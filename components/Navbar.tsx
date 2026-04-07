@@ -35,15 +35,15 @@ export default function Navbar() {
         scrolled ? "shadow-[0_2px_20px_rgba(0,0,0,.08)]" : ""
       }`}
     >
-      <div className="max-w-7xl mx-auto px-5 flex items-center justify-between h-20">
+      <div className="max-w-7xl mx-auto px-5 flex items-center justify-between h-24 lg:h-28">
         {/* Logo */}
-        <a href="#" aria-label="Cityland Travel - Inicio" className="flex-shrink-0 relative h-16 w-56">
+        <a href="#" aria-label="Cityland Travel - Inicio" className="flex-shrink-0 relative h-20 w-[240px] lg:h-24 lg:w-[320px] flex items-center">
           <Image
             src="/logo.png"
             alt="Cityland Travel - Agencia de Viajes Lima"
             fill
             priority
-            className="object-contain object-left"
+            className="object-contain object-left scale-150 origin-left ml-4"
           />
         </a>
 
@@ -53,7 +53,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="nav-link text-sm font-semibold text-gray-600 hover:text-[#0c3265] transition-colors py-1"
+              className="nav-link text-[15px] font-bold text-[#001e43] hover:text-[#e3000f] transition-colors py-2 uppercase tracking-wide"
             >
               {link.label}
             </a>
@@ -64,19 +64,19 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-4">
           <a
             href="tel:+51941551530"
-            className="flex items-center gap-1.5 text-sm font-semibold text-gray-600 hover:text-[#0c3265] transition-colors"
+            className="flex items-center gap-1.5 text-sm font-bold text-[#001e43] hover:text-[#e3000f] transition-colors"
           >
-            <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current opacity-70" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current opacity-80" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
             +51 941 551 530
           </a>
           <a
             href={WA_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-glow inline-flex items-center gap-2 bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white px-5 py-2.5 rounded-full text-sm font-extrabold shadow-[0_4px_16px_rgba(37,211,102,.35)]"
+            className="inline-flex items-center gap-2 bg-[#e3000f] hover:bg-[#b0000a] text-white px-6 py-3 rounded-md text-[15px] font-bold shadow-md transition-colors"
           >
-            <WhatsAppIcon size={15} />
-            Cotizar ahora
+            <WhatsAppIcon size={16} />
+            Cotizar Vuelos
           </a>
         </div>
 

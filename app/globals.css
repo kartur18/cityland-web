@@ -2,17 +2,17 @@
 
 /* ── Tailwind v4 Theme Tokens ── */
 @theme {
-  --color-brand-navy: #0c3265;
-  --color-brand-navy-light: #1a4a8a;
-  --color-brand-red: #d30000;
-  --color-brand-red-light: #e52020;
+  --color-brand-navy: #001e43; /* LATAM/Avianca dark blue */
+  --color-brand-navy-light: #0b3260;
+  --color-brand-red: #e3000f; /* Airline Red */
+  --color-brand-red-light: #ff1a2a;
   --color-brand-green: #059669;
   --color-brand-green-light: #10B981;
   --color-brand-amber: #F59E0B;
   --color-brand-amber-light: #FBBF24;
   --color-brand-gray: #64748b;
-  --color-brand-bg: #f8fafc;
-  --color-brand-cream: #f1f5f9;
+  --color-brand-bg: #ffffff;
+  --color-brand-cream: #f8fafc;
 }
 
 /* ── Scroll suave ── */
@@ -30,24 +30,9 @@ html {
 /* ── Keyframes base ── */
 @keyframes slidebg { 0% { background-position: 0% } 100% { background-position: 200% } }
 @keyframes floatcard { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-8px) } }
-@keyframes pulsefire { 0%,100% { box-shadow: 0 6px 28px rgba(232,64,37,.45) } 50% { box-shadow: 0 6px 40px rgba(232,64,37,.7) } }
-@keyframes pulse { 0%,100% { box-shadow: 0 6px 28px rgba(22,163,74,.45) } 50% { box-shadow: 0 6px 40px rgba(22,163,74,.65) } }
-@keyframes float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-20px) } }
-@keyframes popIn { 0% { transform: scale(.8); opacity: 0 } 100% { transform: scale(1); opacity: 1 } }
+@keyframes float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
 
-/* ── Shimmer gradient text ── */
-@keyframes shimmer {
-  0% { background-position: 200% center }
-  100% { background-position: -200% center }
-}
-.text-shimmer {
-  background: linear-gradient(90deg, #FFD700, #FFA500, #FF6B4A, #FFD700, #FFA500);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 4s linear infinite;
-}
+/* (Removed shimmer, popIn, and pulse fire for enterprise maturity) */
 
 /* ── Marquee airlines ── */
 @keyframes marquee { 0% { transform: translateX(0) } 100% { transform: translateX(-50%) } }
@@ -115,33 +100,14 @@ html {
 
 /* ── Card 3D hover ── */
 .card-3d {
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .card-3d:hover {
-  transform: perspective(1000px) rotateY(2deg) rotateX(-2deg) translateY(-8px);
-  box-shadow: 0 25px 60px rgba(13, 31, 60, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 30, 67, 0.08); /* Suave sombra gris/azul */
 }
 
-/* ── Gradient border on hover ── */
-.gradient-border {
-  position: relative;
-}
-.gradient-border::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1.5px;
-  background: linear-gradient(135deg, #FF4D2E, #F59E0B, #059669);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-.gradient-border:hover::before {
-  opacity: 1;
-}
+/* (Removed heavy gradient borders) */
 
 /* ── Nav link animated underline ── */
 .nav-link {
@@ -154,21 +120,21 @@ html {
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #FF4D2E, #F59E0B);
+  background: var(--color-brand-red);
   border-radius: 2px;
-  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: width 0.3s ease;
 }
 .nav-link:hover::after {
   width: 100%;
 }
 
-/* ── Button glow ── */
+/* ── Button Clean ── */
 .btn-glow {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .btn-glow:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 0 30px rgba(255, 77, 46, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 /* ── Focus visible ── */

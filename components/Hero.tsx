@@ -60,30 +60,23 @@ export default function Hero() {
           className="object-cover scale-105"
           style={{ animation: "none" }}
         />
-        {/* Multi-layer gradient for depth */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0c3265]/85 via-[#0c3265]/50 to-[#d30000]/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-
-        {/* Floating particles */}
-        <div className="absolute top-20 left-[10%] w-2 h-2 rounded-full bg-amber-400/60" style={{ animation: "particle-float-1 8s ease-in-out infinite" }} />
-        <div className="absolute top-32 right-[15%] w-3 h-3 rounded-full bg-white/30" style={{ animation: "particle-float-2 6s ease-in-out infinite" }} />
-        <div className="absolute bottom-40 left-[20%] w-1.5 h-1.5 rounded-full bg-red-400/50" style={{ animation: "particle-float-3 10s ease-in-out infinite" }} />
-        <div className="absolute top-1/3 right-[8%] w-4 h-4 rounded-full bg-amber-300/25" style={{ animation: "particle-float-1 12s ease-in-out infinite reverse" }} />
+        {/* Multi-layer gradient for depth - Enterprise dark blue to red */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#001e43]/95 via-[#001e43]/70 to-[#e3000f]/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 md:from-black/60 via-transparent to-transparent" />
 
         {/* Texto centrado */}
-        <div className="relative z-10 text-center px-5 max-w-3xl mx-auto pb-28">
-          <div className={`inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-full text-white/90 text-[12px] font-bold tracking-widest uppercase mb-6 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-            Agencia de viajes en Lima · Desde 2015
+        <div className="relative z-10 text-center px-5 max-w-4xl mx-auto pb-28">
+          <div className={`inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2 rounded-full text-white text-[13px] font-bold tracking-widest uppercase mb-8 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+            Vuelos Internacionales y Paquetes · Desde 2015
           </div>
           <h1
-            className={`font-[family-name:var(--font-bebas)] text-[clamp(44px,6.5vw,80px)] leading-[0.95] text-white tracking-wide mb-6 transition-all duration-700 delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+            className={`font-sans font-extrabold text-[clamp(40px,7vw,70px)] leading-[1.05] text-white tracking-tight mb-8 transition-all duration-700 delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
           >
-            Descubre el mundo<br />
-            <span className="text-amber-300">con los mejores precios</span>
+            TU VIAJE AL MUNDO<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-400">EMPIEZA AQUÍ</span>
           </h1>
-          <p className={`text-lg text-white/80 max-w-xl mx-auto leading-relaxed transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-            Paquetes migratorios desde <strong className="text-amber-300">$799</strong> · Turísticos a +70 destinos · Cotización gratis en 2 horas
+          <p className={`text-xl md:text-2xl font-medium text-gray-200 max-w-2xl mx-auto leading-relaxed transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+            Paquetes migratorios desde <strong className="text-white bg-[#e3000f] px-2 py-0.5 rounded ml-1">$799</strong>
           </p>
         </div>
       </div>
@@ -104,13 +97,13 @@ export default function Hero() {
                     e.stopPropagation();
                     setMenuAbierto(!menuAbierto);
                   }}
-                  className="w-full flex items-center gap-3 border-2 border-gray-100 rounded-xl px-4 py-3.5 text-left hover:border-[#0c3265]/30 transition-colors focus:outline-none focus:border-[#0c3265]/50"
+                  className="w-full flex items-center gap-3 border border-gray-200 rounded-xl px-4 py-3.5 text-left hover:border-[#001e43]/50 transition-colors focus:outline-none focus:border-[#001e43]/80 bg-gray-50/50"
                 >
-                  <span className="text-xl">🌍</span>
-                  <span className={`text-sm flex-1 ${destino ? "text-gray-900 font-semibold" : "text-gray-400"}`}>
-                    {labelSelected || "¿A dónde quieres viajar?"}
+                  <span className="text-xl opacity-70">🌍</span>
+                  <span className={`text-[15px] flex-1 ${destino ? "text-[#001e43] font-bold" : "text-gray-500 font-medium"}`}>
+                    {labelSelected || "¿Hacia dónde vuelas?"}
                   </span>
-                  <svg className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${menuAbierto ? "rotate-180" : ""}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6"/></svg>
+                  <svg className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${menuAbierto ? "rotate-180" : ""}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
 
                 {menuAbierto && (
@@ -123,7 +116,7 @@ export default function Hero() {
                           setDestino(d.value);
                           setMenuAbierto(false);
                         }}
-                        className={`w-full text-left px-4 py-3 text-sm transition-colors ${destino === d.value ? "bg-blue-50 text-[#0c3265] font-semibold" : "text-gray-700 hover:bg-gray-50"}`}
+                        className={`w-full text-left px-4 py-3 text-[14px] transition-colors ${destino === d.value ? "bg-[#001e43]/5 text-[#001e43] font-bold" : "text-gray-700 hover:bg-gray-50"}`}
                       >
                         {d.label}
                       </button>
@@ -132,41 +125,41 @@ export default function Hero() {
                 )}
               </div>
 
-              {/* Toggle tipo */}
-              <div className="flex rounded-xl border-2 border-gray-100 overflow-hidden flex-shrink-0">
+              {/* Toggle tipo - Enterprise styles */}
+              <div className="flex rounded-xl border border-gray-200 overflow-hidden flex-shrink-0 bg-gray-50 p-1">
                 <button
                   type="button"
                   onClick={() => setTipo("migratorio")}
-                  className={`px-5 py-3.5 text-sm font-semibold transition-colors ${
+                  className={`px-5 py-2.5 text-sm font-bold rounded-lg transition-colors ${
                     tipo === "migratorio"
-                      ? "bg-[#0c3265] text-white"
-                      : "bg-white text-gray-500 hover:bg-gray-50"
+                      ? "bg-[#001e43] text-white shadow-sm"
+                      : "text-gray-500 hover:text-gray-800"
                   }`}
                 >
-                  ✈ Migratorio
+                  ✈ Migración
                 </button>
                 <button
                   type="button"
                   onClick={() => setTipo("turistico")}
-                  className={`px-5 py-3.5 text-sm font-semibold transition-colors ${
+                  className={`px-5 py-2.5 text-sm font-bold rounded-lg transition-colors ${
                     tipo === "turistico"
-                      ? "bg-[#0c3265] text-white"
-                      : "bg-white text-gray-500 hover:bg-gray-50"
+                      ? "bg-[#001e43] text-white shadow-sm"
+                      : "text-gray-500 hover:text-gray-800"
                   }`}
                 >
-                  🌴 Turístico
+                  🌴 Turismo
                 </button>
               </div>
 
-              {/* CTA WhatsApp */}
+              {/* CTA Corporativo */}
               <a
                 href={enlaceCotizar}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-glow inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white px-7 py-3.5 rounded-xl text-sm font-extrabold flex-shrink-0 shadow-[0_4px_20px_rgba(37,211,102,.4)]"
+                className="inline-flex items-center justify-center gap-2 bg-[#e3000f] hover:bg-[#b0000a] text-white px-8 py-3.5 rounded-xl text-[15px] font-bold shadow-lg transition-colors flex-shrink-0 w-full md:w-auto"
               >
-                <WhatsAppIcon size={16} />
-                Cotizar GRATIS
+                Buscar Vuelos
+                <svg viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
               </a>
             </div>
           </div>
