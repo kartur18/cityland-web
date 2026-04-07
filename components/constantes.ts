@@ -66,7 +66,7 @@ export const DESTINOS_CARIBE = [
   },
   {
     ciudad: "Cartagena", pais: "Colombia", bandera: "🇨🇴",
-    img: "https://images.unsplash.com/photo-1583997052103-b4a1cb974ce5?w=600&q=80",
+    img: "https://images.unsplash.com/photo-1614358536373-1ce27819009e?w=600&q=80",
     alt: "Viajes a Cartagena de Indias desde Lima - ciudad amurallada colonial",
     turistico: 549, turiDesc: "Vuelo + hotel + city tour",
   },
