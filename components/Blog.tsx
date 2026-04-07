@@ -1,36 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
-import { WA_LINK } from "@/components/constantes";
-
-const posts = [
-  {
-    titulo: "Guía completa para emigrar a España desde Perú",
-    desc: "Todo lo que necesitas saber: documentos, costos, requisitos y consejos prácticos.",
-    categoria: "Migración",
-    catColor: "bg-red-500",
-    fecha: "15 Mar 2026",
-    lectura: "5 min",
-    imagen: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=600&q=80",
-  },
-  {
-    titulo: "Top 5 resorts todo incluido en Punta Cana 2026",
-    desc: "Los mejores hoteles all-inclusive con playa privada y actividades familiares.",
-    categoria: "Destinos",
-    catColor: "bg-amber-500",
-    fecha: "8 Mar 2026",
-    lectura: "4 min",
-    imagen: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600&q=80",
-  },
-  {
-    titulo: "Migratorio vs turístico: ¿cuál necesitas?",
-    desc: "Diferencias clave entre ambos paquetes para que elijas el correcto.",
-    categoria: "Guía",
-    catColor: "bg-[#0a1628]",
-    fecha: "1 Mar 2026",
-    lectura: "3 min",
-    imagen: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=600&q=80",
-  },
-];
+import { BLOG_POSTS, WA_LINK } from "@/components/constantes";
 
 export default function Blog() {
   return (
@@ -49,7 +20,7 @@ export default function Blog() {
         </AnimateOnScroll>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {posts.map((p, index) => (
+          {BLOG_POSTS.map((p, index) => (
             <AnimateOnScroll key={p.titulo} stagger={index + 1}>
               <div className="card-lift bg-white rounded-xl overflow-hidden border border-gray-100 group flex flex-col h-full">
                 <div className="relative h-[190px] overflow-hidden flex-shrink-0">
@@ -77,13 +48,13 @@ export default function Blog() {
                   </h3>
                   <p className="text-[13px] text-gray-500 leading-relaxed mb-4">{p.desc}</p>
 
-                  <a
-                    href="#blog"
+                  <Link
+                    href={"/blog/" + p.slug}
                     className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#dc2626] hover:gap-2.5 transition-all mt-auto group/link"
                   >
                     Leer más
                     <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current stroke-2 transition-transform group-hover/link:translate-x-0.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </AnimateOnScroll>

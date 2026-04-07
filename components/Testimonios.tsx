@@ -21,10 +21,10 @@ export default function Testimonios() {
           </div>
         </AnimateOnScroll>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-5 px-5 no-scrollbar lg:grid lg:grid-cols-3 lg:overflow-visible lg:snap-none lg:mx-0 lg:px-0 lg:pb-0">
           {TESTIMONIOS.map((t, index) => (
-            <AnimateOnScroll key={t.nombre} stagger={Math.min(index + 1, 4)}>
-              <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 group">
+            <AnimateOnScroll key={t.nombre} stagger={Math.min(index + 1, 4)} className="snap-start shrink-0 w-[85vw] sm:w-[320px] lg:w-auto lg:shrink">
+              <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 group h-full">
                 {/* Stars */}
                 <div className="flex gap-0.5 mb-3">
                   {[1, 2, 3, 4, 5].map((s) => (

@@ -34,6 +34,7 @@ html {
 @keyframes marquee { 0% { transform: translateX(0) } 100% { transform: translateX(-50%) } }
 @keyframes marquee-reverse { 0% { transform: translateX(-50%) } 100% { transform: translateX(0) } }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px) } to { opacity: 1; transform: translateY(0) } }
+@keyframes tabFadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes scaleIn { from { opacity: 0; transform: scale(.95) } to { opacity: 1; transform: scale(1) } }
 @keyframes shimmer { 0% { background-position: -200% 0 } 100% { background-position: 200% 0 } }
 
@@ -135,3 +136,27 @@ html {
 @keyframes particle-float-1 { 0%,100% { transform: translate(0,0) rotate(0deg) } 33% { transform: translate(30px,-40px) rotate(120deg) } 66% { transform: translate(-20px,-80px) rotate(240deg) } }
 @keyframes particle-float-2 { 0%,100% { transform: translate(0,0) } 50% { transform: translate(-40px,-60px) } }
 @keyframes particle-float-3 { 0%,100% { transform: translate(0,0) scale(1) } 50% { transform: translate(20px,-50px) scale(1.2) } }
+
+/* ── Article body prose styles ── */
+/* ── Hide scrollbar ── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.article-body h2 { font-size: 24px; font-weight: 700; color: #0a1628; margin: 32px 0 12px; }
+.article-body h3 { font-size: 18px; font-weight: 600; color: #0a1628; margin: 24px 0 8px; }
+.article-body p { font-size: 15px; color: #475569; line-height: 1.75; margin-bottom: 16px; }
+.article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 16px; }
+.article-body li { font-size: 15px; color: #475569; line-height: 1.75; margin-bottom: 4px; }
+
+/* ── Dark Mode ── */
+.dark {
+  color-scheme: dark;
+}
+.dark body {
+  background-color: #0a1628;
+  color: #e2e8f0;
+}
+.dark .dark\:bg-dark { background-color: #0f1d32; }
+.dark .dark\:bg-card { background-color: #162544; }
+.dark .dark\:text-white { color: #f1f5f9; }
+.dark .dark\:border-dark { border-color: rgba(255,255,255,0.06); }

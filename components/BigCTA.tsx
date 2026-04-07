@@ -1,5 +1,6 @@
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import CotizadorForm from "@/components/CotizadorForm";
 import { TELEFONO, waLink } from "@/components/constantes";
 
 export default function BigCTA() {
@@ -76,6 +77,18 @@ export default function BigCTA() {
           </p>
         </div>
       </AnimateOnScroll>
+
+      {/* Divider */}
+      <div className="relative z-10 flex items-center gap-4 max-w-[560px] mx-auto my-10">
+        <div className="flex-1 h-px bg-white/10" />
+        <span className="text-white/30 text-[12px] font-medium whitespace-nowrap">o completa el formulario</span>
+        <div className="flex-1 h-px bg-white/10" />
+      </div>
+
+      {/* Cotizador Form */}
+      <div className="relative z-10">
+        <CotizadorForm />
+      </div>
     </section>
   );
 }

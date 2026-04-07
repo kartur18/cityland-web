@@ -23,7 +23,7 @@ export default function CookieBar() {
         <div className="bg-[#0a1628] text-white/70 px-5 py-3.5 rounded-xl flex items-center justify-between gap-4 flex-wrap shadow-2xl border border-white/5 text-[12px]">
           <span>
             Usamos cookies para mejorar tu experiencia.{" "}
-            <a href="#" className="text-white/90 underline underline-offset-2">Política de privacidad</a>
+            <a href="/politicas" className="text-white/90 underline underline-offset-2">Política de privacidad</a>
           </span>
           <button
             onClick={aceptar}

@@ -15,6 +15,7 @@ import Video from "@/components/Video";
 import Testimonios from "@/components/Testimonios";
 import TrustSection from "@/components/TrustSection";
 import Blog from "@/components/Blog";
+import InstagramFeed from "@/components/InstagramFeed";
 import FAQ from "@/components/FAQ";
 import BigCTA from "@/components/BigCTA";
 import Mapa from "@/components/Mapa";
@@ -44,6 +45,7 @@ export default function LandingPage() {
         <Testimonios />
         <TrustSection />
         <Blog />
+        <InstagramFeed />
         <FAQ />
         <BigCTA />
         <Mapa />
