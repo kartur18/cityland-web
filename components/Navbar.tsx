@@ -37,7 +37,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-5 flex items-center justify-between h-20">
         {/* Logo */}
-        <a href="#" aria-label="Cityland Travel - Inicio" className="flex-shrink-0 relative h-14 w-48">
+        <a href="#" aria-label="Cityland Travel - Inicio" className="flex-shrink-0 relative h-16 w-56">
           <Image
             src="/logo.png"
             alt="Cityland Travel - Agencia de Viajes Lima"

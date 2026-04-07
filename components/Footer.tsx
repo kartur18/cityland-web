@@ -17,13 +17,15 @@ export default function Footer() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.8fr_1fr_1fr_1.3fr] gap-10 mb-12">
             {/* Columna marca */}
             <div>
-              <div className="relative h-14 w-44 mb-4">
-                <Image
-                  src="/logo.png"
-                  alt="Cityland Travel"
-                  fill
-                  className="object-contain object-left brightness-0 invert opacity-90"
-                />
+              <div className="bg-white/95 rounded-xl px-3 py-2 inline-flex mb-4">
+                <div className="relative h-10 w-36">
+                  <Image
+                    src="/logo.png"
+                    alt="Cityland Travel"
+                    fill
+                    className="object-contain object-left"
+                  />
+                </div>
               </div>
               <p className="text-[13px] leading-relaxed mb-5 max-w-[260px]">
                 Agencia de viajes peruana con más de 10 años conectando peruanos con el mundo. Más de 5,000 viajeros satisfechos.

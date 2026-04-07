@@ -80,7 +80,7 @@ export default function Hero() {
             className={`font-[family-name:var(--font-bebas)] text-[clamp(44px,6.5vw,80px)] leading-[0.95] text-white tracking-wide mb-6 transition-all duration-700 delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
           >
             Descubre el mundo<br />
-            <span className="text-shimmer">con los mejores precios</span>
+            <span className="text-amber-300">con los mejores precios</span>
           </h1>
           <p className={`text-lg text-white/80 max-w-xl mx-auto leading-relaxed transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
             Paquetes migratorios desde <strong className="text-amber-300">$799</strong> · Turísticos a +70 destinos · Cotización gratis en 2 horas

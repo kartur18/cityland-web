@@ -18,16 +18,16 @@ export const WA_SVG = (size = 18) =>
 export const DESTINOS_EUROPA = [
   {
     ciudad: "Madrid", pais: "España", bandera: "🇪🇸",
-    img: "https://images.unsplash.com/photo-1543785349-e9b05fce0c95?w=600&q=80",
-    alt: "Vuelos baratos a Madrid desde Lima - Paquete migratorio desde $799",
+    img: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=600&q=80",
+    alt: "Vuelos baratos a Madrid desde Lima - Gran Vía Madrid de noche",
     tag: "MÁS VENDIDO", tagColor: "hot" as const,
     migratorio: 799, turistico: 1099,
     migraDesc: "Solo ida + seguro + hotel + retorno", turiDesc: "Ida y vuelta + hotel 5 noches",
   },
   {
     ciudad: "Barcelona", pais: "España", bandera: "🇪🇸",
-    img: "https://images.unsplash.com/photo-1511527844068-006b95d162c2?w=600&q=80",
-    alt: "Vuelos a Barcelona desde Lima - Paquetes turísticos a España",
+    img: "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=600&q=80",
+    alt: "Vuelos a Barcelona desde Lima - Sagrada Familia Barcelona",
     tag: "PROMO", tagColor: "promo" as const,
     migratorio: 849, turistico: 1149,
     migraDesc: "Solo ida + seguro + hotel + retorno", turiDesc: "Ida y vuelta + hotel 5 noches",
@@ -42,7 +42,7 @@ export const DESTINOS_EUROPA = [
   },
   {
     ciudad: "Milán", pais: "Italia", bandera: "🇮🇹",
-    img: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600&q=80",
+    img: "https://images.unsplash.com/photo-j4ztviiQg7Y?w=600&q=80",
     alt: "Vuelos a Milán desde Lima - Duomo di Milano Italia",
     migratorio: 899, turistico: 1249,
     migraDesc: "Solo ida + seguro + hotel + retorno", turiDesc: "Ida y vuelta + hotel 5 noches",
@@ -66,8 +66,8 @@ export const DESTINOS_CARIBE = [
   },
   {
     ciudad: "Cartagena", pais: "Colombia", bandera: "🇨🇴",
-    img: "https://images.unsplash.com/photo-1599413987323-b2b8c4e5a06b?w=600&q=80",
-    alt: "Viajes a Cartagena de Indias desde Lima - ciudad amurallada",
+    img: "https://images.unsplash.com/photo-xAGwxrX3sbQ?w=600&q=80",
+    alt: "Viajes a Cartagena de Indias desde Lima - ciudad amurallada colonial",
     turistico: 549, turiDesc: "Vuelo + hotel + city tour",
   },
   {
