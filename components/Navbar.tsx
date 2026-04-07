@@ -38,15 +38,14 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-5 flex items-center justify-between h-20">
-        {/* Logo - imagen 500x500 con mucho padding, usamos overflow-hidden para recortar */}
-        <a href="#" className="flex-shrink-0 h-28 w-52 relative overflow-hidden -my-4">
+        {/* Logo */}
+        <a href="#" className="flex-shrink-0 h-16 w-40 relative overflow-hidden">
           <Image
             src="/logo.png"
             alt="Cityland Travel - Agencia de Viajes"
-            width={500}
-            height={500}
+            fill
             priority
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-auto"
+            className="object-contain scale-[1.7]"
           />
         </a>
 
