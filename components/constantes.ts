@@ -80,12 +80,12 @@ export const DESTINOS_CARIBE = [
 ];
 
 export const TESTIMONIOS = [
-  { nombre: "Ana R.", iniciales: "AR", color: "#1a4a8a", ruta: "Lima → Madrid · Migratorio", texto: "Paquete migratorio a Madrid perfecto. Boleto, seguro, todo ok en migraciones. El precio fue el mejor que encontré. Súper recomendados." },
-  { nombre: "Fernando C.", iniciales: "FC", color: "#d30000", ruta: "Lima → Punta Cana · Turístico", texto: "Punta Cana todo incluido. Resort frente al mar. Cityland se encargó de absolutamente todo. Valió cada centavo." },
-  { nombre: "Pedro H.", iniciales: "PH", color: "#059669", ruta: "Lima → Barcelona · Migratorio", texto: "Respondieron en 1 hora. El precio fue mucho menor al de las agencias del mall. Y pagué con Yape en cuotas. Increíble servicio." },
-  { nombre: "María L.", iniciales: "ML", color: "#6366F1", ruta: "Lima → Cancún · Familiar", texto: "Viajamos a Cancún en familia, 4 personas. Nos armaron el paquete en un día. Precio imbatible y cero problemas." },
-  { nombre: "Juan C.", iniciales: "JC", color: "#B45309", ruta: "Lima → Roma · Migratorio", texto: "Emigré a Roma hace 6 meses con su paquete migratorio. Todo salió perfecto. Los asesores me guiaron paso a paso." },
-  { nombre: "Diana V.", iniciales: "DV", color: "#7C3AED", ruta: "Lima → Cartagena · Turístico", texto: "Coticé con 3 agencias más y Cityland fue la más barata Y la más rápida. Ya hice 2 viajes con ellos y volvería siempre." },
+  { nombre: "Ana R.", foto: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80", iniciales: "AR", color: "#1a4a8a", ruta: "Lima → Madrid · Migratorio", texto: "Paquete migratorio a Madrid perfecto. Boleto, seguro, todo ok en migraciones. El precio fue el mejor que encontré. Súper recomendados." },
+  { nombre: "Fernando C.", foto: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=100&q=80", iniciales: "FC", color: "#d30000", ruta: "Lima → Punta Cana · Turístico", texto: "Punta Cana todo incluido. Resort frente al mar. Cityland se encargó de absolutamente todo. Valió cada centavo." },
+  { nombre: "Pedro H.", foto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80", iniciales: "PH", color: "#059669", ruta: "Lima → Barcelona · Migratorio", texto: "Respondieron en 1 hora. El precio fue mucho menor al de las agencias del mall. Y pagué con Yape en cuotas. Increíble servicio." },
+  { nombre: "María L.", foto: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80", iniciales: "ML", color: "#6366F1", ruta: "Lima → Cancún · Familiar", texto: "Viajamos a Cancún en familia, 4 personas. Nos armaron el paquete en un día. Precio imbatible y cero problemas." },
+  { nombre: "Juan C.", foto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80", iniciales: "JC", color: "#B45309", ruta: "Lima → Roma · Migratorio", texto: "Emigré a Roma hace 6 meses con su paquete migratorio. Todo salió perfecto. Los asesores me guiaron paso a paso." },
+  { nombre: "Diana V.", foto: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80", iniciales: "DV", color: "#7C3AED", ruta: "Lima → Cartagena · Turístico", texto: "Coticé con 3 agencias más y Cityland fue la más barata Y la más rápida. Ya hice 2 viajes con ellos y volvería siempre." },
 ];
 
 export const FAQS = [

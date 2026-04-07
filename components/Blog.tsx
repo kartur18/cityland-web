@@ -81,9 +81,7 @@ export default function Blog() {
 
                   {/* CTA */}
                   <a
-                    href={waLink(`Quiero info sobre: ${p.titulo}`)}
-                    target="_blank"
-                    rel="noopener"
+                    href="#blog"
                     className="inline-flex items-center gap-1.5 text-[13px] font-extrabold text-[#d30000] hover:gap-2.5 transition-all duration-150 mt-auto"
                   >
                     Leer más <span>→</span>

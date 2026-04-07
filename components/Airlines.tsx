@@ -18,18 +18,9 @@ const AEROLINEAS = [
 
 function AirlineCard({ a }: { a: typeof AEROLINEAS[number] }) {
   return (
-    <div className="flex-shrink-0 flex items-center gap-2.5 bg-white border border-gray-100 rounded-xl px-4 py-2.5 shadow-[0_2px_8px_rgba(0,0,0,.05)] hover:shadow-[0_4px_16px_rgba(0,0,0,.10)] hover:border-gray-200 transition-all duration-200 group">
-      <div className="relative w-7 h-7 flex-shrink-0">
-        <Image
-          src={a.logo}
-          alt={`Logo ${a.nombre}`}
-          fill
-          className="object-contain"
-          unoptimized
-          onError={() => {}}
-        />
-      </div>
-      <span className="text-[13px] font-bold text-[#0c3265] whitespace-nowrap">{a.nombre}</span>
+    <div className="flex-shrink-0 flex items-center gap-2 bg-white border border-gray-200 rounded-lg px-5 py-3 shadow-sm hover:shadow-md hover:border-gray-300 transition-all duration-200 group">
+      <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current text-gray-400 group-hover:text-[#001e43] transition-colors" xmlns="http://www.w3.org/2000/svg"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+      <span className="text-[14px] font-bold text-gray-600 group-hover:text-[#001e43] transition-colors whitespace-nowrap">{a.nombre}</span>
     </div>
   );
 }

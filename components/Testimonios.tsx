@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import Image from "next/image";
 import { TESTIMONIOS } from "@/components/constantes";
 
 export default function Testimonios() {
@@ -55,11 +56,20 @@ export default function Testimonios() {
 
                 {/* Autor */}
                 <div className="flex items-center gap-3">
-                  <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center text-white text-[13px] font-extrabold shrink-0 shadow-sm"
-                    style={{ backgroundColor: t.color }}
-                  >
-                    {t.iniciales}
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-[13px] font-extrabold shrink-0 shadow-sm relative overflow-hidden bg-gray-200">
+                    {'foto' in t && t.foto ? (
+                      <Image
+                        src={t.foto as string}
+                        alt={`Foto de ${t.nombre}`}
+                        fill
+                        className="object-cover"
+                        sizes="40px"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center font-extrabold" style={{ backgroundColor: t.color }}>
+                        {t.iniciales}
+                      </div>
+                    )}
                   </div>
                   <div>
                     <p className="text-[14px] font-bold text-[#0c3265]">{t.nombre}</p>
