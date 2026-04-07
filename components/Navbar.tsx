@@ -37,16 +37,16 @@ export default function Navbar() {
         scrolled ? "shadow-sm" : ""
       }`}
     >
-      <div className="max-w-7xl mx-auto px-5 flex items-center justify-between h-20">
+      <div className="max-w-7xl mx-auto px-5 flex items-center justify-between h-24">
         {/* Logo */}
         <a href="#" className="flex-shrink-0">
           <Image
             src="/logo.png"
             alt="Cityland Travel - Agencia de Viajes"
-            width={180}
-            height={80}
+            width={300}
+            height={140}
             priority
-            className="h-16 w-auto object-contain"
+            className="h-20 w-auto object-contain"
           />
         </a>
 
