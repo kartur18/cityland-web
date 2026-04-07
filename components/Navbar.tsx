@@ -41,7 +41,7 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#" className="flex-shrink-0">
           <Image
-            src="/logo.svg"
+            src="/logo-horizontal.svg"
             alt="Cityland Travel"
             width={160}
             height={48}
