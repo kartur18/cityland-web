@@ -18,19 +18,19 @@ export const WA_SVG = (size = 18) =>
 export const DESTINOS_EUROPA = [
   {
     ciudad: "Madrid", pais: "España", bandera: "🇪🇸",
-    img: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=600&q=80",
+    img: "https://images.unsplash.com/photo-1543785349-e9b05fce0c95?w=600&q=80",
     alt: "Vuelos baratos a Madrid desde Lima - Paquete migratorio desde $799",
     tag: "MÁS VENDIDO", tagColor: "hot" as const,
     migratorio: 799, turistico: 1099,
-    migraDesc: "Ida + seguro + hotel + retorno", turiDesc: "Ida y vuelta + hotel 5 noches",
+    migraDesc: "Solo ida + seguro + hotel + retorno", turiDesc: "Ida y vuelta + hotel 5 noches",
   },
   {
     ciudad: "Barcelona", pais: "España", bandera: "🇪🇸",
-    img: "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=600&q=80",
-    alt: "Vuelos a Barcelona desde Lima",
+    img: "https://images.unsplash.com/photo-1511527844068-006b95d162c2?w=600&q=80",
+    alt: "Vuelos a Barcelona desde Lima - Paquetes turísticos a España",
     tag: "PROMO", tagColor: "promo" as const,
     migratorio: 849, turistico: 1149,
-    migraDesc: "Ida + seguro + hotel + retorno", turiDesc: "Ida y vuelta + hotel 5 noches",
+    migraDesc: "Solo ida + seguro + hotel + retorno", turiDesc: "Ida y vuelta + hotel 5 noches",
   },
   {
     ciudad: "Roma", pais: "Italia", bandera: "🇮🇹",
@@ -38,54 +38,54 @@ export const DESTINOS_EUROPA = [
     alt: "Vuelos a Roma desde Lima - Paquetes turísticos a Italia",
     tag: "NUEVO", tagColor: "new" as const,
     migratorio: 899, turistico: 1199,
-    migraDesc: "Ida + seguro + hotel + retorno", turiDesc: "Ida y vuelta + hotel 5 noches",
+    migraDesc: "Solo ida + seguro + hotel + retorno", turiDesc: "Ida y vuelta + hotel 5 noches",
   },
   {
     ciudad: "Milán", pais: "Italia", bandera: "🇮🇹",
-    img: "https://images.unsplash.com/photo-1520440229-6469a149ac59?w=600&q=80",
-    alt: "Vuelos a Milán desde Lima",
+    img: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600&q=80",
+    alt: "Vuelos a Milán desde Lima - Duomo di Milano Italia",
     migratorio: 899, turistico: 1249,
-    migraDesc: "Ida + seguro + hotel + retorno", turiDesc: "Ida y vuelta + hotel 5 noches",
+    migraDesc: "Solo ida + seguro + hotel + retorno", turiDesc: "Ida y vuelta + hotel 5 noches",
   },
 ];
 
 export const DESTINOS_CARIBE = [
   {
     ciudad: "Punta Cana", pais: "República Dominicana", bandera: "🇩🇴",
-    img: "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=600&q=80",
-    alt: "Paquete todo incluido Punta Cana desde Lima",
+    img: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600&q=80",
+    alt: "Paquete todo incluido Punta Cana desde Lima - resort playa",
     tag: "TOP VENTAS", tagColor: "hot" as const,
     turistico: 799, turiDesc: "Vuelo + resort + tours + seguro", turiLabel: "Todo incluido",
   },
   {
     ciudad: "Cancún", pais: "México", bandera: "🇲🇽",
-    img: "https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=600&q=80",
-    alt: "Paquete turístico Cancún desde Lima",
+    img: "https://images.unsplash.com/photo-1552074284-5e88ef1aef18?w=600&q=80",
+    alt: "Paquete turístico Cancún desde Lima - playa caribe",
     tag: "PROMO", tagColor: "promo" as const,
     turistico: 749, turiDesc: "Vuelo + hotel + tours + seguro",
   },
   {
     ciudad: "Cartagena", pais: "Colombia", bandera: "🇨🇴",
-    img: "https://images.unsplash.com/photo-1583997052301-0042b33fc598?w=600&q=80",
-    alt: "Viajes a Cartagena desde Lima",
+    img: "https://images.unsplash.com/photo-1599413987323-b2b8c4e5a06b?w=600&q=80",
+    alt: "Viajes a Cartagena de Indias desde Lima - ciudad amurallada",
     turistico: 549, turiDesc: "Vuelo + hotel + city tour",
   },
   {
     ciudad: "Río de Janeiro", pais: "Brasil", bandera: "🇧🇷",
     img: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=600&q=80",
-    alt: "Vuelos a Río de Janeiro desde Lima",
+    alt: "Vuelos a Río de Janeiro desde Lima - Cristo Redentor",
     tag: "NUEVO", tagColor: "new" as const,
     turistico: 699, turiDesc: "Vuelo + hotel + tours",
   },
 ];
 
 export const TESTIMONIOS = [
-  { nombre: "Ana R.", iniciales: "AR", color: "bg-[#1a4a8a]", ruta: "Lima → Madrid · Migratorio", texto: "Paquete migratorio a Madrid perfecto. Boleto, seguro, todo ok en migraciones. El precio fue el mejor que encontré. Súper recomendados." },
-  { nombre: "Fernando C.", iniciales: "FC", color: "bg-[#d30000]", ruta: "Lima → Punta Cana · Turístico", texto: "Punta Cana todo incluido. Resort frente al mar. Cityland se encargó de absolutamente todo. Valió cada centavo." },
-  { nombre: "Pedro H.", iniciales: "PH", color: "bg-[#059669]", ruta: "Lima → Barcelona · Migratorio", texto: "Respondieron en 1 hora. El precio fue mucho menor al de las agencias del mall. Y pagué con Yape en cuotas. Increíble servicio." },
-  { nombre: "María L.", iniciales: "ML", color: "bg-[#6366F1]", ruta: "Lima → Cancún · Familiar", texto: "Viajamos a Cancún en familia, 4 personas. Nos armaron el paquete en un día. Precio imbatible y cero problemas." },
-  { nombre: "Juan C.", iniciales: "JC", color: "bg-[#F59E0B]", ruta: "Lima → Roma · Migratorio", texto: "Emigré a Roma hace 6 meses con su paquete migratorio. Todo salió perfecto. Los asesores me guiaron paso a paso." },
-  { nombre: "Diana V.", iniciales: "DV", color: "bg-[#A855F7]", ruta: "Lima → Cartagena · Turístico", texto: "Coticé con 3 agencias más y Cityland fue la más barata Y la más rápida. Ya hice 2 viajes con ellos y volvería siempre." },
+  { nombre: "Ana R.", iniciales: "AR", color: "#1a4a8a", ruta: "Lima → Madrid · Migratorio", texto: "Paquete migratorio a Madrid perfecto. Boleto, seguro, todo ok en migraciones. El precio fue el mejor que encontré. Súper recomendados." },
+  { nombre: "Fernando C.", iniciales: "FC", color: "#d30000", ruta: "Lima → Punta Cana · Turístico", texto: "Punta Cana todo incluido. Resort frente al mar. Cityland se encargó de absolutamente todo. Valió cada centavo." },
+  { nombre: "Pedro H.", iniciales: "PH", color: "#059669", ruta: "Lima → Barcelona · Migratorio", texto: "Respondieron en 1 hora. El precio fue mucho menor al de las agencias del mall. Y pagué con Yape en cuotas. Increíble servicio." },
+  { nombre: "María L.", iniciales: "ML", color: "#6366F1", ruta: "Lima → Cancún · Familiar", texto: "Viajamos a Cancún en familia, 4 personas. Nos armaron el paquete en un día. Precio imbatible y cero problemas." },
+  { nombre: "Juan C.", iniciales: "JC", color: "#B45309", ruta: "Lima → Roma · Migratorio", texto: "Emigré a Roma hace 6 meses con su paquete migratorio. Todo salió perfecto. Los asesores me guiaron paso a paso." },
+  { nombre: "Diana V.", iniciales: "DV", color: "#7C3AED", ruta: "Lima → Cartagena · Turístico", texto: "Coticé con 3 agencias más y Cityland fue la más barata Y la más rápida. Ya hice 2 viajes con ellos y volvería siempre." },
 ];
 
 export const FAQS = [

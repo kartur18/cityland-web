@@ -7,12 +7,12 @@ const ITEMS = [
 ];
 export default function Garantias() {
   return (
-    <div className="bg-[#0c3265] py-9">
-      <div className="max-w-[1200px] mx-auto px-5 flex items-center justify-between gap-4 flex-wrap">
+    <div className="bg-[#0c3265] py-10">
+      <div className="max-w-[1200px] mx-auto px-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
         {ITEMS.map((item) => (
-          <div key={item.titulo} className="flex items-center gap-2.5 flex-1 min-w-0">
-            <span className="text-[26px] shrink-0 w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center">{item.icono}</span>
-            <div><strong className="block text-[13px] font-extrabold text-white whitespace-nowrap">{item.titulo}</strong><span className="text-[11.5px] text-white/65 whitespace-nowrap">{item.sub}</span></div>
+          <div key={item.titulo} className="flex items-center gap-2.5">
+            <span className="text-[24px] shrink-0 w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">{item.icono}</span>
+            <div><strong className="block text-[12px] font-extrabold text-white leading-tight">{item.titulo}</strong><span className="text-[11px] text-white/65 leading-tight">{item.sub}</span></div>
           </div>
         ))}
       </div>

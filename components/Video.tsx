@@ -11,7 +11,7 @@ export default function Video() {
             <p className="text-[12px] font-extrabold uppercase tracking-[2px] text-[#d30000] mb-2">CONÓCENOS</p>
             <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(36px,5vw,52px)] text-[#0c3265] tracking-wide leading-tight mb-5">CONOCE CITYLAND TRAVEL</h2>
             <p className="text-[16px] text-[#64748b] leading-relaxed mb-6">
-              Somos la agencia de viajes líder en paquetes migratorios y turísticos para peruanos. Con más de 5 años de experiencia, hemos ayudado a miles de familias a cumplir su sueño de viajar.
+              Somos la agencia de viajes líder en paquetes migratorios y turísticos para peruanos. Con más de 10 años de experiencia, hemos ayudado a miles de familias a cumplir su sueño de viajar.
             </p>
             <div className="flex flex-col gap-3 mb-8">
               {["Más de 5,000 viajes exitosos realizados","Equipo de asesores certificados disponible 24/7","Garantía de mejor precio del mercado peruano"].map((t) => (

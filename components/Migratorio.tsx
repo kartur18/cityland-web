@@ -2,7 +2,7 @@ import AnimateOnScroll from "@/components/AnimateOnScroll";
 import { waLink } from "@/components/constantes";
 
 const items = [
-  { icono: "✈️", titulo: "Boleto aéreo", desc: "Ida y vuelta con aerolíneas de primera" },
+  { icono: "✈️", titulo: "Boleto aéreo", desc: "Solo ida con aerolíneas de primera línea" },
   { icono: "🏨", titulo: "Hotel tránsito", desc: "Alojamiento incluido en escalas" },
   { icono: "🛡️", titulo: "Seguro Schengen", desc: "Cobertura médica internacional" },
   { icono: "🔄", titulo: "Retorno flexible", desc: "Cambia tu fecha de regreso sin costo" },

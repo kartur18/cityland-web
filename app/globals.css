@@ -16,7 +16,16 @@
 }
 
 /* ── Scroll suave ── */
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Compensar altura del navbar sticky */
+}
+
+/* ── Selección de texto ── */
+::selection {
+  background: rgba(12, 50, 101, 0.15);
+  color: #0c3265;
+}
 
 /* ── Keyframes base ── */
 @keyframes slidebg { 0% { background-position: 0% } 100% { background-position: 200% } }

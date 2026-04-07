@@ -22,7 +22,7 @@ export default function Servicios() {
           {SERVICIOS.map((s, index) => (
             <AnimateOnScroll key={s.titulo} stagger={index + 1}>
               <div className={`glass rounded-2xl p-7 border border-black/5 transition-all duration-300 border-t-3 ${s.color} shadow-[0_4px_24px_rgba(12,27,58,.05)] hover:shadow-[0_16px_40px_rgba(12,27,58,.08)] hover:-translate-y-1 group`}>
-                <div className={`w-[50px] h-[50px] rounded-xl ${s.bg} flex items-center justify-center text-[22px] mb-4 transition-transform group-hover:scale-110 group-hover:-rotate-5`}>{s.icono}</div>
+                <div className={`w-[50px] h-[50px] rounded-xl ${s.bg} flex items-center justify-center text-[22px] mb-4 transition-transform group-hover:scale-110 group-hover:-rotate-6`}>{s.icono}</div>
                 <h3 className="text-[15px] font-extrabold text-[#0c3265] mb-1.5">{s.titulo}</h3>
                 <p className="text-[13.5px] text-[#64748b] leading-relaxed">{s.desc}</p>
               </div>
