@@ -6,9 +6,9 @@ import { DESTINOS_EUROPA, DESTINOS_CARIBE, cotLink, waLink } from "@/components/
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 const TAG_STYLES = {
-  hot: "bg-[#d30000] text-white",
-  promo: "bg-amber-500 text-white",
-  new: "bg-[#0c3265] text-white",
+  hot: "bg-[#e3000f] text-white",
+  promo: "bg-[#001e43] text-white",
+  new: "bg-gray-800 text-white",
 };
 
 export default function Destinos() {
@@ -41,14 +41,14 @@ export default function Destinos() {
             <button
               key={t.id}
               onClick={() => setTab(t.id)}
-              className={`flex flex-col items-center px-6 py-3 rounded-xl text-sm font-bold transition-all duration-200 border-2 ${
+              className={`flex flex-col items-center px-8 py-3.5 border-b-2 text-[15px] font-bold transition-all duration-200 ${
                 tab === t.id
-                  ? "bg-[#0c3265] text-white border-[#0c3265] shadow-[0_4px_16px_rgba(12,50,101,.25)]"
-                  : "text-gray-500 border-gray-200 hover:border-gray-300 hover:text-gray-700"
+                  ? "border-[#e3000f] text-[#001e43] bg-gray-50"
+                  : "border-transparent text-gray-400 hover:text-gray-600 hover:bg-gray-50/50"
               }`}
             >
               <span>{t.label}</span>
-              <span className={`text-[10px] font-semibold mt-0.5 ${tab === t.id ? "text-amber-300" : "text-gray-400"}`}>{t.sub}</span>
+              <span className={`text-[11px] font-bold mt-0.5 ${tab === t.id ? "text-[#e3000f]" : "text-gray-400"}`}>{t.sub}</span>
             </button>
           ))}
         </div>
@@ -98,14 +98,14 @@ export default function Destinos() {
                     {isEuropa ? (
                       <div className="space-y-2 mb-4 flex-1">
                         <div className="flex items-center justify-between py-1.5 border-b border-gray-100">
-                          <span className="text-[12px] text-gray-500 font-medium">Migratorio</span>
-                          <span className="text-sm font-extrabold text-[#0c3265]">
+                          <span className="text-[12px] text-gray-500 font-medium">Turismo</span>
+                          <span className="text-sm font-extrabold text-[#001e43]">
                             desde ${(d as (typeof DESTINOS_EUROPA)[number]).migratorio.toLocaleString()}
                           </span>
                         </div>
                         <div className="flex items-center justify-between py-1.5">
-                          <span className="text-[12px] text-gray-500 font-medium">Turístico</span>
-                          <span className="text-sm font-extrabold text-[#0c3265]">
+                          <span className="text-[12px] text-gray-500 font-medium">Paquete Completo</span>
+                          <span className="text-sm font-extrabold text-[#001e43]">
                             desde ${d.turistico.toLocaleString()}
                           </span>
                         </div>
@@ -121,15 +121,14 @@ export default function Destinos() {
                       </div>
                     )}
 
-                    {/* CTA */}
+                    {/* CTA Corporativo */}
                     <a
                       href={mainLink}
                       target="_blank"
                       rel="noopener"
-                      className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white py-2.5 rounded-xl text-[13px] font-extrabold transition-all hover:shadow-[0_4px_16px_rgba(37,211,102,.4)] hover:-translate-y-0.5"
+                      className="w-full inline-flex items-center justify-center gap-2 bg-[#e3000f] hover:bg-[#b0000a] text-white py-3 rounded-md text-[14px] font-bold transition-all hover:shadow-md"
                     >
-                      <WhatsAppIcon size={14} />
-                      Cotizar por WhatsApp
+                      <span className="uppercase tracking-wide">Seleccionar Vuelos</span>
                     </a>
                   </div>
                 </div>
