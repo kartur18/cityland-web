@@ -46,7 +46,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${jakarta.variable} ${bebas.variable} antialiased`}>
-      <body className="font-[family-name:var(--font-jakarta)] text-[#0D1F3C] bg-white overflow-x-hidden m-0">
+      <body className="font-[family-name:var(--font-jakarta)] text-[#0a1628] bg-white overflow-x-hidden m-0">
         {children}
       </body>
     </html>

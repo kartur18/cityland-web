@@ -1,6 +1,5 @@
 import SchemaOrg from "@/components/SchemaOrg";
 import ScrollProgress from "@/components/ScrollProgress";
-import UrgencyBar from "@/components/UrgencyBar";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ProofBar from "@/components/ProofBar";
@@ -21,24 +20,20 @@ import BigCTA from "@/components/BigCTA";
 import Mapa from "@/components/Mapa";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
-import SocialToast from "@/components/SocialToast";
-import ExitPopup from "@/components/ExitPopup";
 import CookieBar from "@/components/CookieBar";
-import FloatingCTA from "@/components/FloatingCTA";
 
 export default function LandingPage() {
   return (
     <>
       <SchemaOrg />
       <ScrollProgress />
-      <UrgencyBar />
       <Navbar />
 
       <main id="main-content">
         <Hero />
         <ProofBar />
         <Destinos />
-        <SectionDivider type="wave" color="#f1f5f9" />
+        <SectionDivider type="wave" color="#f8fafc" />
         <HowItWorks />
         <Migratorio />
         <Garantias />
@@ -57,10 +52,7 @@ export default function LandingPage() {
       <Footer />
 
       <WhatsAppFloat />
-      <SocialToast />
-      <ExitPopup />
       <CookieBar />
-      <FloatingCTA />
     </>
   );
 }

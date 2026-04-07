@@ -5,70 +5,61 @@ import { WA_LINK } from "@/components/constantes";
 const PASOS = [
   {
     num: 1,
-    icon: "💬",
     titulo: "Escríbenos por WhatsApp",
-    desc: "Dinos tu destino, fechas y número de personas. ¡Gratis y sin compromiso!",
-    color: "from-[#d30000] to-[#FF4D2E]",
+    desc: "Cuéntanos tu destino, fechas y pasajeros. Sin compromiso.",
+    icon: <svg viewBox="0 0 24 24" className="w-6 h-6 fill-none stroke-white stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>,
+    color: "from-[#dc2626] to-[#ef4444]",
   },
   {
     num: 2,
-    icon: "📋",
     titulo: "Recibe tu cotización en 2h",
-    desc: "Un asesor experto te envía el paquete personalizado con el mejor precio.",
-    color: "from-[#0c3265] to-[#1a4a8a]",
+    desc: "Un asesor experto te envía opciones personalizadas.",
+    icon: <svg viewBox="0 0 24 24" className="w-6 h-6 fill-none stroke-white stroke-2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>,
+    color: "from-[#0a1628] to-[#162544]",
   },
   {
     num: 3,
-    icon: "💳",
     titulo: "Confirma y paga fácil",
-    desc: "Yape, Plin, transferencia, tarjeta o efectivo. También en cuotas.",
+    desc: "Yape, Plin, transferencia, tarjeta o cuotas sin interés.",
+    icon: <svg viewBox="0 0 24 24" className="w-6 h-6 fill-none stroke-white stroke-2" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>,
     color: "from-[#059669] to-[#10B981]",
   },
   {
     num: 4,
-    icon: "✈️",
-    titulo: "¡Viaja sin preocupaciones!",
-    desc: "Te acompañamos antes, durante y después. Seguro de viaje incluido.",
+    titulo: "Viaja tranquilo",
+    desc: "Soporte 24/7 y seguro de viaje incluido en tu paquete.",
+    icon: <svg viewBox="0 0 24 24" className="w-6 h-6 fill-none stroke-white stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>,
     color: "from-[#F59E0B] to-[#FBBF24]",
   },
 ];
 
 export default function HowItWorks() {
   return (
-    <section className="py-20 bg-[#f1f5f9] relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-72 h-72 rounded-full bg-blue-100/50 blur-3xl -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-red-100/40 blur-3xl translate-y-1/2 -translate-x-1/2" />
-
-      <div className="max-w-[1200px] mx-auto px-5 relative">
+    <section className="py-20 bg-[#f8fafc]">
+      <div className="max-w-[1100px] mx-auto px-5">
         <AnimateOnScroll>
           <div className="text-center mb-14">
-            <p className="text-[12px] font-extrabold tracking-[3px] uppercase text-[#d30000] mb-2">Así de fácil</p>
-            <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(36px,5vw,54px)] text-[#0c3265] tracking-wide leading-none">
+            <p className="text-[11px] font-bold tracking-[3px] uppercase text-[#dc2626] mb-3">Cómo funciona</p>
+            <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(36px,5vw,54px)] text-[#0a1628] tracking-wide leading-none">
               TU VIAJE EN 4 PASOS
             </h2>
           </div>
         </AnimateOnScroll>
 
-        {/* Steps with connecting line */}
         <div className="relative">
-          {/* Connecting line (desktop only) */}
-          <div className="hidden lg:block absolute top-10 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-[#d30000] via-[#0c3265] via-[#059669] to-[#F59E0B] opacity-20" />
+          {/* Connecting line */}
+          <div className="hidden lg:block absolute top-[30px] left-[12.5%] right-[12.5%] h-px bg-gray-200" />
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {PASOS.map((p, i) => (
               <AnimateOnScroll key={p.num} stagger={Math.min(i + 1, 4)}>
                 <div className="text-center relative group">
-                  {/* Number bubble */}
-                  <div className={`w-[60px] h-[60px] rounded-2xl bg-gradient-to-br ${p.color} text-white shadow-[0_8px_24px_rgba(0,0,0,.15)] flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_16px_32px_rgba(0,0,0,.2)]`}>
-                    <span className="text-[26px]">{p.icon}</span>
+                  <div className={`w-[60px] h-[60px] rounded-2xl bg-gradient-to-br ${p.color} flex items-center justify-center mx-auto mb-5 shadow-lg transition-transform duration-300 group-hover:-translate-y-1`}>
+                    {p.icon}
                   </div>
-                  {/* Step number badge */}
-                  <div className={`absolute top-0 left-1/2 -translate-x-1/2 translate-x-5 -translate-y-1 w-5 h-5 rounded-full bg-gradient-to-br ${p.color} text-white text-[10px] font-extrabold flex items-center justify-center shadow-sm`}>
-                    {p.num}
-                  </div>
-                  <h3 className="text-sm font-extrabold text-[#0c3265] mb-2 leading-snug">{p.titulo}</h3>
-                  <p className="text-[13px] text-[#64748b] leading-relaxed">{p.desc}</p>
+                  <div className="text-[10px] font-bold text-gray-300 uppercase tracking-widest mb-2">Paso {p.num}</div>
+                  <h3 className="text-[14px] font-bold text-[#0a1628] mb-2 leading-snug">{p.titulo}</h3>
+                  <p className="text-[13px] text-gray-500 leading-relaxed">{p.desc}</p>
                 </div>
               </AnimateOnScroll>
             ))}
@@ -80,10 +71,10 @@ export default function HowItWorks() {
             href={WA_LINK}
             target="_blank"
             rel="noopener"
-            className="btn-glow inline-flex items-center gap-2.5 bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white px-8 py-4 rounded-full text-[15px] font-extrabold shadow-[0_6px_28px_rgba(37,211,102,.4)]"
+            className="btn-hover inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#1fb855] text-white px-7 py-3.5 rounded-xl text-[14px] font-bold shadow-lg shadow-emerald-500/25"
           >
             <WhatsAppIcon size={18} />
-            Empezar ahora — Es GRATIS
+            Empezar ahora — Es gratis
           </a>
         </div>
       </div>
