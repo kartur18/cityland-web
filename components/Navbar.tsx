@@ -39,13 +39,13 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-5 flex items-center justify-between h-20">
         {/* Logo */}
-        <a href="#" className="flex-shrink-0 h-18 w-48 relative overflow-hidden">
+        <a href="#" className="flex-shrink-0 h-20 w-56 relative overflow-hidden">
           <Image
             src="/logo.png"
             alt="Cityland Travel - Agencia de Viajes"
             fill
             priority
-            className="object-contain scale-[1.85]"
+            className="object-contain scale-[2]"
           />
         </a>
 
