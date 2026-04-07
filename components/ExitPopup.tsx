@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
-import { WA_SVG, waLink } from "@/components/constantes";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import { waLink } from "@/components/constantes";
 
 export default function ExitPopup() {
   const [visible, setVisible] = useState(false);
@@ -28,7 +29,7 @@ export default function ExitPopup() {
           {["✓ Sin costo","✓ Sin compromiso","✓ Mejor precio"].map((t)=>(<span key={t} className="text-xs font-semibold text-[#4B5680]">{t}</span>))}
         </div>
         <a href={waLink("Hola, quiero cotizar un viaje (vi su página)")} target="_blank" rel="noopener" onClick={cerrar} className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-br from-[#FF4D2E] to-[#FF6B4A] text-white px-8 py-4.5 rounded-full text-base font-extrabold shadow-[0_6px_28px_rgba(232,64,37,.45)] hover:-translate-y-0.5 transition">
-          <span dangerouslySetInnerHTML={{ __html: WA_SVG(18) }} />Sí, quiero mi cotización GRATIS
+          <WhatsAppIcon size={18} />Sí, quiero mi cotización GRATIS
         </a>
         <p className="text-[11px] text-[#4B5680] mt-3">🔒 No spam. Solo tu cotización personalizada.</p>
       </div>

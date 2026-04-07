@@ -1,3 +1,5 @@
+import AnimateOnScroll from "@/components/AnimateOnScroll";
+
 const SERVICIOS = [
   { icono: "✈️", titulo: "Vuelos internacionales", desc: "LATAM, Iberia, Copa, Avianca y más. Ida y vuelta, solo ida o multidestino a los mejores precios.", color: "border-t-[#1A3560]", bg: "bg-blue-50" },
   { icono: "🌴", titulo: "Paquetes todo incluido", desc: "Vuelo + hotel + tours + seguro. Los mejores resorts all-inclusive del Caribe.", color: "border-t-[#059669]", bg: "bg-emerald-50" },
@@ -10,17 +12,21 @@ export default function Servicios() {
   return (
     <section className="py-20" id="servicios">
       <div className="max-w-[1200px] mx-auto px-5">
-        <div className="text-center mb-12">
-          <p className="text-[11px] font-extrabold tracking-[3px] uppercase text-[#FF4D2E] mb-2">Servicios</p>
-          <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(36px,5vw,54px)] text-[#0D1F3C] tracking-wide leading-none">TODO PARA TU VIAJE</h2>
-        </div>
+        <AnimateOnScroll>
+          <div className="text-center mb-12">
+            <p className="text-[11px] font-extrabold tracking-[3px] uppercase text-[#FF4D2E] mb-2">Servicios</p>
+            <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(36px,5vw,54px)] text-[#0D1F3C] tracking-wide leading-none">TODO PARA TU VIAJE</h2>
+          </div>
+        </AnimateOnScroll>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {SERVICIOS.map((s) => (
-            <div key={s.titulo} className={`bg-white rounded-2xl p-7 border border-black/5 transition-all duration-300 border-t-3 ${s.color} shadow-[0_4px_24px_rgba(12,27,58,.05)] hover:shadow-[0_16px_40px_rgba(12,27,58,.08)] hover:-translate-y-1 group`}>
-              <div className={`w-[50px] h-[50px] rounded-xl ${s.bg} flex items-center justify-center text-[22px] mb-4 transition-transform group-hover:scale-110 group-hover:-rotate-5`}>{s.icono}</div>
-              <h3 className="text-[15px] font-extrabold text-[#0D1F3C] mb-1.5">{s.titulo}</h3>
-              <p className="text-[13.5px] text-[#4B5680] leading-relaxed">{s.desc}</p>
-            </div>
+          {SERVICIOS.map((s, index) => (
+            <AnimateOnScroll key={s.titulo} stagger={index + 1}>
+              <div className={`glass rounded-2xl p-7 border border-black/5 transition-all duration-300 border-t-3 ${s.color} shadow-[0_4px_24px_rgba(12,27,58,.05)] hover:shadow-[0_16px_40px_rgba(12,27,58,.08)] hover:-translate-y-1 group`}>
+                <div className={`w-[50px] h-[50px] rounded-xl ${s.bg} flex items-center justify-center text-[22px] mb-4 transition-transform group-hover:scale-110 group-hover:-rotate-5`}>{s.icono}</div>
+                <h3 className="text-[15px] font-extrabold text-[#0D1F3C] mb-1.5">{s.titulo}</h3>
+                <p className="text-[13.5px] text-[#4B5680] leading-relaxed">{s.desc}</p>
+              </div>
+            </AnimateOnScroll>
           ))}
         </div>
       </div>

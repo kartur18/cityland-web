@@ -1,10 +1,11 @@
-import { WA_LINK, WA_SVG } from "@/components/constantes";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import { WA_LINK } from "@/components/constantes";
 
 export default function WhatsAppFloat() {
   return (
     <>
       <a href={WA_LINK} target="_blank" rel="noopener" className="fixed bottom-6 right-6 z-[998] bg-gradient-to-br from-[#25D366] to-[#128C7E] text-white px-6 py-3.5 rounded-full text-sm font-bold shadow-[0_8px_32px_rgba(37,211,102,.5)] flex items-center gap-2 animate-[pulse_2.5s_infinite] hover:-translate-y-1 hover:scale-105 transition max-md:bottom-20" aria-label="Contactar por WhatsApp">
-        <span dangerouslySetInnerHTML={{ __html: WA_SVG(22) }} />Escríbenos
+        <WhatsAppIcon size={22} />Escríbenos
       </a>
       <div className="hidden max-md:block fixed bottom-0 left-0 right-0 z-[999] bg-white p-2.5 px-4 shadow-[0_-4px_20px_rgba(0,0,0,.1)] border-t border-black/6">
         <div className="flex gap-2 items-center">
