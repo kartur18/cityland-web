@@ -42,7 +42,7 @@ export const DESTINOS_EUROPA = [
   },
   {
     ciudad: "Milán", pais: "Italia", bandera: "🇮🇹",
-    img: "https://images.unsplash.com/photo-1513326238704-b2ad2b9b2c3c?w=600&q=80",
+    img: "https://images.unsplash.com/photo-1520440229-28a5068615e4?w=600&q=80",
     alt: "Vuelos a Milán desde Lima - Duomo di Milano Italia",
     migratorio: 899, turistico: 1249,
     migraDesc: "Solo ida + seguro + hotel + retorno", turiDesc: "Ida y vuelta + hotel 5 noches",
@@ -66,7 +66,7 @@ export const DESTINOS_CARIBE = [
   },
   {
     ciudad: "Cartagena", pais: "Colombia", bandera: "🇨🇴",
-    img: "https://images.unsplash.com/photo-1583195764036-46274d23f571?w=600&q=80",
+    img: "https://images.unsplash.com/photo-1547963360-0322197ddf9b?w=600&q=80",
     alt: "Viajes a Cartagena de Indias desde Lima - ciudad amurallada colonial",
     turistico: 549, turiDesc: "Vuelo + hotel + city tour",
   },

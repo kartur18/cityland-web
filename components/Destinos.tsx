@@ -6,9 +6,9 @@ import { DESTINOS_EUROPA, DESTINOS_CARIBE, cotLink, waLink } from "@/components/
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 const TAG_STYLES = {
-  hot: "bg-[#e3000f] text-white",
-  promo: "bg-[#001e43] text-white",
-  new: "bg-gray-800 text-white",
+  hot: "bg-[#001e43] text-white shadow-sm",
+  promo: "bg-gray-100 text-[#001e43]",
+  new: "bg-[#e3000f] text-white shadow-sm",
 };
 
 export default function Destinos() {
@@ -126,7 +126,7 @@ export default function Destinos() {
                       href={mainLink}
                       target="_blank"
                       rel="noopener"
-                      className="w-full inline-flex items-center justify-center gap-2 bg-[#e3000f] hover:bg-[#b0000a] text-white py-3 rounded-md text-[14px] font-bold transition-all hover:shadow-md"
+                      className="w-full inline-flex items-center justify-center gap-2 bg-[#001e43] hover:bg-[#e3000f] text-white py-3 rounded-md text-[14px] font-bold shadow-sm transition-all hover:shadow-md"
                     >
                       <span className="uppercase tracking-wide">Seleccionar Vuelos</span>
                     </a>
