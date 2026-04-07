@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/* ── Animaciones ── */
+@keyframes slidebg { 0% { background-position: 0% } 100% { background-position: 200% } }
+@keyframes floatcard { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-8px) } }
+@keyframes pulsefire { 0%,100% { box-shadow: 0 6px 28px rgba(232,64,37,.45) } 50% { box-shadow: 0 6px 40px rgba(232,64,37,.7) } }
+@keyframes pulse { 0%,100% { box-shadow: 0 6px 28px rgba(22,163,74,.45) } 50% { box-shadow: 0 6px 40px rgba(22,163,74,.65) } }
+@keyframes float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-20px) } }
+@keyframes popIn { 0% { transform: scale(.8); opacity: 0 } 100% { transform: scale(1); opacity: 1 } }
+
+/* ── Scroll suave ── */
+html { scroll-behavior: smooth; }
