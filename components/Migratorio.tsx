@@ -12,7 +12,7 @@ const items = [
 
 export default function Migratorio() {
   return (
-    <section id="migra" className="py-20 bg-gradient-to-br from-[#0D1F3C] via-[#1A2E5A] to-[#152040] text-white">
+    <section id="migra" className="py-20 bg-gradient-to-br from-[#0c3265] via-[#1A2E5A] to-[#152040] text-white">
       <div className="max-w-[1200px] mx-auto px-5 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
         <AnimateOnScroll direction="left">
           <div>
@@ -28,7 +28,7 @@ export default function Migratorio() {
             <p className="text-[16px] text-white/75 leading-relaxed mb-8">
               Más de 3,000 peruanos ya viajaron con nosotros. Sin visa requerida para zona Schengen con pasaporte peruano.
             </p>
-            <a href={waLink("Quiero info del paquete migratorio $799")} target="_blank" rel="noopener" className="inline-flex items-center gap-2 bg-gradient-to-br from-amber-400 to-amber-500 text-[#0D1F3C] px-8 py-4 rounded-full text-[15px] font-extrabold shadow-[0_6px_28px_rgba(245,158,11,.4)] hover:-translate-y-0.5 hover:shadow-[0_10px_36px_rgba(245,158,11,.55)] transition">
+            <a href={waLink("Quiero info del paquete migratorio $799")} target="_blank" rel="noopener" className="inline-flex items-center gap-2 bg-gradient-to-br from-amber-400 to-amber-500 text-[#0c3265] px-8 py-4 rounded-full text-[15px] font-extrabold shadow-[0_6px_28px_rgba(245,158,11,.4)] hover:-translate-y-0.5 hover:shadow-[0_10px_36px_rgba(245,158,11,.55)] transition">
               Cotizar paquete migratorio →
             </a>
           </div>

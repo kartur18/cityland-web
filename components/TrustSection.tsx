@@ -15,9 +15,9 @@ export default function TrustSection() {
       <div className="max-w-[1200px] mx-auto px-5">
         <AnimateOnScroll>
           <div className="text-center mb-14">
-            <p className="text-[11px] font-extrabold tracking-[3px] uppercase text-[#FF4D2E] mb-2">Confianza garantizada</p>
-            <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(36px,5vw,54px)] text-[#0D1F3C] tracking-wide leading-none mb-2">¿POR QUÉ CONFIAR EN NOSOTROS?</h2>
-            <p className="text-[15px] text-[#4B5680] leading-relaxed max-w-[540px] mx-auto">No somos una agencia más. Somos la agencia que más peruanos eligen para viajar al mundo.</p>
+            <p className="text-[11px] font-extrabold tracking-[3px] uppercase text-[#d30000] mb-2">Confianza garantizada</p>
+            <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(36px,5vw,54px)] text-[#0c3265] tracking-wide leading-none mb-2">¿POR QUÉ CONFIAR EN NOSOTROS?</h2>
+            <p className="text-[15px] text-[#64748b] leading-relaxed max-w-[540px] mx-auto">No somos una agencia más. Somos la agencia que más peruanos eligen para viajar al mundo.</p>
           </div>
         </AnimateOnScroll>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -27,9 +27,9 @@ export default function TrustSection() {
                 <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.bg} flex items-center justify-center text-2xl mx-auto mb-3 transition-transform group-hover:scale-110 group-hover:-rotate-3`}>
                   {item.icono}
                 </div>
-                <div className="font-[family-name:var(--font-bebas)] text-[28px] text-[#0D1F3C] tracking-wide leading-none mb-1">{item.numero}</div>
-                <h3 className="text-sm font-extrabold text-[#0D1F3C] mb-1">{item.titulo}</h3>
-                <p className="text-xs text-[#4B5680] leading-relaxed">{item.desc}</p>
+                <div className="font-[family-name:var(--font-bebas)] text-[28px] text-[#0c3265] tracking-wide leading-none mb-1">{item.numero}</div>
+                <h3 className="text-sm font-extrabold text-[#0c3265] mb-1">{item.titulo}</h3>
+                <p className="text-xs text-[#64748b] leading-relaxed">{item.desc}</p>
               </div>
             </AnimateOnScroll>
           ))}

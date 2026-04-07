@@ -18,9 +18,9 @@ export default function Comparador() {
       <div className="max-w-[1200px] mx-auto px-5">
         <AnimateOnScroll>
           <div className="text-center mb-12">
-            <p className="text-[12px] font-extrabold uppercase tracking-[2px] text-[#FF4D2E] mb-2">COMPARADOR</p>
-            <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(36px,5vw,52px)] text-[#0D1F3C] tracking-wide leading-tight">¿POR QUÉ ELEGIRNOS?</h2>
-            <p className="text-[16px] text-[#4B5680] mt-3 max-w-[600px] mx-auto">Compara nuestros precios y servicios con otras agencias</p>
+            <p className="text-[12px] font-extrabold uppercase tracking-[2px] text-[#d30000] mb-2">COMPARADOR</p>
+            <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(36px,5vw,52px)] text-[#0c3265] tracking-wide leading-tight">¿POR QUÉ ELEGIRNOS?</h2>
+            <p className="text-[16px] text-[#64748b] mt-3 max-w-[600px] mx-auto">Compara nuestros precios y servicios con otras agencias</p>
           </div>
         </AnimateOnScroll>
 
@@ -29,7 +29,7 @@ export default function Comparador() {
             <div className="bg-white rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,.08)] overflow-hidden">
               <table className="w-full">
                 <thead>
-                  <tr className="bg-[#0D1F3C] text-white">
+                  <tr className="bg-[#0c3265] text-white">
                     <th className="text-left px-5 py-3.5 text-[13px] font-bold">Concepto</th>
                     <th className="text-center px-5 py-3.5 text-[13px] font-bold">Cityland Travel</th>
                     <th className="text-center px-5 py-3.5 text-[13px] font-bold">Otras agencias</th>
@@ -37,10 +37,10 @@ export default function Comparador() {
                 </thead>
                 <tbody>
                   {filas.map((f, i) => (
-                    <tr key={f.concepto} className={i % 2 === 0 ? "bg-white" : "bg-[#F4F6FB]"}>
-                      <td className="px-5 py-3 text-[14px] font-semibold text-[#0D1F3C]">{f.concepto}</td>
+                    <tr key={f.concepto} className={i % 2 === 0 ? "bg-white" : "bg-[#f8fafc]"}>
+                      <td className="px-5 py-3 text-[14px] font-semibold text-[#0c3265]">{f.concepto}</td>
                       <td className="px-5 py-3 text-center text-[14px] font-bold text-[#059669]">{f.cityland}</td>
-                      <td className="px-5 py-3 text-center text-[14px] text-[#4B5680]">{f.otros}</td>
+                      <td className="px-5 py-3 text-center text-[14px] text-[#64748b]">{f.otros}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -51,13 +51,13 @@ export default function Comparador() {
           <AnimateOnScroll direction="right">
             <div className="bg-white rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,.1)] p-8 text-center">
               <span className="text-[48px] block mb-3">💰</span>
-              <h3 className="text-[28px] font-extrabold text-[#0D1F3C] mb-2">AHORRA HASTA $400</h3>
-              <p className="text-[14px] text-[#4B5680] mb-6">en tu paquete migratorio o turístico comparado con otras agencias del mercado</p>
-              <div className="bg-[#F4F6FB] rounded-xl p-4 mb-6 border border-[#E8ECF4]">
-                <p className="text-[13px] font-bold text-[#0D1F3C] mb-1">🛡️ Garantía de mejor precio</p>
-                <p className="text-[12px] text-[#4B5680]">Si encuentras un precio menor, lo igualamos o te devolvemos la diferencia</p>
+              <h3 className="text-[28px] font-extrabold text-[#0c3265] mb-2">AHORRA HASTA $400</h3>
+              <p className="text-[14px] text-[#64748b] mb-6">en tu paquete migratorio o turístico comparado con otras agencias del mercado</p>
+              <div className="bg-[#f8fafc] rounded-xl p-4 mb-6 border border-[#E8ECF4]">
+                <p className="text-[13px] font-bold text-[#0c3265] mb-1">🛡️ Garantía de mejor precio</p>
+                <p className="text-[12px] text-[#64748b]">Si encuentras un precio menor, lo igualamos o te devolvemos la diferencia</p>
               </div>
-              <a href={waLink("Quiero comparar precios")} target="_blank" rel="noopener" className="w-full py-3.5 bg-gradient-to-br from-[#FF4D2E] to-[#FF6B4A] text-white rounded-xl text-[14px] font-bold flex items-center justify-center gap-2 hover:shadow-lg transition">
+              <a href={waLink("Quiero comparar precios")} target="_blank" rel="noopener" className="w-full py-3.5 bg-gradient-to-br from-[#d30000] to-[#e52020] text-white rounded-xl text-[14px] font-bold flex items-center justify-center gap-2 hover:shadow-lg transition">
                 Comparar mi cotización →
               </a>
             </div>

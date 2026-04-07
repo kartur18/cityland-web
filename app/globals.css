@@ -2,17 +2,17 @@
 
 /* ── Tailwind v4 Theme Tokens ── */
 @theme {
-  --color-brand-navy: #0D1F3C;
-  --color-brand-navy-light: #1A3560;
-  --color-brand-red: #FF4D2E;
-  --color-brand-red-light: #FF6B4A;
+  --color-brand-navy: #0c3265;
+  --color-brand-navy-light: #1a4a8a;
+  --color-brand-red: #d30000;
+  --color-brand-red-light: #e52020;
   --color-brand-green: #059669;
   --color-brand-green-light: #10B981;
   --color-brand-amber: #F59E0B;
   --color-brand-amber-light: #FBBF24;
-  --color-brand-gray: #4B5680;
-  --color-brand-bg: #F4F6FB;
-  --color-brand-cream: #F7F8FF;
+  --color-brand-gray: #64748b;
+  --color-brand-bg: #f8fafc;
+  --color-brand-cream: #f1f5f9;
 }
 
 /* ── Scroll suave ── */

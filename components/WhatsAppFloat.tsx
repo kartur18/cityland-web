@@ -9,8 +9,8 @@ export default function WhatsAppFloat() {
       </a>
       <div className="hidden max-md:block fixed bottom-0 left-0 right-0 z-[999] bg-white p-2.5 px-4 shadow-[0_-4px_20px_rgba(0,0,0,.1)] border-t border-black/6">
         <div className="flex gap-2 items-center">
-          <div className="flex-1 min-w-0"><strong className="text-xs text-[#0D1F3C] block">Desde $749 · Cotiza GRATIS</strong><span className="text-[10px] text-[#4B5680]"><span className="w-2 h-2 bg-green-500 rounded-full inline-block animate-pulse mr-0.5"/>Asesores disponibles</span></div>
-          <a href={WA_LINK} target="_blank" rel="noopener" className="shrink-0 inline-flex items-center gap-1.5 bg-gradient-to-br from-[#FF4D2E] to-[#FF6B4A] text-white px-5 py-3 rounded-full text-[13px] font-extrabold">WhatsApp</a>
+          <div className="flex-1 min-w-0"><strong className="text-xs text-[#0c3265] block">Desde $749 · Cotiza GRATIS</strong><span className="text-[10px] text-[#64748b]"><span className="w-2 h-2 bg-green-500 rounded-full inline-block animate-pulse mr-0.5"/>Asesores disponibles</span></div>
+          <a href={WA_LINK} target="_blank" rel="noopener" className="shrink-0 inline-flex items-center gap-1.5 bg-gradient-to-br from-[#d30000] to-[#e52020] text-white px-5 py-3 rounded-full text-[13px] font-extrabold">WhatsApp</a>
         </div>
       </div>
     </>

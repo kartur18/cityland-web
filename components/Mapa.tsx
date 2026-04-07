@@ -7,14 +7,14 @@ export default function Mapa() {
       <div className="max-w-[1200px] mx-auto px-5">
         <AnimateOnScroll>
           <div className="text-center mb-12">
-            <p className="text-[11px] font-extrabold tracking-[3px] uppercase text-[#FF4D2E] mb-2">Visítanos</p>
-            <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(36px,5vw,54px)] text-[#0D1F3C] tracking-wide leading-none">NUESTRA OFICINA EN LIMA</h2>
+            <p className="text-[11px] font-extrabold tracking-[3px] uppercase text-[#d30000] mb-2">Visítanos</p>
+            <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(36px,5vw,54px)] text-[#0c3265] tracking-wide leading-none">NUESTRA OFICINA EN LIMA</h2>
           </div>
         </AnimateOnScroll>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <AnimateOnScroll direction="left">
             <div>
-              <h3 className="text-xl font-extrabold text-[#0D1F3C] mb-4">Cityland Travel — Los Olivos</h3>
+              <h3 className="text-xl font-extrabold text-[#0c3265] mb-4">Cityland Travel — Los Olivos</h3>
               {[
                 { icono: "📍", titulo: "Dirección", sub: "Av. Antúnez de Mayolo N. 814, Los Olivos, Lima", bg: "bg-blue-50" },
                 { icono: "📞", titulo: "Teléfono / WhatsApp", sub: "+51 941 551 530", bg: "bg-emerald-50", link: "tel:+51941551530" },
@@ -24,12 +24,12 @@ export default function Mapa() {
                 <div key={item.titulo} className="flex items-start gap-3 mb-4">
                   <div className={`w-10 h-10 rounded-xl ${item.bg} flex items-center justify-center text-lg shrink-0`}>{item.icono}</div>
                   <div>
-                    <strong className="block text-sm text-[#0D1F3C]">{item.titulo}</strong>
-                    {item.link ? <a href={item.link} className="text-[13px] text-[#059669] font-semibold">{item.sub}</a> : <span className="text-[13px] text-[#4B5680]">{item.sub}</span>}
+                    <strong className="block text-sm text-[#0c3265]">{item.titulo}</strong>
+                    {item.link ? <a href={item.link} className="text-[13px] text-[#059669] font-semibold">{item.sub}</a> : <span className="text-[13px] text-[#64748b]">{item.sub}</span>}
                   </div>
                 </div>
               ))}
-              <a href={waLink("Hola, quiero visitar su oficina")} target="_blank" rel="noopener" className="inline-flex items-center gap-2 bg-gradient-to-br from-[#FF4D2E] to-[#FF6B4A] text-white px-7 py-3.5 rounded-full text-sm font-extrabold shadow-[0_6px_28px_rgba(232,64,37,.35)] hover:-translate-y-0.5 transition mt-5">Agendar visita por WhatsApp</a>
+              <a href={waLink("Hola, quiero visitar su oficina")} target="_blank" rel="noopener" className="inline-flex items-center gap-2 bg-gradient-to-br from-[#d30000] to-[#e52020] text-white px-7 py-3.5 rounded-full text-sm font-extrabold shadow-[0_6px_28px_rgba(232,64,37,.35)] hover:-translate-y-0.5 transition mt-5">Agendar visita por WhatsApp</a>
             </div>
           </AnimateOnScroll>
           <AnimateOnScroll direction="right">

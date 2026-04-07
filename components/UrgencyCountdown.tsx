@@ -18,7 +18,7 @@ export default function UrgencyCountdown() {
   }, []);
   const pad = (n: number) => String(n).padStart(2, "0");
   return (
-    <div className="bg-gradient-to-r from-[#0D1F3C] via-[#1A3560] to-[#0D1F3C] py-7">
+    <div className="bg-gradient-to-r from-[#0c3265] via-[#1a4a8a] to-[#0c3265] py-7">
       <div className="max-w-[1200px] mx-auto px-5 flex items-center justify-between flex-wrap gap-5">
         <div className="flex items-center gap-4">
           <div className="text-4xl">⏰</div>

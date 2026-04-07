@@ -7,12 +7,12 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-20 bg-[#F4F6FB]">
+    <section id="faq" className="py-20 bg-[#f8fafc]">
       <div className="max-w-[800px] mx-auto px-5">
         <AnimateOnScroll>
           <div className="text-center mb-12">
-            <p className="text-[12px] font-extrabold uppercase tracking-[2px] text-[#FF4D2E] mb-2">FAQ</p>
-            <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(36px,5vw,52px)] text-[#0D1F3C] tracking-wide leading-tight">PREGUNTAS FRECUENTES</h2>
+            <p className="text-[12px] font-extrabold uppercase tracking-[2px] text-[#d30000] mb-2">FAQ</p>
+            <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(36px,5vw,52px)] text-[#0c3265] tracking-wide leading-tight">PREGUNTAS FRECUENTES</h2>
           </div>
         </AnimateOnScroll>
 
@@ -26,11 +26,11 @@ export default function FAQ() {
                     onClick={() => setOpenIndex(isOpen ? null : i)}
                     className="w-full flex items-center justify-between px-5 py-4 text-left gap-4"
                   >
-                    <span className="text-[15px] font-bold text-[#0D1F3C]">{faq.pregunta}</span>
-                    <span className={`w-7 h-7 rounded-full flex items-center justify-center text-[18px] font-bold shrink-0 transition-all duration-300 ${isOpen ? "bg-[#0D1F3C] text-white rotate-45" : "bg-[#F4F6FB] text-[#4B5680]"}`}>+</span>
+                    <span className="text-[15px] font-bold text-[#0c3265]">{faq.pregunta}</span>
+                    <span className={`w-7 h-7 rounded-full flex items-center justify-center text-[18px] font-bold shrink-0 transition-all duration-300 ${isOpen ? "bg-[#0c3265] text-white rotate-45" : "bg-[#f8fafc] text-[#64748b]"}`}>+</span>
                   </button>
                   <div className="transition-all duration-300 overflow-hidden" style={{ maxHeight: isOpen ? "300px" : "0px" }}>
-                    <p className="px-5 pb-4 text-[14px] text-[#4B5680] leading-relaxed">{faq.respuesta}</p>
+                    <p className="px-5 pb-4 text-[14px] text-[#64748b] leading-relaxed">{faq.respuesta}</p>
                   </div>
                 </div>
               </AnimateOnScroll>

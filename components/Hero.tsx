@@ -1,218 +1,174 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { WA_LINK, cotLink } from "@/components/constantes";
+import { WA_LINK, waLink } from "@/components/constantes";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 
-const destinos = [
-  { ciudad: "Madrid", tipo: "Migratorio", precio: 799, hot: true },
-  { ciudad: "Punta Cana", tipo: "Turístico", precio: 799, hot: false },
-  { ciudad: "Roma", tipo: "Turístico", precio: 1199, hot: false },
-  { ciudad: "Cancún", tipo: "Turístico", precio: 749, hot: false },
+const destinosOpciones = [
+  "Madrid",
+  "Barcelona",
+  "Roma",
+  "Milan",
+  "Punta Cana",
+  "Cancun",
+  "Cartagena",
+  "Rio de Janeiro",
 ];
 
-const trustPills = [
-  "✅ Sin visa para Europa",
-  "⚡ Respuesta en 2h",
-  "💳 Pago en cuotas",
-  "🛡️ Seguro incluido",
-];
-
-const particles = [
-  { size: 4, top: "10%", left: "5%", opacity: 0.15, animation: "particle-float-1", duration: "8s" },
-  { size: 8, top: "25%", left: "80%", opacity: 0.1, animation: "particle-float-2", duration: "12s" },
-  { size: 20, top: "60%", left: "15%", opacity: 0.08, animation: "particle-float-3", duration: "20s" },
-  { size: 6, top: "75%", left: "70%", opacity: 0.12, animation: "particle-float-1", duration: "15s" },
-  { size: 12, top: "40%", left: "50%", opacity: 0.1, animation: "particle-float-2", duration: "10s" },
-  { size: 16, top: "85%", left: "90%", opacity: 0.07, animation: "particle-float-3", duration: "18s" },
+const insignias = [
+  { icono: "\u2708\uFE0F", texto: "+5,000 viajes" },
+  { icono: "\u2B50", texto: "4.9/5 Google" },
+  { icono: "\u26A1", texto: "Respuesta en 2h" },
+  { icono: "\uD83D\uDEE1\uFE0F", texto: "Seguro incluido" },
 ];
 
 export default function Hero() {
-  const [scrollY, setScrollY] = useState(0);
+  const [destino, setDestino] = useState("");
+  const [tipo, setTipo] = useState<"migratorio" | "turistico">("migratorio");
+  const [menuAbierto, setMenuAbierto] = useState(false);
 
+  /* Cerrar dropdown al hacer click fuera */
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    if (!menuAbierto) return;
+    const cerrar = () => setMenuAbierto(false);
+    document.addEventListener("click", cerrar);
+    return () => document.removeEventListener("click", cerrar);
+  }, [menuAbierto]);
+
+  const enlaceCotizar = destino
+    ? waLink(
+        `Hola Cityland Travel, quiero cotizar un paquete ${tipo} a ${destino}.`
+      )
+    : WA_LINK;
 
   return (
-    <header className="relative min-h-[calc(100vh-120px)] overflow-hidden bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 flex items-center">
-      {/* Parallax background */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{ transform: `translateY(${scrollY * 0.3}px)` }}
-      >
+    <header className="relative">
+      {/* ── Hero image ── */}
+      <div className="relative min-h-[500px] lg:min-h-[600px] flex items-center justify-center overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1800&q=85"
-          alt="Vuelos internacionales desde Lima"
+          src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1920&q=90"
+          alt="Destinos internacionales desde Lima"
           fill
           priority
-          className="object-cover opacity-12"
+          className="object-cover"
         />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-transparent" />
+
+        {/* Texto centrado */}
+        <div className="relative z-10 text-center px-5 max-w-3xl mx-auto pb-24">
+          <p className="text-sm uppercase tracking-widest text-white/80 mb-4">
+            Agencia de viajes en Lima &middot; Desde 2015
+          </p>
+          <h1 className="font-[family-name:var(--font-bebas)] text-[clamp(36px,5vw,64px)] leading-[1.05] text-white tracking-wide mb-5">
+            Descubre el mundo con los mejores precios
+          </h1>
+          <p className="text-lg text-white/70 max-w-xl mx-auto">
+            Paquetes migratorios desde $799 &middot; Tur&iacute;sticos a +70
+            destinos
+          </p>
+        </div>
       </div>
 
-      {/* Floating particles */}
-      {particles.map((p, i) => (
-        <div
-          key={i}
-          className="absolute rounded-full pointer-events-none"
-          style={{
-            width: p.size,
-            height: p.size,
-            top: p.top,
-            left: p.left,
-            opacity: p.opacity,
-            background: i % 2 === 0 ? "#f59e0b" : "#ffffff",
-            animation: `${p.animation} ${p.duration} ease-in-out infinite`,
-          }}
-        />
-      ))}
-
-      {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-gray-950/70 to-transparent z-[1]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent z-[1]" />
-
-      {/* Wave divider */}
-      <div
-        className="absolute bottom-0 left-0 right-0 z-10 h-20 bg-white"
-        style={{ clipPath: "polygon(0 100%, 100% 100%, 100% 0, 0 60%)" }}
-      />
-
-      {/* Content */}
-      <div className="relative z-[2] max-w-[1200px] mx-auto px-5 grid grid-cols-1 lg:grid-cols-[1fr_480px] gap-12 items-center w-full pb-20">
-        {/* Left column */}
+      {/* ── Widget de cotizacion ── */}
+      <div className="relative z-20 max-w-4xl mx-auto px-5 -mt-16">
         <AnimateOnScroll direction="up">
-          <div className="text-center lg:text-left">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-amber-400/15 border border-amber-400/40 px-4 py-1.5 rounded-full text-amber-300 text-[12.5px] font-bold tracking-wide uppercase mb-5 backdrop-blur-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-amber-500" />
-              </span>
-              Ofertas disponibles ahora
-            </div>
-
-            {/* Heading */}
-            <h1 className="font-[family-name:var(--font-bebas)] text-[clamp(52px,7vw,82px)] leading-[0.95] text-white tracking-wide mb-5">
-              VUELA A{" "}
-              <em className="not-italic text-shimmer">
-                EUROPA, CARIBE Y SUDAMÉRICA
-              </em>
-            </h1>
-
-            {/* Subtitle */}
-            <p className="text-[17px] text-white/75 leading-relaxed mb-8 max-w-[520px] mx-auto lg:mx-0">
-              Paquetes migratorios desde{" "}
-              <strong className="text-white font-bold">$799</strong> y
-              turísticos a más de 70 destinos.
-              <br />
-              Cotización{" "}
-              <strong className="text-white font-bold">GRATIS</strong> en menos
-              de 2 horas por WhatsApp.
-            </p>
-
-            {/* Trust pills */}
-            <div className="flex flex-wrap gap-2.5 mb-10 justify-center lg:justify-start">
-              {trustPills.map((t) => (
-                <span
-                  key={t}
-                  className="inline-flex items-center gap-1.5 bg-white/8 border border-white/18 px-4 py-1.5 rounded-full text-white/90 text-[12.5px] font-semibold backdrop-blur-sm hover:bg-white/14 transition"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-
-            {/* Action buttons */}
-            <div className="flex gap-3 flex-wrap justify-center lg:justify-start">
-              <a
-                href={WA_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-glow inline-flex items-center gap-2 bg-gradient-to-br from-[#FF4D2E] to-[#FF6B4A] text-white px-8 py-4 rounded-full text-[15px] font-extrabold shadow-[0_6px_28px_rgba(232,64,37,.45)] hover:-translate-y-0.5 hover:shadow-[0_10px_36px_rgba(232,64,37,.55)] transition"
-              >
-                <WhatsAppIcon size={18} />
-                Cotizar GRATIS ahora
-              </a>
-              <a
-                href="#destinos"
-                className="inline-flex items-center gap-2 bg-white/12 text-white px-7 py-4 rounded-full text-[15px] font-bold border-[1.5px] border-white/30 hover:bg-white/20 transition"
-              >
-                Ver destinos y precios →
-              </a>
-            </div>
-          </div>
-        </AnimateOnScroll>
-
-        {/* Right column — Destination card */}
-        <AnimateOnScroll direction="right" delay={200}>
-          <div className="bg-white rounded-3xl shadow-[0_32px_80px_rgba(0,0,0,.28)] p-7 relative animate-[floatcard_6s_ease-in-out_infinite] max-w-[480px] mx-auto lg:mx-0">
-            <div className="flex items-center justify-between mb-4">
-              <p className="text-[11px] font-extrabold uppercase tracking-[1.5px] text-[#4B5680]">
-                🔥 Destinos populares
-              </p>
-              <span className="inline-flex items-center gap-1.5 text-xs text-green-600">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
-                </span>
-                Online
-              </span>
-            </div>
-
-            <div className="flex flex-col gap-2.5 mb-5">
-              {destinos.map((d) => (
+          <div className="bg-white rounded-2xl shadow-xl p-5 md:p-6">
+            <div className="flex flex-col md:flex-row md:items-center gap-4">
+              {/* Selector de destino */}
+              <div className="relative flex-1">
                 <button
-                  key={d.ciudad}
-                  onClick={() => window.open(cotLink(d.ciudad, d.tipo, d.precio), "_blank")}
-                  className={`flex items-center justify-between p-3 rounded-xl cursor-pointer transition hover:scale-[1.02] w-full text-left ${
-                    d.hot
-                      ? "bg-gradient-to-br from-[#FFF4F2] to-[#FFE8E4] border border-[#FF4D2E]/15"
-                      : "bg-[#F4F6FB] hover:bg-[#EFF6FF]"
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setMenuAbierto(!menuAbierto);
+                  }}
+                  className="w-full flex items-center gap-3 border border-gray-200 rounded-xl px-4 py-3 text-left hover:border-gray-300 transition-colors"
+                >
+                  <span className="text-xl">🌍</span>
+                  <span
+                    className={`text-sm ${destino ? "text-gray-900 font-medium" : "text-gray-400"}`}
+                  >
+                    {destino || "\u00bfA d\u00f3nde quieres viajar?"}
+                  </span>
+                </button>
+
+                {menuAbierto && (
+                  <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-xl shadow-lg z-30 max-h-60 overflow-y-auto">
+                    {destinosOpciones.map((d) => (
+                      <button
+                        key={d}
+                        type="button"
+                        onClick={() => {
+                          setDestino(d);
+                          setMenuAbierto(false);
+                        }}
+                        className="w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors first:rounded-t-xl last:rounded-b-xl"
+                      >
+                        {d}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Toggle tipo */}
+              <div className="flex rounded-xl border border-gray-200 overflow-hidden flex-shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setTipo("migratorio")}
+                  className={`px-5 py-3 text-sm font-medium transition-colors ${
+                    tipo === "migratorio"
+                      ? "bg-[#0c3265] text-white"
+                      : "bg-white text-gray-600 hover:bg-gray-50"
                   }`}
                 >
-                  <div className="flex items-center gap-2.5">
-                    <span className="font-bold text-[14px] text-[#0D1F3C]">
-                      {d.ciudad}
-                    </span>
-                    {d.hot && (
-                      <span className="bg-[#FF4D2E] text-white px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wide">
-                        MÁS VENDIDO
-                      </span>
-                    )}
-                  </div>
-                  <div className="text-right">
-                    <div className="text-[9px] font-bold uppercase text-[#4B5680] opacity-60">
-                      desde
-                    </div>
-                    <div className="text-[20px] font-extrabold text-[#0D1F3C] tabular-nums">
-                      ${d.precio.toLocaleString()}
-                    </div>
-                  </div>
+                  Migratorio
                 </button>
-              ))}
+                <button
+                  type="button"
+                  onClick={() => setTipo("turistico")}
+                  className={`px-5 py-3 text-sm font-medium transition-colors ${
+                    tipo === "turistico"
+                      ? "bg-[#0c3265] text-white"
+                      : "bg-white text-gray-600 hover:bg-gray-50"
+                  }`}
+                >
+                  Tur&iacute;stico
+                </button>
+              </div>
+
+              {/* CTA WhatsApp */}
+              <a
+                href={enlaceCotizar}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white px-7 py-3 rounded-xl text-sm font-semibold hover:bg-[#1fb855] transition-colors flex-shrink-0"
+              >
+                <WhatsAppIcon size={16} />
+                Cotizar GRATIS
+              </a>
             </div>
-
-            <a
-              href={WA_LINK}
-              target="_blank"
-              rel="noopener"
-              className="w-full py-3.5 bg-[#059669] text-white rounded-xl text-[14px] font-bold flex items-center justify-center gap-2 hover:bg-[#10B981] transition cursor-pointer"
-            >
-              <WhatsAppIcon size={16} />
-              Obtener mi cotización GRATIS
-            </a>
-
-            <p className="text-center text-[11px] text-[#4B5680] mt-2.5">
-              <span className="w-2 h-2 bg-green-500 rounded-full inline-block animate-pulse mr-1" />
-              3 asesores disponibles ahora
-            </p>
           </div>
         </AnimateOnScroll>
+
+        {/* Insignias de confianza */}
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-5">
+          {insignias.map((b) => (
+            <span
+              key={b.texto}
+              className="text-sm text-gray-500 flex items-center gap-1.5"
+            >
+              <span>{b.icono}</span>
+              {b.texto}
+            </span>
+          ))}
+        </div>
       </div>
+
+      {/* Espaciador para que la seccion siguiente no tape el widget */}
+      <div className="h-12" />
     </header>
   );
 }

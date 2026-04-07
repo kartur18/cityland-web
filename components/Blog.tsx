@@ -7,7 +7,7 @@ const posts = [
     titulo: "Guía completa para emigrar a España desde Perú",
     desc: "Todo lo que necesitas saber: documentos, costos, requisitos y consejos de quienes ya lo lograron.",
     categoria: "Migración",
-    catColor: "bg-[#FF4D2E]/90 text-white",
+    catColor: "bg-[#d30000]/90 text-white",
     fecha: "15 Mar 2026",
     imagen: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80",
   },
@@ -35,8 +35,8 @@ export default function Blog() {
       <div className="max-w-[1200px] mx-auto px-5">
         <AnimateOnScroll>
           <div className="text-center mb-12">
-            <p className="text-[12px] font-extrabold uppercase tracking-[2px] text-[#FF4D2E] mb-2">BLOG</p>
-            <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(36px,5vw,52px)] text-[#0D1F3C] tracking-wide leading-tight">GUÍAS Y CONSEJOS DE VIAJE</h2>
+            <p className="text-[12px] font-extrabold uppercase tracking-[2px] text-[#d30000] mb-2">BLOG</p>
+            <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(36px,5vw,52px)] text-[#0c3265] tracking-wide leading-tight">GUÍAS Y CONSEJOS DE VIAJE</h2>
           </div>
         </AnimateOnScroll>
 
@@ -49,10 +49,10 @@ export default function Blog() {
                   <span className={`absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wide ${p.catColor}`}>{p.categoria}</span>
                 </div>
                 <div className="p-5">
-                  <p className="text-[12px] text-[#4B5680] mb-2">{p.fecha}</p>
-                  <h3 className="text-[16px] font-bold text-[#0D1F3C] mb-2 leading-snug">{p.titulo}</h3>
-                  <p className="text-[13px] text-[#4B5680] leading-relaxed mb-4">{p.desc}</p>
-                  <a href={waLink(`Quiero info sobre: ${p.titulo}`)} target="_blank" rel="noopener" className="text-[13px] font-bold text-[#FF4D2E] hover:underline">
+                  <p className="text-[12px] text-[#64748b] mb-2">{p.fecha}</p>
+                  <h3 className="text-[16px] font-bold text-[#0c3265] mb-2 leading-snug">{p.titulo}</h3>
+                  <p className="text-[13px] text-[#64748b] leading-relaxed mb-4">{p.desc}</p>
+                  <a href={waLink(`Quiero info sobre: ${p.titulo}`)} target="_blank" rel="noopener" className="text-[13px] font-bold text-[#d30000] hover:underline">
                     Leer más →
                   </a>
                 </div>

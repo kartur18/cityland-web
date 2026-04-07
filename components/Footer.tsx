@@ -2,7 +2,7 @@ import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0D1F3C] text-white/70 pt-14">
+    <footer className="bg-[#0c3265] text-white/70 pt-14">
       <div className="max-w-[1200px] mx-auto px-5">
         <AnimateOnScroll>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr] gap-8 mb-10">

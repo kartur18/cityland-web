@@ -4,7 +4,7 @@ import { WA_LINK, TELEFONO } from "@/components/constantes";
 
 export default function BigCTA() {
   return (
-    <section className="bg-gradient-to-br from-[#0D1F3C] via-[#1A3560] to-[#152B50] text-center py-20 px-5 relative overflow-hidden" id="cotizar">
+    <section className="bg-gradient-to-br from-[#0c3265] via-[#1a4a8a] to-[#152B50] text-center py-20 px-5 relative overflow-hidden" id="cotizar">
       <div className="absolute -top-20 -right-20 w-[300px] h-[300px] rounded-full bg-amber-500/8 animate-[float_10s_ease-in-out_infinite]" />
       <div className="absolute -bottom-15 -left-15 w-[240px] h-[240px] rounded-full bg-red-500/7 animate-[float_7s_ease-in-out_infinite_reverse]" />
       <AnimateOnScroll direction="scale">

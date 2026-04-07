@@ -80,8 +80,8 @@ export const DESTINOS_CARIBE = [
 ];
 
 export const TESTIMONIOS = [
-  { nombre: "Ana R.", iniciales: "AR", color: "bg-[#1A3560]", ruta: "Lima → Madrid · Migratorio", texto: "Paquete migratorio a Madrid perfecto. Boleto, seguro, todo ok en migraciones. El precio fue el mejor que encontré. Súper recomendados." },
-  { nombre: "Fernando C.", iniciales: "FC", color: "bg-[#FF4D2E]", ruta: "Lima → Punta Cana · Turístico", texto: "Punta Cana todo incluido. Resort frente al mar. Cityland se encargó de absolutamente todo. Valió cada centavo." },
+  { nombre: "Ana R.", iniciales: "AR", color: "bg-[#1a4a8a]", ruta: "Lima → Madrid · Migratorio", texto: "Paquete migratorio a Madrid perfecto. Boleto, seguro, todo ok en migraciones. El precio fue el mejor que encontré. Súper recomendados." },
+  { nombre: "Fernando C.", iniciales: "FC", color: "bg-[#d30000]", ruta: "Lima → Punta Cana · Turístico", texto: "Punta Cana todo incluido. Resort frente al mar. Cityland se encargó de absolutamente todo. Valió cada centavo." },
   { nombre: "Pedro H.", iniciales: "PH", color: "bg-[#059669]", ruta: "Lima → Barcelona · Migratorio", texto: "Respondieron en 1 hora. El precio fue mucho menor al de las agencias del mall. Y pagué con Yape en cuotas. Increíble servicio." },
   { nombre: "María L.", iniciales: "ML", color: "bg-[#6366F1]", ruta: "Lima → Cancún · Familiar", texto: "Viajamos a Cancún en familia, 4 personas. Nos armaron el paquete en un día. Precio imbatible y cero problemas." },
   { nombre: "Juan C.", iniciales: "JC", color: "bg-[#F59E0B]", ruta: "Lima → Roma · Migratorio", texto: "Emigré a Roma hace 6 meses con su paquete migratorio. Todo salió perfecto. Los asesores me guiaron paso a paso." },

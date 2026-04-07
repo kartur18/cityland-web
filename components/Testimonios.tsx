@@ -3,12 +3,12 @@ import { TESTIMONIOS } from "@/components/constantes";
 
 export default function Testimonios() {
   return (
-    <section id="testimonios" className="py-20 bg-[#F4F6FB]">
+    <section id="testimonios" className="py-20 bg-[#f8fafc]">
       <div className="max-w-[1200px] mx-auto px-5">
         <AnimateOnScroll>
           <div className="text-center mb-12">
-            <p className="text-[12px] font-extrabold uppercase tracking-[2px] text-[#FF4D2E] mb-2">TESTIMONIOS</p>
-            <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(36px,5vw,52px)] text-[#0D1F3C] tracking-wide leading-tight">LO QUE DICEN NUESTROS VIAJEROS</h2>
+            <p className="text-[12px] font-extrabold uppercase tracking-[2px] text-[#d30000] mb-2">TESTIMONIOS</p>
+            <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(36px,5vw,52px)] text-[#0c3265] tracking-wide leading-tight">LO QUE DICEN NUESTROS VIAJEROS</h2>
           </div>
         </AnimateOnScroll>
 
@@ -21,8 +21,8 @@ export default function Testimonios() {
                     <span key={s} className="text-amber-400 text-[18px]">★</span>
                   ))}
                 </div>
-                <p className="text-[14px] text-[#4B5680] leading-relaxed mb-5 italic relative pl-5">
-                  <span className="absolute left-0 top-0 text-[28px] text-[#0D1F3C]/15 font-serif leading-none">&ldquo;</span>
+                <p className="text-[14px] text-[#64748b] leading-relaxed mb-5 italic relative pl-5">
+                  <span className="absolute left-0 top-0 text-[28px] text-[#0c3265]/15 font-serif leading-none">&ldquo;</span>
                   {t.texto}
                 </p>
                 <div className="flex items-center gap-3">
@@ -30,8 +30,8 @@ export default function Testimonios() {
                     {t.iniciales}
                   </div>
                   <div>
-                    <p className="text-[14px] font-bold text-[#0D1F3C]">{t.nombre}</p>
-                    <p className="text-[12px] text-[#4B5680]">{t.ruta}</p>
+                    <p className="text-[14px] font-bold text-[#0c3265]">{t.nombre}</p>
+                    <p className="text-[12px] text-[#64748b]">{t.ruta}</p>
                   </div>
                 </div>
               </div>

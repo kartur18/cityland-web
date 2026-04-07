@@ -6,7 +6,7 @@ function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
     <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
       <div className={`flex shrink-0 gap-3 ${animClass}`}>
         {[...AEROLINEAS, ...AEROLINEAS].map((a, i) => (
-          <span key={`${a}-${i}`} className="bg-[#F4F6FB] px-5 py-2.5 rounded-full text-xs font-bold text-[#0D1F3C] border border-black/6 whitespace-nowrap hover:border-[#0D1F3C] hover:bg-blue-50 transition">
+          <span key={`${a}-${i}`} className="bg-[#f8fafc] px-5 py-2.5 rounded-full text-xs font-bold text-[#0c3265] border border-black/6 whitespace-nowrap hover:border-[#0c3265] hover:bg-blue-50 transition">
             {a}
           </span>
         ))}
@@ -19,7 +19,7 @@ export default function Airlines() {
   return (
     <div className="bg-white py-10 border-b border-black/6">
       <div className="max-w-[1200px] mx-auto px-5">
-        <p className="text-[11px] font-extrabold tracking-widest uppercase text-[#4B5680] text-center mb-5">Volamos con las mejores aerolíneas del mundo</p>
+        <p className="text-[11px] font-extrabold tracking-widest uppercase text-[#64748b] text-center mb-5">Volamos con las mejores aerolíneas del mundo</p>
       </div>
       <div className="flex flex-col gap-3">
         <MarqueeRow />
