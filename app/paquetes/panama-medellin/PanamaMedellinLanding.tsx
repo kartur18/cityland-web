@@ -33,8 +33,8 @@ function Timer() {
     <div className="flex items-center gap-1">
       {[p(t.h), p(t.m), p(t.s)].map((v, i) => (
         <span key={i} className="flex items-center gap-1">
-          {i > 0 && <span className="text-amber-300 font-bold">:</span>}
-          <span className="bg-black/30 text-white font-mono font-black text-lg px-2 py-0.5 rounded">
+          {i > 0 && <span className="text-white/50 font-bold">:</span>}
+          <span className="bg-red-600 text-white font-mono font-black text-lg px-2 py-0.5 rounded">
             {v}
           </span>
         </span>
@@ -45,8 +45,8 @@ function Timer() {
 
 export default function PanamaMedellinLanding() {
   return (
-    <div className="min-h-screen bg-[#0a1628] text-white pb-16 md:pb-0">
-      {/* ── HERO COMPACTO ── */}
+    <div className="min-h-screen bg-white pb-16 md:pb-0">
+      {/* ── HERO ── */}
       <section className="relative overflow-hidden">
         <Image
           src="/images/paquetes/panama-medellin/hero-panama.png"
@@ -55,43 +55,39 @@ export default function PanamaMedellinLanding() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a1628]/80 via-[#0a1628]/50 to-[#0a1628]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
 
-        <div className="relative z-10 px-5 pt-10 pb-14 max-w-lg mx-auto">
-          {/* Logo */}
-          <div className="flex items-center justify-between mb-10">
-            <Image src="/logo.png" alt="Cityland Travel" width={100} height={35} style={{ objectFit: "contain" }} />
-            <span className="bg-red-500 text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full animate-pulse">
+        <div className="relative z-10 px-5 pt-8 pb-12 max-w-lg mx-auto">
+          <div className="flex items-center justify-between mb-8">
+            <Image src="/logo.png" alt="Cityland Travel" width={95} height={32} style={{ objectFit: "contain" }} />
+            <span className="bg-red-500 text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full animate-pulse">
               Últimos 4 cupos
             </span>
           </div>
 
-          {/* Título */}
-          <h1 className="text-[2.8rem] md:text-6xl font-black leading-[0.95] tracking-tight mb-3">
+          <h1 className="text-[2.6rem] md:text-5xl font-black text-white leading-[0.95] tracking-tight mb-2">
             Panamá<span className="text-amber-400"> + </span>Medellín
           </h1>
 
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-white/60 text-sm mb-8">
-            <span className="flex items-center gap-1"><Clock size={14} /> 7 días · 6 noches</span>
-            <span className="flex items-center gap-1"><Plane size={14} /> Copa Airlines</span>
-            <span className="flex items-center gap-1"><MapPin size={14} /> Junio 2026</span>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-white/60 text-xs mb-6">
+            <span className="flex items-center gap-1"><Clock size={12} /> 7 días · 6 noches</span>
+            <span className="flex items-center gap-1"><Plane size={12} /> Copa Airlines</span>
+            <span className="flex items-center gap-1"><MapPin size={12} /> Junio 2026</span>
           </div>
 
-          {/* Precio */}
-          <div className="flex items-end gap-3 mb-2">
+          <div className="flex items-end gap-2.5 mb-2">
             <div>
-              <span className="text-white/30 text-sm line-through">$1,150</span>
-              <div className="text-[3.5rem] font-black leading-none text-white">
-                $799<span className="text-lg font-medium text-white/50 ml-1">USD</span>
+              <span className="text-white/30 text-xs line-through">$1,150</span>
+              <div className="text-[3rem] font-black leading-none text-white">
+                $799<span className="text-sm font-medium text-white/50 ml-1">USD</span>
               </div>
             </div>
-            <span className="bg-amber-400 text-black text-[11px] font-black px-2.5 py-1 rounded-full mb-2">
-              -30% OFF
+            <span className="bg-amber-400 text-black text-[10px] font-black px-2 py-0.5 rounded-full mb-1.5">
+              -30%
             </span>
           </div>
 
-          {/* Timer + CTA */}
-          <div className="flex items-center gap-3 mb-6 text-xs text-white/40">
+          <div className="flex items-center gap-2.5 mb-5 text-[11px] text-white/40">
             <span>Oferta termina en</span>
             <Timer />
           </div>
@@ -100,21 +96,21 @@ export default function PanamaMedellinLanding() {
             href={WA}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2.5 bg-[#25D366] text-white font-bold text-[17px] w-full py-4 rounded-2xl active:scale-[0.97] transition-all shadow-[0_6px_25px_rgba(37,211,102,0.4)]"
+            className="flex items-center justify-center gap-2.5 bg-[#25D366] text-white font-bold text-[16px] w-full py-3.5 rounded-xl active:scale-[0.97] transition-all shadow-[0_6px_25px_rgba(37,211,102,0.35)]"
           >
-            <WaIcon s={22} />
+            <WaIcon s={20} />
             Reservar ahora por WhatsApp
           </a>
 
-          <p className="text-white/20 text-[10px] text-center mt-2.5">
+          <p className="text-white/25 text-[10px] text-center mt-2">
             <Shield size={10} className="inline mr-1" />
-            +5,000 viajeros atendidos · Respuesta inmediata
+            +5,000 viajeros · Respuesta inmediata
           </p>
         </div>
       </section>
 
-      {/* ── DESTINOS PREVIEW ── */}
-      <section className="px-5 -mt-2 max-w-lg mx-auto">
+      {/* ── FOTOS DESTINOS ── */}
+      <section className="px-4 py-6 max-w-lg mx-auto">
         <div className="grid grid-cols-2 gap-2.5">
           {[
             { img: "/images/paquetes/panama-medellin/casco-antiguo.png", t: "Casco Antiguo", sub: "3 noches en Panamá" },
@@ -122,12 +118,12 @@ export default function PanamaMedellinLanding() {
             { img: "/images/paquetes/panama-medellin/medellin-skyline.png", t: "Medellín", sub: "3 noches" },
             { img: "/images/paquetes/panama-medellin/chiva-medellin.png", t: "Tour en Chiva", sub: "Incluido" },
           ].map((d, i) => (
-            <div key={i} className="relative h-36 rounded-2xl overflow-hidden group">
-              <Image src={d.img} alt={d.t} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div key={i} className="relative h-32 rounded-xl overflow-hidden">
+              <Image src={d.img} alt={d.t} fill className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-              <div className="absolute bottom-3 left-3">
-                <div className="text-white font-bold text-sm leading-tight">{d.t}</div>
-                <div className="text-white/50 text-[11px]">{d.sub}</div>
+              <div className="absolute bottom-2.5 left-3">
+                <div className="text-white font-bold text-[13px] leading-tight">{d.t}</div>
+                <div className="text-white/60 text-[10px]">{d.sub}</div>
               </div>
             </div>
           ))}
@@ -135,13 +131,12 @@ export default function PanamaMedellinLanding() {
       </section>
 
       {/* ── QUÉ INCLUYE ── */}
-      <section className="px-5 py-10 max-w-lg mx-auto">
-        <h2 className="text-lg font-extrabold mb-5 flex items-center gap-2">
-          <span className="w-8 h-0.5 bg-amber-400 rounded" />
+      <section className="px-5 pb-8 max-w-lg mx-auto">
+        <h2 className="text-[17px] font-extrabold text-gray-800 mb-4">
           El paquete incluye
         </h2>
 
-        <div className="space-y-2.5">
+        <div className="space-y-2">
           {[
             "Boleto aéreo ida y vuelta vía Copa Airlines",
             "Equipaje: mochila de mano 8 kg + maleta 10 kg",
@@ -156,18 +151,18 @@ export default function PanamaMedellinLanding() {
             "Tour en chiva tradicional por Medellín",
           ].map((x, i) => (
             <div key={i} className="flex items-start gap-2.5">
-              <Check size={16} className="text-[#25D366] mt-0.5 shrink-0" />
-              <span className="text-white/70 text-[14px] leading-snug">{x}</span>
+              <Check size={15} className="text-green-500 mt-0.5 shrink-0" />
+              <span className="text-gray-600 text-[13px] leading-snug">{x}</span>
             </div>
           ))}
         </div>
 
-        <div className="mt-6 pt-5 border-t border-white/10">
-          <h3 className="text-sm font-bold text-red-400 mb-3">No incluye</h3>
-          <div className="grid grid-cols-2 gap-1.5">
+        <div className="mt-5 pt-4 border-t border-gray-100">
+          <h3 className="text-[13px] font-bold text-red-500 mb-2">No incluye</h3>
+          <div className="grid grid-cols-2 gap-x-4 gap-y-1">
             {["Almuerzos / cenas", "Seguro de viaje", "Gastos personales", "Excursiones extras"].map((x, i) => (
-              <div key={i} className="flex items-center gap-1.5 text-white/30 text-[13px]">
-                <XIcon size={12} className="text-red-400/60 shrink-0" /> {x}
+              <div key={i} className="flex items-center gap-1.5 text-gray-400 text-[12px]">
+                <XIcon size={11} className="text-red-300 shrink-0" /> {x}
               </div>
             ))}
           </div>
@@ -175,9 +170,8 @@ export default function PanamaMedellinLanding() {
       </section>
 
       {/* ── VUELOS ── */}
-      <section className="px-5 pb-10 max-w-lg mx-auto">
-        <h2 className="text-lg font-extrabold mb-5 flex items-center gap-2">
-          <span className="w-8 h-0.5 bg-amber-400 rounded" />
+      <section className="px-5 pb-8 max-w-lg mx-auto">
+        <h2 className="text-[17px] font-extrabold text-gray-800 mb-4">
           Vuelos
         </h2>
 
@@ -188,51 +182,50 @@ export default function PanamaMedellinLanding() {
             { c: "CM 157", from: "Medellín", to: "Panamá", d: "07 Jun", h: "18:20", arr: "19:47", dur: "1h27" },
             { c: "CM 337", from: "Panamá", to: "Lima", d: "07 Jun", h: "21:20", arr: "00:55", dur: "3h35" },
           ].map((f, i) => (
-            <div key={i} className="bg-white/5 rounded-xl px-4 py-3 flex items-center justify-between border border-white/5">
+            <div key={i} className="bg-gray-50 rounded-xl px-4 py-3 flex items-center justify-between border border-gray-100">
               <div>
-                <div className="text-white/80 font-bold text-[15px]">
-                  {f.from} <span className="text-amber-400 mx-1">→</span> {f.to}
+                <div className="text-gray-800 font-bold text-[14px]">
+                  {f.from} <span className="text-blue-600 mx-0.5">→</span> {f.to}
                 </div>
-                <div className="text-white/30 text-[11px] mt-0.5">
+                <div className="text-gray-400 text-[11px] mt-0.5">
                   {f.c} · {f.d} · {f.h}–{f.arr}
                 </div>
               </div>
-              <div className="bg-white/5 px-2.5 py-1 rounded-lg text-center">
-                <div className="text-white font-bold text-sm">{f.dur}</div>
-                <div className="text-white/30 text-[9px]">directo</div>
+              <div className="bg-blue-50 text-blue-700 px-2.5 py-1 rounded-lg text-center">
+                <div className="font-bold text-sm">{f.dur}</div>
               </div>
             </div>
           ))}
         </div>
 
-        <p className="text-white/15 text-[11px] text-center mt-3">Copa Airlines · Aerolínea premium</p>
+        <p className="text-gray-300 text-[11px] text-center mt-3">Copa Airlines · Aerolínea premium</p>
       </section>
 
       {/* ── CTA FINAL ── */}
-      <section className="px-5 pb-10 max-w-lg mx-auto">
-        <div className="bg-gradient-to-br from-amber-400 to-orange-500 rounded-3xl p-7 text-center">
-          <p className="text-black/50 text-xs font-semibold uppercase tracking-wider mb-1">
+      <section className="px-5 pb-8 max-w-lg mx-auto">
+        <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-6 text-center">
+          <p className="text-white/60 text-[11px] font-semibold uppercase tracking-wider mb-1">
             Últimos cupos · Junio 2026
           </p>
-          <div className="text-5xl font-black text-black leading-none mb-1">$799</div>
-          <p className="text-black/40 text-xs mb-5">USD por persona · Todo incluido</p>
+          <div className="text-4xl font-black text-white leading-none mb-0.5">$799</div>
+          <p className="text-white/40 text-[11px] mb-4">USD por persona · Todo incluido</p>
 
           <a
             href={WA}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2.5 bg-[#25D366] text-white font-bold text-[17px] w-full py-4 rounded-2xl active:scale-[0.97] transition-all shadow-lg"
+            className="flex items-center justify-center gap-2.5 bg-[#25D366] text-white font-bold text-[16px] w-full py-3.5 rounded-xl active:scale-[0.97] transition-all shadow-lg"
           >
-            <WaIcon s={22} />
+            <WaIcon s={20} />
             ¡Reservar mi cupo ahora!
           </a>
 
-          <p className="text-black/25 text-[10px] mt-2">Tarifa sujeta a disponibilidad</p>
+          <p className="text-white/20 text-[9px] mt-2">Tarifa sujeta a disponibilidad</p>
         </div>
       </section>
 
       {/* ── FOOTER ── */}
-      <footer className="text-white/15 py-5 px-5 text-center text-[11px] border-t border-white/5">
+      <footer className="text-gray-300 py-4 px-5 text-center text-[11px] border-t border-gray-100">
         Cityland Travel · Los Olivos, Lima · © 2026
       </footer>
 
@@ -247,12 +240,12 @@ export default function PanamaMedellinLanding() {
       </a>
 
       {/* ── STICKY MOBILE ── */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden p-2.5 bg-[#0a1628]/95 backdrop-blur border-t border-white/5">
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden p-2.5 bg-white/95 backdrop-blur border-t border-gray-200">
         <a
           href={WA}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-3.5 rounded-xl text-[15px] shadow-[0_4px_15px_rgba(37,211,102,0.3)]"
+          className="flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-3 rounded-xl text-[15px] shadow-[0_4px_15px_rgba(37,211,102,0.3)]"
         >
           <WaIcon s={18} />
           Reservar — $799 USD
