@@ -49,7 +49,7 @@ export default function PanamaMedellinLanding() {
       {/* ── HERO ── */}
       <section className="relative overflow-hidden">
         <Image
-          src="/images/paquetes/panama-medellin/hero-panama.png"
+          src="/images/paquetes/panama-medellin/hero-panama.jpg"
           alt="Ciudad de Panamá"
           fill
           className="object-cover"
@@ -58,10 +58,9 @@ export default function PanamaMedellinLanding() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
 
         <div className="relative z-10 px-5 pt-8 pb-12 max-w-lg mx-auto">
-          <div className="flex items-center justify-between mb-8">
-            <Image src="/logo.png" alt="Cityland Travel" width={95} height={32} style={{ objectFit: "contain" }} />
-            <span className="bg-red-500 text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full animate-pulse">
-              Últimos 4 cupos
+          <div className="flex items-center justify-center mb-8">
+            <span className="bg-red-500 text-white text-[10px] font-black uppercase tracking-wider px-3 py-1.5 rounded-full animate-pulse">
+              Solo quedan 4 cupos · Junio 2026
             </span>
           </div>
 
