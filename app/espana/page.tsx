@@ -74,34 +74,36 @@ export default function EspanaLandingPage() {
           </a>
         </header>
 
-        <div className="max-w-6xl mx-auto px-6 pb-8 md:pb-12 pt-2 grid md:grid-cols-[1.1fr_1fr] gap-8 items-stretch">
+        <div className="max-w-6xl mx-auto px-6 pb-10 md:pb-14 pt-4 md:pt-6 grid md:grid-cols-[1.1fr_1fr] gap-10 items-center">
           {/* Texto */}
-          <div className="flex flex-col justify-center py-4">
-            <span className="inline-block bg-[#FFE8EA] text-[#E11D2E] text-xs font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full mb-4">
+          <div className="space-y-5">
+            <span className="inline-block bg-[#FFE8EA] text-[#E11D2E] text-xs font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full">
               Paquete migratorio completo
             </span>
 
-            <h1 className={`${serif.className} font-black text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-4`} style={{ color: BLUE }}>
+            <h1 className={`${serif.className} font-black text-5xl md:text-6xl lg:text-7xl leading-[0.95]`} style={{ color: BLUE }}>
               Viaja a España<br />
               desde <span style={{ color: RED }}>${PRECIO_HOY}</span>
             </h1>
 
-            <p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
+            <p className="text-base md:text-lg text-gray-600 leading-relaxed">
               Vuelo · Hotel · Seguro · Guía · Check-in · Asesoría.{' '}
               <strong className="text-gray-900">Todo incluido en un solo pago.</strong>
             </p>
 
-            <a
-              href={WA}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#1ebe57] text-white font-bold text-lg py-4 px-8 rounded-full shadow-xl transition hover:scale-105"
-            >
-              <WA_Icon className="w-5 h-5" />
-              Reservar por WhatsApp
-            </a>
+            <div className="pt-1">
+              <a
+                href={WA}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#1ebe57] text-white font-bold text-lg py-4 px-8 rounded-full shadow-xl transition hover:scale-105"
+              >
+                <WA_Icon className="w-5 h-5" />
+                Reservar por WhatsApp
+              </a>
+            </div>
 
-            <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-500">
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-500">
               <span className="flex items-center gap-1.5"><span className="text-yellow-500">★★★★★</span> 4.9/5</span>
               <span>·</span>
               <span>+5,000 pasajeros</span>
