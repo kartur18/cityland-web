@@ -1,11 +1,17 @@
 import { Metadata } from 'next';
 import { DM_Sans, Fraunces } from 'next/font/google';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { Reveal, CountUp } from './_components/Reveal';
-import { WhatsAppTracker } from './_components/WhatsAppTracker';
 
-const sans = DM_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'], display: 'swap' });
-const serif = Fraunces({ subsets: ['latin'], weight: ['700', '900'], display: 'swap' });
+// Code-splitting: el tracker va en su propio chunk y se carga después del LCP
+const WhatsAppTracker = dynamic(() =>
+  import('./_components/WhatsAppTracker').then((m) => m.WhatsAppTracker)
+);
+
+// Solo cargamos los pesos realmente usados (font-normal, font-medium, font-bold, font-black)
+const sans = DM_Sans({ subsets: ['latin'], weight: ['400', '500', '700'], display: 'swap' });
+const serif = Fraunces({ subsets: ['latin'], weight: ['900'], display: 'swap' });
 
 // ═══════════════════════════════════════════════════════
 // FUENTE ÚNICA DE VERDAD
@@ -88,6 +94,9 @@ const ICON = {
 export default function EspanaLandingPage() {
   return (
     <main className={`${sans.className} text-gray-900 bg-white`}>
+      {/* Preconnect al CDN de imágenes para acelerar el LCP del hero */}
+      <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="" />
+      <link rel="dns-prefetch" href="https://images.unsplash.com" />
 
       {/* ═══════════ 1. HERO ═══════════ */}
       <section className="bg-white">
