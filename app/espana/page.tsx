@@ -201,9 +201,6 @@ export default function EspanaLandingPage() {
             ))}
           </div>
 
-          <p className="text-center text-xs text-gray-500 mt-6">
-            No incluye: traslados entre ciudades españolas, comidas, tours opcionales y tasas aeroportuarias (~$80).
-          </p>
         </div>
       </section>
 
