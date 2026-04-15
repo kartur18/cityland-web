@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import { DM_Sans, Fraunces } from 'next/font/google';
 import Image from 'next/image';
-import StickyWhatsApp from './_components/StickyWhatsApp';
 
 const sans = DM_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'], display: 'swap' });
 const serif = Fraunces({ subsets: ['latin'], weight: ['700', '900'], display: 'swap' });
@@ -65,9 +64,9 @@ export default function EspanaLandingPage() {
         </div>
 
         {/* Header */}
-        <header className="max-w-6xl w-full mx-auto px-6 py-4 flex items-center justify-between">
-          <a href={`https://${DOMINIO}`} aria-label="Ir al inicio de Cityland Travel">
-            <Image src="/logo-cityland.svg" alt="Cityland Travel" width={280} height={280} className="h-28 md:h-36 w-auto" priority />
+        <header className="max-w-6xl w-full mx-auto px-6 py-1 flex items-center justify-between">
+          <a href={`https://${DOMINIO}`} aria-label="Ir al inicio de Cityland Travel" className="-my-4">
+            <Image src="/logo-cityland.svg" alt="Cityland Travel" width={280} height={280} className="h-24 md:h-32 w-auto -ml-2" priority />
           </a>
           <a href={WA} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1ebe57] text-white text-sm font-bold px-5 py-2.5 rounded-full shadow-lg transition hover:scale-105">
             <WA_Icon className="w-4 h-4" />
@@ -75,9 +74,9 @@ export default function EspanaLandingPage() {
           </a>
         </header>
 
-        <div className="max-w-6xl mx-auto px-6 py-6 md:py-8 grid md:grid-cols-[1.1fr_1fr] gap-8 items-center">
+        <div className="max-w-6xl mx-auto px-6 pb-8 md:pb-12 pt-2 grid md:grid-cols-[1.1fr_1fr] gap-8 items-stretch">
           {/* Texto */}
-          <div>
+          <div className="flex flex-col justify-center py-4">
             <span className="inline-block bg-[#FFE8EA] text-[#E11D2E] text-xs font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full mb-4">
               Paquete migratorio completo
             </span>
@@ -128,7 +127,69 @@ export default function EspanaLandingPage() {
         </div>
       </section>
 
-      {/* ═══════════ 2. ANTICIPACIÓN (urgencia de reservar hoy) ═══════════ */}
+      {/* ═══════════ 2. QUÉ INCLUYE (interés — qué recibe) ═══════════ */}
+      <section className="py-10 md:py-14 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-7">
+            <p className="text-[#E11D2E] text-xs font-bold uppercase tracking-[0.25em] mb-2">Paquete migratorio</p>
+            <h2 className={`${serif.className} text-3xl md:text-4xl font-black leading-tight`} style={{ color: BLUE }}>
+              Qué incluye tu paquete
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-3">
+            {[
+              { i: '✈️', t: 'Vuelo de ida Lima → España', d: 'Aerolíneas reconocidas. Equipaje 23 kg + mano.' },
+              { i: '🏨', t: 'Hotel en España', d: '3★ céntrico. Habitación privada con baño.' },
+              { i: '🛡️', t: 'Seguro Schengen', d: 'Cobertura médica €30,000. Certificado oficial.' },
+              { i: '🛬', t: 'Itinerario de retorno', d: 'Comprobante para migraciones Schengen.' },
+              { i: '📲', t: 'Asesoría 1 a 1', d: 'Un asesor por WhatsApp todo el viaje.' },
+              { i: '✅', t: 'Check-in realizado', d: 'Te enviamos tu tarjeta de embarque al WhatsApp.' },
+              { i: '📘', t: 'Guía de viaje PDF', d: 'Itinerario, mapas, restaurantes y tips.' },
+              { i: '💳', t: 'Pago flexible 70/30', d: '70% al reservar, 30% antes de viajar.' },
+            ].map((b) => (
+              <div key={b.t} className="flex gap-3 bg-gray-50 border border-gray-100 rounded-xl p-4">
+                <span className="text-2xl flex-shrink-0" aria-hidden="true">{b.i}</span>
+                <div>
+                  <h3 className="font-bold text-sm" style={{ color: BLUE }}>{b.t}</h3>
+                  <p className="text-gray-600 text-xs mt-0.5">{b.d}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center text-xs text-gray-500 mt-6">
+            No incluye: traslados entre ciudades españolas, comidas, tours opcionales y tasas aeroportuarias (~$80).
+          </p>
+        </div>
+      </section>
+
+      {/* ═══════════ 3. POR QUÉ CITYLAND (deseo — confianza) ═══════════ */}
+      <section className="py-10 md:py-14 px-6" style={{ backgroundColor: BLUE }}>
+        <div className="max-w-5xl mx-auto text-white">
+          <div className="text-center mb-8">
+            <h2 className={`${serif.className} text-3xl md:text-4xl font-black`}>
+              ¿Por qué con Cityland?
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { n: '💰', t: `Ahorras $${AHORRO_PAQUETE.toLocaleString()}`, d: `Comprado por separado te cuesta $${PRECIO_SEPARADO.toLocaleString()}+. Con nosotros $${PRECIO_HOY}.` },
+              { n: '⭐', t: '+5,000 pasajeros felices', d: 'Más de 3 años gestionando viajes a Europa. Calificación 4.9/5.' },
+              { n: '📲', t: 'Asesor humano real', d: 'Te atiende una persona por WhatsApp antes, durante y después del viaje.' },
+            ].map((r) => (
+              <div key={r.t} className="bg-white/5 border border-white/10 rounded-2xl p-6">
+                <div className="text-4xl mb-3" aria-hidden="true">{r.n}</div>
+                <h3 className="text-xl font-bold mb-2">{r.t}</h3>
+                <p className="text-white/80 text-sm leading-relaxed">{r.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════ 4. ANTICIPACIÓN (urgencia — por qué hoy) ═══════════ */}
       <section className="py-10 md:py-14 px-6 bg-gray-50">
         <div className="max-w-4xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-8">
@@ -192,69 +253,7 @@ export default function EspanaLandingPage() {
         </div>
       </section>
 
-      {/* ═══════════ 3. QUÉ INCLUYE ═══════════ */}
-      <section className="py-10 md:py-14 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-7">
-            <p className="text-[#E11D2E] text-xs font-bold uppercase tracking-[0.25em] mb-2">Paquete migratorio</p>
-            <h2 className={`${serif.className} text-3xl md:text-4xl font-black leading-tight`} style={{ color: BLUE }}>
-              Qué incluye tu paquete
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-3">
-            {[
-              { i: '✈️', t: 'Vuelo de ida Lima → España', d: 'Aerolíneas reconocidas. Equipaje 23 kg + mano.' },
-              { i: '🛬', t: 'Itinerario de retorno', d: 'Comprobante para migraciones Schengen.' },
-              { i: '🏨', t: 'Hotel en España', d: '3★ céntrico. Habitación privada con baño.' },
-              { i: '🛡️', t: 'Seguro Schengen', d: 'Cobertura médica €30,000. Certificado oficial.' },
-              { i: '📘', t: 'Guía de viaje PDF', d: 'Itinerario, mapas, restaurantes y tips.' },
-              { i: '✅', t: 'Check-in realizado', d: 'Te enviamos tu tarjeta de embarque al WhatsApp.' },
-              { i: '📲', t: 'Asesoría 1 a 1', d: 'Un asesor por WhatsApp todo el viaje.' },
-              { i: '💳', t: 'Pago flexible 70/30', d: '70% al reservar, 30% antes de viajar.' },
-            ].map((b) => (
-              <div key={b.t} className="flex gap-3 bg-gray-50 border border-gray-100 rounded-xl p-4">
-                <span className="text-2xl flex-shrink-0" aria-hidden="true">{b.i}</span>
-                <div>
-                  <h3 className="font-bold text-sm" style={{ color: BLUE }}>{b.t}</h3>
-                  <p className="text-gray-600 text-xs mt-0.5">{b.d}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <p className="text-center text-xs text-gray-500 mt-6">
-            No incluye: traslados entre ciudades españolas, comidas, tours opcionales y tasas aeroportuarias (~$80).
-          </p>
-        </div>
-      </section>
-
-      {/* ═══════════ 4. POR QUÉ CITYLAND (diferenciadores) ═══════════ */}
-      <section className="py-10 md:py-14 px-6" style={{ backgroundColor: BLUE }}>
-        <div className="max-w-5xl mx-auto text-white">
-          <div className="text-center mb-8">
-            <h2 className={`${serif.className} text-3xl md:text-4xl font-black`}>
-              ¿Por qué con Cityland?
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { n: '💰', t: `Ahorras $${AHORRO_PAQUETE.toLocaleString()}`, d: `Comprado por separado te cuesta $${PRECIO_SEPARADO.toLocaleString()}+. Con nosotros $${PRECIO_HOY}.` },
-              { n: '⭐', t: '+5,000 pasajeros felices', d: 'Más de 3 años gestionando viajes a Europa. Calificación 4.9/5.' },
-              { n: '📲', t: 'Asesor humano real', d: 'Te atiende una persona por WhatsApp antes, durante y después del viaje.' },
-            ].map((r) => (
-              <div key={r.t} className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                <div className="text-4xl mb-3" aria-hidden="true">{r.n}</div>
-                <h3 className="text-xl font-bold mb-2">{r.t}</h3>
-                <p className="text-white/80 text-sm leading-relaxed">{r.d}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════ 5. CTA FINAL ═══════════ */}
+      {/* ═══════════ 5. CTA FINAL (acción) ═══════════ */}
       <section className="py-14 px-6 text-center text-white" style={{ background: `linear-gradient(135deg, ${RED} 0%, #a8121f 100%)` }}>
         <div className="max-w-2xl mx-auto">
           <h2 className={`${serif.className} text-4xl md:text-5xl font-black mb-4`}>
@@ -285,7 +284,6 @@ export default function EspanaLandingPage() {
         </div>
       </footer>
 
-      <StickyWhatsApp />
     </main>
   );
 }
