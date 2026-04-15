@@ -36,8 +36,15 @@ const WA = `https://wa.me/51941551530?text=${encodeURIComponent(
 )}`;
 
 const IMG = {
-  hero: 'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=2400&q=85',
+  hero: 'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1400&q=75',
 };
+
+// Blur placeholder (gradiente cálido que imita Madrid al atardecer) — evita network round-trip
+const HERO_BLUR =
+  'data:image/svg+xml;base64,' +
+  Buffer.from(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 10"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb98a"/><stop offset="0.5" stop-color="#c97f5f"/><stop offset="1" stop-color="#1a2547"/></linearGradient></defs><rect width="8" height="10" fill="url(#g)"/></svg>'
+  ).toString('base64');
 
 const BLUE = '#0A1F5C';
 const RED = '#E11D2E';
@@ -139,7 +146,18 @@ export default function EspanaLandingPage() {
           </div>
 
           <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3] md:aspect-[4/5]">
-            <Image src={IMG.hero} alt="Vista de Madrid al atardecer" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" priority />
+            <Image
+              src={IMG.hero}
+              alt="Vista de Madrid al atardecer"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 45vw, 560px"
+              className="object-cover"
+              priority
+              fetchPriority="high"
+              placeholder="blur"
+              blurDataURL={HERO_BLUR}
+              quality={75}
+            />
             <div className="absolute top-4 left-4 bg-white/95 backdrop-blur text-[#0A1F5C] text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
               📍 Madrid, España
             </div>
