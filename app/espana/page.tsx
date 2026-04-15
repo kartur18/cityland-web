@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { DM_Sans, Fraunces } from 'next/font/google';
 import Image from 'next/image';
 import { Reveal, CountUp } from './_components/Reveal';
+import { WhatsAppTracker } from './_components/WhatsAppTracker';
 
 const sans = DM_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'], display: 'swap' });
 const serif = Fraunces({ subsets: ['latin'], weight: ['700', '900'], display: 'swap' });
@@ -337,6 +338,8 @@ export default function EspanaLandingPage() {
           <a href={WA} target="_blank" rel="noopener noreferrer" className="font-bold" style={{ color: RED }}>WhatsApp {TELEFONO}</a>
         </div>
       </footer>
+
+      <WhatsAppTracker />
     </main>
   );
 }
