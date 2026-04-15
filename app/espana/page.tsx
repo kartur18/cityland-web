@@ -213,60 +213,7 @@ export default function EspanaLandingPage() {
         </div>
       </section>
 
-      {/* ═══════════ 3. DESTINOS ═══════════ */}
-      <section className="py-12 md:py-16 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <Reveal className="text-center mb-10">
-            <p className="text-[#E11D2E] text-xs font-bold uppercase tracking-[0.25em] mb-2">Destinos</p>
-            <h2 className={`${serif.className} text-3xl md:text-4xl font-black leading-tight`} style={{ color: BLUE }}>
-              Conoce la España real
-            </h2>
-            <p className="text-gray-600 mt-3 text-base max-w-xl mx-auto">
-              Te armamos la ruta según tus fechas y gustos. Estas son las ciudades más pedidas.
-            </p>
-          </Reveal>
-
-          <div className="grid md:grid-cols-3 gap-5">
-            {[
-              { img: IMG.madrid, name: 'Madrid', desc: 'Gran Vía, Plaza Mayor y tapas en La Latina.' },
-              { img: IMG.barcelona, name: 'Barcelona', desc: 'Sagrada Familia, Park Güell y Las Ramblas.' },
-              { img: IMG.sevilla, name: 'Sevilla', desc: 'Plaza de España, Alcázar y tablaos flamencos.' },
-            ].map((d, i) => (
-              <Reveal key={d.name} delay={i * 120}>
-                <article className="group relative overflow-hidden rounded-3xl aspect-[4/5] shadow-lg cursor-pointer">
-                  <img src={d.img} alt={d.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 className={`${serif.className} text-3xl font-black mb-1.5`}>{d.name}</h3>
-                    <p className="text-sm text-white/90 leading-relaxed">{d.desc}</p>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════ 4. TESTIMONIO ═══════════ */}
-      <section className="py-14 md:py-16 px-6 bg-white">
-        <Reveal className="max-w-3xl mx-auto text-center">
-          <div className="flex justify-center gap-0.5 mb-4">
-            {[...Array(5)].map((_, i) => <span key={i}>{ICON.star}</span>)}
-          </div>
-          <p className={`${serif.className} text-xl md:text-2xl font-medium leading-relaxed mb-6`} style={{ color: BLUE }}>
-            &ldquo;Solo armé mi maleta. Cityland se encargó de todo: vuelo, hotel y seguro. La guía PDF me salvó en Madrid, fue como tener un amigo local.&rdquo;
-          </p>
-          <div className="flex items-center justify-center gap-3">
-            <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#E11D2E] to-[#0A1F5C] flex items-center justify-center text-white font-black">L</div>
-            <div className="text-left">
-              <div className="font-bold text-sm" style={{ color: BLUE }}>Laura Meza</div>
-              <div className="text-gray-500 text-xs">Viajó a Madrid · Noviembre 2024</div>
-            </div>
-          </div>
-        </Reveal>
-      </section>
-
-      {/* ═══════════ 5. POR QUÉ CITYLAND ═══════════ */}
+      {/* ═══════════ 3. POR QUÉ CITYLAND ═══════════ */}
       <section className="py-12 md:py-16 px-6" style={{ backgroundColor: BLUE }}>
         <div className="max-w-5xl mx-auto text-white">
           <Reveal className="text-center mb-10">
