@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 
 const GOOGLE_ADS_ID = "AW-18893163482";
+const GA4_ID = "G-SRFK1LXPBE";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -54,14 +55,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})()` }} />
         {children}
         <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
           strategy="afterInteractive"
         />
-        <Script id="google-ads-gtag" strategy="afterInteractive">
+        <Script id="google-tags-init" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
+            gtag('config', '${GA4_ID}');
             gtag('config', '${GOOGLE_ADS_ID}');
           `}
         </Script>
