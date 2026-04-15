@@ -36,9 +36,6 @@ const WA = `https://wa.me/51941551530?text=${encodeURIComponent(
 
 const IMG = {
   hero: 'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=2400&q=85',
-  madrid: 'https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&w=1000&q=80',
-  barcelona: 'https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=1000&q=80',
-  sevilla: 'https://images.unsplash.com/photo-1559682468-a6a29e7d9517?auto=format&fit=crop&w=1000&q=80',
 };
 
 const BLUE = '#0A1F5C';
@@ -77,9 +74,6 @@ const ICON = {
   ),
   card: (
     <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" /></svg>
-  ),
-  star: (
-    <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.955a1 1 0 00.95.69h4.156c.969 0 1.371 1.24.588 1.81l-3.362 2.443a1 1 0 00-.363 1.118l1.286 3.955c.3.922-.755 1.688-1.538 1.118L10 14.347l-3.36 2.443c-.783.57-1.838-.196-1.538-1.118l1.287-3.955a1 1 0 00-.363-1.118L2.664 8.155c-.783-.57-.38-1.81.588-1.81h4.156a1 1 0 00.95-.69l1.286-3.955z"/></svg>
   ),
 };
 
@@ -255,7 +249,7 @@ export default function EspanaLandingPage() {
         </div>
       </section>
 
-      {/* ═══════════ 6. ANTICIPACIÓN ═══════════ */}
+      {/* ═══════════ 4. ANTICIPACIÓN ═══════════ */}
       <section className="py-12 md:py-16 px-6 bg-gray-50">
         <div className="max-w-4xl mx-auto">
           <Reveal className="text-center max-w-2xl mx-auto mb-8">
@@ -321,7 +315,7 @@ export default function EspanaLandingPage() {
         </div>
       </section>
 
-      {/* ═══════════ 7. CTA FINAL ═══════════ */}
+      {/* ═══════════ 5. CTA FINAL ═══════════ */}
       <section className="py-14 md:py-16 px-6 text-center text-white" style={{ background: `linear-gradient(135deg, ${RED} 0%, #a8121f 100%)` }}>
         <Reveal className="max-w-2xl mx-auto">
           <h2 className={`${serif.className} text-4xl md:text-5xl font-black mb-4`}>
