@@ -212,9 +212,9 @@ export default function EspanaLandingPage() {
           <div className="grid md:grid-cols-2 gap-3">
             {[
               { i: ICON.plane, t: 'Vuelo de ida Lima → España', d: 'Aerolíneas reconocidas. Equipaje 23 kg + mano.' },
+              { i: ICON.docReturn, t: 'Vuelo de retorno gestionado', d: 'Comprobante para migraciones Schengen.' },
               { i: ICON.hotel, t: 'Hotel en España', d: '3★ céntrico. Habitación privada con baño.' },
               { i: ICON.shield, t: 'Seguro Schengen', d: 'Cobertura médica €30,000. Certificado oficial.' },
-              { i: ICON.docReturn, t: 'Itinerario de retorno', d: 'Comprobante para migraciones Schengen.' },
               { i: ICON.chat, t: 'Asesoría 1 a 1', d: 'Un asesor por WhatsApp todo el viaje.' },
               { i: ICON.checkBadge, t: 'Check-in realizado', d: 'Te enviamos tu tarjeta de embarque al WhatsApp.' },
               { i: ICON.book, t: 'Guía de viaje PDF', d: 'Itinerario, mapas, restaurantes y tips.' },
