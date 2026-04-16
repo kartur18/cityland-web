@@ -116,7 +116,7 @@ export default function EspanaLandingPage() {
           <a href={`https://${DOMINIO}`} aria-label="Ir al inicio de Cityland Travel" className="-my-4">
             <Image src="/logo-cityland.svg" alt="Cityland Travel" width={280} height={280} className="h-24 md:h-32 w-auto -ml-2" priority />
           </a>
-          <a href={WA} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1ebe57] text-white text-sm font-bold px-5 py-2.5 rounded-full shadow-lg transition hover:scale-105">
+          <a href={WA} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border-2 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white text-sm font-bold px-5 py-2 rounded-full transition hover:scale-105">
             <WA_Icon className="w-4 h-4" />
             Cotizar ahora
           </a>
@@ -154,7 +154,7 @@ export default function EspanaLandingPage() {
             </div>
           </div>
 
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3] md:aspect-[4/5]">
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[16/9] md:aspect-[4/5]">
             <Image
               src={IMG.hero}
               alt="Vista de Madrid al atardecer"
@@ -175,27 +175,32 @@ export default function EspanaLandingPage() {
       </section>
 
       {/* ═══════════ TRUST STRIP ═══════════ */}
-      <section className="bg-gray-50 border-y border-gray-100 py-5 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-6 md:gap-10 flex-wrap justify-center">
+      <section className="bg-gray-50 border-y border-gray-100 py-4 px-6">
+        {/* Móvil: texto compacto */}
+        <div className="md:hidden text-center text-xs text-gray-500 font-medium leading-relaxed">
+          Vuelos con <strong className="text-gray-700">LATAM · Iberia · Air Europa · KLM</strong> · Pago seguro con <strong className="text-gray-700">Yape · Plin · Visa · Mastercard</strong>
+        </div>
+        {/* Desktop: layout expandido */}
+        <div className="hidden md:flex max-w-6xl mx-auto items-center justify-between gap-6">
+          <div className="flex items-center gap-10">
             <span className="text-xs font-bold uppercase tracking-widest text-gray-500">Volamos con</span>
             <span className="font-black text-gray-600 text-lg">LATAM</span>
             <span className="font-black text-gray-600 text-lg italic">Iberia</span>
             <span className="font-black text-gray-600 text-lg">Air Europa</span>
             <span className="font-black text-gray-600 text-lg">KLM</span>
           </div>
-          <div className="flex items-center gap-4 flex-wrap justify-center">
+          <div className="flex items-center gap-4">
             <span className="text-xs font-bold uppercase tracking-widest text-gray-500">Pago seguro</span>
-            <span className="inline-flex items-center gap-1 text-sm font-bold text-purple-700 bg-white px-3 py-1 rounded-md border border-gray-200">Yape</span>
-            <span className="inline-flex items-center gap-1 text-sm font-bold text-cyan-700 bg-white px-3 py-1 rounded-md border border-gray-200">Plin</span>
-            <span className="inline-flex items-center gap-1 text-sm font-bold text-blue-700 bg-white px-3 py-1 rounded-md border border-gray-200">Visa</span>
-            <span className="inline-flex items-center gap-1 text-sm font-bold text-red-700 bg-white px-3 py-1 rounded-md border border-gray-200">Mastercard</span>
+            <span className="text-sm font-bold text-purple-700 bg-white px-3 py-1 rounded-md border border-gray-200">Yape</span>
+            <span className="text-sm font-bold text-cyan-700 bg-white px-3 py-1 rounded-md border border-gray-200">Plin</span>
+            <span className="text-sm font-bold text-blue-700 bg-white px-3 py-1 rounded-md border border-gray-200">Visa</span>
+            <span className="text-sm font-bold text-red-700 bg-white px-3 py-1 rounded-md border border-gray-200">Mastercard</span>
           </div>
         </div>
       </section>
 
       {/* ═══════════ 2. QUÉ INCLUYE ═══════════ */}
-      <section className="py-12 md:py-16 px-6 bg-white">
+      <section className="py-8 md:py-16 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
           <Reveal className="text-center mb-9">
             <p className="text-[#E11D2E] text-xs font-bold uppercase tracking-[0.25em] mb-2">Paquete migratorio</p>
@@ -233,7 +238,7 @@ export default function EspanaLandingPage() {
       </section>
 
       {/* ═══════════ 3. POR QUÉ CITYLAND ═══════════ */}
-      <section className="py-12 md:py-16 px-6" style={{ backgroundColor: BLUE }}>
+      <section className="py-8 md:py-16 px-6" style={{ backgroundColor: BLUE }}>
         <div className="max-w-5xl mx-auto text-white">
           <Reveal className="text-center mb-10">
             <h2 className={`${serif.className} text-3xl md:text-4xl font-black`}>
@@ -243,9 +248,11 @@ export default function EspanaLandingPage() {
 
           <div className="grid md:grid-cols-3 gap-5">
             <Reveal delay={0}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 h-full transition hover:bg-white/10 hover:-translate-y-1">
-                <div className="text-4xl mb-3">💰</div>
-                <h3 className={`${serif.className} text-3xl font-black mb-1`}>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-5 md:p-6 h-full transition hover:bg-white/10 hover:-translate-y-1">
+                <div className="w-10 h-10 rounded-lg bg-[#FFD93D]/20 flex items-center justify-center mb-3 text-[#FFD93D]">
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+                </div>
+                <h3 className={`${serif.className} text-2xl md:text-3xl font-black mb-1`}>
                   $<CountUp end={AHORRO_PAQUETE} />
                 </h3>
                 <p className="text-[#FFD93D] text-xs font-bold uppercase tracking-widest mb-2">de ahorro</p>
@@ -253,9 +260,11 @@ export default function EspanaLandingPage() {
               </div>
             </Reveal>
             <Reveal delay={120}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 h-full transition hover:bg-white/10 hover:-translate-y-1">
-                <div className="text-4xl mb-3">⭐</div>
-                <h3 className={`${serif.className} text-3xl font-black mb-1`}>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-5 md:p-6 h-full transition hover:bg-white/10 hover:-translate-y-1">
+                <div className="w-10 h-10 rounded-lg bg-[#FFD93D]/20 flex items-center justify-center mb-3 text-[#FFD93D]">
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" /></svg>
+                </div>
+                <h3 className={`${serif.className} text-2xl md:text-3xl font-black mb-1`}>
                   +<CountUp end={5000} />
                 </h3>
                 <p className="text-[#FFD93D] text-xs font-bold uppercase tracking-widest mb-2">pasajeros felices</p>
@@ -263,9 +272,11 @@ export default function EspanaLandingPage() {
               </div>
             </Reveal>
             <Reveal delay={240}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 h-full transition hover:bg-white/10 hover:-translate-y-1">
-                <div className="text-4xl mb-3">📲</div>
-                <h3 className={`${serif.className} text-3xl font-black mb-1`}>1 a 1</h3>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-5 md:p-6 h-full transition hover:bg-white/10 hover:-translate-y-1">
+                <div className="w-10 h-10 rounded-lg bg-[#FFD93D]/20 flex items-center justify-center mb-3 text-[#FFD93D]">
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" /></svg>
+                </div>
+                <h3 className={`${serif.className} text-2xl md:text-3xl font-black mb-1`}>1 a 1</h3>
                 <p className="text-[#FFD93D] text-xs font-bold uppercase tracking-widest mb-2">Asesor humano</p>
                 <p className="text-white/75 text-sm leading-relaxed">Te atiende una persona por WhatsApp antes, durante y después del viaje.</p>
               </div>
@@ -275,7 +286,7 @@ export default function EspanaLandingPage() {
       </section>
 
       {/* ═══════════ 4. ANTICIPACIÓN ═══════════ */}
-      <section className="py-12 md:py-16 px-6 bg-gray-50">
+      <section className="py-8 md:py-16 px-6 bg-gray-50">
         <div className="max-w-4xl mx-auto">
           <Reveal className="text-center max-w-2xl mx-auto mb-8">
             <p className="text-[#E11D2E] text-xs font-bold uppercase tracking-[0.25em] mb-2">¿Por qué reservar hoy?</p>
@@ -290,7 +301,7 @@ export default function EspanaLandingPage() {
 
           <div className="grid md:grid-cols-2 gap-5">
             <Reveal>
-              <div className="bg-white rounded-3xl p-7 border-2 border-[#25D366] shadow-xl relative">
+              <div className="bg-white rounded-3xl p-5 md:p-7 border-2 border-[#25D366] shadow-xl relative">
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#25D366] text-white text-[10px] font-black uppercase tracking-widest px-4 py-1 rounded-full shadow-lg whitespace-nowrap">
                   ★ Más vendido
                 </span>
@@ -298,7 +309,7 @@ export default function EspanaLandingPage() {
                   Reserva hoy · Abril
                 </span>
                 <div className="text-sm text-gray-500 mb-1">Paquete completo a España</div>
-                <div className={`${serif.className} text-5xl font-black mb-3`} style={{ color: BLUE }}>${PRECIO_HOY}</div>
+                <div className={`${serif.className} text-4xl md:text-5xl font-black mb-3`} style={{ color: BLUE }}>${PRECIO_HOY}</div>
                 <ul className="space-y-1.5 text-sm text-gray-700">
                   <li>✅ Precio de lanzamiento</li>
                   <li>✅ Eliges la fecha que prefieras</li>
@@ -308,12 +319,12 @@ export default function EspanaLandingPage() {
             </Reveal>
 
             <Reveal delay={120}>
-              <div className="bg-white rounded-3xl p-7 border-2 border-gray-200">
+              <div className="bg-white rounded-3xl p-5 md:p-7 border-2 border-gray-200">
                 <span className="inline-block bg-gray-100 text-gray-500 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3">
                   Si esperas a agosto / septiembre
                 </span>
                 <div className="text-sm text-gray-500 mb-1">El mismo paquete</div>
-                <div className={`${serif.className} text-5xl font-black mb-3 text-gray-400`}>${PRECIO_ESPERANDO}+</div>
+                <div className={`${serif.className} text-4xl md:text-5xl font-black mb-3 text-gray-400`}>${PRECIO_ESPERANDO}+</div>
                 <ul className="space-y-1.5 text-sm text-gray-600">
                   <li>⚠️ Vuelos más caros</li>
                   <li>⚠️ Menos hoteles disponibles</li>
@@ -341,7 +352,7 @@ export default function EspanaLandingPage() {
       </section>
 
       {/* ═══════════ 5. CTA FINAL ═══════════ */}
-      <section className="py-14 md:py-16 px-6 text-center text-white" style={{ background: `linear-gradient(135deg, ${RED} 0%, #a8121f 100%)` }}>
+      <section className="py-10 md:py-16 px-6 text-center text-white" style={{ background: `linear-gradient(135deg, ${RED} 0%, #a8121f 100%)` }}>
         <Reveal className="max-w-2xl mx-auto">
           <h2 className={`${serif.className} text-4xl md:text-5xl font-black mb-4`}>
             Reserva tu cupo hoy
