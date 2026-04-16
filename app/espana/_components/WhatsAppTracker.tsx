@@ -22,6 +22,11 @@ export function WhatsAppTracker() {
           value: 1.0,
           currency: "PEN",
         });
+        window.gtag("event", "conversion", {
+          send_to: "AW-18093363482/Sg0OCKzz4SwcEJqiy7ND",
+          value: 1.0,
+          currency: "PEN",
+        });
       }
     };
     document.addEventListener("click", handler, true);
