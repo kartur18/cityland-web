@@ -3,6 +3,7 @@
 import { useState } from "react";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { DESTINOS_EUROPA, DESTINOS_CARIBE, cotFormLink } from "@/components/constantes";
+import { trackConversion } from "@/lib/gtag";
 
 interface CotizadorFormProps {
   preselectedDestino?: string;
@@ -36,6 +37,7 @@ export default function CotizadorForm({ preselectedDestino }: CotizadorFormProps
     if (Object.keys(e).length > 0) return;
 
     const url = cotFormLink({ nombre, email, destino, fechaIda, fechaRetorno: fechaRetorno || undefined, pasajeros });
+    trackConversion();
     window.open(url, "_blank");
   }
 
