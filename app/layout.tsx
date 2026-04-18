@@ -3,8 +3,7 @@ import { Plus_Jakarta_Sans, Bebas_Neue } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
-const GOOGLE_ADS_ID = "AW-18893163482";
-const GOOGLE_ADS_ID_2 = "AW-18093363482";
+const GOOGLE_ADS_ID = "AW-18093363482";
 const GA4_ID = "G-SRFK1LXPBE";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -66,7 +65,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('js', new Date());
             gtag('config', '${GA4_ID}');
             gtag('config', '${GOOGLE_ADS_ID}');
-            gtag('config', '${GOOGLE_ADS_ID_2}');
           `}
         </Script>
       </body>

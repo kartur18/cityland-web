@@ -18,11 +18,6 @@ export function WhatsAppTracker() {
       if (!link) return;
       if (typeof window.gtag === "function") {
         window.gtag("event", "conversion", {
-          send_to: "AW-18893163482/8g0OCKxa45wcEJqiy7ND",
-          value: 1.0,
-          currency: "PEN",
-        });
-        window.gtag("event", "conversion", {
           send_to: "AW-18093363482/Sg0OCKzz45wcEJqiy7ND",
           value: 1.0,
           currency: "PEN",
