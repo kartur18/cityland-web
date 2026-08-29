@@ -6,36 +6,54 @@ const OFERTAS = [
   {
     nombre: "Punta Cana",
     precio: 899,
+    dias: 5,
+    noches: 4,
+    paises: 1,
     img: "https://viaje.b-cdn.net/megatravel-peru/2025/image/top10/699fa27460c43.jpg",
     href: "https://viaje-pe.vercel.app/citylandtravel/viaje/punta-cana-51008.html",
   },
   {
     nombre: "Mega Europa Fantástica",
     precio: 3399,
+    dias: 17,
+    noches: 15,
+    paises: 4,
     img: "https://viaje.b-cdn.net/megatravel-peru/2025/image/top10/699fa14a183f9.jpg",
     href: "https://viaje-pe.vercel.app/citylandtravel/viaje/mega-europa-fantastica--con-plus-ultra-10112.html",
   },
   {
     nombre: "Turquía y Dubái",
     precio: 3599,
+    dias: 17,
+    noches: 15,
+    paises: 2,
     img: "https://viaje.b-cdn.net/megatravel-peru/2025/image/top10/699fa20a47fe6.jpg",
     href: "https://viaje-pe.vercel.app/citylandtravel/viaje/turqua-y-dubi--via-madrid-20174.html",
   },
   {
     nombre: "Gran Triángulo Centroamericano",
     precio: 1699,
+    dias: 8,
+    noches: 7,
+    paises: 3,
     img: "https://viaje.b-cdn.net/megatravel-peru/2025/image/top10/699fa238c7430.jpg",
     href: "https://viaje-pe.vercel.app/citylandtravel/viaje/gran-triangulo-centroamericano-50007.html",
   },
   {
     nombre: "Jamaica Vibrante",
     precio: 1699,
+    dias: 5,
+    noches: 4,
+    paises: 1,
     img: "https://viaje.b-cdn.net/megatravel-peru/2025/image/top10/699fa2b0c5d49.jpg",
     href: "https://viaje-pe.vercel.app/citylandtravel/viaje/jamaica-vibrante-51026.html",
   },
   {
     nombre: "Iguazú & Río de Janeiro",
     precio: 1799,
+    dias: 7,
+    noches: 6,
+    paises: 1,
     img: "https://viaje.b-cdn.net/megatravel-peru/2025/image/top10/699fa3687f7fa.jpg",
     href: "https://viaje-pe.vercel.app/citylandtravel/viaje/iguazu--rio-de-janeiro-52098.html",
   },
@@ -62,18 +80,41 @@ export default function OfertasDestacadas() {
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
           {OFERTAS.map((o, index) => (
             <AnimateOnScroll key={o.nombre} stagger={Math.min(index + 1, 6)}>
-              <div className="card-lift card-lift-warm rounded-xl overflow-hidden bg-white border border-gray-100 shadow-[0_2px_12px_rgba(0,0,0,.05)] flex flex-col h-full">
+              <div className="relative card-lift card-lift-warm rounded-xl overflow-hidden bg-white border border-gray-100 shadow-[0_2px_12px_rgba(0,0,0,.05)] flex flex-col h-full">
+                {/* Badge de separación */}
+                <div className="absolute -top-2 -right-2 z-10 w-[62px] h-[62px] rounded-full grad-warm text-white flex flex-col items-center justify-center text-center leading-[1.1] shadow-lg border-2 border-white">
+                  <span className="text-[7px] font-bold tracking-wide">SEPÁRALO</span>
+                  <span className="text-[15px] font-extrabold">35%</span>
+                </div>
+
                 <div className="relative aspect-[9/16] w-full overflow-hidden">
                   <Image
                     src={o.img}
                     alt={`Paquete ${o.nombre} - Cityland Travel`}
                     fill
                     sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 25vw"
-                    className="object-cover"
+                    className="object-cover scale-[1.18]"
                   />
                 </div>
                 <div className="p-4 flex flex-col flex-1">
-                  <h3 className="text-[14px] font-bold text-[#0a1628] mb-1 leading-snug flex-1">{o.nombre}</h3>
+                  <h3 className="text-[14px] font-bold text-[#0a1628] mb-1.5 leading-snug">{o.nombre}</h3>
+
+                  {/* Info del paquete */}
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-gray-500 mb-2">
+                    <span className="inline-flex items-center gap-1">
+                      <svg viewBox="0 0 24 24" className="w-3 h-3 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                      {o.dias}d / {o.noches}n
+                    </span>
+                    <span className="inline-flex items-center gap-1">
+                      <svg viewBox="0 0 24 24" className="w-3 h-3 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                      {o.paises} {o.paises === 1 ? "país" : "países"}
+                    </span>
+                    <span className="inline-flex items-center gap-1 text-emerald-600 font-medium">
+                      <svg viewBox="0 0 24 24" className="w-3 h-3 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+                      Incluye vuelo
+                    </span>
+                  </div>
+
                   <p className="text-[11px] text-gray-400 mb-3">
                     Desde <span className="text-[16px] font-bold grad-warm-text">${o.precio.toLocaleString()}</span> por persona
                   </p>
