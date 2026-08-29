@@ -1,5 +1,6 @@
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import PlaneIcon from "@/components/icons/PlaneIcon";
 import { WA_LINK } from "@/components/constantes";
 
 const PASOS = [
@@ -28,7 +29,7 @@ const PASOS = [
     num: 4,
     titulo: "Viaja tranquilo",
     desc: "Soporte 24/7 y seguro de viaje incluido en tu paquete.",
-    icon: <svg viewBox="0 0 24 24" className="w-6 h-6 fill-none stroke-white stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>,
+    icon: <PlaneIcon className="w-6 h-6 fill-none stroke-white stroke-2" />,
     color: "from-[#F59E0B] to-[#FBBF24]",
   },
 ];

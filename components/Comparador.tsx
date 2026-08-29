@@ -1,9 +1,13 @@
 import AnimateOnScroll from "@/components/AnimateOnScroll";
-import { waLink } from "@/components/constantes";
+import { waLink, DESTINOS_EUROPA, DESTINOS_CARIBE } from "@/components/constantes";
+import ArrowRightIcon from "@/components/icons/ArrowRightIcon";
+
+const MADRID = DESTINOS_EUROPA.find((d) => d.slug === "madrid")!;
+const PUNTA_CANA = DESTINOS_CARIBE.find((d) => d.slug === "punta-cana")!;
 
 const filas = [
-  { concepto: "Migratorio Madrid", cityland: "$799", otros: "$1,200+" },
-  { concepto: "Punta Cana", cityland: "$799", otros: "$1,100+" },
+  { concepto: "Migratorio Madrid", cityland: `$${MADRID.migratorio}`, otros: "$1,200+" },
+  { concepto: "Punta Cana", cityland: `$${PUNTA_CANA.turistico}`, otros: "$1,100+" },
   { concepto: "Cotización", cityland: "Gratis", otros: "Cobran" },
   { concepto: "Respuesta", cityland: "2 horas", otros: "24-48h" },
   { concepto: "Seguro", cityland: "Incluido", otros: "Extra" },
@@ -69,7 +73,7 @@ export default function Comparador() {
               </div>
               <a href={waLink("Quiero comparar precios")} target="_blank" rel="noopener" className="grad-warm glow-warm w-full py-3 text-white rounded-xl text-[13px] font-bold flex items-center justify-center gap-2 transition-all">
                 Comparar mi cotización
-                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                <ArrowRightIcon className="w-3.5 h-3.5 fill-none stroke-current stroke-2" />
               </a>
             </div>
           </AnimateOnScroll>

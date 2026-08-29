@@ -165,16 +165,3 @@ html {
 .article-body p { font-size: 15px; color: #475569; line-height: 1.75; margin-bottom: 16px; }
 .article-body ul, .article-body ol { padding-left: 20px; margin-bottom: 16px; }
 .article-body li { font-size: 15px; color: #475569; line-height: 1.75; margin-bottom: 4px; }
-
-/* ── Dark Mode ── */
-.dark {
-  color-scheme: dark;
-}
-.dark body {
-  background-color: #0a1628;
-  color: #e2e8f0;
-}
-.dark .dark\:bg-dark { background-color: #0f1d32; }
-.dark .dark\:bg-card { background-color: #162544; }
-.dark .dark\:text-white { color: #f1f5f9; }
-.dark .dark\:border-dark { border-color: rgba(255,255,255,0.06); }

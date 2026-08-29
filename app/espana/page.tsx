@@ -3,6 +3,7 @@ import { DM_Sans, Fraunces } from 'next/font/google';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { Reveal, CountUp } from './_components/Reveal';
+import { waLink } from '@/components/constantes';
 
 // Code-splitting: el tracker va en su propio chunk y se carga después del LCP
 const WhatsAppTracker = dynamic(() =>
@@ -37,9 +38,7 @@ export const metadata: Metadata = {
   },
 };
 
-const WA = `https://wa.me/51906450098?text=${encodeURIComponent(
-  `Hola Cityland Travel, quiero reservar mi viaje a España desde $${PRECIO_HOY} (${MESES})`
-)}`;
+const WA = waLink(`Hola Cityland Travel, quiero reservar mi viaje a España desde $${PRECIO_HOY} (${MESES})`);
 
 const IMG = {
   hero: 'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1400&q=75',
@@ -256,7 +255,7 @@ export default function EspanaLandingPage() {
                   $<CountUp end={AHORRO_PAQUETE} />
                 </h3>
                 <p className="text-[#FFD93D] text-xs font-bold uppercase tracking-widest mb-2">de ahorro</p>
-                <p className="text-white/75 text-sm leading-relaxed">Comprado por separado te cuesta ${PRECIO_SEPARADO.toLocaleString()}+. Con nosotros ${PRECIO_HOY}.</p>
+                <p className="text-white/75 text-sm leading-relaxed">Comprado por separado te cuesta ${PRECIO_SEPARADO.toLocaleString("es-PE")}+. Con nosotros ${PRECIO_HOY}.</p>
               </div>
             </Reveal>
             <Reveal delay={120}>

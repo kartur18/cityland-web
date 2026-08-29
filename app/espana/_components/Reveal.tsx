@@ -56,5 +56,5 @@ export function CountUp({ end, suffix = "", duration = 1800 }: { end: number; su
     return () => obs.disconnect();
   }, [end, duration]);
 
-  return <span ref={ref}>{count.toLocaleString()}{suffix}</span>;
+  return <span ref={ref}>{count.toLocaleString("es-PE")}{suffix}</span>;
 }

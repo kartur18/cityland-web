@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
+import PlaneIcon from "@/components/icons/PlaneIcon";
 
 function AnimNum({ texto }: { texto: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -32,7 +33,7 @@ function AnimNum({ texto }: { texto: string }) {
 }
 
 const STATS = [
-  { texto: "+5,000", label: "Viajes realizados", icon: <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-[#dc2626] stroke-[1.5]" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg> },
+  { texto: "+5,000", label: "Viajes realizados", icon: <PlaneIcon className="w-5 h-5 fill-none stroke-[#dc2626] stroke-[1.5]" /> },
   { texto: "+70", label: "Destinos internacionales", icon: <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-[#dc2626] stroke-[1.5]" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> },
   { texto: "+10", label: "Años de experiencia", icon: <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-[#dc2626] stroke-[1.5]" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> },
   { rating: true, label: "Rating en Google", icon: <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-[#dc2626] stroke-[1.5]" strokeLinecap="round" strokeLinejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> },

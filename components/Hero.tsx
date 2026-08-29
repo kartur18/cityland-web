@@ -2,19 +2,19 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { WA_LINK, waLink } from "@/components/constantes";
+import { DESTINOS_EUROPA, DESTINOS_CARIBE, PRECIO_DESDE_EUROPA, waLink } from "@/components/constantes";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import FlagIcon from "@/components/icons/FlagIcon";
+import ArrowRightIcon from "@/components/icons/ArrowRightIcon";
+import PlaneIcon from "@/components/icons/PlaneIcon";
 
-const destinosOpciones = [
-  { label: "Madrid", flag: "🇪🇸", value: "Madrid" },
-  { label: "Barcelona", flag: "🇪🇸", value: "Barcelona" },
-  { label: "Roma", flag: "🇮🇹", value: "Roma" },
-  { label: "Milán", flag: "🇮🇹", value: "Milán" },
-  { label: "Punta Cana", flag: "🇩🇴", value: "Punta Cana" },
-  { label: "Cancún", flag: "🇲🇽", value: "Cancún" },
-  { label: "Cartagena", flag: "🇨🇴", value: "Cartagena" },
-  { label: "Río de Janeiro", flag: "🇧🇷", value: "Río de Janeiro" },
-];
+const destinosOpciones = [...DESTINOS_EUROPA, ...DESTINOS_CARIBE].map((d) => ({
+  label: d.ciudad,
+  pais: d.pais,
+  value: d.ciudad,
+}));
+
+const HOY = new Date().toISOString().split("T")[0];
 
 export default function Hero() {
   const [destino, setDestino] = useState("");
@@ -33,9 +33,9 @@ export default function Hero() {
     return () => document.removeEventListener("click", cerrar);
   }, [menuAbierto]);
 
-  const enlaceCotizar = destino
-    ? waLink(`Hola Cityland Travel, quiero cotizar un paquete ${tipo} a ${destino}.${fecha ? ` Fecha: ${fecha}.` : ""}${pasajeros > 1 ? ` Pasajeros: ${pasajeros}.` : " Pasajeros: 1."}`)
-    : WA_LINK;
+  const enlaceCotizar = waLink(
+    `Hola Cityland Travel, quiero cotizar un paquete ${tipo} a ${destino || "un destino (aún no decido)"}.${fecha ? ` Fecha: ${fecha}.` : ""}${pasajeros > 1 ? ` Pasajeros: ${pasajeros}.` : " Pasajeros: 1."}`
+  );
 
   const labelSelected = destinosOpciones.find(d => d.value === destino);
 
@@ -68,7 +68,7 @@ export default function Hero() {
           </h1>
 
           <p className={`text-lg md:text-xl text-white/90 max-w-xl mx-auto leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,.65)] transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-            Paquetes migratorios y turísticos desde <span className="font-bold text-white">$799</span>
+            Paquetes migratorios y turísticos desde <span className="font-bold text-white">${PRECIO_DESDE_EUROPA}</span>
             <span className="mx-2 text-white/30">|</span>
             Cotización gratis en 2 horas
           </p>
@@ -112,11 +112,12 @@ export default function Hero() {
                   onClick={(e) => { e.stopPropagation(); setMenuAbierto(!menuAbierto); }}
                   className="w-full border border-gray-200 hover:border-gray-300 focus:border-[#dc2626] focus:ring-2 focus:ring-[#dc2626]/10 rounded-xl px-4 py-3 bg-white text-left transition-all outline-none"
                 >
-                  <span className="block text-[10px] uppercase font-semibold text-[#dc2626] mb-0.5 tracking-wider">Destino</span>
+                  <span className="block text-[10px] uppercase font-semibold text-gray-400 mb-0.5 tracking-wider">Destino</span>
                   <div className="flex items-center gap-2">
-                    <svg viewBox="0 0 24 24" className="w-4 h-4 text-gray-400 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+                    <PlaneIcon className="w-4 h-4 text-gray-400 fill-none stroke-current stroke-2" />
+                    {labelSelected && <FlagIcon pais={labelSelected.pais} className="w-4 h-3" />}
                     <span className={`text-[15px] ${destino ? "text-[#0a1628] font-semibold" : "text-gray-400"}`}>
-                      {labelSelected ? `${labelSelected.flag} ${labelSelected.label}` : "¿A dónde viajas?"}
+                      {labelSelected ? labelSelected.label : "¿A dónde viajas?"}
                     </span>
                   </div>
                 </button>
@@ -130,7 +131,7 @@ export default function Hero() {
                         onClick={() => { setDestino(d.value); setMenuAbierto(false); }}
                         className={`w-full text-left px-4 py-3 text-[14px] transition-colors flex items-center gap-3 ${destino === d.value ? "bg-red-50 text-[#dc2626] font-semibold" : "text-gray-700 hover:bg-gray-50 font-medium"}`}
                       >
-                        <span className="text-base">{d.flag}</span>
+                        <FlagIcon pais={d.pais} className="w-4 h-3" />
                         {d.label}
                       </button>
                     ))}
@@ -147,6 +148,7 @@ export default function Hero() {
                     <input
                       type="date"
                       value={fecha}
+                      min={HOY}
                       onChange={(e) => setFecha(e.target.value)}
                       className="text-[15px] text-[#0a1628] font-semibold bg-transparent border-none outline-none w-full cursor-pointer [&::-webkit-calendar-picker-indicator]:cursor-pointer"
                       placeholder="Flexibles"
@@ -190,7 +192,7 @@ export default function Hero() {
                 className="grad-warm glow-warm flex items-center justify-center gap-2 text-white px-8 py-3 md:py-0 rounded-xl text-[15px] font-bold shadow-lg shadow-orange-500/20 hover:-translate-y-0.5 transition-all min-h-[56px]"
               >
                 Cotizar por WhatsApp
-                <svg viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                <ArrowRightIcon className="w-4 h-4 fill-none stroke-current stroke-2" />
               </a>
             </div>
           </div>
@@ -199,7 +201,7 @@ export default function Hero() {
         {/* Trust badges */}
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-5">
           {[
-            { icon: <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>, text: "+5,000 viajes" },
+            { icon: <PlaneIcon className="w-3.5 h-3.5 fill-none stroke-current stroke-2" />, text: "+5,000 viajes" },
             { icon: <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current text-amber-500"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>, text: "4.9/5 Google" },
             { icon: <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>, text: "Respuesta en 2h" },
             { icon: <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>, text: "Seguro incluido" },

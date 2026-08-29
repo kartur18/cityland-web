@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 
-function useCountUp(end: number, duration: number = 2000) {
+function useCountUp<T extends HTMLElement>(end: number, duration: number = 2000) {
   const [count, setCount] = useState(0);
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<T>(null);
   const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
@@ -44,26 +44,26 @@ function useCountUp(end: number, duration: number = 2000) {
 }
 
 export default function StatsCounter() {
-  const passengers = useCountUp(5000);
-  const perMonth = useCountUp(150);
-  const years = useCountUp(3);
+  const passengers = useCountUp<HTMLSpanElement>(5000);
+  const perMonth = useCountUp<HTMLSpanElement>(150);
+  const years = useCountUp<HTMLSpanElement>(3);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl mx-auto px-4">
       <div className="flex flex-col items-center px-2 py-6 bg-white rounded-2xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-        <span ref={passengers.ref as any} className="text-3xl md:text-5xl font-serif text-[#0A2A6B] mb-1 md:mb-2 flex items-center shadow-sm">
-          {passengers.count.toLocaleString()}+
+        <span ref={passengers.ref} className="text-3xl md:text-5xl font-serif text-[#0A2A6B] mb-1 md:mb-2 flex items-center shadow-sm">
+          {passengers.count.toLocaleString("es-PE")}+
         </span>
         <span className="text-sm md:text-base text-gray-600 font-bold uppercase tracking-wide">Felices Pasajeros</span>
       </div>
       <div className="flex flex-col items-center px-2 py-6 bg-white rounded-2xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-         <span ref={perMonth.ref as any} className="text-3xl md:text-5xl font-serif text-[#0A2A6B] mb-1 md:mb-2 flex items-center shadow-sm">
-          {perMonth.count.toLocaleString()}+
+         <span ref={perMonth.ref} className="text-3xl md:text-5xl font-serif text-[#0A2A6B] mb-1 md:mb-2 flex items-center shadow-sm">
+          {perMonth.count.toLocaleString("es-PE")}+
         </span>
         <span className="text-sm md:text-base text-gray-600 font-bold uppercase tracking-wide">Viajan Mensual</span>
       </div>
        <div className="flex flex-col items-center px-2 py-6 bg-white rounded-2xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-        <span ref={years.ref as any} className="text-3xl md:text-5xl font-serif text-[#0A2A6B] mb-1 md:mb-2 flex items-center shadow-sm">
+        <span ref={years.ref} className="text-3xl md:text-5xl font-serif text-[#0A2A6B] mb-1 md:mb-2 flex items-center shadow-sm">
           {years.count}+
         </span>
         <span className="text-sm md:text-base text-gray-600 font-bold uppercase tracking-wide">Años Operando</span>

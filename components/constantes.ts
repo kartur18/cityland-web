@@ -1,11 +1,12 @@
 export const TELEFONO = "+51906450098";
-export const WA_LINK =
-  "https://wa.me/51906450098?text=Hola%20Cityland%20Travel%2C%20quiero%20cotizar%20un%20viaje";
+export const TELEFONO_FORMATEADO = TELEFONO.replace(/^\+(\d{2})(\d{3})(\d{3})(\d{3})$/, "+$1 $2 $3 $4");
 export const CATALOGO_LINK = "https://viaje-pe.vercel.app/citylandtravel";
 
 export function waLink(mensaje: string) {
-  return `https://wa.me/51906450098?text=${encodeURIComponent(mensaje)}`;
+  return `https://wa.me/${TELEFONO.replace("+", "")}?text=${encodeURIComponent(mensaje)}`;
 }
+
+export const WA_LINK = waLink("Hola Cityland Travel, quiero cotizar un viaje");
 
 export function cotLink(destino: string, tipo: string, precio: number) {
   return waLink(
@@ -23,9 +24,6 @@ export function cotFormLink(data: { nombre: string; email: string; destino: stri
 • Pasajeros: ${data.pasajeros}`;
   return waLink(msg);
 }
-
-export const WA_SVG = (size = 18) =>
-  `<svg viewBox="0 0 24 24" style="width:${size}px;height:${size}px;fill:currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479c0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.556 4.127 1.528 5.856L0 24l6.335-1.652A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.373l-.36-.213-3.727.973.996-3.636-.235-.374A9.818 9.818 0 1112 21.818z"/></svg>`;
 
 // ── Types ──
 export interface Destino {
@@ -197,6 +195,12 @@ export const DESTINOS_CARIBE: Destino[] = [
     temporada: "verano", tipo: "caribe",
   },
 ];
+
+// Precio "desde" que se muestra en Hero, Navbar, Migratorio, etc. — una sola fuente
+// para que nunca quede desincronizado del catálogo real (paso esto por el bug de
+// WhatsAppFloat mostrando $749 mientras el resto del sitio decía $799).
+export const PRECIO_DESDE_EUROPA = Math.min(...DESTINOS_EUROPA.map((d) => d.migratorio ?? d.turistico));
+export const PRECIO_DESDE_CARIBE = Math.min(...DESTINOS_CARIBE.map((d) => d.turistico));
 
 // ── Testimonios ──
 export const TESTIMONIOS = [

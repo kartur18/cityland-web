@@ -11,6 +11,8 @@ import {
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import DestinoGallery from "@/components/DestinoGallery";
 import PriceDisplay from "@/components/PriceDisplay";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import FlagIcon from "@/components/icons/FlagIcon";
 
 const ALL_DESTINOS = [...DESTINOS_EUROPA, ...DESTINOS_CARIBE];
 
@@ -65,6 +67,7 @@ export default async function DestinoPage({
   const dest = findDestino(slug);
   if (!dest) notFound();
 
+  const esMigratorio = dest.migratorio != null;
   const price = dest.migratorio ?? dest.turistico;
   const related = getRelated(dest);
   const includes = [
@@ -93,8 +96,8 @@ export default async function DestinoPage({
         <div className="absolute inset-0 flex items-end">
           <div className="max-w-[1100px] mx-auto px-5 pb-12 w-full">
             <AnimateOnScroll>
-              <p className="text-white/70 text-sm font-semibold uppercase tracking-widest mb-2">
-                {dest.bandera} {dest.pais}
+              <p className="text-white/70 text-sm font-semibold uppercase tracking-widest mb-2 flex items-center gap-2">
+                <FlagIcon pais={dest.pais} className="w-5 h-3.5" /> {dest.pais}
               </p>
               <h1 className="font-[family-name:var(--font-bebas)] text-white text-[clamp(48px,8vw,80px)] leading-none tracking-wide mb-4">
                 {dest.ciudad}
@@ -205,7 +208,7 @@ export default async function DestinoPage({
               {/* Pricing */}
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">
-                  {dest.turiLabel ?? "Paquete turístico"}
+                  {esMigratorio ? "Paquete migratorio" : dest.turiLabel ?? "Paquete turístico"}
                 </p>
                 <PriceDisplay
                   price={price}
@@ -216,7 +219,7 @@ export default async function DestinoPage({
 
               {/* Package description */}
               <p className="text-sm text-gray-500 border-t border-gray-100 pt-4">
-                {dest.turiDesc}
+                {esMigratorio ? dest.migraDesc : dest.turiDesc}
               </p>
 
               {/* CTA */}
@@ -230,13 +233,7 @@ export default async function DestinoPage({
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#1fb855] text-white font-bold text-sm py-4 rounded-xl transition-colors"
               >
-                <svg
-                  viewBox="0 0 24 24"
-                  className="w-5 h-5 fill-current"
-                >
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479c0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z" />
-                  <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.556 4.127 1.528 5.856L0 24l6.335-1.652A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.373l-.36-.213-3.727.973.996-3.636-.235-.374A9.818 9.818 0 1112 21.818z" />
-                </svg>
+                <WhatsAppIcon size={20} />
                 Cotizar por WhatsApp
               </a>
 
@@ -312,8 +309,8 @@ export default async function DestinoPage({
                       )}
                     </div>
                     <div className="p-5">
-                      <p className="text-xs text-gray-400 font-medium mb-1">
-                        {r.bandera} {r.pais}
+                      <p className="text-xs text-gray-400 font-medium mb-1 flex items-center gap-1.5">
+                        <FlagIcon pais={r.pais} className="w-4 h-3" /> {r.pais}
                       </p>
                       <h3 className="font-[family-name:var(--font-bebas)] text-[#0a1628] text-2xl tracking-wide mb-2">
                         {r.ciudad}

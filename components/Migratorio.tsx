@@ -1,8 +1,10 @@
 import AnimateOnScroll from "@/components/AnimateOnScroll";
-import { waLink } from "@/components/constantes";
+import { waLink, PRECIO_DESDE_EUROPA } from "@/components/constantes";
+import PlaneIcon from "@/components/icons/PlaneIcon";
+import ArrowRightIcon from "@/components/icons/ArrowRightIcon";
 
 const items = [
-  { titulo: "Boleto aéreo", desc: "Solo ida con aerolíneas de primera línea", icon: <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg> },
+  { titulo: "Boleto aéreo", desc: "Solo ida con aerolíneas de primera línea", icon: <PlaneIcon className="w-5 h-5 fill-none stroke-current stroke-2" /> },
   { titulo: "Hotel tránsito", desc: "Alojamiento incluido en escalas", icon: <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11m16-11v11M8 14v3m4-3v3m4-3v3"/></svg> },
   { titulo: "Seguro Schengen", desc: "Cobertura médica internacional", icon: <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> },
   { titulo: "Retorno flexible", desc: "Cambia tu fecha de regreso sin costo", icon: <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> },
@@ -27,7 +29,7 @@ export default function Migratorio() {
             <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(40px,5vw,60px)] tracking-wide leading-[0.95] mb-6">
               PAQUETE MIGRATORIO<br/>
               <span className="text-white/50">EUROPA DESDE</span>{" "}
-              <span className="text-white grad-warm px-3 py-0.5 rounded-lg">$799</span>
+              <span className="text-white grad-warm px-3 py-0.5 rounded-lg">${PRECIO_DESDE_EUROPA}</span>
             </h2>
             <p className="text-[16px] text-white/55 leading-relaxed mb-4">
               Todo lo que necesitas para emigrar a Europa de forma segura y organizada. Vuelo, hotel de tránsito, seguro y asesoría personalizada.
@@ -35,9 +37,9 @@ export default function Migratorio() {
             <p className="text-[16px] text-white/55 leading-relaxed mb-8">
               Más de 3,000 peruanos ya viajaron con nosotros. Sin visa requerida para zona Schengen.
             </p>
-            <a href={waLink("Quiero info del paquete migratorio $799")} target="_blank" rel="noopener" className="btn-hover grad-warm glow-warm inline-flex items-center justify-center gap-2 text-white px-7 py-3.5 rounded-xl text-[14px] font-bold shadow-lg shadow-orange-600/25 transition-all">
+            <a href={waLink(`Quiero info del paquete migratorio $${PRECIO_DESDE_EUROPA}`)} target="_blank" rel="noopener" className="btn-hover grad-warm glow-warm inline-flex items-center justify-center gap-2 text-white px-7 py-3.5 rounded-xl text-[14px] font-bold shadow-lg shadow-orange-600/25 transition-all">
               Explorar plan migratorio
-              <svg viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+              <ArrowRightIcon className="w-4 h-4 fill-none stroke-current stroke-2" />
             </a>
           </div>
         </AnimateOnScroll>

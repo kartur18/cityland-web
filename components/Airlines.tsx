@@ -1,5 +1,7 @@
 "use client";
 
+import PlaneIcon from "@/components/icons/PlaneIcon";
+
 const AEROLINEAS = [
   "LATAM", "Iberia", "Avianca", "Copa Airlines", "Air Europa",
   "American Airlines", "KLM", "Lufthansa", "Air France",
@@ -9,7 +11,7 @@ const AEROLINEAS = [
 function AirlineChip({ nombre }: { nombre: string }) {
   return (
     <div className="flex-shrink-0 flex items-center gap-2 bg-white border border-gray-100 rounded-lg px-5 py-3 hover:border-gray-200 hover:shadow-sm transition-all group">
-      <svg viewBox="0 0 24 24" className="w-4 h-4 text-gray-300 group-hover:text-[#0a1628] fill-current transition-colors" xmlns="http://www.w3.org/2000/svg"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+      <PlaneIcon className="w-4 h-4 text-gray-300 group-hover:text-[#0a1628] fill-current transition-colors" />
       <span className="text-[13px] font-semibold text-gray-500 group-hover:text-[#0a1628] transition-colors whitespace-nowrap">{nombre}</span>
     </div>
   );

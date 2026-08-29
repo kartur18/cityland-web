@@ -1,5 +1,6 @@
 import AnimateOnScroll from "@/components/AnimateOnScroll";
-import { waLink } from "@/components/constantes";
+import { waLink, TELEFONO, TELEFONO_FORMATEADO } from "@/components/constantes";
+import ArrowRightIcon from "@/components/icons/ArrowRightIcon";
 
 export default function Mapa() {
   return (
@@ -17,7 +18,7 @@ export default function Mapa() {
               <h3 className="text-lg font-bold text-[#0a1628] mb-6">Cityland Travel — Los Olivos</h3>
               {[
                 { titulo: "Dirección", sub: "Av. Antúnez de Mayolo N. 814, Los Olivos, Lima", icon: <svg viewBox="0 0 24 24" className="w-4.5 h-4.5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>, bg: "bg-blue-50 text-blue-500" },
-                { titulo: "Teléfono / WhatsApp", sub: "+51 906 450 098", icon: <svg viewBox="0 0 24 24" className="w-4.5 h-4.5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.97.36 1.91.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>, bg: "bg-emerald-50 text-emerald-500", link: "tel:+51906450098" },
+                { titulo: "Teléfono / WhatsApp", sub: TELEFONO_FORMATEADO, icon: <svg viewBox="0 0 24 24" className="w-4.5 h-4.5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.97.36 1.91.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>, bg: "bg-emerald-50 text-emerald-500", link: `tel:${TELEFONO}` },
                 { titulo: "Horario de atención", sub: "Lunes a Sábado: 9:00 AM – 7:00 PM", icon: <svg viewBox="0 0 24 24" className="w-4.5 h-4.5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>, bg: "bg-amber-50 text-amber-500" },
                 { titulo: "RUC", sub: "20614914239", icon: <svg viewBox="0 0 24 24" className="w-4.5 h-4.5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11m16-11v11"/></svg>, bg: "bg-red-50 text-red-500" },
               ].map((item) => (
@@ -31,7 +32,7 @@ export default function Mapa() {
               ))}
               <a href={waLink("Hola, quiero visitar su oficina")} target="_blank" rel="noopener" className="btn-hover grad-warm glow-warm inline-flex items-center gap-2 text-white px-6 py-3 rounded-xl text-[13px] font-bold shadow-lg shadow-orange-600/15 transition-all mt-4">
                 Agendar visita por WhatsApp
-                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                <ArrowRightIcon className="w-3.5 h-3.5 fill-none stroke-current stroke-2" />
               </a>
             </div>
           </AnimateOnScroll>

@@ -9,6 +9,8 @@ interface CotizadorFormProps {
   preselectedDestino?: string;
 }
 
+const HOY = new Date().toISOString().split("T")[0];
+
 export default function CotizadorForm({ preselectedDestino }: CotizadorFormProps) {
   const allDestinos = [...DESTINOS_EUROPA, ...DESTINOS_CARIBE];
 
@@ -27,6 +29,9 @@ export default function CotizadorForm({ preselectedDestino }: CotizadorFormProps
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = "Email no valido";
     if (!destino) e.destino = "Selecciona un destino";
     if (!fechaIda) e.fechaIda = "Selecciona fecha de ida";
+    if (fechaRetorno && fechaIda && fechaRetorno < fechaIda) {
+      e.fechaRetorno = "La fecha de retorno debe ser posterior a la de ida";
+    }
     return e;
   }
 
@@ -118,6 +123,7 @@ export default function CotizadorForm({ preselectedDestino }: CotizadorFormProps
           <input
             type="date"
             value={fechaIda}
+            min={HOY}
             onChange={(e) => setFechaIda(e.target.value)}
             className={inputCls}
           />
@@ -130,9 +136,11 @@ export default function CotizadorForm({ preselectedDestino }: CotizadorFormProps
           <input
             type="date"
             value={fechaRetorno}
+            min={fechaIda || HOY}
             onChange={(e) => setFechaRetorno(e.target.value)}
             className={inputCls}
           />
+          {errors.fechaRetorno && <p className="text-red-500 text-[11px] mt-1">{errors.fechaRetorno}</p>}
         </div>
 
         {/* Pasajeros */}

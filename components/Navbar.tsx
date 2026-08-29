@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { WA_LINK, CATALOGO_LINK } from "@/components/constantes";
+import { WA_LINK, CATALOGO_LINK, TELEFONO, TELEFONO_FORMATEADO } from "@/components/constantes";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
-import DarkModeToggle from "@/components/DarkModeToggle";
+import PhoneIcon from "@/components/icons/PhoneIcon";
+import ArrowRightIcon from "@/components/icons/ArrowRightIcon";
 
 const navLinks: { label: string; href: string; external?: boolean }[] = [
   { label: "Destinos", href: "#destinos" },
@@ -45,9 +46,9 @@ export default function Navbar() {
             </span>
           </div>
           <div className="flex items-center gap-5">
-            <a href="tel:+51906450098" className="flex items-center gap-1.5 hover:text-white transition-colors">
-              <svg viewBox="0 0 24 24" className="w-3 h-3 fill-current opacity-60"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-              +51 906 450 098
+            <a href={`tel:${TELEFONO}`} className="flex items-center gap-1.5 hover:text-white transition-colors">
+              <PhoneIcon className="w-3 h-3 fill-current opacity-60" />
+              {TELEFONO_FORMATEADO}
             </a>
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors font-semibold">
               <WhatsAppIcon size={12} />
@@ -86,13 +87,12 @@ export default function Navbar() {
           {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="tel:+51906450098"
+              href={`tel:${TELEFONO}`}
               className="flex items-center gap-1.5 text-[13px] font-semibold text-[#0a1628]/70 hover:text-[#0a1628] transition-colors"
             >
-              <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-              906 450 098
+              <PhoneIcon className="w-4 h-4 fill-current" />
+              {TELEFONO_FORMATEADO.replace("+51 ", "")}
             </a>
-            <DarkModeToggle />
             <a
               href={WA_LINK}
               target="_blank"
@@ -100,14 +100,14 @@ export default function Navbar() {
               className="inline-flex items-center gap-2 bg-[#dc2626] hover:bg-[#b91c1c] text-white px-5 py-2.5 rounded-lg text-[13px] font-bold shadow-sm hover:shadow-md transition-all"
             >
               Cotizar Gratis
-              <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+              <ArrowRightIcon className="w-3.5 h-3.5 fill-none stroke-current stroke-2" />
             </a>
           </div>
 
           {/* Mobile hamburger */}
           <button
             onClick={() => setAbierto(!abierto)}
-            className="lg:hidden flex flex-col gap-[5px] p-2 rounded-lg hover:bg-gray-50 transition"
+            className="lg:hidden flex flex-col gap-[5px] p-3 rounded-lg hover:bg-gray-50 transition"
             aria-label={abierto ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={abierto}
           >
@@ -138,11 +138,11 @@ export default function Navbar() {
 
             <div className="mt-8 flex flex-col gap-3 pb-8">
               <a
-                href="tel:+51906450098"
+                href={`tel:${TELEFONO}`}
                 className="flex items-center gap-2 text-sm font-medium text-gray-500"
               >
-                <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                +51 906 450 098
+                <PhoneIcon className="w-4 h-4 fill-current" />
+                {TELEFONO_FORMATEADO}
               </a>
               <a
                 href={WA_LINK}

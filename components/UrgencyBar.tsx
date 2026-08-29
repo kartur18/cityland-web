@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { PRECIO_DESDE_EUROPA } from "@/components/constantes";
 
 export default function UrgencyBar() {
   const [visible, setVisible] = useState(true);
@@ -28,7 +29,7 @@ export default function UrgencyBar() {
       <div className="px-4 py-2 flex items-center justify-center gap-2 flex-wrap text-[12px] sm:text-[13px] font-semibold">
         <span className="text-amber-300 font-extrabold">🔥 OFERTA LIMITADA:</span>
         <span>Paquete migratorio Madrid desde</span>
-        <strong className="text-amber-300 text-[14px]">$799</strong>
+        <strong className="text-amber-300 text-[14px]">${PRECIO_DESDE_EUROPA}</strong>
         <span className="hidden sm:inline">·</span>
         <span className="flex items-center gap-1">
           Expira en:

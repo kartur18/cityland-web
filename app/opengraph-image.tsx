@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
+import { PRECIO_DESDE_EUROPA } from "@/components/constantes";
 
 export const runtime = "edge";
-export const alt = "Cityland Travel — Paquetes a Europa desde $799";
+export const alt = `Cityland Travel — Paquetes a Europa desde $${PRECIO_DESDE_EUROPA}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -78,7 +79,7 @@ export default async function Image() {
             }}
           >
             Paquetes migratorios y turísticos desde{" "}
-            <span style={{ color: "white", fontWeight: 700 }}>$799</span>
+            <span style={{ color: "white", fontWeight: 700 }}>${PRECIO_DESDE_EUROPA}</span>
           </div>
 
           <div

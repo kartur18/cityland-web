@@ -6,8 +6,8 @@ export default function Video() {
   return (
     <section id="video" className="py-20 bg-white">
       <div className="max-w-[1100px] mx-auto px-5 flex flex-col lg:flex-row gap-14 items-center">
-        <AnimateOnScroll direction="left">
-          <div className="flex-1">
+        <AnimateOnScroll direction="left" className="w-full lg:flex-1">
+          <div>
             <p className="text-[11px] font-bold uppercase tracking-[3px] text-[#dc2626] mb-3">Conócenos</p>
             <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(36px,5vw,52px)] text-[#0a1628] tracking-wide leading-tight mb-5">CONOCE CITYLAND TRAVEL</h2>
             <p className="text-[15px] text-gray-500 leading-relaxed mb-6">
@@ -30,8 +30,8 @@ export default function Video() {
           </div>
         </AnimateOnScroll>
 
-        <AnimateOnScroll direction="right">
-          <div className="flex-1 max-w-[360px] w-full">
+        <AnimateOnScroll direction="right" className="w-full lg:flex-1">
+          <div className="max-w-[360px] w-full mx-auto">
             <div className="relative rounded-2xl overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,.15)] ring-1 ring-black/5" style={{ aspectRatio: "9/16" }}>
               <iframe
                 src="https://player.vimeo.com/video/1174954461?autoplay=0&loop=1&background=0"

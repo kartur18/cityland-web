@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import { BLOG_POSTS, WA_LINK } from "@/components/constantes";
+import ArrowRightIcon from "@/components/icons/ArrowRightIcon";
 
 export default function Blog() {
   return (
@@ -53,7 +54,7 @@ export default function Blog() {
                     className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#dc2626] hover:gap-2.5 transition-all mt-auto group/link"
                   >
                     Leer más
-                    <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current stroke-2 transition-transform group-hover/link:translate-x-0.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                    <ArrowRightIcon className="w-3.5 h-3.5 fill-none stroke-current stroke-2 transition-transform group-hover/link:translate-x-0.5" />
                   </Link>
                 </div>
               </div>
@@ -69,7 +70,7 @@ export default function Blog() {
             className="inline-flex items-center gap-2 text-[13px] font-semibold text-gray-400 hover:text-[#0a1628] transition-colors"
           >
             Consultar más temas por WhatsApp
-            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+            <ArrowRightIcon className="w-3.5 h-3.5 fill-none stroke-current stroke-2" />
           </a>
         </div>
       </div>

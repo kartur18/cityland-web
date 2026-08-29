@@ -3,7 +3,9 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
-import { DESTINOS_EUROPA, DESTINOS_CARIBE, CATALOGO_LINK, cotLink, waLink, type Destino } from "@/components/constantes";
+import { DESTINOS_EUROPA, DESTINOS_CARIBE, CATALOGO_LINK, PRECIO_DESDE_EUROPA, PRECIO_DESDE_CARIBE, cotLink, waLink, type Destino } from "@/components/constantes";
+import FlagIcon from "@/components/icons/FlagIcon";
+import ArrowRightIcon from "@/components/icons/ArrowRightIcon";
 
 const TAG_STYLES = {
   hot: "grad-cool text-white",
@@ -61,8 +63,8 @@ export default function Destinos() {
         {/* Tabs */}
         <div className="flex gap-1 justify-center mb-6 bg-gray-50 rounded-lg p-1 w-fit mx-auto">
           {[
-            { id: "europa" as const, label: "Europa", sub: "desde $799" },
-            { id: "caribe" as const, label: "Caribe & América", sub: "desde $549" },
+            { id: "europa" as const, label: "Europa", sub: `desde $${PRECIO_DESDE_EUROPA}` },
+            { id: "caribe" as const, label: "Caribe & América", sub: `desde $${PRECIO_DESDE_CARIBE}` },
           ].map((t) => (
             <button
               key={t.id}
@@ -124,8 +126,8 @@ export default function Destinos() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
                       {/* Flag */}
-                      <div className="absolute top-3 left-3 z-10 text-sm bg-white/90 backdrop-blur-sm w-7 h-7 rounded-full flex items-center justify-center shadow-sm">
-                        {d.bandera}
+                      <div className="absolute top-3 left-3 z-10 bg-white/90 backdrop-blur-sm w-7 h-7 rounded-full flex items-center justify-center shadow-sm">
+                        <FlagIcon pais={d.pais} className="w-4 h-3" />
                       </div>
                       {/* Tag */}
                       {d.tag && d.tagColor && (
@@ -149,11 +151,11 @@ export default function Destinos() {
                             <div className="text-right">
                               {savings > 0 && (
                                 <span className="text-[11px] text-gray-400 line-through mr-1.5">
-                                  ${d.regularPrice!.toLocaleString()}
+                                  ${d.regularPrice!.toLocaleString("es-PE")}
                                 </span>
                               )}
                               <span className="text-[14px] font-bold text-[#0a1628]">
-                                desde ${d.migratorio!.toLocaleString()}
+                                desde ${d.migratorio!.toLocaleString("es-PE")}
                               </span>
                               {savings > 0 && (
                                 <p className="text-[10px] text-green-600 font-semibold mt-0.5">Ahorra ${savings}</p>
@@ -163,7 +165,7 @@ export default function Destinos() {
                           <div className="flex items-center justify-between py-1.5">
                             <span className="text-[11px] text-gray-400 font-medium">Turístico</span>
                             <span className="text-[14px] font-bold text-[#0a1628]">
-                              desde ${d.turistico.toLocaleString()}
+                              desde ${d.turistico.toLocaleString("es-PE")}
                             </span>
                           </div>
                         </div>
@@ -173,11 +175,11 @@ export default function Destinos() {
                           <div>
                             {savings > 0 && (
                               <span className="text-[12px] text-gray-400 line-through mr-1.5">
-                                ${d.regularPrice!.toLocaleString()}
+                                ${d.regularPrice!.toLocaleString("es-PE")}
                               </span>
                             )}
                             <p className="text-xl font-bold text-[#0a1628]">
-                              desde <span className="text-[#dc2626]">${d.turistico.toLocaleString()}</span>
+                              desde <span className="text-[#dc2626]">${d.turistico.toLocaleString("es-PE")}</span>
                             </p>
                             {savings > 0 && (
                               <p className="text-[10px] text-green-600 font-semibold mt-0.5">Ahorra ${savings}</p>
@@ -198,7 +200,7 @@ export default function Destinos() {
                         className="w-full inline-flex items-center justify-center gap-2 bg-[#0a1628] hover:bg-gradient-to-r hover:from-[#dc2626] hover:via-[#f97316] hover:to-[#f59e0b] text-white py-2.5 rounded-lg text-[13px] font-semibold transition-all"
                       >
                         Ver opciones
-                        <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                        <ArrowRightIcon className="w-3.5 h-3.5 fill-none stroke-current stroke-2" />
                       </a>
                     </div>
                   </div>
@@ -216,7 +218,7 @@ export default function Destinos() {
             className="grad-warm glow-warm inline-flex items-center gap-2 text-white text-[13px] font-semibold px-6 py-2.5 rounded-lg transition-all"
           >
             Ver catálogo completo de ofertas
-            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+            <ArrowRightIcon className="w-3.5 h-3.5 fill-none stroke-current stroke-2" />
           </a>
           <a
             href={waLink("Hola, quiero ver todos los destinos disponibles")}
@@ -225,7 +227,7 @@ export default function Destinos() {
             className="inline-flex items-center gap-2 text-[#0a1628] text-[13px] font-semibold border border-gray-200 px-6 py-2.5 rounded-lg hover:bg-[#0a1628] hover:text-white hover:border-[#0a1628] transition-all"
           >
             Ver todos los destinos
-            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+            <ArrowRightIcon className="w-3.5 h-3.5 fill-none stroke-current stroke-2" />
           </a>
         </div>
       </div>

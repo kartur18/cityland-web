@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Plane, Check, X as XIcon, Shield, Clock, MapPin } from "lucide-react";
+import { waLink } from "@/components/constantes";
 
-const WA =
-  "https://wa.me/51906450098?text=Hola%2C%20quiero%20información%20del%20paquete%20Panamá%20%2B%20Medellín%20a%20%24799";
+const WA = waLink("Hola, quiero información del paquete Panamá + Medellín a $799");
 
 function WaIcon({ s = 22 }: { s?: number }) {
   return (
