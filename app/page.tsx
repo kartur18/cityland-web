@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ProofBar from "@/components/ProofBar";
 import Destinos from "@/components/Destinos";
+import OfertasDestacadas from "@/components/OfertasDestacadas";
 import SectionDivider from "@/components/SectionDivider";
 import HowItWorks from "@/components/HowItWorks";
 import Migratorio from "@/components/Migratorio";
@@ -35,6 +36,7 @@ export default function LandingPage() {
         <ProofBar />
         <Destinos />
         <SectionDivider type="wave" color="#f8fafc" />
+        <OfertasDestacadas />
         <HowItWorks />
         <Migratorio />
         <Garantias />
