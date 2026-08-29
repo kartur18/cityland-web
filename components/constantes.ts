@@ -1,6 +1,7 @@
 export const TELEFONO = "+51941551530";
 export const WA_LINK =
   "https://wa.me/51941551530?text=Hola%20Cityland%20Travel%2C%20quiero%20cotizar%20un%20viaje";
+export const CATALOGO_LINK = "https://viaje-pe.vercel.app/citylandtravel";
 
 export function waLink(mensaje: string) {
   return `https://wa.me/51941551530?text=${encodeURIComponent(mensaje)}`;

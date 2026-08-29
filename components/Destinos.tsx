@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
-import { DESTINOS_EUROPA, DESTINOS_CARIBE, cotLink, waLink, type Destino } from "@/components/constantes";
+import { DESTINOS_EUROPA, DESTINOS_CARIBE, CATALOGO_LINK, cotLink, waLink, type Destino } from "@/components/constantes";
 
 const TAG_STYLES = {
   hot: "bg-[#0a1628] text-white",
@@ -208,7 +208,16 @@ export default function Destinos() {
           </div>
         )}
 
-        <div className="text-center mt-10">
+        <div className="text-center mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a
+            href={CATALOGO_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[#0a1628] text-white text-[13px] font-semibold px-6 py-2.5 rounded-lg hover:bg-[#dc2626] transition-all"
+          >
+            Ver catálogo completo de ofertas
+            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+          </a>
           <a
             href={waLink("Hola, quiero ver todos los destinos disponibles")}
             target="_blank"

@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { WA_LINK } from "@/components/constantes";
+import { WA_LINK, CATALOGO_LINK } from "@/components/constantes";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import DarkModeToggle from "@/components/DarkModeToggle";
 
-const navLinks = [
+const navLinks: { label: string; href: string; external?: boolean }[] = [
   { label: "Destinos", href: "#destinos" },
+  { label: "Ofertas", href: CATALOGO_LINK, external: true },
   { label: "Migratorio", href: "#migra" },
   { label: "Servicios", href: "#servicios" },
   { label: "Blog", href: "#blog" },
@@ -81,6 +82,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
+                {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="nav-link text-[13px] font-semibold text-[#0a1628] hover:text-[#dc2626] transition-colors px-4 py-2 rounded-lg hover:bg-gray-50"
               >
                 {link.label}
@@ -133,6 +135,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
+                {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 onClick={() => setAbierto(false)}
                 className="text-lg font-semibold text-[#0a1628] py-3.5 border-b border-gray-50 hover:text-[#dc2626] transition-colors"
               >
