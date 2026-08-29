@@ -28,7 +28,7 @@ export default function StickyWhatsApp() {
     >
       <div className="bg-gradient-to-t from-white via-white/90 to-transparent pt-6 pb-4 px-4 w-full">
         <a 
-          href="https://wa.me/51941551530?text=Hola%20Cityland%20Travel,%20quiero%20reservar%20mi%20viaje%20a%20Espa%C3%B1a%20desde%20$699"
+          href="https://wa.me/51906450098?text=Hola%20Cityland%20Travel,%20quiero%20reservar%20mi%20viaje%20a%20Espa%C3%B1a%20desde%20$699"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20b858] text-white font-['DM_Sans'] font-bold text-lg py-4 px-6 rounded-2xl shadow-[0_4px_14px_0_rgba(37,211,102,0.39)] transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] w-full max-w-[360px] mx-auto"

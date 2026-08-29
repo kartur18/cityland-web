@@ -6,9 +6,9 @@ import AnimateOnScroll from "@/components/AnimateOnScroll";
 import { DESTINOS_EUROPA, DESTINOS_CARIBE, CATALOGO_LINK, cotLink, waLink, type Destino } from "@/components/constantes";
 
 const TAG_STYLES = {
-  hot: "bg-[#0a1628] text-white",
-  promo: "bg-amber-500 text-white",
-  new: "bg-[#dc2626] text-white",
+  hot: "grad-cool text-white",
+  promo: "bg-gradient-to-r from-amber-500 to-orange-500 text-white",
+  new: "grad-warm text-white",
 };
 
 const PRICE_FILTERS = [
@@ -112,7 +112,7 @@ export default function Destinos() {
 
               return (
                 <AnimateOnScroll key={d.ciudad} stagger={Math.min(index + 1, 4)}>
-                  <div className="card-lift block rounded-xl overflow-hidden bg-white border border-gray-100 shadow-[0_2px_12px_rgba(0,0,0,.05)] group flex flex-col h-full">
+                  <div className="card-lift card-lift-warm block rounded-xl overflow-hidden bg-white border border-gray-100 shadow-[0_2px_12px_rgba(0,0,0,.05)] group flex flex-col h-full">
                     {/* Image */}
                     <Link href={`/destinos/${d.slug}`} className="block h-[200px] overflow-hidden relative flex-shrink-0">
                       <Image
@@ -195,7 +195,7 @@ export default function Destinos() {
                         href={mainLink}
                         target="_blank"
                         rel="noopener"
-                        className="w-full inline-flex items-center justify-center gap-2 bg-[#0a1628] hover:bg-[#dc2626] text-white py-2.5 rounded-lg text-[13px] font-semibold transition-all"
+                        className="w-full inline-flex items-center justify-center gap-2 bg-[#0a1628] hover:bg-gradient-to-r hover:from-[#dc2626] hover:via-[#f97316] hover:to-[#f59e0b] text-white py-2.5 rounded-lg text-[13px] font-semibold transition-all"
                       >
                         Ver opciones
                         <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
@@ -213,7 +213,7 @@ export default function Destinos() {
             href={CATALOGO_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#0a1628] text-white text-[13px] font-semibold px-6 py-2.5 rounded-lg hover:bg-[#dc2626] transition-all"
+            className="grad-warm glow-warm inline-flex items-center gap-2 text-white text-[13px] font-semibold px-6 py-2.5 rounded-lg transition-all"
           >
             Ver catálogo completo de ofertas
             <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>

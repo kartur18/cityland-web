@@ -166,10 +166,10 @@ export default function CotizadorForm({ preselectedDestino }: CotizadorFormProps
       {/* Submit */}
       <button
         type="submit"
-        className="mt-6 w-full bg-[#dc2626] hover:bg-[#b91c1c] text-white font-bold text-[15px] py-3.5 rounded-xl flex items-center justify-center gap-2.5 transition-colors shadow-lg shadow-red-500/20"
+        className="mt-6 w-full grad-warm glow-warm text-white font-bold text-[15px] py-3.5 rounded-xl flex items-center justify-center gap-2.5 transition-all shadow-lg shadow-orange-500/20"
       >
         <WhatsAppIcon size={18} />
-        Enviar cotizacion por WhatsApp
+        Enviar cotización por WhatsApp
       </button>
 
       {/* Trust indicators */}

@@ -1,10 +1,10 @@
-export const TELEFONO = "+51941551530";
+export const TELEFONO = "+51906450098";
 export const WA_LINK =
-  "https://wa.me/51941551530?text=Hola%20Cityland%20Travel%2C%20quiero%20cotizar%20un%20viaje";
+  "https://wa.me/51906450098?text=Hola%20Cityland%20Travel%2C%20quiero%20cotizar%20un%20viaje";
 export const CATALOGO_LINK = "https://viaje-pe.vercel.app/citylandtravel";
 
 export function waLink(mensaje: string) {
-  return `https://wa.me/51941551530?text=${encodeURIComponent(mensaje)}`;
+  return `https://wa.me/51906450098?text=${encodeURIComponent(mensaje)}`;
 }
 
 export function cotLink(destino: string, tipo: string, precio: number) {
@@ -142,7 +142,7 @@ export const DESTINOS_CARIBE: Destino[] = [
     turiDesc: "Vuelo + resort + tours + seguro", turiLabel: "Todo incluido",
     gallery: [
       "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&q=80",
-      "https://images.unsplash.com/photo-1570737209810-8e7d79cee4de?w=800&q=80",
+      "https://images.unsplash.com/photo-1619680939776-4eadd78709a4?w=800&q=80",
       "https://images.unsplash.com/photo-1548574505-5e239809ee19?w=800&q=80",
     ],
     descripcion: "Playas de arena blanca, resorts todo incluido y aguas cristalinas del Caribe. Punta Cana es el destino perfecto para unas vacaciones inolvidables.",
@@ -216,7 +216,7 @@ export const FAQS = [
   { pregunta: "¿Cuánto demoran en enviar la cotización?", respuesta: "Menos de 2 horas por WhatsApp en horario de lunes a sábado de 9am a 7pm. Fuera de horario te respondemos al primer horario disponible." },
   { pregunta: "¿Los precios incluyen impuestos y tasas?", respuesta: "Los precios son referenciales. Al cotizar te damos el precio final exacto con todos los impuestos incluidos, según fecha y disponibilidad." },
   { pregunta: "¿Tienen seguro de viaje incluido?", respuesta: "Sí. Todos nuestros paquetes incluyen seguro de viaje. Para Europa el seguro tiene cobertura Schengen, que es requisito para ingresar. Trabajamos con Assist Card y Travel Ace." },
-  { pregunta: "¿Dónde queda la oficina de Cityland Travel?", respuesta: "Nuestra oficina está en Av. Antúnez de Mayolo N. 814, Los Olivos, Lima. Atendemos de lunes a sábado de 9am a 7pm. También puedes contactarnos 24/7 por WhatsApp al +51 941 551 530." },
+  { pregunta: "¿Dónde queda la oficina de Cityland Travel?", respuesta: "Nuestra oficina está en Av. Antúnez de Mayolo N. 814, Los Olivos, Lima. Atendemos de lunes a sábado de 9am a 7pm. También puedes contactarnos 24/7 por WhatsApp al +51 906 450 098." },
 ];
 
 // ── Blog Posts ──

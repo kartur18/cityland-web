@@ -27,7 +27,7 @@ export default function TrustSection() {
                 <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center mx-auto mb-4 group-hover:bg-red-50 transition-colors">
                   {item.icon}
                 </div>
-                <div className="font-[family-name:var(--font-bebas)] text-[32px] text-[#0a1628] tracking-wide leading-none mb-1">{item.numero}</div>
+                <div className="font-[family-name:var(--font-bebas)] grad-warm-text text-[32px] tracking-wide leading-none mb-1">{item.numero}</div>
                 <h3 className="text-[13px] font-semibold text-gray-700 mb-1">{item.titulo}</h3>
                 <p className="text-[12px] text-gray-400 leading-relaxed">{item.desc}</p>
               </div>

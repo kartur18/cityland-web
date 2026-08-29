@@ -44,15 +44,15 @@ export default function Hero() {
       {/* Hero image */}
       <div className="relative min-h-[560px] lg:min-h-[680px] flex flex-col justify-center overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1920&q=90"
-          alt="Viajes internacionales desde Lima - Cityland Travel"
+          src="https://images.unsplash.com/photo-1579425018591-181e9f63f9de?w=1920&q=90"
+          alt="Playa caribeña desde el aire - Cityland Travel"
           fill
           priority
           sizes="100vw"
           className="object-cover"
         />
         {/* Overlays */}
-        <div className="absolute inset-0 bg-[#0a1628]/50" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628]/80 via-[#1e2a5e]/60 to-[#4c1d95]/50" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-[#0a1628]/30 to-transparent" />
 
         {/* Content */}
@@ -187,9 +187,9 @@ export default function Hero() {
                 href={enlaceCotizar}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-[#dc2626] hover:bg-[#b91c1c] text-white px-8 py-3 md:py-0 rounded-xl text-[15px] font-bold shadow-lg shadow-red-600/20 hover:shadow-red-600/30 hover:-translate-y-0.5 transition-all min-h-[56px]"
+                className="grad-warm glow-warm flex items-center justify-center gap-2 text-white px-8 py-3 md:py-0 rounded-xl text-[15px] font-bold shadow-lg shadow-orange-500/20 hover:-translate-y-0.5 transition-all min-h-[56px]"
               >
-                Buscar vuelos
+                Cotizar por WhatsApp
                 <svg viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
               </a>
             </div>

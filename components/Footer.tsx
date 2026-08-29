@@ -1,5 +1,4 @@
 import AnimateOnScroll from "@/components/AnimateOnScroll";
-import Image from "next/image";
 import { WA_LINK } from "@/components/constantes";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
@@ -18,11 +17,7 @@ export default function Footer() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1.2fr] gap-10 mb-12">
             {/* Brand */}
             <div>
-              <div className="bg-white/95 rounded-lg px-3 py-1.5 inline-flex mb-4">
-                <div className="relative h-8 w-28">
-                  <Image src="/logo.png" alt="Cityland Travel" fill className="object-contain object-left" />
-                </div>
-              </div>
+              <img src="/logo-horizontal.svg" alt="Cityland Travel" className="h-9 w-auto mb-5 brightness-0 invert" />
               <p className="text-[12px] leading-relaxed mb-5 max-w-[240px]">
                 Agencia de viajes con más de 10 años conectando peruanos con el mundo. +5,000 viajeros satisfechos.
               </p>
@@ -80,9 +75,9 @@ export default function Footer() {
                   <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 mt-0.5 fill-none stroke-current stroke-2 shrink-0" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                   <span>Av. Antúnez de Mayolo N. 814<br />Los Olivos, Lima</span>
                 </a>
-                <a href="tel:+51941551530" className="flex items-center gap-2 text-[12px] hover:text-white transition-colors">
+                <a href="tel:+51906450098" className="flex items-center gap-2 text-[12px] hover:text-white transition-colors">
                   <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current shrink-0"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                  +51 941 551 530
+                  +51 906 450 098
                 </a>
                 <div className="flex items-center gap-2 text-[12px]">
                   <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current stroke-2 shrink-0" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>

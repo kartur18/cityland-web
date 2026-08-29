@@ -27,7 +27,7 @@ export default function Migratorio() {
             <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(40px,5vw,60px)] tracking-wide leading-[0.95] mb-6">
               PAQUETE MIGRATORIO<br/>
               <span className="text-white/50">EUROPA DESDE</span>{" "}
-              <span className="text-white bg-[#dc2626] px-3 py-0.5 rounded-lg">$799</span>
+              <span className="text-white grad-warm px-3 py-0.5 rounded-lg">$799</span>
             </h2>
             <p className="text-[16px] text-white/55 leading-relaxed mb-4">
               Todo lo que necesitas para emigrar a Europa de forma segura y organizada. Vuelo, hotel de tránsito, seguro y asesoría personalizada.
@@ -35,7 +35,7 @@ export default function Migratorio() {
             <p className="text-[16px] text-white/55 leading-relaxed mb-8">
               Más de 3,000 peruanos ya viajaron con nosotros. Sin visa requerida para zona Schengen.
             </p>
-            <a href={waLink("Quiero info del paquete migratorio $799")} target="_blank" rel="noopener" className="btn-hover inline-flex items-center justify-center gap-2 bg-[#dc2626] hover:bg-[#b91c1c] text-white px-7 py-3.5 rounded-xl text-[14px] font-bold shadow-lg shadow-red-600/25 transition-all">
+            <a href={waLink("Quiero info del paquete migratorio $799")} target="_blank" rel="noopener" className="btn-hover grad-warm glow-warm inline-flex items-center justify-center gap-2 text-white px-7 py-3.5 rounded-xl text-[14px] font-bold shadow-lg shadow-orange-600/25 transition-all">
               Explorar plan migratorio
               <svg viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
             </a>

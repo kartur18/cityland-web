@@ -23,7 +23,7 @@ export default function Video() {
                 </div>
               ))}
             </div>
-            <a href={WA_LINK} target="_blank" rel="noopener" className="btn-hover inline-flex items-center gap-2 bg-[#dc2626] hover:bg-[#b91c1c] text-white px-7 py-3.5 rounded-xl text-[14px] font-bold shadow-lg shadow-red-600/20 transition-all">
+            <a href={WA_LINK} target="_blank" rel="noopener" className="btn-hover grad-warm glow-warm inline-flex items-center gap-2 text-white px-7 py-3.5 rounded-xl text-[14px] font-bold shadow-lg shadow-orange-600/20 transition-all">
               <WhatsAppIcon size={16} />
               Hablar con un asesor
             </a>

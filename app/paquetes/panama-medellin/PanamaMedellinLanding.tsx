@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Plane, Check, X as XIcon, Shield, Clock, MapPin } from "lucide-react";
 
 const WA =
-  "https://wa.me/51941551530?text=Hola%2C%20quiero%20información%20del%20paquete%20Panamá%20%2B%20Medellín%20a%20%24799";
+  "https://wa.me/51906450098?text=Hola%2C%20quiero%20información%20del%20paquete%20Panamá%20%2B%20Medellín%20a%20%24799";
 
 function WaIcon({ s = 22 }: { s?: number }) {
   return (

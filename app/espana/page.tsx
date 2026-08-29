@@ -21,7 +21,7 @@ const PRECIO_SEPARADO = 1800;
 const PRECIO_ESPERANDO = 999;
 const AHORRO_PAQUETE = PRECIO_SEPARADO - PRECIO_HOY;
 const AHORRO_ANTICIPACION = PRECIO_ESPERANDO - PRECIO_HOY;
-const TELEFONO = '941 551 530';
+const TELEFONO = '906 450 098';
 const MESES = 'Oct · Nov · Dic 2026';
 const DOMINIO = 'citylandtravelpe.com';
 
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
 };
 
-const WA = `https://wa.me/51941551530?text=${encodeURIComponent(
+const WA = `https://wa.me/51906450098?text=${encodeURIComponent(
   `Hola Cityland Travel, quiero reservar mi viaje a España desde $${PRECIO_HOY} (${MESES})`
 )}`;
 
