@@ -52,8 +52,8 @@ export default function Hero() {
           className="object-cover"
         />
         {/* Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628]/50 via-[#1e2a5e]/30 to-[#4c1d95]/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/90 via-[#0a1628]/15 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628]/25 via-[#1e2a5e]/12 to-[#4c1d95]/8" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/80 via-[#0a1628]/5 to-transparent" />
 
         {/* Content */}
         <div className="relative z-10 text-center px-5 max-w-4xl mx-auto pb-36 pt-8">
@@ -62,12 +62,12 @@ export default function Hero() {
             Agencia de viajes en Lima, Perú
           </div>
 
-          <h1 className={`font-[family-name:var(--font-bebas)] text-[clamp(48px,9vw,88px)] leading-[0.95] text-white tracking-tight mb-5 drop-shadow-[0_2px_16px_rgba(0,0,0,.45)] transition-all duration-700 delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+          <h1 className={`font-[family-name:var(--font-bebas)] text-[clamp(48px,9vw,88px)] leading-[0.95] text-white tracking-tight mb-5 drop-shadow-[0_3px_20px_rgba(0,0,0,.6)] transition-all duration-700 delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
             VUELOS Y PAQUETES<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/60">AL MEJOR PRECIO</span>
           </h1>
 
-          <p className={`text-lg md:text-xl text-white/90 max-w-xl mx-auto leading-relaxed drop-shadow-[0_1px_8px_rgba(0,0,0,.5)] transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+          <p className={`text-lg md:text-xl text-white/90 max-w-xl mx-auto leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,.65)] transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
             Paquetes migratorios y turísticos desde <span className="font-bold text-white">$799</span>
             <span className="mx-2 text-white/30">|</span>
             Cotización gratis en 2 horas
