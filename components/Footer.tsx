@@ -17,7 +17,7 @@ export default function Footer() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1.2fr] gap-10 mb-12">
             {/* Brand */}
             <div>
-              <img src="/logo-horizontal.svg" alt="Cityland Travel" className="h-9 w-auto mb-5 brightness-0 invert" />
+              <img src="/logo-transparent.png" alt="Cityland Travel" className="h-11 w-auto mb-5 brightness-0 invert" />
               <p className="text-[12px] leading-relaxed mb-5 max-w-[240px]">
                 Agencia de viajes con más de 10 años conectando peruanos con el mundo. +5,000 viajeros satisfechos.
               </p>

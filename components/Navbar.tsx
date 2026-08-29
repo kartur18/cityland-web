@@ -65,8 +65,8 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-5 lg:px-6 flex items-center justify-between h-[68px]">
           {/* Logo */}
-          <a href="#" aria-label="Cityland Travel - Inicio" className="flex-shrink-0 flex items-center h-9 lg:h-10">
-            <img src="/logo-horizontal.svg" alt="Cityland Travel" className="h-full w-auto" />
+          <a href="#" aria-label="Cityland Travel - Inicio" className="flex-shrink-0 flex items-center h-11 lg:h-12">
+            <img src="/logo-transparent.png" alt="Cityland Travel" className="h-full w-auto" />
           </a>
 
           {/* Desktop nav */}
