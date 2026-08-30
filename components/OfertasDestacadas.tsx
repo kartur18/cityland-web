@@ -3,6 +3,7 @@ import AnimateOnScroll from "@/components/AnimateOnScroll";
 import { CATALOGO_LINK, waLink } from "@/components/constantes";
 import PlaneIcon from "@/components/icons/PlaneIcon";
 import ArrowRightIcon from "@/components/icons/ArrowRightIcon";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 const OFERTAS = [
   {
@@ -79,26 +80,24 @@ export default function OfertasDestacadas() {
           </div>
         </AnimateOnScroll>
 
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {OFERTAS.map((o, index) => (
             <AnimateOnScroll key={o.nombre} stagger={Math.min(index + 1, 6)}>
-              <div className="relative card-lift card-lift-warm rounded-xl overflow-hidden bg-white border border-gray-100 shadow-[0_2px_12px_rgba(0,0,0,.05)] flex flex-col h-full">
-                {/* Badge de separación */}
-                <div className="absolute -top-2 -right-2 z-10 w-[62px] h-[62px] rounded-full grad-warm text-white flex flex-col items-center justify-center text-center leading-[1.1] shadow-lg border-2 border-white">
-                  <span className="text-[7px] font-bold tracking-wide">SEPÁRALO</span>
-                  <span className="text-[15px] font-extrabold">35%</span>
-                </div>
-
+              <div className="relative card-lift card-lift-warm rounded-xl overflow-hidden bg-white border border-gray-100 shadow-[0_2px_12px_rgba(0,0,0,.05)] flex flex-col h-full max-w-[340px] sm:max-w-none mx-auto">
                 <div className="relative aspect-[9/16] w-full overflow-hidden">
                   <Image
                     src={o.img}
                     alt={`Paquete ${o.nombre} - Cityland Travel`}
                     fill
-                    sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 25vw"
+                    sizes="(max-width:640px) 90vw, (max-width:1024px) 33vw, 25vw"
                     className="object-cover scale-[1.18]"
                   />
                 </div>
                 <div className="p-4 flex flex-col flex-1">
+                  {/* Badge de separación: fuera de la imagen para no tapar el titulo del flyer */}
+                  <span className="inline-flex items-center gap-1 self-start grad-warm text-white text-[10px] font-extrabold uppercase tracking-wide px-2.5 py-1 rounded-full mb-2">
+                    Sepáralo con 35%
+                  </span>
                   <h3 className="text-[14px] font-bold text-[#0a1628] mb-1.5 leading-snug">{o.nombre}</h3>
 
                   {/* Info del paquete */}
@@ -126,6 +125,7 @@ export default function OfertasDestacadas() {
                     rel="noopener noreferrer"
                     className="grad-warm glow-warm w-full inline-flex items-center justify-center gap-1.5 text-white py-2.5 rounded-lg text-[12px] font-semibold transition-all mb-2"
                   >
+                    <WhatsAppIcon size={14} />
                     Cotizar por WhatsApp
                   </a>
                   <a

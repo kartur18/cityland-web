@@ -116,48 +116,49 @@ export default function Navbar() {
             <span className={`block w-5 h-[1.5px] bg-[#0a1628] rounded-full transition-all duration-300 ${abierto ? "-rotate-45 -translate-y-[6.5px]" : ""}`} />
           </button>
         </div>
+      </nav>
 
-        {/* Mobile overlay */}
-        <div
-          className={`fixed inset-0 top-[68px] bg-white z-40 flex flex-col transition-all duration-300 lg:hidden ${
-            abierto ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-          }`}
-        >
-          <div className="flex flex-col px-6 pt-6 gap-0.5 flex-1 overflow-y-auto">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                onClick={() => setAbierto(false)}
-                className="text-lg font-semibold text-[#0a1628] py-3.5 border-b border-gray-50 hover:text-[#dc2626] transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
+      {/* Mobile overlay: fuera del <nav> porque su backdrop-blur crea un containing
+          block para hijos "fixed" y colapsa la altura de este panel a 0 */}
+      <div
+        className={`fixed inset-0 top-[68px] bg-white z-40 flex flex-col transition-all duration-300 lg:hidden ${
+          abierto ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <div className="flex flex-col px-6 pt-6 gap-0.5 flex-1 overflow-y-auto">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              onClick={() => setAbierto(false)}
+              className="text-lg font-semibold text-[#0a1628] py-3.5 border-b border-gray-50 hover:text-[#dc2626] transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
 
-            <div className="mt-8 flex flex-col gap-3 pb-8">
-              <a
-                href={`tel:${TELEFONO}`}
-                className="flex items-center gap-2 text-sm font-medium text-gray-500"
-              >
-                <PhoneIcon className="w-4 h-4 fill-current" />
-                {TELEFONO_FORMATEADO}
-              </a>
-              <a
-                href={WA_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setAbierto(false)}
-                className="inline-flex items-center justify-center gap-2 bg-[#dc2626] text-white px-6 py-4 rounded-xl text-[15px] font-bold"
-              >
-                <WhatsAppIcon size={18} />
-                Cotizar mi viaje GRATIS
-              </a>
-            </div>
+          <div className="mt-8 flex flex-col gap-3 pb-8">
+            <a
+              href={`tel:${TELEFONO}`}
+              className="flex items-center gap-2 text-sm font-medium text-gray-500"
+            >
+              <PhoneIcon className="w-4 h-4 fill-current" />
+              {TELEFONO_FORMATEADO}
+            </a>
+            <a
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setAbierto(false)}
+              className="inline-flex items-center justify-center gap-2 bg-[#dc2626] text-white px-6 py-4 rounded-xl text-[15px] font-bold"
+            >
+              <WhatsAppIcon size={18} />
+              Cotizar mi viaje GRATIS
+            </a>
           </div>
         </div>
-      </nav>
+      </div>
     </>
   );
 }

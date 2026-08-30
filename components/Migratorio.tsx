@@ -26,10 +26,10 @@ export default function Migratorio() {
               <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               El más vendido
             </div>
-            <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(40px,5vw,60px)] tracking-wide leading-[0.95] mb-6">
+            <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(40px,5vw,60px)] tracking-wide leading-[1.15] mb-6">
               PAQUETE MIGRATORIO<br/>
               <span className="text-white/50">EUROPA DESDE</span>{" "}
-              <span className="text-white grad-warm px-3 py-0.5 rounded-lg">${PRECIO_DESDE_EUROPA}</span>
+              <span className="text-white grad-warm px-3 py-0.5 rounded-lg inline-block">${PRECIO_DESDE_EUROPA}</span>
             </h2>
             <p className="text-[16px] text-white/55 leading-relaxed mb-4">
               Todo lo que necesitas para emigrar a Europa de forma segura y organizada. Vuelo, hotel de tránsito, seguro y asesoría personalizada.

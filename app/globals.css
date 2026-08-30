@@ -33,6 +33,13 @@ html {
   scroll-padding-top: 80px;
 }
 
+/* Evita scroll horizontal fantasma: las animaciones .reveal-left/.reveal-right
+   parten con translateX fuera de pantalla y eso amplia el scrollWidth hasta
+   que el elemento entra en viewport y se anima a su posicion final. */
+html, body {
+  overflow-x: hidden;
+}
+
 /* ── Seleccion ── */
 ::selection {
   background: rgba(220, 38, 38, 0.12);
