@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { DESTINOS_EUROPA, DESTINOS_CARIBE, cotFormLink } from "@/components/constantes";
 import { trackConversion } from "@/lib/gtag";
@@ -8,8 +8,6 @@ import { trackConversion } from "@/lib/gtag";
 interface CotizadorFormProps {
   preselectedDestino?: string;
 }
-
-const HOY = new Date().toISOString().split("T")[0];
 
 export default function CotizadorForm({ preselectedDestino }: CotizadorFormProps) {
   const allDestinos = [...DESTINOS_EUROPA, ...DESTINOS_CARIBE];
@@ -21,6 +19,11 @@ export default function CotizadorForm({ preselectedDestino }: CotizadorFormProps
   const [fechaRetorno, setFechaRetorno] = useState("");
   const [pasajeros, setPasajeros] = useState(1);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [hoy, setHoy] = useState<string>();
+
+  // Se calcula solo en el cliente para no arriesgar un mismatch de hidratacion
+  // si el render del servidor y la hidratacion caen en dias distintos.
+  useEffect(() => { setHoy(new Date().toISOString().split("T")[0]); }, []);
 
   function validate() {
     const e: Record<string, string> = {};
@@ -123,7 +126,7 @@ export default function CotizadorForm({ preselectedDestino }: CotizadorFormProps
           <input
             type="date"
             value={fechaIda}
-            min={HOY}
+            min={hoy}
             onChange={(e) => setFechaIda(e.target.value)}
             className={inputCls}
           />
@@ -136,7 +139,7 @@ export default function CotizadorForm({ preselectedDestino }: CotizadorFormProps
           <input
             type="date"
             value={fechaRetorno}
-            min={fechaIda || HOY}
+            min={fechaIda || hoy}
             onChange={(e) => setFechaRetorno(e.target.value)}
             className={inputCls}
           />

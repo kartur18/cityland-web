@@ -230,6 +230,17 @@ export default function Destinos() {
             <ArrowRightIcon className="w-3.5 h-3.5 fill-none stroke-current stroke-2" />
           </a>
         </div>
+        <p className="text-center text-[12px] text-gray-400 mt-4">
+          ¿Viste un paquete que te gustó en el catálogo?{" "}
+          <a
+            href={waLink("Hola Cityland Travel, vi un paquete en su catálogo y quiero más información.")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#0a1628] font-semibold hover:underline"
+          >
+            Escríbenos por WhatsApp con el nombre del paquete
+          </a>
+        </p>
       </div>
     </section>
   );

@@ -14,8 +14,6 @@ const destinosOpciones = [...DESTINOS_EUROPA, ...DESTINOS_CARIBE].map((d) => ({
   value: d.ciudad,
 }));
 
-const HOY = new Date().toISOString().split("T")[0];
-
 export default function Hero() {
   const [destino, setDestino] = useState("");
   const [tipo, setTipo] = useState<"migratorio" | "turistico">("migratorio");
@@ -23,6 +21,11 @@ export default function Hero() {
   const [mounted, setMounted] = useState(false);
   const [fecha, setFecha] = useState("");
   const [pasajeros, setPasajeros] = useState(1);
+  const [hoy, setHoy] = useState<string>();
+
+  // Se calcula solo en el cliente para no arriesgar un mismatch de hidratacion
+  // si el render del servidor y la hidratacion caen en dias distintos.
+  useEffect(() => { setHoy(new Date().toISOString().split("T")[0]); }, []);
 
   useEffect(() => { setMounted(true); }, []);
 
@@ -148,7 +151,7 @@ export default function Hero() {
                     <input
                       type="date"
                       value={fecha}
-                      min={HOY}
+                      min={hoy}
                       onChange={(e) => setFecha(e.target.value)}
                       className="text-[15px] text-[#0a1628] font-semibold bg-transparent border-none outline-none w-full cursor-pointer [&::-webkit-calendar-picker-indicator]:cursor-pointer"
                       placeholder="Flexibles"

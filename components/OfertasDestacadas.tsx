@@ -156,6 +156,17 @@ export default function OfertasDestacadas() {
               Ver catálogo completo de ofertas
               <ArrowRightIcon className="w-3.5 h-3.5 fill-none stroke-current stroke-2" />
             </a>
+            <p className="text-[12px] text-gray-400 mt-4">
+              El catálogo no tiene botón de contacto —{" "}
+              <a
+                href={waLink("Hola Cityland Travel, vi un paquete en su catálogo y quiero más información.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#0a1628] font-semibold hover:underline"
+              >
+                escríbenos por WhatsApp con el nombre del paquete
+              </a>
+            </p>
           </div>
         </AnimateOnScroll>
       </div>
