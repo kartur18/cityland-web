@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { DESTINOS_EUROPA, DESTINOS_CARIBE, BLOG_POSTS } from "@/components/constantes";
 
-const BASE = "https://citylandtravelpe.com";
+const BASE = "https://citylandtravel.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const destinos = [...DESTINOS_EUROPA, ...DESTINOS_CARIBE].map((d) => ({
