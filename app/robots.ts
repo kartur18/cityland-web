@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://citylandtravelpe.com/sitemap.xml",
+    sitemap: "https://citylandtravel.com/sitemap.xml",
   };
 }

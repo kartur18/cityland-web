@@ -24,7 +24,7 @@ const AHORRO_PAQUETE = PRECIO_SEPARADO - PRECIO_HOY;
 const AHORRO_ANTICIPACION = PRECIO_ESPERANDO - PRECIO_HOY;
 const TELEFONO = '906 450 098';
 const MESES = 'Oct · Nov · Dic 2026';
-const DOMINIO = 'citylandtravelpe.com';
+const DOMINIO = 'citylandtravel.com';
 
 export const metadata: Metadata = {
   title: `España desde $${PRECIO_HOY} · Cityland Travel · ${MESES}`,
