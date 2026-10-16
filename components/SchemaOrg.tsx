@@ -52,13 +52,6 @@ const TRAVEL_AGENCY = {
       closes: "19:00",
     },
   ],
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "500",
-    bestRating: "5",
-    worstRating: "1",
-  },
   sameAs: [
     "https://www.facebook.com/citylandtravel",
     "https://www.instagram.com/citylandtravel",
@@ -136,23 +129,23 @@ const OFFERS = {
     "@type": "ListItem",
     position: index + 1,
     item: {
-      "@type": "Product",
+      "@type": "TouristTrip",
       name: `${paquete.tituloComercial} (${paquete.duracion})`,
       description: paquete.resaltado,
       image: paquete.img.startsWith("http")
         ? paquete.img
         : `https://citylandtravel.com${paquete.img}`,
-      brand: { "@type": "Brand", name: "Cityland Travel" },
+      provider: {
+        "@type": "TravelAgency",
+        name: "Cityland Travel",
+        url: "https://citylandtravel.com",
+      },
       offers: {
         "@type": "Offer",
         priceCurrency: "USD",
         price: String(paquete.precioUSD),
-        priceValidUntil: "2026-12-31",
         availability: "https://schema.org/InStock",
-        url:
-          paquete.categoria === "europa"
-            ? "https://citylandtravel.com/espana"
-            : "https://citylandtravel.com/#paquetes",
+        url: `https://citylandtravel.com/destinos/${paquete.slug}`,
       },
     },
   })),

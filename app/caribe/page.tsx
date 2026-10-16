@@ -82,31 +82,20 @@ const JSON_LD_CARIBE = {
         "@type": "ListItem",
         position: idx + 1,
         item: {
-          "@type": "Product",
+          "@type": "TouristTrip",
           name: `Paquete Turístico a ${d.ciudad} (${d.duracion}) desde Lima`,
           description: `${d.resumenCorto}. Incluye: ${d.checks.join(", ")}.`,
           image: d.img.startsWith("http") ? d.img : `https://citylandtravel.com${d.img}`,
-          brand: {
-            "@type": "Brand",
-            name: "Cityland Travel",
-          },
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: "4.9",
-            reviewCount: "500",
-            bestRating: "5",
+          provider: {
+            "@type": "TravelAgency",
+            name: "Cityland Travel E.I.R.L.",
           },
           offers: {
             "@type": "Offer",
             url: `https://citylandtravel.com/caribe#${d.id}`,
             priceCurrency: "USD",
             price: String(d.precioUSD),
-            priceValidUntil: "2027-05-31",
             availability: "https://schema.org/InStock",
-            seller: {
-              "@type": "TravelAgency",
-              name: "Cityland Travel E.I.R.L.",
-            },
           },
         },
       })),

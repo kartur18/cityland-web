@@ -71,20 +71,14 @@ const JSON_LD_ESPANA = {
       ],
     },
     {
-      "@type": "Product",
+      "@type": "TouristTrip",
       name: "Paquete Migratorio a España desde Lima (Carpeta Completa)",
       image: "https://citylandtravel.com/images/espana/plaza-mayor.jpg",
       description:
         "Paquete migratorio formal a España con boleto aéreo confirmado (Iberia, Air Europa o LATAM), seguro Schengen 30.000€, reserva de hotel y asesoría 1 a 1 para pasar el control migratorio de Barajas.",
-      brand: {
-        "@type": "Brand",
+      provider: {
+        "@type": "TravelAgency",
         name: "Cityland Travel",
-      },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "500",
-        bestRating: "5",
       },
       offers: {
         "@type": "AggregateOffer",
@@ -167,12 +161,6 @@ const JSON_LD_ESPANA = {
           closes: "19:00",
         },
       ],
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "500",
-        bestRating: "5",
-      },
     },
     {
       "@type": "FAQPage",

@@ -256,17 +256,11 @@ const JSON_LD_PERU = {
         "@type": "ListItem",
         position: idx + 1,
         item: {
-          "@type": "Product",
+          "@type": "TouristTrip",
           name: item.titulo,
           description: item.resumenCorto,
           image: item.img,
-          brand: { "@type": "Brand", name: "Cityland Travel" },
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: "4.9",
-            reviewCount: "500",
-            bestRating: "5",
-          },
+          provider: { "@type": "TravelAgency", name: "Cityland Travel" },
           offers: {
             "@type": "Offer",
             priceCurrency: "USD",

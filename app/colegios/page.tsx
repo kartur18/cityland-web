@@ -71,25 +71,18 @@ const JSON_LD_COLEGIOS = {
         "@type": "ListItem",
         position: idx + 1,
         item: {
-          "@type": "Product",
+          "@type": "TouristTrip",
           name: `Viaje de Promoción: ${p.titulo} (${p.duracion})`,
           description: p.resumenCorto,
           image: p.img,
-          brand: {
-            "@type": "Brand",
+          provider: {
+            "@type": "TravelAgency",
             name: "Cityland Travel",
-          },
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: "4.9",
-            reviewCount: "500",
-            bestRating: "5",
           },
           offers: {
             "@type": "Offer",
             priceCurrency: "USD",
             price: String(p.precioNumeroUSD),
-            priceValidUntil: "2027-05-31",
             availability: "https://schema.org/InStock",
             url: "https://citylandtravel.com/colegios",
           },

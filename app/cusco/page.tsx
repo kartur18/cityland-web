@@ -71,25 +71,18 @@ const JSON_LD_CUSCO = {
         "@type": "ListItem",
         position: idx + 1,
         item: {
-          "@type": "Product",
+          "@type": "TouristTrip",
           name: `${p.titulo} (${p.duracion}) desde Lima`,
           description: p.resumenCorto,
           image: p.img,
-          brand: {
-            "@type": "Brand",
+          provider: {
+            "@type": "TravelAgency",
             name: "Cityland Travel",
-          },
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: "4.9",
-            reviewCount: "500",
-            bestRating: "5",
           },
           offers: {
             "@type": "Offer",
             priceCurrency: "USD",
             price: String(p.precioUSD),
-            priceValidUntil: "2027-05-31",
             availability: "https://schema.org/InStock",
             url: "https://citylandtravel.com/cusco",
           },
