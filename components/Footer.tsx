@@ -1,110 +1,149 @@
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import Image from "next/image";
 import { WA_LINK, TELEFONO, TELEFONO_FORMATEADO } from "@/components/constantes";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import PhoneIcon from "@/components/icons/PhoneIcon";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0a1628] text-white/60">
-      {/* Wave */}
-      <div className="w-full overflow-hidden leading-[0] bg-white">
-        <svg viewBox="0 0 1200 60" preserveAspectRatio="none" className="w-full h-8 md:h-12 block">
-          <path d="M0,30 C300,55 900,5 1200,30 L1200,60 L0,60 Z" fill="#0a1628" />
-        </svg>
-      </div>
+    <footer className="bg-[#0a1628] text-white/70 border-t border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-14 pb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 mb-12">
+          
+          {/* Brand & Legal Info */}
+          <div className="lg:col-span-4">
+            <div className="relative h-16 sm:h-20 w-48 sm:w-60 mb-5">
+              <Image
+                src="/logo-transparent.png"
+                alt="Cityland Travel - Agencia de Viajes"
+                fill
+                sizes="(max-width: 640px) 192px, 240px"
+                className="object-contain object-left brightness-0 invert"
+              />
+            </div>
+            
+            <p className="text-xs text-slate-300 leading-relaxed mb-5 max-w-sm">
+              Agencia de viajes física y formal con más de 10 años de experiencia conectando a miles de familias y viajeros peruanos con el mundo.
+            </p>
 
-      <div className="max-w-[1100px] mx-auto px-5 pt-4 pb-12">
-        <AnimateOnScroll>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1.2fr] gap-10 mb-12">
-            {/* Brand */}
+            <div className="space-y-1.5 text-xs text-slate-400 mb-6">
+              <p><strong className="text-white">Razón Social:</strong> Cityland Travel E.I.R.L.</p>
+              <p><strong className="text-white">RUC:</strong> 20614914239</p>
+              <p><strong className="text-white">Oficina:</strong> Av. Antúnez de Mayolo N. 814, Los Olivos, Lima</p>
+            </div>
+
+            {/* Medios de pago */}
             <div>
-              <img src="/logo-transparent.png" alt="Cityland Travel" className="h-11 w-auto mb-5 brightness-0 invert" />
-              <p className="text-[12px] leading-relaxed mb-5 max-w-[240px]">
-                Agencia de viajes con más de 10 años conectando peruanos con el mundo. +5,000 viajeros satisfechos.
+              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2.5">
+                Medios de pago aceptados
               </p>
-              {/* Payment */}
-              <div className="mb-5">
-                <p className="text-[10px] font-semibold text-white/25 uppercase tracking-wider mb-2">Medios de pago</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {["Visa", "Mastercard", "Yape", "Plin", "Transferencia", "Efectivo"].map((p) => (
-                    <span key={p} className="bg-white/[0.05] px-2 py-1 rounded text-[10px] font-medium">{p}</span>
-                  ))}
-                </div>
-              </div>
-              {/* Social */}
-              <div className="flex gap-2">
-                {[
-                  { label: "Facebook", href: "https://facebook.com/citylandtravel", icon: <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg> },
-                  { label: "Instagram", href: "https://instagram.com/citylandtravel", icon: <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg> },
-                  { label: "TikTok", href: "https://tiktok.com/@citylandtravel", icon: <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.89 2.89 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.14 15.67 6.34 6.34 0 0 0 9.48 22a6.34 6.34 0 0 0 6.34-6.34V9.09a8.16 8.16 0 0 0 3.77.92V6.69z"/></svg> },
-                ].map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={s.label}
-                    className="w-8 h-8 rounded-lg bg-white/[0.05] flex items-center justify-center text-white/40 hover:bg-[#dc2626] hover:text-white transition-all"
-                  >
-                    {s.icon}
-                  </a>
+              <div className="flex flex-wrap gap-2">
+                {["BCP", "BBVA", "Interbank", "Yape", "Plin", "Visa", "Mastercard", "Efectivo"].map((p) => (
+                  <span key={p} className="bg-white/10 px-2.5 py-1 rounded-md text-[11px] font-semibold text-slate-200">
+                    {p}
+                  </span>
                 ))}
               </div>
             </div>
+          </div>
 
-            {/* Europa */}
-            <div>
-              <h5 className="text-[12px] font-bold text-white/90 mb-4 tracking-wider uppercase">Europa</h5>
-              {["Paquete migratorio a España", "Vuelos a Madrid", "Vuelos a Barcelona", "Vuelos a Roma", "Vuelos a Milán", "Circuitos por Europa"].map((l) => (
-                <a key={l} href="#destinos" className="block text-[12px] py-1.5 hover:text-white hover:translate-x-0.5 transition-all">{l}</a>
-              ))}
-            </div>
-
-            {/* Caribe */}
-            <div>
-              <h5 className="text-[12px] font-bold text-white/90 mb-4 tracking-wider uppercase">Caribe & América</h5>
-              {["Punta Cana todo incluido", "Paquetes a Cancún", "Viajes a Cartagena", "Río de Janeiro", "San Andrés", "Buenos Aires"].map((l) => (
-                <a key={l} href="#destinos" className="block text-[12px] py-1.5 hover:text-white hover:translate-x-0.5 transition-all">{l}</a>
-              ))}
-            </div>
-
-            {/* Contact */}
-            <div>
-              <h5 className="text-[12px] font-bold text-white/90 mb-4 tracking-wider uppercase">Contáctanos</h5>
-              <div className="space-y-2.5 mb-5">
-                <a href="#ubicacion" className="flex items-start gap-2 text-[12px] hover:text-white transition-colors">
-                  <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 mt-0.5 fill-none stroke-current stroke-2 shrink-0" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  <span>Av. Antúnez de Mayolo N. 814<br />Los Olivos, Lima</span>
-                </a>
-                <a href={`tel:${TELEFONO}`} className="flex items-center gap-2 text-[12px] hover:text-white transition-colors">
-                  <PhoneIcon className="w-3.5 h-3.5 fill-current shrink-0" />
-                  {TELEFONO_FORMATEADO}
-                </a>
-                <div className="flex items-center gap-2 text-[12px]">
-                  <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current stroke-2 shrink-0" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                  Lun–Sáb: 9am–7pm
-                </div>
-                <div className="flex items-center gap-2 text-[12px]">
-                  <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current stroke-2 shrink-0" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11m16-11v11"/></svg>
-                  RUC: 20614914239
-                </div>
-              </div>
-              <a
-                href={WA_LINK}
-                target="_blank"
-                rel="noopener"
-                className="inline-flex items-center gap-2 bg-[#25D366]/90 hover:bg-[#25D366] text-white px-4 py-2 rounded-lg text-[12px] font-bold transition-all"
-              >
-                <WhatsAppIcon size={14} />
-                Escribirnos ahora
+          {/* Rutas Europa */}
+          <div className="lg:col-span-3">
+            <h4 className="text-xs font-bold text-white mb-4 tracking-wider uppercase">
+              Europa & Migratorio
+            </h4>
+            <div className="space-y-2 text-xs">
+              <a href="#migra" className="block text-slate-300 hover:text-white transition-colors">
+                Paquete migratorio a España
+              </a>
+              <a href="#migra" className="block text-slate-300 hover:text-white transition-colors">
+                Vuelos Lima ➔ Madrid (Directos)
+              </a>
+              <a href="#migra" className="block text-slate-300 hover:text-white transition-colors">
+                Vuelos Lima ➔ Barcelona
+              </a>
+              <a href="#migra" className="block text-slate-300 hover:text-white transition-colors">
+                Vuelos Lima ➔ Roma & Milán
+              </a>
+              <a href="#servicios" className="block text-slate-300 hover:text-white transition-colors">
+                Seguro médico Schengen 30.000€
+              </a>
+              <a href="#paquetes" className="block text-slate-300 hover:text-white transition-colors">
+                Circuitos por Europa 15 Días
               </a>
             </div>
           </div>
-        </AnimateOnScroll>
 
-        <div className="border-t border-white/[0.06] pt-6 flex flex-col sm:flex-row justify-between items-center text-[11px] text-white/25 gap-2 text-center">
-          <span>&copy; 2026 Cityland Travel · RUC: 20614914239 · Todos los derechos reservados.</span>
-          <span>Hecho en Lima, Perú</span>
+          {/* Rutas Caribe & América */}
+          <div className="lg:col-span-2">
+            <h4 className="text-xs font-bold text-white mb-4 tracking-wider uppercase">
+              Caribe & América
+            </h4>
+            <div className="space-y-2 text-xs">
+              <a href="#paquetes" className="block text-slate-300 hover:text-white transition-colors">
+                Punta Cana All Inclusive
+              </a>
+              <a href="#paquetes" className="block text-slate-300 hover:text-white transition-colors">
+                Cancún & Riviera Maya
+              </a>
+              <a href="#paquetes" className="block text-slate-300 hover:text-white transition-colors">
+                Cartagena de Indias
+              </a>
+              <a href="#paquetes" className="block text-slate-300 hover:text-white transition-colors">
+                Medellín & Guatapé
+              </a>
+              <a href="#paquetes" className="block text-slate-300 hover:text-white transition-colors">
+                Miami & Florida
+              </a>
+              <a href="#paquetes" className="block text-slate-300 hover:text-white transition-colors">
+                Río de Janeiro
+              </a>
+            </div>
+          </div>
+
+          {/* Contáctanos */}
+          <div className="lg:col-span-3">
+            <h4 className="text-xs font-bold text-white mb-4 tracking-wider uppercase">
+              Atención Presencial & Remota
+            </h4>
+            <div className="space-y-3 mb-6 text-xs text-slate-300">
+              <div className="flex items-start gap-2.5">
+                <svg viewBox="0 0 24 24" className="w-4 h-4 text-red-500 shrink-0 mt-0.5 fill-current">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                <span>Av. Antúnez de Mayolo N. 814, Los Olivos, Lima</span>
+              </div>
+              
+              <a href={`tel:${TELEFONO}`} className="flex items-center gap-2.5 hover:text-white transition-colors">
+                <PhoneIcon className="w-4 h-4 fill-current text-slate-400 shrink-0" />
+                <span>{TELEFONO_FORMATEADO}</span>
+              </a>
+
+              <div className="flex items-center gap-2.5 text-slate-400">
+                <svg viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-current stroke-2 shrink-0">
+                  <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                </svg>
+                <span>Lunes a Sábado: 9:00 AM – 7:00 PM</span>
+              </div>
+            </div>
+
+            <a
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs font-bold shadow-md shadow-emerald-500/20 transition-all cursor-pointer"
+            >
+              <WhatsAppIcon size={16} />
+              <span>Escribir al WhatsApp Oficial</span>
+            </a>
+          </div>
+
+        </div>
+
+        {/* Legal Bottom Bar */}
+        <div className="border-t border-slate-800 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-3 text-center sm:text-left">
+          <span>&copy; 2026 Cityland Travel E.I.R.L. · RUC: 20614914239 · Todos los derechos reservados.</span>
+          <span>Lima, Perú · Agencia de Viajes y Turismo</span>
         </div>
       </div>
     </footer>

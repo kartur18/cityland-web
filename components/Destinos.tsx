@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import AnimateOnScroll from "@/components/AnimateOnScroll";
 import {
   PAQUETES_COMPLETOS,
   buildWaUrl,
@@ -12,19 +11,19 @@ import FlagIcon from "@/components/icons/FlagIcon";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 const TAG_STYLES: Record<string, string> = {
-  hot: "bg-gradient-to-r from-red-600 to-orange-600 text-white shadow-sm",
-  promo: "bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-sm",
-  new: "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-sm",
-  luxury: "bg-gradient-to-r from-purple-700 to-indigo-700 text-white shadow-sm",
+  hot: "bg-red-600 text-white",
+  promo: "bg-amber-600 text-white",
+  new: "bg-emerald-600 text-white",
+  luxury: "bg-purple-700 text-white",
 };
 
 const CATEGORIAS = [
-  { id: "all", label: "🌟 Todos los Paquetes" },
-  { id: "caribe", label: "🏖️ Caribe Todo Incluido" },
-  { id: "europa", label: "🏰 Europa & España" },
-  { id: "exoticos", label: "🕌 Turquía & Exóticos" },
-  { id: "norteamerica", label: "🗽 Miami & Orlando" },
-  { id: "sudamerica", label: "🌴 Sudamérica & Brasil" },
+  { id: "all", label: "Todos los Paquetes" },
+  { id: "caribe", label: "Caribe All Inclusive" },
+  { id: "europa", label: "España & Europa" },
+  { id: "exoticos", label: "Turquía Sin Visa" },
+  { id: "norteamerica", label: "Miami & Orlando" },
+  { id: "sudamerica", label: "Sudamérica" },
 ] as const;
 
 export default function Destinos() {
@@ -36,37 +35,33 @@ export default function Destinos() {
     : PAQUETES_COMPLETOS.filter((p) => p.categoria === catFiltro);
 
   return (
-    <section id="destinos" className="bg-[#f8fafc] py-20 relative overflow-hidden">
-      {/* Decorative ambient gradients */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-100/30 rounded-full blur-3xl pointer-events-none" />
+    <section id="paquetes" className="bg-[#f8fafc] py-16 sm:py-20 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        
+        {/* Encabezado limpio, directo y comercial */}
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-red-600 text-xs font-bold uppercase tracking-wider mb-3">
+            Catálogo Oficial 2026
+          </span>
+          <h2 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-5xl text-[#0a1628] tracking-tight leading-none mb-3">
+            PAQUETES TURÍSTICOS MÁS VENDIDOS
+          </h2>
+          <p className="text-sm sm:text-base text-slate-600">
+            Tarifas referenciales con vuelo ida y vuelta desde Lima, hoteles seleccionados y traslados.{" "}
+            <strong className="text-slate-900 font-bold">Separa con el 50% de inicial</strong> y cancela el saldo antes de viajar.
+          </p>
+        </div>
 
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 relative z-10">
-        <AnimateOnScroll>
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 border border-red-200 text-red-600 text-[11px] font-extrabold uppercase tracking-widest mb-3">
-              <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse" />
-              Paquetes Turísticos Todo Incluido 2026
-            </span>
-            <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(36px,5.5vw,60px)] text-[#0a1628] tracking-wide leading-none mb-4">
-              Viaja con Todo Resuelto y sin Preocupaciones
-            </h2>
-            <p className="text-[15px] sm:text-base text-slate-600 leading-relaxed">
-              Vuelos directos o con mejor conexión desde Lima, resorts frente a la playa con comidas y cócteles ilimitados, traslados privados y tours. <strong className="text-slate-900 font-bold">Separa tu cupo con el 50% de inicial</strong> y cancela el saldo antes de salir.
-            </p>
-          </div>
-        </AnimateOnScroll>
-
-        {/* Category Filter Tabs */}
+        {/* Filtros por Categoría (Sin emojis, diseño píldora elegante) */}
         <div className="flex gap-2 justify-start sm:justify-center overflow-x-auto pb-3 mb-10 no-scrollbar">
           {CATEGORIAS.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setCatFiltro(cat.id)}
-              className={`shrink-0 px-4 sm:px-5 py-2.5 rounded-xl text-[13px] font-bold transition-all cursor-pointer ${
+              className={`shrink-0 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 catFiltro === cat.id
-                  ? "bg-[#0a1628] text-white shadow-md shadow-slate-900/20 scale-[1.02]"
-                  : "bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-100/80 border border-slate-200/80"
+                  ? "bg-[#0a1628] text-white shadow-sm"
+                  : "bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200"
               }`}
             >
               {cat.label}
@@ -74,222 +69,251 @@ export default function Destinos() {
           ))}
         </div>
 
-        {/* Package Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-          {paquetesFiltrados.map((paquete, index) => {
+        {/* Grilla Limpia de Tarjetas de Paquetes (Superficie única, sin cajas dentro de cajas) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
+          {paquetesFiltrados.map((paquete) => {
             const waHref = buildWaUrl({
               categoria: paquete.categoria,
               destino: paquete.ciudad,
               tipo: paquete.tituloComercial,
               precioUSD: paquete.precioUSD,
               duracion: paquete.duracion,
+              mensajePersonalizado: `¡Hola Cityland Travel! Vi en su web el paquete a ${paquete.ciudad} (${paquete.duracion}) por $${paquete.precioUSD} USD. Deseo cotizar con un asesor para viajar separando con el 50% de inicial.`,
             });
 
             return (
-              <AnimateOnScroll key={paquete.id} stagger={Math.min(index + 1, 6)}>
-                <div className="group rounded-2xl overflow-hidden bg-white border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(10,22,40,0.08)] hover:shadow-[0_16px_40px_-8px_rgba(10,22,40,0.16)] transition-all duration-300 hover:-translate-y-1.5 flex flex-col h-full">
-                  
-                  {/* Photo Header */}
-                  <div className="relative h-[220px] w-full overflow-hidden bg-slate-900">
-                    <Image
-                      src={paquete.img}
-                      alt={paquete.alt}
-                      fill
-                      sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
+              <div
+                key={paquete.id}
+                className="group rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col h-full"
+              >
+                {/* Imagen del Destino */}
+                <div className="relative h-56 w-full overflow-hidden bg-slate-100">
+                  <Image
+                    src={paquete.img}
+                    alt={paquete.alt}
+                    fill
+                    sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/25 to-transparent" />
 
-                    {/* Top Badges */}
-                    <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 z-10">
-                      <span className="inline-flex items-center gap-1.5 bg-black/55 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-full border border-white/15">
-                        <FlagIcon pais={paquete.pais} className="w-3.5 h-2.5" />
-                        {paquete.pais}
+                  {/* Etiquetas superiores */}
+                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 z-10">
+                    <span className="inline-flex items-center gap-1.5 bg-black/60 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-full border border-white/20">
+                      <FlagIcon pais={paquete.pais} className="w-3.5 h-2.5" />
+                      {paquete.pais}
+                    </span>
+                    {paquete.tag && (
+                      <span className={`text-[10px] font-extrabold uppercase tracking-wide px-2.5 py-1 rounded-full shadow-xs ${TAG_STYLES[paquete.tagColor] || TAG_STYLES.hot}`}>
+                        {paquete.tag.split("·")[0]}
                       </span>
-                      {paquete.tag && (
-                        <span className={`text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full ${TAG_STYLES[paquete.tagColor] || TAG_STYLES.hot}`}>
-                          {paquete.tag}
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Bottom Info on Image */}
-                    <div className="absolute bottom-3 left-3 right-3 z-10 text-white">
-                      <p className="text-[11px] uppercase tracking-wider font-semibold text-amber-300 mb-0.5">
-                        {paquete.duracion}
-                      </p>
-                      <h3 className="text-xl sm:text-2xl font-bold leading-tight drop-shadow-sm">
-                        {paquete.ciudad}
-                      </h3>
-                    </div>
+                    )}
                   </div>
 
-                  {/* Body Content */}
-                  <div className="p-5 flex flex-col flex-1">
-                    
-                    {/* Commercial Highlight Banner */}
-                    <div className="bg-amber-50/70 border border-amber-200/80 rounded-xl px-3 py-2 text-[12px] font-semibold text-amber-900 mb-4 flex items-center gap-2">
-                      <span className="text-base">✨</span>
-                      <span className="truncate">{paquete.resaltado}</span>
-                    </div>
-
-                    {/* Inclusions Checklist */}
-                    <div className="space-y-2 mb-5 flex-1">
-                      <div className="flex items-start gap-2.5 text-[12.5px] text-slate-700">
-                        <span className="text-emerald-600 font-bold shrink-0">✓</span>
-                        <span><strong>Vuelo:</strong> Boletos aéreos ida y vuelta desde Lima con equipaje</span>
-                      </div>
-                      <div className="flex items-start gap-2.5 text-[12.5px] text-slate-700">
-                        <span className="text-emerald-600 font-bold shrink-0">✓</span>
-                        <span><strong>Hotel:</strong> {paquete.inclusiones.hotel}</span>
-                      </div>
-                      <div className="flex items-start gap-2.5 text-[12.5px] text-slate-700">
-                        <span className="text-emerald-600 font-bold shrink-0">✓</span>
-                        <span><strong>Régimen:</strong> {paquete.inclusiones.alimentacion}</span>
-                      </div>
-                      <div className="flex items-start gap-2.5 text-[12.5px] text-slate-700">
-                        <span className="text-emerald-600 font-bold shrink-0">✓</span>
-                        <span><strong>Traslados:</strong> Aeropuerto ↔ Hotel ↔ Aeropuerto incluidos</span>
-                      </div>
-                      <div className="flex items-start gap-2.5 text-[12.5px] text-slate-700">
-                        <span className="text-emerald-600 font-bold shrink-0">✓</span>
-                        <span><strong>Tour:</strong> {paquete.inclusiones.tour}</span>
-                      </div>
-                    </div>
-
-                    {/* Pricing & Booking Guarantee */}
-                    <div className="border-t border-slate-100 pt-4 mb-4">
-                      <div className="flex items-end justify-between gap-2">
-                        <div>
-                          <span className="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">
-                            Precio por persona
-                          </span>
-                          <div className="flex items-baseline gap-1.5">
-                            <span className="text-2xl sm:text-3xl font-extrabold text-[#0a1628]">
-                              ${paquete.precioUSD}
-                            </span>
-                            <span className="text-[12px] font-semibold text-slate-500">USD</span>
-                          </div>
-                          <span className="text-[11px] font-semibold text-slate-500 block">
-                            aprox. S/ {paquete.precioSoles.toLocaleString("es-PE")}
-                          </span>
-                        </div>
-
-                        <div className="text-right">
-                          <span className="inline-block bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px] font-extrabold px-2.5 py-1 rounded-md uppercase tracking-wide">
-                            Separa con el 50%
-                          </span>
-                          <span className="block text-[10px] text-slate-400 mt-1">
-                            Saldo antes de viajar
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Action Buttons */}
-                    <div className="space-y-2">
-                      <a
-                        href={waHref}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1fb855] text-white py-3 px-4 rounded-xl text-[13px] font-bold shadow-md shadow-emerald-500/20 hover:shadow-lg hover:shadow-emerald-500/30 transition-all cursor-pointer"
-                      >
-                        <WhatsAppIcon size={16} />
-                        Cotizar por WhatsApp con Asesor
-                      </a>
-
-                      <button
-                        type="button"
-                        onClick={() => setModalPaquete(paquete)}
-                        className="w-full text-center py-1.5 text-[11px] font-semibold text-slate-500 hover:text-slate-800 transition-colors cursor-pointer"
-                      >
-                        Ver detalles completos e itinerario →
-                      </button>
-                    </div>
-
+                  {/* Título sobre la imagen */}
+                  <div className="absolute bottom-3 left-3 right-3 z-10 text-white">
+                    <span className="text-[11px] uppercase tracking-wider font-bold text-amber-300 block mb-0.5">
+                      {paquete.duracion}
+                    </span>
+                    <h3 className="text-xl font-bold leading-tight drop-shadow-sm">
+                      {paquete.ciudad}
+                    </h3>
                   </div>
                 </div>
-              </AnimateOnScroll>
+
+                {/* Contenido de la Tarjeta */}
+                <div className="p-5 flex flex-col flex-1">
+                  
+                  {/* Resumen comercial directo (Sin envoltorio de caja pesada) */}
+                  <p className="text-xs font-bold text-slate-800 border-l-2 border-red-500 pl-2.5 mb-3 leading-snug">
+                    {paquete.resaltado}
+                  </p>
+
+                  {/* Puntos Clave estructurados con checks limpios */}
+                  <div className="space-y-1.5 mb-4 text-xs text-slate-600 flex-1">
+                    <p className="flex items-center gap-2">
+                      <span className="text-emerald-600 font-bold">✓</span>
+                      <span>Vuelo ida y vuelta desde Lima con equipaje</span>
+                    </p>
+                    <p className="flex items-center gap-2">
+                      <span className="text-emerald-600 font-bold">✓</span>
+                      <span className="truncate">{paquete.inclusiones.hotel}</span>
+                    </p>
+                    <p className="flex items-center gap-2">
+                      <span className="text-emerald-600 font-bold">✓</span>
+                      <span className="truncate">{paquete.inclusiones.alimentacion}</span>
+                    </p>
+                    <p className="flex items-center gap-2">
+                      <span className="text-emerald-600 font-bold">✓</span>
+                      <span>Traslados en destino y seguro de viaje</span>
+                    </p>
+                  </div>
+
+                  {/* Precio y Condiciones Claras */}
+                  <div className="border-t border-slate-100 pt-3.5 mb-4">
+                    <div className="flex items-end justify-between">
+                      <div>
+                        <span className="text-[11px] font-black uppercase tracking-wider text-red-600 block leading-tight">
+                          DESDE
+                        </span>
+                        <div className="flex items-baseline gap-1">
+                          <span className="text-2xl sm:text-3xl font-black text-[#0a1628]">
+                            ${paquete.precioUSD}
+                          </span>
+                          <span className="text-xs font-bold text-slate-500">USD</span>
+                        </div>
+                        <span className="text-[11px] font-medium text-slate-500 block">
+                          aprox. S/ {paquete.precioSoles.toLocaleString("es-PE")} en hab. doble
+                        </span>
+                      </div>
+
+                      <div className="text-right">
+                        <span className="inline-block bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px] font-bold px-2 py-0.5 rounded uppercase">
+                          Separa con el 50%
+                        </span>
+                        <span className="block text-[10px] text-slate-400 mt-0.5">
+                          Saldo antes de viajar
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Acciones */}
+                  <div className="space-y-2">
+                    <a
+                      href={waHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white py-3 px-4 rounded-xl text-xs sm:text-sm font-bold shadow-md shadow-emerald-500/20 hover:shadow-lg transition-all cursor-pointer"
+                    >
+                      <WhatsAppIcon size={16} />
+                      <span>Cotizar por WhatsApp</span>
+                    </a>
+
+                    <button
+                      type="button"
+                      onClick={() => setModalPaquete(paquete)}
+                      className="w-full text-center py-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900 transition-colors cursor-pointer"
+                    >
+                      Ver itinerario detallado →
+                    </button>
+                  </div>
+
+                </div>
+              </div>
             );
           })}
         </div>
 
-        {/* Trust Bottom Notice */}
-        <div className="mt-14 p-5 sm:p-6 bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-          <div className="flex items-center gap-3">
-            <span className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xl shrink-0">
-              🛡️
-            </span>
+        {/* Respaldo Institucional (Limpio, con icono formal SVG) */}
+        <div className="mt-12 p-5 bg-white rounded-2xl border border-slate-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          <div className="flex items-center gap-3.5">
+            <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700 shrink-0">
+              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2">
+                <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11m16-11v11"/>
+              </svg>
+            </div>
             <div>
-              <h4 className="text-sm font-bold text-slate-900">
-                Garantía y Seriedad de Cityland Travel E.I.R.L. (RUC 20614914239)
-              </h4>
-              <p className="text-xs text-slate-500 mt-0.5">
-                Oficina física en Los Olivos, Lima. Pagos seguros con Yape, Plin, BCP, BBVA y Tarjetas de Crédito en cuotas.
+              <p className="text-sm font-bold text-slate-900">
+                Atención presencial en Los Olivos: Av. Antúnez de Mayolo N. 814
+              </p>
+              <p className="text-xs text-slate-500">
+                Cityland Travel E.I.R.L. · RUC: 20614914239 · Lunes a Sábado de 9:00 am a 7:00 pm
               </p>
             </div>
           </div>
           <a
-            href={buildWaUrl({ categoria: "general", mensajePersonalizado: "Hola Cityland Travel, deseo armar un paquete personalizado a mi medida." })}
+            href={buildWaUrl({ categoria: "general", mensajePersonalizado: "Hola Cityland Travel, deseo una cotización personalizada de viaje." })}
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 bg-[#0a1628] hover:bg-[#162544] text-white text-xs font-bold px-5 py-2.5 rounded-xl transition-all"
+            className="shrink-0 text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-5 py-2.5 rounded-xl hover:bg-emerald-100 transition-colors cursor-pointer"
           >
-            Solicitar Paquete a Medida
+            Hablar con un asesor ahora
           </a>
         </div>
+
       </div>
 
-      {/* Detail Modal */}
+      {/* Modal Interactivo de Itinerario (100% Profesional y sin emojis) */}
       {modalPaquete && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/65 backdrop-blur-sm animate-fade-in">
-          <div className="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-6 shadow-2xl relative">
+        <div
+          className="fixed inset-0 z-[1000] bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto"
+          onClick={() => setModalPaquete(null)}
+        >
+          <div
+            className="bg-white rounded-3xl max-w-xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative animate-in fade-in zoom-in-95 duration-200"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
               onClick={() => setModalPaquete(null)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl font-bold w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center cursor-pointer"
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-lg cursor-pointer"
               aria-label="Cerrar modal"
             >
               ✕
             </button>
 
-            <span className="text-[11px] font-bold text-red-600 uppercase tracking-widest block mb-1">
+            <span className="text-xs font-bold text-red-600 uppercase tracking-widest block mb-1">
               {modalPaquete.pais} · {modalPaquete.duracion}
             </span>
-            <h3 className="text-2xl font-bold text-slate-900 mb-2">
+            <h3 className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] mb-4">
               {modalPaquete.tituloComercial}
             </h3>
-            <p className="text-xs text-slate-600 leading-relaxed mb-4">
-              {modalPaquete.descripcion}
-            </p>
 
-            <div className="bg-slate-50 rounded-xl p-3.5 mb-4 border border-slate-200/80">
-              <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
-                📋 ¿Qué incluye tu paquete?
+            <div className="bg-slate-50 rounded-2xl p-4 sm:p-5 border border-slate-200/80 mb-5">
+              <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wide mb-3">
+                Inclusiones del Paquete
               </h4>
-              <ul className="text-xs text-slate-700 space-y-1.5">
-                <li>• ✈️ <strong>Vuelos:</strong> Boletos ida y vuelta desde Lima con equipaje</li>
-                <li>• 🏨 <strong>Hospedaje:</strong> {modalPaquete.inclusiones.hotel}</li>
-                <li>• 🍹 <strong>Alimentación:</strong> {modalPaquete.inclusiones.alimentacion}</li>
-                <li>• 🚐 <strong>Traslados:</strong> Aeropuerto ↔ Hotel ↔ Aeropuerto</li>
-                <li>• 🛡️ <strong>Asistencia:</strong> {modalPaquete.inclusiones.seguro}</li>
-                <li>• 🏝️ <strong>Excursión:</strong> {modalPaquete.inclusiones.tour}</li>
+              <ul className="space-y-2 text-xs text-slate-700">
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 font-bold">✓</span>
+                  <span><strong>Vuelos:</strong> Boletos ida y vuelta desde Lima con equipaje</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 font-bold">✓</span>
+                  <span><strong>Hospedaje:</strong> {modalPaquete.inclusiones.hotel}</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 font-bold">✓</span>
+                  <span><strong>Alimentación:</strong> {modalPaquete.inclusiones.alimentacion}</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 font-bold">✓</span>
+                  <span><strong>Traslados:</strong> Aeropuerto ↔ Hotel ↔ Aeropuerto en privado o compartido</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 font-bold">✓</span>
+                  <span><strong>Asistencia Médica:</strong> {modalPaquete.inclusiones.seguro}</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 font-bold">✓</span>
+                  <span><strong>Excursión:</strong> {modalPaquete.inclusiones.tour}</span>
+                </li>
               </ul>
             </div>
 
-            <div className="mb-5">
-              <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
-                🗓️ Itinerario Sugerido:
+            <div className="mb-6">
+              <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wide mb-3">
+                Itinerario sugerido día a día
               </h4>
-              <ol className="text-xs text-slate-600 space-y-1.5 pl-3 border-l-2 border-amber-300">
-                {modalPaquete.itinerario.map((paso, idx) => (
-                  <li key={idx} className="pl-2">{paso}</li>
+              <div className="space-y-2 border-l-2 border-red-500 pl-4 text-xs text-slate-600">
+                {modalPaquete.itinerario.map((dia, i) => (
+                  <p key={i} className="leading-relaxed">{dia}</p>
                 ))}
-              </ol>
+              </div>
             </div>
 
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-900 font-semibold mb-5 flex items-center justify-between">
-              <span>Tarifa referencial: <strong>${modalPaquete.precioUSD} USD</strong></span>
-              <span className="bg-amber-200/70 text-amber-950 px-2 py-0.5 rounded font-bold">Separa con el 50%</span>
+            <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 mb-6 flex items-center justify-between">
+              <div>
+                <span className="text-xs font-bold text-emerald-950 block">
+                  Precio: ${modalPaquete.precioUSD} USD (~S/ {modalPaquete.precioSoles})
+                </span>
+                <span className="text-[11px] text-emerald-800">
+                  Separa con el 50% de inicial y cancela el saldo antes de viajar
+                </span>
+              </div>
+              <span className="text-xs font-bold bg-emerald-600 text-white px-2.5 py-1 rounded-lg">
+                50% Inicial
+              </span>
             </div>
 
             <a
@@ -299,13 +323,14 @@ export default function Destinos() {
                 tipo: modalPaquete.tituloComercial,
                 precioUSD: modalPaquete.precioUSD,
                 duracion: modalPaquete.duracion,
+                mensajePersonalizado: `¡Hola Cityland Travel! Me gustó el paquete a ${modalPaquete.ciudad} (${modalPaquete.duracion}) por $${modalPaquete.precioUSD} USD. Deseo cotizar con un asesor para viajar separando con el 50% de inicial.`,
               })}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1fb855] text-white py-3 px-4 rounded-xl text-sm font-bold shadow-md cursor-pointer"
+              className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white py-3.5 px-6 rounded-xl font-bold shadow-lg shadow-emerald-500/25 transition-all text-sm cursor-pointer"
             >
-              <WhatsAppIcon size={16} />
-              Cotizar con Asesor Especialista
+              <WhatsAppIcon size={18} />
+              <span>Cotizar este paquete por WhatsApp</span>
             </a>
           </div>
         </div>

@@ -1,71 +1,155 @@
-import AnimateOnScroll from "@/components/AnimateOnScroll";
+"use client";
+
+import Image from "next/image";
 import { buildWaUrl, PRECIO_DESDE_EUROPA } from "@/components/constantes";
 import PlaneIcon from "@/components/icons/PlaneIcon";
-import ArrowRightIcon from "@/components/icons/ArrowRightIcon";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import FlagIcon from "@/components/icons/FlagIcon";
 
-const items = [
-  { titulo: "Boleto aéreo", desc: "Solo ida con aerolíneas de primera línea", icon: <PlaneIcon className="w-5 h-5 fill-none stroke-current stroke-2" /> },
-  { titulo: "Hotel tránsito", desc: "Alojamiento incluido en escalas", icon: <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11m16-11v11M8 14v3m4-3v3m4-3v3"/></svg> },
-  { titulo: "Seguro Schengen", desc: "Cobertura médica internacional", icon: <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> },
-  { titulo: "Retorno flexible", desc: "Cambia tu fecha de regreso sin costo", icon: <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> },
-  { titulo: "Documentación", desc: "Asesoría completa con tus papeles", icon: <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> },
-  { titulo: "Asesoría 24/7", desc: "Soporte antes, durante y después", icon: <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> },
+const REQUISITOS_EUROPA = [
+  {
+    titulo: "Boleto Aéreo Confirmado",
+    desc: "Emisión formal con aerolíneas IATA (Iberia, Air Europa, LATAM) con equipaje.",
+    icon: <PlaneIcon className="w-5 h-5 fill-none stroke-current stroke-2 text-red-600" />,
+  },
+  {
+    titulo: "Seguro Schengen 30.000€",
+    desc: "Póliza médica internacional obligatoria exigida por el control migratorio de la Unión Europea.",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2 text-emerald-600">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    ),
+  },
+  {
+    titulo: "Sustento de Hospedaje",
+    desc: "Voucher de reserva de hotel confirmado o asesoría para carta de invitación formal.",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2 text-blue-600">
+        <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11m16-11v11"/>
+      </svg>
+    ),
+  },
+  {
+    titulo: "Asesoría Migratoria 1 a 1",
+    desc: "Guía completa de preguntas en aeropuerto Barajas/Roma, fondos económicos y documentos.",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2 text-amber-600">
+        <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+      </svg>
+    ),
+  },
 ];
 
 export default function Migratorio() {
+  const waUrlEuropa = buildWaUrl({
+    categoria: "europa",
+    destino: "España / Madrid",
+    tipo: "Paquete Europa / Migratorio",
+    precioUSD: PRECIO_DESDE_EUROPA,
+    mensajePersonalizado: `¡Hola Cityland Travel! Me interesa el plan de viaje a España/Europa desde $${PRECIO_DESDE_EUROPA} USD. Deseo información de requisitos, seguro Schengen de 30.000€ y cómo separar con el 50% de inicial.`,
+  });
+
   return (
-    <section id="migra" className="py-24 bg-[#0a1628] text-white relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-white/[0.02] blur-3xl -translate-y-1/2 translate-x-1/3" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-red-500/[0.04] blur-3xl translate-y-1/2 -translate-x-1/3" />
-
-      <div className="max-w-[1100px] mx-auto px-5 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative">
-        <AnimateOnScroll direction="left">
-          <div>
-            <div className="inline-flex items-center gap-2 bg-white/[0.06] border border-white/10 px-3.5 py-1.5 rounded-lg text-white/60 text-[11px] font-semibold tracking-wider uppercase mb-6">
-              <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              El más vendido
+    <section id="migra" className="py-16 sm:py-20 bg-white border-b border-slate-200 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          
+          {/* Columna Izquierda: Mensaje Especializado Europa */}
+          <div className="lg:col-span-6 text-left">
+            <div className="inline-flex items-center gap-2 bg-slate-100 border border-slate-200 px-3.5 py-1.5 rounded-full text-xs font-semibold text-slate-700 mb-4">
+              <FlagIcon pais="España" className="w-4 h-2.5" />
+              <span>Ruta Especializada · Asesor Exclusivo para Europa</span>
             </div>
-            <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(40px,5vw,60px)] tracking-wide leading-[1.15] mb-6">
-              PAQUETE MIGRATORIO<br/>
-              <span className="text-white/50">EUROPA DESDE</span>{" "}
-              <span className="text-white grad-warm px-3 py-0.5 rounded-lg inline-block">${PRECIO_DESDE_EUROPA}</span>
-            </h2>
-            <p className="text-[16px] text-white/55 leading-relaxed mb-4">
-              Todo lo que necesitas para emigrar a Europa de forma segura y organizada. Vuelo, hotel de tránsito, seguro y asesoría personalizada.
-            </p>
-            <p className="text-[16px] text-white/55 leading-relaxed mb-8">
-              Más de 3,000 peruanos ya viajaron con nosotros. Sin visa requerida para zona Schengen.
-            </p>
-            <a
-              href={buildWaUrl({
-                categoria: "europa",
-                destino: "España",
-                texto: `¡Hola Cityland Travel! Me interesa el Paquete Migratorio a España/Europa desde $${PRECIO_DESDE_EUROPA} USD. Deseo información de requisitos, fechas disponibles y cómo separar con el 50% de inicial.`
-              })}
-              target="_blank"
-              rel="noopener"
-              className="btn-hover grad-warm glow-warm inline-flex items-center justify-center gap-2 text-white px-7 py-3.5 rounded-xl text-[14px] font-bold shadow-lg shadow-orange-600/25 transition-all"
-            >
-              Explorar plan migratorio
-              <ArrowRightIcon className="w-4 h-4 fill-none stroke-current stroke-2" />
-            </a>
-          </div>
-        </AnimateOnScroll>
 
-        <AnimateOnScroll direction="right">
-          <div className="grid grid-cols-2 gap-3">
-            {items.map((item, index) => (
-              <AnimateOnScroll key={item.titulo} stagger={index + 1}>
-                <div className="bg-white/[0.04] backdrop-blur-sm rounded-xl p-5 border border-white/[0.06] hover:bg-white/[0.08] transition group">
-                  <div className="text-white/40 mb-3 group-hover:text-[#dc2626] transition-colors">{item.icon}</div>
-                  <h3 className="text-[14px] font-semibold text-white mb-1">{item.titulo}</h3>
-                  <p className="text-[12px] text-white/40 leading-relaxed">{item.desc}</p>
+            <h2 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-5xl text-[#0a1628] tracking-tight leading-[0.98] mb-4">
+              ESPECIAL ESPAÑA & EUROPA 2026:<br />
+              <span className="text-red-600">VIAJA CON TODO REGULADO Y SIN RIESGOS</span>
+            </h2>
+
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6 font-normal">
+              Viajar a Madrid, Barcelona o cualquier país del Espacio Schengen requiere cumplir estrictamente con los filtros de migraciones. En Cityland Travel gestionamos tu boleto, seguro médico obligatorio y documentación de respaldo para que abordes con absoluta seguridad.
+            </p>
+
+            {/* Bloque de Precio y Facilidad 50% */}
+            <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-4 sm:p-5 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <span className="text-[11px] font-black uppercase tracking-wider text-red-600 block leading-tight">
+                  TARIFA RUTA EUROPA
+                </span>
+                <div className="flex items-baseline gap-1.5">
+                  <span className="text-xs font-bold text-slate-500">DESDE</span>
+                  <span className="text-3xl font-black text-[#0a1628]">
+                    ${PRECIO_DESDE_EUROPA}
+                  </span>
+                  <span className="text-xs font-bold text-slate-500">USD</span>
                 </div>
-              </AnimateOnScroll>
-            ))}
+                <span className="text-[11px] text-slate-500 block mt-0.5">
+                  Separa con el 50% y cancela el saldo antes de volar
+                </span>
+              </div>
+
+              <a
+                href={waUrlEuropa}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold shadow-md shadow-emerald-500/20 hover:shadow-lg transition-all shrink-0 cursor-pointer"
+              >
+                <WhatsAppIcon size={16} />
+                <span>Hablar con Asesor Europa</span>
+              </a>
+            </div>
+
+            <div className="flex items-center gap-4 text-xs text-slate-500 flex-wrap">
+              <span className="flex items-center gap-1.5">
+                <span className="text-emerald-600 font-bold">✓</span> Sin visa para peruanos (hasta 90 días)
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="text-emerald-600 font-bold">✓</span> Seguro válido en toda la UE
+              </span>
+            </div>
           </div>
-        </AnimateOnScroll>
+
+          {/* Columna Derecha: Requisitos en Cuadrícula Limpia (Superficie blanca con bordes sutiles) */}
+          <div className="lg:col-span-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {REQUISITOS_EUROPA.map((req) => (
+                <div
+                  key={req.titulo}
+                  className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs hover:shadow-md transition-all duration-300"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200/60 flex items-center justify-center mb-3">
+                    {req.icon}
+                  </div>
+                  <h3 className="text-sm font-bold text-slate-900 mb-1.5 leading-snug">
+                    {req.titulo}
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                    {req.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Testimonio Rápido de Respaldo */}
+            <div className="mt-4 p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center gap-3.5 text-xs text-slate-600">
+              <div className="w-9 h-9 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xs shrink-0">
+                CM
+              </div>
+              <div className="min-w-0">
+                <p className="font-semibold text-slate-800 truncate">
+                  &ldquo;Pasamos el control migratorio de Barajas en 5 minutos con la carpeta de Cityland.&rdquo;
+                </p>
+                <span className="text-[11px] text-slate-500">
+                  Carlos & Mariana · Viajaron en 2026 · Asesoría Europa
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </section>
   );

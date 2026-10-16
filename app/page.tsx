@@ -4,21 +4,11 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ProofBar from "@/components/ProofBar";
 import Destinos from "@/components/Destinos";
-import OfertasDestacadas from "@/components/OfertasDestacadas";
-import SectionDivider from "@/components/SectionDivider";
-import HowItWorks from "@/components/HowItWorks";
 import Migratorio from "@/components/Migratorio";
-import Garantias from "@/components/Garantias";
-import Comparador from "@/components/Comparador";
 import Servicios from "@/components/Servicios";
-import Airlines from "@/components/Airlines";
-import Video from "@/components/Video";
+import Garantias from "@/components/Garantias";
 import Testimonios from "@/components/Testimonios";
-import TrustSection from "@/components/TrustSection";
-import Blog from "@/components/Blog";
-import InstagramFeed from "@/components/InstagramFeed";
 import FAQ from "@/components/FAQ";
-import BigCTA from "@/components/BigCTA";
 import Mapa from "@/components/Mapa";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
@@ -32,24 +22,31 @@ export default function LandingPage() {
       <Navbar />
 
       <main id="main-content">
+        {/* 1. Hero Compacto con Cotizador Inmediato a WhatsApp */}
         <Hero />
+
+        {/* 2. Barra de Métricas y Formalidad */}
         <ProofBar />
+
+        {/* 3. PRIORIDAD #1: Catálogo de Paquetes Turísticos 2026 (Lo que el cliente busca de inmediato) */}
         <Destinos />
-        <SectionDivider type="wave" color="#f8fafc" />
-        <OfertasDestacadas />
-        <HowItWorks />
+
+        {/* 4. PRIORIDAD #2: Especial Paquete a España y Migratorio (Ruta directa al especialista Europa) */}
         <Migratorio />
-        <Garantias />
-        <Comparador />
+
+        {/* 5. PRIORIDAD #3: Servicios Complementarios (Vuelos, All Inclusive, Seguro Schengen, Facilidades) */}
         <Servicios />
-        <Airlines />
-        <Video />
+
+        {/* 6. Garantías y Respaldo Formal (RUC, 50% inicial, Oficina en Los Olivos) */}
+        <Garantias />
+
+        {/* 7. Testimonios Reales de Viajeros */}
         <Testimonios />
-        <TrustSection />
-        <Blog />
-        <InstagramFeed />
+
+        {/* 8. Preguntas Frecuentes Clave */}
         <FAQ />
-        <BigCTA />
+
+        {/* 9. Ubicación de Oficina Física en Los Olivos */}
         <Mapa />
       </main>
 

@@ -25,40 +25,81 @@ function AnimNum({ texto }: { texto: string }) {
     obs.observe(el);
     return () => obs.disconnect();
   }, [texto]);
+
   return (
-    <span ref={ref} className="font-[family-name:var(--font-bebas)] text-[36px] md:text-[42px] text-[#0a1628] tracking-wide leading-none">
+    <span ref={ref} className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] tracking-tight leading-none">
       {texto}
     </span>
   );
 }
 
 const STATS = [
-  { texto: "+5,000", label: "Viajes realizados", icon: <PlaneIcon className="w-5 h-5 fill-none stroke-[#dc2626] stroke-[1.5]" /> },
-  { texto: "+70", label: "Destinos internacionales", icon: <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-[#dc2626] stroke-[1.5]" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> },
-  { texto: "+10", label: "Años de experiencia", icon: <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-[#dc2626] stroke-[1.5]" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> },
-  { rating: true, label: "Rating en Google", icon: <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-[#dc2626] stroke-[1.5]" strokeLinecap="round" strokeLinejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> },
+  {
+    texto: "+10 Años",
+    titulo: "Trayectoria Formal",
+    sub: "Asesorando viajeros peruanos",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-5 h-5 text-red-600 fill-none stroke-current stroke-2">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+      </svg>
+    ),
+  },
+  {
+    texto: "+5,000",
+    titulo: "Pasajeros Felices",
+    sub: "Al Caribe, Europa y Sudamérica",
+    icon: <PlaneIcon className="w-5 h-5 fill-none stroke-red-600 stroke-2" />,
+  },
+  {
+    rating: true,
+    titulo: "Calificación Google",
+    sub: "4.9 / 5 estrellas (+500 reseñas)",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-5 h-5 text-amber-500 fill-current">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      </svg>
+    ),
+  },
+  {
+    texto: "100% Formal",
+    titulo: "RUC 20614914239",
+    sub: "Oficina física en Los Olivos",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-5 h-5 text-emerald-600 fill-none stroke-current stroke-2">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    ),
+  },
 ];
 
 export default function ProofBar() {
   return (
-    <div className="bg-white py-10 border-b border-gray-100">
-      <div className="max-w-[1100px] mx-auto px-5 grid grid-cols-2 md:grid-cols-4 gap-6">
-        {STATS.map((s, i) => (
-          <div key={i} className="text-center">
-            <div className="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center mx-auto mb-3">
-              {s.icon}
+    <div className="bg-white py-8 sm:py-10 border-b border-slate-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
+          {STATS.map((s, i) => (
+            <div key={i} className={`flex items-center gap-3.5 ${i > 0 ? "pt-4 sm:pt-0 sm:pl-6" : ""}`}>
+              <div className="w-11 h-11 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-center shrink-0">
+                {s.icon}
+              </div>
+              <div className="min-w-0">
+                {s.rating ? (
+                  <div className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] tracking-tight leading-none">
+                    4.9 / 5.0
+                  </div>
+                ) : (
+                  <AnimNum texto={s.texto!} />
+                )}
+                <strong className="block text-xs font-bold text-slate-800 leading-tight mt-0.5 truncate">
+                  {s.titulo}
+                </strong>
+                <span className="block text-[11px] text-slate-500 leading-tight truncate">
+                  {s.sub}
+                </span>
+              </div>
             </div>
-            {s.rating ? (
-              <>
-                <div className="text-amber-400 text-[14px] tracking-wide leading-none mb-1">★★★★★</div>
-                <div className="font-[family-name:var(--font-bebas)] text-[36px] md:text-[42px] text-[#0a1628] tracking-wide leading-none">4.9/5</div>
-              </>
-            ) : (
-              <AnimNum texto={s.texto!} />
-            )}
-            <div className="text-[12px] font-semibold text-gray-500 mt-1">{s.label}</div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
