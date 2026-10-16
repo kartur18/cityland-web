@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Plane, Check, X as XIcon, Shield, Clock, MapPin } from "lucide-react";
 import { waLink } from "@/components/constantes";
 
-const WA = waLink("Hola, quiero información del paquete Panamá + Medellín a $799");
+const WA = waLink("Hola Cityland Travel, quiero información del paquete Panamá + Medellín (Desde $799 USD)");
 
 function WaIcon({ s = 22 }: { s?: number }) {
   return (
@@ -76,9 +76,9 @@ export default function PanamaMedellinLanding() {
 
           <div className="flex items-end gap-2.5 mb-2">
             <div>
-              <span className="text-white/30 text-xs line-through">$1,150</span>
-              <div className="text-[3rem] font-black leading-none text-white">
-                $799<span className="text-sm font-medium text-white/50 ml-1">USD</span>
+              <span className="text-white/30 text-xs line-through">$1,150 USD</span>
+              <div className="text-[2.5rem] font-black leading-none text-white">
+                Desde $799<span className="text-sm font-medium text-white/50 ml-1">USD</span>
               </div>
             </div>
             <span className="bg-amber-400 text-black text-[10px] font-black px-2 py-0.5 rounded-full mb-1.5">
@@ -206,8 +206,8 @@ export default function PanamaMedellinLanding() {
           <p className="text-white/60 text-[11px] font-semibold uppercase tracking-wider mb-1">
             Últimos cupos · Junio 2026
           </p>
-          <div className="text-4xl font-black text-white leading-none mb-0.5">$799</div>
-          <p className="text-white/40 text-[11px] mb-4">USD por persona · Todo incluido</p>
+          <div className="text-3xl font-black text-white leading-none mb-0.5">Desde $799 USD</div>
+          <p className="text-white/40 text-[11px] mb-4">Por persona · Todo incluido</p>
 
           <a
             href={WA}
@@ -247,7 +247,7 @@ export default function PanamaMedellinLanding() {
           className="flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-3 rounded-xl text-[15px] shadow-[0_4px_15px_rgba(37,211,102,0.3)]"
         >
           <WaIcon s={18} />
-          Reservar — $799 USD
+          Reservar — Desde $799 USD
         </a>
       </div>
     </div>

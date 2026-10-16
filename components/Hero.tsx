@@ -11,9 +11,9 @@ export default function Hero() {
     categoria: "caribe",
     destino: "Punta Cana All Inclusive",
     tipo: "Resort 5 Estrellas Frente al Mar",
-    precioUSD: 949,
+    precioUSD: 1099,
     mensajePersonalizado:
-      "¡Hola Cityland Travel! Vi en su web oficial el paquete a Punta Cana All Inclusive desde $949 USD. Deseo consultar disponibilidad para mis fechas y separar con el 50%.",
+      "¡Hola Cityland Travel! Vi en su web oficial el paquete a Punta Cana All Inclusive desde $1,099 USD. Deseo consultar disponibilidad para mis fechas y separar con el 50%.",
   });
 
   return (
@@ -120,16 +120,17 @@ export default function Hero() {
               <div className="p-5 flex items-center justify-between gap-4 bg-white">
                 <div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1">
-                    Tarifa desde
+                    Paquete Completo
                   </span>
-                  <div className="flex items-baseline gap-1">
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="text-xs font-extrabold uppercase text-red-600">Desde</span>
                     <span className="font-[family-name:var(--font-bebas)] text-4xl text-[#0a1628] leading-none">
-                      $949
+                      $1,099
                     </span>
                     <span className="text-xs font-bold text-slate-500">USD</span>
                   </div>
                   <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                    Separa con 50% ($475 USD)
+                    Separa con 50% ($550 USD)
                   </span>
                 </div>
 

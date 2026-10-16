@@ -54,7 +54,7 @@ export default function Footer() {
             </h4>
             <div className="space-y-2 text-xs">
               <a href="/espana" className="block text-slate-300 hover:text-white transition-colors">
-                Paquete Migratorio a España ($695)
+                Paquete Migratorio a España (Desde $890 USD)
               </a>
               <a href="/europa-turquia" className="block text-slate-300 hover:text-white transition-colors">
                 Circuitos Europa 15D & Turquía Sin Visa

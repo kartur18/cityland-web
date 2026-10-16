@@ -121,17 +121,24 @@ export default function Destinos() {
 
                   <div className="pt-3.5 border-t border-slate-100 flex items-center justify-between gap-3">
                     <div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1">
-                        Desde
-                      </span>
+                      <div className="flex items-center gap-1.5 mb-0.5">
+                        <span className="text-[10px] font-extrabold uppercase tracking-wider text-red-600">
+                          Desde
+                        </span>
+                        {paquete.precioRegularUSD && (
+                          <span className="text-[11px] font-semibold text-slate-400 line-through">
+                            ${paquete.precioRegularUSD.toLocaleString("en-US")}
+                          </span>
+                        )}
+                      </div>
                       <div className="flex items-baseline gap-1">
                         <span className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] leading-none">
-                          ${paquete.precioUSD}
+                          ${paquete.precioUSD.toLocaleString("en-US")}
                         </span>
                         <span className="text-xs font-bold text-slate-500">USD</span>
                       </div>
                       <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                        Separa con 50% (${Math.round(paquete.precioUSD * 0.5)})
+                        Separa con 50% (${Math.round(paquete.precioUSD * 0.5).toLocaleString("en-US")} USD)
                       </span>
                     </div>
 

@@ -173,7 +173,7 @@ export default async function DestinoPage({
                 {dest.ciudad}
               </h1>
               <span className="inline-block bg-[#dc2626] text-white font-bold text-lg px-5 py-2 rounded-full">
-                Desde ${price}
+                Desde ${price} USD
               </span>
             </AnimateOnScroll>
           </div>
@@ -386,7 +386,7 @@ export default async function DestinoPage({
                         {r.ciudad}
                       </h3>
                       <p className="text-[#dc2626] font-bold text-lg">
-                        Desde ${rPrice}
+                        Desde ${rPrice} USD
                       </p>
                     </div>
                   </Link>

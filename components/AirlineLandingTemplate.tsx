@@ -76,16 +76,20 @@ export interface ConfiguracionLandingAerolinea {
   };
 }
 
-const LINKS_RAPIDOS = [
+const LINKS_PRINCIPALES = [
   { label: "España", href: "/espana" },
   { label: "Caribe & Miami", href: "/caribe" },
   { label: "Cusco", href: "/cusco" },
   { label: "Perú & Playas", href: "/peru" },
   { label: "Visas", href: "/visas" },
-  { label: "Cruceros", href: "/cruceros" },
-  { label: "Europa & Turquía", href: "/europa-turquia" },
-  { label: "Seguros", href: "/seguros" },
   { label: "Colegios", href: "/colegios" },
+  { label: "Cruceros", href: "/cruceros" },
+];
+
+const LINKS_SECUNDARIOS = [
+  { label: "Europa & Turquía", href: "/europa-turquia" },
+  { label: "Luna de Miel & 15 Años", href: "/luna-de-miel" },
+  { label: "Seguros de Viaje", href: "/seguros" },
   { label: "Empresas", href: "/empresas" },
 ];
 
@@ -103,54 +107,83 @@ export default function AirlineLandingTemplate({
 
   return (
     <div className="bg-white min-h-screen text-[#0a1628] antialiased">
-      {/* 1. Header Limpio y Editorial Estilo Aerolínea */}
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 py-2.5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-4 shrink-0">
-            <Link href="/" aria-label="Cityland Travel - Inicio" className="flex items-center">
-              <div className="relative h-12 sm:h-14 w-40 sm:w-48 flex items-center">
+      {/* 1. Header de Aerolínea de 2 Niveles (Cero desbordes ni botones cortados) */}
+      <header className="sticky top-0 z-40 shadow-xs">
+        <div className="hidden lg:block bg-[#0a1628] text-slate-300 text-[11px] font-medium border-b border-slate-800">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 h-8 flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <span className="inline-flex items-center gap-1.5 text-white font-semibold">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                Agencia Registrada MINCETUR · RUC 20614914239
+              </span>
+              <span className="text-slate-600">|</span>
+              <span>Av. Antúnez de Mayolo N. 814, Los Olivos, Lima</span>
+            </div>
+
+            <div className="flex items-center gap-4">
+              {LINKS_SECUNDARIOS.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="hover:text-white transition-colors"
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <span className="text-slate-600">|</span>
+              <a
+                href="tel:+51983882504"
+                className="text-amber-300 hover:text-amber-200 font-bold"
+              >
+                Central: +51 983 882 504
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white/95 backdrop-blur-md border-b border-slate-200/80 py-2.5">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-3">
+            <Link href="/" aria-label="Cityland Travel - Inicio" className="flex items-center shrink-0">
+              <div className="relative h-12 sm:h-13 w-38 sm:w-44 flex items-center">
                 <Image
                   src="/logo-transparent.png"
                   alt="Cityland Travel - Agencia de Viajes en Lima"
                   fill
                   priority
-                  sizes="(max-width: 640px) 160px, 192px"
+                  sizes="(max-width: 640px) 152px, 176px"
                   className="object-contain object-left"
                 />
               </div>
             </Link>
-            <span className="hidden xl:inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 border-l border-slate-200 pl-4">
-              RUC 20614914239 · Los Olivos, Lima
-            </span>
-          </div>
 
-          <div className="hidden lg:flex items-center gap-1 overflow-x-auto no-scrollbar">
-            {LINKS_RAPIDOS.slice(0, 7).map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="text-xs font-bold text-slate-600 hover:text-[#0a1628] px-2.5 py-1.5 rounded-full hover:bg-slate-100 whitespace-nowrap transition-colors"
+            <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5">
+              {LINKS_PRINCIPALES.map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="text-xs xl:text-[13px] font-bold text-slate-700 hover:text-[#0a1628] px-2.5 py-1.5 rounded-full hover:bg-slate-100 whitespace-nowrap transition-colors"
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </nav>
+
+            <div className="flex items-center gap-2.5 shrink-0">
+              <a
+                href={`https://wa.me/51983882504?text=${encodeURIComponent(config.waPrincipalMensaje)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold cursor-pointer whitespace-nowrap shadow-xs"
               >
-                {l.label}
-              </Link>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-3 shrink-0">
-            <a
-              href={`https://wa.me/51983882504?text=${encodeURIComponent(config.waPrincipalMensaje)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold cursor-pointer"
-            >
-              <WhatsAppIcon size={16} />
-              <span>Cotizar por WhatsApp</span>
-            </a>
+                <WhatsAppIcon size={16} />
+                <span>Cotizar por WhatsApp</span>
+              </a>
+            </div>
           </div>
         </div>
       </header>
 
-      {/* 2. Portada Luminosa, Blanca y Simétrica (Cero fondos oscuros ni cuadros recargados) */}
+      {/* 2. Portada Luminosa, Blanca y Simétrica */}
       <section className="bg-gradient-to-b from-sky-50/50 via-white to-white pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -245,6 +278,9 @@ export default function AirlineLandingTemplate({
                       {config.vitrina.labelPrecio}
                     </span>
                     <div className="flex items-baseline gap-1.5">
+                      <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
+                        Desde
+                      </span>
                       <span className="font-[family-name:var(--font-bebas)] text-4xl text-[#0a1628] leading-none">
                         {config.vitrina.precio}
                       </span>
@@ -366,9 +402,12 @@ export default function AirlineLandingTemplate({
                     <div className="pt-3.5 border-t border-slate-100 flex items-center justify-between gap-3">
                       <div>
                         <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1">
-                          Tarifa desde
+                          Tarifa referencial
                         </span>
                         <div className="flex items-baseline gap-1.5">
+                          <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
+                            Desde
+                          </span>
                           <span className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] leading-none">
                             {item.precioPrincipal}
                           </span>
@@ -416,8 +455,8 @@ export default function AirlineLandingTemplate({
             ))}
           </div>
 
-          <div className="rounded-3xl border border-slate-200/90 bg-gradient-to-br from-sky-50/50 via-white to-slate-50 shadow-sm overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center">
-            <div className="lg:col-span-7 p-6 sm:p-10">
+          <div className="rounded-3xl border border-slate-200/90 bg-gradient-to-br from-sky-50/50 via-white to-slate-50 shadow-sm overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-stretch">
+            <div className="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-center">
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
                 {config.bannerFinal.sobretitulo}
               </span>
@@ -447,7 +486,7 @@ export default function AirlineLandingTemplate({
               </div>
             </div>
 
-            <div className="lg:col-span-5 relative h-56 sm:h-64 lg:h-full min-h-[240px] w-full">
+            <div className="lg:col-span-5 relative min-h-[260px] sm:min-h-[320px] w-full overflow-hidden">
               <Image
                 src={config.bannerFinal.img}
                 alt={config.bannerFinal.alt}
@@ -478,7 +517,7 @@ export default function AirlineLandingTemplate({
               <WhatsAppIcon size={14} />
               <span>Central WhatsApp</span>
             </a>
-            {LINKS_RAPIDOS.map((l) => (
+            {[...LINKS_PRINCIPALES, ...LINKS_SECUNDARIOS].map((l) => (
               <Link
                 key={l.href}
                 href={l.href}

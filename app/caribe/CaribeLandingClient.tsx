@@ -25,64 +25,81 @@ export default function CaribeLandingClient() {
 
   return (
     <div className="bg-white min-h-screen text-[#0a1628] antialiased">
-      {/* 1. Header Luminoso y Ordenado Estilo Aerolínea */}
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 py-2.5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <Link href="/" aria-label="Cityland Travel - Inicio" className="flex items-center">
-              <div className="relative h-12 sm:h-14 w-40 sm:w-48 flex items-center">
+      {/* 1. Header de Aerolínea de 2 Niveles (Cero desbordes) */}
+      <header className="sticky top-0 z-40 shadow-xs">
+        <div className="hidden lg:block bg-[#0a1628] text-slate-300 text-[11px] font-medium border-b border-slate-800">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 h-8 flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <span className="inline-flex items-center gap-1.5 text-white font-semibold">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                Agencia Registrada MINCETUR · RUC 20614914239
+              </span>
+              <span className="text-slate-600">|</span>
+              <span>Av. Antúnez de Mayolo N. 814, Los Olivos, Lima</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <Link href="/espana" className="hover:text-white transition-colors">
+                Especial España
+              </Link>
+              <Link href="/cusco" className="hover:text-white transition-colors">
+                Cusco
+              </Link>
+              <Link href="/visas" className="hover:text-white transition-colors">
+                Visas
+              </Link>
+              <Link href="/colegios" className="hover:text-white transition-colors">
+                Colegios
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white/95 backdrop-blur-md border-b border-slate-200/80 py-2.5">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-3">
+            <Link href="/" aria-label="Cityland Travel - Inicio" className="flex items-center shrink-0">
+              <div className="relative h-12 sm:h-13 w-38 sm:w-44 flex items-center">
                 <Image
                   src="/logo-transparent.png"
                   alt="Cityland Travel - Agencia de Viajes en Lima"
                   fill
                   priority
-                  sizes="(max-width: 640px) 160px, 192px"
+                  sizes="(max-width: 640px) 152px, 176px"
                   className="object-contain object-left"
                 />
               </div>
             </Link>
-            <span className="hidden md:inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 border-l border-slate-200 pl-4">
-              RUC 20614914239 · Los Olivos, Lima
-            </span>
-          </div>
 
-          <div className="hidden lg:flex items-center gap-1">
-            {[
-              { label: "Punta Cana", href: "#punta-cana" },
-              { label: "Cancún", href: "#cancun" },
-              { label: "Cartagena", href: "#cartagena" },
-              { label: "Medellín", href: "#medellin" },
-              { label: "Río de Janeiro", href: "#rio-de-janeiro" },
-              { label: "Miami", href: "#miami-orlando" },
-            ].map((item) => (
+            <div className="hidden lg:flex items-center gap-1">
+              {[
+                { label: "Punta Cana", href: "#punta-cana" },
+                { label: "Cancún", href: "#cancun" },
+                { label: "Cartagena", href: "#cartagena" },
+                { label: "Medellín", href: "#medellin" },
+                { label: "Río de Janeiro", href: "#rio-de-janeiro" },
+                { label: "Miami", href: "#miami-orlando" },
+              ].map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setFiltroActivo("todos")}
+                  className="text-xs font-bold text-slate-700 hover:text-[#0a1628] px-3 py-1.5 rounded-full hover:bg-slate-100 whitespace-nowrap transition-colors"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+
+            <div className="flex items-center gap-2.5 shrink-0">
               <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setFiltroActivo("todos")}
-                className="text-xs font-bold text-slate-600 hover:text-[#0a1628] px-3 py-2 rounded-full hover:bg-slate-100 transition-colors"
+                href={`https://wa.me/51983882504?text=${encodeURIComponent("¡Hola Cityland Travel! Vi su página de paquetes a Caribe, Sudamérica y Miami. Deseo cotizar con un asesor.")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold cursor-pointer whitespace-nowrap shadow-xs"
               >
-                {item.label}
+                <WhatsAppIcon size={16} />
+                <span>Cotizar por WhatsApp</span>
               </a>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-3">
-            <Link
-              href="/espana"
-              className="hidden sm:inline-flex items-center gap-1.5 text-xs font-extrabold text-red-600 bg-red-50 hover:bg-red-100 px-3.5 py-2 rounded-full transition-colors"
-            >
-              <FlagIcon pais="España" className="w-3.5 h-2.5" />
-              <span>España</span>
-            </Link>
-            <a
-              href={`https://wa.me/51983882504?text=${encodeURIComponent("¡Hola Cityland Travel! Vi su página de paquetes a Caribe, Sudamérica y Miami. Deseo cotizar con un asesor.")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold cursor-pointer"
-            >
-              <WhatsAppIcon size={16} />
-              <span>Cotizar por WhatsApp</span>
-            </a>
+            </div>
           </div>
         </div>
       </header>
@@ -182,21 +199,24 @@ export default function CaribeLandingClient() {
                 <div className="p-5 flex items-center justify-between gap-4 bg-white">
                   <div>
                     <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1">
-                      Paquete Completo desde
+                      Paquete Completo
                     </span>
                     <div className="flex items-baseline gap-1.5">
+                      <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
+                        Desde
+                      </span>
                       <span className="font-[family-name:var(--font-bebas)] text-4xl text-[#0a1628] leading-none">
-                        $949
+                        $1,099
                       </span>
                       <span className="text-xs font-bold text-slate-500">USD</span>
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                      Separa con 50% ($475 USD)
+                      Separa con 50% ($550 USD)
                     </span>
                   </div>
 
                   <a
-                    href={`https://wa.me/51942086698?text=${encodeURIComponent("¡Hola Cityland Travel! Vi en su web el paquete Todo Incluido a Punta Cana (5 Días / 4 Noches) desde $949 USD. Deseo cotizar separando con el 50%.")}`}
+                    href={`https://wa.me/51942086698?text=${encodeURIComponent("¡Hola Cityland Travel! Vi en su web el paquete Todo Incluido a Punta Cana (5 Días / 4 Noches) desde $1,099 USD. Deseo cotizar separando con el 50%.")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0"
@@ -313,15 +333,18 @@ export default function CaribeLandingClient() {
                       <div>
                         <div className="flex items-center gap-1.5 mb-0.5">
                           <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                            Desde
+                            Regular
                           </span>
                           <span className="text-[11px] font-semibold text-slate-400 line-through">
-                            ${d.precioRegularUSD}
+                            ${d.precioRegularUSD.toLocaleString("en-US")} USD
                           </span>
                         </div>
-                        <div className="flex items-baseline gap-1">
+                        <div className="flex items-baseline gap-1.5">
+                          <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
+                            Desde
+                          </span>
                           <span className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] leading-none">
-                            ${d.precioUSD}
+                            ${d.precioUSD.toLocaleString("en-US")}
                           </span>
                           <span className="text-xs font-bold text-slate-500">USD</span>
                         </div>
@@ -392,8 +415,8 @@ export default function CaribeLandingClient() {
           </div>
 
           {/* Tarjeta Luminosa Dividida: Cotización a Medida */}
-          <div className="rounded-3xl border border-slate-200/90 bg-gradient-to-br from-sky-50/60 via-white to-emerald-50/40 shadow-sm overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center">
-            <div className="lg:col-span-7 p-6 sm:p-10">
+          <div className="rounded-3xl border border-slate-200/90 bg-gradient-to-br from-sky-50/60 via-white to-emerald-50/40 shadow-sm overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-stretch">
+            <div className="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-center">
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
                 Atención Personalizada en Lima y Todo el Perú
               </span>
@@ -424,7 +447,7 @@ export default function CaribeLandingClient() {
               </div>
             </div>
 
-            <div className="lg:col-span-5 relative h-56 sm:h-64 lg:h-full min-h-[240px] w-full">
+            <div className="lg:col-span-5 relative min-h-[260px] sm:min-h-[320px] w-full overflow-hidden">
               <Image
                 src="https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=1200&q=85"
                 alt="Playas del Caribe Todo Incluido desde Lima - Cityland Travel"

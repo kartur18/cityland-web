@@ -24,52 +24,76 @@ export default function VisasLandingClient() {
 
   return (
     <div className="bg-white min-h-screen text-[#0a1628] antialiased">
-      {/* 1. Header Luminoso y Formal */}
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 py-2.5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <Link href="/" aria-label="Cityland Travel - Inicio" className="flex items-center">
-              <div className="relative h-12 sm:h-14 w-40 sm:w-48 flex items-center">
+      {/* 1. Header de Aerolínea de 2 Niveles (Cero desbordes) */}
+      <header className="sticky top-0 z-40 shadow-xs">
+        <div className="hidden lg:block bg-[#0a1628] text-slate-300 text-[11px] font-medium border-b border-slate-800">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 h-8 flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <span className="inline-flex items-center gap-1.5 text-white font-semibold">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                Agencia Registrada MINCETUR · RUC 20614914239
+              </span>
+              <span className="text-slate-600">|</span>
+              <span>Av. Antúnez de Mayolo N. 814, Los Olivos, Lima</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <Link href="/espana" className="hover:text-white transition-colors">
+                Especial España
+              </Link>
+              <Link href="/caribe" className="hover:text-white transition-colors">
+                Caribe & Miami
+              </Link>
+              <Link href="/cusco" className="hover:text-white transition-colors">
+                Cusco
+              </Link>
+              <Link href="/colegios" className="hover:text-white transition-colors">
+                Colegios
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white/95 backdrop-blur-md border-b border-slate-200/80 py-2.5">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-3">
+            <Link href="/" aria-label="Cityland Travel - Inicio" className="flex items-center shrink-0">
+              <div className="relative h-12 sm:h-13 w-38 sm:w-44 flex items-center">
                 <Image
                   src="/logo-transparent.png"
                   alt="Cityland Travel - Asesoría de Visas en Lima"
                   fill
                   priority
-                  sizes="(max-width: 640px) 160px, 192px"
+                  sizes="(max-width: 640px) 152px, 176px"
                   className="object-contain object-left"
                 />
               </div>
             </Link>
-            <span className="hidden md:inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 border-l border-slate-200 pl-4">
-              RUC 20614914239 · Los Olivos, Lima
-            </span>
-          </div>
 
-          <div className="hidden lg:flex items-center gap-1.5">
-            <Link href="/caribe" className="text-xs font-bold text-slate-600 hover:text-[#0a1628] px-3 py-2 rounded-full hover:bg-slate-100">
-              Caribe & Miami
-            </Link>
-            <Link href="/espana" className="text-xs font-bold text-slate-600 hover:text-[#0a1628] px-3 py-2 rounded-full hover:bg-slate-100">
-              Especial España
-            </Link>
-            <Link href="/cusco" className="text-xs font-bold text-slate-600 hover:text-[#0a1628] px-3 py-2 rounded-full hover:bg-slate-100">
-              Paquetes Cusco
-            </Link>
-            <Link href="/colegios" className="text-xs font-bold text-slate-600 hover:text-[#0a1628] px-3 py-2 rounded-full hover:bg-slate-100">
-              Viajes de Promoción
-            </Link>
-          </div>
+            <div className="hidden lg:flex items-center gap-1.5">
+              <Link href="/caribe" className="text-xs font-bold text-slate-700 hover:text-[#0a1628] px-3 py-1.5 rounded-full hover:bg-slate-100">
+                Caribe & Miami
+              </Link>
+              <Link href="/espana" className="text-xs font-bold text-slate-700 hover:text-[#0a1628] px-3 py-1.5 rounded-full hover:bg-slate-100">
+                Especial España
+              </Link>
+              <Link href="/cusco" className="text-xs font-bold text-slate-700 hover:text-[#0a1628] px-3 py-1.5 rounded-full hover:bg-slate-100">
+                Paquetes Cusco
+              </Link>
+              <Link href="/colegios" className="text-xs font-bold text-slate-700 hover:text-[#0a1628] px-3 py-1.5 rounded-full hover:bg-slate-100">
+                Viajes de Promoción
+              </Link>
+            </div>
 
-          <div className="flex items-center gap-3">
-            <a
-              href={`https://wa.me/51983882504?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo asesoría para tramitar mi visa (EE.UU., Canadá, México o España).")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold cursor-pointer"
-            >
-              <WhatsAppIcon size={16} />
-              <span>Evaluar mi Perfil</span>
-            </a>
+            <div className="flex items-center gap-2.5 shrink-0">
+              <a
+                href={`https://wa.me/51983882504?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo asesoría para tramitar mi visa (EE.UU., Canadá, México o España).")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold cursor-pointer whitespace-nowrap shadow-xs"
+              >
+                <WhatsAppIcon size={16} />
+                <span>Evaluar mi Perfil</span>
+              </a>
+            </div>
           </div>
         </div>
       </header>
@@ -171,13 +195,16 @@ export default function VisasLandingClient() {
                 <div className="p-5 flex items-center justify-between gap-4 bg-white">
                   <div>
                     <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1">
-                      Asesoría Integral desde
+                      Asesoría Integral
                     </span>
                     <div className="flex items-baseline gap-1.5">
-                      <span className="font-[family-name:var(--font-bebas)] text-4xl text-[#0a1628] leading-none">
-                        S/ 290
+                      <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
+                        Desde
                       </span>
-                      <span className="text-xs font-bold text-slate-500">($79 USD)</span>
+                      <span className="font-[family-name:var(--font-bebas)] text-4xl text-[#0a1628] leading-none">
+                        $120
+                      </span>
+                      <span className="text-xs font-bold text-slate-500">USD</span>
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
                       Incluye simulacro de entrevista 1 a 1
@@ -185,7 +212,7 @@ export default function VisasLandingClient() {
                   </div>
 
                   <a
-                    href={`https://wa.me/51942086698?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo iniciar mi trámite de Visa Americana B1/B2 con asesoría completa.")}`}
+                    href={`https://wa.me/51942086698?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo iniciar mi trámite de Visa Americana B1/B2 desde $120 USD con asesoría completa.")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0"
@@ -233,7 +260,7 @@ export default function VisasLandingClient() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {lista.map((item) => {
               const waUrl = `https://wa.me/${item.waNumber}?text=${encodeURIComponent(
-                `¡Hola Cityland Travel! Vi su página de Visas y deseo cotizar la asesoría para: ${item.titulo} (Desde S/ ${item.tarifaDesdeSoles}).`
+                `¡Hola Cityland Travel! Vi su página de Visas y deseo cotizar la asesoría para: ${item.titulo} (Desde $${item.tarifaDesdeUSD} USD).`
               )}`;
 
               return (
@@ -289,14 +316,17 @@ export default function VisasLandingClient() {
                     <div className="pt-3.5 border-t border-slate-100 flex items-center justify-between gap-3">
                       <div>
                         <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1">
-                          Asesoría desde
+                          Asesoría Consular
                         </span>
                         <div className="flex items-baseline gap-1.5">
+                          <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
+                            Desde
+                          </span>
                           <span className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] leading-none">
-                            S/ {item.tarifaDesdeSoles}
+                            ${item.tarifaDesdeUSD}
                           </span>
                           <span className="text-xs font-bold text-slate-500">
-                            (${item.tarifaDesdeUSD} USD)
+                            USD
                           </span>
                         </div>
                         <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
@@ -356,8 +386,8 @@ export default function VisasLandingClient() {
             ))}
           </div>
 
-          <div className="rounded-3xl border border-slate-200/90 bg-gradient-to-br from-sky-50/60 via-white to-slate-50 shadow-sm overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center">
-            <div className="lg:col-span-7 p-6 sm:p-10">
+          <div className="rounded-3xl border border-slate-200/90 bg-gradient-to-br from-sky-50/60 via-white to-slate-50 shadow-sm overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-stretch">
+            <div className="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-center">
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
                 Asesoría Presencial o Virtual en Todo el Perú
               </span>
@@ -369,18 +399,20 @@ export default function VisasLandingClient() {
                 <strong className="text-[#0a1628]">Av. Antúnez de Mayolo 814, Los Olivos</strong>. Revisamos tu caso con total honestidad antes de iniciar el trámite.
               </p>
 
-              <a
-                href={`https://wa.me/51944280151?text=${encodeURIComponent("¡Hola Cityland Travel! Quisiera saber si califico para tramitar mi visa. ¿Me ayudan con una evaluación?")}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold cursor-pointer"
-              >
-                <WhatsAppIcon size={18} />
-                <span>Consultar con Especialista en Visas</span>
-              </a>
+              <div>
+                <a
+                  href={`https://wa.me/51944280151?text=${encodeURIComponent("¡Hola Cityland Travel! Quisiera saber si califico para tramitar mi visa. ¿Me ayudan con una evaluación?")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold cursor-pointer"
+                >
+                  <WhatsAppIcon size={18} />
+                  <span>Consultar con Especialista en Visas</span>
+                </a>
+              </div>
             </div>
 
-            <div className="lg:col-span-5 relative h-56 sm:h-64 lg:h-full min-h-[240px] w-full">
+            <div className="lg:col-span-5 relative min-h-[260px] sm:min-h-[320px] w-full overflow-hidden">
               <Image
                 src="https://images.unsplash.com/photo-1517935706615-2717063c2225?w=1200&q=85"
                 alt="Asesoría de Visas Estados Unidos, Canadá, México y España - Cityland Travel"

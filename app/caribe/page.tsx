@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title:
     "Paquetes a Punta Cana, Cancún, Cartagena, Medellín, Río de Janeiro y Miami desde Lima | Cityland Travel",
   description:
-    "Paquetes turísticos Todo Incluido saliendo desde Lima: Medellín desde $549, Cartagena desde $569, Río de Janeiro desde $749, Cancún desde $899, Punta Cana desde $949 y Miami desde $1,049 USD. Separa hoy con el 50% de inicial en Cityland Travel (RUC 20614914239 · Los Olivos).",
+    "Paquetes turísticos Todo Incluido saliendo desde Lima: Medellín desde $679 USD, Cartagena desde $699 USD, Río de Janeiro desde $849 USD, Cancún desde $1,049 USD, Punta Cana desde $1,099 USD y Miami desde $1,190 USD. Separa hoy con el 50% de inicial en Cityland Travel (RUC 20614914239 · Los Olivos).",
   keywords: [
     "paquetes turisticos punta cana todo incluido desde lima",
     "paquetes a cancun todo incluido desde lima peru",

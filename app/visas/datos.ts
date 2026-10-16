@@ -4,7 +4,6 @@ export interface ServicioVisa {
   pais: string;
   filtro: "usa" | "canada-mexico" | "espana";
   modalidad: string;
-  tarifaDesdeSoles: number;
   tarifaDesdeUSD: number;
   tag: string;
   tagBg: string;
@@ -22,8 +21,7 @@ export const SERVICIOS_VISAS: ServicioVisa[] = [
     pais: "Estados Unidos",
     filtro: "usa",
     modalidad: "Turismo, Compras y Negocios (10 años)",
-    tarifaDesdeSoles: 290,
-    tarifaDesdeUSD: 79,
+    tarifaDesdeUSD: 120,
     tag: "#1 Más Solicitada",
     tagBg: "bg-red-600 text-white",
     img: "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=1200&q=85",
@@ -39,8 +37,7 @@ export const SERVICIOS_VISAS: ServicioVisa[] = [
     pais: "Estados Unidos",
     filtro: "usa",
     modalidad: "Trámite Sin Entrevista Consular",
-    tarifaDesdeSoles: 220,
-    tarifaDesdeUSD: 59,
+    tarifaDesdeUSD: 99,
     tag: "Sin Entrevista",
     tagBg: "bg-blue-600 text-white",
     img: "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=1200&q=85",
@@ -56,8 +53,7 @@ export const SERVICIOS_VISAS: ServicioVisa[] = [
     pais: "Canadá",
     filtro: "canada-mexico",
     modalidad: "Turismo, Visita Familiar y eTA Express",
-    tarifaDesdeSoles: 320,
-    tarifaDesdeUSD: 85,
+    tarifaDesdeUSD: 140,
     tag: "Turismo & eTA",
     tagBg: "bg-red-600 text-white",
     img: "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=1200&q=85",
@@ -73,8 +69,7 @@ export const SERVICIOS_VISAS: ServicioVisa[] = [
     pais: "México",
     filtro: "canada-mexico",
     modalidad: "Turismo Cancún, Riviera Maya y CDMX",
-    tarifaDesdeSoles: 250,
-    tarifaDesdeUSD: 69,
+    tarifaDesdeUSD: 110,
     tag: "Cancún & CDMX",
     tagBg: "bg-emerald-600 text-white",
     img: "https://images.unsplash.com/photo-1518638150340-f706e86654de?w=1200&q=85",
@@ -90,8 +85,7 @@ export const SERVICIOS_VISAS: ServicioVisa[] = [
     pais: "España",
     filtro: "espana",
     modalidad: "Estudios, Trabajo, Nómada Digital y Carpeta Barajas",
-    tarifaDesdeSoles: 290,
-    tarifaDesdeUSD: 79,
+    tarifaDesdeUSD: 150,
     tag: "Ruta Europa",
     tagBg: "bg-amber-600 text-white",
     img: "/images/espana/gran-via-metropolis.jpg",
@@ -107,8 +101,7 @@ export const SERVICIOS_VISAS: ServicioVisa[] = [
     pais: "Estados Unidos",
     filtro: "usa",
     modalidad: "Tarifa Especial para Familias Peruanas",
-    tarifaDesdeSoles: 240,
-    tarifaDesdeUSD: 65,
+    tarifaDesdeUSD: 95,
     tag: "Descuento Familiar",
     tagBg: "bg-sky-600 text-white",
     img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85",

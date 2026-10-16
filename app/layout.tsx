@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | Cityland Travel — Agencia de Viajes en Lima",
   },
   description:
-    "Agencia de viajes formal en Lima, Perú (RUC 20614914239 · Oficina en Los Olivos). Paquetes turísticos Todo Incluido a Punta Cana, Cancún, Cartagena y Paquetes Migratorios a España desde $695 USD con Seguro Schengen 30.000€. Separa hoy con el 50% de inicial.",
+    "Agencia de viajes formal en Lima, Perú (RUC 20614914239 · Oficina en Los Olivos). Paquetes turísticos Todo Incluido a Punta Cana, Cancún, Cartagena y Paquetes Migratorios a España Desde $890 USD con Seguro Schengen 30.000€. Separa hoy con el 50% de inicial.",
   keywords: [
     "agencia de viajes en lima",
     "agencia de viajes en los olivos",

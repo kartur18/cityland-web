@@ -18,10 +18,16 @@ export default function PriceDisplay({ price, regularPrice, cuotas }: Props) {
       )}
 
       {/* Current price */}
-      <p className="text-[#dc2626] font-[family-name:var(--font-bebas)] text-5xl tracking-wide leading-none">
-        ${price}
-      </p>
-      <p className="text-xs text-gray-500">por persona</p>
+      <div className="flex items-baseline gap-1.5">
+        <span className="text-xs font-extrabold uppercase tracking-wider text-[#0a1628]">
+          Desde
+        </span>
+        <p className="text-[#dc2626] font-[family-name:var(--font-bebas)] text-5xl tracking-wide leading-none">
+          ${price.toLocaleString("en-US")}
+        </p>
+        <span className="text-sm font-bold text-gray-500">USD</span>
+      </div>
+      <p className="text-xs text-gray-500">por persona · separa con el 50%</p>
 
       {/* Savings badge */}
       {savings > 0 && (

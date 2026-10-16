@@ -91,14 +91,26 @@ const BREADCRUMB_SCHEMA = {
     {
       "@type": "ListItem",
       position: 2,
-      name: "Paquetes Migratorios a España desde $695",
+      name: "Paquetes Migratorios a España Desde $890 USD",
       item: "https://citylandtravel.com/espana",
     },
     {
       "@type": "ListItem",
       position: 3,
-      name: "Paquete Panamá + Medellín desde $799",
-      item: "https://citylandtravel.com/paquetes/panama-medellin",
+      name: "Paquetes al Caribe y Sudamérica Desde $679 USD",
+      item: "https://citylandtravel.com/caribe",
+    },
+    {
+      "@type": "ListItem",
+      position: 4,
+      name: "Paquetes a Cusco y Machu Picchu Desde $399 USD",
+      item: "https://citylandtravel.com/cusco",
+    },
+    {
+      "@type": "ListItem",
+      position: 5,
+      name: "Trámite de Visas (EE.UU., Canadá, México, España) Desde $110 USD",
+      item: "https://citylandtravel.com/visas",
     },
   ],
 };

@@ -11,25 +11,25 @@ export default function Migratorio() {
     categoria: "europa",
     destino: "España / Madrid",
     tipo: "Paquete Europa / Migratorio",
-    precioUSD: 695,
+    precioUSD: 890,
     mensajePersonalizado:
-      "¡Hola Cityland Travel! Me interesa el paquete a España desde $695 USD. Deseo información para separar con el 50%.",
+      "¡Hola Cityland Travel! Me interesa el paquete a España desde $890 USD. Deseo información para separar con el 50%.",
   });
 
   return (
     <section id="migra" className="py-14 sm:py-20 bg-white border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="rounded-3xl border border-slate-200/90 bg-gradient-to-br from-slate-50 via-white to-sky-50/40 shadow-sm overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center">
+        <div className="rounded-3xl border border-slate-200/90 bg-gradient-to-br from-slate-50 via-white to-sky-50/40 shadow-sm overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-stretch">
           {/* Izquierda: Contenido Luminoso y Ordenado */}
-          <div className="lg:col-span-7 p-6 sm:p-10 lg:p-12">
-            <div className="inline-flex items-center gap-2 bg-white border border-slate-200 px-3.5 py-1 rounded-full text-xs font-bold text-slate-700 mb-4 shadow-2xs">
+          <div className="lg:col-span-7 p-6 sm:p-10 lg:p-12 flex flex-col justify-center">
+            <div className="inline-flex items-center gap-2 bg-white border border-slate-200 px-3.5 py-1 rounded-full text-xs font-bold text-slate-700 mb-4 shadow-2xs w-fit">
               <FlagIcon pais="España" className="w-4 h-3" />
               <span>Ruta Especializada · Sin Visa Consular para Peruanos</span>
             </div>
 
             <h2 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-5xl text-[#0a1628] tracking-tight leading-[0.96] mb-3">
               ESPECIAL ESPAÑA & EUROPA{" "}
-              <span className="text-red-600">DESDE $695 USD</span>
+              <span className="text-red-600">DESDE $890 USD</span>
             </h2>
 
             <p className="text-sm sm:text-base text-slate-600 mb-6 max-w-xl">
@@ -56,8 +56,8 @@ export default function Migratorio() {
             </div>
           </div>
 
-          {/* Derecha: Fotografía Luminosa de Madrid */}
-          <div className="lg:col-span-5 relative h-64 sm:h-80 lg:h-full min-h-[280px] w-full">
+          {/* Derecha: Fotografía Luminosa de Madrid que cubre todo el alto */}
+          <div className="lg:col-span-5 relative min-h-[260px] sm:min-h-[320px] w-full overflow-hidden">
             <Image
               src="/images/espana/gran-via-metropolis.jpg"
               alt="Madrid España - Cityland Travel"

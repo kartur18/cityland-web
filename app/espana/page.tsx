@@ -3,13 +3,13 @@ import EspanaLandingClient from "./EspanaLandingClient";
 
 export const metadata: Metadata = {
   title:
-    "Paquetes Migratorios a España desde $695 USD | Vuelos, Seguro Schengen y Asesoría Barajas — Cityland Travel",
+    "Paquetes Migratorios a España desde $890 USD | Vuelos, Seguro Schengen y Asesoría Barajas — Cityland Travel",
   description:
-    "Paquetes migratorios completos a España desde Lima con Cityland Travel (RUC 20614914239 · Los Olivos). Boleto aéreo confirmado, seguro Schengen 30.000€, reserva de hotel y asesoría 1 a 1 para pasar control migratorio en Barajas. Separa con 50% de inicial.",
+    "Paquetes migratorios completos a España desde Lima con Cityland Travel (RUC 20614914239 · Los Olivos). Boleto aéreo confirmado, seguro Schengen 30.000€, reserva de hotel y asesoría 1 a 1 para pasar control migratorio en Barajas desde $890 USD. Separa con 50% de inicial.",
   keywords: [
     "paquetes migratorios a espana desde lima",
     "viajar a espana desde peru 2026",
-    "paquete migratorio espana 695 dolares",
+    "paquete migratorio espana precio dolares",
     "requisitos para viajar a espana peruanos 2026",
     "seguro schengen 30000 euros lima peru",
     "vuelos lima madrid con equipaje",
@@ -23,9 +23,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://citylandtravel.com/espana",
-    title: "Paquetes Migratorios a España desde $695 USD — Cityland Travel",
+    title: "Paquetes Migratorios a España desde $890 USD — Cityland Travel",
     description:
-      "Tu oportunidad en España con carpeta completa desde Lima: Noviembre ($695), Diciembre ($875), Enero ($875) y Marzo-Abril-Mayo ($699). Separa con el 50% de inicial.",
+      "Tu viaje a España con carpeta completa desde Lima: Noviembre (Desde $890 USD), Diciembre (Desde $1,090 USD), Enero (Desde $1,050 USD) y Primavera (Desde $899 USD). Separa con el 50% de inicial.",
     siteName: "Cityland Travel",
     locale: "es_PE",
     images: [
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Paquetes Migratorios a España desde $695 USD — Cityland Travel",
+    title: "Paquetes Migratorios a España desde $890 USD — Cityland Travel",
     description:
       "Vuelos confirmados IATA, seguro Schengen 30.000€, reserva de hotel y asesoría migratoria en Lima. Separa con 50%.",
     images: ["https://citylandtravel.com/images/espana/plaza-mayor.jpg"],
@@ -65,7 +65,7 @@ const JSON_LD_ESPANA = {
         {
           "@type": "ListItem",
           position: 2,
-          name: "Paquetes Migratorios a España desde $695 USD",
+          name: "Paquetes Migratorios a España desde $890 USD",
           item: "https://citylandtravel.com/espana",
         },
       ],
@@ -89,14 +89,14 @@ const JSON_LD_ESPANA = {
       offers: {
         "@type": "AggregateOffer",
         priceCurrency: "USD",
-        lowPrice: "695",
-        highPrice: "875",
+        lowPrice: "890",
+        highPrice: "1090",
         offerCount: "4",
         offers: [
           {
             "@type": "Offer",
             name: "Paquete Migratorio España — Salida Noviembre",
-            price: "695",
+            price: "890",
             priceCurrency: "USD",
             priceValidUntil: "2026-11-30",
             availability: "https://schema.org/InStock",
@@ -105,7 +105,7 @@ const JSON_LD_ESPANA = {
           {
             "@type": "Offer",
             name: "Paquete Migratorio España — Salida Diciembre",
-            price: "875",
+            price: "1090",
             priceCurrency: "USD",
             priceValidUntil: "2026-12-31",
             availability: "https://schema.org/InStock",
@@ -114,7 +114,7 @@ const JSON_LD_ESPANA = {
           {
             "@type": "Offer",
             name: "Paquete Migratorio España — Salida Enero",
-            price: "875",
+            price: "1050",
             priceCurrency: "USD",
             priceValidUntil: "2027-01-31",
             availability: "https://schema.org/InStock",
@@ -123,7 +123,7 @@ const JSON_LD_ESPANA = {
           {
             "@type": "Offer",
             name: "Paquete Migratorio España — Salidas Marzo · Abril · Mayo",
-            price: "699",
+            price: "899",
             priceCurrency: "USD",
             priceValidUntil: "2027-05-31",
             availability: "https://schema.org/InStock",
@@ -198,7 +198,7 @@ const JSON_LD_ESPANA = {
           name: "¿Cuánto cuesta el paquete a España y cómo se separa?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Las tarifas promocionales según mes de salida son: Noviembre desde $695 USD, Diciembre $875 USD, Enero $875 USD y Marzo/Abril/Mayo desde $699 USD. Se separa hoy con el 50% de inicial y el saldo se cancela antes del vuelo.",
+            text: "Las tarifas promocionales según mes de salida son: Noviembre Desde $890 USD, Diciembre Desde $1,090 USD, Enero Desde $1,050 USD y Marzo/Abril/Mayo Desde $899 USD. Se separa hoy con el 50% de inicial y el saldo se cancela antes del vuelo.",
           },
         },
         {
