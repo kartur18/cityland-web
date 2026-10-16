@@ -23,12 +23,12 @@ const bebas = Bebas_Neue({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://citylandtravel.com"),
-  title: `Cityland Travel — Paquetes a Europa desde $${PRECIO_DESDE_EUROPA} | Vuelos y Viajes desde Lima`,
+  title: "Cityland Travel — Paquetes Turísticos All Inclusive y Vuelos desde Lima | Separa con 50%",
   description:
-    `Cityland Travel: agencia de viajes en Lima. Paquetes migratorios a Europa desde $${PRECIO_DESDE_EUROPA} y turísticos al Caribe, Sudamérica y todo el mundo. Cotización GRATIS en 2 horas por WhatsApp. +5,000 viajes realizados.`,
+    "Agencia de viajes formal en Lima (RUC 20614914239). Paquetes turísticos completos Todo Incluido a Punta Cana, Cancún, Cartagena, Europa y Turquía. Separa con el 50% de inicial y cancela antes de viajar. Cotización personalizada por WhatsApp.",
   keywords:
-    "agencia de viajes Lima, paquetes a Europa, vuelos baratos, paquete migratorio España, viajes al Caribe, Punta Cana todo incluido, vuelos a Madrid desde Lima, agencia de viajes Los Olivos, Cityland Travel, emigrar a Europa",
-  authors: [{ name: "Cityland Travel" }],
+    "paquetes turisticos todo incluido lima, agencia de viajes lima peru, paquetes punta cana todo incluido, cancun all inclusive, cartagena de indias, vuelos a espana madrid, paquetes europa, viajes turquia sin visa, agencia de viajes los olivos, cityland travel",
+  authors: [{ name: "Cityland Travel E.I.R.L." }],
   robots: "index, follow, max-image-preview:large, max-snippet:-1",
   openGraph: {
     type: "website",

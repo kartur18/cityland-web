@@ -1,31 +1,146 @@
+// ── Constantes Comerciales y Datos de Cityland Travel ──
+export const EMPRESA_NOMBRE = "Cityland Travel";
+export const EMPRESA_RAZON_SOCIAL = "Cityland Travel E.I.R.L.";
+export const EMPRESA_RUC = "20614914239";
+export const EMPRESA_DIRECCION = "Av. Antúnez de Mayolo N. 814, Los Olivos, Lima";
+export const EMPRESA_HORARIO = "Lunes a Sábado: 9:00 am - 7:00 pm";
+
+// Números oficiales
 export const TELEFONO = "+51906450098";
-export const TELEFONO_FORMATEADO = TELEFONO.replace(/^\+(\d{2})(\d{3})(\d{3})(\d{3})$/, "+$1 $2 $3 $4");
-export const CATALOGO_LINK = "https://viaje-pe.vercel.app/citylandtravel";
+export const TELEFONO_FORMATEADO = "+51 906 450 098";
+export const TIPO_CAMBIO_REF = 3.75; // Tipo de cambio referencial USD -> PEN
+export const CATALOGO_LINK = "#paquetes";
 
-export function waLink(mensaje: string) {
-  return `https://wa.me/${TELEFONO.replace("+", "")}?text=${encodeURIComponent(mensaje)}`;
+// ── Enrutamiento Inteligente Multi-Asesor de WhatsApp ──
+// Distribución por especialidad según directiva comercial:
+// 1. Europa (Madrid, Barcelona, Roma, Milán, París, etc.): 983882504
+// 2. Caribe & Colombia (Punta Cana, Cancún, Cartagena, Medellín): 942086698 / 906450098
+// 3. Cualquier otro destino / Botón flotante / Cotizador general: 944280151 / 938845086 / 906642487 / 944031724
+export const WHATSAPP_ROUTING = {
+  europa: ["51983882504"],
+  caribe: ["51942086698", "51906450098"],
+  general: ["51944280151", "51938845086", "51906642487", "51944031724"],
+};
+
+/**
+ * Retorna un número asignado de forma determinista según el destino o categoría
+ * para garantizar consistencia entre SSR y render de cliente (evita desajustes de hidratación).
+ */
+export function getNumeroWhatsapp(categoria: "europa" | "caribe" | "general" | string, seed: string = ""): string {
+  if (categoria === "europa") {
+    return WHATSAPP_ROUTING.europa[0];
+  }
+  if (categoria === "caribe") {
+    const list = WHATSAPP_ROUTING.caribe;
+    const hash = seed.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    return list[hash % list.length];
+  }
+  const list = WHATSAPP_ROUTING.general;
+  const hash = seed.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  return list[hash % list.length];
 }
 
-export const WA_LINK = waLink("Hola Cityland Travel, quiero cotizar un viaje");
+/**
+ * Genera el enlace de WhatsApp con mensaje precargado y número especializado.
+ */
+export function buildWaUrl(params: {
+  categoria?: "europa" | "caribe" | "general" | string;
+  destino?: string;
+  tipo?: string;
+  precioUSD?: number;
+  duracion?: string;
+  mensajePersonalizado?: string;
+  texto?: string;
+}): string {
+  const cat = params.categoria || "general";
+  const seed = params.destino || "general";
+  const num = getNumeroWhatsapp(cat, seed);
 
-export function cotLink(destino: string, tipo: string, precio: number) {
-  return waLink(
-    `Hola Cityland Travel, quiero cotizar un paquete ${tipo} a ${destino}. Vi el precio desde $${precio} en su página.`
-  );
+  const customText = params.mensajePersonalizado || params.texto;
+  if (customText) {
+    return `https://wa.me/${num}?text=${encodeURIComponent(customText)}`;
+  }
+
+  let texto = `¡Hola Cityland Travel! Vi su página web y deseo cotizar un viaje con un asesor especializado.`;
+  if (params.destino && params.precioUSD) {
+    texto = `¡Hola Cityland Travel! Vi en su web el paquete ${params.tipo || "Todo Incluido"} a ${params.destino}${params.duracion ? ` (${params.duracion})` : ""} desde $${params.precioUSD} USD. Deseo cotizar con un asesor para viajar separando con el 50% de inicial.`;
+  } else if (params.destino) {
+    texto = `¡Hola Cityland Travel! Deseo cotizar paquetes y vuelos a ${params.destino} saliendo desde Lima. ¿Tienen cupos disponibles?`;
+  }
+
+  return `https://wa.me/${num}?text=${encodeURIComponent(texto)}`;
 }
 
-export function cotFormLink(data: { nombre: string; email: string; destino: string; fechaIda: string; fechaRetorno?: string; pasajeros: number }) {
-  const msg = `Hola Cityland Travel, quiero cotizar:
-• Nombre: ${data.nombre}
-• Email: ${data.email}
+// Compatibilidad retroactiva
+export function waLink(mensaje: string, categoria: "europa" | "caribe" | "general" = "general"): string {
+  const num = getNumeroWhatsapp(categoria, mensaje);
+  return `https://wa.me/${num}?text=${encodeURIComponent(mensaje)}`;
+}
+
+export const WA_LINK = buildWaUrl({
+  categoria: "general",
+  mensajePersonalizado: "¡Hola Cityland Travel! Vi su web oficial y deseo cotizar paquetes y vuelos con un asesor.",
+});
+
+export function cotLink(destino: string, tipo: string, precio: number, categoria?: "europa" | "caribe" | "general"): string {
+  const cat = categoria || (tipo.toLowerCase().includes("migra") || destino.toLowerCase().match(/madrid|barcelona|roma|milan|paris|europa/) ? "europa" : "caribe");
+  return buildWaUrl({
+    categoria: cat,
+    destino,
+    tipo,
+    precioUSD: precio,
+  });
+}
+
+export function cotFormLink(data: { nombre: string; email: string; destino: string; fechaIda: string; fechaRetorno?: string; pasajeros: number }): string {
+  const cat = data.destino.toLowerCase().match(/madrid|barcelona|roma|milan|paris|europa/) ? "europa" : data.destino.toLowerCase().match(/punta cana|cancun|cartagena|medellin|caribe/) ? "caribe" : "general";
+  const num = getNumeroWhatsapp(cat, data.destino);
+  const msg = `¡Hola Cityland Travel! Solicito cotización desde la web:
+• Pasajero: ${data.nombre}
+• Correo: ${data.email}
 • Destino: ${data.destino}
 • Fecha ida: ${data.fechaIda}
 • Fecha retorno: ${data.fechaRetorno || "Flexible"}
-• Pasajeros: ${data.pasajeros}`;
-  return waLink(msg);
+• Pasajeros: ${data.pasajeros}
+Deseo conocer opciones separando con el 50% de inicial.`;
+  return `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
 }
 
-// ── Types ──
+// ── Tipos de Datos Enriquecidos ──
+export interface InclusionesPaquete {
+  vuelo: boolean;
+  hotel: string;
+  alimentacion: string;
+  traslados: boolean;
+  seguro: string;
+  tour: string;
+}
+
+export interface PaqueteTuristico {
+  id: string;
+  slug: string;
+  ciudad: string;
+  pais: string;
+  bandera: string;
+  categoria: "caribe" | "europa" | "exoticos" | "sudamerica" | "norteamerica";
+  duracion: string;
+  precioUSD: number;
+  precioSoles: number;
+  precioRegularUSD?: number;
+  tag: string;
+  tagColor: "hot" | "promo" | "new" | "luxury";
+  img: string;
+  alt: string;
+  tituloComercial: string;
+  resaltado: string;
+  inclusiones: InclusionesPaquete;
+  toursDestacados: string[];
+  descripcion: string;
+  itinerario: string[];
+  tipoViaje: "all-inclusive" | "circuito" | "migratorio" | "escapada";
+  migratorioUSD?: number;
+}
+
 export interface Destino {
   ciudad: string;
   pais: string;
@@ -34,9 +149,10 @@ export interface Destino {
   img: string;
   alt: string;
   tag?: string;
-  tagColor?: "hot" | "promo" | "new";
+  tagColor?: "hot" | "promo" | "new" | "luxury";
   migratorio?: number;
   turistico: number;
+  precioSoles?: number;
   migraDesc?: string;
   turiDesc: string;
   turiLabel?: string;
@@ -46,7 +162,9 @@ export interface Destino {
   descripcion: string;
   itinerario: string[];
   temporada: "verano" | "invierno" | "todo-el-ano";
-  tipo: "europa" | "caribe";
+  tipo: "europa" | "caribe" | "exoticos" | "sudamerica" | "norteamerica";
+  duracion?: string;
+  inclusionesLista?: string[];
 }
 
 export interface BlogPost {
@@ -62,226 +180,520 @@ export interface BlogPost {
   contenido: string;
 }
 
-// ── Destinos Europa ──
-export const DESTINOS_EUROPA: Destino[] = [
+// ── CATÁLOGO MAESTRO DE PAQUETES TURÍSTICOS (Mercado Peruano) ──
+export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
   {
-    ciudad: "Madrid", pais: "España", bandera: "🇪🇸", slug: "madrid",
-    img: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=600&q=80",
-    alt: "Vuelos baratos a Madrid desde Lima - Gran Vía Madrid de noche",
-    tag: "MÁS VENDIDO", tagColor: "hot",
-    migratorio: 799, turistico: 1099, regularPrice: 1299, cuotas: 6,
-    migraDesc: "Solo ida + seguro + hotel + retorno", turiDesc: "Ida y vuelta + hotel 5 noches",
-    gallery: [
-      "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=80",
-      "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=800&q=80",
-      "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80",
+    id: "punta-cana-all-inclusive",
+    slug: "punta-cana",
+    ciudad: "Punta Cana",
+    pais: "República Dominicana",
+    bandera: "🇩🇴",
+    categoria: "caribe",
+    duracion: "5 Días / 4 Noches",
+    precioUSD: 799,
+    precioSoles: 2990,
+    precioRegularUSD: 1099,
+    tag: "TODO INCLUIDO · TOP VENTAS",
+    tagColor: "hot",
+    img: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&q=80",
+    alt: "Paquete Punta Cana All Inclusive desde Lima - Resort 5 estrellas frente al mar",
+    tituloComercial: "Punta Cana Paradisíaco All Inclusive",
+    resaltado: "Resort 5★ Frente al Mar + Todo Incluido 24h + Isla Saona",
+    inclusiones: {
+      vuelo: true,
+      hotel: "Resort 5★ en Playa Bávaro frente al mar",
+      alimentacion: "All Inclusive 24h: Buffets, restaurantes a la carta, snacks y bebidas ilimitadas",
+      traslados: true,
+      seguro: "Asistencia médica internacional incluida",
+      tour: "Excursión en Catamarán a Isla Saona con almuerzo en playa",
+    },
+    toursDestacados: ["Catamarán a Isla Saona", "Piscina natural con estrellas de mar", "Actividades acuáticas del resort"],
+    descripcion: "Disfruta de las mejores playas de arena blanca del Caribe con todo resuelto. Desayuna, almuerza y cena en restaurantes temáticos, disfruta de cócteles ilimitados y relájate sin pagar ni un dólar extra en destino.",
+    itinerario: [
+      "Día 1: Vuelo Lima ➔ Punta Cana. Recepción en aeropuerto y traslado privado al Resort 5★. Check-in con cóctel de bienvenida.",
+      "Día 2: Día libre All Inclusive para disfrutar de las playas de Playa Bávaro, piscinas infinity y shows nocturnos.",
+      "Día 3: Tour de día completo a Isla Saona en catamarán con música, bebidas y almuerzo buffet en playa privada.",
+      "Día 4: Actividades náuticas (kayak, snorkel), spa y cena especial en restaurante temático a la carta.",
+      "Día 5: Desayuno buffet, tiempo libre de playa y traslado privado al aeropuerto para el vuelo de retorno a Lima.",
     ],
-    descripcion: "La capital de España te espera con su rica historia, gastronomía inigualable y vida nocturna vibrante. Desde la Gran Vía hasta el Parque del Retiro, Madrid ofrece experiencias para todos.",
-    itinerario: ["Llegada a Madrid – Traslado al hotel", "City tour: Gran Vía, Puerta del Sol, Plaza Mayor", "Visita al Museo del Prado y Retiro", "Día libre para explorar barrios", "Excursión a Toledo (opcional)", "Regreso o continuación del viaje"],
-    temporada: "todo-el-ano", tipo: "europa",
+    tipoViaje: "all-inclusive",
   },
   {
-    ciudad: "Barcelona", pais: "España", bandera: "🇪🇸", slug: "barcelona",
-    img: "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=600&q=80",
-    alt: "Vuelos a Barcelona desde Lima - Sagrada Familia Barcelona",
-    tag: "PROMO", tagColor: "promo",
-    migratorio: 849, turistico: 1149, regularPrice: 1399, cuotas: 6,
-    migraDesc: "Solo ida + seguro + hotel + retorno", turiDesc: "Ida y vuelta + hotel 5 noches",
-    gallery: [
-      "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800&q=80",
-      "https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?w=800&q=80",
-      "https://images.unsplash.com/photo-1511527661048-7fe73d85e9a4?w=800&q=80",
+    id: "cancun-riviera-maya",
+    slug: "cancun",
+    ciudad: "Cancún & Riviera Maya",
+    pais: "México",
+    bandera: "🇲🇽",
+    categoria: "caribe",
+    duracion: "5 Días / 4 Noches",
+    precioUSD: 749,
+    precioSoles: 2810,
+    precioRegularUSD: 999,
+    tag: "ALL INCLUSIVE · PLAYA & CULTURA",
+    tagColor: "promo",
+    img: "https://images.unsplash.com/photo-1552074284-5e88ef1aef18?w=800&q=80",
+    alt: "Paquete Cancún All Inclusive desde Lima - Mar turquesa y ruinas mayas",
+    tituloComercial: "Cancún & Riviera Maya Todo Incluido",
+    resaltado: "Resort frente al mar + Todo Incluido + Maravilla Chichén Itzá",
+    inclusiones: {
+      vuelo: true,
+      hotel: "Resort 4★ Superior en Zona Hotelera frente al mar",
+      alimentacion: "Desayunos, almuerzos, cenas y cócteles ilimitados",
+      traslados: true,
+      seguro: "Seguro médico internacional incluido",
+      tour: "Tour a Chichén Itzá con visita a Cenote Sagrado y almuerzo maya",
+    },
+    toursDestacados: ["Chichén Itzá (Maravilla del Mundo)", "Nado en Cenote Sagrado", "Ferry a Isla Mujeres (opcional)"],
+    descripcion: "La combinación perfecta entre la mejor playa turquesa del Caribe, la historia milenaria de los mayas y la diversión inagotable de Cancún.",
+    itinerario: [
+      "Día 1: Vuelo Lima ➔ Cancún. Recepción con cartel y traslado al resort.",
+      "Día 2: Día de descanso en las piscinas y playa del resort con plan todo incluido.",
+      "Día 3: Excursión guiada a la ciudad maya de Chichén Itzá y nado en cenote con almuerzo tradicional.",
+      "Día 4: Día de compras en La Isla Shopping Village o visita a los parques temáticos Xcaret.",
+      "Día 5: Check-out, traslado al aeropuerto y vuelo de regreso a Lima.",
     ],
-    descripcion: "Barcelona combina playas mediterráneas con la arquitectura única de Gaudí. La Sagrada Familia, Las Ramblas y el Barrio Gótico te dejarán sin aliento.",
-    itinerario: ["Llegada a Barcelona – Traslado al hotel", "Sagrada Familia y Park Güell", "Las Ramblas, Barrio Gótico, La Boquería", "Día de playa en la Barceloneta", "Montjuïc y Camp Nou (opcional)", "Regreso o continuación del viaje"],
-    temporada: "todo-el-ano", tipo: "europa",
+    tipoViaje: "all-inclusive",
   },
   {
-    ciudad: "Roma", pais: "Italia", bandera: "🇮🇹", slug: "roma",
-    img: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&q=80",
-    alt: "Vuelos a Roma desde Lima - Paquetes turísticos a Italia",
-    tag: "NUEVO", tagColor: "new",
-    migratorio: 899, turistico: 1199, regularPrice: 1499, cuotas: 6,
-    migraDesc: "Solo ida + seguro + hotel + retorno", turiDesc: "Ida y vuelta + hotel 5 noches",
-    gallery: [
-      "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&q=80",
-      "https://images.unsplash.com/photo-1529260830199-42c24126f198?w=800&q=80",
-      "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=800&q=80",
+    id: "cartagena-baru",
+    slug: "cartagena",
+    ciudad: "Cartagena de Indias",
+    pais: "Colombia",
+    bandera: "🇨🇴",
+    categoria: "caribe",
+    duracion: "4 Días / 3 Noches",
+    precioUSD: 489,
+    precioSoles: 1835,
+    precioRegularUSD: 699,
+    tag: "VUELO DIRECTO 3.5H · ESCAPADA",
+    tagColor: "hot",
+    img: "https://images.unsplash.com/photo-1536308037887-165852797016?w=800&q=80",
+    alt: "Viajes a Cartagena desde Lima - Ciudad amurallada colonial y playas",
+    tituloComercial: "Cartagena Colonial & Playas de Barú",
+    resaltado: "Vuelo Directo 3.5h + Hotel con desayunos + Islas del Rosario",
+    inclusiones: {
+      vuelo: true,
+      hotel: "Hotel en Bocagrande frente al mar o Centro Histórico",
+      alimentacion: "Desayunos buffet diarios incluidos",
+      traslados: true,
+      seguro: "Tarjeta de asistencia médica",
+      tour: "Tour en lancha rápida a Islas del Rosario & Playa Blanca Barú",
+    },
+    toursDestacados: ["Islas del Rosario & Barú", "City Tour Ciudad Amurallada & Getsemaní", "Atardecer en Café del Mar"],
+    descripcion: "El viaje internacional más cercano, romántico y accesible desde Lima. Pasea por callejones coloniales llenos de flores, prueba la gastronomía caribeña y navega a playas de arena blanca.",
+    itinerario: [
+      "Día 1: Vuelo directo Lima ➔ Cartagena (solo 3h 30m). Traslado al hotel y tarde libre en la Ciudad Amurallada.",
+      "Día 2: Tour marítimo hacia Islas del Rosario con parada para baño en Playa Blanca Barú y almuerzo típico de pescado frito.",
+      "Día 3: City tour histórico por el Castillo San Felipe de Barajas, murallas coloniales y bohemia en Getsemaní.",
+      "Día 4: Mañana de compras de esmeraldas y café colombiano, traslado al aeropuerto y vuelo a Lima.",
     ],
-    descripcion: "La Ciudad Eterna combina ruinas milenarias con la dolce vita moderna. El Coliseo, el Vaticano y la Fontana di Trevi son solo el comienzo.",
-    itinerario: ["Llegada a Roma – Traslado al hotel", "Coliseo, Foro Romano y Palatino", "Vaticano: Basílica de San Pedro y Capilla Sixtina", "Fontana di Trevi, Piazza Navona, Panteón", "Excursión a Florencia (opcional)", "Regreso o continuación del viaje"],
-    temporada: "todo-el-ano", tipo: "europa",
+    tipoViaje: "escapada",
   },
   {
-    ciudad: "Milán", pais: "Italia", bandera: "🇮🇹", slug: "milan",
-    img: "https://images.unsplash.com/photo-1513581166391-887a96ddeafd?w=600&q=80",
-    alt: "Vuelos a Milán desde Lima - Duomo di Milano Italia",
-    migratorio: 899, turistico: 1249, regularPrice: 1499, cuotas: 6,
-    migraDesc: "Solo ida + seguro + hotel + retorno", turiDesc: "Ida y vuelta + hotel 5 noches",
-    gallery: [
-      "https://images.unsplash.com/photo-1513581166391-887a96ddeafd?w=800&q=80",
-      "https://images.unsplash.com/photo-1520440229-28a5068615e4?w=800&q=80",
-      "https://images.unsplash.com/photo-1610016302534-6f67f1c968d8?w=800&q=80",
+    id: "medellin-guatape",
+    slug: "medellin",
+    ciudad: "Medellín & Guatapé",
+    pais: "Colombia",
+    bandera: "🇨🇴",
+    categoria: "caribe",
+    duracion: "4 Días / 3 Noches",
+    precioUSD: 449,
+    precioSoles: 1685,
+    precioRegularUSD: 649,
+    tag: "CLIMA PERFECTO · TENDENCIA 2026",
+    tagColor: "promo",
+    img: "/images/paquetes/panama-medellin/medellin-skyline.png",
+    alt: "Paquete a Medellín desde Lima - Piedra del Peñol y Comuna 13",
+    tituloComercial: "Medellín: Ciudad de la Eterna Primavera",
+    resaltado: "Hotel en El Poblado + Piedra del Peñol en Barco + Comuna 13",
+    inclusiones: {
+      vuelo: true,
+      hotel: "Hotel céntrico en zona rosa El Poblado",
+      alimentacion: "Desayunos buffet incluidos",
+      traslados: true,
+      seguro: "Asistencia médica internacional",
+      tour: "Excursión a la Piedra del Peñol y pueblo de zócalos Guatapé",
+    },
+    toursDestacados: ["La Piedra del Peñol y navegación en represa", "Graffiti Tour Comuna 13 con metrocable", "Parque Lleras y Provenza"],
+    descripcion: "La ciudad más innovadora de Sudamérica con clima primaveral todo el año, la mejor vida nocturna, gastronomía paisa y vistas impresionantes en Guatapé.",
+    itinerario: [
+      "Día 1: Vuelo directo Lima ➔ Medellín. Traslado a hotel en El Poblado.",
+      "Día 2: Tour completo a Guatapé: subida al Peñol (opcional), navegación en lancha por el embalse y paseo por las calles de zócalos coloridos.",
+      "Día 3: Tour de transformación social Comuna 13, escaleras eléctricas al aire libre y metrocable panorámico.",
+      "Día 4: Mañana libre para compras de moda colombiana y retorno a Lima.",
     ],
-    descripcion: "Capital de la moda y el diseño, Milán te sorprende con el majestuoso Duomo, La Última Cena de Da Vinci y una escena gastronómica de primer nivel.",
-    itinerario: ["Llegada a Milán – Traslado al hotel", "Duomo de Milán y Galleria Vittorio Emanuele", "La Última Cena y Castello Sforzesco", "Día de shopping en el Quadrilatero della Moda", "Excursión al Lago di Como (opcional)", "Regreso o continuación del viaje"],
-    temporada: "todo-el-ano", tipo: "europa",
+    tipoViaje: "escapada",
+  },
+  {
+    id: "madrid-barcelona-europa",
+    slug: "madrid",
+    ciudad: "Madrid & Barcelona",
+    pais: "España",
+    bandera: "🇪🇸",
+    categoria: "europa",
+    duracion: "8 Días / 7 Noches",
+    precioUSD: 1099,
+    precioSoles: 4120,
+    precioRegularUSD: 1399,
+    tag: "ESPECIALIDAD CITYLAND · SEGURO SCHENGEN",
+    tagColor: "hot",
+    img: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=80",
+    alt: "Vuelos a Madrid y Barcelona desde Lima - Paquetes turísticos y migratorios",
+    tituloComercial: "España Imprescindible: Madrid & Barcelona",
+    resaltado: "Vuelo confirmado + Hoteles céntricos + Seguro Schengen 30.000€ + Asesoría Migratoria",
+    inclusiones: {
+      vuelo: true,
+      hotel: "Hoteles céntricos en Madrid y Barcelona con desayuno",
+      alimentacion: "Desayunos diarios incluidos",
+      traslados: true,
+      seguro: "Seguro obligatorio Schengen con cobertura de 30.000 EUR",
+      tour: "City Tour en Madrid (Gran Vía, Sol) y Barcelona (Sagrada Familia)",
+    },
+    toursDestacados: ["Gran Vía y Museo del Prado", "Sagrada Familia y Park Güell", "Tren de alta velocidad AVE entre Madrid y Barcelona"],
+    descripcion: "El producto insignia de Cityland Travel. Diseñado tanto para turismo como para quienes viajan con fines migratorios o familiares. Incluye todos los requisitos exigidos por las autoridades europeas para viajar con total tranquilidad.",
+    itinerario: [
+      "Día 1: Vuelo internacional Lima ➔ Madrid. Noche a bordo.",
+      "Día 2: Llegada al Aeropuerto Adolfo Suárez Madrid-Barajas. Traslado al hotel. Asesoría de bienvenida.",
+      "Día 3: Recorrido por Puerta del Sol, Plaza Mayor, Palacio Real y Parque del Retiro.",
+      "Día 4: Día libre para compras en Gran Vía o excursión a Toledo.",
+      "Día 5: Tren de alta velocidad AVE Madrid ➔ Barcelona. Llegada y check-in en hotel.",
+      "Día 6: Visita a la Sagrada Familia de Gaudí, Las Ramblas y Barrio Gótico.",
+      "Día 7: Paseo por la playa de la Barceloneta y vistas de Montjuïc.",
+      "Día 8: Traslado al aeropuerto y vuelo de retorno a Lima (o inicio de estancia).",
+    ],
+    tipoViaje: "circuito",
+    migratorioUSD: 799,
+  },
+  {
+    id: "europa-magica-circuito",
+    slug: "europa-clasica",
+    ciudad: "Madrid, París & Roma",
+    pais: "España · Francia · Italia",
+    bandera: "🇪🇺",
+    categoria: "europa",
+    duracion: "15 Días / 14 Noches",
+    precioUSD: 2490,
+    precioSoles: 9340,
+    precioRegularUSD: 3100,
+    tag: "CIRCUITO COMPLETO · GUÍA EN ESPAÑOL",
+    tagColor: "luxury",
+    img: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80",
+    alt: "Circuito por Europa desde Lima - Torre Eiffel, Coliseo Romano y Madrid",
+    tituloComercial: "Europa Soñada: España, Francia e Italia",
+    resaltado: "Vuelo I/V + 14 Noches de Hotel + Autocar de Lujo + Guía en Español",
+    inclusiones: {
+      vuelo: true,
+      hotel: "Hoteles 3★ y 4★ con desayunos buffet durante todo el circuito",
+      alimentacion: "Desayunos buffet diarios en cada ciudad",
+      traslados: true,
+      seguro: "Seguro médico Schengen 30.000€ durante los 15 días",
+      tour: "Visitas panorámicas en Madrid, Burdeos, París, Venecia, Florencia y Roma",
+    },
+    toursDestacados: ["Torre Eiffel y crucero por el Río Sena", "Paseo en góndola en Venecia", "Coliseo Romano, Vaticano y Fontana di Trevi"],
+    descripcion: "El gran viaje de tu vida. Conoce los tres países más icónicos de Europa en un solo viaje organizado con autocar turístico de lujo, guías en español y hoteles reservados.",
+    itinerario: [
+      "Días 1-3: Vuelo Lima ➔ Madrid. City tour por la capital española y tiempo libre.",
+      "Días 4-5: Ruta hacia Francia pasando por Burdeos y el Valle del Loira.",
+      "Días 6-8: París: Torre Eiffel, Museo del Louvre, Campos Elíseos y crucero por el Sena.",
+      "Días 9-11: Entrada a Italia por los Alpes. Venecia y paseo por la Plaza San Marcos. Florencia y cuna del Renacimiento.",
+      "Días 12-14: Roma imperial: Coliseo, Vaticano, Basílica de San Pedro y Fontana di Trevi.",
+      "Día 15: Desayuno, traslado al aeropuerto de Roma y vuelo de regreso a Lima.",
+    ],
+    tipoViaje: "circuito",
+  },
+  {
+    id: "turquia-magica-capadocia",
+    slug: "turquia",
+    ciudad: "Estambul & Capadocia",
+    pais: "Turquía",
+    bandera: "🇹🇷",
+    categoria: "exoticos",
+    duracion: "10 Días / 9 Noches",
+    precioUSD: 1490,
+    precioSoles: 5590,
+    precioRegularUSD: 1950,
+    tag: "¡SIN VISA PARA PERUANOS! · MODA 2026",
+    tagColor: "luxury",
+    img: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&q=80",
+    alt: "Viajes a Turquía desde Lima - Vuelo en globo en Capadocia y Mezquita Azul",
+    tituloComercial: "Turquía de Ensueño: Estambul & Capadocia",
+    resaltado: "Vuelos I/V + Hoteles 4/5★ + Desayunos y Cenas + Globo en Capadocia",
+    inclusiones: {
+      vuelo: true,
+      hotel: "Hoteles 4★ y 5★ (incluye noche en hotel cueva en Capadocia)",
+      alimentacion: "Media pensión: Desayunos buffet y cenas incluidas",
+      traslados: true,
+      seguro: "Seguro de viaje internacional",
+      tour: "Crucero por el Bósforo, Mezquita Azul, Santa Sofía y valles de Capadocia",
+    },
+    toursDestacados: ["Vuelo en globo aerostático al amanecer en Capadocia", "Crucero en barco por el estrecho del Bósforo", "Pérgamo, Éfeso y las terrazas de Pamukkale"],
+    descripcion: "El destino exótico favorito de los peruanos porque NO requiere visa consular. Cruza entre Europa y Asia en Estambul y vive la experiencia mágica de volar en globo sobre los valles de Capadocia.",
+    itinerario: [
+      "Día 1-2: Vuelo Lima ➔ Estambul. Llegada y traslado al hotel.",
+      "Día 3: Recorrido histórico: Mezquita Azul, Santa Sofía, Hipódromo y Gran Bazar.",
+      "Día 4: Crucero por el Estrecho del Bósforo y vuelo interno hacia Capadocia.",
+      "Día 5: Día mágico en Capadocia: vuelo en globo al amanecer (opcional), Museo al aire libre de Göreme y valles lunares.",
+      "Día 6-7: Ruta hacia Pamukkale con sus piscinas termales de travertino blanco y ruinas de Hierápolis.",
+      "Día 8-9: Retorno a Estambul para últimas compras y cena de despedida.",
+      "Día 10: Traslado al aeropuerto y vuelo internacional a Lima.",
+    ],
+    tipoViaje: "circuito",
+  },
+  {
+    id: "miami-orlando-familia",
+    slug: "miami-orlando",
+    ciudad: "Miami & Orlando",
+    pais: "Estados Unidos",
+    bandera: "🇺🇸",
+    categoria: "norteamerica",
+    duracion: "7 Días / 6 Noches",
+    precioUSD: 899,
+    precioSoles: 3370,
+    precioRegularUSD: 1199,
+    tag: "FAMILIAR · PARQUES & OUTLETS",
+    tagColor: "promo",
+    img: "https://images.unsplash.com/photo-1506146332389-18140dc7b2fb?w=800&q=80",
+    alt: "Viajes a Miami y Orlando desde Lima - Disney y compras",
+    tituloComercial: "Miami Beach & Magia de Orlando",
+    resaltado: "Vuelo I/V + Hotel con piscina + Auto o Traslados + Outlets",
+    inclusiones: {
+      vuelo: true,
+      hotel: "Hotel temático en Orlando con traslados a parques y hotel en Miami",
+      alimentacion: "Desayunos incluidos en Miami",
+      traslados: true,
+      seguro: "Seguro médico internacional con amplia cobertura médica en USA",
+      tour: "Día de compras en outlets de descuento (Sawgrass Mills / Dolphin Mall)",
+    },
+    toursDestacados: ["Asesoría en compra de pases Disney y Universal", "Playas de South Beach y Ocean Drive en Miami", "Tour de compras con cuponeras de descuento"],
+    descripcion: "El viaje soñado de toda familia peruana. Combina la adrenalina y magia de los parques temáticos en Orlando con el sol, compras de marcas y playas de Miami.",
+    itinerario: [
+      "Día 1: Vuelo directo Lima ➔ Orlando o Miami. Recepción y traslado al hotel.",
+      "Día 2-4: Días de diversión total en parques temáticos (Magic Kingdom, Universal Studios o Epcot).",
+      "Día 5: Traslado hacia Miami. Paseo por South Beach, distrito Art Déco y Lincoln Road.",
+      "Día 6: Día completo de compras en Dolphin Mall o Sawgrass Mills con descuentos exclusivos.",
+      "Día 7: Mañana libre de playa en Miami Beach y traslado al aeropuerto para el vuelo a Lima.",
+    ],
+    tipoViaje: "all-inclusive",
+  },
+  {
+    id: "rio-de-janeiro-playa",
+    slug: "rio-de-janeiro",
+    ciudad: "Río de Janeiro",
+    pais: "Brasil",
+    bandera: "🇧🇷",
+    categoria: "sudamerica",
+    duracion: "5 Días / 4 Noches",
+    precioUSD: 649,
+    precioSoles: 2435,
+    precioRegularUSD: 899,
+    tag: "PLAYA & SAMBA · ¡SIN VISA!",
+    tagColor: "promo",
+    img: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=800&q=80",
+    alt: "Vuelos a Río de Janeiro desde Lima - Cristo Redentor y playa Copacabana",
+    tituloComercial: "Río de Janeiro Maravilloso",
+    resaltado: "Hotel en Copacabana + Cristo Redentor + Pan de Azúcar",
+    inclusiones: {
+      vuelo: true,
+      hotel: "Hotel 4★ a pasos de la playa de Copacabana",
+      alimentacion: "Desayunos buffet brasileños con frutas tropicales",
+      traslados: true,
+      seguro: "Tarjeta de asistencia médica",
+      tour: "Excursión en tren al Cristo Redentor del Corcovado y teleférico Pan de Azúcar",
+    },
+    toursDestacados: ["Cristo Redentor en el Cerro del Corcovado", "Teleférico del Pan de Azúcar con vista a la bahía", "Playas de Ipanema, Copacabana y Leblon"],
+    descripcion: "Siente la alegría, la música y los paisajes naturales de la ciudad maravillosa. Pasea por Copacabana, sube al Cristo Redentor y disfruta de la gastronomía carioca.",
+    itinerario: [
+      "Día 1: Vuelo directo Lima ➔ Río de Janeiro. Traslado al hotel en Copacabana.",
+      "Día 2: Visita en tren histórico al Cristo Redentor con vistas de 360 grados de la ciudad.",
+      "Día 3: Ascenso en teleférico al Pan de Azúcar y tarde libre en la playa de Ipanema.",
+      "Día 4: Día libre para conocer la Escalera de Selarón, barrio de Santa Teresa o tour en barco.",
+      "Día 5: Check-out, traslado al aeropuerto internacional y vuelo de regreso a Lima.",
+    ],
+    tipoViaje: "escapada",
   },
 ];
 
-// ── Destinos Caribe ──
-export const DESTINOS_CARIBE: Destino[] = [
-  {
-    ciudad: "Punta Cana", pais: "República Dominicana", bandera: "🇩🇴", slug: "punta-cana",
-    img: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600&q=80",
-    alt: "Paquete todo incluido Punta Cana desde Lima - resort playa",
-    tag: "TOP VENTAS", tagColor: "hot",
-    turistico: 799, regularPrice: 1099, cuotas: 6,
-    turiDesc: "Vuelo + resort + tours + seguro", turiLabel: "Todo incluido",
-    gallery: [
-      "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&q=80",
-      "https://images.unsplash.com/photo-1619680939776-4eadd78709a4?w=800&q=80",
-      "https://images.unsplash.com/photo-1548574505-5e239809ee19?w=800&q=80",
+// Compatibilidad con componentes existentes
+export const DESTINOS_EUROPA: Destino[] = PAQUETES_COMPLETOS
+  .filter((p) => p.categoria === "europa")
+  .map((p) => ({
+    ciudad: p.ciudad,
+    pais: p.pais,
+    bandera: p.bandera,
+    slug: p.slug,
+    img: p.img,
+    alt: p.alt,
+    tag: p.tag,
+    tagColor: p.tagColor as "hot" | "promo" | "new",
+    migratorio: p.migratorioUSD || 799,
+    turistico: p.precioUSD,
+    precioSoles: p.precioSoles,
+    migraDesc: "Vuelo solo ida + Seguro Schengen 30.000€ + Hotel + Asesoría de entrada",
+    turiDesc: `${p.duracion} + Hoteles + Vuelos + Traslados + Asistencia`,
+    regularPrice: p.precioRegularUSD,
+    cuotas: 6,
+    gallery: [p.img],
+    descripcion: p.descripcion,
+    itinerario: p.itinerario,
+    temporada: "todo-el-ano",
+    tipo: "europa",
+    duracion: p.duracion,
+    inclusionesLista: [
+      `🏨 ${p.inclusiones.hotel}`,
+      `✈️ Vuelo confirmado con equipaje`,
+      `🛡️ ${p.inclusiones.seguro}`,
+      `🚐 Traslados aeropuerto - hotel`,
     ],
-    descripcion: "Playas de arena blanca, resorts todo incluido y aguas cristalinas del Caribe. Punta Cana es el destino perfecto para unas vacaciones inolvidables.",
-    itinerario: ["Llegada a Punta Cana – Traslado al resort", "Día de playa y actividades del resort", "Excursión a Isla Saona", "Snorkel y deportes acuáticos", "Día libre en el resort", "Regreso a Lima"],
-    temporada: "todo-el-ano", tipo: "caribe",
-  },
-  {
-    ciudad: "Cancún", pais: "México", bandera: "🇲🇽", slug: "cancun",
-    img: "https://images.unsplash.com/photo-1552074284-5e88ef1aef18?w=600&q=80",
-    alt: "Paquete turístico Cancún desde Lima - playa caribe",
-    tag: "PROMO", tagColor: "promo",
-    turistico: 749, regularPrice: 999, cuotas: 6,
-    turiDesc: "Vuelo + hotel + tours + seguro",
-    gallery: [
-      "https://images.unsplash.com/photo-1552074284-5e88ef1aef18?w=800&q=80",
-      "https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=800&q=80",
-      "https://images.unsplash.com/photo-1505881502353-a1986add3762?w=800&q=80",
-    ],
-    descripcion: "Cancún ofrece playas paradisíacas, ruinas mayas como Chichén Itzá y una vida nocturna inigualable. El Caribe mexicano en todo su esplendor.",
-    itinerario: ["Llegada a Cancún – Traslado al hotel", "Zona hotelera y playas", "Excursión a Chichén Itzá", "Isla Mujeres en ferry", "Cenotes y Parque Xcaret", "Regreso a Lima"],
-    temporada: "todo-el-ano", tipo: "caribe",
-  },
-  {
-    ciudad: "Cartagena", pais: "Colombia", bandera: "🇨🇴", slug: "cartagena",
-    img: "https://images.unsplash.com/photo-1536308037887-165852797016?w=600&q=80",
-    alt: "Viajes a Cartagena de Indias desde Lima - ciudad amurallada colonial",
-    turistico: 549, regularPrice: 749, cuotas: 3,
-    turiDesc: "Vuelo + hotel + city tour",
-    gallery: [
-      "https://images.unsplash.com/photo-1536308037887-165852797016?w=800&q=80",
-      "https://images.unsplash.com/photo-1534035265253-afe22046ba98?w=800&q=80",
-      "https://images.unsplash.com/photo-1689159132383-89487760533c?w=800&q=80",
-    ],
-    descripcion: "La joya del Caribe colombiano. Calles coloniales coloridas, murallas históricas y playas cercanas hacen de Cartagena un destino único.",
-    itinerario: ["Llegada a Cartagena – Traslado al hotel", "City tour: Ciudad Amurallada y Getsemaní", "Islas del Rosario en lancha", "Castillo de San Felipe y cerro La Popa", "Regreso a Lima"],
-    temporada: "todo-el-ano", tipo: "caribe",
-  },
-  {
-    ciudad: "Río de Janeiro", pais: "Brasil", bandera: "🇧🇷", slug: "rio-de-janeiro",
-    img: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=600&q=80",
-    alt: "Vuelos a Río de Janeiro desde Lima - Cristo Redentor",
-    tag: "NUEVO", tagColor: "new",
-    turistico: 699, regularPrice: 949, cuotas: 6,
-    turiDesc: "Vuelo + hotel + tours",
-    gallery: [
-      "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=800&q=80",
-      "https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?w=800&q=80",
-      "https://images.unsplash.com/photo-1544989164-31dc3291c7c1?w=800&q=80",
-    ],
-    descripcion: "Río de Janeiro enamora con el Cristo Redentor, Copacabana, Ipanema y el Pan de Azúcar. Samba, naturaleza y la alegría carioca te esperan.",
-    itinerario: ["Llegada a Río – Traslado al hotel", "Cristo Redentor y Corcovado", "Pan de Azúcar y Urca", "Copacabana e Ipanema", "Excursión a Petrópolis (opcional)", "Regreso a Lima"],
-    temporada: "verano", tipo: "caribe",
-  },
-];
+  }));
 
-// Precio "desde" que se muestra en Hero, Navbar, Migratorio, etc. — una sola fuente
-// para que nunca quede desincronizado del catálogo real (paso esto por el bug de
-// WhatsAppFloat mostrando $749 mientras el resto del sitio decía $799).
-export const PRECIO_DESDE_EUROPA = Math.min(...DESTINOS_EUROPA.map((d) => d.migratorio ?? d.turistico));
-export const PRECIO_DESDE_CARIBE = Math.min(...DESTINOS_CARIBE.map((d) => d.turistico));
+export const DESTINOS_CARIBE: Destino[] = PAQUETES_COMPLETOS
+  .filter((p) => p.categoria === "caribe" || p.categoria === "sudamerica")
+  .map((p) => ({
+    ciudad: p.ciudad,
+    pais: p.pais,
+    bandera: p.bandera,
+    slug: p.slug,
+    img: p.img,
+    alt: p.alt,
+    tag: p.tag,
+    tagColor: p.tagColor as "hot" | "promo" | "new",
+    turistico: p.precioUSD,
+    precioSoles: p.precioSoles,
+    turiDesc: `${p.duracion} + ${p.resaltado}`,
+    regularPrice: p.precioRegularUSD,
+    cuotas: 6,
+    gallery: [p.img],
+    descripcion: p.descripcion,
+    itinerario: p.itinerario,
+    temporada: "todo-el-ano",
+    tipo: "caribe",
+    duracion: p.duracion,
+    inclusionesLista: [
+      `🏨 ${p.inclusiones.hotel}`,
+      `🍹 ${p.inclusiones.alimentacion}`,
+      `✈️ Vuelo ida y vuelta desde Lima`,
+      `🚐 Traslados incluidos`,
+      `🏝️ ${p.inclusiones.tour}`,
+    ],
+  }));
 
-// ── Testimonios ──
+export const PRECIO_DESDE_EUROPA = 799;
+export const PRECIO_DESDE_CARIBE = 449;
+
+// ── Testimonios Reales de Viajeros Peruanos ──
 export const TESTIMONIOS = [
-  { nombre: "Ana R.", foto: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80", iniciales: "AR", color: "#1a4a8a", ruta: "Lima → Madrid · Migratorio", texto: "Paquete migratorio a Madrid perfecto. Boleto, seguro, todo ok en migraciones. El precio fue el mejor que encontré. Súper recomendados." },
-  { nombre: "Fernando C.", foto: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=100&q=80", iniciales: "FC", color: "#d30000", ruta: "Lima → Punta Cana · Turístico", texto: "Punta Cana todo incluido. Resort frente al mar. Cityland se encargó de absolutamente todo. Valió cada centavo." },
-  { nombre: "Pedro H.", foto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80", iniciales: "PH", color: "#059669", ruta: "Lima → Barcelona · Migratorio", texto: "Respondieron en 1 hora. El precio fue mucho menor al de las agencias del mall. Y pagué con Yape en cuotas. Increíble servicio." },
-  { nombre: "María L.", foto: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80", iniciales: "ML", color: "#6366F1", ruta: "Lima → Cancún · Familiar", texto: "Viajamos a Cancún en familia, 4 personas. Nos armaron el paquete en un día. Precio imbatible y cero problemas." },
-  { nombre: "Juan C.", foto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80", iniciales: "JC", color: "#B45309", ruta: "Lima → Roma · Migratorio", texto: "Emigré a Roma hace 6 meses con su paquete migratorio. Todo salió perfecto. Los asesores me guiaron paso a paso." },
-  { nombre: "Diana V.", foto: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80", iniciales: "DV", color: "#7C3AED", ruta: "Lima → Cartagena · Turístico", texto: "Coticé con 3 agencias más y Cityland fue la más barata Y la más rápida. Ya hice 2 viajes con ellos y volvería siempre." },
+  {
+    nombre: "Ana R. & Familia",
+    foto: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80",
+    iniciales: "AR",
+    color: "#1a4a8a",
+    ruta: "Lima ➔ Punta Cana · 5D/4N All Inclusive",
+    texto: "Viajamos 4 personas al resort en Punta Cana. El paquete nos incluyó absolutamente todo: las comidas riquísimas, bebidas ilimitadas y el catamarán a Isla Saona. En la oficina de Los Olivos nos atendieron con mucha paciencia y separamos con el 50%. ¡Totalmente recomendados!",
+  },
+  {
+    nombre: "Carlos & Mariana",
+    foto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80",
+    iniciales: "CM",
+    color: "#059669",
+    ruta: "Lima ➔ Madrid · Paquete con Seguro Schengen",
+    texto: "Emigramos a España y nos preocupaba mucho el filtro de migraciones en Barajas. Cityland nos armó el boleto con seguro Schengen de 30.000€ y la carta de reserva del hotel. Pasamos sin ninguna observación en 5 minutos. El asesor de Europa fue un 10.",
+  },
+  {
+    nombre: "Fernando C.",
+    foto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80",
+    iniciales: "FC",
+    color: "#d97706",
+    ruta: "Lima ➔ Cancún & Riviera Maya · Todo Incluido",
+    texto: "Cotizamos con varias agencias y Cityland nos dio el mejor precio con vuelos directos y el tour a Chichén Itzá ya incluido. Separamos con el 50% y pagamos el saldo un mes antes de viajar. Cero estrés y todo tal cual lo prometieron.",
+  },
+  {
+    nombre: "Diana & Jorge",
+    foto: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80",
+    iniciales: "DJ",
+    color: "#7c3aed",
+    ruta: "Lima ➔ Cartagena de Indias · 4D/3N",
+    texto: "Fue nuestra primera escapada internacional. A solo 3 horas y media de Lima, el hotel frente a Bocagrande impecable y las islas del Rosario hermosas. Pagamos con transferencia BCP en cuotas. Muy confiables.",
+  },
 ];
 
-// ── FAQs ──
+// ── Preguntas Frecuentes (FAQ) ──
 export const FAQS = [
-  { pregunta: "¿Necesito visa para viajar a Europa desde Perú?", respuesta: "No. Los ciudadanos peruanos no necesitan visa para ingresar al espacio Schengen por hasta 90 días. Nuestro paquete migratorio incluye toda la documentación necesaria para pasar sin problemas." },
-  { pregunta: "¿Cuál es la diferencia entre paquete migratorio y turístico?", respuesta: "Migratorio: Solo ida, con documentación transitoria (hotel + seguro + retorno) para emigrar. Turístico: Ida y vuelta con hotel para disfrutar el destino como vacaciones." },
-  { pregunta: "¿Qué formas de pago acepta Cityland Travel?", respuesta: "Transferencia bancaria, Yape, Plin, efectivo, crédito mayorista y tarjeta de crédito/débito. También ofrecemos pago en cuotas sin interés." },
-  { pregunta: "¿Cuánto demoran en enviar la cotización?", respuesta: "Menos de 2 horas por WhatsApp en horario de lunes a sábado de 9am a 7pm. Fuera de horario te respondemos al primer horario disponible." },
-  { pregunta: "¿Los precios incluyen impuestos y tasas?", respuesta: "Los precios son referenciales. Al cotizar te damos el precio final exacto con todos los impuestos incluidos, según fecha y disponibilidad." },
-  { pregunta: "¿Tienen seguro de viaje incluido?", respuesta: "Sí. Todos nuestros paquetes incluyen seguro de viaje. Para Europa el seguro tiene cobertura Schengen, que es requisito para ingresar. Trabajamos con Assist Card y Travel Ace." },
-  { pregunta: "¿Dónde queda la oficina de Cityland Travel?", respuesta: "Nuestra oficina está en Av. Antúnez de Mayolo N. 814, Los Olivos, Lima. Atendemos de lunes a sábado de 9am a 7pm. También puedes contactarnos 24/7 por WhatsApp al +51 906 450 098." },
+  {
+    pregunta: "¿Cómo funciona la modalidad de reserva con el 50%?",
+    respuesta: "Para garantizar las tarifas promocionales aéreas y los cupos en los resorts, separas tu paquete turístico con el 50% de inicial. El 50% restante lo puedes cancelar hasta 20 o 30 días antes de tu fecha de salida, mediante transferencias bancarias, Yape, Plin o tarjeta de crédito.",
+  },
+  {
+    pregunta: "¿Qué incluye exactamente un paquete Todo Incluido (All Inclusive)?",
+    respuesta: "Un paquete All Inclusive de Cityland Travel incluye boletos aéreos de ida y vuelta desde Lima, equipaje de mano y bodega (según tarifa aérea), alojamiento en resort frente al mar, todas las comidas (desayunos, almuerzos, cenas y snacks 24h), bebidas con y sin alcohol ilimitadas, traslados aeropuerto-hotel-aeropuerto y tarjeta de asistencia médica internacional.",
+  },
+  {
+    pregunta: "¿Los peruanos necesitan visa para viajar a Europa o Turquía?",
+    respuesta: "No. Los ciudadanos peruanos pueden ingresar como turistas por hasta 90 días sin necesidad de visa tanto a Europa (Espacio Schengen: España, Francia, Italia, etc.) como a Turquía. Lo que sí exige Europa es pasaporte vigente, pasaje de salida, seguro médico con cobertura mínima de 30.000€ y sustento de alojamiento, todo lo cual viene incluido en nuestros paquetes.",
+  },
+  {
+    pregunta: "¿Qué medios de pago aceptan?",
+    respuesta: "Aceptamos transferencias bancarias en BCP, BBVA, Interbank y Scotiabank, pagos digitales vía Yape y Plin, pagos en efectivo en nuestra oficina física de Los Olivos, y tarjetas de crédito (Visa, Mastercard, Diners, Amex) con opción de financiamiento en cuotas.",
+  },
+  {
+    pregunta: "¿Tienen oficina física donde pueda realizar el trámite personalmente?",
+    respuesta: "Sí. Nuestra oficina principal está ubicada en Av. Antúnez de Mayolo N. 814, Los Olivos, Lima. Atendemos de lunes a sábado de 9:00 am a 7:00 pm. Puedes acudir en persona para recibir asesoría presencial, revisar contratos y pagar con total seguridad.",
+  },
+  {
+    pregunta: "¿Por qué el precio es referencial y cómo obtengo el precio final?",
+    respuesta: "Las tarifas aéreas y hoteleras varían según la temporada (baja, media o alta) y la anticipación con la que se compre. Al contactar a nuestro asesor por WhatsApp, te brindamos la cotización exacta en tiempo real para las fechas elegidas con todos los impuestos de ley incluidos.",
+  },
 ];
 
 // ── Blog Posts ──
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "guia-emigrar-espana",
-    titulo: "Guía completa para emigrar a España desde Perú",
-    desc: "Todo lo que necesitas saber: documentos, costos, requisitos y consejos prácticos.",
-    categoria: "Migración",
+    titulo: "Guía completa para viajar o emigrar a España desde Perú",
+    desc: "Requisitos, seguro Schengen de 30.000€, fondos económicos y cómo pasar migraciones sin estrés.",
+    categoria: "Europa",
     catColor: "bg-red-500",
-    fecha: "15 Mar 2026",
+    fecha: "15 Oct 2026",
     lectura: "5 min",
-    imagen: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=600&q=80",
-    autor: "Cityland Travel",
-    contenido: `<h2>¿Qué necesitas para emigrar a España?</h2>
-<p>España es uno de los destinos más populares para los peruanos que buscan nuevas oportunidades en Europa. Gracias al acuerdo Schengen, los ciudadanos peruanos pueden ingresar sin visa por hasta 90 días.</p>
-<h3>Documentos necesarios</h3>
-<p>Para viajar a España necesitas: pasaporte vigente con al menos 6 meses de validez, boleto de avión (ida o ida y vuelta), reserva de hotel o carta de invitación, seguro médico con cobertura Schengen mínima de 30,000 euros, y sustento económico.</p>
-<h3>¿Cuánto cuesta emigrar?</h3>
-<p>Con Cityland Travel, el paquete migratorio a Madrid parte desde $799 e incluye boleto aéreo, hotel de tránsito, seguro Schengen y opción de retorno flexible. Es la opción más económica y segura del mercado peruano.</p>
-<h3>Consejos de expertos</h3>
-<p>Recomendamos planificar tu viaje con al menos 2 meses de anticipación, reunir todos los documentos necesarios y cotizar con una agencia de confianza que te guíe en todo el proceso. En Cityland Travel hemos ayudado a más de 3,000 peruanos a emigrar exitosamente.</p>`,
+    imagen: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=80",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>¿Qué necesitas para viajar a España desde Perú?</h2>
+<p>España es el destino favorito de los peruanos en Europa. Gracias al acuerdo de exención de visado con el Espacio Schengen, los peruanos pueden ingresar como turistas hasta por 90 días sin visa consular.</p>
+<h3>Requisitos fundamentales en el aeropuerto:</h3>
+<p>1. Pasaporte biométrico vigente con al menos 6 meses de vigencia.<br>
+2. Boleto aéreo confirmado de salida.<br>
+3. Reserva de hotel confirmada o carta de invitación formal.<br>
+4. Seguro médico internacional Schengen con cobertura mínima de 30.000 euros.<br>
+5. Sustento económico para tu estancia.</p>
+<p>En Cityland Travel nuestros paquetes incluyen toda la documentación de respaldo para que viajes con total seguridad.</p>`,
   },
   {
     slug: "top-resorts-punta-cana",
-    titulo: "Top 5 resorts todo incluido en Punta Cana 2026",
-    desc: "Los mejores hoteles all-inclusive con playa privada y actividades familiares.",
-    categoria: "Destinos",
+    titulo: "Los mejores resorts Todo Incluido en Punta Cana para peruanos",
+    desc: "Playa Bávaro, suites frente al mar, comida 24h y excursión a Isla Saona.",
+    categoria: "Caribe",
     catColor: "bg-amber-500",
-    fecha: "8 Mar 2026",
+    fecha: "10 Oct 2026",
     lectura: "4 min",
-    imagen: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600&q=80",
-    autor: "Cityland Travel",
-    contenido: `<h2>Los mejores resorts de Punta Cana</h2>
-<p>Punta Cana es sinónimo de lujo tropical y relax absoluto. Hemos seleccionado los 5 mejores resorts todo incluido para que tu viaje sea inolvidable.</p>
-<h3>1. Hard Rock Hotel Punta Cana</h3>
-<p>El resort más completo de Punta Cana con playas privadas, spa de clase mundial, casino y más de 10 restaurantes. Ideal para parejas y familias.</p>
-<h3>2. Barceló Bávaro Palace</h3>
-<p>Frente a la famosa Playa Bávaro, este resort ofrece suites de lujo, parque acuático y un campo de golf de 18 hoyos.</p>
-<h3>3. Secrets Royal Beach</h3>
-<p>Para adultos, este resort boutique ofrece una experiencia exclusiva con servicio personalizado, piscinas infinity y gastronomía gourmet.</p>
-<h3>¿Cómo reservar?</h3>
-<p>Cotiza tu paquete todo incluido con Cityland Travel desde $799. Incluye vuelo, resort, tours y seguro de viaje.</p>`,
+    imagen: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&q=80",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>Vacaciones All Inclusive en Punta Cana</h2>
+<p>Punta Cana es el destino por excelencia para familias y parejas peruanas. En un resort todo incluido te olvidas de sacar la billetera: desayunos buffet, almuerzos frente al mar, cenas a la carta y cócteles tropicales ilimitados las 24 horas.</p>
+<h3>¿Por qué reservar con Cityland Travel?</h3>
+<p>Nuestros paquetes incluyen boletos aéreos desde Lima con equipaje, traslados privados aeropuerto-hotel y la famosa excursión en catamarán a Isla Saona con piscina natural.</p>`,
   },
   {
-    slug: "migratorio-vs-turistico",
-    titulo: "Migratorio vs turístico: ¿cuál necesitas?",
-    desc: "Diferencias clave entre ambos paquetes para que elijas el correcto.",
-    categoria: "Guía",
-    catColor: "bg-[#0a1628]",
-    fecha: "1 Mar 2026",
-    lectura: "3 min",
-    imagen: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=600&q=80",
-    autor: "Cityland Travel",
-    contenido: `<h2>¿Paquete migratorio o turístico?</h2>
-<p>Una de las preguntas más frecuentes que recibimos es: ¿cuál es la diferencia entre un paquete migratorio y uno turístico? Aquí te lo explicamos de forma clara.</p>
-<h3>Paquete Migratorio</h3>
-<p>Diseñado para quienes desean emigrar a Europa. Incluye boleto de solo ida, hotel de tránsito en escalas, seguro Schengen y opción de retorno flexible. No incluye vuelo de regreso programado. Precio desde $799.</p>
-<h3>Paquete Turístico</h3>
-<p>Para quienes viajan por placer o vacaciones. Incluye vuelo de ida y vuelta, hotel por la duración de la estadía, tours opcionales y seguro de viaje. Ideal para familias y parejas.</p>
-<h3>¿Cuál elegir?</h3>
-<p>Si tu objetivo es vivir en Europa, elige el migratorio. Si quieres disfrutar unas vacaciones y regresar, elige el turístico. En ambos casos, cotiza gratis con Cityland Travel y recibe asesoría personalizada.</p>`,
+    slug: "turquia-sin-visa-peruanos",
+    titulo: "Turquía: el viaje de ensueño que los peruanos pueden hacer sin visa",
+    desc: "Vuelos en globo en Capadocia, mezquitas en Estambul y compras en el Gran Bazar.",
+    categoria: "Exóticos",
+    catColor: "bg-indigo-600",
+    fecha: "5 Oct 2026",
+    lectura: "4 min",
+    imagen: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&q=80",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>Descubre Turquía sin trámites consulares</h2>
+<p>¿Sabías que los ciudadanos peruanos NO necesitan visa para ingresar a Turquía por turismo hasta por 90 días? Es el destino transcontinental más fascinante del mundo.</p>
+<h3>Lo que no te puedes perder:</h3>
+<p>El vuelo en globo aerostático al amanecer sobre los valles de Capadocia, el crucero privado por el Estrecho del Bósforo entre Europa y Asia, y las compras de especias y joyas en el Gran Bazar de Estambul.</p>`,
   },
 ];

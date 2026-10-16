@@ -7,12 +7,12 @@ import PhoneIcon from "@/components/icons/PhoneIcon";
 import ArrowRightIcon from "@/components/icons/ArrowRightIcon";
 
 const navLinks: { label: string; href: string; external?: boolean }[] = [
-  { label: "Destinos", href: "#destinos" },
-  { label: "Ofertas", href: CATALOGO_LINK, external: true },
-  { label: "Migratorio", href: "#migra" },
+  { label: "Paquetes Todo Incluido", href: "#destinos" },
+  { label: "Salidas 2026", href: "#paquetes" },
+  { label: "Europa & Migratorio", href: "#migra" },
   { label: "Servicios", href: "#servicios" },
-  { label: "Blog", href: "#blog" },
-  { label: "Contacto", href: "#ubicacion" },
+  { label: "Testimonios", href: "#testimonios" },
+  { label: "Oficina & Contacto", href: "#ubicacion" },
 ];
 
 export default function Navbar() {

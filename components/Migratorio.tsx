@@ -1,5 +1,5 @@
 import AnimateOnScroll from "@/components/AnimateOnScroll";
-import { waLink, PRECIO_DESDE_EUROPA } from "@/components/constantes";
+import { buildWaUrl, PRECIO_DESDE_EUROPA } from "@/components/constantes";
 import PlaneIcon from "@/components/icons/PlaneIcon";
 import ArrowRightIcon from "@/components/icons/ArrowRightIcon";
 
@@ -37,7 +37,16 @@ export default function Migratorio() {
             <p className="text-[16px] text-white/55 leading-relaxed mb-8">
               Más de 3,000 peruanos ya viajaron con nosotros. Sin visa requerida para zona Schengen.
             </p>
-            <a href={waLink(`Quiero info del paquete migratorio $${PRECIO_DESDE_EUROPA}`)} target="_blank" rel="noopener" className="btn-hover grad-warm glow-warm inline-flex items-center justify-center gap-2 text-white px-7 py-3.5 rounded-xl text-[14px] font-bold shadow-lg shadow-orange-600/25 transition-all">
+            <a
+              href={buildWaUrl({
+                categoria: "europa",
+                destino: "España",
+                texto: `¡Hola Cityland Travel! Me interesa el Paquete Migratorio a España/Europa desde $${PRECIO_DESDE_EUROPA} USD. Deseo información de requisitos, fechas disponibles y cómo separar con el 50% de inicial.`
+              })}
+              target="_blank"
+              rel="noopener"
+              className="btn-hover grad-warm glow-warm inline-flex items-center justify-center gap-2 text-white px-7 py-3.5 rounded-xl text-[14px] font-bold shadow-lg shadow-orange-600/25 transition-all"
+            >
               Explorar plan migratorio
               <ArrowRightIcon className="w-4 h-4 fill-none stroke-current stroke-2" />
             </a>

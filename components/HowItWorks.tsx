@@ -20,9 +20,9 @@ const PASOS = [
   },
   {
     num: 3,
-    titulo: "Confirma y paga fácil",
-    desc: "Yape, Plin, transferencia, tarjeta o cuotas sin interés.",
-    icon: <svg viewBox="0 0 24 24" className="w-6 h-6 fill-none stroke-white stroke-2" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>,
+    titulo: "Separa con el 50%",
+    desc: "Asegura vuelos y hotel con 50% de inicial (Yape, Plin, BCP, BBVA o tarjeta). Paga el saldo antes de viajar.",
+    icon: <svg viewBox="0 0 24 24" className="w-6 h-6 fill-none stroke-white stroke-2" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="12" y2="15"/></svg>,
     color: "from-[#059669] to-[#10B981]",
   },
   {

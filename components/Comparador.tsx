@@ -7,13 +7,12 @@ const PUNTA_CANA = DESTINOS_CARIBE.find((d) => d.slug === "punta-cana")!;
 
 const filas = [
   { concepto: "Migratorio Madrid", cityland: `$${MADRID.migratorio}`, otros: "$1,200+" },
-  { concepto: "Punta Cana", cityland: `$${PUNTA_CANA.turistico}`, otros: "$1,100+" },
-  { concepto: "Cotización", cityland: "Gratis", otros: "Cobran" },
-  { concepto: "Respuesta", cityland: "2 horas", otros: "24-48h" },
-  { concepto: "Seguro", cityland: "Incluido", otros: "Extra" },
-  { concepto: "Pago cuotas", cityland: "Sí", otros: "Solo contado" },
-  { concepto: "Yape/Plin", cityland: "Sí", otros: "No" },
-  { concepto: "Soporte 24/7", cityland: "Sí", otros: "Solo horario" },
+  { concepto: "Punta Cana All Inclusive", cityland: `$${PUNTA_CANA.turistico}`, otros: "$1,100+" },
+  { concepto: "Modalidad de reserva", cityland: "Separa con 50%", otros: "100% inmediato" },
+  { concepto: "Cotización personalizada", cityland: "Gratis en 2h", otros: "Cobran o tardan" },
+  { concepto: "Seguro internacional", cityland: "Incluido", otros: "Extra ($50+)" },
+  { concepto: "Medios de pago", cityland: "Yape/Plin/Bancos/Tarjetas", otros: "Limitados" },
+  { concepto: "Soporte en viaje", cityland: "24/7 activo", otros: "Solo oficina" },
 ];
 
 export default function Comparador() {
