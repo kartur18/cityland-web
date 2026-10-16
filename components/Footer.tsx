@@ -50,11 +50,20 @@ export default function Footer() {
           {/* Rutas Europa, Visas & Seguros */}
           <div className="lg:col-span-3">
             <h4 className="text-xs font-bold text-white mb-4 tracking-wider uppercase">
-              España, Visas & Seguros
+              Vuelos a Europa, Visas & Seguros
             </h4>
             <div className="space-y-2 text-xs">
               <a href="/espana" className="block text-slate-300 hover:text-white transition-colors">
                 Paquete Migratorio a España (Desde $890 USD)
+              </a>
+              <a href="/vuelos/lima-madrid" className="block text-slate-300 hover:text-white transition-colors">
+                Vuelos de Lima a Madrid (LIM → MAD)
+              </a>
+              <a href="/vuelos/madrid-lima" className="block text-slate-300 hover:text-white transition-colors">
+                Vuelos de Madrid a Lima (MAD → LIM)
+              </a>
+              <a href="/vuelos/lima-barcelona" className="block text-slate-300 hover:text-white transition-colors">
+                Vuelos de Lima a Barcelona (LIM → BCN)
               </a>
               <a href="/europa-turquia" className="block text-slate-300 hover:text-white transition-colors">
                 Circuitos Europa 15D & Turquía Sin Visa
@@ -65,26 +74,23 @@ export default function Footer() {
               <a href="/seguros" className="block text-slate-300 hover:text-white transition-colors">
                 Seguro Schengen 30.000€ & Internacional
               </a>
-              <a href="/cruceros" className="block text-slate-300 hover:text-white transition-colors">
-                Cruceros Todo Incluido Sin Visa
-              </a>
-              <a href="/empresas" className="block text-slate-300 hover:text-white transition-colors">
-                Viajes Corporativos (Factura RUC)
-              </a>
             </div>
           </div>
 
           {/* Rutas Caribe, Perú & Grupos */}
           <div className="lg:col-span-2">
             <h4 className="text-xs font-bold text-white mb-4 tracking-wider uppercase">
-              Caribe, Perú & Grupos
+              Caribe, Rutas & Local
             </h4>
             <div className="space-y-2 text-xs">
               <a href="/caribe" className="block text-slate-300 hover:text-white transition-colors">
-                Punta Cana, Cancún & Miami
+                Punta Cana, Cancún & Cartagena
               </a>
-              <a href="/caribe#cartagena" className="block text-slate-300 hover:text-white transition-colors">
-                Colombia & Brasil (Solo DNI)
+              <a href="/vuelos/lima-miami" className="block text-slate-300 hover:text-white transition-colors">
+                Vuelos de Lima a Miami (LIM → MIA)
+              </a>
+              <a href="/vuelos/lima-buenos-aires" className="block text-slate-300 hover:text-white transition-colors">
+                Vuelos Lima a Buenos Aires (Solo DNI)
               </a>
               <a href="/cusco" className="block text-slate-300 hover:text-white transition-colors">
                 Cusco & Machu Picchu (3 a 6 Días)
@@ -92,11 +98,11 @@ export default function Footer() {
               <a href="/peru" className="block text-slate-300 hover:text-white transition-colors">
                 Punta Sal, Máncora & Tarapoto
               </a>
-              <a href="/luna-de-miel" className="block text-slate-300 hover:text-white transition-colors">
-                Luna de Miel & Quinceañeras
+              <a href="/agencia-de-viajes-los-olivos" className="block text-slate-300 hover:text-white transition-colors">
+                Agencia de Viajes en Los Olivos
               </a>
-              <a href="/colegios" className="block text-slate-300 hover:text-white transition-colors">
-                Viajes de Promoción Escolar
+              <a href="/agencia-de-viajes-lima-norte" className="block text-slate-300 hover:text-white transition-colors">
+                Agencia de Viajes en Lima Norte
               </a>
             </div>
           </div>

@@ -172,6 +172,12 @@ export default function AdminTarifasPage() {
           </div>
           <div className="flex items-center gap-3">
             <Link
+              href="/admin/asesores"
+              className="text-xs font-bold text-emerald-300 hover:text-white bg-white/10 px-4 py-2.5 rounded-xl"
+            >
+              Panel 12 Asesores WhatsApp
+            </Link>
+            <Link
               href="/"
               className="text-xs font-bold text-white/80 hover:text-white border border-white/20 px-4 py-2.5 rounded-xl"
             >

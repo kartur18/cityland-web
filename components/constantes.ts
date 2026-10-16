@@ -532,6 +532,88 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     ],
     tipoViaje: "escapada",
   },
+  {
+    id: "aruba-playa-caribe",
+    slug: "aruba",
+    ciudad: "Aruba",
+    pais: "Aruba",
+    bandera: "🇦🇼",
+    categoria: "caribe",
+    duracion: "5 Días / 4 Noches",
+    precioUSD: 1150,
+    precioSoles: 4310,
+    precioRegularUSD: 1390,
+    tag: "ISLA FELIZ · SIN VISA",
+    tagColor: "promo",
+    img: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&q=85",
+    alt: "Paquetes a Aruba desde Lima - Eagle Beach y Palm Beach",
+    tituloComercial: "Aruba — La Isla Feliz del Caribe",
+    resaltado: "Vuelos desde Lima + Hotel en Palm Beach / Eagle Beach + Sin Visa",
+    inclusiones: {
+      vuelo: true,
+      hotel: "Resort 4 Estrellas frente a Eagle Beach / Palm Beach",
+      alimentacion: "Desayunos buffet o plan Todo Incluido",
+      traslados: true,
+      seguro: "Tarjeta de asistencia médica internacional",
+      tour: "Paseo por Oranjestad y Faro California",
+    },
+    toursDestacados: [
+      "Playas de arena blanca Eagle Beach y Palm Beach",
+      "Paseo en catamarán al atardecer con snorkel",
+      "Recorrido por Oranjestad, Faro California y Baby Beach",
+    ],
+    descripcion:
+      "Conocida como la Isla Feliz del Caribe y fuera del cinturón de huracanes, Aruba ofrece playas de agua cristalina como Eagle Beach y Palm Beach sin necesidad de visa consular para peruanos.",
+    itinerario: [
+      "Día 1: Vuelo desde Lima hacia Reina Beatrix (AUA). Recepción y traslado al hotel.",
+      "Día 2: Día de relax frente al mar en Palm Beach y paseo por la zona comercial de Oranjestad.",
+      "Día 3: Visita a Eagle Beach (considerada una de las mejores playas del mundo) y Faro California.",
+      "Día 4: Día libre para excursión opcional en catamarán o visita a Isla De Palm.",
+      "Día 5: Traslado al aeropuerto internacional de Aruba y vuelo de retorno a Lima.",
+    ],
+    tipoViaje: "all-inclusive",
+  },
+  {
+    id: "panama-compras-playa",
+    slug: "panama",
+    ciudad: "Ciudad de Panamá",
+    pais: "Panamá",
+    bandera: "🇵🇦",
+    categoria: "caribe",
+    duracion: "5 Días / 4 Noches",
+    precioUSD: 699,
+    precioSoles: 2620,
+    precioRegularUSD: 890,
+    tag: "COMPRAS & PLAYA · SIN VISA",
+    tagColor: "hot",
+    img: "https://images.unsplash.com/photo-1578894381163-e72c17f2d45f?w=1200&q=85",
+    alt: "Paquetes a Panamá desde Lima - Canal de Panamá y Compras",
+    tituloComercial: "Panamá: Ciudad, Canal & Playa Blanca",
+    resaltado: "Vuelos directos + Hotel + Tour Canal de Panamá y Albrook Mall",
+    inclusiones: {
+      vuelo: true,
+      hotel: "Hotel 4 Estrellas en Ciudad de Panamá / Playa Blanca",
+      alimentacion: "Desayunos buffet (y All Inclusive en Playa Blanca)",
+      traslados: true,
+      seguro: "Asistencia médica internacional",
+      tour: "City Tour Casco Antiguo + Canal de Panamá + Compras",
+    },
+    toursDestacados: [
+      "Esclusas de Miraflores en el Canal de Panamá",
+      "Casco Antiguo colonial y Calzada de Amador",
+      "Tour de compras en Albrook Mall / Multiplaza",
+    ],
+    descripcion:
+      "Combina modernidad, compras libres de impuestos en los mejores centros comerciales de Latinoamérica, la ingeniería del Canal de Panamá y playas del Pacífico o San Blas sin visa para peruanos.",
+    itinerario: [
+      "Día 1: Vuelo directo Lima ➔ Ciudad de Panamá (Tocumen). Traslado al hotel.",
+      "Día 2: City Tour por el Casco Antiguo, Calzada de Amador y visita al Canal de Panamá.",
+      "Día 3: Tour de compras en Albrook Mall con traslados incluidos.",
+      "Día 4: Día libre para disfrutar la piscina del hotel o excursión a Isla Taboga / San Blas.",
+      "Día 5: Traslado al Aeropuerto de Tocumen y vuelo de regreso a Lima.",
+    ],
+    tipoViaje: "escapada",
+  },
 ];
 
 // Compatibilidad con componentes existentes
@@ -568,7 +650,7 @@ export const DESTINOS_EUROPA: Destino[] = PAQUETES_COMPLETOS
   }));
 
 export const DESTINOS_CARIBE: Destino[] = PAQUETES_COMPLETOS
-  .filter((p) => p.categoria === "caribe" || p.categoria === "sudamerica")
+  .filter((p) => p.categoria === "caribe" || p.categoria === "sudamerica" || p.categoria === "norteamerica")
   .map((p) => ({
     ciudad: p.ciudad,
     pais: p.pais,
