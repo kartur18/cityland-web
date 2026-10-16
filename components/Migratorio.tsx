@@ -1,167 +1,87 @@
 "use client";
 
-import { buildWaUrl, PRECIO_DESDE_EUROPA } from "@/components/constantes";
-import PlaneIcon from "@/components/icons/PlaneIcon";
+import Image from "next/image";
+import Link from "next/link";
+import { buildWaUrl } from "@/components/constantes";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
-
-const REQUISITOS_EUROPA = [
-  {
-    titulo: "Boleto Aéreo Confirmado",
-    desc: "Emisión formal con Iberia, Air Europa o LATAM con equipaje de bodega.",
-    icon: <PlaneIcon className="w-5 h-5 fill-none stroke-current stroke-2 text-red-600" />,
-  },
-  {
-    titulo: "Seguro Schengen 30.000€",
-    desc: "Póliza médica oficial exigida por el control migratorio de la Unión Europea.",
-    icon: (
-      <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2 text-emerald-600">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-      </svg>
-    ),
-  },
-  {
-    titulo: "Sustento de Hospedaje",
-    desc: "Voucher de reserva de hotel formal para presentar en el filtro del aeropuerto.",
-    icon: (
-      <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2 text-blue-600">
-        <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11m16-11v11"/>
-      </svg>
-    ),
-  },
-  {
-    titulo: "Asesoría Migratoria 1 a 1",
-    desc: "Simulacro de preguntas frecuentes en Barajas, solvencia y carpeta documentaria.",
-    icon: (
-      <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2 text-amber-600">
-        <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
-      </svg>
-    ),
-  },
-];
 
 export default function Migratorio() {
   const waUrlEuropa = buildWaUrl({
     categoria: "europa",
     destino: "España / Madrid",
     tipo: "Paquete Europa / Migratorio",
-    precioUSD: PRECIO_DESDE_EUROPA,
-    mensajePersonalizado: `¡Hola Cityland Travel! Me interesa el plan de viaje a España/Europa desde $${PRECIO_DESDE_EUROPA} USD. Deseo información de requisitos, seguro Schengen de 30.000€ y cómo separar con el 50% de inicial.`,
+    precioUSD: 695,
+    mensajePersonalizado:
+      "¡Hola Cityland Travel! Me interesa el paquete a España desde $695 USD. Deseo información para separar con el 50%.",
   });
 
   return (
-    <section id="migra" className="py-16 sm:py-20 bg-white border-b border-slate-200 relative overflow-hidden">
+    <section id="migra" className="py-14 sm:py-18 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          
-          {/* Columna Izquierda: Mensaje Especializado Europa */}
-          <div className="lg:col-span-6 text-left">
-            <div className="inline-flex items-center gap-2 bg-slate-100 border border-slate-200 px-3.5 py-1.5 rounded-full text-xs font-semibold text-slate-700 mb-4">
-              <FlagIcon pais="España" className="w-4 h-2.5" />
-              <span>Ruta Especializada · Asesor Exclusivo para Europa</span>
-            </div>
-
-            <h2 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-5xl text-[#0a1628] tracking-tight leading-[0.98] mb-3">
-              ESPECIAL ESPAÑA & EUROPA 2026:<br />
-              <span className="text-red-600">VIAJA CON TODO REGULADO Y SIN RIESGOS</span>
-            </h2>
-
-            <p className="text-sm text-slate-600 mb-4 font-normal">
-              Te entregamos la carpeta completa para ingresar a Madrid o la UE cumpliendo todos los filtros migratorios:
-            </p>
-
-            {/* 3 Chips Visuales de Alto Impacto (Lectura instantánea) */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mb-6">
-              <div className="flex items-center gap-2 bg-slate-50 border border-slate-200/80 rounded-xl px-3 py-2 text-xs font-semibold text-slate-800">
-                <span className="text-emerald-600 font-bold">✓</span> Boleto IATA
-              </div>
-              <div className="flex items-center gap-2 bg-slate-50 border border-slate-200/80 rounded-xl px-3 py-2 text-xs font-semibold text-slate-800">
-                <span className="text-emerald-600 font-bold">✓</span> Seguro 30.000€
-              </div>
-              <div className="flex items-center gap-2 bg-slate-50 border border-slate-200/80 rounded-xl px-3 py-2 text-xs font-semibold text-slate-800">
-                <span className="text-emerald-600 font-bold">✓</span> Asesoría 1 a 1
-              </div>
-            </div>
-
-            {/* Bloque de Precio y Facilidad 50% */}
-            <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-4 sm:p-5 mb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 card-interactive">
-              <div>
-                <span className="text-[11px] font-black uppercase tracking-wider text-red-600 block leading-tight">
-                  TARIFA RUTA EUROPA
-                </span>
-                <div className="flex items-baseline gap-1.5">
-                  <span className="text-xs font-bold text-slate-500">DESDE</span>
-                  <span className="text-3xl font-black text-[#0a1628]">
-                    ${PRECIO_DESDE_EUROPA}
-                  </span>
-                  <span className="text-xs font-bold text-slate-500">USD</span>
-                </div>
-                <span className="text-[11px] text-slate-500 block mt-0.5">
-                  Separa con el 50% y cancela el saldo antes de volar
-                </span>
-              </div>
-
-              <a
-                href={waUrlEuropa}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold shrink-0 cursor-pointer"
-              >
-                <WhatsAppIcon size={16} />
-                <span>Hablar con Asesor Europa</span>
-              </a>
-            </div>
-
-            <div className="flex items-center gap-4 text-xs text-slate-500 flex-wrap">
-              <span className="flex items-center gap-1.5">
-                <span className="text-emerald-600 font-bold">✓</span> Sin visa consular para peruanos (hasta 90 días)
-              </span>
-              <span className="flex items-center gap-1.5">
-                <span className="text-emerald-600 font-bold">✓</span> Válido en toda la Unión Europea
-              </span>
-            </div>
+        <div className="relative rounded-3xl overflow-hidden bg-[#0a1628] text-white shadow-xl">
+          {/* Imagen panorámica de Madrid */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/espana/palacio-real.jpg"
+              alt="Paquetes a España desde Lima - Cityland Travel"
+              fill
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              className="object-cover object-center opacity-45"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#07101f]/95 via-[#0a1628]/85 to-transparent" />
           </div>
 
-          {/* Columna Derecha: Requisitos en Cuadrícula Limpia */}
-          <div className="lg:col-span-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {REQUISITOS_EUROPA.map((req) => (
-                <div
-                  key={req.titulo}
-                  className="card-interactive group bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs"
+          <div className="relative z-10 p-7 sm:p-12 lg:p-14 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+            <div className="max-w-xl">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold text-amber-300 mb-4">
+                <FlagIcon pais="España" className="w-4 h-3" />
+                <span>Ruta Especializada · Sin Visa Consular</span>
+              </div>
+
+              <h2 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[0.95] mb-3">
+                ESPECIAL ESPAÑA & EUROPA{" "}
+                <span className="text-amber-400">DESDE $695 USD</span>
+              </h2>
+
+              <p className="text-sm sm:text-base text-slate-200 mb-6">
+                Carpeta completa para ingresar por Madrid-Barajas: Vuelo IATA + Seguro Schengen 30.000€ + Reserva de Hotel + Asesoría 1 a 1.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-3">
+                <Link
+                  href="/espana"
+                  className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3.5 rounded-full text-xs sm:text-sm font-extrabold shadow-lg transition-all"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200/60 flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-red-50 transition-all duration-300">
-                    {req.icon}
-                  </div>
-                  <h3 className="text-sm font-bold text-slate-900 mb-1.5 leading-snug group-hover:text-red-600 transition-colors">
-                    {req.titulo}
-                  </h3>
-                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                    {req.desc}
-                  </p>
-                </div>
-              ))}
+                  <span>Ver Fechas y Precios España →</span>
+                </Link>
+
+                <a
+                  href={waUrlEuropa}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-6 py-3.5 rounded-full text-xs sm:text-sm font-extrabold cursor-pointer"
+                >
+                  <WhatsAppIcon size={16} />
+                  <span>Hablar con Asesor Europa</span>
+                </a>
+              </div>
             </div>
 
-            {/* Testimonio Rápido de Respaldo */}
-            <div className="mt-4 p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center gap-3.5 text-xs text-slate-600">
-              <div className="w-9 h-9 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xs shrink-0">
-                CM
+            {/* Tarifa resumida limpia a la derecha */}
+            <div className="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-6 lg:min-w-[260px] text-left lg:text-right">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-amber-300 block mb-1">
+                Salidas 2026 – 2027
+              </span>
+              <div className="font-[family-name:var(--font-bebas)] text-5xl text-white leading-none">
+                $695 <span className="text-lg font-sans font-bold text-slate-300">USD</span>
               </div>
-              <div className="min-w-0">
-                <p className="font-semibold text-slate-800 truncate">
-                  &ldquo;Pasamos el control migratorio de Barajas en 5 minutos con la carpeta de Cityland.&rdquo;
-                </p>
-                <span className="text-[11px] text-slate-500">
-                  Carlos & Mariana · Viajaron en 2026 · Asesoría Europa
-                </span>
-              </div>
+              <span className="text-xs font-semibold text-emerald-300 block mt-1">
+                Separa hoy con $348 USD (50%)
+              </span>
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
   );
