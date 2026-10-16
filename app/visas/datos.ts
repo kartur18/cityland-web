@@ -31,7 +31,7 @@ export const SERVICIOS_VISAS: ServicioVisa[] = [
     resumenCorto:
       "Evaluación de perfil y arraigos + Llenado experto del Formulario DS-160 + Programación de cita y Simulacro 1 a 1 de entrevista consular.",
     checks: ["Formulario DS-160 en inglés", "Gestión y adelanto de cita", "Simulacro de entrevista 1 a 1"],
-    waNumber: "51944031724",
+    waNumber: "51983891157",
   },
   {
     id: "renovacion-visa-americana",
@@ -48,7 +48,7 @@ export const SERVICIOS_VISAS: ServicioVisa[] = [
     resumenCorto:
       "Renueva tu visa B1/B2 vencida (o por vencer) sin pasar entrevista en la embajada, o adelanta tu cita consular para viajar antes.",
     checks: ["Formulario DS-160 actualizado", "Orden de envío DHL oficial", "Adelanto prioritario de cita"],
-    waNumber: "51906450098",
+    waNumber: "51944031724",
   },
   {
     id: "visa-canada",
@@ -65,7 +65,7 @@ export const SERVICIOS_VISAS: ServicioVisa[] = [
     resumenCorto:
       "Armado completo de expediente digital en el portal oficial de Canadá (IRCC), cita de biométricos en Lima o trámite rápido de eTA si tienes visa USA.",
     checks: ["Expediente digital IRCC", "Cita biométrica VFS Lima", "Trámite eTA en 24h (con visa USA)"],
-    waNumber: "51942086698",
+    waNumber: "51907451255",
   },
   {
     id: "visa-mexico",
@@ -82,7 +82,7 @@ export const SERVICIOS_VISAS: ServicioVisa[] = [
     resumenCorto:
       "Revisión de solvencia económica (boletas, estados de cuenta o propiedades), obtención de cita en la Embajada de México en San Isidro y carpeta lista.",
     checks: ["Cita Embajada de México", "Revisión de solvencia y arraigo", "Sustento de vuelo y hotel"],
-    waNumber: "51944280151",
+    waNumber: "51983269950",
   },
   {
     id: "visado-espana-trabajo-estudios",
@@ -99,7 +99,7 @@ export const SERVICIOS_VISAS: ServicioVisa[] = [
     resumenCorto:
       "Orientación documental para visados de estudios, trabajo o residencia ante el Consulado de España, y armado de carpeta completa para ingreso en Barajas.",
     checks: ["Requisitos Consulado / BLS", "Seguro Schengen 30.000€", "Reserva de vuelo y hotel"],
-    waNumber: "51983882504",
+    waNumber: "51913637476",
   },
   {
     id: "visa-familiar-grupal",
@@ -116,6 +116,6 @@ export const SERVICIOS_VISAS: ServicioVisa[] = [
     resumenCorto:
       "Unificamos el expediente de toda tu familia para que asistan juntos a una sola cita consular, cuidando la coherencia de cada formulario DS-160.",
     checks: ["Cita grupal unificada", "DS-160 por cada integrante", "Preparación familiar previa"],
-    waNumber: "51938845086",
+    waNumber: "51903212007",
   },
 ];

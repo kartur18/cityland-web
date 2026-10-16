@@ -35,7 +35,7 @@ export const DESTINOS_TOP_PERU: DestinoLandingCaribe[] = [
     alt: "Paquete Punta Cana Todo Incluido desde Lima - Resort 5 estrellas en Playa Bávaro",
     resumenCorto: "Resort 5★ en Playa Bávaro + Comidas y bebidas ilimitadas 24h + Catamarán a Isla Saona",
     checks: ["Vuelo I/V desde Lima", "Resort 5★ All Inclusive", "Tour Isla Saona + Traslados"],
-    waNumber: "51942086698",
+    waNumber: "51983891157",
   },
   {
     id: "cancun",
@@ -53,7 +53,7 @@ export const DESTINOS_TOP_PERU: DestinoLandingCaribe[] = [
     alt: "Paquete Cancún Todo Incluido desde Lima - Zona Hotelera y Chichén Itzá",
     resumenCorto: "Resort frente al mar en Zona Hotelera + Todo Incluido 24h + Tour Chichén Itzá y Cenote",
     checks: ["Vuelo I/V desde Lima", "Resort All Inclusive 24h", "Chichén Itzá + Traslados"],
-    waNumber: "51906450098",
+    waNumber: "51944031724",
   },
   {
     id: "cartagena",
@@ -71,7 +71,7 @@ export const DESTINOS_TOP_PERU: DestinoLandingCaribe[] = [
     alt: "Paquete Cartagena de Indias desde Lima - Ciudad Amurallada e Isla Barú",
     resumenCorto: "Vuelo directo + Hotel en Bocagrande con desayunos + Día de playa en Isla Barú",
     checks: ["Vuelo directo I/V", "Hotel en Bocagrande", "Isla Barú + Traslados"],
-    waNumber: "51944280151",
+    waNumber: "51907451255",
   },
   {
     id: "medellin",
@@ -89,7 +89,7 @@ export const DESTINOS_TOP_PERU: DestinoLandingCaribe[] = [
     alt: "Paquete Medellín y Guatapé desde Lima - Piedra del Peñol y Comuna 13",
     resumenCorto: "Vuelo directo + Hotel en El Poblado + Excursión a la Piedra del Peñol, Guatapé y Comuna 13",
     checks: ["Vuelo directo I/V", "Hotel en El Poblado", "Guatapé + Comuna 13"],
-    waNumber: "51938845086",
+    waNumber: "51983269950",
   },
   {
     id: "rio-de-janeiro",
@@ -107,7 +107,7 @@ export const DESTINOS_TOP_PERU: DestinoLandingCaribe[] = [
     alt: "Paquete Río de Janeiro desde Lima - Copacabana, Cristo Redentor y Pan de Azúcar",
     resumenCorto: "Hotel 4★ a pasos de Copacabana con desayunos + Tour Cristo Redentor y Pan de Azúcar",
     checks: ["Vuelo I/V desde Lima", "Hotel 4★ Copacabana", "Cristo + Pan de Azúcar"],
-    waNumber: "51906642487",
+    waNumber: "51913637476",
   },
   {
     id: "miami-orlando",
@@ -125,6 +125,6 @@ export const DESTINOS_TOP_PERU: DestinoLandingCaribe[] = [
     alt: "Paquete Miami y Orlando desde Lima - South Beach y Compras en Outlets",
     resumenCorto: "Hoteles en Miami y Orlando con desayunos + Tour de compras en Outlets y South Beach",
     checks: ["Vuelo I/V desde Lima", "Hotel Miami & Orlando", "Tour Outlets + Traslados"],
-    waNumber: "51944031724",
+    waNumber: "51903212007",
   },
 ];

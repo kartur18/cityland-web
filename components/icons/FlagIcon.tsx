@@ -92,6 +92,23 @@ const FLAGS: Record<string, React.ReactNode> = {
       <rect x="2" width="1" height="2" fill="#D91023" />
     </>
   ),
+  Panamá: (
+    <>
+      <rect width="3" height="2" fill="#fff" />
+      <rect x="1.5" y="0" width="1.5" height="1" fill="#DA121A" />
+      <rect x="0" y="1" width="1.5" height="1" fill="#072357" />
+      <circle cx=".75" cy=".5" r=".18" fill="#072357" />
+      <circle cx="2.25" cy="1.5" r=".18" fill="#DA121A" />
+    </>
+  ),
+  "Emiratos Árabes": (
+    <>
+      <rect width="3" height=".66" fill="#00732F" />
+      <rect y=".66" width="3" height=".68" fill="#fff" />
+      <rect y="1.34" width="3" height=".66" fill="#000" />
+      <rect width=".8" height="2" fill="#FF0000" />
+    </>
+  ),
 };
 
 export default function FlagIcon({ pais, className = "w-4 h-3" }: { pais: string; className?: string }) {

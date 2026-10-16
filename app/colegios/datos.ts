@@ -33,7 +33,7 @@ export const PAQUETES_COLEGIOS: PaqueteEscolar[] = [
     resumenCorto:
       "Vuelos I/V + Hotel + Alimentación completa (Desayuno, Almuerzo y Cena) + Tren y entrada a Machu Picchu + Valle Sagrado + 1 Liberado cada 15 alumnos.",
     checks: ["Vuelo I/V + Pensión Completa", "Machu Picchu + Valle Sagrado", "1 Liberado cada 15 pagantes"],
-    waNumber: "51906450098",
+    waNumber: "51983891157",
   },
   {
     id: "promocion-punta-sal-mancora",
@@ -51,7 +51,7 @@ export const PAQUETES_COLEGIOS: PaqueteEscolar[] = [
     resumenCorto:
       "Vuelo Lima–Tumbes I/V + Hotel frente al mar con piscina + Alimentación completa + Nado con tortugas en El Ñuro y Manglares de Tumbes.",
     checks: ["Vuelo I/V + Hotel con Piscina", "Desayunos, Almuerzos y Cenas", "Nado con Tortugas + Manglares"],
-    waNumber: "51942086698",
+    waNumber: "51944031724",
   },
   {
     id: "promocion-tarapoto-selva",
@@ -69,7 +69,7 @@ export const PAQUETES_COLEGIOS: PaqueteEscolar[] = [
     resumenCorto:
       "Vuelo Lima–Tarapoto I/V + Resort con piscina + Alimentación completa + Paseo en bote en Laguna Azul, Cataratas de Ahuashiyacu y Castillo de Lamas.",
     checks: ["Vuelo I/V + Resort con Piscina", "Pensión Completa Incluida", "Laguna Azul + Ahuashiyacu"],
-    waNumber: "51944280151",
+    waNumber: "51907451255",
   },
   {
     id: "promocion-cartagena-colombia",
@@ -87,7 +87,7 @@ export const PAQUETES_COLEGIOS: PaqueteEscolar[] = [
     resumenCorto:
       "El viaje internacional favorito de Secundaria e Institutos (sin pasaporte). Vuelo directo + Hotel en Bocagrande + Isla Barú y Chiva Turística.",
     checks: ["Vuelo Directo + Traslados", "Hotel en Bocagrande", "Playa Blanca Barú + Seguro"],
-    waNumber: "51938845086",
+    waNumber: "51983269950",
   },
   {
     id: "promocion-punta-cana",
@@ -105,7 +105,7 @@ export const PAQUETES_COLEGIOS: PaqueteEscolar[] = [
     resumenCorto:
       "Vuelo I/V + Resort 5★ en Playa Bávaro con todas las comidas, snacks y bebidas ilimitadas 24h + Catamarán a Isla Saona y Seguro Médico.",
     checks: ["Vuelo I/V desde Lima", "Resort 5★ Todo Incluido 24h", "Isla Saona + 1 Liberado c/15"],
-    waNumber: "51906642487",
+    waNumber: "51913637476",
   },
   {
     id: "promocion-cancun-graduacion",
@@ -123,6 +123,6 @@ export const PAQUETES_COLEGIOS: PaqueteEscolar[] = [
     resumenCorto:
       "Ideal para promociones de 5to de secundaria, institutos y universidades. Vuelo I/V + Resort Todo Incluido 24h + Chichén Itzá y Cenote.",
     checks: ["Vuelo I/V desde Lima", "Resort All Inclusive 24h", "Chichén Itzá + Seguro Grupal"],
-    waNumber: "51944031724",
+    waNumber: "51903212007",
   },
 ];

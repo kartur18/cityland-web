@@ -9,12 +9,14 @@ import PhoneIcon from "@/components/icons/PhoneIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
 
 const navLinks: { label: string; href: string; highlight?: boolean; badgeColor?: "red" | "sky" }[] = [
-  { label: "Especial España", href: "/espana", highlight: true, badgeColor: "red" },
+  { label: "España", href: "/espana", highlight: true, badgeColor: "red" },
   { label: "Caribe & Miami", href: "/caribe", highlight: true, badgeColor: "sky" },
   { label: "Cusco", href: "/cusco" },
+  { label: "Perú & Playas", href: "/peru" },
   { label: "Visas", href: "/visas" },
-  { label: "Colegios & Promos", href: "/colegios" },
-  { label: "Oficina", href: "#ubicacion" },
+  { label: "Cruceros", href: "/cruceros" },
+  { label: "Seguros", href: "/seguros" },
+  { label: "Colegios", href: "/colegios" },
 ];
 
 export default function Navbar() {

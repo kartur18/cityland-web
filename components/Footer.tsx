@@ -47,53 +47,53 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Rutas Europa & Visas */}
+          {/* Rutas Europa, Visas & Seguros */}
           <div className="lg:col-span-3">
             <h4 className="text-xs font-bold text-white mb-4 tracking-wider uppercase">
-              España, Europa & Visas
+              España, Visas & Seguros
             </h4>
             <div className="space-y-2 text-xs">
               <a href="/espana" className="block text-slate-300 hover:text-white transition-colors">
                 Paquete Migratorio a España ($695)
               </a>
-              <a href="/visas" className="block text-slate-300 hover:text-white transition-colors">
-                Trámite Visa Americana B1/B2
+              <a href="/europa-turquia" className="block text-slate-300 hover:text-white transition-colors">
+                Circuitos Europa 15D & Turquía Sin Visa
               </a>
               <a href="/visas" className="block text-slate-300 hover:text-white transition-colors">
-                Visa de Canadá & Permiso eTA
+                Trámite Visa Americana, Canadá & México
               </a>
-              <a href="/visas" className="block text-slate-300 hover:text-white transition-colors">
-                Visa de México para Peruanos
+              <a href="/seguros" className="block text-slate-300 hover:text-white transition-colors">
+                Seguro Schengen 30.000€ & Internacional
               </a>
-              <a href="/visas" className="block text-slate-300 hover:text-white transition-colors">
-                Visados de Estudio y Trabajo España
+              <a href="/cruceros" className="block text-slate-300 hover:text-white transition-colors">
+                Cruceros Todo Incluido Sin Visa
               </a>
-              <a href="/destinos/europa-clasica" className="block text-slate-300 hover:text-white transition-colors">
-                Circuitos por Europa 15 Días
+              <a href="/empresas" className="block text-slate-300 hover:text-white transition-colors">
+                Viajes Corporativos (Factura RUC)
               </a>
             </div>
           </div>
 
-          {/* Rutas Caribe, Cusco & Colegios */}
+          {/* Rutas Caribe, Perú & Grupos */}
           <div className="lg:col-span-2">
             <h4 className="text-xs font-bold text-white mb-4 tracking-wider uppercase">
-              Caribe, Cusco & Grupos
+              Caribe, Perú & Grupos
             </h4>
             <div className="space-y-2 text-xs">
-              <a href="/caribe#punta-cana" className="block text-slate-300 hover:text-white transition-colors">
-                Punta Cana All Inclusive
-              </a>
-              <a href="/caribe#cancun" className="block text-slate-300 hover:text-white transition-colors">
-                Cancún & Riviera Maya
+              <a href="/caribe" className="block text-slate-300 hover:text-white transition-colors">
+                Punta Cana, Cancún & Miami
               </a>
               <a href="/caribe#cartagena" className="block text-slate-300 hover:text-white transition-colors">
-                Cartagena & Medellín (Solo DNI)
-              </a>
-              <a href="/caribe#rio-de-janeiro" className="block text-slate-300 hover:text-white transition-colors">
-                Río de Janeiro & Miami
+                Colombia & Brasil (Solo DNI)
               </a>
               <a href="/cusco" className="block text-slate-300 hover:text-white transition-colors">
-                Paquetes a Cusco & Machu Picchu
+                Cusco & Machu Picchu (3 a 6 Días)
+              </a>
+              <a href="/peru" className="block text-slate-300 hover:text-white transition-colors">
+                Punta Sal, Máncora & Tarapoto
+              </a>
+              <a href="/luna-de-miel" className="block text-slate-300 hover:text-white transition-colors">
+                Luna de Miel & Quinceañeras
               </a>
               <a href="/colegios" className="block text-slate-300 hover:text-white transition-colors">
                 Viajes de Promoción Escolar
