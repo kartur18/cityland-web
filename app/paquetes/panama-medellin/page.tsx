@@ -2,19 +2,31 @@ import type { Metadata } from "next";
 import PanamaMedellinLanding from "./PanamaMedellinLanding";
 
 export const metadata: Metadata = {
-  title: "Paquete Panamá + Medellín desde $799 | Cityland Travel",
+  title:
+    "Paquete Panamá + Medellín 7 Días desde $799 USD (Salidas desde Lima) | Cityland Travel",
   description:
-    "Viaja a Panamá y Medellín 7 días todo incluido desde $799. Vuelos Copa Airlines, hoteles, desayunos, traslados y tours. Junio 2026.",
+    "Viaja a Panamá y Medellín 7 días / 6 noches desde $799 USD con Cityland Travel (RUC 20614914239). Vuelos Copa Airlines desde Lima, hoteles, desayunos, traslados y tours (Canal de Panamá, Comuna 13 y Chiva Rumbera). Separa con el 50%.",
+  keywords: [
+    "paquete panama y medellin desde lima",
+    "viaje a panama y medellin 2026",
+    "tours panama medellin copa airlines",
+    "agencia de viajes en lima colombia panama",
+    "cityland travel panama medellin",
+  ],
+  alternates: {
+    canonical: "https://citylandtravel.com/paquetes/panama-medellin",
+  },
   openGraph: {
-    title: "Paquete Panamá + Medellín desde $799 | Cityland Travel",
+    title: "Paquete Panamá + Medellín 7 Días desde $799 USD | Cityland Travel",
     description:
-      "Viaja a Panamá y Medellín 7 días todo incluido desde $799. Vuelos Copa Airlines, hoteles, desayunos, traslados y tours. Junio 2026.",
+      "Viaja a Panamá y Medellín 7 días desde $799 USD. Vuelos Copa Airlines, hoteles, desayunos, traslados y tours. Separa con 50%.",
+    url: "https://citylandtravel.com/paquetes/panama-medellin",
     type: "website",
     locale: "es_PE",
     siteName: "Cityland Travel",
     images: [
       {
-        url: "/images/paquetes/panama-medellin/hero-panama.png",
+        url: "https://citylandtravel.com/images/paquetes/panama-medellin/hero-panama.png",
         width: 1200,
         height: 630,
         alt: "Paquete Panamá + Medellín — Cityland Travel",
@@ -23,13 +35,66 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Paquete Panamá + Medellín desde $799 | Cityland Travel",
+    title: "Paquete Panamá + Medellín desde $799 USD | Cityland Travel",
     description:
-      "Viaja a Panamá y Medellín 7 días todo incluido desde $799. Vuelos Copa Airlines, hoteles, desayunos, traslados y tours.",
-    images: ["/images/paquetes/panama-medellin/hero-panama.png"],
+      "Viaja a Panamá y Medellín 7 días desde $799 USD. Vuelos Copa Airlines, hoteles, desayunos, traslados y tours.",
+    images: ["https://citylandtravel.com/images/paquetes/panama-medellin/hero-panama.png"],
   },
 };
 
+const JSON_LD_PANAMA_MEDELLIN = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Inicio — Cityland Travel",
+          item: "https://citylandtravel.com/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Paquete Panamá + Medellín desde $799 USD",
+          item: "https://citylandtravel.com/paquetes/panama-medellin",
+        },
+      ],
+    },
+    {
+      "@type": "Product",
+      name: "Paquete Combinado Panamá + Medellín (7 Días / 6 Noches) desde Lima",
+      description:
+        "Paquete turístico a Ciudad de Panamá y Medellín con vuelos Copa Airlines desde Lima, hoteles con desayuno, traslados y tours incluidos.",
+      image: "https://citylandtravel.com/images/paquetes/panama-medellin/hero-panama.png",
+      brand: { "@type": "Brand", name: "Cityland Travel" },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "4.9",
+        reviewCount: "500",
+        bestRating: "5",
+      },
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "USD",
+        price: "799",
+        priceValidUntil: "2026-12-31",
+        availability: "https://schema.org/InStock",
+        url: "https://citylandtravel.com/paquetes/panama-medellin",
+      },
+    },
+  ],
+};
+
 export default function PanamaMedellinPage() {
-  return <PanamaMedellinLanding />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD_PANAMA_MEDELLIN) }}
+      />
+      <PanamaMedellinLanding />
+    </>
+  );
 }

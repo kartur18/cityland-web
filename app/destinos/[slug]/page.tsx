@@ -46,13 +46,35 @@ export async function generateMetadata({
   if (!dest) return { title: "Destino no encontrado" };
 
   const price = dest.migratorio ?? dest.turistico;
+  const canonicalUrl = `https://citylandtravel.com/destinos/${dest.slug}`;
   return {
-    title: `${dest.ciudad}, ${dest.pais} desde $${price} | Cityland Travel`,
-    description: dest.descripcion,
+    title: `Paquete a ${dest.ciudad}, ${dest.pais} desde $${price} USD (Salidas desde Lima) | Cityland Travel`,
+    description: `${dest.descripcion} Vuelos confirmados desde Lima, hotel, seguro y asesoría personalizada con Cityland Travel (RUC 20614914239). Separa hoy con el 50% de inicial.`,
+    keywords: [
+      `paquetes a ${dest.ciudad.toLowerCase()} desde lima`,
+      `viajar a ${dest.ciudad.toLowerCase()} desde peru`,
+      `paquete turistico ${dest.ciudad.toLowerCase()} ${dest.pais.toLowerCase()}`,
+      `vuelos lima ${dest.ciudad.toLowerCase()}`,
+      "agencia de viajes en lima",
+      "cityland travel",
+    ],
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
-      title: `Viaja a ${dest.ciudad} desde $${price}`,
-      description: dest.descripcion,
-      images: [{ url: dest.img, width: 1200, height: 630 }],
+      type: "website",
+      url: canonicalUrl,
+      title: `Viaja a ${dest.ciudad}, ${dest.pais} desde $${price} USD — Cityland Travel`,
+      description: `${dest.descripcion} Separa con el 50% de inicial desde Lima.`,
+      siteName: "Cityland Travel",
+      locale: "es_PE",
+      images: [{ url: dest.img, width: 1200, height: 630, alt: dest.alt }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `Paquete a ${dest.ciudad} desde $${price} USD | Cityland Travel`,
+      description: `${dest.descripcion} Separa hoy con el 50% de inicial.`,
+      images: [dest.img],
     },
   };
 }
@@ -79,8 +101,56 @@ export default async function DestinoPage({
     "Traslados aeropuerto-hotel",
   ];
 
+  const jsonLdDestino = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Inicio — Cityland Travel",
+            item: "https://citylandtravel.com/",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: `Paquete a ${dest.ciudad}, ${dest.pais}`,
+            item: `https://citylandtravel.com/destinos/${dest.slug}`,
+          },
+        ],
+      },
+      {
+        "@type": "Product",
+        name: `Paquete a ${dest.ciudad}, ${dest.pais} desde Lima`,
+        description: dest.descripcion,
+        image: dest.img,
+        brand: { "@type": "Brand", name: "Cityland Travel" },
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.9",
+          reviewCount: "500",
+          bestRating: "5",
+        },
+        offers: {
+          "@type": "Offer",
+          priceCurrency: "USD",
+          price: String(price),
+          priceValidUntil: "2026-12-31",
+          availability: "https://schema.org/InStock",
+          url: `https://citylandtravel.com/destinos/${dest.slug}`,
+        },
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdDestino) }}
+      />
       {/* ── Hero ── */}
       <section className="relative h-[60vh] min-h-[400px] w-full">
         <Image
