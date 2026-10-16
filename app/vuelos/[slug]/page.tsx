@@ -79,16 +79,15 @@ export default async function RutaVueloPage({
         ],
       },
       {
-        "@type": "Product",
+        "@type": "TouristTrip",
         name: `Vuelos y Paquetes de ${ruta.origen} (${ruta.codigoOrigen}) a ${ruta.destino} (${ruta.codigoDestino})`,
         description: ruta.metaDescription,
         image: ruta.config.vitrina.img,
-        brand: { "@type": "Brand", name: "Cityland Travel" },
+        provider: { "@type": "TravelAgency", name: "Cityland Travel" },
         offers: {
           "@type": "Offer",
           priceCurrency: "USD",
           price: String(ruta.precioDesdeUSD),
-          priceValidUntil: "2026-12-31",
           availability: "https://schema.org/InStock",
           url: `https://citylandtravel.com/vuelos/${ruta.slug}`,
         },

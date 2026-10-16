@@ -63,23 +63,16 @@ const JSON_LD_PANAMA_MEDELLIN = {
       ],
     },
     {
-      "@type": "Product",
+      "@type": "TouristTrip",
       name: "Paquete Combinado Panamá + Medellín (7 Días / 6 Noches) desde Lima",
       description:
         "Paquete turístico a Ciudad de Panamá y Medellín con vuelos Copa Airlines desde Lima, hoteles con desayuno, traslados y tours incluidos.",
       image: "https://citylandtravel.com/images/paquetes/panama-medellin/hero-panama.png",
-      brand: { "@type": "Brand", name: "Cityland Travel" },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "500",
-        bestRating: "5",
-      },
+      provider: { "@type": "TravelAgency", name: "Cityland Travel" },
       offers: {
         "@type": "Offer",
         priceCurrency: "USD",
         price: "799",
-        priceValidUntil: "2026-12-31",
         availability: "https://schema.org/InStock",
         url: "https://citylandtravel.com/paquetes/panama-medellin",
       },
