@@ -6,7 +6,7 @@ import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import PlaneIcon from "@/components/icons/PlaneIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
 
-// ── 4 Tarjetas de Salidas Oficiales del Flyer con Número Diferente en Cada Botón ──
+// ── 4 Tarjetas de Salidas Oficiales del Flyer con Monumentos Reales de Madrid y WhatsApp Individual ──
 export const PAQUETES_ESPANA = [
   {
     id: "noviembre",
@@ -15,8 +15,8 @@ export const PAQUETES_ESPANA = [
     precio: 695,
     tag: "Precio Promocional",
     tagColor: "bg-blue-600 text-white",
-    img: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=80",
-    monumento: "Edificio Metrópolis · Gran Vía",
+    img: "/images/espana/gran-via-metropolis.jpg",
+    monumento: "Gran Vía & Edificio Metrópolis · Madrid",
     inclusiones: [
       "Boleto aéreo confirmado con equipaje",
       "Seguro Schengen obligatorio 30.000€",
@@ -33,7 +33,7 @@ export const PAQUETES_ESPANA = [
     precio: 875,
     tag: "Alta Demanda",
     tagColor: "bg-red-600 text-white",
-    img: "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=800&q=80",
+    img: "/images/espana/puerta-de-alcala.jpg",
     monumento: "Puerta de Alcalá · Madrid",
     inclusiones: [
       "Boleto aéreo confirmado con equipaje",
@@ -51,8 +51,8 @@ export const PAQUETES_ESPANA = [
     precio: 875,
     tag: "Cupos Limitados",
     tagColor: "bg-amber-600 text-white",
-    img: "https://images.unsplash.com/photo-1576085898323-218337e3e43c?w=800&q=80",
-    monumento: "Plaza de Cibeles · Madrid",
+    img: "/images/espana/cibeles.jpg",
+    monumento: "Plaza de Cibeles & Madrid Skyline",
     inclusiones: [
       "Boleto aéreo confirmado con equipaje",
       "Seguro Schengen obligatorio 30.000€",
@@ -69,8 +69,8 @@ export const PAQUETES_ESPANA = [
     precio: 699,
     tag: "Mejor Tarifa",
     tagColor: "bg-emerald-600 text-white",
-    img: "https://images.unsplash.com/photo-1563784462386-044fd95e9852?w=800&q=80",
-    monumento: "Palacio Real de Madrid",
+    img: "/images/espana/palacio-real.jpg",
+    monumento: "Palacio Real de Madrid & Almudena",
     inclusiones: [
       "Boleto aéreo confirmado con equipaje",
       "Seguro Schengen obligatorio 30.000€",
@@ -115,13 +115,13 @@ export default function EspanaLandingClient() {
       <header className="sticky top-0 z-40 bg-white/98 backdrop-blur-md border-b border-slate-200 py-3 sm:py-3.5 shadow-2xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
           <Link href="/" aria-label="Cityland Travel - Inicio" className="flex items-center group">
-            <div className="relative h-14 sm:h-16 lg:h-18 w-44 sm:w-52 lg:w-56 flex items-center transition-transform group-hover:scale-[1.01]">
+            <div className="relative h-14 sm:h-18 lg:h-20 w-48 sm:w-60 lg:w-68 flex items-center transition-transform group-hover:scale-[1.01]">
               <Image
                 src="/logo-transparent.png"
                 alt="Cityland Travel - Agencia de Viajes"
                 fill
                 priority
-                sizes="(max-width: 640px) 176px, (max-width: 1024px) 208px, 240px"
+                sizes="(max-width: 640px) 192px, (max-width: 1024px) 240px, 272px"
                 className="object-contain object-left"
               />
             </div>
@@ -140,8 +140,8 @@ export default function EspanaLandingClient() {
         </div>
       </header>
 
-      {/* 3. Hero Section (Fiel al Flyer Oficial) */}
-      <section className="relative bg-gradient-to-b from-white via-slate-50 to-slate-100/60 pt-8 pb-14 sm:pt-12 sm:pb-20 border-b border-slate-200 overflow-hidden">
+      {/* 3. Hero Section (Fiel al Flyer Oficial con Logotipo y Datos Corporativos) */}
+      <section className="relative bg-gradient-to-b from-white via-slate-50 to-slate-100/60 pt-6 pb-14 sm:pt-10 sm:pb-20 border-b border-slate-200 overflow-hidden">
         <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-red-500/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
@@ -151,9 +151,27 @@ export default function EspanaLandingClient() {
             {/* Columna de Texto: Titular del Flyer */}
             <div className="lg:col-span-7 text-left">
               
-              <div className="inline-flex items-center gap-2 bg-white border border-slate-200 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-700 shadow-2xs mb-4">
-                <FlagIcon pais="España" className="w-4 h-2.5" />
-                <span>Ruta Especializada Madrid & Barcelona 2026</span>
+              {/* Badge con Logotipo Oficial en el Hero */}
+              <div className="inline-flex items-center gap-3 bg-white border border-slate-200/90 rounded-2xl p-2 pr-4 shadow-2xs mb-4">
+                <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl overflow-hidden bg-white border border-slate-100 flex items-center justify-center shrink-0">
+                  <Image
+                    src="/logo-oficial.png"
+                    alt="Cityland Travel"
+                    width={40}
+                    height={40}
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+                <div className="text-left">
+                  <span className="text-[11px] font-black text-red-600 uppercase tracking-wider block leading-tight">
+                    Cityland Travel · Agencia de Viajes
+                  </span>
+                  <span className="text-[11px] text-slate-500 font-semibold block leading-tight flex items-center gap-1.5">
+                    <FlagIcon pais="España" className="w-3 h-2" />
+                    Ruta Especializada Madrid & Barcelona 2026
+                  </span>
+                </div>
               </div>
 
               {/* Título Principal Idéntico al Flyer */}
@@ -229,12 +247,12 @@ export default function EspanaLandingClient() {
 
             </div>
 
-            {/* Columna Derecha: Tarjeta Visual de Madrid con Botón -> Asesora Línea 2 (942 086 698) */}
+            {/* Columna Derecha: Tarjeta Visual de Madrid con Plaza Mayor Real y Botón -> Asesora Línea 2 (942 086 698) */}
             <div className="lg:col-span-5">
               <div className="card-interactive group relative rounded-3xl overflow-hidden bg-white border border-slate-200 shadow-xl">
                 <div className="relative h-80 sm:h-96 w-full overflow-hidden bg-slate-100">
                   <Image
-                    src="https://images.unsplash.com/photo-1570698453961-932a2924d545?w=800&q=80"
+                    src="/images/espana/plaza-mayor.jpg"
                     alt="Plaza Mayor de Madrid España - Cityland Travel"
                     fill
                     priority
@@ -243,7 +261,7 @@ export default function EspanaLandingClient() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
 
-                  {/* Badges superiores */}
+                  {/* Badges superiores con logo de marca */}
                   <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
                     <span className="inline-flex items-center gap-1.5 bg-black/60 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full border border-white/20">
                       <FlagIcon pais="España" className="w-3.5 h-2.5" />
@@ -477,26 +495,43 @@ export default function EspanaLandingClient() {
             </div>
           </div>
 
-          {/* Banner CTA intermedio -> Asesora Lucero (983 882 504) */}
-          <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div>
-              <h3 className="text-base font-bold text-slate-900 mb-1">
-                ¿Tienes preguntas sobre el control en el aeropuerto de Barajas?
-              </h3>
-              <p className="text-xs text-slate-600">
-                Nuestra especialista en Europa te asesora paso a paso antes de tu vuelo.
-              </p>
+          {/* Banner CTA intermedio con Foto Real de Barajas T4 -> Asesora Lucero (983 882 504) */}
+          <div className="relative rounded-3xl overflow-hidden border border-slate-200 shadow-lg bg-slate-950 text-white">
+            <div className="absolute inset-0 z-0">
+              <Image
+                src="/images/espana/barajas.jpg"
+                alt="Aeropuerto Adolfo Suárez Madrid-Barajas Terminal 4"
+                fill
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                className="object-cover opacity-30"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-slate-900/50" />
             </div>
 
-            <a
-              href={`https://wa.me/51983882504?text=${encodeURIComponent("¡Hola Lucero! Deseo asesoría sobre las preguntas de migraciones en Barajas.")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-wa-pulse shrink-0 inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer"
-            >
-              <WhatsAppIcon size={16} />
-              <span>Consultar con una Asesora</span>
-            </a>
+            <div className="relative z-10 p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+              <div className="max-w-2xl">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-amber-300 text-[11px] font-bold uppercase tracking-wider mb-2.5 border border-white/10">
+                  <PlaneIcon className="w-3.5 h-3.5 fill-none stroke-current stroke-2" />
+                  Control Migratorio Aeropuerto Barajas (Madrid)
+                </span>
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 leading-tight">
+                  ¿Tienes dudas sobre el control en el aeropuerto de Barajas?
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                  Viaja con seguridad total. Te preparamos con la carpeta exacta que solicita la Policía Nacional de España: solvencia económica, reserva de hotel y seguro Schengen de 30.000€.
+                </p>
+              </div>
+
+              <a
+                href={`https://wa.me/51983882504?text=${encodeURIComponent("¡Hola Lucero! Deseo asesoría sobre las preguntas de migraciones en Barajas.")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-wa-pulse shrink-0 inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-6 py-3.5 rounded-2xl text-xs sm:text-sm font-bold shadow-lg shadow-emerald-500/25 cursor-pointer"
+              >
+                <WhatsAppIcon size={18} />
+                <span>Consultar con Asesora Lucero</span>
+              </a>
+            </div>
           </div>
 
         </div>
@@ -507,14 +542,16 @@ export default function EspanaLandingClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center border-b border-white/10 pb-8 mb-8">
             <div>
-              <div className="relative h-14 w-48 mb-2">
-                <Image
-                  src="/logo-transparent.png"
-                  alt="Cityland Travel"
-                  fill
-                  sizes="200px"
-                  className="object-contain object-left brightness-0 invert"
-                />
+              <div className="bg-white p-2.5 rounded-2xl inline-block mb-3 shadow-md">
+                <div className="relative h-12 w-44">
+                  <Image
+                    src="/logo-transparent.png"
+                    alt="Cityland Travel - Agencia de Viajes"
+                    fill
+                    sizes="176px"
+                    className="object-contain object-left"
+                  />
+                </div>
               </div>
               <p className="text-xs text-slate-400">
                 Agencia formal de viajes en Lima especializada en rutas a Europa y turismo internacional.

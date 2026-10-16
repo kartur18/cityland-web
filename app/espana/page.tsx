@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     locale: "es_PE",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1200&h=630&q=85",
+        url: "https://citylandtravel.com/images/espana/plaza-mayor.jpg",
         width: 1200,
         height: 630,
         alt: "Paquetes Migratorios a España - Cityland Travel",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "Paquetes Migratorios a España desde $695 USD — Cityland Travel",
     description:
       "Vuelos confirmados, seguro Schengen 30.000€ y asesoría migratoria en Lima. Separa con 50%.",
-    images: ["https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1200&h=630&q=85"],
+    images: ["https://citylandtravel.com/images/espana/plaza-mayor.jpg"],
   },
   other: {
     "geo.region": "PE-LIM",
