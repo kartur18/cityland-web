@@ -1,0 +1,112 @@
+import { Metadata } from "next";
+import ColegiosLandingClient from "./ColegiosLandingClient";
+import { PAQUETES_COLEGIOS } from "./datos";
+
+export const metadata: Metadata = {
+  title:
+    "Viajes de Promoción y Graduación Todo Incluido (Cusco, Punta Sal, Tarapoto, Cartagena y Punta Cana) | Cityland Travel",
+  description:
+    "Agencia especializada en viajes de promoción para colegios (primaria y secundaria), institutos y universidades en Lima. Paquetes Todo Incluido a Cusco desde S/ 1,690, Punta Sal desde S/ 1,390, Tarapoto desde S/ 1,290, Cartagena y Punta Cana. 1 liberado gratis cada 15 alumnos (RUC 20614914239).",
+  keywords: [
+    "viajes de promocion escolar todo incluido lima peru",
+    "paquetes de viajes de promocion a cusco 2026",
+    "viajes de promocion a punta sal y mancora",
+    "viajes de promocion a cartagena y punta cana",
+    "viajes de graduacion universidades institutos peru",
+    "agencia de viajes para colegios en lima norte los olivos",
+    "cityland travel promociones escolares",
+  ],
+  alternates: {
+    canonical: "https://citylandtravel.com/colegios",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://citylandtravel.com/colegios",
+    title:
+      "Viajes de Promoción y Graduación Todo Incluido — Cityland Travel",
+    description:
+      "Cusco, Punta Sal, Tarapoto, Cartagena, Punta Cana y Cancún Todo Incluido. 1 pasaje liberado gratis cada 15 alumnos y pagos en cuotas.",
+    siteName: "Cityland Travel",
+    locale: "es_PE",
+    images: [
+      {
+        url: "https://citylandtravel.com/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Viajes de Promoción para Colegios, Institutos y Universidades — Cityland Travel",
+      },
+    ],
+  },
+  other: {
+    "geo.region": "PE-LIM",
+    "geo.placename": "Los Olivos, Lima, Perú",
+  },
+};
+
+const JSON_LD_COLEGIOS = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Inicio — Cityland Travel",
+          item: "https://citylandtravel.com/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Viajes de Promoción para Colegios, Institutos y Universidades",
+          item: "https://citylandtravel.com/colegios",
+        },
+      ],
+    },
+    {
+      "@type": "ItemList",
+      name: "Programas de Viajes de Promoción y Graduación en Perú",
+      numberOfItems: PAQUETES_COLEGIOS.length,
+      itemListElement: PAQUETES_COLEGIOS.map((p, idx) => ({
+        "@type": "ListItem",
+        position: idx + 1,
+        item: {
+          "@type": "Product",
+          name: `Viaje de Promoción: ${p.titulo} (${p.duracion})`,
+          description: p.resumenCorto,
+          image: p.img,
+          brand: {
+            "@type": "Brand",
+            name: "Cityland Travel",
+          },
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "4.9",
+            reviewCount: "500",
+            bestRating: "5",
+          },
+          offers: {
+            "@type": "Offer",
+            priceCurrency: "PEN",
+            price: String(p.precioNumeroSoles),
+            priceValidUntil: "2027-05-31",
+            availability: "https://schema.org/InStock",
+            url: "https://citylandtravel.com/colegios",
+          },
+        },
+      })),
+    },
+  ],
+};
+
+export default function ColegiosPage() {
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD_COLEGIOS) }}
+      />
+      <ColegiosLandingClient />
+    </>
+  );
+}

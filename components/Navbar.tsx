@@ -9,11 +9,11 @@ import PhoneIcon from "@/components/icons/PhoneIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
 
 const navLinks: { label: string; href: string; highlight?: boolean; badgeColor?: "red" | "sky" }[] = [
-  { label: "Destinos", href: "#paquetes" },
   { label: "Especial España", href: "/espana", highlight: true, badgeColor: "red" },
-  { label: "Caribe & América", href: "/caribe", highlight: true, badgeColor: "sky" },
-  { label: "Reseñas", href: "#testimonios" },
-  { label: "Preguntas", href: "#faq" },
+  { label: "Caribe & Miami", href: "/caribe", highlight: true, badgeColor: "sky" },
+  { label: "Cusco", href: "/cusco" },
+  { label: "Visas", href: "/visas" },
+  { label: "Colegios & Promos", href: "/colegios" },
   { label: "Oficina", href: "#ubicacion" },
 ];
 

@@ -47,37 +47,37 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Rutas Europa */}
+          {/* Rutas Europa & Visas */}
           <div className="lg:col-span-3">
             <h4 className="text-xs font-bold text-white mb-4 tracking-wider uppercase">
-              Europa & Migratorio
+              España, Europa & Visas
             </h4>
             <div className="space-y-2 text-xs">
-              <a href="#migra" className="block text-slate-300 hover:text-white transition-colors">
-                Paquete migratorio a España
+              <a href="/espana" className="block text-slate-300 hover:text-white transition-colors">
+                Paquete Migratorio a España ($695)
               </a>
-              <a href="#migra" className="block text-slate-300 hover:text-white transition-colors">
-                Vuelos Lima ➔ Madrid (Directos)
+              <a href="/visas" className="block text-slate-300 hover:text-white transition-colors">
+                Trámite Visa Americana B1/B2
               </a>
-              <a href="#migra" className="block text-slate-300 hover:text-white transition-colors">
-                Vuelos Lima ➔ Barcelona
+              <a href="/visas" className="block text-slate-300 hover:text-white transition-colors">
+                Visa de Canadá & Permiso eTA
               </a>
-              <a href="#migra" className="block text-slate-300 hover:text-white transition-colors">
-                Vuelos Lima ➔ Roma & Milán
+              <a href="/visas" className="block text-slate-300 hover:text-white transition-colors">
+                Visa de México para Peruanos
               </a>
-              <a href="#servicios" className="block text-slate-300 hover:text-white transition-colors">
-                Seguro médico Schengen 30.000€
+              <a href="/visas" className="block text-slate-300 hover:text-white transition-colors">
+                Visados de Estudio y Trabajo España
               </a>
-              <a href="#paquetes" className="block text-slate-300 hover:text-white transition-colors">
+              <a href="/destinos/europa-clasica" className="block text-slate-300 hover:text-white transition-colors">
                 Circuitos por Europa 15 Días
               </a>
             </div>
           </div>
 
-          {/* Rutas Caribe & América */}
+          {/* Rutas Caribe, Cusco & Colegios */}
           <div className="lg:col-span-2">
             <h4 className="text-xs font-bold text-white mb-4 tracking-wider uppercase">
-              Caribe & América
+              Caribe, Cusco & Grupos
             </h4>
             <div className="space-y-2 text-xs">
               <a href="/caribe#punta-cana" className="block text-slate-300 hover:text-white transition-colors">
@@ -87,16 +87,16 @@ export default function Footer() {
                 Cancún & Riviera Maya
               </a>
               <a href="/caribe#cartagena" className="block text-slate-300 hover:text-white transition-colors">
-                Cartagena de Indias
-              </a>
-              <a href="/caribe#medellin" className="block text-slate-300 hover:text-white transition-colors">
-                Medellín & Guatapé
-              </a>
-              <a href="/caribe#miami-orlando" className="block text-slate-300 hover:text-white transition-colors">
-                Miami & Florida
+                Cartagena & Medellín (Solo DNI)
               </a>
               <a href="/caribe#rio-de-janeiro" className="block text-slate-300 hover:text-white transition-colors">
-                Río de Janeiro
+                Río de Janeiro & Miami
+              </a>
+              <a href="/cusco" className="block text-slate-300 hover:text-white transition-colors">
+                Paquetes a Cusco & Machu Picchu
+              </a>
+              <a href="/colegios" className="block text-slate-300 hover:text-white transition-colors">
+                Viajes de Promoción Escolar
               </a>
             </div>
           </div>

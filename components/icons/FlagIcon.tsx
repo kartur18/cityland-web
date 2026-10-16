@@ -77,6 +77,21 @@ const FLAGS: Record<string, React.ReactNode> = {
       <circle cx="1.5" cy="1" r=".6" fill="none" stroke="#FFCC00" strokeWidth=".1" strokeDasharray=".15 .2" />
     </>
   ),
+  Canadá: (
+    <>
+      <rect width=".75" height="2" fill="#FF0000" />
+      <rect x=".75" width="1.5" height="2" fill="#fff" />
+      <rect x="2.25" width=".75" height="2" fill="#FF0000" />
+      <circle cx="1.5" cy="1" r=".32" fill="#FF0000" />
+    </>
+  ),
+  Perú: (
+    <>
+      <rect width="1" height="2" fill="#D91023" />
+      <rect x="1" width="1" height="2" fill="#fff" />
+      <rect x="2" width="1" height="2" fill="#D91023" />
+    </>
+  ),
 };
 
 export default function FlagIcon({ pais, className = "w-4 h-3" }: { pais: string; className?: string }) {
