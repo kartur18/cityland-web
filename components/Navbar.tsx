@@ -8,9 +8,10 @@ import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import PhoneIcon from "@/components/icons/PhoneIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
 
-const navLinks: { label: string; href: string; highlight?: boolean }[] = [
+const navLinks: { label: string; href: string; highlight?: boolean; badgeColor?: "red" | "sky" }[] = [
   { label: "Destinos", href: "#paquetes" },
-  { label: "Especial España", href: "/espana", highlight: true },
+  { label: "Especial España", href: "/espana", highlight: true, badgeColor: "red" },
+  { label: "Caribe & América", href: "/caribe", highlight: true, badgeColor: "sky" },
   { label: "Reseñas", href: "#testimonios" },
   { label: "Preguntas", href: "#faq" },
   { label: "Oficina", href: "#ubicacion" },
@@ -74,9 +75,16 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="inline-flex items-center gap-1.5 text-xs font-extrabold text-red-600 bg-red-50 hover:bg-red-100 px-3.5 py-2 rounded-full transition-all whitespace-nowrap"
+                  className={`inline-flex items-center gap-1.5 text-xs font-extrabold px-3.5 py-2 rounded-full transition-all whitespace-nowrap ${
+                    link.badgeColor === "sky"
+                      ? "text-sky-700 bg-sky-50 hover:bg-sky-100"
+                      : "text-red-600 bg-red-50 hover:bg-red-100"
+                  }`}
                 >
-                  <FlagIcon pais="España" className="w-3.5 h-2.5" />
+                  <FlagIcon
+                    pais={link.badgeColor === "sky" ? "República Dominicana" : "España"}
+                    className="w-3.5 h-2.5"
+                  />
                   <span>{link.label}</span>
                 </Link>
               ) : (

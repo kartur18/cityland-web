@@ -302,8 +302,8 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     precioRegularUSD: 750,
     tag: "TENDENCIA 2026",
     tagColor: "promo",
-    img: "https://images.unsplash.com/photo-1599413987323-f17222b85090?w=1200&q=85",
-    alt: "Paquete a Medellín desde Lima - Piedra del Peñol y Guatapé",
+    img: "/images/paquetes/panama-medellin/medellin-skyline.png",
+    alt: "Paquete a Medellín desde Lima - Metrocable, Piedra del Peñol y Guatapé",
     tituloComercial: "Medellín: Ciudad de la Eterna Primavera",
     resaltado: "Hotel en El Poblado + Tour Peñol y Guatapé",
     inclusiones: {

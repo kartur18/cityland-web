@@ -21,6 +21,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: BASE, lastModified: new Date(), changeFrequency: "daily", priority: 1 },
     { url: `${BASE}/espana`, lastModified: new Date(), changeFrequency: "daily", priority: 0.98 },
+    { url: `${BASE}/caribe`, lastModified: new Date(), changeFrequency: "daily", priority: 0.98 },
+    { url: `${BASE}/paquetes`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.92 },
     { url: `${BASE}/paquetes/panama-medellin`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
     ...destinos,
     ...blog,

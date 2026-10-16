@@ -80,22 +80,22 @@ export default function Footer() {
               Caribe & América
             </h4>
             <div className="space-y-2 text-xs">
-              <a href="#paquetes" className="block text-slate-300 hover:text-white transition-colors">
+              <a href="/caribe#punta-cana" className="block text-slate-300 hover:text-white transition-colors">
                 Punta Cana All Inclusive
               </a>
-              <a href="#paquetes" className="block text-slate-300 hover:text-white transition-colors">
+              <a href="/caribe#cancun" className="block text-slate-300 hover:text-white transition-colors">
                 Cancún & Riviera Maya
               </a>
-              <a href="#paquetes" className="block text-slate-300 hover:text-white transition-colors">
+              <a href="/caribe#cartagena" className="block text-slate-300 hover:text-white transition-colors">
                 Cartagena de Indias
               </a>
-              <a href="#paquetes" className="block text-slate-300 hover:text-white transition-colors">
+              <a href="/caribe#medellin" className="block text-slate-300 hover:text-white transition-colors">
                 Medellín & Guatapé
               </a>
-              <a href="#paquetes" className="block text-slate-300 hover:text-white transition-colors">
+              <a href="/caribe#miami-orlando" className="block text-slate-300 hover:text-white transition-colors">
                 Miami & Florida
               </a>
-              <a href="#paquetes" className="block text-slate-300 hover:text-white transition-colors">
+              <a href="/caribe#rio-de-janeiro" className="block text-slate-300 hover:text-white transition-colors">
                 Río de Janeiro
               </a>
             </div>
