@@ -11,42 +11,53 @@ export const TELEFONO_FORMATEADO = "+51 906 450 098";
 export const TIPO_CAMBIO_REF = 3.75; // Tipo de cambio referencial USD -> PEN
 export const CATALOGO_LINK = "#paquetes";
 
-// ── Enrutamiento Inteligente Multi-Asesor de WhatsApp ──
-// Distribución por especialidad según directiva comercial:
-// 1. Europa (Madrid, Barcelona, Roma, Milán, París, etc.): 983882504
-// 2. Caribe & Colombia (Punta Cana, Cancún, Cartagena, Medellín): 942086698 / 906450098
-// 3. Cualquier otro destino / Botón flotante / Cotizador general: 944280151 / 938845086 / 906642487 / 944031724
+// ── Los 12 Números Oficiales de WhatsApp de Cityland Travel ──
+// Iniciales (7): 983882504, 942086698, 906450098, 944280151, 938845086, 906642487, 944031724
+// Adicionales (5): 983891157, 907451255, 983269950, 913637476, 903212007
+export const TODOS_LOS_NUMEROS_WHATSAPP = [
+  "51983882504", // 1. 983 882 504
+  "51942086698", // 2. 942 086 698
+  "51906450098", // 3. 906 450 098
+  "51944280151", // 4. 944 280 151
+  "51938845086", // 5. 938 845 086
+  "51906642487", // 6. 906 642 487
+  "51944031724", // 7. 944 031 724
+  "51983891157", // 8. 983 891 157
+  "51907451255", // 9. 907 451 255
+  "51983269950", // 10. 983 269 950
+  "51913637476", // 11. 913 637 476
+  "51903212007", // 12. 903 212 007
+] as const;
+
 export const WHATSAPP_ROUTING = {
-  europa: ["51983882504", "51983891157", "51907451255"],
-  caribe: ["51942086698", "51906450098", "51983891157", "51983269950", "51913637476", "51903212007"],
-  general: [
+  europa: [
+    "51983882504",
     "51983891157",
-    "51944031724",
     "51907451255",
     "51983269950",
     "51913637476",
     "51903212007",
-    "51944280151",
-    "51938845086",
-    "51906642487",
   ],
+  caribe: [
+    "51942086698",
+    "51906450098",
+    "51983891157",
+    "51907451255",
+    "51983269950",
+    "51913637476",
+    "51903212007",
+  ],
+  general: [...TODOS_LOS_NUMEROS_WHATSAPP],
 };
 
 /**
- * Retorna un número asignado de forma determinista según el destino o categoría
- * para garantizar consistencia entre SSR y render de cliente (evita desajustes de hidratación).
+ * Retorna un número asignado de forma determinista entre los 12 números oficiales
+ * según el destino o semilla para garantizar que todos los asesores reciban consultas.
  */
 export function getNumeroWhatsapp(categoria: "europa" | "caribe" | "general" | string, seed: string = ""): string {
-  if (categoria === "europa") {
-    return WHATSAPP_ROUTING.europa[0];
-  }
-  if (categoria === "caribe") {
-    const list = WHATSAPP_ROUTING.caribe;
-    const hash = seed.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
-    return list[hash % list.length];
-  }
-  const list = WHATSAPP_ROUTING.general;
-  const hash = seed.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const list = TODOS_LOS_NUMEROS_WHATSAPP;
+  const textoSeed = `${categoria}-${seed}`;
+  const hash = textoSeed.split("").reduce((acc, char, idx) => acc + char.charCodeAt(0) * (idx + 1), 0);
   return list[hash % list.length];
 }
 

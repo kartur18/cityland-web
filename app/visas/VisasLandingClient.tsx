@@ -62,7 +62,7 @@ export default function VisasLandingClient() {
 
           <div className="flex items-center gap-3">
             <a
-              href={`https://wa.me/51944031724?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo asesoría para tramitar mi visa (EE.UU., Canadá, México o España).")}`}
+              href={`https://wa.me/51983882504?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo asesoría para tramitar mi visa (EE.UU., Canadá, México o España).")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold cursor-pointer"
@@ -103,7 +103,7 @@ export default function VisasLandingClient() {
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-7">
                 <a
-                  href={`https://wa.me/51944031724?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo evaluar mi perfil por WhatsApp para tramitar mi Visa.")}`}
+                  href={`https://wa.me/51906450098?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo evaluar mi perfil por WhatsApp para tramitar mi Visa.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-wa-pulse inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-7 py-4 rounded-2xl text-sm sm:text-base font-bold shadow-md cursor-pointer"
@@ -185,7 +185,7 @@ export default function VisasLandingClient() {
                   </div>
 
                   <a
-                    href={`https://wa.me/51944031724?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo iniciar mi trámite de Visa Americana B1/B2 con asesoría completa.")}`}
+                    href={`https://wa.me/51942086698?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo iniciar mi trámite de Visa Americana B1/B2 con asesoría completa.")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0"
@@ -370,7 +370,7 @@ export default function VisasLandingClient() {
               </p>
 
               <a
-                href={`https://wa.me/51944031724?text=${encodeURIComponent("¡Hola Cityland Travel! Quisiera saber si califico para tramitar mi visa. ¿Me ayudan con una evaluación?")}`}
+                href={`https://wa.me/51944280151?text=${encodeURIComponent("¡Hola Cityland Travel! Quisiera saber si califico para tramitar mi visa. ¿Me ayudan con una evaluación?")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold cursor-pointer"
@@ -401,6 +401,15 @@ export default function VisasLandingClient() {
             <p>Av. Antúnez de Mayolo N. 814, Los Olivos, Lima · Lun–Sáb 9:00 am – 7:00 pm</p>
           </div>
           <div className="flex items-center gap-4">
+            <a
+              href={`https://wa.me/51938845086?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo información sobre el trámite de visas.")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-2.5 rounded-xl text-xs font-bold cursor-pointer"
+            >
+              <WhatsAppIcon size={15} />
+              <span>WhatsApp Oficial</span>
+            </a>
             <Link href="/caribe" className="text-xs text-slate-400 hover:text-white underline">
               Caribe & Miami
             </Link>
@@ -417,7 +426,7 @@ export default function VisasLandingClient() {
       {/* 6. Botón Flotante */}
       <div className="fixed bottom-5 right-5 z-50">
         <a
-          href={`https://wa.me/51944031724?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo asesoría para tramitar mi visa.")}`}
+          href={`https://wa.me/51906642487?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo asesoría para tramitar mi visa.")}`}
           target="_blank"
           rel="noopener noreferrer"
           className="btn-wa-pulse flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-xl cursor-pointer"

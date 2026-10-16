@@ -61,7 +61,7 @@ export default function ColegiosLandingClient() {
 
           <div className="flex items-center gap-3">
             <a
-              href={`https://wa.me/51906450098?text=${encodeURIComponent("¡Hola Cityland Travel! Soy del comité de aula / institución y deseo cotizar un Viaje de Promoción.")}`}
+              href={`https://wa.me/51983882504?text=${encodeURIComponent("¡Hola Cityland Travel! Soy del comité de aula / institución y deseo cotizar un Viaje de Promoción.")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold cursor-pointer"
@@ -179,7 +179,7 @@ export default function ColegiosLandingClient() {
                   </div>
 
                   <a
-                    href={`https://wa.me/51906450098?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo agendar una reunión/cotización para el viaje de promoción de nuestro salón.")}`}
+                    href={`https://wa.me/51942086698?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo agendar una reunión/cotización para el viaje de promoción de nuestro salón.")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0"
@@ -363,7 +363,7 @@ export default function ColegiosLandingClient() {
               </p>
 
               <a
-                href={`https://wa.me/51906450098?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo solicitar una proforma en PDF para presentar a los padres de nuestra promoción.")}`}
+                href={`https://wa.me/51944280151?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo solicitar una proforma en PDF para presentar a los padres de nuestra promoción.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold cursor-pointer"
@@ -394,6 +394,15 @@ export default function ColegiosLandingClient() {
             <p>Av. Antúnez de Mayolo N. 814, Los Olivos, Lima · Lun–Sáb 9:00 am – 7:00 pm</p>
           </div>
           <div className="flex items-center gap-4">
+            <a
+              href={`https://wa.me/51938845086?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo información sobre viajes de promoción.")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-2.5 rounded-xl text-xs font-bold cursor-pointer"
+            >
+              <WhatsAppIcon size={15} />
+              <span>WhatsApp Oficial</span>
+            </a>
             <Link href="/cusco" className="text-xs text-slate-400 hover:text-white underline">
               Cusco
             </Link>
@@ -410,7 +419,7 @@ export default function ColegiosLandingClient() {
       {/* 6. Botón Flotante */}
       <div className="fixed bottom-5 right-5 z-50">
         <a
-          href={`https://wa.me/51906450098?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar un viaje de promoción escolar / universitario.")}`}
+          href={`https://wa.me/51906642487?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar un viaje de promoción escolar / universitario.")}`}
           target="_blank"
           rel="noopener noreferrer"
           className="btn-wa-pulse flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-xl cursor-pointer"
