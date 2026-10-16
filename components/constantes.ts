@@ -857,6 +857,208 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     ],
     tipoViaje: "circuito",
   },
+  {
+    id: "arequipa-canon-del-colca",
+    slug: "arequipa-colca",
+    ciudad: "Arequipa & Cañón del Colca",
+    pais: "Perú",
+    bandera: "🇵🇪",
+    categoria: "sudamerica",
+    duracion: "4 Días / 3 Noches",
+    precioUSD: 329,
+    precioSoles: 1235,
+    precioRegularUSD: 420,
+    tag: "CIUDAD BLANCA & COLCA",
+    tagColor: "promo",
+    img: "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=1200&q=85",
+    alt: "Paquete a Arequipa y Cañón del Colca desde Lima",
+    tituloComercial: "Arequipa Colonial & Vuelo del Cóndor en el Colca",
+    resaltado: "Vuelos + Hotel + Monasterio Santa Catalina + Cruz del Cóndor",
+    inclusiones: {
+      vuelo: true,
+      hotel: "Hotel 3★/4★ en Arequipa y Chivay",
+      alimentacion: "Desayunos diarios incluidos",
+      traslados: true,
+      seguro: "Asistencia permanente en viaje",
+      tour: "City Tour + Ruta del Sillar + Cañón del Colca 2D/1N",
+    },
+    toursDestacados: [
+      "Mirador de la Cruz del Cóndor en el Cañón del Colca",
+      "Centro Histórico de Arequipa, Yanahuara y Monasterio de Santa Catalina",
+      "Canteras de Añashuayco (Ruta del Sillar) y baños termales de La Calera",
+    ],
+    descripcion:
+      "Descubre la arquitectura colonial en sillar blanco de Arequipa, su extraordinaria gastronomía en picanterías tradicionales y el majestuoso vuelo del cóndor en el Valle del Colca.",
+    itinerario: [
+      "Día 1: Vuelo directo Lima ➔ Arequipa. Traslado al hotel y City Tour por la tarde.",
+      "Día 2: Salida hacia el Valle del Colca cruzando la Reserva de Salinas y Aguada Blanca hasta Chivay.",
+      "Día 3: Visita al Mirador de la Cruz del Cóndor, pueblos tradicionales de Maca y Yanque, y retorno a Arequipa.",
+      "Día 4: Mañana libre para compras de chocolates y alpaca, traslado al aeropuerto y vuelo a Lima.",
+    ],
+    tipoViaje: "escapada",
+  },
+  {
+    id: "mancora-vichayito-playas",
+    slug: "mancora-vichayito",
+    ciudad: "Máncora & Vichayito",
+    pais: "Perú",
+    bandera: "🇵🇪",
+    categoria: "sudamerica",
+    duracion: "4 Días / 3 Noches",
+    precioUSD: 369,
+    precioSoles: 1385,
+    precioRegularUSD: 470,
+    tag: "SOL TODO EL AÑO",
+    tagColor: "hot",
+    img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85",
+    alt: "Paquete a Máncora, Vichayito y Punta Sal desde Lima",
+    tituloComercial: "Sol del Norte: Vichayito, Las Pocitas & Máncora",
+    resaltado: "Vuelos + Hotel Frente al Mar con Piscina + Tortugas en El Ñuro",
+    inclusiones: {
+      vuelo: true,
+      hotel: "Hotel frente al mar en Vichayito / Máncora",
+      alimentacion: "Desayunos frente al mar incluidos",
+      traslados: true,
+      seguro: "Asistencia al viajero",
+      tour: "Nado con tortugas marinas en El Ñuro y avistamiento costero",
+    },
+    toursDestacados: [
+      "Nado con tortugas verdes en la caleta de El Ñuro",
+      "Tardes de playa y piscina en Las Pocitas y Vichayito",
+      "Gastronomía marina norteña y paseo por Punta Sal",
+    ],
+    descripcion:
+      "Escápate del invierno limeño hacia las aguas cálidas del norte peruano. Disfruta de hoteles boutique frente al mar con piscina, atardeceres inolvidables y la mejor comida marina del Perú.",
+    itinerario: [
+      "Día 1: Vuelo Lima ➔ Piura o Talara. Traslado privado directo hasta el hotel frente al mar.",
+      "Día 2: Excursión por la mañana al muelle de El Ñuro para nadar junto a las tortugas marinas.",
+      "Día 3: Día libre de relax frente al mar en Vichayito y Las Pocitas.",
+      "Día 4: Desayuno frente al océano, traslado al aeropuerto y vuelo de regreso a Lima.",
+    ],
+    tipoViaje: "escapada",
+  },
+  {
+    id: "tarapoto-laguna-azul",
+    slug: "tarapoto-selva",
+    ciudad: "Tarapoto & Laguna Azul",
+    pais: "Perú",
+    bandera: "🇵🇪",
+    categoria: "sudamerica",
+    duracion: "4 Días / 3 Noches",
+    precioUSD: 289,
+    precioSoles: 1085,
+    precioRegularUSD: 380,
+    tag: "SELVA PERUANA · TOP VENTAS",
+    tagColor: "hot",
+    img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&q=85",
+    alt: "Paquete a Tarapoto y Laguna Azul Todo Organizado desde Lima",
+    tituloComercial: "Tarapoto Mágico: Laguna Azul, Ahuashiyacu & Lamas",
+    resaltado: "Vuelos + Hotel con Piscina + 3 Excursiones con Entradas",
+    inclusiones: {
+      vuelo: true,
+      hotel: "Hotel con piscina en Tarapoto",
+      alimentacion: "Desayunos diarios + Almuerzo en Laguna Azul",
+      traslados: true,
+      seguro: "Asistencia permanente en destino",
+      tour: "Laguna Azul (Sauce), Cataratas de Ahuashiyacu y Castillo de Lamas",
+    },
+    toursDestacados: [
+      "Paseo en bote y almuerzo turístico en la Laguna Azul de Sauce",
+      "Baño refrescante en las Cataratas de Ahuashiyacu",
+      "Visita cultural a la comunidad nativa Wayku y Castillo de Lamas",
+    ],
+    descripcion:
+      "El destino favorito de naturaleza y aventura en el Perú. A solo 1 hora y 20 minutos de Lima, combina cataratas cristalinas, lagunas rodeadas de palmeras y excelente hotelería con piscina.",
+    itinerario: [
+      "Día 1: Vuelo directo Lima ➔ Tarapoto. Traslado al hotel y tarde de visita a Lamas y su castillo.",
+      "Día 2: Día completo en la Laguna Azul de Sauce con paseo en bote y almuerzo típico.",
+      "Día 3: Excursión a las Cataratas de Ahuashiyacu y tarde libre en la piscina del hotel.",
+      "Día 4: Mañana de compras de café, cacao y puros artesanales, y vuelo de regreso a Lima.",
+    ],
+    tipoViaje: "escapada",
+  },
+  {
+    id: "cataratas-iguazu-brasil-argentina",
+    slug: "iguazu-cataratas",
+    ciudad: "Cataratas del Iguazú",
+    pais: "Brasil & Argentina",
+    bandera: "🇧🇷",
+    categoria: "sudamerica",
+    duracion: "4 Días / 3 Noches",
+    precioUSD: 649,
+    precioSoles: 2435,
+    precioRegularUSD: 820,
+    tag: "MARAVILLA NATURAL · SOLO DNI",
+    tagColor: "promo",
+    img: "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=1200&q=85",
+    alt: "Paquete a Cataratas del Iguazú desde Lima - Lado Brasileño y Argentino",
+    tituloComercial: "Cataratas del Iguazú: Lado Brasileño & Argentino",
+    resaltado: "Vuelos Directos + Hotel con Piscina + Garganta del Diablo & Hito Tres Fronteras",
+    inclusiones: {
+      vuelo: true,
+      hotel: "Hotel 4 Estrellas con piscina en Foz do Iguaçu",
+      alimentacion: "Desayunos buffet diarios",
+      traslados: true,
+      seguro: "Tarjeta de asistencia médica internacional",
+      tour: "Cataratas Lado Argentino + Lado Brasileño + Hito de las Tres Fronteras",
+    },
+    toursDestacados: [
+      "Tren Ecológico y pasarelas de la Garganta del Diablo (Lado Argentino)",
+      "Vista panorámica de los 275 saltos de agua (Lado Brasileño)",
+      "Parque de las Aves, Represa de Itaipú y compras libres de impuestos en Paraguay",
+    ],
+    descripcion:
+      "Conoce una de las 7 Maravillas Naturales del Mundo en la triple frontera entre Brasil, Argentina y Paraguay, viajando cómodamente desde Lima solo con tu DNI vigente.",
+    itinerario: [
+      "Día 1: Vuelo Lima ➔ Foz do Iguaçu (IGU). Recepción y traslado al hotel.",
+      "Día 2: Excursión de día completo a las Cataratas del lado argentino y Garganta del Diablo.",
+      "Día 3: Visita panorámica a las Cataratas del lado brasileño y Parque de las Aves.",
+      "Día 4: Mañana libre, traslado al aeropuerto y vuelo de retorno a Lima.",
+    ],
+    tipoViaje: "escapada",
+  },
+  {
+    id: "dubai-emiratos-lujo",
+    slug: "dubai-emiratos",
+    ciudad: "Dubái & Abu Dhabi",
+    pais: "Emiratos Árabes Unidos",
+    bandera: "🇦🇪",
+    categoria: "exoticos",
+    duracion: "8 Días / 7 Noches",
+    precioUSD: 1990,
+    precioSoles: 7460,
+    precioRegularUSD: 2490,
+    tag: "EXÓTICO DE LUJO · SIN VISA",
+    tagColor: "luxury",
+    img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=85",
+    alt: "Paquete a Dubái y Abu Dhabi desde Lima - Burj Khalifa y Safari en el Desierto",
+    tituloComercial: "Dubái & Abu Dhabi Inolvidable",
+    resaltado: "Vuelos + Hoteles 4★/5★ + Safari 4x4 en el Desierto + Gran Mezquita",
+    inclusiones: {
+      vuelo: true,
+      hotel: "7 Noches en Hoteles 4★/5★ en Dubái",
+      alimentacion: "Desayunos buffet + Cena BBQ en el Desierto + Cena Crucero Dhow",
+      traslados: true,
+      seguro: "Seguro médico internacional de amplia cobertura",
+      tour: "Dubái Moderno y Clásico, Safari 4x4 y Excursión a Abu Dhabi",
+    },
+    toursDestacados: [
+      "Dubái Marina, Burj Khalifa, Dubai Mall y Palmera Jumeirah",
+      "Safari en camionetas 4x4 por las dunas del desierto con cena árabe bajo las estrellas",
+      "Día completo en Abu Dhabi visitando la Gran Mezquita Sheikh Zayed",
+    ],
+    descripcion:
+      "Los ciudadanos peruanos NO necesitan visa para ingresar a los Emiratos Árabes Unidos. Vive el contraste entre el lujo futurista de Dubái y la magia milenaria del desierto árabe.",
+    itinerario: [
+      "Días 1-2: Vuelo internacional desde Lima hacia Dubái. Llegada y traslado privado al hotel.",
+      "Día 3: City Tour por Dubái Clásico (Bastakiya, zocos de oro y especias) y Dubái Moderno.",
+      "Día 4: Tarde de Safari en 4x4 por las dunas rojas del desierto con cena espectáculo.",
+      "Día 5: Excursión de día completo a Abu Dhabi y la Gran Mezquita Blanca.",
+      "Días 6-7: Cena crucero por Dubái Marina y día libre para compras o ascenso al Burj Khalifa.",
+      "Día 8: Traslado al aeropuerto internacional de Dubái y vuelo de regreso a Lima.",
+    ],
+    tipoViaje: "circuito",
+  },
 ];
 
 // Compatibilidad con componentes existentes
@@ -1193,5 +1395,59 @@ export const BLOG_POSTS: BlogPost[] = [
 <h3>2. ¿Cómo se puede demostrar el dinero?</h3>
 <p>Puedes acreditarlo combinando <strong>dinero en efectivo (euros)</strong>, tarjetas de crédito o débito internacionales a tu nombre acompañadas de un extracto bancario reciente o certificación de saldo disponible. En Cityland Travel te orientamos sobre cómo organizar tu viaje y los días de tu itinerario para cumplir este requisito sin inconvenientes.</p>`,
   },
+  {
+    slug: "seguro-schengen-30000-euros-peru-precio",
+    titulo: "Seguro de Viaje Schengen de 30.000€ desde Perú: Requisitos oficiales y cuánto cuesta",
+    desc: "Por qué es obligatorio el seguro médico internacional sin deducible para entrar a España, Italia o Francia y cómo adquirirlo en Lima.",
+    categoria: "Europa",
+    catColor: "bg-red-600",
+    fecha: "16 Oct 2026",
+    lectura: "4 min",
+    imagen: "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800&q=80",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>¿Qué exige la Unión Europea sobre el Seguro Schengen?</h2>
+<p>Para ingresar sin visa a cualquiera de los 29 países del Espacio Schengen (incluyendo España, Italia, Francia, Alemania y Países Bajos), todo viajero peruano debe portar una póliza de asistencia médica internacional vigente durante todos los días de su viaje.</p>
+<h3>Requisitos obligatorios de tu póliza:</h3>
+<p>1. <strong>Cobertura médica mínima de 30.000 euros</strong> (o su equivalente superior en dólares) por accidente o enfermedad repentina.<br>
+2. <strong>Cero deducible (Sin franquicia):</strong> el viajero no debe pagar copagos para recibir atención de urgencia.<br>
+3. <strong>Cobertura de repatriación sanitaria y funeraria</strong> incluida.<br>
+4. Vigencia exacta desde el día de aterrizaje en Europa hasta la fecha de tu vuelo de retorno.</p>
+<p>En Cityland Travel emitimos tu póliza oficial Schengen al instante o la incluimos directamente dentro de tu paquete migratorio o turístico.</p>`,
+  },
+  {
+    slug: "viajes-promocion-escolar-cusco-caribe-consejos",
+    titulo: "Cómo organizar un viaje de promoción escolar a Cusco, Punta Cana o Cartagena con seguridad",
+    desc: "Guía para comités de aula y colegios en Lima: contratos formales, permisos notariales, seguros estudiantiles y cronograma de pagos.",
+    categoria: "Colegios",
+    catColor: "bg-indigo-600",
+    fecha: "16 Oct 2026",
+    lectura: "5 min",
+    imagen: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=800&q=80",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>Claves para un viaje de promoción escolar 100% seguro</h2>
+<p>Elegir la agencia de viajes adecuada para la promoción de primaria o secundaria requiere verificar la formalidad legal y operativa de la empresa.</p>
+<h3>1. Verifica el RUC activo y registro en MINCETUR</h3>
+<p>Contrata únicamente con agencias constituidas con oficina física real en Lima (como Cityland Travel E.I.R.L., RUC 20614914239) que entreguen contrato formal, boletas/facturas electrónicas y códigos de reserva aérea verificables para cada alumno.</p>
+<h3>2. Destinos favoritos de las promociones peruanas</h3>
+<p>En rutas nacionales destacan <strong>Cusco y Machu Picchu</strong>, <strong>Tarapoto y Laguna Azul</strong> y <strong>Playas de Máncora/Punta Sal</strong>. En rutas internacionales lideran <strong>Punta Cana Todo Incluido</strong>, <strong>Cartagena de Indias</strong> y <strong>Cancún</strong>, siempre acompañados por un tour conductor y asistencia médica 24/7.</p>`,
+  },
+  {
+    slug: "temporada-baja-viajar-machu-picchu-cusco",
+    titulo: "Cuál es el mejor mes para viajar a Cusco y Machu Picchu y cómo asegurar tus entradas",
+    desc: "Diferencias entre la temporada seca y la temporada verde en Cusco, circuitos oficiales de Machu Picchu y con cuánta anticipación reservar.",
+    categoria: "Perú",
+    catColor: "bg-emerald-700",
+    fecha: "16 Oct 2026",
+    lectura: "5 min",
+    imagen: "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=800&q=80",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>Planifica tu viaje a Cusco y Machu Picchu sin contratiempos</h2>
+<p>La Ciudadela Inca de Machu Picchu cuenta con aforos diarios estrictos regulados por el Ministerio de Cultura. Por ello, reservar tu paquete con anticipación garantiza conseguir los mejores horarios en el Circuito 2 (Clásico) y en los trenes turísticos.</p>
+<h3>1. Temporada Seca (Abril a Octubre)</h3>
+<p>Ofrece cielos despejados ideales para fotografía en Machu Picchu, Montaña de 7 Colores y Laguna Humantay. Se recomienda separar con el 50% de inicial al menos 30 a 60 días antes.</p>
+<h3>2. Temporada de Ofertas (Noviembre a Marzo)</h3>
+<p>Encontrarás paisajes verdes espectaculares en el Valle Sagrado y tarifas promocionales más bajas tanto en vuelos Lima – Cusco como en hoteles de 3, 4 y 5 estrellas.</p>`,
+  },
 ];
+
 
