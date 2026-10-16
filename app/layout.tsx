@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, Bebas_Neue } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { PRECIO_DESDE_EUROPA } from "@/components/constantes";
+import WhatsAppTracker from "@/components/WhatsAppTracker";
 import "./globals.css";
 
 const GOOGLE_ADS_ID = "AW-18093363482";
@@ -103,6 +104,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es-PE" className={`${jakarta.variable} ${bebas.variable} antialiased`} suppressHydrationWarning>
       <body className="font-[family-name:var(--font-jakarta)] text-[#0a1628] bg-white overflow-x-hidden m-0">
         {children}
+        <WhatsAppTracker />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
           strategy="afterInteractive"

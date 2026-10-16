@@ -505,6 +505,9 @@ export default function AirlineLandingTemplate({
           <div className="text-xs text-slate-300 text-center lg:text-left space-y-1">
             <p className="font-bold text-white text-sm">Cityland Travel E.I.R.L. · RUC 20614914239</p>
             <p>Av. Antúnez de Mayolo N. 814, Los Olivos, Lima · Lun–Sáb 9:00 am – 7:00 pm</p>
+            <p className="text-[11px] text-slate-400 pt-1">
+              * Tarifas referenciales en US$ con impuestos y cargos obligatorios incluidos. Tarifa sujeta a disponibilidad y condiciones aplicables (Verificado: Oct 2026).
+            </p>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
