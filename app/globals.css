@@ -56,6 +56,9 @@ html, body {
 @keyframes tabFadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes scaleIn { from { opacity: 0; transform: scale(.95) } to { opacity: 1; transform: scale(1) } }
 @keyframes shimmer { 0% { background-position: -200% 0 } 100% { background-position: 200% 0 } }
+@keyframes pulseSubtle { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+@keyframes glowPulse { 0%, 100% { box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25); } 50% { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5); } }
+@keyframes badgePop { 0% { transform: scale(0.9); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 
 /* ── Scroll Reveal ── */
 .reveal {
@@ -148,6 +151,46 @@ html, body {
 .btn-hover:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* ── Interactive Card Lift & Border Glow ── */
+.card-interactive {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+.card-interactive:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px -15px rgba(10, 22, 40, 0.12), 0 0 0 1px rgba(220, 38, 38, 0.15);
+  border-color: rgba(220, 38, 38, 0.25);
+}
+
+/* ── WhatsApp Button Subtle Glow Pulse ── */
+.btn-wa-pulse {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+}
+.btn-wa-pulse:hover {
+  transform: translateY(-1.5px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(37, 211, 102, 0.45);
+}
+.btn-wa-pulse:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ── Shimmer Sweep ── */
+.shimmer-effect {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(90deg, rgba(255,255,255,0) 0, rgba(255,255,255,0.2) 20%, rgba(255,255,255,0.5) 60%, rgba(255,255,255,0));
+  animation: shimmer 3s infinite;
 }
 
 /* ── Focus visible ── */

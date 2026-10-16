@@ -16,7 +16,7 @@ const SERVICIOS_COMPACTOS = [
     badgeColor: "bg-red-50 text-red-700 border-red-200",
     titulo: "Paquetes All Inclusive",
     subtitulo: "Caribe, Cancún y Colombia",
-    descripcion: "Vuelo ida y vuelta desde Lima + Resort 4★ y 5★ frente al mar + Comidas y bebidas ilimitadas 24h + Traslados y tours.",
+    descripcion: "Vuelo I/V desde Lima + Resort frente al mar + Comidas y bebidas ilimitadas 24h + Tours.",
     precio: "Desde $569 USD",
     cat: "caribe" as const,
     tipo: "All Inclusive",
@@ -28,11 +28,11 @@ const SERVICIOS_COMPACTOS = [
         <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
       </svg>
     ),
-    badge: "Especialidad Cityland",
-    badgeColor: "bg-amber-50 text-amber-800 border-amber-200",
-    titulo: "Europa & Paquete Migratorio",
+    badge: "Especialidad",
+    badgeColor: "bg-blue-50 text-blue-800 border-blue-200",
+    titulo: "Europa & Asesoría Migratoria",
     subtitulo: "España, Italia y Francia",
-    descripcion: "Boleto confirmado + Seguro Schengen obligatorio (30.000€) + Hotel de tránsito y asesoría para migraciones.",
+    descripcion: "Boleto formal IATA + Seguro Schengen 30.000€ + Asesoría personalizada para migraciones.",
     precio: `Desde $${PRECIO_DESDE_EUROPA} USD`,
     cat: "europa" as const,
     tipo: "Europa / Migratorio",
@@ -48,7 +48,7 @@ const SERVICIOS_COMPACTOS = [
     badgeColor: "bg-purple-50 text-purple-700 border-purple-200",
     titulo: "Turquía & Circuitos Exóticos",
     subtitulo: "Estambul y Capadocia en Globo",
-    descripcion: "Vuelos I/V + Hoteles 4★ y 5★ + Desayunos y cenas + Crucero Bósforo y vuelo en globo al amanecer.",
+    descripcion: "Sin visa: Vuelos I/V + Hoteles 4★ y 5★ + Capadocia en globo y crucero por el Bósforo.",
     precio: "Desde $1,690 USD",
     cat: "general" as const,
     tipo: "Circuito Exótico",
@@ -57,10 +57,10 @@ const SERVICIOS_COMPACTOS = [
     id: "vuelos",
     icon: <PlaneIcon className="w-5 h-5 text-emerald-600 fill-none stroke-current stroke-2" />,
     badge: "Con Equipaje",
-    badgeColor: "bg-blue-50 text-blue-700 border-blue-200",
+    badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
     titulo: "Boletos Aéreos Internacionales",
     subtitulo: "LATAM, Iberia, Air Europa y Copa",
-    descripcion: "Emisión de pasajes directos y con escala desde Lima con equipaje de mano y bodega incluido. Sin sorpresas.",
+    descripcion: "Emisión inmediata de pasajes desde Lima con equipaje de mano y bodega incluido.",
     precio: "Cotiza tu fecha",
     cat: "general" as const,
     tipo: "Vuelo Internacional",
@@ -73,29 +73,29 @@ const SERVICIOS_COMPACTOS = [
       </svg>
     ),
     badge: "Exigido en Europa",
-    badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
-    titulo: "Seguro de Asistencia Médica",
-    subtitulo: "Cobertura Schengen 30.000€",
-    descripcion: "Tarjeta de asistencia médica internacional válida para control migratorio, emergencias y extravío de maletas.",
+    badgeColor: "bg-amber-50 text-amber-800 border-amber-200",
+    titulo: "Seguro Médico Schengen",
+    subtitulo: "Cobertura de 30.000€ Obligatoria",
+    descripcion: "Tarjeta de asistencia médica internacional válida para control migratorio y emergencias.",
     precio: "Desde $45 USD",
     cat: "general" as const,
     tipo: "Seguro Médico",
   },
   {
-    id: "facilidades",
+    id: "grupos",
     icon: (
       <svg viewBox="0 0 24 24" className="w-5 h-5 text-indigo-600 fill-none stroke-current stroke-2">
-        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/>
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
       </svg>
     ),
-    badge: "Reserva Segura",
+    badge: "Tarifa Especial",
     badgeColor: "bg-indigo-50 text-indigo-700 border-indigo-200",
-    titulo: "Separa con el 50% de Inicial",
-    subtitulo: "Cancela el saldo antes de volar",
-    descripcion: "Congela tarifas y asegura tus cupos con el 50% de inicial vía Yape, Plin, BCP, BBVA o tarjetas de crédito en cuotas.",
-    precio: "50% de Inicial",
+    titulo: "Viajes en Grupo & Promociones",
+    subtitulo: "Quinceañeros, Familias y Colegios",
+    descripcion: "Precios corporativos por volumen. Separa con 50% y planifica con asesoría exclusiva.",
+    precio: "Cotiza Grupos",
     cat: "general" as const,
-    tipo: "Facilidad de Pago",
+    tipo: "Viaje en Grupo",
   },
 ];
 
@@ -113,7 +113,7 @@ export default function Servicios() {
             ¿QUÉ SERVICIO BUSCAS HOY?
           </h2>
           <p className="text-xs sm:text-sm text-slate-600">
-            Haz clic en el servicio que deseas para recibir cotización personalizada en tiempo real por WhatsApp.
+            Selecciona el servicio y un asesor te responderá de inmediato por WhatsApp con opciones y tarifas.
           </p>
         </div>
 
@@ -130,11 +130,11 @@ export default function Servicios() {
             return (
               <div
                 key={s.id}
-                className="bg-white rounded-2xl border border-slate-200/90 p-5 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+                className="card-interactive group bg-white rounded-2xl border border-slate-200/90 p-5 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200/60 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200/70 flex items-center justify-center group-hover:scale-110 group-hover:bg-red-50 group-hover:border-red-200 transition-all duration-300">
                       {s.icon}
                     </div>
                     <span className={`text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full border ${s.badgeColor}`}>
@@ -142,10 +142,10 @@ export default function Servicios() {
                     </span>
                   </div>
 
-                  <h3 className="text-sm sm:text-base font-bold text-slate-900 leading-snug">
+                  <h3 className="text-sm sm:text-base font-bold text-slate-900 leading-snug group-hover:text-red-600 transition-colors">
                     {s.titulo}
                   </h3>
-                  <p className="text-xs font-bold text-red-600 mb-2">
+                  <p className="text-xs font-semibold text-slate-500 mb-2">
                     {s.subtitulo}
                   </p>
                   <p className="text-xs text-slate-600 leading-relaxed mb-4">
@@ -167,7 +167,7 @@ export default function Servicios() {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 py-2 rounded-xl text-xs font-bold shadow-xs hover:shadow-md transition-all cursor-pointer shrink-0"
+                    className="btn-wa-pulse inline-flex items-center gap-1.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 py-2 rounded-xl text-xs font-bold shrink-0 cursor-pointer"
                   >
                     <WhatsAppIcon size={14} />
                     <span>Cotizar</span>

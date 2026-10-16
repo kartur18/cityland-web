@@ -84,7 +84,7 @@ export default function Destinos() {
             return (
               <div
                 key={paquete.id}
-                className="group rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col h-full"
+                className="card-interactive group rounded-2xl overflow-hidden bg-white border border-slate-200/90 flex flex-col h-full"
               >
                 {/* Imagen del Destino */}
                 <div className="relative h-56 w-full overflow-hidden bg-slate-100">
@@ -93,7 +93,7 @@ export default function Destinos() {
                     alt={paquete.alt}
                     fill
                     sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/25 to-transparent" />
 
@@ -115,7 +115,7 @@ export default function Destinos() {
                     <span className="text-[11px] uppercase tracking-wider font-bold text-amber-300 block mb-0.5">
                       {paquete.duracion}
                     </span>
-                    <h3 className="text-xl font-bold leading-tight drop-shadow-sm">
+                    <h3 className="text-xl font-bold leading-tight drop-shadow-sm group-hover:text-amber-200 transition-colors">
                       {paquete.ciudad}
                     </h3>
                   </div>
@@ -131,20 +131,20 @@ export default function Destinos() {
 
                   {/* Puntos Clave estructurados con checks limpios */}
                   <div className="space-y-1.5 mb-4 text-xs text-slate-600 flex-1">
-                    <p className="flex items-center gap-2">
-                      <span className="text-emerald-600 font-bold">✓</span>
+                    <p className="flex items-start gap-2">
+                      <span className="text-emerald-600 font-bold mt-0.5">✓</span>
                       <span>Vuelo ida y vuelta desde Lima con equipaje</span>
                     </p>
-                    <p className="flex items-center gap-2">
-                      <span className="text-emerald-600 font-bold">✓</span>
-                      <span className="truncate">{paquete.inclusiones.hotel}</span>
+                    <p className="flex items-start gap-2">
+                      <span className="text-emerald-600 font-bold mt-0.5">✓</span>
+                      <span>{paquete.inclusiones.hotel}</span>
                     </p>
-                    <p className="flex items-center gap-2">
-                      <span className="text-emerald-600 font-bold">✓</span>
-                      <span className="truncate">{paquete.inclusiones.alimentacion}</span>
+                    <p className="flex items-start gap-2">
+                      <span className="text-emerald-600 font-bold mt-0.5">✓</span>
+                      <span>{paquete.inclusiones.alimentacion}</span>
                     </p>
-                    <p className="flex items-center gap-2">
-                      <span className="text-emerald-600 font-bold">✓</span>
+                    <p className="flex items-start gap-2">
+                      <span className="text-emerald-600 font-bold mt-0.5">✓</span>
                       <span>Traslados en destino y seguro de viaje</span>
                     </p>
                   </div>
@@ -184,7 +184,7 @@ export default function Destinos() {
                       href={waHref}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white py-3 px-4 rounded-xl text-xs sm:text-sm font-bold shadow-md shadow-emerald-500/20 hover:shadow-lg transition-all cursor-pointer"
+                      className="btn-wa-pulse w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white py-3 px-4 rounded-xl text-xs sm:text-sm font-bold cursor-pointer"
                     >
                       <WhatsAppIcon size={16} />
                       <span>Cotizar por WhatsApp</span>
@@ -203,33 +203,6 @@ export default function Destinos() {
               </div>
             );
           })}
-        </div>
-
-        {/* Respaldo Institucional (Limpio, con icono formal SVG) */}
-        <div className="mt-12 p-5 bg-white rounded-2xl border border-slate-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <div className="flex items-center gap-3.5">
-            <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700 shrink-0">
-              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2">
-                <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11m16-11v11"/>
-              </svg>
-            </div>
-            <div>
-              <p className="text-sm font-bold text-slate-900">
-                Atención presencial en Los Olivos: Av. Antúnez de Mayolo N. 814
-              </p>
-              <p className="text-xs text-slate-500">
-                Cityland Travel E.I.R.L. · RUC: 20614914239 · Lunes a Sábado de 9:00 am a 7:00 pm
-              </p>
-            </div>
-          </div>
-          <a
-            href={buildWaUrl({ categoria: "general", mensajePersonalizado: "Hola Cityland Travel, deseo una cotización personalizada de viaje." })}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="shrink-0 text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-5 py-2.5 rounded-xl hover:bg-emerald-100 transition-colors cursor-pointer"
-          >
-            Hablar con un asesor ahora
-          </a>
         </div>
 
       </div>

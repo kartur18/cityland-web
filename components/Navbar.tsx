@@ -8,12 +8,12 @@ import PhoneIcon from "@/components/icons/PhoneIcon";
 import ArrowRightIcon from "@/components/icons/ArrowRightIcon";
 
 const navLinks: { label: string; href: string; external?: boolean }[] = [
-  { label: "Paquetes 2026", href: "#paquetes" },
-  { label: "Especial Europa", href: "#migra" },
+  { label: "Paquetes", href: "#paquetes" },
+  { label: "Europa", href: "#migra" },
   { label: "Servicios", href: "#servicios" },
-  { label: "Garantías & 50%", href: "#garantias" },
+  { label: "Garantías", href: "#garantias" },
   { label: "Testimonios", href: "#testimonios" },
-  { label: "Oficina & Ubicación", href: "#ubicacion" },
+  { label: "Oficina", href: "#ubicacion" },
 ];
 
 export default function Navbar() {
@@ -105,7 +105,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="text-[13px] font-bold text-slate-700 hover:text-red-600 transition-colors px-3 py-2 rounded-lg hover:bg-slate-50"
+                className="text-[13px] font-bold text-slate-700 hover:text-red-600 transition-colors px-3 py-2 rounded-lg hover:bg-slate-50 whitespace-nowrap"
               >
                 {link.label}
               </a>
@@ -120,7 +120,7 @@ export default function Navbar() {
               </span>
               <a
                 href={`tel:${TELEFONO}`}
-                className="text-xs font-extrabold text-[#0a1628] hover:text-red-600 transition-colors"
+                className="text-xs font-extrabold text-[#0a1628] hover:text-red-600 transition-colors whitespace-nowrap"
               >
                 {TELEFONO_FORMATEADO}
               </a>
@@ -130,7 +130,7 @@ export default function Navbar() {
               href={WA_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 xl:px-5 py-2.5 rounded-xl text-xs sm:text-[13px] font-bold shadow-md shadow-emerald-500/20 hover:shadow-lg transition-all"
+              className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 xl:px-5 py-2.5 rounded-xl text-xs sm:text-[13px] font-bold shadow-md shadow-emerald-500/20 hover:shadow-lg transition-all whitespace-nowrap cursor-pointer"
             >
               <WhatsAppIcon size={16} />
               <span>Cotizar por WhatsApp</span>
@@ -143,7 +143,7 @@ export default function Navbar() {
               href={WA_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 bg-[#25D366] text-white px-3 py-2 rounded-xl text-xs font-bold"
+              className="btn-wa-pulse inline-flex items-center gap-1.5 bg-[#25D366] text-white px-3 py-2 rounded-xl text-xs font-bold cursor-pointer"
               aria-label="WhatsApp"
             >
               <WhatsAppIcon size={15} />
