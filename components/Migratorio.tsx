@@ -17,69 +17,54 @@ export default function Migratorio() {
   });
 
   return (
-    <section id="migra" className="py-14 sm:py-18 bg-white">
+    <section id="migra" className="py-14 sm:py-20 bg-white border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="relative rounded-3xl overflow-hidden bg-[#0a1628] text-white shadow-xl">
-          {/* Imagen panorámica de Madrid */}
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/images/espana/palacio-real.jpg"
-              alt="Paquetes a España desde Lima - Cityland Travel"
-              fill
-              sizes="(max-width: 1280px) 100vw, 1280px"
-              className="object-cover object-center opacity-45"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#07101f]/95 via-[#0a1628]/85 to-transparent" />
+        <div className="rounded-3xl border border-slate-200/90 bg-gradient-to-br from-slate-50 via-white to-sky-50/40 shadow-sm overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center">
+          {/* Izquierda: Contenido Luminoso y Ordenado */}
+          <div className="lg:col-span-7 p-6 sm:p-10 lg:p-12">
+            <div className="inline-flex items-center gap-2 bg-white border border-slate-200 px-3.5 py-1 rounded-full text-xs font-bold text-slate-700 mb-4 shadow-2xs">
+              <FlagIcon pais="España" className="w-4 h-3" />
+              <span>Ruta Especializada · Sin Visa Consular para Peruanos</span>
+            </div>
+
+            <h2 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-5xl text-[#0a1628] tracking-tight leading-[0.96] mb-3">
+              ESPECIAL ESPAÑA & EUROPA{" "}
+              <span className="text-red-600">DESDE $695 USD</span>
+            </h2>
+
+            <p className="text-sm sm:text-base text-slate-600 mb-6 max-w-xl">
+              Carpeta completa para tu ingreso por Madrid-Barajas: Vuelo confirmado IATA, Seguro Schengen de 30.000€, Reserva de Hotel y Asesoría 1 a 1.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-3">
+              <Link
+                href="/espana"
+                className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold shadow-sm transition-all"
+              >
+                <span>Ver Salidas y Precios España →</span>
+              </Link>
+
+              <a
+                href={waUrlEuropa}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold cursor-pointer"
+              >
+                <WhatsAppIcon size={16} />
+                <span>Hablar con Asesor Europa</span>
+              </a>
+            </div>
           </div>
 
-          <div className="relative z-10 p-7 sm:p-12 lg:p-14 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-            <div className="max-w-xl">
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold text-amber-300 mb-4">
-                <FlagIcon pais="España" className="w-4 h-3" />
-                <span>Ruta Especializada · Sin Visa Consular</span>
-              </div>
-
-              <h2 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[0.95] mb-3">
-                ESPECIAL ESPAÑA & EUROPA{" "}
-                <span className="text-amber-400">DESDE $695 USD</span>
-              </h2>
-
-              <p className="text-sm sm:text-base text-slate-200 mb-6">
-                Carpeta completa para ingresar por Madrid-Barajas: Vuelo IATA + Seguro Schengen 30.000€ + Reserva de Hotel + Asesoría 1 a 1.
-              </p>
-
-              <div className="flex flex-wrap items-center gap-3">
-                <Link
-                  href="/espana"
-                  className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3.5 rounded-full text-xs sm:text-sm font-extrabold shadow-lg transition-all"
-                >
-                  <span>Ver Fechas y Precios España →</span>
-                </Link>
-
-                <a
-                  href={waUrlEuropa}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-6 py-3.5 rounded-full text-xs sm:text-sm font-extrabold cursor-pointer"
-                >
-                  <WhatsAppIcon size={16} />
-                  <span>Hablar con Asesor Europa</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Tarifa resumida limpia a la derecha */}
-            <div className="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-6 lg:min-w-[260px] text-left lg:text-right">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-amber-300 block mb-1">
-                Salidas 2026 – 2027
-              </span>
-              <div className="font-[family-name:var(--font-bebas)] text-5xl text-white leading-none">
-                $695 <span className="text-lg font-sans font-bold text-slate-300">USD</span>
-              </div>
-              <span className="text-xs font-semibold text-emerald-300 block mt-1">
-                Separa hoy con $348 USD (50%)
-              </span>
-            </div>
+          {/* Derecha: Fotografía Luminosa de Madrid */}
+          <div className="lg:col-span-5 relative h-64 sm:h-80 lg:h-full min-h-[280px] w-full">
+            <Image
+              src="/images/espana/gran-via-metropolis.jpg"
+              alt="Madrid España - Cityland Travel"
+              fill
+              sizes="(max-width: 1024px) 100vw, 500px"
+              className="object-cover"
+            />
           </div>
         </div>
       </div>
