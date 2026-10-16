@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     url: "https://citylandtravel.com/espana",
     title: "Paquetes Migratorios a España desde $695 USD — Cityland Travel",
     description:
-      "Tu oportunidad en España. Salidas en Noviembre ($695), Diciembre ($875), Enero ($875) y Feb-Mar-Abr ($699). Separa con el 50% de inicial.",
+      "Tu oportunidad en España. Salidas en Noviembre ($695), Diciembre ($875), Enero ($875) y Marzo-Abril-Mayo ($699). Separa con el 50% de inicial.",
     siteName: "Cityland Travel",
     locale: "es_PE",
     images: [
@@ -85,7 +85,7 @@ const JSON_LD_ESPANA = {
           },
           {
             "@type": "Offer",
-            name: "Paquete Migratorio Febrero · Marzo · Abril",
+            name: "Paquete Migratorio Marzo · Abril · Mayo",
             price: "699",
             priceCurrency: "USD",
             availability: "https://schema.org/InStock",
@@ -145,7 +145,7 @@ const JSON_LD_ESPANA = {
           name: "¿Cuánto cuesta el paquete a España?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Las tarifas promocionales según mes de salida son: Noviembre desde $695 USD, Diciembre $875 USD, Enero $875 USD y Febrero/Marzo/Abril desde $699 USD. Se separa con el 50% de inicial.",
+            text: "Las tarifas promocionales según mes de salida son: Noviembre desde $695 USD, Diciembre $875 USD, Enero $875 USD y Marzo/Abril/Mayo desde $699 USD. Se separa con el 50% de inicial.",
           },
         },
         {

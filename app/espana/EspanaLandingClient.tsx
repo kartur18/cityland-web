@@ -6,88 +6,7 @@ import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import PlaneIcon from "@/components/icons/PlaneIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
 
-// ── Lista de los 7 Asesores con sus Números Individuales Oficiales ──
-export const ASESORES_OFICIALES = [
-  {
-    id: "lucero",
-    nombre: "Lucero — Especialista Europa",
-    rol: "Asesora Principal de Rutas a España & Espacio Schengen",
-    telefono: "+51 983 882 504",
-    numeroRaw: "51983882504",
-    destacado: true,
-    badge: "Especialista Europa",
-    badgeColor: "bg-red-50 text-red-700 border-red-200",
-    msg: "¡Hola Lucero! Deseo cotizar el Paquete Migratorio a España y consultar asesoría para el viaje.",
-  },
-  {
-    id: "asesor-1",
-    nombre: "Asesoría de Turno 1",
-    rol: "Emisión de Boletos IATA (Iberia, Air Europa, LATAM)",
-    telefono: "+51 906 450 098",
-    numeroRaw: "51906450098",
-    destacado: false,
-    badge: "Boletos Aéreos",
-    badgeColor: "bg-blue-50 text-blue-700 border-blue-200",
-    msg: "¡Hola! Deseo cotizar la emisión de boletos confirmados a España con equipaje de bodega.",
-  },
-  {
-    id: "asesor-2",
-    nombre: "Asesoría de Turno 2",
-    rol: "Pólizas de Seguro Médico Schengen (30.000€)",
-    telefono: "+51 942 086 698",
-    numeroRaw: "51942086698",
-    destacado: false,
-    badge: "Seguros Schengen",
-    badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
-    msg: "¡Hola! Deseo información del Seguro Médico Schengen obligatorio de 30.000€ para España.",
-  },
-  {
-    id: "asesor-3",
-    nombre: "Asesoría de Turno 3",
-    rol: "Reservas, Contratos SUNAT y Facilidad 50%",
-    telefono: "+51 944 280 151",
-    numeroRaw: "51944280151",
-    destacado: false,
-    badge: "Facilidad 50%",
-    badgeColor: "bg-amber-50 text-amber-800 border-amber-200",
-    msg: "¡Hola! Deseo información de cómo congelar mi tarifa a España separando con el 50% de inicial.",
-  },
-  {
-    id: "asesor-4",
-    nombre: "Asesoría de Turno 4",
-    rol: "Asesoría en Filtros Migratorios & Documentos Barajas",
-    telefono: "+51 938 845 086",
-    numeroRaw: "51938845086",
-    destacado: false,
-    badge: "Filtros Migratorios",
-    badgeColor: "bg-purple-50 text-purple-700 border-purple-200",
-    msg: "¡Hola! Quisiera orientación sobre las preguntas del control migratorio de Barajas y sustento de viaje.",
-  },
-  {
-    id: "asesor-5",
-    nombre: "Asesoría de Turno 5",
-    rol: "Atención Inmediata & Cotizaciones en Tiempo Real",
-    telefono: "+51 906 642 487",
-    numeroRaw: "51906642487",
-    destacado: false,
-    badge: "Atención Inmediata",
-    badgeColor: "bg-slate-100 text-slate-800 border-slate-200",
-    msg: "¡Hola! Deseo cotización inmediata para viajar a España en las próximas semanas.",
-  },
-  {
-    id: "asesor-6",
-    nombre: "Asesoría de Turno 6",
-    rol: "Disponibilidad de Cupos y Fechas de Salida",
-    telefono: "+51 944 031 724",
-    numeroRaw: "51944031724",
-    destacado: false,
-    badge: "Disponibilidad Cupos",
-    badgeColor: "bg-indigo-50 text-indigo-700 border-indigo-200",
-    msg: "¡Hola! Deseo consultar cupos disponibles para el Paquete a España.",
-  },
-];
-
-// ── Las 4 Tarjetas de Salidas Oficiales del Flyer con Número ÚNICO por Botón ──
+// ── 4 Tarjetas de Salidas Oficiales del Flyer con Número Diferente en Cada Botón ──
 export const PAQUETES_ESPANA = [
   {
     id: "noviembre",
@@ -104,13 +23,8 @@ export const PAQUETES_ESPANA = [
       "Voucher de hospedaje para control fronterizo",
       "Asesoría migratoria 1 a 1 antes del viaje",
     ],
-    // Número individual asignado para Noviembre: Asesoría 3
-    asesorAsignado: {
-      nombre: "Asesoría de Turno (944 280 151)",
-      numeroRaw: "51944280151",
-      telefono: "+51 944 280 151",
-    },
-    waMsg: "¡Hola Cityland Travel! Deseo cotizar el Paquete Migratorio a España para NOVIEMBRE ($695 USD). Quisiera separar con el 50% de inicial.",
+    // Asignado a Asesora Línea 3
+    waUrl: `https://wa.me/51944280151?text=${encodeURIComponent("¡Hola! Deseo cotizar el Paquete Migratorio a España para NOVIEMBRE ($695 USD). Quisiera separar con el 50% de inicial.")}`,
   },
   {
     id: "diciembre",
@@ -127,13 +41,8 @@ export const PAQUETES_ESPANA = [
       "Voucher de hospedaje para control fronterizo",
       "Asesoría migratoria 1 a 1 antes del viaje",
     ],
-    // Número individual asignado para Diciembre: Asesoría 4
-    asesorAsignado: {
-      nombre: "Asesoría de Turno (938 845 086)",
-      numeroRaw: "51938845086",
-      telefono: "+51 938 845 086",
-    },
-    waMsg: "¡Hola Cityland Travel! Deseo cotizar el Paquete Migratorio a España para DICIEMBRE ($875 USD). Quisiera separar con el 50% de inicial.",
+    // Asignado a Asesora Línea 4
+    waUrl: `https://wa.me/51938845086?text=${encodeURIComponent("¡Hola! Deseo cotizar el Paquete Migratorio a España para DICIEMBRE ($875 USD). Quisiera separar con el 50% de inicial.")}`,
   },
   {
     id: "enero",
@@ -150,36 +59,26 @@ export const PAQUETES_ESPANA = [
       "Voucher de hospedaje para control fronterizo",
       "Asesoría migratoria 1 a 1 antes del viaje",
     ],
-    // Número individual asignado para Enero: Asesoría 5
-    asesorAsignado: {
-      nombre: "Asesoría de Turno (906 642 487)",
-      numeroRaw: "51906642487",
-      telefono: "+51 906 642 487",
-    },
-    waMsg: "¡Hola Cityland Travel! Deseo cotizar el Paquete Migratorio a España para ENERO ($875 USD). Quisiera separar con el 50% de inicial.",
+    // Asignado a Asesora Línea 5
+    waUrl: `https://wa.me/51906642487?text=${encodeURIComponent("¡Hola! Deseo cotizar el Paquete Migratorio a España para ENERO ($875 USD). Quisiera separar con el 50% de inicial.")}`,
   },
   {
-    id: "feb-mar-abr",
-    mes: "FEBRERO • MARZO • ABRIL",
+    id: "mar-abr-may",
+    mes: "MARZO • ABRIL • MAYO",
     subtitulo: "Primavera Europea 2027",
     precio: 699,
     tag: "Mejor Tarifa",
     tagColor: "bg-emerald-600 text-white",
-    img: "https://images.unsplash.com/photo-1509356843151-3e7d96241e11?w=800&q=80",
-    monumento: "Gran Vía & Skyline de Madrid",
+    img: "https://images.unsplash.com/photo-1563784462386-044fd95e9852?w=800&q=80",
+    monumento: "Palacio Real de Madrid",
     inclusiones: [
       "Boleto aéreo confirmado con equipaje",
       "Seguro Schengen obligatorio 30.000€",
       "Voucher de hospedaje para control fronterizo",
       "Asesoría migratoria 1 a 1 antes del viaje",
     ],
-    // Número individual asignado para Feb-Mar-Abr: Asesoría 6
-    asesorAsignado: {
-      nombre: "Asesoría de Turno (944 031 724)",
-      numeroRaw: "51944031724",
-      telefono: "+51 944 031 724",
-    },
-    waMsg: "¡Hola Cityland Travel! Deseo cotizar el Paquete Migratorio a España para FEBRERO/MARZO/ABRIL ($699 USD). Quisiera separar con el 50% de inicial.",
+    // Asignado a Asesora Línea 6
+    waUrl: `https://wa.me/51944031724?text=${encodeURIComponent("¡Hola! Deseo cotizar el Paquete Migratorio a España para MARZO/ABRIL/MAYO ($699 USD). Quisiera separar con el 50% de inicial.")}`,
   },
 ];
 
@@ -187,7 +86,7 @@ export default function EspanaLandingClient() {
   return (
     <div className="bg-white min-h-screen text-[#0a1628] antialiased">
       
-      {/* 1. Barra Superior Corporativa de Respaldo */}
+      {/* 1. Barra Superior Corporativa */}
       <div className="bg-[#0a1628] text-white/90 text-xs py-2 px-4 border-b border-white/10">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="flex items-center gap-3 sm:gap-6 flex-wrap">
@@ -202,15 +101,6 @@ export default function EspanaLandingClient() {
           </div>
 
           <div className="flex items-center gap-4">
-            <a
-              href="#asesores"
-              className="text-xs font-bold text-amber-400 hover:text-amber-300 transition-colors flex items-center gap-1.5"
-            >
-              <span>7 Líneas de WhatsApp Activas</span>
-              <span className="text-[10px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded-full border border-emerald-500/40">
-                Online
-              </span>
-            </a>
             <Link
               href="/"
               className="text-xs text-slate-300 hover:text-white transition-colors underline"
@@ -221,7 +111,7 @@ export default function EspanaLandingClient() {
         </div>
       </div>
 
-      {/* 2. Header con Logotipo Oficial Cityland Travel y Botón Directo a Lucero (+51 983 882 504) */}
+      {/* 2. Header con Logotipo Oficial Cityland Travel y Botón Directo a Asesora Lucero (Línea 1: 983 882 504) */}
       <header className="sticky top-0 z-40 bg-white/98 backdrop-blur-md border-b border-slate-200 py-3 sm:py-3.5 shadow-2xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
           <Link href="/" aria-label="Cityland Travel - Inicio" className="flex items-center group">
@@ -237,34 +127,21 @@ export default function EspanaLandingClient() {
             </div>
           </Link>
 
-          {/* Botón Header: Va directo a Lucero (Especialista Europa - 983 882 504) */}
-          <div className="flex items-center gap-3">
-            <a
-              href={`https://wa.me/51983882504?text=${encodeURIComponent("¡Hola Lucero! Te contacto desde la web de España. Deseo información de paquetes migratorios.")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-wa-pulse hidden sm:inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-md shadow-emerald-500/20 cursor-pointer"
-            >
-              <WhatsAppIcon size={16} />
-              <span>Lucero Especialista Europa (983 882 504)</span>
-            </a>
-
-            <a
-              href={`https://wa.me/51983882504?text=${encodeURIComponent("¡Hola Lucero! Te contacto desde la web de España. Deseo información de paquetes migratorios.")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="sm:hidden btn-wa-pulse inline-flex items-center gap-1.5 bg-[#25D366] text-white px-3.5 py-2 rounded-xl text-xs font-bold cursor-pointer"
-            >
-              <WhatsAppIcon size={15} />
-              <span>WhatsApp 983 882 504</span>
-            </a>
-          </div>
+          {/* Botón Header -> Asesora Lucero (983 882 504) */}
+          <a
+            href={`https://wa.me/51983882504?text=${encodeURIComponent("¡Hola Lucero! Te contacto desde la web de España. Deseo información de paquetes migratorios.")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-md shadow-emerald-500/20 cursor-pointer"
+          >
+            <WhatsAppIcon size={16} />
+            <span>Cotizar por WhatsApp</span>
+          </a>
         </div>
       </header>
 
-      {/* 3. Hero Section (Fiel a la Gráfica Oficial del Flyer) */}
+      {/* 3. Hero Section (Fiel al Flyer Oficial) */}
       <section className="relative bg-gradient-to-b from-white via-slate-50 to-slate-100/60 pt-8 pb-14 sm:pt-12 sm:pb-20 border-b border-slate-200 overflow-hidden">
-        {/* Luz de acento sutil */}
         <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-red-500/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
@@ -284,7 +161,6 @@ export default function EspanaLandingClient() {
                 PAQUETES MIGRATORIOS A<br />
                 <span className="text-red-600 relative inline-block">
                   ESPAÑA
-                  {/* Cinta bandera de España */}
                   <span className="absolute -bottom-1.5 left-0 right-0 h-1.5 rounded-full bg-gradient-to-r from-red-600 via-amber-400 to-red-600" />
                 </span>
               </h1>
@@ -297,39 +173,27 @@ export default function EspanaLandingClient() {
                 Viaja a Europa con la carpeta completa: boleto aéreo confirmado con equipaje, seguro médico Schengen de 30.000€, sustento de hospedaje y asesoría personalizada para pasar el control migratorio de Barajas.
               </p>
 
-              {/* Botones de Acción con Números DIFERENTES:
-                  - Botón 1: Va a Asesoría 1 (906 450 098)
-                  - Botón 2: Va a Asesoría 2 (942 086 698)
-              */}
+              {/* Botón Principal Hero -> Asesora Línea 1 (906 450 098) */}
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-8">
                 <a
                   href={`https://wa.me/51906450098?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo reservar el Paquete Migratorio a España con el 50% de inicial.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-wa-pulse inline-flex flex-col items-center justify-center bg-red-600 hover:bg-red-700 text-white px-7 py-3 rounded-2xl shadow-lg shadow-red-500/25 hover:shadow-xl transition-all cursor-pointer text-center"
+                  className="btn-wa-pulse inline-flex items-center justify-center gap-2.5 bg-red-600 hover:bg-red-700 text-white px-7 py-3.5 rounded-2xl text-sm sm:text-base font-bold shadow-lg shadow-red-500/25 hover:shadow-xl transition-all cursor-pointer"
                 >
-                  <div className="flex items-center gap-2">
-                    <PlaneIcon className="w-5 h-5 fill-none stroke-current stroke-2" />
-                    <span className="text-sm sm:text-base font-bold">RESERVA AHORA (50%)</span>
-                  </div>
-                  <span className="text-[11px] text-red-100 font-semibold mt-0.5">
-                    WhatsApp directo: +51 906 450 098
+                  <PlaneIcon className="w-5 h-5 fill-none stroke-current stroke-2" />
+                  <span>RESERVA AHORA</span>
+                  <span className="text-xs bg-black/20 px-2 py-0.5 rounded-lg">
+                    Separa con 50%
                   </span>
                 </a>
 
                 <a
-                  href={`https://wa.me/51942086698?text=${encodeURIComponent("¡Hola! Deseo consultar los requisitos migratorios para viajar a España y seguro Schengen de 30.000€.")}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-wa-pulse inline-flex flex-col items-center justify-center bg-[#25D366] hover:bg-[#20ba5a] text-white px-6 py-3 rounded-2xl shadow-md shadow-emerald-500/20 cursor-pointer text-center"
+                  href="#tarifas"
+                  className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 px-5 py-3.5 rounded-2xl text-sm font-bold shadow-2xs transition-all cursor-pointer"
                 >
-                  <div className="flex items-center gap-2">
-                    <WhatsAppIcon size={18} />
-                    <span className="text-sm sm:text-base font-bold">Consulta Requisitos</span>
-                  </div>
-                  <span className="text-[11px] text-emerald-100 font-semibold mt-0.5">
-                    WhatsApp directo: +51 942 086 698
-                  </span>
+                  <span>Ver Fechas y Precios</span>
+                  <svg viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-current stroke-2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
                 </a>
               </div>
 
@@ -365,13 +229,13 @@ export default function EspanaLandingClient() {
 
             </div>
 
-            {/* Columna Derecha: Tarjeta Visual de Madrid Metrópolis con Botón Directo a Lucero (+51 983 882 504) */}
+            {/* Columna Derecha: Tarjeta Visual de Madrid con Botón -> Asesora Línea 2 (942 086 698) */}
             <div className="lg:col-span-5">
               <div className="card-interactive group relative rounded-3xl overflow-hidden bg-white border border-slate-200 shadow-xl">
                 <div className="relative h-80 sm:h-96 w-full overflow-hidden bg-slate-100">
                   <Image
-                    src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=80"
-                    alt="Edificio Metrópolis Madrid España - Cityland Travel"
+                    src="https://images.unsplash.com/photo-1570698453961-932a2924d545?w=800&q=80"
+                    alt="Plaza Mayor de Madrid España - Cityland Travel"
                     fill
                     priority
                     sizes="(max-width: 1024px) 100vw, 500px"
@@ -383,7 +247,7 @@ export default function EspanaLandingClient() {
                   <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
                     <span className="inline-flex items-center gap-1.5 bg-black/60 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full border border-white/20">
                       <FlagIcon pais="España" className="w-3.5 h-2.5" />
-                      Madrid Barajas
+                      Plaza Mayor · Madrid
                     </span>
                     <span className="bg-red-600 text-white text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
                       Tarifa desde $695
@@ -404,23 +268,19 @@ export default function EspanaLandingClient() {
                   </div>
                 </div>
 
+                {/* Botón de la tarjeta derecha -> Asesora Línea 2 (942 086 698) */}
                 <div className="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between gap-3">
-                  <div>
-                    <span className="text-xs font-bold text-slate-800 block">
-                      Asesora Lucero
-                    </span>
-                    <span className="text-[10px] text-slate-500">
-                      Especialista Principal Europa
-                    </span>
-                  </div>
+                  <span className="text-xs font-bold text-slate-700">
+                    ¿Deseas verificar tus fechas?
+                  </span>
                   <a
-                    href={`https://wa.me/51983882504?text=${encodeURIComponent("¡Hola Lucero! Vi el paquete a España en la web. Deseo consultar disponibilidad.")}`}
+                    href={`https://wa.me/51942086698?text=${encodeURIComponent("¡Hola! Deseo verificar disponibilidad para viajar a España.")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-wa-pulse inline-flex items-center gap-1.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 py-2 rounded-xl text-xs font-bold cursor-pointer"
                   >
                     <WhatsAppIcon size={14} />
-                    <span>WhatsApp: 983 882 504</span>
+                    <span>Cotizar por WhatsApp</span>
                   </a>
                 </div>
               </div>
@@ -431,7 +291,7 @@ export default function EspanaLandingClient() {
         </div>
       </section>
 
-      {/* 4. SECCIÓN CALENDARIO DE PRECIOS (Las 4 Tarjetas Oficiales del Flyer con NÚMERO DISTINTO EN CADA TARJETA) */}
+      {/* 4. SECCIÓN CALENDARIO DE PRECIOS: CADA TARJETA TIENE SU PROPIO NÚMERO DE ASESORA */}
       <section id="tarifas" className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           
@@ -443,23 +303,21 @@ export default function EspanaLandingClient() {
               ELIGE TU FECHA DE SALIDA A ESPAÑA
             </h2>
             <p className="text-xs sm:text-sm text-slate-600">
-              Cada mes cuenta con un asesor exclusivo y número directo de WhatsApp.{" "}
-              <strong className="text-slate-900 font-bold">Separa con el 50% de inicial</strong> y cancela el saldo antes de volar.
+              Precios por persona en dólares americanos (USD). Incluyen boleto IATA, seguro Schengen 30.000€, hotel de tránsito y asesoría.{" "}
+              <strong className="text-slate-900 font-bold">Separa con el 50% de inicial</strong>.
             </p>
           </div>
 
-          {/* Grilla de las 4 Tarjetas con NÚMEROS DISTINTOS */}
+          {/* Grilla de las 4 Tarjetas: Cada botón va a una asesora distinta */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {PAQUETES_ESPANA.map((p) => {
-              const waUrlIndividual = `https://wa.me/${p.asesorAsignado.numeroRaw}?text=${encodeURIComponent(p.waMsg)}`;
-
               return (
                 <div
                   key={p.id}
                   className="card-interactive group bg-white rounded-3xl overflow-hidden border border-slate-200/90 flex flex-col justify-between"
                 >
                   <div>
-                    {/* Foto del Monumento de Madrid */}
+                    {/* Foto del Monumento */}
                     <div className="relative h-44 w-full overflow-hidden bg-slate-100">
                       <Image
                         src={p.img}
@@ -528,21 +386,21 @@ export default function EspanaLandingClient() {
                     </div>
                   </div>
 
-                  {/* Botón con su PROPIO número directo de WhatsApp */}
+                  {/* Botón Directo con Número Diferente para Cada Tarjeta:
+                      - Noviembre -> 51944280151
+                      - Diciembre -> 51938845086
+                      - Enero     -> 51906642487
+                      - Feb-Mar-Abr -> 51944031724
+                  */}
                   <div className="p-5 pt-0">
                     <a
-                      href={waUrlIndividual}
+                      href={p.waUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-wa-pulse w-full inline-flex flex-col items-center justify-center bg-[#25D366] hover:bg-[#20ba5a] text-white py-2.5 px-3 rounded-xl shadow-md shadow-emerald-500/20 cursor-pointer text-center"
+                      className="btn-wa-pulse w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white py-3 px-4 rounded-xl text-xs sm:text-sm font-bold shadow-md shadow-emerald-500/20 cursor-pointer"
                     >
-                      <div className="flex items-center gap-1.5">
-                        <WhatsAppIcon size={15} />
-                        <span className="text-xs sm:text-sm font-bold">Cotizar {p.mes.split(" ")[0]}</span>
-                      </div>
-                      <span className="text-[10px] text-emerald-100 font-semibold">
-                        Línea directa: {p.asesorAsignado.telefono}
-                      </span>
+                      <WhatsAppIcon size={16} />
+                      <span>Cotizar {p.mes.split(" ")[0]}</span>
                     </a>
                   </div>
                 </div>
@@ -553,87 +411,12 @@ export default function EspanaLandingClient() {
         </div>
       </section>
 
-      {/* 5. SECCIÓN MULTI-WHATSAPP: CADA ASESOR CON SU BOTÓN Y NÚMERO INDIVIDUAL */}
-      <section id="asesores" className="py-16 sm:py-20 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider mb-2.5">
-              Equipo de 7 Asesores Oficiales
-            </span>
-            <h2 className="font-[family-name:var(--font-bebas)] text-3xl sm:text-5xl text-[#0a1628] tracking-tight leading-none mb-3">
-              UN NÚMERO DIFERENTE EN CADA BOTÓN
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-600">
-              Cada botón abre directamente el WhatsApp del asesor asignado. Elige la línea que prefieras para ser atendido sin colas ni esperas:
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
-            {ASESORES_OFICIALES.map((a) => {
-              const linkDirecto = `https://wa.me/${a.numeroRaw}?text=${encodeURIComponent(a.msg)}`;
-
-              return (
-                <div
-                  key={a.id}
-                  className={`card-interactive group bg-white rounded-2xl p-5 border flex flex-col justify-between ${
-                    a.destacado
-                      ? "border-red-300 ring-2 ring-red-500/10 shadow-md"
-                      : "border-slate-200/90 shadow-2xs"
-                  }`}
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className={`text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full border ${a.badgeColor}`}>
-                        {a.badge}
-                      </span>
-                      <span className="flex items-center gap-1 text-[11px] font-bold text-emerald-600">
-                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                        Online
-                      </span>
-                    </div>
-
-                    <h3 className="text-sm font-bold text-slate-900 group-hover:text-red-600 transition-colors leading-snug">
-                      {a.nombre}
-                    </h3>
-                    <p className="text-xs text-slate-500 mb-3 leading-relaxed">
-                      {a.rol}
-                    </p>
-
-                    <div className="bg-slate-50 rounded-xl p-2.5 mb-4 border border-slate-100">
-                      <span className="text-[10px] uppercase font-bold text-slate-400 block leading-none mb-1">
-                        Línea de WhatsApp
-                      </span>
-                      <strong className="text-xs sm:text-sm font-extrabold text-[#0a1628]">
-                        {a.telefono}
-                      </strong>
-                    </div>
-                  </div>
-
-                  {/* Cada botón conecta a SU PROPIO número individual */}
-                  <a
-                    href={linkDirecto}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-wa-pulse w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white py-2.5 px-4 rounded-xl text-xs font-bold cursor-pointer"
-                  >
-                    <WhatsAppIcon size={15} />
-                    <span>Escribir a {a.telefono}</span>
-                  </a>
-                </div>
-              );
-            })}
-          </div>
-
-        </div>
-      </section>
-
-      {/* 6. ¿QUÉ INCLUYE EL PAQUETE MIGRATORIO? (Sin relleno) */}
-      <section className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200">
+      {/* 5. ¿QUÉ INCLUYE EL PAQUETE MIGRATORIO? (Sin relleno, con botón al final -> Asesora Lucero 983 882 504) */}
+      <section className="py-16 sm:py-20 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           
           <div className="text-center max-w-xl mx-auto mb-12">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-200 text-slate-700 text-xs font-bold uppercase tracking-wider mb-2.5">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-bold uppercase tracking-wider mb-2.5">
               Cobertura Total
             </span>
             <h2 className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] tracking-tight leading-none mb-2">
@@ -644,8 +427,8 @@ export default function EspanaLandingClient() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div className="card-interactive bg-white p-5 rounded-2xl border border-slate-200/90 shadow-2xs">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+            <div className="card-interactive bg-slate-50/70 p-5 rounded-2xl border border-slate-200/90 shadow-2xs">
               <div className="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center mb-3">
                 <PlaneIcon className="w-5 h-5 fill-none stroke-current stroke-2" />
               </div>
@@ -657,7 +440,7 @@ export default function EspanaLandingClient() {
               </p>
             </div>
 
-            <div className="card-interactive bg-white p-5 rounded-2xl border border-slate-200/90 shadow-2xs">
+            <div className="card-interactive bg-slate-50/70 p-5 rounded-2xl border border-slate-200/90 shadow-2xs">
               <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-3">
                 <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               </div>
@@ -669,7 +452,7 @@ export default function EspanaLandingClient() {
               </p>
             </div>
 
-            <div className="card-interactive bg-white p-5 rounded-2xl border border-slate-200/90 shadow-2xs">
+            <div className="card-interactive bg-slate-50/70 p-5 rounded-2xl border border-slate-200/90 shadow-2xs">
               <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-3">
                 <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11m16-11v11"/></svg>
               </div>
@@ -681,7 +464,7 @@ export default function EspanaLandingClient() {
               </p>
             </div>
 
-            <div className="card-interactive bg-white p-5 rounded-2xl border border-slate-200/90 shadow-2xs">
+            <div className="card-interactive bg-slate-50/70 p-5 rounded-2xl border border-slate-200/90 shadow-2xs">
               <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-3">
                 <svg viewBox="0 0 24 24" className="w-5 h-5 fill-none stroke-current stroke-2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
               </div>
@@ -694,10 +477,32 @@ export default function EspanaLandingClient() {
             </div>
           </div>
 
+          {/* Banner CTA intermedio -> Asesora Lucero (983 882 504) */}
+          <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <h3 className="text-base font-bold text-slate-900 mb-1">
+                ¿Tienes preguntas sobre el control en el aeropuerto de Barajas?
+              </h3>
+              <p className="text-xs text-slate-600">
+                Nuestra especialista en Europa te asesora paso a paso antes de tu vuelo.
+              </p>
+            </div>
+
+            <a
+              href={`https://wa.me/51983882504?text=${encodeURIComponent("¡Hola Lucero! Deseo asesoría sobre las preguntas de migraciones en Barajas.")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-wa-pulse shrink-0 inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer"
+            >
+              <WhatsAppIcon size={16} />
+              <span>Consultar con una Asesora</span>
+            </a>
+          </div>
+
         </div>
       </section>
 
-      {/* 7. Footer Corporativo con RUC y Oficina */}
+      {/* 6. Footer Corporativo con RUC y Oficina */}
       <footer className="bg-[#0a1628] text-white py-12 border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center border-b border-white/10 pb-8 mb-8">
@@ -724,14 +529,15 @@ export default function EspanaLandingClient() {
             </div>
 
             <div className="flex flex-col sm:items-end gap-3">
+              {/* Botón Footer -> Asesora Línea 1 (906 450 098) */}
               <a
-                href={`https://wa.me/51983882504?text=${encodeURIComponent("¡Hola Lucero! Deseo información de paquetes a España.")}`}
+                href={`https://wa.me/51906450098?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar mi viaje a España.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer"
               >
                 <WhatsAppIcon size={16} />
-                <span>Hablar con Lucero (983 882 504)</span>
+                <span>Contactar por WhatsApp</span>
               </a>
               <Link href="/" className="text-xs text-slate-400 hover:text-white underline">
                 Volver a la portada principal
@@ -745,18 +551,18 @@ export default function EspanaLandingClient() {
         </div>
       </footer>
 
-      {/* 8. Botón Flotante Permanente Directo a Lucero Especialista Europa (+51 983 882 504) */}
+      {/* 7. Botón Flotante Permanente -> Asesora Línea 2 (942 086 698) */}
       <div className="fixed bottom-6 right-6 z-50">
         <a
-          href={`https://wa.me/51983882504?text=${encodeURIComponent("¡Hola Lucero! Deseo consultar sobre el Paquete Migratorio a España.")}`}
+          href={`https://wa.me/51942086698?text=${encodeURIComponent("¡Hola! Deseo cotizar el Paquete Migratorio a España.")}`}
           target="_blank"
           rel="noopener noreferrer"
           className="btn-wa-pulse group flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-xl shadow-emerald-500/30 cursor-pointer"
-          aria-label="Chatear con Lucero por WhatsApp"
+          aria-label="Chatear por WhatsApp"
         >
           <WhatsAppIcon size={24} />
           <span className="hidden sm:inline font-bold text-xs sm:text-sm">
-            Lucero Especialista (+51 983 882 504)
+            Cotizar por WhatsApp
           </span>
         </a>
       </div>

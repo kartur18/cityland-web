@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `Cityland Travel — Paquetes a Europa desde $${PRECIO_DESDE_EUROPA}`,
-    description: `Agencia de viajes en Lima. Vuelos y paquetes migratorios desde $${PRECIO_DESDE_EUROPA}. Cotización GRATIS en 2h.`,
+    description: `Agencia de viajes en Lima (RUC 20614914239). Vuelos y paquetes turísticos y migratorios. Separa con 50%. Respuesta en 2 min por WhatsApp.`,
     images: ["https://citylandtravel.com/og-image.jpg"],
   },
   alternates: { canonical: "https://citylandtravel.com/" },

@@ -1,7 +1,6 @@
 import { ImageResponse } from "next/og";
 import { PRECIO_DESDE_EUROPA } from "@/components/constantes";
 
-export const runtime = "edge";
 export const alt = `Cityland Travel — Paquetes a Europa desde $${PRECIO_DESDE_EUROPA}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -44,6 +43,7 @@ export default async function Image() {
         >
           <div
             style={{
+              display: "flex",
               background: "rgba(255,255,255,0.06)",
               border: "1px solid rgba(255,255,255,0.1)",
               borderRadius: "8px",
@@ -60,6 +60,7 @@ export default async function Image() {
 
           <div
             style={{
+              display: "flex",
               fontSize: "72px",
               fontWeight: 900,
               color: "white",
@@ -73,13 +74,13 @@ export default async function Image() {
 
           <div
             style={{
+              display: "flex",
               fontSize: "28px",
               color: "rgba(255,255,255,0.6)",
               textAlign: "center" as const,
             }}
           >
-            Paquetes migratorios y turísticos desde{" "}
-            <span style={{ color: "white", fontWeight: 700 }}>${PRECIO_DESDE_EUROPA}</span>
+            Paquetes migratorios y turísticos desde ${PRECIO_DESDE_EUROPA}
           </div>
 
           <div
