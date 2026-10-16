@@ -799,4 +799,83 @@ export const BLOG_POSTS: BlogPost[] = [
 <h3>Lo que no te puedes perder:</h3>
 <p>El vuelo en globo aerostático al amanecer sobre los valles de Capadocia, el crucero privado por el Estrecho del Bósforo entre Europa y Asia, y las compras de especias y joyas en el Gran Bazar de Estambul.</p>`,
   },
+  {
+    slug: "requisitos-viajar-espana-desde-peru-2026",
+    titulo: "Requisitos para viajar a España desde Perú en 2026 (Carpeta Migratoria Completa)",
+    desc: "Lista actualizada de documentos exigidos en el Aeropuerto de Madrid-Barajas y Barcelona-El Prat para turistas peruanos sin visa.",
+    categoria: "Migratorio",
+    catColor: "bg-red-600",
+    fecha: "16 Oct 2026",
+    lectura: "6 min",
+    imagen: "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=800&q=80",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>Documentos obligatorios para ingresar a España como turista peruano</h2>
+<p>Los ciudadanos peruanos no requieren visa consular para viajes turísticos o de visita familiar de hasta 90 días dentro del Espacio Schengen. Sin embargo, al llegar al control fronterizo de Madrid-Barajas o Barcelona-El Prat, la Policía Nacional puede solicitar la acreditación de tu viaje.</p>
+<h3>1. Pasaporte peruano vigente</h3>
+<p>Tu pasaporte biométrico o mecanizado debe tener una vigencia mínima de 3 meses posteriores a la fecha prevista de salida de Europa (se recomienda mínimo 6 meses).</p>
+<h3>2. Boleto aéreo de ida y vuelta confirmada</h3>
+<p>Debes contar con reserva aérea de retorno (PNR verificable en aerolínea) dentro del plazo máximo de 90 días.</p>
+<h3>3. Seguro médico internacional Schengen (Mínimo 30.000€)</h3>
+<p>El seguro debe cubrir gastos médicos de urgencia, hospitalización y repatriación por un mínimo de 30.000 euros sin deducible durante todos los días de tu estancia.</p>
+<h3>4. Justificación de alojamiento</h3>
+<p>Si vas por turismo, debes presentar tu reserva de hotel confirmada por toda la estadía. Si te alojas con un familiar o amigo residente en España, necesitas la <strong>Carta de Invitación original</strong> tramitada ante una Comisaría de Policía en España.</p>
+<h3>5. Acreditación de medios económicos</h3>
+<p>Se exige demostrar solvencia económica (efectivo en euros y/o tarjetas bancarias internacionales habilitadas para compras en el exterior).</p>`,
+  },
+  {
+    slug: "equipaje-permitido-iberia-air-europa-plus-ultra",
+    titulo: "Medidas y peso de equipaje en vuelos de Lima a Madrid (Iberia, Air Europa, Plus Ultra y LATAM)",
+    desc: "Guía práctica de maletas de mano (10 kg) y equipaje de bodega (23 kg) en las 4 aerolíneas que vuelan directo de Lima a España.",
+    categoria: "Vuelos",
+    catColor: "bg-blue-700",
+    fecha: "16 Oct 2026",
+    lectura: "5 min",
+    imagen: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>¿Cuánto equipaje puedo llevar en mi vuelo de Lima a Madrid?</h2>
+<p>Al reservar tu vuelo transatlántico entre el Aeropuerto Jorge Chávez (LIM) y Madrid-Barajas (MAD), conocer las reglas de equipaje evita cobros adicionales en el mostrador.</p>
+<h3>1. Equipaje de cabina (Mano + Artículo personal)</h3>
+<p>En Iberia, Air Europa, Plus Ultra y LATAM, el estándar en cabina económica permite llevar un artículo personal (mochila o bolso de mano bajo el asiento delantero) más una maleta de cabina de hasta <strong>10 kg</strong> (dimensiones máximas habituales: 55 x 40 x 20 cm).</p>
+<h3>2. Equipaje facturado en bodega (23 kg)</h3>
+<p>Las tarifas con equipaje incluido permiten registrar <strong>1 o 2 maletas de hasta 23 kg cada una</strong> (máximo 158 cm lineales sumando alto + largo + ancho). En Cityland Travel priorizamos tarifas que ya incluyan tu maleta de bodega para que viajes con todo lo necesario.</p>`,
+  },
+  {
+    slug: "destinos-internacionales-solo-con-dni-peruanos",
+    titulo: "8 destinos internacionales a los que puedes viajar desde Perú solo con tu DNI",
+    desc: "Viaja a Cartagena, Medellín, Buenos Aires, Río de Janeiro y Santiago de Chile sin necesidad de tramitar pasaporte ni visa.",
+    categoria: "Guías de Viaje",
+    catColor: "bg-emerald-700",
+    fecha: "16 Oct 2026",
+    lectura: "4 min",
+    imagen: "https://images.unsplash.com/photo-1583531352515-8884af319dc1?w=800&q=80",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>Viaja al extranjero sin pasaporte: acuerdos CAN y Mercosur</h2>
+<p>Gracias a los convenios de la Comunidad Andina (CAN) y el Mercosur, los ciudadanos peruanos pueden viajar por turismo a 8 países de Sudamérica presentando únicamente su <strong>DNI físico vigente</strong>.</p>
+<h3>Los destinos más pedidos solo con DNI:</h3>
+<p>1. <strong>Colombia:</strong> Cartagena de Indias, Medellín, Bogotá y San Andrés.<br>
+2. <strong>Argentina:</strong> Buenos Aires, Bariloche, Mendoza e Iguazú.<br>
+3. <strong>Brasil:</strong> Río de Janeiro, São Paulo, Búzios y Foz de Iguazú.<br>
+4. <strong>Chile:</strong> Santiago de Chile, Viña del Mar y Valparaíso.<br>
+5. <strong>Ecuador, Bolivia, Uruguay y Paraguay.</strong></p>
+<p>Importante: si haces escala en un tercer país fuera de Sudamérica (como Panamá), sí necesitarás pasaporte. Por eso nuestros asesores verifican que tu vuelo sea directo o con escala dentro de Sudamérica cuando viajas solo con DNI.</p>`,
+  },
+  {
+    slug: "como-encontrar-vuelos-economicos-europa-caribe",
+    titulo: "Consejos reales para conseguir vuelos y paquetes económicos a Europa y el Caribe desde Lima",
+    desc: "Cuáles son los meses más baratos para volar desde el Perú y cómo congelar tarifas promocionales con el 50% de inicial.",
+    categoria: "Consejos",
+    catColor: "bg-amber-600",
+    fecha: "16 Oct 2026",
+    lectura: "4 min",
+    imagen: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>¿Cuándo son más baratos los vuelos desde Lima?</h2>
+<p>El precio de un boleto aéreo o paquete turístico depende directamente de la temporada y de la anticipación con la que separes tu cupo.</p>
+<h3>1. Temporadas de mejor precio a España y Europa</h3>
+<p>Los meses de <strong>noviembre, febrero, marzo, abril y mayo</strong> ofrecen las tarifas más bajas del año desde Lima hacia Madrid, Barcelona, Roma y París, ahorrando entre $200 y $400 USD frente a julio o diciembre.</p>
+<h3>2. Temporadas ideales para el Caribe (Punta Cana y Cancún)</h3>
+<p>Reservando con 60 a 90 días de anticipación para viajar entre abril y junio o entre septiembre y noviembre consigues resorts 5 estrellas Todo Incluido a tarifa promocional.</p>
+<h3>3. Separa con el 50% de inicial</h3>
+<p>En Cityland Travel puedes bloquear tu paquete promocional abonando el 50% de inicial y completando el saldo en cuotas antes de tu fecha de salida.</p>`,
+  },
 ];

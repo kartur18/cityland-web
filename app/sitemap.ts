@@ -39,6 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/luna-de-miel`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.95 },
     { url: `${BASE}/colegios`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.95 },
     { url: `${BASE}/empresas`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.94 },
+    { url: `${BASE}/agencia-de-viajes-lima`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.96 },
     { url: `${BASE}/agencia-de-viajes-los-olivos`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.95 },
     { url: `${BASE}/agencia-de-viajes-lima-norte`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.94 },
     { url: `${BASE}/paquetes/panama-medellin`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
