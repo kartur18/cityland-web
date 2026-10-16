@@ -204,43 +204,18 @@ export default function AdminTarifasPage() {
           </div>
         )}
 
-        {/* Configuración Global: Tipo de Cambio y Leyenda Legal */}
+        {/* Configuración Global: Moneda 100% USD y Leyenda Legal */}
         <section className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
-            <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-1.5">
-              Tipo de Cambio Referencial (USD → S/)
-            </label>
-            <input
-              type="number"
-              step="0.01"
-              value={catalogo.configuracion.tipoCambioPEN}
-              onChange={(e) =>
-                setCatalogo((prev) => ({
-                  ...prev,
-                  configuracion: {
-                    ...prev.configuracion,
-                    tipoCambioPEN: parseFloat(e.target.value) || 3.78,
-                  },
-                }))
-              }
-              className="w-full border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm font-bold"
-            />
-            <label className="inline-flex items-center gap-2 mt-2.5 text-xs text-slate-600 font-medium cursor-pointer">
-              <input
-                type="checkbox"
-                checked={catalogo.configuracion.mostrarEquivalenteSoles}
-                onChange={(e) =>
-                  setCatalogo((prev) => ({
-                    ...prev,
-                    configuracion: {
-                      ...prev.configuracion,
-                      mostrarEquivalenteSoles: e.target.checked,
-                    },
-                  }))
-                }
-              />
-              Calcular y mostrar equivalente referencial en Soles (S/)
-            </label>
+            <span className="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-1.5">
+              Moneda Oficial del Sistema
+            </span>
+            <div className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm font-extrabold text-[#0a1628]">
+              100% Dólares Estadounidenses (US$)
+            </div>
+            <p className="text-[11px] text-slate-500 mt-2">
+              Todos los precios se muestran con el formato <strong>«Desde US$ XXX»</strong> sin tipo de cambio en soles.
+            </p>
           </div>
 
           <div className="md:col-span-2">

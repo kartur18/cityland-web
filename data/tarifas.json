@@ -1,7 +1,7 @@
 {
   "configuracion": {
     "tipoCambioPEN": 3.78,
-    "mostrarEquivalenteSoles": true,
+    "mostrarEquivalenteSoles": false,
     "aclaracionLegal": "Tarifa sujeta a disponibilidad y condiciones aplicables. Incluye impuestos y cargos obligatorios.",
     "ultimaActualizacionGlobal": "2026-10-16"
   },

@@ -87,15 +87,12 @@ export function resolverTarifa(
   }
 
   const precioFormateado = tarifa.precioUSD!.toLocaleString("en-US");
-  const montoSoles = Math.round(tarifa.precioUSD! * config.tipoCambioPEN);
 
   return {
     vigente: true,
     precioUSD: tarifa.precioUSD,
     textoPrecio: `Desde US$ ${precioFormateado}`,
-    textoEquivalentePEN: config.mostrarEquivalenteSoles
-      ? `Ref. S/ ${montoSoles.toLocaleString("es-PE")} (T.C. ${config.tipoCambioPEN.toFixed(2)})`
-      : null,
+    textoEquivalentePEN: null,
     modalidad: tarifa.modalidad,
     incluyeImpuestosTexto: tarifa.incluyeImpuestos
       ? "Incluye impuestos y cargos obligatorios"
