@@ -614,11 +614,254 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     ],
     tipoViaje: "escapada",
   },
+  {
+    id: "san-andres-todo-incluido",
+    slug: "san-andres",
+    ciudad: "San Andrés Islas",
+    pais: "Colombia",
+    bandera: "🇨🇴",
+    categoria: "caribe",
+    duracion: "4 Días / 3 Noches",
+    precioUSD: 749,
+    precioSoles: 2810,
+    precioRegularUSD: 940,
+    tag: "MAR DE 7 COLORES · SOLO DNI",
+    tagColor: "hot",
+    img: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&q=85",
+    alt: "Paquetes a San Andrés Islas desde Lima Todo Incluido",
+    tituloComercial: "San Andrés: El Mar de los 7 Colores",
+    resaltado: "Vuelos + Hotel Todo Incluido + Johnny Cay y Acuario",
+    inclusiones: {
+      vuelo: true,
+      hotel: "Hotel Todo Incluido frente al mar",
+      alimentacion: "Desayunos, almuerzos, cenas y bebidas ilimitadas",
+      traslados: true,
+      seguro: "Tarjeta de asistencia médica",
+      tour: "Johnny Cay, El Acuario y Vuelta a la Isla",
+    },
+    toursDestacados: [
+      "Cayo Johnny Cay y baño en aguas turquesas",
+      "El Acuario y avistamiento de mantarrayas",
+      "Hoyo Soplador y piscina natural West View",
+    ],
+    descripcion:
+      "Descubre el famoso Mar de los Siete Colores en el Caribe Colombiano viajando solo con tu DNI (vía Bogotá o Medellín). Disfruta de playas de arena blanca, gastronomía isleña y plan Todo Incluido.",
+    itinerario: [
+      "Día 1: Vuelo Lima ➔ San Andrés (ADZ). Recepción y traslado al hotel Todo Incluido.",
+      "Día 2: Excursión marítima a Johnny Cay y El Acuario con snorkel en arrecifes.",
+      "Día 3: Vuelta a la isla visitando La Cueva de Morgan, Hoyo Soplador y playas de San Luis.",
+      "Día 4: Mañana de compras libres de impuestos en el centro de San Andrés y vuelo de retorno a Lima.",
+    ],
+    tipoViaje: "all-inclusive",
+  },
+  {
+    id: "curazao-caribe-azul",
+    slug: "curazao",
+    ciudad: "Curazao",
+    pais: "Curazao",
+    bandera: "🇨🇼",
+    categoria: "caribe",
+    duracion: "5 Días / 4 Noches",
+    precioUSD: 1090,
+    precioSoles: 4085,
+    precioRegularUSD: 1320,
+    tag: "CARIBE NEERLANDÉS · SIN VISA",
+    tagColor: "luxury",
+    img: "https://images.unsplash.com/photo-1580541631950-7282082b53ce?w=1200&q=85",
+    alt: "Paquetes a Curazao desde Lima - Willemstad y playas cristalinas",
+    tituloComercial: "Curazao: Playas Turquesas & Willemstad",
+    resaltado: "Vuelos desde Lima + Resort de Playa + Sin Visa para Peruanos",
+    inclusiones: {
+      vuelo: true,
+      hotel: "Resort 4 Estrellas con playa privada",
+      alimentacion: "Desayunos buffet o plan Todo Incluido",
+      traslados: true,
+      seguro: "Seguro médico internacional",
+      tour: "Willemstad, Puente Reina Emma y Playa Kenepa",
+    },
+    toursDestacados: [
+      "Centro histórico de Willemstad (Patrimonio UNESCO)",
+      "Playas cristalinas Kenepa Grande y Cas Abao",
+      "Excursión opcional en catamarán a isla Klein Curaçao",
+    ],
+    descripcion:
+      "Con arquitectura holandesa llena de color y más de 35 playas de aguas tranquilas y cristalinas, Curazao es uno de los destinos más seguros y exclusivos del Caribe sin requerir visa para peruanos.",
+    itinerario: [
+      "Día 1: Vuelo desde Lima hacia el Aeropuerto Internacional Hato (CUR). Traslado al hotel.",
+      "Día 2: Recorrido por Punda y Otrobanda en Willemstad y fábrica del licor Blue Curaçao.",
+      "Día 3: Tour de playas hacia Grote Knip (Kenepa) y Playa Porto Mari.",
+      "Día 4: Día libre para disfrutar del resort o navegar a Klein Curaçao.",
+      "Día 5: Traslado al aeropuerto y vuelo de retorno a Lima.",
+    ],
+    tipoViaje: "all-inclusive",
+  },
+  {
+    id: "buenos-aires-tango",
+    slug: "buenos-aires",
+    ciudad: "Buenos Aires",
+    pais: "Argentina",
+    bandera: "🇦🇷",
+    categoria: "sudamerica",
+    duracion: "5 Días / 4 Noches",
+    precioUSD: 699,
+    precioSoles: 2620,
+    precioRegularUSD: 860,
+    tag: "VUELO DIRECTO · SOLO DNI",
+    tagColor: "promo",
+    img: "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=1200&q=85",
+    alt: "Paquetes a Buenos Aires desde Lima - Obelisco, Caminito y Puerto Madero",
+    tituloComercial: "Buenos Aires Clásico & Tango",
+    resaltado: "Vuelo Directo + Hotel Céntrico + City Tour & Delta del Tigre",
+    inclusiones: {
+      vuelo: true,
+      hotel: "Hotel 4 Estrellas en Recoleta / Centro",
+      alimentacion: "Desayunos buffet argentinos diarios",
+      traslados: true,
+      seguro: "Tarjeta de asistencia médica",
+      tour: "City Tour Porteño: Caminito, Palermo y Puerto Madero",
+    },
+    toursDestacados: [
+      "Plaza de Mayo, Casa Rosada, San Telmo y La Boca (Caminito)",
+      "Puerto Madero, Recoleta y Bosques de Palermo",
+      "Navegación opcional por el Delta del Tigre y cena show de tango",
+    ],
+    descripcion:
+      "Vive la pasión, gastronomía, teatros y arquitectura europea de Buenos Aires con vuelos directos desde Lima y viajando únicamente con tu DNI vigente.",
+    itinerario: [
+      "Día 1: Vuelo directo Lima ➔ Buenos Aires. Recepción y traslado al hotel.",
+      "Día 2: City Tour panorámico por el Obelisco, Plaza de Mayo, San Telmo, La Boca y Puerto Madero.",
+      "Día 3: Excursión hacia San Isidro y paseo en lancha por los ríos del Delta del Tigre.",
+      "Día 4: Día libre para compras en Calle Florida, Galerías Pacífico o Palermo Soho.",
+      "Día 5: Desayuno, traslado al aeropuerto y vuelo de regreso a Lima.",
+    ],
+    tipoViaje: "escapada",
+  },
+  {
+    id: "santiago-vina-del-mar",
+    slug: "santiago-chile",
+    ciudad: "Santiago & Viña del Mar",
+    pais: "Chile",
+    bandera: "🇨🇱",
+    categoria: "sudamerica",
+    duracion: "4 Días / 3 Noches",
+    precioUSD: 549,
+    precioSoles: 2058,
+    precioRegularUSD: 690,
+    tag: "ESCAPADA · SOLO DNI",
+    tagColor: "promo",
+    img: "https://images.unsplash.com/photo-1478827387698-1527781a4887?w=1200&q=85",
+    alt: "Paquete a Santiago de Chile y Viña del Mar desde Lima",
+    tituloComercial: "Santiago Moderno, Viña del Mar & Valparaíso",
+    resaltado: "Vuelo Directo + Hotel en Providencia + Tour Costa Pacífica",
+    inclusiones: {
+      vuelo: true,
+      hotel: "Hotel en Providencia / Las Condes",
+      alimentacion: "Desayunos buffet incluidos",
+      traslados: true,
+      seguro: "Asistencia médica internacional",
+      tour: "City Tour Santiago + Excursión a Viña del Mar y Valparaíso",
+    },
+    toursDestacados: [
+      "Cerro Santa Lucía, Palacio de La Moneda y Sky Costanera",
+      "Reloj de Flores y playas de Viña del Mar",
+      "Cerros coloridos de Valparaíso y valle vitivinícola",
+    ],
+    descripcion:
+      "Una escapada internacional rápida y completa: combina compras y modernidad en Santiago de Chile con la brisa marina de Viña del Mar y el arte bohemio de Valparaíso.",
+    itinerario: [
+      "Día 1: Vuelo directo Lima ➔ Santiago de Chile (3h 30m). Traslado al hotel.",
+      "Día 2: City Tour por el centro histórico y zona financiera de Sanhattan.",
+      "Día 3: Excursión de día completo a Valparaíso y Viña del Mar pasando por el Valle de Casablanca.",
+      "Día 4: Mañana de compras en Costanera Center y vuelo de retorno a Lima.",
+    ],
+    tipoViaje: "escapada",
+  },
+  {
+    id: "habana-varadero-cuba",
+    slug: "varadero-habana",
+    ciudad: "La Habana & Varadero",
+    pais: "Cuba",
+    bandera: "🇨🇺",
+    categoria: "caribe",
+    duracion: "6 Días / 5 Noches",
+    precioUSD: 990,
+    precioSoles: 3710,
+    precioRegularUSD: 1250,
+    tag: "HISTORIA & PLAYA ALL INCLUSIVE",
+    tagColor: "promo",
+    img: "https://images.unsplash.com/photo-1500759285222-a95626b934cb?w=1200&q=85",
+    alt: "Paquete combinado La Habana y Varadero desde Lima",
+    tituloComercial: "Combinado Cubano: La Habana Colonial & Varadero",
+    resaltado: "2 Noches en La Habana + 3 Noches Todo Incluido en Varadero",
+    inclusiones: {
+      vuelo: true,
+      hotel: "Hotel en La Habana + Resort All Inclusive en Varadero",
+      alimentacion: "Desayunos en La Habana y Todo Incluido 24h en Varadero",
+      traslados: true,
+      seguro: "Seguro médico y Tarjeta del Turista incluida",
+      tour: "City Tour en La Habana Vieja",
+    },
+    toursDestacados: [
+      "Recorrido por La Habana Vieja, Malecón, Capitolio y Plaza de la Catedral",
+      "Playas de arena blanca y mar turquesa en Varadero",
+      "Traslados interhoteles La Habana - Varadero incluidos",
+    ],
+    descripcion:
+      "Combina el encanto histórico, los autos clásicos y la música de La Habana con el descanso total en los resorts Todo Incluido frente a la espectacular playa de Varadero.",
+    itinerario: [
+      "Día 1: Vuelo desde Lima hacia La Habana. Recepción y traslado al hotel.",
+      "Día 2: City Tour a pie y panorámico por La Habana Colonial y Moderna.",
+      "Día 3: Traslado terrestre hacia Varadero. Check-in en el Resort Todo Incluido frente al mar.",
+      "Días 4-5: Días libres en Varadero con comidas, bebidas y deportes náuticos ilimitados.",
+      "Día 6: Traslado al aeropuerto y vuelo de retorno a Lima.",
+    ],
+    tipoViaje: "all-inclusive",
+  },
+  {
+    id: "cusco-machu-picchu-4d3n",
+    slug: "cusco-magico",
+    ciudad: "Cusco & Machu Picchu",
+    pais: "Perú",
+    bandera: "🇵🇪",
+    categoria: "sudamerica",
+    duracion: "4 Días / 3 Noches",
+    precioUSD: 399,
+    precioSoles: 1495,
+    precioRegularUSD: 520,
+    tag: "MARAVILLA DEL MUNDO",
+    tagColor: "hot",
+    img: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=85",
+    alt: "Paquete Cusco y Machu Picchu Todo Incluido desde Lima",
+    tituloComercial: "Cusco Mágico, Valle Sagrado & Machu Picchu",
+    resaltado: "Vuelos + Hotel + Tren Turístico + Entradas a Machu Picchu",
+    inclusiones: {
+      vuelo: true,
+      hotel: "3 Noches de Hotel en Cusco con desayunos",
+      alimentacion: "Desayunos diarios + Almuerzo buffet en Valle Sagrado",
+      traslados: true,
+      seguro: "Asistencia permanente en destino",
+      tour: "City Tour, Valle Sagrado y Ciudadela de Machu Picchu",
+    },
+    toursDestacados: [
+      "Ciudadela Inca de Machu Picchu en tren turístico Expedition o Vistadome",
+      "Valle Sagrado: Pisac, Urubamba y fortaleza de Ollantaytambo",
+      "Sacsayhuamán, Qorikancha y Laguna Humantay o Montaña de 7 Colores",
+    ],
+    descripcion:
+      "Conoce la Maravilla del Mundo con toda la logística resuelta por expertos: vuelos desde Lima, boletos oficiales de ingreso a Machu Picchu, tren turístico y traslados.",
+    itinerario: [
+      "Día 1: Vuelo Lima ➔ Cusco. Recepción en aeropuerto, mate de coca y City Tour por la tarde (Qorikancha y 4 ruinas).",
+      "Día 2: Excursión al Valle Sagrado de los Incas con almuerzo buffet en Urubamba.",
+      "Día 3: Viaje en tren turístico hacia Aguas Calientes, subida en bus Consettur y visita guiada en Machu Picchu.",
+      "Día 4: Mañana libre (o tour a Montaña de 7 Colores), traslado al aeropuerto y vuelo a Lima.",
+    ],
+    tipoViaje: "circuito",
+  },
 ];
 
 // Compatibilidad con componentes existentes
 export const DESTINOS_EUROPA: Destino[] = PAQUETES_COMPLETOS
-  .filter((p) => p.categoria === "europa")
+  .filter((p) => p.categoria === "europa" || p.categoria === "exoticos")
   .map((p) => ({
     ciudad: p.ciudad,
     pais: p.pais,
@@ -628,7 +871,7 @@ export const DESTINOS_EUROPA: Destino[] = PAQUETES_COMPLETOS
     alt: p.alt,
     tag: p.tag,
     tagColor: p.tagColor as "hot" | "promo" | "new",
-    migratorio: p.migratorioUSD || 890,
+    migratorio: p.migratorioUSD,
     turistico: p.precioUSD,
     precioSoles: p.precioSoles,
     migraDesc: "Vuelo confirmado IATA + Seguro Schengen 30.000€ + Hotel + Asesoría de entrada",
@@ -878,4 +1121,77 @@ export const BLOG_POSTS: BlogPost[] = [
 <h3>3. Separa con el 50% de inicial</h3>
 <p>En Cityland Travel puedes bloquear tu paquete promocional abonando el 50% de inicial y completando el saldo en cuotas antes de tu fecha de salida.</p>`,
   },
+  {
+    slug: "carta-invitacion-espana-peru-requisitos",
+    titulo: "Carta de Invitación para España desde Perú: Requisitos, precio y cómo usarla en 2026",
+    desc: "Todo lo que tu familiar o amigo en España debe tramitar ante la Policía Nacional y qué documentos debes llevar junto con tu carta al viajar desde Lima.",
+    categoria: "Migratorio",
+    catColor: "bg-red-600",
+    fecha: "16 Oct 2026",
+    lectura: "5 min",
+    imagen: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=80",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>¿Para qué sirve la Carta de Invitación para viajar a España?</h2>
+<p>La Carta de Invitación es el documento oficial que reemplaza a la reserva de hotel cuando un ciudadano peruano viaja a España para alojarse en la vivienda de un familiar o amigo (ciudadano español o residente legal en España).</p>
+<h3>1. ¿Dónde se tramita?</h3>
+<p>La solicita tu anfitrión en España ante la <strong>Comisaría de Policía Nacional</strong> de su lugar de residencia, presentando su DNI o TIE, escritura o contrato de alquiler de la vivienda y el volante de empadronamiento colectivo.</p>
+<h3>2. ¿Es suficiente solo con la Carta de Invitación?</h3>
+<p>No. La Carta de Invitación únicamente acredita el alojamiento. Al pasar el control migratorio en Madrid-Barajas o Barcelona-El Prat también debes presentar: <strong>boleto aéreo de ida y vuelta confirmado</strong>, <strong>Seguro Schengen con cobertura mínima de 30.000 euros</strong> y tu <strong>sustento económico (bolsa de viaje)</strong>.</p>
+<h3>3. ¿Debes llevar el documento original?</h3>
+<p>Sí, tu familiar debe enviarte la Carta de Invitación física original por courier a Lima antes de tu vuelo para presentarla en el mostrador de la aerolínea y en el control fronterizo.</p>`,
+  },
+  {
+    slug: "mejor-epoca-viajar-punta-cana-cancun",
+    titulo: "Cuál es la mejor época para viajar a Punta Cana y Cancún desde Lima (Clima y Precios)",
+    desc: "Meses con mejor sol, menos lluvias y tarifas Todo Incluido más bajas para tus vacaciones en el Caribe.",
+    categoria: "Caribe",
+    catColor: "bg-amber-500",
+    fecha: "16 Oct 2026",
+    lectura: "5 min",
+    imagen: "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>Guía de temporadas para viajar a Punta Cana y Cancún</h2>
+<p>Tanto Punta Cana (República Dominicana) como Cancún y la Riviera Maya (México) cuentan con clima cálido tropical durante todo el año, con temperaturas entre 26 °C y 31 °C.</p>
+<h3>1. Temporada seca y clima perfecto (Diciembre a Abril)</h3>
+<p>Es la época con días más soleados, brisa fresca y mar completamente cristalino. Si planeas viajar en enero, febrero o Semana Santa, te recomendamos separar tu paquete con el 50% al menos con 60 días de anticipación.</p>
+<h3>2. Temporada de mejores ofertas (Mayo, Junio, Septiembre, Octubre y Noviembre)</h3>
+<p>En estos meses los resorts 5 estrellas All Inclusive lanzan sus mejores promociones del año para viajeros desde Perú, permitiéndote ahorrar hasta un 30% en paquetes completos con vuelo, traslados y excursiones.</p>`,
+  },
+  {
+    slug: "como-tramitar-visa-americana-b1-b2-peru",
+    titulo: "Cómo tramitar la Visa Americana de Turismo (B1/B2) en Lima paso a paso",
+    desc: "Guía práctica sobre el formulario DS-160, pago de tasa consular, programación de cita en la Embajada de EE.UU. en Surco y preparación de entrevista.",
+    categoria: "Visas",
+    catColor: "bg-blue-700",
+    fecha: "16 Oct 2026",
+    lectura: "6 min",
+    imagen: "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=800&q=80",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>Pasos para solicitar tu Visa a Estados Unidos desde Perú</h2>
+<p>Para viajar a Miami, Orlando, Nueva York o incluso hacer escala en aeropuertos estadounidenses, los ciudadanos peruanos requieren contar con una Visa B1/B2 vigente.</p>
+<h3>1. Llenado profesional del Formulario DS-160</h3>
+<p>El formulario oficial DS-160 es la base de tu evaluación consular. Un error u omisión en tus datos laborales, ingresos, viajes previos o vínculos familiares en el Perú es la causa principal de rechazo. En Cityland Travel redactamos tu DS-160 de forma estratégica y coherente con tu perfil real.</p>
+<h3>2. Pago de derecho consular y adelanto de cita</h3>
+<p>Una vez generado el código DS-160, se abona la tasa consular oficial y monitoreamos el calendario del sistema para conseguir o adelantar tu fecha de entrevista en la Embajada de EE.UU. en Lima.</p>
+<h3>3. Simulación de entrevista consular</h3>
+<p>Te preparamos con las preguntas reales que realiza el cónsul según tu ocupación (dependiente, independiente, empresario, estudiante o jubilado) para que asistas con total seguridad.</p>`,
+  },
+  {
+    slug: "cuanto-dinero-llevar-espana-bolsa-de-viaje",
+    titulo: "Cuánto dinero exigen llevar a España como bolsa de viaje para peruanos en 2026",
+    desc: "Cálculo oficial del monto diario y mínimo exigido en el Aeropuerto de Madrid-Barajas y cómo acreditarlo en efectivo o tarjetas.",
+    categoria: "Europa",
+    catColor: "bg-red-500",
+    fecha: "16 Oct 2026",
+    lectura: "4 min",
+    imagen: "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=800&q=80",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>¿Cuál es el monto de la bolsa de viaje para entrar a España?</h2>
+<p>Al ingresar como turista al Espacio Schengen por España, las autoridades fronterizas pueden solicitar que demuestres solvencia económica suficiente para cubrir los días que permanecerás en el país.</p>
+<h3>1. Monto referencial por día y mínimo total</h3>
+<p>La normativa española establece una cuantía referencial aproximada de <strong>113 euros por persona y por cada día de estancia</strong>, con un mínimo global exigido de alrededor de <strong>1.020 euros por persona</strong> aunque tu viaje dure menos de 9 días.</p>
+<h3>2. ¿Cómo se puede demostrar el dinero?</h3>
+<p>Puedes acreditarlo combinando <strong>dinero en efectivo (euros)</strong>, tarjetas de crédito o débito internacionales a tu nombre acompañadas de un extracto bancario reciente o certificación de saldo disponible. En Cityland Travel te orientamos sobre cómo organizar tu viaje y los días de tu itinerario para cumplir este requisito sin inconvenientes.</p>`,
+  },
 ];
+
