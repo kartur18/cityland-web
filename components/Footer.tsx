@@ -271,7 +271,16 @@ export default function Footer() {
                 <a href="/blog/como-encontrar-vuelos-economicos-europa-caribe" className="hover:text-white transition-colors">Consejos vuelos económicos</a>
                 <a href="/blog/viajes-promocion-escolar-cusco-caribe-consejos" className="hover:text-white transition-colors">Guía viajes de promoción</a>
                 <a href="/blog/temporada-baja-viajar-machu-picchu-cusco" className="hover:text-white transition-colors">Mejor mes para Machu Picchu</a>
+                <a href="/viajes/primer-viaje-a-madrid" className="hover:text-white transition-colors">Primer Viaje a Madrid</a>
+                <a href="/viajes/vuelos-con-2-maletas-lima-madrid" className="hover:text-white transition-colors">Vuelos con 2 Maletas 23kg</a>
+                <a href="/viajes/requisitos-viajar-a-espana-desde-peru" className="hover:text-white transition-colors">Requisitos España 2026</a>
+                <a href="/agencia/arequipa" className="hover:text-white transition-colors">Agencia para Arequipa</a>
+                <a href="/agencia/trujillo" className="hover:text-white transition-colors">Agencia para Trujillo</a>
+                <a href="/agencia/piura" className="hover:text-white transition-colors">Agencia para Piura</a>
                 <a href="/politicas" className="hover:text-white transition-colors">Términos y Políticas</a>
+                <a href="/directorio" className="text-amber-400 font-bold hover:text-amber-300 transition-colors">
+                  ★ Ver Directorio Completo de 1,000 Rutas y Destinos →
+                </a>
               </div>
             </div>
           </div>

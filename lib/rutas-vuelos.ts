@@ -2,6 +2,7 @@ import type { ConfiguracionLandingAerolinea } from "@/components/AirlineLandingT
 import { RUTAS_VUELOS_LOTE_2 } from "@/lib/rutas-vuelos-lote2";
 import { RUTAS_VUELOS_LOTE_3 } from "@/lib/rutas-vuelos-lote3";
 import { RUTAS_VUELOS_LOTE_4 } from "@/lib/rutas-vuelos-lote4";
+import { RUTAS_VUELOS_MASIVAS } from "@/lib/catalogo-vuelos-masivo";
 
 export interface RutaVueloSEO {
   slug: string;
@@ -1016,6 +1017,7 @@ export const RUTAS_VUELOS_SEO: RutaVueloSEO[] = [
   ...RUTAS_VUELOS_LOTE_2,
   ...RUTAS_VUELOS_LOTE_3,
   ...RUTAS_VUELOS_LOTE_4,
+  ...RUTAS_VUELOS_MASIVAS,
 ];
 
 export function buscarRutaVuelo(slug: string): RutaVueloSEO | undefined {

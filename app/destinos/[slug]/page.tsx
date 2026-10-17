@@ -8,13 +8,14 @@ import {
   cotLink,
   type Destino,
 } from "@/components/constantes";
+import { DESTINOS_MASIVOS } from "@/lib/catalogo-destinos-masivo";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import DestinoGallery from "@/components/DestinoGallery";
 import PriceDisplay from "@/components/PriceDisplay";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
 
-const ALL_DESTINOS = [...DESTINOS_EUROPA, ...DESTINOS_CARIBE];
+const ALL_DESTINOS = [...DESTINOS_EUROPA, ...DESTINOS_CARIBE, ...DESTINOS_MASIVOS];
 
 function findDestino(slug: string): Destino | undefined {
   return ALL_DESTINOS.find((d) => d.slug === slug);

@@ -2,12 +2,15 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BLOG_POSTS, BlogPost, WA_LINK } from "@/components/constantes";
+import { BLOG_POSTS, WA_LINK } from "@/components/constantes";
+import { BLOG_POSTS_MASIVOS } from "@/lib/catalogo-blog-masivo";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
+const ALL_BLOG_POSTS = [...BLOG_POSTS, ...BLOG_POSTS_MASIVOS];
+
 export function generateStaticParams() {
-  return BLOG_POSTS.map((post) => ({ slug: post.slug }));
+  return ALL_BLOG_POSTS.map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({
@@ -16,14 +19,17 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = BLOG_POSTS.find((p) => p.slug === slug);
+  const post = ALL_BLOG_POSTS.find((p) => p.slug === slug);
   if (!post) return { title: "Artículo no encontrado | Cityland Travel" };
 
+  const canonical = `https://citylandtravel.com/blog/${post.slug}`;
   return {
     title: `${post.titulo} | Cityland Travel`,
     description: post.desc,
+    alternates: { canonical },
     openGraph: {
       type: "article",
+      url: canonical,
       title: post.titulo,
       description: post.desc,
       images: [{ url: post.imagen, width: 1200, height: 630 }],
@@ -39,13 +45,49 @@ export default async function BlogArticlePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = BLOG_POSTS.find((p) => p.slug === slug);
+  const post = ALL_BLOG_POSTS.find((p) => p.slug === slug);
   if (!post) notFound();
 
-  const related = BLOG_POSTS.filter((p) => p.slug !== slug).slice(0, 2);
+  const related = ALL_BLOG_POSTS.filter((p) => p.slug !== slug).slice(0, 4);
+  const canonicalUrl = `https://citylandtravel.com/blog/${post.slug}`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Inicio — Cityland Travel",
+            item: "https://citylandtravel.com/",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: post.titulo,
+            item: canonicalUrl,
+          },
+        ],
+      },
+      {
+        "@type": "Article",
+        headline: post.titulo,
+        description: post.desc,
+        image: post.imagen,
+        author: { "@type": "Organization", name: "Cityland Travel" },
+        publisher: { "@type": "Organization", name: "Cityland Travel" },
+        mainEntityOfPage: canonicalUrl,
+      },
+    ],
+  };
 
   return (
     <main className="bg-white min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero image */}
       <div className="relative w-full h-[320px] sm:h-[400px] lg:h-[460px]">
         <Image
