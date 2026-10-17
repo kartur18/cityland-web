@@ -163,7 +163,7 @@ export default function EspanaLandingClient() {
                     </span>
                     <div className="flex items-baseline gap-1.5">
                       <span className="text-xs font-extrabold uppercase text-red-600">Desde</span>
-                      <span className="font-[family-name:var(--font-bebas)] text-4xl text-[#0a1628] leading-none">
+                      <span className="text-3xl sm:text-4xl font-black text-[#0a1628] tracking-tight leading-none">
                         $890
                       </span>
                       <span className="text-xs font-bold text-slate-500">USD</span>
@@ -235,7 +235,7 @@ export default function EspanaLandingClient() {
                     <span className="text-[10px] font-semibold text-amber-300 block">
                       {p.monumento}
                     </span>
-                    <h3 className="font-[family-name:var(--font-bebas)] text-2xl sm:text-3xl text-white leading-none mt-0.5">
+                    <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight leading-tight mt-0.5">
                       {p.mes}
                     </h3>
                   </div>
@@ -259,7 +259,7 @@ export default function EspanaLandingClient() {
                         </span>
                       </div>
                       <div className="flex items-baseline gap-1">
-                        <span className="font-[family-name:var(--font-bebas)] text-4xl text-[#0a1628] leading-none">
+                        <span className="text-2xl sm:text-3xl font-black text-[#0a1628] tracking-tight leading-none">
                           ${p.precio.toLocaleString("en-US")}
                         </span>
                         <span className="text-xs font-bold text-slate-500">USD</span>
@@ -314,8 +314,8 @@ export default function EspanaLandingClient() {
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
                 Control Migratorio Madrid-Barajas
               </span>
-              <h3 className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] leading-none mb-2">
-                ¿DUDAS SOBRE REQUISITOS O EL INGRESO A ESPAÑA?
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0a1628] tracking-tight leading-snug mb-2">
+                ¿Dudas sobre requisitos o el ingreso a España?
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 mb-6 max-w-xl">
                 Te preparamos con la carpeta exacta que solicita migraciones en el aeropuerto: solvencia económica, reserva de hotel y seguro Schengen de 30.000€.

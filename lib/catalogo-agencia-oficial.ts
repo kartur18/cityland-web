@@ -205,8 +205,8 @@ export function obtenerConfigAgenciaOficial(referenciaZona?: string): Configurac
       waNumero: TELEFONO,
       waMensaje:
         "¡Hola Cityland Travel! Deseo recibir atención de una asesora para cotizar mi próximo viaje.",
-      img: "/images/oficina-exterior.png",
-      alt: "Oficina Principal de Cityland Travel en Lima",
+      img: "/images/espana/plaza-mayor.jpg",
+      alt: "Viajes Internacionales con Cityland Travel en Lima",
     },
 
     waFlotante: {

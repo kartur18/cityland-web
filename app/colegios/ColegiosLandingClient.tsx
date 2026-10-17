@@ -125,7 +125,7 @@ export default function ColegiosLandingClient() {
                       <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
                         Desde
                       </span>
-                      <span className="font-[family-name:var(--font-bebas)] text-4xl text-[#0a1628] leading-none">
+                      <span className="text-3xl sm:text-4xl font-black text-[#0a1628] tracking-tight leading-none">
                         $399
                       </span>
                       <span className="text-xs font-bold text-slate-500">USD por alumno</span>
@@ -246,7 +246,7 @@ export default function ColegiosLandingClient() {
                           <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
                             Desde
                           </span>
-                          <span className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] leading-none">
+                          <span className="text-2xl sm:text-3xl font-black text-[#0a1628] tracking-tight leading-none">
                             {p.precioTexto}
                           </span>
                           <span className="text-xs font-bold text-slate-500">
@@ -315,8 +315,8 @@ export default function ColegiosLandingClient() {
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
                 Atención a Comités de Aula, Promociones y Universidades
               </span>
-              <h3 className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] leading-none mb-2">
-                ¿QUIERES QUE VAYAMOS A EXPONER AL COLEGIO O ENVIEMOS UNA PROFORMA FORMAL?
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0a1628] tracking-tight leading-snug mb-2">
+                ¿Quieres que vayamos a exponer al colegio o enviemos una proforma formal?
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 mb-6 max-w-xl">
                 Escríbenos cuántos alumnos son y qué destino les interesa. Prepararemos una propuesta comparativa en PDF con hoteles, vuelos, alimentación y cronograma de cuotas para presentar a los padres.
@@ -337,7 +337,7 @@ export default function ColegiosLandingClient() {
 
             <div className="lg:col-span-5 relative min-h-[260px] sm:min-h-[320px] w-full overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85"
+                src="https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=85"
                 alt="Viajes de Promoción a Cusco y el Caribe - Cityland Travel"
                 fill
                 sizes="(max-width: 1024px) 100vw, 500px"

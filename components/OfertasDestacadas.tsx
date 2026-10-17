@@ -4,6 +4,7 @@ import Image from "next/image";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import { buildWaUrl, PAQUETES_COMPLETOS } from "@/components/constantes";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import FlagIcon from "@/components/icons/FlagIcon";
 
 export default function OfertasDestacadas() {
   // Tomamos los 6 paquetes comerciales más fuertes
@@ -16,9 +17,9 @@ export default function OfertasDestacadas() {
         <AnimateOnScroll>
           <div className="text-center max-w-3xl mx-auto mb-14">
             <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-[11px] font-extrabold uppercase tracking-widest mb-3">
-              ⚡ Salidas Confirmadas 2026
+              Salidas Confirmadas 2026
             </span>
-            <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(36px,5.5vw,60px)] text-[#0a1628] tracking-wide leading-none mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[#0a1628] tracking-tight leading-[1.12] mb-4">
               Los Paquetes Más Solicitados por Peruanos
             </h2>
             <p className="text-[15px] sm:text-base text-slate-600 leading-relaxed">
@@ -53,8 +54,9 @@ export default function OfertasDestacadas() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
 
                     <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 z-10">
-                      <span className="bg-black/60 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-full border border-white/20">
-                        {oferta.bandera} {oferta.pais}
+                      <span className="inline-flex items-center gap-1.5 bg-white/95 backdrop-blur-md text-[#0a1628] text-[11px] font-bold px-2.5 py-1 rounded-full shadow-xs">
+                        <FlagIcon pais={oferta.pais} className="w-3.5 h-2.5" />
+                        {oferta.pais}
                       </span>
                       <span className="bg-amber-400 text-slate-900 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full shadow-sm">
                         Separa con 50%

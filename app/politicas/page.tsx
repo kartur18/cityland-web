@@ -14,16 +14,16 @@ export default function PoliticasPage() {
       <Navbar />
       <main className="bg-white min-h-screen pt-28 pb-20">
         <div className="max-w-[800px] mx-auto px-5">
-          <h1 className="font-[family-name:var(--font-bebas)] text-[clamp(36px,5vw,52px)] text-[#0a1628] tracking-wide leading-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0a1628] tracking-tight leading-tight mb-4">
             Políticas y Términos
           </h1>
           <p className="text-[14px] text-gray-400 mb-12">
-            Última actualización: marzo 2026
+            Última actualización: octubre 2026
           </p>
 
           {/* Política de Privacidad */}
           <section className="mb-12">
-            <h2 className="font-[family-name:var(--font-bebas)] text-[28px] text-[#0a1628] tracking-wide mb-4">
+            <h2 className="text-2xl font-extrabold text-[#0a1628] tracking-tight mb-4">
               Política de Privacidad
             </h2>
             <p className="text-[15px] text-gray-600 leading-relaxed mb-4">
@@ -54,7 +54,7 @@ export default function PoliticasPage() {
 
           {/* Política de Cookies */}
           <section className="mb-12">
-            <h2 className="font-[family-name:var(--font-bebas)] text-[28px] text-[#0a1628] tracking-wide mb-4">
+            <h2 className="text-2xl font-extrabold text-[#0a1628] tracking-tight mb-4">
               Política de Cookies
             </h2>
             <p className="text-[15px] text-gray-600 leading-relaxed mb-4">
@@ -81,7 +81,7 @@ export default function PoliticasPage() {
 
           {/* Términos y Condiciones */}
           <section className="mb-12">
-            <h2 className="font-[family-name:var(--font-bebas)] text-[28px] text-[#0a1628] tracking-wide mb-4">
+            <h2 className="text-2xl font-extrabold text-[#0a1628] tracking-tight mb-4">
               Términos y Condiciones
             </h2>
             <p className="text-[15px] text-gray-600 leading-relaxed mb-4">

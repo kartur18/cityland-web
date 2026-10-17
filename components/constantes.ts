@@ -1451,7 +1451,7 @@ export const BLOG_POSTS: BlogPost[] = [
     catColor: "bg-red-500",
     fecha: "16 Oct 2026",
     lectura: "4 min",
-    imagen: "/images/espana/retiro.jpg",
+    imagen: "/images/espana/palacio-real.jpg",
     autor: "Equipo Cityland Travel",
     contenido: `<h2>¿Cuál es el monto de la bolsa de viaje para entrar a España?</h2>
 <p>Al ingresar como turista al Espacio Schengen por España, las autoridades fronterizas pueden solicitar que demuestres solvencia económica suficiente para cubrir los días que permanecerás en el país.</p>

@@ -22,7 +22,7 @@ export const PAQUETES_CUSCO: PaqueteCusco[] = [
     precioRegularUSD: 499,
     tag: "Escapada Fin de Semana",
     tagBg: "bg-sky-600 text-white",
-    img: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=85",
+    img: "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=1200&q=85",
     alt: "Paquete Cusco Express 3 Días Machu Picchu desde Lima - Cityland Travel",
     resumenCorto:
       "Vuelo I/V desde Lima + Hotel con desayunos + Tren turístico + Entrada oficial a Machu Picchu, bus Consettur y guía.",
@@ -37,7 +37,7 @@ export const PAQUETES_CUSCO: PaqueteCusco[] = [
     precioRegularUSD: 620,
     tag: "#1 Más Vendido",
     tagBg: "bg-red-600 text-white",
-    img: "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=1200&q=85",
+    img: "https://images.unsplash.com/photo-1660966237842-b37209ab8bdf?w=1200&q=85",
     alt: "Paquete Cusco Clásico 4 Días Valle Sagrado y Machu Picchu - Cityland Travel",
     resumenCorto:
       "Vuelo I/V + Hotel + City Tour 4 Ruinas + Valle Sagrado con almuerzo buffet en Urubamba + Machu Picchu completo en tren.",
@@ -52,8 +52,8 @@ export const PAQUETES_CUSCO: PaqueteCusco[] = [
     precioRegularUSD: 730,
     tag: "Aventura & Cultura",
     tagBg: "bg-emerald-600 text-white",
-    img: "https://images.unsplash.com/photo-1531065208531-4036c0dba3ca?w=1200&q=85",
-    alt: "Paquete Cusco 5 Días con Montaña de 7 Colores y Machu Picchu - Cityland Travel",
+    img: "https://images.unsplash.com/photo-1545330785-15356daae141?w=1200&q=85",
+    alt: "Paquete Cusco 5 Días con Montaña de 7 Colores Vinicunca y Machu Picchu - Cityland Travel",
     resumenCorto:
       "Vuelo I/V + Hotel + City Tour + Valle Sagrado + Machu Picchu + Excursión guiada a la Montaña de 7 Colores (Vinicunca).",
     checks: ["Vuelo I/V + 4 Noches Hotel", "Machu Picchu + Valle Sagrado", "Montaña 7 Colores con Almuerzo"],
@@ -67,7 +67,7 @@ export const PAQUETES_CUSCO: PaqueteCusco[] = [
     precioRegularUSD: 840,
     tag: "Experiencia Total",
     tagBg: "bg-amber-600 text-white",
-    img: "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=1200&q=85",
+    img: "https://images.unsplash.com/photo-1716618704106-b335685a6b4d?w=1200&q=85",
     alt: "Paquete Cusco Imperial 6 Días Laguna Humantay, Maras Moray y Machu Picchu",
     resumenCorto:
       "El circuito más completo: Vuelo I/V + 5 noches de hotel + Machu Picchu + Valle Sagrado + Laguna Humantay + Montaña de 7 Colores.",

@@ -131,7 +131,7 @@ export default function VisasLandingClient() {
                       <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
                         Desde
                       </span>
-                      <span className="font-[family-name:var(--font-bebas)] text-4xl text-[#0a1628] leading-none">
+                      <span className="text-3xl sm:text-4xl font-black text-[#0a1628] tracking-tight leading-none">
                         $120
                       </span>
                       <span className="text-xs font-bold text-slate-500">USD</span>
@@ -252,7 +252,7 @@ export default function VisasLandingClient() {
                           <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
                             Desde
                           </span>
-                          <span className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] leading-none">
+                          <span className="text-2xl sm:text-3xl font-black text-[#0a1628] tracking-tight leading-none">
                             ${item.tarifaDesdeUSD}
                           </span>
                           <span className="text-xs font-bold text-slate-500">
@@ -321,8 +321,8 @@ export default function VisasLandingClient() {
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
                 Asesoría Presencial o Virtual en Todo el Perú
               </span>
-              <h3 className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] leading-none mb-2">
-                ¿QUIERES SABER SI CALIFICAS PARA LA VISA AMERICANA O CANADIENSE?
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0a1628] tracking-tight leading-snug mb-2">
+                ¿Quieres saber si calificas para la Visa Americana o Canadiense?
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 mb-6 max-w-xl">
                 Escríbenos por WhatsApp o visítanos en nuestra oficina en{" "}

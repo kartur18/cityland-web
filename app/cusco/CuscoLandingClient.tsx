@@ -75,7 +75,7 @@ export default function CuscoLandingClient() {
               <div className="card-interactive group bg-white rounded-3xl border border-slate-200/90 shadow-lg overflow-hidden">
                 <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-100">
                   <Image
-                    src="https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85"
+                    src="https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=85"
                     alt="Machu Picchu Cusco Paquete Completo desde Lima - Cityland Travel"
                     fill
                     priority
@@ -113,7 +113,7 @@ export default function CuscoLandingClient() {
                       <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
                         Desde
                       </span>
-                      <span className="font-[family-name:var(--font-bebas)] text-4xl text-[#0a1628] leading-none">
+                      <span className="text-3xl sm:text-4xl font-black text-[#0a1628] tracking-tight leading-none">
                         $499
                       </span>
                       <span className="text-xs font-bold text-slate-500">USD</span>
@@ -224,7 +224,7 @@ export default function CuscoLandingClient() {
                             <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
                               Desde
                             </span>
-                            <span className="font-[family-name:var(--font-bebas)] text-3xl text-[#0a1628] leading-none">
+                            <span className="text-2xl sm:text-3xl font-black text-[#0a1628] tracking-tight leading-none">
                               ${p.precioUSD}
                             </span>
                             <span className="text-xs font-bold text-slate-500">
@@ -263,8 +263,8 @@ export default function CuscoLandingClient() {
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
                 Atención 1 a 1 por WhatsApp o en Oficina
               </span>
-              <h3 className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] leading-none mb-2">
-                ¿YA TIENES VUELOS O QUIERES ARMAR UN PAQUETE ESPECIAL A CUSCO?
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0a1628] tracking-tight leading-snug mb-2">
+                ¿Ya tienes vuelos o quieres armar un paquete especial a Cusco?
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 mb-6 max-w-xl">
                 Indícanos cuántos adultos o niños viajan y en qué mes desean ir. Nuestro equipo bloquea tus entradas oficiales a Machu Picchu, tus boletos de tren y tu hotel ideal al instante.
@@ -285,8 +285,8 @@ export default function CuscoLandingClient() {
 
             <div className="lg:col-span-5 relative min-h-[260px] sm:min-h-[320px] w-full overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&q=85"
-                alt="Montaña de 7 Colores y Machu Picchu Cusco - Cityland Travel"
+                src="https://images.unsplash.com/photo-1522409994346-2682217b9a3e?w=1200&q=85"
+                alt="Laguna Humantay y Nevado Salkantay en Cusco - Cityland Travel"
                 fill
                 sizes="(max-width: 1024px) 100vw, 500px"
                 className="object-cover"

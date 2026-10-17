@@ -4,6 +4,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import FlagIcon from "@/components/icons/FlagIcon";
 import { DESTINOS_EUROPA, DESTINOS_CARIBE, BLOG_POSTS } from "@/components/constantes";
 import { RUTAS_VUELOS_SEO } from "@/lib/rutas-vuelos";
 import { VIAJES_ESPECIALIZADOS_SEO } from "@/lib/catalogo-viajes-especializados";
@@ -86,7 +87,7 @@ const DIVISIONES_VISUALES = [
     titulo: "Colegios, Institutos y Clubes Deportivos",
     subtitulo: "Promociones escolares, delegaciones y torneos",
     precio: "Desde $199 USD",
-    img: "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=900&q=80",
+    img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=900&q=80",
     href: "/colegios",
   },
   {
@@ -294,8 +295,9 @@ export default function DirectorioMaestroPage() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                    <span className="absolute top-3 left-3 bg-white/95 text-[#0a1628] text-xs font-bold px-3 py-1 rounded-full">
-                      {d.bandera} {d.pais}
+                    <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 bg-white/95 text-[#0a1628] text-xs font-bold px-3 py-1 rounded-full">
+                      <FlagIcon pais={d.pais} className="w-3.5 h-2.5" />
+                      <span>{d.pais}</span>
                     </span>
                     <div className="absolute bottom-3 left-4 right-4 text-white">
                       <h3 className="text-lg font-extrabold leading-tight">

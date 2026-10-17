@@ -138,10 +138,10 @@ const POOL_IMAGENES_ALTERNATIVAS: Record<string, string[]> = {
     "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1200&q=85",
   ],
   Perú: [
-    "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=1200&q=85",
     "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=85",
-    "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=1200&q=85",
-    "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
+    "https://images.unsplash.com/photo-1545330785-15356daae141?w=1200&q=85",
+    "https://images.unsplash.com/photo-1716618704106-b335685a6b4d?w=1200&q=85",
+    "https://images.unsplash.com/photo-1723134087756-3fdd46625a84?w=1200&q=85",
   ],
   Brasil: [
     "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85",

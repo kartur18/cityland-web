@@ -134,7 +134,7 @@ const CONFIG_PERU: ConfiguracionLandingAerolinea = {
       notaPrecio: "Separa con 50% ($195 USD)",
       tag: "Top Ventas Selva",
       tagBg: "bg-emerald-600 text-white",
-      img: "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=1200&q=85",
+      img: "https://images.unsplash.com/photo-1500759285222-a95626b934cb?w=1200&q=85",
       alt: "Paquete a Tarapoto Todo Incluido Laguna Azul y Ahuashiyacu desde Lima",
       resumenCorto:
         "Vuelo Lima–Tarapoto I/V + Hotel con piscina y desayunos + Paseo en bote por la Laguna Azul con almuerzo amazónico, Cataratas de Ahuashiyacu y Lamas.",
@@ -152,7 +152,7 @@ const CONFIG_PERU: ConfiguracionLandingAerolinea = {
       notaPrecio: "Incluye alimentación completa en el Lodge",
       tag: "Lodge Amazónico",
       tagBg: "bg-amber-600 text-white",
-      img: "https://images.unsplash.com/photo-1531065208531-4036c0dba3ca?w=1200&q=85",
+      img: "https://images.unsplash.com/photo-1699575678956-aefa714b67f0?w=1200&q=85",
       alt: "Paquete a Iquitos y Lodge en el Río Amazonas desde Lima",
       resumenCorto:
         "Vuelo Lima–Iquitos I/V + Noches en Lodge amazónico con pensión completa + Navegación por el Río Amazonas, delfines rosados y comunidades nativas.",
@@ -170,7 +170,7 @@ const CONFIG_PERU: ConfiguracionLandingAerolinea = {
       notaPrecio: "Separa con 50% ($190 USD)",
       tag: "Sur del Perú",
       tagBg: "bg-blue-600 text-white",
-      img: "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=1200&q=85",
+      img: "https://images.unsplash.com/photo-1787929759288-1b4aa7af30f6?w=1200&q=85",
       alt: "Paquete turístico a Arequipa y Cañón del Colca desde Lima",
       resumenCorto:
         "Vuelo Lima–Arequipa I/V + Hotel con desayunos + Campiña Arequipeña, Ruta del Sillar y excursión de 2 días al Valle y Cañón del Colca (Vuelo del Cóndor).",
@@ -188,7 +188,7 @@ const CONFIG_PERU: ConfiguracionLandingAerolinea = {
       notaPrecio: "Ideal para fines de semana y feriados",
       tag: "Cerca de Lima",
       tagBg: "bg-red-600 text-white",
-      img: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=85",
+      img: "https://images.unsplash.com/photo-1723134087756-3fdd46625a84?w=1200&q=85",
       alt: "Paquete a Paracas, Ica y Oasis de la Huacachina desde Lima",
       resumenCorto:
         "Bus Cruz del Sur VIP I/V + Hotel con piscina + Deslizador a Islas Ballestas, Reserva de Paracas, ruta de viñedos en Ica y tubulares en Huacachina.",

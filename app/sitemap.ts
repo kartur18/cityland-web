@@ -57,6 +57,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: BASE, lastModified: now, changeFrequency: "daily", priority: 1 },
     { url: `${BASE}/directorio`, lastModified: now, changeFrequency: "daily", priority: 0.99 },
+    { url: `${BASE}/blog`, lastModified: now, changeFrequency: "daily", priority: 0.98 },
+    { url: `${BASE}/destinos`, lastModified: now, changeFrequency: "daily", priority: 0.98 },
+    { url: `${BASE}/vuelos`, lastModified: now, changeFrequency: "daily", priority: 0.98 },
+    { url: `${BASE}/ofertas`, lastModified: now, changeFrequency: "daily", priority: 0.98 },
+    { url: `${BASE}/viajes`, lastModified: now, changeFrequency: "daily", priority: 0.98 },
+    { url: `${BASE}/agencia`, lastModified: now, changeFrequency: "daily", priority: 0.97 },
     { url: `${BASE}/espana`, lastModified: now, changeFrequency: "daily", priority: 0.98 },
     { url: `${BASE}/caribe`, lastModified: now, changeFrequency: "daily", priority: 0.98 },
     { url: `${BASE}/visas`, lastModified: now, changeFrequency: "daily", priority: 0.97 },

@@ -59,11 +59,11 @@ export default function CotizadorForm({ preselectedDestino }: CotizadorFormProps
       className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sm:p-8 max-w-[640px] mx-auto"
     >
       {/* Header */}
-      <h3 className="font-[family-name:var(--font-bebas)] text-[clamp(28px,4vw,36px)] text-gray-900 tracking-wide leading-none text-center mb-1">
-        COTIZA TU VIAJE GRATIS
+      <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight leading-snug text-center mb-1">
+        Cotiza tu Viaje Gratis
       </h3>
       <p className="text-gray-400 text-[13px] text-center mb-6">
-        Un asesor te responde en menos de 2 horas
+        Un asesor te responde en minutos por WhatsApp
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -105,14 +105,14 @@ export default function CotizadorForm({ preselectedDestino }: CotizadorFormProps
             <optgroup label="Europa">
               {DESTINOS_EUROPA.map((d) => (
                 <option key={d.slug} value={d.ciudad}>
-                  {d.bandera} {d.ciudad}, {d.pais}
+                  {d.ciudad} ({d.pais})
                 </option>
               ))}
             </optgroup>
-            <optgroup label="Caribe y Latinoamerica">
+            <optgroup label="Caribe y Latinoamérica">
               {DESTINOS_CARIBE.map((d) => (
                 <option key={d.slug} value={d.ciudad}>
-                  {d.bandera} {d.ciudad}, {d.pais}
+                  {d.ciudad} ({d.pais})
                 </option>
               ))}
             </optgroup>

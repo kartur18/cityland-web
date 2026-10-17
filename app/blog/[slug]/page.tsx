@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import FlagIcon from "@/components/icons/FlagIcon";
 
 const ALL_BLOG_POSTS = [...BLOG_POSTS, ...BLOG_POSTS_MASIVOS];
 
@@ -110,7 +111,7 @@ export default async function BlogArticlePage({
               Inicio
             </Link>
             <span>/</span>
-            <Link href="/directorio" className="hover:text-[#0b2347] font-medium">
+            <Link href="/blog" className="hover:text-[#0b2347] font-medium">
               Guías del Viajero
             </Link>
             <span>/</span>
@@ -124,23 +125,28 @@ export default async function BlogArticlePage({
               >
                 {post.categoria} · Guía Oficial
               </span>
-              <h1 className="font-[family-name:var(--font-outfit)] text-[clamp(26px,3.8vw,42px)] font-extrabold text-[#0b2347] tracking-tight leading-[1.12] mb-4">
+              <h1 className="text-[clamp(26px,3.6vw,40px)] font-extrabold text-[#0b2347] tracking-tight leading-[1.12] mb-4">
                 {post.titulo}
               </h1>
               <p className="text-slate-600 text-[15px] sm:text-[16px] leading-relaxed mb-5">
                 {post.desc}
               </p>
               <div className="flex flex-wrap items-center gap-3 text-[12px] font-semibold text-slate-500">
-                <span>📅 Actualizado: {post.fecha}</span>
+                <span className="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">
+                  Actualizado: {post.fecha}
+                </span>
                 <span>•</span>
-                <span>⏱️ {post.lectura} de lectura</span>
+                <span>Lectura: {post.lectura}</span>
                 <span>•</span>
-                <span>✍️ {post.autor} (RUC 20614914239)</span>
+                <span className="inline-flex items-center gap-1.5 text-[#0b2347]">
+                  <FlagIcon pais="Perú" className="w-3.5 h-2.5" />
+                  {post.autor} (RUC 20614914239)
+                </span>
               </div>
             </div>
 
             <div className="lg:col-span-5">
-              <div className="relative h-[240px] sm:h-[290px] rounded-2xl overflow-hidden shadow-md border border-slate-200">
+              <div className="relative h-[240px] sm:h-[290px] rounded-2xl overflow-hidden shadow-md border border-slate-200 bg-slate-100">
                 <Image
                   src={post.imagen}
                   alt={post.titulo}
@@ -187,13 +193,13 @@ export default async function BlogArticlePage({
             </div>
           </div>
 
-          {/* Sidebar CTA */}
+          {/* Sidebar CTA con Banderas SVG reales (Cero emojis rotos en Windows) */}
           <aside className="lg:col-span-4 lg:sticky lg:top-24 space-y-5">
             <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-md">
               <span className="inline-block text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-md bg-red-50 text-[#e30613] mb-2">
                 Tarifas Referenciales en USD
               </span>
-              <h3 className="font-[family-name:var(--font-outfit)] text-[20px] font-extrabold text-[#0b2347] leading-snug mb-2">
+              <h3 className="text-[20px] font-extrabold text-[#0b2347] leading-snug mb-2">
                 Planifica tu viaje con Cityland Travel
               </h3>
               <p className="text-[13px] text-slate-600 leading-relaxed mb-4">
@@ -206,8 +212,13 @@ export default async function BlogArticlePage({
                   className="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-blue-50/60 border border-slate-200/80 transition-colors"
                 >
                   <div>
-                    <p className="text-[13px] font-bold text-[#0b2347]">🇪🇸 Especial España</p>
-                    <p className="text-[11px] text-slate-500">Vuelo + Hotel + Seguro 30.000€</p>
+                    <p className="text-[13px] font-bold text-[#0b2347] flex items-center gap-2">
+                      <FlagIcon pais="España" className="w-4 h-3" />
+                      <span>Especial España</span>
+                    </p>
+                    <p className="text-[11px] text-slate-500 mt-0.5">
+                      Vuelo + Hotel + Seguro 30.000€
+                    </p>
                   </div>
                   <span className="text-[14px] font-black text-[#e30613]">Desde $890</span>
                 </Link>
@@ -216,8 +227,13 @@ export default async function BlogArticlePage({
                   className="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-blue-50/60 border border-slate-200/80 transition-colors"
                 >
                   <div>
-                    <p className="text-[13px] font-bold text-[#0b2347]">🇩🇴 Punta Cana 5D/4N</p>
-                    <p className="text-[11px] text-slate-500">Vuelo + Resort All Inclusive</p>
+                    <p className="text-[13px] font-bold text-[#0b2347] flex items-center gap-2">
+                      <FlagIcon pais="República Dominicana" className="w-4 h-3" />
+                      <span>Punta Cana 5D/4N</span>
+                    </p>
+                    <p className="text-[11px] text-slate-500 mt-0.5">
+                      Vuelo + Resort All Inclusive
+                    </p>
                   </div>
                   <span className="text-[14px] font-black text-[#e30613]">Desde $1,099</span>
                 </Link>
@@ -226,8 +242,13 @@ export default async function BlogArticlePage({
                   className="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-blue-50/60 border border-slate-200/80 transition-colors"
                 >
                   <div>
-                    <p className="text-[13px] font-bold text-[#0b2347]">🇲🇽 Cancún Todo Incluido</p>
-                    <p className="text-[11px] text-slate-500">Vuelo + Resort + Chichén Itzá</p>
+                    <p className="text-[13px] font-bold text-[#0b2347] flex items-center gap-2">
+                      <FlagIcon pais="México" className="w-4 h-3" />
+                      <span>Cancún Todo Incluido</span>
+                    </p>
+                    <p className="text-[11px] text-slate-500 mt-0.5">
+                      Vuelo + Resort + Chichén Itzá
+                    </p>
                   </div>
                   <span className="text-[14px] font-black text-[#e30613]">Desde $1,049</span>
                 </Link>
@@ -236,8 +257,13 @@ export default async function BlogArticlePage({
                   className="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-blue-50/60 border border-slate-200/80 transition-colors"
                 >
                   <div>
-                    <p className="text-[13px] font-bold text-[#0b2347]">🇨🇴 Cartagena 4D/3N</p>
-                    <p className="text-[11px] text-slate-500">Solo con DNI + Islas del Rosario</p>
+                    <p className="text-[13px] font-bold text-[#0b2347] flex items-center gap-2">
+                      <FlagIcon pais="Colombia" className="w-4 h-3" />
+                      <span>Cartagena 4D/3N</span>
+                    </p>
+                    <p className="text-[11px] text-slate-500 mt-0.5">
+                      Solo con DNI + Islas del Rosario
+                    </p>
                   </div>
                   <span className="text-[14px] font-black text-[#e30613]">Desde $699</span>
                 </Link>
@@ -261,7 +287,7 @@ export default async function BlogArticlePage({
       {related.length > 0 && (
         <section className="bg-white border-t border-slate-200 py-14">
           <div className="max-w-[1140px] mx-auto px-4 sm:px-6">
-            <h2 className="font-[family-name:var(--font-outfit)] text-[clamp(22px,3vw,30px)] font-extrabold text-[#0b2347] tracking-tight mb-6">
+            <h2 className="text-[clamp(22px,3vw,30px)] font-extrabold text-[#0b2347] tracking-tight mb-6">
               Más Guías para Viajeros Peruanos
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -269,7 +295,7 @@ export default async function BlogArticlePage({
                 <AnimateOnScroll key={r.slug} stagger={index + 1}>
                   <Link href={`/blog/${r.slug}`} className="block h-full">
                     <div className="card-lift bg-white rounded-2xl overflow-hidden border border-slate-200 group flex flex-col h-full shadow-sm">
-                      <div className="relative h-[165px] overflow-hidden flex-shrink-0">
+                      <div className="relative h-[165px] overflow-hidden flex-shrink-0 bg-slate-100">
                         <Image
                           src={r.imagen}
                           alt={r.titulo}

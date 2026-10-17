@@ -43,10 +43,10 @@ const GALERIA_POR_TIPO: Record<string, string[]> = {
     "https://images.unsplash.com/photo-1583531352515-8884af319dc1?w=1200&q=85",
   ],
   peru: [
-    "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=1200&q=85",
     "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=85",
-    "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=1200&q=85",
-    "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
+    "https://images.unsplash.com/photo-1545330785-15356daae141?w=1200&q=85",
+    "https://images.unsplash.com/photo-1716618704106-b335685a6b4d?w=1200&q=85",
+    "https://images.unsplash.com/photo-1723134087756-3fdd46625a84?w=1200&q=85",
   ],
   norteamerica: [
     "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=1200&q=85",

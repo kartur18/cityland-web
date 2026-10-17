@@ -541,7 +541,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
         pais: "Colombia",
         etiquetaIzq: "Solo con DNI",
         etiquetaDer: "Vuelo 3h 20m",
-        img: "https://images.unsplash.com/photo-1599413987323-b127b908a027?auto=format&fit=crop&w=1000&q=85",
+        img: "/images/paquetes/panama-medellin/medellin-skyline.png",
         alt: "Medellín y Guatapé — Vuelos de Lima a Medellín",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → José María Córdova (MDE)",
         titulo: "Vuelos y Paquetes Lima – Medellín",
@@ -574,7 +574,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
           notaPrecio: "Paquete turístico · Incluye impuestos (Verif. Oct 2026)",
           tag: "Favorito Jóvenes y Familias",
           tagBg: "bg-red-600",
-          img: "https://images.unsplash.com/photo-1599413987323-b127b908a027?auto=format&fit=crop&w=900&q=85",
+          img: "/images/paquetes/panama-medellin/chiva-medellin.png",
           alt: "Paquete a Medellín desde Lima",
           resumenCorto: "El Poblado / Laureles + Guatapé + Graffitour",
           checks: [
@@ -625,7 +625,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
         waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Medellín.",
-        img: "https://images.unsplash.com/photo-1599413987323-b127b908a027?auto=format&fit=crop&w=1000&q=80",
+        img: "https://images.unsplash.com/photo-1583531352515-8884af319dc1?auto=format&fit=crop&w=1000&q=80",
         alt: "Viajes de Lima a Medellín",
       },
       waFlotante: {

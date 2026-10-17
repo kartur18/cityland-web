@@ -130,7 +130,7 @@ export default function CaribeLandingClient() {
                       <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
                         Desde
                       </span>
-                      <span className="font-[family-name:var(--font-bebas)] text-4xl text-[#0a1628] leading-none">
+                      <span className="text-3xl sm:text-4xl font-black text-[#0a1628] tracking-tight leading-none">
                         $1,099
                       </span>
                       <span className="text-xs font-bold text-slate-500">USD</span>
@@ -268,7 +268,7 @@ export default function CaribeLandingClient() {
                           <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
                             Desde
                           </span>
-                          <span className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] leading-none">
+                          <span className="text-2xl sm:text-3xl font-black text-[#0a1628] tracking-tight leading-none">
                             ${d.precioUSD.toLocaleString("en-US")}
                           </span>
                           <span className="text-xs font-bold text-slate-500">USD</span>
@@ -345,8 +345,8 @@ export default function CaribeLandingClient() {
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
                 Atención Personalizada en Lima y Todo el Perú
               </span>
-              <h3 className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] leading-none mb-2">
-                ¿VIAJAS EN PAREJA, EN FAMILIA O EN GRUPO?
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0a1628] tracking-tight leading-snug mb-2">
+                ¿Viajas en pareja, en familia o en grupo?
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 mb-6 max-w-xl">
                 Armamos tu cotización exacta según tus fechas de vacaciones, número de adultos o niños, y te atendemos en nuestra oficina de{" "}
