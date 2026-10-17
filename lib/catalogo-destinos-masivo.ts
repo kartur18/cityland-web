@@ -1,4 +1,5 @@
 import type { Destino } from "@/components/constantes";
+import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
 
 const IMG_ESP = "/images/espana/gran-via-metropolis.jpg";
 const IMG_EUR = "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1200&q=85";
@@ -10,72 +11,21 @@ const IMG_USA = "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=
 const IMG_PER = "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=1200&q=85";
 const IMG_EXO = "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?w=1200&q=85";
 
-const GALERIA_POR_TIPO: Record<string, string[]> = {
-  espana: [
-    "/images/espana/gran-via-metropolis.jpg",
-    "/images/espana/puerta-de-alcala.jpg",
-    "/images/espana/palacio-real.jpg",
-    "/images/espana/cibeles.jpg",
-    "/images/espana/plaza-mayor.jpg",
-    "/images/espana/barajas.jpg",
-  ],
-  europa: [
-    "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1200&q=85",
-    "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=85",
-    "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200&q=85",
-    "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1200&q=85",
-    "/images/espana/palacio-real.jpg",
-    "/images/espana/puerta-de-alcala.jpg",
-  ],
-  caribe: [
-    "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=85",
-    "https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=1200&q=85",
-    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85",
-    "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&q=85",
-    "https://images.unsplash.com/photo-1583531352515-8884af319dc1?w=1200&q=85",
-    "https://images.unsplash.com/photo-1580541631950-7282082b53ce?w=1200&q=85",
-  ],
-  sudamerica: [
-    "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85",
-    "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=1200&q=85",
-    "/images/paquetes/panama-medellin/medellin-skyline.png",
-    "/images/paquetes/panama-medellin/chiva-medellin.png",
-    "https://images.unsplash.com/photo-1583531352515-8884af319dc1?w=1200&q=85",
-  ],
-  peru: [
-    "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=85",
-    "https://images.unsplash.com/photo-1545330785-15356daae141?w=1200&q=85",
-    "https://images.unsplash.com/photo-1716618704106-b335685a6b4d?w=1200&q=85",
-    "https://images.unsplash.com/photo-1723134087756-3fdd46625a84?w=1200&q=85",
-  ],
-  norteamerica: [
-    "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=1200&q=85",
-    "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=1200&q=85",
-    "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1200&q=85",
-    "https://images.unsplash.com/photo-1518638150340-f706e86654de?w=1200&q=85",
-  ],
-  exoticos: [
-    "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?w=1200&q=85",
-    "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=85",
-    "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=85",
-    "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=85",
-  ],
-};
-
-function obtenerGaleriaDestino(s: SemillaDestino, idx: number): { img: string; gallery: string[] } {
+function obtenerGaleriaDestino(s: SemillaDestino, _idx: number): { img: string; gallery: string[] } {
   const clave =
     s.pais === "España"
       ? "espana"
       : s.pais === "Perú"
       ? "peru"
       : s.tipo;
-  const fotos = GALERIA_POR_TIPO[clave] ?? GALERIA_POR_TIPO.caribe;
-  const principal = fotos[idx % fotos.length];
-  const segunda = fotos[(idx + 1) % fotos.length];
-  const tercera = fotos[(idx + 2) % fotos.length];
-  const cuarta = fotos[(idx + 3) % fotos.length];
+  const [principal, segunda, tercera, cuarta] = obtenerGaleriaPorTexto(
+    `${s.slug} ${s.pais}`,
+    clave
+  );
   // La galería NUNCA repite la foto principal del Hero
-  const galeriaSinHero = [segunda, tercera, cuarta].filter((f, i, arr) => f !== principal && arr.indexOf(f) === i);
+  const galeriaSinHero = [segunda, tercera, cuarta].filter(
+    (f, i, arr) => f !== principal && arr.indexOf(f) === i
+  );
   return { img: principal, gallery: galeriaSinHero };
 }
 

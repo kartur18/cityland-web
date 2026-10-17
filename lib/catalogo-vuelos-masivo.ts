@@ -1,4 +1,5 @@
 import type { RutaVueloSEO } from "@/lib/rutas-vuelos";
+import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
 
 interface SemillaRuta {
   slug: string;
@@ -262,25 +263,21 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
   const p2Maletas = s.precioUSD + (esNacional ? 35 : 95);
   const pPaquete = s.precioUSD + (esNacional ? 130 : 260);
   const waMsg = `Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de ${s.origen} a ${s.destino} (Desde $${s.precioUSD} USD). ¿Me pueden ayudar?`;
-  const imgPaquete =
-    s.modalidad === "caribe"
-      ? IMG_HOTEL_RESORT
-      : s.modalidad === "europa"
-      ? "/images/espana/palacio-real.jpg"
-      : s.modalidad === "usa"
-      ? IMG_NYC
-      : s.modalidad === "exotico"
-      ? IMG_EXOTICO
-      : esNacional
-      ? "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=1200&q=85"
-      : IMG_HOTEL_RESORT;
 
-  const imgBanner =
+  const textoBusqueda =
+    s.destino === "Lima"
+      ? s.slug
+      : `${s.destino} ${s.paisDestino}`;
+  const [f0, f1, f2, f3, f4] = obtenerGaleriaPorTexto(
+    textoBusqueda,
     s.modalidad === "europa"
-      ? "/images/espana/barajas.jpg"
-      : esNacional
-      ? "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85"
-      : IMG_AEROPUERTO;
+      ? "europa"
+      : s.modalidad === "usa"
+      ? "usa"
+      : s.modalidad === "caribe"
+      ? "caribe"
+      : "sudamerica"
+  );
 
   return {
     slug: s.slug,
@@ -334,7 +331,7 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
         pais: s.paisDestino,
         etiquetaIzq: `${s.codigoOrigen} → ${s.codigoDestino}`,
         etiquetaDer: "Tarifa Verificada",
-        img: s.img,
+        img: f0,
         alt: `Vuelos de ${s.origen} a ${s.destino} — Cityland Travel`,
         sobretitulo: `${s.origen} (${s.codigoOrigen}) → ${s.destino} (${s.codigoDestino})`,
         titulo: `Vuelos Confirmados ${s.origen} – ${s.destino}`,
@@ -366,7 +363,7 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
           notaPrecio: "Tarifa sujeta a disponibilidad y condiciones aplicables",
           tag: "Mejor Tarifa",
           tagBg: "bg-emerald-600 text-white",
-          img: IMG_AVION_CABINA,
+          img: f2,
           alt: `Boleto de ${s.origen} a ${s.destino}`,
           resumenCorto: `Boleto confirmado ${s.codigoOrigen} → ${s.codigoDestino} con impuestos incluidos y código PNR verificable.`,
           checks: [
@@ -388,7 +385,7 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
           notaPrecio: "Tarifa sujeta a disponibilidad y condiciones aplicables",
           tag: "Con Maleta 23 kg",
           tagBg: "bg-blue-600 text-white",
-          img: IMG_AEROPUERTO,
+          img: f3,
           alt: `Vuelo con maleta 23 kg de ${s.origen} a ${s.destino}`,
           resumenCorto: `Incluye franquicia completa de equipaje en bodega de 23 kg + cabina 10 kg en ruta ${s.origen} – ${s.destino}.`,
           checks: [
@@ -410,7 +407,7 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
           notaPrecio: "Tarifa sujeta a disponibilidad y condiciones aplicables",
           tag: "Todo Resuelto",
           tagBg: "bg-red-600 text-white",
-          img: imgPaquete,
+          img: f1,
           alt: `Paquete a ${s.destino} desde ${s.origen}`,
           resumenCorto: `Viaje completo de ${s.origen} a ${s.destino} con alojamiento verificado, traslados y asesoría personalizada.`,
           checks: [
@@ -437,7 +434,7 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
         ctaTexto: "Consultar disponibilidad por WhatsApp",
         waNumero: "51944103890",
         waMensaje: waMsg,
-        img: imgBanner,
+        img: f4,
         alt: `Viajes de ${s.origen} a ${s.destino}`,
       },
       waFlotante: {

@@ -83,96 +83,36 @@ export interface ConfiguracionLandingAerolinea {
   };
 }
 
-const POOL_IMAGENES_ALTERNATIVAS: Record<string, string[]> = {
-  España: [
-    "/images/espana/gran-via-metropolis.jpg",
-    "/images/espana/palacio-real.jpg",
-    "/images/espana/puerta-de-alcala.jpg",
-    "/images/espana/cibeles.jpg",
-    "/images/espana/plaza-mayor.jpg",
-    "/images/espana/barajas.jpg",
-  ],
-  Europa: [
-    "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1200&q=85",
-    "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=85",
-    "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200&q=85",
-    "/images/espana/palacio-real.jpg",
-  ],
-  Francia: [
-    "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1200&q=85",
-    "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=85",
-  ],
-  Italia: [
-    "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=85",
-    "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&q=85",
-    "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1200&q=85",
-  ],
-  Turquía: [
-    "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?w=1200&q=85",
-    "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=85",
-    "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=85",
-  ],
-  "República Dominicana": [
-    "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=85",
-    "https://images.unsplash.com/photo-1580541631950-7282082b53ce?w=1200&q=85",
-    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85",
-  ],
-  México: [
-    "https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=1200&q=85",
-    "https://images.unsplash.com/photo-1518638150340-f706e86654de?w=1200&q=85",
-    "https://images.unsplash.com/photo-1568402102990-bc541580b59f?w=1200&q=85",
-  ],
-  Colombia: [
-    "https://images.unsplash.com/photo-1583531352515-8884af319dc1?w=1200&q=85",
-    "/images/paquetes/panama-medellin/medellin-skyline.png",
-    "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&q=85",
-  ],
-  Panamá: [
-    "/images/paquetes/panama-medellin/hero-panama.jpg",
-    "/images/paquetes/panama-medellin/canal-panama.png",
-    "/images/paquetes/panama-medellin/casco-antiguo.png",
-  ],
-  "Estados Unidos": [
-    "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=1200&q=85",
-    "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=1200&q=85",
-    "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1200&q=85",
-  ],
-  Perú: [
-    "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=85",
-    "https://images.unsplash.com/photo-1545330785-15356daae141?w=1200&q=85",
-    "https://images.unsplash.com/photo-1716618704106-b335685a6b4d?w=1200&q=85",
-    "https://images.unsplash.com/photo-1723134087756-3fdd46625a84?w=1200&q=85",
-  ],
-  Brasil: [
-    "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85",
-    "https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?w=1200&q=85",
-  ],
-  Argentina: [
-    "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=1200&q=85",
-    "https://images.unsplash.com/photo-1612294037637-ec328d0e075e?w=1200&q=85",
-  ],
-  default: [
-    "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=85",
-    "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=1200&q=85",
-    "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=85",
-    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85",
-    "/images/espana/palacio-real.jpg",
-  ],
-};
+import {
+  obtenerGaleriaPorTexto,
+  IMG_AVION_ALA,
+  IMG_AEROPUERTO_INTERNACIONAL,
+  IMG_HOTEL_LUJO_PISCINA,
+  IMG_VIAJERO_MALETA,
+  IMG_FAMILIA_VIAJE,
+  IMG_PASAPORTE_VIAJE,
+} from "@/lib/imagenes-destinos";
+
+const FALLBACKS_NEUTROS_UNIVERSALES: string[] = [
+  IMG_AVION_ALA,
+  IMG_AEROPUERTO_INTERNACIONAL,
+  IMG_HOTEL_LUJO_PISCINA,
+  IMG_VIAJERO_MALETA,
+  IMG_FAMILIA_VIAJE,
+  IMG_PASAPORTE_VIAJE,
+];
 
 function obtenerImagenUnica(
   imgOriginal: string,
-  pais: string,
+  contextoTexto: string,
   usadas: Set<string>
 ): string {
-  if (!usadas.has(imgOriginal)) {
+  if (imgOriginal && !usadas.has(imgOriginal)) {
     usadas.add(imgOriginal);
     return imgOriginal;
   }
-  const candidatos = [
-    ...(POOL_IMAGENES_ALTERNATIVAS[pais] || []),
-    ...POOL_IMAGENES_ALTERNATIVAS.default,
-  ];
+  const galeriaEspecifica = obtenerGaleriaPorTexto(contextoTexto);
+  const candidatos = [...galeriaEspecifica, ...FALLBACKS_NEUTROS_UNIVERSALES];
   for (const cand of candidatos) {
     if (!usadas.has(cand)) {
       usadas.add(cand);
@@ -205,21 +145,26 @@ export default function AirlineLandingTemplate({
   const [filtro, setFiltro] = useState<string>("todos");
 
   // Garantizamos que ninguna imagen se repita entre vitrina, tarjetas y banner final
+  const contextoGlobal = `${config.vitrina.titulo} ${config.tituloHero} ${config.tituloDestacadoHero} ${config.vitrina.pais}`;
   const imagenesUsadas = new Set<string>();
   const imgVitrina = obtenerImagenUnica(
     config.vitrina.img,
-    config.vitrina.pais,
+    contextoGlobal,
     imagenesUsadas
   );
 
   const itemsConImagenUnica = config.items.map((item) => ({
     ...item,
-    imgRender: obtenerImagenUnica(item.img, item.pais, imagenesUsadas),
+    imgRender: obtenerImagenUnica(
+      item.img,
+      `${item.id} ${item.titulo} ${item.alt} ${contextoGlobal}`,
+      imagenesUsadas
+    ),
   }));
 
   const imgBannerFinal = obtenerImagenUnica(
     config.bannerFinal.img,
-    config.vitrina.pais,
+    `${config.bannerFinal.titulo} ${contextoGlobal}`,
     imagenesUsadas
   );
 

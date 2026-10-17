@@ -150,7 +150,7 @@ const CONFIG_EMPRESAS: ConfiguracionLandingAerolinea = {
       notaPrecio: "Vuelos + Hotel cercano al recinto ferial + Seguro",
       tag: "Ferias & Congresos",
       tagBg: "bg-blue-600 text-white",
-      img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=85",
+      img: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&q=85",
       alt: "Viajes a ferias y congresos internacionales para empresarios peruanos",
       resumenCorto:
         "Coordinamos el viaje de tu delegación empresarial a ferias internacionales en Miami, Madrid, Barcelona, São Paulo o Bogotá con hoteles a pasos del centro de convenciones.",
@@ -168,7 +168,7 @@ const CONFIG_EMPRESAS: ConfiguracionLandingAerolinea = {
       notaPrecio: "Póliza anual multiviajes + Gestión consular",
       tag: "Visas & Seguros B2B",
       tagBg: "bg-amber-600 text-white",
-      img: "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=1200&q=85",
+      img: "https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=1200&q=85",
       alt: "Visas de negocios y seguros multiviajes para ejecutivos en Perú",
       resumenCorto:
         "Gestionamos las visas americanas, canadienses o mexicanas de tus ejecutivos y emitimos pólizas de asistencia médica anual para que viajen cubiertos los 365 días.",
@@ -186,7 +186,7 @@ const CONFIG_EMPRESAS: ConfiguracionLandingAerolinea = {
       notaPrecio: "Transporte privado, hotel, auditorio y alimentación",
       tag: "Eventos & Integración",
       tagBg: "bg-slate-800 text-white",
-      img: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=85",
+      img: "/images/destinos/lima-costa-verde.jpg",
       alt: "Convenciones y viajes de integración para empresas en Perú",
       resumenCorto:
         "Diseñamos convenciones de fin de año, aniversarios empresariales y jornadas de integración fuera de Lima con toda la logística resuelta.",
@@ -221,7 +221,7 @@ const CONFIG_EMPRESAS: ConfiguracionLandingAerolinea = {
     waNumero: "51944103890",
     waMensaje:
       "¡Hola Cityland Travel! Deseo solicitar una cotización corporativa con Factura RUC para mi empresa.",
-    img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=85",
+    img: "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=1200&q=85",
     alt: "Atención corporativa para empresas en Lima - Cityland Travel",
   },
   waFlotante: {

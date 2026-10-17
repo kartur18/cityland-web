@@ -141,7 +141,7 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
       notaPrecio: "2 países en 1 solo viaje",
       tag: "2x1 Destinos",
       tagBg: "bg-blue-600 text-white",
-      img: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=1200&q=85",
+      img: "/images/paquetes/panama-medellin/hero-panama.jpg",
       alt: "Promoción Panamá y Medellín desde Lima",
       resumenCorto:
         "Vuela con Copa Airlines y conoce el Canal de Panamá, compras y la eterna primavera de Medellín con hoteles, desayunos y tours incluidos.",

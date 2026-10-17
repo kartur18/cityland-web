@@ -99,7 +99,7 @@ const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
       notaPrecio: "Sin Visa USA · Separa con $595 USD",
       tag: "#1 Sin Visa USA",
       tagBg: "bg-red-600 text-white",
-      img: "https://images.unsplash.com/photo-1548574505-5e239809ee19?w=1200&q=85",
+      img: "https://images.unsplash.com/photo-1580541631950-7282082b53ce?w=1200&q=85",
       alt: "Crucero Royal Caribbean desde Panamá y Cartagena sin visa",
       resumenCorto:
         "Embarca en Colón (Panamá) o Cartagena (Colombia) y recorre las islas ABC (Aruba, Bonaire y Curazao) con todas las comidas y entretenimiento a bordo.",
@@ -153,7 +153,7 @@ const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
       notaPrecio: "Sin Visa Consular · Separa con 50%",
       tag: "Europa en Crucero",
       tagBg: "bg-amber-600 text-white",
-      img: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1200&q=85",
+      img: "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&q=85",
       alt: "Crucero por el Mediterráneo Barcelona, Marsella, Roma y Nápoles",
       resumenCorto:
         "Embarca en Barcelona y conoce Marsella, Génova, Roma (Civitavecchia), Palermo y Mallorca en un hotel flotante de 5 estrellas.",
@@ -171,7 +171,7 @@ const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
       notaPrecio: "Los barcos más grandes del mundo",
       tag: "Barco Gigante",
       tagBg: "bg-blue-600 text-white",
-      img: "https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=1200&q=85",
+      img: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&q=85",
       alt: "Crucero por el Caribe Occidental en el barco más grande del mundo",
       resumenCorto:
         "Navega en los barcos más modernos del planeta con pista de patinaje sobre hielo, simulador de surf, parque acuático y playas de México y Honduras.",
@@ -224,7 +224,7 @@ const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
     waNumero: "51944103890",
     waMensaje:
       "¡Hola Cityland Travel! Quisiera asesoría para elegir un Crucero Todo Incluido saliendo desde Perú.",
-    img: "https://images.unsplash.com/photo-1548574505-5e239809ee19?w=1200&q=85",
+    img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85",
     alt: "Asesoría de Cruceros en Lima Perú - Cityland Travel",
   },
   waFlotante: {

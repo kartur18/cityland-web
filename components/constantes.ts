@@ -1033,97 +1033,17 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
   },
 ];
 
-const GALERIAS_AUTENTICAS_POR_SLUG: Record<string, [string, string, string]> = {
-  madrid: [
-    "/images/espana/palacio-real.jpg",
-    "/images/espana/puerta-de-alcala.jpg",
-    "/images/espana/plaza-mayor.jpg",
-  ],
-  "europa-clasica": [
-    "/images/espana/gran-via-metropolis.jpg",
-    "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=900&q=80",
-    "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=900&q=80",
-  ],
-  turquia: [
-    "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=900&q=80",
-    "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=900&q=80",
-    "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=900&q=80",
-  ],
-  "dubai-emiratos": [
-    "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=900&q=80",
-    "https://images.unsplash.com/photo-1546412414-e1885259563a?w=900&q=80",
-    "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=900&q=80",
-  ],
-  "punta-cana": [
-    "https://images.unsplash.com/photo-1580541631950-7282082b53ce?w=900&q=80",
-    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80",
-    "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=900&q=80",
-  ],
-  cancun: [
-    "https://images.unsplash.com/photo-1518638150340-f706e86654de?w=900&q=80",
-    "https://images.unsplash.com/photo-1568402102990-bc541580b59f?w=900&q=80",
-    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80",
-  ],
-  cartagena: [
-    "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=900&q=80",
-    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80",
-    "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=900&q=80",
-  ],
-  medellin: [
-    "/images/paquetes/panama-medellin/chiva-medellin.png",
-    "https://images.unsplash.com/photo-1583531352515-8884af319dc1?w=900&q=80",
-    "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=900&q=80",
-  ],
-  "cusco-magico": [
-    "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=900&q=80",
-    "https://images.unsplash.com/photo-1545330785-15356daae141?w=900&q=80",
-    "https://images.unsplash.com/photo-1716618704106-b335685a6b4d?w=900&q=80",
-  ],
-  panama: [
-    "/images/paquetes/panama-medellin/canal-panama.png",
-    "/images/paquetes/panama-medellin/casco-antiguo.png",
-    "/images/paquetes/panama-medellin/hero-panama.jpg",
-  ],
-};
+import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
 
 function obtenerGaleriaSinDuplicarHero(p: PaqueteTuristico): string[] {
-  const especifica = GALERIAS_AUTENTICAS_POR_SLUG[p.slug];
-  if (especifica) {
-    return especifica.filter((u) => u !== p.img);
-  }
-  if (p.pais === "Perú") {
-    return [
-      "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=900&q=80",
-      "https://images.unsplash.com/photo-1545330785-15356daae141?w=900&q=80",
-      "https://images.unsplash.com/photo-1716618704106-b335685a6b4d?w=900&q=80",
-    ].filter((u) => u !== p.img);
-  }
-  if (p.categoria === "sudamerica") {
-    return [
-      "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=900&q=80",
-      "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=900&q=80",
-      "https://images.unsplash.com/photo-1706587531457-8c574be27a08?w=900&q=80",
-    ].filter((u) => u !== p.img);
-  }
-  if (p.categoria === "norteamerica") {
-    return [
-      "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=900&q=80",
-      "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=900&q=80",
-      "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=900&q=80",
-    ].filter((u) => u !== p.img);
-  }
-  if (p.categoria === "europa" || p.categoria === "exoticos") {
-    return [
-      "/images/espana/palacio-real.jpg",
-      "/images/espana/puerta-de-alcala.jpg",
-      "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=900&q=80",
-    ].filter((u) => u !== p.img);
-  }
-  return [
-    "https://images.unsplash.com/photo-1580541631950-7282082b53ce?w=900&q=80",
-    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80",
-    "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=900&q=80",
-  ].filter((u) => u !== p.img);
+  const galeria = obtenerGaleriaPorTexto(
+    `${p.slug} ${p.ciudad} ${p.pais}`,
+    p.categoria
+  );
+  const idBaseHero = p.img.split("?")[0];
+  return galeria
+    .filter((u) => u.split("?")[0] !== idBaseHero)
+    .slice(0, 3);
 }
 
 // Compatibilidad con componentes existentes

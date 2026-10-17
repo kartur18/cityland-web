@@ -104,7 +104,7 @@ export const SERVICIOS_VISAS: ServicioVisa[] = [
     tarifaDesdeUSD: 95,
     tag: "Descuento Familiar",
     tagBg: "bg-sky-600 text-white",
-    img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85",
+    img: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=1200&q=85",
     alt: "Trámite de Visa Americana Familiar en Lima Perú - Cityland Travel",
     resumenCorto:
       "Unificamos el expediente de toda tu familia para que asistan juntos a una sola cita consular, cuidando la coherencia de cada formulario DS-160.",

@@ -3,6 +3,7 @@ import { RUTAS_VUELOS_LOTE_2 } from "@/lib/rutas-vuelos-lote2";
 import { RUTAS_VUELOS_LOTE_3 } from "@/lib/rutas-vuelos-lote3";
 import { RUTAS_VUELOS_LOTE_4 } from "@/lib/rutas-vuelos-lote4";
 import { RUTAS_VUELOS_MASIVAS } from "@/lib/catalogo-vuelos-masivo";
+import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
 
 export interface RutaVueloSEO {
   slug: string;
@@ -18,7 +19,7 @@ export interface RutaVueloSEO {
   config: ConfiguracionLandingAerolinea;
 }
 
-export const RUTAS_VUELOS_SEO: RutaVueloSEO[] = [
+const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
   {
     slug: "lima-madrid",
     origen: "Lima",
@@ -1014,12 +1015,45 @@ export const RUTAS_VUELOS_SEO: RutaVueloSEO[] = [
       },
     },
   },
-  ...RUTAS_VUELOS_LOTE_2,
-  ...RUTAS_VUELOS_LOTE_3,
-  ...RUTAS_VUELOS_LOTE_4,
+];
+
+function normalizarImagenesRutaBase(ruta: RutaVueloSEO): RutaVueloSEO {
+  const textoClave =
+    ruta.destino === "Lima"
+      ? `${ruta.slug} ${ruta.origen} a Lima`
+      : `${ruta.destino} ${ruta.config.vitrina.pais}`;
+  const [f0, f1, f2, f3, f4] = obtenerGaleriaPorTexto(textoClave);
+  const fotosItems = [f1, f2, f3];
+
+  return {
+    ...ruta,
+    config: {
+      ...ruta.config,
+      vitrina: {
+        ...ruta.config.vitrina,
+        img: f0,
+      },
+      items: ruta.config.items.map((item, idx) => ({
+        ...item,
+        img: fotosItems[idx % fotosItems.length],
+      })),
+      bannerFinal: {
+        ...ruta.config.bannerFinal,
+        img: f4,
+      },
+    },
+  };
+}
+
+export const RUTAS_VUELOS_SEO: RutaVueloSEO[] = [
+  ...RUTAS_VUELOS_BASE.map(normalizarImagenesRutaBase),
+  ...RUTAS_VUELOS_LOTE_2.map(normalizarImagenesRutaBase),
+  ...RUTAS_VUELOS_LOTE_3.map(normalizarImagenesRutaBase),
+  ...RUTAS_VUELOS_LOTE_4.map(normalizarImagenesRutaBase),
   ...RUTAS_VUELOS_MASIVAS,
 ];
 
 export function buscarRutaVuelo(slug: string): RutaVueloSEO | undefined {
   return RUTAS_VUELOS_SEO.find((r) => r.slug === slug);
 }
+

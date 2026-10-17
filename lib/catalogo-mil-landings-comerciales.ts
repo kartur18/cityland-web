@@ -1,4 +1,5 @@
 import { ConfiguracionLandingAerolinea } from "@/components/AirlineLandingTemplate";
+import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
 
 export interface LandingComercialSEO {
   slug: string;
@@ -146,7 +147,6 @@ function armarLandingComercial(params: {
     precioBase,
     etiquetaVitrina,
     duracionOServicio,
-    fotos,
     checksBase,
     checksPlus,
     checksVip,
@@ -169,6 +169,20 @@ function armarLandingComercial(params: {
   const tituloCompleto = `${tituloHero} ${tituloDestacado}`.trim();
   const mitadBase = Math.max(20, Math.round(precioBase * 0.5));
   const msgPrincipal = `¡Hola Cityland Travel! Vi su promoción web de "${tituloCompleto}" (Desde $${precioBase.toLocaleString("en-US")} USD) y deseo recibir una cotización personalizada.`;
+
+  const fallbackRegion =
+    cluster === "cruceros"
+      ? "cruceros"
+      : cluster === "visas-seguros"
+      ? "visasSeguros"
+      : cluster === "empresas"
+      ? "corporativo"
+      : undefined;
+
+  const [f0, f1, f2, f3, f4] = obtenerGaleriaPorTexto(
+    `${slug} ${etiquetaVitrina} ${tituloCompleto}`,
+    fallbackRegion
+  );
 
   return {
     slug,
@@ -196,7 +210,7 @@ function armarLandingComercial(params: {
         pais: destinoOPais,
         etiquetaIzq: destinoOPais,
         etiquetaDer: precioBase >= 180 ? "Separa con 50%" : "Emisión Inmediata",
-        img: fotos[0],
+        img: f0,
         alt: tituloCompleto,
         sobretitulo: duracionOServicio,
         titulo: etiquetaVitrina,
@@ -235,7 +249,7 @@ function armarLandingComercial(params: {
           notaPrecio: "Tarifa promocional verificada · Impuestos incluidos",
           tag: tagCard1,
           tagBg: "bg-red-600",
-          img: fotos[1],
+          img: f1,
           alt: tituloCard1,
           resumenCorto: "Confirmación inmediata con código oficial",
           checks: checksBase,
@@ -256,7 +270,7 @@ function armarLandingComercial(params: {
           notaPrecio: "Incluye gestión integral y asistencia 24/7",
           tag: tagCard2,
           tagBg: "bg-blue-700",
-          img: fotos[2],
+          img: f2,
           alt: tituloCard2,
           resumenCorto: "La opción más elegida por nuestros viajeros",
           checks: checksPlus,
@@ -277,7 +291,7 @@ function armarLandingComercial(params: {
           notaPrecio: "Atención preferencial VIP y tarifas de grupo",
           tag: tagCard3,
           tagBg: "bg-emerald-700",
-          img: fotos[3],
+          img: f3,
           alt: tituloCard3,
           resumenCorto: "Experiencia superior o descuento grupal/corporativo",
           checks: checksVip,
@@ -311,7 +325,7 @@ function armarLandingComercial(params: {
         ctaTexto: "Solicitar Cotización por WhatsApp",
         waNumero: "51944103890",
         waMensaje: msgPrincipal,
-        img: fotos[1],
+        img: f4,
         alt: tituloCompleto,
       },
       waFlotante: {

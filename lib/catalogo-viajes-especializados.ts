@@ -1,3 +1,5 @@
+import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
+
 export interface ViajeEspecializadoSEO {
   slug: string;
   categoria: "primer-viaje" | "dos-maletas" | "aerolinea" | "grupos-seguros" | "requisitos";
@@ -19,99 +21,9 @@ export interface ViajeEspecializadoSEO {
   waMensaje: string;
 }
 
-const FOTOS_POR_DESTINO: Record<string, [string, string, string, string]> = {
-  espana: [
-    "/images/espana/gran-via-metropolis.jpg",
-    "/images/espana/palacio-real.jpg",
-    "/images/espana/puerta-de-alcala.jpg",
-    "/images/espana/plaza-mayor.jpg",
-  ],
-  italia: [
-    "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=85",
-    "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=900&q=80",
-    "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=900&q=80",
-    "https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=900&q=80",
-  ],
-  francia: [
-    "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=85",
-    "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=900&q=80",
-    "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=900&q=80",
-    "https://images.unsplash.com/photo-1549144511-f099e773c147?w=900&q=80",
-  ],
-  europa: [
-    "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200&q=85",
-    "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=900&q=80",
-    "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=900&q=80",
-    "/images/espana/cibeles.jpg",
-  ],
-  caribe: [
-    "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=85",
-    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80",
-    "https://images.unsplash.com/photo-1580541631950-7282082b53ce?w=900&q=80",
-    "https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=900&q=80",
-  ],
-  usa: [
-    "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=1200&q=85",
-    "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=900&q=80",
-    "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=900&q=80",
-    "https://images.unsplash.com/photo-1518638150340-f706e86654de?w=900&q=80",
-  ],
-  sudamerica: [
-    "https://images.unsplash.com/photo-1583531352515-8884af319dc1?w=1200&q=85",
-    "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=900&q=80",
-    "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=900&q=80",
-    "/images/paquetes/panama-medellin/medellin-skyline.png",
-  ],
-  peru: [
-    "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=85",
-    "https://images.unsplash.com/photo-1545330785-15356daae141?w=1200&q=85",
-    "https://images.unsplash.com/photo-1716618704106-b335685a6b4d?w=1200&q=85",
-    "https://images.unsplash.com/photo-1723134087756-3fdd46625a84?w=1200&q=85",
-  ],
-  exoticos: [
-    "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?w=1200&q=85",
-    "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=900&q=80",
-    "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=900&q=80",
-    "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=900&q=80",
-  ],
-  vuelos: [
-    "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=85",
-    "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=900&q=80",
-    "/images/espana/barajas.jpg",
-    "/images/paquetes/panama-medellin/hero-panama.jpg",
-  ],
-};
-
 function obtenerFotosPorTexto(texto: string): [string, string, string, string] {
-  const t = texto.toLowerCase();
-  if (t.match(/madrid|barcelona|españa|espana|valencia|sevilla|malaga|bilbao|zaragoza|alicante|mallorca|tenerife|vigo|coruña|galicia|granada/)) {
-    return FOTOS_POR_DESTINO.espana;
-  }
-  if (t.match(/roma|milan|milán|italia|venecia|florencia|turin|bolonia|napoles/)) {
-    return FOTOS_POR_DESTINO.italia;
-  }
-  if (t.match(/paris|parís|francia|lyon/)) {
-    return FOTOS_POR_DESTINO.francia;
-  }
-  if (t.match(/amsterdam|ámsterdam|holanda|bruselas|zurich|zúrich|suiza|munich|múnich|alemania|lisboa|portugal|londres|reino unido|schengen|europa/)) {
-    return FOTOS_POR_DESTINO.europa;
-  }
-  if (t.match(/punta cana|cancun|cancún|aruba|curazao|jamaica|cuba|habana|varadero|caribe|san andres|san andrés|panama|panamá|costa rica|crucero/)) {
-    return FOTOS_POR_DESTINO.caribe;
-  }
-  if (t.match(/miami|nueva york|newark|los angeles|orlando|houston|chicago|atlanta|washington|boston|estados unidos|ee\. uu\.|toronto|montreal|canada|canadá|disney/)) {
-    return FOTOS_POR_DESTINO.usa;
-  }
-  if (t.match(/turquia|turquía|dubai|dubái|japon|japón|tokio/)) {
-    return FOTOS_POR_DESTINO.exoticos;
-  }
-  if (t.match(/cartagena|medellin|medellín|bogota|bogotá|colombia|buenos aires|argentina|santiago|chile|sao paulo|são paulo|rio de janeiro|brasil|uruguay|bolivia|ecuador/)) {
-    return FOTOS_POR_DESTINO.sudamerica;
-  }
-  if (t.match(/cusco|machu picchu|arequipa|tarapoto|iquitos|huaraz|punta sal|peru|perú|menores/)) {
-    return FOTOS_POR_DESTINO.peru;
-  }
-  return FOTOS_POR_DESTINO.vuelos;
+  const [f0, f1, f2, f3] = obtenerGaleriaPorTexto(texto);
+  return [f0, f1, f2, f3];
 }
 
 const CIUDADES_PRIMER_VIAJE: [string, string, string, number][] = [
@@ -294,7 +206,7 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
 
   // A. 35 páginas de Primer Viaje / Carpeta Migratoria
   for (const [ciudad, slugCiudad, pais, precio] of CIUDADES_PRIMER_VIAJE) {
-    const fotos = obtenerFotosPorTexto(`${ciudad} ${pais}`);
+    const fotos = obtenerFotosPorTexto(`${slugCiudad} ${ciudad} ${pais}`);
     lista.push({
       slug: `primer-viaje-a-${slugCiudad}`,
       categoria: "primer-viaje",
@@ -344,7 +256,7 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
 
   // B. 35 páginas de Vuelos con 2 Maletas de 23 kg
   for (const [rutaNombre, slugRuta, pais, precio, aerolineas] of RUTAS_DOS_MALETAS) {
-    const fotos = obtenerFotosPorTexto(`${rutaNombre} ${pais}`);
+    const fotos = obtenerFotosPorTexto(slugRuta);
     lista.push({
       slug: `vuelos-con-2-maletas-${slugRuta}`,
       categoria: "dos-maletas",
@@ -442,7 +354,7 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
 
   // D. 25 páginas de Grupos, Promociones Escolares, Quinceañeras, Corporativos y Seguros
   for (const [titulo, slugGrupo, destino, precio, desc] of GRUPOS_Y_SEGUROS) {
-    const fotos = obtenerFotosPorTexto(`${titulo} ${destino}`);
+    const fotos = obtenerFotosPorTexto(`${slugGrupo} ${titulo} ${destino}`);
     lista.push({
       slug: slugGrupo,
       categoria: "grupos-seguros",
@@ -490,7 +402,7 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
 
   // E. 30 páginas de Requisitos Migratorios y Documentación por País
   for (const [pais, slugReq, ciudadesRef, precio, detalleReq] of PAISES_REQUISITOS) {
-    const fotos = obtenerFotosPorTexto(`${pais} ${ciudadesRef}`);
+    const fotos = obtenerFotosPorTexto(`${slugReq} ${pais}`);
     const esGuiaEspecial = slugReq === "requisitos-viajar-con-menores-de-edad-peru" || slugReq === "requisitos-carta-de-invitacion-espana-peru";
     const tituloFinal =
       slugReq === "requisitos-viajar-con-menores-de-edad-peru"
