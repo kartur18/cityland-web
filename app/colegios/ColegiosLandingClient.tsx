@@ -45,7 +45,7 @@ export default function ColegiosLandingClient() {
               <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-7 max-w-xl">
                 Organizamos el viaje soñado de tu salón con vuelos confirmados, alimentación completa, seguro médico grupal y{" "}
                 <strong className="text-[#0a1628] font-bold">
-                  1 pasaje liberado gratis cada 15 alumnos
+                  facilidades de pago en cuotas con contrato formal
                 </strong>
                 .
               </p>
@@ -71,7 +71,7 @@ export default function ColegiosLandingClient() {
 
               <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-bold text-slate-700 pt-5 border-t border-slate-200/80">
                 <span className="flex items-center gap-1.5">
-                  <span className="text-emerald-600 font-extrabold">✓</span> 1 Liberado Gratis c/15 Alumnos
+                  <span className="text-emerald-600 font-extrabold">✓</span> Tarifas Grupales Preferenciales
                 </span>
                 <span className="flex items-center gap-1.5">
                   <span className="text-emerald-600 font-extrabold">✓</span> Exposición a Padres de Familia
@@ -254,7 +254,7 @@ export default function ColegiosLandingClient() {
                           </span>
                         </div>
                         <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                          + 1 liberado gratis cada 15 alumnos
+                          Separa con 50% y paga en cuotas
                         </span>
                       </div>
 
@@ -282,8 +282,8 @@ export default function ColegiosLandingClient() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pb-12 mb-12 border-b border-slate-200/80">
             {[
               {
-                titulo: "1 Liberado Gratis c/15",
-                sub: "Pasaje y estadía libre para el tutor, docente o padre responsable",
+                titulo: "Tarifas Grupales",
+                sub: "Precios preferenciales bloqueados por contrato para todo el salón",
               },
               {
                 titulo: "Reunión con Padres",

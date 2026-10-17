@@ -679,6 +679,8 @@ const MODALIDADES_RESORTS: {
   factorPrecio: number;
   badge: string;
   desc: string;
+  negrita: string;
+  checksHero: (nombre: string) => [string, string, string];
 }[] = [
   {
     prefijo: "all-inclusive",
@@ -687,6 +689,12 @@ const MODALIDADES_RESORTS: {
     factorPrecio: 1,
     badge: "Vuelo + Resort Todo Incluido · Comidas y Bebidas Ilimitadas",
     desc: "Disfruta de playa privada, restaurantes buffet y a la carta, bares libres, shows nocturnos y vuelos ida y vuelta desde Lima.",
+    negrita: "Incluye vuelos desde Lima, traslados aeropuerto-hotel, seguro de viaje y régimen Todo Incluido 24h.",
+    checksHero: (nombre) => [
+      `Boleto aéreo ida y vuelta a ${nombre} con impuestos incluidos`,
+      `4 noches en Resort con desayuno, almuerzo, cena y snacks ilimitados`,
+      `Bebidas nacionales e internacionales ilimitadas + traslados y seguro`,
+    ],
   },
   {
     prefijo: "resorts-5-estrellas",
@@ -695,6 +703,12 @@ const MODALIDADES_RESORTS: {
     factorPrecio: 1.25,
     badge: "Cadenas 5★ RIU, Iberostar, Barceló, Lopesan y Decameron",
     desc: "Alójate en los mejores complejos 5 estrellas frente al mar con servicio de habitación, piscinas infinity y gastronomía internacional.",
+    negrita: "Reserva garantizada en complejos 5★ de primera línea de playa con código oficial de hotel y aerolínea.",
+    checksHero: (nombre) => [
+      `Estadía en Resort 5 Estrellas frente al mar en ${nombre}`,
+      `Restaurantes gourmet a la carta sin límite de reservas y bares premium`,
+      `Traslados ejecutivos aeropuerto-resort y tarjeta de asistencia VIP`,
+    ],
   },
   {
     prefijo: "hoteles-en-oferta",
@@ -703,6 +717,12 @@ const MODALIDADES_RESORTS: {
     factorPrecio: 0.85,
     badge: "Tarifas Mayoristas de Agencia · Ahorra hasta 30%",
     desc: "Reservamos tu hotel o resort con tarifas negociadas de operador turístico más traslados y boletos aéreos confirmados.",
+    negrita: "Accede a tarifas mayoristas más bajas que buscadores online y congela tu reserva con el 50%.",
+    checksHero: (nombre) => [
+      `Tarifa de operador mayorista en hoteles verificados de ${nombre}`,
+      `Vuelo ida y vuelta desde Lima + noches de alojamiento con impuestos`,
+      `Sin cargos ocultos: boleta o factura electrónica RUC 20614914239`,
+    ],
   },
   {
     prefijo: "all-inclusive-familiar",
@@ -711,6 +731,12 @@ const MODALIDADES_RESORTS: {
     factorPrecio: 0.95,
     badge: "Resorts con Parque Acuático, Club de Niños y Habitaciones Familiares",
     desc: "Vacaciones inolvidables para toda la familia con tarifas especiales para niños, entretenimiento diario y playas de aguas tranquilas.",
+    negrita: "Habitaciones familiares conectadas, club infantil supervisado y vuelos con asientos juntos para tu familia.",
+    checksHero: (nombre) => [
+      `Resorts familiares en ${nombre} con parque acuático y Kids Club`,
+      `Alimentación completa, helados, snacks y bebidas todo el día para niños y adultos`,
+      `Asientos contiguos en el vuelo, traslados seguros y seguro médico familiar`,
+    ],
   },
   {
     prefijo: "resorts-solo-adultos",
@@ -719,6 +745,12 @@ const MODALIDADES_RESORTS: {
     factorPrecio: 1.15,
     badge: "Especial Parejas, Aniversarios y Amigos · Adults Only 18+",
     desc: "Relájate en resorts exclusivos para mayores de 18 años con cenas románticas frente al mar, spa, fiestas temáticas y bares premium.",
+    negrita: "Ambiente exclusivo solo para adultos ideal para escapadas en pareja, lunas de miel y grupos de amigos.",
+    checksHero: (nombre) => [
+      `Complejos exclusivos Solo Adultos (18+) frente a la playa en ${nombre}`,
+      `Cenas de especialidad, piscina chill-out, coctelería premium y fiestas`,
+      `Vuelos confirmados desde Lima, traslados privados y asistencia 24/7`,
+    ],
   },
   {
     prefijo: "ofertas-todo-incluido",
@@ -727,6 +759,12 @@ const MODALIDADES_RESORTS: {
     factorPrecio: 0.9,
     badge: "Preventa 2026 · Separa hoy con el 50% de inicial",
     desc: "Asegura tus próximas vacaciones de sol y playa congelando el precio promocional de hoy con pagos flexibles.",
+    negrita: "Separa tus cupos aéreos y de resort con el 50% de inicial y completa el saldo en cuotas programadas.",
+    checksHero: (nombre) => [
+      `Tarifa de preventa 2026 hacia ${nombre} con espacios aéreos bloqueados`,
+      `Separa hoy con el 50% y paga el resto antes de tu fecha de salida`,
+      `Todo Incluido: boletos aéreos, resort, alimentación 24h y traslados`,
+    ],
   },
 ];
 
@@ -743,17 +781,13 @@ const LANDINGS_CLUSTER_2: LandingComercialSEO[] = DESTINOS_PLAYA_RESORTS.flatMap
       tituloHero: `${m.tituloPre} ${d.nombre}`,
       tituloDestacado: m.tituloPost,
       descripcionHero: m.desc,
-      negritaHero: "Incluye vuelos desde Lima, traslados, seguro de viaje y régimen Todo Incluido.",
+      negritaHero: m.negrita,
       destinoOPais: d.pais,
       precioBase: pBase,
       etiquetaVitrina: `${d.nombre} — ${m.tituloPost}`,
       duracionOServicio: "5 Días / 4 Noches · Todo Incluido",
       fotos,
-      checksBase: [
-        `Boleto aéreo ida y vuelta a ${d.nombre} con impuestos incluidos`,
-        `4 noches en Resort con desayuno, almuerzo, cena y snacks ilimitados`,
-        `Bebidas nacionales e internacionales ilimitadas + traslados y seguro`,
-      ],
+      checksBase: m.checksHero(d.nombre),
       checksPlus: [
         `Resort 5 Estrellas en primera línea de playa en ${d.nombre}`,
         `Restaurantes a la carta, deportes acuáticos y shows en vivo`,
@@ -777,14 +811,18 @@ const LANDINGS_CLUSTER_2: LandingComercialSEO[] = DESTINOS_PLAYA_RESORTS.flatMap
       precioCard3: Math.round(pBase * 1.28),
       tagCard3: "Luxury 5★",
       keywords: [
-        `all inclusive ${d.nombre.toLowerCase()}`,
+        `${m.prefijo.replace(/-/g, " ")} ${d.nombre.toLowerCase()}`,
         `resorts en ${d.nombre.toLowerCase()} todo incluido`,
         `paquetes todo incluido ${d.nombre.toLowerCase()}`,
       ],
       faqs: [
         {
-          q: `¿Qué incluye el sistema Todo Incluido (All Inclusive) en ${d.nombre}?`,
-          a: `Incluye todas las comidas (desayuno, almuerzo, cena buffet y restaurantes a la carta), snacks las 24 horas, bebidas alcohólicas y no alcohólicas ilimitadas, entretenimiento nocturno, piscinas y playa privada.`,
+          q: `¿Qué incluye la modalidad "${m.tituloPre} ${d.nombre} ${m.tituloPost}"?`,
+          a: `${m.desc} Además, cuenta con vuelos ida y vuelta desde Lima, traslados aeropuerto-hotel, alimentación y bebidas ilimitadas las 24 horas y tarjeta de asistencia médica.`,
+        },
+        {
+          q: `¿Cómo puedo reservar mi viaje a ${d.nombre} en cuotas?`,
+          a: `Puedes congelar la tarifa Desde $${pBase.toLocaleString("en-US")} USD abonando el 50% de inicial en nuestra sede de Los Olivos o cuentas empresa BCP/BBVA/Interbank de Cityland Travel E.I.R.L. (RUC 20614914239).`,
         },
       ],
     });
@@ -827,13 +865,75 @@ const MODALIDADES_CRUCEROS: {
   prefijo: string;
   tituloPre: string;
   factor: number;
+  desc: (nombre: string) => string;
+  checksHero: [string, string, string];
 }[] = [
-  { prefijo: "crucero", tituloPre: "Crucero", factor: 1 },
-  { prefijo: "ofertas-crucero", tituloPre: "Oferta de Crucero:", factor: 0.9 },
-  { prefijo: "vuelo-mas-crucero", tituloPre: "Paquete Vuelo desde Lima + Crucero", factor: 1.35 },
-  { prefijo: "crucero-barato", tituloPre: "Crucero Económico (Preventa):", factor: 0.88 },
-  { prefijo: "crucero-de-lujo", tituloPre: "Crucero VIP en Cabina con Balcón:", factor: 1.28 },
-  { prefijo: "crucero-familiar", tituloPre: "Crucero Familiar / Grupal:", factor: 0.95 },
+  {
+    prefijo: "crucero",
+    tituloPre: "Crucero",
+    factor: 1,
+    desc: (nombre) => `Navega en el itinerario oficial ${nombre} con todas las comidas, espectáculos estilo Broadway, piscinas y múltiples puertos incluidos.`,
+    checksHero: [
+      "Alojamiento en cabina seleccionada con servicio a la habitación diario",
+      "Desayunos, almuerzos, cenas de gala y buffet ilimitado incluidos a bordo",
+      "Shows en el teatro, piscinas, parque acuático e impuestos portuarios",
+    ],
+  },
+  {
+    prefijo: "ofertas-crucero",
+    tituloPre: "Oferta de Crucero:",
+    factor: 0.9,
+    desc: (nombre) => `Aprovecha nuestras salidas en promoción para el crucero ${nombre} con tarifas rebajadas por preventa y bloqueo de cabina garantizado.`,
+    checksHero: [
+      "Tarifa promocional de temporada con tasas e impuestos portuarios incluidos",
+      "Congela tu cabina hoy con el 50% de inicial y paga en cuotas",
+      "Pensión completa a bordo: restaurantes principales, buffet y snacks",
+    ],
+  },
+  {
+    prefijo: "vuelo-mas-crucero",
+    tituloPre: "Paquete Vuelo desde Lima + Crucero",
+    factor: 1.35,
+    desc: (nombre) => `Paquete completo desde Perú hacia el crucero ${nombre}: incluye boletos aéreos Lima – Puerto de Embarque, noche de hotel previa, traslados y crucero Todo Incluido.`,
+    checksHero: [
+      "Boleto aéreo ida y vuelta desde Lima hasta la ciudad de embarque",
+      "1 noche de hotel pre-crucero + traslados aeropuerto – hotel – puerto",
+      "Crucero completo con alimentación ilimitada, shows y seguro marítimo",
+    ],
+  },
+  {
+    prefijo: "crucero-barato",
+    tituloPre: "Crucero Económico (Preventa):",
+    factor: 0.88,
+    desc: (nombre) => `Viaja al menor precio del año en el crucero ${nombre} eligiendo nuestras cabinas interiores en preventa con acceso total a todas las instalaciones del barco.`,
+    checksHero: [
+      "Cabina Interior de alta comodidad al precio más bajo de la naviera",
+      "Mismo acceso 100% libre a todos los restaurantes, piscinas y espectáculos",
+      "Reserva verificable con número de booking oficial de la naviera",
+    ],
+  },
+  {
+    prefijo: "crucero-de-lujo",
+    tituloPre: "Crucero VIP en Cabina con Balcón:",
+    factor: 1.28,
+    desc: (nombre) => `Vive el crucero ${nombre} desde una Cabina Exterior con Balcón Privado al mar o Suite VIP con embarque prioritario y paquete de bebidas.`,
+    checksHero: [
+      "Cabina con Balcón Privado vista al mar o Suite de categoría superior",
+      "Embarque prioritario, cenas en restaurantes de especialidad y bebidas",
+      "Atención Concierge de Cityland Travel y seguro médico internacional VIP",
+    ],
+  },
+  {
+    prefijo: "crucero-familiar",
+    tituloPre: "Crucero Familiar / Grupal:",
+    factor: 0.95,
+    desc: (nombre) => `Disfruta en familia o con amigos del crucero ${nombre} en cabinas triples, cuádruples o conectadas con club de niños y actividades para todas las edades.`,
+    checksHero: [
+      "Tarifas reducidas para el 3er y 4to pasajero compartiendo cabina familiar",
+      "Club infantil y juvenil gratuito a bordo, toboganes y shows familiares",
+      "Asesoría integral en Lima para grupos familiares, aniversarios y amigos",
+    ],
+  },
 ];
 
 const LANDINGS_CLUSTER_3: LandingComercialSEO[] = RUTAS_CRUCEROS.flatMap((c) => {
@@ -848,18 +948,14 @@ const LANDINGS_CLUSTER_3: LandingComercialSEO[] = RUTAS_CRUCEROS.flatMap((c) => 
       banderas: ["Perú", c.pais],
       tituloHero: `${m.tituloPre}`,
       tituloDestacado: c.nombre,
-      descripcionHero: `Navega con todas las comidas, espectáculos tipo Broadway, piscinas, parque acuático y múltiples puertos incluidos en una sola tarifa.`,
-      negritaHero: `${c.requisito}. Separa tu cabina con el 50% de inicial.`,
+      descripcionHero: m.desc(c.nombre),
+      negritaHero: `${c.requisito}. Separa tu cabina con el 50% de inicial en Cityland Travel.`,
       destinoOPais: c.pais,
       precioBase: pBase,
-      etiquetaVitrina: `Crucero ${c.nombre}`,
+      etiquetaVitrina: `${m.tituloPre} ${c.nombre}`,
       duracionOServicio: "7 u 8 Días a Bordo · Todo Incluido",
       fotos,
-      checksBase: [
-        "Alojamiento en cabina seleccionada con atención a la habitación",
-        "Desayunos, almuerzos, cenas de gala y buffet incluidos a bordo",
-        "Shows nocturnos, piscinas, gimnasio y tasas portuarias incluidas",
-      ],
+      checksBase: m.checksHero,
       checksPlus: [
         "Paquete Completo con Boletos Aéreos desde Lima + Noche Pre-Crucero",
         "Cabina Exterior con Ventana o Balcón Privado con vista al mar",
@@ -883,14 +979,18 @@ const LANDINGS_CLUSTER_3: LandingComercialSEO[] = RUTAS_CRUCEROS.flatMap((c) => 
       precioCard3: Math.round(pBase * 1.38),
       tagCard3: "Paquete Total",
       keywords: [
-        `cruceros ${c.nombre.toLowerCase()}`,
+        `${m.prefijo.replace(/-/g, " ")} ${c.nombre.toLowerCase()}`,
         `cruceros desde lima`,
         `precio crucero ${c.nombre.toLowerCase()}`,
       ],
       faqs: [
         {
-          q: `¿Qué incluye la tarifa del crucero ${c.nombre}?`,
-          a: `Incluye cabina durante toda la travesía, alimentación completa (desayuno, almuerzo, cena y snacks), espectáculos en el teatro, acceso a piscinas y actividades a bordo, más impuestos portuarios.`,
+          q: `¿Qué incluye la tarifa de ${m.tituloPre} ${c.nombre}?`,
+          a: `${m.desc(c.nombre)} Incluye cabina durante toda la travesía, alimentación completa, espectáculos en el teatro, acceso a piscinas e impuestos portuarios.`,
+        },
+        {
+          q: `¿Qué documentos necesito para embarcar en ${c.nombre}?`,
+          a: `${c.requisito}. En Cityland Travel verificamos toda tu documentación antes del embarque.`,
         },
       ],
     });
@@ -939,12 +1039,70 @@ const VARIANTES_VISAS_SEGUROS: {
   prefijo: string;
   etiqueta: string;
   factor: number;
+  complementoDesc: string;
+  negrita: string;
+  checksHero: [string, string, string];
 }[] = [
-  { prefijo: "tramite", etiqueta: "Gestión Oficial", factor: 1 },
-  { prefijo: "precio", etiqueta: "Tarifa Promocional 2026", factor: 0.95 },
-  { prefijo: "requisitos", etiqueta: "Requisitos + Asesoría", factor: 1 },
-  { prefijo: "urgente", etiqueta: "Atención Prioritaria 24h", factor: 1.15 },
-  { prefijo: "asesoria", etiqueta: "Especialistas en Lima", factor: 1 },
+  {
+    prefijo: "tramite",
+    etiqueta: "Gestión Paso a Paso",
+    factor: 1,
+    complementoDesc: "Nos encargamos del llenado técnico de formularios, armado de carpeta y emisión de vouchers oficiales.",
+    negrita: "Inicia tu gestión hoy mismo por WhatsApp 944 103 890 o en nuestra oficina de Los Olivos.",
+    checksHero: [
+      "Armado completo de expediente y llenado profesional de formularios",
+      "Emisión de certificados, reservas o pólizas oficiales verificables",
+      "Boleta o Factura Electrónica SUNAT (Cityland Travel RUC 20614914239)",
+    ],
+  },
+  {
+    prefijo: "precio",
+    etiqueta: "Tarifa Promocional 2026",
+    factor: 0.95,
+    complementoDesc: "Tarifas transparentes en dólares sin cobros ocultos y con descuento especial para parejas o familias.",
+    negrita: "Aprovecha nuestra tarifa promocional 2026 con atención inmediata y entrega garantizada.",
+    checksHero: [
+      "Tarifa promocional verificada sin costos ocultos ni recargos extra",
+      "Descuento especial a partir de 2 solicitantes (parejas y familias)",
+      "Pago seguro en oficina física de Los Olivos o cuentas empresa RUC 20",
+    ],
+  },
+  {
+    prefijo: "requisitos",
+    etiqueta: "Requisitos Actualizados + Revisión",
+    factor: 1,
+    complementoDesc: "Auditamos tus documentos de sustento laboral, financiero y migratorio según la normativa consular vigente.",
+    negrita: "Evita rechazos o demoras: validamos cada requisito obligatorio antes de tu cita o vuelo.",
+    checksHero: [
+      "Checklist actualizado 2026 según el perfil de cada pasajero",
+      "Auditoría de documentos financieros, laborales y reservas de viaje",
+      "Simulacro de entrevista o guía de control migratorio en aeropuerto",
+    ],
+  },
+  {
+    prefijo: "urgente",
+    etiqueta: "Atención Prioritaria Express",
+    factor: 1.15,
+    complementoDesc: "Servicio prioritario para pasajeros con fecha de viaje próxima que requieren gestión o emisión en el día.",
+    negrita: "Emisión de pólizas y carpetas en minutos y prioridad absoluta en programación de expedientes.",
+    checksHero: [
+      "Asignación inmediata de especialista para atención en el mismo día",
+      "Entrega express de pólizas PDF y reservas con código PNR activo",
+      "Soporte prioritario por WhatsApp 944 103 890 para viajes urgentes",
+    ],
+  },
+  {
+    prefijo: "asesoria",
+    etiqueta: "Especialistas en Lima",
+    factor: 1,
+    complementoDesc: "Recibe acompañamiento personalizado por asesores con amplia experiencia en trámites consulares y seguros internacionales.",
+    negrita: "Visítanos en Av. Antúnez de Mayolo 814, Los Olivos o agenda tu asesoría virtual hoy.",
+    checksHero: [
+      "Evaluación personalizada de perfil migratorio o cobertura médica",
+      "Atención presencial en Lima Norte (Los Olivos) y 100% digital a todo el Perú",
+      "Respaldo formal de agencia registrada Cityland Travel E.I.R.L.",
+    ],
+  },
 ];
 
 const LANDINGS_CLUSTER_4: LandingComercialSEO[] = SERVICIOS_VISAS_SEGUROS.flatMap((s) => {
@@ -959,18 +1117,14 @@ const LANDINGS_CLUSTER_4: LandingComercialSEO[] = SERVICIOS_VISAS_SEGUROS.flatMa
       banderas: ["Perú", s.pais],
       tituloHero: `${s.titulo}:`,
       tituloDestacado: v.etiqueta,
-      descripcionHero: s.desc,
-      negritaHero: "Atención rápida por WhatsApp 944 103 890 y presencial en Av. Antúnez de Mayolo 814, Los Olivos.",
+      descripcionHero: `${s.desc} ${v.complementoDesc}`,
+      negritaHero: v.negrita,
       destinoOPais: s.pais,
       precioBase: pBase,
-      etiquetaVitrina: s.titulo,
+      etiquetaVitrina: `${s.titulo} (${v.etiqueta})`,
       duracionOServicio: `${v.etiqueta} · Entrega Verificada`,
       fotos,
-      checksBase: [
-        "Revisión personalizada de requisitos y documentos paso a paso",
-        "Emisión de certificados, formularios o pólizas oficiales en minutos",
-        "Boleta o Factura Electrónica SUNAT (Cityland Travel RUC 20614914239)",
-      ],
+      checksBase: v.checksHero,
       checksPlus: [
         "Asesoría integral con especialista consular o migratorio",
         "Reservas aéreas y hoteleras de respaldo con código PNR real",
@@ -1000,8 +1154,12 @@ const LANDINGS_CLUSTER_4: LandingComercialSEO[] = SERVICIOS_VISAS_SEGUROS.flatMa
       ],
       faqs: [
         {
-          q: `¿Cuánto demora la gestión de ${s.titulo}?`,
-          a: `Para seguros de viaje y carpetas migratorias la entrega es el mismo día (en minutos por WhatsApp o impreso en oficina). Para trámites de visa y pasaporte iniciamos tu expediente el mismo día de tu solicitud.`,
+          q: `¿Cómo funciona el servicio de ${s.titulo} (${v.etiqueta})?`,
+          a: `${s.desc} ${v.complementoDesc}`,
+        },
+        {
+          q: `¿Cuánto demora la entrega o gestión en Cityland Travel?`,
+          a: `Para seguros de viaje y carpetas migratorias la entrega es el mismo día (en minutos por WhatsApp o impreso en nuestra oficina de Los Olivos). Para trámites de visa y pasaporte iniciamos tu expediente de inmediato.`,
         },
       ],
     });
@@ -1050,12 +1208,70 @@ const MODALIDADES_TOURS: {
   prefijo: string;
   sufijo: string;
   factor: number;
+  desc: (nombre: string) => string;
+  negrita: string;
+  checksHero: [string, string, string];
 }[] = [
-  { prefijo: "tour", sufijo: "Reserva Confirmada", factor: 1 },
-  { prefijo: "oferta-tour", sufijo: "en Promoción 2026", factor: 0.92 },
-  { prefijo: "tour-privado", sufijo: "en Servicio Privado VIP", factor: 1.45 },
-  { prefijo: "tour-grupal", sufijo: "Especial Familias / Grupos", factor: 0.9 },
-  { prefijo: "paquete-con-tour", sufijo: "+ Vuelo + Hotel Incluido", factor: 2.2 },
+  {
+    prefijo: "tour",
+    sufijo: "Reserva Confirmada",
+    factor: 1,
+    desc: (nombre) => `Asegura tu cupo oficial en ${nombre} con recojo desde tu hotel, entradas garantizadas sin hacer colas y guía certificado en español.`,
+    negrita: "Confirmación inmediata con voucher electrónico oficial de Cityland Travel.",
+    checksHero: [
+      "Recojo y traslado turístico confirmado en unidades climatizadas",
+      "Entradas e ingresos oficiales garantizados según el itinerario",
+      "Guía oficial acreditado en español durante todo el recorrido",
+    ],
+  },
+  {
+    prefijo: "oferta-tour",
+    sufijo: "en Promoción 2026",
+    factor: 0.92,
+    desc: (nombre) => `Reserva anticipadamente ${nombre} con tarifa promocional 2026 y asegura tu ingreso en temporada alta sin pagar sobrecostos en destino.`,
+    negrita: "Tarifa rebajada por compra anticipada con impuestos y entradas incluidas.",
+    checksHero: [
+      "Precio promocional de preventa reservando desde Lima",
+      "Cupos garantizados para fechas de alta demanda y feriados",
+      "Comprobante electrónico oficial RUC 20614914239 y soporte 24/7",
+    ],
+  },
+  {
+    prefijo: "tour-privado",
+    sufijo: "en Servicio Privado VIP",
+    factor: 1.45,
+    desc: (nombre) => `Disfruta de ${nombre} en modalidad 100% privada: vehículo exclusivo para tu grupo o pareja, horarios flexibles a tu ritmo y guía personal.`,
+    negrita: "Servicio VIP sin compartir movilidad con desconocidos y con paradas fotográficas a medida.",
+    checksHero: [
+      "Movilidad privada exclusiva con recojo en la puerta de tu hotel",
+      "Guía privado exclusivo en español y flexibilidad de horarios",
+      "Entradas preferenciales sin colas y atención personalizada VIP",
+    ],
+  },
+  {
+    prefijo: "tour-grupal",
+    sufijo: "Especial Familias / Grupos",
+    factor: 0.9,
+    desc: (nombre) => `Tarifa especial para familias, amigos y grupos que desean realizar ${nombre} juntos con asientos asegurados y descuento por volumen.`,
+    negrita: "Descuento directo a partir de 3 o más pasajeros viajando en la misma fecha.",
+    checksHero: [
+      "Tarifa reducida por pasajero para familias, parejas y grupos de amigos",
+      "Coordinación integral de entradas y transporte para todo el grupo",
+      "Facilidad para separar con el 50% de inicial y pagar el saldo antes del viaje",
+    ],
+  },
+  {
+    prefijo: "paquete-con-tour",
+    sufijo: "+ Vuelo + Hotel Incluido",
+    factor: 2.2,
+    desc: (nombre) => `Paquete turístico completo organizado desde Lima: incluye boletos aéreos ida y vuelta, hotel con desayunos, traslados y la excursión ${nombre}.`,
+    negrita: "Todo tu viaje resuelto en un solo paquete con código aéreo PNR y vouchers confirmados.",
+    checksHero: [
+      "Boleto aéreo ida y vuelta + noches de alojamiento con desayuno",
+      "Excursión principal con entradas, transporte y guía incluidos",
+      "Traslados aeropuerto-hotel-aeropuerto y tarjeta de asistencia médica",
+    ],
+  },
 ];
 
 const LANDINGS_CLUSTER_5: LandingComercialSEO[] = TOURS_CATALOGO.flatMap((t) => {
@@ -1070,18 +1286,14 @@ const LANDINGS_CLUSTER_5: LandingComercialSEO[] = TOURS_CATALOGO.flatMap((t) => 
       banderas: ["Perú", t.pais],
       tituloHero: t.nombre,
       tituloDestacado: m.sufijo,
-      descripcionHero: `Reserva tus entradas oficiales, transporte turístico climatizado y guía certificado sin hacer colas ni arriesgar disponibilidad en destino.`,
-      negritaHero: "Confirmación inmediata con voucher oficial de Cityland Travel.",
+      descripcionHero: m.desc(t.nombre),
+      negritaHero: m.negrita,
       destinoOPais: t.pais,
       precioBase: pBase,
-      etiquetaVitrina: t.nombre,
+      etiquetaVitrina: `${t.nombre} (${m.sufijo})`,
       duracionOServicio: "Excursión Verificada · Guía en Español",
       fotos,
-      checksBase: [
-        "Recojo y traslado turístico confirmado en unidades modernas",
-        "Entradas oficiales a los atractivos turísticos según programa",
-        "Guía profesional acreditado en español durante todo el recorrido",
-      ],
+      checksBase: m.checksHero,
       checksPlus: [
         "Modalidad Privada o VIP sin tiempos de espera y a tu propio ritmo",
         "Opción de incluir almuerzo buffet típico o gastronómico",
@@ -1110,6 +1322,10 @@ const LANDINGS_CLUSTER_5: LandingComercialSEO[] = TOURS_CATALOGO.flatMap((t) => 
         `reservar ${t.slug.replace(/-/g, " ")}`,
       ],
       faqs: [
+        {
+          q: `¿Qué incluye exactamente ${t.nombre} (${m.sufijo})?`,
+          a: `${m.desc(t.nombre)} Recibirás tu voucher oficial de reserva por WhatsApp y correo electrónico.`,
+        },
         {
           q: `¿Con cuánta anticipación debo reservar ${t.nombre}?`,
           a: `Recomendamos reservar con anticipación (especialmente en Machu Picchu, Xcaret, Disney o Capadocia) para asegurar cupos de ingreso oficial en la fecha exacta de tu viaje.`,
@@ -1152,18 +1368,78 @@ const SOLUCIONES_EMPRESAS: {
 const VARIANTES_EMPRESAS: {
   prefijo: string;
   etiqueta: string;
+  factor: number;
+  desc: (titulo: string) => string;
+  negrita: string;
+  checksHero: [string, string, string];
 }[] = [
-  { prefijo: "corporativo", etiqueta: "Facturación Electrónica RUC 20" },
-  { prefijo: "agencia-empresas", etiqueta: "Cuenta Corporativa B2B" },
-  { prefijo: "cotizacion-empresarial", etiqueta: "Atención Ejecutiva 24/7" },
-  { prefijo: "servicio-ejecutivo", etiqueta: "Tarifas Negociadas para Empresas" },
-  { prefijo: "convenio-corporativo", etiqueta: "Convenio sin Costo de Afiliación" },
+  {
+    prefijo: "corporativo",
+    etiqueta: "Facturación Electrónica RUC 20",
+    factor: 1,
+    desc: (titulo) => `Gestiona ${titulo} con emisión inmediata de Factura Electrónica SUNAT deducible al 100% para tu empresa y tarifas corporativas verificadas.`,
+    negrita: "Atendemos empresas, corporaciones, pymes, constructoras, mineras e importadores en todo el Perú.",
+    checksHero: [
+      "Emisión inmediata de Factura Electrónica SUNAT (RUC 20614914239)",
+      "Ejecutivo corporativo asignado por WhatsApp y correo las 24 horas",
+      "Tarifas corporativas en boletos aéreos, hoteles, traslados y seguros",
+    ],
+  },
+  {
+    prefijo: "agencia-empresas",
+    etiqueta: "Cuenta Corporativa B2B",
+    factor: 0.96,
+    desc: (titulo) => `Centraliza ${titulo} con nuestra División Corporativa B2B: control de presupuestos, reservas ágiles sin colas y soporte postventa permanente.`,
+    negrita: "Tu propio departamento de viajes corporativos externo sin costos fijos de mantenimiento.",
+    checksHero: [
+      "Asignación de ejecutivo de cuenta exclusivo para tu empresa",
+      "Control y consolidación de reservas aéreas, hoteleras y traslados",
+      "Atención prioritaria para cambios de itinerario, fechas o rutas",
+    ],
+  },
+  {
+    prefijo: "cotizacion-empresarial",
+    etiqueta: "Atención Ejecutiva 24/7",
+    factor: 1,
+    desc: (titulo) => `Recibe en minutos la propuesta comparativa para ${titulo} con opciones de horarios, aerolíneas y hoteles ejecutivos cercanos a tu centro de negocios.`,
+    negrita: "Respuesta inmediata por WhatsApp 944 103 890 para viajes programados o de último minuto.",
+    checksHero: [
+      "Cotizaciones comparativas en PDF enviadas en minutos por WhatsApp",
+      "Emisión express de boletos y vouchers con código PNR verificable",
+      "Soporte de emergencias 24/7 para ejecutivos en ruta o comisión",
+    ],
+  },
+  {
+    prefijo: "servicio-ejecutivo",
+    etiqueta: "Tarifas Negociadas para Empresas",
+    factor: 1.12,
+    desc: (titulo) => `Servicio preferencial en ${titulo} con acceso a tarifas flexibles que permiten cambios, selección de asientos delanteros y hoteles de categoría ejecutiva.`,
+    negrita: "Ideal para gerentes, directores, ingenieros y personal técnico en comisión de servicios.",
+    checksHero: [
+      "Tarifas aéreas con franquicia de equipaje y flexibilidad de cambios",
+      "Hoteles ejecutivos con desayuno buffet, Wi-Fi de alta velocidad y sala business",
+      "Traslados privados puntuales aeropuerto – hotel – planta u oficina",
+    ],
+  },
+  {
+    prefijo: "convenio-corporativo",
+    etiqueta: "Convenio sin Costo de Afiliación",
+    factor: 0.92,
+    desc: (titulo) => `Afilia a tu empresa sin costo a nuestro Convenio Corporativo para ${titulo} y accede a descuentos por volumen en todas las rutas nacionales e internacionales.`,
+    negrita: "Ahorra hasta un 18% anual en el presupuesto de viajes y viáticos de tu organización.",
+    checksHero: [
+      "Cero costo de afiliación ni consumo mínimo mensual obligatorio",
+      "Descuentos corporativos para cuadrillas, equipos de ventas y directorio",
+      "Respaldo legal en nuestra sede de Av. Antúnez de Mayolo 814, Los Olivos",
+    ],
+  },
 ];
 
 const LANDINGS_CLUSTER_6: LandingComercialSEO[] = SOLUCIONES_EMPRESAS.flatMap((e) => {
   const fotos = FOTOS_GALERIA[e.galeriaKey];
-  return VARIANTES_EMPRESAS.map((v) =>
-    armarLandingComercial({
+  return VARIANTES_EMPRESAS.map((v) => {
+    const pBase = Math.max(39, Math.round(e.precioBase * v.factor));
+    return armarLandingComercial({
       slug: `${v.prefijo}-${e.slug}`,
       cluster: "empresas",
       clusterNombre: "División Corporativa y Empresas (B2B)",
@@ -1171,18 +1447,14 @@ const LANDINGS_CLUSTER_6: LandingComercialSEO[] = SOLUCIONES_EMPRESAS.flatMap((e
       banderas: ["Perú", e.pais],
       tituloHero: `${e.titulo}:`,
       tituloDestacado: v.etiqueta,
-      descripcionHero: `Optimiza el presupuesto de viajes de tu empresa con tarifas corporativas, cambios flexibles, ejecutivo de cuenta asignado 24/7 y emisión inmediata de Factura Electrónica SUNAT.`,
-      negritaHero: "Atendemos empresas, corporaciones, pymes, constructoras, mineras e importadores.",
+      descripcionHero: v.desc(e.titulo),
+      negritaHero: v.negrita,
       destinoOPais: e.pais,
-      precioBase: e.precioBase,
-      etiquetaVitrina: e.titulo,
+      precioBase: pBase,
+      etiquetaVitrina: `${e.titulo} (${v.etiqueta})`,
       duracionOServicio: "Atención B2B · Factura RUC 20614914239",
       fotos,
-      checksBase: [
-        "Emisión inmediata de Factura Electrónica SUNAT deducible para tu empresa",
-        "Ejecutivo corporativo asignado por WhatsApp y correo las 24 horas",
-        "Tarifas corporativas en boletos aéreos, hoteles, traslados y seguros",
-      ],
+      checksBase: v.checksHero,
       checksPlus: [
         "Gestión de cambios de fecha, ruta o nombre sin esperas en call centers",
         "Reportes mensuales de gastos de viaje por centro de costos o área",
@@ -1195,29 +1467,33 @@ const LANDINGS_CLUSTER_6: LandingComercialSEO[] = SOLUCIONES_EMPRESAS.flatMap((e
       ],
       tituloCard1: `Tarifa Corporativa Flexible — ${e.titulo}`,
       subCard1: "Emisión rápida + Factura Electrónica RUC 20",
-      precioCard1: e.precioBase,
+      precioCard1: pBase,
       tagCard1: "Tarifa Empresas",
       tituloCard2: `Programa Ejecutivo Integral (Vuelo + Hotel + Traslado)`,
       subCard2: "Soluciones llave en mano para personal en comisión",
-      precioCard2: Math.round(e.precioBase * 1.45),
+      precioCard2: Math.round(pBase * 1.45),
       tagCard2: "Pack Ejecutivo",
       tituloCard3: `Tarifa Grupal Corporativa / Incentivos (5+ Pasajeros)`,
       subCard3: "Descuento por volumen para equipos y delegaciones",
-      precioCard3: Math.round(e.precioBase * 0.92),
+      precioCard3: Math.round(pBase * 0.92),
       tagCard3: "Descuento Corporativo",
       keywords: [
         e.titulo.toLowerCase(),
+        `${v.prefijo.replace(/-/g, " ")} ${e.slug.replace(/-/g, " ")}`,
         "agencia de viajes para empresas en lima",
-        "viajes corporativos peru factura",
       ],
       faqs: [
         {
-          q: "¿Emiten Factura Electrónica válida ante SUNAT para todos los servicios?",
-          a: "Sí. Cityland Travel E.I.R.L. (RUC 20614914239) emite Factura Electrónica y Liquidaciones de Cobranza oficiales para que tu empresa sustente el 100% de sus gastos de viaje.",
+          q: `¿Cómo funciona la modalidad "${v.etiqueta}" en ${e.titulo}?`,
+          a: `${v.desc(e.titulo)} Emitimos Factura Electrónica y Liquidaciones de Cobranza oficiales de Cityland Travel E.I.R.L. (RUC 20614914239).`,
+        },
+        {
+          q: "¿Cómo solicitamos una cotización corporativa para nuestra empresa?",
+          a: "Escríbenos al WhatsApp corporativo +51 944 103 890 indicando tu número de RUC, ruta, fechas y cantidad de pasajeros para asignarte un ejecutivo de cuenta de inmediato.",
         },
       ],
-    })
-  );
+    });
+  });
 });
 
 // ============================================================================
@@ -1253,18 +1529,78 @@ const PROGRAMAS_COLEGIOS_DEPORTES: {
 const VARIANTES_COLEGIOS_DEPORTES: {
   prefijo: string;
   etiqueta: string;
+  factor: number;
+  desc: (titulo: string) => string;
+  negrita: string;
+  checksHero: [string, string, string];
 }[] = [
-  { prefijo: "grupos", etiqueta: "Liberados Gratis + Cuotas" },
-  { prefijo: "paquetes", etiqueta: "Programa Todo Incluido" },
-  { prefijo: "cotizacion", etiqueta: "Tarifa Especial Delegaciones" },
-  { prefijo: "organizacion", etiqueta: "Contrato Formal · Seguridad Total" },
-  { prefijo: "preventa", etiqueta: "Campaña 2026 / 2027" },
+  {
+    prefijo: "grupos",
+    etiqueta: "Tarifas Grupales + Pagos en Cuotas",
+    factor: 0.96,
+    desc: (titulo) => `Accede a tarifas especiales de grupo para ${titulo} con bloqueo de espacios aéreos, hoteles exclusivos y facilidad de pago en cuotas mensuales.`,
+    negrita: "Congelamos la tarifa de todo tu salón, promoción o delegación desde la firma del contrato.",
+    checksHero: [
+      "Tarifa grupal preferencial bloqueada para salones y delegaciones",
+      "Cronograma de pagos en cuotas mensuales con recibos oficiales",
+      "Vuelos confirmados en el mismo horario + traslados privados",
+    ],
+  },
+  {
+    prefijo: "paquetes",
+    etiqueta: "Programa Todo Incluido",
+    factor: 1,
+    desc: (titulo) => `Programa integral para ${titulo}: incluye boletos aéreos ida y vuelta, alojamiento seleccionado, alimentación completa (desayuno, almuerzo y cena) y excursiones.`,
+    negrita: "Sin gastos ocultos para los padres de familia: todas las comidas, entradas y traslados incluidos.",
+    checksHero: [
+      "Vuelos confirmados en grupo, hotel con piscina y pensión completa",
+      "Entradas a todos los atractivos turísticos y movilidad privada",
+      "Tarjeta de asistencia médica 24/7 y coordinador acompañante",
+    ],
+  },
+  {
+    prefijo: "cotizacion",
+    etiqueta: "Tarifa Especial Delegaciones",
+    factor: 0.95,
+    desc: (titulo) => `Solicita hoy la proforma comparativa en PDF para ${titulo} y agenda una exposición presencial o vía Zoom con el comité de aula, padres o directiva.`,
+    negrita: "Asistimos sin costo a tu colegio, instituto, academia o club deportivo en Lima para exponer el programa.",
+    checksHero: [
+      "Entrega de proforma detallada con 3 opciones de presupuesto en PDF",
+      "Exposición presencial ante padres de familia o junta directiva",
+      "Flexibilidad en lista de pasajeros y nombres antes de la emisión",
+    ],
+  },
+  {
+    prefijo: "organizacion",
+    etiqueta: "Contrato Formal · Seguridad Total",
+    factor: 1.04,
+    desc: (titulo) => `Organizamos ${titulo} con respaldo legal de agencia registrada (RUC 20614914239), carpeta documental para permisos UGEL/MINEDU y seguro médico grupal.`,
+    negrita: "Seguridad total de principio a fin con oficina física en Av. Antúnez de Mayolo 814, Los Olivos.",
+    checksHero: [
+      "Contrato formal de servicios turísticos con RUC 20614914239",
+      "Asesoría en permisos notariales de menores y expediente UGEL/MINEDU",
+      "Coordinador de viaje permanente desde el Aeropuerto Jorge Chávez",
+    ],
+  },
+  {
+    prefijo: "preventa",
+    etiqueta: "Campaña 2026 / 2027",
+    factor: 0.92,
+    desc: (titulo) => `Reserva con anticipación ${titulo} en nuestra Campaña de Preventa 2026 / 2027 para asegurar los mejores hoteles y las tarifas aéreas más económicas.`,
+    negrita: "Separa los cupos de tu promoción o equipo con inicial fraccionada y paga cómodamente mes a mes.",
+    checksHero: [
+      "Precio más bajo garantizado reservando en preventa 2026 / 2027",
+      "Prioridad en elección de fechas, horarios de vuelo y resorts",
+      "Cuotas mensuales flexibles adaptadas al calendario del comité",
+    ],
+  },
 ];
 
 const LANDINGS_CLUSTER_7: LandingComercialSEO[] = PROGRAMAS_COLEGIOS_DEPORTES.flatMap((p) => {
   const fotos = FOTOS_GALERIA[p.galeriaKey];
-  return VARIANTES_COLEGIOS_DEPORTES.map((v) =>
-    armarLandingComercial({
+  return VARIANTES_COLEGIOS_DEPORTES.map((v) => {
+    const pBase = Math.max(35, Math.round(p.precioBase * v.factor));
+    return armarLandingComercial({
       slug: `${v.prefijo}-${p.slug}`,
       cluster: "colegios-deportes",
       clusterNombre: "Colegios, Institutos, Academias y Clubes Deportivos",
@@ -1272,53 +1608,53 @@ const LANDINGS_CLUSTER_7: LandingComercialSEO[] = PROGRAMAS_COLEGIOS_DEPORTES.fl
       banderas: ["Perú", p.pais],
       tituloHero: `${p.titulo}:`,
       tituloDestacado: v.etiqueta,
-      descripcionHero: `Organizamos el viaje completo de tu colegio, instituto, universidad, academia o club deportivo con contrato notarial/formal, pagos en cuotas mensuales y liberados gratis.`,
-      negritaHero: "Solicita una reunión informativa presencial para padres, junta directiva o entrenadores.",
+      descripcionHero: v.desc(p.titulo),
+      negritaHero: v.negrita,
       destinoOPais: p.pais,
-      precioBase: p.precioBase,
-      etiquetaVitrina: p.titulo,
+      precioBase: pBase,
+      etiquetaVitrina: `${p.titulo} (${v.etiqueta})`,
       duracionOServicio: `${v.etiqueta} · RUC 20614914239`,
       fotos,
-      checksBase: [
-        "1 liberado gratis por cada 15 participantes (para tutor, docente o entrenador)",
-        "Vuelos confirmados en grupo, hotel exclusivo, alimentación completa y traslados",
-        "Tarjeta de asistencia médica permanente 24/7 y coordinador acompañante",
-      ],
+      checksBase: v.checksHero,
       checksPlus: [
         "Cronograma de pagos mensuales congelando la tarifa desde la firma del contrato",
         "Presentación presencial con proyector en tu colegio, academia o club en Lima",
         "Gestión de permisos notariales de viaje y autorizaciones MINEDU",
       ],
       checksVip: [
-        "Fiesta de integración, polo/casaca recordatoria o fotobook profesional incluido",
+        "Noche de integración, dinámicas grupales y acompañamiento permanente",
         "Logística especial para implementos deportivos, vestuarios o instrumentos",
         "Respaldo legal en nuestra sede de Av. Antúnez de Mayolo 814, Los Olivos",
       ],
       tituloCard1: `Plan Estándar Grupal — ${p.titulo}`,
       subCard1: "Vuelos + Hotel + Alimentación + Traslados",
-      precioCard1: p.precioBase,
+      precioCard1: pBase,
       tagCard1: "Tarifa Grupal",
       tituloCard2: `Plan Todo Incluido Plus — ${p.titulo}`,
-      subCard2: "Incluye Excursiones + Seguro + Coordinador + Liberados",
-      precioCard2: Math.round(p.precioBase * 1.18),
+      subCard2: "Incluye Excursiones + Seguro Médico + Coordinador",
+      precioCard2: Math.round(pBase * 1.18),
       tagCard2: "Más Elegido",
       tituloCard3: `Plan VIP / Delegación Completa (20+ Integrantes)`,
-      subCard3: "Tarifa corporativa preferencial + Beneficios exclusivos",
-      precioCard3: Math.round(p.precioBase * 0.92),
+      subCard3: "Tarifa grupal preferencial + Pagos en cuotas",
+      precioCard3: Math.round(pBase * 0.92),
       tagCard3: "20+ Pasajeros",
       keywords: [
         p.titulo.toLowerCase(),
+        `${v.prefijo} ${p.slug.replace(/-/g, " ")}`,
         "viajes de promocion escolar lima",
-        "viajes para clubes deportivos y academias",
       ],
       faqs: [
         {
+          q: `¿Qué incluye la modalidad "${v.etiqueta}" para ${p.titulo}?`,
+          a: `${v.desc(p.titulo)} Todos nuestros programas grupales cuentan con contrato formal RUC 20614914239 y asistencia permanente.`,
+        },
+        {
           q: "¿Realizan presentaciones presenciales para los padres de familia o directiva del club?",
-          a: "Sí. Nuestro equipo especializado en grupos asiste sin costo a tu colegio, instituto, academia o club deportivo en Lima para exponer el programa detallado y resolver todas las dudas.",
+          a: "Sí. Nuestro equipo especializado en grupos asiste sin costo a tu colegio, instituto, academia o club deportivo en Lima (o vía Zoom) para exponer el programa detallado y entregar la proforma en PDF.",
         },
       ],
-    })
-  );
+    });
+  });
 });
 
 // ============================================================================
@@ -1354,18 +1690,78 @@ const PROGRAMAS_RELIGIOSOS_EVENTOS: {
 const VARIANTES_RELIGIOSOS_EVENTOS: {
   prefijo: string;
   etiqueta: string;
+  factor: number;
+  desc: (titulo: string) => string;
+  negrita: string;
+  checksHero: [string, string, string];
 }[] = [
-  { prefijo: "especial", etiqueta: "Salidas Confirmadas desde Lima" },
-  { prefijo: "programa", etiqueta: "Programa Todo Incluido" },
-  { prefijo: "oferta", etiqueta: "Preventa 2026 con 50% Inicial" },
-  { prefijo: "todo-incluido", etiqueta: "Vuelo + Hotel + Asistencia Total" },
-  { prefijo: "grupos-vip", etiqueta: "Atención VIP + Cupos Liberados" },
+  {
+    prefijo: "especial",
+    etiqueta: "Salidas Confirmadas desde Lima",
+    factor: 1,
+    desc: (titulo) => `Participa en nuestras salidas confirmadas desde Lima para ${titulo} con boletos aéreos, hoteles seleccionados, traslados y coordinación permanente.`,
+    negrita: "Cupos aéreos y hoteleros bloqueados con código de reserva PNR verificable.",
+    checksHero: [
+      "Boleto aéreo ida y vuelta desde Lima con impuestos y equipaje incluido",
+      "Alojamiento en hoteles verificados con desayunos y comidas según programa",
+      "Traslados en bus privado climatizado, guías en español y seguro médico",
+    ],
+  },
+  {
+    prefijo: "programa",
+    etiqueta: "Programa Completo Paso a Paso",
+    factor: 1.04,
+    desc: (titulo) => `Conoce el itinerario completo día por día de ${titulo}: incluye visitas guiadas en español, entradas a todos los recintos y acompañamiento integral.`,
+    negrita: "Organización cuidada al detalle para que disfrutes tu viaje con total tranquilidad.",
+    checksHero: [
+      "Itinerario completo con visitas guiadas y entradas oficiales incluidas",
+      "Hoteles de excelente ubicación y régimen alimenticio según circuito",
+      "Acompañamiento y asistencia permanente en español las 24 horas",
+    ],
+  },
+  {
+    prefijo: "oferta",
+    etiqueta: "Preventa 2026 con 50% Inicial",
+    factor: 0.92,
+    desc: (titulo) => `Aprovecha la tarifa de Preventa 2026 para ${titulo}: congela hoy el precio promocional abonando el 50% de inicial y paga el saldo en cuotas.`,
+    negrita: "Ahorra reservando con anticipación en nuestra oficina de Los Olivos o por WhatsApp.",
+    checksHero: [
+      "Tarifa rebajada de preventa 2026 con espacios aéreos garantizados",
+      "Separa tu cupo con el 50% de inicial y abona en cuotas mensuales",
+      "Contrato formal y comprobante electrónico RUC 20614914239",
+    ],
+  },
+  {
+    prefijo: "todo-incluido",
+    etiqueta: "Vuelo + Hotel + Asistencia Total",
+    factor: 1.08,
+    desc: (titulo) => `Modalidad Todo Resuelto para ${titulo}: nos encargamos de tus vuelos, alojamiento superior, alimentación, traslados privados y seguro internacional.`,
+    negrita: "Viaja sin preocupaciones desde el Aeropuerto Jorge Chávez hasta tu retorno a Lima.",
+    checksHero: [
+      "Paquete integral: vuelos + hoteles + alimentación + traslados",
+      "Seguro médico internacional de amplia cobertura incluido",
+      "Reunión informativa previa al viaje y entrega de kit documental",
+    ],
+  },
+  {
+    prefijo: "grupos-vip",
+    etiqueta: "Atención Preferencial VIP y Grupos",
+    factor: 1.12,
+    desc: (titulo) => `Servicio exclusivo en ${titulo} para familias, parroquias, quinceañeras y novios con beneficios especiales de estadía, traslados privados y tarifas de grupo.`,
+    negrita: "Atención personalizada para novios, quinceañeras, familias numerosas y comunidades parroquiales.",
+    checksHero: [
+      "Tarifas preferenciales para grupos familiares, parroquias y delegaciones",
+      "Atenciones especiales en hotel para novios (Luna de Miel) y quinceañeras",
+      "Soporte VIP 24/7 y asesoría presencial en nuestra sede de Los Olivos",
+    ],
+  },
 ];
 
 const LANDINGS_CLUSTER_8: LandingComercialSEO[] = PROGRAMAS_RELIGIOSOS_EVENTOS.flatMap((r) => {
   const fotos = FOTOS_GALERIA[r.galeriaKey];
-  return VARIANTES_RELIGIOSOS_EVENTOS.map((v) =>
-    armarLandingComercial({
+  return VARIANTES_RELIGIOSOS_EVENTOS.map((v) => {
+    const pBase = Math.round((r.precioBase * v.factor) / 10) * 10;
+    return armarLandingComercial({
       slug: `${v.prefijo}-${r.slug}`,
       cluster: "religiosos-eventos",
       clusterNombre: "Peregrinaciones Religiosas, Quinceañeras y Bodas/Miel",
@@ -1373,53 +1769,53 @@ const LANDINGS_CLUSTER_8: LandingComercialSEO[] = PROGRAMAS_RELIGIOSOS_EVENTOS.f
       banderas: ["Perú", r.pais],
       tituloHero: `${r.titulo}:`,
       tituloDestacado: v.etiqueta,
-      descripcionHero: `Viaja con organización integral desde Lima: boletos aéreos confirmados, hoteles seleccionados, alimentación, traslados privados, seguro médico y coordinación paso a paso.`,
-      negritaHero: "Beneficios especiales para parroquias, sacerdotes/pastores, quinceañeras, novios y familias.",
+      descripcionHero: v.desc(r.titulo),
+      negritaHero: v.negrita,
       destinoOPais: r.pais,
-      precioBase: r.precioBase,
-      etiquetaVitrina: r.titulo,
+      precioBase: pBase,
+      etiquetaVitrina: `${r.titulo} (${v.etiqueta})`,
       duracionOServicio: `${v.etiqueta} · Cityland Travel`,
       fotos,
-      checksBase: [
-        "Boleto aéreo ida y vuelta desde Lima con impuestos y equipaje incluido",
-        "Alojamiento en hoteles seleccionados con desayunos y comidas según programa",
-        "Traslados en bus privado climatizado, guías en español y seguro médico",
-      ],
+      checksBase: v.checksHero,
       checksPlus: [
-        "Liberados gratuitos para el director espiritual, sacerdote, pastor o coordinador",
+        "Tarifas grupales preferenciales para parroquias, familias e invitados",
         "Atención especial en habitación para novios (Luna de Miel) o quinceañeras",
         "Facilidad de pago: separa con el 50% y abona en cuotas mensuales",
       ],
       checksVip: [
-        "Acompañamiento desde el Aeropuerto Jorge Chávez de Lima",
+        "Acompañamiento y orientación desde el Aeropuerto Jorge Chávez de Lima",
         "Reunión informativa previa al viaje en nuestra oficina de Los Olivos",
         "Agencia formal registrada RUC 20614914239 con soporte 24/7",
       ],
       tituloCard1: `Modalidad Preventa — ${r.titulo}`,
       subCard1: "Separa hoy con el 50% de inicial",
-      precioCard1: Math.round(r.precioBase * 0.94),
+      precioCard1: Math.round(pBase * 0.94),
       tagCard1: "Preventa 2026",
       tituloCard2: `Programa Oficial Completo — ${r.titulo}`,
       subCard2: "Vuelos + Hoteles + Visitas + Seguro",
-      precioCard2: r.precioBase,
+      precioCard2: pBase,
       tagCard2: "Programa Oficial",
       tituloCard3: `Edición VIP / Grupos (10+ Pasajeros)`,
-      subCard3: "Incluye beneficios exclusivos y liberados",
-      precioCard3: Math.round(r.precioBase * 1.15),
+      subCard3: "Incluye beneficios exclusivos y tarifa grupal",
+      precioCard3: Math.round(pBase * 1.15),
       tagCard3: "VIP / Grupos",
       keywords: [
         r.titulo.toLowerCase(),
-        "peregrinaciones desde lima peru",
-        "viajes de quinceaneras y luna de miel lima",
+        `${v.prefijo} ${r.slug.replace(/-/g, " ")}`,
+        "peregrinaciones y viajes especiales desde lima",
       ],
       faqs: [
         {
-          q: `¿Qué beneficios ofrecen para grupos en ${r.titulo}?`,
-          a: `Ofrecemos tarifas grupales congeladas en cuotas, cupos liberados gratuitos para el coordinador o guía espiritual de la parroquia/grupo, y atención personalizada en Lima.`,
+          q: `¿Qué incluye la modalidad "${v.etiqueta}" en ${r.titulo}?`,
+          a: `${v.desc(r.titulo)} Incluye boletos aéreos confirmados, alojamiento seleccionado, traslados y seguro de viaje.`,
+        },
+        {
+          q: `¿Qué facilidades ofrecen para grupos o familias en ${r.titulo}?`,
+          a: `Ofrecemos tarifas grupales congeladas por contrato, facilidad de separar con el 50% de inicial y pagar en cuotas mensuales, y atención personalizada en nuestra oficina de Los Olivos.`,
         },
       ],
-    })
-  );
+    });
+  });
 });
 
 // ============================================================================

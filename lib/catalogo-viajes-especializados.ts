@@ -141,7 +141,7 @@ const RUTAS_AEROLINEAS: [string, string, string, string, number][] = [
 ];
 
 const GRUPOS_Y_SEGUROS: [string, string, string, number, string][] = [
-  ["Viaje de Promoción Escolar a Cusco y Machu Picchu", "viaje-promocion-escolar-cusco", "Cusco, Perú", 320, "Programa estudiantil todo incluido con vuelos, hotel, tren a Machu Picchu, alimentación completa, tour conductor y liberados para el salón."],
+  ["Viaje de Promoción Escolar a Cusco y Machu Picchu", "viaje-promocion-escolar-cusco", "Cusco, Perú", 320, "Programa estudiantil todo incluido con vuelos, hotel, tren a Machu Picchu, alimentación completa, tour conductor y seguro médico grupal."],
   ["Viaje de Promoción Escolar a Punta Cana All Inclusive", "viaje-promocion-escolar-punta-cana", "Punta Cana, Rep. Dominicana", 1050, "Promoción secundaria en Resort 5★ Todo Incluido 24h en Playa Bávaro, Isla Saona en catamarán, seguro médico y coordinador desde Lima."],
   ["Viaje de Promoción Escolar a Cancún & Parques", "viaje-promocion-escolar-cancun", "Cancún, México", 1040, "Paquete estudiantil en Cancún con Resort All Inclusive, Chichén Itzá o Xcaret, fiestas temáticas seguras y acompañamiento permanente."],
   ["Viaje de Promoción Escolar a Cartagena de Indias", "viaje-promocion-escolar-cartagena", "Cartagena, Colombia", 660, "Solo con DNI: vuelos desde Lima, hotel con piscina en Bocagrande, Islas del Rosario, Chiva Rumbera estudiantil y alimentación completa."],

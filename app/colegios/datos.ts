@@ -31,8 +31,8 @@ export const PAQUETES_COLEGIOS: PaqueteEscolar[] = [
     img: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=85",
     alt: "Viaje de Promoción a Cusco y Machu Picchu Todo Incluido para Colegios - Cityland Travel",
     resumenCorto:
-      "Vuelos I/V + Hotel + Alimentación completa (Desayuno, Almuerzo y Cena) + Tren y entrada a Machu Picchu + Valle Sagrado + 1 Liberado cada 15 alumnos.",
-    checks: ["Vuelo I/V + Pensión Completa", "Machu Picchu + Valle Sagrado", "1 Liberado cada 15 pagantes"],
+      "Vuelos I/V + Hotel + Alimentación completa (Desayuno, Almuerzo y Cena) + Tren y entrada a Machu Picchu + Valle Sagrado + Coordinador de viaje.",
+    checks: ["Vuelo I/V + Pensión Completa", "Machu Picchu + Valle Sagrado", "Seguro Médico + Coordinador"],
     waNumber: "51944103890",
   },
   {
@@ -104,7 +104,7 @@ export const PAQUETES_COLEGIOS: PaqueteEscolar[] = [
     alt: "Viaje de Promoción y Graduación a Punta Cana Todo Incluido - Cityland Travel",
     resumenCorto:
       "Vuelo I/V + Resort 5★ en Playa Bávaro con todas las comidas, snacks y bebidas ilimitadas 24h + Catamarán a Isla Saona y Seguro Médico.",
-    checks: ["Vuelo I/V desde Lima", "Resort 5★ Todo Incluido 24h", "Isla Saona + 1 Liberado c/15"],
+    checks: ["Vuelo I/V desde Lima", "Resort 5★ Todo Incluido 24h", "Isla Saona + Seguro Médico"],
     waNumber: "51944103890",
   },
   {
