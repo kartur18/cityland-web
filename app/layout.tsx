@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Bebas_Neue } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { PRECIO_DESDE_EUROPA } from "@/components/constantes";
@@ -11,14 +11,8 @@ const GA4_ID = "G-SRFK1LXPBE";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-jakarta",
-  display: "swap",
-});
-
-const bebas = Bebas_Neue({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-bebas",
   display: "swap",
 });
 
@@ -101,7 +95,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es-PE" className={`${jakarta.variable} ${bebas.variable} antialiased`} suppressHydrationWarning>
+    <html lang="es-PE" className={`${jakarta.variable} antialiased`} suppressHydrationWarning>
       <body className="font-[family-name:var(--font-jakarta)] text-[#0a1628] bg-white overflow-x-hidden m-0">
         {children}
         <WhatsAppTracker />

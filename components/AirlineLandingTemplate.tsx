@@ -213,7 +213,7 @@ export default function AirlineLandingTemplate({
       <Navbar />
 
       {/* 2. Hero Luminoso Estilo Aerolínea */}
-      <section className="bg-gradient-to-b from-sky-50/70 via-white to-white pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-slate-200/80">
+      <section className="bg-gradient-to-b from-sky-50/80 via-white to-white pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             <div className="lg:col-span-7 text-left">
@@ -226,7 +226,7 @@ export default function AirlineLandingTemplate({
                 <span>{config.badgeHero}</span>
               </div>
 
-              <h1 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-6xl lg:text-[62px] text-[#0a1628] tracking-tight leading-[0.96] mb-4">
+              <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#0a1628] tracking-tight leading-[1.12] mb-4">
                 {config.tituloHero}{" "}
                 <span className="text-red-600">{config.tituloDestacadoHero}</span>
               </h1>
@@ -252,7 +252,7 @@ export default function AirlineLandingTemplate({
                   href="#catalogo-principal"
                   className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-[#0a1628] border border-slate-300 px-5 py-3.5 rounded-xl font-bold text-sm transition-colors"
                 >
-                  <span>Ver Opciones y Precios</span>
+                  <span>Ver Paquetes y Tarifas</span>
                 </a>
               </div>
 
@@ -268,7 +268,7 @@ export default function AirlineLandingTemplate({
             {/* Tarjeta Vitrina Derecha */}
             <div className="lg:col-span-5">
               <div className="group bg-white rounded-3xl border border-slate-200/90 shadow-xl overflow-hidden">
-                <div className="relative h-60 sm:h-68 w-full overflow-hidden bg-slate-100">
+                <div className="relative h-60 sm:h-64 w-full overflow-hidden bg-slate-100">
                   <Image
                     src={imgVitrina}
                     alt={config.vitrina.alt}
@@ -277,7 +277,7 @@ export default function AirlineLandingTemplate({
                     sizes="(max-width: 1024px) 100vw, 500px"
                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/65 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/75 via-black/35 to-transparent" />
 
                   <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
                     <span className="inline-flex items-center gap-1.5 bg-white/95 backdrop-blur-md text-[#0a1628] text-xs font-bold px-3 py-1 rounded-full shadow-xs">
@@ -290,10 +290,10 @@ export default function AirlineLandingTemplate({
                   </div>
 
                   <div className="absolute bottom-3.5 left-4 right-4 z-10 text-white">
-                    <span className="text-[11px] font-bold text-amber-300 uppercase tracking-wider block">
+                    <span className="text-[11px] font-bold text-amber-300 uppercase tracking-wider block mb-0.5">
                       {config.vitrina.sobretitulo}
                     </span>
-                    <h2 className="text-xl font-extrabold leading-tight">
+                    <h2 className="text-lg sm:text-xl font-extrabold leading-snug">
                       {config.vitrina.titulo}
                     </h2>
                   </div>
@@ -301,21 +301,21 @@ export default function AirlineLandingTemplate({
 
                 <div className="p-5 flex items-center justify-between gap-4 bg-white">
                   <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1.5">
                       {config.vitrina.labelPrecio}
                     </span>
                     <div className="flex items-baseline gap-1.5">
                       <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
                         Desde
                       </span>
-                      <span className="font-[family-name:var(--font-bebas)] text-4xl text-[#0a1628] leading-none">
+                      <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0a1628] leading-none">
                         {config.vitrina.precio}
                       </span>
                       <span className="text-xs font-bold text-slate-500">
                         USD
                       </span>
                     </div>
-                    <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
+                    <span className="text-[11px] font-semibold text-emerald-700 block mt-1">
                       {config.vitrina.notaInferior}
                     </span>
                   </div>
@@ -341,10 +341,10 @@ export default function AirlineLandingTemplate({
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
             <div>
-              <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
+              <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1.5">
                 {config.seccionCatalogo.sobretitulo}
               </span>
-              <h2 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-5xl text-[#0a1628] tracking-tight leading-none">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight">
                 {config.seccionCatalogo.titulo}
               </h2>
             </div>
@@ -429,21 +429,21 @@ export default function AirlineLandingTemplate({
 
                     <div className="pt-3.5 border-t border-slate-100 flex items-center justify-between gap-3">
                       <div>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1.5">
                           Tarifa por pasajero
                         </span>
                         <div className="flex items-baseline gap-1.5">
                           <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
                             Desde
                           </span>
-                          <span className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] leading-none">
+                          <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0a1628] leading-none">
                             {item.precioPrincipal}
                           </span>
                           <span className="text-xs font-bold text-slate-500">
                             USD
                           </span>
                         </div>
-                        <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
+                        <span className="text-[11px] font-semibold text-emerald-700 block mt-1">
                           {esInicial ? `Separa con ${item.precioSecundario} (50% inicial)` : item.notaPrecio}
                         </span>
                       </div>
@@ -485,13 +485,13 @@ export default function AirlineLandingTemplate({
 
           <div className="rounded-3xl border border-slate-200/90 bg-gradient-to-br from-sky-50/50 via-white to-slate-50 shadow-sm overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-stretch">
             <div className="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-center">
-              <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
+              <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1.5">
                 {config.bannerFinal.sobretitulo}
               </span>
-              <h3 className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] leading-none mb-2">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0a1628] tracking-tight leading-tight mb-3">
                 {config.bannerFinal.titulo}
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 mb-6 max-w-xl">
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 max-w-xl">
                 {config.bannerFinal.descripcion}
               </p>
 
@@ -540,11 +540,11 @@ export default function AirlineLandingTemplate({
           target="_blank"
           rel="noopener noreferrer"
           className="btn-wa-pulse flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-xl cursor-pointer"
-          aria-label={config.waFlotante.texto}
+          aria-label="Cotizar por WhatsApp"
         >
           <WhatsAppIcon size={22} />
           <span className="hidden sm:inline font-bold text-xs sm:text-sm">
-            {config.waFlotante.texto}
+            Cotizar por WhatsApp
           </span>
         </a>
       </div>

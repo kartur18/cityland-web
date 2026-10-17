@@ -24,9 +24,9 @@ export default function CuscoLandingClient() {
                 <span>Salidas Diarias desde Lima · Entradas Oficiales Machu Picchu</span>
               </div>
 
-              <h1 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-6xl lg:text-[64px] text-[#0a1628] tracking-tight leading-[0.95] mb-3">
-                PAQUETES TURÍSTICOS A{" "}
-                <span className="text-red-600">CUSCO Y MACHU PICCHU</span>
+              <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#0a1628] tracking-tight leading-[1.12] mb-4">
+                Paquetes Turísticos a{" "}
+                <span className="text-red-600">Cusco y Machu Picchu</span>
               </h1>
 
               <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-7 max-w-xl">
@@ -147,8 +147,8 @@ export default function CuscoLandingClient() {
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
                 Programas Todo Incluido desde Lima
               </span>
-              <h2 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-5xl text-[#0a1628] tracking-tight leading-none">
-                ELIGE LA DURACIÓN DE TU VIAJE A CUSCO
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight">
+                Elige la Duración de tu Viaje a Cusco
               </h2>
             </div>
             <p className="text-xs sm:text-sm font-semibold text-slate-500">

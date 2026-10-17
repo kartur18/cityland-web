@@ -37,9 +37,9 @@ export default function ColegiosLandingClient() {
                 <span>Primaria · Secundaria · Institutos y Universidades</span>
               </div>
 
-              <h1 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-6xl lg:text-[64px] text-[#0a1628] tracking-tight leading-[0.95] mb-3">
-                VIAJES DE PROMOCIÓN Y{" "}
-                <span className="text-red-600">GRADUACIÓN TODO INCLUIDO</span>
+              <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#0a1628] tracking-tight leading-[1.12] mb-4">
+                Viajes de Promoción y{" "}
+                <span className="text-red-600">Graduación Todo Incluido</span>
               </h1>
 
               <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-7 max-w-xl">
@@ -159,8 +159,8 @@ export default function ColegiosLandingClient() {
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
                 Programas Nacionales e Internacionales
               </span>
-              <h2 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-5xl text-[#0a1628] tracking-tight leading-none">
-                LOS DESTINOS MÁS ELEGIDOS POR PROMOCIONES
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight">
+                Los Destinos Más Elegidos por Promociones
               </h2>
             </div>
 

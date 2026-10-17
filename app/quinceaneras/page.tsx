@@ -32,8 +32,8 @@ export const metadata: Metadata = {
 const CONFIG_QUINCEANERAS: ConfiguracionLandingAerolinea = {
   badgeHero: "Especial 15 Años · Programas Grupales y En Familia desde Lima",
   banderasHero: ["Francia", "España", "Estados Unidos", "México", "República Dominicana"],
-  tituloHero: "EL VIAJE DE 15 AÑOS SOÑADO:",
-  tituloDestacadoHero: "EUROPA, DISNEY, CRUCERO & CARIBE",
+  tituloHero: "El Viaje de 15 Años Soñado:",
+  tituloDestacadoHero: "Europa, Disney, Crucero & Caribe",
   descripcionHero:
     "Cambia la fiesta de una noche por recuerdos para toda la vida. Organizamos viajes de Quinceañeras en grupo acompañado o en familia a Europa con Disneyland París, Orlando + Crucero a las Bahamas y Resorts Todo Incluido en el Caribe.",
   negritaHero: "Separa el cupo con el 50% de inicial y paga en cuotas programadas hasta antes del viaje",
@@ -64,7 +64,7 @@ const CONFIG_QUINCEANERAS: ConfiguracionLandingAerolinea = {
   },
   seccionCatalogo: {
     sobretitulo: "Programas Especiales de 15 Años",
-    titulo: "ELIGE EL DESTINO PARA CELEBRAR SUS 15 AÑOS",
+    titulo: "Elige el Destino para Celebrar sus 15 Años",
     filtros: [
       { id: "todos", label: "Todos los Programas" },
       { id: "europa", label: "Europa & Disney París" },
@@ -189,7 +189,7 @@ const CONFIG_QUINCEANERAS: ConfiguracionLandingAerolinea = {
   ],
   bannerFinal: {
     sobretitulo: "Reuniones Informativas para Padres de Familia",
-    titulo: "¿QUIERES RECIBIR EL BROCHURE DE QUINCEAÑERAS 2026 / 2027?",
+    titulo: "¿Quieres recibir el brochure de Quinceañeras 2026 / 2027?",
     descripcion:
       "Atendemos a los padres de familia en nuestra sede de Los Olivos (Av. Antúnez de Mayolo 814) o por videollamada para explicarte cada detalle del itinerario, seguridad y facilidades de pago.",
     ctaTexto: "Solicitar Brochure por WhatsApp",

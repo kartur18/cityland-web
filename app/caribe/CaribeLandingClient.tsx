@@ -40,9 +40,9 @@ export default function CaribeLandingClient() {
                 <span>Salidas Confirmadas desde Lima · Temporada 2026 – 2027</span>
               </div>
 
-              <h1 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-6xl lg:text-[64px] text-[#0a1628] tracking-tight leading-[0.95] mb-3">
-                PUNTA CANA, CANCÚN, COLOMBIA,{" "}
-                <span className="text-red-600">BRASIL Y MIAMI</span>
+              <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#0a1628] tracking-tight leading-[1.12] mb-4">
+                Paquetes al Caribe y América:{" "}
+                <span className="text-red-600">Punta Cana, Cancún y Cartagena</span>
               </h1>
 
               <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-7 max-w-xl">
@@ -164,8 +164,8 @@ export default function CaribeLandingClient() {
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
                 Los 6 Destinos Favoritos de los Peruanos
               </span>
-              <h2 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-5xl text-[#0a1628] tracking-tight leading-none">
-                ELIGE TU PRÓXIMO VIAJE DESDE LIMA
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight">
+                Elige tu Próximo Viaje desde Lima
               </h2>
             </div>
 

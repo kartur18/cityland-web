@@ -198,7 +198,7 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
                 <span>{item.badge}</span>
               </div>
 
-              <h1 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-5xl lg:text-[56px] text-[#0a1628] tracking-tight leading-[0.98] mb-4">
+              <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[#0a1628] tracking-tight leading-[1.12] mb-4">
                 {item.titulo}
               </h1>
 
@@ -277,19 +277,19 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
 
                 <div className="p-5 flex items-center justify-between gap-4 bg-white">
                   <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1.5">
                       {item.etiquetaPrecio}
                     </span>
                     <div className="flex items-baseline gap-1.5">
                       <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
                         Desde
                       </span>
-                      <span className="font-[family-name:var(--font-bebas)] text-4xl text-[#0a1628] leading-none">
+                      <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0a1628] leading-none">
                         ${item.precioDesdeUSD.toLocaleString("en-US")}
                       </span>
                       <span className="text-xs font-bold text-slate-500">USD</span>
                     </div>
-                    <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
+                    <span className="text-[11px] font-semibold text-emerald-700 block mt-1">
                       {notaPrecioVitrina}
                     </span>
                   </div>
@@ -341,13 +341,13 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-8 space-y-8">
             <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs">
-              <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
+              <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1.5">
                 {esRequisitos ? "Información Migratoria y Documental" : "Resumen del Servicio"}
               </span>
-              <h2 className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] tracking-wide mb-4">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0a1628] tracking-tight mb-4">
                 {esRequisitos
-                  ? `DOCUMENTOS Y REQUISITOS PARA ${item.destinoOPais.toUpperCase()}`
-                  : `¿QUÉ INCLUYE NUESTRO SERVICIO EN ${item.destinoOPais.toUpperCase()}?`}
+                  ? `Documentos y Requisitos para ${item.destinoOPais}`
+                  : `¿Qué incluye nuestro servicio en ${item.destinoOPais}?`}
               </h2>
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
                 {item.resumenEjecutivo}
@@ -388,8 +388,8 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
             </div>
 
             <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs">
-              <h2 className="font-[family-name:var(--font-bebas)] text-3xl text-[#0a1628] tracking-wide mb-5">
-                PREGUNTAS FRECUENTES
+              <h2 className="text-2xl font-extrabold text-[#0a1628] tracking-tight mb-5">
+                Preguntas Frecuentes
               </h2>
               <div className="space-y-4">
                 {item.faqs.map((f) => (
@@ -414,8 +414,8 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
               <span className="inline-block bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-[11px] font-bold px-3 py-1 rounded-full mb-4">
                 ● Atención Inmediata en Línea
               </span>
-              <h3 className="font-[family-name:var(--font-bebas)] text-3xl tracking-wide leading-none mb-2">
-                CENTRAL DE RESERVAS CITYLAND TRAVEL
+              <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight leading-tight mb-2">
+                Central de Reservas Cityland Travel
               </h3>
               <p className="text-xs text-slate-300 leading-relaxed mb-5">
                 Escríbenos al WhatsApp oficial para verificar disponibilidad según tus fechas o agendar atención presencial en nuestra oficina de Los Olivos.

@@ -45,8 +45,8 @@ export const metadata: Metadata = {
 const CONFIG_EMPRESAS: ConfiguracionLandingAerolinea = {
   badgeHero: "Facturación Electrónica SUNAT · RUC 20614914239 · Atención Ejecutiva",
   banderasHero: ["Perú", "Estados Unidos", "España", "Colombia"],
-  tituloHero: "GESTIÓN DE VIAJES CORPORATIVOS Y",
-  tituloDestacadoHero: "VUELOS PARA EMPRESAS EN PERÚ",
+  tituloHero: "Gestión de Viajes Corporativos y",
+  tituloDestacadoHero: "Vuelos para Empresas en Perú",
   descripcionHero:
     "Optimizamos el presupuesto de viajes de tu empresa con emisión inmediata de pasajes aéreos nacionales e internacionales, hoteles ejecutivos, cambios flexibles y facturación electrónica al instante.",
   negritaHero: "Asesor corporativo asignado 24/7 para tu equipo y gerencia",
@@ -77,7 +77,7 @@ const CONFIG_EMPRESAS: ConfiguracionLandingAerolinea = {
   },
   seccionCatalogo: {
     sobretitulo: "Soluciones para Gerencias, RR.HH. y Logística",
-    titulo: "SERVICIOS CORPORATIVOS PARA TU EMPRESA",
+    titulo: "Servicios Corporativos para tu Empresa",
     filtros: [
       { id: "todos", label: "Todos los Servicios (6)" },
       { id: "vuelos-hoteles", label: "Vuelos, Hoteles & Logística" },
@@ -214,7 +214,7 @@ const CONFIG_EMPRESAS: ConfiguracionLandingAerolinea = {
   ],
   bannerFinal: {
     sobretitulo: "Atención Corporativa Directa",
-    titulo: "¿NECESITAS COTIZAR VUELOS O UN VIAJE GRUPAL PARA TU EMPRESA HOY?",
+    titulo: "¿Necesitas cotizar vuelos o un viaje grupal para tu empresa hoy?",
     descripcion:
       "Escríbenos con el RUC de tu empresa y la ruta o fechas que necesitas. Te asignaremos un ejecutivo corporativo para atender tus requerimientos al instante.",
     ctaTexto: "Solicitar Cotización Corporativa",

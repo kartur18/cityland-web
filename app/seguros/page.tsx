@@ -46,8 +46,8 @@ export const metadata: Metadata = {
 const CONFIG_SEGUROS: ConfiguracionLandingAerolinea = {
   badgeHero: "Emisión Oficial en 5 Minutos · Válido para Control Migratorio",
   banderasHero: ["España", "Europa", "Estados Unidos", "Perú"],
-  tituloHero: "SEGURO DE VIAJE INTERNACIONAL Y",
-  tituloDestacadoHero: "SEGURO SCHENGEN 30.000€",
+  tituloHero: "Seguro de Viaje Internacional y",
+  tituloDestacadoHero: "Póliza Schengen 30.000€",
   descripcionHero:
     "Cumple con el requisito obligatorio de ingreso a España, Europa, Estados Unidos y el Caribe. Emitimos tu póliza oficial verificable al instante y te la enviamos en PDF lista para presentar en aeropuerto.",
   negritaHero: "Cobertura médica 24/7 sin deducible y pérdida de equipaje",
@@ -78,7 +78,7 @@ const CONFIG_SEGUROS: ConfiguracionLandingAerolinea = {
   },
   seccionCatalogo: {
     sobretitulo: "Coberturas Internacionales Verificables",
-    titulo: "ELIGE EL SEGURO DE VIAJE PARA TU DESTINO",
+    titulo: "Elige el Seguro de Viaje para tu Destino",
     filtros: [
       { id: "todos", label: "Todos los Seguros (6)" },
       { id: "europa", label: "España & Espacio Schengen (30.000€)" },
@@ -216,7 +216,7 @@ const CONFIG_SEGUROS: ConfiguracionLandingAerolinea = {
   ],
   bannerFinal: {
     sobretitulo: "Emisión Inmediata por WhatsApp",
-    titulo: "¿VIAJAS MAÑANA O ESTA SEMANA Y TE FALTA TU SEGURO?",
+    titulo: "¿Viajas mañana o esta semana y te falta tu seguro?",
     descripcion:
       "Escríbenos cuántos días viajas y a qué país vas. Te cotizamos al instante la tarifa más económica y te enviamos tu póliza oficial en PDF lista para imprimir o llevar en el celular.",
     ctaTexto: "Cotizar mi Seguro en 1 Minuto",

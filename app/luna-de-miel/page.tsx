@@ -46,8 +46,8 @@ export const metadata: Metadata = {
 const CONFIG_LUNA_DE_MIEL: ConfiguracionLandingAerolinea = {
   badgeHero: "Resorts 5★ Solo Adultos · Atención VIP para Novios y Quinceañeras",
   banderasHero: ["República Dominicana", "México", "Colombia", "Estados Unidos"],
-  tituloHero: "LUNA DE MIEL SOÑADA Y VIAJES DE",
-  tituloDestacadoHero: "QUINCEAÑERAS CON TODO INCLUIDO",
+  tituloHero: "Luna de Miel Soñada y Viajes de",
+  tituloDestacadoHero: "Quinceañeras Todo Incluido",
   descripcionHero:
     "Celebramos los momentos más importantes de tu vida con habitaciones de lujo frente al mar, atenciones románticas para recién casados y programas inolvidables de 15 años.",
   negritaHero: "Separa hoy con el 50% de inicial y congela tu tarifa de temporada",
@@ -78,7 +78,7 @@ const CONFIG_LUNA_DE_MIEL: ConfiguracionLandingAerolinea = {
   },
   seccionCatalogo: {
     sobretitulo: "Experiencias Románticas y Celebraciones",
-    titulo: "ELIGE TU VIAJE DE LUNA DE MIEL O 15 AÑOS",
+    titulo: "Elige tu Viaje de Luna de Miel o 15 Años",
     filtros: [
       { id: "todos", label: "Todos los Programas (6)" },
       { id: "novios", label: "Luna de Miel & Parejas (Solo Adultos)" },
@@ -215,7 +215,7 @@ const CONFIG_LUNA_DE_MIEL: ConfiguracionLandingAerolinea = {
   ],
   bannerFinal: {
     sobretitulo: "Planificación a Medida con Asesora Especializada",
-    titulo: "¿PLANEANDO TU BODA, ANIVERSARIO O EL VIAJE DE 15 AÑOS DE TU HIJA?",
+    titulo: "¿Planeando tu boda, aniversario o el viaje de 15 años de tu hija?",
     descripcion:
       "Te ayudamos a comparar los mejores resorts y rutas según el mes de tu celebración para que tengan clima soleado garantizado y beneficios exclusivos.",
     ctaTexto: "Hablar con Asesora de Luna de Miel / 15 Años",

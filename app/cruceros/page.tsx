@@ -47,8 +47,8 @@ export const metadata: Metadata = {
 const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
   badgeHero: "Royal Caribbean · MSC · Norwegian · Con y Sin Visa",
   banderasHero: ["Panamá", "Colombia", "Estados Unidos", "España"],
-  tituloHero: "CRUCEROS TODO INCLUIDO POR EL",
-  tituloDestacadoHero: "CARIBE, BAHAMAS Y EUROPA",
+  tituloHero: "Cruceros Todo Incluido por el",
+  tituloDestacadoHero: "Caribe, Bahamas y Europa",
   descripcionHero:
     "Despierta cada mañana en un país distinto con restaurantes buffet y a la carta, piscinas, teatro estilo Broadway y vuelos desde Lima.",
   negritaHero: "Viaja sin visa americana saliendo desde Panamá o Cartagena y separa con el 50%",
@@ -79,7 +79,7 @@ const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
   },
   seccionCatalogo: {
     sobretitulo: "Rutas Marítimas Confirmadas 2026 – 2027",
-    titulo: "ELIGE TU RUTA DE CRUCERO",
+    titulo: "Elige tu Ruta de Crucero",
     filtros: [
       { id: "todos", label: "Todos los Cruceros (6)" },
       { id: "sin-visa", label: "Sin Visa Americana (Caribe & Sudamérica)" },
@@ -217,7 +217,7 @@ const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
   ],
   bannerFinal: {
     sobretitulo: "Especialistas en Cruceros Internacionales",
-    titulo: "¿ES TU PRIMERA VEZ EN UN CRUCERO? TE ASESORAMOS EN TODO",
+    titulo: "¿Es tu primera vez en un crucero? Te asesoramos en todo",
     descripcion:
       "Te ayudamos a elegir el barco ideal, la ubicación exacta de tu cabina (interior, ventana o balcón), los vuelos de conexión desde Lima y el paquete de bebidas para que viajes con cero preocupaciones.",
     ctaTexto: "Hablar con Especialista en Cruceros",

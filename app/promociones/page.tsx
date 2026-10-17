@@ -32,8 +32,8 @@ export const metadata: Metadata = {
 const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
   badgeHero: "Campaña Preventa 2026 · Cupos Aéreos Confirmados desde Lima",
   banderasHero: ["España", "República Dominicana", "México", "Colombia", "Perú"],
-  tituloHero: "PROMOCIONES Y OFERTAS DE",
-  tituloDestacadoHero: "VIAJES TODO INCLUIDO DESDE LIMA",
+  tituloHero: "Promociones y Ofertas de",
+  tituloDestacadoHero: "Viajes Todo Incluido desde Lima",
   descripcionHero:
     "Congela tu tarifa promocional en dólares con impuestos incluidos para viajar a Europa, el Caribe, Sudamérica o el interior del Perú con respaldo de agencia formal.",
   negritaHero: "Separa cualquiera de nuestras promociones con el 50% de inicial y paga en cuotas sin intereses",
@@ -64,7 +64,7 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
   },
   seccionCatalogo: {
     sobretitulo: "Catálogo de Ofertas y Preventas Vigentes",
-    titulo: "ELIGE TU DESTINO EN PROMOCIÓN",
+    titulo: "Elige tu Destino en Promoción",
     filtros: [
       { id: "todos", label: "Todas las Promos" },
       { id: "caribe", label: "Caribe & Sudamérica" },
@@ -208,7 +208,7 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
   ],
   bannerFinal: {
     sobretitulo: "Campaña Preventa 2026",
-    titulo: "¿BUSCAS UNA PROMOCIÓN PARA TU FECHA EXACTA DE VIAJE?",
+    titulo: "¿Buscas una promoción para tu fecha exacta de viaje?",
     descripcion:
       "Escríbenos a nuestro WhatsApp oficial +51 944 103 890 indicando el destino, mes de viaje y cantidad de pasajeros para enviarte las ofertas disponibles hoy.",
     ctaTexto: "Ver Ofertas por WhatsApp",

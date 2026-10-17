@@ -30,10 +30,10 @@ export default function Hero() {
             </div>
 
             {/* Titular Claro y Profesional */}
-            <h1 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-5xl lg:text-6xl text-[#0a1628] tracking-tight leading-[0.96] mb-4">
-              TU VIAJE AL CARIBE, ESPAÑA O EUROPA{" "}
+            <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#0a1628] tracking-tight leading-[1.12] mb-4">
+              Tu Viaje al Caribe, España o Europa{" "}
               <span className="text-red-600 block">
-                CON TODO RESUELTO DESDE LIMA
+                con Todo Resuelto desde Lima
               </span>
             </h1>
 
@@ -119,17 +119,17 @@ export default function Hero() {
               {/* Pie Blanco Limpio: Precio a la izquierda + Botón a la derecha */}
               <div className="p-5 flex items-center justify-between gap-4 bg-white">
                 <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1.5">
                     Paquete Completo
                   </span>
                   <div className="flex items-baseline gap-1.5">
                     <span className="text-xs font-extrabold uppercase text-red-600">Desde</span>
-                    <span className="font-[family-name:var(--font-bebas)] text-4xl text-[#0a1628] leading-none">
+                    <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0a1628] leading-none">
                       $1,099
                     </span>
                     <span className="text-xs font-bold text-slate-500">USD</span>
                   </div>
-                  <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
+                  <span className="text-[11px] font-semibold text-emerald-700 block mt-1">
                     Separa con 50% ($550 USD)
                   </span>
                 </div>

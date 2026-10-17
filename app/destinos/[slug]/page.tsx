@@ -198,9 +198,9 @@ export default async function DestinoPage({
                 )}
               </div>
 
-              <h1 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-6xl lg:text-[62px] text-[#0a1628] tracking-tight leading-[0.96] mb-4">
-                PAQUETE DE VIAJE A{" "}
-                <span className="text-red-600">{dest.ciudad.toUpperCase()}</span>
+              <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[#0a1628] tracking-tight leading-[1.12] mb-4">
+                Paquete de Viaje a{" "}
+                <span className="text-red-600">{dest.ciudad}</span>
               </h1>
 
               <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6 max-w-2xl">
@@ -378,8 +378,8 @@ export default async function DestinoPage({
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
                 Opciones de Reserva en Dólares
               </span>
-              <h2 className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] tracking-wide mb-5">
-                MODALIDADES DISPONIBLES PARA {dest.ciudad.toUpperCase()}
+              <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a1628] tracking-tight mb-5">
+                Modalidades Disponibles para {dest.ciudad}
               </h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -402,9 +402,9 @@ export default async function DestinoPage({
                         <span className="text-[10px] font-bold uppercase text-slate-500 block">
                           Desde
                         </span>
-                        <span className="font-[family-name:var(--font-bebas)] text-3xl text-[#0a1628] leading-none">
+                        <span className="text-2xl font-extrabold text-[#0a1628] leading-none">
                           ${dest.migratorio.toLocaleString("en-US")}{" "}
-                          <span className="text-xs font-sans font-bold text-slate-500">USD</span>
+                          <span className="text-xs font-bold text-slate-500">USD</span>
                         </span>
                       </div>
                       <a
@@ -437,9 +437,9 @@ export default async function DestinoPage({
                       <span className="text-[10px] font-bold uppercase text-slate-500 block">
                         Desde
                       </span>
-                      <span className="font-[family-name:var(--font-bebas)] text-3xl text-[#0a1628] leading-none">
+                      <span className="text-2xl font-extrabold text-[#0a1628] leading-none">
                         ${dest.turistico.toLocaleString("en-US")}{" "}
-                        <span className="text-xs font-sans font-bold text-slate-500">USD</span>
+                        <span className="text-xs font-bold text-slate-500">USD</span>
                       </span>
                     </div>
                     <a
@@ -472,9 +472,9 @@ export default async function DestinoPage({
                         <span className="text-[10px] font-bold uppercase text-slate-500 block">
                           Inicial 50%
                         </span>
-                        <span className="font-[family-name:var(--font-bebas)] text-3xl text-emerald-700 leading-none">
+                        <span className="text-2xl font-extrabold text-emerald-700 leading-none">
                           ${Math.round(dest.turistico * 0.5).toLocaleString("en-US")}{" "}
-                          <span className="text-xs font-sans font-bold text-slate-500">USD</span>
+                          <span className="text-xs font-bold text-slate-500">USD</span>
                         </span>
                       </div>
                       <a
@@ -497,8 +497,8 @@ export default async function DestinoPage({
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
                 Ruta Organizada Paso a Paso
               </span>
-              <h2 className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] tracking-wide mb-6">
-                ITINERARIO EN {dest.ciudad.toUpperCase()} ({dest.duracion || "PROGRAMA OFICIAL"})
+              <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a1628] tracking-tight mb-6">
+                Itinerario en {dest.ciudad} ({dest.duracion || "Programa Oficial"})
               </h2>
 
               <div className="space-y-4">
@@ -534,8 +534,8 @@ export default async function DestinoPage({
 
             {/* Respaldo Legal y Garantías */}
             <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs">
-              <h2 className="font-[family-name:var(--font-bebas)] text-2xl sm:text-3xl text-[#0a1628] tracking-wide mb-4">
-                ¿POR QUÉ RESERVAR TU VIAJE A {dest.ciudad.toUpperCase()} CON CITYLAND TRAVEL?
+              <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a1628] tracking-tight mb-4">
+                ¿Por qué reservar tu viaje a {dest.ciudad} con Cityland Travel?
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/60">
@@ -573,8 +573,8 @@ export default async function DestinoPage({
                 ● Cupos Aéreos Disponibles
               </span>
 
-              <h3 className="font-[family-name:var(--font-bebas)] text-3xl tracking-wide leading-none mb-2">
-                COTIZA TU VIAJE A {dest.ciudad.toUpperCase()}
+              <h3 className="text-2xl font-extrabold tracking-tight leading-snug mb-2">
+                Cotiza tu Viaje a {dest.ciudad}
               </h3>
               <p className="text-xs text-slate-300 leading-relaxed mb-5">
                 Un especialista te enviará por WhatsApp la cotización exacta según tu fecha de salida y número de pasajeros.
@@ -643,8 +643,8 @@ export default async function DestinoPage({
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
                 Sigue Explorando
               </span>
-              <h2 className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] tracking-wide leading-none">
-                OTROS PAQUETES RECOMENDADOS DESDE LIMA
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0a1628] tracking-tight leading-tight">
+                Otros Paquetes Recomendados desde Lima
               </h2>
             </div>
             <Link

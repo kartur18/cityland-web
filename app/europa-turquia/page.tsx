@@ -46,8 +46,8 @@ export const metadata: Metadata = {
 const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
   badgeHero: "Peruanos Viajan Sin Visa Consular a Europa y Turquía",
   banderasHero: ["Turquía", "España", "Francia", "Italia"],
-  tituloHero: "CIRCUITOS A EUROPA, TURQUÍA Y",
-  tituloDestacadoHero: "CAPADOCIA CON TODO ORGANIZADO",
+  tituloHero: "Circuitos a Europa, Turquía y",
+  tituloDestacadoHero: "Capadocia Todo Organizado",
   descripcionHero:
     "Conoce la Torre Eiffel, el Coliseo Romano, Madrid o vuela en globo sobre Capadocia con boletos aéreos confirmados, hoteles seleccionados y guía en español durante todo el recorrido.",
   negritaHero: "Solo necesitas tu pasaporte peruano vigente y separas con el 50%",
@@ -78,7 +78,7 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
   },
   seccionCatalogo: {
     sobretitulo: "Grandes Viajes con Salidas desde Lima",
-    titulo: "ELIGE TU CIRCUITO POR EUROPA, TURQUÍA O DUBÁI",
+    titulo: "Elige tu Circuito por Europa, Turquía o Dubái",
     filtros: [
       { id: "todos", label: "Todos los Circuitos (6)" },
       { id: "turquia-dubai", label: "Turquía & Dubái (Exóticos Sin Visa)" },
@@ -215,7 +215,7 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
   ],
   bannerFinal: {
     sobretitulo: "Especialistas en Europa y Medio Oriente",
-    titulo: "¿QUIERES RECIBIR EL ITINERARIO DÍA POR DÍA EN PDF?",
+    titulo: "¿Quieres recibir el itinerario día por día en PDF?",
     descripcion:
       "Escríbenos por WhatsApp qué circuito te interesa (Turquía, Europa 15 Días o Dubái) y un asesor te enviará el programa detallado con fechas de salida y hoteles.",
     ctaTexto: "Solicitar Itinerario en PDF",

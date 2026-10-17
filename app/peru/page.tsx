@@ -46,8 +46,8 @@ export const metadata: Metadata = {
 const CONFIG_PERU: ConfiguracionLandingAerolinea = {
   badgeHero: "Playas del Norte, Selva Mágica y Sur del Perú · Salidas Diarias",
   banderasHero: ["Perú"],
-  tituloHero: "DESCUBRE EL PERÚ: PUNTA SAL, MÁNCORA,",
-  tituloDestacadoHero: "TARAPOTO, IQUITOS Y AREQUIPA",
+  tituloHero: "Descubre lo Mejor del Perú:",
+  tituloDestacadoHero: "Playas del Norte, Selva y Sur",
   descripcionHero:
     "Escápate del frío de Lima hacia las playas soleadas del norte, la selva de Tarapoto e Iquitos o los paisajes de Arequipa con vuelos confirmados, hoteles con piscina y tours incluidos.",
   negritaHero: "Separa hoy tu paquete nacional con el 50% de inicial",
@@ -78,7 +78,7 @@ const CONFIG_PERU: ConfiguracionLandingAerolinea = {
   },
   seccionCatalogo: {
     sobretitulo: "Sol Todo el Año y Naturaleza Increíble",
-    titulo: "LOS 6 DESTINOS NACIONALES MÁS PEDIDOS",
+    titulo: "Los 6 Destinos Nacionales Más Solicitados",
     filtros: [
       { id: "todos", label: "Todos los Destinos (6)" },
       { id: "playas", label: "Playas del Norte (Punta Sal & Máncora)" },
@@ -216,7 +216,7 @@ const CONFIG_PERU: ConfiguracionLandingAerolinea = {
   ],
   bannerFinal: {
     sobretitulo: "Turismo Nacional a tu Medida",
-    titulo: "¿BUSCAS UN PAQUETE A CUSCO O COMBINAR VARIOS DESTINOS DEL PERÚ?",
+    titulo: "¿Buscas un paquete a Cusco o combinar varios destinos del Perú?",
     descripcion:
       "También tenemos nuestra página exclusiva de Cusco y Machu Picchu de 3 a 6 días, o armamos tu ruta personalizada para viajar en pareja, familia o amigos.",
     ctaTexto: "Armar mi Viaje por el Perú",

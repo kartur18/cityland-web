@@ -76,9 +76,9 @@ export default function EspanaLandingClient() {
                 <span>Ruta Especializada Madrid & Barcelona · Sin Visa Consular</span>
               </div>
 
-              <h1 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-6xl lg:text-[64px] text-[#0a1628] tracking-tight leading-[0.95] mb-3">
-                PAQUETES MIGRATORIOS A{" "}
-                <span className="text-red-600">ESPAÑA</span>
+              <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#0a1628] tracking-tight leading-[1.12] mb-4">
+                Paquetes y Vuelos a{" "}
+                <span className="text-red-600">España con Carpeta Migratoria</span>
               </h1>
 
               <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-7 max-w-xl">
@@ -197,8 +197,8 @@ export default function EspanaLandingClient() {
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
                 Salidas Confirmadas desde Lima
               </span>
-              <h2 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-5xl text-[#0a1628] tracking-tight leading-none">
-                ELIGE TU MES DE VIAJE A ESPAÑA
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight">
+                Elige tu Mes de Viaje a España
               </h2>
             </div>
             <p className="text-xs sm:text-sm font-semibold text-slate-500">
