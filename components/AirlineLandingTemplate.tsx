@@ -3,18 +3,19 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
-import PlaneIcon from "@/components/icons/PlaneIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
 
-export interface TarjetaCatalogoLanding {
+export interface TarjetaCatalogoAerolinea {
   id: string;
   titulo: string;
   pais: string;
   filtro: string;
   subtitulo: string;
   precioPrincipal: string;
-  precioSecundario: string;
+  precioSecundario?: string;
   notaPrecio: string;
   tag: string;
   tagBg: string;
@@ -37,6 +38,7 @@ export interface ConfiguracionLandingAerolinea {
   waPrincipalNumero: string;
   waPrincipalMensaje: string;
   checksHero: [string, string, string];
+
   vitrina: {
     pais: string;
     etiquetaIzq: string;
@@ -52,13 +54,17 @@ export interface ConfiguracionLandingAerolinea {
     waNumero: string;
     waMensaje: string;
   };
+
   seccionCatalogo: {
     sobretitulo: string;
     titulo: string;
     filtros: { id: string; label: string }[];
   };
-  items: TarjetaCatalogoLanding[];
+
+  items: TarjetaCatalogoAerolinea[];
+
   pilares: { titulo: string; sub: string }[];
+
   bannerFinal: {
     sobretitulo: string;
     titulo: string;
@@ -69,181 +75,202 @@ export interface ConfiguracionLandingAerolinea {
     img: string;
     alt: string;
   };
+
   waFlotante: {
     numero: string;
-    mensaje: string;
     texto: string;
+    mensaje: string;
   };
 }
 
-const LINKS_PRINCIPALES = [
-  { label: "España", href: "/espana" },
-  { label: "Caribe & Miami", href: "/caribe" },
-  { label: "Cusco", href: "/cusco" },
-  { label: "Perú & Playas", href: "/peru" },
-  { label: "Visas", href: "/visas" },
-  { label: "Colegios", href: "/colegios" },
-  { label: "Cruceros", href: "/cruceros" },
-];
+const POOL_IMAGENES_ALTERNATIVAS: Record<string, string[]> = {
+  España: [
+    "/images/espana/gran-via-metropolis.jpg",
+    "/images/espana/palacio-real.jpg",
+    "/images/espana/puerta-de-alcala.jpg",
+    "/images/espana/cibeles.jpg",
+    "/images/espana/plaza-mayor.jpg",
+    "/images/espana/barajas.jpg",
+  ],
+  Europa: [
+    "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1200&q=85",
+    "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=85",
+    "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200&q=85",
+    "/images/espana/palacio-real.jpg",
+  ],
+  Francia: [
+    "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1200&q=85",
+    "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=85",
+  ],
+  Italia: [
+    "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=85",
+    "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&q=85",
+    "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1200&q=85",
+  ],
+  Turquía: [
+    "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?w=1200&q=85",
+    "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=85",
+    "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=85",
+  ],
+  "República Dominicana": [
+    "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=85",
+    "https://images.unsplash.com/photo-1580541631950-7282082b53ce?w=1200&q=85",
+    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85",
+  ],
+  México: [
+    "https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=1200&q=85",
+    "https://images.unsplash.com/photo-1518638150340-f706e86654de?w=1200&q=85",
+    "https://images.unsplash.com/photo-1568402102990-bc541580b59f?w=1200&q=85",
+  ],
+  Colombia: [
+    "https://images.unsplash.com/photo-1583531352515-8884af319dc1?w=1200&q=85",
+    "/images/paquetes/panama-medellin/medellin-skyline.png",
+    "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&q=85",
+  ],
+  Panamá: [
+    "/images/paquetes/panama-medellin/hero-panama.jpg",
+    "/images/paquetes/panama-medellin/canal-panama.png",
+    "/images/paquetes/panama-medellin/casco-antiguo.png",
+  ],
+  "Estados Unidos": [
+    "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=1200&q=85",
+    "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=1200&q=85",
+    "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1200&q=85",
+  ],
+  Perú: [
+    "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=1200&q=85",
+    "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=85",
+    "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=1200&q=85",
+    "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
+  ],
+  default: [
+    "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=85",
+    "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=1200&q=85",
+    "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=85",
+    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85",
+    "/images/espana/palacio-real.jpg",
+  ],
+};
 
-const LINKS_SECUNDARIOS = [
-  { label: "Europa & Turquía", href: "/europa-turquia" },
-  { label: "Luna de Miel & 15 Años", href: "/luna-de-miel" },
-  { label: "Seguros de Viaje", href: "/seguros" },
-  { label: "Empresas", href: "/empresas" },
-];
+function obtenerImagenUnica(
+  imgOriginal: string,
+  pais: string,
+  usadas: Set<string>
+): string {
+  if (!usadas.has(imgOriginal)) {
+    usadas.add(imgOriginal);
+    return imgOriginal;
+  }
+  const candidatos = [
+    ...(POOL_IMAGENES_ALTERNATIVAS[pais] || []),
+    ...POOL_IMAGENES_ALTERNATIVAS.default,
+  ];
+  for (const cand of candidatos) {
+    if (!usadas.has(cand)) {
+      usadas.add(cand);
+      return cand;
+    }
+  }
+  return imgOriginal;
+}
 
 export default function AirlineLandingTemplate({
   config,
+  children,
 }: {
   config: ConfiguracionLandingAerolinea;
+  children?: React.ReactNode;
 }) {
   const [filtro, setFiltro] = useState<string>("todos");
 
+  // Garantizamos que ninguna imagen se repita entre vitrina, tarjetas y banner final
+  const imagenesUsadas = new Set<string>();
+  const imgVitrina = obtenerImagenUnica(
+    config.vitrina.img,
+    config.vitrina.pais,
+    imagenesUsadas
+  );
+
+  const itemsConImagenUnica = config.items.map((item) => ({
+    ...item,
+    imgRender: obtenerImagenUnica(item.img, item.pais, imagenesUsadas),
+  }));
+
+  const imgBannerFinal = obtenerImagenUnica(
+    config.bannerFinal.img,
+    config.vitrina.pais,
+    imagenesUsadas
+  );
+
   const itemsMostrados =
     filtro === "todos"
-      ? config.items
-      : config.items.filter((i) => i.filtro === filtro);
+      ? itemsConImagenUnica
+      : itemsConImagenUnica.filter((i) => i.filtro === filtro);
 
   return (
     <div className="bg-white min-h-screen text-[#0a1628] antialiased">
-      {/* 1. Header de Aerolínea de 2 Niveles (Cero desbordes ni botones cortados) */}
-      <header className="sticky top-0 z-40 shadow-xs">
-        <div className="hidden lg:block bg-[#0a1628] text-slate-300 text-[11px] font-medium border-b border-slate-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 h-8 flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <span className="inline-flex items-center gap-1.5 text-white font-semibold">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                Agencia Registrada MINCETUR · RUC 20614914239
-              </span>
-              <span className="text-slate-600">|</span>
-              <span>Av. Antúnez de Mayolo N. 814, Los Olivos, Lima</span>
-            </div>
+      {/* 1. Cabecera Unificada de Cityland Travel */}
+      <Navbar />
 
-            <div className="flex items-center gap-4">
-              {LINKS_SECUNDARIOS.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="hover:text-white transition-colors"
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <span className="text-slate-600">|</span>
-              <a
-                href="tel:+51944103890"
-                className="text-amber-300 hover:text-amber-200 font-bold"
-              >
-                Central: +51 944 103 890
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white/95 backdrop-blur-md border-b border-slate-200/80 py-2.5">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-3">
-            <Link href="/" aria-label="Cityland Travel - Inicio" className="flex items-center shrink-0">
-              <div className="relative h-12 sm:h-13 w-38 sm:w-44 flex items-center">
-                <Image
-                  src="/logo-transparent.png"
-                  alt="Cityland Travel - Agencia de Viajes en Lima"
-                  fill
-                  priority
-                  sizes="(max-width: 640px) 152px, 176px"
-                  className="object-contain object-left"
-                />
-              </div>
-            </Link>
-
-            <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5">
-              {LINKS_PRINCIPALES.map((l) => (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  className="text-xs xl:text-[13px] font-bold text-slate-700 hover:text-[#0a1628] px-2.5 py-1.5 rounded-full hover:bg-slate-100 whitespace-nowrap transition-colors"
-                >
-                  {l.label}
-                </Link>
-              ))}
-            </nav>
-
-            <div className="flex items-center gap-2.5 shrink-0">
-              <a
-                href={`https://wa.me/51944103890?text=${encodeURIComponent(config.waPrincipalMensaje)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold cursor-pointer whitespace-nowrap shadow-xs"
-              >
-                <WhatsAppIcon size={16} />
-                <span>Cotizar por WhatsApp</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* 2. Portada Luminosa, Blanca y Simétrica */}
-      <section className="bg-gradient-to-b from-sky-50/50 via-white to-white pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-slate-200/80">
+      {/* 2. Hero Luminoso Estilo Aerolínea */}
+      <section className="bg-gradient-to-b from-sky-50/70 via-white to-white pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             <div className="lg:col-span-7 text-left">
               <div className="inline-flex items-center gap-2 bg-white border border-slate-200 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-700 shadow-2xs mb-5">
-                {config.banderasHero.map((b) => (
-                  <FlagIcon key={b} pais={b} className="w-3.5 h-2.5" />
-                ))}
+                <span className="flex items-center -space-x-1">
+                  {config.banderasHero.map((pais) => (
+                    <FlagIcon key={pais} pais={pais} className="w-3.5 h-2.5" />
+                  ))}
+                </span>
                 <span>{config.badgeHero}</span>
               </div>
 
-              <h1 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-6xl lg:text-[62px] text-[#0a1628] tracking-tight leading-[0.95] mb-3">
+              <h1 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-6xl lg:text-[62px] text-[#0a1628] tracking-tight leading-[0.96] mb-4">
                 {config.tituloHero}{" "}
                 <span className="text-red-600">{config.tituloDestacadoHero}</span>
               </h1>
 
-              <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-7 max-w-xl">
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6 max-w-xl">
                 {config.descripcionHero}{" "}
                 <strong className="text-[#0a1628] font-bold">
                   {config.negritaHero}
                 </strong>
-                .
               </p>
 
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-7">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6">
                 <a
                   href={`https://wa.me/51944103890?text=${encodeURIComponent(config.waPrincipalMensaje)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-wa-pulse inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-7 py-4 rounded-2xl text-sm sm:text-base font-bold shadow-md cursor-pointer"
+                  className="btn-wa-pulse inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-6 py-3.5 rounded-xl font-bold text-sm shadow-md cursor-pointer"
                 >
-                  <WhatsAppIcon size={20} />
+                  <WhatsAppIcon size={18} />
                   <span>{config.ctaPrincipalTexto}</span>
                 </a>
-
                 <a
                   href="#catalogo-principal"
-                  className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-[#0a1628] border border-slate-300 px-6 py-4 rounded-2xl text-sm sm:text-base font-bold transition-all cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-[#0a1628] border border-slate-300 px-5 py-3.5 rounded-xl font-bold text-sm transition-colors"
                 >
-                  <PlaneIcon className="w-4 h-4 fill-none stroke-current stroke-2 text-red-600" />
-                  <span>Ver Opciones y Tarifas ↓</span>
+                  <span>Ver Opciones y Precios</span>
                 </a>
               </div>
 
-              {/* 3 Puntos Clave en Línea Limpia (Sin recuadros) */}
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-bold text-slate-700 pt-5 border-t border-slate-200/80">
-                {config.checksHero.map((ck) => (
-                  <span key={ck} className="flex items-center gap-1.5">
-                    <span className="text-emerald-600 font-extrabold">✓</span> {ck}
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-slate-600 font-semibold">
+                {config.checksHero.map((c) => (
+                  <span key={c} className="flex items-center gap-1.5">
+                    <span className="text-emerald-600 font-bold">✓</span> {c}
                   </span>
                 ))}
               </div>
             </div>
 
-            {/* Vitrina Derecha */}
+            {/* Tarjeta Vitrina Derecha */}
             <div className="lg:col-span-5">
-              <div className="card-interactive group bg-white rounded-3xl border border-slate-200/90 shadow-lg overflow-hidden">
-                <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-100">
+              <div className="group bg-white rounded-3xl border border-slate-200/90 shadow-xl overflow-hidden">
+                <div className="relative h-60 sm:h-68 w-full overflow-hidden bg-slate-100">
                   <Image
-                    src={config.vitrina.img}
+                    src={imgVitrina}
                     alt={config.vitrina.alt}
                     fill
                     priority
@@ -357,7 +384,7 @@ export default function AirlineLandingTemplate({
                 >
                   <div className="relative h-56 w-full overflow-hidden bg-slate-100">
                     <Image
-                      src={item.img}
+                      src={item.imgRender}
                       alt={item.alt}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -489,7 +516,7 @@ export default function AirlineLandingTemplate({
 
             <div className="lg:col-span-5 relative min-h-[260px] sm:min-h-[320px] w-full overflow-hidden">
               <Image
-                src={config.bannerFinal.img}
+                src={imgBannerFinal}
                 alt={config.bannerFinal.alt}
                 fill
                 sizes="(max-width: 1024px) 100vw, 500px"
@@ -500,39 +527,11 @@ export default function AirlineLandingTemplate({
         </div>
       </section>
 
-      {/* 5. Footer Corporativo con Enlaces a Todo el Ecosistema */}
-      <footer className="bg-[#0a1628] text-white py-10 border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center justify-between gap-6">
-          <div className="text-xs text-slate-300 text-center lg:text-left space-y-1">
-            <p className="font-bold text-white text-sm">Cityland Travel E.I.R.L. · RUC 20614914239</p>
-            <p>Av. Antúnez de Mayolo N. 814, Los Olivos, Lima · Central: +51 944 103 890 · Lun–Sáb 9:00 am – 7:00 pm</p>
-            <p className="text-[11px] text-slate-400 pt-1">
-              * Tarifas referenciales en US$ con impuestos y cargos obligatorios incluidos. Tarifa sujeta a disponibilidad y condiciones aplicables (Verificado: Oct 2026).
-            </p>
-          </div>
+      {/* Secciones adicionales (como FAQs y rutas relacionadas en /vuelos/[slug]) antes del Footer */}
+      {children}
 
-          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
-            <a
-              href={`https://wa.me/51944103890?text=${encodeURIComponent(config.waPrincipalMensaje)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-wa-pulse inline-flex items-center gap-1.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 py-2 rounded-xl text-xs font-bold cursor-pointer"
-            >
-              <WhatsAppIcon size={14} />
-              <span>Central WhatsApp</span>
-            </a>
-            {[...LINKS_PRINCIPALES, ...LINKS_SECUNDARIOS].map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="text-xs text-slate-300 hover:text-white transition-colors"
-              >
-                {l.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </footer>
+      {/* 5. Footer Oficial Unificado */}
+      <Footer />
 
       {/* 6. Botón Flotante de WhatsApp */}
       <div className="fixed bottom-5 right-5 z-50">

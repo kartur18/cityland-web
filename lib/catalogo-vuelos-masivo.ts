@@ -258,19 +258,29 @@ const SLUGS_EXISTENTES = new Set([
 ]);
 
 function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
-  const p2Maletas = s.precioUSD + (s.modalidad === "nacional" ? 35 : 95);
-  const pPaquete = s.precioUSD + (s.modalidad === "nacional" ? 130 : 260);
+  const esNacional = s.modalidad === "nacional";
+  const p2Maletas = s.precioUSD + (esNacional ? 35 : 95);
+  const pPaquete = s.precioUSD + (esNacional ? 130 : 260);
   const waMsg = `Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de ${s.origen} a ${s.destino} (Desde $${s.precioUSD} USD). ¿Me pueden ayudar?`;
   const imgPaquete =
     s.modalidad === "caribe"
       ? IMG_HOTEL_RESORT
       : s.modalidad === "europa"
-      ? IMG_MADRID
+      ? "/images/espana/palacio-real.jpg"
       : s.modalidad === "usa"
       ? IMG_NYC
       : s.modalidad === "exotico"
       ? IMG_EXOTICO
-      : s.img;
+      : esNacional
+      ? "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=1200&q=85"
+      : IMG_HOTEL_RESORT;
+
+  const imgBanner =
+    s.modalidad === "europa"
+      ? "/images/espana/barajas.jpg"
+      : esNacional
+      ? "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85"
+      : IMG_AEROPUERTO;
 
   return {
     slug: s.slug,
@@ -300,16 +310,18 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
       },
       {
         q: `¿Qué requisitos necesito para viajar de ${s.origen} a ${s.destino}?`,
-        a: `${s.requisitos} Nuestro equipo te asesora paso a paso con el check-in, equipaje de 23 kg y documentación migratoria.`,
+        a: esNacional
+          ? `${s.requisitos} Nuestro equipo gestiona tu check-in anticipado, selección de asientos, equipaje en bodega y envío de tarjetas de embarque.`
+          : `${s.requisitos} Nuestro equipo te asesora paso a paso con el check-in, equipaje de 23 kg y documentación requerida para tu viaje.`,
       },
     ],
     config: {
       badgeHero: `Ruta ${s.codigoOrigen} → ${s.codigoDestino} · ${s.aerolineas}`,
-      banderasHero: [s.paisOrigen, s.paisDestino],
+      banderasHero: esNacional ? ["Perú"] : [s.paisOrigen, s.paisDestino],
       tituloHero: `Vuelos y Paquetes de ${s.origen} a`,
       tituloDestacadoHero: `${s.destino} (${s.codigoDestino})`,
       descripcionHero: `Tarifas referenciales verificadas Desde $${s.precioUSD} USD con impuestos y cargos obligatorios incluidos.`,
-      negritaHero: `${s.requisitos} Emitimos boletos con equipaje de 23 kg, reserva verificable y soporte 24/7 por WhatsApp.`,
+      negritaHero: `${s.requisitos} Emitimos boletos con equipaje en bodega, reserva verificable y soporte 24/7 por WhatsApp.`,
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
       waPrincipalNumero: "51944103890",
       waPrincipalMensaje: waMsg,
@@ -339,7 +351,7 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
         filtros: [
           { id: "todos", label: "Todas las tarifas" },
           { id: "vuelo", label: "Solo Boleto Aéreo" },
-          { id: "paquete", label: "Vuelo + Hotel / Asesoría" },
+          { id: "paquete", label: "Vuelo + Hotel / Tours" },
         ],
       },
       items: [
@@ -359,7 +371,7 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
           resumenCorto: `Boleto confirmado ${s.codigoOrigen} → ${s.codigoDestino} con impuestos incluidos y código PNR verificable.`,
           checks: [
             `Boleto confirmado ${s.codigoOrigen} → ${s.codigoDestino}`,
-            "Artículo personal + equipaje de mano 10 kg",
+            "Artículo personal + equipaje de cabina 10 kg",
             "Check-in y envío de tarjetas de embarque",
           ],
           waNumber: "51944103890",
@@ -370,7 +382,7 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
           titulo: `Vuelo ${s.origen} – ${s.destino} + Bodega 23 kg`,
           pais: s.paisDestino,
           filtro: "vuelo",
-          subtitulo: "Ideal para estadías largas o compras",
+          subtitulo: "Ideal para estadías largas o equipaje completo",
           precioPrincipal: `$${p2Maletas}`,
           precioSecundario: "Impuestos y maleta de 23 kg incluidos",
           notaPrecio: "Tarifa sujeta a disponibilidad y condiciones aplicables",
@@ -389,22 +401,24 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
         },
         {
           id: `${s.slug}-paquete`,
-          titulo: `Paquete ${s.origen} – ${s.destino} (Vuelo + Hotel + Seguro)`,
+          titulo: `Paquete ${s.origen} – ${s.destino} (Vuelo + Hotel + Traslados)`,
           pais: s.paisDestino,
           filtro: "paquete",
           subtitulo: "Separa con el 50% y paga en cuotas sin intereses",
           precioPrincipal: `$${pPaquete}`,
-          precioSecundario: "Vuelo + Hotel + Asistencia incluidos",
+          precioSecundario: "Vuelo + Hotel + Traslados incluidos",
           notaPrecio: "Tarifa sujeta a disponibilidad y condiciones aplicables",
           tag: "Todo Resuelto",
           tagBg: "bg-red-600 text-white",
           img: imgPaquete,
           alt: `Paquete a ${s.destino} desde ${s.origen}`,
-          resumenCorto: `Viaje completo de ${s.origen} a ${s.destino} con alojamiento verificado, seguro de viaje y asesoría personalizada.`,
+          resumenCorto: `Viaje completo de ${s.origen} a ${s.destino} con alojamiento verificado, traslados y asesoría personalizada.`,
           checks: [
             `Boleto aéreo ${s.origen} – ${s.destino}`,
             "Estadía en hotel seleccionado con desayuno",
-            "Seguro de asistencia y soporte 24/7 en viaje",
+            esNacional
+              ? "Traslados aeropuerto – hotel y soporte 24/7"
+              : "Seguro de asistencia y soporte 24/7 en viaje",
           ],
           waNumber: "51944103890",
           waMensaje: `Hola, quiero cotizar el Paquete Completo de ${s.origen} a ${s.destino} (Desde $${pPaquete} USD).`,
@@ -423,7 +437,7 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
         ctaTexto: "Consultar disponibilidad por WhatsApp",
         waNumero: "51944103890",
         waMensaje: waMsg,
-        img: s.img,
+        img: imgBanner,
         alt: `Viajes de ${s.origen} a ${s.destino}`,
       },
       waFlotante: {

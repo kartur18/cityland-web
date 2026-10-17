@@ -19,60 +19,70 @@ export interface ViajeEspecializadoSEO {
   waMensaje: string;
 }
 
-const FOTOS_POR_DESTINO: Record<string, [string, string, string]> = {
+const FOTOS_POR_DESTINO: Record<string, [string, string, string, string]> = {
   espana: [
-    "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1200&q=85",
-    "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=900&q=80",
-    "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=900&q=80",
+    "/images/espana/gran-via-metropolis.jpg",
+    "/images/espana/palacio-real.jpg",
+    "/images/espana/puerta-de-alcala.jpg",
+    "/images/espana/plaza-mayor.jpg",
   ],
   italia: [
     "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=85",
     "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=900&q=80",
     "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=900&q=80",
+    "https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=900&q=80",
   ],
   francia: [
     "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=85",
     "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=900&q=80",
     "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=900&q=80",
+    "https://images.unsplash.com/photo-1549144511-f099e773c147?w=900&q=80",
   ],
   europa: [
     "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200&q=85",
     "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=900&q=80",
     "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=900&q=80",
+    "/images/espana/cibeles.jpg",
   ],
   caribe: [
     "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=85",
     "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80",
-    "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=900&q=80",
+    "https://images.unsplash.com/photo-1580541631950-7282082b53ce?w=900&q=80",
+    "https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=900&q=80",
   ],
   usa: [
     "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=1200&q=85",
     "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=900&q=80",
     "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=900&q=80",
+    "https://images.unsplash.com/photo-1518638150340-f706e86654de?w=900&q=80",
   ],
   sudamerica: [
     "https://images.unsplash.com/photo-1583531352515-8884af319dc1?w=1200&q=85",
     "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=900&q=80",
     "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=900&q=80",
+    "/images/paquetes/panama-medellin/medellin-skyline.png",
   ],
   peru: [
-    "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=85",
+    "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=1200&q=85",
+    "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=900&q=80",
     "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=900&q=80",
     "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=900&q=80",
   ],
   exoticos: [
-    "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=85",
+    "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?w=1200&q=85",
+    "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=900&q=80",
     "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=900&q=80",
-    "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=900&q=80",
+    "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=900&q=80",
   ],
   vuelos: [
     "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=85",
     "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=900&q=80",
-    "https://images.unsplash.com/photo-1540339832862-474599807836?w=900&q=80",
+    "/images/espana/barajas.jpg",
+    "/images/paquetes/panama-medellin/hero-panama.jpg",
   ],
 };
 
-function obtenerFotosPorTexto(texto: string): [string, string, string] {
+function obtenerFotosPorTexto(texto: string): [string, string, string, string] {
   const t = texto.toLowerCase();
   if (t.match(/madrid|barcelona|españa|espana|valencia|sevilla|malaga|bilbao|zaragoza|alicante|mallorca|tenerife|vigo|coruña|galicia|granada/)) {
     return FOTOS_POR_DESTINO.espana;
@@ -295,7 +305,7 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
       precioDesdeUSD: precio,
       etiquetaPrecio: "Paquete con Carpeta Completa Desde",
       imagenHero: fotos[0],
-      galeria: fotos,
+      galeria: [fotos[1], fotos[2], fotos[3]],
       metaTitle: `Primer Viaje a ${ciudad}, ${pais} Desde $${precio} USD (Carpeta Completa) | Cityland Travel`,
       metaDescription: `Viaja por primera vez de Lima a ${ciudad} (${pais}) con todo en regla Desde $${precio} USD (impuestos incluidos). Incluye boleto aéreo, reserva de hotel verificada, Seguro Schengen 30.000€ y asesoría paso a paso en Lima (RUC 20614914239).`,
       keywords: [
@@ -345,7 +355,7 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
       precioDesdeUSD: precio,
       etiquetaPrecio: "Vuelo con Equipaje Completo Desde",
       imagenHero: fotos[0],
-      galeria: fotos,
+      galeria: [fotos[1], fotos[2], fotos[3]],
       metaTitle: `Vuelos ${rutaNombre} con 2 Maletas de 23 kg Desde $${precio} USD | Cityland Travel`,
       metaDescription: `Compra tu pasaje aéreo de ${rutaNombre} con 2 maletas de 23 kg en bodega + equipaje de mano 10 kg Desde $${precio} USD (impuestos incluidos). Emitimos en ${aerolineas} con código PNR inmediato.`,
       keywords: [
@@ -394,7 +404,7 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
       precioDesdeUSD: precio,
       etiquetaPrecio: "Tarifa Aérea con Impuestos Desde",
       imagenHero: fotos[0],
-      galeria: fotos,
+      galeria: [fotos[1], fotos[2], fotos[3]],
       metaTitle: `Vuelos ${aerolinea} ${rutaNombre} Desde $${precio} USD (Impuestos Incluidos) | Cityland Travel`,
       metaDescription: `Reserva vuelos en ${aerolinea} para la ruta ${rutaNombre} Desde $${precio} USD con impuestos incluidos. Conoce la franquicia de equipaje, horarios y tarifas con maleta de 23 kg en Cityland Travel (RUC 20614914239).`,
       keywords: [
@@ -443,7 +453,7 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
       precioDesdeUSD: precio,
       etiquetaPrecio: "Tarifa Referencial Desde",
       imagenHero: fotos[0],
-      galeria: fotos,
+      galeria: [fotos[1], fotos[2], fotos[3]],
       metaTitle: `${titulo} Desde $${precio} USD | Cityland Travel Perú`,
       metaDescription: `${desc} Cotiza Desde $${precio} USD con impuestos incluidos en Cityland Travel E.I.R.L. (RUC 20614914239), oficina en Los Olivos, Lima.`,
       keywords: [
@@ -503,7 +513,7 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
       precioDesdeUSD: precio,
       etiquetaPrecio: "Vuelos y Paquetes con Asesoría Desde",
       imagenHero: fotos[0],
-      galeria: fotos,
+      galeria: [fotos[1], fotos[2], fotos[3]],
       metaTitle: `${tituloFinal} | Cityland Travel`,
       metaDescription: `Conoce los requisitos vigentes para ${pais} (${ciudadesRef}): documentos, pasaporte, seguro y solvencia. Cotiza tu vuelo o paquete Desde $${precio} USD con asesoría incluida en Cityland Travel.`,
       keywords: [

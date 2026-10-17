@@ -123,7 +123,7 @@ export default function DirectorioMaestroPage() {
         <section className="relative overflow-hidden bg-[#0a1628] text-white pt-12 pb-16 sm:pt-16 sm:pb-20">
           <div className="absolute inset-0 z-0">
             <Image
-              src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1400&q=80"
+              src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=1400&q=80"
               alt="Catálogo de Destinos Cityland Travel"
               fill
               priority

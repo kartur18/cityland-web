@@ -66,6 +66,10 @@ export function waLink(mensaje: string, categoria: "europa" | "caribe" | "genera
   return `https://wa.me/${num}?text=${encodeURIComponent(mensaje)}`;
 }
 
+export function armarLinkWhatsApp(mensaje: string): string {
+  return waLink(mensaje);
+}
+
 export const WA_LINK = buildWaUrl({
   categoria: "general",
   mensajePersonalizado: "¡Hola Cityland Travel! Vi su web oficial y deseo cotizar paquetes y vuelos con un asesor.",
@@ -595,7 +599,7 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     precioRegularUSD: 940,
     tag: "MAR DE 7 COLORES · SOLO DNI",
     tagColor: "hot",
-    img: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&q=85",
+    img: "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=1200&q=85",
     alt: "Paquetes a San Andrés Islas desde Lima Todo Incluido",
     tituloComercial: "San Andrés: El Mar de los 7 Colores",
     resaltado: "Vuelos + Hotel Todo Incluido + Johnny Cay y Acuario",
@@ -958,7 +962,7 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     precioRegularUSD: 820,
     tag: "MARAVILLA NATURAL · SOLO DNI",
     tagColor: "promo",
-    img: "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=1200&q=85",
+    img: "https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?w=1200&q=85",
     alt: "Paquete a Cataratas del Iguazú desde Lima - Lado Brasileño y Argentino",
     tituloComercial: "Cataratas del Iguazú: Lado Brasileño & Argentino",
     resaltado: "Vuelos Directos + Hotel con Piscina + Garganta del Diablo & Hito Tres Fronteras",
@@ -1029,6 +1033,99 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
   },
 ];
 
+const GALERIAS_AUTENTICAS_POR_SLUG: Record<string, [string, string, string]> = {
+  madrid: [
+    "/images/espana/palacio-real.jpg",
+    "/images/espana/puerta-de-alcala.jpg",
+    "/images/espana/plaza-mayor.jpg",
+  ],
+  "europa-clasica": [
+    "/images/espana/gran-via-metropolis.jpg",
+    "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=900&q=80",
+    "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=900&q=80",
+  ],
+  turquia: [
+    "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=900&q=80",
+    "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=900&q=80",
+    "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=900&q=80",
+  ],
+  "dubai-emiratos": [
+    "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=900&q=80",
+    "https://images.unsplash.com/photo-1546412414-e1885259563a?w=900&q=80",
+    "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=900&q=80",
+  ],
+  "punta-cana": [
+    "https://images.unsplash.com/photo-1580541631950-7282082b53ce?w=900&q=80",
+    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80",
+    "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=900&q=80",
+  ],
+  cancun: [
+    "https://images.unsplash.com/photo-1518638150340-f706e86654de?w=900&q=80",
+    "https://images.unsplash.com/photo-1568402102990-bc541580b59f?w=900&q=80",
+    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80",
+  ],
+  cartagena: [
+    "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=900&q=80",
+    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80",
+    "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=900&q=80",
+  ],
+  medellin: [
+    "/images/paquetes/panama-medellin/chiva-medellin.png",
+    "https://images.unsplash.com/photo-1583531352515-8884af319dc1?w=900&q=80",
+    "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=900&q=80",
+  ],
+  "cusco-magico": [
+    "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=900&q=80",
+    "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=900&q=80",
+    "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=900&q=80",
+  ],
+  panama: [
+    "/images/paquetes/panama-medellin/canal-panama.png",
+    "/images/paquetes/panama-medellin/casco-antiguo.png",
+    "/images/paquetes/panama-medellin/hero-panama.jpg",
+  ],
+};
+
+function obtenerGaleriaSinDuplicarHero(p: PaqueteTuristico): string[] {
+  const especifica = GALERIAS_AUTENTICAS_POR_SLUG[p.slug];
+  if (especifica) {
+    return especifica.filter((u) => u !== p.img);
+  }
+  if (p.pais === "Perú") {
+    return [
+      "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=900&q=80",
+      "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=900&q=80",
+      "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=900&q=80",
+    ].filter((u) => u !== p.img);
+  }
+  if (p.categoria === "sudamerica") {
+    return [
+      "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=900&q=80",
+      "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=900&q=80",
+      "https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?w=900&q=80",
+    ].filter((u) => u !== p.img);
+  }
+  if (p.categoria === "norteamerica") {
+    return [
+      "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=900&q=80",
+      "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=900&q=80",
+      "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=900&q=80",
+    ].filter((u) => u !== p.img);
+  }
+  if (p.categoria === "europa" || p.categoria === "exoticos") {
+    return [
+      "/images/espana/palacio-real.jpg",
+      "/images/espana/puerta-de-alcala.jpg",
+      "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=900&q=80",
+    ].filter((u) => u !== p.img);
+  }
+  return [
+    "https://images.unsplash.com/photo-1580541631950-7282082b53ce?w=900&q=80",
+    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80",
+    "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=900&q=80",
+  ].filter((u) => u !== p.img);
+}
+
 // Compatibilidad con componentes existentes
 export const DESTINOS_EUROPA: Destino[] = PAQUETES_COMPLETOS
   .filter((p) => p.categoria === "europa" || p.categoria === "exoticos")
@@ -1048,11 +1145,7 @@ export const DESTINOS_EUROPA: Destino[] = PAQUETES_COMPLETOS
     turiDesc: `${p.duracion} + Hoteles + Vuelos + Traslados + Asistencia`,
     regularPrice: p.precioRegularUSD,
     cuotas: 6,
-    gallery: [
-      p.img,
-      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=900&q=80",
-      "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=900&q=80",
-    ],
+    gallery: obtenerGaleriaSinDuplicarHero(p),
     descripcion: p.descripcion,
     itinerario: p.itinerario,
     temporada: "todo-el-ano",
@@ -1082,11 +1175,7 @@ export const DESTINOS_CARIBE: Destino[] = PAQUETES_COMPLETOS
     turiDesc: `${p.duracion} + ${p.resaltado}`,
     regularPrice: p.precioRegularUSD,
     cuotas: 6,
-    gallery: [
-      p.img,
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80",
-      "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=900&q=80",
-    ],
+    gallery: obtenerGaleriaSinDuplicarHero(p),
     descripcion: p.descripcion,
     itinerario: p.itinerario,
     temporada: "todo-el-ano",
@@ -1307,7 +1396,7 @@ export const BLOG_POSTS: BlogPost[] = [
     catColor: "bg-red-600",
     fecha: "16 Oct 2026",
     lectura: "5 min",
-    imagen: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=80",
+    imagen: "/images/espana/plaza-mayor.jpg",
     autor: "Equipo Cityland Travel",
     contenido: `<h2>¿Para qué sirve la Carta de Invitación para viajar a España?</h2>
 <p>La Carta de Invitación es el documento oficial que reemplaza a la reserva de hotel cuando un ciudadano peruano viaja a España para alojarse en la vivienda de un familiar o amigo (ciudadano español o residente legal en España).</p>
@@ -1326,7 +1415,7 @@ export const BLOG_POSTS: BlogPost[] = [
     catColor: "bg-amber-500",
     fecha: "16 Oct 2026",
     lectura: "5 min",
-    imagen: "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+    imagen: "https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=800&q=80",
     autor: "Equipo Cityland Travel",
     contenido: `<h2>Guía de temporadas para viajar a Punta Cana y Cancún</h2>
 <p>Tanto Punta Cana (República Dominicana) como Cancún y la Riviera Maya (México) cuentan con clima cálido tropical durante todo el año, con temperaturas entre 26 °C y 31 °C.</p>
@@ -1343,7 +1432,7 @@ export const BLOG_POSTS: BlogPost[] = [
     catColor: "bg-blue-700",
     fecha: "16 Oct 2026",
     lectura: "6 min",
-    imagen: "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=800&q=80",
+    imagen: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&q=80",
     autor: "Equipo Cityland Travel",
     contenido: `<h2>Pasos para solicitar tu Visa a Estados Unidos desde Perú</h2>
 <p>Para viajar a Miami, Orlando, Nueva York o incluso hacer escala en aeropuertos estadounidenses, los ciudadanos peruanos requieren contar con una Visa B1/B2 vigente.</p>
@@ -1362,7 +1451,7 @@ export const BLOG_POSTS: BlogPost[] = [
     catColor: "bg-red-500",
     fecha: "16 Oct 2026",
     lectura: "4 min",
-    imagen: "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=800&q=80",
+    imagen: "/images/espana/retiro.jpg",
     autor: "Equipo Cityland Travel",
     contenido: `<h2>¿Cuál es el monto de la bolsa de viaje para entrar a España?</h2>
 <p>Al ingresar como turista al Espacio Schengen por España, las autoridades fronterizas pueden solicitar que demuestres solvencia económica suficiente para cubrir los días que permanecerás en el país.</p>

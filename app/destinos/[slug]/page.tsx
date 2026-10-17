@@ -1,114 +1,111 @@
+import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import {
   DESTINOS_EUROPA,
   DESTINOS_CARIBE,
   cotLink,
-  type Destino,
+  waLink,
+  EMPRESA_RUC,
+  EMPRESA_DIRECCION,
+  EMPRESA_HORARIO,
 } from "@/components/constantes";
 import { DESTINOS_MASIVOS } from "@/lib/catalogo-destinos-masivo";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import AnimateOnScroll from "@/components/AnimateOnScroll";
-import DestinoGallery from "@/components/DestinoGallery";
-import PriceDisplay from "@/components/PriceDisplay";
-import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 import FlagIcon from "@/components/icons/FlagIcon";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 const ALL_DESTINOS = [...DESTINOS_EUROPA, ...DESTINOS_CARIBE, ...DESTINOS_MASIVOS];
 
-function findDestino(slug: string): Destino | undefined {
-  return ALL_DESTINOS.find((d) => d.slug === slug);
-}
-
-function getRelated(current: Destino): Destino[] {
-  const sameTipo = ALL_DESTINOS.filter(
-    (d) => d.slug !== current.slug && d.tipo === current.tipo
-  );
-  const others = ALL_DESTINOS.filter(
-    (d) => d.slug !== current.slug && d.tipo !== current.tipo
-  );
-  return [...sameTipo, ...others].slice(0, 3);
-}
-
-/* ── Static params ── */
 export function generateStaticParams() {
   return ALL_DESTINOS.map((d) => ({ slug: d.slug }));
 }
 
-/* ── SEO metadata ── */
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const dest = findDestino(slug);
+  const dest = ALL_DESTINOS.find((d) => d.slug === slug);
   if (!dest) return { title: "Destino no encontrado" };
 
-  const price = dest.migratorio ?? dest.turistico;
+  const precioDesde = dest.migratorio ?? dest.turistico;
+  const title = `Paquete a ${dest.ciudad} (${dest.pais}) Desde $${precioDesde.toLocaleString("en-US")} USD — Todo Organizado desde Lima | Cityland Travel`;
+  const description = `${dest.descripcion} Paquetes a ${dest.ciudad} (${dest.duracion || "5 Días / 4 Noches"}) saliendo desde Lima Desde $${precioDesde.toLocaleString("en-US")} USD. Separa hoy con el 50% en Cityland Travel (RUC ${EMPRESA_RUC}).`;
   const canonicalUrl = `https://citylandtravel.com/destinos/${dest.slug}`;
+
   return {
-    title: `Paquete a ${dest.ciudad}, ${dest.pais} desde $${price} USD (Salidas desde Lima) | Cityland Travel`,
-    description: `${dest.descripcion} Vuelos confirmados desde Lima, hotel, seguro y asesoría personalizada con Cityland Travel (RUC 20614914239). Separa hoy con el 50% de inicial.`,
+    title,
+    description,
     keywords: [
       `paquetes a ${dest.ciudad.toLowerCase()} desde lima`,
-      `viajar a ${dest.ciudad.toLowerCase()} desde peru`,
-      `paquete turistico ${dest.ciudad.toLowerCase()} ${dest.pais.toLowerCase()}`,
-      `vuelos lima ${dest.ciudad.toLowerCase()}`,
-      "agencia de viajes en lima",
+      `viajes a ${dest.ciudad.toLowerCase()} todo incluido`,
+      `vuelos y hotel a ${dest.ciudad.toLowerCase()} precio en dolares`,
+      `tours a ${dest.ciudad.toLowerCase()} ${dest.pais.toLowerCase()}`,
+      `agencia de viajes ${dest.ciudad.toLowerCase()} peru`,
       "cityland travel",
     ],
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
-      type: "website",
+      title,
+      description,
       url: canonicalUrl,
-      title: `Viaja a ${dest.ciudad}, ${dest.pais} desde $${price} USD — Cityland Travel`,
-      description: `${dest.descripcion} Separa con el 50% de inicial desde Lima.`,
       siteName: "Cityland Travel",
+      images: [
+        {
+          url: dest.img.startsWith("http")
+            ? dest.img
+            : `https://citylandtravel.com${dest.img}`,
+          width: 1200,
+          height: 630,
+          alt: dest.alt,
+        },
+      ],
       locale: "es_PE",
-      images: [{ url: dest.img, width: 1200, height: 630, alt: dest.alt }],
+      type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: `Paquete a ${dest.ciudad} desde $${price} USD | Cityland Travel`,
-      description: `${dest.descripcion} Separa hoy con el 50% de inicial.`,
-      images: [dest.img],
+      title,
+      description,
+      images: [
+        dest.img.startsWith("http")
+          ? dest.img
+          : `https://citylandtravel.com${dest.img}`,
+      ],
     },
   };
 }
 
-/* ── Page ── */
 export default async function DestinoPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const dest = findDestino(slug);
+  const dest = ALL_DESTINOS.find((d) => d.slug === slug);
   if (!dest) notFound();
 
-  const tieneMigratorio = dest.migratorio != null;
-  const precioTuristico = dest.turistico;
-  const precioDesde = dest.migratorio ?? dest.turistico;
-  const related = getRelated(dest);
-  const includes =
-    dest.inclusionesLista && dest.inclusionesLista.length > 0
-      ? dest.inclusionesLista
-      : [
-          "Boleto aéreo ida y vuelta desde Lima (impuestos incluidos)",
-          dest.tipo === "europa" ? "Seguro médico Schengen 30.000€ sin deducible" : "Seguro de asistencia médica internacional",
-          "Alojamiento seleccionado con desayuno o Todo Incluido",
-          "Asistencia 24/7 por WhatsApp durante todo tu viaje",
-          "Asesoría documentaria y migratoria personalizada",
-          "Traslados aeropuerto - hotel - aeropuerto",
-        ];
+  const catWa = dest.tipo === "europa" ? "europa" : "caribe";
+  const precioPrincipal = dest.migratorio ?? dest.turistico;
+  const mitadPrecio = Math.round(precioPrincipal * 0.5);
 
-  const jsonLdDestino = {
+  // Garantizamos que las fotos de galería nunca repitan la foto del Hero
+  const fotosGaleria = (dest.gallery || [])
+    .filter((g, idx, arr) => g && g !== dest.img && arr.indexOf(g) === idx)
+    .slice(0, 3);
+
+  const otrosDestinos = ALL_DESTINOS.filter(
+    (d) => d.slug !== slug && d.img !== dest.img
+  ).slice(0, 3);
+
+  const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
@@ -117,316 +114,600 @@ export default async function DestinoPage({
           {
             "@type": "ListItem",
             position: 1,
-            name: "Inicio — Cityland Travel",
+            name: "Inicio",
             item: "https://citylandtravel.com/",
           },
           {
             "@type": "ListItem",
             position: 2,
-            name: `Paquete a ${dest.ciudad}, ${dest.pais}`,
+            name: `Paquete a ${dest.ciudad}`,
             item: `https://citylandtravel.com/destinos/${dest.slug}`,
           },
         ],
       },
       {
-        "@type": "TouristTrip",
-        name: `Paquete a ${dest.ciudad}, ${dest.pais} desde Lima`,
+        "@type": "Product",
+        name: `Paquete de Viaje a ${dest.ciudad}, ${dest.pais} (${dest.duracion || "5 Días / 4 Noches"})`,
         description: dest.descripcion,
-        image: dest.img,
-        provider: { "@type": "TravelAgency", name: "Cityland Travel" },
+        image: dest.img.startsWith("http")
+          ? dest.img
+          : `https://citylandtravel.com${dest.img}`,
+        brand: { "@type": "Brand", name: "Cityland Travel" },
         offers: {
           "@type": "Offer",
           priceCurrency: "USD",
-          price: String(precioDesde),
+          price: String(precioPrincipal),
           availability: "https://schema.org/InStock",
           url: `https://citylandtravel.com/destinos/${dest.slug}`,
+          seller: {
+            "@type": "TravelAgency",
+            name: "Cityland Travel E.I.R.L.",
+          },
         },
       },
     ],
   };
 
   return (
-    <>
+    <div className="bg-white min-h-screen text-[#0a1628] antialiased">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdDestino) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Navbar />
-      {/* ── Hero ── */}
-      <section className="relative h-[60vh] min-h-[420px] w-full">
-        <Image
-          src={dest.img}
-          alt={dest.alt}
-          fill
-          sizes="100vw"
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-[#0a1628]/55 to-black/30" />
 
-        <div className="absolute inset-0 flex items-end">
-          <div className="max-w-[1100px] mx-auto px-5 pb-12 w-full">
-            <AnimateOnScroll>
-              <div className="flex flex-wrap items-center gap-2 mb-2">
-                <p className="text-white/80 text-sm font-semibold uppercase tracking-widest flex items-center gap-2">
-                  <FlagIcon pais={dest.pais} className="w-5 h-3.5" /> {dest.pais}
-                </p>
+      {/* 1. HERO ESTILO AEROLÍNEA / AGENCIA MODERNA (Sin imágenes gigantes duplicadas) */}
+      <section className="bg-gradient-to-b from-sky-50/70 via-white to-white pt-6 pb-12 sm:pt-10 sm:pb-14 border-b border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          {/* Migas de pan */}
+          <nav
+            aria-label="Ruta de navegación"
+            className="flex items-center gap-2 text-xs font-semibold text-slate-500 mb-5"
+          >
+            <Link href="/" className="hover:text-[#0a1628] transition-colors">
+              Inicio
+            </Link>
+            <span>/</span>
+            <Link
+              href={dest.tipo === "europa" ? "/espana" : "/caribe"}
+              className="hover:text-[#0a1628] transition-colors"
+            >
+              {dest.tipo === "europa" ? "Europa & Exóticos" : "Caribe & América"}
+            </Link>
+            <span>/</span>
+            <span className="text-[#0a1628] font-bold truncate">{dest.ciudad}</span>
+          </nav>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+            {/* Columna Izquierda: Información Comercial Clara */}
+            <div className="lg:col-span-7">
+              <div className="inline-flex flex-wrap items-center gap-2 bg-white border border-slate-200 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-700 shadow-2xs mb-4">
+                <FlagIcon pais={dest.pais} className="w-4 h-3" />
+                <span>{dest.pais}</span>
                 {dest.duracion && (
-                  <span className="bg-white/15 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full">
-                    {dest.duracion}
-                  </span>
+                  <>
+                    <span className="text-slate-300">•</span>
+                    <span className="text-red-600 font-extrabold">{dest.duracion}</span>
+                  </>
+                )}
+                {dest.tag && (
+                  <>
+                    <span className="text-slate-300">•</span>
+                    <span className="text-emerald-700 font-extrabold">{dest.tag}</span>
+                  </>
                 )}
               </div>
-              <h1 className="font-[family-name:var(--font-bebas)] text-white text-[clamp(44px,7vw,76px)] leading-none tracking-wide mb-4">
-                {dest.ciudad}
+
+              <h1 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-6xl lg:text-[62px] text-[#0a1628] tracking-tight leading-[0.96] mb-4">
+                PAQUETE DE VIAJE A{" "}
+                <span className="text-red-600">{dest.ciudad.toUpperCase()}</span>
               </h1>
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="inline-block bg-[#dc2626] text-white font-bold text-lg px-5 py-2 rounded-full">
-                  Paquete Completo Desde ${precioTuristico} USD
-                </span>
-                {tieneMigratorio && (
-                  <span className="inline-block bg-[#0a1628]/90 border border-white/25 text-white font-semibold text-sm px-4 py-2 rounded-full">
-                    Vuelo + Carpeta Migratoria desde ${dest.migratorio} USD
-                  </span>
-                )}
-              </div>
-            </AnimateOnScroll>
-          </div>
-        </div>
-      </section>
 
-      {/* ── Gallery ── */}
-      {dest.gallery.length > 0 && (
-        <section className="max-w-[1100px] mx-auto px-5 py-12">
-          <AnimateOnScroll>
-            <DestinoGallery gallery={dest.gallery} alt={dest.alt} />
-          </AnimateOnScroll>
-        </section>
-      )}
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6 max-w-2xl">
+                {dest.descripcion}
+              </p>
 
-      {/* ── Content grid ── */}
-      <section className="max-w-[1100px] mx-auto px-5 pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-          {/* Left 2/3 */}
-          <div className="lg:col-span-2 space-y-12">
-            {/* Description */}
-            <AnimateOnScroll>
-              <div>
-                <h2 className="font-[family-name:var(--font-bebas)] text-[#0a1628] text-3xl tracking-wide mb-4">
-                  Programa y Experiencia en {dest.ciudad}
-                </h2>
-                <p className="text-gray-600 leading-relaxed text-[15px]">
-                  {dest.descripcion}
-                </p>
-              </div>
-            </AnimateOnScroll>
-
-            {/* Itinerary */}
-            <AnimateOnScroll>
-              <div>
-                <h2 className="font-[family-name:var(--font-bebas)] text-[#0a1628] text-3xl tracking-wide mb-6">
-                  Itinerario sugerido
-                </h2>
-                <ol className="space-y-4">
-                  {dest.itinerario.map((step, i) => (
-                    <li key={i} className="flex items-start gap-4">
-                      <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#0a1628] text-white text-sm font-bold flex items-center justify-center">
-                        {i + 1}
-                      </span>
-                      <div className="pt-1">
-                        <p className="text-gray-700 font-medium text-[15px]">
-                          {step.includes(" – ") ? (
-                            <>
-                              <span className="font-bold text-[#0a1628]">
-                                {step.split(" – ")[0]}
-                              </span>
-                              {" – "}
-                              {step.split(" – ").slice(1).join(" – ")}
-                            </>
-                          ) : (
-                            step
-                          )}
-                        </p>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            </AnimateOnScroll>
-
-            {/* What's included */}
-            <AnimateOnScroll>
-              <div>
-                <h2 className="font-[family-name:var(--font-bebas)] text-[#0a1628] text-3xl tracking-wide mb-6">
-                  Lo que incluye tu paquete
-                </h2>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {includes.map((item, i) => (
-                    <li
-                      key={i}
-                      className="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3"
+              {/* Chips de Inclusión Rápida */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 mb-7">
+                {(
+                  dest.inclusionesLista ?? [
+                    "Boleto aéreo ida y vuelta desde Lima",
+                    `Alojamiento verificado en ${dest.ciudad}`,
+                    "Traslados aeropuerto – hotel – aeropuerto",
+                    dest.tipo === "europa"
+                      ? "Seguro Schengen 30.000€ incluido"
+                      : "Tarjeta de asistencia médica internacional",
+                    "Desayunos o régimen Todo Incluido",
+                    "Soporte 24/7 por WhatsApp",
+                  ]
+                )
+                  .slice(0, 6)
+                  .map((inc) => (
+                    <div
+                      key={inc}
+                      className="flex items-center gap-2 bg-slate-50 border border-slate-200/80 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700"
                     >
-                      <svg
-                        className="w-5 h-5 text-green-500 flex-shrink-0"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2.5}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      <span className="text-sm text-gray-700">{item}</span>
-                    </li>
+                      <span className="text-emerald-600 font-extrabold shrink-0">✓</span>
+                      <span className="truncate">{inc.replace(/^[^\wÁÉÍÓÚáéíóúÑñ]+\s*/, "")}</span>
+                    </div>
                   ))}
-                </ul>
-              </div>
-            </AnimateOnScroll>
-          </div>
-
-          {/* Right sidebar */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-28 bg-white border border-gray-200 rounded-2xl shadow-lg p-6 space-y-6">
-              {/* Primary Tourist Package Pricing */}
-              <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-[#dc2626] mb-3">
-                  {dest.turiLabel ?? "Paquete Turístico Completo"} {dest.duracion ? `· ${dest.duracion}` : ""}
-                </p>
-                <PriceDisplay
-                  price={precioTuristico}
-                  regularPrice={dest.regularPrice}
-                  cuotas={dest.cuotas}
-                />
-                <p className="text-xs text-gray-500 mt-3 leading-relaxed">
-                  {dest.turiDesc}
-                </p>
               </div>
 
-              {/* Optional Migratory Package Box */}
-              {tieneMigratorio && dest.migratorio && (
-                <div className="bg-slate-50 border border-slate-200 rounded-xl p-4">
-                  <div className="flex items-center justify-between gap-2 mb-1">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#0a1628]">
-                      Opción Vuelo + Carpeta Migratoria
+              {/* Botones Principales */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                <a
+                  href={cotLink(
+                    dest.ciudad,
+                    dest.migratorio ? "Paquete Migratorio / Turístico" : "Paquete Completo",
+                    precioPrincipal,
+                    catWa
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-wa-pulse inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-6 py-3.5 rounded-xl font-bold text-sm shadow-md cursor-pointer"
+                >
+                  <WhatsAppIcon size={18} />
+                  <span>
+                    Cotizar {dest.ciudad} (Desde ${precioPrincipal.toLocaleString("en-US")} USD)
+                  </span>
+                </a>
+                <a
+                  href="#itinerario-detallado"
+                  className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-[#0a1628] border border-slate-300 px-5 py-3.5 rounded-xl font-bold text-sm transition-colors"
+                >
+                  <span>Ver Itinerario y Tarifas</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Columna Derecha: Tarjeta Visual del Destino + Precio Oficial */}
+            <div className="lg:col-span-5">
+              <div className="bg-white rounded-3xl border border-slate-200/90 shadow-xl overflow-hidden">
+                <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-100">
+                  <Image
+                    src={dest.img}
+                    alt={dest.alt}
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 500px"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
+
+                  <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
+                    <span className="inline-flex items-center gap-1.5 bg-white/95 backdrop-blur-md text-[#0a1628] text-xs font-bold px-3 py-1 rounded-full shadow-xs">
+                      <FlagIcon pais={dest.pais} className="w-3.5 h-2.5" />
+                      {dest.pais}
                     </span>
-                    <span className="text-sm font-black text-emerald-700">
-                      Desde ${dest.migratorio} USD
+                    <span className="bg-red-600 text-white text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full shadow-xs">
+                      Separa con 50%
                     </span>
                   </div>
-                  <p className="text-xs text-gray-600 leading-relaxed">
-                    {dest.migraDesc}
-                  </p>
+
+                  <div className="absolute bottom-3.5 left-4 right-4 z-10 text-white">
+                    <span className="text-[11px] font-bold text-amber-300 uppercase tracking-wider block">
+                      {dest.duracion || "Salidas Confirmadas desde Lima"}
+                    </span>
+                    <h2 className="text-xl font-extrabold leading-tight">
+                      {dest.ciudad} — Vuelo + Hotel + Asistencia
+                    </h2>
+                  </div>
                 </div>
-              )}
 
-              {/* CTA */}
-              <a
-                href={cotLink(
-                  dest.ciudad,
-                  tieneMigratorio ? "paquete turístico o carpeta migratoria" : "turístico",
-                  precioDesde
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#1fb855] text-white font-bold text-sm py-4 rounded-xl transition-colors"
-              >
-                <WhatsAppIcon size={20} />
-                Cotizar por WhatsApp
-              </a>
+                <div className="p-5 flex items-center justify-between gap-4 bg-white">
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1">
+                      Tarifa por pasajero (Impuestos incluidos)
+                    </span>
+                    <div className="flex items-baseline gap-1.5">
+                      <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
+                        Desde
+                      </span>
+                      <span className="font-[family-name:var(--font-bebas)] text-4xl text-[#0a1628] leading-none">
+                        ${precioPrincipal.toLocaleString("en-US")}
+                      </span>
+                      <span className="text-xs font-bold text-slate-500">USD</span>
+                      {dest.regularPrice && (
+                        <span className="text-xs text-slate-400 line-through ml-1">
+                          ${dest.regularPrice.toLocaleString("en-US")}
+                        </span>
+                      )}
+                    </div>
+                    <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
+                      Separa hoy con ${mitadPrecio.toLocaleString("en-US")} USD (50% inicial)
+                    </span>
+                  </div>
 
-              {/* Trust badges */}
-              <div className="space-y-3 border-t border-gray-100 pt-4">
-                {[
-                  { icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z", label: "Seguro de viaje incluido" },
-                  { icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z", label: "Atención inmediata por WhatsApp" },
-                  { icon: "M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z", label: "Separa con 50% y paga en cuotas" },
-                  { icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z", label: "Sede en Los Olivos · RUC 20614914239" },
-                ].map((badge, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <svg
-                      className="w-4 h-4 text-[#0a1628] flex-shrink-0"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d={badge.icon}
-                      />
-                    </svg>
-                    <span className="text-xs text-gray-600">{badge.label}</span>
+                  <a
+                    href={cotLink(dest.ciudad, "Paquete", precioPrincipal, catWa)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0"
+                  >
+                    <WhatsAppIcon size={16} />
+                    <span>Reservar</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 2. MOSAICO COMPACTO DE 3 FOTOS DISTINTAS AL HERO (Cero duplicidad) */}
+          {fotosGaleria.length > 0 && (
+            <div className="mt-8 pt-8 border-t border-slate-200/70">
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs font-extrabold uppercase tracking-wider text-slate-500">
+                  Postales y Experiencias en {dest.ciudad}
+                </span>
+                <span className="text-xs text-slate-400 font-medium">
+                  Salidas verificadas desde Lima (LIM)
+                </span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {fotosGaleria.map((imgUrl, i) => (
+                  <div
+                    key={imgUrl}
+                    className="relative h-44 sm:h-48 rounded-2xl overflow-hidden border border-slate-200/80 shadow-xs group bg-slate-100"
+                  >
+                    <Image
+                      src={imgUrl}
+                      alt={`${dest.ciudad} — Vista destacada ${i + 1}`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                    <span className="absolute bottom-2.5 left-3 text-[11px] font-bold text-white drop-shadow-xs">
+                      {dest.ciudad} · Experiencia #{i + 1}
+                    </span>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
 
-      {/* ── Related destinations ── */}
-      <section className="bg-gray-50 py-16">
-        <div className="max-w-[1100px] mx-auto px-5">
-          <AnimateOnScroll>
-            <h2 className="font-[family-name:var(--font-bebas)] text-[#0a1628] text-4xl tracking-wide text-center mb-10">
-              Otros destinos que te pueden interesar
-            </h2>
-          </AnimateOnScroll>
+      {/* 3. MODALIDADES, ITINERARIO DETALLADO Y COTIZADOR LATERAL */}
+      <section id="itinerario-detallado" className="py-12 sm:py-16 bg-slate-50/70">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Columna Principal (8 cols) */}
+          <div className="lg:col-span-8 space-y-8">
+            {/* Tarjetas de Modalidades de Precio */}
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs">
+              <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
+                Opciones de Reserva en Dólares
+              </span>
+              <h2 className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] tracking-wide mb-5">
+                MODALIDADES DISPONIBLES PARA {dest.ciudad.toUpperCase()}
+              </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {related.map((r, i) => {
-              const rPrice = r.turistico;
-              return (
-                <AnimateOnScroll key={r.slug} delay={i * 100}>
-                  <Link
-                    href={`/destinos/${r.slug}`}
-                    className="group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
-                  >
-                    <div className="relative aspect-[4/3]">
-                      <Image
-                        src={r.img}
-                        alt={r.alt}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      {r.tag && (
-                        <span
-                          className={`absolute top-3 left-3 text-[10px] font-bold uppercase px-2.5 py-1 rounded-full ${
-                            r.tagColor === "hot"
-                              ? "bg-[#0a1628] text-white"
-                              : r.tagColor === "promo"
-                              ? "bg-amber-500 text-white"
-                              : "bg-[#dc2626] text-white"
-                          }`}
-                        >
-                          {r.tag}
-                        </span>
-                      )}
-                    </div>
-                    <div className="p-5">
-                      <p className="text-xs text-gray-400 font-medium mb-1 flex items-center gap-1.5">
-                        <FlagIcon pais={r.pais} className="w-4 h-3" /> {r.pais}
-                      </p>
-                      <h3 className="font-[family-name:var(--font-bebas)] text-[#0a1628] text-2xl tracking-wide mb-2">
-                        {r.ciudad}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {dest.migratorio && (
+                  <div className="rounded-2xl border-2 border-blue-600/20 bg-blue-50/40 p-5 flex flex-col justify-between">
+                    <div>
+                      <span className="inline-block bg-blue-600 text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full mb-2.5">
+                        Especial Carpeta Migratoria
+                      </span>
+                      <h3 className="text-base font-extrabold text-[#0a1628] mb-1">
+                        Vuelo + Carpeta Migratoria a {dest.ciudad}
                       </h3>
-                      <p className="text-[#dc2626] font-bold text-lg">
-                        Desde ${rPrice} USD
+                      <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                        {dest.migraDesc ||
+                          "Boleto aéreo confirmado + Seguro Schengen 30.000€ + Reserva de alojamiento verificada y asesoría de ingreso."}
                       </p>
                     </div>
-                  </Link>
-                </AnimateOnScroll>
+                    <div className="pt-3 border-t border-blue-200/60 flex items-center justify-between gap-2">
+                      <div>
+                        <span className="text-[10px] font-bold uppercase text-slate-500 block">
+                          Desde
+                        </span>
+                        <span className="font-[family-name:var(--font-bebas)] text-3xl text-[#0a1628] leading-none">
+                          ${dest.migratorio.toLocaleString("en-US")}{" "}
+                          <span className="text-xs font-sans font-bold text-slate-500">USD</span>
+                        </span>
+                      </div>
+                      <a
+                        href={cotLink(dest.ciudad, "Paquete Migratorio", dest.migratorio, catWa)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 bg-[#0a1628] hover:bg-slate-800 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition-colors"
+                      >
+                        <WhatsAppIcon size={14} />
+                        <span>Cotizar</span>
+                      </a>
+                    </div>
+                  </div>
+                )}
+
+                <div className="rounded-2xl border-2 border-emerald-600/25 bg-emerald-50/40 p-5 flex flex-col justify-between">
+                  <div>
+                    <span className="inline-block bg-emerald-600 text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full mb-2.5">
+                      {dest.turiLabel || "Paquete Turístico Completo"}
+                    </span>
+                    <h3 className="text-base font-extrabold text-[#0a1628] mb-1">
+                      Programa Completo en {dest.ciudad} ({dest.duracion || "5 Días / 4 Noches"})
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                      {dest.turiDesc}
+                    </p>
+                  </div>
+                  <div className="pt-3 border-t border-emerald-200/60 flex items-center justify-between gap-2">
+                    <div>
+                      <span className="text-[10px] font-bold uppercase text-slate-500 block">
+                        Desde
+                      </span>
+                      <span className="font-[family-name:var(--font-bebas)] text-3xl text-[#0a1628] leading-none">
+                        ${dest.turistico.toLocaleString("en-US")}{" "}
+                        <span className="text-xs font-sans font-bold text-slate-500">USD</span>
+                      </span>
+                    </div>
+                    <a
+                      href={cotLink(dest.ciudad, "Paquete Turístico", dest.turistico, catWa)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 py-2.5 rounded-xl text-xs font-bold transition-colors"
+                    >
+                      <WhatsAppIcon size={14} />
+                      <span>Cotizar</span>
+                    </a>
+                  </div>
+                </div>
+
+                {!dest.migratorio && (
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 flex flex-col justify-between">
+                    <div>
+                      <span className="inline-block bg-amber-500 text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full mb-2.5">
+                        Facilidad de Pago
+                      </span>
+                      <h3 className="text-base font-extrabold text-[#0a1628] mb-1">
+                        Reserva Flexible con el 50% de Inicial
+                      </h3>
+                      <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                        Congela tu tarifa aérea y hotelera abonando el 50% hoy y completa el saldo en cuotas programadas antes de tu viaje.
+                      </p>
+                    </div>
+                    <div className="pt-3 border-t border-slate-200 flex items-center justify-between gap-2">
+                      <div>
+                        <span className="text-[10px] font-bold uppercase text-slate-500 block">
+                          Inicial 50%
+                        </span>
+                        <span className="font-[family-name:var(--font-bebas)] text-3xl text-emerald-700 leading-none">
+                          ${Math.round(dest.turistico * 0.5).toLocaleString("en-US")}{" "}
+                          <span className="text-xs font-sans font-bold text-slate-500">USD</span>
+                        </span>
+                      </div>
+                      <a
+                        href={cotLink(dest.ciudad, "Reserva con 50%", dest.turistico, catWa)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 bg-[#0a1628] hover:bg-slate-800 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition-colors"
+                      >
+                        <WhatsAppIcon size={14} />
+                        <span>Separar Cupo</span>
+                      </a>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Itinerario Día por Día */}
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs">
+              <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
+                Ruta Organizada Paso a Paso
+              </span>
+              <h2 className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] tracking-wide mb-6">
+                ITINERARIO EN {dest.ciudad.toUpperCase()} ({dest.duracion || "PROGRAMA OFICIAL"})
+              </h2>
+
+              <div className="space-y-4">
+                {dest.itinerario.map((paso, index) => {
+                  const partes = paso.split(/[:–-]/);
+                  const tieneEtiqueta = partes.length > 1 && partes[0].length < 22;
+                  const tituloPaso = tieneEtiqueta ? partes[0].trim() : `Etapa ${index + 1}`;
+                  const detallePaso = tieneEtiqueta
+                    ? partes.slice(1).join(":").trim()
+                    : paso;
+
+                  return (
+                    <div
+                      key={index}
+                      className="flex gap-4 items-start bg-slate-50/80 rounded-2xl p-4 sm:p-5 border border-slate-200/70"
+                    >
+                      <div className="w-10 h-10 rounded-xl bg-[#0a1628] text-white font-extrabold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                        0{index + 1}
+                      </div>
+                      <div>
+                        <span className="text-xs font-extrabold uppercase tracking-wider text-red-600 block mb-1">
+                          {tituloPaso}
+                        </span>
+                        <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
+                          {detallePaso}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Respaldo Legal y Garantías */}
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs">
+              <h2 className="font-[family-name:var(--font-bebas)] text-2xl sm:text-3xl text-[#0a1628] tracking-wide mb-4">
+                ¿POR QUÉ RESERVAR TU VIAJE A {dest.ciudad.toUpperCase()} CON CITYLAND TRAVEL?
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/60">
+                  <div className="text-sm font-extrabold text-[#0a1628] mb-1">
+                    Código PNR Verificable
+                  </div>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Entregamos tu reserva aérea oficial verificable directamente en la web de la aerolínea.
+                  </p>
+                </div>
+                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/60">
+                  <div className="text-sm font-extrabold text-[#0a1628] mb-1">
+                    Agencia Formal en Lima
+                  </div>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Cityland Travel E.I.R.L. (RUC {EMPRESA_RUC}) con oficina física en {EMPRESA_DIRECCION}.
+                  </p>
+                </div>
+                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/60">
+                  <div className="text-sm font-extrabold text-[#0a1628] mb-1">
+                    Asistencia 24/7 en Ruta
+                  </div>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Acompañamiento antes, durante y después de tu vuelo con check-in y tarjetas de embarque.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Columna Lateral Sticky (4 cols) */}
+          <aside className="lg:col-span-4 lg:sticky lg:top-24 space-y-5">
+            <div className="bg-[#0a1628] text-white rounded-3xl p-6 sm:p-7 shadow-xl border border-slate-800">
+              <span className="inline-block bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-[11px] font-bold px-3 py-1 rounded-full mb-4">
+                ● Cupos Aéreos Disponibles
+              </span>
+
+              <h3 className="font-[family-name:var(--font-bebas)] text-3xl tracking-wide leading-none mb-2">
+                COTIZA TU VIAJE A {dest.ciudad.toUpperCase()}
+              </h3>
+              <p className="text-xs text-slate-300 leading-relaxed mb-5">
+                Un especialista te enviará por WhatsApp la cotización exacta según tu fecha de salida y número de pasajeros.
+              </p>
+
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-4 mb-5 space-y-2.5 text-xs">
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-300">Tarifa desde:</span>
+                  <span className="text-lg font-extrabold text-white">
+                    ${precioPrincipal.toLocaleString("en-US")} USD
+                  </span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-300">Separa hoy con (50%):</span>
+                  <span className="text-sm font-bold text-amber-300">
+                    ${mitadPrecio.toLocaleString("en-US")} USD
+                  </span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-300">Duración base:</span>
+                  <span className="font-semibold text-white">
+                    {dest.duracion || "5 Días / 4 Noches"}
+                  </span>
+                </div>
+              </div>
+
+              <a
+                href={cotLink(dest.ciudad, "Paquete Completo", precioPrincipal, catWa)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-wa-pulse w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white py-3.5 px-5 rounded-xl font-bold text-sm shadow-lg cursor-pointer mb-3"
+              >
+                <WhatsAppIcon size={18} />
+                <span>Hablar con un Asesor Ahora</span>
+              </a>
+
+              <a
+                href={waLink(
+                  `¡Hola Cityland Travel! Deseo agendar una cita en su oficina de Los Olivos para cotizar mi viaje a ${dest.ciudad}.`,
+                  catWa
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 text-white py-3 px-4 rounded-xl font-semibold text-xs transition-colors"
+              >
+                <span>Agendar Visita en Oficina Los Olivos</span>
+              </a>
+
+              <div className="mt-5 pt-4 border-t border-white/10 text-[11px] text-slate-400 space-y-1">
+                <p className="text-slate-200 font-semibold">
+                  📍 {EMPRESA_DIRECCION}
+                </p>
+                <p>🕒 {EMPRESA_HORARIO}</p>
+                <p>🏢 RUC {EMPRESA_RUC} · Boleta y Factura Electrónica</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      {/* 4. OTROS DESTINOS RECOMENDADOS */}
+      <section className="py-14 bg-white border-t border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex items-end justify-between mb-8">
+            <div>
+              <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
+                Sigue Explorando
+              </span>
+              <h2 className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] tracking-wide leading-none">
+                OTROS PAQUETES RECOMENDADOS DESDE LIMA
+              </h2>
+            </div>
+            <Link
+              href="/caribe"
+              className="text-xs font-extrabold text-red-600 hover:underline hidden sm:inline"
+            >
+              Ver catálogo completo →
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {otrosDestinos.map((d) => {
+              const p = d.migratorio ?? d.turistico;
+              return (
+                <Link
+                  key={d.slug}
+                  href={`/destinos/${d.slug}`}
+                  className="group bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between"
+                >
+                  <div className="relative h-48 w-full overflow-hidden bg-slate-100">
+                    <Image
+                      src={d.img}
+                      alt={d.alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
+                    <div className="absolute top-3 left-3">
+                      <span className="inline-flex items-center gap-1.5 bg-white/95 text-[#0a1628] text-[11px] font-bold px-2.5 py-1 rounded-full">
+                        <FlagIcon pais={d.pais} className="w-3.5 h-2.5" />
+                        {d.pais}
+                      </span>
+                    </div>
+                    <div className="absolute bottom-3 left-3.5 right-3.5 text-white">
+                      <span className="text-[10px] font-bold text-amber-300 uppercase block">
+                        {d.duracion || "5 Días / 4 Noches"}
+                      </span>
+                      <h3 className="text-lg font-extrabold leading-tight">{d.ciudad}</h3>
+                    </div>
+                  </div>
+                  <div className="p-4 flex items-center justify-between">
+                    <div>
+                      <span className="text-[10px] font-bold uppercase text-slate-400 block">
+                        Desde
+                      </span>
+                      <span className="font-[family-name:var(--font-bebas)] text-2xl text-[#0a1628]">
+                        ${p.toLocaleString("en-US")} USD
+                      </span>
+                    </div>
+                    <span className="text-xs font-extrabold text-red-600 group-hover:translate-x-1 transition-transform">
+                      Ver programa →
+                    </span>
+                  </div>
+                </Link>
               );
             })}
           </div>
         </div>
       </section>
+
       <Footer />
-    </>
+      <WhatsAppFloat />
+    </div>
   );
 }

@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import PlaneIcon from "@/components/icons/PlaneIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
@@ -61,75 +63,7 @@ export const PAQUETES_ESPANA = [
 export default function EspanaLandingClient() {
   return (
     <div className="bg-white min-h-screen text-[#0a1628] antialiased">
-      {/* 1. Header Corporativo Estilo Aerolínea (Sin desborde horizontal) */}
-      <header className="sticky top-0 z-40">
-        <div className="bg-[#0a1628] text-slate-300 text-[11px] py-1.5 border-b border-slate-800/80 hidden md:block">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
-            <span className="inline-flex items-center gap-1.5 text-white font-semibold">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-              Cityland Travel E.I.R.L. · RUC 20614914239 · Av. Antúnez de Mayolo 814, Los Olivos
-            </span>
-            <div className="flex items-center gap-4">
-              <Link href="/seguros" className="hover:text-white font-semibold transition-colors">
-                Seguro Schengen 30.000€
-              </Link>
-              <Link href="/visas" className="hover:text-white font-semibold transition-colors">
-                Visados España
-              </Link>
-              <Link href="/europa-turquia" className="hover:text-white font-semibold transition-colors">
-                Circuitos Europa 15D
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white/95 backdrop-blur-md border-b border-slate-200/80 py-2.5">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
-            <Link href="/" aria-label="Cityland Travel - Inicio" className="flex items-center shrink-0">
-              <div className="relative h-11 sm:h-13 w-36 sm:w-44 flex items-center">
-                <Image
-                  src="/logo-transparent.png"
-                  alt="Cityland Travel - Agencia de Viajes"
-                  fill
-                  priority
-                  sizes="(max-width: 640px) 144px, 176px"
-                  className="object-contain object-left"
-                />
-              </div>
-            </Link>
-
-            <div className="hidden lg:flex items-center gap-1.5">
-              <a href="#tarifas" className="text-xs font-bold text-slate-700 hover:text-[#0a1628] px-3 py-1.5 rounded-full hover:bg-slate-100">
-                Salidas y Precios
-              </a>
-              <Link href="/caribe" className="text-xs font-bold text-slate-700 hover:text-[#0a1628] px-3 py-1.5 rounded-full hover:bg-slate-100">
-                Caribe & Miami
-              </Link>
-              <Link href="/europa-turquia" className="text-xs font-bold text-slate-700 hover:text-[#0a1628] px-3 py-1.5 rounded-full hover:bg-slate-100">
-                Europa & Turquía
-              </Link>
-              <Link href="/cusco" className="text-xs font-bold text-slate-700 hover:text-[#0a1628] px-3 py-1.5 rounded-full hover:bg-slate-100">
-                Cusco
-              </Link>
-              <Link href="/" className="text-xs font-bold text-slate-700 hover:text-[#0a1628] px-3 py-1.5 rounded-full hover:bg-slate-100">
-                Web Principal
-              </Link>
-            </div>
-
-            <div className="flex items-center gap-3 shrink-0">
-              <a
-                href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Me comunico desde su página de España y deseo cotizar un paquete migratorio.")}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 sm:px-5 py-2.5 rounded-full text-xs font-bold cursor-pointer whitespace-nowrap"
-              >
-                <WhatsAppIcon size={15} />
-                <span>Cotizar por WhatsApp</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Navbar />
 
       {/* 2. Hero Claro, Luminoso y Simétrico */}
       <section className="bg-gradient-to-b from-sky-50/50 via-white to-white pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-slate-200/80">
@@ -419,36 +353,7 @@ export default function EspanaLandingClient() {
         </div>
       </section>
 
-      {/* 5. Footer Corporativo */}
-      <footer className="bg-[#0a1628] text-white py-10 border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="text-xs text-slate-300 text-center sm:text-left space-y-1">
-            <p className="font-bold text-white text-sm">Cityland Travel E.I.R.L. · RUC 20614914239</p>
-            <p>Av. Antúnez de Mayolo N. 814, Los Olivos, Lima · Lun–Sáb 9:00 am – 7:00 pm</p>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <a
-              href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar mi viaje a España.")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-2.5 rounded-xl text-xs font-bold cursor-pointer"
-            >
-              <WhatsAppIcon size={15} />
-              <span>WhatsApp Oficial</span>
-            </a>
-            <Link href="/caribe" className="text-xs text-slate-400 hover:text-white underline">
-              Caribe & Miami
-            </Link>
-            <Link href="/visas" className="text-xs text-slate-400 hover:text-white underline">
-              Trámite de Visas
-            </Link>
-            <Link href="/" className="text-xs text-slate-400 hover:text-white underline">
-              Web Principal
-            </Link>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       {/* 6. Botón Flotante */}
       <div className="fixed bottom-5 right-5 z-50">

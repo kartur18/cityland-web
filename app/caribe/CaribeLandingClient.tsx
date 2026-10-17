@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import PlaneIcon from "@/components/icons/PlaneIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
@@ -25,84 +27,7 @@ export default function CaribeLandingClient() {
 
   return (
     <div className="bg-white min-h-screen text-[#0a1628] antialiased">
-      {/* 1. Header de Aerolínea de 2 Niveles (Cero desbordes) */}
-      <header className="sticky top-0 z-40 shadow-xs">
-        <div className="hidden lg:block bg-[#0a1628] text-slate-300 text-[11px] font-medium border-b border-slate-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 h-8 flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <span className="inline-flex items-center gap-1.5 text-white font-semibold">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                Agencia Registrada MINCETUR · RUC 20614914239
-              </span>
-              <span className="text-slate-600">|</span>
-              <span>Av. Antúnez de Mayolo N. 814, Los Olivos, Lima</span>
-            </div>
-            <div className="flex items-center gap-4">
-              <Link href="/espana" className="hover:text-white transition-colors">
-                Especial España
-              </Link>
-              <Link href="/cusco" className="hover:text-white transition-colors">
-                Cusco
-              </Link>
-              <Link href="/visas" className="hover:text-white transition-colors">
-                Visas
-              </Link>
-              <Link href="/colegios" className="hover:text-white transition-colors">
-                Colegios
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white/95 backdrop-blur-md border-b border-slate-200/80 py-2.5">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-3">
-            <Link href="/" aria-label="Cityland Travel - Inicio" className="flex items-center shrink-0">
-              <div className="relative h-12 sm:h-13 w-38 sm:w-44 flex items-center">
-                <Image
-                  src="/logo-transparent.png"
-                  alt="Cityland Travel - Agencia de Viajes en Lima"
-                  fill
-                  priority
-                  sizes="(max-width: 640px) 152px, 176px"
-                  className="object-contain object-left"
-                />
-              </div>
-            </Link>
-
-            <div className="hidden lg:flex items-center gap-1">
-              {[
-                { label: "Punta Cana", href: "#punta-cana" },
-                { label: "Cancún", href: "#cancun" },
-                { label: "Cartagena", href: "#cartagena" },
-                { label: "Medellín", href: "#medellin" },
-                { label: "Río de Janeiro", href: "#rio-de-janeiro" },
-                { label: "Miami", href: "#miami-orlando" },
-              ].map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setFiltroActivo("todos")}
-                  className="text-xs font-bold text-slate-700 hover:text-[#0a1628] px-3 py-1.5 rounded-full hover:bg-slate-100 whitespace-nowrap transition-colors"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-
-            <div className="flex items-center gap-2.5 shrink-0">
-              <a
-                href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Vi su página de paquetes a Caribe, Sudamérica y Miami. Deseo cotizar con un asesor.")}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold cursor-pointer whitespace-nowrap shadow-xs"
-              >
-                <WhatsAppIcon size={16} />
-                <span>Cotizar por WhatsApp</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Navbar />
 
       {/* 2. Hero Luminoso, Blanco y Simétrico (Cero fondos negros, estilo aerolínea moderna) */}
       <section className="bg-gradient-to-b from-sky-50/60 via-white to-white pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-slate-200/80">
@@ -167,7 +92,7 @@ export default function CaribeLandingClient() {
               <div className="card-interactive group bg-white rounded-3xl border border-slate-200/90 shadow-lg overflow-hidden">
                 <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-100">
                   <Image
-                    src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=85"
+                    src="https://images.unsplash.com/photo-1580541631950-7282082b53ce?w=1200&q=85"
                     alt="Punta Cana Resort 5 Estrellas Todo Incluido - Cityland Travel"
                     fill
                     priority
@@ -449,7 +374,7 @@ export default function CaribeLandingClient() {
 
             <div className="lg:col-span-5 relative min-h-[260px] sm:min-h-[320px] w-full overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=1200&q=85"
+                src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85"
                 alt="Playas del Caribe Todo Incluido desde Lima - Cityland Travel"
                 fill
                 sizes="(max-width: 1024px) 100vw, 500px"
@@ -460,33 +385,7 @@ export default function CaribeLandingClient() {
         </div>
       </section>
 
-      {/* 5. Footer Corporativo */}
-      <footer className="bg-[#0a1628] text-white py-10 border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="text-xs text-slate-300 text-center sm:text-left space-y-1">
-            <p className="font-bold text-white text-sm">Cityland Travel E.I.R.L. · RUC 20614914239</p>
-            <p>Av. Antúnez de Mayolo N. 814, Los Olivos, Lima · Lun–Sáb 9:00 am – 7:00 pm</p>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <a
-              href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar un paquete turístico desde Lima.")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-2.5 rounded-xl text-xs font-bold cursor-pointer"
-            >
-              <WhatsAppIcon size={15} />
-              <span>WhatsApp Oficial</span>
-            </a>
-            <Link href="/espana" className="text-xs text-slate-400 hover:text-white underline">
-              Especial España
-            </Link>
-            <Link href="/" className="text-xs text-slate-400 hover:text-white underline">
-              Web Principal
-            </Link>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       {/* 6. Botón Flotante de WhatsApp */}
       <div className="fixed bottom-5 right-5 z-50">
