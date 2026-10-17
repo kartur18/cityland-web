@@ -715,7 +715,7 @@ export const RUTAS_VUELOS_SEO: RutaVueloSEO[] = [
       badgeHero: "Ruta Directa LIM → MIA · LATAM, Sky Airline, American y Copa",
       banderasHero: ["Perú", "Estados Unidos"],
       tituloHero: "Vuelos y Paquetes de Lima a",
-      tituloDestacadoHero: "Miami y Orlando",
+      tituloDestacadoHero: "Miami & Orlando",
       descripcionHero:
         "Vuela directo de Lima al Aeropuerto Internacional de Miami (MIA) en solo 5h 40m.",
       negritaHero:

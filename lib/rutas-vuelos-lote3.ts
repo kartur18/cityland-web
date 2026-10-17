@@ -588,7 +588,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
     codigoOrigen: "LIM",
     codigoDestino: "IST",
     metaTitle:
-      "Vuelos y Paquetes de Lima a Estambul y Capadocia Desde $1,190 USD | Cityland Travel",
+      "Vuelos y Paquetes de Lima a Estambul & Capadocia Desde $1,190 USD | Cityland Travel",
     metaDescription:
       "Viaja de Lima a Estambul, Turquía (LIM - IST) sin visa para peruanos. Vuelos Desde $1,190 USD y circuito completo con Capadocia Desde $1,790 USD con impuestos incluidos.",
     keywords: [
@@ -1458,7 +1458,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
     codigoOrigen: "LIM",
     codigoDestino: "AQP",
     metaTitle:
-      "Vuelos y Paquetes de Lima a Arequipa y Colca Desde $109 USD | Cityland Travel",
+      "Vuelos y Paquetes de Lima a Arequipa & Colca Desde $109 USD | Cityland Travel",
     metaDescription:
       "Cotiza vuelos de Lima a Arequipa (LIM - AQP) Desde $109 USD ida y vuelta y paquetes Ciudad Blanca + Cañón del Colca Desde $329 USD con impuestos incluidos.",
     keywords: [
@@ -1603,7 +1603,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
     codigoOrigen: "LIM",
     codigoDestino: "PIU",
     metaTitle:
-      "Vuelos y Paquetes de Lima a Piura, Máncora y Vichayito Desde $119 USD | Cityland Travel",
+      "Vuelos y Paquetes de Lima a Piura, Máncora & Vichayito Desde $119 USD | Cityland Travel",
     metaDescription:
       "Cotiza vuelos de Lima a Piura o Talara (LIM - PIU/TYL) Desde $119 USD ida y vuelta y paquetes de playa en Máncora, Vichayito y Punta Sal Desde $369 USD.",
     keywords: [
@@ -1649,7 +1649,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=85",
         alt: "Playas de Máncora y Vichayito — Vuelos desde Lima",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Piura (PIU) / Talara (TYL)",
-        titulo: "Vuelos y Paquetes a Máncora y Vichayito",
+        titulo: "Vuelos y Paquetes a Máncora & Vichayito",
         labelPrecio: "Vuelo referencial ida y vuelta desde",
         precio: "$119",
         moneda: "USD",

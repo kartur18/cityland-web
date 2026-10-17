@@ -153,7 +153,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
     codigoOrigen: "LIM",
     codigoDestino: "BIO",
     metaTitle:
-      "Vuelos de Lima a Bilbao y País Vasco Desde $970 USD (Ida y Vuelta) | Cityland Travel",
+      "Vuelos de Lima a Bilbao & País Vasco Desde $970 USD (Ida y Vuelta) | Cityland Travel",
     metaDescription:
       "Cotiza vuelos de Lima a Bilbao (LIM - BIO) Desde $970 USD con impuestos incluidos. Conexión vía Madrid en Iberia o Air Europa con maleta de 23 kg y Seguro Schengen.",
     keywords: [
@@ -298,7 +298,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
     codigoOrigen: "LIM",
     codigoDestino: "LIS",
     metaTitle:
-      "Vuelos y Paquetes de Lima a Lisboa y Fátima Desde $960 USD | Cityland Travel",
+      "Vuelos y Paquetes de Lima a Lisboa & Fátima Desde $960 USD | Cityland Travel",
     metaDescription:
       "Cotiza vuelos de Lima a Lisboa, Portugal (LIM - LIS) Desde $960 USD con impuestos incluidos. Paquetes a Lisboa, Oporto y Santuario de Fátima con Seguro Schengen.",
     keywords: [
@@ -344,7 +344,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
         img: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=1000&q=85",
         alt: "Tranvía de Lisboa — Vuelos de Lima a Portugal",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Lisboa (LIS)",
-        titulo: "Vuelos y Circuitos a Lisboa y Fátima",
+        titulo: "Vuelos y Circuitos a Lisboa & Fátima",
         labelPrecio: "Vuelo referencial con impuestos incluidos",
         precio: "$960",
         moneda: "USD",
@@ -733,7 +733,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
     codigoOrigen: "LIM",
     codigoDestino: "MCO",
     metaTitle:
-      "Vuelos y Paquetes de Lima a Orlando (Disney y Universal) Desde $529 USD | Cityland Travel",
+      "Vuelos y Paquetes de Lima a Orlando (Disney & Universal) Desde $529 USD | Cityland Travel",
     metaDescription:
       "Cotiza vuelos de Lima a Orlando (LIM - MCO) Desde $529 USD y paquetes familiares a Disney y Universal Studios Desde $1,190 USD con impuestos incluidos.",
     keywords: [
@@ -1458,9 +1458,9 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
     codigoOrigen: "LIM",
     codigoDestino: "TPP",
     metaTitle:
-      "Vuelos y Paquetes de Lima a Tarapoto y Laguna Azul Desde $99 USD | Cityland Travel",
+      "Vuelos y Paquetes de Lima a Tarapoto & Laguna Azul Desde $99 USD | Cityland Travel",
     metaDescription:
-      "Cotiza vuelos directos de Lima a Tarapoto (LIM - TPP) Desde $99 USD ida y vuelta y paquetes con Laguna Azul y Cataratas de Ahuashiyacu Desde $289 USD.",
+      "Cotiza vuelos directos de Lima a Tarapoto (LIM - TPP) Desde $99 USD ida y vuelta o paquetes con Laguna Azul y Cataratas de Ahuashiyacu Desde $289 USD.",
     keywords: [
       "vuelos de lima a tarapoto",
       "paquetes a tarapoto desde lima",
@@ -1603,9 +1603,9 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
     codigoOrigen: "LIM",
     codigoDestino: "IQT",
     metaTitle:
-      "Vuelos y Paquetes de Lima a Iquitos y Río Amazonas Desde $119 USD | Cityland Travel",
+      "Vuelos y Paquetes de Lima a Iquitos & Río Amazonas Desde $119 USD | Cityland Travel",
     metaDescription:
-      "Cotiza vuelos directos de Lima a Iquitos (LIM - IQT) Desde $119 USD ida y vuelta y paquetes con Lodge en el Río Amazonas Desde $349 USD con impuestos incluidos.",
+      "Cotiza vuelos directos de Lima a Iquitos (LIM - IQT) Desde $119 USD ida y vuelta o paquetes con Lodge en el Río Amazonas Desde $349 USD con impuestos incluidos.",
     keywords: [
       "vuelos de lima a iquitos",
       "paquetes a iquitos desde lima",
@@ -1649,7 +1649,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
         img: "https://images.unsplash.com/photo-1699575678956-aefa714b67f0?auto=format&fit=crop&w=1000&q=85",
         alt: "Río Amazonas en Iquitos — Vuelos desde Lima",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Iquitos (IQT)",
-        titulo: "Vuelos y Paquetes a Iquitos y Amazonas",
+        titulo: "Vuelos y Paquetes a Iquitos & Río Amazonas",
         labelPrecio: "Vuelo referencial ida y vuelta desde",
         precio: "$119",
         moneda: "USD",
@@ -1744,13 +1744,13 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
   {
     slug: "lima-puno",
     origen: "Lima",
-    destino: "Puno y Lago Titicaca",
+    destino: "Puno & Lago Titicaca",
     codigoOrigen: "LIM",
     codigoDestino: "JUL",
     metaTitle:
-      "Vuelos y Paquetes de Lima a Puno / Juliaca y Lago Titicaca Desde $119 USD | Cityland Travel",
+      "Vuelos y Paquetes de Lima a Puno / Juliaca & Lago Titicaca Desde $119 USD | Cityland Travel",
     metaDescription:
-      "Cotiza vuelos directos de Lima a Juliaca / Puno (LIM - JUL) Desde $119 USD ida y vuelta y paquetes Islas de los Uros, Taquile y Sillustani Desde $329 USD.",
+      "Cotiza vuelos directos de Lima a Juliaca / Puno (LIM - JUL) Desde $119 USD ida y vuelta o paquetes Islas de los Uros, Taquile y Sillustani Desde $329 USD.",
     keywords: [
       "vuelos de lima a juliaca puno",
       "paquetes a puno desde lima",
@@ -1794,7 +1794,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
         img: "https://images.unsplash.com/photo-1522409994346-2682217b9a3e?auto=format&fit=crop&w=1000&q=85",
         alt: "Lago Titicaca en Puno — Vuelos desde Lima",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Juliaca / Puno (JUL)",
-        titulo: "Vuelos y Paquetes a Puno y Titicaca",
+        titulo: "Vuelos y Paquetes a Puno & Lago Titicaca",
         labelPrecio: "Vuelo referencial ida y vuelta desde",
         precio: "$119",
         moneda: "USD",

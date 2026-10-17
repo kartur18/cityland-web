@@ -8,7 +8,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
     codigoOrigen: "LIM",
     codigoDestino: "PUJ",
     metaTitle:
-      "Vuelos y Paquetes de Lima a Punta Cana Desde $649 USD (Directos y All Inclusive) | Cityland Travel",
+      "Vuelos y Paquetes de Lima a Punta Cana Desde $649 USD (Directos · All Inclusive) | Cityland Travel",
     metaDescription:
       "Cotiza vuelos directos de Lima a Punta Cana (LIM - PUJ) Desde $649 USD ida y vuelta con impuestos incluidos, o Paquete Resort Todo Incluido Desde $1,099 USD. ¡Peruanos viajan sin visa!",
     keywords: [
@@ -176,7 +176,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
     codigoOrigen: "LIM",
     codigoDestino: "CUN",
     metaTitle:
-      "Vuelos y Paquetes de Lima a Cancún Desde $599 USD (Directos y Todo Incluido) | Cityland Travel",
+      "Vuelos y Paquetes de Lima a Cancún Desde $599 USD (Directos · Todo Incluido) | Cityland Travel",
     metaDescription:
       "Vuelos directos de Lima a Cancún (LIM - CUN) Desde $599 USD ida y vuelta con impuestos incluidos, o Paquete Todo Incluido en Cancún y Riviera Maya Desde $1,049 USD. También asesoramos tu Visa México.",
     keywords: [
@@ -197,7 +197,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
       badgeHero: "Ruta Directa LIM → CUN · Vuelos Directos LATAM y Sky Airline",
       banderasHero: ["Perú", "México"],
       tituloHero: "Vuelos y Paquetes de Lima a",
-      tituloDestacadoHero: "Cancún y Riviera Maya",
+      tituloDestacadoHero: "Cancún & Riviera Maya",
       descripcionHero:
         "Vuela directo de Lima al Aeropuerto Internacional de Cancún (CUN) en 5h 25m.",
       negritaHero:
@@ -523,7 +523,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
       badgeHero: "Ruta Directa LIM → MDE · Ciudad de la Eterna Primavera Solo con DNI",
       banderasHero: ["Perú", "Colombia"],
       tituloHero: "Vuelos y Paquetes de Lima a",
-      tituloDestacadoHero: "Medellín y Guatapé",
+      tituloDestacadoHero: "Medellín & Guatapé",
       descripcionHero:
         "Vuela directo de Lima a Medellín en solo 3h 20m presentando únicamente tu DNI peruano.",
       negritaHero:
@@ -643,7 +643,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
     codigoOrigen: "LIM",
     codigoDestino: "CUZ",
     metaTitle:
-      "Vuelos y Paquetes de Lima a Cusco y Machu Picchu Desde $129 USD | Cityland Travel",
+      "Vuelos y Paquetes de Lima a Cusco & Machu Picchu Desde $129 USD | Cityland Travel",
     metaDescription:
       "Vuelos diarios de Lima a Cusco (LIM - CUZ) Desde $129 USD ida y vuelta con impuestos incluidos, o Paquete Completo con Hotel, Tren y Machu Picchu Desde $399 USD. Agencia Cityland Travel.",
     keywords: [
@@ -663,7 +663,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
       badgeHero: "Ruta Nacional LIM → CUZ · LATAM, Sky y JetSMART · Entradas Machu Picchu",
       banderasHero: ["Perú"],
       tituloHero: "Vuelos y Paquetes de Lima a",
-      tituloDestacadoHero: "Cusco y Machu Picchu",
+      tituloDestacadoHero: "Cusco & Machu Picchu",
       descripcionHero:
         "Vuela de Lima a Cusco en 1h 20m con horarios diarios garantizados.",
       negritaHero:
@@ -946,7 +946,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
     codigoOrigen: "LIM",
     codigoDestino: "CDG",
     metaTitle:
-      "Vuelos y Paquetes de Lima a París, Francia Desde $980 USD (Directos y Conexión) | Cityland Travel",
+      "Vuelos y Paquetes de Lima a París, Francia Desde $980 USD (Con Seguro Schengen) | Cityland Travel",
     metaDescription:
       "Cotiza vuelos de Lima a París Charles de Gaulle (LIM - CDG) Desde $980 USD con impuestos incluidos. Vuelos en Air France, KLM, Iberia y Air Europa con Seguro Schengen 30.000€.",
     keywords: [

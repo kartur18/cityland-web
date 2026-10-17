@@ -1334,7 +1334,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "equipaje-permitido-iberia-air-europa-plus-ultra",
-    titulo: "Medidas y peso de equipaje en vuelos de Lima a Madrid (Iberia, Air Europa, Plus Ultra y LATAM)",
+    titulo: "Equipaje permitido en vuelos de Lima a Madrid: Iberia, Air Europa, Plus Ultra y LATAM",
     desc: "Guía práctica de maletas de mano (10 kg) y equipaje de bodega (23 kg) en las 4 aerolíneas que vuelan directo de Lima a España.",
     categoria: "Vuelos",
     catColor: "bg-blue-700",
@@ -1371,8 +1371,8 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "como-encontrar-vuelos-economicos-europa-caribe",
-    titulo: "Consejos reales para conseguir vuelos y paquetes económicos a Europa y el Caribe desde Lima",
-    desc: "Cuáles son los meses más baratos para volar desde el Perú y cómo congelar tarifas promocionales con el 50% de inicial.",
+    titulo: "Consejos reales para conseguir vuelos y paquetes económicos a Europa o el Caribe desde Lima",
+    desc: "Cuáles son los meses más baratos para volar desde el Perú: congela tarifas promocionales con el 50% de inicial.",
     categoria: "Consejos",
     catColor: "bg-amber-600",
     fecha: "16 Oct 2026",
@@ -1391,7 +1391,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "carta-invitacion-espana-peru-requisitos",
     titulo: "Carta de Invitación para España desde Perú: Requisitos, precio y cómo usarla en 2026",
-    desc: "Todo lo que tu familiar o amigo en España debe tramitar ante la Policía Nacional y qué documentos debes llevar junto con tu carta al viajar desde Lima.",
+    desc: "Todo lo que tu familiar o amigo en España debe tramitar ante la Policía Nacional para acreditar tu alojamiento al viajar desde Lima.",
     categoria: "Migratorio",
     catColor: "bg-red-600",
     fecha: "16 Oct 2026",
@@ -1409,7 +1409,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "mejor-epoca-viajar-punta-cana-cancun",
-    titulo: "Cuál es la mejor época para viajar a Punta Cana y Cancún desde Lima (Clima y Precios)",
+    titulo: "Cuál es la mejor época para viajar a Punta Cana o Cancún desde Lima (Clima y Precios)",
     desc: "Meses con mejor sol, menos lluvias y tarifas Todo Incluido más bajas para tus vacaciones en el Caribe.",
     categoria: "Caribe",
     catColor: "bg-amber-500",
@@ -1446,7 +1446,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "cuanto-dinero-llevar-espana-bolsa-de-viaje",
     titulo: "Cuánto dinero exigen llevar a España como bolsa de viaje para peruanos en 2026",
-    desc: "Cálculo oficial del monto diario y mínimo exigido en el Aeropuerto de Madrid-Barajas y cómo acreditarlo en efectivo o tarjetas.",
+    desc: "Cálculo oficial del monto diario exigido en el Aeropuerto de Madrid-Barajas y cómo acreditarlo en efectivo o tarjetas.",
     categoria: "Europa",
     catColor: "bg-red-500",
     fecha: "16 Oct 2026",
@@ -1456,14 +1456,14 @@ export const BLOG_POSTS: BlogPost[] = [
     contenido: `<h2>¿Cuál es el monto de la bolsa de viaje para entrar a España?</h2>
 <p>Al ingresar como turista al Espacio Schengen por España, las autoridades fronterizas pueden solicitar que demuestres solvencia económica suficiente para cubrir los días que permanecerás en el país.</p>
 <h3>1. Monto referencial por día y mínimo total</h3>
-<p>La normativa española establece una cuantía referencial aproximada de <strong>113 euros por persona y por cada día de estancia</strong>, con un mínimo global exigido de alrededor de <strong>1.020 euros por persona</strong> aunque tu viaje dure menos de 9 días.</p>
+<p>La normativa española establece una cuantía referencial aproximada de <strong>113 euros por persona por cada día de estancia</strong>, con un mínimo global exigido de alrededor de <strong>1.020 euros por persona</strong> aunque tu viaje dure menos de 9 días.</p>
 <h3>2. ¿Cómo se puede demostrar el dinero?</h3>
 <p>Puedes acreditarlo combinando <strong>dinero en efectivo (euros)</strong>, tarjetas de crédito o débito internacionales a tu nombre acompañadas de un extracto bancario reciente o certificación de saldo disponible. En Cityland Travel te orientamos sobre cómo organizar tu viaje y los días de tu itinerario para cumplir este requisito sin inconvenientes.</p>`,
   },
   {
     slug: "seguro-schengen-30000-euros-peru-precio",
     titulo: "Seguro de Viaje Schengen de 30.000€ desde Perú: Requisitos oficiales y cuánto cuesta",
-    desc: "Por qué es obligatorio el seguro médico internacional sin deducible para entrar a España, Italia o Francia y cómo adquirirlo en Lima.",
+    desc: "Por qué es obligatorio el seguro médico internacional sin deducible para entrar a España, Italia o Francia, y cómo adquirirlo en Lima.",
     categoria: "Europa",
     catColor: "bg-red-600",
     fecha: "16 Oct 2026",
@@ -1494,11 +1494,11 @@ export const BLOG_POSTS: BlogPost[] = [
 <h3>1. Verifica el RUC activo y registro en MINCETUR</h3>
 <p>Contrata únicamente con agencias constituidas con oficina física real en Lima (como Cityland Travel E.I.R.L., RUC 20614914239) que entreguen contrato formal, boletas/facturas electrónicas y códigos de reserva aérea verificables para cada alumno.</p>
 <h3>2. Destinos favoritos de las promociones peruanas</h3>
-<p>En rutas nacionales destacan <strong>Cusco y Machu Picchu</strong>, <strong>Tarapoto y Laguna Azul</strong> y <strong>Playas de Máncora/Punta Sal</strong>. En rutas internacionales lideran <strong>Punta Cana Todo Incluido</strong>, <strong>Cartagena de Indias</strong> y <strong>Cancún</strong>, siempre acompañados por un tour conductor y asistencia médica 24/7.</p>`,
+<p>En rutas nacionales destacan <strong>Cusco & Machu Picchu</strong>, <strong>Tarapoto (Laguna Azul)</strong> y las <strong>Playas de Máncora / Punta Sal</strong>. En rutas internacionales lideran <strong>Punta Cana Todo Incluido</strong>, <strong>Cartagena de Indias</strong> y <strong>Cancún</strong>, siempre acompañados por un tour conductor con asistencia médica 24/7.</p>`,
   },
   {
     slug: "temporada-baja-viajar-machu-picchu-cusco",
-    titulo: "Cuál es el mejor mes para viajar a Cusco y Machu Picchu y cómo asegurar tus entradas",
+    titulo: "Mejor época para viajar a Cusco y Machu Picchu: cómo asegurar tus entradas",
     desc: "Diferencias entre la temporada seca y la temporada verde en Cusco, circuitos oficiales de Machu Picchu y con cuánta anticipación reservar.",
     categoria: "Perú",
     catColor: "bg-emerald-700",
