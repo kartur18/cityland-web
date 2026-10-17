@@ -79,9 +79,14 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
   const inc2 = item.incluye[2] || "Boleta o Factura Electrónica SUNAT (RUC 20614914239)";
   const inc3 = item.incluye[3] || "Soporte 24/7 antes y durante tu viaje";
 
-  const relacionados = VIAJES_ESPECIALIZADOS_SEO.filter(
-    (v) => v.categoria === item.categoria && v.slug !== item.slug
-  ).slice(0, 8);
+  const listaCat = VIAJES_ESPECIALIZADOS_SEO.filter(
+    (v) => v.categoria === item.categoria
+  );
+  const idxCat = listaCat.findIndex((v) => v.slug === item.slug);
+  const relacionados = Array.from(
+    { length: Math.min(12, Math.max(0, listaCat.length - 1)) },
+    (_, i) => listaCat[(Math.max(0, idxCat) + i + 1) % listaCat.length]
+  ).filter((v) => v && v.slug !== item.slug);
 
   const config: ConfiguracionLandingAerolinea = {
     badgeHero: item.badge,

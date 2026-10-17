@@ -69,9 +69,14 @@ export default async function OfertaComercialPage({ params }: Props) {
     notFound();
   }
 
-  const relacionadosCluster = MIL_LANDINGS_COMERCIALES_SEO.filter(
-    (x) => x.cluster === item.cluster && x.slug !== item.slug
-  ).slice(0, 10);
+  const listaCluster = MIL_LANDINGS_COMERCIALES_SEO.filter(
+    (x) => x.cluster === item.cluster
+  );
+  const idxCluster = listaCluster.findIndex((x) => x.slug === item.slug);
+  const relacionadosCluster = Array.from(
+    { length: Math.min(12, Math.max(0, listaCluster.length - 1)) },
+    (_, i) => listaCluster[(Math.max(0, idxCluster) + i + 1) % listaCluster.length]
+  ).filter((x) => x && x.slug !== item.slug);
 
   const jsonLd = {
     "@context": "https://schema.org",

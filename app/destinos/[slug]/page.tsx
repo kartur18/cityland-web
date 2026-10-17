@@ -101,9 +101,14 @@ export default async function DestinoPage({
     .filter((g, idx, arr) => g && g !== dest.img && arr.indexOf(g) === idx)
     .slice(0, 3);
 
-  const otrosDestinos = ALL_DESTINOS.filter(
-    (d) => d.slug !== slug && d.img !== dest.img
-  ).slice(0, 3);
+  const idxDest = ALL_DESTINOS.findIndex((d) => d.slug === slug);
+  const otrosDestinos: typeof ALL_DESTINOS = [];
+  for (let i = 1; i < ALL_DESTINOS.length && otrosDestinos.length < 3; i++) {
+    const cand = ALL_DESTINOS[(Math.max(0, idxDest) + i) % ALL_DESTINOS.length];
+    if (cand && cand.slug !== slug && cand.img !== dest.img) {
+      otrosDestinos.push(cand);
+    }
+  }
 
   const jsonLd = {
     "@context": "https://schema.org",
