@@ -52,7 +52,7 @@ const CONFIG_SEGUROS: ConfiguracionLandingAerolinea = {
     "Cumple con el requisito obligatorio de ingreso a España, Europa, Estados Unidos y el Caribe. Emitimos tu póliza oficial verificable al instante y te la enviamos en PDF lista para presentar en aeropuerto.",
   negritaHero: "Cobertura médica 24/7 sin deducible y pérdida de equipaje",
   ctaPrincipalTexto: "Emitir mi Seguro por WhatsApp",
-  waPrincipalNumero: "51907451255",
+  waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
     "¡Hola Cityland Travel! Necesito cotizar y emitir un Seguro de Viaje Internacional / Seguro Schengen 30.000€.",
   checksHero: [
@@ -72,7 +72,7 @@ const CONFIG_SEGUROS: ConfiguracionLandingAerolinea = {
     precio: "$65",
     moneda: "USD",
     notaInferior: "Emisión inmediata con tu pasaporte",
-    waNumero: "51983269950",
+    waNumero: "51944103890",
     waMensaje:
       "¡Hola Cityland Travel! Deseo emitir mi Seguro Schengen de 30.000€ desde $65 USD para viajar a España.",
   },
@@ -103,7 +103,7 @@ const CONFIG_SEGUROS: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Cumple al 100% con la normativa de la Unión Europea: mínimo 30.000€ en asistencia médica por accidente o enfermedad, repatriación sanitaria y cero deducible.",
       checks: ["30.000€ Cobertura Oficial", "Cero deducible ni copago", "Entrega inmediata en PDF"],
-      waNumber: "51983891157",
+      waNumber: "51944103890",
     },
     {
       id: "seguro-estados-unidos-miami",
@@ -121,7 +121,7 @@ const CONFIG_SEGUROS: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "La salud en EE.UU. es la más costosa del mundo. Viaja protegido ante urgencias médicas, odontológicas, medicamentos y demora o pérdida de maletas.",
       checks: ["Hasta $150,000 USD", "Medicamentos incluidos", "Compensación de equipaje"],
-      waNumber: "51944031724",
+      waNumber: "51944103890",
     },
     {
       id: "seguro-caribe-sudamerica",
@@ -139,7 +139,7 @@ const CONFIG_SEGUROS: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Ideal para vacaciones familiares en resorts o escapadas a Colombia y Brasil. Incluye médico a domicilio en tu hotel, hospitalización y asistencia legal.",
       checks: ["Médico en tu hotel", "Cobertura en playas y tours", "Tarifa especial familiar"],
-      waNumber: "51907451255",
+      waNumber: "51944103890",
     },
     {
       id: "seguro-adulto-mayor-preexistencias",
@@ -157,7 +157,7 @@ const CONFIG_SEGUROS: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Diseñado para viajeros mayores de 70 y 85 años que visitan familiares en España, EE.UU. o el extranjero, con cobertura para hipertensión o diabetes.",
       checks: ["Cubre preexistencias", "Válido hasta 85+ años", "Aprobado por consulados"],
-      waNumber: "51983269950",
+      waNumber: "51944103890",
     },
     {
       id: "seguro-embarazadas-maternidad",
@@ -175,7 +175,7 @@ const CONFIG_SEGUROS: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Viaja tranquila durante tu embarazo con asistencia médica especializada ante cualquier emergencia obstétrica o control de urgencia en el extranjero.",
       checks: ["Cubre hasta semana 32", "Urgencias obstétricas", "Atención prioritaria 24h"],
-      waNumber: "51913637476",
+      waNumber: "51944103890",
     },
     {
       id: "seguro-multiviajes-anual",
@@ -193,7 +193,7 @@ const CONFIG_SEGUROS: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Si viajas más de 2 veces al año por negocios o turismo, una sola póliza anual te cubre todos tus viajes internacionales a Europa, EE.UU. y el mundo.",
       checks: ["Válido por 365 días", "Cumple norma Schengen", "Factura electrónica RUC"],
-      waNumber: "51903212007",
+      waNumber: "51944103890",
     },
   ],
   pilares: [
@@ -220,14 +220,14 @@ const CONFIG_SEGUROS: ConfiguracionLandingAerolinea = {
     descripcion:
       "Escríbenos cuántos días viajas y a qué país vas. Te cotizamos al instante la tarifa más económica y te enviamos tu póliza oficial en PDF lista para imprimir o llevar en el celular.",
     ctaTexto: "Cotizar mi Seguro en 1 Minuto",
-    waNumero: "51907451255",
+    waNumero: "51944103890",
     waMensaje:
       "¡Hola Cityland Travel! Necesito cotizar un seguro de viaje urgente. Mis fechas son:",
     img: "/images/espana/barajas.jpg",
     alt: "Emisión inmediata de Seguro Schengen y Seguro de Viaje en Lima",
   },
   waFlotante: {
-    numero: "51907451255",
+    numero: "51944103890",
     mensaje: "¡Hola Cityland Travel! Deseo cotizar mi Seguro de Viaje Internacional.",
     texto: "Seguro de Viaje",
   },

@@ -52,7 +52,7 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
     "Conoce la Torre Eiffel, el Coliseo Romano, Madrid o vuela en globo sobre Capadocia con boletos aéreos confirmados, hoteles seleccionados y guía en español durante todo el recorrido.",
   negritaHero: "Solo necesitas tu pasaporte peruano vigente y separas con el 50%",
   ctaPrincipalTexto: "Cotizar Circuito por WhatsApp",
-  waPrincipalNumero: "51903212007",
+  waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
     "¡Hola Cityland Travel! Vi su página de Europa y Turquía y deseo cotizar un circuito organizado desde Lima.",
   checksHero: [
@@ -72,7 +72,7 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
     precio: "$1,790",
     moneda: "USD",
     notaInferior: "Separa hoy con 50% ($895 USD)",
-    waNumero: "51903212007",
+    waNumero: "51944103890",
     waMensaje:
       "¡Hola Cityland Travel! Deseo cotizar el paquete a Turquía (Estambul y Capadocia · 10 Días) desde $1,790 USD.",
   },
@@ -102,7 +102,7 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Vuelos I/V + Hoteles 4★ y 5★ con desayunos y cenas + Crucero por el Bósforo, Éfeso, piscinas blancas de Pamukkale y los valles de Capadocia.",
       checks: ["Vuelo Internacional I/V", "Hoteles 4★ y 5★ + Cenas", "Guía en español todo el tour"],
-      waNumber: "51983891157",
+      waNumber: "51944103890",
     },
     {
       id: "europa-clasica-15d",
@@ -120,7 +120,7 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Conoce lo mejor de España, Francia e Italia en un solo viaje organizado con vuelos desde Lima, autocar de lujo, hoteles 4★ y guía en español.",
       checks: ["Vuelo I/V + 14 Noches Hotel", "Madrid, París, Venecia y Roma", "Seguro Schengen 30.000€"],
-      waNumber: "51944031724",
+      waNumber: "51944103890",
     },
     {
       id: "espana-madrid-barcelona-8d",
@@ -138,7 +138,7 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Vuelo Lima–Madrid + Hoteles céntricos con desayuno + Tren rápido AVE a Barcelona + Visita a Puerta del Sol, Sagrada Familia y Seguro 30.000€.",
       checks: ["Vuelo I/V desde Lima", "Tren AVE Madrid–Barcelona", "Seguro Schengen 30.000€"],
-      waNumber: "51907451255",
+      waNumber: "51944103890",
     },
     {
       id: "dubai-turquia-combinado-14d",
@@ -156,7 +156,7 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Une la historia milenaria de Estambul y los globos de Capadocia con la modernidad de Dubái, el Burj Khalifa, Safari en el desierto y Mezquita de Abu Dhabi.",
       checks: ["Vuelos Internacionales + Internos", "Estambul + Capadocia + Dubái", "Safari en el Desierto con Cena"],
-      waNumber: "51983269950",
+      waNumber: "51944103890",
     },
     {
       id: "italia-completa-roma-venecia-10d",
@@ -169,12 +169,12 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       notaPrecio: "Ideal para Año Jubilar y Turismo Cultural",
       tag: "Roma & Vaticano",
       tagBg: "bg-emerald-600 text-white",
-      img: "/images/espana/palacio-real.jpg",
+      img: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=85",
       alt: "Tour por Italia Roma, Vaticano, Florencia y Venecia desde Lima",
       resumenCorto:
         "Recorre el Coliseo Romano, la Basílica de San Pedro en el Vaticano, la cuna del Renacimiento en Florencia y los canales de Venecia.",
       checks: ["Vuelos I/V desde Lima", "Hoteles 4★ con Desayuno", "Guía en Español + Traslados"],
-      waNumber: "51913637476",
+      waNumber: "51944103890",
     },
     {
       id: "paquete-migratorio-espana-carpeta",
@@ -192,7 +192,7 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Boleto aéreo confirmado IATA + Seguro Schengen 30.000€ + Reserva de hotel verificable y preparación personalizada 1 a 1 para tu ingreso en Madrid-Barajas.",
       checks: ["Boleto Aéreo Confirmado", "Seguro Schengen 30.000€", "Asesoría 1 a 1 Barajas"],
-      waNumber: "51903212007",
+      waNumber: "51944103890",
     },
   ],
   pilares: [
@@ -219,14 +219,14 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
     descripcion:
       "Escríbenos por WhatsApp qué circuito te interesa (Turquía, Europa 15 Días o Dubái) y un asesor te enviará el programa detallado con fechas de salida y hoteles.",
     ctaTexto: "Solicitar Itinerario en PDF",
-    waNumero: "51903212007",
+    waNumero: "51944103890",
     waMensaje:
       "¡Hola Cityland Travel! Deseo recibir el itinerario en PDF de sus circuitos a Europa / Turquía.",
     img: "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?w=1200&q=85",
     alt: "Circuitos a Europa y Turquía desde Lima - Cityland Travel",
   },
   waFlotante: {
-    numero: "51903212007",
+    numero: "51944103890",
     mensaje: "¡Hola Cityland Travel! Deseo cotizar un viaje a Europa / Turquía.",
     texto: "Europa & Turquía",
   },

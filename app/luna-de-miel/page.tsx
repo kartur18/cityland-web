@@ -52,7 +52,7 @@ const CONFIG_LUNA_DE_MIEL: ConfiguracionLandingAerolinea = {
     "Celebramos los momentos más importantes de tu vida con habitaciones de lujo frente al mar, atenciones románticas para recién casados y programas inolvidables de 15 años.",
   negritaHero: "Separa hoy con el 50% de inicial y congela tu tarifa de temporada",
   ctaPrincipalTexto: "Cotizar con Asesora VIP",
-  waPrincipalNumero: "51913637476",
+  waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
     "¡Hola Cityland Travel! Deseo cotizar un paquete especial de Luna de Miel / Viaje de 15 Años.",
   checksHero: [
@@ -72,7 +72,7 @@ const CONFIG_LUNA_DE_MIEL: ConfiguracionLandingAerolinea = {
     precio: "$1,190",
     moneda: "USD",
     notaInferior: "Incluye amenidades de recién casados",
-    waNumero: "51913637476",
+    waNumero: "51944103890",
     waMensaje:
       "¡Hola Cityland Travel! Deseo cotizar el paquete de Luna de Miel en Punta Cana Resort 5★ Solo Adultos desde $1,190 USD.",
   },
@@ -102,7 +102,7 @@ const CONFIG_LUNA_DE_MIEL: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Vuelo I/V + Resort 5★ exclusivo para mayores de 18 años en Playa Bávaro, restaurantes gourmet a la carta sin límite, decoración en habitación y catamarán a Isla Saona.",
       checks: ["Resort 5★ Solo Adultos", "Cena romántica a la carta", "Vuelos + Traslados VIP"],
-      waNumber: "51983891157",
+      waNumber: "51944103890",
     },
     {
       id: "luna-miel-cancun-riviera-maya",
@@ -120,7 +120,7 @@ const CONFIG_LUNA_DE_MIEL: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Combina el mar turquesa del Caribe mexicano, piscinas infinity frente a la playa, spa para parejas y nado en cenotes cristalinos.",
       checks: ["Vuelo I/V desde Lima", "Resort 5★ Todo Incluido", "Cenote Sagrado + Chichén Itzá"],
-      waNumber: "51944031724",
+      waNumber: "51944103890",
     },
     {
       id: "luna-miel-cartagena-boutique",
@@ -138,7 +138,7 @@ const CONFIG_LUNA_DE_MIEL: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Atardeceres frente al mar en la Ciudad Amurallada, hotel con piscina en la terraza y día de playa en club privado de Islas del Rosario.",
       checks: ["Vuelo directo I/V", "Día de playa Islas del Rosario", "Solo requiere DNI vigente"],
-      waNumber: "51907451255",
+      waNumber: "51944103890",
     },
     {
       id: "quinceanera-disney-orlando-miami",
@@ -156,7 +156,7 @@ const CONFIG_LUNA_DE_MIEL: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "El regalo inolvidable de 15 años: parques Magic Kingdom, Universal Studios, día de compras en Outlets de Orlando y playas de Miami Beach.",
       checks: ["Vuelos + Hoteles en Orlando/Miami", "Pases a Parques Temáticos", "Tour de Compras + Traslados"],
-      waNumber: "51983269950",
+      waNumber: "51944103890",
     },
     {
       id: "quinceanera-crucero-caribe-sin-visa",
@@ -174,7 +174,7 @@ const CONFIG_LUNA_DE_MIEL: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Celebra sus 15 años a bordo de un crucero de lujo visitando Panamá, Cartagena, Aruba y Curazao con cenas de gala, fiestas juveniles y shows.",
       checks: ["Sin Visa Americana", "Comidas y bebidas a bordo", "Fiesta y fotos de gala"],
-      waNumber: "51913637476",
+      waNumber: "51944103890",
     },
     {
       id: "luna-miel-quince-europa",
@@ -192,7 +192,7 @@ const CONFIG_LUNA_DE_MIEL: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Fotos frente a la Torre Eiffel en París, paseo en góndola por Venecia, el Coliseo de Roma y Madrid con vuelos, hoteles 4★ y guía en español.",
       checks: ["Vuelo I/V + 14 Noches Hotel", "Guía en español todo el viaje", "Seguro Schengen 30.000€"],
-      waNumber: "51903212007",
+      waNumber: "51944103890",
     },
   ],
   pilares: [
@@ -219,14 +219,14 @@ const CONFIG_LUNA_DE_MIEL: ConfiguracionLandingAerolinea = {
     descripcion:
       "Te ayudamos a comparar los mejores resorts y rutas según el mes de tu celebración para que tengan clima soleado garantizado y beneficios exclusivos.",
     ctaTexto: "Hablar con Asesora de Luna de Miel / 15 Años",
-    waNumero: "51913637476",
+    waNumero: "51944103890",
     waMensaje:
       "¡Hola Cityland Travel! Quisiera asesoría personalizada para planificar una Luna de Miel / Viaje de 15 Años.",
     img: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=1200&q=85",
     alt: "Planificación de Luna de Miel y Quinceañeras en Lima - Cityland Travel",
   },
   waFlotante: {
-    numero: "51913637476",
+    numero: "51944103890",
     mensaje: "¡Hola Cityland Travel! Deseo cotizar un paquete de Luna de Miel / 15 Años.",
     texto: "Cotizar Viaje VIP",
   },

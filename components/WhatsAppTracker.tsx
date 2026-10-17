@@ -1,18 +1,12 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
+import { NUMERO_WHATSAPP_OFICIAL } from "./constantes";
 
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
   }
-}
-
-interface CandidatoTurno {
-  asesorId: string;
-  telefono: string;
-  nombreInterno: string;
-  esContinuidad: boolean;
 }
 
 function detectarFuenteTrafico(): string {
@@ -47,62 +41,19 @@ function detectarFuenteTrafico(): string {
 }
 
 /**
- * Sistema Inteligente de Distribución por WhatsApp Business (Round Robin 1..12 + Continuidad).
- * - Conserva el mismo asesor si el visitante vuelve a consultar desde el mismo navegador.
- * - Ejecuta la asignación oficial y el conteo en el backend únicamente cuando el usuario PULSA el botón.
- * - Funciona de forma síncrona en el clic para compatibilidad total con iPhone (Safari), Android y Escritorio.
- * - Si el distribuidor no responde, conserva el enlace estático oficial de respaldo.
+ * Rastreador y Canalizador Oficial de WhatsApp hacia el número central de Cityland Travel (944 103 890).
+ * - Limpia asignaciones previas en localStorage para que 100% de las consultas entren a la Bandeja Central (51944103890).
+ * - Conserva el mensaje contextual de cada página y registra la conversión en Google Analytics 4.
  */
 export default function WhatsAppTracker() {
-  const candidatoRef = useRef<CandidatoTurno | null>(null);
-
   useEffect(() => {
-    let cancelado = false;
-
-    const sincronizarCandidato = async () => {
-      try {
-        const aidGuardado = localStorage.getItem("cityland_wa_aid") || "";
-        const telGuardado = localStorage.getItem("cityland_wa_tel") || "";
-
-        if (aidGuardado && telGuardado) {
-          candidatoRef.current = {
-            asesorId: aidGuardado,
-            telefono: telGuardado,
-            nombreInterno: localStorage.getItem("cityland_wa_nombre") || "Asesor Asignado",
-            esContinuidad: true,
-          };
-        }
-
-        const qs = new URLSearchParams();
-        if (aidGuardado) qs.set("aid", aidGuardado);
-        if (telGuardado) qs.set("tel", telGuardado);
-
-        const res = await fetch(`/api/whatsapp/asignar?${qs.toString()}`, {
-          method: "GET",
-          cache: "no-store",
-        });
-        if (!res.ok) return;
-        const data = await res.json();
-        if (!cancelado && data?.telefono) {
-          candidatoRef.current = {
-            asesorId: data.asesorId,
-            telefono: data.telefono,
-            nombreInterno: data.nombreInterno,
-            esContinuidad: Boolean(data.esContinuidad),
-          };
-          // Si ya tenía uno guardado pero fue desactivado/pausado, actualizar al nuevo elegible
-          if (aidGuardado && !data.esContinuidad) {
-            localStorage.setItem("cityland_wa_aid", data.asesorId);
-            localStorage.setItem("cityland_wa_tel", data.telefono);
-            localStorage.setItem("cityland_wa_nombre", data.nombreInterno);
-          }
-        }
-      } catch {
-        // Mantiene el enlace de respaldo estático del HTML si no hay red
-      }
-    };
-
-    sincronizarCandidato();
+    try {
+      localStorage.removeItem("cityland_wa_aid");
+      localStorage.removeItem("cityland_wa_tel");
+      localStorage.removeItem("cityland_wa_nombre");
+    } catch {
+      // Ignorar si localStorage está restringido
+    }
 
     const handleClick = (event: MouseEvent) => {
       const target = event.target as HTMLElement | null;
@@ -111,7 +62,6 @@ export default function WhatsAppTracker() {
 
       try {
         const url = new URL(anchor.href);
-        const telefonoOriginal = url.pathname.replace(/\D/g, "");
         const textoActual = url.searchParams.get("text") || "";
         const paginaOrigen = window.location.pathname || "/";
         const fuenteTrafico = detectarFuenteTrafico();
@@ -122,77 +72,29 @@ export default function WhatsAppTracker() {
             .trim()
             .slice(0, 60);
 
-        // 1. Determinar el teléfono del asesor (Persistente del visitante o siguiente en Round Robin)
-        const aidPrevio = localStorage.getItem("cityland_wa_aid");
-        const telPrevio = localStorage.getItem("cityland_wa_tel");
-        const candidato = candidatoRef.current;
+        const telefonoFinal = NUMERO_WHATSAPP_OFICIAL; // 51944103890
 
-        const telefonoFinal =
-          candidato?.telefono || telPrevio || telefonoOriginal || "51906450098";
-        const asesorIdFinal = candidato?.asesorId || aidPrevio || "asignado";
-        const asesorNombreFinal = candidato?.nombreInterno || "Asesor Comercial";
-
-        // 2. Actualizar el enlace `https://wa.me/` de forma síncrona antes de que el navegador abra la pestaña
         url.pathname = `/${telefonoFinal}`;
         if (!textoActual) {
           url.searchParams.set(
             "text",
-            `Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para mi próximo viaje (${paginaOrigen}). ¿Me pueden ayudar?`
+            `¡Hola Cityland Travel! Vi su web oficial (${paginaOrigen}) y quiero cotizar mi próximo viaje.`
           );
         }
         anchor.href = url.toString();
 
-        // 3. Persistir inmediatamente en el navegador para que futuros clics mantengan el mismo asesor
-        localStorage.setItem("cityland_wa_aid", asesorIdFinal);
-        localStorage.setItem("cityland_wa_tel", telefonoFinal);
-        localStorage.setItem("cityland_wa_nombre", asesorNombreFinal);
-
-        // 4. Confirmar asignación e incrementar turno Round Robin en el servidor
-        const payload = {
-          asesorPrevioId: aidPrevio,
-          asesorPrevioTelefono: telPrevio,
-          landingPage: paginaOrigen,
-          fuenteTrafico,
-          botonSeleccionado: textoBoton,
-          dispositivo: esMovil,
-        };
-
-        fetch("/api/whatsapp/asignar", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-          keepalive: true,
-        })
-          .then((r) => r.json())
-          .then((confirmado) => {
-            if (confirmado?.telefono) {
-              localStorage.setItem("cityland_wa_aid", confirmado.asesorId);
-              localStorage.setItem("cityland_wa_tel", confirmado.telefono);
-              localStorage.setItem("cityland_wa_nombre", confirmado.nombreInterno);
-              candidatoRef.current = {
-                asesorId: confirmado.asesorId,
-                telefono: confirmado.telefono,
-                nombreInterno: confirmado.nombreInterno,
-                esContinuidad: true,
-              };
-            }
-          })
-          .catch(() => {});
-
-        // 5. Registrar evento de conversión de clic en Google Analytics 4 (separado de conversación iniciada)
         if (typeof window.gtag === "function") {
           window.gtag("event", "click_whatsapp_consulta", {
             event_category: "Captacion_WhatsApp",
             landing_page: paginaOrigen,
             traffic_source: fuenteTrafico,
             button_selected: textoBoton,
-            advisor_id: asesorIdFinal,
+            advisor_id: "central_bandeja",
             advisor_phone: telefonoFinal,
             device_type: esMovil,
           });
         }
 
-        // 6. Guardar también en el historial local del navegador
         const raw = localStorage.getItem("cityland_wa_clicks");
         const lista = raw ? JSON.parse(raw) : [];
         lista.unshift({
@@ -203,7 +105,7 @@ export default function WhatsAppTracker() {
           destino: textoActual.slice(0, 80) || "Consulta general",
           dispositivo: esMovil,
           telefono: telefonoFinal,
-          asesor: asesorNombreFinal,
+          asesor: "Central Cityland Travel",
         });
         localStorage.setItem("cityland_wa_clicks", JSON.stringify(lista.slice(0, 80)));
       } catch {
@@ -213,7 +115,6 @@ export default function WhatsAppTracker() {
 
     document.addEventListener("click", handleClick, { capture: true });
     return () => {
-      cancelado = true;
       document.removeEventListener("click", handleClick, { capture: true });
     };
   }, []);

@@ -132,7 +132,7 @@ const JSON_LD_ESPANA = {
       legalName: "Cityland Travel E.I.R.L.",
       url: "https://citylandtravel.com",
       taxID: "20614914239",
-      telephone: "+51983882504",
+      telephone: "+51944103890",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Av. Antúnez de Mayolo N. 814",

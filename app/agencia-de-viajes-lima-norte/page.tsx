@@ -42,7 +42,7 @@ const CONFIG_LIMA_NORTE: ConfiguracionLandingAerolinea = {
   negritaHero:
     "Reserva tus vuelos y paquetes con el respaldo de una oficina física real.",
   ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
-  waPrincipalNumero: "51983891157",
+  waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
     "Hola, encontré Cityland Travel en Google buscando una agencia de viajes en Lima Norte. Quiero consultar disponibilidad y precios. ¿Me pueden ayudar?",
   checksHero: [
@@ -62,7 +62,7 @@ const CONFIG_LIMA_NORTE: ConfiguracionLandingAerolinea = {
     precio: "$399",
     moneda: "USD",
     notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
-    waNumero: "51907451255",
+    waNumero: "51944103890",
     waMensaje:
       "Hola, encontré Cityland Travel en Google (Lima Norte). Quiero cotizar un viaje con un asesor.",
   },
@@ -96,7 +96,7 @@ const CONFIG_LIMA_NORTE: ConfiguracionLandingAerolinea = {
         "4 noches en Resort Todo Incluido en Punta Cana o Cancún",
         "Traslados aeropuerto-hotel-aeropuerto y asistencia permanente",
       ],
-      waNumber: "51983269950",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, soy de Lima Norte y encontré Cityland Travel en Google. Quiero cotizar un paquete Todo Incluido a Cancún o Punta Cana (Desde $1,049 USD). ¿Me pueden ayudar?",
     },
@@ -119,7 +119,7 @@ const CONFIG_LIMA_NORTE: ConfiguracionLandingAerolinea = {
         "Seguro médico Schengen obligatorio con cobertura de 30.000€",
         "Reserva de hospedaje y simulacro migratorio en nuestra oficina",
       ],
-      waNumber: "51913637476",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, soy de Lima Norte y encontré Cityland Travel en Google. Quiero información para viajar a España (Desde $890 USD). ¿Me pueden ayudar?",
     },
@@ -142,7 +142,7 @@ const CONFIG_LIMA_NORTE: ConfiguracionLandingAerolinea = {
         "Tours incluidos (Isla Barú en Cartagena o Guatapé en Medellín)",
         "Viaja presentando únicamente tu DNI peruano vigente",
       ],
-      waNumber: "51903212007",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, soy de Lima Norte y encontré Cityland Travel en Google. Quiero consultar los paquetes a Colombia solo con DNI (Desde $679 USD). ¿Me pueden ayudar?",
     },
@@ -159,14 +159,14 @@ const CONFIG_LIMA_NORTE: ConfiguracionLandingAerolinea = {
     descripcion:
       "Escríbenos ahora mismo para asignarte un asesor especializado y enviarte las mejores tarifas vigentes.",
     ctaTexto: "Consultar disponibilidad por WhatsApp",
-    waNumero: "51983882504",
+    waNumero: "51944103890",
     waMensaje:
       "Hola, encontré Cityland Travel en Google buscando agencia de viajes en Lima Norte. ¿Me pueden ayudar con una cotización?",
     img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80",
     alt: "Agencia de Viajes en Lima Norte",
   },
   waFlotante: {
-    numero: "51942086698",
+    numero: "51944103890",
     texto: "WhatsApp Lima Norte",
     mensaje:
       "Hola, encontré Cityland Travel en Google buscando agencia de viajes en Lima Norte. ¿Me pueden ayudar?",

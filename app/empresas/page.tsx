@@ -51,7 +51,7 @@ const CONFIG_EMPRESAS: ConfiguracionLandingAerolinea = {
     "Optimizamos el presupuesto de viajes de tu empresa con emisión inmediata de pasajes aéreos nacionales e internacionales, hoteles ejecutivos, cambios flexibles y facturación electrónica al instante.",
   negritaHero: "Asesor corporativo asignado 24/7 para tu equipo y gerencia",
   ctaPrincipalTexto: "Contactar Ejecutivo Corporativo",
-  waPrincipalNumero: "51983891157",
+  waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
     "¡Hola Cityland Travel! Me comunico en representación de mi empresa para cotizar vuelos / servicios corporativos con Factura RUC.",
   checksHero: [
@@ -71,7 +71,7 @@ const CONFIG_EMPRESAS: ConfiguracionLandingAerolinea = {
     precio: "$180",
     moneda: "USD · Con Factura",
     notaInferior: "Cityland Travel E.I.R.L. · RUC 20614914239",
-    waNumero: "51944031724",
+    waNumero: "51944103890",
     waMensaje:
       "¡Hola Cityland Travel! Deseo afiliar a mi empresa para emisión de vuelos y hoteles corporativos con factura.",
   },
@@ -101,7 +101,7 @@ const CONFIG_EMPRESAS: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Cotizamos y emitimos en minutos las rutas más convenientes para tu personal técnico, ventas o directorio en provincias y el extranjero, incluyendo equipaje y selección de asientos.",
       checks: ["Factura Electrónica RUC", "Gestión de check-in y maletas", "Soporte ante reprogramaciones"],
-      waNumber: "51983891157",
+      waNumber: "51944103890",
     },
     {
       id: "hoteles-ejecutivos-traslados",
@@ -119,7 +119,7 @@ const CONFIG_EMPRESAS: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Reservamos hoteles de cadena y ejecutivos cerca de zonas industriales o financieras, con recojo puntual en aeropuerto y facturación consolidada para tu contabilidad.",
       checks: ["Hoteles 3★, 4★ y 5★", "Movilidad privada segura", "Facturación unificada"],
-      waNumber: "51944031724",
+      waNumber: "51944103890",
     },
     {
       id: "viajes-incentivos-premiacion",
@@ -137,7 +137,7 @@ const CONFIG_EMPRESAS: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Premia a tus mejores vendedores o colaboradores con viajes Todo Incluido a Punta Cana, Cartagena o Cusco. Organizamos vuelos, salón de eventos y cenas corporativas.",
       checks: ["Bloqueo aéreo grupal", "Salas de reunión en resort", "100% deducible con factura"],
-      waNumber: "51907451255",
+      waNumber: "51944103890",
     },
     {
       id: "ferias-congresos-internacionales",
@@ -155,7 +155,7 @@ const CONFIG_EMPRESAS: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Coordinamos el viaje de tu delegación empresarial a ferias internacionales en Miami, Madrid, Barcelona, São Paulo o Bogotá con hoteles a pasos del centro de convenciones.",
       checks: ["Vuelos + Hotel Estratégico", "Seguro Médico Corporativo", "Trámite de Visas de Negocios"],
-      waNumber: "51983269950",
+      waNumber: "51944103890",
     },
     {
       id: "seguros-visas-ejecutivos",
@@ -173,7 +173,7 @@ const CONFIG_EMPRESAS: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Gestionamos las visas americanas, canadienses o mexicanas de tus ejecutivos y emitimos pólizas de asistencia médica anual para que viajen cubiertos los 365 días.",
       checks: ["Visa B1/B2 Negocios", "Seguro Anual 365 Días", "Atención preferencial"],
-      waNumber: "51913637476",
+      waNumber: "51944103890",
     },
     {
       id: "convenciones-integracion-peru",
@@ -191,7 +191,7 @@ const CONFIG_EMPRESAS: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Diseñamos convenciones de fin de año, aniversarios empresariales y jornadas de integración fuera de Lima con toda la logística resuelta.",
       checks: ["Movilidad + Alojamiento", "Auditorio y Coffee Break", "Coordinador en destino"],
-      waNumber: "51903212007",
+      waNumber: "51944103890",
     },
   ],
   pilares: [
@@ -218,14 +218,14 @@ const CONFIG_EMPRESAS: ConfiguracionLandingAerolinea = {
     descripcion:
       "Escríbenos con el RUC de tu empresa y la ruta o fechas que necesitas. Te asignaremos un ejecutivo corporativo para atender tus requerimientos al instante.",
     ctaTexto: "Solicitar Cotización Corporativa",
-    waNumero: "51983891157",
+    waNumero: "51944103890",
     waMensaje:
       "¡Hola Cityland Travel! Deseo solicitar una cotización corporativa con Factura RUC para mi empresa.",
     img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=85",
     alt: "Atención corporativa para empresas en Lima - Cityland Travel",
   },
   waFlotante: {
-    numero: "51983891157",
+    numero: "51944103890",
     mensaje: "¡Hola Cityland Travel! Deseo atención corporativa para mi empresa.",
     texto: "Canal Empresas",
   },

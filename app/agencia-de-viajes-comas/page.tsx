@@ -42,7 +42,7 @@ const CONFIG_COMAS: ConfiguracionLandingAerolinea = {
   negritaHero:
     "Especialistas en vuelos y carpetas migratorias a España, paquetes al Caribe y viajes de promoción escolar.",
   ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
-  waPrincipalNumero: "51906450098",
+  waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
     "Hola, encontré Cityland Travel en Google buscando una agencia de viajes en Comas / Lima Norte. Quiero consultar disponibilidad y precios. ¿Me pueden ayudar?",
   checksHero: [
@@ -62,7 +62,7 @@ const CONFIG_COMAS: ConfiguracionLandingAerolinea = {
     precio: "$399",
     moneda: "USD",
     notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
-    waNumero: "51944280151",
+    waNumero: "51944103890",
     waMensaje:
       "Hola, soy de Comas / Carabayllo y encontré Cityland Travel en Google. Quiero cotizar un viaje con un asesor.",
   },
@@ -96,7 +96,7 @@ const CONFIG_COMAS: ConfiguracionLandingAerolinea = {
         "Seguro Schengen 30.000€ y revisión de Carta de Invitación o reserva de hotel",
         "Tarifa sujeta a disponibilidad y condiciones aplicables",
       ],
-      waNumber: "51938845086",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, soy de Comas y encontré Cityland Travel en Google. Quiero información para viajar a España / Europa (Desde $890 USD).",
     },
@@ -119,7 +119,7 @@ const CONFIG_COMAS: ConfiguracionLandingAerolinea = {
         "4 noches en Resort Todo Incluido con alimentación 24 horas",
         "Tarifa sujeta a disponibilidad y condiciones aplicables",
       ],
-      waNumber: "51906642487",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, soy de Comas y encontré Cityland Travel en Google. Quiero cotizar un paquete Todo Incluido a Punta Cana o Cancún (Desde $1,049 USD).",
     },
@@ -142,7 +142,7 @@ const CONFIG_COMAS: ConfiguracionLandingAerolinea = {
         "City Tour, Valle Sagrado y visita guiada a Machu Picchu en tren",
         "Tarifa sujeta a disponibilidad y condiciones aplicables",
       ],
-      waNumber: "51944031724",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, soy de Comas y encontré Cityland Travel en Google. Quiero cotizar el paquete a Cusco y Machu Picchu (Desde $399 USD).",
     },
@@ -159,14 +159,14 @@ const CONFIG_COMAS: ConfiguracionLandingAerolinea = {
     descripcion:
       "Te atendemos con total transparencia, contrato formal y precios verificados en dólares.",
     ctaTexto: "Consultar disponibilidad por WhatsApp",
-    waNumero: "51983891157",
+    waNumero: "51944103890",
     waMensaje:
       "Hola, encontré Cityland Travel en Google buscando agencia de viajes en Comas. ¿Me pueden ayudar con una cotización?",
     img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80",
     alt: "Agencia de Viajes Comas",
   },
   waFlotante: {
-    numero: "51907451255",
+    numero: "51944103890",
     texto: "WhatsApp Comas",
     mensaje:
       "Hola, encontré Cityland Travel en Google buscando agencia de viajes en Comas. ¿Me pueden ayudar?",

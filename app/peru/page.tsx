@@ -52,7 +52,7 @@ const CONFIG_PERU: ConfiguracionLandingAerolinea = {
     "Escápate del frío de Lima hacia las playas soleadas del norte, la selva de Tarapoto e Iquitos o los paisajes de Arequipa con vuelos confirmados, hoteles con piscina y tours incluidos.",
   negritaHero: "Separa hoy tu paquete nacional con el 50% de inicial",
   ctaPrincipalTexto: "Cotizar Destino Nacional",
-  waPrincipalNumero: "51944031724",
+  waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
     "¡Hola Cityland Travel! Vi su página de Destinos Nacionales (Punta Sal, Máncora, Tarapoto, Iquitos, Arequipa) y deseo cotizar.",
   checksHero: [
@@ -72,7 +72,7 @@ const CONFIG_PERU: ConfiguracionLandingAerolinea = {
     precio: "$549",
     moneda: "USD",
     notaInferior: "Separa hoy con 50% ($275 USD)",
-    waNumero: "51944031724",
+    waNumero: "51944103890",
     waMensaje:
       "¡Hola Cityland Travel! Deseo cotizar el paquete Todo Incluido a Punta Sal (4 Días / 3 Noches) desde $549 USD.",
   },
@@ -103,7 +103,7 @@ const CONFIG_PERU: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Vuelo Lima–Tumbes I/V + Traslados + 3 noches de alojamiento frente al mar con desayunos, almuerzos, cenas, snacks y bebidas ilimitadas.",
       checks: ["Vuelo I/V + Traslados", "Comidas y bebidas ilimitadas", "Playa de aguas cálidas"],
-      waNumber: "51983891157",
+      waNumber: "51944103890",
     },
     {
       id: "mancora-vichayito-tortugas",
@@ -121,7 +121,7 @@ const CONFIG_PERU: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Vuelo I/V + Hotel frente al mar con piscina y desayunos + Tour de nado con tortugas marinas en El Ñuro y avistamiento de ballenas en temporada.",
       checks: ["Vuelo I/V desde Lima", "Hotel frente a la playa", "Tour Nado con Tortugas"],
-      waNumber: "51944031724",
+      waNumber: "51944103890",
     },
     {
       id: "tarapoto-laguna-azul-cataratas",
@@ -139,7 +139,7 @@ const CONFIG_PERU: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Vuelo Lima–Tarapoto I/V + Hotel con piscina y desayunos + Paseo en bote por la Laguna Azul con almuerzo amazónico, Cataratas de Ahuashiyacu y Lamas.",
       checks: ["Vuelo I/V + Traslados", "Hotel con piscina", "3 Tours con entradas"],
-      waNumber: "51907451255",
+      waNumber: "51944103890",
     },
     {
       id: "iquitos-rio-amazonas-lodge",
@@ -157,7 +157,7 @@ const CONFIG_PERU: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Vuelo Lima–Iquitos I/V + Noches en Lodge amazónico con pensión completa + Navegación por el Río Amazonas, delfines rosados y comunidades nativas.",
       checks: ["Vuelo I/V desde Lima", "Lodge + Pensión Completa", "Navegación Río Amazonas"],
-      waNumber: "51983269950",
+      waNumber: "51944103890",
     },
     {
       id: "arequipa-canon-del-colca",
@@ -175,7 +175,7 @@ const CONFIG_PERU: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Vuelo Lima–Arequipa I/V + Hotel con desayunos + Campiña Arequipeña, Ruta del Sillar y excursión de 2 días al Valle y Cañón del Colca (Vuelo del Cóndor).",
       checks: ["Vuelo I/V + Traslados", "Hotel en Arequipa y Colca", "Mirador Cruz del Cóndor"],
-      waNumber: "51913637476",
+      waNumber: "51944103890",
     },
     {
       id: "paracas-ica-huacachina-escapada",
@@ -193,7 +193,7 @@ const CONFIG_PERU: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Bus Cruz del Sur VIP I/V + Hotel con piscina + Deslizador a Islas Ballestas, Reserva de Paracas, ruta de viñedos en Ica y tubulares en Huacachina.",
       checks: ["Bus Crucero I/V + Hotel", "Islas Ballestas + Paracas", "Tubulares en Huacachina"],
-      waNumber: "51903212007",
+      waNumber: "51944103890",
     },
   ],
   pilares: [
@@ -220,14 +220,14 @@ const CONFIG_PERU: ConfiguracionLandingAerolinea = {
     descripcion:
       "También tenemos nuestra página exclusiva de Cusco y Machu Picchu de 3 a 6 días, o armamos tu ruta personalizada para viajar en pareja, familia o amigos.",
     ctaTexto: "Armar mi Viaje por el Perú",
-    waNumero: "51944031724",
+    waNumero: "51944103890",
     waMensaje:
       "¡Hola Cityland Travel! Deseo que me coticen un paquete nacional por el Perú.",
     img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=85",
     alt: "Paquetes Turísticos por el Perú - Cityland Travel",
   },
   waFlotante: {
-    numero: "51944031724",
+    numero: "51944103890",
     mensaje: "¡Hola Cityland Travel! Deseo cotizar un paquete nacional (Playas / Selva / Sur).",
     texto: "Viajes por el Perú",
   },

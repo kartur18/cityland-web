@@ -42,7 +42,7 @@ const CONFIG_SMP: ConfiguracionLandingAerolinea = {
   negritaHero:
     "Compra tus boletos aéreos y paquetes turísticos con contrato formal y oficina física real.",
   ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
-  waPrincipalNumero: "51906450098",
+  waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
     "Hola, encontré Cityland Travel en Google buscando una agencia de viajes en San Martín de Porres. Quiero consultar disponibilidad y precios. ¿Me pueden ayudar?",
   checksHero: [
@@ -62,7 +62,7 @@ const CONFIG_SMP: ConfiguracionLandingAerolinea = {
     precio: "$399",
     moneda: "USD",
     notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
-    waNumero: "51944280151",
+    waNumero: "51944103890",
     waMensaje:
       "Hola, soy de San Martín de Porres y encontré Cityland Travel en Google. Quiero cotizar un viaje con un asesor.",
   },
@@ -96,7 +96,7 @@ const CONFIG_SMP: ConfiguracionLandingAerolinea = {
         "Seguro médico Schengen 30.000€ y reserva de hotel o Carta de Invitación",
         "Tarifa sujeta a disponibilidad y condiciones aplicables",
       ],
-      waNumber: "51938845086",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, soy de San Martín de Porres y encontré Cityland Travel en Google. Quiero información para viajar a España / Italia (Desde $890 USD).",
     },
@@ -119,7 +119,7 @@ const CONFIG_SMP: ConfiguracionLandingAerolinea = {
         "4 noches de alojamiento Todo Incluido y traslados",
         "Tarifa sujeta a disponibilidad y condiciones aplicables",
       ],
-      waNumber: "51906642487",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, soy de San Martín de Porres y encontré Cityland Travel en Google. Quiero cotizar un paquete a Punta Cana o Cancún (Desde $1,049 USD).",
     },
@@ -142,7 +142,7 @@ const CONFIG_SMP: ConfiguracionLandingAerolinea = {
         "Alojamiento con desayunos y excursión a Isla Barú o Guatapé",
         "Tarifa sujeta a disponibilidad y condiciones aplicables",
       ],
-      waNumber: "51944031724",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, soy de San Martín de Porres y encontré Cityland Travel en Google. Quiero consultar los paquetes a Colombia solo con DNI (Desde $679 USD).",
     },
@@ -159,14 +159,14 @@ const CONFIG_SMP: ConfiguracionLandingAerolinea = {
     descripcion:
       "Atendemos de lunes a sábado de 9:00 a. m. a 7:00 p. m. con respaldo legal y emisión inmediata.",
     ctaTexto: "Consultar disponibilidad por WhatsApp",
-    waNumero: "51983891157",
+    waNumero: "51944103890",
     waMensaje:
       "Hola, encontré Cityland Travel en Google buscando agencia de viajes en San Martín de Porres. ¿Me pueden ayudar con una cotización?",
     img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80",
     alt: "Agencia de Viajes San Martín de Porres",
   },
   waFlotante: {
-    numero: "51907451255",
+    numero: "51944103890",
     texto: "WhatsApp SMP",
     mensaje:
       "Hola, encontré Cityland Travel en Google buscando agencia de viajes en San Martín de Porres. ¿Me pueden ayudar?",

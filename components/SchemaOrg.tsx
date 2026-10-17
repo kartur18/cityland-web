@@ -113,10 +113,10 @@ const FAQ_SCHEMA = {
   "@type": "FAQPage",
   mainEntity: FAQS.map((f) => ({
     "@type": "Question",
-    name: f.pregunta.replace("+51 906 450 098", TELEFONO_FORMATEADO),
+    name: f.pregunta.replace("+51 944 103 890", TELEFONO_FORMATEADO),
     acceptedAnswer: {
       "@type": "Answer",
-      text: f.respuesta.replace("+51 906 450 098", TELEFONO_FORMATEADO),
+      text: f.respuesta.replace("+51 944 103 890", TELEFONO_FORMATEADO),
     },
   })),
 };

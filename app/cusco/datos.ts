@@ -27,7 +27,7 @@ export const PAQUETES_CUSCO: PaqueteCusco[] = [
     resumenCorto:
       "Vuelo I/V desde Lima + Hotel con desayunos + Tren turístico + Entrada oficial a Machu Picchu, bus Consettur y guía.",
     checks: ["Vuelo I/V + Traslados", "Hotel céntrico + Desayunos", "Tren + Entrada Machu Picchu"],
-    waNumber: "51983891157",
+    waNumber: "51944103890",
   },
   {
     id: "cusco-clasico-4d",
@@ -42,7 +42,7 @@ export const PAQUETES_CUSCO: PaqueteCusco[] = [
     resumenCorto:
       "Vuelo I/V + Hotel + City Tour 4 Ruinas + Valle Sagrado con almuerzo buffet en Urubamba + Machu Picchu completo en tren.",
     checks: ["Vuelo I/V + Hotel 3★/4★", "City Tour + Valle Sagrado", "Machu Picchu Todo Incluido"],
-    waNumber: "51944031724",
+    waNumber: "51944103890",
   },
   {
     id: "cusco-7-colores-5d",
@@ -57,7 +57,7 @@ export const PAQUETES_CUSCO: PaqueteCusco[] = [
     resumenCorto:
       "Vuelo I/V + Hotel + City Tour + Valle Sagrado + Machu Picchu + Excursión guiada a la Montaña de 7 Colores (Vinicunca).",
     checks: ["Vuelo I/V + 4 Noches Hotel", "Machu Picchu + Valle Sagrado", "Montaña 7 Colores con Almuerzo"],
-    waNumber: "51907451255",
+    waNumber: "51944103890",
   },
   {
     id: "cusco-imperial-6d",
@@ -72,6 +72,6 @@ export const PAQUETES_CUSCO: PaqueteCusco[] = [
     resumenCorto:
       "El circuito más completo: Vuelo I/V + 5 noches de hotel + Machu Picchu + Valle Sagrado + Laguna Humantay + Montaña de 7 Colores.",
     checks: ["Vuelo I/V + 5 Noches Hotel", "Machu Picchu + Maras Moray", "Laguna Humantay + 7 Colores"],
-    waNumber: "51983269950",
+    waNumber: "51944103890",
   },
 ];

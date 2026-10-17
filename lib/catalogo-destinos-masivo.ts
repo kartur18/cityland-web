@@ -10,9 +10,76 @@ const IMG_USA = "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=
 const IMG_PER = "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=80";
 const IMG_EXO = "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=80";
 
+const GALERIAS_POR_REGION: Record<string, [string, string, string]> = {
+  espana: [
+    "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1200&q=80",
+    "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&q=80",
+    "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=1200&q=80",
+  ],
+  italia: [
+    "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=80",
+    "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&q=80",
+    "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=1200&q=80",
+  ],
+  europa: [
+    "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=80",
+    "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1200&q=80",
+    "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1200&q=80",
+  ],
+  caribe: [
+    "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=80",
+    "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&q=80",
+    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
+  ],
+  mexico: [
+    "https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=1200&q=80",
+    "https://images.unsplash.com/photo-1552074284-5e88ef1aef18?w=1200&q=80",
+    "https://images.unsplash.com/photo-1518638150340-f706e86654de?w=1200&q=80",
+  ],
+  sudamerica: [
+    "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=1200&q=80",
+    "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=80",
+    "https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?w=1200&q=80",
+  ],
+  peru: [
+    "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=80",
+    "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=1200&q=80",
+    "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=80",
+  ],
+  norteamerica: [
+    "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=1200&q=80",
+    "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=1200&q=80",
+    "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1200&q=80",
+  ],
+  exoticos: [
+    "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=80",
+    "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80",
+    "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1200&q=80",
+  ],
+};
+
+function obtenerGaleriaDestino(s: SemillaDestino, idx: number): { img: string; gallery: string[] } {
+  let clave = "caribe";
+  if (s.pais.includes("España")) clave = "espana";
+  else if (s.pais.includes("Italia")) clave = "italia";
+  else if (s.pais.includes("Perú")) clave = "peru";
+  else if (s.pais.includes("México")) clave = "mexico";
+  else if (s.tipo === "europa") clave = "europa";
+  else if (s.tipo === "exoticos") clave = "exoticos";
+  else if (s.tipo === "norteamerica") clave = "norteamerica";
+  else if (s.tipo === "sudamerica") clave = "sudamerica";
+
+  const fotos = GALERIAS_POR_REGION[clave] ?? GALERIAS_POR_REGION.caribe;
+  const principal = fotos[idx % fotos.length];
+  const segunda = fotos[(idx + 1) % fotos.length];
+  const tercera = fotos[(idx + 2) % fotos.length];
+  return { img: principal, gallery: [principal, segunda, tercera] };
+}
+
 interface SemillaDestino {
   slug: string;
   ciudad: string;
+  ciudadBase?: string;
   pais: string;
   bandera: string;
   tipo: "europa" | "caribe" | "exoticos" | "sudamerica" | "norteamerica";
@@ -173,7 +240,8 @@ for (const [nombreTemp, slugTemp, tagTemp, delta] of TEMPORADAS_COLECCION) {
     if (SEMILLAS_DESTINOS.length < 128) {
       SEMILLAS_DESTINOS.push({
         slug: `${slugTemp}-${slugCiudad}`,
-        ciudad: `${nombreTemp} ${ciudad}`,
+        ciudad: `${ciudad} — ${nombreTemp.replace(" en", "").replace(" a", "")}`,
+        ciudadBase: ciudad,
         pais,
         bandera,
         tipo,
@@ -181,7 +249,7 @@ for (const [nombreTemp, slugTemp, tagTemp, delta] of TEMPORADAS_COLECCION) {
         precioUSD: precioBase + delta,
         tag: tagTemp,
         img,
-        resumen: `Programa exclusivo de ${nombreTemp} ${ciudad} (${pais}) saliendo desde Lima con vuelos confirmados, hotel seleccionado, traslados, seguro de viaje y atención personalizada de Cityland Travel.`,
+        resumen: `Programa exclusivo en ${ciudad} (${pais}) saliendo desde Lima con vuelos confirmados, hotel seleccionado, traslados, seguro de viaje y atención personalizada de Cityland Travel.`,
         atractivo1: `Boletos aéreos confirmados desde Lima hacia ${ciudad} con impuestos incluidos`,
         atractivo2: `Estadía en hotel o resort seleccionado en ${ciudad} con régimen según programa`,
         atractivo3: "Traslados privados aeropuerto-hotel-aeropuerto, seguro médico y soporte 24/7",
@@ -190,43 +258,47 @@ for (const [nombreTemp, slugTemp, tagTemp, delta] of TEMPORADAS_COLECCION) {
   }
 }
 
-export const DESTINOS_MASIVOS: Destino[] = SEMILLAS_DESTINOS.slice(0, 128).map((s) => ({
-  ciudad: s.ciudad,
-  pais: s.pais,
-  bandera: s.bandera,
-  slug: s.slug,
-  img: s.img,
-  alt: `Paquete a ${s.ciudad}, ${s.pais} desde Lima — Cityland Travel`,
-  tag: s.tag,
-  tagColor: s.tipo === "europa" ? "hot" : s.tipo === "exoticos" ? "luxury" : "promo",
-  migratorio: s.migratorioUSD,
-  turistico: s.precioUSD,
-  precioSoles: Math.round(s.precioUSD * 3.75),
-  migraDesc: s.migratorioUSD
-    ? "Boleto aéreo + Reserva de Hotel verificada + Seguro Schengen 30.000€ + Asesoría"
-    : undefined,
-  turiDesc: "Vuelo desde Lima + Hotel seleccionado + Traslados + Seguro de asistencia + Tours",
-  turiLabel: "Paquete Completo",
-  regularPrice: Math.round(s.precioUSD * 1.2),
-  cuotas: 3,
-  gallery: [s.img],
-  descripcion: s.resumen,
-  itinerario: [
-    `Día 1: Salida en vuelo confirmado desde Lima hacia ${s.ciudad} (${s.pais}). Recepción en el aeropuerto y traslado al hotel.`,
-    `Día 2: Recorrido destacado: ${s.atractivo1}.`,
-    `Día 3: Experiencia incluida: ${s.atractivo2}.`,
-    `Día 4: Actividades programadas: ${s.atractivo3}.`,
-    `Último día: Desayuno en el hotel, tiempo libre para compras y traslado al aeropuerto para el vuelo de retorno.`,
-  ],
-  temporada: "todo-el-ano",
-  tipo: s.tipo,
-  duracion: s.duracion,
-  inclusionesLista: [
-    "Boleto aéreo ida y vuelta desde Lima (impuestos incluidos)",
-    `Alojamiento verificado en ${s.ciudad} (${s.duracion})`,
-    "Desayunos diarios o régimen Todo Incluido según hotel",
-    "Traslados aeropuerto - hotel - aeropuerto",
-    s.tipo === "europa" ? "Seguro médico Schengen 30.000€ sin deducible" : "Tarjeta de asistencia médica internacional",
-    "Asesoría documentaria y acompañamiento 24/7 por WhatsApp",
-  ],
-}));
+export const DESTINOS_MASIVOS: Destino[] = SEMILLAS_DESTINOS.slice(0, 128).map((s, idx) => {
+  const { img, gallery } = obtenerGaleriaDestino(s, idx);
+  const lugar = s.ciudadBase ?? s.ciudad;
+  return {
+    ciudad: s.ciudad,
+    pais: s.pais,
+    bandera: s.bandera,
+    slug: s.slug,
+    img,
+    alt: `Paquete a ${s.ciudad}, ${s.pais} desde Lima — Cityland Travel`,
+    tag: s.tag,
+    tagColor: s.tipo === "europa" ? "hot" : s.tipo === "exoticos" ? "luxury" : "promo",
+    migratorio: s.migratorioUSD,
+    turistico: s.precioUSD,
+    precioSoles: Math.round(s.precioUSD * 3.75),
+    migraDesc: s.migratorioUSD
+      ? "Boleto aéreo + Reserva de Hotel verificada + Seguro Schengen 30.000€ + Asesoría"
+      : undefined,
+    turiDesc: "Vuelo desde Lima + Hotel seleccionado + Traslados + Seguro de asistencia + Tours",
+    turiLabel: "Paquete Completo",
+    regularPrice: Math.round(s.precioUSD * 1.2),
+    cuotas: 3,
+    gallery,
+    descripcion: s.resumen,
+    itinerario: [
+      `Día 1 – Salida en vuelo confirmado desde Lima hacia ${lugar} (${s.pais}). Recepción en el aeropuerto y traslado al hotel.`,
+      `Día 2 – Recorrido destacado: ${s.atractivo1}.`,
+      `Día 3 – Experiencia incluida: ${s.atractivo2}.`,
+      `Día 4 – Actividades programadas: ${s.atractivo3}.`,
+      `Último día – Desayuno en el hotel, tiempo libre para compras y traslado al aeropuerto para el vuelo de retorno.`,
+    ],
+    temporada: "todo-el-ano",
+    tipo: s.tipo,
+    duracion: s.duracion,
+    inclusionesLista: [
+      "Boleto aéreo ida y vuelta desde Lima (impuestos incluidos)",
+      `Alojamiento verificado en ${lugar} (${s.duracion})`,
+      "Desayunos diarios o régimen Todo Incluido según hotel",
+      "Traslados aeropuerto - hotel - aeropuerto",
+      s.tipo === "europa" ? "Seguro médico Schengen 30.000€ sin deducible" : "Tarjeta de asistencia médica internacional",
+      "Asesoría documentaria y acompañamiento 24/7 por WhatsApp",
+    ],
+  };
+});

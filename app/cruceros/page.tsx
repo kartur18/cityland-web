@@ -53,7 +53,7 @@ const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
     "Despierta cada mañana en un país distinto con restaurantes buffet y a la carta, piscinas, teatro estilo Broadway y vuelos desde Lima.",
   negritaHero: "Viaja sin visa americana saliendo desde Panamá o Cartagena y separa con el 50%",
   ctaPrincipalTexto: "Cotizar mi Crucero por WhatsApp",
-  waPrincipalNumero: "51983891157",
+  waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
     "¡Hola Cityland Travel! Vi su página de Cruceros y deseo cotizar un Crucero Todo Incluido saliendo desde Lima.",
   checksHero: [
@@ -73,7 +73,7 @@ const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
     precio: "$1,190",
     moneda: "USD",
     notaInferior: "Separa hoy con 50% ($595 USD)",
-    waNumero: "51944031724",
+    waNumero: "51944103890",
     waMensaje:
       "¡Hola Cityland Travel! Deseo cotizar el Crucero Caribe Sur Sin Visa (Panamá, Cartagena, Aruba y Curazao) desde $1,190 USD.",
   },
@@ -104,7 +104,7 @@ const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Embarca en Colón (Panamá) o Cartagena (Colombia) y recorre las islas ABC (Aruba, Bonaire y Curazao) con todas las comidas y entretenimiento a bordo.",
       checks: ["No pide Visa Americana", "Comidas ilimitadas 24h", "4 Países en 1 solo viaje"],
-      waNumber: "51983891157",
+      waNumber: "51944103890",
     },
     {
       id: "crucero-brasil-argentina-uruguay",
@@ -122,7 +122,7 @@ const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Navega por las playas de Brasil (Río de Janeiro, Ilhabela y Búzios), Punta del Este y Buenos Aires viajando únicamente con tu DNI peruano vigente.",
       checks: ["Solo DNI (Sin Pasaporte)", "Pensión completa a bordo", "Shows y piscinas incluidas"],
-      waNumber: "51944031724",
+      waNumber: "51944103890",
     },
     {
       id: "crucero-bahamas-coco-cay",
@@ -140,7 +140,7 @@ const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Zarpa desde Miami hacia Nassau (Bahamas) y disfruta del parque acuático más grande del Caribe en la isla privada de Royal Caribbean.",
       checks: ["Salida desde Miami", "Isla Privada CocoCay", "Ideal para familias y parejas"],
-      waNumber: "51907451255",
+      waNumber: "51944103890",
     },
     {
       id: "crucero-mediterraneo-europa",
@@ -158,7 +158,7 @@ const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Embarca en Barcelona y conoce Marsella, Génova, Roma (Civitavecchia), Palermo y Mallorca en un hotel flotante de 5 estrellas.",
       checks: ["España, Francia e Italia", "Pensión completa buffet", "Sin cambiar de maleta"],
-      waNumber: "51983269950",
+      waNumber: "51944103890",
     },
     {
       id: "crucero-caribe-occidental-cozumel",
@@ -176,7 +176,7 @@ const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
       resumenCorto:
         "Navega en los barcos más modernos del planeta con pista de patinaje sobre hielo, simulador de surf, parque acuático y playas de México y Honduras.",
       checks: ["Barcos clase Oasis / Icon", "Todo Incluido a bordo", "Playas del Caribe Mexicano"],
-      waNumber: "51913637476",
+      waNumber: "51944103890",
     },
     {
       id: "crucero-islas-griegas",
@@ -189,12 +189,12 @@ const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
       notaPrecio: "No pide Visa Schengen a peruanos",
       tag: "Santorini & Mykonos",
       tagBg: "bg-sky-700 text-white",
-      img: "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=85",
+      img: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1200&q=85",
       alt: "Crucero por las Islas Griegas Santorini y Mykonos desde Perú",
       resumenCorto:
         "El viaje más romántico de Europa: recorre las cúpulas azules de Santorini, los molinos de Mykonos, Atenas y la costa italiana.",
       checks: ["Santorini y Mykonos", "Gastronomía internacional", "Asesoría completa desde Lima"],
-      waNumber: "51903212007",
+      waNumber: "51944103890",
     },
   ],
   pilares: [
@@ -221,14 +221,14 @@ const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
     descripcion:
       "Te ayudamos a elegir el barco ideal, la ubicación exacta de tu cabina (interior, ventana o balcón), los vuelos de conexión desde Lima y el paquete de bebidas para que viajes con cero preocupaciones.",
     ctaTexto: "Hablar con Especialista en Cruceros",
-    waNumero: "51983891157",
+    waNumero: "51944103890",
     waMensaje:
       "¡Hola Cityland Travel! Quisiera asesoría para elegir un Crucero Todo Incluido saliendo desde Perú.",
     img: "https://images.unsplash.com/photo-1548574505-5e239809ee19?w=1200&q=85",
     alt: "Asesoría de Cruceros en Lima Perú - Cityland Travel",
   },
   waFlotante: {
-    numero: "51944031724",
+    numero: "51944103890",
     mensaje: "¡Hola Cityland Travel! Deseo cotizar un Crucero Todo Incluido.",
     texto: "Cotizar Crucero",
   },

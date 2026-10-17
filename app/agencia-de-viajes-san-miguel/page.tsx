@@ -42,7 +42,7 @@ const CONFIG_SAN_MIGUEL: ConfiguracionLandingAerolinea = {
   negritaHero:
     "Cotiza por WhatsApp o videollamada y separa tu paquete turístico con el 50% de inicial.",
   ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
-  waPrincipalNumero: "51983882504",
+  waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
     "Hola, encontré Cityland Travel en Google buscando una agencia de viajes en San Miguel. Quiero consultar disponibilidad y precios. ¿Me pueden ayudar?",
   checksHero: [
@@ -62,7 +62,7 @@ const CONFIG_SAN_MIGUEL: ConfiguracionLandingAerolinea = {
     precio: "$399",
     moneda: "USD",
     notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
-    waNumero: "51942086698",
+    waNumero: "51944103890",
     waMensaje:
       "Hola, soy de San Miguel / Pueblo Libre y encontré Cityland Travel en Google. Quiero cotizar un viaje con un asesor.",
   },
@@ -96,7 +96,7 @@ const CONFIG_SAN_MIGUEL: ConfiguracionLandingAerolinea = {
         "4 noches en Resort Todo Incluido con comidas y bebidas 24h",
         "Tarifa sujeta a disponibilidad y condiciones aplicables",
       ],
-      waNumber: "51906450098",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, soy de San Miguel y encontré Cityland Travel en Google. Quiero cotizar un paquete Todo Incluido a Punta Cana o Cancún (Desde $1,049 USD).",
     },
@@ -119,7 +119,7 @@ const CONFIG_SAN_MIGUEL: ConfiguracionLandingAerolinea = {
         "Seguro médico Schengen cobertura 30.000€ sin deducible",
         "Tarifa sujeta a disponibilidad y condiciones aplicables",
       ],
-      waNumber: "51944280151",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, soy de San Miguel y encontré Cityland Travel en Google. Quiero información para viajar a España (Desde $890 USD).",
     },
@@ -142,7 +142,7 @@ const CONFIG_SAN_MIGUEL: ConfiguracionLandingAerolinea = {
         "Alojamiento con desayunos buffet y tour principal incluido",
         "Tarifa sujeta a disponibilidad y condiciones aplicables",
       ],
-      waNumber: "51938845086",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, soy de San Miguel y encontré Cityland Travel en Google. Quiero consultar los paquetes a Cartagena o Medellín (Desde $679 USD).",
     },
@@ -159,14 +159,14 @@ const CONFIG_SAN_MIGUEL: ConfiguracionLandingAerolinea = {
     descripcion:
       "Recibe tu cotización formal en dólares con impuestos incluidos directamente en tu WhatsApp.",
     ctaTexto: "Consultar disponibilidad por WhatsApp",
-    waNumero: "51906642487",
+    waNumero: "51944103890",
     waMensaje:
       "Hola, encontré Cityland Travel en Google buscando agencia de viajes en San Miguel. ¿Me pueden ayudar con una cotización?",
     img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80",
     alt: "Agencia de Viajes San Miguel",
   },
   waFlotante: {
-    numero: "51944031724",
+    numero: "51944103890",
     texto: "WhatsApp San Miguel",
     mensaje:
       "Hola, encontré Cityland Travel en Google buscando agencia de viajes en San Miguel. ¿Me pueden ayudar?",

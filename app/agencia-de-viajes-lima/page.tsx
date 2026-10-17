@@ -41,7 +41,7 @@ const CONFIG_LIMA: ConfiguracionLandingAerolinea = {
   negritaHero:
     "Boletos aéreos confirmados con código PNR, paquetes Todo Incluido, carpeta migratoria a Europa y asesoría de visas.",
   ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
-  waPrincipalNumero: "51983882504",
+  waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
     "Hola, encontré Cityland Travel en Google buscando una agencia de viajes en Lima. Quiero consultar disponibilidad y precios. ¿Me pueden ayudar?",
   checksHero: [
@@ -61,7 +61,7 @@ const CONFIG_LIMA: ConfiguracionLandingAerolinea = {
     precio: "$399",
     moneda: "USD",
     notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
-    waNumero: "51942086698",
+    waNumero: "51944103890",
     waMensaje:
       "Hola, encontré Cityland Travel en Google buscando una agencia de viajes en Lima. Quiero cotizar un viaje.",
   },
@@ -95,7 +95,7 @@ const CONFIG_LIMA: ConfiguracionLandingAerolinea = {
         "Seguro médico Schengen obligatorio con cobertura de 30.000€",
         "Asesoría paso a paso para pasar el control migratorio sin estrés",
       ],
-      waNumber: "51906450098",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, encontré su agencia en Lima por Google. Quiero consultar el paquete a España (Desde $890 USD). ¿Me pueden ayudar?",
     },
@@ -118,7 +118,7 @@ const CONFIG_LIMA: ConfiguracionLandingAerolinea = {
         "Alojamiento en resorts seleccionados frente a las mejores playas",
         "Congela tu tarifa hoy con el 50% de inicial y paga en cuotas",
       ],
-      waNumber: "51944280151",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, encontré su agencia en Lima por Google. Quiero cotizar un paquete al Caribe (Desde $699 USD). ¿Me pueden ayudar?",
     },
@@ -141,7 +141,7 @@ const CONFIG_LIMA: ConfiguracionLandingAerolinea = {
         "Hotel con desayunos + Tren Expedition/Voyager + Bus Consettur",
         "Entradas oficiales garantizadas a Machu Picchu con guía profesional",
       ],
-      waNumber: "51938845086",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, encontré su agencia en Lima por Google. Quiero consultar el paquete a Cusco (Desde $399 USD). ¿Me pueden ayudar?",
     },
@@ -158,14 +158,14 @@ const CONFIG_LIMA: ConfiguracionLandingAerolinea = {
     descripcion:
       "Atendemos presencialmente en nuestra sede de Lima y de forma inmediata por WhatsApp Business para todos los distritos de Lima y provincias.",
     ctaTexto: "Consultar disponibilidad por WhatsApp",
-    waNumero: "51906642487",
+    waNumero: "51944103890",
     waMensaje:
       "Hola, encontré Cityland Travel en Google buscando una agencia de viajes en Lima. ¿Me pueden ayudar?",
     img: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1000&q=80",
     alt: "Agencia de Viajes en Lima Cityland Travel",
   },
   waFlotante: {
-    numero: "51944031724",
+    numero: "51944103890",
     texto: "Cotizar con Agencia Lima",
     mensaje:
       "Hola, encontré Cityland Travel en Google buscando agencia de viajes en Lima. ¿Me pueden ayudar?",

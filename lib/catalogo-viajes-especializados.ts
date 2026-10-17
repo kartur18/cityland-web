@@ -7,6 +7,8 @@ export interface ViajeEspecializadoSEO {
   destinoOPais: string;
   precioDesdeUSD: number;
   etiquetaPrecio: string;
+  imagenHero: string;
+  galeria: [string, string, string];
   metaTitle: string;
   metaDescription: string;
   keywords: string[];
@@ -15,6 +17,91 @@ export interface ViajeEspecializadoSEO {
   beneficiosClave: { titulo: string; desc: string }[];
   faqs: { q: string; a: string }[];
   waMensaje: string;
+}
+
+const FOTOS_POR_DESTINO: Record<string, [string, string, string]> = {
+  espana: [
+    "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1200&q=85",
+    "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=900&q=80",
+    "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=900&q=80",
+  ],
+  italia: [
+    "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=85",
+    "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=900&q=80",
+    "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=900&q=80",
+  ],
+  francia: [
+    "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=85",
+    "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=900&q=80",
+    "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=900&q=80",
+  ],
+  europa: [
+    "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200&q=85",
+    "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=900&q=80",
+    "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=900&q=80",
+  ],
+  caribe: [
+    "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=85",
+    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80",
+    "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=900&q=80",
+  ],
+  usa: [
+    "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=1200&q=85",
+    "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=900&q=80",
+    "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=900&q=80",
+  ],
+  sudamerica: [
+    "https://images.unsplash.com/photo-1583531352515-8884af319dc1?w=1200&q=85",
+    "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=900&q=80",
+    "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=900&q=80",
+  ],
+  peru: [
+    "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=85",
+    "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=900&q=80",
+    "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=900&q=80",
+  ],
+  exoticos: [
+    "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=85",
+    "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=900&q=80",
+    "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=900&q=80",
+  ],
+  vuelos: [
+    "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=85",
+    "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=900&q=80",
+    "https://images.unsplash.com/photo-1540339832862-474599807836?w=900&q=80",
+  ],
+};
+
+function obtenerFotosPorTexto(texto: string): [string, string, string] {
+  const t = texto.toLowerCase();
+  if (t.match(/madrid|barcelona|españa|espana|valencia|sevilla|malaga|bilbao|zaragoza|alicante|mallorca|tenerife|vigo|coruña|galicia|granada/)) {
+    return FOTOS_POR_DESTINO.espana;
+  }
+  if (t.match(/roma|milan|milán|italia|venecia|florencia|turin|bolonia|napoles/)) {
+    return FOTOS_POR_DESTINO.italia;
+  }
+  if (t.match(/paris|parís|francia|lyon/)) {
+    return FOTOS_POR_DESTINO.francia;
+  }
+  if (t.match(/amsterdam|ámsterdam|holanda|bruselas|zurich|zúrich|suiza|munich|múnich|alemania|lisboa|portugal|londres|reino unido|schengen|europa/)) {
+    return FOTOS_POR_DESTINO.europa;
+  }
+  if (t.match(/punta cana|cancun|cancún|aruba|curazao|jamaica|cuba|habana|varadero|caribe|san andres|san andrés|panama|panamá|costa rica|crucero/)) {
+    return FOTOS_POR_DESTINO.caribe;
+  }
+  if (t.match(/miami|nueva york|newark|los angeles|orlando|houston|chicago|atlanta|washington|boston|estados unidos|ee\. uu\.|toronto|montreal|canada|canadá|disney/)) {
+    return FOTOS_POR_DESTINO.usa;
+  }
+  if (t.match(/turquia|turquía|dubai|dubái|japon|japón|tokio/)) {
+    return FOTOS_POR_DESTINO.exoticos;
+  }
+  if (t.match(/cartagena|medellin|medellín|bogota|bogotá|colombia|buenos aires|argentina|santiago|chile|sao paulo|são paulo|rio de janeiro|brasil|uruguay|bolivia|ecuador/)) {
+    return FOTOS_POR_DESTINO.sudamerica;
+  }
+  if (t.match(/cusco|machu picchu|arequipa|tarapoto|iquitos|huaraz|punta sal|peru|perú|menores/)) {
+    return FOTOS_POR_DESTINO.peru;
+  }
+  return FOTOS_POR_DESTINO.vuelos;
 }
 
 const CIUDADES_PRIMER_VIAJE: [string, string, string, number][] = [
@@ -147,16 +234,16 @@ const GRUPOS_Y_SEGUROS: [string, string, string, number, string][] = [
   ["Viaje de Quinceañeras en Crucero por el Caribe (Sin Visa)", "viaje-quinceaneras-crucero-caribe", "Panamá, Aruba y Curazao", 1690, "7 noches a bordo de crucero Todo Incluido zarpando de Panamá o Cartagena sin requerir visa estadounidense, con fiesta de 15 años a bordo."],
   ["Viaje de Quinceañeras a Cancún & Riviera Maya", "viaje-quinceaneras-cancun-riviera-maya", "Cancún, México", 1390, "Resort 5★ Todo Incluido, parque Xcaret, Isla Mujeres en catamarán, sesión de fotos y acompañamiento permanente desde Lima."],
   ["Viaje de Quinceañeras a Punta Cana Todo Incluido", "viaje-quinceaneras-punta-cana", "Punta Cana, Rep. Dominicana", 1350, "Sin visa para peruanas: Resort 5★ frente a Playa Bávaro, Isla Saona, Dolphin Explorer, sesión fotográfica y coordinadoras de viaje."],
-  ["Agencia de Viajes Corporativos para Empresas en Lima", "viajes-corporativos-empresas-lima", "Nacional e Internacional", 120, "Facturación electrónica RUC 20614914239, tarifas corporativas en vuelos nacionales e internacionales, hoteles ejecutivos y atención 24/7."],
+  ["Agencia de Viajes Corporativos para Empresas en Lima", "viajes-corporativos-empresas-lima", "Nacional e Internacional", 120, "Facturación electrónica RUC 20614914239, tarifas corporativas en vuelos nacionales e internacionales, hoteles ejecutivos y atención personalizada."],
   ["Gestión de Pasajes Aéreos para Minería, Ingeniería y Construcción", "viajes-corporativos-mineria-energia-peru", "Rutas Nacionales Perú", 95, "Emisión y cambios flexibles para cuadrillas y ejecutivos hacia Arequipa, Cusco, Cajamarca, Trujillo, Piura, Talara e Iquitos."],
   ["Viajes de Incentivos y Convenciones para Empresas en el Caribe", "viajes-incentivos-empresas-caribe", "Punta Cana, Cancún y Cartagena", 890, "Premia a tu fuerza de ventas o directorio con programas Todo Incluido, salas de conferencias, cenas privadas y bloqueos aéreos grupales."],
   ["Viajes a Ferias Internacionales, Congresos y Ruedas de Negocio", "viajes-congresos-ferias-internacionales", "Europa, EE. UU., China y Latinoamérica", 690, "Boletos aéreos corporativos, hoteles junto al recinto ferial, traslados ejecutivos, seguro de negocios y factura deducible."],
   ["Boletos Aéreos Grupales para Delegaciones Deportivas y Culturales", "pasajes-aereos-grupos-delegaciones-peru", "Perú y el Mundo", 110, "Tarifas de grupo a partir de 10 pasajeros con nombres flexibles hasta días antes del vuelo y franquicia de equipaje especial."],
-  ["Seguro de Viaje Schengen 30.000€ Oficial para España", "seguro-schengen-espana-30000-euros", "España y Unión Europea", 45, "Póliza oficial sin deducible con cobertura médica mínima de 30.000 euros, repatriación sanitaria y certificado inmediato para Madrid-Barajas."],
-  ["Seguro Médico Internacional Schengen para Italia, Francia y Europa", "seguro-schengen-italia-francia", "Espacio Schengen (29 países)", 45, "Emisión inmediata en PDF verificable para migraciones en Roma, Milán, París, Ámsterdam y Frankfurt con asistencia en español 24/7."],
-  ["Seguro de Viaje Médico para Estados Unidos y Canadá", "seguro-viaje-estados-unidos-cobertura-medica", "EE. UU. y Canadá", 55, "Alta cobertura médica de $60,000 a $150,000 USD para proteger tu viaje familiar o de negocios ante los altos costos médicos en Norteamérica."],
-  ["Seguro de Asistencia al Viajero para el Caribe y Sudamérica", "seguro-viaje-caribe-todo-incluido", "Punta Cana, Cancún, Colombia y Brasil", 35, "Cobertura médica, pérdida de equipaje, demora de vuelos y asistencia odontológica de urgencia para tus vacaciones familiares."],
-  ["Reserva Verificable de Vuelo y Hotel para Trámite de Visa o Ingreso", "reserva-vuelo-hotel-para-tramite-visa", "Consulados y Migraciones", 65, "Itinerario aéreo con código PNR real y voucher de reserva hotelera para sustentar tu entrevista consular o carpeta de viaje."],
+  ["Seguro de Viaje Schengen 30.000€ Oficial para España", "seguro-schengen-espana-30000-euros", "España y Unión Europea", 65, "Póliza oficial sin deducible con cobertura médica mínima de 30.000 euros, repatriación sanitaria y certificado inmediato para Madrid-Barajas."],
+  ["Seguro Médico Internacional Schengen para Italia, Francia y Europa", "seguro-schengen-italia-francia", "Espacio Schengen (29 países)", 65, "Emisión inmediata en PDF verificable para migraciones en Roma, Milán, París, Ámsterdam y Frankfurt con asistencia en español 24/7."],
+  ["Seguro de Viaje Médico para Estados Unidos y Canadá", "seguro-viaje-estados-unidos-cobertura-medica", "EE. UU. y Canadá", 75, "Alta cobertura médica de $60,000 a $150,000 USD para proteger tu viaje familiar o de negocios ante los altos costos médicos en Norteamérica."],
+  ["Seguro de Asistencia al Viajero para el Caribe y Sudamérica", "seguro-viaje-caribe-todo-incluido", "Punta Cana, Cancún, Colombia y Brasil", 45, "Cobertura médica, pérdida de equipaje, demora de vuelos y asistencia odontológica de urgencia para tus vacaciones familiares."],
+  ["Asesoría Documental y Preparación de Carpeta de Viaje Internacional", "reserva-vuelo-hotel-para-tramite-visa", "Trámites Consulares y Europa", 120, "Preparación integral de tu expediente de viaje con itinerario aéreo, reserva de alojamiento y seguro médico para trámites consulares o ingreso a Europa."],
 ];
 
 const PAISES_REQUISITOS: [string, string, string, number, string][] = [
@@ -167,13 +254,13 @@ const PAISES_REQUISITOS: [string, string, string, number, string][] = [
   ["Países Bajos (Holanda)", "requisitos-viajar-a-paises-bajos-desde-peru", "Ámsterdam", 950, "Pasaporte vigente, vuelo directo o con conexión ida y vuelta, Seguro Schengen 30.000€, reserva hotelera verificable y solvencia por día de estancia."],
   ["Suiza", "requisitos-viajar-a-suiza-desde-peru", "Zúrich / Ginebra", 990, "Como parte del Espacio Schengen, los peruanos ingresan sin visa hasta 90 días con pasaporte vigente, boleto redondo, Seguro Schengen y reserva de alojamiento."],
   ["Portugal", "requisitos-viajar-a-portugal-desde-peru", "Lisboa / Oporto", 940, "Pasaporte peruano vigente, boleto aéreo ida y vuelta, Seguro médico Schengen de 30.000€, reserva de hotel o termo de responsabilidade y bolsa de viaje."],
-  ["Reino Unido (Inglaterra)", "requisitos-viajar-a-reino-unido-desde-peru", "Londres", 995, "Los peruanos no requieren visa consular tradicional por turismo corto: se tramita la Autorización Electrónica de Viaje (UK ETA) con pasaporte vigente, vuelo de retorno y hotel."],
+  ["Reino Unido (Inglaterra)", "requisitos-viajar-a-reino-unido-desde-peru", "Londres", 995, "Los peruanos gestionan la Autorización Electrónica de Viaje (UK ETA) con pasaporte vigente, vuelo de retorno confirmado y reserva de alojamiento."],
   ["Turquía", "requisitos-viajar-a-turquia-desde-peru", "Estambul / Capadocia", 1090, "Los ciudadanos peruanos están EXENTOS DE VISA para viajar a Turquía por turismo hasta 90 días. Solo necesitas pasaporte con al menos 6 meses de vigencia, vuelo redondo y reserva de hotel/circuito."],
-  ["Dubái (Emiratos Árabes)", "requisitos-viajar-a-dubai-desde-peru", "Dubái / Abu Dhabi", 1290, "Los peruanos ingresan a Emiratos Árabes Unidos por turismo con pasaporte vigente (mínimo 6 meses), boleto de ida y vuelta y reserva de hotel."],
+  ["Dubái (Emiratos Árabes)", "requisitos-viajar-a-dubai-desde-peru", "Dubái / Abu Dhabi", 1290, "Los peruanos ingresan a Emiratos Árabes Unidos por turismo sin visa consular con pasaporte vigente (mínimo 6 meses), boleto de ida y vuelta y reserva de hotel."],
   ["Japón", "requisitos-viajar-a-japon-desde-peru", "Tokio / Kioto", 1390, "Exención de visa para peruanos portadores de pasaporte electrónico/biométrico vigente en viajes de turismo de hasta 90 días, con pasaje redondo e itinerario."],
   ["Estados Unidos", "requisitos-viajar-a-estados-unidos-desde-peru", "Miami / Nueva York / Orlando", 490, "Requiere Pasaporte peruano vigente y Visa Americana B1/B2 válida. Te asesoramos con el formulario DS-160, pago de tasa consular, programación de cita y paquete de viaje."],
   ["Canadá", "requisitos-viajar-a-canada-desde-peru", "Toronto / Montreal / Vancouver", 670, "Requiere Pasaporte vigente y Visa de Residente Temporal (Visitor Visa) canadiense. Te asesoramos en el expediente consular e itinerario de vuelo y hotel."],
-  ["México y Cancún", "requisitos-viajar-a-mexico-cancun-desde-peru", "Cancún / Ciudad de México", 480, "Los ciudadanos peruanos requieren Visa Mexicana vigente, O BIEN quedan exentos si poseen Visa vigente y múltiple de Estados Unidos, Canadá, Espacio Schengen, Reino Unido o Japón (o residencia permanente en Alianza del Pacífico/Schengen/EE.UU.)."],
+  ["México y Cancún", "requisitos-viajar-a-mexico-cancun-desde-peru", "Cancún / Ciudad de México", 480, "Los ciudadanos peruanos requieren Visa Mexicana vigente, O BIEN quedan exentos si poseen Visa vigente y múltiple de Estados Unidos, Canadá, Espacio Schengen, Reino Unido o Japón."],
   ["Punta Cana (Rep. Dominicana)", "requisitos-viajar-a-punta-cana-desde-peru", "Punta Cana / Santo Domingo", 510, "SIN VISA para peruanos: solo necesitas Pasaporte vigente (mínimo 6 meses), boleto de ida y vuelta, reserva de resort y completar el formulario electrónico gratuito E-Ticket dominicano."],
   ["Aruba", "requisitos-viajar-a-aruba-desde-peru", "Oranjestad, Aruba", 545, "SIN VISA para peruanos: Pasaporte vigente, boleto aéreo ida y vuelta, reserva de hotel, tarjeta ED Card online y Certificado Internacional de Vacuna contra la Fiebre Amarilla (aplicada mínimo 10 días antes)."],
   ["Curazao", "requisitos-viajar-a-curazao-desde-peru", "Willemstad, Curazao", 550, "SIN VISA para peruanos: Pasaporte con mínimo 6 meses de vigencia, Digital Immigration Card, vacuna contra la fiebre amarilla, reserva de hotel y boleto de retorno."],
@@ -188,8 +275,8 @@ const PAISES_REQUISITOS: [string, string, string, number, string][] = [
   ["Uruguay (Montevideo y Punta del Este)", "requisitos-viajar-a-uruguay-solo-dni", "Montevideo / Punta del Este", 450, "VIAJA SOLO CON TU DNI PERUANO VIGENTE (o pasaporte) sin requerir visa por turismo hasta 90 días."],
   ["Bolivia (La Paz, Santa Cruz y Salar de Uyuni)", "requisitos-viajar-a-bolivia-solo-dni", "Santa Cruz / La Paz / Uyuni", 335, "VIAJA SOLO CON TU DNI PERUANO VIGENTE (o pasaporte) sin visa como ciudadano de la Comunidad Andina."],
   ["Ecuador (Quito, Guayaquil y Galápagos)", "requisitos-viajar-a-ecuador-solo-dni", "Quito / Guayaquil / Galápagos", 320, "VIAJA SOLO CON TU DNI PERUANO VIGENTE (o pasaporte) sin visa. Para Galápagos se adiciona la tarjeta de control de tránsito TCT en aeropuerto."],
-  ["Viajar con Menores de Edad desde Perú", "requisitos-viajar-con-menores-de-edad-peru", "Rutas Nacionales e Internacionales", 89, "Para vuelos dentro del Perú basta que el menor viaje con al menos uno de sus padres (con DNI vigente). Para vuelos internacionales, si viaja con uno solo de los padres o con un tercero, es obligatorio el Permiso Notarial de Viaje al Exterior (o judicial/consular)."],
-  ["Carta de Invitación Policial para España desde Perú", "requisitos-carta-de-invitacion-espana-peru", "Madrid, Barcelona y toda España", 890, "Si te hospedarás en casa de un familiar o amigo residente legal en España, el anfitrión debe tramitar la Carta de Invitación original en la Comisaría de Policía de su localidad y enviártela en físico a Lima antes de tu vuelo, acompañada de tu boleto ida y vuelta y Seguro Schengen 30.000€."],
+  ["Viajar con Menores de Edad desde Perú", "requisitos-viajar-con-menores-de-edad-peru", "Rutas Nacionales e Internacionales", 299, "Para vuelos dentro del Perú basta que el menor viaje con al menos uno de sus padres (con DNI vigente). Para vuelos internacionales, si viaja con uno solo de los padres o con un tercero, es obligatorio el Permiso Notarial de Viaje al Exterior (o judicial/consular)."],
+  ["Carta de Invitación para España desde Perú", "requisitos-carta-de-invitacion-espana-peru", "Madrid, Barcelona y toda España", 890, "Si te hospedarás en casa de un familiar o amigo residente legal en España, el anfitrión debe tramitar la Carta de Invitación original en la Comisaría de Policía de su localidad y enviártela en físico a Lima antes de tu vuelo, acompañada de tu boleto ida y vuelta y Seguro Schengen 30.000€."],
 ];
 
 function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
@@ -197,6 +284,7 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
 
   // A. 35 páginas de Primer Viaje / Carpeta Migratoria
   for (const [ciudad, slugCiudad, pais, precio] of CIUDADES_PRIMER_VIAJE) {
+    const fotos = obtenerFotosPorTexto(`${ciudad} ${pais}`);
     lista.push({
       slug: `primer-viaje-a-${slugCiudad}`,
       categoria: "primer-viaje",
@@ -205,7 +293,9 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
       subtitulo: `Vuelo confirmado + Reserva de Hotel verificable + Seguro Schengen 30.000€ + Preparación de Documentos`,
       destinoOPais: `${ciudad}, ${pais}`,
       precioDesdeUSD: precio,
-      etiquetaPrecio: "Desde (Impuestos y carpeta incluidos)",
+      etiquetaPrecio: "Paquete con Carpeta Completa Desde",
+      imagenHero: fotos[0],
+      galeria: fotos,
       metaTitle: `Primer Viaje a ${ciudad}, ${pais} Desde $${precio} USD (Carpeta Completa) | Cityland Travel`,
       metaDescription: `Viaja por primera vez de Lima a ${ciudad} (${pais}) con todo en regla Desde $${precio} USD (impuestos incluidos). Incluye boleto aéreo, reserva de hotel verificada, Seguro Schengen 30.000€ y asesoría paso a paso en Lima (RUC 20614914239).`,
       keywords: [
@@ -221,29 +311,30 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
         `Reserva de alojamiento verificada en ${ciudad} o validación de Carta de Invitación`,
         "Póliza oficial de Seguro Médico Schengen por 30.000€ sin deducible",
         "Equipaje de mano 10 kg + opción de maleta de 23 kg en bodega",
-        "Asesoría personalizada sobre bolsa de viaje y entrevista en aeropuerto",
+        "Asesoría personalizada sobre bolsa de viaje y control migratorio en aeropuerto",
       ],
       beneficiosClave: [
         { titulo: "Documentación 100% Verificable", desc: `Entregamos tu carpeta impresa y digital con reservas activas en sistema para tu llegada a ${ciudad}.` },
         { titulo: "Seguro Schengen Oficial 30.000€", desc: "Cumple con la normativa europea de asistencia médica sin franquicia ni copagos." },
-        { titulo: "Oficina Física en Los Olivos, Lima", desc: "Atención presencial en Av. Antúnez de Mayolo 814 (RUC 20614914239) y por WhatsApp Business." },
+        { titulo: "Oficina Física en Los Olivos, Lima", desc: "Atención presencial en Av. Antúnez de Mayolo 814 (RUC 20614914239) y Central WhatsApp +51 944 103 890." },
       ],
       faqs: [
         {
           q: `¿Qué documentos incluye el paquete de primer viaje a ${ciudad}?`,
-          a: `Incluye tu boleto aéreo confirmado hacia ${ciudad} (${pais}), póliza de Seguro Schengen de 30.000€, reserva hotelera verificable (si no cuentas con carta de invitación) e itinerario turístico detallado.`,
+          a: `Incluye tu boleto aéreo confirmado hacia ${ciudad} (${pais}), póliza de Seguro Schengen de 30.000€, reserva hotelera verificable (si no cuentas con carta de invitación) e itinerario detallado.`,
         },
         {
           q: `¿El precio Desde $${precio} USD incluye impuestos?`,
-          a: `Sí. Todas nuestras tarifas están expresadas en dólares americanos (USD) con impuestos aeroportuarios y cargos obligatorios incluidos. Tarifa sujeta a disponibilidad y condiciones aplicables.`,
+          a: `Sí. Todas nuestras tarifas están expresadas en dólares americanos (USD) con impuestos aeroportuarios y cargos obligatorios incluidos. Puedes separar con el 50% de inicial.`,
         },
       ],
-      waMensaje: `Hola, encontré Cityland Travel en Google. Quiero cotizar mi Primer Viaje a ${ciudad} (${pais}) Desde $${precio} USD con carpeta completa. ¿Me pueden asesorar?`,
+      waMensaje: `¡Hola Cityland Travel! Quiero cotizar mi Primer Viaje a ${ciudad} (${pais}) Desde $${precio} USD con carpeta completa. ¿Me pueden asesorar?`,
     });
   }
 
   // B. 35 páginas de Vuelos con 2 Maletas de 23 kg
   for (const [rutaNombre, slugRuta, pais, precio, aerolineas] of RUTAS_DOS_MALETAS) {
+    const fotos = obtenerFotosPorTexto(`${rutaNombre} ${pais}`);
     lista.push({
       slug: `vuelos-con-2-maletas-${slugRuta}`,
       categoria: "dos-maletas",
@@ -252,7 +343,9 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
       subtitulo: `Lleva hasta 46 kg en bodega + 10 kg en cabina con tarifas especiales de agencia en dólares`,
       destinoOPais: rutaNombre,
       precioDesdeUSD: precio,
-      etiquetaPrecio: "Desde (Impuestos y equipaje incluidos)",
+      etiquetaPrecio: "Vuelo con Equipaje Completo Desde",
+      imagenHero: fotos[0],
+      galeria: fotos,
       metaTitle: `Vuelos ${rutaNombre} con 2 Maletas de 23 kg Desde $${precio} USD | Cityland Travel`,
       metaDescription: `Compra tu pasaje aéreo de ${rutaNombre} con 2 maletas de 23 kg en bodega + equipaje de mano 10 kg Desde $${precio} USD (impuestos incluidos). Emitimos en ${aerolineas} con código PNR inmediato.`,
       keywords: [
@@ -271,7 +364,7 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
       ],
       beneficiosClave: [
         { titulo: "Ahorra hasta 50% en Equipaje", desc: "Tarifa con equipaje incluido desde la emisión, mucho más económica que pagar en aeropuerto." },
-        { titulo: "Ideal para Mudanzas, Compras o Familia", desc: `Lleva regalos, encomiendas o equipaje de larga estadía en tu vuelo ${rutaNombre}.` },
+        { titulo: "Ideal para Larga Estadía o Familia", desc: `Lleva todo tu equipaje sin preocupaciones en tu vuelo ${rutaNombre}.` },
         { titulo: "Reserva Verificable al Instante", desc: "Verifica tus 2 piezas de 23 kg directamente con tu código PNR en la web de la aerolínea." },
       ],
       faqs: [
@@ -281,15 +374,16 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
         },
         {
           q: `¿Qué precio tiene el vuelo de ${rutaNombre} con equipaje completo?`,
-          a: `Contamos con tarifas referenciales Desde $${precio} USD con impuestos incluidos. Tarifa sujeta a disponibilidad y condiciones aplicables.`,
+          a: `Contamos con tarifas referenciales Desde $${precio} USD con impuestos incluidos. Tarifa sujeta a disponibilidad según tus fechas de viaje.`,
         },
       ],
-      waMensaje: `Hola, encontré Cityland Travel en Google. Quiero cotizar el vuelo de ${rutaNombre} con 2 maletas de 23 kg (Desde $${precio} USD). ¿Me ayudan con fechas?`,
+      waMensaje: `¡Hola Cityland Travel! Quiero cotizar el vuelo de ${rutaNombre} con 2 maletas de 23 kg (Desde $${precio} USD). ¿Me ayudan con fechas?`,
     });
   }
 
   // C. 35 páginas de Rutas por Aerolínea
   for (const [aerolinea, slugAero, rutaNombre, pais, precio] of RUTAS_AEROLINEAS) {
+    const fotos = obtenerFotosPorTexto(`${rutaNombre} ${pais}`);
     lista.push({
       slug: slugAero,
       categoria: "aerolinea",
@@ -298,7 +392,9 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
       subtitulo: `Cotiza boletos confirmados en ${aerolinea} con código PNR inmediato, maleta de 23 kg y atención en Lima`,
       destinoOPais: `${rutaNombre} (${aerolinea})`,
       precioDesdeUSD: precio,
-      etiquetaPrecio: "Desde (Impuestos incluidos)",
+      etiquetaPrecio: "Tarifa Aérea con Impuestos Desde",
+      imagenHero: fotos[0],
+      galeria: fotos,
       metaTitle: `Vuelos ${aerolinea} ${rutaNombre} Desde $${precio} USD (Impuestos Incluidos) | Cityland Travel`,
       metaDescription: `Reserva vuelos en ${aerolinea} para la ruta ${rutaNombre} Desde $${precio} USD con impuestos incluidos. Conoce la franquicia de equipaje, horarios y tarifas con maleta de 23 kg en Cityland Travel (RUC 20614914239).`,
       keywords: [
@@ -318,7 +414,7 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
       beneficiosClave: [
         { titulo: `Tarifas Negociadas ${aerolinea}`, desc: "Comparamos clases tarifarias y fechas flexibles para encontrar el menor precio en USD." },
         { titulo: "Pago Seguro en Perú", desc: "Paga mediante cuentas empresa (BCP, BBVA, Interbank), tarjetas o en nuestra oficina de Los Olivos." },
-        { titulo: "Asistencia Postventa Real", desc: "No lidies con call centers robotizados: tu asesor de Cityland Travel te atiende por WhatsApp." },
+        { titulo: "Asistencia Postventa Real", desc: "Atención directa por nuestra Central WhatsApp +51 944 103 890 antes y durante tu viaje." },
       ],
       faqs: [
         {
@@ -327,15 +423,16 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
         },
         {
           q: `¿El precio Desde $${precio} USD incluye impuestos?`,
-          a: `Sí, el precio referencial en dólares incluye todos los impuestos aeroportuarios y tasas obligatorias. Tarifa sujeta a disponibilidad y condiciones aplicables.`,
+          a: `Sí, el precio referencial en dólares incluye todos los impuestos aeroportuarios y tasas obligatorias.`,
         },
       ],
-      waMensaje: `Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio en ${aerolinea} para la ruta ${rutaNombre} (Desde $${precio} USD).`,
+      waMensaje: `¡Hola Cityland Travel! Quiero consultar disponibilidad y precio en ${aerolinea} para la ruta ${rutaNombre} (Desde $${precio} USD).`,
     });
   }
 
   // D. 25 páginas de Grupos, Promociones Escolares, Quinceañeras, Corporativos y Seguros
   for (const [titulo, slugGrupo, destino, precio, desc] of GRUPOS_Y_SEGUROS) {
+    const fotos = obtenerFotosPorTexto(`${titulo} ${destino}`);
     lista.push({
       slug: slugGrupo,
       categoria: "grupos-seguros",
@@ -344,7 +441,9 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
       subtitulo: desc,
       destinoOPais: destino,
       precioDesdeUSD: precio,
-      etiquetaPrecio: "Desde (Tarifa referencial USD)",
+      etiquetaPrecio: "Tarifa Referencial Desde",
+      imagenHero: fotos[0],
+      galeria: fotos,
       metaTitle: `${titulo} Desde $${precio} USD | Cityland Travel Perú`,
       metaDescription: `${desc} Cotiza Desde $${precio} USD con impuestos incluidos en Cityland Travel E.I.R.L. (RUC 20614914239), oficina en Los Olivos, Lima.`,
       keywords: [
@@ -352,13 +451,13 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
         `${titulo.toLowerCase()} lima`,
         "agencia de viajes cityland travel",
       ],
-      resumenEjecutivo: `${desc} En Cityland Travel E.I.R.L. (RUC 20614914239) contamos con más de 10 años de experiencia organizando viajes individuales, grupales, estudiantiles y corporativos con respaldo legal y atención personalizada.`,
+      resumenEjecutivo: `${desc} En Cityland Travel E.I.R.L. (RUC 20614914239) organizamos viajes individuales, grupales, estudiantiles y corporativos con contrato formal, boleta/factura electrónica y atención personalizada.`,
       incluye: [
-        "Atención personalizada por un asesor asignado en WhatsApp Business",
+        "Atención directa en nuestra Central WhatsApp (+51 944 103 890) y oficina en Los Olivos",
         "Contrato formal y comprobantes electrónicos (Boleta o Factura RUC 20614914239)",
         "Tarifas expresadas 100% en dólares americanos (USD) con impuestos incluidos",
         "Facilidades de pago fraccionado reservando con inicial desde el 50%",
-        "Asistencia permanente 24/7 antes y durante todo el servicio",
+        "Asistencia permanente 24/7 antes y durante todo el viaje",
       ],
       beneficiosClave: [
         { titulo: "Agencia Formal Registrada", desc: "Cityland Travel E.I.R.L. (RUC 20614914239) con oficina física en Av. Antúnez de Mayolo 814, Los Olivos." },
@@ -368,60 +467,75 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
       faqs: [
         {
           q: `¿Cómo solicito una cotización formal para ${titulo}?`,
-          a: `Haz clic en cualquiera de los botones de WhatsApp de esta página y nuestro sistema te conectará al instante con un asesor especializado para enviarte la propuesta detallada en PDF.`,
+          a: `Haz clic en cualquiera de los botones de WhatsApp (+51 944 103 890) y nuestro equipo te enviará la propuesta detallada en PDF según tus fechas y número de viajeros.`,
         },
         {
           q: `¿El monto Desde $${precio} USD incluye impuestos?`,
-          a: `Sí, nuestras tarifas referenciales en dólares incluyen impuestos y cargos obligatorios. Tarifa sujeta a disponibilidad y condiciones aplicables.`,
+          a: `Sí, nuestras tarifas referenciales en dólares incluyen impuestos y cargos obligatorios.`,
         },
       ],
-      waMensaje: `Hola, encontré Cityland Travel en Google. Quiero solicitar información y cotización sobre: ${titulo} (Desde $${precio} USD). ¿Me pueden ayudar?`,
+      waMensaje: `¡Hola Cityland Travel! Quiero solicitar información y cotización sobre: ${titulo} (Desde $${precio} USD). ¿Me pueden ayudar?`,
     });
   }
 
   // E. 30 páginas de Requisitos Migratorios y Documentación por País
   for (const [pais, slugReq, ciudadesRef, precio, detalleReq] of PAISES_REQUISITOS) {
+    const fotos = obtenerFotosPorTexto(`${pais} ${ciudadesRef}`);
+    const esGuiaEspecial = slugReq === "requisitos-viajar-con-menores-de-edad-peru" || slugReq === "requisitos-carta-de-invitacion-espana-peru";
+    const tituloFinal =
+      slugReq === "requisitos-viajar-con-menores-de-edad-peru"
+        ? "Requisitos para Viajar con Menores de Edad desde Perú (Vuelos Nacionales e Internacionales)"
+        : slugReq === "requisitos-carta-de-invitacion-espana-peru"
+        ? "Requisitos de Carta de Invitación Policial para Viajar a España desde Perú"
+        : `Requisitos para Viajar a ${pais} desde Perú (Guía 2026 + Vuelos y Paquetes)`;
+
+    const subtituloFinal = esGuiaEspecial
+      ? `Guía práctica para pasajeros peruanos (${ciudadesRef}) y emisión de paquetes y boletos con asesoría documental incluida`
+      : `Todo lo que solicita migraciones en ${ciudadesRef} para ciudadanos peruanos + cotización de vuelos y paquetes Desde $${precio} USD`;
+
     lista.push({
       slug: slugReq,
       categoria: "requisitos",
-      badge: `Requisitos actualizados 2026 · ${pais}`,
-      titulo: `Requisitos para Viajar a ${pais} desde Perú (Guía + Vuelos y Paquetes)`,
-      subtitulo: `Todo lo que exige migraciones en ${ciudadesRef} para ciudadanos peruanos y cotización de viaje Desde $${precio} USD`,
+      badge: `Guía Documental Actualizada · ${pais}`,
+      titulo: tituloFinal,
+      subtitulo: subtituloFinal,
       destinoOPais: pais,
       precioDesdeUSD: precio,
-      etiquetaPrecio: "Vuelos / Paquetes Desde",
-      metaTitle: `Requisitos para Viajar a ${pais} desde Perú 2026 + Vuelos Desde $${precio} USD | Cityland Travel`,
-      metaDescription: `Conoce los requisitos oficiales para viajar a ${pais} (${ciudadesRef}) siendo peruano: documentos, pasaporte, seguro y solvencia. Cotiza tu vuelo o paquete Desde $${precio} USD con impuestos incluidos en Cityland Travel.`,
+      etiquetaPrecio: "Vuelos y Paquetes con Asesoría Desde",
+      imagenHero: fotos[0],
+      galeria: fotos,
+      metaTitle: `${tituloFinal} | Cityland Travel`,
+      metaDescription: `Conoce los requisitos vigentes para ${pais} (${ciudadesRef}): documentos, pasaporte, seguro y solvencia. Cotiza tu vuelo o paquete Desde $${precio} USD con asesoría incluida en Cityland Travel.`,
       keywords: [
         `requisitos para viajar a ${pais.toLowerCase()} desde peru`,
-        `que necesito para viajar a ${pais.toLowerCase()} siendo peruano`,
         `documentos para entrar a ${pais.toLowerCase()}`,
         `vuelos a ${pais.toLowerCase()} desde lima`,
+        "cityland travel",
       ],
       resumenEjecutivo: detalleReq,
       incluye: [
-        `Revisión completa de tus documentos para ingresar a ${pais} (${ciudadesRef})`,
+        `Asesoría y revisión gratuita de tus documentos al comprar tu pasaje o paquete hacia ${ciudadesRef}`,
         `Boleto aéreo de ida y vuelta hacia ${ciudadesRef} con código PNR verificable`,
-        "Reserva de hotel confirmada o validación de alojamiento familiar",
+        "Reserva de hotel confirmada o validación de Carta de Invitación familiar",
         "Seguro médico internacional obligatorio según normativa del país de destino",
-        "Llenado de formularios electrónicos migratorios y check-in previo al vuelo",
+        "Apoyo con formularios electrónicos migratorios y check-in previo al vuelo",
       ],
       beneficiosClave: [
-        { titulo: "Viaja con Todo en Regla", desc: `Verificamos cada requisito exigido por las autoridades de ${pais} antes de tu embarque en Lima.` },
+        { titulo: "Asesoría Incluida con tu Viaje", desc: `Al emitir tu boleto o paquete con nosotros, verificamos cada documento requerido para ${pais}.` },
         { titulo: "Todo en un Solo Lugar", desc: "Emitimos tu pasaje aéreo, hotel, seguro médico y carpeta documental lista para presentar." },
-        { titulo: "Atención Inmediata", desc: "Resuelve tus dudas por WhatsApp con nuestros 12 asesores o visítanos en Los Olivos." },
+        { titulo: "Atención Centralizada", desc: "Resuelve tus dudas por WhatsApp al +51 944 103 890 o visítanos en nuestra sede de Los Olivos." },
       ],
       faqs: [
         {
-          q: `¿Qué documentos me pedirán al viajar a ${pais} desde Perú?`,
+          q: `¿Qué documentos necesito presentar para este viaje (${pais})?`,
           a: detalleReq,
         },
         {
-          q: `¿Cuánto cuesta volar o viajar con paquete a ${pais} desde Lima?`,
-          a: `Contamos con tarifas referenciales hacia ${ciudadesRef} Desde $${precio} USD con impuestos incluidos. Tarifa sujeta a disponibilidad y condiciones aplicables.`,
+          q: `¿La asesoría documental tiene costo adicional?`,
+          a: `No. Nuestra orientación documental está incluida al reservar tu vuelo o paquete turístico hacia ${ciudadesRef} (Desde $${precio} USD con impuestos incluidos).`,
         },
       ],
-      waMensaje: `Hola, encontré Cityland Travel en Google leyendo los requisitos para viajar a ${pais}. Quiero asesoría y cotizar mi viaje Desde $${precio} USD. ¿Me pueden ayudar?`,
+      waMensaje: `¡Hola Cityland Travel! Vi su guía de requisitos para ${pais} y quiero cotizar mi viaje (${ciudadesRef}) Desde $${precio} USD con asesoría incluida.`,
     });
   }
 

@@ -42,7 +42,7 @@ const CONFIG_INDEPENDENCIA: ConfiguracionLandingAerolinea = {
   negritaHero:
     "Visítanos en nuestra oficina física de Av. Antúnez de Mayolo 814 o cotiza al instante por WhatsApp.",
   ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
-  waPrincipalNumero: "51983891157",
+  waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
     "Hola, encontré Cityland Travel en Google buscando una agencia de viajes en Independencia / MegaPlaza. Quiero consultar disponibilidad y precios. ¿Me pueden ayudar?",
   checksHero: [
@@ -62,7 +62,7 @@ const CONFIG_INDEPENDENCIA: ConfiguracionLandingAerolinea = {
     precio: "$399",
     moneda: "USD",
     notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
-    waNumero: "51907451255",
+    waNumero: "51944103890",
     waMensaje:
       "Hola, soy de Independencia y encontré Cityland Travel en Google. Quiero cotizar un viaje con un asesor.",
   },
@@ -96,7 +96,7 @@ const CONFIG_INDEPENDENCIA: ConfiguracionLandingAerolinea = {
         "Seguro médico internacional Schengen de 30.000€ incluido",
         "Tarifa sujeta a disponibilidad y condiciones aplicables",
       ],
-      waNumber: "51983269950",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, soy de Independencia y encontré Cityland Travel en Google. Quiero información para viajar a España (Desde $890 USD).",
     },
@@ -119,7 +119,7 @@ const CONFIG_INDEPENDENCIA: ConfiguracionLandingAerolinea = {
         "4 noches de alojamiento frente al mar en plan Todo Incluido",
         "Tarifa sujeta a disponibilidad y condiciones aplicables",
       ],
-      waNumber: "51913637476",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, soy de Independencia y encontré Cityland Travel en Google. Quiero cotizar un paquete a Punta Cana o Cancún (Desde $1,049 USD).",
     },
@@ -142,7 +142,7 @@ const CONFIG_INDEPENDENCIA: ConfiguracionLandingAerolinea = {
         "Alojamiento en zona turística con desayunos y tour principal",
         "Tarifa sujeta a disponibilidad y condiciones aplicables",
       ],
-      waNumber: "51903212007",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, soy de Independencia y encontré Cityland Travel en Google. Quiero consultar los paquetes a Colombia solo con DNI (Desde $679 USD).",
     },
@@ -159,14 +159,14 @@ const CONFIG_INDEPENDENCIA: ConfiguracionLandingAerolinea = {
     descripcion:
       "Atendemos de lunes a sábado de 9:00 a. m. a 7:00 p. m. con asesores especializados en Europa, Caribe y Sudamérica.",
     ctaTexto: "Consultar disponibilidad por WhatsApp",
-    waNumero: "51983882504",
+    waNumero: "51944103890",
     waMensaje:
       "Hola, encontré Cityland Travel en Google buscando agencia de viajes en Independencia. ¿Me pueden ayudar con una cotización?",
     img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80",
     alt: "Agencia de Viajes Independencia",
   },
   waFlotante: {
-    numero: "51942086698",
+    numero: "51944103890",
     texto: "WhatsApp Independencia",
     mensaje:
       "Hola, encontré Cityland Travel en Google buscando agencia de viajes en Independencia. ¿Me pueden ayudar?",

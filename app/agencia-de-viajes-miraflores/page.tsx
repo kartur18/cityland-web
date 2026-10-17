@@ -42,7 +42,7 @@ const CONFIG_MIRAFLORES: ConfiguracionLandingAerolinea = {
   negritaHero:
     "Tarifas transparentes en dólares con impuestos incluidos y emisión formal IATA / MINCETUR.",
   ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
-  waPrincipalNumero: "51983882504",
+  waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
     "Hola, encontré Cityland Travel en Google buscando una agencia de viajes en Miraflores / San Isidro. Quiero consultar disponibilidad y precios. ¿Me pueden ayudar?",
   checksHero: [
@@ -62,7 +62,7 @@ const CONFIG_MIRAFLORES: ConfiguracionLandingAerolinea = {
     precio: "$679",
     moneda: "USD",
     notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
-    waNumero: "51942086698",
+    waNumero: "51944103890",
     waMensaje:
       "Hola, soy de Miraflores / San Isidro y encontré Cityland Travel en Google. Quiero cotizar un viaje con un asesor.",
   },
@@ -96,7 +96,7 @@ const CONFIG_MIRAFLORES: ConfiguracionLandingAerolinea = {
         "Hoteles seleccionados con desayunos y guía en español",
         "Tarifa sujeta a disponibilidad y condiciones aplicables",
       ],
-      waNumber: "51906450098",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, soy de Miraflores / San Isidro y encontré Cityland Travel en Google. Quiero cotizar un circuito a Europa o Turquía (Desde $1,490 USD).",
     },
@@ -119,7 +119,7 @@ const CONFIG_MIRAFLORES: ConfiguracionLandingAerolinea = {
         "4 noches en Resort 5★ con alimentación y bebidas ilimitadas",
         "Tarifa sujeta a disponibilidad y condiciones aplicables",
       ],
-      waNumber: "51944280151",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, soy de Miraflores / San Isidro y encontré Cityland Travel en Google. Quiero cotizar un Resort 5 estrellas en el Caribe (Desde $1,049 USD).",
     },
@@ -142,7 +142,7 @@ const CONFIG_MIRAFLORES: ConfiguracionLandingAerolinea = {
         "Seguro médico para Estados Unidos y traslados incluidos",
         "Tarifa sujeta a disponibilidad y condiciones aplicables",
       ],
-      waNumber: "51938845086",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, soy de Miraflores / San Isidro y encontré Cityland Travel en Google. Quiero cotizar un viaje a Miami, Orlando o Nueva York (Desde $1,190 USD).",
     },
@@ -159,14 +159,14 @@ const CONFIG_MIRAFLORES: ConfiguracionLandingAerolinea = {
     descripcion:
       "Recibe en minutos una propuesta formal en dólares con vuelos, hoteles y seguros incluidos.",
     ctaTexto: "Consultar disponibilidad por WhatsApp",
-    waNumero: "51906642487",
+    waNumero: "51944103890",
     waMensaje:
       "Hola, encontré Cityland Travel en Google buscando agencia de viajes en Miraflores. ¿Me pueden ayudar con una cotización?",
     img: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=1000&q=80",
     alt: "Agencia de Viajes Miraflores",
   },
   waFlotante: {
-    numero: "51944031724",
+    numero: "51944103890",
     texto: "WhatsApp Miraflores",
     mensaje:
       "Hola, encontré Cityland Travel en Google buscando agencia de viajes en Miraflores. ¿Me pueden ayudar?",

@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Plane, Check, X as XIcon, Shield, Clock, MapPin } from "lucide-react";
 import { waLink } from "@/components/constantes";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const WA = waLink("Hola Cityland Travel, quiero información del paquete Panamá + Medellín (Desde $799 USD)");
 
@@ -15,228 +16,205 @@ function WaIcon({ s = 22 }: { s?: number }) {
   );
 }
 
-function Timer() {
-  const [t, setT] = useState({ h: 2, m: 59, s: 59 });
-  useEffect(() => {
-    const id = setInterval(() => {
-      setT((p) => {
-        if (p.s > 0) return { ...p, s: p.s - 1 };
-        if (p.m > 0) return { ...p, m: p.m - 1, s: 59 };
-        if (p.h > 0) return { h: p.h - 1, m: 59, s: 59 };
-        return { h: 0, m: 0, s: 0 };
-      });
-    }, 1000);
-    return () => clearInterval(id);
-  }, []);
-  const p = (n: number) => String(n).padStart(2, "0");
-  return (
-    <div className="flex items-center gap-1">
-      {[p(t.h), p(t.m), p(t.s)].map((v, i) => (
-        <span key={i} className="flex items-center gap-1">
-          {i > 0 && <span className="text-white/50 font-bold">:</span>}
-          <span className="bg-red-600 text-white font-mono font-black text-lg px-2 py-0.5 rounded">
-            {v}
-          </span>
-        </span>
-      ))}
-    </div>
-  );
-}
-
 export default function PanamaMedellinLanding() {
   return (
-    <div className="min-h-screen bg-white pb-16 md:pb-0">
+    <div className="min-h-screen bg-[#f8fafc] pb-20 md:pb-0">
+      <Navbar />
+
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden py-14 md:py-24">
         <Image
           src="/images/paquetes/panama-medellin/hero-panama.jpg"
-          alt="Ciudad de Panamá"
+          alt="Ciudad de Panamá y Medellín — Cityland Travel"
           fill
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a1628]/90 via-[#0a1628]/75 to-[#0a1628]/55" />
 
-        <div className="relative z-10 px-5 pt-8 pb-12 max-w-lg mx-auto">
-          <div className="flex items-center justify-center mb-8">
-            <span className="bg-red-500 text-white text-[10px] font-black uppercase tracking-wider px-3 py-1.5 rounded-full animate-pulse">
-              Solo quedan 4 cupos · Junio 2026
-            </span>
-          </div>
-
-          <h1 className="text-[2.6rem] md:text-5xl font-black text-white leading-[0.95] tracking-tight mb-2">
-            Panamá<span className="text-amber-400"> + </span>Medellín
-          </h1>
-
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-white/60 text-xs mb-6">
-            <span className="flex items-center gap-1"><Clock size={12} /> 7 días · 6 noches</span>
-            <span className="flex items-center gap-1"><Plane size={12} /> Copa Airlines</span>
-            <span className="flex items-center gap-1"><MapPin size={12} /> Junio 2026</span>
-          </div>
-
-          <div className="flex items-end gap-2.5 mb-2">
-            <div>
-              <span className="text-white/30 text-xs line-through">$1,150 USD</span>
-              <div className="text-[2.5rem] font-black leading-none text-white">
-                Desde $799<span className="text-sm font-medium text-white/50 ml-1">USD</span>
-              </div>
+        <div className="relative z-10 px-5 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-7">
+            <div className="inline-flex items-center gap-2 bg-red-600 text-white text-xs font-black uppercase tracking-wider px-4 py-1.5 rounded-full mb-5">
+              Paquete 2 Países en 1 Viaje · Sin Visa
             </div>
-            <span className="bg-amber-400 text-black text-[10px] font-black px-2 py-0.5 rounded-full mb-1.5">
-              -30%
-            </span>
+
+            <h1 className="font-[family-name:var(--font-bebas)] text-white text-[clamp(48px,7vw,84px)] leading-none tracking-wide mb-3">
+              Panamá <span className="text-amber-400">+</span> Medellín
+            </h1>
+
+            <p className="text-white/85 text-base md:text-lg max-w-xl mb-6 leading-relaxed">
+              Combina compras, el Canal de Panamá y el Casco Antiguo con la eterna primavera de Medellín en un solo programa aéreo confirmado desde Lima.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4 text-white/80 text-sm font-medium mb-6">
+              <span className="flex items-center gap-1.5 bg-white/10 px-3.5 py-1.5 rounded-full">
+                <Clock size={15} className="text-amber-400" /> 7 días · 6 noches
+              </span>
+              <span className="flex items-center gap-1.5 bg-white/10 px-3.5 py-1.5 rounded-full">
+                <Plane size={15} className="text-amber-400" /> Copa Airlines desde Lima
+              </span>
+              <span className="flex items-center gap-1.5 bg-white/10 px-3.5 py-1.5 rounded-full">
+                <MapPin size={15} className="text-amber-400" /> 3N Panamá + 3N Medellín
+              </span>
+            </div>
           </div>
 
-          <div className="flex items-center gap-2.5 mb-5 text-[11px] text-white/40">
-            <span>Oferta termina en</span>
-            <Timer />
+          <div className="lg:col-span-5">
+            <div className="bg-white rounded-3xl p-6 md:p-8 shadow-2xl border border-slate-100">
+              <span className="inline-block bg-amber-100 text-amber-800 text-xs font-extrabold uppercase tracking-wider px-3 py-1 rounded-full mb-3">
+                Tarifa Preventa · Separa con 50%
+              </span>
+              <div className="flex items-baseline gap-3 mb-2">
+                <span className="text-slate-400 text-sm line-through font-semibold">$1,150 USD</span>
+                <span className="bg-red-100 text-red-700 text-xs font-black px-2 py-0.5 rounded-full">
+                  Ahorra $351
+                </span>
+              </div>
+              <div className="text-4xl md:text-5xl font-black text-[#0a1628] leading-none mb-2">
+                Desde $799 <span className="text-base font-bold text-slate-500">USD</span>
+              </div>
+              <p className="text-xs text-slate-500 mb-6">
+                Por persona en habitación doble · Impuestos aéreos incluidos
+              </p>
+
+              <a
+                href={WA}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#1fb855] text-white font-bold text-base w-full py-4 rounded-xl transition-all shadow-lg"
+              >
+                <WaIcon s={20} />
+                Cotizar por WhatsApp Oficial
+              </a>
+
+              <p className="text-slate-400 text-xs text-center mt-3 flex items-center justify-center gap-1.5">
+                <Shield size={13} className="text-emerald-600" />
+                Cityland Travel · RUC 20614914239 · Los Olivos, Lima
+              </p>
+            </div>
           </div>
-
-          <a
-            href={WA}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2.5 bg-[#25D366] text-white font-bold text-[16px] w-full py-3.5 rounded-xl active:scale-[0.97] transition-all shadow-[0_6px_25px_rgba(37,211,102,0.35)]"
-          >
-            <WaIcon s={20} />
-            Reservar ahora por WhatsApp
-          </a>
-
-          <p className="text-white/25 text-[10px] text-center mt-2">
-            <Shield size={10} className="inline mr-1" />
-            +5,000 viajeros · Respuesta inmediata
-          </p>
         </div>
       </section>
 
       {/* ── FOTOS DESTINOS ── */}
-      <section className="px-4 py-6 max-w-lg mx-auto">
-        <div className="grid grid-cols-2 gap-2.5">
+      <section className="px-5 py-12 max-w-6xl mx-auto">
+        <h2 className="font-[family-name:var(--font-bebas)] text-[#0a1628] text-3xl md:text-4xl tracking-wide mb-6">
+          Experiencias Destacadas del Circuito
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { img: "/images/paquetes/panama-medellin/casco-antiguo.png", t: "Casco Antiguo", sub: "3 noches en Panamá" },
-            { img: "/images/paquetes/panama-medellin/canal-panama.png", t: "Canal de Panamá", sub: "Tour incluido" },
-            { img: "/images/paquetes/panama-medellin/medellin-skyline.png", t: "Medellín", sub: "3 noches" },
-            { img: "/images/paquetes/panama-medellin/chiva-medellin.png", t: "Tour en Chiva", sub: "Incluido" },
+            { img: "/images/paquetes/panama-medellin/casco-antiguo.png", t: "Casco Antiguo", sub: "3 noches en Ciudad de Panamá" },
+            { img: "/images/paquetes/panama-medellin/canal-panama.png", t: "Canal de Panamá", sub: "Visita panorámica y compras" },
+            { img: "/images/paquetes/panama-medellin/medellin-skyline.png", t: "Medellín Eterna Primavera", sub: "3 noches con desayuno" },
+            { img: "/images/paquetes/panama-medellin/chiva-medellin.png", t: "Recorrido en Chiva", sub: "Experiencia tradicional paisa" },
           ].map((d, i) => (
-            <div key={i} className="relative h-32 rounded-xl overflow-hidden">
-              <Image src={d.img} alt={d.t} fill className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-              <div className="absolute bottom-2.5 left-3">
-                <div className="text-white font-bold text-[13px] leading-tight">{d.t}</div>
-                <div className="text-white/60 text-[10px]">{d.sub}</div>
+            <div key={i} className="relative h-56 rounded-2xl overflow-hidden shadow-sm group">
+              <Image src={d.img} alt={d.t} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="text-white font-bold text-base leading-tight">{d.t}</div>
+                <div className="text-white/75 text-xs mt-0.5">{d.sub}</div>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ── QUÉ INCLUYE ── */}
-      <section className="px-5 pb-8 max-w-lg mx-auto">
-        <h2 className="text-[17px] font-extrabold text-gray-800 mb-4">
-          El paquete incluye
-        </h2>
+      {/* ── QUÉ INCLUYE Y VUELOS ── */}
+      <section className="px-5 pb-16 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="lg:col-span-7 bg-white rounded-3xl p-6 md:p-8 border border-slate-200/80 shadow-sm">
+          <h2 className="font-[family-name:var(--font-bebas)] text-[#0a1628] text-3xl tracking-wide mb-5">
+            El paquete incluye
+          </h2>
 
-        <div className="space-y-2">
-          {[
-            "Boleto aéreo ida y vuelta vía Copa Airlines",
-            "Equipaje: mochila de mano 8 kg + maleta 10 kg",
-            "Alojamiento 7 días / 6 noches",
-            "3 noches en Ciudad de Panamá",
-            "3 noches en Medellín",
-            "Traslados terrestres (Aeropuerto – Hotel – Aeropuerto)",
-            "Desayunos diarios durante toda la estancia",
-            "Check-in anticipado 24 horas antes del vuelo",
-            "Impuestos aeroportuarios incluidos",
-            "City tour por el Casco Antiguo y Canal de Panamá",
-            "Tour en chiva tradicional por Medellín",
-          ].map((x, i) => (
-            <div key={i} className="flex items-start gap-2.5">
-              <Check size={15} className="text-green-500 mt-0.5 shrink-0" />
-              <span className="text-gray-600 text-[13px] leading-snug">{x}</span>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-5 pt-4 border-t border-gray-100">
-          <h3 className="text-[13px] font-bold text-red-500 mb-2">No incluye</h3>
-          <div className="grid grid-cols-2 gap-x-4 gap-y-1">
-            {["Almuerzos / cenas", "Seguro de viaje", "Gastos personales", "Excursiones extras"].map((x, i) => (
-              <div key={i} className="flex items-center gap-1.5 text-gray-400 text-[12px]">
-                <XIcon size={11} className="text-red-300 shrink-0" /> {x}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {[
+              "Boleto aéreo Lima – Panamá – Medellín – Lima vía Copa Airlines",
+              "Equipaje: artículo personal + maleta de cabina 10 kg",
+              "Alojamiento completo por 7 días / 6 noches",
+              "3 noches de hotel en Ciudad de Panamá",
+              "3 noches de hotel en Medellín",
+              "Traslados aeropuerto – hotel – aeropuerto en ambos destinos",
+              "Desayunos diarios durante toda la estadía",
+              "Check-in anticipado y envío de tarjetas de embarque",
+              "Impuestos aeroportuarios incluidos en la tarifa",
+              "City tour por el Casco Antiguo y Canal de Panamá",
+              "Tour panorámico en chiva tradicional por Medellín",
+              "Asesoría personalizada y soporte 24/7 por WhatsApp",
+            ].map((x, i) => (
+              <div key={i} className="flex items-start gap-2.5 bg-slate-50 rounded-xl p-3">
+                <Check size={16} className="text-emerald-600 mt-0.5 shrink-0" />
+                <span className="text-slate-700 text-sm leading-snug">{x}</span>
               </div>
             ))}
+          </div>
+
+          <div className="mt-6 pt-5 border-t border-slate-100">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
+              Servicios opcionales no incluidos en tarifa base
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              {["Almuerzos y cenas", "Tarjeta de asistencia", "Gastos personales", "Excursiones adicionales"].map((x, i) => (
+                <div key={i} className="flex items-center gap-1.5 text-slate-500 text-xs">
+                  <XIcon size={12} className="text-rose-400 shrink-0" /> {x}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="lg:col-span-5 space-y-6">
+          <div className="bg-white rounded-3xl p-6 md:p-8 border border-slate-200/80 shadow-sm">
+            <h2 className="font-[family-name:var(--font-bebas)] text-[#0a1628] text-3xl tracking-wide mb-4">
+              Ruta Aérea Referencial
+            </h2>
+
+            <div className="space-y-3">
+              {[
+                { c: "Copa Airlines", from: "Lima (LIM)", to: "Panamá (PTY)", h: "11:00", arr: "14:45", dur: "3h 45m" },
+                { c: "Copa Airlines", from: "Panamá (PTY)", to: "Medellín (MDE)", h: "13:19", arr: "14:45", dur: "1h 26m" },
+                { c: "Copa Airlines", from: "Medellín (MDE)", to: "Panamá (PTY)", h: "18:20", arr: "19:47", dur: "1h 27m" },
+                { c: "Copa Airlines", from: "Panamá (PTY)", to: "Lima (LIM)", h: "21:20", arr: "00:55", dur: "3h 35m" },
+              ].map((f, i) => (
+                <div key={i} className="bg-slate-50 rounded-xl px-4 py-3 flex items-center justify-between border border-slate-100">
+                  <div>
+                    <div className="text-[#0a1628] font-bold text-sm">
+                      {f.from} <span className="text-blue-600 mx-1">→</span> {f.to}
+                    </div>
+                    <div className="text-slate-500 text-xs mt-0.5">
+                      {f.c} · {f.h} – {f.arr}
+                    </div>
+                  </div>
+                  <div className="bg-blue-50 text-blue-700 px-3 py-1 rounded-lg text-center">
+                    <div className="font-bold text-xs">{f.dur}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-br from-[#0a1628] to-[#162a4a] rounded-3xl p-6 md:p-8 text-center text-white">
+            <p className="text-amber-400 text-xs font-bold uppercase tracking-widest mb-1">
+              Separa con el 50% de Inicial
+            </p>
+            <div className="text-3xl font-black mb-1">Desde $799 USD</div>
+            <p className="text-white/70 text-xs mb-5">
+              Consulta fechas disponibles y cotiza con nuestro equipo por WhatsApp
+            </p>
+            <a
+              href={WA}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#1fb855] text-white font-bold text-sm w-full py-3.5 rounded-xl transition-all shadow-lg"
+            >
+              <WaIcon s={18} />
+              Consultar disponibilidad por WhatsApp
+            </a>
           </div>
         </div>
       </section>
 
-      {/* ── VUELOS ── */}
-      <section className="px-5 pb-8 max-w-lg mx-auto">
-        <h2 className="text-[17px] font-extrabold text-gray-800 mb-4">
-          Vuelos
-        </h2>
-
-        <div className="space-y-2">
-          {[
-            { c: "CM 400", from: "Lima", to: "Panamá", d: "01 Jun", h: "11:00", arr: "14:45", dur: "3h45" },
-            { c: "CM 764", from: "Panamá", to: "Medellín", d: "03 Jun", h: "13:19", arr: "14:45", dur: "1h26" },
-            { c: "CM 157", from: "Medellín", to: "Panamá", d: "07 Jun", h: "18:20", arr: "19:47", dur: "1h27" },
-            { c: "CM 337", from: "Panamá", to: "Lima", d: "07 Jun", h: "21:20", arr: "00:55", dur: "3h35" },
-          ].map((f, i) => (
-            <div key={i} className="bg-gray-50 rounded-xl px-4 py-3 flex items-center justify-between border border-gray-100">
-              <div>
-                <div className="text-gray-800 font-bold text-[14px]">
-                  {f.from} <span className="text-blue-600 mx-0.5">→</span> {f.to}
-                </div>
-                <div className="text-gray-400 text-[11px] mt-0.5">
-                  {f.c} · {f.d} · {f.h}–{f.arr}
-                </div>
-              </div>
-              <div className="bg-blue-50 text-blue-700 px-2.5 py-1 rounded-lg text-center">
-                <div className="font-bold text-sm">{f.dur}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <p className="text-gray-300 text-[11px] text-center mt-3">Copa Airlines · Aerolínea premium</p>
-      </section>
-
-      {/* ── CTA FINAL ── */}
-      <section className="px-5 pb-8 max-w-lg mx-auto">
-        <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-6 text-center">
-          <p className="text-white/60 text-[11px] font-semibold uppercase tracking-wider mb-1">
-            Últimos cupos · Junio 2026
-          </p>
-          <div className="text-3xl font-black text-white leading-none mb-0.5">Desde $799 USD</div>
-          <p className="text-white/40 text-[11px] mb-4">Por persona · Todo incluido</p>
-
-          <a
-            href={WA}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2.5 bg-[#25D366] text-white font-bold text-[16px] w-full py-3.5 rounded-xl active:scale-[0.97] transition-all shadow-lg"
-          >
-            <WaIcon s={20} />
-            ¡Reservar mi cupo ahora!
-          </a>
-
-          <p className="text-white/20 text-[9px] mt-2">Tarifa sujeta a disponibilidad</p>
-        </div>
-      </section>
-
-      {/* ── FOOTER ── */}
-      <footer className="text-gray-300 py-4 px-5 text-center text-[11px] border-t border-gray-100">
-        Cityland Travel · Los Olivos, Lima · © 2026
-      </footer>
-
-      {/* ── WA FLOAT (desktop) ── */}
-      <a
-        href={WA}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-40 bg-[#25D366] text-white w-14 h-14 rounded-full items-center justify-center shadow-lg hover:scale-110 transition-all hidden md:flex"
-      >
-        <WaIcon s={28} />
-      </a>
+      <Footer />
 
       {/* ── STICKY MOBILE ── */}
       <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden p-2.5 bg-white/95 backdrop-blur border-t border-gray-200">
@@ -247,7 +225,7 @@ export default function PanamaMedellinLanding() {
           className="flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-3 rounded-xl text-[15px] shadow-[0_4px_15px_rgba(37,211,102,0.3)]"
         >
           <WaIcon s={18} />
-          Reservar — Desde $799 USD
+          Cotizar Panamá + Medellín — $799 USD
         </a>
       </div>
     </div>

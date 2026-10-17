@@ -26,6 +26,10 @@ const IMG_NYC = "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?au
 const IMG_CARIBE = "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1000&q=80";
 const IMG_LATAM = "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?auto=format&fit=crop&w=1000&q=80";
 const IMG_PERU = "https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=1000&q=80";
+const IMG_EXOTICO = "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1000&q=80";
+const IMG_AVION_CABINA = "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1000&q=80";
+const IMG_AEROPUERTO = "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=1000&q=80";
+const IMG_HOTEL_RESORT = "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1000&q=80";
 
 /* ── 1. Destinos en España (Ida desde Lima + Retorno a Lima) ── */
 const CIUDADES_ESPANA: [string, string, string, number, string][] = [
@@ -257,6 +261,16 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
   const p2Maletas = s.precioUSD + (s.modalidad === "nacional" ? 35 : 95);
   const pPaquete = s.precioUSD + (s.modalidad === "nacional" ? 130 : 260);
   const waMsg = `Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de ${s.origen} a ${s.destino} (Desde $${s.precioUSD} USD). ¿Me pueden ayudar?`;
+  const imgPaquete =
+    s.modalidad === "caribe"
+      ? IMG_HOTEL_RESORT
+      : s.modalidad === "europa"
+      ? IMG_MADRID
+      : s.modalidad === "usa"
+      ? IMG_NYC
+      : s.modalidad === "exotico"
+      ? IMG_EXOTICO
+      : s.img;
 
   return {
     slug: s.slug,
@@ -297,7 +311,7 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
       descripcionHero: `Tarifas referenciales verificadas Desde $${s.precioUSD} USD con impuestos y cargos obligatorios incluidos.`,
       negritaHero: `${s.requisitos} Emitimos boletos con equipaje de 23 kg, reserva verificable y soporte 24/7 por WhatsApp.`,
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
-      waPrincipalNumero: "51983882504",
+      waPrincipalNumero: "51944103890",
       waPrincipalMensaje: waMsg,
       checksHero: [
         `Aerolíneas: ${s.aerolineas}`,
@@ -316,7 +330,7 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
         precio: `$${s.precioUSD}`,
         moneda: "USD",
         notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
-        waNumero: "51942086698",
+        waNumero: "51944103890",
         waMensaje: waMsg,
       },
       seccionCatalogo: {
@@ -340,7 +354,7 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
           notaPrecio: "Tarifa sujeta a disponibilidad y condiciones aplicables",
           tag: "Mejor Tarifa",
           tagBg: "bg-emerald-600 text-white",
-          img: s.img,
+          img: IMG_AVION_CABINA,
           alt: `Boleto de ${s.origen} a ${s.destino}`,
           resumenCorto: `Boleto confirmado ${s.codigoOrigen} → ${s.codigoDestino} con impuestos incluidos y código PNR verificable.`,
           checks: [
@@ -348,7 +362,7 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
             "Artículo personal + equipaje de mano 10 kg",
             "Check-in y envío de tarjetas de embarque",
           ],
-          waNumber: "51983882504",
+          waNumber: "51944103890",
           waMensaje: `Hola, quiero cotizar el Boleto Estándar de ${s.origen} a ${s.destino} (Desde $${s.precioUSD} USD). ¿Me ayudan con fechas?`,
         },
         {
@@ -362,7 +376,7 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
           notaPrecio: "Tarifa sujeta a disponibilidad y condiciones aplicables",
           tag: "Con Maleta 23 kg",
           tagBg: "bg-blue-600 text-white",
-          img: s.img,
+          img: IMG_AEROPUERTO,
           alt: `Vuelo con maleta 23 kg de ${s.origen} a ${s.destino}`,
           resumenCorto: `Incluye franquicia completa de equipaje en bodega de 23 kg + cabina 10 kg en ruta ${s.origen} – ${s.destino}.`,
           checks: [
@@ -370,7 +384,7 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
             "Equipaje de cabina 10 kg + bolso personal",
             "Asistencia ante cambios o reprogramaciones",
           ],
-          waNumber: "51906450098",
+          waNumber: "51944103890",
           waMensaje: `Hola, quiero cotizar el vuelo de ${s.origen} a ${s.destino} con maleta de 23 kg (Desde $${p2Maletas} USD).`,
         },
         {
@@ -384,7 +398,7 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
           notaPrecio: "Tarifa sujeta a disponibilidad y condiciones aplicables",
           tag: "Todo Resuelto",
           tagBg: "bg-red-600 text-white",
-          img: s.img,
+          img: imgPaquete,
           alt: `Paquete a ${s.destino} desde ${s.origen}`,
           resumenCorto: `Viaje completo de ${s.origen} a ${s.destino} con alojamiento verificado, seguro de viaje y asesoría personalizada.`,
           checks: [
@@ -392,7 +406,7 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
             "Estadía en hotel seleccionado con desayuno",
             "Seguro de asistencia y soporte 24/7 en viaje",
           ],
-          waNumber: "51944280151",
+          waNumber: "51944103890",
           waMensaje: `Hola, quiero cotizar el Paquete Completo de ${s.origen} a ${s.destino} (Desde $${pPaquete} USD).`,
         },
       ],
@@ -403,17 +417,17 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
         { titulo: "RUC 20614914239", sub: "Agencia física formal en Los Olivos, Lima" },
       ],
       bannerFinal: {
-        sobretitulo: "Atención Inmediata por WhatsApp Business",
+        sobretitulo: "Atención Inmediata por WhatsApp Oficial",
         titulo: `¿Buscas la mejor fecha para volar de ${s.origen} a ${s.destino}?`,
-        descripcion: "Nuestros 12 asesores especializados comparan tarifas en tiempo real para conseguirte el mejor precio en dólares.",
+        descripcion: "Nuestro equipo de especialistas compara tarifas en tiempo real para conseguirte el mejor precio en dólares.",
         ctaTexto: "Consultar disponibilidad por WhatsApp",
-        waNumero: "51938845086",
+        waNumero: "51944103890",
         waMensaje: waMsg,
         img: s.img,
         alt: `Viajes de ${s.origen} a ${s.destino}`,
       },
       waFlotante: {
-        numero: "51938845086",
+        numero: "51944103890",
         texto: `Cotizar ${s.origen} → ${s.destino}`,
         mensaje: waMsg,
       },

@@ -132,10 +132,10 @@ export default function AirlineLandingTemplate({
               ))}
               <span className="text-slate-600">|</span>
               <a
-                href="tel:+51983882504"
+                href="tel:+51944103890"
                 className="text-amber-300 hover:text-amber-200 font-bold"
               >
-                Central: +51 983 882 504
+                Central: +51 944 103 890
               </a>
             </div>
           </div>
@@ -170,7 +170,7 @@ export default function AirlineLandingTemplate({
 
             <div className="flex items-center gap-2.5 shrink-0">
               <a
-                href={`https://wa.me/51983882504?text=${encodeURIComponent(config.waPrincipalMensaje)}`}
+                href={`https://wa.me/51944103890?text=${encodeURIComponent(config.waPrincipalMensaje)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold cursor-pointer whitespace-nowrap shadow-xs"
@@ -210,7 +210,7 @@ export default function AirlineLandingTemplate({
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-7">
                 <a
-                  href={`https://wa.me/51906450098?text=${encodeURIComponent(config.waPrincipalMensaje)}`}
+                  href={`https://wa.me/51944103890?text=${encodeURIComponent(config.waPrincipalMensaje)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-wa-pulse inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-7 py-4 rounded-2xl text-sm sm:text-base font-bold shadow-md cursor-pointer"
@@ -285,7 +285,7 @@ export default function AirlineLandingTemplate({
                         {config.vitrina.precio}
                       </span>
                       <span className="text-xs font-bold text-slate-500">
-                        {config.vitrina.moneda}
+                        USD
                       </span>
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
@@ -294,7 +294,7 @@ export default function AirlineLandingTemplate({
                   </div>
 
                   <a
-                    href={`https://wa.me/51942086698?text=${encodeURIComponent(config.vitrina.waMensaje)}`}
+                    href={`https://wa.me/51944103890?text=${encodeURIComponent(config.vitrina.waMensaje)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0"
@@ -343,10 +343,11 @@ export default function AirlineLandingTemplate({
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {itemsMostrados.map((item) => {
+              const esInicial = item.precioSecundario?.trim().startsWith("$");
               const msg =
                 item.waMensaje ||
-                `¡Hola Cityland Travel! Vi su página web y deseo cotizar: ${item.titulo} (${item.subtitulo}) desde ${item.precioPrincipal} ${item.precioSecundario}.`;
-              const waUrl = `https://wa.me/${item.waNumber}?text=${encodeURIComponent(msg)}`;
+                `¡Hola Cityland Travel! Vi su página web y deseo cotizar: ${item.titulo} (${item.subtitulo}) desde ${item.precioPrincipal} USD.`;
+              const waUrl = `https://wa.me/51944103890?text=${encodeURIComponent(msg)}`;
 
               return (
                 <article
@@ -402,7 +403,7 @@ export default function AirlineLandingTemplate({
                     <div className="pt-3.5 border-t border-slate-100 flex items-center justify-between gap-3">
                       <div>
                         <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1">
-                          Tarifa referencial
+                          Tarifa por pasajero
                         </span>
                         <div className="flex items-baseline gap-1.5">
                           <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
@@ -412,11 +413,11 @@ export default function AirlineLandingTemplate({
                             {item.precioPrincipal}
                           </span>
                           <span className="text-xs font-bold text-slate-500">
-                            {item.precioSecundario}
+                            USD
                           </span>
                         </div>
                         <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                          {item.notaPrecio}
+                          {esInicial ? `Separa con ${item.precioSecundario} (50% inicial)` : item.notaPrecio}
                         </span>
                       </div>
 
@@ -469,7 +470,7 @@ export default function AirlineLandingTemplate({
 
               <div className="flex flex-wrap items-center gap-3">
                 <a
-                  href={`https://wa.me/51944280151?text=${encodeURIComponent(config.bannerFinal.waMensaje)}`}
+                  href={`https://wa.me/51944103890?text=${encodeURIComponent(config.bannerFinal.waMensaje)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold cursor-pointer"
@@ -504,7 +505,7 @@ export default function AirlineLandingTemplate({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center justify-between gap-6">
           <div className="text-xs text-slate-300 text-center lg:text-left space-y-1">
             <p className="font-bold text-white text-sm">Cityland Travel E.I.R.L. · RUC 20614914239</p>
-            <p>Av. Antúnez de Mayolo N. 814, Los Olivos, Lima · Lun–Sáb 9:00 am – 7:00 pm</p>
+            <p>Av. Antúnez de Mayolo N. 814, Los Olivos, Lima · Central: +51 944 103 890 · Lun–Sáb 9:00 am – 7:00 pm</p>
             <p className="text-[11px] text-slate-400 pt-1">
               * Tarifas referenciales en US$ con impuestos y cargos obligatorios incluidos. Tarifa sujeta a disponibilidad y condiciones aplicables (Verificado: Oct 2026).
             </p>
@@ -512,7 +513,7 @@ export default function AirlineLandingTemplate({
 
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
             <a
-              href={`https://wa.me/51938845086?text=${encodeURIComponent(config.waPrincipalMensaje)}`}
+              href={`https://wa.me/51944103890?text=${encodeURIComponent(config.waPrincipalMensaje)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-wa-pulse inline-flex items-center gap-1.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 py-2 rounded-xl text-xs font-bold cursor-pointer"
@@ -536,7 +537,7 @@ export default function AirlineLandingTemplate({
       {/* 6. Botón Flotante de WhatsApp */}
       <div className="fixed bottom-5 right-5 z-50">
         <a
-          href={`https://wa.me/51906642487?text=${encodeURIComponent(config.waFlotante.mensaje)}`}
+          href={`https://wa.me/51944103890?text=${encodeURIComponent(config.waFlotante.mensaje)}`}
           target="_blank"
           rel="noopener noreferrer"
           className="btn-wa-pulse flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-xl cursor-pointer"

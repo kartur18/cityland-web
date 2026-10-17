@@ -4,6 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BLOG_POSTS, WA_LINK } from "@/components/constantes";
 import { BLOG_POSTS_MASIVOS } from "@/lib/catalogo-blog-masivo";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
@@ -88,6 +90,7 @@ export default async function BlogArticlePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <Navbar />
       {/* Hero image */}
       <div className="relative w-full h-[320px] sm:h-[400px] lg:h-[460px]">
         <Image
@@ -98,7 +101,7 @@ export default async function BlogArticlePage({
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/80 via-[#0a1628]/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/85 via-[#0a1628]/35 to-black/30" />
 
         <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10 max-w-[900px] mx-auto">
           <span
@@ -137,8 +140,8 @@ export default async function BlogArticlePage({
                 ¿Necesitas ayuda?
               </h3>
               <p className="text-[13px] text-gray-500 leading-relaxed mb-4">
-                Nuestros asesores pueden ayudarte a planificar tu viaje. Cotiza
-                gratis por WhatsApp.
+                Nuestro equipo puede ayudarte a planificar tu viaje. Cotiza
+                ahora por WhatsApp oficial.
               </p>
               <a
                 href={WA_LINK}
@@ -199,6 +202,7 @@ export default async function BlogArticlePage({
           </div>
         </section>
       )}
+      <Footer />
     </main>
   );
 }

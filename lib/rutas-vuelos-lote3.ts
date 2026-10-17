@@ -39,7 +39,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       negritaHero:
         "Ideal para visita familiar, turismo por el Mediterráneo o estadía con carpeta migratoria Schengen completa.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
-      waPrincipalNumero: "51983882504",
+      waPrincipalNumero: "51944103890",
       waPrincipalMensaje:
         "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Valencia, España. ¿Me pueden ayudar?",
       checksHero: [
@@ -59,7 +59,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         precio: "$950",
         moneda: "USD",
         notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
-        waNumero: "51942086698",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Valencia (Desde $950 USD). ¿Me pueden ayudar?",
       },
@@ -92,7 +92,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "Maleta de mano 10 kg + equipaje de bodega 23 kg",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51906450098",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Vuelo Lima - Valencia (Desde $950 USD).",
         },
@@ -115,7 +115,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "Seguro médico Schengen cobertura 30.000€ sin deducible",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51944280151",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Paquete Lima - Valencia con Carpeta Migratoria (Desde $1,050 USD).",
         },
@@ -132,14 +132,14 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         descripcion:
           "Un asesor verifica hoy mismo los cupos en Iberia y Air Europa para tus fechas.",
         ctaTexto: "Consultar tarifa Lima – Valencia por WhatsApp",
-        waNumero: "51938845086",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Valencia. ¿Me pueden ayudar?",
         img: "https://images.unsplash.com/photo-1559564484-e48b3e040ff4?auto=format&fit=crop&w=1000&q=80",
         alt: "Viajes de Lima a Valencia",
       },
       waFlotante: {
-        numero: "51906642487",
+        numero: "51944103890",
         texto: "Cotizar Lima → Valencia",
         mensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Valencia. ¿Me pueden ayudar?",
@@ -184,7 +184,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       negritaHero:
         "Conexiones garantizadas a Málaga, Marbella, Sevilla y Granada con equipaje completo.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
-      waPrincipalNumero: "51906642487",
+      waPrincipalNumero: "51944103890",
       waPrincipalMensaje:
         "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Málaga, España. ¿Me pueden ayudar?",
       checksHero: [
@@ -204,7 +204,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         precio: "$960",
         moneda: "USD",
         notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
-        waNumero: "51944031724",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Málaga (Desde $960 USD). ¿Me pueden ayudar?",
       },
@@ -237,7 +237,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "Equipaje de mano 10 kg + maleta de 23 kg",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51983891157",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Boleto Lima - Málaga (Desde $960 USD).",
         },
@@ -260,7 +260,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "8 noches de alojamiento con desayunos y Seguro Schengen",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51907451255",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Paquete Madrid y Andalucía (Desde $1,590 USD).",
         },
@@ -277,14 +277,14 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         descripcion:
           "Escríbenos por WhatsApp y recibe las mejores fechas y tarifas disponibles.",
         ctaTexto: "Consultar tarifa Lima – Málaga por WhatsApp",
-        waNumero: "51983269950",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Málaga. ¿Me pueden ayudar?",
         img: "https://images.unsplash.com/photo-1561632669-7f55f7975606?auto=format&fit=crop&w=1000&q=80",
         alt: "Viajes de Lima a Málaga",
       },
       waFlotante: {
-        numero: "51913637476",
+        numero: "51944103890",
         texto: "Cotizar Lima → Málaga",
         mensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Málaga. ¿Me pueden ayudar?",
@@ -329,7 +329,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       negritaHero:
         "Vuelos de ida y vuelta, boletos con equipaje de 23 kg y paquetes por Italia con Seguro Schengen.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
-      waPrincipalNumero: "51913637476",
+      waPrincipalNumero: "51944103890",
       waPrincipalMensaje:
         "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Milán, Italia. ¿Me pueden ayudar?",
       checksHero: [
@@ -349,7 +349,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         precio: "$970",
         moneda: "USD",
         notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
-        waNumero: "51903212007",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Milán (Desde $970 USD). ¿Me pueden ayudar?",
       },
@@ -382,7 +382,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "Equipaje de mano 10 kg + maleta de 23 kg en bodega",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51983882504",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Vuelo Lima - Milán (Desde $970 USD).",
         },
@@ -405,7 +405,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "Seguro médico Schengen 30.000€ válido en toda Italia",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51942086698",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Paquete Lima - Milán con Carpeta Migratoria (Desde $1,080 USD).",
         },
@@ -422,14 +422,14 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         descripcion:
           "Cotiza hoy mismo por WhatsApp con un asesor especializado en rutas a Italia.",
         ctaTexto: "Consultar tarifa Lima – Milán por WhatsApp",
-        waNumero: "51906450098",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Milán, Italia. ¿Me pueden ayudar?",
         img: "https://images.unsplash.com/photo-1513581166391-887a96ddeafd?auto=format&fit=crop&w=1000&q=80",
         alt: "Viajes de Lima a Milán",
       },
       waFlotante: {
-        numero: "51944280151",
+        numero: "51944103890",
         texto: "Cotizar Lima → Milán",
         mensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Milán. ¿Me pueden ayudar?",
@@ -474,7 +474,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       negritaHero:
         "Vuela sin escalas con KLM o ahorra con conexión vía Madrid con equipaje y Seguro Schengen.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
-      waPrincipalNumero: "51944280151",
+      waPrincipalNumero: "51944103890",
       waPrincipalMensaje:
         "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Ámsterdam. ¿Me pueden ayudar?",
       checksHero: [
@@ -494,7 +494,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         precio: "$960",
         moneda: "USD",
         notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
-        waNumero: "51938845086",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Ámsterdam (Desde $960 USD). ¿Me pueden ayudar?",
       },
@@ -527,7 +527,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "Equipaje de mano 10 kg + equipaje de bodega 23 kg",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51906642487",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Vuelo Lima - Ámsterdam (Desde $960 USD).",
         },
@@ -550,7 +550,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "9 noches de alojamiento con desayunos diarios y guía en español",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51944031724",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Circuito Ámsterdam, Brujas y París (Desde $1,890 USD).",
         },
@@ -567,14 +567,14 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         descripcion:
           "Un asesor te envía en minutos las tarifas reales disponibles para tu mes de viaje.",
         ctaTexto: "Consultar tarifa Lima – Ámsterdam por WhatsApp",
-        waNumero: "51983891157",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Ámsterdam. ¿Me pueden ayudar?",
         img: "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?auto=format&fit=crop&w=1000&q=80",
         alt: "Viajes de Lima a Ámsterdam",
       },
       waFlotante: {
-        numero: "51907451255",
+        numero: "51944103890",
         texto: "Cotizar Lima → Ámsterdam",
         mensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Ámsterdam. ¿Me pueden ayudar?",
@@ -619,7 +619,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       negritaHero:
         "Reserva solo tu boleto aéreo o el circuito completo de 10 días con hoteles 4★/5★ separando con el 50%.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
-      waPrincipalNumero: "51907451255",
+      waPrincipalNumero: "51944103890",
       waPrincipalMensaje:
         "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Estambul y Capadocia. ¿Me pueden ayudar?",
       checksHero: [
@@ -639,7 +639,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         precio: "$1,190",
         moneda: "USD",
         notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
-        waNumero: "51983269950",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Estambul / Turquía. ¿Me pueden ayudar?",
       },
@@ -672,7 +672,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "9 noches en hoteles 4★ y 5★ con desayunos y cenas",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51913637476",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Circuito Turquía Mágica 10D/9N (Desde $1,790 USD).",
         },
@@ -695,7 +695,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "Equipaje de mano 10 kg + maleta de bodega 23 kg",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51903212007",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Vuelo Lima - Estambul (Desde $1,190 USD).",
         },
@@ -712,14 +712,14 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         descripcion:
           "Escríbenos por WhatsApp y recibe el itinerario completo día por día.",
         ctaTexto: "Consultar tarifa a Turquía por WhatsApp",
-        waNumero: "51983882504",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Estambul y Capadocia. ¿Me pueden ayudar?",
         img: "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?auto=format&fit=crop&w=1000&q=80",
         alt: "Viajes a Turquía desde Lima",
       },
       waFlotante: {
-        numero: "51942086698",
+        numero: "51944103890",
         texto: "Cotizar Lima → Estambul",
         mensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Estambul. ¿Me pueden ayudar?",
@@ -764,7 +764,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       negritaHero:
         "Vuelos directos de 5h 35m en LATAM, American Airlines y SKY, o con 1 escala en Copa y Avianca.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
-      waPrincipalNumero: "51942086698",
+      waPrincipalNumero: "51944103890",
       waPrincipalMensaje:
         "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Miami a Lima. ¿Me pueden ayudar?",
       checksHero: [
@@ -784,7 +784,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         precio: "$489",
         moneda: "USD",
         notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
-        waNumero: "51906450098",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Miami a Lima (Desde $489 USD). ¿Me pueden ayudar?",
       },
@@ -817,7 +817,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "Equipaje de mano incluido (opción de bodega 23 kg)",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51944280151",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Vuelo Miami - Lima ida y vuelta (Desde $489 USD).",
         },
@@ -840,7 +840,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "Opciones para agregar 1 o 2 maletas de 23 kg",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51938845086",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para un Vuelo Solo Ida de Miami a Lima (Desde $289 USD).",
         },
@@ -857,14 +857,14 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         descripcion:
           "Escríbenos por WhatsApp y cotiza tu vuelo directo con equipaje.",
         ctaTexto: "Consultar tarifa Miami – Lima por WhatsApp",
-        waNumero: "51906642487",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Miami a Lima. ¿Me pueden ayudar?",
         img: "https://images.unsplash.com/photo-1531968455001-5c5272a41129?auto=format&fit=crop&w=1000&q=80",
         alt: "Vuelos de Miami a Lima",
       },
       waFlotante: {
-        numero: "51944031724",
+        numero: "51944103890",
         texto: "Cotizar Miami → Lima",
         mensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Miami a Lima. ¿Me pueden ayudar?",
@@ -909,7 +909,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       negritaHero:
         "Ahorra emitiendo tu boleto desde Perú en dólares sin impuestos adicionales a tarjetas argentinas.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
-      waPrincipalNumero: "51944031724",
+      waPrincipalNumero: "51944103890",
       waPrincipalMensaje:
         "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Buenos Aires a Lima. ¿Me pueden ayudar?",
       checksHero: [
@@ -929,7 +929,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         precio: "$389",
         moneda: "USD",
         notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
-        waNumero: "51983891157",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Buenos Aires a Lima (Desde $389 USD). ¿Me pueden ayudar?",
       },
@@ -962,7 +962,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "Emitido en Perú (libre de percepciones a tarjetas argentinas)",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51907451255",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Vuelo Buenos Aires - Lima ida y vuelta (Desde $389 USD).",
         },
@@ -985,7 +985,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "Equipaje de mano + opción de bodega 23 kg",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51983269950",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Vuelo Solo Ida de Buenos Aires a Lima (Desde $229 USD).",
         },
@@ -1002,14 +1002,14 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         descripcion:
           "Escríbenos por WhatsApp y ahorra emitiendo tu boleto directamente en Perú.",
         ctaTexto: "Consultar tarifa Buenos Aires – Lima por WhatsApp",
-        waNumero: "51913637476",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Buenos Aires a Lima. ¿Me pueden ayudar?",
         img: "https://images.unsplash.com/photo-1531968455001-5c5272a41129?auto=format&fit=crop&w=1000&q=80",
         alt: "Vuelos de Buenos Aires a Lima",
       },
       waFlotante: {
-        numero: "51903212007",
+        numero: "51944103890",
         texto: "Cotizar Bs. Aires → Lima",
         mensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Buenos Aires a Lima. ¿Me pueden ayudar?",
@@ -1054,7 +1054,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       negritaHero:
         "Boleto de ida y vuelta o solo ida con opción de maletas de bodega de 23 kg.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
-      waPrincipalNumero: "51903212007",
+      waPrincipalNumero: "51944103890",
       waPrincipalMensaje:
         "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Santiago de Chile a Lima. ¿Me pueden ayudar?",
       checksHero: [
@@ -1074,7 +1074,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         precio: "$249",
         moneda: "USD",
         notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
-        waNumero: "51983882504",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Santiago a Lima (Desde $249 USD). ¿Me pueden ayudar?",
       },
@@ -1107,7 +1107,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "Tasas de embarque e impuestos incluidos",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51942086698",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Vuelo Santiago - Lima ida y vuelta (Desde $249 USD).",
         },
@@ -1130,7 +1130,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "Impuestos aeroportuarios incluidos",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51906450098",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Vuelo Solo Ida de Santiago a Lima (Desde $149 USD).",
         },
@@ -1147,14 +1147,14 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         descripcion:
           "Escríbenos por WhatsApp y recibe las mejores tarifas del día.",
         ctaTexto: "Consultar tarifa Santiago – Lima por WhatsApp",
-        waNumero: "51944280151",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Santiago a Lima. ¿Me pueden ayudar?",
         img: "https://images.unsplash.com/photo-1531968455001-5c5272a41129?auto=format&fit=crop&w=1000&q=80",
         alt: "Vuelos de Santiago a Lima",
       },
       waFlotante: {
-        numero: "51938845086",
+        numero: "51944103890",
         texto: "Cotizar Santiago → Lima",
         mensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Santiago a Lima. ¿Me pueden ayudar?",
@@ -1199,7 +1199,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       negritaHero:
         "Separa tu paquete Todo Incluido a San Andrés con el 50% de inicial y viaja solo con tu DNI.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
-      waPrincipalNumero: "51938845086",
+      waPrincipalNumero: "51944103890",
       waPrincipalMensaje:
         "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a San Andrés Islas. ¿Me pueden ayudar?",
       checksHero: [
@@ -1219,7 +1219,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         precio: "$429",
         moneda: "USD",
         notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
-        waNumero: "51906642487",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a San Andrés Islas. ¿Me pueden ayudar?",
       },
@@ -1252,7 +1252,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "3 noches en hotel Todo Incluido + Tour Johnny Cay y Acuario",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51944031724",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Paquete a San Andrés Todo Incluido 4D/3N (Desde $749 USD).",
         },
@@ -1275,7 +1275,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "Impuestos aeroportuarios incluidos",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51983891157",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Vuelo Lima - San Andrés (Desde $429 USD).",
         },
@@ -1292,14 +1292,14 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         descripcion:
           "Escríbenos por WhatsApp y un asesor te enviará los hoteles disponibles.",
         ctaTexto: "Consultar tarifa a San Andrés por WhatsApp",
-        waNumero: "51907451255",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a San Andrés Islas. ¿Me pueden ayudar?",
         img: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1000&q=80",
         alt: "Viajes a San Andrés Islas",
       },
       waFlotante: {
-        numero: "51983269950",
+        numero: "51944103890",
         texto: "Cotizar Lima → San Andrés",
         mensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a San Andrés. ¿Me pueden ayudar?",
@@ -1344,7 +1344,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       negritaHero:
         "Vuelos directos o con conexión corta y paquetes en resorts frente a Palm Beach separando con el 50%.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
-      waPrincipalNumero: "51983269950",
+      waPrincipalNumero: "51944103890",
       waPrincipalMensaje:
         "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Aruba. ¿Me pueden ayudar?",
       checksHero: [
@@ -1364,7 +1364,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         precio: "$589",
         moneda: "USD",
         notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
-        waNumero: "51913637476",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Aruba. ¿Me pueden ayudar?",
       },
@@ -1397,7 +1397,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "4 noches de alojamiento en Palm Beach / Eagle Beach",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51903212007",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Paquete a Aruba 5D/4N (Desde $1,150 USD).",
         },
@@ -1420,7 +1420,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "Impuestos aeroportuarios incluidos y asesoría ED Card",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51983882504",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Vuelo Lima - Aruba (Desde $589 USD).",
         },
@@ -1437,14 +1437,14 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         descripcion:
           "Escríbenos por WhatsApp y recibe nuestra cotización personalizada.",
         ctaTexto: "Consultar tarifa Lima – Aruba por WhatsApp",
-        waNumero: "51942086698",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Aruba. ¿Me pueden ayudar?",
         img: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1000&q=80",
         alt: "Viajes a Aruba desde Lima",
       },
       waFlotante: {
-        numero: "51906450098",
+        numero: "51944103890",
         texto: "Cotizar Lima → Aruba",
         mensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Aruba. ¿Me pueden ayudar?",
@@ -1489,7 +1489,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       negritaHero:
         "Reserva solo tu boleto aéreo o el paquete completo con hotel y Cañón del Colca separando con el 50%.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
-      waPrincipalNumero: "51906450098",
+      waPrincipalNumero: "51944103890",
       waPrincipalMensaje:
         "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Arequipa. ¿Me pueden ayudar?",
       checksHero: [
@@ -1509,7 +1509,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         precio: "$109",
         moneda: "USD",
         notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
-        waNumero: "51944280151",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Arequipa. ¿Me pueden ayudar?",
       },
@@ -1542,7 +1542,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "3 noches de alojamiento con desayunos + excursión al Colca",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51938845086",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Paquete Arequipa y Colca 4D/3N (Desde $329 USD).",
         },
@@ -1565,7 +1565,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "Tasas aeroportuarias TUUA incluidas",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51906642487",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Vuelo Lima - Arequipa ida y vuelta (Desde $109 USD).",
         },
@@ -1582,14 +1582,14 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         descripcion:
           "Escríbenos por WhatsApp y te armamos la cotización exacta para tus fechas.",
         ctaTexto: "Consultar tarifa Lima – Arequipa por WhatsApp",
-        waNumero: "51944031724",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Arequipa. ¿Me pueden ayudar?",
         img: "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?auto=format&fit=crop&w=1000&q=80",
         alt: "Viajes a Arequipa",
       },
       waFlotante: {
-        numero: "51983891157",
+        numero: "51944103890",
         texto: "Cotizar Lima → Arequipa",
         mensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Arequipa. ¿Me pueden ayudar?",
@@ -1634,7 +1634,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       negritaHero:
         "Escápate al sol del norte con vuelos confirmados y hoteles frente al mar separando con el 50%.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
-      waPrincipalNumero: "51983891157",
+      waPrincipalNumero: "51944103890",
       waPrincipalMensaje:
         "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Piura / Máncora. ¿Me pueden ayudar?",
       checksHero: [
@@ -1654,7 +1654,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         precio: "$119",
         moneda: "USD",
         notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
-        waNumero: "51907451255",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Piura y Máncora. ¿Me pueden ayudar?",
       },
@@ -1687,7 +1687,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "3 noches de hotel frente al mar con desayunos y tour El Ñuro",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51983269950",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Paquete a Máncora y Vichayito 4D/3N (Desde $369 USD).",
         },
@@ -1710,7 +1710,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
             "Tasas e impuestos aeroportuarios incluidos",
             "Tarifa sujeta a disponibilidad y condiciones aplicables",
           ],
-          waNumber: "51913637476",
+          waNumber: "51944103890",
           waMensaje:
             "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Vuelo Lima - Piura ida y vuelta (Desde $119 USD).",
         },
@@ -1727,14 +1727,14 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         descripcion:
           "Escríbenos por WhatsApp y recibe opciones de hoteles en Vichayito, Máncora y Punta Sal.",
         ctaTexto: "Consultar tarifa a Piura / Máncora por WhatsApp",
-        waNumero: "51903212007",
+        waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Piura y Máncora. ¿Me pueden ayudar?",
         img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80",
         alt: "Viajes a Piura y Máncora",
       },
       waFlotante: {
-        numero: "51983882504",
+        numero: "51944103890",
         texto: "Cotizar Lima → Máncora",
         mensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Piura y Máncora. ¿Me pueden ayudar?",

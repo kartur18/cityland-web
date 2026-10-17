@@ -106,7 +106,7 @@ const JSON_LD_CARIBE = {
       legalName: "Cityland Travel E.I.R.L.",
       url: "https://citylandtravel.com/caribe",
       taxID: "20614914239",
-      telephone: "+51942086698",
+      telephone: "+51944103890",
       priceRange: "$$",
       address: {
         "@type": "PostalAddress",

@@ -224,6 +224,6 @@ export const BLOG_POSTS_MASIVOS: BlogPost[] = [
     imagen: IMG_BLOG_PER,
     autor: "Equipo Cityland Travel",
     contenido: `<h2>Seguridad y acompañamiento humano antes, durante y después de tu vuelo</h2>
-<p>A diferencia de las plataformas extranjeras sin oficinas en el Perú, en <strong>Cityland Travel E.I.R.L. (RUC 20614914239)</strong> cuentas con una sede física en Av. Antúnez de Mayolo N. 814 (Los Olivos, Lima) y 12 asesores especializados listos para resolver cambios, añadir equipaje, preparar tu carpeta migratoria y asistirte las 24 horas.</p>`,
+<p>A diferencia de las plataformas extranjeras sin oficinas en el Perú, en <strong>Cityland Travel E.I.R.L. (RUC 20614914239)</strong> cuentas con una sede física en Av. Antúnez de Mayolo N. 814 (Los Olivos, Lima) y atención directa por nuestro WhatsApp oficial <strong>+51 944 103 890</strong> para resolver cambios, añadir equipaje, preparar tu carpeta migratoria y asistirte las 24 horas.</p>`,
   },
 ];

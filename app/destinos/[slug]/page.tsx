@@ -9,6 +9,8 @@ import {
   type Destino,
 } from "@/components/constantes";
 import { DESTINOS_MASIVOS } from "@/lib/catalogo-destinos-masivo";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import DestinoGallery from "@/components/DestinoGallery";
 import PriceDisplay from "@/components/PriceDisplay";
@@ -90,17 +92,21 @@ export default async function DestinoPage({
   const dest = findDestino(slug);
   if (!dest) notFound();
 
-  const esMigratorio = dest.migratorio != null;
-  const price = dest.migratorio ?? dest.turistico;
+  const tieneMigratorio = dest.migratorio != null;
+  const precioTuristico = dest.turistico;
+  const precioDesde = dest.migratorio ?? dest.turistico;
   const related = getRelated(dest);
-  const includes = [
-    "Vuelo(s) incluido(s)",
-    dest.tipo === "europa" ? "Seguro Schengen" : "Seguro de viaje",
-    "Hotel incluido",
-    "Asistencia 24/7",
-    "Asesoría personalizada",
-    "Traslados aeropuerto-hotel",
-  ];
+  const includes =
+    dest.inclusionesLista && dest.inclusionesLista.length > 0
+      ? dest.inclusionesLista
+      : [
+          "Boleto aéreo ida y vuelta desde Lima (impuestos incluidos)",
+          dest.tipo === "europa" ? "Seguro médico Schengen 30.000€ sin deducible" : "Seguro de asistencia médica internacional",
+          "Alojamiento seleccionado con desayuno o Todo Incluido",
+          "Asistencia 24/7 por WhatsApp durante todo tu viaje",
+          "Asesoría documentaria y migratoria personalizada",
+          "Traslados aeropuerto - hotel - aeropuerto",
+        ];
 
   const jsonLdDestino = {
     "@context": "https://schema.org",
@@ -131,7 +137,7 @@ export default async function DestinoPage({
         offers: {
           "@type": "Offer",
           priceCurrency: "USD",
-          price: String(price),
+          price: String(precioDesde),
           availability: "https://schema.org/InStock",
           url: `https://citylandtravel.com/destinos/${dest.slug}`,
         },
@@ -145,8 +151,9 @@ export default async function DestinoPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdDestino) }}
       />
+      <Navbar />
       {/* ── Hero ── */}
-      <section className="relative h-[60vh] min-h-[400px] w-full">
+      <section className="relative h-[60vh] min-h-[420px] w-full">
         <Image
           src={dest.img}
           alt={dest.alt}
@@ -155,20 +162,34 @@ export default async function DestinoPage({
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-[#0a1628]/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-[#0a1628]/55 to-black/30" />
 
         <div className="absolute inset-0 flex items-end">
           <div className="max-w-[1100px] mx-auto px-5 pb-12 w-full">
             <AnimateOnScroll>
-              <p className="text-white/70 text-sm font-semibold uppercase tracking-widest mb-2 flex items-center gap-2">
-                <FlagIcon pais={dest.pais} className="w-5 h-3.5" /> {dest.pais}
-              </p>
-              <h1 className="font-[family-name:var(--font-bebas)] text-white text-[clamp(48px,8vw,80px)] leading-none tracking-wide mb-4">
+              <div className="flex flex-wrap items-center gap-2 mb-2">
+                <p className="text-white/80 text-sm font-semibold uppercase tracking-widest flex items-center gap-2">
+                  <FlagIcon pais={dest.pais} className="w-5 h-3.5" /> {dest.pais}
+                </p>
+                {dest.duracion && (
+                  <span className="bg-white/15 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full">
+                    {dest.duracion}
+                  </span>
+                )}
+              </div>
+              <h1 className="font-[family-name:var(--font-bebas)] text-white text-[clamp(44px,7vw,76px)] leading-none tracking-wide mb-4">
                 {dest.ciudad}
               </h1>
-              <span className="inline-block bg-[#dc2626] text-white font-bold text-lg px-5 py-2 rounded-full">
-                Desde ${price} USD
-              </span>
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="inline-block bg-[#dc2626] text-white font-bold text-lg px-5 py-2 rounded-full">
+                  Paquete Completo Desde ${precioTuristico} USD
+                </span>
+                {tieneMigratorio && (
+                  <span className="inline-block bg-[#0a1628]/90 border border-white/25 text-white font-semibold text-sm px-4 py-2 rounded-full">
+                    Vuelo + Carpeta Migratoria desde ${dest.migratorio} USD
+                  </span>
+                )}
+              </div>
             </AnimateOnScroll>
           </div>
         </div>
@@ -192,7 +213,7 @@ export default async function DestinoPage({
             <AnimateOnScroll>
               <div>
                 <h2 className="font-[family-name:var(--font-bebas)] text-[#0a1628] text-3xl tracking-wide mb-4">
-                  Sobre {dest.ciudad}
+                  Programa y Experiencia en {dest.ciudad}
                 </h2>
                 <p className="text-gray-600 leading-relaxed text-[15px]">
                   {dest.descripcion}
@@ -237,7 +258,7 @@ export default async function DestinoPage({
             <AnimateOnScroll>
               <div>
                 <h2 className="font-[family-name:var(--font-bebas)] text-[#0a1628] text-3xl tracking-wide mb-6">
-                  Lo que incluye
+                  Lo que incluye tu paquete
                 </h2>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {includes.map((item, i) => (
@@ -269,29 +290,44 @@ export default async function DestinoPage({
           {/* Right sidebar */}
           <div className="lg:col-span-1">
             <div className="sticky top-28 bg-white border border-gray-200 rounded-2xl shadow-lg p-6 space-y-6">
-              {/* Pricing */}
+              {/* Primary Tourist Package Pricing */}
               <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">
-                  {esMigratorio ? "Paquete migratorio" : dest.turiLabel ?? "Paquete turístico"}
+                <p className="text-xs font-bold uppercase tracking-widest text-[#dc2626] mb-3">
+                  {dest.turiLabel ?? "Paquete Turístico Completo"} {dest.duracion ? `· ${dest.duracion}` : ""}
                 </p>
                 <PriceDisplay
-                  price={price}
+                  price={precioTuristico}
                   regularPrice={dest.regularPrice}
                   cuotas={dest.cuotas}
                 />
+                <p className="text-xs text-gray-500 mt-3 leading-relaxed">
+                  {dest.turiDesc}
+                </p>
               </div>
 
-              {/* Package description */}
-              <p className="text-sm text-gray-500 border-t border-gray-100 pt-4">
-                {esMigratorio ? dest.migraDesc : dest.turiDesc}
-              </p>
+              {/* Optional Migratory Package Box */}
+              {tieneMigratorio && dest.migratorio && (
+                <div className="bg-slate-50 border border-slate-200 rounded-xl p-4">
+                  <div className="flex items-center justify-between gap-2 mb-1">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#0a1628]">
+                      Opción Vuelo + Carpeta Migratoria
+                    </span>
+                    <span className="text-sm font-black text-emerald-700">
+                      Desde ${dest.migratorio} USD
+                    </span>
+                  </div>
+                  <p className="text-xs text-gray-600 leading-relaxed">
+                    {dest.migraDesc}
+                  </p>
+                </div>
+              )}
 
               {/* CTA */}
               <a
                 href={cotLink(
                   dest.ciudad,
-                  dest.tipo === "europa" ? "migratorio" : "turístico",
-                  price
+                  tieneMigratorio ? "paquete turístico o carpeta migratoria" : "turístico",
+                  precioDesde
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -305,9 +341,9 @@ export default async function DestinoPage({
               <div className="space-y-3 border-t border-gray-100 pt-4">
                 {[
                   { icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z", label: "Seguro de viaje incluido" },
-                  { icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z", label: "Respuesta en menos de 2h" },
-                  { icon: "M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z", label: "Pago en cuotas sin interés" },
-                  { icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z", label: "Agencia registrada en Lima" },
+                  { icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z", label: "Atención inmediata por WhatsApp" },
+                  { icon: "M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z", label: "Separa con 50% y paga en cuotas" },
+                  { icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z", label: "Sede en Los Olivos · RUC 20614914239" },
                 ].map((badge, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <svg
@@ -343,7 +379,7 @@ export default async function DestinoPage({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {related.map((r, i) => {
-              const rPrice = r.migratorio ?? r.turistico;
+              const rPrice = r.turistico;
               return (
                 <AnimateOnScroll key={r.slug} delay={i * 100}>
                   <Link
@@ -390,6 +426,7 @@ export default async function DestinoPage({
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 }

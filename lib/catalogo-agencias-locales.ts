@@ -49,7 +49,7 @@ const DISTRITOS_LIMA_CALLAO: [string, string, string][] = [
   ["La Punta (Callao)", "la-punta-callao", "Cruceros, paquetes internacionales de lujo y boletos aéreos con atención personalizada"],
   ["Carmen de la Legua", "carmen-de-la-legua", "A 12 minutos de nuestra oficina en Los Olivos: compra tus pasajes en persona o por WhatsApp"],
   ["Cercado de Lima", "cercado-de-lima", "Emisión de pasajes aéreos, trámite de visas, Seguro Schengen y paquetes para Lima Centro"],
-  ["Lima Este", "lima-este", "Cobertura integral para La Molina, Ate, Santa Anita, San Luis y Chosica con 12 asesores en línea"],
+  ["Lima Este", "lima-este", "Cobertura integral para La Molina, Ate, Santa Anita, San Luis y Chosica por WhatsApp +51 944 103 890"],
   ["Lima Sur", "lima-sur", "Cobertura para Chorrillos, Surco, Barranco, SJM, VMT, VES y Lurín con precios en dólares"],
   ["Lima Moderna", "lima-moderna", "Paquetes vacacionales, corporativos, lunas de miel y quinceañeras para toda Lima Moderna"],
   ["Aeropuerto Jorge Chávez", "aeropuerto-jorge-chavez-lima", "Ubicados estratégicamente cerca del Aeropuerto Internacional Jorge Chávez en Lima Norte"],

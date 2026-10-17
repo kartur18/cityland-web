@@ -42,7 +42,7 @@ const CONFIG_SURCO: ConfiguracionLandingAerolinea = {
   negritaHero:
     "Atención personalizada por WhatsApp y videollamada, cerca a la Embajada de EE.UU. para asesoría de Visas.",
   ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
-  waPrincipalNumero: "51983891157",
+  waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
     "Hola, encontré Cityland Travel en Google buscando una agencia de viajes en Surco / San Borja. Quiero consultar disponibilidad y precios. ¿Me pueden ayudar?",
   checksHero: [
@@ -62,7 +62,7 @@ const CONFIG_SURCO: ConfiguracionLandingAerolinea = {
     precio: "$399",
     moneda: "USD",
     notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
-    waNumero: "51907451255",
+    waNumero: "51944103890",
     waMensaje:
       "Hola, soy de Surco / San Borja y encontré Cityland Travel en Google. Quiero cotizar un viaje con un asesor.",
   },
@@ -96,7 +96,7 @@ const CONFIG_SURCO: ConfiguracionLandingAerolinea = {
         "4 noches en Resort Todo Incluido ideal para familias o parejas",
         "Tarifa sujeta a disponibilidad y condiciones aplicables",
       ],
-      waNumber: "51983269950",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, soy de Surco y encontré Cityland Travel en Google. Quiero cotizar un paquete familiar al Caribe (Desde $1,049 USD).",
     },
@@ -119,7 +119,7 @@ const CONFIG_SURCO: ConfiguracionLandingAerolinea = {
         "Asesoría integral si necesitas tramitar o renovar tu Visa en la Embajada de Surco",
         "Tarifa sujeta a disponibilidad y condiciones aplicables",
       ],
-      waNumber: "51913637476",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, soy de Surco y encontré Cityland Travel en Google. Quiero información sobre paquetes a Orlando/Miami o trámite de Visa B1/B2.",
     },
@@ -142,7 +142,7 @@ const CONFIG_SURCO: ConfiguracionLandingAerolinea = {
         "Circuitos de 8 a 15 días o boletos con carpeta migratoria",
         "Tarifa sujeta a disponibilidad y condiciones aplicables",
       ],
-      waNumber: "51903212007",
+      waNumber: "51944103890",
       waMensaje:
         "Hola, soy de Surco y encontré Cityland Travel en Google. Quiero cotizar un viaje a España / Europa (Desde $890 USD).",
     },
@@ -159,14 +159,14 @@ const CONFIG_SURCO: ConfiguracionLandingAerolinea = {
     descripcion:
       "Escríbenos por WhatsApp para asignarte un asesor de viajes y enviarte tu cotización en minutos.",
     ctaTexto: "Consultar disponibilidad por WhatsApp",
-    waNumero: "51983882504",
+    waNumero: "51944103890",
     waMensaje:
       "Hola, encontré Cityland Travel en Google buscando agencia de viajes en Surco. ¿Me pueden ayudar con una cotización?",
     img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80",
     alt: "Agencia de Viajes Surco",
   },
   waFlotante: {
-    numero: "51942086698",
+    numero: "51944103890",
     texto: "WhatsApp Surco",
     mensaje:
       "Hola, encontré Cityland Travel en Google buscando agencia de viajes en Surco. ¿Me pueden ayudar?",

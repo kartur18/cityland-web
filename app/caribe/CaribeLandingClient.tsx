@@ -91,7 +91,7 @@ export default function CaribeLandingClient() {
 
             <div className="flex items-center gap-2.5 shrink-0">
               <a
-                href={`https://wa.me/51983882504?text=${encodeURIComponent("¡Hola Cityland Travel! Vi su página de paquetes a Caribe, Sudamérica y Miami. Deseo cotizar con un asesor.")}`}
+                href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Vi su página de paquetes a Caribe, Sudamérica y Miami. Deseo cotizar con un asesor.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold cursor-pointer whitespace-nowrap shadow-xs"
@@ -130,7 +130,7 @@ export default function CaribeLandingClient() {
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-7">
                 <a
-                  href={`https://wa.me/51906450098?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar un paquete turístico (Punta Cana, Cancún, Cartagena, Medellín, Río o Miami) separando con el 50% de inicial.")}`}
+                  href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar un paquete turístico (Punta Cana, Cancún, Cartagena, Medellín, Río o Miami) separando con el 50% de inicial.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-wa-pulse inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-7 py-4 rounded-2xl text-sm sm:text-base font-bold shadow-md cursor-pointer"
@@ -216,7 +216,7 @@ export default function CaribeLandingClient() {
                   </div>
 
                   <a
-                    href={`https://wa.me/51942086698?text=${encodeURIComponent("¡Hola Cityland Travel! Vi en su web el paquete Todo Incluido a Punta Cana (5 Días / 4 Noches) desde $1,099 USD. Deseo cotizar separando con el 50%.")}`}
+                    href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Vi en su web el paquete Todo Incluido a Punta Cana (5 Días / 4 Noches) desde $1,099 USD. Deseo cotizar separando con el 50%.")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0"
@@ -430,7 +430,7 @@ export default function CaribeLandingClient() {
 
               <div className="flex flex-wrap items-center gap-3">
                 <a
-                  href={`https://wa.me/51944280151?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo una cotización personalizada para viajar en familia/pareja.")}`}
+                  href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo una cotización personalizada para viajar en familia/pareja.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold cursor-pointer"
@@ -470,7 +470,7 @@ export default function CaribeLandingClient() {
 
           <div className="flex items-center gap-4">
             <a
-              href={`https://wa.me/51938845086?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar un paquete turístico desde Lima.")}`}
+              href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar un paquete turístico desde Lima.")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-2.5 rounded-xl text-xs font-bold cursor-pointer"
@@ -491,7 +491,7 @@ export default function CaribeLandingClient() {
       {/* 6. Botón Flotante de WhatsApp */}
       <div className="fixed bottom-5 right-5 z-50">
         <a
-          href={`https://wa.me/51906642487?text=${encodeURIComponent("¡Hola Cityland Travel! Vi su landing de Caribe y América y deseo cotizar mi viaje.")}`}
+          href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Vi su landing de Caribe y América y deseo cotizar mi viaje.")}`}
           target="_blank"
           rel="noopener noreferrer"
           className="btn-wa-pulse flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-xl cursor-pointer"

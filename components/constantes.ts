@@ -5,60 +5,28 @@ export const EMPRESA_RUC = "20614914239";
 export const EMPRESA_DIRECCION = "Av. Antúnez de Mayolo N. 814, Los Olivos, Lima";
 export const EMPRESA_HORARIO = "Lunes a Sábado: 9:00 am - 7:00 pm";
 
-// Números oficiales
-export const TELEFONO = "+51906450098";
-export const TELEFONO_FORMATEADO = "+51 906 450 098";
+// Número oficial único de WhatsApp y Central Comercial (conectado a la Bandeja Cityland Travel)
+export const NUMERO_WHATSAPP_OFICIAL = "51944103890";
+export const TELEFONO = "+51944103890";
+export const TELEFONO_FORMATEADO = "+51 944 103 890";
 export const TIPO_CAMBIO_REF = 3.75; // Tipo de cambio referencial USD -> PEN
 export const CATALOGO_LINK = "#paquetes";
 
-// ── Los 12 Números Oficiales de WhatsApp de Cityland Travel ──
-// Iniciales (7): 983882504, 942086698, 906450098, 944280151, 938845086, 906642487, 944031724
-// Adicionales (5): 983891157, 907451255, 983269950, 913637476, 903212007
 export const TODOS_LOS_NUMEROS_WHATSAPP = [
-  "51983882504", // 1. 983 882 504
-  "51942086698", // 2. 942 086 698
-  "51906450098", // 3. 906 450 098
-  "51944280151", // 4. 944 280 151
-  "51938845086", // 5. 938 845 086
-  "51906642487", // 6. 906 642 487
-  "51944031724", // 7. 944 031 724
-  "51983891157", // 8. 983 891 157
-  "51907451255", // 9. 907 451 255
-  "51983269950", // 10. 983 269 950
-  "51913637476", // 11. 913 637 476
-  "51903212007", // 12. 903 212 007
+  NUMERO_WHATSAPP_OFICIAL,
 ] as const;
 
 export const WHATSAPP_ROUTING = {
-  europa: [
-    "51983882504",
-    "51983891157",
-    "51907451255",
-    "51983269950",
-    "51913637476",
-    "51903212007",
-  ],
-  caribe: [
-    "51942086698",
-    "51906450098",
-    "51983891157",
-    "51907451255",
-    "51983269950",
-    "51913637476",
-    "51903212007",
-  ],
-  general: [...TODOS_LOS_NUMEROS_WHATSAPP],
+  europa: [NUMERO_WHATSAPP_OFICIAL],
+  caribe: [NUMERO_WHATSAPP_OFICIAL],
+  general: [NUMERO_WHATSAPP_OFICIAL],
 };
 
 /**
- * Retorna un número asignado de forma determinista entre los 12 números oficiales
- * según el destino o semilla para garantizar que todos los asesores reciban consultas.
+ * Retorna siempre el número oficial único de WhatsApp de Cityland Travel (944 103 890).
  */
-export function getNumeroWhatsapp(categoria: "europa" | "caribe" | "general" | string, seed: string = ""): string {
-  const list = TODOS_LOS_NUMEROS_WHATSAPP;
-  const textoSeed = `${categoria}-${seed}`;
-  const hash = textoSeed.split("").reduce((acc, char, idx) => acc + char.charCodeAt(0) * (idx + 1), 0);
-  return list[hash % list.length];
+export function getNumeroWhatsapp(_categoria?: "europa" | "caribe" | "general" | string, _seed: string = ""): string {
+  return NUMERO_WHATSAPP_OFICIAL;
 }
 
 /**
@@ -1080,7 +1048,11 @@ export const DESTINOS_EUROPA: Destino[] = PAQUETES_COMPLETOS
     turiDesc: `${p.duracion} + Hoteles + Vuelos + Traslados + Asistencia`,
     regularPrice: p.precioRegularUSD,
     cuotas: 6,
-    gallery: [p.img],
+    gallery: [
+      p.img,
+      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=900&q=80",
+      "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=900&q=80",
+    ],
     descripcion: p.descripcion,
     itinerario: p.itinerario,
     temporada: "todo-el-ano",
@@ -1110,7 +1082,11 @@ export const DESTINOS_CARIBE: Destino[] = PAQUETES_COMPLETOS
     turiDesc: `${p.duracion} + ${p.resaltado}`,
     regularPrice: p.precioRegularUSD,
     cuotas: 6,
-    gallery: [p.img],
+    gallery: [
+      p.img,
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80",
+      "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=900&q=80",
+    ],
     descripcion: p.descripcion,
     itinerario: p.itinerario,
     temporada: "todo-el-ano",

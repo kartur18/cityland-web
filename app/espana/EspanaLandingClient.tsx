@@ -18,7 +18,7 @@ export const PAQUETES_ESPANA = [
     tagColor: "bg-blue-600 text-white",
     img: "/images/espana/gran-via-metropolis.jpg",
     monumento: "Gran Vía · Madrid",
-    waUrl: `https://wa.me/51944280151?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar el Paquete Migratorio a España para NOVIEMBRE (Desde $890 USD). Quisiera separar con el 50% de inicial.")}`,
+    waUrl: `https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar el Paquete Migratorio a España para NOVIEMBRE (Desde $890 USD). Quisiera separar con el 50% de inicial.")}`,
   },
   {
     id: "diciembre",
@@ -30,7 +30,7 @@ export const PAQUETES_ESPANA = [
     tagColor: "bg-red-600 text-white",
     img: "/images/espana/puerta-de-alcala.jpg",
     monumento: "Puerta de Alcalá · Madrid",
-    waUrl: `https://wa.me/51938845086?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar el Paquete Migratorio a España para DICIEMBRE (Desde $1,090 USD). Quisiera separar con el 50% de inicial.")}`,
+    waUrl: `https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar el Paquete Migratorio a España para DICIEMBRE (Desde $1,090 USD). Quisiera separar con el 50% de inicial.")}`,
   },
   {
     id: "enero",
@@ -42,7 +42,7 @@ export const PAQUETES_ESPANA = [
     tagColor: "bg-amber-600 text-white",
     img: "/images/espana/cibeles.jpg",
     monumento: "Plaza de Cibeles · Madrid",
-    waUrl: `https://wa.me/51906642487?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar el Paquete Migratorio a España para ENERO (Desde $1,050 USD). Quisiera separar con el 50% de inicial.")}`,
+    waUrl: `https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar el Paquete Migratorio a España para ENERO (Desde $1,050 USD). Quisiera separar con el 50% de inicial.")}`,
   },
   {
     id: "mar-abr-may",
@@ -54,7 +54,7 @@ export const PAQUETES_ESPANA = [
     tagColor: "bg-emerald-600 text-white",
     img: "/images/espana/palacio-real.jpg",
     monumento: "Palacio Real · Madrid",
-    waUrl: `https://wa.me/51944031724?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar el Paquete Migratorio a España para MARZO/ABRIL/MAYO (Desde $899 USD). Quisiera separar con el 50% de inicial.")}`,
+    waUrl: `https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar el Paquete Migratorio a España para MARZO/ABRIL/MAYO (Desde $899 USD). Quisiera separar con el 50% de inicial.")}`,
   },
 ];
 
@@ -118,7 +118,7 @@ export default function EspanaLandingClient() {
 
             <div className="flex items-center gap-3 shrink-0">
               <a
-                href={`https://wa.me/51983882504?text=${encodeURIComponent("¡Hola Cityland Travel! Me comunico desde su página de España y deseo cotizar un paquete migratorio.")}`}
+                href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Me comunico desde su página de España y deseo cotizar un paquete migratorio.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 sm:px-5 py-2.5 rounded-full text-xs font-bold cursor-pointer whitespace-nowrap"
@@ -157,7 +157,7 @@ export default function EspanaLandingClient() {
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-7">
                 <a
-                  href={`https://wa.me/51906450098?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo reservar el Paquete Migratorio a España (Desde $890 USD) separando con el 50% de inicial.")}`}
+                  href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo reservar el Paquete Migratorio a España (Desde $890 USD) separando con el 50% de inicial.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-wa-pulse inline-flex items-center justify-center gap-2.5 bg-red-600 hover:bg-red-700 text-white px-7 py-4 rounded-2xl text-sm sm:text-base font-bold shadow-md cursor-pointer"
@@ -240,7 +240,7 @@ export default function EspanaLandingClient() {
                   </div>
 
                   <a
-                    href={`https://wa.me/51942086698?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo verificar disponibilidad de fechas para viajar a España (Desde $890 USD).")}`}
+                    href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo verificar disponibilidad de fechas para viajar a España (Desde $890 USD).")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0"
@@ -389,7 +389,7 @@ export default function EspanaLandingClient() {
 
               <div className="flex flex-wrap items-center gap-3">
                 <a
-                  href={`https://wa.me/51983891157?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo asesoría especializada sobre los requisitos y preguntas de migraciones en Madrid-Barajas.")}`}
+                  href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo asesoría especializada sobre los requisitos y preguntas de migraciones en Madrid-Barajas.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold cursor-pointer"
@@ -429,7 +429,7 @@ export default function EspanaLandingClient() {
 
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a
-              href={`https://wa.me/51907451255?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar mi viaje a España.")}`}
+              href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar mi viaje a España.")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-2.5 rounded-xl text-xs font-bold cursor-pointer"
@@ -453,7 +453,7 @@ export default function EspanaLandingClient() {
       {/* 6. Botón Flotante */}
       <div className="fixed bottom-5 right-5 z-50">
         <a
-          href={`https://wa.me/51983269950?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar el Paquete Migratorio a España.")}`}
+          href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar el Paquete Migratorio a España.")}`}
           target="_blank"
           rel="noopener noreferrer"
           className="btn-wa-pulse flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-xl cursor-pointer"
