@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     siteName: "Cityland Travel",
     images: [
       {
-        url: "https://citylandtravel.com/images/paquetes/panama-medellin/hero-panama.png",
+        url: "https://citylandtravel.com/images/paquetes/panama-medellin/hero-panama.jpg",
         width: 1200,
         height: 630,
         alt: "Paquete Panamá + Medellín — Cityland Travel",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: "Paquete Panamá + Medellín desde $799 USD | Cityland Travel",
     description:
       "Viaja a Panamá y Medellín 7 días desde $799 USD. Vuelos Copa Airlines, hoteles, desayunos, traslados y tours.",
-    images: ["https://citylandtravel.com/images/paquetes/panama-medellin/hero-panama.png"],
+    images: ["https://citylandtravel.com/images/paquetes/panama-medellin/hero-panama.jpg"],
   },
 };
 
@@ -67,7 +67,7 @@ const JSON_LD_PANAMA_MEDELLIN = {
       name: "Paquete Combinado Panamá + Medellín (7 Días / 6 Noches) desde Lima",
       description:
         "Paquete turístico a Ciudad de Panamá y Medellín con vuelos Copa Airlines desde Lima, hoteles con desayuno, traslados y tours incluidos.",
-      image: "https://citylandtravel.com/images/paquetes/panama-medellin/hero-panama.png",
+      image: "https://citylandtravel.com/images/paquetes/panama-medellin/hero-panama.jpg",
       provider: { "@type": "TravelAgency", name: "Cityland Travel" },
       offers: {
         "@type": "Offer",

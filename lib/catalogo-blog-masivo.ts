@@ -181,7 +181,7 @@ export const BLOG_POSTS_MASIVOS: BlogPost[] = [
     catColor: "bg-emerald-700",
     fecha: "16 Oct 2026",
     lectura: "4 min",
-    imagen: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=900&q=80",
+    imagen: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=900&q=80",
     autor: "Equipo Cityland Travel",
     contenido: `<h2>Ahorra hasta un 35% reservando en preventa con el 50%</h2>
 <p>En el mercado aéreo peruano existen tres picos de máxima demanda donde los boletos suelen duplicar su valor si se compran a última hora: <strong>Semana Santa, Fiestas Patrias (25 al 30 de julio) y Año Nuevo (28 de diciembre al 3 de enero)</strong>.</p>

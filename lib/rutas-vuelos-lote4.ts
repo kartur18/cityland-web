@@ -1501,7 +1501,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
         pais: "Perú",
         etiquetaIzq: "Selva Peruana",
         etiquetaDer: "Separa con 50%",
-        img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=85",
+        img: "https://images.unsplash.com/photo-1620658927695-c33df6fb8130?auto=format&fit=crop&w=1000&q=85",
         alt: "Laguna Azul en Tarapoto — Vuelos desde Lima",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Tarapoto (TPP)",
         titulo: "Vuelos y Paquetes a Tarapoto",
@@ -1534,7 +1534,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
           notaPrecio: "Paquete turístico · Incluye impuestos (Verif. Oct 2026)",
           tag: "Favorito en Selva",
           tagBg: "bg-emerald-700",
-          img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=900&q=80",
+          img: "https://images.unsplash.com/photo-1620658927695-c33df6fb8130?auto=format&fit=crop&w=900&q=80",
           alt: "Paquete a Tarapoto desde Lima",
           resumenCorto: "Vuelos + 3 noches de hotel + 3 tours con entradas",
           checks: [
@@ -1585,7 +1585,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
         waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Tarapoto. ¿Me pueden ayudar?",
-        img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=80",
+        img: "https://images.unsplash.com/photo-1620658927695-c33df6fb8130?auto=format&fit=crop&w=1000&q=80",
         alt: "Viajes a Tarapoto",
       },
       waFlotante: {
@@ -1646,7 +1646,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
         pais: "Perú",
         etiquetaIzq: "Río Amazonas",
         etiquetaDer: "Separa con 50%",
-        img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=85",
+        img: "https://images.unsplash.com/photo-1699575678956-aefa714b67f0?auto=format&fit=crop&w=1000&q=85",
         alt: "Río Amazonas en Iquitos — Vuelos desde Lima",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Iquitos (IQT)",
         titulo: "Vuelos y Paquetes a Iquitos y Amazonas",
@@ -1679,7 +1679,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
           notaPrecio: "Paquete turístico · Incluye impuestos (Verif. Oct 2026)",
           tag: "Aventura Amazónica",
           tagBg: "bg-emerald-700",
-          img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=900&q=80",
+          img: "https://images.unsplash.com/photo-1699575678956-aefa714b67f0?auto=format&fit=crop&w=900&q=80",
           alt: "Paquete a Iquitos y Río Amazonas",
           resumenCorto: "Vuelos + Lodge en la selva + Navegación por el Amazonas",
           checks: [
@@ -1730,7 +1730,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
         waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Iquitos. ¿Me pueden ayudar?",
-        img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=80",
+        img: "https://images.unsplash.com/photo-1699575678956-aefa714b67f0?auto=format&fit=crop&w=1000&q=80",
         alt: "Viajes a Iquitos",
       },
       waFlotante: {
@@ -1791,7 +1791,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
         pais: "Perú",
         etiquetaIzq: "Lago Titicaca",
         etiquetaDer: "Separa con 50%",
-        img: "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?auto=format&fit=crop&w=1000&q=85",
+        img: "https://images.unsplash.com/photo-1522409994346-2682217b9a3e?auto=format&fit=crop&w=1000&q=85",
         alt: "Lago Titicaca en Puno — Vuelos desde Lima",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Juliaca / Puno (JUL)",
         titulo: "Vuelos y Paquetes a Puno y Titicaca",
@@ -1824,7 +1824,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
           notaPrecio: "Paquete turístico · Incluye impuestos (Verif. Oct 2026)",
           tag: "Todo Organizado",
           tagBg: "bg-amber-600",
-          img: "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?auto=format&fit=crop&w=900&q=80",
+          img: "https://images.unsplash.com/photo-1522409994346-2682217b9a3e?auto=format&fit=crop&w=900&q=80",
           alt: "Paquete a Puno y Lago Titicaca",
           resumenCorto: "Vuelos + 3 noches de hotel + Uros, Taquile y Sillustani",
           checks: [
@@ -1875,7 +1875,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
         waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Puno. ¿Me pueden ayudar?",
-        img: "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?auto=format&fit=crop&w=1000&q=80",
+        img: "https://images.unsplash.com/photo-1522409994346-2682217b9a3e?auto=format&fit=crop&w=1000&q=80",
         alt: "Viajes a Puno",
       },
       waFlotante: {

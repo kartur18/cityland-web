@@ -1122,7 +1122,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
           notaPrecio: "Solo ida · Incluye impuestos (Verif. Oct 2026)",
           tag: "Solo Ida",
           tagBg: "bg-emerald-700",
-          img: "https://images.unsplash.com/photo-1478827387698-1527781a4887?auto=format&fit=crop&w=900&q=80",
+          img: "https://images.unsplash.com/photo-1557974040-3bec341da09b?auto=format&fit=crop&w=900&q=80",
           alt: "Vuelo solo ida de Santiago a Lima",
           resumenCorto: "Un tramo directo Santiago (SCL) → Lima (LIM)",
           checks: [
@@ -1501,7 +1501,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         pais: "Perú",
         etiquetaIzq: "Sur del Perú",
         etiquetaDer: "Separa con 50%",
-        img: "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?auto=format&fit=crop&w=1000&q=85",
+        img: "https://images.unsplash.com/photo-1787929759288-1b4aa7af30f6?auto=format&fit=crop&w=1000&q=85",
         alt: "Plaza de Armas de Arequipa y Volcán Misti — Vuelos desde Lima",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Rodríguez Ballón (AQP)",
         titulo: "Vuelos y Paquetes a Arequipa",
@@ -1534,7 +1534,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
           notaPrecio: "Paquete turístico · Incluye impuestos (Verif. Oct 2026)",
           tag: "Todo Organizado",
           tagBg: "bg-amber-600",
-          img: "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?auto=format&fit=crop&w=900&q=80",
+          img: "https://images.unsplash.com/photo-1787929759288-1b4aa7af30f6?auto=format&fit=crop&w=900&q=80",
           alt: "Paquete a Arequipa y Cañón del Colca",
           resumenCorto: "Vuelos + 3 noches de hotel + City Tour + Valle del Colca",
           checks: [
@@ -1585,7 +1585,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         waNumero: "51944103890",
         waMensaje:
           "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Arequipa. ¿Me pueden ayudar?",
-        img: "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?auto=format&fit=crop&w=1000&q=80",
+        img: "https://images.unsplash.com/photo-1787929759288-1b4aa7af30f6?auto=format&fit=crop&w=1000&q=80",
         alt: "Viajes a Arequipa",
       },
       waFlotante: {

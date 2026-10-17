@@ -721,7 +721,7 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     precioRegularUSD: 690,
     tag: "ESCAPADA · SOLO DNI",
     tagColor: "promo",
-    img: "https://images.unsplash.com/photo-1478827387698-1527781a4887?w=1200&q=85",
+    img: "https://images.unsplash.com/photo-1557974040-3bec341da09b?w=1200&q=85",
     alt: "Paquete a Santiago de Chile y Viña del Mar desde Lima",
     tituloComercial: "Santiago Moderno, Viña del Mar & Valparaíso",
     resaltado: "Vuelo Directo + Hotel en Providencia + Tour Costa Pacífica",
@@ -842,7 +842,7 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     precioRegularUSD: 420,
     tag: "CIUDAD BLANCA & COLCA",
     tagColor: "promo",
-    img: "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=1200&q=85",
+    img: "https://images.unsplash.com/photo-1787929759288-1b4aa7af30f6?w=1200&q=85",
     alt: "Paquete a Arequipa y Cañón del Colca desde Lima",
     tituloComercial: "Arequipa Colonial & Vuelo del Cóndor en el Colca",
     resaltado: "Vuelos + Hotel + Monasterio Santa Catalina + Cruz del Cóndor",
@@ -922,7 +922,7 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     precioRegularUSD: 380,
     tag: "SELVA PERUANA · TOP VENTAS",
     tagColor: "hot",
-    img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&q=85",
+    img: "https://images.unsplash.com/photo-1620658927695-c33df6fb8130?w=1200&q=85",
     alt: "Paquete a Tarapoto y Laguna Azul Todo Organizado desde Lima",
     tituloComercial: "Tarapoto Mágico: Laguna Azul, Ahuashiyacu & Lamas",
     resaltado: "Vuelos + Hotel con Piscina + 3 Excursiones con Entradas",
@@ -962,7 +962,7 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     precioRegularUSD: 820,
     tag: "MARAVILLA NATURAL · SOLO DNI",
     tagColor: "promo",
-    img: "https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?w=1200&q=85",
+    img: "https://images.unsplash.com/photo-1706587531457-8c574be27a08?w=1200&q=85",
     alt: "Paquete a Cataratas del Iguazú desde Lima - Lado Brasileño y Argentino",
     tituloComercial: "Cataratas del Iguazú: Lado Brasileño & Argentino",
     resaltado: "Vuelos Directos + Hotel con Piscina + Garganta del Diablo & Hito Tres Fronteras",
@@ -1076,8 +1076,8 @@ const GALERIAS_AUTENTICAS_POR_SLUG: Record<string, [string, string, string]> = {
   ],
   "cusco-magico": [
     "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=900&q=80",
-    "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=900&q=80",
-    "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=900&q=80",
+    "https://images.unsplash.com/photo-1545330785-15356daae141?w=900&q=80",
+    "https://images.unsplash.com/photo-1716618704106-b335685a6b4d?w=900&q=80",
   ],
   panama: [
     "/images/paquetes/panama-medellin/canal-panama.png",
@@ -1094,15 +1094,15 @@ function obtenerGaleriaSinDuplicarHero(p: PaqueteTuristico): string[] {
   if (p.pais === "Perú") {
     return [
       "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=900&q=80",
-      "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=900&q=80",
-      "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=900&q=80",
+      "https://images.unsplash.com/photo-1545330785-15356daae141?w=900&q=80",
+      "https://images.unsplash.com/photo-1716618704106-b335685a6b4d?w=900&q=80",
     ].filter((u) => u !== p.img);
   }
   if (p.categoria === "sudamerica") {
     return [
       "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=900&q=80",
       "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=900&q=80",
-      "https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?w=900&q=80",
+      "https://images.unsplash.com/photo-1706587531457-8c574be27a08?w=900&q=80",
     ].filter((u) => u !== p.img);
   }
   if (p.categoria === "norteamerica") {
@@ -1152,10 +1152,10 @@ export const DESTINOS_EUROPA: Destino[] = PAQUETES_COMPLETOS
     tipo: "europa",
     duracion: p.duracion,
     inclusionesLista: [
-      `🏨 ${p.inclusiones.hotel}`,
-      `✈️ Vuelo confirmado con equipaje`,
-      `🛡️ ${p.inclusiones.seguro}`,
-      `🚐 Traslados aeropuerto - hotel`,
+      p.inclusiones.hotel,
+      "Vuelo confirmado con equipaje",
+      p.inclusiones.seguro,
+      "Traslados aeropuerto - hotel",
     ],
   }));
 
@@ -1182,11 +1182,11 @@ export const DESTINOS_CARIBE: Destino[] = PAQUETES_COMPLETOS
     tipo: "caribe",
     duracion: p.duracion,
     inclusionesLista: [
-      `🏨 ${p.inclusiones.hotel}`,
-      `🍹 ${p.inclusiones.alimentacion}`,
-      `✈️ Vuelo ida y vuelta desde Lima`,
-      `🚐 Traslados incluidos`,
-      `🏝️ ${p.inclusiones.tour}`,
+      p.inclusiones.hotel,
+      p.inclusiones.alimentacion,
+      "Vuelo ida y vuelta desde Lima",
+      "Traslados incluidos",
+      p.inclusiones.tour,
     ],
   }));
 

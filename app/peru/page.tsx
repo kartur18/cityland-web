@@ -134,7 +134,7 @@ const CONFIG_PERU: ConfiguracionLandingAerolinea = {
       notaPrecio: "Separa con 50% ($195 USD)",
       tag: "Top Ventas Selva",
       tagBg: "bg-emerald-600 text-white",
-      img: "https://images.unsplash.com/photo-1500759285222-a95626b934cb?w=1200&q=85",
+      img: "https://images.unsplash.com/photo-1620658927695-c33df6fb8130?w=1200&q=85",
       alt: "Paquete a Tarapoto Todo Incluido Laguna Azul y Ahuashiyacu desde Lima",
       resumenCorto:
         "Vuelo Lima–Tarapoto I/V + Hotel con piscina y desayunos + Paseo en bote por la Laguna Azul con almuerzo amazónico, Cataratas de Ahuashiyacu y Lamas.",

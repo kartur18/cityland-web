@@ -64,7 +64,7 @@ export const PAQUETES_COLEGIOS: PaqueteEscolar[] = [
     precioNumeroUSD: 399,
     tag: "Selva & Aventura",
     tagBg: "bg-emerald-600 text-white",
-    img: "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=1200&q=85",
+    img: "https://images.unsplash.com/photo-1620658927695-c33df6fb8130?w=1200&q=85",
     alt: "Viaje de Promoción a Tarapoto para Colegios e Institutos - Cityland Travel",
     resumenCorto:
       "Vuelo Lima–Tarapoto I/V + Resort con piscina + Alimentación completa + Paseo en bote en Laguna Azul, Cataratas de Ahuashiyacu y Castillo de Lamas.",
