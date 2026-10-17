@@ -132,7 +132,7 @@ export default async function RutaVueloPage({ params }: Props) {
         {ruta.faqs.length > 0 && (
           <section className="py-12 bg-slate-50 border-t border-slate-200/80">
             <div className="max-w-5xl mx-auto px-4 sm:px-6">
-              <h2 className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] mb-6">
+              <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a1628] tracking-tight mb-6">
                 Preguntas Frecuentes: Ruta {ruta.origen} ({ruta.codigoOrigen}) → {ruta.destino} ({ruta.codigoDestino})
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

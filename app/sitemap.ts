@@ -5,11 +5,19 @@ import { DESTINOS_MASIVOS } from "@/lib/catalogo-destinos-masivo";
 import { VIAJES_ESPECIALIZADOS_SEO } from "@/lib/catalogo-viajes-especializados";
 import { AGENCIAS_LOCALES_SEO } from "@/lib/catalogo-agencias-locales";
 import { BLOG_POSTS_MASIVOS } from "@/lib/catalogo-blog-masivo";
+import { MIL_LANDINGS_COMERCIALES_SEO } from "@/lib/catalogo-mil-landings-comerciales";
 
 const BASE = "https://citylandtravel.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
+
+  const ofertasComerciales = MIL_LANDINGS_COMERCIALES_SEO.map((o) => ({
+    url: `${BASE}/ofertas/${o.slug}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.92,
+  }));
 
   const rutasVuelos = RUTAS_VUELOS_SEO.map((r) => ({
     url: `${BASE}/vuelos/${r.slug}`,
@@ -74,6 +82,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/agencia-de-viajes-surco`, lastModified: now, changeFrequency: "weekly", priority: 0.94 },
     { url: `${BASE}/agencia-de-viajes-san-martin-de-porres`, lastModified: now, changeFrequency: "weekly", priority: 0.94 },
     { url: `${BASE}/paquetes/panama-medellin`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    ...ofertasComerciales,
     ...rutasVuelos,
     ...destinos,
     ...viajesEspecializados,

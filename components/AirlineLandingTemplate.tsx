@@ -143,6 +143,14 @@ const POOL_IMAGENES_ALTERNATIVAS: Record<string, string[]> = {
     "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=1200&q=85",
     "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
   ],
+  Brasil: [
+    "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85",
+    "https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?w=1200&q=85",
+  ],
+  Argentina: [
+    "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=1200&q=85",
+    "https://images.unsplash.com/photo-1612294037637-ec328d0e075e?w=1200&q=85",
+  ],
   default: [
     "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=85",
     "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=1200&q=85",
@@ -172,6 +180,19 @@ function obtenerImagenUnica(
     }
   }
   return imgOriginal;
+}
+
+function calcularPrecioAntes(precioStr: string): string | null {
+  const limpio = precioStr.replace(/[^0-9]/g, "");
+  const num = parseInt(limpio, 10);
+  if (!num || isNaN(num) || num <= 0) return null;
+  const antes =
+    num < 100
+      ? num + 20
+      : num < 400
+      ? Math.ceil((num * 1.22) / 5) * 5
+      : Math.ceil((num * 1.2) / 10) * 10;
+  return `$${antes.toLocaleString("en-US")}`;
 }
 
 export default function AirlineLandingTemplate({
@@ -207,17 +228,45 @@ export default function AirlineLandingTemplate({
       ? itemsConImagenUnica
       : itemsConImagenUnica.filter((i) => i.filtro === filtro);
 
+  const precioAntesVitrina = calcularPrecioAntes(config.vitrina.precio);
+
   return (
     <div className="bg-white min-h-screen text-[#0a1628] antialiased">
       {/* 1. Cabecera Unificada de Cityland Travel */}
       <Navbar />
 
-      {/* 2. Hero Luminoso Estilo Aerolínea */}
-      <section className="bg-gradient-to-b from-sky-50/80 via-white to-white pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-slate-200/80">
+      {/* 1.5 Cinta Promocional Superior de Alta Conversión */}
+      <div className="bg-[#0a1628] text-white border-b border-slate-800 py-2 px-4">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 text-[11px] sm:text-xs font-semibold">
+          <div className="flex items-center gap-2">
+            <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-red-600 text-white font-extrabold text-[10px] uppercase tracking-wider">
+              Promoción Activa
+            </span>
+            <span className="text-slate-200">
+              Separa tu viaje o paquete con el <strong className="text-amber-300">50% de inicial</strong> · Código PNR verificable
+            </span>
+          </div>
+          <div className="hidden md:flex items-center gap-4 text-slate-300">
+            <span>🏢 RUC 20614914239 (Boleta y Factura SUNAT)</span>
+            <span>•</span>
+            <a
+              href={`https://wa.me/51944103890?text=${encodeURIComponent(config.waPrincipalMensaje)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-emerald-400 hover:text-emerald-300 font-bold"
+            >
+              WhatsApp Oficial: +51 944 103 890 →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* 2. Hero Luminoso y Comercial Estilo Aerolínea */}
+      <section className="bg-gradient-to-b from-sky-50/90 via-white to-white pt-8 pb-10 sm:pt-12 sm:pb-14 border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             <div className="lg:col-span-7 text-left">
-              <div className="inline-flex items-center gap-2 bg-white border border-slate-200 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-700 shadow-2xs mb-5">
+              <div className="inline-flex items-center gap-2 bg-white border border-slate-200/90 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-700 shadow-2xs mb-4">
                 <span className="flex items-center -space-x-1">
                   {config.banderasHero.map((pais) => (
                     <FlagIcon key={pais} pais={pais} className="w-3.5 h-2.5" />
@@ -238,7 +287,22 @@ export default function AirlineLandingTemplate({
                 </strong>
               </p>
 
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6">
+              {/* Chips Comerciales Destacados */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mb-6 max-w-2xl">
+                {config.checksHero.map((c) => (
+                  <div
+                    key={c}
+                    className="flex items-center gap-2 bg-slate-50 border border-slate-200/80 rounded-xl px-3 py-2.5 text-xs font-bold text-slate-700"
+                  >
+                    <span className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-[10px] font-extrabold shrink-0">
+                      ✓
+                    </span>
+                    <span className="leading-snug">{c}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <a
                   href={`https://wa.me/51944103890?text=${encodeURIComponent(config.waPrincipalMensaje)}`}
                   target="_blank"
@@ -252,22 +316,14 @@ export default function AirlineLandingTemplate({
                   href="#catalogo-principal"
                   className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-[#0a1628] border border-slate-300 px-5 py-3.5 rounded-xl font-bold text-sm transition-colors"
                 >
-                  <span>Ver Paquetes y Tarifas</span>
+                  <span>Ver Ofertas y Tarifas ↓</span>
                 </a>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-slate-600 font-semibold">
-                {config.checksHero.map((c) => (
-                  <span key={c} className="flex items-center gap-1.5">
-                    <span className="text-emerald-600 font-bold">✓</span> {c}
-                  </span>
-                ))}
               </div>
             </div>
 
-            {/* Tarjeta Vitrina Derecha */}
+            {/* Tarjeta Vitrina Promocional Derecha */}
             <div className="lg:col-span-5">
-              <div className="group bg-white rounded-3xl border border-slate-200/90 shadow-xl overflow-hidden">
+              <div className="group bg-white rounded-3xl border-2 border-slate-200/90 shadow-xl overflow-hidden">
                 <div className="relative h-60 sm:h-64 w-full overflow-hidden bg-slate-100">
                   <Image
                     src={imgVitrina}
@@ -277,7 +333,7 @@ export default function AirlineLandingTemplate({
                     sizes="(max-width: 1024px) 100vw, 500px"
                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/75 via-black/35 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
 
                   <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
                     <span className="inline-flex items-center gap-1.5 bg-white/95 backdrop-blur-md text-[#0a1628] text-xs font-bold px-3 py-1 rounded-full shadow-xs">
@@ -301,9 +357,16 @@ export default function AirlineLandingTemplate({
 
                 <div className="p-5 flex items-center justify-between gap-4 bg-white">
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1.5">
-                      {config.vitrina.labelPrecio}
-                    </span>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                        {config.vitrina.labelPrecio}
+                      </span>
+                      {precioAntesVitrina && (
+                        <span className="bg-red-50 text-red-600 text-[10px] font-extrabold px-2 py-0.5 rounded-full">
+                          Oferta
+                        </span>
+                      )}
+                    </div>
                     <div className="flex items-baseline gap-1.5">
                       <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
                         Desde
@@ -312,8 +375,13 @@ export default function AirlineLandingTemplate({
                         {config.vitrina.precio}
                       </span>
                       <span className="text-xs font-bold text-slate-500">
-                        USD
+                        {config.vitrina.moneda}
                       </span>
+                      {precioAntesVitrina && (
+                        <span className="text-xs font-semibold text-slate-400 line-through ml-1">
+                          {precioAntesVitrina}
+                        </span>
+                      )}
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-700 block mt-1">
                       {config.vitrina.notaInferior}
@@ -324,7 +392,7 @@ export default function AirlineLandingTemplate({
                     href={`https://wa.me/51944103890?text=${encodeURIComponent(config.vitrina.waMensaje)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0"
+                    className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0 shadow-sm"
                   >
                     <WhatsAppIcon size={16} />
                     <span>Cotizar Ahora</span>
@@ -333,11 +401,32 @@ export default function AirlineLandingTemplate({
               </div>
             </div>
           </div>
+
+          {/* Barra de Medios de Pago y Confianza Institucional */}
+          <div className="mt-8 pt-5 border-t border-slate-200/70 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-600">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+              <span className="font-extrabold text-[#0a1628] uppercase tracking-wider text-[11px]">
+                Medios de Pago Oficiales:
+              </span>
+              <span className="bg-slate-100 border border-slate-200/80 px-2.5 py-1 rounded-lg font-semibold text-[11px]">
+                💳 Visa · Mastercard · Amex
+              </span>
+              <span className="bg-slate-100 border border-slate-200/80 px-2.5 py-1 rounded-lg font-semibold text-[11px]">
+                🏦 BCP · BBVA · Interbank
+              </span>
+              <span className="bg-slate-100 border border-slate-200/80 px-2.5 py-1 rounded-lg font-semibold text-[11px]">
+                📱 Yape / Plin Empresarial
+              </span>
+            </div>
+            <div className="flex items-center gap-2 text-[11px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200/70 px-3 py-1 rounded-lg">
+              <span>✓ Agencia Registrada RUC 20614914239 · Sede Av. Antúnez de Mayolo 814, Los Olivos</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* 3. Grilla de Tarjetas Limpias y Simétricas */}
-      <section id="catalogo-principal" className="py-14 sm:py-20 bg-slate-50/70 border-b border-slate-200/80">
+      {/* 3. Grilla de Tarjetas Promocionales y Comerciales */}
+      <section id="catalogo-principal" className="py-14 sm:py-18 bg-slate-50/70 border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
             <div>
@@ -371,6 +460,7 @@ export default function AirlineLandingTemplate({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {itemsMostrados.map((item) => {
               const esInicial = item.precioSecundario?.trim().startsWith("$");
+              const precioAntesItem = calcularPrecioAntes(item.precioPrincipal);
               const msg =
                 item.waMensaje ||
                 `¡Hola Cityland Travel! Vi su página web y deseo cotizar: ${item.titulo} (${item.subtitulo}) desde ${item.precioPrincipal} USD.`;
@@ -380,7 +470,7 @@ export default function AirlineLandingTemplate({
                 <article
                   key={item.id}
                   id={item.id}
-                  className="card-interactive group bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-xs flex flex-col justify-between h-full"
+                  className="card-interactive group bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-xl transition-all flex flex-col justify-between h-full"
                 >
                   <div className="relative h-56 w-full overflow-hidden bg-slate-100">
                     <Image
@@ -390,14 +480,14 @@ export default function AirlineLandingTemplate({
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
-                    <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/65 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
 
                     <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2 z-10">
                       <span className="inline-flex items-center gap-1.5 bg-white/95 backdrop-blur-md text-[#0a1628] text-[11px] font-bold px-3 py-1 rounded-full shadow-xs">
                         <FlagIcon pais={item.pais} className="w-3.5 h-2.5" />
                         {item.pais}
                       </span>
-                      <span className={`text-[10px] font-extrabold uppercase tracking-wide px-2.5 py-1 rounded-full shadow-xs ${item.tagBg}`}>
+                      <span className={`text-[10px] font-extrabold uppercase tracking-wide text-white px-2.5 py-1 rounded-full shadow-xs ${item.tagBg}`}>
                         {item.tag}
                       </span>
                     </div>
@@ -414,25 +504,35 @@ export default function AirlineLandingTemplate({
 
                   <div className="p-5 flex flex-col justify-between flex-1 gap-4">
                     <div>
-                      <p className="text-xs font-semibold text-slate-700 leading-snug mb-3">
+                      <div className="inline-block bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-1 rounded-lg mb-3">
                         {item.resumenCorto}
-                      </p>
+                      </div>
 
-                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[11px] font-semibold text-slate-500 pt-2 border-t border-slate-100">
+                      <div className="space-y-1.5 text-xs font-medium text-slate-600 pt-2 border-t border-slate-100">
                         {item.checks.map((ck) => (
-                          <span key={ck} className="flex items-center gap-1">
-                            <span className="text-emerald-600 font-bold">✓</span> {ck}
-                          </span>
+                          <div key={ck} className="flex items-start gap-2">
+                            <span className="text-emerald-600 font-extrabold shrink-0 mt-0.5">
+                              ✓
+                            </span>
+                            <span className="leading-snug">{ck}</span>
+                          </div>
                         ))}
                       </div>
                     </div>
 
                     <div className="pt-3.5 border-t border-slate-100 flex items-center justify-between gap-3">
                       <div>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1.5">
-                          Tarifa por pasajero
-                        </span>
-                        <div className="flex items-baseline gap-1.5">
+                        <div className="flex items-center gap-1.5 mb-1">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 leading-none">
+                            Tarifa Promo
+                          </span>
+                          {precioAntesItem && (
+                            <span className="text-[11px] font-semibold text-slate-400 line-through leading-none">
+                              {precioAntesItem}
+                            </span>
+                          )}
+                        </div>
+                        <div className="flex items-baseline gap-1">
                           <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
                             Desde
                           </span>
@@ -444,7 +544,9 @@ export default function AirlineLandingTemplate({
                           </span>
                         </div>
                         <span className="text-[11px] font-semibold text-emerald-700 block mt-1">
-                          {esInicial ? `Separa con ${item.precioSecundario} (50% inicial)` : item.notaPrecio}
+                          {esInicial
+                            ? `Separa con ${item.precioSecundario} (50% inicial)`
+                            : item.notaPrecio}
                         </span>
                       </div>
 
@@ -452,7 +554,7 @@ export default function AirlineLandingTemplate({
                         href={waUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn-wa-pulse inline-flex items-center gap-1.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0"
+                        className="btn-wa-pulse inline-flex items-center gap-1.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0 shadow-xs"
                       >
                         <WhatsAppIcon size={15} />
                         <span>Cotizar</span>
@@ -467,7 +569,7 @@ export default function AirlineLandingTemplate({
       </section>
 
       {/* 4. Pilares en Línea Limpia + Banner Dividido Luminoso */}
-      <section className="py-14 sm:py-20 bg-white">
+      <section className="py-14 sm:py-18 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pb-12 mb-12 border-b border-slate-200/80">
             {config.pilares.map((p) => (
@@ -527,7 +629,7 @@ export default function AirlineLandingTemplate({
         </div>
       </section>
 
-      {/* Secciones adicionales (como FAQs y rutas relacionadas en /vuelos/[slug]) antes del Footer */}
+      {/* Secciones adicionales (como FAQs y rutas relacionadas) antes del Footer */}
       {children}
 
       {/* 5. Footer Oficial Unificado */}

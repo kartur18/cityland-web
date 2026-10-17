@@ -7,11 +7,12 @@ import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { DESTINOS_EUROPA, DESTINOS_CARIBE, BLOG_POSTS } from "@/components/constantes";
 import { RUTAS_VUELOS_SEO } from "@/lib/rutas-vuelos";
 import { VIAJES_ESPECIALIZADOS_SEO } from "@/lib/catalogo-viajes-especializados";
+import { MIL_LANDINGS_COMERCIALES_SEO } from "@/lib/catalogo-mil-landings-comerciales";
 
 export const metadata: Metadata = {
-  title: "Catálogo de Destinos, Vuelos y Servicios Turísticos | Cityland Travel",
+  title: "Catálogo de Destinos, Ofertas, Vuelos y Servicios Turísticos | Cityland Travel",
   description:
-    "Explora todos los destinos, paquetes turísticos y servicios de Cityland Travel (RUC 20614914239): España, Europa, Caribe Todo Incluido, Cusco, Sudamérica, Visas y Seguros Schengen.",
+    "Explora más de 2,000 opciones de viajes, paquetes turísticos Todo Incluido, cruceros, visas, trámite de pasaporte, viajes corporativos y grupales en Cityland Travel (RUC 20614914239).",
   alternates: {
     canonical: "https://citylandtravel.com/directorio",
   },
@@ -63,44 +64,99 @@ const DIVISIONES_VISUALES = [
   {
     titulo: "Cruceros por el Caribe y Europa",
     subtitulo: "Salidas desde Panamá y Cartagena sin visa EE. UU.",
-    precio: "Desde $990 USD",
+    precio: "Desde $890 USD",
     img: "https://images.unsplash.com/photo-1548574505-5e239809ee19?w=900&q=80",
     href: "/cruceros",
   },
   {
-    titulo: "Asesoría de Visas (EE. UU., Canadá, México)",
-    subtitulo: "Formulario DS-160, citas y preparación de entrevista",
-    precio: "Desde $120 USD",
+    titulo: "Asesoría de Visas y Pasaporte",
+    subtitulo: "EE. UU., Canadá, México, China y Pasaporte Urgente",
+    precio: "Desde $45 USD",
     img: "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=900&q=80",
     href: "/visas",
   },
   {
     titulo: "Seguro Médico Schengen 30.000€",
     subtitulo: "Póliza oficial sin deducible para ingresar a Europa",
-    precio: "Desde $65 USD",
+    precio: "Desde $29 USD",
     img: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=900&q=80",
     href: "/seguros",
   },
   {
-    titulo: "Promociones Escolares",
-    subtitulo: "Primaria y secundaria con contrato formal y tour conductor",
-    precio: "Desde $265 USD",
+    titulo: "Colegios, Institutos y Clubes Deportivos",
+    subtitulo: "Promociones escolares, delegaciones y torneos",
+    precio: "Desde $199 USD",
     img: "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=900&q=80",
     href: "/colegios",
   },
   {
-    titulo: "Viajes de Quinceañeras y Lunas de Miel",
-    subtitulo: "Disney, Europa 15 Años, Bodas Destino y Escapadas",
-    precio: "Desde $1,190 USD",
+    titulo: "Quinceañeras, Lunas de Miel y Peregrinaciones",
+    subtitulo: "Disney, Europa, Tierra Santa y Bodas de Destino",
+    precio: "Desde $990 USD",
     img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80",
     href: "/luna-de-miel",
   },
   {
     titulo: "Viajes Corporativos para Empresas",
     subtitulo: "Vuelos ejecutivos, ferias y facturación RUC 20614914239",
-    precio: "Atención Ejecutiva",
+    precio: "Atención B2B 24/7",
     img: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=900&q=80",
     href: "/empresas",
+  },
+];
+
+const CLUSTERS_CONFIG: {
+  id:
+    | "mundiales"
+    | "all-inclusive"
+    | "cruceros"
+    | "visas-seguros"
+    | "tours"
+    | "empresas"
+    | "colegios-deportes"
+    | "religiosos-eventos";
+  titulo: string;
+  sub: string;
+}[] = [
+  {
+    id: "mundiales",
+    titulo: "1. Paquetes Mundiales: Baratos vs. Lujo 5★ VIP",
+    sub: "Europa, Turquía, Dubái, Egipto, Japón, Tailandia, EE. UU., Caribe, Sudamérica y Perú",
+  },
+  {
+    id: "all-inclusive",
+    titulo: "2. Resorts All Inclusive & Hoteles 5 Estrellas",
+    sub: "Punta Cana, Cancún, Riviera Maya, Varadero, Aruba, Curaçao, San Andrés y Punta Sal",
+  },
+  {
+    id: "cruceros",
+    titulo: "3. Cruceros Internacionales y Sin Visa",
+    sub: "Royal Caribbean, MSC, Norwegian y Disney desde Panamá, Cartagena, Miami y Barcelona",
+  },
+  {
+    id: "visas-seguros",
+    titulo: "4. Visas Consulares, Pasaporte Urgente y Seguros",
+    sub: "Visa USA B1/B2, Canadá, México, China, Pasaporte Electrónico y Seguro Schengen 30.000€",
+  },
+  {
+    id: "tours",
+    titulo: "5. Tours, Excursiones y Circuitos Guiados",
+    sub: "Machu Picchu, Valle Sagrado, Humantay, Paracas, Isla Saona, Xcaret, Capadocia y Disney",
+  },
+  {
+    id: "empresas",
+    titulo: "6. Empresas, Corporativos, Ferias y Congresos (RUC 20)",
+    sub: "Pasajes corporativos, Feria de Cantón en China, PERUMIN, hoteles ejecutivos y viajes de incentivos",
+  },
+  {
+    id: "colegios-deportes",
+    titulo: "7. Colegios, Institutos, Academias y Clubes Deportivos",
+    sub: "Viajes de promoción escolar, estudios universitarios y delegaciones deportivas a torneos",
+  },
+  {
+    id: "religiosos-eventos",
+    titulo: "8. Peregrinaciones Religiosas, Quinceañeras y Lunas de Miel",
+    sub: "Tierra Santa, Roma y Vaticano, Santuarios Marianos, Quinceañeras y Bodas en la Playa",
   },
 ];
 
@@ -136,13 +192,13 @@ export default function DirectorioMaestroPage() {
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
             <div className="max-w-3xl">
               <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-amber-300 px-3.5 py-1.5 rounded-full text-xs font-bold mb-4">
-                🌍 Cityland Travel E.I.R.L. · RUC 20614914239
+                🌍 Cityland Travel E.I.R.L. · RUC 20614914239 · +2,000 Rutas y Programas
               </span>
-              <h1 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-none mb-4">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.12] mb-4">
                 Catálogo Oficial de Destinos, Vuelos y Experiencias
               </h1>
               <p className="text-base sm:text-lg text-slate-200 leading-relaxed">
-                Explora nuestras divisiones especializadas, paquetes turísticos Todo Incluido y rutas aéreas con salida desde Lima. Congela tu tarifa promocional abonando el 50% de inicial.
+                Explora nuestras divisiones especializadas, paquetes turísticos Todo Incluido, cruceros, trámites consulares y programas para empresas, colegios y grupos. Separa hoy con el 50% de inicial.
               </p>
             </div>
 
@@ -167,7 +223,7 @@ export default function DirectorioMaestroPage() {
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
                 Especialidades Cityland Travel
               </span>
-              <h2 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-5xl text-[#0a1628] leading-none">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0a1628] tracking-tight">
                 Nuestras Divisiones de Viaje
               </h2>
             </div>
@@ -217,7 +273,7 @@ export default function DirectorioMaestroPage() {
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
                 Europa, Caribe, Norteamérica y Sudamérica
               </span>
-              <h2 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-5xl text-[#0a1628] leading-none">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0a1628] tracking-tight">
                 Paquetes Turísticos Más Solicitados
               </h2>
             </div>
@@ -255,7 +311,7 @@ export default function DirectorioMaestroPage() {
                       <span className="text-[10px] uppercase font-bold text-slate-400 block">
                         Paquete desde
                       </span>
-                      <span className="text-xl font-black text-[#0a1628]">
+                      <span className="text-xl font-extrabold text-[#0a1628]">
                         ${d.turistico} USD
                       </span>
                     </div>
@@ -268,7 +324,62 @@ export default function DirectorioMaestroPage() {
             </div>
           </section>
 
-          {/* 3. Rutas Aéreas Frecuentes y Guías del Viajero en Bloques Limpios */}
+          {/* 3. Los 8 Clusters de las 1,020 Nuevas Landings Comerciales (/ofertas/[slug]) */}
+          <section className="space-y-8">
+            <div>
+              <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
+                Cobertura Mundial, Corporativa y Grupal
+              </span>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0a1628] tracking-tight">
+                Catálogo Especializado por Producto y Tipo de Viajero
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {CLUSTERS_CONFIG.map((cl) => {
+                const itemsCluster = MIL_LANDINGS_COMERCIALES_SEO.filter(
+                  (x) => x.cluster === cl.id
+                );
+                return (
+                  <div
+                    key={cl.id}
+                    className="bg-white rounded-3xl border border-slate-200 p-6 shadow-xs flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between gap-2 mb-1">
+                        <h3 className="text-lg font-extrabold text-[#0a1628]">
+                          {cl.titulo}
+                        </h3>
+                        <span className="bg-red-50 text-red-600 text-[11px] font-extrabold px-2.5 py-0.5 rounded-full shrink-0">
+                          {itemsCluster.length} programas
+                        </span>
+                      </div>
+                      <p className="text-xs text-slate-500 mb-4">{cl.sub}</p>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                        {itemsCluster.slice(0, 14).map((it) => (
+                          <Link
+                            key={it.slug}
+                            href={`/ofertas/${it.slug}`}
+                            className="flex items-center justify-between bg-slate-50 hover:bg-red-50/70 px-3 py-2 rounded-xl border border-slate-200/70 transition-colors"
+                          >
+                            <span className="font-semibold text-slate-700 truncate pr-2">
+                              {it.titulo}
+                            </span>
+                            <span className="font-extrabold text-[#0a1628] shrink-0">
+                              ${it.precioDesdeUSD}
+                            </span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+
+          {/* 4. Rutas Aéreas Frecuentes y Guías del Viajero */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <section className="lg:col-span-7 bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-xs">
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
