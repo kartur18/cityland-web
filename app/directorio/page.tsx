@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BuscadorCatalogoInstantaneo from "@/components/BuscadorCatalogoInstantaneo";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
 import { DESTINOS_EUROPA, DESTINOS_CARIBE, BLOG_POSTS } from "@/components/constantes";
@@ -165,6 +166,15 @@ export default function DirectorioMaestroPage() {
   const destinosDestacados = [...DESTINOS_EUROPA, ...DESTINOS_CARIBE];
   const rutasPrincipales = RUTAS_VUELOS_SEO.slice(0, 36);
   const serviciosDestacados = VIAJES_ESPECIALIZADOS_SEO.slice(0, 24);
+  const inicialesBuscador = TODOS_LOS_RESUMENES_OFERTAS_SEO.slice(0, 24).map((o) => ({
+    slug: o.slug,
+    url: `/ofertas/${o.slug}`,
+    titulo: o.titulo,
+    destinoOPais: o.destinoOPais,
+    cluster: o.cluster,
+    clusterNombre: o.clusterNombre,
+    precioDesdeUSD: o.precioDesdeUSD,
+  }));
   const waUrl =
     "https://wa.me/51944103890?text=" +
     encodeURIComponent(
@@ -218,6 +228,12 @@ export default function DirectorioMaestroPage() {
         </section>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 space-y-16">
+          {/* 0. Buscador Instantáneo de las +10,000 Páginas */}
+          <BuscadorCatalogoInstantaneo
+            itemsIniciales={inicialesBuscador}
+            totalInicial={10003}
+          />
+
           {/* 1. Divisiones Comerciales con Fotografías Reales */}
           <section>
             <div className="mb-8">

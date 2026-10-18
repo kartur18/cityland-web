@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import AirlineLandingTemplate, {
   ConfiguracionLandingAerolinea,
 } from "@/components/AirlineLandingTemplate";
+import BuscadorCatalogoInstantaneo from "@/components/BuscadorCatalogoInstantaneo";
+import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-comerciales";
 
 export const metadata: Metadata = {
   title:
@@ -226,5 +228,25 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
 };
 
 export default function PromocionesPage() {
-  return <AirlineLandingTemplate config={CONFIG_PROMOCIONES} />;
+  const iniciales = TODOS_LOS_RESUMENES_OFERTAS_SEO.slice(0, 24).map((o) => ({
+    slug: o.slug,
+    url: `/ofertas/${o.slug}`,
+    titulo: o.titulo,
+    destinoOPais: o.destinoOPais,
+    cluster: o.cluster,
+    clusterNombre: o.clusterNombre,
+    precioDesdeUSD: o.precioDesdeUSD,
+  }));
+
+  return (
+    <AirlineLandingTemplate config={CONFIG_PROMOCIONES}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+        <BuscadorCatalogoInstantaneo
+          itemsIniciales={iniciales}
+          totalInicial={10003}
+        />
+      </div>
+    </AirlineLandingTemplate>
+  );
 }
+

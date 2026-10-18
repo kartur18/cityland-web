@@ -25,6 +25,7 @@ const PRIMARY_LINKS: {
 ];
 
 const TOP_BAR_LINKS: { label: string; href: string }[] = [
+  { label: "🔍 Catálogo (+10,000 Ofertas)", href: "/directorio#buscador" },
   { label: "Seguros Schengen 30.000€", href: "/seguros" },
   { label: "Luna de Miel & 15 Años", href: "/luna-de-miel" },
   { label: "Promociones Escolares", href: "/colegios" },
@@ -32,8 +33,9 @@ const TOP_BAR_LINKS: { label: string; href: string }[] = [
 ];
 
 const ALL_MOBILE_LINKS: { label: string; href: string; highlight?: boolean }[] = [
+  { label: "🔍 Buscador de +10,000 Ofertas y Hoteles", href: "/directorio#buscador", highlight: true },
   ...PRIMARY_LINKS,
-  ...TOP_BAR_LINKS,
+  ...TOP_BAR_LINKS.slice(1),
 ];
 
 export default function Navbar() {
@@ -149,8 +151,16 @@ export default function Navbar() {
               )}
             </div>
 
-            {/* Botón Derecha Desktop (Siempre visible y completo) */}
-            <div className="hidden lg:flex items-center shrink-0">
+            {/* Botones Derecha Desktop (Buscador + WhatsApp) */}
+            <div className="hidden lg:flex items-center gap-2 shrink-0">
+              <Link
+                href="/directorio#buscador"
+                title="Buscar entre +10,000 paquetes, hoteles y destinos"
+                className="inline-flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-[#0a1628] px-3.5 py-2.5 rounded-full text-xs font-extrabold transition-colors whitespace-nowrap"
+              >
+                <span>🔍</span>
+                <span>Buscar</span>
+              </Link>
               <a
                 href={WA_LINK}
                 target="_blank"
@@ -163,7 +173,14 @@ export default function Navbar() {
             </div>
 
             {/* Controles Móvil */}
-            <div className="flex items-center gap-2 lg:hidden">
+            <div className="flex items-center gap-1.5 lg:hidden">
+              <Link
+                href="/directorio#buscador"
+                aria-label="Buscar destino u hotel"
+                className="inline-flex items-center justify-center bg-slate-100 text-[#0a1628] w-8 h-8 rounded-full text-xs font-extrabold border border-slate-200/80"
+              >
+                🔍
+              </Link>
               <Link
                 href="/espana"
                 className="inline-flex items-center gap-1 bg-red-50 text-red-600 px-2.5 py-1.5 rounded-full text-xs font-extrabold border border-red-200/60"
@@ -175,7 +192,7 @@ export default function Navbar() {
                 href={WA_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-wa-pulse inline-flex items-center gap-1.5 bg-[#25D366] text-white px-3.5 py-1.5 rounded-full text-xs font-bold cursor-pointer"
+                className="btn-wa-pulse inline-flex items-center gap-1.5 bg-[#25D366] text-white px-3 py-1.5 rounded-full text-xs font-bold cursor-pointer"
                 aria-label="WhatsApp"
               >
                 <WhatsAppIcon size={14} />

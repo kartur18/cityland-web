@@ -42,5 +42,9 @@ next-env.d.ts
 
 # local test screenshots and tool cache
 /*.png
+/*.jpg
+*.bak
+*.tmp
+*.old
 .claude/
 .playwright-mcp/

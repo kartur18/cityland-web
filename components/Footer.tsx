@@ -1,5 +1,6 @@
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import Image from "next/image";
+import Link from "next/link";
 import { WA_LINK, TELEFONO, TELEFONO_FORMATEADO } from "@/components/constantes";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import PhoneIcon from "@/components/icons/PhoneIcon";
@@ -53,27 +54,27 @@ export default function Footer() {
               Destinos Internacionales
             </h4>
             <div className="space-y-2.5 text-xs">
-              <a href="/espana" className="block text-slate-300 hover:text-white transition-colors">
+              <Link href="/directorio#buscador" className="block text-amber-300 hover:text-amber-200 font-bold transition-colors">
+                🔍 Buscador Oficial (+10,000 Programas)
+              </Link>
+              <Link href="/espana" className="block text-slate-300 hover:text-white transition-colors">
                 Vuelos y Paquetes a España (Desde $890 USD)
-              </a>
-              <a href="/europa-turquia" className="block text-slate-300 hover:text-white transition-colors">
+              </Link>
+              <Link href="/europa-turquia" className="block text-slate-300 hover:text-white transition-colors">
                 Circuitos a Europa & Turquía Sin Visa
-              </a>
-              <a href="/caribe" className="block text-slate-300 hover:text-white transition-colors">
+              </Link>
+              <Link href="/caribe" className="block text-slate-300 hover:text-white transition-colors">
                 Caribe Todo Incluido (Punta Cana & Cancún)
-              </a>
-              <a href="/destinos/punta-cana" className="block text-slate-300 hover:text-white transition-colors">
+              </Link>
+              <Link href="/destinos/punta-cana" className="block text-slate-300 hover:text-white transition-colors">
                 Paquete Punta Cana 5D/4N Resort 5★
-              </a>
-              <a href="/destinos/cancun" className="block text-slate-300 hover:text-white transition-colors">
+              </Link>
+              <Link href="/destinos/cancun" className="block text-slate-300 hover:text-white transition-colors">
                 Paquete Cancún & Riviera Maya 5D/4N
-              </a>
-              <a href="/destinos/cartagena" className="block text-slate-300 hover:text-white transition-colors">
-                Paquete Cartagena de Indias 4D/3N
-              </a>
-              <a href="/paquetes/panama-medellin" className="block text-slate-300 hover:text-white transition-colors">
+              </Link>
+              <Link href="/paquetes/panama-medellin" className="block text-slate-300 hover:text-white transition-colors">
                 Combinado Panamá + Medellín 2026
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -83,30 +84,33 @@ export default function Footer() {
               Perú & Servicios
             </h4>
             <div className="space-y-2.5 text-xs">
-              <a href="/cusco" className="block text-slate-300 hover:text-white transition-colors">
+              <Link href="/ofertas" className="block text-slate-300 hover:text-white transition-colors">
+                Ofertas y Preventas con 50%
+              </Link>
+              <Link href="/cusco" className="block text-slate-300 hover:text-white transition-colors">
                 Cusco & Machu Picchu (3 a 6 Días)
-              </a>
-              <a href="/peru" className="block text-slate-300 hover:text-white transition-colors">
+              </Link>
+              <Link href="/peru" className="block text-slate-300 hover:text-white transition-colors">
                 Playas del Norte, Arequipa & Selva
-              </a>
-              <a href="/cruceros" className="block text-slate-300 hover:text-white transition-colors">
+              </Link>
+              <Link href="/cruceros" className="block text-slate-300 hover:text-white transition-colors">
                 Cruceros por el Caribe y Sudamérica
-              </a>
-              <a href="/visas" className="block text-slate-300 hover:text-white transition-colors">
+              </Link>
+              <Link href="/visas" className="block text-slate-300 hover:text-white transition-colors">
                 Asesoría de Visas (EE.UU., Canadá & Schengen)
-              </a>
-              <a href="/seguros" className="block text-slate-300 hover:text-white transition-colors">
+              </Link>
+              <Link href="/seguros" className="block text-slate-300 hover:text-white transition-colors">
                 Seguro de Viaje Schengen 30.000€
-              </a>
-              <a href="/colegios" className="block text-slate-300 hover:text-white transition-colors">
+              </Link>
+              <Link href="/colegios" className="block text-slate-300 hover:text-white transition-colors">
                 Viajes de Promoción Escolar y Grupos
-              </a>
-              <a href="/blog" className="block text-slate-300 hover:text-white transition-colors">
+              </Link>
+              <Link href="/blog" className="block text-slate-300 hover:text-white transition-colors">
                 Guías y Consejos de Viaje
-              </a>
-              <a href="/politicas" className="block text-slate-300 hover:text-white transition-colors">
+              </Link>
+              <Link href="/politicas" className="block text-slate-300 hover:text-white transition-colors">
                 Términos, Condiciones y Políticas
-              </a>
+              </Link>
             </div>
           </div>
 
