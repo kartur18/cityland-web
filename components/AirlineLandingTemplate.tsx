@@ -89,7 +89,6 @@ import {
   obtenerGaleriaPorTexto,
   IMG_AVION_ALA,
   IMG_AEROPUERTO_INTERNACIONAL,
-  IMG_HOTEL_LUJO_PISCINA,
   IMG_VIAJERO_MALETA,
   IMG_FAMILIA_VIAJE,
   IMG_PASAPORTE_VIAJE,
@@ -98,7 +97,6 @@ import {
 const FALLBACKS_NEUTROS_UNIVERSALES: string[] = [
   IMG_AVION_ALA,
   IMG_AEROPUERTO_INTERNACIONAL,
-  IMG_HOTEL_LUJO_PISCINA,
   IMG_VIAJERO_MALETA,
   IMG_FAMILIA_VIAJE,
   IMG_PASAPORTE_VIAJE,
@@ -315,7 +313,7 @@ export default function AirlineLandingTemplate({
             </span>
           </div>
           <div className="hidden md:flex items-center gap-4 text-slate-300">
-            <span>🏢 Av. Universitaria 2029, Los Olivos · RUC 20614914239</span>
+            <span>🏢 Av. Antúnez de Mayolo 814, Los Olivos · RUC 20614914239</span>
             <span>•</span>
             <a
               href={armarUrlWaConAtribucion(config.waPrincipalMensaje, "Barra Superior")}
@@ -839,17 +837,42 @@ export default function AirlineLandingTemplate({
       {/* 5. Footer Oficial Unificado */}
       <Footer />
 
-      {/* 6. Botón Flotante de WhatsApp */}
-      <div className="fixed bottom-5 right-5 z-50">
+      {/* 6. Barra Sticky de Conversión Móvil (estilo agencias líderes) + Botón Flotante en Escritorio */}
+      <div className="sm:hidden fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200 px-4 py-2.5 shadow-[0_-8px_24px_rgba(10,22,40,0.12)] flex items-center justify-between gap-3">
+        <div className="min-w-0">
+          <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block leading-none">
+            Tarifa desde
+          </span>
+          <div className="flex items-baseline gap-1 mt-0.5">
+            <span className="text-lg font-black text-[#0a1628] leading-none">
+              {config.vitrina.precio.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+            </span>
+            <span className="text-[10px] font-bold text-emerald-700 truncate">
+              · Separa con 50%
+            </span>
+          </div>
+        </div>
+        <a
+          href={armarUrlWaConAtribucion(config.waFlotante.mensaje, "Barra Móvil")}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white font-extrabold px-4 py-2.5 rounded-xl text-xs shadow-md shrink-0"
+        >
+          <WhatsAppIcon size={16} />
+          <span>WhatsApp Ahora</span>
+        </a>
+      </div>
+
+      <div className="hidden sm:block fixed bottom-5 right-5 z-50">
         <a
           href={armarUrlWaConAtribucion(config.waFlotante.mensaje, "Botón Flotante")}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-wa-pulse flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-xl cursor-pointer"
+          className="btn-wa-pulse flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3.5 rounded-full shadow-xl cursor-pointer"
           aria-label="Cotizar por WhatsApp"
         >
           <WhatsAppIcon size={22} />
-          <span className="hidden sm:inline font-bold text-xs sm:text-sm">
+          <span className="font-bold text-xs sm:text-sm">
             Cotizar por WhatsApp
           </span>
         </a>

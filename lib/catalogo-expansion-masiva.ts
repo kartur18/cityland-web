@@ -1104,7 +1104,7 @@ function generarIndiceExpansion(): ResumenLandingExpansion[] {
               },
               {
                 q: `¿Cuánto cuesta el paquete "${nombreModalidad}" a ${nombreDestino} y cómo reservo?`,
-                a: `La tarifa referencial empieza Desde $${precio} USD por pasajero. Puedes congelar tu espacio hoy mismo abonando el 50% de inicial en nuestra sede de Los Olivos (Av. Universitaria 2029) o por WhatsApp (+51 944 103 890).`,
+                a: `La tarifa referencial empieza Desde $${precio} USD por pasajero. Puedes congelar tu espacio hoy mismo abonando el 50% de inicial en nuestra sede de Los Olivos (Av. Antúnez de Mayolo 814) o por WhatsApp (+51 944 103 890).`,
               },
             ],
           }),

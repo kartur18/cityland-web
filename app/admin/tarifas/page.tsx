@@ -42,13 +42,30 @@ export default function AdminTarifasPage() {
     } catch {}
   }, []);
 
-  const ingresar = (e: React.FormEvent) => {
+  const ingresar = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (pin === "2026" || pin.toUpperCase() === "CITYLAND2026") {
-      setAutenticado(true);
-      setErrorPin("");
-    } else {
-      setErrorPin("Clave incorrecta. Usa la clave de administración (ej. 2026).");
+    if (!pin.trim()) {
+      setErrorPin("Ingresa tu clave de administrador.");
+      return;
+    }
+    try {
+      const res = await fetch("/api/tarifas", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-pin": pin.trim(),
+        },
+        body: JSON.stringify({ pin: pin.trim(), catalogo }),
+      });
+      const data = await res.json();
+      if (res.ok && data?.ok) {
+        setAutenticado(true);
+        setErrorPin("");
+      } else {
+        setErrorPin(data?.error || "Credenciales de administrador inválidas.");
+      }
+    } catch {
+      setErrorPin("Error de conexión con el servidor.");
     }
   };
 
@@ -97,17 +114,20 @@ export default function AdminTarifasPage() {
     try {
       const res = await fetch("/api/tarifas", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ pin: "2026", catalogo }),
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-pin": pin,
+        },
+        body: JSON.stringify({ pin, catalogo }),
       });
       const data = await res.json();
       if (data.ok) {
-        setMensajeGuardado("¡Catálogo de tarifas y tipo de cambio actualizados correctamente!");
+        setMensajeGuardado("¡Catálogo de tarifas actualizado correctamente!");
       } else {
         setMensajeGuardado(data.error || "No se pudo guardar.");
       }
     } catch {
-      setMensajeGuardado("Guardado en sesión local.");
+      setMensajeGuardado("Error de conexión con el servidor.");
     } finally {
       setGuardando(false);
     }
@@ -121,22 +141,23 @@ export default function AdminTarifasPage() {
           className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl border border-slate-100"
         >
           <span className="inline-block text-[11px] font-extrabold uppercase tracking-widest text-blue-700 bg-blue-50 px-3 py-1 rounded-full mb-3">
-            Cityland Travel · Administración
+            Cityland Travel · Acceso Restringido
           </span>
           <h1 className="text-2xl font-extrabold text-[#0a1628] mb-2">
             Panel Central de Tarifas y SEO
           </h1>
           <p className="text-slate-500 text-sm mb-6">
-            Ingresa tu clave de acceso para administrar precios referenciales, fechas de vigencia, tipo de cambio y métricas de captación por WhatsApp.
+            Acceso exclusivo para gerencia con clave de servidor configurada.
           </p>
           <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
-            Clave de Acceso
+            Clave de Administrador
           </label>
           <input
             type="password"
             value={pin}
             onChange={(e) => setPin(e.target.value)}
-            placeholder="Ingresa la clave (ej. 2026)"
+            placeholder="Ingresa tu clave privada de servidor"
+            autoComplete="current-password"
             className="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm mb-3 focus:outline-none focus:border-blue-600"
           />
           {errorPin && <p className="text-red-600 text-xs font-semibold mb-3">{errorPin}</p>}
@@ -144,7 +165,7 @@ export default function AdminTarifasPage() {
             type="submit"
             className="w-full bg-[#0a1628] hover:bg-blue-900 text-white font-bold text-sm py-3.5 rounded-xl transition-colors cursor-pointer"
           >
-            Ingresar al Panel
+            Verificar Credenciales
           </button>
         </form>
       </div>

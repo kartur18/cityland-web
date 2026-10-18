@@ -2,11 +2,28 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs/promises";
 import path from "path";
 import { CATALOGO_INICIAL, type CatalogoTarifas } from "@/lib/tarifas";
+import {
+  obtenerIpCliente,
+  verificarAccesoAdmin,
+  verificarRateLimit,
+} from "@/lib/seguridad-http";
 
 const FILE_PATH = path.join(process.cwd(), "data", "tarifas.json");
-const ADMIN_PIN = process.env.ADMIN_PIN || "2026";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const ip = obtenerIpCliente(req);
+  const rl = verificarRateLimit({
+    clave: `tarifas-get:${ip}`,
+    limite: 60,
+    ventanaMs: 60 * 1000,
+  });
+  if (!rl.permitido) {
+    return NextResponse.json(
+      { ok: false, error: "Demasiadas consultas. Intenta en un minuto." },
+      { status: 429 }
+    );
+  }
+
   try {
     const raw = await fs.readFile(FILE_PATH, "utf-8");
     return NextResponse.json(JSON.parse(raw));
@@ -20,14 +37,12 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { pin, catalogo } = body as { pin?: string; catalogo?: CatalogoTarifas };
 
-    if (pin !== ADMIN_PIN) {
-      return NextResponse.json(
-        { ok: false, error: "Clave de administrador incorrecta." },
-        { status: 401 }
-      );
+    const authCheck = verificarAccesoAdmin(req, pin);
+    if (!authCheck.ok) {
+      return authCheck.response;
     }
 
-    if (!catalogo || !Array.isArray(catalogo.tarifas)) {
+    if (!catalogo || !Array.isArray(catalogo.tarifas) || catalogo.tarifas.length > 500) {
       return NextResponse.json(
         { ok: false, error: "Formato de catálogo inválido." },
         { status: 400 }

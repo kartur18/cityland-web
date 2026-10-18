@@ -8,19 +8,19 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
     pais: "España",
     filtro: "europa",
     subtitulo: "Vuelo Confirmado + Carpeta Migratoria Completa",
-    precioPrincipal: "$1,290",
-    precioSecundario: "$645",
-    notaPrecio: "Separa con $645 USD (50% inicial)",
+    precioPrincipal: "$1,090",
+    precioSecundario: "$545",
+    notaPrecio: "Separa con $545 USD (50% inicial) · Solo ida con carpeta desde $869",
     tag: "Más Solicitado",
     tagBg: "bg-red-600 text-white",
     img: "/images/espana/gran-via-metropolis.jpg",
     alt: "Gran Vía de Madrid — Paquetes y vuelos a España con Cityland Travel",
     resumenCorto:
-      "Pasaje aéreo con código PNR verificable, reserva de alojamiento, Seguro Schengen de 30.000€ y preparación personalizada para control migratorio en Barajas.",
+      "Pasaje aéreo con código PNR verificable, reserva de alojamiento o Carta de Invitación, Seguro Schengen de 30.000€ y preparación personalizada para control migratorio en Barajas.",
     checks: ["Seguro Schengen 30.000€", "Equipaje 23 kg + 10 kg", "Asesoría Migratoria 1 a 1"],
     waNumber: TELEFONO,
     waMensaje:
-      "¡Hola Cityland Travel! Deseo cotizar el Paquete y Vuelo a España (Desde $1,290 USD).",
+      "¡Hola Cityland Travel! Deseo cotizar el Paquete y Vuelo a España (Ida y vuelta desde $1,090 USD / Paquete Migratorio desde $869 USD).",
   },
   {
     id: "paquete-punta-cana",
@@ -28,9 +28,9 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
     pais: "República Dominicana",
     filtro: "caribe",
     subtitulo: "5 Días / 4 Noches · Playa Bávaro",
-    precioPrincipal: "$1,290",
-    precioSecundario: "$645",
-    notaPrecio: "Separa con $645 USD (50% inicial)",
+    precioPrincipal: "$1,049",
+    precioSecundario: "$525",
+    notaPrecio: "Separa con $525 USD (50% inicial)",
     tag: "Todo Incluido",
     tagBg: "bg-amber-400 text-slate-950",
     img: "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=85",
@@ -40,7 +40,7 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
     checks: ["Vuelo + Resort 5★", "Bebidas y Buffet 24h", "Traslados Incluidos"],
     waNumber: TELEFONO,
     waMensaje:
-      "¡Hola Cityland Travel! Deseo cotizar el paquete Punta Cana 5D/4N Todo Incluido (Desde $1,290 USD).",
+      "¡Hola Cityland Travel! Deseo cotizar el paquete Punta Cana 5D/4N Todo Incluido (Desde $1,049 USD).",
   },
   {
     id: "paquete-cancun",
@@ -48,10 +48,10 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
     pais: "México",
     filtro: "caribe",
     subtitulo: "5 Días / 4 Noches · Zona Hotelera",
-    precioPrincipal: "$1,290",
-    precioSecundario: "$645",
-    notaPrecio: "Separa con $645 USD (50% inicial)",
-    tag: "Playa &Familia",
+    precioPrincipal: "$999",
+    precioSecundario: "$500",
+    notaPrecio: "Separa con $500 USD (50% inicial)",
+    tag: "Playa & Familia",
     tagBg: "bg-sky-600 text-white",
     img: "https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=1200&q=85",
     alt: "Playa turquesa en Cancún Zona Hotelera",
@@ -60,7 +60,7 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
     checks: ["Vuelo Directo Confirmado", "Resort Todo Incluido", "Asistencia 24/7"],
     waNumber: TELEFONO,
     waMensaje:
-      "¡Hola Cityland Travel! Deseo cotizar el paquete Cancún 5D/4N Todo Incluido (Desde $1,290 USD).",
+      "¡Hola Cityland Travel! Deseo cotizar el paquete Cancún 5D/4N Todo Incluido (Desde $999 USD).",
   },
   {
     id: "paquete-cartagena",
@@ -68,9 +68,9 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
     pais: "Colombia",
     filtro: "caribe",
     subtitulo: "4 Días / 3 Noches · Viaja Solo con DNI",
-    precioPrincipal: "$799",
-    precioSecundario: "$400",
-    notaPrecio: "Separa con $400 USD (50% inicial)",
+    precioPrincipal: "$649",
+    precioSecundario: "$325",
+    notaPrecio: "Separa con $325 USD (50% inicial)",
     tag: "Solo con DNI",
     tagBg: "bg-emerald-600 text-white",
     img: "https://images.unsplash.com/photo-1583531352515-8884af319dc1?w=1200&q=85",
@@ -80,7 +80,7 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
     checks: ["No Requiere Pasaporte", "Vuelo + Hotel + Traslados", "Excursión Islas del Rosario"],
     waNumber: TELEFONO,
     waMensaje:
-      "¡Hola Cityland Travel! Deseo cotizar el paquete Cartagena 4D/3N (Desde $799 USD).",
+      "¡Hola Cityland Travel! Deseo cotizar el paquete Cartagena 4D/3N (Desde $649 USD).",
   },
   {
     id: "paquete-turquia",
@@ -108,9 +108,9 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
     pais: "Perú",
     filtro: "peru",
     subtitulo: "4 Días / 3 Noches · Tren Turístico Incluido",
-    precioPrincipal: "$499",
-    precioSecundario: "$250",
-    notaPrecio: "Separa con $250 USD (50% inicial)",
+    precioPrincipal: "$349",
+    precioSecundario: "$175",
+    notaPrecio: "Separa con $175 USD (50% inicial)",
     tag: "Perú Imperdible",
     tagBg: "bg-red-600 text-white",
     img: "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=1200&q=85",
@@ -120,7 +120,7 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
     checks: ["Vuelo + Hotel 3★/4★", "Tren + Entrada Machu Picchu", "Traslados y Guía Oficial"],
     waNumber: TELEFONO,
     waMensaje:
-      "¡Hola Cityland Travel! Deseo cotizar el paquete Cusco & Machu Picchu 4D/3N (Desde $499 USD).",
+      "¡Hola Cityland Travel! Deseo cotizar el paquete Cusco & Machu Picchu 4D/3N (Desde $349 USD).",
   },
 ];
 
@@ -131,8 +131,8 @@ export function obtenerConfigAgenciaOficial(
   const mencionZona = referenciaZona
     ? `${
         notaEspecifica ? `${notaEspecifica}. ` : ""
-      }Todos los vuelos salen desde el Aeropuerto Internacional Jorge Chávez (LIM). Atendemos en nuestra sede principal de Los Olivos (Av. Universitaria 2029, Lima) y por videollamada o WhatsApp, con emisión inmediata de boletos y contrato formal.`
-    : "Todos los vuelos salen desde el Aeropuerto Internacional Jorge Chávez (LIM). Atendemos en nuestra sede principal de Los Olivos (Av. Universitaria 2029, Lima) y de manera digital para todo el Perú, con emisión inmediata de boletos y contrato formal.";
+      }Todos los vuelos salen desde el Aeropuerto Internacional Jorge Chávez (LIM). Atendemos en nuestra sede principal de Los Olivos (Av. Antúnez de Mayolo 814, Lima) y por videollamada o WhatsApp, con emisión inmediata de boletos y contrato formal.`
+    : "Todos los vuelos salen desde el Aeropuerto Internacional Jorge Chávez (LIM). Atendemos en nuestra sede principal de Los Olivos (Av. Antúnez de Mayolo 814, Lima) y de manera digital para todo el Perú, con emisión inmediata de boletos y contrato formal.";
 
   return {
     badgeHero: "Salida Aeropuerto Jorge Chávez (LIM) · RUC 20614914239",
@@ -154,20 +154,20 @@ export function obtenerConfigAgenciaOficial(
     ],
 
     vitrina: {
-      pais: "República Dominicana",
-      etiquetaIzq: "Punta Cana · 5D / 4N",
-      etiquetaDer: "Todo Incluido 5★",
-      img: "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=85",
-      alt: "Resort 5 estrellas en Punta Cana Todo Incluido — Cityland Travel",
-      sobretitulo: "Paquete Estrella Temporada 2026 · Salida desde Lima (LIM)",
-      titulo: "Punta Cana Resort 5★ Todo Incluido",
+      pais: "España",
+      etiquetaIzq: "Lima ✈️ Madrid",
+      etiquetaDer: "Especialidad #1",
+      img: "/images/espana/gran-via-metropolis.jpg",
+      alt: "Gran Vía de Madrid — Paquetes y vuelos a España con Cityland Travel",
+      sobretitulo: "Especialidad Principal Temporada 2026 · Salida desde Lima (LIM)",
+      titulo: "Paquete y Vuelo a Madrid + Carpeta Migratoria",
       labelPrecio: "Tarifa referencial por pasajero",
-      precio: "$1,290",
+      precio: "$869",
       moneda: "USD",
-      notaInferior: "Separa hoy con $645 (50% inicial) · Sujeto a fecha",
+      notaInferior: "Separa hoy con $435 (50% inicial) · Ida y vuelta cerrado desde $1,090",
       waNumero: TELEFONO,
       waMensaje:
-        "¡Hola Cityland Travel! Deseo cotizar el paquete estrella a Punta Cana Resort 5★ Todo Incluido desde $1,290.",
+        "¡Hola Cityland Travel! Deseo cotizar el paquete y vuelo a Madrid (Desde $869 USD con carpeta migratoria / $1,090 USD ida y vuelta).",
     },
 
     seccionCatalogo: {
@@ -175,8 +175,8 @@ export function obtenerConfigAgenciaOficial(
       titulo: "Paquetes Turísticos y Vuelos Más Solicitados desde Lima (LIM)",
       filtros: [
         { id: "todos", label: "Todos los Destinos (6)" },
-        { id: "caribe", label: "Caribe Todo Incluido (3)" },
         { id: "europa", label: "España, Europa & Turquía (2)" },
+        { id: "caribe", label: "Caribe Todo Incluido (3)" },
         { id: "peru", label: "Perú & Machu Picchu (1)" },
       ],
     },
@@ -186,7 +186,7 @@ export function obtenerConfigAgenciaOficial(
     pilares: [
       {
         titulo: "Agencia Registrada (RUC 20614914239)",
-        sub: "Cityland Travel E.I.R.L. · Oficina en Av. Universitaria 2029, Los Olivos.",
+        sub: "Cityland Travel · Sedes en Av. Antúnez de Mayolo 814 y Av. Angélica Gamarra 763, Los Olivos.",
       },
       {
         titulo: "Separa con el 50% de Inicial",
@@ -208,7 +208,7 @@ export function obtenerConfigAgenciaOficial(
         ? `¿Viajas desde ${referenciaZona}? Cotiza hoy en 2 Minutos por WhatsApp`
         : "Visítanos en Nuestra Oficina o Cotiza en 2 Minutos por WhatsApp",
       descripcion:
-        "Te esperamos de Lunes a Sábado de 9:00 AM a 7:00 PM en nuestra sede principal de Av. Universitaria 2029, Los Olivos, Lima, o agenda una atención inmediata por videollamada o WhatsApp con nuestras asesoras de viaje.",
+        "Te esperamos de Lunes a Sábado de 9:00 AM a 7:00 PM en nuestra sede principal de Av. Antúnez de Mayolo 814, Los Olivos (a 2 cuadras de la Municipalidad), o agenda una atención inmediata por videollamada o WhatsApp.",
       ctaTexto: "Hablar con una Asesora Ahora",
       waNumero: TELEFONO,
       waMensaje: referenciaZona

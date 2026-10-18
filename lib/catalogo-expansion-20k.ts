@@ -271,7 +271,7 @@ const PLANES_DESDE_JORGE_CHAVEZ_40: [string, string, string, number][] = [
   ["Viaje Corporativo y de Negocios (RUC 20)", "plan-viaje-corporativo-empresas-lima", "con Factura Electrónica SUNAT (RUC 20614914239) y vuelos ejecutivos desde Lima (LIM)", 20],
   ["Categoría Lujo 5★ y Traslado Privado", "plan-categoria-lujo-5-estrellas-lima", "con hoteles 5 estrellas, recojo privado y atención VIP desde Lima (LIM)", 125],
   ["Paquete con Excursiones Guiadas Incluidas", "plan-con-excursiones-guiadas-lima", "con entradas y tours oficiales en español saliendo del Jorge Chávez (LIM)", 40],
-  ["Atención Presencial Sede Los Olivos + PNR", "plan-atencion-sede-los-olivos-pnr", "con firma de contrato en Av. Universitaria 2029 (Los Olivos) y salida desde Lima (LIM)", 0],
+  ["Atención Presencial Sede Los Olivos + PNR", "plan-atencion-sede-los-olivos-pnr", "con firma de contrato en Av. Antúnez de Mayolo 814 (Los Olivos) y salida desde Lima (LIM)", 0],
 ];
 
 const DESTINOS_DISTRITOS_50: [string, string, string, LandingComercialSEO["cluster"], number, boolean][] = [
@@ -569,7 +569,7 @@ export function generarIndiceExpansion20k(
                 "Revisión personalizada de tu carpeta de viaje antes del embarque",
               ],
               checksVip: [
-                "Atención presencial en Los Olivos (Av. Universitaria 2029) y por WhatsApp",
+                "Atención presencial en Los Olivos (Av. Antúnez de Mayolo 814) y por WhatsApp",
                 "Opciones con 1 o 2 maletas de 23 kg en bodega + equipaje de mano",
                 "Respaldo legal RUC 20614914239 con Boleta o Factura Electrónica SUNAT",
               ],
@@ -711,7 +711,7 @@ export function generarIndiceExpansion20k(
             ],
             checksVip: [
               "Check-in y asignación de asientos gestionados por tu asesor",
-              "Atención en sede Los Olivos (Av. Universitaria 2029) y por WhatsApp",
+              "Atención en sede Los Olivos (Av. Antúnez de Mayolo 814) y por WhatsApp",
               "Soporte 24/7 antes, durante y después de tu vuelo",
             ],
             esInternacional: esInt,

@@ -13,28 +13,34 @@ export default function AdminAsesoresPage() {
   const [mensaje, setMensaje] = useState("");
   const [probandoTurno, setProbandoTurno] = useState(false);
 
-  const cargarDatos = async () => {
+  const cargarDatos = async (claveAdmin?: string) => {
     try {
-      const res = await fetch("/api/whatsapp/asesores", { cache: "no-store" });
+      const res = await fetch("/api/whatsapp/asesores", {
+        cache: "no-store",
+        headers: {
+          "x-admin-pin": claveAdmin ?? pin,
+        },
+      });
       const data = await res.json();
-      if (data?.estado) {
+      if (res.ok && data?.estado) {
         setEstado(data.estado);
+        setAutenticado(true);
+        setErrorPin("");
+      } else {
+        setErrorPin(data?.error || "Credenciales de administrador inválidas.");
       }
-    } catch {}
+    } catch {
+      setErrorPin("Error de conexión con el servidor.");
+    }
   };
 
-  useEffect(() => {
-    cargarDatos();
-  }, []);
-
-  const ingresar = (e: React.FormEvent) => {
+  const ingresar = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (pin === "2026" || pin.toUpperCase() === "CITYLAND2026") {
-      setAutenticado(true);
-      setErrorPin("");
-    } else {
-      setErrorPin("Clave incorrecta. Usa la clave de administración (ej. 2026).");
+    if (!pin.trim()) {
+      setErrorPin("Ingresa tu clave de administrador.");
+      return;
     }
+    await cargarDatos(pin.trim());
   };
 
   const actualizarAsesor = (id: string, cambios: Partial<AsesorWhatsApp>) => {
@@ -53,8 +59,8 @@ export default function AdminAsesoresPage() {
       id: `asesor-${Date.now()}`,
       orden: siguienteOrden,
       nombreInterno: `Asesor Comercial ${numStr}`,
-      telefono: "51900000000",
-      telefonoVisible: "+51 900 000 000",
+      telefono: "51944103890",
+      telefonoVisible: "+51 944 103 890",
       activo: false,
       pausado: false,
       horaInicio: "08:00",
@@ -75,8 +81,11 @@ export default function AdminAsesoresPage() {
     try {
       const res = await fetch("/api/whatsapp/asesores", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ pin: "2026", estado }),
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-pin": pin,
+        },
+        body: JSON.stringify({ pin, estado }),
       });
       const data = await res.json();
       if (data?.ok) {
@@ -127,22 +136,23 @@ export default function AdminAsesoresPage() {
           className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl border border-slate-100"
         >
           <span className="inline-block text-[11px] font-extrabold uppercase tracking-widest text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full mb-3">
-            Cityland Travel · WhatsApp Business
+            Cityland Travel · Acceso Restringido
           </span>
           <h1 className="text-2xl font-extrabold text-[#0a1628] mb-2">
-            Panel de Distribución — 12 Asesores
+            Panel de Distribución WhatsApp
           </h1>
           <p className="text-slate-500 text-sm mb-6">
-            Ingresa tu clave de administrador para gestionar el Round Robin de los 12 números oficiales, pausas temporales, horarios y métricas de clics.
+            Acceso exclusivo para gerencia. La gestión diaria de leads y conversaciones se realiza desde el CRM central (portal.citylandtravel.com).
           </p>
           <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
-            Clave de Acceso
+            Clave de Administrador
           </label>
           <input
             type="password"
             value={pin}
             onChange={(e) => setPin(e.target.value)}
-            placeholder="Ingresa la clave (ej. 2026)"
+            placeholder="Ingresa tu clave privada de servidor"
+            autoComplete="current-password"
             className="w-full border border-slate-300 rounded-xl px-4 py-3 text-sm mb-3 focus:outline-none focus:border-blue-600"
           />
           {errorPin && <p className="text-red-600 text-xs font-semibold mb-3">{errorPin}</p>}
@@ -150,7 +160,7 @@ export default function AdminAsesoresPage() {
             type="submit"
             className="w-full bg-[#0a1628] hover:bg-blue-900 text-white font-bold text-sm py-3.5 rounded-xl transition-colors cursor-pointer"
           >
-            Ingresar al Panel de Asesores
+            Verificar Credenciales
           </button>
         </form>
       </div>

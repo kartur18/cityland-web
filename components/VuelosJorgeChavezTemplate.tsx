@@ -199,7 +199,7 @@ export default function VuelosJorgeChavezTemplate({
                     <li className="flex items-start gap-2">
                       <span className="text-emerald-600 font-black mt-0.5">✓</span>
                       <span>
-                        Atención presencial en Los Olivos (Av. Universitaria 2029) y WhatsApp
+                        Atención presencial en Los Olivos (Av. Antúnez de Mayolo 814) y WhatsApp
                       </span>
                     </li>
                   </ul>

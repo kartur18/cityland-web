@@ -36,7 +36,7 @@ function obtenerIndiceUnificado(): ItemBuscadorCatalogo[] {
   for (let i = 0; i < INDICE_MADRID_10K.length; i++) {
     const m = INDICE_MADRID_10K[i];
     const url = `/madrid/${m.slug}`;
-    const galeria = obtenerGaleriaPorTexto(`madrid espana ${m.zonaOMunicipio}`);
+    const galeria = obtenerGaleriaPorTexto(`${m.zonaOMunicipio} ${m.slug}`, "espana");
     lista.push({
       slug: `madrid-${m.slug}`,
       url,
@@ -130,15 +130,35 @@ function obtenerIndiceUnificado(): ItemBuscadorCatalogo[] {
 }
 
 export async function GET(req: NextRequest) {
+  const { obtenerIpCliente, verificarRateLimit } = await import("@/lib/seguridad-http");
+  const ip = obtenerIpCliente(req);
+  const rl = verificarRateLimit({
+    clave: `catalogo-get:${ip}`,
+    limite: 120,
+    ventanaMs: 60 * 1000,
+  });
+  if (!rl.permitido) {
+    return NextResponse.json(
+      { totalCatalogo: 0, totalMatches: 0, items: [] },
+      { status: 429 }
+    );
+  }
+
   const { searchParams } = new URL(req.url);
-  const q = normalizarTexto(searchParams.get("q") || "").trim();
-  const cluster = (searchParams.get("cluster") || "todos").trim();
-  const origen = normalizarTexto(searchParams.get("origen") || "").trim();
-  const mes = normalizarTexto(searchParams.get("mes") || "").trim();
+  const q = normalizarTexto(searchParams.get("q") || "")
+    .trim()
+    .slice(0, 100);
+  const cluster = (searchParams.get("cluster") || "todos").trim().slice(0, 40);
+  const origen = normalizarTexto(searchParams.get("origen") || "")
+    .trim()
+    .slice(0, 40);
+  const mes = normalizarTexto(searchParams.get("mes") || "")
+    .trim()
+    .slice(0, 30);
   const limit = Math.min(96, Math.max(12, Number(searchParams.get("limit")) || 36));
 
   const indice = obtenerIndiceUnificado();
-  const palabras = q ? q.split(/\s+/).filter(Boolean) : [];
+  const palabras = q ? q.split(/\s+/).filter(Boolean).slice(0, 8) : [];
 
   const resultados: Omit<ItemBuscadorCatalogo, "searchNorm">[] = [];
   let totalMatches = 0;

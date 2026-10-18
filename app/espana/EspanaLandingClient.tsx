@@ -174,7 +174,7 @@ export default function EspanaLandingClient() {
                   <span className="text-emerald-600 font-extrabold">✓</span> Agencia Formal RUC 20614914239
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <span className="text-emerald-600 font-extrabold">✓</span> Oficina en Av. Universitaria 2029, Los Olivos
+                  <span className="text-emerald-600 font-extrabold">✓</span> Oficina en Av. Antúnez de Mayolo 814, Los Olivos
                 </span>
               </div>
             </div>

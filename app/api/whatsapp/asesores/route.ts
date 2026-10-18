@@ -4,10 +4,13 @@ import {
   leerEstadoDistribuidor,
   type EstadoDistribuidorWA,
 } from "@/lib/distribuidor-wa";
+import { verificarAccesoAdmin } from "@/lib/seguridad-http";
 
-const ADMIN_PIN = process.env.ADMIN_PIN || "2026";
-
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const authCheck = verificarAccesoAdmin(req);
+  if (!authCheck.ok) {
+    return authCheck.response;
+  }
   const estado = await leerEstadoDistribuidor();
   return NextResponse.json({ ok: true, estado });
 }
@@ -20,14 +23,12 @@ export async function POST(req: NextRequest) {
       estado?: EstadoDistribuidorWA;
     };
 
-    if (pin !== ADMIN_PIN && pin?.toUpperCase() !== "CITYLAND2026") {
-      return NextResponse.json(
-        { ok: false, error: "Clave de administrador no válida." },
-        { status: 401 }
-      );
+    const authCheck = verificarAccesoAdmin(req, pin);
+    if (!authCheck.ok) {
+      return authCheck.response;
     }
 
-    if (!estado || !Array.isArray(estado.asesores)) {
+    if (!estado || !Array.isArray(estado.asesores) || estado.asesores.length > 50) {
       return NextResponse.json(
         { ok: false, error: "Datos de asesores inválidos." },
         { status: 400 }
@@ -36,7 +37,7 @@ export async function POST(req: NextRequest) {
 
     // Normalizar teléfonos al formato internacional 519XXXXXXXX
     estado.asesores = estado.asesores.map((a, idx) => {
-      const soloDigitos = a.telefono.replace(/\D/g, "");
+      const soloDigitos = String(a.telefono || "").replace(/\D/g, "").slice(0, 15);
       const telefonoInternacional =
         soloDigitos.length === 9 && soloDigitos.startsWith("9")
           ? `51${soloDigitos}`

@@ -145,7 +145,7 @@ export default function MadridMigratorioTemplate({
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
               {/* Columna Izquierda: Propuesta clara, concisa y con botón WhatsApp siempre visible */}
-              <div className="lg:col-span-7 space-y-4">
+              <div className="lg:col-span-7 space-y-4 animate-fade-up">
                 <div
                   className={`inline-flex flex-wrap items-center gap-2 border px-3.5 py-1.5 rounded-full text-[11px] font-extrabold tracking-wide ${tema.badgeBg}`}
                 >
@@ -202,23 +202,23 @@ export default function MadridMigratorioTemplate({
 
                 {/* Sello de agencia formal */}
                 <p className="text-xs text-slate-300 pt-1">
-                  📍 <strong>Oficina en Lima:</strong> Av. Universitaria 2029, Los Olivos ·{" "}
+                  📍 <strong>Oficina en Lima:</strong> Av. Antúnez de Mayolo 814, Los Olivos ·{" "}
                   <strong>RUC 20614914239</strong> · Separa con el 50% (${mitadFmt} USD)
                 </p>
               </div>
 
               {/* Columna Derecha: Tarjeta con Fotografía 100% Limpia + Ruta LIM -> MAD sin textos partidos */}
-              <div className="lg:col-span-5">
-                <div className="bg-white text-slate-900 rounded-3xl shadow-2xl overflow-hidden border-2 border-amber-400/80">
+              <div className="lg:col-span-5 animate-fade-up delay-100">
+                <div className="card-interactive group bg-white text-slate-900 rounded-3xl shadow-2xl overflow-hidden border-2 border-amber-400/80">
                   {/* Fotografía real 100% limpia (sin textos ni sombras oscuras tapando la foto) */}
-                  <div className="relative h-40 sm:h-44 w-full bg-slate-100">
+                  <div className="relative h-44 sm:h-48 w-full bg-slate-100 overflow-hidden">
                     <Image
                       src={datos.imagenHero}
                       alt={`${datos.tituloPrincipal} - ${datos.zonaOMunicipioMadrid}`}
                       fill
                       priority
                       sizes="(max-width: 1024px) 100vw, 42vw"
-                      className="object-cover"
+                      className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                     <div className="absolute top-3 left-3 bg-[#071120]/90 text-amber-300 text-[11px] font-extrabold px-3 py-1 rounded-full shadow-md">
                       ✈️ {datos.aerolineaDestacada}
@@ -368,7 +368,7 @@ export default function MadridMigratorioTemplate({
               return (
                 <div
                   key={idx}
-                  className={`rounded-3xl p-6 flex flex-col justify-between transition-all ${
+                  className={`card-interactive rounded-3xl p-6 flex flex-col justify-between transition-all ${
                     plan.destacado
                       ? "bg-[#071120] text-white border-2 border-amber-400 shadow-xl"
                       : "bg-white text-slate-900 border border-slate-200 shadow-xs hover:shadow-md"
@@ -455,7 +455,7 @@ export default function MadridMigratorioTemplate({
                     rel="noopener noreferrer"
                     className={`w-full inline-flex items-center justify-center gap-2 font-extrabold py-3 px-4 rounded-2xl text-xs transition-all ${
                       plan.destacado
-                        ? "bg-[#25D366] hover:bg-[#1fb858] text-white shadow-lg"
+                        ? "btn-wa-pulse bg-[#25D366] hover:bg-[#1fb858] text-white shadow-lg"
                         : "bg-slate-900 hover:bg-red-600 text-white"
                     }`}
                   >
@@ -509,7 +509,7 @@ export default function MadridMigratorioTemplate({
                 {datos.checklistBarajas.map((item, idx) => (
                   <div
                     key={idx}
-                    className="bg-slate-50 rounded-2xl p-5 border border-slate-200/90 hover:border-amber-400 transition-colors"
+                    className="card-interactive bg-slate-50 rounded-2xl p-5 border border-slate-200/90 hover:border-amber-400 transition-colors"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <h3 className="text-sm sm:text-base font-extrabold text-[#071120]">
@@ -547,7 +547,7 @@ export default function MadridMigratorioTemplate({
             {datos.pasosExpediente.map((p, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-3xl p-6 border border-slate-200 shadow-xs relative"
+                className="card-interactive bg-white rounded-3xl p-6 border border-slate-200 shadow-xs relative"
               >
                 <span className="w-10 h-10 rounded-2xl bg-[#071120] text-amber-400 font-black text-sm flex items-center justify-center mb-4">
                   {p.paso}
@@ -632,6 +632,47 @@ export default function MadridMigratorioTemplate({
       </main>
 
       <Footer />
+
+      {/* Barra Sticky Móvil + Botón Flotante WhatsApp Oficial */}
+      <div className="sm:hidden fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200 px-4 py-2.5 shadow-[0_-8px_24px_rgba(10,22,40,0.12)] flex items-center justify-between gap-3">
+        <div className="min-w-0">
+          <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block leading-none">
+            Madrid · Separa con 50%
+          </span>
+          <div className="flex items-baseline gap-1 mt-0.5">
+            <span className="text-lg font-black text-[#071120] leading-none">
+              Desde ${precioFmt}
+            </span>
+            <span className="text-[10px] font-bold text-emerald-700 truncate">
+              USD · PNR Real
+            </span>
+          </div>
+        </div>
+        <a
+          href={waUrlPrincipal}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1fb858] text-white font-extrabold px-4 py-2.5 rounded-xl text-xs shadow-md shrink-0"
+        >
+          <WhatsAppIcon className="w-4 h-4" />
+          <span>WhatsApp Ahora</span>
+        </a>
+      </div>
+
+      <div className="hidden sm:block fixed bottom-5 right-5 z-50">
+        <a
+          href={waUrlPrincipal}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-wa-pulse flex items-center gap-2 bg-[#25D366] hover:bg-[#1fb858] text-white px-5 py-3.5 rounded-full shadow-xl cursor-pointer"
+          aria-label="Cotizar por WhatsApp"
+        >
+          <WhatsAppIcon className="w-5 h-5" />
+          <span className="font-bold text-xs sm:text-sm">
+            Cotizar Madrid (+51 944 103 890)
+          </span>
+        </a>
+      </div>
     </div>
   );
 }

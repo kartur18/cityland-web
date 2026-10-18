@@ -124,7 +124,7 @@ export default async function AgenciaLocalSlugPage({ params }: Props) {
         },
         address: {
           "@type": "PostalAddress",
-          streetAddress: "Av. Universitaria 2029, Los Olivos",
+          streetAddress: "Av. Antúnez de Mayolo 814, Los Olivos",
           addressLocality: "Los Olivos",
           addressRegion: "Lima",
           postalCode: "15301",

@@ -183,7 +183,7 @@ const DATOS_HUB_MADRID: DatosLandingMadridSEO = {
     },
     {
       q: "¿Dónde queda la oficina de Cityland Travel para recoger mi carpeta impresa?",
-      a: "Te atendemos presencialmente en Av. Universitaria 2029, Los Olivos (frente al Palacio de la Juventud), Lima, y también de forma 100% digital por WhatsApp al +51 944 103 890 con emisión de Boleta o Factura Electrónica SUNAT (RUC 20614914239).",
+      a: "Te atendemos presencialmente en Av. Antúnez de Mayolo 814, Los Olivos, Lima, y también de forma 100% digital por WhatsApp al +51 944 103 890 con emisión de Boleta o Factura Electrónica SUNAT (RUC 20614914239).",
     },
   ],
   enlacesRelacionados: INDICE_MADRID_10K.slice(0, 16).map((it) => ({

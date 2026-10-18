@@ -54,7 +54,7 @@ export const SCHEMA_ORGANIZACION_CITYLAND = {
       paymentAccepted: "Transferencia Bancaria, Tarjeta de Crédito, Débito, Yape, Plin, Efectivo",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "Av. Universitaria 2029, Los Olivos, Lima",
+        streetAddress: "Av. Antúnez de Mayolo 814, Los Olivos, Lima",
         addressLocality: "Los Olivos",
         addressRegion: "Lima",
         postalCode: "15301",

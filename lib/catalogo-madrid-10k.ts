@@ -58,9 +58,22 @@ function crearObjetoMadrid(params: {
     indiceSemilla,
   } = params;
 
-  const [img0, img1] = obtenerGaleriaPorTexto(
-    `madrid espana ${zonaOMunicipioMadrid} ${slug}`
+  const galeria = obtenerGaleriaPorTexto(
+    `${zonaOMunicipioMadrid} ${slug}`,
+    "espana"
   );
+  const FOTOS_MADRID_ROTAR = [
+    "/images/espana/gran-via-metropolis.jpg",
+    "/images/espana/palacio-real.jpg",
+    "/images/espana/puerta-de-alcala.jpg",
+    "/images/espana/plaza-mayor.jpg",
+    "/images/espana/cibeles.jpg",
+  ];
+  const img0 =
+    galeria[0] === "/images/espana/gran-via-metropolis.jpg"
+      ? FOTOS_MADRID_ROTAR[indiceSemilla % FOTOS_MADRID_ROTAR.length]
+      : galeria[0];
+  const img1 = "/images/espana/barajas.jpg";
 
   const mitad = Math.max(35, Math.round(precioDesdeUSD * 0.5));
   const precioSoloIdaVisa = Math.max(699, Math.round((precioDesdeUSD * 0.89) / 10) * 10);
@@ -114,7 +127,7 @@ function crearObjetoMadrid(params: {
     precioCarpetaSolaUSD,
     precioIdaYVueltaUSD,
     imagenHero: img0,
-    imagenSecundaria: img1 || img0,
+    imagenSecundaria: img1,
     metaTitle,
     metaDescription,
     keywords,
@@ -126,12 +139,25 @@ function crearObjetoMadrid(params: {
         subtitulo: `Vuelo ${codigoRuta} + Retorno RF 24h + Hotel + Seguro + Check-in`,
         destacado: true,
         incluye: [
-          `Boleto aéreo ${codigoRuta} con código PNR verificable`,
-          "Reserva de retorno activa (MAD → LIM) para control migratorio",
-          `Hotel verificable en ${zonaOMunicipioMadrid} o ajuste a Carta de Invitación`,
+          `Boleto aéreo ${codigoRuta} con código PNR verificable en aerolínea`,
+          "Reserva de retorno activa (MAD → LIM) gestionada 24h antes del vuelo",
+          `Hotel verificable en ${zonaOMunicipioMadrid} o alineación a Carta de Invitación`,
           "Seguro Schengen 30.000€ sin deducible + Check-in por tu asesor",
         ],
         waMensaje: `¡Hola Cityland Travel! Quiero cotizar el Paquete Migratorio Completo a ${zonaOMunicipioMadrid} (Desde $${precioFmt} USD) con vuelo + retorno RF + hotel + seguro.`,
+      },
+      {
+        etiqueta: "Turismo Seguro (Ida y Vuelta)",
+        titulo: `Paquete Ida y Vuelta a ${zonaOMunicipioMadrid}`,
+        precioUSD: precioIdaYVueltaUSD,
+        subtitulo: "Recomendado para turismo sin visa: vuelo redondo emitido + hotel + seguro",
+        incluye: [
+          "Boleto aéreo Lima – Madrid – Lima con fechas de ida y retorno emitidas",
+          `Alojamiento verificable en ${zonaOMunicipioMadrid} según tu bolsa BOE`,
+          "Seguro médico internacional Schengen de 30.000€ sin franquicia",
+          `Separa hoy con el 50% ($${Math.round(precioIdaYVueltaUSD * 0.5).toLocaleString("en-US")} USD)`,
+        ],
+        waMensaje: `¡Hola Cityland Travel! Quiero cotizar el Paquete Ida y Vuelta Cerrado a ${zonaOMunicipioMadrid} (Desde $${idaVueltaFmt} USD).`,
       },
       {
         etiqueta: "Si Ya Tienes Pasaje",
@@ -150,7 +176,7 @@ function crearObjetoMadrid(params: {
         etiqueta: "Con Visa / Residencia / DNI",
         titulo: `Boleto Solo Ida (${codigoRuta})`,
         precioUSD: precioSoloIdaVisa,
-        subtitulo: "Para visa de estudios, trabajo, reagrupación o residencia española",
+        subtitulo: "Exclusivo para visa de estudios, trabajo, reagrupación o residencia española",
         incluye: [
           `Boleto electrónico IATA de 13 dígitos (${aerolineaDestacada})`,
           "Equipaje de mano 10 kg + maleta de bodega de 23 kg",
@@ -158,19 +184,6 @@ function crearObjetoMadrid(params: {
           "Factura o Boleta Electrónica SUNAT (RUC 20614914239)",
         ],
         waMensaje: `¡Hola Cityland Travel! Quiero cotizar el Boleto Solo Ida para ${zonaOMunicipioMadrid} (Desde $${soloIdaFmt} USD).`,
-      },
-      {
-        etiqueta: "Ida y Vuelta Cerrado",
-        titulo: `Paquete Ida y Vuelta a ${zonaOMunicipioMadrid}`,
-        precioUSD: precioIdaYVueltaUSD,
-        subtitulo: "Vuelo redondo confirmado + alojamiento + seguro Schengen",
-        incluye: [
-          "Boleto aéreo Lima – Madrid – Lima con fechas fijas emitidas",
-          `Alojamiento seleccionado en ${zonaOMunicipioMadrid} y traslados`,
-          "Seguro médico internacional Schengen de 30.000€",
-          `Separa hoy con el 50% ($${Math.round(precioIdaYVueltaUSD * 0.5).toLocaleString("en-US")} USD)`,
-        ],
-        waMensaje: `¡Hola Cityland Travel! Quiero cotizar el Paquete Ida y Vuelta Cerrado a ${zonaOMunicipioMadrid} (Desde $${idaVueltaFmt} USD).`,
       },
     ],
     pasosExpediente: [
@@ -647,7 +660,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
                 },
                 {
                   q: `¿Con cuánto puedo separar mi viaje a ${zonaNombre}?`,
-                  a: `Puedes congelar tu tarifa Desde $${precio.toLocaleString("en-US")} abonando el 50% de inicial en nuestra sede de Los Olivos (Av. Universitaria 2029) o por BCP, BBVA e Interbank.`,
+                  a: `Puedes congelar tu tarifa Desde $${precio.toLocaleString("en-US")} abonando el 50% de inicial en nuestra sede de Los Olivos (Av. Antúnez de Mayolo 814) o por BCP, BBVA e Interbank.`,
                 },
               ],
               indiceSemilla: idxActual,
@@ -867,7 +880,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
               faqsExtra: [
                 {
                   q: `¿Cómo solicito "${nombreServ}" para viajar en ${nombreMes}?`,
-                  a: `Escríbenos por WhatsApp al +51 944 103 890 o visítanos en Av. Universitaria 2029 (Los Olivos). Emitimos tu documentación oficial desde $${precio.toLocaleString("en-US")} con comprobante SUNAT.`,
+                  a: `Escríbenos por WhatsApp al +51 944 103 890 o visítanos en Av. Antúnez de Mayolo 814 (Los Olivos). Emitimos tu documentación oficial desde $${precio.toLocaleString("en-US")} con comprobante SUNAT.`,
                 },
                 {
                   q: `¿En cuánto tiempo me entregan mi código PNR o carpeta verificable?`,

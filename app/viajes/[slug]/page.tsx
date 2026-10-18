@@ -150,7 +150,7 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
     tituloDestacadoHero: `Desde $${item.precioDesdeUSD.toLocaleString("en-US")}`,
     descripcionHero: item.subtitulo,
     negritaHero:
-      "Salidas desde el Aeropuerto Internacional Jorge Chávez (LIM) · Atención en Av. Universitaria 2029, Los Olivos.",
+      "Salidas desde el Aeropuerto Internacional Jorge Chávez (LIM) · Atención en Av. Antúnez de Mayolo 814, Los Olivos.",
     ctaPrincipalTexto: "Cotizar Promoción por WhatsApp",
     waPrincipalNumero: "51944103890",
     waPrincipalMensaje: item.waMensaje,
@@ -321,13 +321,13 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
             <div className="bg-gradient-to-br from-slate-50 via-white to-sky-50/40 rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-2xs grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
               <div className="lg:col-span-6">
                 <span className="text-[11px] font-extrabold uppercase tracking-widest text-red-600 block mb-1.5">
-                  Información Oficial Verificada
+                  Respaldo Oficial · RUC 20614914239
                 </span>
                 <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a1628] tracking-tight leading-snug mb-3">
-                  Lo que debes saber sobre {item.destinoOPais}
+                  Garantías para tu viaje a {item.destinoOPais}
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  {item.resumenEjecutivo.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                  Emitimos todos nuestros programas saliendo desde el Aeropuerto Internacional Jorge Chávez (LIM) con código de reserva PNR de 6 caracteres verificable en la aerolínea, vouchers confirmados y atención presencial en Av. Antúnez de Mayolo 814, Los Olivos.
                 </p>
               </div>
               <div className="lg:col-span-6 bg-white rounded-2xl p-5 border border-slate-200/80 shadow-2xs">
