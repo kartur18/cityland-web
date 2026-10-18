@@ -133,10 +133,9 @@ export default function CaribeLandingClient() {
                       <span className="text-3xl sm:text-4xl font-black text-[#0a1628] tracking-tight leading-none">
                         $1,099
                       </span>
-                      <span className="text-xs font-bold text-slate-500">USD</span>
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                      Separa con 50% ($550 USD)
+                      Separa con 50% ($550)
                     </span>
                   </div>
 
@@ -261,7 +260,7 @@ export default function CaribeLandingClient() {
                             Regular
                           </span>
                           <span className="text-[11px] font-semibold text-slate-400 line-through">
-                            ${d.precioRegularUSD.toLocaleString("en-US")} USD
+                            ${d.precioRegularUSD.toLocaleString("en-US")}
                           </span>
                         </div>
                         <div className="flex items-baseline gap-1.5">
@@ -271,10 +270,9 @@ export default function CaribeLandingClient() {
                           <span className="text-2xl sm:text-3xl font-black text-[#0a1628] tracking-tight leading-none">
                             ${d.precioUSD.toLocaleString("en-US")}
                           </span>
-                          <span className="text-xs font-bold text-slate-500">USD</span>
                         </div>
                         <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                          Separa con 50% (${inicialUSD} USD)
+                          Separa con 50% (${inicialUSD})
                         </span>
                       </div>
 

@@ -134,7 +134,6 @@ export default function VisasLandingClient() {
                       <span className="text-3xl sm:text-4xl font-black text-[#0a1628] tracking-tight leading-none">
                         $120
                       </span>
-                      <span className="text-xs font-bold text-slate-500">USD</span>
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
                       Incluye simulacro de entrevista 1 a 1
@@ -254,9 +253,6 @@ export default function VisasLandingClient() {
                           </span>
                           <span className="text-2xl sm:text-3xl font-black text-[#0a1628] tracking-tight leading-none">
                             ${item.tarifaDesdeUSD}
-                          </span>
-                          <span className="text-xs font-bold text-slate-500">
-                            USD
                           </span>
                         </div>
                         <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">

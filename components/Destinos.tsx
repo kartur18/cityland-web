@@ -135,10 +135,9 @@ export default function Destinos() {
                         <span className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] leading-none">
                           ${paquete.precioUSD.toLocaleString("en-US")}
                         </span>
-                        <span className="text-xs font-bold text-slate-500">USD</span>
                       </div>
                       <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                        Separa con 50% (${Math.round(paquete.precioUSD * 0.5).toLocaleString("en-US")} USD)
+                        Separa con 50% (${Math.round(paquete.precioUSD * 0.5).toLocaleString("en-US")})
                       </span>
                     </div>
 

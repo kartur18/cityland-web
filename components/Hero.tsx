@@ -127,10 +127,9 @@ export default function Hero() {
                     <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0a1628] leading-none">
                       $1,099
                     </span>
-                    <span className="text-xs font-bold text-slate-500">USD</span>
                   </div>
                   <span className="text-[11px] font-semibold text-emerald-700 block mt-1">
-                    Separa con 50% ($550 USD)
+                    Separa con 50% ($550)
                   </span>
                 </div>
 

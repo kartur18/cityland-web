@@ -166,10 +166,9 @@ export default function EspanaLandingClient() {
                       <span className="text-3xl sm:text-4xl font-black text-[#0a1628] tracking-tight leading-none">
                         $890
                       </span>
-                      <span className="text-xs font-bold text-slate-500">USD</span>
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                      Separa con 50% ($445 USD)
+                      Separa con 50% ($445)
                     </span>
                   </div>
 
@@ -189,7 +188,7 @@ export default function EspanaLandingClient() {
         </div>
       </section>
 
-      {/* 3. Las 4 Salidas Oficiales (Tarjetas Luminosas con "Desde $ USD") */}
+      {/* 3. Las 4 Salidas Oficiales (Tarjetas Luminosas con "Desde $") */}
       <section id="tarifas" className="py-14 sm:py-20 bg-slate-50/70 border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
@@ -262,11 +261,10 @@ export default function EspanaLandingClient() {
                         <span className="text-2xl sm:text-3xl font-black text-[#0a1628] tracking-tight leading-none">
                           ${p.precio.toLocaleString("en-US")}
                         </span>
-                        <span className="text-xs font-bold text-slate-500">USD</span>
                       </div>
                     </div>
                     <span className="text-xs font-bold text-emerald-700">
-                      Inicial ${Math.round(p.precio * 0.5)} USD
+                      Inicial ${Math.round(p.precio * 0.5)}
                     </span>
                   </div>
 

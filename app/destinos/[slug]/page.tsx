@@ -258,7 +258,7 @@ export default async function DestinoPage({
                 >
                   <WhatsAppIcon size={18} />
                   <span>
-                    Cotizar {dest.ciudad} (Desde ${precioPrincipal.toLocaleString("en-US")} USD)
+                    Cotizar {dest.ciudad} (Desde ${precioPrincipal.toLocaleString("en-US")})
                   </span>
                 </a>
                 <a
@@ -316,7 +316,6 @@ export default async function DestinoPage({
                       <span className="font-[family-name:var(--font-bebas)] text-4xl text-[#0a1628] leading-none">
                         ${precioPrincipal.toLocaleString("en-US")}
                       </span>
-                      <span className="text-xs font-bold text-slate-500">USD</span>
                       {dest.regularPrice && (
                         <span className="text-xs text-slate-400 line-through ml-1">
                           ${dest.regularPrice.toLocaleString("en-US")}
@@ -324,7 +323,7 @@ export default async function DestinoPage({
                       )}
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                      Separa hoy con ${mitadPrecio.toLocaleString("en-US")} USD (50% inicial)
+                      Separa hoy con ${mitadPrecio.toLocaleString("en-US")} (50% inicial)
                     </span>
                   </div>
 
@@ -413,8 +412,7 @@ export default async function DestinoPage({
                           Desde
                         </span>
                         <span className="text-2xl font-extrabold text-[#0a1628] leading-none">
-                          ${dest.migratorio.toLocaleString("en-US")}{" "}
-                          <span className="text-xs font-bold text-slate-500">USD</span>
+                          ${dest.migratorio.toLocaleString("en-US")}
                         </span>
                       </div>
                       <a
@@ -448,8 +446,7 @@ export default async function DestinoPage({
                         Desde
                       </span>
                       <span className="text-2xl font-extrabold text-[#0a1628] leading-none">
-                        ${dest.turistico.toLocaleString("en-US")}{" "}
-                        <span className="text-xs font-bold text-slate-500">USD</span>
+                        ${dest.turistico.toLocaleString("en-US")}
                       </span>
                     </div>
                     <a
@@ -483,8 +480,7 @@ export default async function DestinoPage({
                           Inicial 50%
                         </span>
                         <span className="text-2xl font-extrabold text-emerald-700 leading-none">
-                          ${Math.round(dest.turistico * 0.5).toLocaleString("en-US")}{" "}
-                          <span className="text-xs font-bold text-slate-500">USD</span>
+                          ${Math.round(dest.turistico * 0.5).toLocaleString("en-US")}
                         </span>
                       </div>
                       <a
@@ -594,13 +590,13 @@ export default async function DestinoPage({
                 <div className="flex items-center justify-between">
                   <span className="text-slate-300">Tarifa desde:</span>
                   <span className="text-lg font-extrabold text-white">
-                    ${precioPrincipal.toLocaleString("en-US")} USD
+                    ${precioPrincipal.toLocaleString("en-US")}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-slate-300">Separa hoy con (50%):</span>
                   <span className="text-sm font-bold text-amber-300">
-                    ${mitadPrecio.toLocaleString("en-US")} USD
+                    ${mitadPrecio.toLocaleString("en-US")}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
@@ -702,7 +698,7 @@ export default async function DestinoPage({
                         Desde
                       </span>
                       <span className="font-[family-name:var(--font-bebas)] text-2xl text-[#0a1628]">
-                        ${p.toLocaleString("en-US")} USD
+                        ${p.toLocaleString("en-US")}
                       </span>
                     </div>
                     <span className="text-xs font-extrabold text-red-600 group-hover:translate-x-1 transition-transform">

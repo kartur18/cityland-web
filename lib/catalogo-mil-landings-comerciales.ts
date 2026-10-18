@@ -219,7 +219,7 @@ function armarLandingComercial(params: {
         moneda: "USD",
         notaInferior:
           precioBase >= 180
-            ? `Separa hoy con $${mitadBase.toLocaleString("en-US")} USD (50% de inicial)`
+            ? `Separa hoy con $${mitadBase.toLocaleString("en-US")} (50% de inicial)`
             : "Emisión oficial con factura o boleta electrónica SUNAT",
         waNumero: "51944103890",
         waMensaje: msgPrincipal,

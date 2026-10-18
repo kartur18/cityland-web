@@ -100,7 +100,7 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
     badgeHero: item.badge,
     banderasHero: ["Perú", item.destinoOPais],
     tituloHero: item.titulo,
-    tituloDestacadoHero: `Desde $${item.precioDesdeUSD.toLocaleString("en-US")} USD`,
+    tituloDestacadoHero: `Desde $${item.precioDesdeUSD.toLocaleString("en-US")}`,
     descripcionHero: item.subtitulo,
     negritaHero:
       "Atención inmediata por WhatsApp y en nuestra sede física de Av. Antúnez de Mayolo 814, Los Olivos.",
@@ -121,7 +121,7 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
       moneda: "USD",
       notaInferior:
         item.precioDesdeUSD >= 200
-          ? `Separa hoy con $${mitadPrecio.toLocaleString("en-US")} USD (50% inicial)`
+          ? `Separa hoy con $${mitadPrecio.toLocaleString("en-US")} (50% inicial)`
           : "Entrega inmediata verificada con respaldo RUC 20614914239",
       waNumero: "51944103890",
       waMensaje: item.waMensaje,
@@ -272,9 +272,11 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
                     className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-2xs"
                   >
                     <h3 className="text-sm font-extrabold text-[#0a1628] mb-2">
-                      {f.q}
+                      {f.q.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                     </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed">{f.a}</p>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      {f.a.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -294,7 +296,7 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
                   href={`/viajes/${rel.slug}`}
                   className="text-xs font-semibold text-slate-700 hover:text-red-600 bg-slate-50 hover:bg-red-50 border border-slate-200/80 px-3 py-1.5 rounded-full transition-colors"
                 >
-                  {rel.titulo} (${rel.precioDesdeUSD} USD)
+                  {rel.titulo} (${rel.precioDesdeUSD})
                 </Link>
               ))}
             </div>

@@ -228,14 +228,19 @@ export default function AirlineLandingTemplate({
               </div>
 
               <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#0a1628] tracking-tight leading-[1.12] mb-4">
-                {config.tituloHero}{" "}
-                <span className="text-red-600">{config.tituloDestacadoHero}</span>
+                {config.tituloHero.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}{" "}
+                <span className="text-red-600">
+                  {config.tituloDestacadoHero.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                </span>
               </h1>
 
               <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6 max-w-xl">
-                {config.descripcionHero}{" "}
+                {config.descripcionHero
+                  .trim()
+                  .replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")
+                  .replace(/([^.!?])$/, "$1.")}{" "}
                 <strong className="text-[#0a1628] font-bold">
-                  {config.negritaHero}
+                  {config.negritaHero.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                 </strong>
               </p>
 
@@ -249,7 +254,9 @@ export default function AirlineLandingTemplate({
                     <span className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-[10px] font-extrabold shrink-0">
                       ✓
                     </span>
-                    <span className="leading-snug">{c}</span>
+                    <span className="leading-snug">
+                      {c.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -324,11 +331,14 @@ export default function AirlineLandingTemplate({
                         Desde
                       </span>
                       <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0a1628] leading-none">
-                        {config.vitrina.precio}
+                        {config.vitrina.precio.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                       </span>
-                      <span className="text-xs font-bold text-slate-500">
-                        {config.vitrina.moneda}
-                      </span>
+                      {config.vitrina.moneda &&
+                        config.vitrina.moneda.replace(/\bUSD\b\s*[·•-]?\s*/gi, "").trim() !== "" && (
+                          <span className="text-xs font-bold text-slate-500">
+                            {config.vitrina.moneda.replace(/\bUSD\b\s*[·•-]?\s*/gi, "").trim()}
+                          </span>
+                        )}
                       {precioAntesVitrina && (
                         <span className="text-xs font-semibold text-slate-400 line-through ml-1">
                           {precioAntesVitrina}
@@ -336,7 +346,7 @@ export default function AirlineLandingTemplate({
                       )}
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-700 block mt-1">
-                      {config.vitrina.notaInferior}
+                      {config.vitrina.notaInferior.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                     </span>
                   </div>
 
@@ -446,10 +456,10 @@ export default function AirlineLandingTemplate({
 
                     <div className="absolute bottom-3 left-4 right-4 z-10 text-white">
                       <span className="text-[11px] font-semibold text-amber-300 block">
-                        {item.subtitulo}
+                        {item.subtitulo.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                       </span>
                       <h3 className="text-lg sm:text-xl font-extrabold leading-tight drop-shadow-xs">
-                        {item.titulo}
+                        {item.titulo.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                       </h3>
                     </div>
                   </div>
@@ -457,7 +467,7 @@ export default function AirlineLandingTemplate({
                   <div className="p-5 flex flex-col justify-between flex-1 gap-4">
                     <div>
                       <div className="inline-block bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-1 rounded-lg mb-3">
-                        {item.resumenCorto}
+                        {item.resumenCorto.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                       </div>
 
                       <div className="space-y-1.5 text-xs font-medium text-slate-600 pt-2 border-t border-slate-100">
@@ -466,7 +476,9 @@ export default function AirlineLandingTemplate({
                             <span className="text-emerald-600 font-extrabold shrink-0 mt-0.5">
                               ✓
                             </span>
-                            <span className="leading-snug">{ck}</span>
+                            <span className="leading-snug">
+                              {ck.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                            </span>
                           </div>
                         ))}
                       </div>
@@ -489,16 +501,14 @@ export default function AirlineLandingTemplate({
                             Desde
                           </span>
                           <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0a1628] leading-none">
-                            {item.precioPrincipal}
-                          </span>
-                          <span className="text-xs font-bold text-slate-500">
-                            USD
+                            {item.precioPrincipal.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                           </span>
                         </div>
                         <span className="text-[11px] font-semibold text-emerald-700 block mt-1">
-                          {esInicial
+                          {(esInicial
                             ? `Separa con ${item.precioSecundario} (50% inicial)`
-                            : item.notaPrecio}
+                            : item.notaPrecio
+                          ).replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                         </span>
                       </div>
 
@@ -530,8 +540,12 @@ export default function AirlineLandingTemplate({
                   ✓
                 </span>
                 <div>
-                  <h3 className="text-sm font-extrabold text-[#0a1628]">{p.titulo}</h3>
-                  <p className="text-xs text-slate-500 mt-0.5">{p.sub}</p>
+                  <h3 className="text-sm font-extrabold text-[#0a1628]">
+                    {p.titulo.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                  </h3>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    {p.sub.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                  </p>
                 </div>
               </div>
             ))}
@@ -607,10 +621,10 @@ export default function AirlineLandingTemplate({
                 {config.bannerFinal.sobretitulo}
               </span>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0a1628] tracking-tight leading-tight mb-3">
-                {config.bannerFinal.titulo}
+                {config.bannerFinal.titulo.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 max-w-xl">
-                {config.bannerFinal.descripcion}
+                {config.bannerFinal.descripcion.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
               </p>
 
               <div className="flex flex-wrap items-center gap-3">

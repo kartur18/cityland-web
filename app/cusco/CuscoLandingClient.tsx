@@ -116,10 +116,9 @@ export default function CuscoLandingClient() {
                       <span className="text-3xl sm:text-4xl font-black text-[#0a1628] tracking-tight leading-none">
                         $499
                       </span>
-                      <span className="text-xs font-bold text-slate-500">USD</span>
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                      Separa con 50% ($250 USD)
+                      Separa con 50% ($250)
                     </span>
                   </div>
 
@@ -217,7 +216,7 @@ export default function CuscoLandingClient() {
                               Regular
                             </span>
                             <span className="text-[11px] font-semibold text-slate-400 line-through">
-                              ${p.precioRegularUSD} USD
+                              ${p.precioRegularUSD}
                             </span>
                           </div>
                           <div className="flex items-baseline gap-1.5">
@@ -227,13 +226,10 @@ export default function CuscoLandingClient() {
                             <span className="text-2xl sm:text-3xl font-black text-[#0a1628] tracking-tight leading-none">
                               ${p.precioUSD}
                             </span>
-                            <span className="text-xs font-bold text-slate-500">
-                              USD
-                            </span>
                           </div>
                         </div>
                         <span className="text-[11px] font-bold text-emerald-700">
-                          Inicial ${inicialUSD} USD
+                          Inicial ${inicialUSD}
                         </span>
                       </div>
 

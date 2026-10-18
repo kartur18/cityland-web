@@ -129,9 +129,11 @@ export default async function RutaVueloPage({ params }: Props) {
                     className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-2xs"
                   >
                     <h3 className="text-sm font-extrabold text-[#0a1628] mb-2">
-                      {f.q}
+                      {f.q.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                     </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed">{f.a}</p>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      {f.a.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -152,7 +154,7 @@ export default async function RutaVueloPage({ params }: Props) {
                     href={`/vuelos/${r.slug}`}
                     className="text-xs font-semibold text-slate-700 hover:text-red-600 bg-slate-50 hover:bg-red-50 border border-slate-200/80 px-3 py-1.5 rounded-full transition-colors"
                   >
-                    Vuelos {r.origen} a {r.destino} (${r.precioDesdeUSD} USD)
+                    Vuelos {r.origen} a {r.destino} (${r.precioDesdeUSD})
                   </Link>
                 ))}
               </div>
@@ -170,7 +172,7 @@ export default async function RutaVueloPage({ params }: Props) {
                       href={`/destinos/${d.slug}`}
                       className="text-xs font-semibold text-slate-600 hover:text-[#0a1628] bg-slate-100 hover:bg-slate-200/70 px-3 py-1.5 rounded-full transition-colors"
                     >
-                      Paquete {d.ciudad} (Desde ${d.turistico} USD)
+                      Paquete {d.ciudad} (Desde ${d.turistico})
                     </Link>
                   ))}
                 </div>

@@ -381,8 +381,7 @@ export default function BuscadorCatalogoInstantaneo({
                             Desde
                           </span>
                           <span className="text-sm font-black text-white leading-tight">
-                            ${item.precioDesdeUSD}{" "}
-                            <span className="text-[10px] font-bold text-slate-300">USD</span>
+                            ${item.precioDesdeUSD}
                           </span>
                         </div>
                       </div>

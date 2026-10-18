@@ -135,9 +135,11 @@ export default async function OfertaComercialPage({ params }: Props) {
                     className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-2xs"
                   >
                     <h3 className="text-sm font-extrabold text-[#0a1628] mb-2">
-                      {f.q}
+                      {f.q.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                     </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed">{f.a}</p>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      {f.a.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -157,7 +159,7 @@ export default async function OfertaComercialPage({ params }: Props) {
                   href={`/ofertas/${r.slug}`}
                   className="text-xs font-semibold text-slate-700 hover:text-red-600 bg-slate-50 hover:bg-red-50 border border-slate-200/80 px-3 py-1.5 rounded-full transition-colors"
                 >
-                  {r.titulo} (Desde ${r.precioDesdeUSD} USD)
+                  {r.titulo} (Desde ${r.precioDesdeUSD})
                 </Link>
               ))}
             </div>

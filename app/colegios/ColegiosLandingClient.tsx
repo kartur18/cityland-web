@@ -128,7 +128,7 @@ export default function ColegiosLandingClient() {
                       <span className="text-3xl sm:text-4xl font-black text-[#0a1628] tracking-tight leading-none">
                         $399
                       </span>
-                      <span className="text-xs font-bold text-slate-500">USD por alumno</span>
+                      <span className="text-xs font-bold text-slate-500">por alumno</span>
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
                       Facilidades de pago para el salón

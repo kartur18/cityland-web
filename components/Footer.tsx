@@ -58,7 +58,7 @@ export default function Footer() {
                 🔍 Buscador Oficial (+10,000 Programas)
               </Link>
               <Link href="/espana" className="block text-slate-300 hover:text-white transition-colors">
-                Vuelos y Paquetes a España (Desde $890 USD)
+                Vuelos y Paquetes a España (Desde $890)
               </Link>
               <Link href="/europa-turquia" className="block text-slate-300 hover:text-white transition-colors">
                 Circuitos a Europa & Turquía Sin Visa

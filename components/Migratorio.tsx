@@ -29,7 +29,7 @@ export default function Migratorio() {
 
             <h2 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-5xl text-[#0a1628] tracking-tight leading-[0.96] mb-3">
               ESPECIAL ESPAÑA & EUROPA{" "}
-              <span className="text-red-600">DESDE $890 USD</span>
+              <span className="text-red-600">DESDE $890</span>
             </h2>
 
             <p className="text-sm sm:text-base text-slate-600 mb-6 max-w-xl">
