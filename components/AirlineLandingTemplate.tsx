@@ -178,6 +178,21 @@ export default function AirlineLandingTemplate({
       : itemsConImagenUnica.filter((i) => i.filtro === filtro);
 
   const precioAntesVitrina = calcularPrecioAntes(config.vitrina.precio);
+  const rutaOrigenSeo =
+    breadcrumbs && breadcrumbs.length > 0
+      ? breadcrumbs[breadcrumbs.length - 1]?.url || ""
+      : "";
+
+  function armarUrlWaConAtribucion(mensajeBase: string, seccion: string): string {
+    const limpio = mensajeBase.trim();
+    if (limpio.includes("📍 Ref Web:")) {
+      return `https://wa.me/51944103890?text=${encodeURIComponent(limpio)}`;
+    }
+    const sufijo = rutaOrigenSeo
+      ? `\n\n📍 Ref Web: citylandtravel.com${rutaOrigenSeo} [${seccion}]`
+      : `\n\n📍 Ref Web: citylandtravel.com [${seccion}]`;
+    return `https://wa.me/51944103890?text=${encodeURIComponent(`${limpio}${sufijo}`)}`;
+  }
 
   return (
     <div className="bg-white min-h-screen text-[#0a1628] antialiased">
@@ -199,7 +214,7 @@ export default function AirlineLandingTemplate({
             <span>🏢 RUC 20614914239 (Boleta y Factura SUNAT)</span>
             <span>•</span>
             <a
-              href={`https://wa.me/51944103890?text=${encodeURIComponent(config.waPrincipalMensaje)}`}
+              href={armarUrlWaConAtribucion(config.waPrincipalMensaje, "Barra Superior")}
               target="_blank"
               rel="noopener noreferrer"
               className="text-emerald-400 hover:text-emerald-300 font-bold"
@@ -267,7 +282,7 @@ export default function AirlineLandingTemplate({
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <a
-                  href={`https://wa.me/51944103890?text=${encodeURIComponent(config.waPrincipalMensaje)}`}
+                  href={armarUrlWaConAtribucion(config.waPrincipalMensaje, "Hero Principal")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-wa-pulse inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-6 py-3.5 rounded-xl font-bold text-sm shadow-md cursor-pointer"
@@ -355,7 +370,7 @@ export default function AirlineLandingTemplate({
                   </div>
 
                   <a
-                    href={`https://wa.me/51944103890?text=${encodeURIComponent(config.vitrina.waMensaje)}`}
+                    href={armarUrlWaConAtribucion(config.vitrina.waMensaje, "Vitrina Destacada")}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0 shadow-sm"
@@ -429,8 +444,8 @@ export default function AirlineLandingTemplate({
               const precioAntesItem = calcularPrecioAntes(item.precioPrincipal);
               const msg =
                 item.waMensaje ||
-                `¡Hola Cityland Travel! Vi su página web y deseo cotizar: ${item.titulo} (${item.subtitulo}) desde ${item.precioPrincipal} USD.`;
-              const waUrl = `https://wa.me/51944103890?text=${encodeURIComponent(msg)}`;
+                `¡Hola Cityland Travel! Vi su página web y deseo cotizar: ${item.titulo} (${item.subtitulo}) desde ${item.precioPrincipal}.`;
+              const waUrl = armarUrlWaConAtribucion(msg, `Tarjeta: ${item.tag || item.id}`);
 
               return (
                 <article
@@ -642,7 +657,7 @@ export default function AirlineLandingTemplate({
 
               <div className="flex flex-wrap items-center gap-3">
                 <a
-                  href={`https://wa.me/51944103890?text=${encodeURIComponent(config.bannerFinal.waMensaje)}`}
+                  href={armarUrlWaConAtribucion(config.bannerFinal.waMensaje, "Banner Final")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold cursor-pointer"
@@ -681,7 +696,7 @@ export default function AirlineLandingTemplate({
       {/* 6. Botón Flotante de WhatsApp */}
       <div className="fixed bottom-5 right-5 z-50">
         <a
-          href={`https://wa.me/51944103890?text=${encodeURIComponent(config.waFlotante.mensaje)}`}
+          href={armarUrlWaConAtribucion(config.waFlotante.mensaje, "Botón Flotante")}
           target="_blank"
           rel="noopener noreferrer"
           className="btn-wa-pulse flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-xl cursor-pointer"

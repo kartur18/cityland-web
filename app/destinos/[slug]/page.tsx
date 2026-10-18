@@ -18,6 +18,7 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import FlagIcon from "@/components/icons/FlagIcon";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { SeoSiloFooter } from "@/components/SeoSiloFooter";
+import ModuloSeguridadYCalculadoraEuropa from "@/components/ModuloSeguridadYCalculadoraEuropa";
 import {
   obtenerEnlacesCruzadosSEO,
   optimizarMetaTitleSEO,
@@ -648,6 +649,12 @@ export default async function DestinoPage({
           </aside>
         </div>
       </section>
+
+      {dest.tipo === "europa" && (
+        <ModuloSeguridadYCalculadoraEuropa
+          destinoInicial={`${dest.ciudad} (${dest.pais})`}
+        />
+      )}
 
       {/* 4. OTROS DESTINOS RECOMENDADOS */}
       <section className="py-14 bg-white border-t border-slate-200/80">

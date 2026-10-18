@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import AirlineLandingTemplate from "@/components/AirlineLandingTemplate";
+import ModuloSeguridadYCalculadoraEuropa from "@/components/ModuloSeguridadYCalculadoraEuropa";
 import { SeoSiloFooter } from "@/components/SeoSiloFooter";
 import { RUTAS_VUELOS_SEO, buscarRutaVuelo } from "@/lib/rutas-vuelos";
 import { DESTINOS_EUROPA, DESTINOS_CARIBE } from "@/components/constantes";
@@ -16,6 +17,8 @@ export const revalidate = 86400;
 export const dynamicParams = true;
 
 const TODOS_DESTINOS = [...DESTINOS_EUROPA, ...DESTINOS_CARIBE];
+const REGEX_RUTA_EUROPA =
+  /\b(espana|españa|italia|francia|paises bajos|países bajos|holanda|alemania|suiza|portugal|belgica|bélgica|reino unido|inglaterra|grecia|austria|europa|madrid|barcelona|valencia|sevilla|bilbao|malaga|málaga|zaragoza|alicante|palma|tenerife|roma|milan|milán|turin|turín|florencia|venecia|bolonia|napoles|nápoles|genova|génova|paris|parís|lyon|amsterdam|ámsterdam|lisboa|oporto|zurich|zúrich|ginebra|munich|múnich|frankfurt|berlin|berlín|bruselas|londres)\b/i;
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -90,6 +93,9 @@ export default async function RutaVueloPage({ params }: Props) {
   }).filter(Boolean);
 
   const paisDestino = ruta.config.vitrina.pais || ruta.destino;
+  const esRutaEuropa = REGEX_RUTA_EUROPA.test(
+    `${ruta.origen} ${ruta.destino} ${paisDestino} ${ruta.slug}`
+  );
 
   const enlacesCruzados = obtenerEnlacesCruzadosSEO(
     `Vuelos de ${ruta.origen} a ${ruta.destino} ${paisDestino}`,
@@ -126,6 +132,11 @@ export default async function RutaVueloPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <AirlineLandingTemplate config={ruta.config} breadcrumbs={migas}>
+        {esRutaEuropa && (
+          <ModuloSeguridadYCalculadoraEuropa
+            destinoInicial={`${ruta.destino} (${paisDestino})`}
+          />
+        )}
         {ruta.faqs.length > 0 && (
           <section className="py-12 bg-slate-50 border-t border-slate-200/80">
             <div className="max-w-5xl mx-auto px-4 sm:px-6">

@@ -2,12 +2,19 @@ import { Metadata } from "next";
 import AirlineLandingTemplate, {
   ConfiguracionLandingAerolinea,
 } from "@/components/AirlineLandingTemplate";
+import ModuloSeguridadYCalculadoraEuropa from "@/components/ModuloSeguridadYCalculadoraEuropa";
+import {
+  optimizarMetaTitleSEO,
+  optimizarMetaDescriptionSEO,
+} from "@/lib/seo-arquitectura";
+
+const rawTitle = "Circuitos a Europa y Turquía Sin Visa | Cityland Travel";
+const rawDesc =
+  "Circuitos a Europa, Turquía (Capadocia) y Dubái sin visa desde Lima: Turquía Desde $1,790, Europa 15 Días Desde $2,890 y España Desde $890. Separa con 50%.";
 
 export const metadata: Metadata = {
-  title:
-    "Tours y Circuitos a Europa, Turquía (Capadocia) y Dubái Sin Visa desde Lima | Cityland Travel",
-  description:
-    "Viaja sin visa consular desde Lima: Turquía (Estambul y Capadocia en Globo) 10 Días desde $1,790 USD, Circuito Europa Clásica 15 Días (Madrid, París, Venecia y Roma) desde $2,890 USD y Dubái + Turquía desde $2,590 USD. Separa con el 50% en Cityland Travel (RUC 20614914239).",
+  title: optimizarMetaTitleSEO(rawTitle),
+  description: optimizarMetaDescriptionSEO(rawDesc),
   keywords: [
     "tours a turquia desde lima sin visa 2026",
     "paquete estambul y capadocia desde peru precios",
@@ -22,10 +29,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://citylandtravel.com/europa-turquia",
-    title:
-      "Circuitos a Europa, Turquía (Capadocia) y Dubái Sin Visa — Cityland Travel",
-    description:
-      "Vuelos internacionales + Hoteles 4★ y 5★ + Guía en Español + Seguro Schengen 30.000€. Peruanos viajan a Europa y Turquía solo con pasaporte.",
+    title: optimizarMetaTitleSEO(rawTitle),
+    description: optimizarMetaDescriptionSEO(rawDesc),
     siteName: "Cityland Travel",
     locale: "es_PE",
     images: [
@@ -274,7 +279,9 @@ export default function EuropaTurquiaPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD_EUROPA_TURQUIA) }}
       />
-      <AirlineLandingTemplate config={CONFIG_EUROPA_TURQUIA} />
+      <AirlineLandingTemplate config={CONFIG_EUROPA_TURQUIA}>
+        <ModuloSeguridadYCalculadoraEuropa destinoInicial="Madrid, Roma, París y Estambul" />
+      </AirlineLandingTemplate>
     </>
   );
 }

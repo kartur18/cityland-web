@@ -4,6 +4,7 @@ import Link from "next/link";
 import AirlineLandingTemplate, {
   ConfiguracionLandingAerolinea,
 } from "@/components/AirlineLandingTemplate";
+import ModuloSeguridadYCalculadoraEuropa from "@/components/ModuloSeguridadYCalculadoraEuropa";
 import { SeoSiloFooter } from "@/components/SeoSiloFooter";
 import {
   VIAJES_ESPECIALIZADOS_SEO,
@@ -18,6 +19,9 @@ import {
 
 export const revalidate = 86400;
 export const dynamicParams = true;
+
+const REGEX_VIAJE_EUROPA =
+  /\b(espana|españa|italia|francia|paises bajos|países bajos|holanda|alemania|suiza|portugal|belgica|bélgica|reino unido|europa|schengen|madrid|barcelona|valencia|sevilla|bilbao|malaga|málaga|zaragoza|alicante|palma|tenerife|roma|milan|milán|turin|turín|florencia|venecia|bolonia|napoles|nápoles|paris|parís|amsterdam|ámsterdam|lisboa|zurich|zúrich|munich|múnich|iberia|air europa|plus ultra|klm|air france)\b/i;
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -284,6 +288,10 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
     ? item.imagenHero
     : `https://citylandtravel.com${item.imagenHero}`;
 
+  const esViajeEuropa = REGEX_VIAJE_EUROPA.test(
+    `${item.slug} ${item.titulo} ${item.destinoOPais} ${item.badge}`
+  );
+
   const jsonLd = construirSchemaLandingSEO({
     url: `https://citylandtravel.com/viajes/${item.slug}`,
     titulo: item.titulo,
@@ -303,6 +311,11 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <AirlineLandingTemplate config={config} breadcrumbs={migas}>
+        {esViajeEuropa && (
+          <ModuloSeguridadYCalculadoraEuropa
+            destinoInicial={item.destinoOPais}
+          />
+        )}
         <section className="py-12 bg-white border-t border-slate-200/80">
           <div className="max-w-5xl mx-auto px-4 sm:px-6">
             <div className="bg-gradient-to-br from-slate-50 via-white to-sky-50/40 rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-2xs grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">

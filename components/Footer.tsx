@@ -57,6 +57,9 @@ export default function Footer() {
               <Link href="/directorio#buscador" className="block text-amber-300 hover:text-amber-200 font-bold transition-colors">
                 🔍 Buscador Oficial (+10,000 Programas)
               </Link>
+              <Link href="/guia-europa" className="block text-sky-300 hover:text-white font-bold transition-colors">
+                🇪🇺 Guía Europa 2026 (BOE 122€ & Verificador PNR)
+              </Link>
               <Link href="/espana" className="block text-slate-300 hover:text-white transition-colors">
                 Vuelos y Paquetes a España (Desde $890)
               </Link>

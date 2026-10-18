@@ -301,4 +301,100 @@ export const BLOG_POSTS_MASIVOS: BlogPost[] = [
 4. <strong>Facilidad de pago con el 50%:</strong> Separa tus paquetes promocionales en dólares y completa el saldo antes de viajar.<br>
 5. <strong>Atención directa por WhatsApp oficial (+51 944 103 890):</strong> Un asesor real te acompaña hasta tu retorno a casa.</p>`,
   },
+  {
+    slug: "bolsa-de-viaje-espana-2026-boe-122-euros-calculo",
+    titulo: "Bolsa de viaje para España en 2026 según el BOE: Cómo acreditar los 122,10 € por día y el mínimo de 1.098,90 €",
+    desc: "Cálculo oficial de medios económicos en el Aeropuerto de Madrid-Barajas y Barcelona-El Prat según la Orden PRE/1282/2007.",
+    categoria: "Europa",
+    catColor: "bg-red-600",
+    fecha: "Actualizado 2026",
+    lectura: "5 min",
+    imagen: "/images/espana/plaza-mayor.jpg",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>¿Cuánto dinero exige acreditar España a los turistas peruanos en 2026?</h2>
+<p>Conforme a la <strong>Orden PRE/1282/2007 del Boletín Oficial del Estado (BOE)</strong> y al Salario Mínimo Interprofesional (SMI) vigente en España, todo viajero extracomunitario que ingresa por turismo o visita familiar (hasta 90 días) debe estar en condiciones de acreditar medios económicos equivalentes al 10% del SMI bruto por día.</p>
+<h3>1. Las dos reglas matemáticas oficiales en 2026:</h3>
+<p>• <strong>Monto diario por persona:</strong> <strong>122,10 €</strong> por cada día de estancia programada en España.<br>
+• <strong>Mínimo obligatorio por persona:</strong> <strong>1.098,90 €</strong> por cada viajero (equivalente al 90% del SMI vigente), incluso si tu viaje dura menos de 9 días.</p>
+<h3>2. Ejemplos prácticos de cálculo:</h3>
+<p>• <strong>Viaje de 7 o 9 días (1 persona):</strong> Se aplica el mínimo legal de <strong>1.098,90 €</strong>.<br>
+• <strong>Viaje de 15 días (1 persona):</strong> 15 días × 122,10 € = <strong>1.831,50 €</strong>.<br>
+• <strong>Viaje de 20 días (1 persona):</strong> 20 días × 122,10 € = <strong>2.442,00 €</strong>.</p>
+<h3>3. ¿Cómo se demuestra la solvencia económica en Madrid-Barajas?</h3>
+<p>Puedes acreditarla combinando efectivo en euros, tarjetas de crédito o débito internacionales habilitadas para compras en el exterior (acompañadas de extracto bancario reciente que muestre el saldo o línea disponible) o cheques certificados. Recuerda que contar con <strong>Carta de Invitación policial</strong> acredita tu alojamiento, pero <strong>no exime</strong> de demostrar esta bolsa de viaje.</p>`,
+  },
+  {
+    slug: "regla-no-show-vuelos-europa-perder-tramo-ida",
+    titulo: "Regla del No-Show en vuelos a España e Italia: Por qué no presentarte a un tramo cancela todo tu boleto",
+    desc: "Qué ocurre si pierdes tu vuelo doméstico de conexión o el primer tramo de tu pasaje internacional y cómo reprogramar a tiempo.",
+    categoria: "Seguridad",
+    catColor: "bg-slate-800",
+    fecha: "Actualizado 2026",
+    lectura: "4 min",
+    imagen: "/images/espana/barajas.jpg",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>¿Qué es la cláusula de No-Show en la aviación comercial?</h2>
+<p>En todos los boletos aéreos emitidos bajo normativa IATA (Iberia, Air Europa, Plus Ultra, LATAM, KLM y Air France), los cupones de vuelo deben utilizarse estrictamente en el orden secuencial en que fueron emitidos.</p>
+<h3>1. ¿Qué pasa si no te presentas al primer vuelo?</h3>
+<p>Si un pasajero no se presenta al embarque de su vuelo de ida (o del primer tramo desde provincias hacia Lima) sin haber solicitado un cambio al menos 24 horas antes de la salida, el sistema de la aerolínea registra un <strong>No-Show</strong> y <strong>anula automáticamente todos los tramos subsiguientes</strong>, incluyendo la conexión en Madrid y el vuelo de retorno a Perú.</p>
+<h3>2. Cómo proteger tu inversión aérea con Cityland Travel</h3>
+<p>• Si surge cualquier imprevisto médico o documental antes de tu viaje, comunícate de inmediato con nuestra Central WhatsApp (<strong>+51 944 103 890</strong>) al menos 24 a 48 horas antes del vuelo para dejar tu boleto abierto o reprogramar la fecha pagando únicamente la diferencia tarifaria o penalidad de cambio antes del cierre del vuelo.</p>`,
+  },
+  {
+    slug: "dichiarazione-di-ospitalita-italia-48-horas-questura",
+    titulo: "Dichiarazione di Ospitalità en Italia: La regla de las 48 horas ante la Questura para visitas familiares",
+    desc: "Guía legal sobre la Lettera di Invito y el registro obligatorio de alojamiento en Milán, Turín, Roma, Bolonia y Florencia.",
+    categoria: "Europa",
+    catColor: "bg-emerald-600",
+    fecha: "Actualizado 2026",
+    lectura: "5 min",
+    imagen: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=900&q=80",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>Visitar familiares en Italia desde Perú: Antes y después del vuelo</h2>
+<p>Si viajas desde el Perú para visitar a un familiar o amigo residente en Milán, Turín, Roma, Génova, Florencia o Bolonia y te alojarás en su domicilio particular, existen dos pasos documentales clave:</p>
+<h3>1. Antes de viajar desde Lima: La Dichiarazione di Alloggio / Lettera di Invito</h3>
+<p>Tu anfitrión en Italia debe completar y firmar el formulario oficial de declaración de alojamiento adjuntando copia legible de su <em>Permesso di Soggiorno</em> vigente (o <em>Carta d'Identità</em> si es ciudadano italiano) y enviártelo para que lo lleves impreso en tu carpeta de mano junto con tu boleto de ida y vuelta y tu Seguro Schengen de 30.000€.</p>
+<h3>2. Dentro de las 48 horas de llegar a Italia: Registro en la Questura</h3>
+<p>De acuerdo con el <strong>Artículo 7 del Decreto Legislativo 286/1998</strong> de la República Italiana, toda persona que brinde alojamiento a un ciudadano extracomunitario debe presentar la <strong>Dichiarazione di Ospitalità</strong> ante la <em>Questura</em> (Comisaría Central) o <em>Commissariato di Pubblica Sicurezza</em> de su municipio dentro de las <strong>48 horas posteriores a la llegada</strong> del visitante.</p>`,
+  },
+  {
+    slug: "guia-conexion-madrid-barajas-t4-t4s-t1-peruanos",
+    titulo: "Guía de conexión en el Aeropuerto de Madrid-Barajas (T4S, T4 y T1) hacia Barcelona, Roma o Milán",
+    desc: "Cómo usar el tren subterráneo automático entre T4S y T4, dónde pasas migraciones Schengen y dónde recoges tus maletas.",
+    categoria: "Europa",
+    catColor: "bg-blue-600",
+    fecha: "Actualizado 2026",
+    lectura: "5 min",
+    imagen: "/images/espana/cibeles.jpg",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>Paso a paso para conectar en Madrid-Barajas sin perder tu vuelo</h2>
+<p>El Aeropuerto Adolfo Suárez Madrid-Barajas (MAD) es la principal puerta de entrada de los viajeros peruanos a Europa. Saber en qué terminal aterrizas y dónde realizas el control migratorio te ahorrará estrés:</p>
+<h3>1. Si vuelas con Iberia o LATAM (Terminales T4S y T4)</h3>
+<p>Los vuelos intercontinentales procedentes de Lima aterrizan en el <strong>Edificio Satélite T4S</strong>. Al bajar del avión, pasarás el control de pasaportes y registro biométrico <strong>EES</strong> de la Policía Nacional en la misma T4S y luego tomarás el <strong>tren subterráneo automático gratuito (APM)</strong> que en solo 4 minutos te lleva al edificio principal de la <strong>Terminal 4 (T4)</strong>, desde donde salen los vuelos hacia Barcelona, Bilbao, Valencia, Roma, Milán o París.</p>
+<h3>2. Si vuelas con Air Europa o Plus Ultra (Terminales T1 y T2)</h3>
+<p>Los vuelos procedentes de Lima llegan a la <strong>Terminal 1 (T1)</strong>. Si tienes conexión doméstica o europea hacia otra ciudad Schengen con Air Europa, una vez pasado el control de pasaportes en T1 caminarás por el pasillo interno señalizado hacia la <strong>Terminal 2 (T2)</strong> (aproximadamente 8 a 10 minutos a pie).</p>
+<h3>3. ¿Dónde se recogen las maletas de 23 kg?</h3>
+<p>Si compraste tu viaje en un <strong>único código PNR</strong> (por ejemplo, Lima – Madrid – Milán con Iberia), tu equipaje de bodega va etiquetado hasta el aeropuerto final (Milán), por lo que en Madrid solo pasas control de pasaportes y embarcas en tu segundo vuelo.</p>`,
+  },
+  {
+    slug: "comprar-pasaje-solo-ida-espana-italia-quienes-pueden",
+    titulo: "¿Quiénes pueden viajar a España o Italia con pasaje de Solo Ida (One-Way) y quiénes necesitan Ida y Vuelta?",
+    desc: "Normativa IATA Timatic sobre boletos de solo ida para titulares de Visado Tipo D (RD 1155/2024 / Decreto Flussi), TIE y turistas.",
+    categoria: "Requisitos",
+    catColor: "bg-indigo-600",
+    fecha: "Actualizado 2026",
+    lectura: "4 min",
+    imagen: "/images/espana/palacio-real.jpg",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>La diferencia legal entre viajar sin visa y viajar con Visado Nacional Tipo D o residencia</h2>
+<p>Antes de emitir un boleto aéreo hacia Europa, las aerolíneas en el Aeropuerto Jorge Chávez verifican tu condición documental en el sistema internacional <strong>IATA Timatic</strong>:</p>
+<h3>1. Pasajeros que OBLIGATORIAMENTE requieren boleto de Ida y Vuelta</h3>
+<p>Todo ciudadano peruano que viaja acogido a la exención de visa de corta duración (turismo, visita familiar con Carta de Invitación o negocios por menos de 90 días) está obligado a presentar un <strong>boleto de retorno confirmado o de continuación de viaje</strong> fuera del Espacio Schengen dentro del plazo máximo de 90 días.</p>
+<h3>2. Pasajeros AUTORIZADOS a embarcar con boleto de Solo Ida (One-Way)</h3>
+<p>Solo pueden viajar desde Lima hacia España o Italia con pasaje de solo ida quienes presenten en el mostrador de la aerolínea alguno de los siguientes documentos vigentes:<br>
+• <strong>Pasaporte de un país miembro de la Unión Europea / Espacio Schengen.</strong><br>
+• <strong>Tarjeta de Residencia vigente:</strong> TIE en España o <em>Permesso di Soggiorno</em> en Italia.<br>
+• <strong>Visado Nacional de Larga Duración Tipo D</strong> estampado en el pasaporte peruano (por estudios superiores bajo el RD 1155/2024, reagrupación familiar o autorización de trabajo <em>Decreto Flussi / Nulla Osta</em>).</p>`,
+  },
 ];
+

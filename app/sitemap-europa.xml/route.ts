@@ -13,6 +13,7 @@ const REGEX_EUROPA =
 
 export async function GET() {
   const urls: { loc: string; priority: string }[] = [
+    { loc: `${URL_BASE_SEO}/guia-europa`, priority: "1.00" },
     { loc: `${URL_BASE_SEO}/espana`, priority: "0.99" },
     { loc: `${URL_BASE_SEO}/europa-turquia`, priority: "0.98" },
     { loc: `${URL_BASE_SEO}/seguros`, priority: "0.96" },

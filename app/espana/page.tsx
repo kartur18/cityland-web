@@ -1,20 +1,27 @@
 import { Metadata } from "next";
 import EspanaLandingClient from "./EspanaLandingClient";
+import {
+  optimizarMetaTitleSEO,
+  optimizarMetaDescriptionSEO,
+} from "@/lib/seo-arquitectura";
+
+const rawTitle = "Paquetes y Vuelos a España Desde $890 | Cityland Travel";
+const rawDesc =
+  "Paquetes y vuelos a España desde Lima (Desde $890): boleto aéreo, Seguro Schengen 30.000€, hotel o Carta de Invitación y calculadora BOE (122,10 €/día).";
 
 export const metadata: Metadata = {
-  title:
-    "Paquetes Migratorios a España desde $890 USD | Vuelos, Seguro Schengen y Asesoría Barajas — Cityland Travel",
-  description:
-    "Paquetes migratorios completos a España desde Lima con Cityland Travel (RUC 20614914239 · Los Olivos). Boleto aéreo confirmado, seguro Schengen 30.000€, reserva de hotel y asesoría 1 a 1 para pasar control migratorio en Barajas desde $890 USD. Separa con 50% de inicial.",
+  title: optimizarMetaTitleSEO(rawTitle),
+  description: optimizarMetaDescriptionSEO(rawDesc),
   keywords: [
     "paquetes migratorios a espana desde lima",
     "viajar a espana desde peru 2026",
     "paquete migratorio espana precio dolares",
     "requisitos para viajar a espana peruanos 2026",
+    "bolsa de viaje espana 2026 boe 122 euros",
+    "carta de invitacion espana vuelos",
     "seguro schengen 30000 euros lima peru",
-    "vuelos lima madrid con equipaje",
+    "vuelos lima madrid con 2 maletas",
     "asesoria migratoria barajas madrid peru",
-    "agencia de viajes en los olivos espana",
     "cityland travel espana",
   ],
   alternates: {
@@ -23,9 +30,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://citylandtravel.com/espana",
-    title: "Paquetes Migratorios a España desde $890 USD — Cityland Travel",
-    description:
-      "Tu viaje a España con carpeta completa desde Lima: Noviembre (Desde $890 USD), Diciembre (Desde $1,090 USD), Enero (Desde $1,050 USD) y Primavera (Desde $899 USD). Separa con el 50% de inicial.",
+    title: optimizarMetaTitleSEO(rawTitle),
+    description: optimizarMetaDescriptionSEO(rawDesc),
     siteName: "Cityland Travel",
     locale: "es_PE",
     images: [
@@ -33,15 +39,14 @@ export const metadata: Metadata = {
         url: "https://citylandtravel.com/images/espana/plaza-mayor.jpg",
         width: 1200,
         height: 630,
-        alt: "Paquetes Migratorios a España desde Lima - Cityland Travel",
+        alt: "Paquetes y Vuelos a España desde Lima - Cityland Travel",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Paquetes Migratorios a España desde $890 USD — Cityland Travel",
-    description:
-      "Vuelos confirmados, seguro Schengen 30.000€, reserva de hotel y asesoría migratoria en Lima. Separa con 50%.",
+    title: optimizarMetaTitleSEO(rawTitle),
+    description: optimizarMetaDescriptionSEO(rawDesc),
     images: ["https://citylandtravel.com/images/espana/plaza-mayor.jpg"],
   },
   other: {

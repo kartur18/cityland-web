@@ -61,12 +61,22 @@ export function SeoSiloFooter({
               {enlaces.pilar.subtitulo}
             </p>
           </div>
-          <Link
-            href={enlaces.pilar.href}
-            className="inline-flex items-center justify-center shrink-0 bg-[#0a1628] hover:bg-red-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-colors"
-          >
-            Explorar Guía Principal →
-          </Link>
+          <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+            {(enlaces.pilar.href === "/espana" || enlaces.pilar.href === "/europa-turquia") && (
+              <Link
+                href="/guia-europa"
+                className="inline-flex items-center justify-center bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 text-xs font-extrabold px-4 py-2.5 rounded-xl transition-colors"
+              >
+                Calculadora BOE & PNR →
+              </Link>
+            )}
+            <Link
+              href={enlaces.pilar.href}
+              className="inline-flex items-center justify-center bg-[#0a1628] hover:bg-red-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-colors"
+            >
+              Explorar Guía Principal →
+            </Link>
+          </div>
         </div>
 
         {/* Malla de 4 Columnas de Silos */}

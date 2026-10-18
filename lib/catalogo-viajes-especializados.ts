@@ -169,11 +169,11 @@ const GRUPOS_Y_SEGUROS: [string, string, string, number, string][] = [
 ];
 
 const PAISES_REQUISITOS: [string, string, string, number, string][] = [
-  ["España", "requisitos-viajar-a-espana-desde-peru", "Madrid / Barcelona", 890, "Pasaporte vigente (mínimo 3 meses tras retorno), boleto ida y vuelta dentro de 90 días, Seguro Schengen 30.000€ sin deducible, reserva de hotel pagada o Carta de Invitación policial y solvencia económica (bolsa de viaje)."],
-  ["Italia", "requisitos-viajar-a-italia-desde-peru", "Roma / Milán", 950, "Pasaporte peruano vigente, pasaje de ida y vuelta no mayor a 90 días, Seguro Schengen de 30.000€, reserva de hotel confirmada o Dichiarazione di Ospitalità / Lettera di Invito y medios económicos."],
-  ["Francia", "requisitos-viajar-a-francia-desde-peru", "París / Lyon", 960, "Pasaporte peruano vigente, boleto aéreo de retorno confirmado, Seguro Schengen 30.000€, reserva de alojamiento o Attestation d'accueil y sustento económico diario."],
-  ["Alemania", "requisitos-viajar-a-alemania-desde-peru", "Frankfurt / Múnich / Berlín", 960, "Pasaporte vigente, boleto de regreso dentro de los 90 días Schengen, seguro médico europeo de 30.000€ y reserva de hotel o carta de compromiso formal."],
-  ["Países Bajos (Holanda)", "requisitos-viajar-a-paises-bajos-desde-peru", "Ámsterdam", 950, "Pasaporte vigente, vuelo directo o con conexión ida y vuelta, Seguro Schengen 30.000€, reserva hotelera verificable y solvencia por día de estancia."],
+  ["España", "requisitos-viajar-a-espana-desde-peru", "Madrid / Barcelona", 890, "Pasaporte vigente (mínimo 3 meses tras retorno), boleto ida y vuelta dentro de 90 días con E-Ticket IATA de 13 dígitos, Seguro Schengen 30.000€ sin deducible, reserva de hotel pagada o Carta de Invitación policial original, registro biométrico EES en aeropuerto y solvencia económica BOE 2026 (122,10 € por persona/día, con mínimo obligatorio de 1.098,90 € por persona según Orden PRE/1282/2007)."],
+  ["Italia", "requisitos-viajar-a-italia-desde-peru", "Roma / Milán / Turín", 950, "Pasaporte peruano vigente, pasaje de ida y vuelta no mayor a 90 días, Seguro Schengen de 30.000€ sin franquicia, reserva de hotel confirmada o Lettera di Invito (recordando que el anfitrión debe registrar la Dichiarazione di Ospitalità en la Questura local dentro de las 48 horas según Art. 7 D.Lgs. 286/1998) y medios económicos."],
+  ["Francia", "requisitos-viajar-a-francia-desde-peru", "París / Lyon", 960, "Pasaporte peruano vigente, boleto aéreo de retorno confirmado, Seguro Schengen 30.000€, reserva de alojamiento o Attestation d'accueil tramitada en el ayuntamiento francés y sustento económico diario."],
+  ["Alemania", "requisitos-viajar-a-alemania-desde-peru", "Frankfurt / Múnich / Berlín", 960, "Pasaporte vigente, boleto de regreso dentro de los 90 días Schengen, seguro médico europeo de 30.000€ y reserva de hotel o carta de compromiso formal (Verpflichtungserklärung)."],
+  ["Países Bajos (Holanda)", "requisitos-viajar-a-paises-bajos-desde-peru", "Ámsterdam", 950, "Pasaporte vigente, vuelo directo KLM o con conexión ida y vuelta, Seguro Schengen 30.000€, reserva hotelera verificable y solvencia por día de estancia."],
   ["Suiza", "requisitos-viajar-a-suiza-desde-peru", "Zúrich / Ginebra", 990, "Como parte del Espacio Schengen, los peruanos ingresan sin visa hasta 90 días con pasaporte vigente, boleto redondo, Seguro Schengen y reserva de alojamiento."],
   ["Portugal", "requisitos-viajar-a-portugal-desde-peru", "Lisboa / Oporto", 940, "Pasaporte peruano vigente, boleto aéreo ida y vuelta, Seguro médico Schengen de 30.000€, reserva de hotel o termo de responsabilidade y bolsa de viaje."],
   ["Reino Unido (Inglaterra)", "requisitos-viajar-a-reino-unido-desde-peru", "Londres", 995, "Los peruanos gestionan la Autorización Electrónica de Viaje (UK ETA) con pasaporte vigente, vuelo de retorno confirmado y reserva de alojamiento."],
@@ -198,7 +198,13 @@ const PAISES_REQUISITOS: [string, string, string, number, string][] = [
   ["Bolivia (La Paz, Santa Cruz y Salar de Uyuni)", "requisitos-viajar-a-bolivia-solo-dni", "Santa Cruz / La Paz / Uyuni", 335, "VIAJA SOLO CON TU DNI PERUANO VIGENTE (o pasaporte) sin visa como ciudadano de la Comunidad Andina."],
   ["Ecuador (Quito, Guayaquil y Galápagos)", "requisitos-viajar-a-ecuador-solo-dni", "Quito / Guayaquil / Galápagos", 320, "VIAJA SOLO CON TU DNI PERUANO VIGENTE (o pasaporte) sin visa. Para Galápagos se adiciona la tarjeta de control de tránsito TCT en aeropuerto."],
   ["Viajar con Menores de Edad desde Perú", "requisitos-viajar-con-menores-de-edad-peru", "Rutas Nacionales e Internacionales", 299, "Para vuelos dentro del Perú basta que el menor viaje con al menos uno de sus padres (con DNI vigente). Para vuelos internacionales, si viaja con uno solo de los padres o con un tercero, es obligatorio el Permiso Notarial de Viaje al Exterior (o judicial/consular)."],
-  ["Carta de Invitación para España desde Perú", "requisitos-carta-de-invitacion-espana-peru", "Madrid, Barcelona y toda España", 890, "Si te hospedarás en casa de un familiar o amigo residente legal en España, el anfitrión debe tramitar la Carta de Invitación original en la Comisaría de Policía de su localidad y enviártela en físico a Lima antes de tu vuelo, junto con tu boleto de retorno y Seguro Schengen 30.000€."],
+  ["Carta de Invitación para España desde Perú", "requisitos-carta-de-invitacion-espana-peru", "Madrid, Barcelona y toda España", 890, "Si te hospedarás en casa de un familiar o amigo residente legal en España, tu anfitrión debe tramitar la Carta de Invitación original en la Comisaría de Policía Nacional y enviártela en físico a Perú. En Cityland Travel te cotizamos SOLO Vuelo Ida y Vuelta + Seguro Schengen 30.000€ (sin hacerte pagar hotel), recordando que la Carta NO exime de demostrar la bolsa de viaje BOE (mínimo 1.098,90 €)."],
+  ["Visado de Estudios en España (RD 1155/2024)", "vuelos-estudiantes-espana-visado-rd-1155-2024", "Madrid, Barcelona, Valencia y Sevilla", 890, "Atención especializada bajo el nuevo Reglamento de Extranjería de España (Real Decreto 1155/2024): emitimos pre-reserva aérea para tu cita consular, seguro médico anual sin copagos ni carencias y boleto definitivo (Solo Ida o Ida y Vuelta) con franquicia de 2 maletas de 23 kg."],
+  ["Reagrupación Familiar a España e Italia", "vuelos-reagrupacion-familiar-espana-italia", "Madrid, Barcelona, Milán, Roma y Turín", 895, "Si viajas con Visado Nacional Tipo D de Reagrupación Familiar (RD 1155/2024 en España o Ricongiungimento Familiare en Italia), estás autorizado a volar con pasaje de Solo Ida (One-Way). Emitimos tu boleto con 2 maletas de 23 kg y asistencia completa para tu familia."],
+  ["Visado de Trabajo en Italia (Decreto Flussi / Nulla Osta)", "vuelos-decreto-flussi-italia-nulla-osta-peru", "Milán, Roma, Turín, Bolonia y Florencia", 950, "Para trabajadores peruanos que cuentan con autorización Nulla Osta al lavoro (Sportello Unico per l'Immigrazione) y Visado Tipo D emitido por la Embajada de Italia en Lima: emitimos tu boleto aéreo hacia Italia con 2 maletas de 23 kg y conexión protegida vía Madrid, Ámsterdam o París."],
+  ["Comprar Pasajes desde España o Italia para Familiares en Perú", "comprar-pasajes-desde-espana-italia-para-familiares-peru", "Emisión para Padres, Hijos y Cónyuges", 890, "Servicio especial para residentes peruanos en Madrid, Barcelona, Milán, Turín y Roma que desean comprar de forma segura el pasaje o paquete para sus padres, hijos o pareja en Perú. Entregamos la carpeta física en nuestra oficina de Los Olivos o por courier a cualquier provincia."],
+  ["Vuelos a Europa para Adulto Mayor con Silla de Ruedas (SSR WCHR)", "vuelos-adulto-mayor-silla-de-ruedas-lima-madrid-roma", "Madrid, Barcelona, Roma y Milán", 890, "Gestionamos sin costo adicional el servicio oficial de asistencia de Silla de Ruedas (código IATA SSR WCHR / WCHS) en Iberia, Air Europa, Plus Ultra, LATAM y KLM para que tus padres o abuelos viajen acompañados desde el mostrador en Lima hasta la entrega de equipaje en Europa."],
+  ["Sistema Biométrico EES 2026 y ETIAS para Peruanos", "sistema-ees-etias-europa-requisitos-peruanos", "Espacio Schengen (29 países)", 890, "Guía oficial verificada en travel-europe.europa.eu: el Sistema de Entradas y Salidas (EES) está operativo desde el 10 de abril de 2026 (registro biométrico gratuito en frontera). En cambio, la autorización ETIAS AÚN NO ESTÁ EN VIGOR en 2026; evita páginas no oficiales que cobran por trámites inexistentes."],
 ];
 
 function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
@@ -207,19 +213,26 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
   // A. 35 páginas de Primer Viaje / Carpeta Migratoria
   for (const [ciudad, slugCiudad, pais, precio] of CIUDADES_PRIMER_VIAJE) {
     const fotos = obtenerFotosPorTexto(`${slugCiudad} ${ciudad} ${pais}`);
+    const notaPaisEspecifica =
+      pais === "España"
+        ? `Incluye orientación sobre la solvencia económica oficial BOE 2026 (122,10 € por persona/día, mínimo 1.098,90 €) y el control biométrico EES en ${ciudad}.`
+        : pais === "Italia"
+        ? `Incluye orientación sobre reserva hotelera verificada o Lettera di Invito y la regla de las 48 horas de Dichiarazione di Ospitalità ante la Questura en ${ciudad}.`
+        : `Incluye orientación sobre solvencia económica, Seguro Schengen de 30.000€ y registro biométrico EES 2026 para tu ingreso por ${ciudad}.`;
+
     lista.push({
       slug: `primer-viaje-a-${slugCiudad}`,
       categoria: "primer-viaje",
       badge: `Paquetes y Vuelos · ${pais}`,
       titulo: `Paquete y Vuelos a ${ciudad}, ${pais} desde Lima`,
-      subtitulo: `Vuelo confirmado + Reserva de Hotel verificable + Seguro Schengen 30.000€ + Preparación de Documentos`,
+      subtitulo: `Vuelo confirmado (PNR + E-Ticket IATA 13 dígitos) + Hotel verificable o Carta de Invitación + Seguro Schengen 30.000€`,
       destinoOPais: `${ciudad}, ${pais}`,
       precioDesdeUSD: precio,
       etiquetaPrecio: "Paquete con Carpeta Completa Desde",
       imagenHero: fotos[0],
       galeria: [fotos[1], fotos[2], fotos[3], fotos[4]],
-      metaTitle: `Primer Viaje a ${ciudad}, ${pais} Desde $${precio} USD (Carpeta Completa) | Cityland Travel`,
-      metaDescription: `Viaja por primera vez de Lima a ${ciudad} (${pais}) con todo en regla Desde $${precio} USD (impuestos incluidos). Incluye boleto aéreo, reserva de hotel verificada, Seguro Schengen 30.000€ y asesoría paso a paso en Lima (RUC 20614914239).`,
+      metaTitle: `Primer Viaje a ${ciudad}, ${pais} Desde $${precio} | Cityland Travel`,
+      metaDescription: `Viaja de Lima a ${ciudad} (${pais}) Desde $${precio}: boleto aéreo PNR, hotel o Carta de Invitación, Seguro Schengen 30.000€ y guía migratoria 2026.`,
       keywords: [
         `primer viaje a ${ciudad.toLowerCase()} desde peru`,
         `paquete migratorio a ${ciudad.toLowerCase()}`,
@@ -227,30 +240,30 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
         `vuelos lima ${ciudad.toLowerCase()} carpeta migratoria`,
         "cityland travel",
       ],
-      resumenEjecutivo: `Si es tu primer viaje desde Perú hacia ${ciudad} (${pais}), en Cityland Travel preparamos tu expediente completo de viaje para que pases el control migratorio europeo con total tranquilidad y respaldo documental verificable.`,
+      resumenEjecutivo: `Si es tu primer viaje desde Perú hacia ${ciudad} (${pais}), en Cityland Travel preparamos tu expediente completo según tu modalidad legal (Turismo con Hotel, Visita Familiar con Carta de Invitación o Titular de Visado Tipo D). ${notaPaisEspecifica}`,
       incluye: [
-        `Boleto aéreo Lima – ${ciudad} con código PNR verificable e impuestos incluidos`,
-        `Reserva de alojamiento verificada en ${ciudad} o validación de Carta de Invitación`,
-        "Póliza oficial de Seguro Médico Schengen por 30.000€ sin deducible",
-        "Equipaje de mano 10 kg + opción de maleta de 23 kg en bodega",
-        "Asesoría personalizada sobre bolsa de viaje y control migratorio en aeropuerto",
+        `Boleto aéreo Lima – ${ciudad} con código PNR y E-Ticket IATA de 13 dígitos (impuestos incluidos)`,
+        `Reserva de alojamiento verificada en ${ciudad} (o descuento si ya cuentas con Carta de Invitación / Ospitalità)`,
+        "Póliza oficial de Seguro Médico Schengen por 30.000€ sin deducible ni copago",
+        "Equipaje de mano 10 kg + opciones con 1 o 2 maletas de 23 kg en bodega",
+        `Asesoría 1 a 1 sobre bolsa de viaje y sistema biométrico EES 2026 para ${ciudad}`,
       ],
       beneficiosClave: [
-        { titulo: "Documentación 100% Verificable", desc: `Entregamos tu carpeta impresa y digital con reservas activas en sistema para tu llegada a ${ciudad}.` },
+        { titulo: "Documentación 100% Verificable", desc: `Entregamos tu carpeta impresa y digital con PNR y boleto de 13 dígitos activos para tu llegada a ${ciudad}.` },
         { titulo: "Seguro Schengen Oficial 30.000€", desc: "Cumple con la normativa europea de asistencia médica sin franquicia ni copagos." },
         { titulo: "Oficina Física en Los Olivos, Lima", desc: "Atención presencial en Av. Antúnez de Mayolo 814 (RUC 20614914239) y Central WhatsApp +51 944 103 890." },
       ],
       faqs: [
         {
-          q: `¿Qué documentos incluye el paquete de primer viaje a ${ciudad}?`,
-          a: `Incluye tu boleto aéreo confirmado hacia ${ciudad} (${pais}), póliza de Seguro Schengen de 30.000€, reserva hotelera verificable (si no cuentas con carta de invitación) e itinerario detallado.`,
+          q: `¿Qué documentos incluye el paquete de primer viaje a ${ciudad} (${pais})?`,
+          a: `Incluye tu boleto aéreo confirmado hacia ${ciudad} con número de E-Ticket IATA de 13 dígitos, póliza de Seguro Schengen de 30.000€ sin deducible, reserva hotelera verificable (o ajuste sin hotel si viajas con Carta de Invitación) y orientación migratoria personalizada.`,
         },
         {
-          q: `¿El precio Desde $${precio} USD incluye impuestos?`,
-          a: `Sí. Todas nuestras tarifas están expresadas en dólares americanos (USD) con impuestos aeroportuarios y cargos obligatorios incluidos. Puedes separar con el 50% de inicial.`,
+          q: `¿El precio Desde $${precio} incluye impuestos y se puede separar con el 50%?`,
+          a: `Sí. Todas nuestras tarifas están expresadas en dólares americanos con impuestos aeroportuarios incluidos y puedes congelar tu cupo con el 50% de inicial.`,
         },
       ],
-      waMensaje: `¡Hola Cityland Travel! Quiero cotizar mi Primer Viaje a ${ciudad} (${pais}) Desde $${precio} USD con carpeta completa. ¿Me pueden asesorar?`,
+      waMensaje: `¡Hola Cityland Travel! Quiero cotizar mi Primer Viaje a ${ciudad} (${pais}) Desde $${precio} con carpeta completa. ¿Me pueden asesorar?\n\n📍 Ref Web: citylandtravel.com/viajes/primer-viaje-a-${slugCiudad}`,
     });
   }
 
@@ -400,19 +413,35 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
     });
   }
 
-  // E. 30 páginas de Requisitos Migratorios y Documentación por País
+  // E. Páginas de Requisitos Migratorios y Modalidades Especializadas por País
+  const TITULOS_ESPECIALES_REQ: Record<string, string> = {
+    "requisitos-viajar-con-menores-de-edad-peru":
+      "Viajes con Menores de Edad desde Perú: Requisitos y Boletos",
+    "requisitos-carta-de-invitacion-espana-peru":
+      "Viajar a España con Carta de Invitación: Requisitos y Vuelos",
+    "vuelos-estudiantes-espana-visado-rd-1155-2024":
+      "Vuelos y Seguro para Visado de Estudios en España (RD 1155/2024)",
+    "vuelos-reagrupacion-familiar-espana-italia":
+      "Vuelos para Reagrupación Familiar en España e Italia (Solo Ida / 2 Maletas)",
+    "vuelos-decreto-flussi-italia-nulla-osta-peru":
+      "Vuelos a Italia con Visado de Trabajo (Decreto Flussi / Nulla Osta)",
+    "comprar-pasajes-desde-espana-italia-para-familiares-peru":
+      "Comprar Pasajes desde España o Italia para Familiares en Perú",
+    "vuelos-adulto-mayor-silla-de-ruedas-lima-madrid-roma":
+      "Vuelos a Europa para Adulto Mayor con Silla de Ruedas (SSR WCHR)",
+    "sistema-ees-etias-europa-requisitos-peruanos":
+      "Sistema Biométrico EES 2026 y Estado de ETIAS para Viajeros Peruanos",
+  };
+
   for (const [pais, slugReq, ciudadesRef, precio, detalleReq] of PAISES_REQUISITOS) {
     const fotos = obtenerFotosPorTexto(`${slugReq} ${pais}`);
-    const esGuiaEspecial = slugReq === "requisitos-viajar-con-menores-de-edad-peru" || slugReq === "requisitos-carta-de-invitacion-espana-peru";
+    const esGuiaEspecial = Boolean(TITULOS_ESPECIALES_REQ[slugReq]);
     const tituloFinal =
-      slugReq === "requisitos-viajar-con-menores-de-edad-peru"
-        ? "Viajes con Menores de Edad desde Perú: Requisitos y Boletos"
-        : slugReq === "requisitos-carta-de-invitacion-espana-peru"
-        ? "Viajar a España con Carta de Invitación: Requisitos y Vuelos"
-        : `Requisitos y Paquetes para Viajar a ${pais} desde Perú`;
+      TITULOS_ESPECIALES_REQ[slugReq] ||
+      `Requisitos y Paquetes para Viajar a ${pais} desde Perú`;
 
     const subtituloFinal = esGuiaEspecial
-      ? `Guía práctica para pasajeros peruanos (${ciudadesRef}) con emisión de boletos y asesoría documental incluida`
+      ? `Guía oficial y emisión verificada para pasajeros peruanos (${ciudadesRef}) con código PNR y E-Ticket IATA`
       : `Todo lo que solicita migraciones en ${ciudadesRef} para ciudadanos peruanos + cotización de vuelos y paquetes desde $${precio}`;
 
     lista.push({
@@ -427,7 +456,7 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
       imagenHero: fotos[0],
       galeria: [fotos[1], fotos[2], fotos[3], fotos[4]],
       metaTitle: `${tituloFinal} | Cityland Travel`,
-      metaDescription: `Conoce los requisitos vigentes para ${pais} (${ciudadesRef}): documentos, pasaporte, seguro y solvencia. Cotiza tu vuelo o paquete Desde $${precio} USD con asesoría incluida en Cityland Travel.`,
+      metaDescription: `Guía actualizada para ${pais} (${ciudadesRef}): documentos, seguro Schengen, solvencia BOE y cotización Desde $${precio} en Cityland Travel.`,
       keywords: [
         `requisitos para viajar a ${pais.toLowerCase()} desde peru`,
         `documentos para entrar a ${pais.toLowerCase()}`,

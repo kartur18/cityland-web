@@ -57,6 +57,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: BASE, lastModified: now, changeFrequency: "daily", priority: 1 },
+    { url: `${BASE}/guia-europa`, lastModified: now, changeFrequency: "daily", priority: 0.99 },
     { url: `${BASE}/directorio`, lastModified: now, changeFrequency: "daily", priority: 0.99 },
     { url: `${BASE}/blog`, lastModified: now, changeFrequency: "daily", priority: 0.98 },
     { url: `${BASE}/destinos`, lastModified: now, changeFrequency: "daily", priority: 0.98 },
