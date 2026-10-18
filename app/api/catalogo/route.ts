@@ -5,6 +5,7 @@ import { RUTAS_VUELOS_SEO } from "@/lib/rutas-vuelos";
 import { VIAJES_ESPECIALIZADOS_SEO } from "@/lib/catalogo-viajes-especializados";
 import { AGENCIAS_LOCALES_SEO } from "@/lib/catalogo-agencias-locales";
 import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-comerciales";
+import { INDICE_MADRID_10K } from "@/lib/catalogo-madrid-10k";
 import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
 
 export interface ItemBuscadorCatalogo {
@@ -32,6 +33,25 @@ function obtenerIndiceUnificado(): ItemBuscadorCatalogo[] {
   if (INDICE_CACHE) return INDICE_CACHE;
 
   const lista: ItemBuscadorCatalogo[] = [];
+
+  for (let i = 0; i < INDICE_MADRID_10K.length; i++) {
+    const m = INDICE_MADRID_10K[i];
+    const url = `/madrid/${m.slug}`;
+    const galeria = obtenerGaleriaPorTexto(`madrid espana ${m.zonaOMunicipio}`);
+    lista.push({
+      slug: `madrid-${m.slug}`,
+      url,
+      titulo: m.titulo,
+      destinoOPais: "España",
+      cluster: "mundiales",
+      clusterNombre: m.siloNombre,
+      precioDesdeUSD: m.precioDesdeUSD,
+      img: galeria[i % 3] || galeria[0],
+      searchNorm: normalizarTexto(
+        `${m.titulo} ${m.zonaOMunicipio} ${m.modalidad} ${m.siloNombre} madrid espana ${m.slug.replace(/-/g, " ")}`
+      ),
+    });
+  }
 
   for (let i = 0; i < TODOS_LOS_RESUMENES_OFERTAS_SEO.length; i++) {
     const o = TODOS_LOS_RESUMENES_OFERTAS_SEO[i];

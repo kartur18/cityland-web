@@ -239,7 +239,7 @@ export default function OfertasIndexPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 space-y-12">
         <BuscadorCatalogoInstantaneo
           itemsIniciales={iniciales}
-          totalInicial={20016}
+          totalInicial={30017}
         />
 
         <section className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-xs">
@@ -256,7 +256,7 @@ export default function OfertasIndexPage() {
               href="/directorio"
               className="text-xs font-extrabold text-red-600 hover:underline"
             >
-              Ver directorio completo de +20,000 páginas →
+              Ver directorio completo de +30,000 páginas →
             </Link>
           </div>
 

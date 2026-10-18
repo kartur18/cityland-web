@@ -6,12 +6,20 @@ import { VIAJES_ESPECIALIZADOS_SEO } from "@/lib/catalogo-viajes-especializados"
 import { AGENCIAS_LOCALES_SEO } from "@/lib/catalogo-agencias-locales";
 import { BLOG_POSTS_MASIVOS } from "@/lib/catalogo-blog-masivo";
 import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-comerciales";
+import { INDICE_MADRID_10K } from "@/lib/catalogo-madrid-10k";
 
 const BASE = "https://citylandtravel.com";
-const FECHA_SITEMAP = new Date("2026-10-18T18:30:00.000Z");
+const FECHA_SITEMAP = new Date("2026-10-18T19:00:00.000Z");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = FECHA_SITEMAP;
+
+  const madridEspecializado = INDICE_MADRID_10K.map((m) => ({
+    url: `${BASE}/madrid/${m.slug}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.94,
+  }));
 
   const ofertasComerciales = TODOS_LOS_RESUMENES_OFERTAS_SEO.map((o) => ({
     url: `${BASE}/ofertas/${o.slug}`,
@@ -66,6 +74,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/viajes`, lastModified: now, changeFrequency: "daily", priority: 0.98 },
     { url: `${BASE}/agencia`, lastModified: now, changeFrequency: "daily", priority: 0.97 },
     { url: `${BASE}/espana`, lastModified: now, changeFrequency: "daily", priority: 0.99 },
+    { url: `${BASE}/madrid`, lastModified: now, changeFrequency: "daily", priority: 0.99 },
     { url: `${BASE}/italia`, lastModified: now, changeFrequency: "daily", priority: 0.99 },
     { url: `${BASE}/caribe`, lastModified: now, changeFrequency: "daily", priority: 0.98 },
     { url: `${BASE}/visas`, lastModified: now, changeFrequency: "daily", priority: 0.97 },
@@ -91,6 +100,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/agencia-de-viajes-surco`, lastModified: now, changeFrequency: "weekly", priority: 0.94 },
     { url: `${BASE}/agencia-de-viajes-san-martin-de-porres`, lastModified: now, changeFrequency: "weekly", priority: 0.94 },
     { url: `${BASE}/paquetes/panama-medellin`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    ...madridEspecializado,
     ...ofertasComerciales,
     ...rutasVuelos,
     ...destinos,
