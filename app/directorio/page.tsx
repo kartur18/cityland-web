@@ -9,7 +9,7 @@ import FlagIcon from "@/components/icons/FlagIcon";
 import { DESTINOS_EUROPA, DESTINOS_CARIBE, BLOG_POSTS } from "@/components/constantes";
 import { DESTINOS_MASIVOS } from "@/lib/catalogo-destinos-masivo";
 import { BLOG_POSTS_MASIVOS } from "@/lib/catalogo-blog-masivo";
-import { AGENCIAS_LOCALES_SEO } from "@/lib/catalogo-agencias-locales";
+import { INDICE_MADRID_10K } from "@/lib/catalogo-madrid-10k";
 import { RUTAS_VUELOS_SEO } from "@/lib/rutas-vuelos";
 import { VIAJES_ESPECIALIZADOS_SEO } from "@/lib/catalogo-viajes-especializados";
 import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-comerciales";
@@ -647,34 +647,36 @@ export function VistaCatalogoHub({ modoHub = "directorio" }: { modoHub?: ModoCat
             </section>
           </div>
 
-          {/* 5. Cobertura en Distritos de Lima y Provincias del Perú */}
+          {/* 5. Especial Madrid y España: Paquetes Migratorios y Vuelos desde Lima (LIM) */}
           <section className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-xs">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-4">
               <div>
                 <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
-                  Atención Presencial en Los Olivos y Cobertura Nacional
+                  Salidas desde Aeropuerto Internacional Jorge Chávez (LIM) · RUC 20614914239
                 </span>
                 <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a1628]">
-                  Agencia de Viajes por Distrito de Lima y Ciudades del Perú
+                  Especial Madrid-Barajas: Paquetes Migratorios, Estadías BOE y Vuelos Confirmados
                 </h2>
               </div>
               <Link
-                href="/agencia"
+                href="/madrid"
                 className="text-xs font-extrabold text-red-600 hover:underline"
               >
-                Ver cobertura completa ({AGENCIAS_LOCALES_SEO.length} zonas) →
+                Ver central de Madrid ({INDICE_MADRID_10K.length.toLocaleString("es-PE")} programas) →
               </Link>
             </div>
             <div className="flex flex-wrap gap-1.5">
-              {AGENCIAS_LOCALES_SEO.slice(0, 36).map((a) => (
-                <Link
-                  key={a.slug}
-                  href={`/agencia/${a.slug}`}
-                  className="text-[11px] font-medium bg-slate-50 hover:bg-red-50 text-slate-700 hover:text-red-600 border border-slate-200/80 px-2.5 py-1 rounded-lg transition-colors"
-                >
-                  📍 Agencia en {a.zona}
-                </Link>
-              ))}
+              {INDICE_MADRID_10K.filter((_, i) => i % 275 === 0)
+                .slice(0, 36)
+                .map((m) => (
+                  <Link
+                    key={m.slug}
+                    href={`/madrid/${m.slug}`}
+                    className="text-[11px] font-medium bg-slate-50 hover:bg-red-50 text-slate-700 hover:text-red-600 border border-slate-200/80 px-2.5 py-1 rounded-lg transition-colors"
+                  >
+                    ✈️ {m.titulo} · Desde ${m.precioDesdeUSD}
+                  </Link>
+                ))}
             </div>
           </section>
         </div>

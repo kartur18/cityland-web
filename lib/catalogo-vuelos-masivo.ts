@@ -773,23 +773,40 @@ function generarCatalogoMasivo(): RutaVueloSEO[] {
     });
   }
 
-  // 5B. Salidas Internacionales desde Provincias del Perú (16 provincias x Destinos Internacionales)
-  const PROVINCIAS_INTL = CIUDADES_PERU.slice(0, 15);
-  for (const [ciudadOrig, slugOrig, iataOrig] of PROVINCIAS_INTL) {
+  // 5B. Modalidades Especiales de Vuelos Internacionales desde Lima (Aeropuerto Jorge Chávez - LIM)
+  const MODALIDADES_VUELOS_DESDE_LIMA: [string, string, number, string][] = [
+    ["vuelo-directo", "Vuelo Directo / 1 Escala Rápida", 0, "Itinerario optimizado saliendo del Aeropuerto Internacional Jorge Chávez (LIM)"],
+    ["con-2-maletas-23kg", "Tarifa con 2 Maletas de 23 kg", 85, "Incluye doble franquicia de equipaje en bodega (2x23 kg) + mano 10 kg saliendo de Lima (LIM)"],
+    ["solo-ida-migratorio", "Modalidad con Reserva de Retorno RF", -120, "Boleto desde Lima (LIM) + reserva de retorno activa y código PNR verificable"],
+    ["ida-y-vuelta-confirmado", "Boleto Ida y Vuelta Confirmado", 0, "Pasaje redondo Lima (LIM) con fechas fijas emitidas y código PNR oficial"],
+    ["tarifa-flexible-cambios", "Tarifa Flexible con Cambios", 65, "Boleto desde el Aeropuerto Jorge Chávez (LIM) con opción de reprogramación"],
+    ["preventa-50-por-ciento", "Preventa Separando con 50%", -40, "Congela hoy tu tarifa desde Lima (LIM) abonando el 50% de inicial"],
+    ["viaje-familiar-asientos", "Tarifa Familiar Asientos Juntos", -20, "Asignación de asientos contiguos saliendo del Aeropuerto Jorge Chávez (LIM)"],
+    ["adultos-mayores-asistencia", "Con Asistencia Especial en Aeropuerto", 0, "Incluye gestión de silla de ruedas (SSR) y acompañamiento en check-in desde Lima (LIM)"],
+    ["con-seguro-internacional", "Vuelo + Seguro Médico Internacional", 35, "Boleto aéreo desde Lima (LIM) + póliza médica internacional sin deducible"],
+    ["con-carta-de-invitacion", "Vuelo Calibrado a Carta de Invitación", -20, "Fechas exactas alineadas a tu Carta de Invitación saliendo de Lima (LIM)"],
+    ["con-reserva-de-hotel", "Vuelo + Voucher de Hotel Verificable", 45, "Boleto aéreo desde el Jorge Chávez (LIM) + reserva hotelera verificable"],
+    ["emision-inmediata-pnr", "Emisión Inmediata Código PNR + IATA", 0, "Entrega en el día de tu código PNR y boleto electrónico de 13 dígitos desde Lima (LIM)"],
+    ["temporada-alta-julio-agosto", "Salidas Confirmadas Julio y Agosto", 70, "Cupos aéreos verificados para mitad de año desde el Aeropuerto Jorge Chávez (LIM)"],
+    ["temporada-navidad-fin-de-ano", "Salidas Navidad y Fin de Año", 80, "Vuelos confirmados para diciembre y Año Nuevo saliendo de Lima (LIM)"],
+    ["tarifa-estudiantes-y-visa", "Tarifa Especial Estudios / Trabajo", -90, "Emisión para pasajeros con visado o estudios saliendo del Jorge Chávez (LIM)"],
+  ];
+
+  for (const [modSlug, modNombre, ajustePrecio, descMod] of MODALIDADES_VUELOS_DESDE_LIMA) {
     for (const [ciudadDest, slugDest, iataDest, paisDest, precioBase, aerolineas, img] of DESTINOS_INTL_DESDE_PROVINCIAS) {
       agregar({
-        slug: `${slugOrig}-${slugDest}`,
-        origen: ciudadOrig,
-        codigoOrigen: iataOrig,
+        slug: `lima-${slugDest}-${modSlug}`,
+        origen: "Lima (Jorge Chávez)",
+        codigoOrigen: "LIM",
         paisOrigen: "Perú",
-        destino: ciudadDest,
+        destino: `${ciudadDest} (${modNombre})`,
         codigoDestino: iataDest,
         paisDestino: paisDest,
-        precioUSD: precioBase,
+        precioUSD: Math.max(299, precioBase + ajustePrecio),
         aerolineas,
-        duracion: "Conexión garantizada vía Lima (LIM)",
-        escala: `Boleto único conectado desde ${ciudadOrig} (${iataOrig}) vía Lima con equipaje despachado hasta ${ciudadDest}`,
-        requisitos: `Despacha tu maleta en ${ciudadOrig} y recógela directamente en ${ciudadDest} con boleto único protegido ante conexiones.`,
+        duracion: "Salida desde Aeropuerto Internacional Jorge Chávez (LIM)",
+        escala: `${descMod} rumbo a ${ciudadDest} (${iataDest})`,
+        requisitos: `Salida oficial desde Lima (LIM) con código de reserva PNR verificable, check-in gestionado por tu asesor y respaldo RUC 20614914239.`,
         img,
         modalidad: paisDest === "España" || paisDest === "Italia" || paisDest === "Francia" ? "europa" : "latam",
       });

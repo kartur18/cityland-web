@@ -182,13 +182,13 @@ function construirObjetoLanding(params: {
         {
           id: `${slug}-1`,
           titulo: esTramiteOSeguro
-            ? `Modalidad Estándar — ${etiquetaVitrina}`
-            : `Opción Preventa / Base — ${etiquetaVitrina}`,
+            ? `Modalidad Base — Gestión Oficial (${destinoOPais})`
+            : `Opción 1: Tarifa Preventa / Base (${destinoOPais})`,
           pais: destinoOPais,
           filtro: "ahorro",
           subtitulo: esTramiteOSeguro
-            ? "Revisión de requisitos y emisión documentaria oficial"
-            : "Tarifa referencial anticipada · Separa con 50%",
+            ? "Revisión de requisitos y emisión documentaria verificable"
+            : "Salida desde Aeropuerto Jorge Chávez (LIM) · Separa con 50%",
           precioPrincipal: `$${pCard1.toLocaleString("en-US")}`,
           precioSecundario:
             pCard1 >= 180 ? `$${Math.round(pCard1 * 0.5).toLocaleString("en-US")}` : undefined,
@@ -207,13 +207,13 @@ function construirObjetoLanding(params: {
         {
           id: `${slug}-2`,
           titulo: esTramiteOSeguro
-            ? `Asesoría y Gestión Completa — ${etiquetaVitrina}`
-            : `Programa Clásico Completo — ${etiquetaVitrina}`,
+            ? `Expediente Completo + Asesoría 1 a 1 (${destinoOPais})`
+            : `Opción 2: Programa Clásico Completo (${destinoOPais})`,
           pais: destinoOPais,
           filtro: "completo",
           subtitulo: esTramiteOSeguro
-            ? "Acompañamiento 1 a 1 + verificación integral de documentos"
-            : "La opción más solicitada por viajeros peruanos",
+            ? "Acompañamiento personalizado + verificación integral de documentos"
+            : "La opción más solicitada por viajeros peruanos desde Lima (LIM)",
           precioPrincipal: `$${pCard2.toLocaleString("en-US")}`,
           precioSecundario:
             pCard2 >= 180 ? `$${mitadBase.toLocaleString("en-US")}` : undefined,
@@ -232,13 +232,13 @@ function construirObjetoLanding(params: {
         {
           id: `${slug}-3`,
           titulo: esTramiteOSeguro
-            ? `Atención Prioritaria / Urgente VIP — ${etiquetaVitrina}`
-            : `Edición Superior / A Medida — ${etiquetaVitrina}`,
+            ? `Atención Prioritaria / Urgente VIP (${destinoOPais})`
+            : `Opción 3: Categoría Superior / Flexible (${destinoOPais})`,
           pais: destinoOPais,
           filtro: "vip",
           subtitulo: esTramiteOSeguro
-            ? "Prioridad para viajes próximos + asesoría personalizada en sede o videollamada"
-            : "Categoría superior y fechas a elección del pasajero",
+            ? "Prioridad para viajes próximos + asesoría en sede Los Olivos o videollamada"
+            : "Hotelería superior, fechas flexibles y asistencia preferencial",
           precioPrincipal: `$${pCard3.toLocaleString("en-US")}`,
           precioSecundario:
             pCard3 >= 180 ? `$${Math.round(pCard3 * 0.5).toLocaleString("en-US")}` : undefined,
@@ -612,42 +612,42 @@ const MODALIDADES_HOTELES_12: [string, string, number][] = [
 ];
 
 // ============================================================================
-// BLOQUE 4: SALIDAS DESDE 32 CIUDADES Y DISTRITOS DEL PERÚ × 50 DESTINOS
-// 32 Orígenes × 50 Destinos = 1,600 Landings
+// BLOQUE 4: 32 MODALIDADES REALES DESDE AEROPUERTO JORGE CHÁVEZ (LIM) × 50 DESTINOS
+// 32 Modalidades × 50 Destinos = 1,600 Landings Comerciales
 // ============================================================================
-const ORIGENES_PERU_32: [string, string, string, number][] = [
-  ["Arequipa", "arequipa", "vía conexión en Lima (AQP - LIM)", 55],
-  ["Trujillo", "trujillo", "vía conexión en Lima (TRU - LIM)", 50],
-  ["Chiclayo", "chiclayo", "vía conexión en Lima (CIX - LIM)", 50],
-  ["Piura", "piura", "vía conexión en Lima (PIU - LIM)", 55],
-  ["Cusco", "cusco", "vía conexión en Lima (CUZ - LIM)", 55],
-  ["Huancayo", "huancayo", "con salida coordinada desde Lima (LIM)", 25],
-  ["Iquitos", "iquitos", "vía conexión en Lima (IQT - LIM)", 65],
-  ["Tacna", "tacna", "vía conexión en Lima (TCQ - LIM)", 60],
-  ["Cajamarca", "cajamarca", "vía conexión en Lima (CJA - LIM)", 55],
-  ["Pucallpa", "pucallpa", "vía conexión en Lima (PCL - LIM)", 55],
-  ["Tarapoto", "tarapoto", "vía conexión en Lima (TPP - LIM)", 55],
-  ["Juliaca y Puno", "juliaca", "vía conexión en Lima (JUL - LIM)", 65],
-  ["Ica", "ica", "con salida desde el Aeropuerto Jorge Chávez (LIM)", 15],
-  ["Chimbote", "chimbote", "con salida desde el Aeropuerto Jorge Chávez (LIM)", 20],
-  ["Ayacucho", "ayacucho", "vía conexión en Lima (AYP - LIM)", 50],
-  ["Huánuco", "huanuco", "vía conexión en Lima (HUU - LIM)", 50],
-  ["Tumbes", "tumbes", "vía conexión en Lima (TBP - LIM)", 60],
-  ["Huaraz", "huaraz", "vía conexión en Lima (ATA - LIM)", 45],
-  ["Sullana", "sullana", "vía aeropuerto de Piura y conexión en Lima", 55],
-  ["Chincha", "chincha", "con traslado al Aeropuerto Jorge Chávez (LIM)", 15],
-  ["Talara", "talara", "vía conexión en Lima (TYL - LIM)", 60],
-  ["Los Olivos", "los-olivos", "con atención presencial en nuestra sede de Los Olivos", 0],
-  ["Miraflores", "miraflores", "con atención ejecutiva y salida desde Jorge Chávez (LIM)", 0],
-  ["San Isidro", "san-isidro", "con atención ejecutiva y salida desde Jorge Chávez (LIM)", 0],
-  ["Santiago de Surco", "surco", "con asesoría personalizada y salida desde Lima (LIM)", 0],
-  ["San Borja", "san-borja", "con asesoría personalizada y salida desde Lima (LIM)", 0],
-  ["La Molina", "la-molina", "con asesoría personalizada y salida desde Lima (LIM)", 0],
-  ["San Miguel", "san-miguel", "a minutos del Aeropuerto Internacional Jorge Chávez (LIM)", 0],
-  ["Independencia", "independencia", "con atención inmediata en nuestra sede de Lima Norte", 0],
-  ["Comas", "comas", "con atención presencial en nuestra sede de Lima Norte", 0],
-  ["San Martín de Porres", "san-martin-de-porres", "a minutos de nuestra oficina en Los Olivos y del Aeropuerto", 0],
-  ["Callao", "callao", "con embarque directo en el Aeropuerto Jorge Chávez (LIM)", 0],
+const MODALIDADES_JORGE_CHAVEZ_32: [string, string, string, number][] = [
+  ["Vuelo + Hotel Confirmado", "vuelo-mas-hotel-jorge-chavez", "saliendo desde el Aeropuerto Internacional Jorge Chávez (LIM) con reserva PNR y hotel seleccionado", 0],
+  ["Preventa con 50% de Inicial", "preventa-50-inicial-desde-lima", "congelando hoy tu tarifa con el 50% de inicial y saliendo desde el Aeropuerto Jorge Chávez (LIM)", -30],
+  ["Programa Todo Organizado con Traslados", "todo-organizado-con-traslados-lima", "incluyendo vuelos desde Lima (LIM), traslados aeropuerto-hotel-aeropuerto y alojamiento", 25],
+  ["Paquete con 2 Maletas de 23 kg", "con-2-maletas-23kg-desde-lima", "con franquicia ampliada de 2 maletas de 23 kg en bodega saliendo de Lima (LIM)", 65],
+  ["Viaje Familiar (Adultos + Niños)", "viaje-familiar-desde-lima", "con asientos contiguos garantizados y hoteles familiares saliendo del Aeropuerto Jorge Chávez (LIM)", -15],
+  ["Escapada para Parejas y Aniversarios", "escapada-parejas-desde-lima", "con habitación matrimonial superior y atención preferencial saliendo desde Lima (LIM)", 20],
+  ["Especial Luna de Miel", "luna-de-miel-desde-lima", "con atenciones románticas, hotel seleccionado y vuelos confirmados desde el Jorge Chávez (LIM)", 45],
+  ["Viaje para Adultos Mayores con Asistencia", "adultos-mayores-asistencia-lima", "con gestión de asistencia en aeropuerto (SSR) y traslados seguros saliendo de Lima (LIM)", 0],
+  ["Tarifa Grupal y Viaje de Amigos", "tarifa-grupos-amigos-desde-lima", "con descuento especial para grupos desde 4 pasajeros saliendo del Aeropuerto Jorge Chávez (LIM)", -25],
+  ["Programa con Tours y Excursiones en Español", "con-tours-en-espanol-desde-lima", "incluyendo visitas guiadas en español a los atractivos principales y vuelos desde Lima (LIM)", 40],
+  ["Categoría Hotel 4★ Céntrico", "hotel-4-estrellas-desde-lima", "con alojamiento en hoteles 4 estrellas de ubicación estratégica y salida desde Lima (LIM)", 55],
+  ["Categoría Superior 5★ / VIP", "categoria-5-estrellas-vip-lima", "con hotelería de lujo, traslados privados y vuelos desde el Aeropuerto Jorge Chávez (LIM)", 120],
+  ["Reserva en Cuotas Programadas", "en-cuotas-programadas-desde-lima", "abonando el 50% al reservar y completando el saldo en cuotas antes de volar desde Lima (LIM)", 0],
+  ["Con Seguro Médico Internacional Incluido", "con-seguro-medico-desde-lima", "con póliza de asistencia médica internacional sin deducible y vuelos desde Lima (LIM)", 15],
+  ["Primer Viaje Internacional Asesorado", "primer-viaje-asesorado-desde-lima", "con preparación completa de carpeta de viaje, check-in y salida desde el Jorge Chávez (LIM)", 0],
+  ["Salidas Vacaciones de Verano (Enero y Febrero)", "vacaciones-verano-desde-lima", "aprovechando la temporada de vacaciones de verano con vuelos confirmados desde Lima (LIM)", 30],
+  ["Salidas Especiales Semana Santa", "semana-santa-desde-lima", "con cupos aéreos y hoteleros garantizados para Semana Santa desde el Jorge Chávez (LIM)", 40],
+  ["Salidas Vacaciones de Mayo", "vacaciones-mayo-desde-lima", "ideal para las vacaciones escolares de mayo saliendo desde el Aeropuerto Jorge Chávez (LIM)", 0],
+  ["Salidas Confirmadas Junio y Julio", "temporada-junio-julio-desde-lima", "con itinerarios verificados para mitad de año saliendo desde Lima (LIM)", 35],
+  ["Especial Fiestas Patrias (28 de Julio)", "fiestas-patrias-desde-lima", "para viajar en el feriado largo de Fiestas Patrias desde el Aeropuerto Jorge Chávez (LIM)", 60],
+  ["Salidas de Agosto y Septiembre", "temporada-agosto-septiembre-lima", "con excelente clima y tarifas competitivas saliendo desde Lima (LIM)", 10],
+  ["Salidas Vacaciones de Octubre", "vacaciones-octubre-desde-lima", "aprovechando el feriado y vacaciones escolares de octubre desde el Jorge Chávez (LIM)", 0],
+  ["Oferta Temporada Baja Noviembre", "temporada-baja-noviembre-lima", "con las tarifas más económicas del año saliendo desde el Aeropuerto Jorge Chávez (LIM)", -40],
+  ["Especial Navidad y Año Nuevo", "navidad-y-ano-nuevo-desde-lima", "para celebrar fin de año con vuelos y hotel garantizados desde Lima (LIM)", 75],
+  ["Paquete Corto 5 Días / 4 Noches", "programa-5-dias-4-noches-lima", "en formato práctico de 5 días y 4 noches saliendo desde el Aeropuerto Jorge Chávez (LIM)", -35],
+  ["Paquete Clásico 7 Días / 6 Noches", "programa-7-dias-6-noches-lima", "en programa completo de una semana saliendo desde el Aeropuerto Jorge Chávez (LIM)", 20],
+  ["Gran Viaje 10 Días / 9 Noches", "programa-10-dias-9-noches-lima", "para recorrer el destino con total tranquilidad saliendo desde Lima (LIM)", 80],
+  ["Programa Extendido 15 Días", "programa-15-dias-desde-lima", "de dos semanas completas con asesoría integral saliendo desde el Jorge Chávez (LIM)", 140],
+  ["Tarifa Flexible con Cambios Permitidos", "tarifa-flexible-cambios-lima", "con opción de reprogramación de fecha y salida desde el Aeropuerto Jorge Chávez (LIM)", 45],
+  ["Emisión Inmediata Código PNR + Voucher", "emision-inmediata-pnr-lima", "con entrega en el día de tu código PNR de aerolínea y voucher hotelero en Lima", 0],
+  ["Con Check-in y Asientos Gestionados", "con-checkin-y-asientos-lima", "incluyendo check-in realizado por tu asesor y tarjetas de embarque listas desde Lima (LIM)", 0],
+  ["Conexión Coordinada desde Provincias vía Lima", "conexion-provincias-via-jorge-chavez", "conectando desde tu ciudad hacia el Aeropuerto Internacional Jorge Chávez (LIM)", 45],
 ];
 
 const DESTINOS_ESTRELLA_50: [string, string, string, LandingComercialSEO["cluster"], number, boolean][] = [
@@ -1046,16 +1046,16 @@ function generarIndiceExpansion(): ResumenLandingExpansion[] {
     }
   }
 
-  // 4. Bloque 4: 32 Ciudades y Distritos del Perú × 50 Destinos Estrella = 1,600
-  for (const [nombreOrigen, slugOrigen, notaConexion, suplementoConexion] of ORIGENES_PERU_32) {
+  // 4. Bloque 4: 32 Modalidades desde Aeropuerto Jorge Chávez (LIM) × 50 Destinos Estrella = 1,600
+  for (const [nombreModalidad, slugModalidad, notaSalida, ajustePrecio] of MODALIDADES_JORGE_CHAVEZ_32) {
     for (const [nombreDestino, slugDestino, paisDestino, cluster, precioBase, esInt] of DESTINOS_ESTRELLA_50) {
-      const slug = `paquetes-a-${slugDestino}-desde-${slugOrigen}`;
-      const precio = precioBase + suplementoConexion;
-      const titulo = `Paquetes a ${nombreDestino} saliendo desde ${nombreOrigen}`;
+      const slug = `paquetes-a-${slugDestino}-${slugModalidad}`;
+      const precio = Math.max(169, precioBase + ajustePrecio);
+      const titulo = `Paquetes a ${nombreDestino} (${paisDestino}) desde Lima: ${nombreModalidad}`;
       lista.push({
         slug,
         cluster,
-        clusterNombre: `Viajes desde ${nombreOrigen} a ${paisDestino}`,
+        clusterNombre: `Paquetes a ${paisDestino} desde Lima (LIM)`,
         titulo,
         destinoOPais: paisDestino,
         precioDesdeUSD: precio,
@@ -1063,29 +1063,29 @@ function generarIndiceExpansion(): ResumenLandingExpansion[] {
           construirObjetoLanding({
             slug,
             cluster,
-            clusterNombre: `Viajes desde ${nombreOrigen} a ${paisDestino}`,
-            badge: `Atención para Viajeros de ${nombreOrigen} · RUC 20614914239`,
+            clusterNombre: `Paquetes a ${paisDestino} desde Lima (LIM)`,
+            badge: `Salida Aeropuerto Jorge Chávez (LIM) · ${nombreModalidad}`,
             banderas: esInt ? ["Perú", paisDestino] : ["Perú"],
-            tituloHero: `Paquetes a ${nombreDestino} desde ${nombreOrigen}:`,
-            tituloDestacado: `Todo Organizado Desde $${precio}`,
-            descripcionHero: `Programa especial para viajeros de ${nombreOrigen} rumbo a ${nombreDestino} (${paisDestino}) ${notaConexion}, incluyendo vuelos, hotel seleccionado, traslados y seguro.`,
-            negritaHero: `Reserva desde ${nombreOrigen} por WhatsApp (+51 944 103 890) o en nuestra sede con el 50% de inicial.`,
+            tituloHero: `Paquetes a ${nombreDestino} desde Lima:`,
+            tituloDestacado: `${nombreModalidad} Desde $${precio}`,
+            descripcionHero: `Programa verificado rumbo a ${nombreDestino} (${paisDestino}) ${notaSalida}. Incluye boletos confirmados, alojamiento seleccionado, traslados y asesoría permanente.`,
+            negritaHero: `Salida desde el Aeropuerto Internacional Jorge Chávez (LIM) · Separa hoy con el 50% de inicial en Cityland Travel.`,
             destinoOPais: paisDestino,
             precioBase: precio,
-            etiquetaVitrina: `${nombreDestino} saliendo de ${nombreOrigen}`,
-            duracionOServicio: `Salida desde ${nombreOrigen} · ${paisDestino}`,
+            etiquetaVitrina: `${nombreDestino}: ${nombreModalidad}`,
+            duracionOServicio: `Salida desde Lima (LIM) · ${paisDestino}`,
             checksBase: [
-              `Itinerario aéreo coordinado para viajeros de ${nombreOrigen}`,
+              `Vuelo confirmado desde el Aeropuerto Internacional Jorge Chávez (LIM)`,
               `Alojamiento garantizado en ${nombreDestino} (${paisDestino})`,
               "Traslados aeropuerto – hotel – aeropuerto y asistencia 24/7",
             ],
             checksPlus: [
-              "Emisión digital inmediata con Boleta o Factura Electrónica SUNAT",
-              "Código de reserva PNR verificable en la web de la aerolínea",
-              "Separa con el 50% de inicial mediante bancos peruanos o tarjeta",
+              "Código de reserva PNR verificable en la web oficial de la aerolínea",
+              "Emisión formal con Boleta o Factura Electrónica SUNAT (RUC 20614914239)",
+              "Separa con el 50% de inicial mediante BCP, BBVA, Interbank o tarjeta",
             ],
             checksVip: [
-              `Asesoría personalizada por videollamada o WhatsApp para ${nombreOrigen}`,
+              "Check-in y asignación de asientos gestionados por tu asesor",
               "Hotelería superior y excursiones guiadas en español",
               esInt
                 ? "Incluye seguro médico internacional y carpeta de viaje completa"
@@ -1093,18 +1093,18 @@ function generarIndiceExpansion(): ResumenLandingExpansion[] {
             ],
             esInternacional: esInt,
             keywords: [
-              `paquetes a ${nombreDestino.toLowerCase()} desde ${nombreOrigen.toLowerCase()}`,
-              `viajes a ${nombreDestino.toLowerCase()} saliendo de ${nombreOrigen.toLowerCase()}`,
-              `agencia de viajes en ${nombreOrigen.toLowerCase()} para ${nombreDestino.toLowerCase()}`,
+              `paquetes a ${nombreDestino.toLowerCase()} desde lima`,
+              `viajes a ${nombreDestino.toLowerCase()} ${nombreModalidad.toLowerCase()}`,
+              `vuelos y hotel a ${nombreDestino.toLowerCase()} desde jorge chavez`,
             ],
             faqsExtra: [
               {
-                q: `¿Cómo reservo mi paquete a ${nombreDestino} si vivo en ${nombreOrigen}?`,
-                a: `Atendemos a viajeros de ${nombreOrigen} de forma 100% digital por WhatsApp (+51 944 103 890) y también presencialmente en nuestra oficina de Lima Norte. Coordinamos tu salida ${notaConexion} y te enviamos tus boletos PNR y factura SUNAT al instante.`,
+                q: `¿Desde qué aeropuerto salen los vuelos del paquete a ${nombreDestino} (${nombreModalidad})?`,
+                a: `Todos nuestros vuelos salen desde el Aeropuerto Internacional Jorge Chávez (LIM) en Lima. Si vives en otra ciudad del Perú, también coordinamos tu boleto de conexión nacional hacia Lima (LIM) en un solo itinerario.`,
               },
               {
-                q: `¿Cuánto cuesta el paquete a ${nombreDestino} para pasajeros de ${nombreOrigen}?`,
-                a: `La tarifa promocional empieza Desde $${precio} por persona y puedes congelarla hoy mismo abonando el 50% de inicial.`,
+                q: `¿Cuánto cuesta el paquete "${nombreModalidad}" a ${nombreDestino} y cómo reservo?`,
+                a: `La tarifa referencial empieza Desde $${precio} USD por pasajero. Puedes congelar tu espacio hoy mismo abonando el 50% de inicial en nuestra sede de Los Olivos (Av. Universitaria 2029) o por WhatsApp (+51 944 103 890).`,
               },
             ],
           }),

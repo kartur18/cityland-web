@@ -150,7 +150,7 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
     tituloDestacadoHero: `Desde $${item.precioDesdeUSD.toLocaleString("en-US")}`,
     descripcionHero: item.subtitulo,
     negritaHero:
-      "Atención inmediata por WhatsApp y en nuestra sede física de Av. Antúnez de Mayolo 814, Los Olivos.",
+      "Salidas desde el Aeropuerto Internacional Jorge Chávez (LIM) · Atención en Av. Universitaria 2029, Los Olivos.",
     ctaPrincipalTexto: "Cotizar Promoción por WhatsApp",
     waPrincipalNumero: "51944103890",
     waPrincipalMensaje: item.waMensaje,

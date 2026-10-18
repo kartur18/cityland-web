@@ -229,49 +229,49 @@ const MODALIDADES_MES_4: [string, string, number][] = [
 ];
 
 // ============================================================================
-// BLOQUE 8: 40 DISTRITOS DE LIMA Y CALLAO × 50 DESTINOS CLAVE = 2,000 LANDINGS
+// BLOQUE 8: 40 PLANES COMERCIALES DESDE LIMA (AEROPUERTO JORGE CHÁVEZ - LIM) × 50 DESTINOS CLAVE = 2,000 LANDINGS
 // ============================================================================
-const DISTRITOS_LIMA_40: [string, string, string][] = [
-  ["Los Olivos", "los-olivos", "nuestra sede central frente al Palacio de la Juventud (Av. Universitaria 2029)"],
-  ["San Martín de Porres", "san-martin-de-porres", "a pocos minutos de nuestra oficina en Av. Universitaria, Lima Norte"],
-  ["Independencia", "independencia", "cerca de Plaza Norte y MegaPlaza en Lima Norte"],
-  ["Comas", "comas", "con atención directa en Lima Norte y por WhatsApp"],
-  ["Carabayllo", "carabayllo", "con atención rápida en Lima Norte y emisión digital"],
-  ["Puente Piedra", "puente-piedra", "con asesoría presencial en Lima Norte o 100% digital"],
-  ["Ancón", "ancon", "con emisión inmediata por WhatsApp y respaldo en Lima Norte"],
-  ["Santa Rosa", "santa-rosa-lima", "con atención personalizada en Lima Norte"],
-  ["Rímac", "rimac", "con atención rápida y entrega de documentos verificables"],
-  ["San Juan de Lurigancho", "san-juan-de-lurigancho", "con emisión digital inmediata y oficina física en Lima"],
-  ["Ate Vitarte", "ate-vitarte", "con atención por videollamada, WhatsApp o en nuestra sede"],
-  ["Santa Anita", "santa-anita", "con emisión de boletos PNR y factura electrónica SUNAT"],
-  ["La Molina", "la-molina", "con asesoría ejecutiva y reserva verificable al instante"],
-  ["El Agustino", "el-agustino", "con facilidades de pago con el 50% de inicial"],
-  ["Chaclacayo", "chaclacayo", "con atención digital y presencial garantizada"],
-  ["Lurigancho-Chosica", "chosica", "con reserva inmediata por WhatsApp y bancos peruanos"],
-  ["Miraflores", "miraflores", "con atención corporativa y familiar de primer nivel"],
-  ["San Isidro", "san-isidro", "con gestión ejecutiva de vuelos, hoteles y seguros"],
-  ["Santiago de Surco", "santiago-de-surco", "con emisión garantizada y soporte 24/7"],
-  ["San Borja", "san-borja", "con boletos verificables en aerolínea y factura SUNAT"],
-  ["La Victoria", "la-victoria", "con atención ágil para viajeros y empresarios"],
-  ["Lince", "lince", "con asesoría integral de viajes nacionales e internacionales"],
-  ["Jesús María", "jesus-maria", "con atención personalizada para familias y parejas"],
-  ["Pueblo Libre", "pueblo-libre", "con respaldo formal RUC 20614914239 y código PNR"],
-  ["Magdalena del Mar", "magdalena-del-mar", "con reserva segura y pago en cuotas sin intereses"],
-  ["San Miguel", "san-miguel", "muy cerca del Aeropuerto Jorge Chávez y Lima Norte"],
-  ["Breña", "brena", "con conexión directa a nuestra sede en Av. Universitaria"],
-  ["Cercado de Lima", "cercado-de-lima", "con atención rápida en oficina y por WhatsApp"],
-  ["Barranco", "barranco", "con paquetes a medida y atención personalizada"],
-  ["Chorrillos", "chorrillos", "con emisión digital inmediata y soporte continuo"],
-  ["Surquillo", "surquillo", "con tarifas competitivas y reserva con el 50%"],
-  ["San Luis", "san-luis", "con asesoría de vuelos, paquetes y carpeta migratoria"],
-  ["San Juan de Miraflores", "san-juan-de-miraflores", "con facilidades de pago y respaldo legal SUNAT"],
-  ["Villa María del Triunfo", "villa-maria-del-triunfo", "con atención por WhatsApp y oficina física"],
-  ["Villa El Salvador", "villa-el-salvador", "con paquetes familiares y boletos confirmados"],
-  ["Lurín", "lurin", "con reserva digital inmediata y asesoría 24/7"],
-  ["Pachacámac", "pachacamac", "con atención personalizada por WhatsApp y videollamada"],
-  ["Callao", "callao", "a minutos del Aeropuerto Internacional Jorge Chávez"],
-  ["Bellavista", "bellavista-callao", "con coordinación directa para tus vuelos desde el Jorge Chávez"],
-  ["La Perla y Ventanilla", "ventanilla-callao", "con atención cercana en Lima Norte y el Callao"],
+const PLANES_DESDE_JORGE_CHAVEZ_40: [string, string, string, number][] = [
+  ["Programa Vuelo + Hotel Céntrico", "plan-vuelo-y-hotel-centrico-lima", "con boleto aéreo desde el Aeropuerto Jorge Chávez (LIM) y alojamiento céntrico", 0],
+  ["Programa Vuelo + Hotel 4★ Superior", "plan-vuelo-hotel-4-estrellas-lima", "con vuelo desde Lima (LIM) y estadía en hotel 4 estrellas seleccionado", 45],
+  ["Paquete Todo Organizado + Traslados", "plan-todo-organizado-traslados-lima", "incluyendo vuelos desde el Jorge Chávez (LIM), hotel y traslados de llegada y salida", 25],
+  ["Paquete con Desayunos y City Tour", "plan-con-desayunos-y-city-tour-lima", "con desayunos diarios, visita panorámica en español y salida desde Lima (LIM)", 30],
+  ["Paquete con 2 Maletas de 23 kg", "plan-con-2-maletas-23kg-lima", "con doble franquicia de equipaje en bodega (2x23 kg) saliendo de Lima (LIM)", 65],
+  ["Paquete con 1 Maleta de 23 kg + Cabina", "plan-maleta-23kg-mas-cabina-lima", "con equipaje documentado de 23 kg más carry-on de 10 kg desde el Jorge Chávez (LIM)", 20],
+  ["Preventa con 50% de Inicial", "plan-preventa-50-inicial-lima", "congelando hoy tu tarifa con el 50% de inicial y saliendo desde Lima (LIM)", -30],
+  ["Reserva en Cuotas Programadas", "plan-reserva-en-cuotas-lima", "abonando el 50% al reservar y el saldo en cuotas antes de tu vuelo desde Lima (LIM)", 0],
+  ["Viaje Familiar (2 Adultos + Niños)", "plan-familiar-adultos-y-ninos-lima", "con habitaciones familiares y asientos juntos saliendo del Aeropuerto Jorge Chávez (LIM)", -15],
+  ["Plan Familiar Numeroso (4 a 6 Pasajeros)", "plan-familiar-4-a-6-pasajeros-lima", "con tarifa preferencial familiar y traslados privados saliendo de Lima (LIM)", -25],
+  ["Escapada para Parejas y Esposos", "plan-escapada-parejas-lima", "en habitación doble matrimonial con traslados y vuelos desde el Jorge Chávez (LIM)", 15],
+  ["Programa Especial Luna de Miel", "plan-luna-de-miel-romantica-lima", "con atenciones especiales para recién casados y salida desde Lima (LIM)", 40],
+  ["Viaje de Aniversario de Bodas", "plan-aniversario-de-bodas-lima", "con categoría superior de alojamiento y vuelos confirmados desde Lima (LIM)", 35],
+  ["Programa Adultos Mayores con Asistencia", "plan-adultos-mayores-asistencia-lima", "con asistencia especial en el Aeropuerto Jorge Chávez (LIM) y ritmo tranquilo", 0],
+  ["Viaje para Padres y Abuelos Asesorado", "plan-viaje-padres-y-abuelos-lima", "con acompañamiento en check-in, silla de ruedas (SSR) y carpeta lista desde Lima (LIM)", 0],
+  ["Tarifa Grupal para Amigos (4+ Viajeros)", "plan-tarifa-grupos-amigos-lima", "con descuento por grupo y actividades compartidas saliendo desde Lima (LIM)", -20],
+  ["Viaje de Graduación y Promoción", "plan-viaje-graduacion-lima", "con itinerario juvenil, excursiones y vuelos seguros desde el Jorge Chávez (LIM)", -15],
+  ["Programa 5 Días / 4 Noches desde Lima", "plan-5-dias-4-noches-desde-lima", "en formato práctico de 5 días y 4 noches saliendo del Aeropuerto Jorge Chávez (LIM)", -35],
+  ["Programa 6 Días / 5 Noches desde Lima", "plan-6-dias-5-noches-desde-lima", "con 6 días y 5 noches de estadía confirmada y vuelos desde Lima (LIM)", 0],
+  ["Programa 7 Días / 6 Noches desde Lima", "plan-7-dias-6-noches-desde-lima", "de una semana completa con hotel, traslados y vuelos desde el Jorge Chávez (LIM)", 25],
+  ["Programa 8 Días / 7 Noches desde Lima", "plan-8-dias-7-noches-desde-lima", "con 8 días y 7 noches para disfrutar de cada atractivo saliendo de Lima (LIM)", 45],
+  ["Programa 10 Días / 9 Noches desde Lima", "plan-10-dias-9-noches-desde-lima", "de 10 días y 9 noches con excursiones y vuelos desde el Aeropuerto Jorge Chávez (LIM)", 75],
+  ["Programa 12 Días / 11 Noches desde Lima", "plan-12-dias-11-noches-desde-lima", "de 12 días ideales para circuitos internacionales saliendo de Lima (LIM)", 100],
+  ["Programa 15 Días / 14 Noches desde Lima", "plan-15-dias-14-noches-desde-lima", "de quincena completa con asesoría integral saliendo desde el Jorge Chávez (LIM)", 135],
+  ["Primer Viaje Internacional con Carpeta", "plan-primer-viaje-con-carpeta-lima", "con preparación completa de requisitos migratorios, PNR y salida desde Lima (LIM)", 0],
+  ["Paquete + Seguro Médico Internacional", "plan-con-seguro-internacional-lima", "incluyendo póliza médica internacional sin deducible y vuelos desde Lima (LIM)", 15],
+  ["Emisión Inmediata con Código PNR", "plan-emision-inmediata-pnr-lima", "con entrega en el acto de tu reserva aérea PNR y voucher hotelero verificable", 0],
+  ["Tarifa Flexible con Opción a Cambios", "plan-tarifa-flexible-cambios-lima", "con flexibilidad para reprogramar fechas saliendo desde el Aeropuerto Jorge Chávez (LIM)", 45],
+  ["Salidas Vacaciones de Verano desde Lima", "plan-vacaciones-verano-desde-lima", "para viajar entre enero, febrero y marzo desde el Aeropuerto Jorge Chávez (LIM)", 25],
+  ["Salidas Semana Santa desde Lima", "plan-semana-santa-desde-lima", "aprovechando los días feriados de Semana Santa con vuelos desde Lima (LIM)", 35],
+  ["Salidas Vacaciones Escolares Mayo", "plan-vacaciones-escolares-mayo-lima", "ideal para viajar con hijos en las vacaciones de mayo desde el Jorge Chávez (LIM)", 0],
+  ["Salidas Fiestas Patrias Julio desde Lima", "plan-fiestas-patrias-julio-lima", "con cupos confirmados para las vacaciones de julio saliendo de Lima (LIM)", 55],
+  ["Salidas Vacaciones de Agosto desde Lima", "plan-vacaciones-agosto-desde-lima", "con salidas programadas en agosto desde el Aeropuerto Internacional Jorge Chávez (LIM)", 25],
+  ["Salidas Vacaciones Escolares Octubre", "plan-vacaciones-octubre-desde-lima", "para la semana de vacaciones de octubre saliendo desde Lima (LIM)", 0],
+  ["Oferta Temporada Baja desde Lima", "plan-temporada-baja-oferta-lima", "aprovechando las tarifas más bajas del año desde el Aeropuerto Jorge Chávez (LIM)", -40],
+  ["Salidas Fin de Año y Año Nuevo", "plan-fin-de-ano-desde-lima", "para recibir el Año Nuevo viajando desde el Aeropuerto Jorge Chávez (LIM)", 70],
+  ["Viaje Corporativo y de Negocios (RUC 20)", "plan-viaje-corporativo-empresas-lima", "con Factura Electrónica SUNAT (RUC 20614914239) y vuelos ejecutivos desde Lima (LIM)", 20],
+  ["Categoría Lujo 5★ y Traslado Privado", "plan-categoria-lujo-5-estrellas-lima", "con hoteles 5 estrellas, recojo privado y atención VIP desde Lima (LIM)", 125],
+  ["Paquete con Excursiones Guiadas Incluidas", "plan-con-excursiones-guiadas-lima", "con entradas y tours oficiales en español saliendo del Jorge Chávez (LIM)", 40],
+  ["Atención Presencial Sede Los Olivos + PNR", "plan-atencion-sede-los-olivos-pnr", "con firma de contrato en Av. Universitaria 2029 (Los Olivos) y salida desde Lima (LIM)", 0],
 ];
 
 const DESTINOS_DISTRITOS_50: [string, string, string, LandingComercialSEO["cluster"], number, boolean][] = [
@@ -667,18 +667,18 @@ export function generarIndiceExpansion20k(
   }
 
   // --------------------------------------------------------------------------
-  // BLOQUE 8: 40 Distritos de Lima y Callao × 50 Destinos Clave = 2,000
+  // BLOQUE 8: 40 Planes Comerciales desde Lima (LIM) × 50 Destinos Clave = 2,000
   // --------------------------------------------------------------------------
-  for (const [nombreDistrito, slugDistrito, referenciaDistrito] of DISTRITOS_LIMA_40) {
+  for (const [nombrePlanLima, slugPlanLima, detallePlanLima, ajustePrecio] of PLANES_DESDE_JORGE_CHAVEZ_40) {
     for (const [nombreDestino, slugDestino, pais, cluster, precioBase, esInt] of DESTINOS_DISTRITOS_50) {
-      const slug = `atencion-${slugDistrito}-viajes-a-${slugDestino}`;
-      const precio = precioBase;
-      const titulo = `Agencia de Viajes para ${nombreDistrito}: Paquetes a ${nombreDestino} (${pais})`;
+      const slug = `viajes-a-${slugDestino}-${slugPlanLima}`;
+      const precio = Math.max(159, precioBase + ajustePrecio);
+      const titulo = `Viajes a ${nombreDestino} (${pais}) desde Lima: ${nombrePlanLima}`;
 
       lista.push({
         slug,
         cluster,
-        clusterNombre: `Atención ${nombreDistrito} · Destino ${pais}`,
+        clusterNombre: `Paquetes a ${pais} desde Lima (LIM)`,
         titulo,
         destinoOPais: pais,
         precioDesdeUSD: precio,
@@ -686,20 +686,20 @@ export function generarIndiceExpansion20k(
           construirObjetoLanding({
             slug,
             cluster,
-            clusterNombre: `Viajes para Vecinos de ${nombreDistrito}`,
-            badge: `Vecinos de ${nombreDistrito} · RUC 20614914239`,
+            clusterNombre: `Paquetes a ${pais} desde Lima (LIM)`,
+            badge: `Salida Aeropuerto Jorge Chávez (LIM) · ${nombrePlanLima}`,
             banderas: esInt ? ["Perú", pais] : ["Perú"],
-            tituloHero: `Viajes a ${nombreDestino} para ${nombreDistrito}:`,
-            tituloDestacado: `Paquetes Confirmados Desde $${precio}`,
-            descripcionHero: `Atención especial para viajeros y familias de ${nombreDistrito} (${referenciaDistrito}). Reserva tu viaje a ${nombreDestino} (${pais}) con código PNR verificable y respaldo legal.`,
-            negritaHero: `Cotiza por WhatsApp al +51 944 103 890 o visítanos en oficina y separa con el 50%.`,
+            tituloHero: `Viajes a ${nombreDestino} desde Lima:`,
+            tituloDestacado: `${nombrePlanLima} Desde $${precio}`,
+            descripcionHero: `Reserva tu viaje a ${nombreDestino} (${pais}) ${detallePlanLima}. Incluye código PNR verificable en aerolínea, alojamiento garantizado y respaldo formal RUC 20614914239.`,
+            negritaHero: `Salida desde el Aeropuerto Internacional Jorge Chávez (LIM) · Separa hoy con el 50% de inicial.`,
             destinoOPais: pais,
             precioBase: precio,
-            etiquetaVitrina: `${nombreDestino} (Atención ${nombreDistrito})`,
-            duracionOServicio: `Salida desde Lima · Vecinos de ${nombreDistrito}`,
+            etiquetaVitrina: `${nombreDestino}: ${nombrePlanLima}`,
+            duracionOServicio: `Salida desde Lima (LIM) · ${pais}`,
             checksBase: [
-              `Atención directa para pasajeros de ${nombreDistrito}`,
-              `Boleto aéreo y alojamiento confirmado en ${nombreDestino} (${pais})`,
+              `Vuelo confirmado saliendo del Aeropuerto Internacional Jorge Chávez (LIM)`,
+              `Alojamiento garantizado en ${nombreDestino} (${pais})`,
               "Emisión inmediata de código PNR y Boleta/Factura Electrónica SUNAT",
             ],
             checksPlus: [
@@ -710,24 +710,24 @@ export function generarIndiceExpansion20k(
                 : "Excursiones guiadas e ingresos turísticos incluidos",
             ],
             checksVip: [
-              `Asesoría por WhatsApp, videollamada o en ${referenciaDistrito}`,
-              "Entrega de contrato turístico formal (RUC 20614914239)",
+              "Check-in y asignación de asientos gestionados por tu asesor",
+              "Atención en sede Los Olivos (Av. Universitaria 2029) y por WhatsApp",
               "Soporte 24/7 antes, durante y después de tu vuelo",
             ],
             esInternacional: esInt,
             keywords: [
-              `agencia de viajes en ${nombreDistrito.toLowerCase()}`,
-              `paquetes a ${nombreDestino.toLowerCase()} desde ${nombreDistrito.toLowerCase()}`,
-              `viajes a ${nombreDestino.toLowerCase()} lima`,
+              `viajes a ${nombreDestino.toLowerCase()} desde lima`,
+              `paquetes a ${nombreDestino.toLowerCase()} ${nombrePlanLima.toLowerCase()}`,
+              `vuelos y hotel a ${nombreDestino.toLowerCase()} jorge chavez`,
             ],
             faqsExtra: [
               {
-                q: `¿Cómo puedo reservar mi viaje a ${nombreDestino} si vivo en ${nombreDistrito}?`,
-                a: `Atendemos a todos los vecinos de ${nombreDistrito} ${referenciaDistrito}. Puedes gestionar tu reserva 100% en línea por WhatsApp (+51 944 103 890) o acercarte a nuestra oficina física para recibir tus boletos PNR y comprobante SUNAT.`,
+                q: `¿Qué incluye la modalidad "${nombrePlanLima}" para viajar a ${nombreDestino}?`,
+                a: `Este programa opera ${detallePlanLima}. Recibes tu código PNR aéreo verificable, voucher de alojamiento y comprobante electrónico SUNAT (RUC 20614914239) el mismo día de tu reserva.`,
               },
               {
-                q: `¿Cuál es el precio del paquete a ${nombreDestino} para viajeros de ${nombreDistrito}?`,
-                a: `La tarifa referencial parte Desde $${precio} USD por pasajero y puedes separarla hoy mismo abonando el 50% de inicial.`,
+                q: `¿Cuál es el precio referencial de "${nombrePlanLima}" a ${nombreDestino}?`,
+                a: `La tarifa referencial parte Desde $${precio} USD por pasajero saliendo desde Lima (LIM) y puedes separarla hoy mismo abonando el 50% de inicial.`,
               },
             ],
           }),

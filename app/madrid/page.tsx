@@ -196,18 +196,18 @@ const DATOS_HUB_MADRID: DatosLandingMadridSEO = {
 const SILOS_DIRECTORIO = [
   {
     id: "barajas-rutas",
-    nombre: "1. Rutas y Modalidades Madrid-Barajas (2,500 páginas)",
-    sub: "Zonas de Madrid y conexiones por España con Iberia T4, Air Europa T1, Plus Ultra y LATAM",
+    nombre: "1. Rutas y Modalidades Madrid-Barajas desde Lima (2,500 páginas)",
+    sub: "Zonas de Madrid y conexiones por España con Iberia T4, Air Europa T1, Plus Ultra y LATAM saliendo del Jorge Chávez (LIM)",
   },
   {
-    id: "distritos-lima-madrid",
-    nombre: "2. Atención por Distrito de Lima y Callao rumbo a Madrid (2,400 páginas)",
-    sub: "Paquetes migratorios, carpetas y boletos para vecinos de los 40 distritos de Lima",
+    id: "estadias-boe-madrid",
+    nombre: "2. Planes por Días de Estadía y Bolsa de Viaje BOE 2026 (2,400 páginas)",
+    sub: "Itinerarios de 7 a 90 días calibrados al requisito económico BOE (122,10 €/día) desde el Aeropuerto Jorge Chávez (LIM)",
   },
   {
-    id: "provincias-madrid",
-    nombre: "3. Salidas desde 30 Ciudades del Perú a Madrid por Mes (2,160 páginas)",
-    sub: "Trujillo, Chiclayo, Arequipa, Piura, Cusco, Huancayo, Ica, Chimbote, Tacna y más",
+    id: "rutas-espana-barajas",
+    nombre: "3. Rutas y Circuitos por España y Europa vía Madrid por Mes (2,160 páginas)",
+    sub: "Madrid + Barcelona, Valencia, Sevilla, Bilbao, Roma, Milán, París y Lisboa saliendo de Lima (LIM)",
   },
   {
     id: "comunidad-peruana-madrid",
@@ -237,13 +237,13 @@ export default function MadridHubPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
           <div className="max-w-3xl">
             <span className="text-xs font-extrabold uppercase tracking-widest text-amber-400 block mb-1">
-              Arquitectura SEO Especializada · 10,000 Páginas Exclusivas de Madrid
+              Arquitectura Especializada · 10,000 Páginas Exclusivas de Madrid
             </span>
             <h2 className="text-2xl sm:text-3xl font-black tracking-tight">
-              Directorio Maestro de Paquetes Migratorios, Barrios y Rutas a Madrid
+              Directorio Maestro de Paquetes Migratorios, Estadías BOE y Rutas a Madrid
             </h2>
             <p className="text-sm text-slate-300 mt-2">
-              Explora nuestras 10,000 páginas especializadas por barrio de llegada en Madrid, distrito de salida en Lima, ciudad de provincia, aerolínea y modalidad migratoria.
+              Explora nuestras 10,000 páginas especializadas saliendo del Aeropuerto Internacional Jorge Chávez (LIM) hacia Madrid-Barajas por días de estadía, cálculo de bolsa de viaje BOE 2026, barrios de Madrid, aerolínea y modalidad migratoria.
             </p>
           </div>
 

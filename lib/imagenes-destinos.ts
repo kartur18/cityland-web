@@ -77,23 +77,13 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /\bvisa\b|\bvisas\b|\bds-160|\bds160|\bembajada|\bconsulado|\bconsular|\beta\b|\betias\b|\bcarpeta[- ]migratoria|\bpasaporte|\brelaciones exteriores|\bmigraciones/,
+    match: /\bds-160|\bds160|\bvisa[- ]americana|\bvisa[- ]canadiense|\bvisa[- ]china|\bvisa[- ]mexicana|\bpasaporte[- ]electronico|\brelaciones exteriores/,
     galeria: [
       IMG_PASAPORTE_VIAJE,
       IMG_AEROPUERTO_INTERNACIONAL,
       IMG_VIAJERO_MALETA,
       IMG_AVION_ALA,
       IMG_FAMILIA_VIAJE,
-    ],
-  },
-  {
-    match: /\bseguro schengen|\bseguro de viaje|\bseguros de viaje|\bseguro medico|\bseguros medicos|\basistencia al viajero|\basistencia medica|\b30\.000|\b30,000|\bpoliza/,
-    galeria: [
-      IMG_AEROPUERTO_INTERNACIONAL,
-      IMG_PASAPORTE_VIAJE,
-      IMG_AVION_ALA,
-      IMG_FAMILIA_VIAJE,
-      IMG_VIAJERO_MALETA,
     ],
   },
   {
@@ -310,13 +300,13 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /\b(sevilla|granada|cordoba[- ]espana|jerez|andalucia|alhambra)\b/,
+    match: /\b(sevilla|granada|cordoba|cordoba[- ]espana|jerez|andalucia|alhambra)\b/,
     galeria: [
-      "https://images.unsplash.com/photo-1559564484-e48b3e040ff4?w=1200&q=85",
+      "/images/espana/plaza-mayor.jpg",
+      "/images/espana/palacio-real.jpg",
+      "/images/espana/gran-via-metropolis.jpg",
       IMG_HOTEL_LUJO_PISCINA,
       IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
-      IMG_VIAJERO_MALETA,
     ],
   },
   {

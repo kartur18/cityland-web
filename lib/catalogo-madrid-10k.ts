@@ -366,49 +366,49 @@ const AEROLINEAS_BARAJAS_5: [string, string, string, number][] = [
 ];
 
 // ============================================================================
-// SILO 2: 40 DISTRITOS DE LIMA Y CALLAO × 10 PRODUCTOS MADRID × 6 MODALIDADES DE PAGO = 2,400 PÁGINAS
+// SILO 2: 40 DURACIONES Y PLANES DE BOLSA DE VIAJE BOE 2026 DESDE LIMA (LIM) × 10 PRODUCTOS × 6 MODALIDADES = 2,400 PÁGINAS
 // ============================================================================
-const DISTRITOS_LIMA_MADRID_40: [string, string][] = [
-  ["Los Olivos", "los-olivos"],
-  ["San Martín de Porres", "san-martin-de-porres"],
-  ["Independencia", "independencia"],
-  ["Comas", "comas"],
-  ["Carabayllo", "carabayllo"],
-  ["Puente Piedra", "puente-piedra"],
-  ["Ancón", "ancon"],
-  ["Santa Rosa", "santa-rosa"],
-  ["Rímac", "rimac"],
-  ["San Juan de Lurigancho", "san-juan-de-lurigancho"],
-  ["Ate Vitarte", "ate-vitarte"],
-  ["Santa Anita", "santa-anita"],
-  ["La Molina", "la-molina"],
-  ["El Agustino", "el-agustino"],
-  ["Chaclacayo", "chaclacayo"],
-  ["Chosica", "chosica"],
-  ["Miraflores", "miraflores"],
-  ["San Isidro", "san-isidro"],
-  ["Santiago de Surco", "santiago-de-surco"],
-  ["San Borja", "san-borja"],
-  ["La Victoria", "la-victoria"],
-  ["Lince", "lince"],
-  ["Jesús María", "jesus-maria"],
-  ["Pueblo Libre", "pueblo-libre"],
-  ["Magdalena del Mar", "magdalena-del-mar"],
-  ["San Miguel", "san-miguel"],
-  ["Breña", "brena"],
-  ["Cercado de Lima", "cercado-de-lima"],
-  ["Barranco", "barranco"],
-  ["Chorrillos", "chorrillos"],
-  ["Surquillo", "surquillo"],
-  ["San Luis", "san-luis"],
-  ["San Juan de Miraflores", "san-juan-de-miraflores"],
-  ["Villa María del Triunfo", "villa-maria-del-triunfo"],
-  ["Villa El Salvador", "villa-el-salvador"],
-  ["Lurín", "lurin"],
-  ["Pachacámac", "pachacamac"],
-  ["Callao Cercado", "callao"],
-  ["Bellavista Callao", "bellavista-callao"],
-  ["Ventanilla Callao", "ventanilla-callao"],
+const PLANES_ESTADIA_BOE_MADRID_40: [string, string, string][] = [
+  ["Estadía 7 Días / 6 Noches en Madrid", "estadia-7-dias-6-noches", "Bolsa mínima BOE 2026: 1.098,90 € · Salida Aeropuerto Jorge Chávez (LIM)"],
+  ["Estadía 8 Días / 7 Noches en Madrid", "estadia-8-dias-7-noches", "Bolsa mínima BOE 2026: 1.098,90 € · Salida Aeropuerto Jorge Chávez (LIM)"],
+  ["Estadía 9 Días / 8 Noches (Tramo Mínimo BOE)", "estadia-9-dias-8-noches-boe", "Calibrado exactamente al tramo mínimo BOE de 1.098,90 € desde Lima (LIM)"],
+  ["Estadía 10 Días / 9 Noches en Madrid", "estadia-10-dias-9-noches", "Bolsa referencial BOE: 1.221,00 € · Vuelo desde Lima (LIM)"],
+  ["Estadía 11 Días / 10 Noches en Madrid", "estadia-11-dias-10-noches", "Bolsa referencial BOE: 1.343,10 € · Vuelo desde Lima (LIM)"],
+  ["Estadía 12 Días / 11 Noches en Madrid", "estadia-12-dias-11-noches", "Bolsa referencial BOE: 1.465,20 € · Vuelo desde Lima (LIM)"],
+  ["Estadía 13 Días / 12 Noches en Madrid", "estadia-13-dias-12-noches", "Bolsa referencial BOE: 1.587,30 € · Vuelo desde Lima (LIM)"],
+  ["Estadía 14 Días / 13 Noches (2 Semanas)", "estadia-14-dias-2-semanas", "Bolsa referencial BOE: 1.709,40 € · Vuelo desde Lima (LIM)"],
+  ["Estadía 15 Días / 14 Noches (Quincena)", "estadia-15-dias-quincena", "Bolsa referencial BOE: 1.831,50 € · Vuelo desde Lima (LIM)"],
+  ["Estadía 16 Días / 15 Noches en España", "estadia-16-dias-espana", "Itinerario de 16 días saliendo del Aeropuerto Jorge Chávez (LIM)"],
+  ["Estadía 18 Días / 17 Noches en Madrid", "estadia-18-dias-madrid", "Itinerario de 18 días con retorno activo desde Madrid-Barajas (MAD)"],
+  ["Estadía 20 Días / 19 Noches en Madrid", "estadia-20-dias-madrid", "Itinerario de 20 días calibrado a tu Carta de Invitación o Reserva Hotelera"],
+  ["Estadía 21 Días (3 Semanas en España)", "estadia-21-dias-3-semanas", "Programa de 3 semanas saliendo desde el Aeropuerto Jorge Chávez (LIM)"],
+  ["Estadía 25 Días en Madrid y España", "estadia-25-dias-madrid", "Ideal para visita familiar con Carta de Invitación desde Lima (LIM)"],
+  ["Estadía 30 Días (1 Mes Completo)", "estadia-30-dias-un-mes", "Visita familiar o vacaciones de 1 mes saliendo desde Lima (LIM)"],
+  ["Estadía 45 Días en España", "estadia-45-dias-espana", "Estadía media de 45 días con seguro Schengen y retorno calibrado"],
+  ["Estadía 60 Días (2 Meses en España)", "estadia-60-dias-dos-meses", "Programa de 60 días para visita familiar con Carta de Invitación"],
+  ["Estadía 90 Días (Máximo Schengen)", "estadia-90-dias-maximo-schengen", "Plazo máximo de 90 días sin visa para peruanos saliendo de Lima (LIM)"],
+  ["Salida Primera Quincena de Enero", "salida-enero-invierno-madrid", "Vuelos confirmados en enero desde el Aeropuerto Jorge Chávez (LIM)"],
+  ["Salida Temporada Baja Febrero", "salida-febrero-tarifa-economica", "Tarifas promocionales en febrero saliendo desde Lima (LIM)"],
+  ["Salida Marzo Inicio de Primavera", "salida-marzo-primavera-madrid", "Clima templado de primavera saliendo del Aeropuerto Jorge Chávez (LIM)"],
+  ["Salida Especial Semana Santa Abril", "salida-abril-semana-santa-madrid", "Viaja en Semana Santa y abril desde el Aeropuerto Jorge Chávez (LIM)"],
+  ["Salida Mayo Fiestas de San Isidro Madrid", "salida-mayo-san-isidro-madrid", "Temporada ideal de mayo saliendo desde Lima (LIM) hacia Barajas"],
+  ["Salida Junio Inicio de Verano Europeo", "salida-junio-verano-europeo", "Inicio del verano español con vuelos desde el Jorge Chávez (LIM)"],
+  ["Salida Julio Vacaciones y Fiestas Patrias", "salida-julio-fiestas-patrias", "Alta demanda de julio reservando con 50% desde Lima (LIM)"],
+  ["Salida Agosto Vacaciones en Europa", "salida-agosto-verano-madrid", "Salidas de agosto confirmadas desde el Aeropuerto Jorge Chávez (LIM)"],
+  ["Salida Septiembre Otoño Europeo", "salida-septiembre-otono-madrid", "Excelente temporada en septiembre saliendo desde Lima (LIM)"],
+  ["Salida Octubre Fiesta Nacional España", "salida-octubre-madrid-barajas", "Vuelos de octubre con código PNR verificable desde Lima (LIM)"],
+  ["Salida Noviembre Preventa Económica", "salida-noviembre-oferta-madrid", "Las mejores tarifas de otoño saliendo del Jorge Chávez (LIM)"],
+  ["Salida Diciembre Navidad y Año Nuevo", "salida-diciembre-navidad-madrid", "Reencuentro familiar de Navidad en Madrid saliendo de Lima (LIM)"],
+  ["Modalidad Individual (1 Pasajero)", "plan-individual-1-pasajero", "Expediente completo individual saliendo desde el Jorge Chávez (LIM)"],
+  ["Modalidad Dúo Parejas (2 Pasajeros)", "plan-duo-2-pasajeros-parejas", "Asientos juntos y habitación doble verificable desde Lima (LIM)"],
+  ["Modalidad Familiar (3 Pasajeros)", "plan-familiar-3-pasajeros", "Tarifa familiar para 3 viajeros saliendo del Aeropuerto Jorge Chávez (LIM)"],
+  ["Modalidad Familiar (4 Pasajeros)", "plan-familiar-4-pasajeros", "Tarifa grupal familiar para 4 pasajeros desde Lima (LIM)"],
+  ["Modalidad Con 1 Maleta 23 kg + Mano 10 kg", "franquicia-1-maleta-23kg", "Equipaje completo de bodega 23 kg + cabina 10 kg desde Lima (LIM)"],
+  ["Modalidad Con 2 Maletas 23 kg (46 kg Bodega)", "franquicia-2-maletas-23kg", "Doble maleta de 23 kg en bodega saliendo del Jorge Chávez (LIM)"],
+  ["Ingreso por Terminal T4 (Iberia / LATAM)", "ingreso-terminal-t4-barajas", "Llegada a la Terminal T4 de Madrid-Barajas desde Lima (LIM)"],
+  ["Ingreso por Terminal T1 (Air Europa / Plus Ultra)", "ingreso-terminal-t1-barajas", "Llegada a la Terminal T1 de Madrid-Barajas desde Lima (LIM)"],
+  ["Vuelo Nocturno desde Jorge Chávez (LIM)", "vuelo-nocturno-jorge-chavez", "Salida nocturna desde Lima (LIM) y llegada por la tarde a Madrid"],
+  ["Vuelo Diurno desde Jorge Chávez (LIM)", "vuelo-diurno-jorge-chavez", "Salida de día desde Lima (LIM) y llegada a primera hora a Madrid"],
 ];
 
 const PRODUCTOS_MADRID_10: [string, string, number][] = [
@@ -434,39 +434,39 @@ const MODALIDADES_EMISION_6: [string, string, number][] = [
 ];
 
 // ============================================================================
-// SILO 3: 30 CIUDADES Y PROVINCIAS DEL PERÚ × 12 MESES × 6 PAQUETES MADRID = 2,160 PÁGINAS
+// SILO 3: 30 RUTAS Y CIRCUITOS DESDE LIMA (AEROPUERTO JORGE CHÁVEZ) VÍA MADRID × 12 MESES × 6 PAQUETES = 2,160 PÁGINAS
 // ============================================================================
-const PROVINCIAS_PERU_30: [string, string, number][] = [
-  ["Trujillo", "trujillo", 40],
-  ["Chiclayo", "chiclayo", 40],
-  ["Piura", "piura", 45],
-  ["Arequipa", "arequipa", 45],
-  ["Cusco", "cusco", 45],
-  ["Huancayo", "huancayo", 20],
-  ["Iquitos", "iquitos", 55],
-  ["Tarapoto", "tarapoto", 45],
-  ["Cajamarca", "cajamarca", 45],
-  ["Tumbes", "tumbes", 50],
-  ["Chimbote", "chimbote", 20],
-  ["Ica", "ica", 15],
-  ["Tacna", "tacna", 50],
-  ["Puno y Juliaca", "juliaca-puno", 50],
-  ["Ayacucho", "ayacucho", 40],
-  ["Huánuco", "huanuco", 35],
-  ["Pucallpa", "pucallpa", 45],
-  ["Huaraz", "huaraz", 25],
-  ["Sullana", "sullana", 45],
-  ["Talara", "talara", 50],
-  ["Chincha", "chincha", 10],
-  ["Pisco", "pisco", 15],
-  ["Cañete", "canete", 10],
-  ["Huaral", "huaral", 0],
-  ["Huacho", "huacho", 0],
-  ["Barranca", "barranca", 10],
-  ["Jaén", "jaen", 50],
-  ["Moyobamba", "moyobamba", 50],
-  ["Puerto Maldonado", "puerto-maldonado", 55],
-  ["Moquegua", "moquegua", 50],
+const RUTAS_CONEXION_BARAJAS_30: [string, string, number][] = [
+  ["Madrid Directo (Aeropuerto Barajas)", "lima-a-madrid-directo", 0],
+  ["Madrid y Toledo", "lima-a-madrid-y-toledo", 20],
+  ["Madrid y Segovia", "lima-a-madrid-y-segovia", 20],
+  ["Madrid y Barcelona (AVE / Vuelo)", "lima-a-madrid-y-barcelona", 45],
+  ["Madrid y Valencia", "lima-a-madrid-y-valencia", 35],
+  ["Madrid y Sevilla (Andalucía)", "lima-a-madrid-y-sevilla", 45],
+  ["Madrid, Córdoba y Granada", "lima-a-madrid-cordoba-granada", 55],
+  ["Madrid y Málaga (Costa del Sol)", "lima-a-madrid-y-malaga", 45],
+  ["Madrid y Zaragoza", "lima-a-madrid-y-zaragoza", 30],
+  ["Madrid y Bilbao (País Vasco)", "lima-a-madrid-y-bilbao", 50],
+  ["Madrid y San Sebastián", "lima-a-madrid-y-san-sebastian", 55],
+  ["Madrid y Santiago de Compostela", "lima-a-madrid-y-santiago", 50],
+  ["Madrid, Vigo y La Coruña (Galicia)", "lima-a-madrid-y-galicia", 55],
+  ["Madrid y Asturias (Oviedo / Gijón)", "lima-a-madrid-y-asturias", 50],
+  ["Madrid y Santander (Cantabria)", "lima-a-madrid-y-santander", 50],
+  ["Madrid y Alicante (Costa Blanca)", "lima-a-madrid-y-alicante", 40],
+  ["Madrid y Murcia", "lima-a-madrid-y-murcia", 40],
+  ["Madrid, Valladolid y Salamanca", "lima-a-madrid-y-castilla", 30],
+  ["Madrid y Palma de Mallorca", "lima-a-madrid-y-mallorca", 60],
+  ["Madrid y Tenerife / Gran Canaria", "lima-a-madrid-y-canarias", 75],
+  ["Madrid y Lisboa / Fátima (Portugal)", "lima-a-madrid-y-lisboa-fatima", 60],
+  ["Madrid y París (Francia)", "lima-a-madrid-y-paris", 65],
+  ["Madrid y Lourdes (Francia)", "lima-a-madrid-y-lourdes", 65],
+  ["Madrid y Roma (Italia)", "lima-a-madrid-y-roma", 65],
+  ["Madrid y Milán (Italia)", "lima-a-madrid-y-milan", 65],
+  ["Madrid, Florencia y Venecia", "lima-a-madrid-florencia-venecia", 80],
+  ["Madrid y Turín / Génova (Italia)", "lima-a-madrid-y-turin", 70],
+  ["Madrid y Ámsterdam / Bruselas", "lima-a-madrid-y-amsterdam", 75],
+  ["Madrid y Zúrich / Ginebra (Suiza)", "lima-a-madrid-y-suiza", 85],
+  ["Madrid, París y Roma (Circuito Europeo)", "lima-a-madrid-paris-y-roma", 95],
 ];
 
 const MESES_MADRID_12: [string, string, number][] = [
@@ -484,13 +484,13 @@ const MESES_MADRID_12: [string, string, number][] = [
   ["Diciembre", "diciembre", 1.08],
 ];
 
-const PAQUETES_PROVINCIA_MADRID_6: [string, string, number][] = [
-  ["paquete-migratorio-madrid", "Paquete Migratorio a Madrid (Vuelo + RF + Hotel + Seguro)", 869],
-  ["primer-viaje-a-madrid", "Primer Viaje a Madrid con Expediente Completo", 879],
-  ["madrid-con-carta-invitacion", "Viaje a Madrid con Carta de Invitación", 849],
-  ["madrid-con-2-maletas-23kg", "Pasaje a Madrid con 2 Maletas de 23 kg", 939],
-  ["vuelo-ida-vuelta-madrid", "Paquete Lima – Madrid Ida y Vuelta Confirmado", 1090],
-  ["boleto-solo-ida-madrid-visa", "Boleto Solo Ida a Madrid para Visa o Residencia", 769],
+const PAQUETES_RUTA_MADRID_6: [string, string, number][] = [
+  ["paquete-migratorio-madrid", "Paquete Migratorio Completo (Vuelo + RF + Hotel + Seguro)", 869],
+  ["primer-viaje-a-madrid", "Primer Viaje a Europa con Expediente Completo", 879],
+  ["madrid-con-carta-invitacion", "Modalidad Visita Familiar con Carta de Invitación", 849],
+  ["madrid-con-2-maletas-23kg", "Pasaje Confirmado con 2 Maletas de 23 kg", 939],
+  ["vuelo-ida-vuelta-madrid", "Paquete Turístico Ida y Vuelta Confirmado", 1090],
+  ["boleto-solo-ida-madrid-visa", "Boleto Solo Ida para Visa o Residencia", 769],
 ];
 
 // ============================================================================
@@ -650,52 +650,52 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
     }
   }
 
-  // 2. SILO 2: 40 Distritos de Lima y Callao × 10 Productos Madrid × 6 Modalidades = 2,400
-  for (const [nombreDistrito, slugDistrito] of DISTRITOS_LIMA_MADRID_40) {
+  // 2. SILO 2: 40 Planes de Estadía y Bolsa BOE 2026 desde Lima (LIM) × 10 Productos Madrid × 6 Modalidades = 2,400
+  for (const [nombreEstadia, slugEstadia, detalleBoe] of PLANES_ESTADIA_BOE_MADRID_40) {
     for (const [slugProd, nombreProd, precioBase] of PRODUCTOS_MADRID_10) {
       for (const [slugEmis, nombreEmis, factorEmis] of MODALIDADES_EMISION_6) {
         const idxActual = contador++;
-        const slug = `vecinos-${slugDistrito}-${slugProd}-${slugEmis}`;
+        const slug = `plan-${slugEstadia}-${slugProd}-${slugEmis}`;
         const precio = Math.max(45, Math.round((precioBase * factorEmis) / 5) * 5);
-        const titulo = `${nombreProd} para ${nombreDistrito} — ${nombreEmis}`;
+        const titulo = `${nombreProd}: ${nombreEstadia} (${nombreEmis})`;
 
         lista.push({
           slug,
-          silo: "distritos-lima-madrid",
-          siloNombre: `Atención ${nombreDistrito} rumbo a Madrid`,
+          silo: "estadias-boe-madrid",
+          siloNombre: `${nombreEstadia} · Salida desde Lima (LIM)`,
           titulo,
           zonaOMunicipio: "Madrid (Barajas T4 / T1)",
-          modalidad: nombreProd,
+          modalidad: `${nombreProd} · ${nombreEstadia}`,
           precioDesdeUSD: precio,
           constructorDatos: () =>
             crearObjetoMadrid({
               slug,
-              silo: "distritos-lima-madrid",
-              siloNombre: `Atención ${nombreDistrito} rumbo a Madrid`,
-              badgeSuperior: `Vecinos de ${nombreDistrito} · ${nombreEmis}`,
-              codigoRuta: "LIM → MAD",
+              silo: "estadias-boe-madrid",
+              siloNombre: `${nombreEstadia} · Salida desde Lima (LIM)`,
+              badgeSuperior: `Salida Aeropuerto Jorge Chávez (LIM) · ${nombreEmis}`,
+              codigoRuta: slugProd.includes("madrid-a-lima") ? "MAD → LIM" : "LIM → MAD",
               terminalBarajas: "Terminal T4 y T1 Madrid-Barajas",
               aerolineaDestacada: "Iberia · Air Europa · LATAM · Plus Ultra",
-              tituloPrincipal: `${nombreProd}`,
-              subtituloDorado: `Atención ${nombreDistrito} Desde $${precio} USD`,
-              resumenEjecutivo: `Servicio especializado para vecinos y familias de ${nombreDistrito}: gestionamos tu ${nombreProd} bajo la modalidad "${nombreEmis}" con entrega de código PNR real, reserva de retorno activa, hotel verificable y seguro Schengen 30.000€.`,
+              tituloPrincipal: `${nombreProd} (${nombreEstadia}):`,
+              subtituloDorado: `${nombreEmis} Desde $${precio} USD`,
+              resumenEjecutivo: `Programa especializado para "${nombreEstadia}" (${detalleBoe}): gestionamos tu ${nombreProd} bajo la modalidad "${nombreEmis}" saliendo del Aeropuerto Internacional Jorge Chávez (LIM) con entrega de código PNR real, reserva de retorno activa, hotel verificable y seguro Schengen 30.000€.`,
               zonaOMunicipioMadrid: "Madrid (MAD)",
-              origenPasajero: nombreDistrito,
+              origenPasajero: "Lima — Aeropuerto Jorge Chávez (LIM)",
               modalidadClave: nombreEmis,
               precioDesdeUSD: precio,
               keywords: [
-                `${slugProd.replace(/-/g, " ")} en ${nombreDistrito.toLowerCase()}`,
-                `agencia de viajes a madrid en ${nombreDistrito.toLowerCase()}`,
-                `paquete migratorio madrid ${nombreDistrito.toLowerCase()}`,
+                `${slugProd.replace(/-/g, " ")} ${slugEstadia.replace(/-/g, " ")}`,
+                `viajar a madrid ${nombreEstadia.toLowerCase()} desde lima`,
+                `paquete migratorio madrid ${nombreEmis.toLowerCase()}`,
               ],
               faqsExtra: [
                 {
-                  q: `¿Cómo contrato "${nombreProd}" si vivo en ${nombreDistrito}?`,
-                  a: `Atendemos a todos los pasajeros de ${nombreDistrito} tanto por WhatsApp (+51 944 103 890) como presencialmente en nuestra oficina de Av. Universitaria 2029 (Los Olivos), entregándote tu contrato y comprobante electrónico SUNAT (RUC 20614914239).`,
+                  q: `¿Cómo se calibra el expediente para "${nombreEstadia}" en "${nombreProd}"?`,
+                  a: `${detalleBoe}. Alineamos tu boleto aéreo desde el Aeropuerto Internacional Jorge Chávez (LIM), tu reserva de retorno (MAD → LIM) y tu voucher hotelero o Carta de Invitación por la misma cantidad exacta de días.`,
                 },
                 {
-                  q: `¿Qué ventaja me da la opción "${nombreEmis}" desde ${nombreDistrito}?`,
-                  a: `Te permite asegurar tu tarifa oficial Desde $${precio} USD con emisión verificable en aerolínea y check-in realizado directamente por tu asesor asignado.`,
+                  q: `¿Qué beneficio incluye la modalidad "${nombreEmis}"?`,
+                  a: `Te permite asegurar tu tarifa oficial Desde $${precio} USD con emisión verificable en aerolínea, Boleta o Factura Electrónica SUNAT (RUC 20614914239) y check-in realizado directamente por tu asesor.`,
                 },
               ],
               indiceSemilla: idxActual,
@@ -705,52 +705,52 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
     }
   }
 
-  // 3. SILO 3: 30 Provincias del Perú × 12 Meses × 6 Paquetes Madrid = 2,160
-  for (const [nombreProv, slugProv, suplementoProv] of PROVINCIAS_PERU_30) {
+  // 3. SILO 3: 30 Rutas y Circuitos desde Lima (LIM) vía Madrid × 12 Meses × 6 Paquetes = 2,160
+  for (const [nombreRutaEsp, slugRutaEsp, suplementoRuta] of RUTAS_CONEXION_BARAJAS_30) {
     for (const [nombreMes, slugMes, factorMes] of MESES_MADRID_12) {
-      for (const [slugPaq, nombrePaq, precioBase] of PAQUETES_PROVINCIA_MADRID_6) {
+      for (const [slugPaq, nombrePaq, precioBase] of PAQUETES_RUTA_MADRID_6) {
         const idxActual = contador++;
-        const slug = `desde-${slugProv}-en-${slugMes}-${slugPaq}`;
-        const precio = Math.round(((precioBase + suplementoProv) * factorMes) / 10) * 10;
-        const titulo = `${nombrePaq} desde ${nombreProv} en ${nombreMes}`;
+        const slug = `ruta-${slugRutaEsp}-en-${slugMes}-${slugPaq}`;
+        const precio = Math.round(((precioBase + suplementoRuta) * factorMes) / 10) * 10;
+        const titulo = `Viajes a ${nombreRutaEsp} en ${nombreMes}: ${nombrePaq}`;
 
         lista.push({
           slug,
-          silo: "provincias-madrid",
-          siloNombre: `Salidas desde ${nombreProv} a Madrid`,
+          silo: "rutas-espana-barajas",
+          siloNombre: `Rutas Lima (LIM) → ${nombreRutaEsp}`,
           titulo,
-          zonaOMunicipio: "Madrid (España)",
+          zonaOMunicipio: nombreRutaEsp,
           modalidad: `${nombrePaq} (${nombreMes})`,
           precioDesdeUSD: precio,
           constructorDatos: () =>
             crearObjetoMadrid({
               slug,
-              silo: "provincias-madrid",
-              siloNombre: `Salidas desde ${nombreProv} a Madrid`,
-              badgeSuperior: `Viajeros de ${nombreProv} · Salidas ${nombreMes} 2026`,
-              codigoRuta: `${nombreProv.slice(0, 3).toUpperCase()} / LIM → MAD`,
+              silo: "rutas-espana-barajas",
+              siloNombre: `Rutas Lima (LIM) → ${nombreRutaEsp}`,
+              badgeSuperior: `Salida Aeropuerto Jorge Chávez (LIM) · ${nombreMes} 2026`,
+              codigoRuta: "LIM → MAD",
               terminalBarajas: "Terminal T4 / T1 Madrid-Barajas",
-              aerolineaDestacada: "Conexión desde " + nombreProv + " + Vuelo a Madrid",
-              tituloPrincipal: `Viajes a Madrid desde ${nombreProv} en ${nombreMes}:`,
+              aerolineaDestacada: "Iberia · Air Europa · Plus Ultra · LATAM",
+              tituloPrincipal: `Viajes a ${nombreRutaEsp} en ${nombreMes}:`,
               subtituloDorado: `${nombrePaq} Desde $${precio} USD`,
-              resumenEjecutivo: `Programa integral para pasajeros de ${nombreProv} que viajan a Madrid en el mes de ${nombreMes}. Coordinamos tu salida conectando con el Aeropuerto Jorge Chávez, tu boleto internacional LIM → MAD, reserva de retorno RF 24h, hotel verificable y seguro Schengen.`,
-              zonaOMunicipioMadrid: "Madrid (MAD)",
-              origenPasajero: `${nombreProv} (vía Lima)`,
+              resumenEjecutivo: `Programa integral saliendo desde el Aeropuerto Internacional Jorge Chávez (LIM) en Lima rumbo a ${nombreRutaEsp} para el mes de ${nombreMes}. Incluye boleto internacional LIM → MAD con código PNR, reserva de retorno RF 24h, hotel verificable, seguro Schengen 30.000€ y check-in realizado por tu asesor.`,
+              zonaOMunicipioMadrid: nombreRutaEsp,
+              origenPasajero: "Lima — Aeropuerto Jorge Chávez (LIM)",
               modalidadClave: `Salida ${nombreMes}`,
               precioDesdeUSD: precio,
               keywords: [
-                `viajar a madrid desde ${nombreProv.toLowerCase()} en ${nombreMes.toLowerCase()}`,
-                `paquete migratorio madrid desde ${nombreProv.toLowerCase()}`,
-                `pasajes a espana desde ${nombreProv.toLowerCase()}`,
+                `viajar a ${nombreRutaEsp.toLowerCase()} desde lima en ${nombreMes.toLowerCase()}`,
+                `paquete migratorio ${slugRutaEsp.replace(/-/g, " ")}`,
+                `vuelos lima madrid ${nombreMes.toLowerCase()}`,
               ],
               faqsExtra: [
                 {
-                  q: `Soy de ${nombreProv}, ¿cómo gestiono mi paquete a Madrid para el mes de ${nombreMes}?`,
-                  a: `Emitimos tu expediente completo de manera 100% digital por WhatsApp (+51 944 103 890) y videollamada con factura electrónica SUNAT, o puedes recoger tu carpeta impresa al pasar por Lima rumbo al Aeropuerto Jorge Chávez.`,
+                  q: `¿Cómo funciona la ruta desde Lima (Aeropuerto Jorge Chávez) hacia ${nombreRutaEsp} en ${nombreMes}?`,
+                  a: `Tu vuelo internacional sale del Aeropuerto Internacional Jorge Chávez (LIM) ingresando por el Aeropuerto Adolfo Suárez Madrid-Barajas (MAD) con tu expediente completo (PNR, retorno activo, alojamiento verificable y seguro Schengen 30.000€).`,
                 },
                 {
-                  q: `¿Cuál es la tarifa en ${nombreMes} saliendo desde ${nombreProv}?`,
-                  a: `La tarifa referencial para ${nombreMes} parte Desde $${precio} USD por pasajero y puedes congelarla hoy mismo abonando el 50% de inicial.`,
+                  q: `¿Cuál es la tarifa en ${nombreMes} para ${nombreRutaEsp} y con cuánto se separa?`,
+                  a: `La tarifa referencial para ${nombreMes} parte Desde $${precio} USD por pasajero y puedes congelarla hoy mismo abonando el 50% de inicial en nuestra sede de Los Olivos (Av. Universitaria 2029) o por WhatsApp (+51 944 103 890).`,
                 },
               ],
               indiceSemilla: idxActual,

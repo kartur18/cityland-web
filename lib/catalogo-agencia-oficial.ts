@@ -131,32 +131,24 @@ export function obtenerConfigAgenciaOficial(
   const mencionZona = referenciaZona
     ? `${
         notaEspecifica ? `${notaEspecifica}. ` : ""
-      }Atendemos de forma presencial en nuestra sede principal de Los Olivos (Av. Antúnez de Mayolo 814, Lima) y por videollamada o WhatsApp para viajeros de ${referenciaZona}, con emisión inmediata de boletos y contrato formal.`
-    : "Atendemos de forma presencial en nuestra sede principal de Los Olivos (Av. Antúnez de Mayolo 814, Lima) y de manera digital para todo el Perú, con emisión inmediata de boletos y contrato formal.";
+      }Todos los vuelos salen desde el Aeropuerto Internacional Jorge Chávez (LIM). Atendemos en nuestra sede principal de Los Olivos (Av. Universitaria 2029, Lima) y por videollamada o WhatsApp, con emisión inmediata de boletos y contrato formal.`
+    : "Todos los vuelos salen desde el Aeropuerto Internacional Jorge Chávez (LIM). Atendemos en nuestra sede principal de Los Olivos (Av. Universitaria 2029, Lima) y de manera digital para todo el Perú, con emisión inmediata de boletos y contrato formal.";
 
   return {
-    badgeHero: referenciaZona
-      ? `Atención Oficial para ${referenciaZona} · RUC 20614914239`
-      : "Agencia de Viajes Formal · RUC 20614914239",
+    badgeHero: "Salida Aeropuerto Jorge Chávez (LIM) · RUC 20614914239",
     banderasHero: ["Perú", "España", "República Dominicana", "México"],
-    tituloHero: referenciaZona
-      ? `Agencia de Viajes para ${referenciaZona}:`
-      : "Viaja con Respaldo y Tarifas Oficiales:",
-    tituloDestacadoHero: referenciaZona
-      ? "Vuelos, Europa y Caribe Todo Incluido"
-      : "Vuelos, Caribe Todo Incluido y Europa",
+    tituloHero: "Paquetes Turísticos y Vuelos desde Lima:",
+    tituloDestacadoHero: "Madrid, Europa y Caribe Todo Incluido",
     descripcionHero: mencionZona,
     negritaHero:
       "Separa tu paquete o vuelo hoy con el 50% de inicial y paga el saldo en cuotas antes de viajar.",
-    ctaPrincipalTexto: referenciaZona
-      ? `Cotizar desde ${referenciaZona} por WhatsApp`
-      : "Cotizar mi Viaje por WhatsApp",
+    ctaPrincipalTexto: "Cotizar mi Viaje por WhatsApp",
     waPrincipalNumero: TELEFONO,
     waPrincipalMensaje: referenciaZona
-      ? `¡Hola Cityland Travel! Les escribo desde ${referenciaZona} y deseo recibir una cotización personalizada de viaje.`
+      ? `¡Hola Cityland Travel! Les escribo desde ${referenciaZona} y deseo recibir una cotización personalizada de viaje saliendo desde Lima (LIM).`
       : "¡Hola Cityland Travel! Vi su página web y deseo recibir una cotización personalizada de viaje.",
     checksHero: [
-      "Oficina Física en Lima (RUC 20614914239)",
+      "Oficina Física en Los Olivos (RUC 20614914239)",
       "Código de Reserva Aéreo Verificable (PNR)",
       "Boleta, Factura y Contrato de Viaje",
     ],
@@ -167,8 +159,8 @@ export function obtenerConfigAgenciaOficial(
       etiquetaDer: "Todo Incluido 5★",
       img: "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=85",
       alt: "Resort 5 estrellas en Punta Cana Todo Incluido — Cityland Travel",
-      sobretitulo: "Paquete Estrella Temporada 2026",
-      titulo: "Punta Cana Resort 5★ Todo Incluido (Vuelo + Hotel + Traslados)",
+      sobretitulo: "Paquete Estrella Temporada 2026 · Salida desde Lima (LIM)",
+      titulo: "Punta Cana Resort 5★ Todo Incluido",
       labelPrecio: "Tarifa referencial por pasajero",
       precio: "$1,290",
       moneda: "USD",
@@ -180,9 +172,7 @@ export function obtenerConfigAgenciaOficial(
 
     seccionCatalogo: {
       sobretitulo: "Catálogo Oficial Cityland Travel 2026",
-      titulo: referenciaZona
-        ? `Paquetes y Vuelos Más Solicitados por Viajeros de ${referenciaZona}`
-        : "Paquetes Turísticos y Vuelos Más Solicitados",
+      titulo: "Paquetes Turísticos y Vuelos Más Solicitados desde Lima (LIM)",
       filtros: [
         { id: "todos", label: "Todos los Destinos (6)" },
         { id: "caribe", label: "Caribe Todo Incluido (3)" },
@@ -196,7 +186,7 @@ export function obtenerConfigAgenciaOficial(
     pilares: [
       {
         titulo: "Agencia Registrada (RUC 20614914239)",
-        sub: "Cityland Travel E.I.R.L. · Oficina en Av. Antúnez de Mayolo 814, Los Olivos.",
+        sub: "Cityland Travel E.I.R.L. · Oficina en Av. Universitaria 2029, Los Olivos.",
       },
       {
         titulo: "Separa con el 50% de Inicial",

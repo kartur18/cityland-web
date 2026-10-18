@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import AirlineLandingTemplate from "@/components/AirlineLandingTemplate";
+import VuelosJorgeChavezTemplate from "@/components/VuelosJorgeChavezTemplate";
 import ModuloSeguridadYCalculadoraEuropa from "@/components/ModuloSeguridadYCalculadoraEuropa";
 import { SeoSiloFooter } from "@/components/SeoSiloFooter";
 import { RUTAS_VUELOS_SEO, buscarRutaVuelo } from "@/lib/rutas-vuelos";
@@ -131,7 +131,7 @@ export default async function RutaVueloPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <AirlineLandingTemplate config={ruta.config} breadcrumbs={migas}>
+      <VuelosJorgeChavezTemplate ruta={ruta} breadcrumbs={migas}>
         {esRutaEuropa && (
           <ModuloSeguridadYCalculadoraEuropa
             destinoInicial={`${ruta.destino} (${paisDestino})`}
@@ -206,7 +206,7 @@ export default async function RutaVueloPage({ params }: Props) {
           enlaces={enlacesCruzados}
           tituloContexto={`${ruta.destino} (${paisDestino})`}
         />
-      </AirlineLandingTemplate>
+      </VuelosJorgeChavezTemplate>
     </>
   );
 }

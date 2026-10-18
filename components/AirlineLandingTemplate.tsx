@@ -299,10 +299,10 @@ export default function AirlineLandingTemplate({
               </div>
             </div>
 
-            {/* Tarjeta Vitrina Promocional Derecha */}
+            {/* Tarjeta Vitrina Promocional Derecha (Foto 100% limpia sin textos encima) */}
             <div className="lg:col-span-5 animate-fade-up delay-100">
               <div className="card-interactive group bg-white rounded-3xl border-2 border-slate-200/90 shadow-xl overflow-hidden">
-                <div className="relative h-60 sm:h-64 w-full overflow-hidden bg-slate-100">
+                <div className="relative h-56 sm:h-60 w-full overflow-hidden bg-slate-100">
                   <Image
                     src={imgVitrina}
                     alt={config.vitrina.alt}
@@ -311,7 +311,6 @@ export default function AirlineLandingTemplate({
                     sizes="(max-width: 1024px) 100vw, 500px"
                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
 
                   <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
                     <span className="inline-flex items-center gap-1.5 bg-white/95 backdrop-blur-md text-[#0a1628] text-xs font-bold px-3 py-1 rounded-full shadow-xs">
@@ -322,62 +321,64 @@ export default function AirlineLandingTemplate({
                       {config.vitrina.etiquetaDer}
                     </span>
                   </div>
+                </div>
 
-                  <div className="absolute bottom-3.5 left-4 right-4 z-10 text-white">
-                    <span className="text-[11px] font-bold text-amber-300 uppercase tracking-wider block mb-0.5">
+                <div className="p-5 bg-white space-y-3.5">
+                  <div className="border-b border-slate-100 pb-3">
+                    <span className="text-[11px] font-extrabold text-red-600 uppercase tracking-wider block mb-0.5">
                       {config.vitrina.sobretitulo}
                     </span>
-                    <h2 className="text-lg sm:text-xl font-extrabold leading-snug">
+                    <h2 className="text-base sm:text-lg font-extrabold text-[#0a1628] leading-snug line-clamp-2">
                       {config.vitrina.titulo}
                     </h2>
                   </div>
-                </div>
 
-                <div className="p-5 flex items-center justify-between gap-4 bg-white">
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                        {config.vitrina.labelPrecio}
-                      </span>
-                      {precioAntesVitrina && (
-                        <span className="bg-red-50 text-red-600 text-[10px] font-extrabold px-2 py-0.5 rounded-full">
-                          Oferta
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                          {config.vitrina.labelPrecio}
                         </span>
-                      )}
-                    </div>
-                    <div className="flex items-baseline gap-1.5">
-                      <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
-                        Desde
-                      </span>
-                      <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0a1628] leading-none">
-                        {config.vitrina.precio.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
-                      </span>
-                      {config.vitrina.moneda &&
-                        config.vitrina.moneda.replace(/\bUSD\b\s*[·•-]?\s*/gi, "").trim() !== "" && (
-                          <span className="text-xs font-bold text-slate-500">
-                            {config.vitrina.moneda.replace(/\bUSD\b\s*[·•-]?\s*/gi, "").trim()}
+                        {precioAntesVitrina && (
+                          <span className="bg-red-50 text-red-600 text-[10px] font-extrabold px-2 py-0.5 rounded-full">
+                            Oferta
                           </span>
                         )}
-                      {precioAntesVitrina && (
-                        <span className="text-xs font-semibold text-slate-400 line-through ml-1">
-                          {precioAntesVitrina}
+                      </div>
+                      <div className="flex items-baseline gap-1.5">
+                        <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
+                          Desde
                         </span>
-                      )}
+                        <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0a1628] leading-none">
+                          {config.vitrina.precio.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                        </span>
+                        {config.vitrina.moneda &&
+                          config.vitrina.moneda.replace(/\bUSD\b\s*[·•-]?\s*/gi, "").trim() !== "" && (
+                            <span className="text-xs font-bold text-slate-500">
+                              {config.vitrina.moneda.replace(/\bUSD\b\s*[·•-]?\s*/gi, "").trim()}
+                            </span>
+                          )}
+                        {precioAntesVitrina && (
+                          <span className="text-xs font-semibold text-slate-400 line-through ml-1">
+                            {precioAntesVitrina}
+                          </span>
+                        )}
+                      </div>
+                      <span className="text-[11px] font-semibold text-emerald-700 block mt-1">
+                        {config.vitrina.notaInferior.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                      </span>
                     </div>
-                    <span className="text-[11px] font-semibold text-emerald-700 block mt-1">
-                      {config.vitrina.notaInferior.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
-                    </span>
-                  </div>
 
-                  <a
-                    href={armarUrlWaConAtribucion(config.vitrina.waMensaje, "Vitrina Destacada")}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0 shadow-sm"
-                  >
-                    <WhatsAppIcon size={16} />
-                    <span>Cotizar Ahora</span>
-                  </a>
+                    <a
+                      href={armarUrlWaConAtribucion(config.vitrina.waMensaje, "Vitrina Destacada")}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0 shadow-sm"
+                    >
+                      <WhatsAppIcon size={16} />
+                      <span>Cotizar Ahora</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -400,13 +401,13 @@ export default function AirlineLandingTemplate({
               </span>
             </div>
             <div className="flex items-center gap-2 text-[11px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200/70 px-3 py-1 rounded-lg">
-              <span>✓ Agencia Registrada RUC 20614914239 · Sede Av. Antúnez de Mayolo 814, Los Olivos</span>
+              <span>✓ Agencia Registrada RUC 20614914239 · Salidas Internacionales desde Lima (Aeropuerto Jorge Chávez)</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. Grilla de Tarjetas Promocionales y Comerciales */}
+      {/* 3. Grilla de Tarjetas Promocionales y Comerciales (Fotos limpias sin textos encima) */}
       <section id="catalogo-principal" className="py-14 sm:py-18 bg-slate-50/70 border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
@@ -453,7 +454,8 @@ export default function AirlineLandingTemplate({
                   id={item.id}
                   className="card-interactive group bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-xl transition-all flex flex-col justify-between h-full"
                 >
-                  <div className="relative h-56 w-full overflow-hidden bg-slate-100">
+                  {/* Imagen 100% despejada sin textos superpuestos */}
+                  <div className="relative h-52 w-full overflow-hidden bg-slate-100">
                     <Image
                       src={item.imgRender}
                       alt={item.alt}
@@ -461,7 +463,6 @@ export default function AirlineLandingTemplate({
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
-                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
 
                     <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2 z-10">
                       <span className="inline-flex items-center gap-1.5 bg-white/95 backdrop-blur-md text-[#0a1628] text-[11px] font-bold px-3 py-1 rounded-full shadow-xs">
@@ -472,21 +473,20 @@ export default function AirlineLandingTemplate({
                         {item.tag}
                       </span>
                     </div>
-
-                    <div className="absolute bottom-3 left-4 right-4 z-10 text-white">
-                      <span className="text-[11px] font-semibold text-amber-300 block">
-                        {item.subtitulo.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
-                      </span>
-                      <h3 className="text-lg sm:text-xl font-extrabold leading-tight drop-shadow-xs">
-                        {item.titulo.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
-                      </h3>
-                    </div>
                   </div>
 
+                  {/* Título, subtítulo y beneficios en fondo blanco limpio */}
                   <div className="p-5 flex flex-col justify-between flex-1 gap-4">
                     <div>
+                      <span className="text-[11px] font-extrabold uppercase tracking-wider text-red-600 block mb-1 line-clamp-1">
+                        {item.subtitulo.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                      </span>
+                      <h3 className="text-base sm:text-lg font-extrabold text-[#0a1628] leading-snug mb-2.5 line-clamp-2">
+                        {item.titulo.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                      </h3>
+
                       {item.resumenCorto.length > 55 ? (
-                        <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                        <p className="text-xs text-slate-600 leading-relaxed mb-3 line-clamp-2">
                           {item.resumenCorto.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                         </p>
                       ) : (
@@ -495,7 +495,7 @@ export default function AirlineLandingTemplate({
                         </div>
                       )}
 
-                      <div className="space-y-1.5 text-xs font-medium text-slate-600 pt-2 border-t border-slate-100">
+                      <div className="space-y-1.5 text-xs font-medium text-slate-600 pt-2.5 border-t border-slate-100">
                         {item.checks.map((ck) => (
                           <div key={ck} className="flex items-start gap-2">
                             <span className="text-emerald-600 font-extrabold shrink-0 mt-0.5">
