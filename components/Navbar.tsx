@@ -16,6 +16,7 @@ const PRIMARY_LINKS: {
   flag?: string;
 }[] = [
   { label: "España", href: "/espana", highlight: true, badgeColor: "red", flag: "España" },
+  { label: "Italia", href: "/italia", highlight: true, badgeColor: "sky", flag: "Italia" },
   { label: "Caribe & Miami", href: "/caribe", highlight: true, badgeColor: "sky", flag: "República Dominicana" },
   { label: "Europa & Turquía", href: "/europa-turquia" },
   { label: "Cusco", href: "/cusco" },

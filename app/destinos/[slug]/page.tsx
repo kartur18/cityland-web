@@ -259,7 +259,8 @@ export default async function DestinoPage({
                     dest.ciudad,
                     dest.migratorio ? "Paquete Migratorio / Turístico" : "Paquete Completo",
                     precioPrincipal,
-                    catWa
+                    catWa,
+                    `citylandtravel.com/destinos/${dest.slug} [Hero Principal]`
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -337,7 +338,13 @@ export default async function DestinoPage({
                   </div>
 
                   <a
-                    href={cotLink(dest.ciudad, "Paquete", precioPrincipal, catWa)}
+                    href={cotLink(
+                      dest.ciudad,
+                      "Paquete",
+                      precioPrincipal,
+                      catWa,
+                      `citylandtravel.com/destinos/${dest.slug} [Vitrina Hero]`
+                    )}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0"
@@ -425,7 +432,13 @@ export default async function DestinoPage({
                         </span>
                       </div>
                       <a
-                        href={cotLink(dest.ciudad, "Paquete Migratorio", dest.migratorio, catWa)}
+                        href={cotLink(
+                          dest.ciudad,
+                          "Paquete Migratorio",
+                          dest.migratorio,
+                          catWa,
+                          `citylandtravel.com/destinos/${dest.slug} [Carpeta Migratoria]`
+                        )}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 bg-[#0a1628] hover:bg-slate-800 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition-colors"
@@ -459,7 +472,13 @@ export default async function DestinoPage({
                       </span>
                     </div>
                     <a
-                      href={cotLink(dest.ciudad, "Paquete Turístico", dest.turistico, catWa)}
+                      href={cotLink(
+                        dest.ciudad,
+                        "Paquete Turístico",
+                        dest.turistico,
+                        catWa,
+                        `citylandtravel.com/destinos/${dest.slug} [Paquete Turístico]`
+                      )}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 py-2.5 rounded-xl text-xs font-bold transition-colors"
@@ -493,7 +512,13 @@ export default async function DestinoPage({
                         </span>
                       </div>
                       <a
-                        href={cotLink(dest.ciudad, "Reserva con 50%", dest.turistico, catWa)}
+                        href={cotLink(
+                          dest.ciudad,
+                          "Reserva con 50%",
+                          dest.turistico,
+                          catWa,
+                          `citylandtravel.com/destinos/${dest.slug} [Inicial 50%]`
+                        )}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 bg-[#0a1628] hover:bg-slate-800 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition-colors"
@@ -617,7 +642,13 @@ export default async function DestinoPage({
               </div>
 
               <a
-                href={cotLink(dest.ciudad, "Paquete Completo", precioPrincipal, catWa)}
+                href={cotLink(
+                  dest.ciudad,
+                  "Paquete Completo",
+                  precioPrincipal,
+                  catWa,
+                  `citylandtravel.com/destinos/${dest.slug} [Sidebar Cotizador]`
+                )}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-wa-pulse w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white py-3.5 px-5 rounded-xl font-bold text-sm shadow-lg cursor-pointer mb-3"
@@ -629,7 +660,8 @@ export default async function DestinoPage({
               <a
                 href={waLink(
                   `¡Hola Cityland Travel! Deseo agendar una cita en su oficina de Los Olivos para cotizar mi viaje a ${dest.ciudad}.`,
-                  catWa
+                  catWa,
+                  `citylandtravel.com/destinos/${dest.slug} [Agendar Cita Oficina]`
                 )}
                 target="_blank"
                 rel="noopener noreferrer"

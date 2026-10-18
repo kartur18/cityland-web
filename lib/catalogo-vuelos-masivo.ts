@@ -260,9 +260,16 @@ const SLUGS_EXISTENTES = new Set([
 
 function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
   const esNacional = s.modalidad === "nacional";
+  const esRetornoEuropa =
+    s.modalidad === "retorno" &&
+    ["España", "Italia", "Francia", "Países Bajos", "Alemania", "Suiza", "Portugal", "Bélgica", "Reino Unido"].includes(
+      s.paisOrigen
+    );
   const p2Maletas = s.precioUSD + (esNacional ? 35 : 95);
-  const pPaquete = s.precioUSD + (esNacional ? 130 : 260);
-  const waMsg = `Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de ${s.origen} a ${s.destino} (Desde $${s.precioUSD} USD). ¿Me pueden ayudar?`;
+  const pPaquete = s.precioUSD + (esNacional ? 130 : esRetornoEuropa ? 60 : 260);
+  const waMsg = esRetornoEuropa
+    ? `Hola, escribo desde ${s.origen} (${s.paisOrigen}). Quiero consultar disponibilidad y precio para viajar de ${s.origen} a ${s.destino} o comprar pasaje para un familiar en Perú (Desde $${s.precioUSD} USD). ¿Me pueden ayudar?`
+    : `Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de ${s.origen} a ${s.destino} (Desde $${s.precioUSD} USD). ¿Me pueden ayudar?`;
 
   const textoBusqueda =
     s.destino === "Lima"
@@ -270,7 +277,7 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
       : `${s.destino} ${s.paisDestino}`;
   const [f0, f1, f2, f3, f4] = obtenerGaleriaPorTexto(
     textoBusqueda,
-    s.modalidad === "europa"
+    s.modalidad === "europa" || esRetornoEuropa
       ? "europa"
       : s.modalidad === "usa"
       ? "usa"
@@ -293,21 +300,31 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
       `vuelos baratos ${s.origen.toLowerCase()} a ${s.destino.toLowerCase()}`,
       `boleto aereo ${s.codigoOrigen.toLowerCase()} ${s.codigoDestino.toLowerCase()}`,
       `precio pasaje ${s.origen.toLowerCase()} ${s.destino.toLowerCase()} en dolares`,
+      ...(esRetornoEuropa
+        ? [
+            `comprar pasaje desde ${s.origen.toLowerCase()} para familiar en peru`,
+            `vuelos ${s.origen.toLowerCase()} lima 2 maletas 23 kg`,
+          ]
+        : []),
       "cityland travel",
     ],
     precioDesdeUSD: s.precioUSD,
     faqs: [
       {
         q: `¿Qué aerolíneas operan la ruta de ${s.origen} (${s.codigoOrigen}) a ${s.destino} (${s.codigoDestino})?`,
-        a: `Trabajamos con salidas confirmadas en ${s.aerolineas} (${s.escala}), con un tiempo estimado de viaje de ${s.duracion}. Emitimos tu boleto con código de reserva PNR verificable al instante.`,
+        a: `Trabajamos con salidas confirmadas en ${s.aerolineas} (${s.escala}), con un tiempo estimado de viaje de ${s.duracion}. Emitimos tu boleto con código de reserva PNR y E-Ticket IATA de 13 dígitos verificables al instante.`,
       },
       {
         q: `¿El precio Desde $${s.precioUSD} USD incluye impuestos aeroportuarios?`,
         a: `Sí. Todas nuestras tarifas están expresadas en dólares americanos (USD) e incluyen impuestos aeroportuarios y cargos obligatorios. Tarifa sujeta a disponibilidad y condiciones aplicables.`,
       },
       {
-        q: `¿Qué requisitos necesito para viajar de ${s.origen} a ${s.destino}?`,
-        a: esNacional
+        q: esRetornoEuropa
+          ? `¿Puedo comprar desde ${s.origen} (${s.paisOrigen}) un pasaje o paquete para que mi familiar viaje desde Perú hacia ${s.origen}?`
+          : `¿Qué requisitos necesito para viajar de ${s.origen} a ${s.destino}?`,
+        a: esRetornoEuropa
+          ? `Sí. Atendemos a residentes peruanos en ${s.origen} que viajan de vacaciones a Lima o que compran a distancia el boleto/carpeta para traer a sus padres, hijos o pareja desde Lima o provincias (incluyendo asistencia gratuita de silla de ruedas SSR WCHR para adultos mayores y entrega de carpeta física en Los Olivos).`
+          : esNacional
           ? `${s.requisitos} Nuestro equipo gestiona tu check-in anticipado, selección de asientos, equipaje en bodega y envío de tarjetas de embarque.`
           : `${s.requisitos} Nuestro equipo te asesora paso a paso con el check-in, equipaje de 23 kg y documentación requerida para tu viaje.`,
       },
@@ -344,17 +361,21 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
       },
       seccionCatalogo: {
         sobretitulo: "Opciones de Tarifa en Dólares (Impuestos Incluidos)",
-        titulo: `Modalidades para volar de ${s.origen} a ${s.destino}`,
+        titulo: esRetornoEuropa
+          ? `Modalidades para Residentes en ${s.origen} y Reunificación Familiar`
+          : `Modalidades para volar de ${s.origen} a ${s.destino}`,
         filtros: [
           { id: "todos", label: "Todas las tarifas" },
           { id: "vuelo", label: "Solo Boleto Aéreo" },
-          { id: "paquete", label: "Vuelo + Hotel / Tours" },
+          { id: "paquete", label: esRetornoEuropa ? "Traer Familiar de Perú" : "Vuelo + Hotel / Tours" },
         ],
       },
       items: [
         {
           id: `${s.slug}-base`,
-          titulo: `Boleto Aéreo ${s.origen} – ${s.destino} (Tarifa Estándar)`,
+          titulo: esRetornoEuropa
+            ? `Vuelo ${s.origen} – Lima (Especial Residentes en ${s.paisOrigen})`
+            : `Boleto Aéreo ${s.origen} – ${s.destino} (Tarifa Estándar)`,
           pais: s.paisDestino,
           filtro: "vuelo",
           subtitulo: `${s.aerolineas} · ${s.escala}`,
@@ -368,57 +389,73 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
           resumenCorto: `Boleto confirmado ${s.codigoOrigen} → ${s.codigoDestino} con impuestos incluidos y código PNR verificable.`,
           checks: [
             `Boleto confirmado ${s.codigoOrigen} → ${s.codigoDestino}`,
-            "Artículo personal + equipaje de cabina 10 kg",
+            "Artículo personal + equipaje de cabina 10 kg + bodega 23 kg",
             "Check-in y envío de tarjetas de embarque",
           ],
           waNumber: "51944103890",
-          waMensaje: `Hola, quiero cotizar el Boleto Estándar de ${s.origen} a ${s.destino} (Desde $${s.precioUSD} USD). ¿Me ayudan con fechas?`,
+          waMensaje: `Hola, quiero cotizar el Boleto de ${s.origen} a ${s.destino} (Desde $${s.precioUSD} USD). ¿Me ayudan con fechas?`,
         },
         {
           id: `${s.slug}-maleta`,
-          titulo: `Vuelo ${s.origen} – ${s.destino} + Bodega 23 kg`,
+          titulo: `Vuelo ${s.origen} – ${s.destino} + 2 Maletas de 23 kg (46 kg)`,
           pais: s.paisDestino,
           filtro: "vuelo",
-          subtitulo: "Ideal para estadías largas o equipaje completo",
+          subtitulo: "Ideal para vacaciones familiares, regalos o mudanza",
           precioPrincipal: `$${p2Maletas}`,
-          precioSecundario: "Impuestos y maleta de 23 kg incluidos",
+          precioSecundario: "Impuestos y 2 maletas de 23 kg incluidas",
           notaPrecio: "Tarifa sujeta a disponibilidad y condiciones aplicables",
-          tag: "Con Maleta 23 kg",
+          tag: "Doble Equipaje 46 kg",
           tagBg: "bg-blue-600 text-white",
           img: f3,
           alt: `Vuelo con maleta 23 kg de ${s.origen} a ${s.destino}`,
-          resumenCorto: `Incluye franquicia completa de equipaje en bodega de 23 kg + cabina 10 kg en ruta ${s.origen} – ${s.destino}.`,
+          resumenCorto: `Incluye franquicia ampliada de equipaje en bodega + cabina 10 kg en ruta ${s.origen} – ${s.destino}.`,
           checks: [
-            "Maleta en bodega de 23 kg incluida",
+            "Franquicia de 1 o 2 maletas de 23 kg en bodega",
             "Equipaje de cabina 10 kg + bolso personal",
             "Asistencia ante cambios o reprogramaciones",
           ],
           waNumber: "51944103890",
-          waMensaje: `Hola, quiero cotizar el vuelo de ${s.origen} a ${s.destino} con maleta de 23 kg (Desde $${p2Maletas} USD).`,
+          waMensaje: `Hola, quiero cotizar el vuelo de ${s.origen} a ${s.destino} con equipaje de bodega ampliado (Desde $${p2Maletas} USD).`,
         },
         {
           id: `${s.slug}-paquete`,
-          titulo: `Paquete ${s.origen} – ${s.destino} (Vuelo + Hotel + Traslados)`,
+          titulo: esRetornoEuropa
+            ? `Pack Reunificación: Traer Familiar de Lima a ${s.origen} (Con Carpeta)`
+            : `Paquete ${s.origen} – ${s.destino} (Vuelo + Hotel + Traslados)`,
           pais: s.paisDestino,
           filtro: "paquete",
-          subtitulo: "Separa con el 50% y paga en cuotas sin intereses",
+          subtitulo: esRetornoEuropa
+            ? "Compra desde Europa con entrega de carpeta en Lima + Silla de Ruedas SSR WCHR"
+            : "Separa con el 50% y paga en cuotas sin intereses",
           precioPrincipal: `$${pPaquete}`,
-          precioSecundario: "Vuelo + Hotel + Traslados incluidos",
+          precioSecundario: esRetornoEuropa
+            ? "Vuelo + Seguro Schengen 30.000€ + Revisión Carta Invitación / Ospitalità"
+            : "Vuelo + Hotel + Traslados incluidos",
           notaPrecio: "Tarifa sujeta a disponibilidad y condiciones aplicables",
-          tag: "Todo Resuelto",
+          tag: esRetornoEuropa ? "Traer Familiar a Europa" : "Todo Resuelto",
           tagBg: "bg-red-600 text-white",
           img: f1,
           alt: `Paquete a ${s.destino} desde ${s.origen}`,
-          resumenCorto: `Viaje completo de ${s.origen} a ${s.destino} con alojamiento verificado, traslados y asesoría personalizada.`,
-          checks: [
-            `Boleto aéreo ${s.origen} – ${s.destino}`,
-            "Estadía en hotel seleccionado con desayuno",
-            esNacional
-              ? "Traslados aeropuerto – hotel y soporte 24/7"
-              : "Seguro de asistencia y soporte 24/7 en viaje",
-          ],
+          resumenCorto: esRetornoEuropa
+            ? `Compra desde ${s.origen} el viaje completo para tus padres, hijos o pareja saliendo de Lima o provincias hacia ${s.origen}.`
+            : `Viaje completo de ${s.origen} a ${s.destino} con alojamiento verificado, traslados y asesoría personalizada.`,
+          checks: esRetornoEuropa
+            ? [
+                `Boleto Lima → ${s.origen} con código PNR y E-Ticket IATA de 13 dígitos`,
+                "Seguro Schengen 30.000€ + Revisión de Carta de Invitación / Lettera di Invito",
+                "Asistencia gratuita Silla de Ruedas (SSR WCHR) para padres y adultos mayores",
+              ]
+            : [
+                `Boleto aéreo ${s.origen} – ${s.destino}`,
+                "Estadía en hotel seleccionado con desayuno",
+                esNacional
+                  ? "Traslados aeropuerto – hotel y soporte 24/7"
+                  : "Seguro de asistencia y soporte 24/7 en viaje",
+              ],
           waNumber: "51944103890",
-          waMensaje: `Hola, quiero cotizar el Paquete Completo de ${s.origen} a ${s.destino} (Desde $${pPaquete} USD).`,
+          waMensaje: esRetornoEuropa
+            ? `Hola, vivo en ${s.origen} y quiero cotizar el Pack Reunificación para traer a un familiar desde Lima a ${s.origen} (Desde $${pPaquete} USD).`
+            : `Hola, quiero cotizar el Paquete Completo de ${s.origen} a ${s.destino} (Desde $${pPaquete} USD).`,
         },
       ],
       pilares: [

@@ -30,7 +30,7 @@ export function getNumeroWhatsapp(_categoria?: "europa" | "caribe" | "general" |
 }
 
 /**
- * Genera el enlace de WhatsApp con mensaje precargado y número especializado.
+ * Genera el enlace de WhatsApp con mensaje precargado, número oficial y atribución 📍 Ref Web.
  */
 export function buildWaUrl(params: {
   categoria?: "europa" | "caribe" | "general" | string;
@@ -40,14 +40,23 @@ export function buildWaUrl(params: {
   duracion?: string;
   mensajePersonalizado?: string;
   texto?: string;
+  refWeb?: string;
 }): string {
   const cat = params.categoria || "general";
   const seed = params.destino || "general";
   const num = getNumeroWhatsapp(cat, seed);
+  const refEtiqueta =
+    params.refWeb ||
+    (params.destino
+      ? `citylandtravel.com [${params.destino}${params.tipo ? ` · ${params.tipo}` : ""}]`
+      : "citylandtravel.com [Web Oficial]");
 
   const customText = params.mensajePersonalizado || params.texto;
   if (customText) {
-    return `https://wa.me/${num}?text=${encodeURIComponent(customText)}`;
+    const finalCustom = customText.includes("📍 Ref Web:")
+      ? customText
+      : `${customText}\n\n📍 Ref Web: ${refEtiqueta}`;
+    return `https://wa.me/${num}?text=${encodeURIComponent(finalCustom)}`;
   }
 
   let texto = `¡Hola Cityland Travel! Vi su página web y deseo cotizar un viaje con un asesor especializado.`;
@@ -57,37 +66,78 @@ export function buildWaUrl(params: {
     texto = `¡Hola Cityland Travel! Deseo cotizar paquetes y vuelos a ${params.destino} saliendo desde Lima. ¿Tienen cupos disponibles?`;
   }
 
-  return `https://wa.me/${num}?text=${encodeURIComponent(texto)}`;
+  const textoConRef = texto.includes("📍 Ref Web:")
+    ? texto
+    : `${texto}\n\n📍 Ref Web: ${refEtiqueta}`;
+
+  return `https://wa.me/${num}?text=${encodeURIComponent(textoConRef)}`;
 }
 
-// Compatibilidad retroactiva
-export function waLink(mensaje: string, categoria: "europa" | "caribe" | "general" = "general"): string {
+// Compatibilidad retroactiva con atribución automática
+export function waLink(
+  mensaje: string,
+  categoria: "europa" | "caribe" | "general" = "general",
+  refWeb?: string
+): string {
   const num = getNumeroWhatsapp(categoria, mensaje);
-  return `https://wa.me/${num}?text=${encodeURIComponent(mensaje)}`;
+  const refEtiqueta = refWeb || `citylandtravel.com [${categoria.toUpperCase()}]`;
+  const finalMsg = mensaje.includes("📍 Ref Web:")
+    ? mensaje
+    : `${mensaje}\n\n📍 Ref Web: ${refEtiqueta}`;
+  return `https://wa.me/${num}?text=${encodeURIComponent(finalMsg)}`;
 }
 
-export function armarLinkWhatsApp(mensaje: string): string {
-  return waLink(mensaje);
+export function armarLinkWhatsApp(mensaje: string, refWeb?: string): string {
+  return waLink(mensaje, "general", refWeb);
 }
 
 export const WA_LINK = buildWaUrl({
   categoria: "general",
-  mensajePersonalizado: "¡Hola Cityland Travel! Vi su web oficial y deseo cotizar paquetes y vuelos con un asesor.",
+  mensajePersonalizado:
+    "¡Hola Cityland Travel! Vi su web oficial y deseo cotizar paquetes y vuelos con un asesor.",
+  refWeb: "citylandtravel.com [Contacto General]",
 });
 
-export function cotLink(destino: string, tipo: string, precio: number, categoria?: "europa" | "caribe" | "general"): string {
-  const cat = categoria || (tipo.toLowerCase().includes("migra") || destino.toLowerCase().match(/madrid|barcelona|roma|milan|paris|europa/) ? "europa" : "caribe");
+export function cotLink(
+  destino: string,
+  tipo: string,
+  precio: number,
+  categoria?: "europa" | "caribe" | "general",
+  refWeb?: string
+): string {
+  const cat =
+    categoria ||
+    (tipo.toLowerCase().includes("migra") ||
+    destino.toLowerCase().match(/madrid|barcelona|roma|milan|milán|turin|turín|italia|espana|españa|paris|europa/)
+      ? "europa"
+      : "caribe");
   return buildWaUrl({
     categoria: cat,
     destino,
     tipo,
     precioUSD: precio,
+    refWeb,
   });
 }
 
-export function cotFormLink(data: { nombre: string; email: string; destino: string; fechaIda: string; fechaRetorno?: string; pasajeros: number }): string {
-  const cat = data.destino.toLowerCase().match(/madrid|barcelona|roma|milan|paris|europa/) ? "europa" : data.destino.toLowerCase().match(/punta cana|cancun|cartagena|medellin|caribe/) ? "caribe" : "general";
+export function cotFormLink(data: {
+  nombre: string;
+  email: string;
+  destino: string;
+  fechaIda: string;
+  fechaRetorno?: string;
+  pasajeros: number;
+  refWeb?: string;
+}): string {
+  const cat = data.destino
+    .toLowerCase()
+    .match(/madrid|barcelona|roma|milan|milán|turin|turín|italia|espana|españa|paris|europa/)
+    ? "europa"
+    : data.destino.toLowerCase().match(/punta cana|cancun|cartagena|medellin|caribe/)
+    ? "caribe"
+    : "general";
   const num = getNumeroWhatsapp(cat, data.destino);
+  const refEtiqueta = data.refWeb || `citylandtravel.com [Formulario Cotizador · ${data.destino}]`;
   const msg = `¡Hola Cityland Travel! Solicito cotización desde la web:
 • Pasajero: ${data.nombre}
 • Correo: ${data.email}
@@ -95,7 +145,9 @@ export function cotFormLink(data: { nombre: string; email: string; destino: stri
 • Fecha ida: ${data.fechaIda}
 • Fecha retorno: ${data.fechaRetorno || "Flexible"}
 • Pasajeros: ${data.pasajeros}
-Deseo conocer opciones separando con el 50% de inicial.`;
+Deseo conocer opciones separando con el 50% de inicial.
+
+📍 Ref Web: ${refEtiqueta}`;
   return `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
 }
 

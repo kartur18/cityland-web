@@ -1131,6 +1131,10 @@ export const RUTAS_VUELOS_SEO: RutaVueloSEO[] = [
 ];
 
 export function buscarRutaVuelo(slug: string): RutaVueloSEO | undefined {
-  return RUTAS_VUELOS_SEO.find((r) => r.slug === slug);
+  const directo = RUTAS_VUELOS_SEO.find((r) => r.slug === slug);
+  if (directo) return directo;
+  const normalizado = slug.replace(/-a-/g, "-");
+  return RUTAS_VUELOS_SEO.find((r) => r.slug === normalizado);
 }
+
 

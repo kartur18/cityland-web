@@ -70,7 +70,8 @@ export default async function BlogArticlePage({
 
   const canonicalUrl = `https://citylandtravel.com/blog/${post.slug}`;
   const waHref = armarLinkWhatsApp(
-    `Hola Cityland Travel, leí su guía "${post.titulo}" y deseo cotizar mi viaje.`
+    `Hola Cityland Travel, leí su guía "${post.titulo}" y deseo cotizar mi viaje.`,
+    `citylandtravel.com/blog/${post.slug}`
   );
 
   const jsonLd = {
@@ -229,10 +230,25 @@ export default async function BlogArticlePage({
                       <span>Especial España</span>
                     </p>
                     <p className="text-[11px] text-slate-500 mt-0.5">
-                      Vuelo + Hotel + Seguro 30.000€
+                      Vuelo + Carpeta + Seguro 30.000€
                     </p>
                   </div>
-                  <span className="text-[14px] font-black text-[#e30613]">Desde $890</span>
+                  <span className="text-[14px] font-black text-[#e30613]">Desde $1,290</span>
+                </Link>
+                <Link
+                  href="/italia"
+                  className="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-blue-50/60 border border-slate-200/80 transition-colors"
+                >
+                  <div>
+                    <p className="text-[13px] font-bold text-[#0b2347] flex items-center gap-2">
+                      <FlagIcon pais="Italia" className="w-4 h-3" />
+                      <span>Especial Italia (Milán/Roma)</span>
+                    </p>
+                    <p className="text-[11px] text-slate-500 mt-0.5">
+                      Vuelo + Lettera Invito / Hotel
+                    </p>
+                  </div>
+                  <span className="text-[14px] font-black text-[#e30613]">Desde $1,350</span>
                 </Link>
                 <Link
                   href="/destinos/punta-cana"
@@ -247,7 +263,7 @@ export default async function BlogArticlePage({
                       Vuelo + Resort All Inclusive
                     </p>
                   </div>
-                  <span className="text-[14px] font-black text-[#e30613]">Desde $1,099</span>
+                  <span className="text-[14px] font-black text-[#e30613]">Desde $1,290</span>
                 </Link>
                 <Link
                   href="/destinos/cancun"
@@ -262,7 +278,7 @@ export default async function BlogArticlePage({
                       Vuelo + Resort + Chichén Itzá
                     </p>
                   </div>
-                  <span className="text-[14px] font-black text-[#e30613]">Desde $1,049</span>
+                  <span className="text-[14px] font-black text-[#e30613]">Desde $1,290</span>
                 </Link>
                 <Link
                   href="/destinos/cartagena"
@@ -277,7 +293,7 @@ export default async function BlogArticlePage({
                       Solo con DNI + Islas del Rosario
                     </p>
                   </div>
-                  <span className="text-[14px] font-black text-[#e30613]">Desde $699</span>
+                  <span className="text-[14px] font-black text-[#e30613]">Desde $799</span>
                 </Link>
               </div>
 
