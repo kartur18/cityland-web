@@ -3,7 +3,6 @@ import { DESTINOS_EUROPA, DESTINOS_CARIBE } from "@/components/constantes";
 import { DESTINOS_MASIVOS } from "@/lib/catalogo-destinos-masivo";
 import { RUTAS_VUELOS_SEO } from "@/lib/rutas-vuelos";
 import { VIAJES_ESPECIALIZADOS_SEO } from "@/lib/catalogo-viajes-especializados";
-import { AGENCIAS_LOCALES_SEO } from "@/lib/catalogo-agencias-locales";
 import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-comerciales";
 import { INDICE_MADRID_10K } from "@/lib/catalogo-madrid-10k";
 import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
@@ -123,24 +122,6 @@ function obtenerIndiceUnificado(): ItemBuscadorCatalogo[] {
       precioDesdeUSD: v.precioDesdeUSD,
       img: galeria[i % 3] || galeria[0],
       searchNorm: normalizarTexto(`${v.titulo} ${v.destinoOPais} ${v.slug.replace(/-/g, " ")}`),
-    });
-  }
-
-  for (let i = 0; i < AGENCIAS_LOCALES_SEO.length; i++) {
-    const a = AGENCIAS_LOCALES_SEO[i];
-    const url = `/agencia/${a.slug}`;
-    const titulo = `Agencia de Viajes Cityland Travel para ${a.zona} (${a.region})`;
-    const galeria = obtenerGaleriaPorTexto(`${a.zona} ${a.region} ${a.slug}`);
-    lista.push({
-      slug: `agencia-${a.slug}`,
-      url,
-      titulo,
-      destinoOPais: `${a.zona}, ${a.region}`,
-      cluster: "agencias",
-      clusterNombre: "Atención por Ciudad y Distrito",
-      precioDesdeUSD: 299,
-      img: galeria[i % 3] || galeria[0],
-      searchNorm: normalizarTexto(`${titulo} ${a.zona} ${a.region} ${a.slug.replace(/-/g, " ")}`),
     });
   }
 

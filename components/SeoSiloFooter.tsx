@@ -175,7 +175,7 @@ export function SeoSiloFooter({
 
           <div>
             <h3 className="text-xs font-extrabold uppercase tracking-wider text-[#0a1628] mb-3 pb-2 border-b border-slate-200">
-              Atención en Lima y Provincias
+              Especialistas en Madrid y España
             </h3>
             <ul className="space-y-2">
               {enlaces.agencias.map((item) => (
@@ -197,18 +197,18 @@ export function SeoSiloFooter({
               ))}
               <li className="pt-1">
                 <Link
-                  href="/directorio"
+                  href="/madrid"
                   className="text-xs font-extrabold text-red-600 hover:underline"
                 >
-                  Ver Directorio Completo de Destinos →
+                  Central de Paquetes Migratorios a Madrid →
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/espana"
+                  href="/directorio"
                   className="text-xs font-bold text-[#0a1628] hover:text-red-600 hover:underline"
                 >
-                  Especialistas en Madrid, Barcelona e Italia →
+                  Ver Directorio Maestro de Destinos →
                 </Link>
               </li>
             </ul>

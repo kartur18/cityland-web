@@ -72,8 +72,8 @@ export default function Destinos() {
                 key={paquete.id}
                 className="card-interactive group rounded-3xl overflow-hidden bg-white border border-slate-200/90 shadow-xs flex flex-col justify-between h-full"
               >
-                {/* Fotografía Luminosa (Sin oscurecer la imagen completa) */}
-                <div className="relative h-60 w-full overflow-hidden bg-slate-100">
+                {/* Fotografía 100% Limpia (Sin sombras ni textos encima de la imagen) */}
+                <div className="relative h-56 w-full overflow-hidden bg-slate-100">
                   <Image
                     src={paquete.img}
                     alt={paquete.alt}
@@ -81,7 +81,6 @@ export default function Destinos() {
                     sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/65 to-transparent" />
 
                   <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2 z-10">
                     <span className="inline-flex items-center gap-1.5 bg-white/95 backdrop-blur-md text-[#0a1628] text-[11px] font-bold px-3 py-1 rounded-full shadow-xs">
@@ -92,18 +91,15 @@ export default function Destinos() {
                       {paquete.duracion}
                     </span>
                   </div>
-
-                  <div className="absolute bottom-3 left-4 right-4 z-10 text-white">
-                    <h3 className="text-xl font-extrabold leading-tight drop-shadow-xs">
-                      {paquete.ciudad}
-                    </h3>
-                  </div>
                 </div>
 
                 {/* Cuerpo Blanco Limpio y Ordenado */}
                 <div className="p-5 flex flex-col justify-between flex-1 gap-4">
                   <div>
-                    <p className="text-xs font-semibold text-slate-700 leading-snug mb-3">
+                    <h3 className="text-lg sm:text-xl font-extrabold text-[#0a1628] leading-tight mb-1.5">
+                      {paquete.ciudad}
+                    </h3>
+                    <p className="text-xs font-semibold text-slate-600 leading-snug mb-3">
                       {paquete.resaltado}
                     </p>
                     <div className="flex items-center gap-3 text-[11px] font-semibold text-slate-500">

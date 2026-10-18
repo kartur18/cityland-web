@@ -280,10 +280,10 @@ export default async function DestinoPage({
               </div>
             </div>
 
-            {/* Columna Derecha: Tarjeta Visual del Destino + Precio Oficial */}
+            {/* Columna Derecha: Tarjeta Visual del Destino + Precio Oficial (Foto 100% limpia) */}
             <div className="lg:col-span-5">
               <div className="bg-white rounded-3xl border border-slate-200/90 shadow-xl overflow-hidden">
-                <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-100">
+                <div className="relative h-60 sm:h-64 w-full overflow-hidden bg-slate-100">
                   <Image
                     src={dest.img}
                     alt={dest.alt}
@@ -292,7 +292,6 @@ export default async function DestinoPage({
                     sizes="(max-width: 1024px) 100vw, 500px"
                     className="object-cover"
                   />
-                  <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
 
                   <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
                     <span className="inline-flex items-center gap-1.5 bg-white/95 backdrop-blur-md text-[#0a1628] text-xs font-bold px-3 py-1 rounded-full shadow-xs">
@@ -303,61 +302,63 @@ export default async function DestinoPage({
                       Separa con 50%
                     </span>
                   </div>
+                </div>
 
-                  <div className="absolute bottom-3.5 left-4 right-4 z-10 text-white">
-                    <span className="text-[11px] font-bold text-amber-300 uppercase tracking-wider block">
-                      {dest.duracion || "Salidas Confirmadas desde Lima"}
+                <div className="p-5 bg-white space-y-3">
+                  <div className="border-b border-slate-100 pb-3">
+                    <span className="text-[11px] font-extrabold text-red-600 uppercase tracking-wider block">
+                      {dest.duracion || "Salidas Confirmadas desde Lima (LIM)"}
                     </span>
-                    <h2 className="text-xl font-extrabold leading-tight">
+                    <h2 className="text-lg sm:text-xl font-extrabold text-[#0a1628] leading-snug mt-0.5">
                       {dest.ciudad} — Vuelo + Hotel + Asistencia
                     </h2>
                   </div>
-                </div>
 
-                <div className="p-5 flex items-center justify-between gap-4 bg-white">
-                  <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1">
-                      Tarifa por pasajero (Impuestos incluidos)
-                    </span>
-                    <div className="flex items-baseline gap-1.5">
-                      <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
-                        Desde
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1">
+                        Tarifa por pasajero (Impuestos incluidos)
                       </span>
-                      <span className="font-[family-name:var(--font-bebas)] text-4xl text-[#0a1628] leading-none">
-                        ${precioPrincipal.toLocaleString("en-US")}
-                      </span>
-                      {dest.regularPrice && (
-                        <span className="text-xs text-slate-400 line-through ml-1">
-                          ${dest.regularPrice.toLocaleString("en-US")}
+                      <div className="flex items-baseline gap-1.5">
+                        <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
+                          Desde
                         </span>
-                      )}
+                        <span className="font-[family-name:var(--font-bebas)] text-4xl text-[#0a1628] leading-none">
+                          ${precioPrincipal.toLocaleString("en-US")}
+                        </span>
+                        {dest.regularPrice && (
+                          <span className="text-xs text-slate-400 line-through ml-1">
+                            ${dest.regularPrice.toLocaleString("en-US")}
+                          </span>
+                        )}
+                      </div>
+                      <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
+                        Separa hoy con ${mitadPrecio.toLocaleString("en-US")} (50% inicial)
+                      </span>
                     </div>
-                    <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                      Separa hoy con ${mitadPrecio.toLocaleString("en-US")} (50% inicial)
-                    </span>
-                  </div>
 
-                  <a
-                    href={cotLink(
-                      dest.ciudad,
-                      "Paquete",
-                      precioPrincipal,
-                      catWa,
-                      `citylandtravel.com/destinos/${dest.slug} [Vitrina Hero]`
-                    )}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0"
-                  >
-                    <WhatsAppIcon size={16} />
-                    <span>Reservar</span>
-                  </a>
+                    <a
+                      href={cotLink(
+                        dest.ciudad,
+                        "Paquete",
+                        precioPrincipal,
+                        catWa,
+                        `citylandtravel.com/destinos/${dest.slug} [Vitrina Hero]`
+                      )}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0"
+                    >
+                      <WhatsAppIcon size={16} />
+                      <span>Reservar</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* 2. MOSAICO COMPACTO DE 3 FOTOS DISTINTAS AL HERO (Cero duplicidad) */}
+          {/* 2. MOSAICO COMPACTO DE 3 FOTOS 100% LIMPIAS (Sin textos superpuestos) */}
           {fotosGaleria.length > 0 && (
             <div className="mt-8 pt-8 border-t border-slate-200/70">
               <div className="flex items-center justify-between mb-3">
@@ -365,7 +366,7 @@ export default async function DestinoPage({
                   Postales y Experiencias en {dest.ciudad}
                 </span>
                 <span className="text-xs text-slate-400 font-medium">
-                  Salidas verificadas desde Lima (LIM)
+                  Salidas desde Lima — Aeropuerto Jorge Chávez (LIM)
                 </span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -381,10 +382,6 @@ export default async function DestinoPage({
                       sizes="(max-width: 640px) 100vw, 33vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                    <span className="absolute bottom-2.5 left-3 text-[11px] font-bold text-white drop-shadow-xs">
-                      {dest.ciudad} · Experiencia #{i + 1}
-                    </span>
                   </div>
                 ))}
               </div>
@@ -725,32 +722,35 @@ export default async function DestinoPage({
                       sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
                     <div className="absolute top-3 left-3">
-                      <span className="inline-flex items-center gap-1.5 bg-white/95 text-[#0a1628] text-[11px] font-bold px-2.5 py-1 rounded-full">
+                      <span className="inline-flex items-center gap-1.5 bg-white/95 text-[#0a1628] text-[11px] font-bold px-2.5 py-1 rounded-full shadow-xs">
                         <FlagIcon pais={d.pais} className="w-3.5 h-2.5" />
                         {d.pais}
                       </span>
                     </div>
-                    <div className="absolute bottom-3 left-3.5 right-3.5 text-white">
-                      <span className="text-[10px] font-bold text-amber-300 uppercase block">
+                  </div>
+                  <div className="p-5 flex flex-col justify-between flex-1 gap-3">
+                    <div>
+                      <span className="text-[10px] font-extrabold text-red-600 uppercase tracking-wider block">
                         {d.duracion || "5 Días / 4 Noches"}
                       </span>
-                      <h3 className="text-lg font-extrabold leading-tight">{d.ciudad}</h3>
+                      <h3 className="text-lg font-extrabold text-[#0a1628] leading-tight mt-0.5">
+                        {d.ciudad}
+                      </h3>
                     </div>
-                  </div>
-                  <div className="p-4 flex items-center justify-between">
-                    <div>
-                      <span className="text-[10px] font-bold uppercase text-slate-400 block">
-                        Desde
-                      </span>
-                      <span className="font-[family-name:var(--font-bebas)] text-2xl text-[#0a1628]">
-                        ${p.toLocaleString("en-US")}
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+                      <div>
+                        <span className="text-[10px] font-bold uppercase text-slate-400 block">
+                          Desde
+                        </span>
+                        <span className="font-[family-name:var(--font-bebas)] text-2xl text-[#0a1628]">
+                          ${p.toLocaleString("en-US")}
+                        </span>
+                      </div>
+                      <span className="text-xs font-extrabold text-red-600 group-hover:translate-x-1 transition-transform">
+                        Ver programa →
                       </span>
                     </div>
-                    <span className="text-xs font-extrabold text-red-600 group-hover:translate-x-1 transition-transform">
-                      Ver programa →
-                    </span>
                   </div>
                 </Link>
               );

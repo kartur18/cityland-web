@@ -324,7 +324,7 @@ export function VistaCatalogoHub({ modoHub = "directorio" }: { modoHub?: ModoCat
                   href={div.href}
                   className="group bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-lg transition-all flex flex-col justify-between"
                 >
-                  <div className="relative h-48 w-full bg-slate-100 overflow-hidden">
+                  <div className="relative h-44 w-full bg-slate-100 overflow-hidden">
                     <Image
                       src={div.img}
                       alt={div.titulo}
@@ -332,31 +332,32 @@ export function VistaCatalogoHub({ modoHub = "directorio" }: { modoHub?: ModoCat
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
                     <span className="absolute top-3 right-3 bg-white/95 text-[#0a1628] text-[11px] font-extrabold px-3 py-1 rounded-full shadow-xs">
                       {div.precio}
                     </span>
-                    <div className="absolute bottom-3 left-3.5 right-3.5 text-white">
-                      <h3 className="text-base font-extrabold leading-snug">
+                  </div>
+                  <div className="p-4 bg-white flex flex-col justify-between flex-1 gap-3">
+                    <div>
+                      <h3 className="text-base font-extrabold text-[#0a1628] group-hover:text-red-600 transition-colors leading-snug">
                         {div.titulo}
                       </h3>
-                      <p className="text-xs text-slate-200 mt-0.5 line-clamp-1">
+                      <p className="text-xs text-slate-600 mt-1 line-clamp-2">
                         {div.subtitulo}
                       </p>
                     </div>
-                  </div>
-                  <div className="px-4 py-3 bg-white flex items-center justify-between text-xs font-bold text-[#0a1628]">
-                    <span>Explorar programas</span>
-                    <span className="text-red-600 group-hover:translate-x-1 transition-transform">
-                      Ver más →
-                    </span>
+                    <div className="pt-2.5 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-[#0a1628]">
+                      <span>Explorar programas</span>
+                      <span className="text-red-600 group-hover:translate-x-1 transition-transform">
+                        Ver más →
+                      </span>
+                    </div>
                   </div>
                 </Link>
               ))}
             </div>
           </section>
 
-          {/* 2. Paquetes Destacados con Imágenes + Índice de 108 Destinos */}
+          {/* 2. Paquetes Destacados con Imágenes Limpias + Índice de Destinos */}
           <section className="space-y-8">
             <div>
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
@@ -382,32 +383,33 @@ export function VistaCatalogoHub({ modoHub = "directorio" }: { modoHub?: ModoCat
                       sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                    <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 bg-white/95 text-[#0a1628] text-xs font-bold px-3 py-1 rounded-full">
+                    <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 bg-white/95 text-[#0a1628] text-xs font-bold px-3 py-1 rounded-full shadow-xs">
                       <FlagIcon pais={d.pais} className="w-3.5 h-2.5" />
                       <span>{d.pais}</span>
                     </span>
-                    <div className="absolute bottom-3 left-4 right-4 text-white">
-                      <h3 className="text-lg font-extrabold leading-tight">
+                  </div>
+                  <div className="p-4 flex flex-col justify-between flex-1 gap-3">
+                    <div>
+                      <span className="text-[11px] text-red-600 font-extrabold uppercase tracking-wider block">
+                        {d.duracion}
+                      </span>
+                      <h3 className="text-lg font-extrabold text-[#0a1628] leading-tight mt-0.5">
                         {d.ciudad}
                       </h3>
-                      <p className="text-xs text-amber-300 font-semibold">
-                        {d.duracion}
-                      </p>
                     </div>
-                  </div>
-                  <div className="p-4 flex items-center justify-between">
-                    <div>
-                      <span className="text-[10px] uppercase font-bold text-slate-400 block">
-                        Paquete desde
-                      </span>
-                      <span className="text-xl font-extrabold text-[#0a1628]">
-                        ${d.turistico}
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+                      <div>
+                        <span className="text-[10px] uppercase font-bold text-slate-400 block">
+                          Paquete desde
+                        </span>
+                        <span className="text-xl font-extrabold text-[#0a1628]">
+                          ${d.turistico.toLocaleString("en-US")}
+                        </span>
+                      </div>
+                      <span className="text-xs font-bold text-red-600 group-hover:translate-x-1 transition-transform">
+                        Ver itinerario →
                       </span>
                     </div>
-                    <span className="text-xs font-bold text-red-600 group-hover:translate-x-1 transition-transform">
-                      Ver itinerario →
-                    </span>
                   </div>
                 </Link>
               ))}

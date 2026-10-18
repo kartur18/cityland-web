@@ -81,11 +81,10 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Columna Derecha: Tarjeta Luminosa y Limpia (Foto Protagonista + Precio + Botón) */}
+          {/* Columna Derecha: Tarjeta Luminosa y Limpia (Foto 100% despejada sin textos encima) */}
           <div className="lg:col-span-5">
             <div className="card-interactive group bg-white rounded-3xl border border-slate-200/90 shadow-lg overflow-hidden">
-              {/* Fotografía Luminosa y Nítida (Sin velo negro encima) */}
-              <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-100">
+              <div className="relative h-60 sm:h-64 w-full overflow-hidden bg-slate-100">
                 <Image
                   src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=85"
                   alt="Punta Cana All Inclusive - Cityland Travel"
@@ -94,7 +93,6 @@ export default function Hero() {
                   sizes="(max-width: 1024px) 100vw, 500px"
                   className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/65 to-transparent" />
 
                 <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
                   <span className="inline-flex items-center gap-1.5 bg-white/95 backdrop-blur-md text-[#0a1628] text-xs font-bold px-3 py-1 rounded-full shadow-xs">
@@ -105,43 +103,45 @@ export default function Hero() {
                     Todo Incluido
                   </span>
                 </div>
+              </div>
 
-                <div className="absolute bottom-3.5 left-4 right-4 text-white z-10">
-                  <span className="text-[11px] font-bold text-amber-300 uppercase tracking-wider block">
+              {/* Pie Blanco Limpio: Título + Precio + Botón */}
+              <div className="p-5 bg-white space-y-3">
+                <div className="border-b border-slate-100 pb-2.5">
+                  <span className="text-[11px] font-extrabold text-red-600 uppercase tracking-wider block">
                     5 Días / 4 Noches · Vuelo + Resort 5★ + Isla Saona
                   </span>
-                  <h2 className="text-xl font-extrabold leading-tight">
+                  <h2 className="text-lg sm:text-xl font-extrabold text-[#0a1628] leading-tight mt-0.5">
                     Punta Cana All Inclusive
                   </h2>
                 </div>
-              </div>
 
-              {/* Pie Blanco Limpio: Precio a la izquierda + Botón a la derecha */}
-              <div className="p-5 flex items-center justify-between gap-4 bg-white">
-                <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1.5">
-                    Paquete Completo
-                  </span>
-                  <div className="flex items-baseline gap-1.5">
-                    <span className="text-xs font-extrabold uppercase text-red-600">Desde</span>
-                    <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0a1628] leading-none">
-                      $1,049
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1.5">
+                      Paquete Completo
+                    </span>
+                    <div className="flex items-baseline gap-1.5">
+                      <span className="text-xs font-extrabold uppercase text-red-600">Desde</span>
+                      <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0a1628] leading-none">
+                        $1,049
+                      </span>
+                    </div>
+                    <span className="text-[11px] font-semibold text-emerald-700 block mt-1">
+                      Separa con 50% ($525)
                     </span>
                   </div>
-                  <span className="text-[11px] font-semibold text-emerald-700 block mt-1">
-                    Separa con 50% ($525)
-                  </span>
-                </div>
 
-                <a
-                  href={waUrlPuntaCana}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0"
-                >
-                  <WhatsAppIcon size={16} />
-                  <span>Cotizar Ahora</span>
-                </a>
+                  <a
+                    href={waUrlPuntaCana}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0"
+                  >
+                    <WhatsAppIcon size={16} />
+                    <span>Cotizar Ahora</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>

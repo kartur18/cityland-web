@@ -427,10 +427,10 @@ export default function ItaliaLandingPage() {
               </div>
             </div>
 
-            {/* Columna Derecha — Tarjeta Vitrina Italia (5 cols) */}
+            {/* Columna Derecha — Tarjeta Vitrina Italia (Foto 100% limpia) */}
             <div className="lg:col-span-5">
               <div className="bg-white text-[#0a1628] rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
-                <div className="relative h-56 sm:h-64 w-full bg-slate-900">
+                <div className="relative h-52 sm:h-56 w-full bg-slate-900">
                   <Image
                     src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1000&q=80"
                     alt="Roma y Milán — Vuelos y Paquetes a Italia desde Lima"
@@ -439,7 +439,6 @@ export default function ItaliaLandingPage() {
                     sizes="(max-width: 1024px) 100vw, 42vw"
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/90 via-[#0a1628]/25 to-transparent" />
                   <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2">
                     <span className="inline-flex items-center gap-1.5 bg-white/95 text-[#0a1628] text-xs font-extrabold px-3 py-1 rounded-full shadow-sm">
                       <FlagIcon pais="Italia" className="w-4 h-3" />
@@ -449,17 +448,18 @@ export default function ItaliaLandingPage() {
                       Salidas Confirmadas
                     </span>
                   </div>
-                  <div className="absolute bottom-3.5 left-4 right-4 text-white">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-300 block">
-                      KLM · Air France · Iberia · Air Europa · LATAM
-                    </span>
-                    <h2 className="text-xl sm:text-2xl font-black leading-tight">
-                      Especial Italia 2026: Carpeta Completa o Paquete con Hotel
-                    </h2>
-                  </div>
                 </div>
 
                 <div className="p-5 sm:p-6">
+                  <div className="border-b border-slate-100 pb-3 mb-4">
+                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-emerald-700 block">
+                      KLM · Air France · Iberia · Air Europa · LATAM
+                    </span>
+                    <h2 className="text-lg sm:text-xl font-black text-[#0a1628] leading-snug mt-0.5">
+                      Especial Italia 2026: Carpeta Completa o Paquete con Hotel
+                    </h2>
+                  </div>
+
                   <div className="grid grid-cols-2 gap-3 mb-4">
                     <div className="rounded-2xl bg-slate-50 border border-slate-200/80 p-3.5">
                       <span className="text-[10px] font-extrabold uppercase text-slate-500 block">
@@ -606,7 +606,7 @@ export default function ItaliaLandingPage() {
         </div>
       </section>
 
-      {/* 3. LAS 6 CIUDADES CON MAYOR COMUNIDAD PERUANA EN ITALIA (IDA Y RETORNO) */}
+      {/* 3. LAS 6 CIUDADES CON MAYOR COMUNIDAD PERUANA EN ITALIA (FOTOS 100% LIMPIAS) */}
       <section className="py-14 sm:py-18 bg-white border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
@@ -641,27 +641,24 @@ export default function ItaliaLandingPage() {
                       sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
                     <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-                      <span className="inline-flex items-center gap-1.5 bg-white/95 text-[#0a1628] text-[11px] font-extrabold px-2.5 py-1 rounded-full">
+                      <span className="inline-flex items-center gap-1.5 bg-white/95 text-[#0a1628] text-[11px] font-extrabold px-2.5 py-1 rounded-full shadow-xs">
                         <FlagIcon pais="Italia" className="w-3.5 h-2.5" />
                         LIM ↔ {c.iata}
                       </span>
-                      <span className="bg-emerald-600 text-white text-[11px] font-extrabold px-2.5 py-1 rounded-full">
+                      <span className="bg-emerald-600 text-white text-[11px] font-extrabold px-2.5 py-1 rounded-full shadow-xs">
                         Desde {c.precioIdaVuelta} USD
                       </span>
-                    </div>
-                    <div className="absolute bottom-3 left-3.5 right-3.5 text-white">
-                      <span className="text-[10px] font-bold uppercase text-amber-300 block">
-                        {c.region}
-                      </span>
-                      <h3 className="text-xl font-black leading-tight">
-                        Lima ↔ {c.ciudad} ({c.iata})
-                      </h3>
                     </div>
                   </div>
 
                   <div className="p-5">
+                    <span className="text-[10px] font-extrabold uppercase text-emerald-700 block">
+                      {c.region}
+                    </span>
+                    <h3 className="text-xl font-black text-[#0a1628] leading-tight mt-0.5 mb-2.5">
+                      Lima ↔ {c.ciudad} ({c.iata})
+                    </h3>
                     <p className="text-[11px] font-bold text-slate-500 mb-2">
                       Aerolíneas: <span className="text-[#0a1628]">{c.aerolineas}</span>
                     </p>

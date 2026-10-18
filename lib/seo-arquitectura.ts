@@ -3,7 +3,7 @@ import { DESTINOS_MASIVOS } from "@/lib/catalogo-destinos-masivo";
 import { RUTAS_VUELOS_SEO } from "@/lib/rutas-vuelos";
 import { VIAJES_ESPECIALIZADOS_SEO } from "@/lib/catalogo-viajes-especializados";
 import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-comerciales";
-import { AGENCIAS_LOCALES_SEO } from "@/lib/catalogo-agencias-locales";
+import { INDICE_MADRID_10K } from "@/lib/catalogo-madrid-10k";
 
 export const URL_BASE_SEO = "https://citylandtravel.com";
 export const FECHA_ESTABLE_SITEMAP = "2026-10-18T18:30:00.000Z";
@@ -54,7 +54,7 @@ export const SCHEMA_ORGANIZACION_CITYLAND = {
       paymentAccepted: "Transferencia Bancaria, Tarjeta de Crédito, Débito, Yape, Plin, Efectivo",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "Av. Antúnez de Mayolo N. 814, Los Olivos, Lima",
+        streetAddress: "Av. Universitaria 2029, Los Olivos, Lima",
         addressLocality: "Los Olivos",
         addressRegion: "Lima",
         postalCode: "15301",
@@ -62,8 +62,8 @@ export const SCHEMA_ORGANIZACION_CITYLAND = {
       },
       geo: {
         "@type": "GeoCoordinates",
-        latitude: -11.9556,
-        longitude: -77.0642,
+        latitude: -11.9965,
+        longitude: -77.0785,
       },
       openingHoursSpecification: [
         {
@@ -76,19 +76,13 @@ export const SCHEMA_ORGANIZACION_CITYLAND = {
       areaServed: [
         { "@type": "Country", name: "Perú" },
         { "@type": "City", name: "Lima" },
-        { "@type": "City", name: "Arequipa" },
-        { "@type": "City", name: "Trujillo" },
-        { "@type": "City", name: "Chiclayo" },
-        { "@type": "City", name: "Piura" },
-        { "@type": "City", name: "Cusco" },
       ],
       knowsAbout: [
-        "Paquetes turísticos a España (Madrid y Barcelona)",
+        "Paquetes migratorios y turísticos a Madrid y España desde Lima (LIM)",
+        "Reserva de retorno activa RF 24h, hotel verificable y seguro Schengen 30,000 EUR",
         "Circuitos por Italia (Roma, Venecia, Florencia, Milán)",
         "Tour por Europa y Turquía desde Lima",
         "Paquetes Todo Incluido al Caribe (Punta Cana, Cancún, Cartagena, San Andrés, Aruba)",
-        "Seguro médico Schengen 30,000 EUR",
-        "Asesoría de viaje y requisitos migratorios para peruanos",
         "Paquetes a Cusco y Machu Picchu",
       ],
       contactPoint: [
@@ -137,9 +131,9 @@ export function detectarPilarPorTexto(texto: string): {
     t.includes("schengen")
   ) {
     return {
-      titulo: "Silo Principal: Viajes y Paquetes a España (Madrid y Barcelona)",
-      subtitulo: "Vuelos + hotel, circuitos en tren AVE y carpeta de viaje con seguro Schengen 30.000€",
-      href: "/espana",
+      titulo: "Silo Principal: Paquetes Migratorios y Vuelos a Madrid y España",
+      subtitulo: "Vuelo desde Lima (LIM) + retorno RF 24h + hotel verificable + seguro Schengen 30.000€",
+      href: "/madrid",
       regionClave: "espana",
     };
   }
@@ -250,7 +244,6 @@ export function obtenerEnlacesCruzadosSEO(
     return palabras.some((p) => c.includes(p));
   };
 
-  // Semilla determinística a partir del slug para variar enlaces internos sin repetir el mismo bloque en 2,000 páginas
   let hash = 0;
   for (let i = 0; i < slugActual.length; i++) {
     hash = (hash * 31 + slugActual.charCodeAt(i)) >>> 0;
@@ -266,7 +259,7 @@ export function obtenerEnlacesCruzadosSEO(
     return {
       titulo: `Paquete a ${d.ciudad} (${d.pais})`,
       href: `/destinos/${d.slug}`,
-      etiqueta: `Desde $${d.migratorio ?? d.turistico} USD`,
+      etiqueta: `Desde $${d.migratorio ?? d.turistico}`,
     };
   });
 
@@ -279,7 +272,7 @@ export function obtenerEnlacesCruzadosSEO(
     return {
       titulo: `Vuelos de ${r.origen} a ${r.destino}`,
       href: `/vuelos/${r.slug}`,
-      etiqueta: `Desde $${r.precioDesdeUSD} USD`,
+      etiqueta: `Desde $${r.precioDesdeUSD.toLocaleString("en-US")}`,
     };
   });
 
@@ -292,7 +285,7 @@ export function obtenerEnlacesCruzadosSEO(
     return {
       titulo: o.titulo,
       href: `/ofertas/${o.slug}`,
-      etiqueta: `Desde $${o.precioDesdeUSD} USD`,
+      etiqueta: `Desde $${o.precioDesdeUSD.toLocaleString("en-US")}`,
     };
   });
 
@@ -305,16 +298,17 @@ export function obtenerEnlacesCruzadosSEO(
     return {
       titulo: v.titulo,
       href: `/viajes/${v.slug}`,
-      etiqueta: `Desde $${v.precioDesdeUSD} USD`,
+      etiqueta: `Desde $${v.precioDesdeUSD.toLocaleString("en-US")}`,
     };
   });
 
+  // Enlaces directos al Silo Especializado de Madrid (/madrid/[slug]) en lugar de distritos
   const agencias: EnlaceSiloSEO[] = Array.from({ length: 4 }, (_, i) => {
-    const a = AGENCIAS_LOCALES_SEO[(hash + i * 13) % AGENCIAS_LOCALES_SEO.length];
+    const m = INDICE_MADRID_10K[(hash + i * 97) % INDICE_MADRID_10K.length];
     return {
-      titulo: `Agencia de Viajes en ${a.zona}`,
-      href: `/agencia/${a.slug}`,
-      etiqueta: a.region,
+      titulo: m.titulo,
+      href: `/madrid/${m.slug}`,
+      etiqueta: `$${m.precioDesdeUSD.toLocaleString("en-US")}`,
     };
   });
 

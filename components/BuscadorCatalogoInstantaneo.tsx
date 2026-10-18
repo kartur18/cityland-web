@@ -30,23 +30,16 @@ const CATEGORIAS = [
 ];
 
 const CIUDADES_ORIGEN = [
-  { id: "todos", label: "Salida: Todo el Perú" },
-  { id: "desde lima", label: "Salida desde Lima" },
-  { id: "desde arequipa", label: "Salida desde Arequipa" },
-  { id: "desde trujillo", label: "Salida desde Trujillo" },
-  { id: "desde chiclayo", label: "Salida desde Chiclayo" },
-  { id: "desde piura", label: "Salida desde Piura" },
-  { id: "desde cusco", label: "Salida desde Cusco" },
-  { id: "desde huancayo", label: "Salida desde Huancayo" },
-  { id: "desde iquitos", label: "Salida desde Iquitos" },
-  { id: "desde tacna", label: "Salida desde Tacna" },
-  { id: "desde cajamarca", label: "Salida desde Cajamarca" },
-  { id: "desde tarapoto", label: "Salida desde Tarapoto" },
-  { id: "desde ica", label: "Salida desde Ica" },
-  { id: "desde chimbote", label: "Salida desde Chimbote" },
-  { id: "los olivos", label: "Atención en Los Olivos / Lima Norte" },
-  { id: "miraflores", label: "Atención en Miraflores / San Isidro" },
-  { id: "surco", label: "Atención en Surco / La Molina" },
+  { id: "todos", label: "Modalidad: Todas (Salida Lima LIM)" },
+  { id: "paquete migratorio", label: "Paquete Migratorio + RF 24h" },
+  { id: "carpeta migratoria", label: "Solo Carpeta Migratoria" },
+  { id: "carta de invitacion", label: "Con Carta de Invitación" },
+  { id: "ida y vuelta", label: "Vuelo Ida y Vuelta Cerrado" },
+  { id: "2 maletas", label: "Con 2 Maletas de 23 kg" },
+  { id: "iberia", label: "Vuelo Iberia (Barajas T4)" },
+  { id: "air europa", label: "Vuelo Air Europa (Barajas T1)" },
+  { id: "todo incluido", label: "Resort Todo Incluido" },
+  { id: "50", label: "Separa con 50% Inicial" },
 ];
 
 const MESES_TEMPORADAS = [
@@ -175,13 +168,13 @@ export default function BuscadorCatalogoInstantaneo({
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-6">
         <div>
           <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-red-600 bg-red-50 border border-red-200/60 px-3 py-1 rounded-full mb-2">
-            🔍 Buscador Inteligente en Vivo · +10,000 Páginas Oficiales
+            🔍 Buscador Inteligente en Vivo · +40,000 Páginas Oficiales
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0a1628] tracking-tight">
-            Encuentra cualquier Destino, Hotel 5★, Mes o Ciudad de Salida
+            Encuentra cualquier Destino, Paquete a Madrid, Hotel 5★ o Mes de Viaje
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 mt-1">
-            Escribe el destino, nombre del hotel (ej. <em>Hard Rock</em>, <em>Riu</em>, <em>Lopesan</em>), mes o provincia (ej. <em>Madrid mayo</em>, <em>Barcelona desde Trujillo</em>) y abre la página o copia el enlace al instante.
+            Escribe el destino, modalidad o nombre del hotel (ej. <em>Madrid paquete migratorio</em>, <em>Barcelona julio</em>, <em>Hard Rock</em>, <em>Lopesan</em>) saliendo del Aeropuerto Internacional Jorge Chávez (LIM).
           </p>
         </div>
 
@@ -212,8 +205,8 @@ export default function BuscadorCatalogoInstantaneo({
               setBusqueda(e.target.value);
               setLimite(24);
             }}
-            placeholder="Ej: Barcelona julio, Roma 12 días, Hard Rock, Arequipa..."
-            aria-label="Buscar destino, hotel, ciudad de salida o temporada"
+            placeholder="Ej: Madrid paquete migratorio, Barcelona julio, Roma 12 días, Hard Rock..."
+            aria-label="Buscar destino, hotel, modalidad o temporada"
             className="w-full h-12 pl-11 pr-4 rounded-2xl border-2 border-slate-200 focus:border-[#0a1628] focus:outline-none text-sm font-semibold text-[#0a1628] placeholder:text-slate-400 bg-slate-50/70 focus:bg-white transition-all"
           />
           <svg
@@ -250,7 +243,7 @@ export default function BuscadorCatalogoInstantaneo({
               setOrigen(e.target.value);
               setLimite(24);
             }}
-            aria-label="Filtrar por ciudad de salida en Perú"
+            aria-label="Filtrar por modalidad de viaje"
             className="w-full h-12 px-3 rounded-2xl border border-slate-200 bg-slate-50/80 hover:bg-white focus:border-[#0a1628] focus:outline-none text-xs sm:text-sm font-bold text-[#0a1628] cursor-pointer"
           >
             {CIUDADES_ORIGEN.map((o) => (
@@ -325,7 +318,7 @@ export default function BuscadorCatalogoInstantaneo({
             onClick={limpiarFiltros}
             className="inline-flex items-center gap-2 bg-[#0a1628] text-white text-xs font-bold px-4 py-2.5 rounded-xl cursor-pointer"
           >
-            Ver todos los +10,000 programas
+            Ver todos los programas
           </button>
         </div>
       ) : (
@@ -336,7 +329,7 @@ export default function BuscadorCatalogoInstantaneo({
               const waHref =
                 "https://wa.me/51944103890?text=" +
                 encodeURIComponent(
-                  `¡Hola Cityland Travel! Vi en su buscador el programa "${item.titulo}" desde $${item.precioDesdeUSD} USD (separando con el 50%: $${inicial50} USD) y quiero cotizar mis fechas.`
+                  `¡Hola Cityland Travel! Vi en su buscador el programa "${item.titulo}" desde $${item.precioDesdeUSD.toLocaleString("en-US")} USD (separando con el 50%: $${inicial50.toLocaleString("en-US")} USD) y quiero cotizar mis fechas.`
                 );
               const fueCopiado = copiadoSlug === item.slug;
               const fueResumenCopiado = copiadoResumenSlug === item.slug;
@@ -350,6 +343,7 @@ export default function BuscadorCatalogoInstantaneo({
                   className="group bg-white rounded-2xl border border-slate-200/90 hover:border-slate-300 overflow-hidden transition-all hover:shadow-lg flex flex-col justify-between"
                 >
                   <div>
+                    {/* Imagen 100% limpia sin sombras negras ni textos encima */}
                     <Link
                       href={item.url}
                       className="relative block h-40 w-full bg-slate-100 overflow-hidden"
@@ -361,39 +355,37 @@ export default function BuscadorCatalogoInstantaneo({
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/35" />
-
-                      <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between gap-2">
-                        <span className="text-[10px] font-extrabold uppercase tracking-wider text-white bg-red-600/95 backdrop-blur-xs px-2.5 py-1 rounded-full truncate shadow-xs">
-                          {item.clusterNombre}
-                        </span>
-                        <span className="text-[11px] font-extrabold text-emerald-950 bg-emerald-300/95 backdrop-blur-xs px-2.5 py-0.5 rounded-full shrink-0 shadow-xs">
-                          Separa con ${inicial50}
-                        </span>
-                      </div>
-
-                      <div className="absolute bottom-2.5 left-3 right-3 flex items-end justify-between gap-2 text-white">
-                        <span className="text-xs font-bold text-slate-100 truncate drop-shadow-xs">
-                          📍 {item.destinoOPais}
-                        </span>
-                        <div className="text-right shrink-0 bg-[#0a1628]/85 backdrop-blur-xs px-2.5 py-1 rounded-xl border border-white/15">
-                          <span className="text-[9px] uppercase font-bold text-amber-300 block leading-none">
-                            Desde
-                          </span>
-                          <span className="text-sm font-black text-white leading-tight">
-                            ${item.precioDesdeUSD}
-                          </span>
-                        </div>
-                      </div>
+                      <span className="absolute top-2.5 left-2.5 text-[10px] font-extrabold uppercase tracking-wider text-white bg-[#0a1628]/90 px-2.5 py-1 rounded-full truncate max-w-[70%] shadow-xs">
+                        {item.clusterNombre}
+                      </span>
                     </Link>
 
-                    <div className="p-4 pb-3">
+                    <div className="p-4 pb-3 space-y-2">
+                      <div className="flex items-center justify-between gap-2 text-xs">
+                        <span className="font-bold text-slate-500 truncate">
+                          📍 {item.destinoOPais}
+                        </span>
+                        <span className="font-extrabold text-emerald-800 bg-emerald-50 border border-emerald-200/80 px-2 py-0.5 rounded-lg text-[11px] shrink-0">
+                          Separa con ${inicial50.toLocaleString("en-US")}
+                        </span>
+                      </div>
+
                       <Link
                         href={item.url}
                         className="text-sm font-extrabold text-[#0a1628] group-hover:text-red-600 transition-colors leading-snug line-clamp-2 block"
                       >
                         {item.titulo}
                       </Link>
+
+                      <div className="pt-1 flex items-baseline justify-between">
+                        <span className="text-[11px] font-bold text-slate-400 uppercase">
+                          Tarifa desde
+                        </span>
+                        <span className="text-base font-black text-[#0a1628]">
+                          ${item.precioDesdeUSD.toLocaleString("en-US")}{" "}
+                          <span className="text-[11px] font-bold text-slate-500">USD</span>
+                        </span>
+                      </div>
                     </div>
                   </div>
 

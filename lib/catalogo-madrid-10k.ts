@@ -64,13 +64,17 @@ function crearObjetoMadrid(params: {
 
   const mitad = Math.max(35, Math.round(precioDesdeUSD * 0.5));
   const precioSoloIdaVisa = Math.max(699, Math.round((precioDesdeUSD * 0.89) / 10) * 10);
+  const precioFmt = precioDesdeUSD.toLocaleString("en-US");
+  const mitadFmt = mitad.toLocaleString("en-US");
+  const idaVueltaFmt = precioIdaYVueltaUSD.toLocaleString("en-US");
+  const soloIdaFmt = precioSoloIdaVisa.toLocaleString("en-US");
 
   const metaTitle =
-    `${tituloPrincipal} Desde $${precioDesdeUSD} | Cityland`.length > 60
-      ? `${tituloPrincipal.slice(0, 38).trim()} Desde $${precioDesdeUSD} | Cityland`
-      : `${tituloPrincipal} Desde $${precioDesdeUSD} | Cityland`;
+    `${tituloPrincipal} Desde $${precioFmt} | Cityland`.length > 60
+      ? `${tituloPrincipal.slice(0, 38).trim()} Desde $${precioFmt} | Cityland`
+      : `${tituloPrincipal} Desde $${precioFmt} | Cityland`;
 
-  const descRaw = `${tituloPrincipal} (${subtituloDorado}) desde $${precioDesdeUSD} USD. Incluye PNR, retorno RF 24h, hotel verificable, seguro Schengen 30.000€ y check-in. Separa con $${mitad} (50%) en Los Olivos.`;
+  const descRaw = `${tituloPrincipal} (${subtituloDorado}). Incluye PNR, retorno RF 24h, hotel verificable, seguro Schengen 30.000€ y check-in. Separa con $${mitadFmt} (50%) en Los Olivos.`;
   const metaDescription =
     descRaw.length > 156 ? `${descRaw.slice(0, 153).trim()}...` : descRaw;
 
@@ -124,10 +128,10 @@ function crearObjetoMadrid(params: {
         incluye: [
           `Boleto aéreo ${codigoRuta} con código PNR verificable`,
           "Reserva de retorno activa (MAD → LIM) para control migratorio",
-          `Reserva de hotel verificable en ${zonaOMunicipioMadrid} o ajuste a Carta de Invitación`,
-          "Seguro médico Schengen 30.000€ sin deducible + Check-in hecho por tu asesor",
+          `Hotel verificable en ${zonaOMunicipioMadrid} o ajuste a Carta de Invitación`,
+          "Seguro Schengen 30.000€ sin deducible + Check-in por tu asesor",
         ],
-        waMensaje: `¡Hola Cityland Travel! Quiero cotizar el Paquete Migratorio Completo a ${zonaOMunicipioMadrid} (Desde $${precioDesdeUSD} USD) con vuelo + retorno RF + hotel + seguro.`,
+        waMensaje: `¡Hola Cityland Travel! Quiero cotizar el Paquete Migratorio Completo a ${zonaOMunicipioMadrid} (Desde $${precioFmt} USD) con vuelo + retorno RF + hotel + seguro.`,
       },
       {
         etiqueta: "Si Ya Tienes Pasaje",
@@ -143,95 +147,95 @@ function crearObjetoMadrid(params: {
         waMensaje: `¡Hola Cityland Travel! Ya tengo mi boleto y quiero cotizar Solo la Carpeta Migratoria para ${zonaOMunicipioMadrid} (Desde $${precioCarpetaSolaUSD} USD).`,
       },
       {
-        etiqueta: "Con Visa / Residencia / Retorno",
+        etiqueta: "Con Visa / Residencia / DNI",
         titulo: `Boleto Solo Ida (${codigoRuta})`,
         precioUSD: precioSoloIdaVisa,
-        subtitulo: "Para visa de estudios, trabajo, reagrupación, DNI español o retorno a Perú",
+        subtitulo: "Para visa de estudios, trabajo, reagrupación o residencia española",
         incluye: [
           `Boleto electrónico IATA de 13 dígitos (${aerolineaDestacada})`,
           "Equipaje de mano 10 kg + maleta de bodega de 23 kg",
           "Check-in y asignación de asiento gestionados por tu asesor",
           "Factura o Boleta Electrónica SUNAT (RUC 20614914239)",
         ],
-        waMensaje: `¡Hola Cityland Travel! Quiero cotizar el Boleto Solo Ida para ${zonaOMunicipioMadrid} (Desde $${precioSoloIdaVisa} USD).`,
+        waMensaje: `¡Hola Cityland Travel! Quiero cotizar el Boleto Solo Ida para ${zonaOMunicipioMadrid} (Desde $${soloIdaFmt} USD).`,
       },
       {
         etiqueta: "Ida y Vuelta Cerrado",
-        titulo: `Paquete Turístico Ida y Vuelta a ${zonaOMunicipioMadrid}`,
+        titulo: `Paquete Ida y Vuelta a ${zonaOMunicipioMadrid}`,
         precioUSD: precioIdaYVueltaUSD,
         subtitulo: "Vuelo redondo confirmado + alojamiento + seguro Schengen",
         incluye: [
           "Boleto aéreo Lima – Madrid – Lima con fechas fijas emitidas",
           `Alojamiento seleccionado en ${zonaOMunicipioMadrid} y traslados`,
           "Seguro médico internacional Schengen de 30.000€",
-          `Separa hoy con el 50% ($${Math.round(precioIdaYVueltaUSD * 0.5)} USD) y paga en cuotas`,
+          `Separa hoy con el 50% ($${Math.round(precioIdaYVueltaUSD * 0.5).toLocaleString("en-US")} USD)`,
         ],
-        waMensaje: `¡Hola Cityland Travel! Quiero cotizar el Paquete Ida y Vuelta Cerrado a ${zonaOMunicipioMadrid} (Desde $${precioIdaYVueltaUSD} USD).`,
+        waMensaje: `¡Hola Cityland Travel! Quiero cotizar el Paquete Ida y Vuelta Cerrado a ${zonaOMunicipioMadrid} (Desde $${idaVueltaFmt} USD).`,
       },
     ],
     pasosExpediente: [
       {
         paso: "01",
-        titulo: "Diagnóstico de tu Caso (Hotel o Carta)",
-        detalle: `Definimos si ingresarás por ${terminalBarajas} con Reserva de Hotel verificable o con Carta de Invitación Policial en ${zonaOMunicipioMadrid}, y calculamos tu bolsa de viaje exacta.`,
+        titulo: "Diagnóstico (Hotel o Carta)",
+        detalle: `Definimos si ingresarás por ${terminalBarajas} con Reserva de Hotel verificable o Carta de Invitación en ${zonaOMunicipioMadrid}, y calculamos tu bolsa BOE.`,
       },
       {
         paso: "02",
-        titulo: `Reserva con 50% ($${mitad} USD) y Emisión PNR`,
-        detalle: `Congelas tu tarifa en oficina (Los Olivos) o por transferencia BCP/BBVA/Interbank/Yape y emitimos tu boleto aéreo principal con código PNR real.`,
+        titulo: `Reserva con 50% ($${mitadFmt} USD)`,
+        detalle: `Congelas tu tarifa en nuestra oficina de Los Olivos o por cuentas empresa BCP/BBVA/Interbank y emitimos tu código PNR real.`,
       },
       {
         paso: "03",
-        titulo: "Activación de Retorno RF 24h + Hotel + Seguro",
+        titulo: "Retorno RF 24h + Hotel + Seguro",
         detalle:
-          "Antes de tu embarque dejamos activa tu reserva de retorno MAD → LIM en sistema, tu voucher hotelero verificable y tu póliza Schengen de 30.000€.",
+          "Antes de tu vuelo activamos tu reserva de retorno MAD → LIM en sistema, tu voucher hotelero verificable y tu seguro Schengen de 30.000€.",
       },
       {
         paso: "04",
-        titulo: "Check-in por tu Asesor y Carpeta Lista",
+        titulo: "Check-in y Carpeta Lista",
         detalle:
-          "Nuestro equipo realiza tu check-in, asigna tu asiento y te entrega tu expediente impreso o en PDF listo para presentar en Lima y Madrid-Barajas.",
+          "Realizamos tu check-in, asignamos tu asiento y te entregamos tu carpeta impresa o digital lista para presentar en Lima y Madrid-Barajas.",
       },
     ],
     checklistBarajas: [
       {
-        requisito: "Sustento de Salida del Espacio Schengen (Retorno)",
+        requisito: "Sustento de Retorno del Espacio Schengen",
         detalleOficial:
-          "Tanto la aerolínea en el Jorge Chávez como el control en Madrid-Barajas verifican que cuentes con un pasaje o reserva activa de retorno.",
+          "Tanto la aerolínea en Lima (Jorge Chávez) como el control en Madrid-Barajas verifican que cuentes con pasaje o reserva activa de retorno.",
         comoTeAyudamos:
-          "Nuestro Paquete Migratorio incluye la reserva de retorno (MAD → LIM) activa y verificable en sistema durante tu ingreso, o boleto ida y vuelta cerrado según prefieras.",
+          "Incluimos la reserva de retorno (MAD → LIM) activa y verificable en sistema durante tu ingreso, o boleto ida y vuelta cerrado.",
       },
       {
-        requisito: `Alojamiento Confirmado en ${zonaOMunicipioMadrid} o Carta de Invitación`,
+        requisito: `Alojamiento en ${zonaOMunicipioMadrid} o Carta de Invitación`,
         detalleOficial:
-          "Debes acreditar dónde te hospedarás todos los días declarados mediante reserva hotelera vigente o Carta de Invitación expedida en Comisaría de Policía en España.",
+          "Debes acreditar hospedaje por todos los días declarados mediante reserva hotelera vigente o Carta de Invitación Policial en España.",
         comoTeAyudamos:
-          "Emitimos tu voucher de hotel verificable en sistema calibrado exactamente a tus fechas, o alineamos tu vuelo a los días exactos de tu Carta de Invitación.",
+          "Emitimos tu voucher de hotel verificable calibrado a tus fechas, o alineamos tu vuelo a los días exactos de tu Carta de Invitación.",
       },
       {
         requisito: "Medios Económicos BOE 2026 (Bolsa de Viaje)",
         detalleOficial:
-          "La normativa española exige acreditar 122,10 € por día de estancia, con un mínimo obligatorio de 1.098,90 € por pasajero (en efectivo y/o tarjetas internacionales).",
+          "La normativa española exige acreditar 122,10 € por día de estancia, con un mínimo obligatorio de 1.098,90 € por pasajero.",
         comoTeAyudamos:
-          "Calibramos la cantidad de días de tu itinerario (por ejemplo 9 a 12 días) para que tu bolsa de viaje sea coherente con el monto que llevas.",
+          "Calibramos los días de tu estadía (ej. 9 a 15 días) para que tu bolsa de viaje sea 100% coherente con tu presupuesto.",
       },
       {
-        requisito: "Seguro Médico Schengen de 30.000€ sin Deducible",
+        requisito: "Seguro Médico Schengen de 30.000€ sin Franquicia",
         detalleOficial:
-          "Cobertura médica internacional mínima de 30.000 euros con repatriación sanitaria y 0€ de franquicia válida en toda España y el Espacio Schengen.",
+          "Cobertura médica mínima de 30.000 euros con repatriación y 0€ de deducible válida en toda España y Europa Schengen.",
         comoTeAyudamos:
-          "Incluimos tu certificado oficial en español listo para mostrar en ventanilla de control migratorio.",
+          "Incluimos tu póliza oficial en español lista para presentar en el control migratorio de Barajas.",
       },
     ],
     faqs: [
       ...faqsExtra,
       {
-        q: `¿Qué diferencia hay entre el Paquete Migratorio a ${zonaOMunicipioMadrid} ($${precioDesdeUSD} USD) y comprar solo un pasaje en internet?`,
-        a: `Si compras solo un boleto de ida por tu cuenta, la aerolínea en Lima puede denegarte el embarque por no contar con retorno, hotel verificable ni seguro Schengen. Nuestro Paquete Migratorio a ${zonaOMunicipioMadrid} (Desde $${precioDesdeUSD} USD) incluye tu boleto aéreo, la reserva de retorno activa (MAD → LIM), reserva de hotel verificable, seguro Schengen 30.000€ y el check-in realizado por tu asesor. ${SALVEDAD_LEGAL}`,
+        q: `¿Qué incluye el Paquete Migratorio a ${zonaOMunicipioMadrid} (Desde $${precioFmt} USD)?`,
+        a: `Incluye tu boleto aéreo desde el Aeropuerto Jorge Chávez (Lima), reserva de retorno activa (MAD → LIM) 24h antes, reserva de hotel verificable en ${zonaOMunicipioMadrid}, seguro Schengen 30.000€ y check-in gestionado por tu asesor. ${SALVEDAD_LEGAL}`,
       },
       {
         q: `Si ya compré mi pasaje a Madrid por mi cuenta, ¿pueden armarme solo la Carpeta Migratoria?`,
-        a: `¡Sí! Contamos con el servicio de Solo Carpeta Migratoria Express desde $${precioCarpetaSolaUSD} USD, que incluye la reserva de retorno activa 24h antes, reserva de hotel verificable, seguro Schengen y check-in hecho por tu asesor.`,
+        a: `¡Sí! Nuestro servicio de Solo Carpeta Migratoria Express (desde $${precioCarpetaSolaUSD} USD) incluye reserva de retorno activa 24h antes, hotel verificable, seguro Schengen 30.000€ y check-in.`,
       },
     ],
     enlacesRelacionados,
@@ -242,118 +246,118 @@ function crearObjetoMadrid(params: {
 // SILO 1: 50 ZONAS DE MADRID Y CIUDADES CONECTADAS VÍA BARAJAS × 10 MODALIDADES × 5 AEROLÍNEAS = 2,500 PÁGINAS
 // ============================================================================
 const ZONAS_Y_CONEXIONES_MADRID_50: [string, string, number, string][] = [
-  ["Madrid Centro (Puerta del Sol y Gran Vía)", "madrid-centro-sol", 869, "Terminal T4 / T1 Madrid-Barajas"],
-  ["Puente de Vallecas (Madrid)", "puente-de-vallecas-madrid", 869, "Conexión Metro y Cercanías desde Barajas"],
-  ["Carabanchel (Madrid)", "carabanchel-madrid", 869, "Zona Sur de Madrid · Alta Comunidad Peruana"],
-  ["Usera (Madrid)", "usera-madrid", 869, "Madrid Río y Usera · Conexión Directa Barajas"],
-  ["Ciudad Lineal y Pueblo Nuevo (Madrid)", "ciudad-lineal-madrid", 869, "A 15 minutos del Aeropuerto Madrid-Barajas"],
-  ["Latina y Aluche (Madrid)", "latina-aluche-madrid", 869, "Conexión directa desde Aeropuerto Barajas"],
-  ["Villaverde (Madrid)", "villaverde-madrid", 869, "Conexión Cercanías Renfe desde Barajas T4"],
-  ["Tetuán y Cuatro Caminos (Madrid)", "tetuan-cuatro-caminos-madrid", 869, "Eje Castellana y Nuevos Ministerios"],
-  ["San Blas-Canillejas (Madrid)", "san-blas-canillejas-madrid", 869, "Distrito contiguo al Aeropuerto de Barajas"],
-  ["Hortaleza y Sanchinarro (Madrid)", "hortaleza-madrid", 869, "A 10 minutos de Barajas T4"],
-  ["Alcalá de Henares (Comunidad de Madrid)", "alcala-de-henares-madrid", 879, "Corredor del Henares · A 20 min de Barajas"],
-  ["Móstoles (Comunidad de Madrid)", "mostoles-madrid", 879, "Zona Sur Metropolitana de Madrid"],
-  ["Fuenlabrada (Comunidad de Madrid)", "fuenlabrada-madrid", 879, "Conexión Cercanías desde Madrid-Atocha y Barajas"],
-  ["Leganés (Comunidad de Madrid)", "leganes-madrid", 879, "Área Metropolitana Sur de Madrid"],
-  ["Getafe (Comunidad de Madrid)", "getafe-madrid", 879, "Conexión directa desde Madrid-Barajas"],
-  ["Alcorcón (Comunidad de Madrid)", "alcorcon-madrid", 879, "Conexión Metro Línea 10 y Cercanías Madrid"],
-  ["Parla (Comunidad de Madrid)", "parla-madrid", 879, "Cercanías C4 directo desde Madrid"],
-  ["Torrejón de Ardoz (Comunidad de Madrid)", "torrejon-de-ardoz-madrid", 869, "A 12 minutos del Aeropuerto Madrid-Barajas"],
-  ["Alcobendas y San Sebastián de los Reyes", "alcobendas-madrid", 869, "Pegado a la Terminal T4 de Madrid-Barajas"],
-  ["Coslada y San Fernando de Henares", "coslada-madrid", 869, "Acceso inmediato desde Barajas T1, T2 y T4"],
-  ["Pozuelo de Alarcón y Majadahonda", "pozuelo-majadahonda-madrid", 889, "Zona Noroeste de la Comunidad de Madrid"],
-  ["Las Rozas y Collado Villalba (Madrid)", "las-rozas-villalba-madrid", 889, "Sierra Noroeste de Madrid"],
-  ["Rivas-Vaciamadrid y Arganda del Rey", "rivas-arganda-madrid", 879, "Sureste de la Comunidad de Madrid"],
-  ["Aranjuez y Valdemoro (Madrid)", "aranjuez-valdemoro-madrid", 889, "Eje Sur de la Comunidad de Madrid"],
-  ["Toledo vía Madrid-Barajas", "toledo-via-madrid", 899, "Llegada a Barajas + 33 min en tren AVE desde Atocha"],
-  ["Guadalajara vía Madrid-Barajas", "guadalajara-via-madrid", 889, "A 30 minutos del Aeropuerto Madrid-Barajas"],
-  ["Segovia y Ávila vía Madrid-Barajas", "segovia-avila-via-madrid", 899, "Conexión inmediata desde Madrid-Chamartín"],
-  ["Valladolid vía Madrid-Barajas", "valladolid-via-madrid", 919, "Llegada por Barajas + conexión alta velocidad"],
-  ["Salamanca vía Madrid-Barajas", "salamanca-via-madrid", 919, "Ingreso por Madrid-Barajas + conexión directa"],
-  ["Burgos vía Madrid-Barajas", "burgos-via-madrid", 929, "Vuelo a Madrid-Barajas + conexión a Castilla y León"],
-  ["León y Zamora vía Madrid-Barajas", "leon-zamora-via-madrid", 929, "Vuelo Lima – Madrid + conexión directa"],
-  ["Zaragoza vía Madrid-Barajas", "zaragoza-via-madrid", 929, "Llegada a Madrid + 1h15 en AVE a Zaragoza"],
-  ["Valencia vía Madrid-Barajas", "valencia-via-madrid", 939, "Ingreso por Madrid-Barajas + conexión a Valencia"],
-  ["Alicante y Elche vía Madrid-Barajas", "alicante-via-madrid", 949, "Vuelo vía Madrid-Barajas hacia la Costa Blanca"],
-  ["Murcia y Cartagena vía Madrid-Barajas", "murcia-via-madrid", 949, "Conexión directa desde Madrid-Barajas"],
-  ["Sevilla vía Madrid-Barajas", "sevilla-via-madrid", 949, "Vuelo a Madrid-Barajas + conexión a Andalucía"],
-  ["Málaga y Marbella vía Madrid-Barajas", "malaga-via-madrid", 949, "Llegada por Madrid + conexión a la Costa del Sol"],
-  ["Córdoba y Granada vía Madrid-Barajas", "cordoba-granada-via-madrid", 949, "Ruta Lima – Madrid con enlace a Andalucía"],
-  ["Bilbao y País Vasco vía Madrid-Barajas", "bilbao-via-madrid", 959, "Vuelo Lima – Madrid – Bilbao con código PNR"],
-  ["San Sebastián y Vitoria vía Madrid", "san-sebastian-via-madrid", 959, "Conexión al País Vasco vía Madrid-Barajas"],
-  ["Santander y Cantabria vía Madrid", "santander-via-madrid", 949, "Ruta aérea Lima – Madrid – Santander"],
-  ["Gijón y Oviedo (Asturias) vía Madrid", "asturias-gijon-oviedo-via-madrid", 949, "Conexión a Asturias vía Madrid-Barajas"],
-  ["Vigo, A Coruña y Santiago vía Madrid", "galicia-vigo-coruna-via-madrid", 959, "Conexión a Galicia vía Madrid-Barajas T4"],
-  ["Pamplona y Navarra vía Madrid-Barajas", "pamplona-navarra-via-madrid", 949, "Ingreso por Madrid-Barajas rumbo a Navarra"],
-  ["Logroño y La Rioja vía Madrid-Barajas", "logrono-la-rioja-via-madrid", 939, "Conexión a La Rioja desde Madrid-Barajas"],
-  ["Albacetey Ciudad Real vía Madrid", "albacete-ciudad-real-via-madrid", 919, "Conexión a Castilla-La Mancha desde Madrid"],
-  ["Cáceres, Badajoz y Mérida vía Madrid", "extremadura-caceres-badajoz-via-madrid", 929, "Conexión a Extremadura desde Madrid"],
-  ["Palma de Mallorca e Ibiza vía Madrid", "mallorca-ibiza-via-madrid", 969, "Vuelo Lima – Madrid – Islas Baleares"],
-  ["Tenerife y Gran Canaria vía Madrid", "canarias-tenerife-via-madrid", 989, "Vuelo Lima – Madrid – Islas Canarias"],
-  ["Barcelona vía Madrid-Barajas", "barcelona-via-madrid", 939, "Ruta Lima – Madrid – Barcelona con expediente completo"],
+  ["Madrid Centro", "madrid-centro-sol", 869, "Terminal T4 / T1 Madrid-Barajas"],
+  ["Puente de Vallecas (Madrid)", "puente-de-vallecas-madrid", 869, "Conexión directa desde Madrid-Barajas"],
+  ["Carabanchel (Madrid)", "carabanchel-madrid", 869, "Zona Sur de Madrid · Comunidad Peruana"],
+  ["Usera (Madrid)", "usera-madrid", 869, "Madrid Río y Usera · Conexión Barajas"],
+  ["Ciudad Lineal (Madrid)", "ciudad-lineal-madrid", 869, "A 15 minutos de Madrid-Barajas"],
+  ["Latina y Aluche (Madrid)", "latina-aluche-madrid", 869, "Conexión directa desde Madrid-Barajas"],
+  ["Villaverde (Madrid)", "villaverde-madrid", 869, "Cercanías Renfe desde Barajas T4"],
+  ["Tetuán y Cuatro Caminos", "tetuan-cuatro-caminos-madrid", 869, "Eje Castellana y Nuevos Ministerios"],
+  ["San Blas-Canillejas", "san-blas-canillejas-madrid", 869, "Distrito contiguo a Madrid-Barajas"],
+  ["Hortaleza (Madrid)", "hortaleza-madrid", 869, "A 10 minutos de Barajas T4"],
+  ["Alcalá de Henares", "alcala-de-henares-madrid", 879, "Corredor del Henares · A 20 min de Barajas"],
+  ["Móstoles (Madrid)", "mostoles-madrid", 879, "Área Metropolitana Sur de Madrid"],
+  ["Fuenlabrada (Madrid)", "fuenlabrada-madrid", 879, "Conexión Cercanías desde Atocha y Barajas"],
+  ["Leganés (Madrid)", "leganes-madrid", 879, "Área Metropolitana Sur de Madrid"],
+  ["Getafe (Madrid)", "getafe-madrid", 879, "Conexión directa desde Madrid-Barajas"],
+  ["Alcorcón (Madrid)", "alcorcon-madrid", 879, "Metro Línea 10 y Cercanías Madrid"],
+  ["Parla (Madrid)", "parla-madrid", 879, "Cercanías C4 directo desde Madrid"],
+  ["Torrejón de Ardoz", "torrejon-de-ardoz-madrid", 869, "A 12 minutos de Madrid-Barajas"],
+  ["Alcobendas y San Sebastián", "alcobendas-madrid", 869, "Junto a la Terminal T4 de Barajas"],
+  ["Coslada y San Fernando", "coslada-madrid", 869, "Acceso inmediato desde Barajas T1 y T4"],
+  ["Pozuelo y Majadahonda", "pozuelo-majadahonda-madrid", 889, "Zona Noroeste de Madrid"],
+  ["Las Rozas y Villalba", "las-rozas-villalba-madrid", 889, "Sierra Noroeste de Madrid"],
+  ["Rivas y Arganda del Rey", "rivas-arganda-madrid", 879, "Sureste de la Comunidad de Madrid"],
+  ["Aranjuez y Valdemoro", "aranjuez-valdemoro-madrid", 889, "Eje Sur de la Comunidad de Madrid"],
+  ["Toledo vía Madrid", "toledo-via-madrid", 899, "Llegada a Barajas + 33 min en tren AVE"],
+  ["Guadalajara vía Madrid", "guadalajara-via-madrid", 889, "A 30 minutos de Madrid-Barajas"],
+  ["Segovia y Ávila vía Madrid", "segovia-avila-via-madrid", 899, "Conexión desde Madrid-Chamartín"],
+  ["Valladolid vía Madrid", "valladolid-via-madrid", 919, "Llegada por Barajas + tren alta velocidad"],
+  ["Salamanca vía Madrid", "salamanca-via-madrid", 919, "Ingreso por Madrid-Barajas + conexión"],
+  ["Burgos vía Madrid", "burgos-via-madrid", 929, "Vuelo a Madrid-Barajas + enlace norte"],
+  ["León y Zamora vía Madrid", "leon-zamora-via-madrid", 929, "Vuelo Lima – Madrid + conexión directa"],
+  ["Zaragoza vía Madrid", "zaragoza-via-madrid", 929, "Llegada a Madrid + 1h15 en tren AVE"],
+  ["Valencia vía Madrid", "valencia-via-madrid", 939, "Ingreso por Madrid-Barajas + conexión"],
+  ["Alicante vía Madrid", "alicante-via-madrid", 949, "Ruta vía Madrid-Barajas a Costa Blanca"],
+  ["Murcia vía Madrid", "murcia-via-madrid", 949, "Conexión directa desde Madrid-Barajas"],
+  ["Sevilla vía Madrid", "sevilla-via-madrid", 949, "Vuelo a Madrid-Barajas + enlace Andalucía"],
+  ["Málaga vía Madrid", "malaga-via-madrid", 949, "Llegada por Madrid + Costa del Sol"],
+  ["Córdoba y Granada vía Madrid", "cordoba-granada-via-madrid", 949, "Ruta Lima – Madrid + enlace Andalucía"],
+  ["Bilbao vía Madrid", "bilbao-via-madrid", 959, "Vuelo Lima – Madrid – Bilbao con PNR"],
+  ["San Sebastián vía Madrid", "san-sebastian-via-madrid", 959, "Conexión al País Vasco vía Barajas"],
+  ["Santander vía Madrid", "santander-via-madrid", 949, "Ruta aérea Lima – Madrid – Santander"],
+  ["Asturias (Gijón/Oviedo) vía Madrid", "asturias-gijon-oviedo-via-madrid", 949, "Conexión a Asturias vía Madrid-Barajas"],
+  ["Galicia (Vigo/A Coruña) vía Madrid", "galicia-vigo-coruna-via-madrid", 959, "Conexión a Galicia vía Barajas T4"],
+  ["Pamplona vía Madrid", "pamplona-navarra-via-madrid", 949, "Ingreso por Madrid-Barajas a Navarra"],
+  ["Logroño vía Madrid", "logrono-la-rioja-via-madrid", 939, "Conexión a La Rioja vía Madrid"],
+  ["Albacete y Ciudad Real vía Madrid", "albacete-ciudad-real-via-madrid", 919, "Conexión a Castilla-La Mancha"],
+  ["Cáceres y Badajoz vía Madrid", "extremadura-caceres-badajoz-via-madrid", 929, "Conexión a Extremadura desde Madrid"],
+  ["Mallorca e Ibiza vía Madrid", "mallorca-ibiza-via-madrid", 969, "Vuelo Lima – Madrid – Islas Baleares"],
+  ["Tenerife y Canarias vía Madrid", "canarias-tenerife-via-madrid", 989, "Vuelo Lima – Madrid – Islas Canarias"],
+  ["Barcelona vía Madrid", "barcelona-via-madrid", 939, "Conexión aérea o tren AVE desde Madrid"],
 ];
 
 const MODALIDADES_MADRID_10: [string, string, number, string][] = [
   [
     "paquete-migratorio-completo",
-    "Paquete Migratorio Completo (Vuelo + Retorno RF + Hotel + Seguro)",
+    "Paquete Migratorio Completo",
     1.0,
-    "Nuestra modalidad #1 en ventas: incluye boleto aéreo de ingreso, reserva de retorno activa (MAD → LIM 24h), reserva de hotel verificable, seguro Schengen 30.000€ y check-in hecho por tu asesor",
+    "Incluye boleto aéreo desde el Aeropuerto Jorge Chávez (LIM), reserva de retorno activa (RF 24h), hotel verificable y seguro Schengen 30.000€",
   ],
   [
     "vuelo-con-reserva-retorno-rf",
-    "Boleto Lima – Madrid + Reserva de Retorno RF Activa 24h",
+    "Boleto + Retorno RF Activo 24h",
     0.96,
-    "Emisión de tu boleto principal LIM → MAD acompañada de reserva de retorno verificable en sistema para presentar en mostrador y en el control de Madrid-Barajas",
+    "Boleto principal saliendo de Lima (LIM) más reserva de retorno PNR verificable en sistema para control migratorio en Madrid-Barajas",
   ],
   [
     "visita-familiar-carta-invitacion",
-    "Viaje a Madrid con Carta de Invitación Policial",
+    "Viaje con Carta de Invitación",
     0.95,
-    "Calibramos tu boleto de ida y tu reserva de retorno exactamente a las fechas autorizadas en la Carta de Invitación de tu familiar en España",
+    "Calibramos tu boleto desde Lima (LIM) y tu reserva de retorno exactamente a las fechas de tu Carta de Invitación Policial en España",
   ],
   [
     "primer-viaje-sin-carta-con-hotel",
-    "Primer Viaje a Madrid sin Carta (Con Reserva de Hotel Verificable)",
+    "Primer Viaje con Reserva de Hotel",
     1.0,
-    "Si no tienes Carta de Invitación, armamos tu carpeta turística completa con voucher de hotel verificable en Madrid, seguro Schengen y retorno activo",
+    "Carpeta turística completa sin Carta de Invitación: incluye vuelo desde Lima (LIM), voucher de hotel verificable, retorno RF y seguro 30.000€",
   ],
   [
     "boleto-solo-ida-visa-residencia",
-    "Boleto Solo Ida a Madrid (Visa de Trabajo, Estudios o Residencia)",
+    "Boleto Solo Ida (Visa o Residencia)",
     0.88,
-    "Tarifa especial de solo ida para pasajeros que cuentan con visado nacional español, tarjeta TIE/DNI o resolución de reagrupación familiar",
+    "Tarifa especial de solo ida desde Lima (LIM) para pasajeros con visado de estudios, trabajo, reagrupación familiar o DNI/TIE español",
   ],
   [
     "pasaje-con-2-maletas-23kg",
-    "Pasaje a Madrid con 2 Maletas de 23 kg + Equipaje de Mano",
+    "Pasaje con 2 Maletas de 23 kg",
     1.08,
-    "Tarifa con doble franquicia de bodega (2x23 kg) más carry-on de 10 kg ideal para largas estadías, estudios o mudanza a España",
+    "Tarifa con doble franquicia en bodega (2x23 kg) más equipaje de mano de 10 kg saliendo del Aeropuerto Jorge Chávez (LIM)",
   ],
   [
     "vuelo-retorno-madrid-a-lima",
-    "Boleto de Retorno Madrid → Lima (Para Residentes y Familiares)",
+    "Boleto de Retorno Madrid → Lima",
     0.86,
-    "Pasajes saliendo desde Madrid-Barajas hacia Lima (o comprados desde España para traer a tus padres e hijos desde el Perú)",
+    "Pasajes confirmados desde Madrid-Barajas hacia Lima o comprados desde España para traer a tus familiares desde el Perú",
   ],
   [
     "viaje-padres-adultos-mayores",
-    "Viaje a Madrid para Padres y Adultos Mayores con Asistencia",
+    "Viaje para Adultos Mayores",
     1.01,
-    "Incluye solicitud de asistencia especial / silla de ruedas en el Jorge Chávez y en Madrid-Barajas, check-in por asesor y carpeta lista para tus padres",
+    "Incluye asistencia especial / silla de ruedas en el Aeropuerto Jorge Chávez (LIM) y en Madrid-Barajas, check-in por asesor y carpeta impresa",
   ],
   [
     "viaje-familiar-con-ninos",
-    "Paquete Familiar a Madrid (Adultos + Niños con Asientos Juntos)",
+    "Paquete Familiar (Asientos Juntos)",
     0.97,
-    "Tarifa grupal familiar con asignación de asientos contiguos, orientación de autorización notarial de viaje para menores y carpeta migratoria familiar",
+    "Tarifa familiar desde Lima (LIM) con asientos contiguos garantizados, orientación de permiso notarial de menores y carpeta completa",
   ],
   [
     "vuelo-ida-y-vuelta-cerrado",
-    "Paquete Lima – Madrid – Lima Ida y Vuelta Confirmado",
+    "Paquete Ida y Vuelta Confirmado",
     1.24,
-    "Boleto aéreo ida y vuelta cerrado con fechas fijas emitidas, reserva de alojamiento verificable en Madrid y seguro médico Schengen 30.000€",
+    "Boleto aéreo ida y vuelta cerrado con fechas fijas desde Lima (LIM), alojamiento verificable y seguro médico Schengen 30.000€",
   ],
 ];
 
@@ -412,61 +416,61 @@ const PLANES_ESTADIA_BOE_MADRID_40: [string, string, string][] = [
 ];
 
 const PRODUCTOS_MADRID_10: [string, string, number][] = [
-  ["paquete-migratorio-madrid", "Paquete Migratorio Completo a Madrid (Vuelo + RF + Hotel + Seguro)", 869],
-  ["solo-carpeta-migratoria-madrid", "Solo Carpeta Migratoria para Madrid (Retorno RF + Hotel + Seguro)", 85],
-  ["boleto-solo-ida-madrid", "Boleto Solo Ida Lima a Madrid (Con Visa o Residencia)", 769],
-  ["vuelo-ida-vuelta-madrid", "Boleto Ida y Vuelta Lima – Madrid – Lima Confirmado", 1090],
-  ["viaje-madrid-carta-invitacion", "Pasaje a Madrid con Carta de Invitación Policial", 849],
-  ["viaje-madrid-sin-carta-con-hotel", "Viaje a Madrid sin Carta de Invitación (Con Reserva de Hotel)", 869],
-  ["pasaje-madrid-2-maletas-23kg", "Vuelo a Madrid con 2 Maletas de 23 kg en Bodega", 939],
-  ["pasaje-madrid-adultos-mayores", "Viaje a Madrid para Padres y Adultos Mayores", 879],
-  ["vuelo-madrid-a-lima-retorno", "Pasaje de Madrid a Lima para Familiares", 729],
-  ["seguro-schengen-y-hotel-madrid", "Seguro Médico Schengen 30.000€ + Reserva Hotel Madrid", 75],
+  ["paquete-migratorio-madrid", "Paquete Migratorio a Madrid", 869],
+  ["solo-carpeta-migratoria-madrid", "Solo Carpeta Migratoria Madrid", 85],
+  ["boleto-solo-ida-madrid", "Boleto Solo Ida Lima – Madrid", 769],
+  ["vuelo-ida-vuelta-madrid", "Boleto Ida y Vuelta Lima – Madrid", 1090],
+  ["viaje-madrid-carta-invitacion", "Viaje a Madrid con Carta de Invitación", 849],
+  ["viaje-madrid-sin-carta-con-hotel", "Viaje a Madrid con Reserva de Hotel", 869],
+  ["pasaje-madrid-2-maletas-23kg", "Vuelo a Madrid con 2 Maletas 23 kg", 939],
+  ["pasaje-madrid-adultos-mayores", "Viaje a Madrid para Adultos Mayores", 879],
+  ["vuelo-madrid-a-lima-retorno", "Pasaje de Madrid a Lima", 729],
+  ["seguro-schengen-y-hotel-madrid", "Seguro Schengen 30.000€ + Hotel Madrid", 75],
 ];
 
 const MODALIDADES_EMISION_6: [string, string, number][] = [
   ["separa-con-50-por-ciento", "Separa con 50% de Inicial", 1.0],
-  ["emision-inmediata-pnr", "Emisión Inmediata con Código PNR", 1.0],
-  ["atencion-sede-los-olivos", "Atención Presencial en Sede Los Olivos", 1.0],
-  ["pago-bcp-bbva-interbank-yape", "Pago Seguro en Bancos Peruanos o Yape", 1.0],
-  ["checkin-hecho-por-asesor", "Incluye Check-in Hecho por tu Asesor", 1.0],
-  ["preventa-salidas-2026", "Preventa Salidas Confirmadas 2026", 0.96],
+  ["emision-inmediata-pnr", "Emisión con Código PNR", 1.0],
+  ["atencion-sede-los-olivos", "Atención en Sede Los Olivos", 1.0],
+  ["pago-bcp-bbva-interbank-yape", "Pago BCP · BBVA · Interbank · Yape", 1.0],
+  ["checkin-hecho-por-asesor", "Check-in Hecho por tu Asesor", 1.0],
+  ["preventa-salidas-2026", "Preventa Salidas 2026", 0.96],
 ];
 
 // ============================================================================
 // SILO 3: 30 RUTAS Y CIRCUITOS DESDE LIMA (AEROPUERTO JORGE CHÁVEZ) VÍA MADRID × 12 MESES × 6 PAQUETES = 2,160 PÁGINAS
 // ============================================================================
 const RUTAS_CONEXION_BARAJAS_30: [string, string, number][] = [
-  ["Madrid Directo (Aeropuerto Barajas)", "lima-a-madrid-directo", 0],
+  ["Madrid Directo (Barajas)", "lima-a-madrid-directo", 0],
   ["Madrid y Toledo", "lima-a-madrid-y-toledo", 20],
   ["Madrid y Segovia", "lima-a-madrid-y-segovia", 20],
-  ["Madrid y Barcelona (AVE / Vuelo)", "lima-a-madrid-y-barcelona", 45],
+  ["Madrid y Barcelona", "lima-a-madrid-y-barcelona", 45],
   ["Madrid y Valencia", "lima-a-madrid-y-valencia", 35],
-  ["Madrid y Sevilla (Andalucía)", "lima-a-madrid-y-sevilla", 45],
+  ["Madrid y Sevilla", "lima-a-madrid-y-sevilla", 45],
   ["Madrid, Córdoba y Granada", "lima-a-madrid-cordoba-granada", 55],
-  ["Madrid y Málaga (Costa del Sol)", "lima-a-madrid-y-malaga", 45],
+  ["Madrid y Málaga", "lima-a-madrid-y-malaga", 45],
   ["Madrid y Zaragoza", "lima-a-madrid-y-zaragoza", 30],
-  ["Madrid y Bilbao (País Vasco)", "lima-a-madrid-y-bilbao", 50],
+  ["Madrid y Bilbao", "lima-a-madrid-y-bilbao", 50],
   ["Madrid y San Sebastián", "lima-a-madrid-y-san-sebastian", 55],
   ["Madrid y Santiago de Compostela", "lima-a-madrid-y-santiago", 50],
-  ["Madrid, Vigo y La Coruña (Galicia)", "lima-a-madrid-y-galicia", 55],
-  ["Madrid y Asturias (Oviedo / Gijón)", "lima-a-madrid-y-asturias", 50],
-  ["Madrid y Santander (Cantabria)", "lima-a-madrid-y-santander", 50],
-  ["Madrid y Alicante (Costa Blanca)", "lima-a-madrid-y-alicante", 40],
+  ["Madrid, Vigo y La Coruña", "lima-a-madrid-y-galicia", 55],
+  ["Madrid y Asturias", "lima-a-madrid-y-asturias", 50],
+  ["Madrid y Santander", "lima-a-madrid-y-santander", 50],
+  ["Madrid y Alicante", "lima-a-madrid-y-alicante", 40],
   ["Madrid y Murcia", "lima-a-madrid-y-murcia", 40],
   ["Madrid, Valladolid y Salamanca", "lima-a-madrid-y-castilla", 30],
   ["Madrid y Palma de Mallorca", "lima-a-madrid-y-mallorca", 60],
-  ["Madrid y Tenerife / Gran Canaria", "lima-a-madrid-y-canarias", 75],
-  ["Madrid y Lisboa / Fátima (Portugal)", "lima-a-madrid-y-lisboa-fatima", 60],
-  ["Madrid y París (Francia)", "lima-a-madrid-y-paris", 65],
-  ["Madrid y Lourdes (Francia)", "lima-a-madrid-y-lourdes", 65],
-  ["Madrid y Roma (Italia)", "lima-a-madrid-y-roma", 65],
-  ["Madrid y Milán (Italia)", "lima-a-madrid-y-milan", 65],
+  ["Madrid y Tenerife / Canarias", "lima-a-madrid-y-canarias", 75],
+  ["Madrid, Lisboa y Fátima", "lima-a-madrid-y-lisboa-fatima", 60],
+  ["Madrid y París", "lima-a-madrid-y-paris", 65],
+  ["Madrid y Lourdes", "lima-a-madrid-y-lourdes", 65],
+  ["Madrid y Roma", "lima-a-madrid-y-roma", 65],
+  ["Madrid y Milán", "lima-a-madrid-y-milan", 65],
   ["Madrid, Florencia y Venecia", "lima-a-madrid-florencia-venecia", 80],
-  ["Madrid y Turín / Génova (Italia)", "lima-a-madrid-y-turin", 70],
-  ["Madrid y Ámsterdam / Bruselas", "lima-a-madrid-y-amsterdam", 75],
-  ["Madrid y Zúrich / Ginebra (Suiza)", "lima-a-madrid-y-suiza", 85],
-  ["Madrid, París y Roma (Circuito Europeo)", "lima-a-madrid-paris-y-roma", 95],
+  ["Madrid y Turín / Génova", "lima-a-madrid-y-turin", 70],
+  ["Madrid y Ámsterdam", "lima-a-madrid-y-amsterdam", 75],
+  ["Madrid y Suiza (Zúrich)", "lima-a-madrid-y-suiza", 85],
+  ["Madrid, París y Roma", "lima-a-madrid-paris-y-roma", 95],
 ];
 
 const MESES_MADRID_12: [string, string, number][] = [
@@ -485,12 +489,12 @@ const MESES_MADRID_12: [string, string, number][] = [
 ];
 
 const PAQUETES_RUTA_MADRID_6: [string, string, number][] = [
-  ["paquete-migratorio-madrid", "Paquete Migratorio Completo (Vuelo + RF + Hotel + Seguro)", 869],
-  ["primer-viaje-a-madrid", "Primer Viaje a Europa con Expediente Completo", 879],
-  ["madrid-con-carta-invitacion", "Modalidad Visita Familiar con Carta de Invitación", 849],
-  ["madrid-con-2-maletas-23kg", "Pasaje Confirmado con 2 Maletas de 23 kg", 939],
-  ["vuelo-ida-vuelta-madrid", "Paquete Turístico Ida y Vuelta Confirmado", 1090],
-  ["boleto-solo-ida-madrid-visa", "Boleto Solo Ida para Visa o Residencia", 769],
+  ["paquete-migratorio-madrid", "Paquete Migratorio Completo", 869],
+  ["primer-viaje-a-madrid", "Primer Viaje con Carpeta Completa", 879],
+  ["madrid-con-carta-invitacion", "Modalidad con Carta de Invitación", 849],
+  ["madrid-con-2-maletas-23kg", "Pasaje con 2 Maletas de 23 kg", 939],
+  ["vuelo-ida-vuelta-madrid", "Paquete Ida y Vuelta Confirmado", 1090],
+  ["boleto-solo-ida-madrid-visa", "Boleto Solo Ida (Visa o Residencia)", 769],
 ];
 
 // ============================================================================
@@ -498,94 +502,94 @@ const PAQUETES_RUTA_MADRID_6: [string, string, number][] = [
 // ============================================================================
 const BARRIOS_COMUNIDAD_PERUANA_30: [string, string][] = [
   ["Puente de Vallecas", "barrio-puente-de-vallecas"],
-  ["Carabanchel Bajo y Vista Alegre", "barrio-carabanchel"],
-  ["Usera y Almendrales", "barrio-usera"],
+  ["Carabanchel", "barrio-carabanchel"],
+  ["Usera", "barrio-usera"],
   ["Ciudad Lineal y Ventas", "barrio-ciudad-lineal"],
-  ["Aluche y Campamento (Latina)", "barrio-aluche-latina"],
-  ["Villaverde Alto y Bajo", "barrio-villaverde"],
-  ["Cuatro Caminos y Bellas Vistas (Tetuán)", "barrio-cuatro-caminos-tetuan"],
-  ["Puerta del Sol y Lavapiés (Centro)", "barrio-sol-lavapies"],
-  ["Chamberí y Ríos Rosas", "barrio-chamberi"],
-  ["Arganzuela, Atocha y Delicias", "barrio-arganzuela-atocha"],
-  ["Canillejas y Simancas (San Blas)", "barrio-canillejas-san-blas"],
-  ["Hortaleza y Pinar del Rey", "barrio-hortaleza"],
+  ["Aluche y Latina", "barrio-aluche-latina"],
+  ["Villaverde", "barrio-villaverde"],
+  ["Cuatro Caminos y Tetuán", "barrio-cuatro-caminos-tetuan"],
+  ["Puerta del Sol y Centro", "barrio-sol-lavapies"],
+  ["Chamberí", "barrio-chamberi"],
+  ["Atocha y Arganzuela", "barrio-arganzuela-atocha"],
+  ["San Blas y Canillejas", "barrio-canillejas-san-blas"],
+  ["Hortaleza", "barrio-hortaleza"],
   ["Moratalaz", "barrio-moratalaz"],
   ["Vicálvaro", "barrio-vicalvaro"],
-  ["Villa de Vallecas y Ensanche", "barrio-villa-de-vallecas"],
-  ["Barrio del Pilar y Peñagrande", "barrio-del-pilar"],
+  ["Villa de Vallecas", "barrio-villa-de-vallecas"],
+  ["Barrio del Pilar", "barrio-del-pilar"],
   ["Moncloa y Argüelles", "barrio-moncloa"],
-  ["Pacífico y Conde de Casal (Retiro)", "barrio-retiro-pacifico"],
-  ["Prosperidad y Castilla (Chamartín)", "barrio-chamartin"],
-  ["Goya y Guindalera (Salamanca)", "barrio-salamanca-goya"],
-  ["Alcalá de Henares Centro", "municipio-alcala-de-henares"],
-  ["Móstoles Central", "municipio-mostoles"],
-  ["Fuenlabrada Central", "municipio-fuenlabrada"],
-  ["Leganés y Zarzaquemada", "municipio-leganes"],
-  ["Getafe Centro", "municipio-getafe"],
-  ["Alcorcón Central", "municipio-alcorcon"],
-  ["Parla Centro", "municipio-parla"],
-  ["Torrejón de Ardoz Centro", "municipio-torrejon-de-ardoz"],
-  ["Alcobendas Centro", "municipio-alcobendas"],
+  ["Retiro y Pacífico", "barrio-retiro-pacifico"],
+  ["Chamartín", "barrio-chamartin"],
+  ["Barrio de Salamanca", "barrio-salamanca-goya"],
+  ["Alcalá de Henares", "municipio-alcala-de-henares"],
+  ["Móstoles", "municipio-mostoles"],
+  ["Fuenlabrada", "municipio-fuenlabrada"],
+  ["Leganés", "municipio-leganes"],
+  ["Getafe", "municipio-getafe"],
+  ["Alcorcón", "municipio-alcorcon"],
+  ["Parla", "municipio-parla"],
+  ["Torrejón de Ardoz", "municipio-torrejon-de-ardoz"],
+  ["Alcobendas", "municipio-alcobendas"],
   ["San Sebastián de los Reyes", "municipio-san-sebastian-de-los-reyes"],
 ];
 
 const PERFILES_VIAJERO_MADRID_10: [string, string, number][] = [
-  ["visita-a-familiares-peruanos", "Visita a Familiares con Carta de Invitación", 849],
-  ["primer-viaje-con-reserva-hotel", "Primer Viaje con Reserva de Hotel Verificable", 869],
-  ["paquete-migratorio-con-retorno-rf", "Paquete Migratorio + Reserva de Retorno RF 24h", 869],
-  ["viaje-de-padres-y-abuelos", "Viaje de Padres y Abuelos desde Lima", 879],
-  ["viaje-de-esposos-y-parejas", "Paquete para Parejas y Esposos rumbo a Madrid", 859],
-  ["viaje-con-hijos-menores", "Viaje Familiar con Hijos Menores de Edad", 859],
-  ["estudiantes-y-master-en-madrid", "Boleto para Estudiantes y Máster en Madrid", 779],
-  ["trabajadores-con-contrato-visa", "Boleto para Trabajadores con Visa Aprobada", 769],
-  ["comprado-desde-madrid-para-familia", "Pasaje Comprado desde España para Traer Familiares", 869],
-  ["solo-reserva-hotel-y-retorno-rf", "Solo Reserva de Hotel + Retorno RF para Ingreso", 85],
+  ["visita-a-familiares-peruanos", "Visita Familiar con Carta de Invitación", 849],
+  ["primer-viaje-con-reserva-hotel", "Primer Viaje con Reserva de Hotel", 869],
+  ["paquete-migratorio-con-retorno-rf", "Paquete Migratorio + Retorno RF 24h", 869],
+  ["viaje-de-padres-y-abuelos", "Viaje para Padres y Adultos Mayores", 879],
+  ["viaje-de-esposos-y-parejas", "Paquete para Parejas y Esposos", 859],
+  ["viaje-con-hijos-menores", "Viaje Familiar con Hijos Menores", 859],
+  ["estudiantes-y-master-en-madrid", "Boleto para Estudiantes y Máster", 779],
+  ["trabajadores-con-contrato-visa", "Boleto con Visa de Trabajo Aprobada", 769],
+  ["comprado-desde-madrid-para-familia", "Pasaje Comprado desde España para Familia", 869],
+  ["solo-reserva-hotel-y-retorno-rf", "Solo Reserva Hotel + Retorno RF", 85],
 ];
 
 const DURACIONES_ESTADIA_MADRID_5: [string, string, number][] = [
-  ["estadia-9-dias-bolsa-minima-boe", "Estadía 9 Días (Mínimo BOE 1.098,90€)", 1.0],
+  ["estadia-9-dias-bolsa-minima-boe", "Estadía 9 Días (Mínimo BOE)", 1.0],
   ["estadia-12-dias-recomendada", "Estadía 12 Días Recomendada", 1.0],
   ["estadia-15-dias-quincena", "Estadía 15 Días en Madrid", 1.02],
   ["estadia-30-dias-visita-familiar", "Estadía 30 Días Visita Familiar", 1.04],
-  ["estadia-60-a-90-dias-schengen", "Estadía Larga 60 a 90 Días Schengen", 1.06],
+  ["estadia-60-a-90-dias-schengen", "Estadía 60 a 90 Días Schengen", 1.06],
 ];
 
 // ============================================================================
 // SILO 5: 24 SERVICIOS Y CASOS REALES DE BD × 12 MESES × 5 VARIANTES = 1,440 PÁGINAS
 // ============================================================================
 const SERVICIOS_ESPECIALES_BD_24: [string, string, number][] = [
-  ["paquete-solo-ida-migratorio-lima-madrid", "Paquete Solo Ida Migratorio Lima – Madrid (Vuelo + RF + Hotel)", 869],
-  ["reserva-retorno-rf-24h-madrid-lima", "Reserva de Retorno RF 24h (MAD → LIM) Verificable", 55],
-  ["reserva-hotel-verificable-barajas-madrid", "Reserva de Hotel Verificable para Migraciones Madrid", 45],
-  ["carpeta-migratoria-completa-sin-vuelo-madrid", "Carpeta Migratoria Completa (Retorno RF + Hotel + Seguro)", 95],
-  ["seguro-medico-schengen-30000-euros-madrid", "Seguro Médico Schengen 30.000€ Oficial para Madrid", 45],
-  ["maleta-adicional-23kg-bodega-madrid", "Maleta Adicional de 23 kg en Bodega para Vuelo a Madrid", 149],
-  ["checkin-y-asignacion-asiento-madrid", "Servicio de Check-in, Asiento y Revisión de Carpeta Madrid", 35],
-  ["reprogramacion-cambio-fecha-vuelo-madrid", "Reprogramación y Cambio de Fecha de Pasaje a Madrid", 149],
-  ["vuelo-directo-iberia-lima-madrid-t4", "Boleto Vuelo Directo Iberia Lima – Madrid (Terminal T4)", 899],
-  ["vuelo-directo-air-europa-lima-madrid-t1", "Boleto Vuelo Directo Air Europa Lima – Madrid (Terminal T1)", 869],
+  ["paquete-solo-ida-migratorio-lima-madrid", "Paquete Migratorio Lima – Madrid", 869],
+  ["reserva-retorno-rf-24h-madrid-lima", "Reserva de Retorno RF 24h (MAD → LIM)", 55],
+  ["reserva-hotel-verificable-barajas-madrid", "Reserva de Hotel Verificable en Madrid", 45],
+  ["carpeta-migratoria-completa-sin-vuelo-madrid", "Solo Carpeta Migratoria Completa Madrid", 95],
+  ["seguro-medico-schengen-30000-euros-madrid", "Seguro Médico Schengen 30.000€ Oficial", 45],
+  ["maleta-adicional-23kg-bodega-madrid", "Maleta Adicional 23 kg en Bodega a Madrid", 149],
+  ["checkin-y-asignacion-asiento-madrid", "Check-in, Asiento y Revisión de Carpeta", 35],
+  ["reprogramacion-cambio-fecha-vuelo-madrid", "Cambio de Fecha de Pasaje a Madrid", 149],
+  ["vuelo-directo-iberia-lima-madrid-t4", "Vuelo Directo Iberia Lima – Madrid (T4)", 899],
+  ["vuelo-directo-air-europa-lima-madrid-t1", "Vuelo Directo Air Europa Lima – Madrid (T1)", 869],
   ["vuelo-plus-ultra-lima-madrid-economico", "Boleto Plus Ultra Lima – Madrid con Equipaje", 839],
-  ["vuelo-latam-lima-madrid-confirmado", "Boleto LATAM Lima – Madrid con Código PNR", 869],
-  ["boleto-madrid-a-lima-solo-ida", "Boleto Solo Ida Madrid → Lima (Para Residentes)", 719],
-  ["boleto-madrid-lima-madrid-ida-vuelta", "Boleto Madrid – Lima – Madrid para Peruanos en España", 1050],
-  ["pasaje-lima-madrid-con-visa-de-trabajo", "Boleto Lima – Madrid para Pasajeros con Visa de Trabajo", 769],
-  ["pasaje-lima-madrid-con-visa-de-estudios", "Boleto Lima – Madrid para Estudiantes con Visa", 769],
-  ["pasaje-lima-madrid-reagrupacion-familiar", "Boleto Lima – Madrid por Reagrupación Familiar", 769],
-  ["asesoria-carta-invitacion-madrid-peru", "Asesoría de Viaje con Carta de Invitación a Madrid", 849],
-  ["asesoria-bolsa-de-viaje-boe-madrid-2026", "Paquete a Madrid Calibrado a la Bolsa de Viaje BOE 2026", 869],
-  ["paquete-familiar-4-a-6-pasajeros-madrid", "Tarifa Grupal Familiar a Madrid (Por Pasajero)", 799],
-  ["viaje-madrid-con-escala-bogota-avianca", "Vuelo Económico Lima – Madrid vía Bogotá (Avianca)", 819],
-  ["viaje-madrid-con-conexion-barcelona-bcn", "Paquete Migratorio Lima – Madrid / Barcelona (BCN)", 899],
-  ["viaje-madrid-con-conexion-roma-milan", "Paquete Migratorio Lima – Madrid – Roma / Milán", 929],
-  ["viaje-madrid-con-conexion-paris-lyon", "Paquete Migratorio Lima – Madrid – París / Lyon", 929],
+  ["vuelo-latam-lima-madrid-confirmado", "Boleto LATAM Lima – Madrid Confirmado", 869],
+  ["boleto-madrid-a-lima-solo-ida", "Boleto Solo Ida Madrid → Lima", 719],
+  ["boleto-madrid-lima-madrid-ida-vuelta", "Boleto Madrid – Lima – Madrid Confirmado", 1050],
+  ["pasaje-lima-madrid-con-visa-de-trabajo", "Boleto Lima – Madrid con Visa de Trabajo", 769],
+  ["pasaje-lima-madrid-con-visa-de-estudios", "Boleto Lima – Madrid para Estudiantes", 769],
+  ["pasaje-lima-madrid-reagrupacion-familiar", "Boleto Lima – Madrid Reagrupación Familiar", 769],
+  ["asesoria-carta-invitacion-madrid-peru", "Viaje a Madrid con Carta de Invitación", 849],
+  ["asesoria-bolsa-de-viaje-boe-madrid-2026", "Paquete a Madrid Calibrado a Bolsa BOE", 869],
+  ["paquete-familiar-4-a-6-pasajeros-madrid", "Tarifa Grupal Familiar a Madrid", 799],
+  ["viaje-madrid-con-escala-bogota-avianca", "Vuelo Lima – Madrid vía Bogotá (Avianca)", 819],
+  ["viaje-madrid-con-conexion-barcelona-bcn", "Paquete Migratorio Lima – Madrid / Barcelona", 899],
+  ["viaje-madrid-con-conexion-roma-milan", "Paquete Migratorio Lima – Madrid / Italia", 929],
+  ["viaje-madrid-con-conexion-paris-lyon", "Paquete Migratorio Lima – Madrid / París", 929],
 ];
 
 const VARIANTES_ATENCION_5: [string, string, number][] = [
   ["tarifa-oficial-pnr", "Emisión Oficial PNR", 1.0],
-  ["reserva-50-inicial", "Reserva con 50% Inicial", 1.0],
-  ["sede-los-olivos", "Oficina Los Olivos RUC 20614914239", 1.0],
-  ["atencion-whatsapp-24-7", "Atención Inmediata WhatsApp", 1.0],
-  ["preventa-garantizada", "Tarifa Preventa Garantizada", 0.96],
+  ["reserva-50-inicial", "Separa con 50%", 1.0],
+  ["sede-los-olivos", "Sede Los Olivos", 1.0],
+  ["atencion-whatsapp-24-7", "Atención WhatsApp", 1.0],
+  ["preventa-garantizada", "Tarifa Preventa", 0.96],
 ];
 
 // ============================================================================
@@ -596,13 +600,14 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
   let contador = 0;
 
   // 1. SILO 1: 50 Zonas/Conexiones × 10 Modalidades × 5 Aerolíneas = 2,500
-  for (const [zonaNombre, slugZona, precioBase, terminalInfo] of ZONAS_Y_CONEXIONES_MADRID_50) {
+  for (const [zonaNombre, slugZona, precioBase] of ZONAS_Y_CONEXIONES_MADRID_50) {
     for (const [slugMod, nombreMod, factorMod, descMod] of MODALIDADES_MADRID_10) {
       for (const [slugAero, nombreAero, terminalAero, factorAero] of AEROLINEAS_BARAJAS_5) {
         const idxActual = contador++;
         const slug = `${slugZona}-${slugMod}-${slugAero}`;
         const precio = Math.round((precioBase * factorMod * factorAero) / 10) * 10;
         const titulo = `${zonaNombre}: ${nombreMod} (${nombreAero})`;
+        const esRetorno = slugMod.includes("retorno-madrid-a-lima");
 
         lista.push({
           slug,
@@ -618,15 +623,17 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
               silo: "barajas-rutas",
               siloNombre: "Rutas y Modalidades Madrid-Barajas",
               badgeSuperior: `${nombreAero} · ${terminalAero}`,
-              codigoRuta: slugMod.includes("retorno-madrid-a-lima") ? "MAD → LIM" : "LIM → MAD",
+              codigoRuta: esRetorno ? "MAD → LIM" : "LIM → MAD",
               terminalBarajas: terminalAero,
               aerolineaDestacada: nombreAero,
               tituloPrincipal: `Viajes a ${zonaNombre}:`,
-              subtituloDorado: `${nombreMod} Desde $${precio} USD`,
-              resumenEjecutivo: `${descMod}. Operado con ${nombreAero} llegando a ${terminalInfo}, con código PNR verificable, check-in realizado por tu asesor y respaldo formal RUC 20614914239.`,
+              subtituloDorado: `${nombreMod} Desde $${precio.toLocaleString("en-US")}`,
+              resumenEjecutivo: `${descMod}. Operado con ${nombreAero} (${terminalAero}), entrega inmediata de código PNR y check-in realizado por tu asesor.`,
               zonaOMunicipioMadrid: zonaNombre,
-              origenPasajero: "Lima y Provincias",
-              modalidadClave: nombreMod.slice(0, 32),
+              origenPasajero: esRetorno
+                ? "Madrid-Barajas (MAD)"
+                : "Lima — Aeropuerto Jorge Chávez (LIM)",
+              modalidadClave: "PNR + Retorno RF",
               precioDesdeUSD: precio,
               keywords: [
                 `viajar a ${zonaNombre.toLowerCase()} desde lima`,
@@ -635,12 +642,12 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
               ],
               faqsExtra: [
                 {
-                  q: `¿Qué incluye exactamente "${nombreMod}" hacia ${zonaNombre} con ${nombreAero}?`,
-                  a: `${descMod}. Llegarás por ${terminalAero} con tu código PNR activo en el sistema de ${nombreAero} y toda tu documentación verificable lista.`,
+                  q: `¿Qué incluye "${nombreMod}" hacia ${zonaNombre} con ${nombreAero}?`,
+                  a: `${descMod}. Llegarás por ${terminalAero} con tu código PNR activo en el sistema de ${nombreAero} y tu carpeta verificable lista.`,
                 },
                 {
                   q: `¿Con cuánto puedo separar mi viaje a ${zonaNombre}?`,
-                  a: `Puedes congelar tu tarifa Desde $${precio} USD abonando el 50% de inicial en nuestra sede de Los Olivos (Av. Universitaria 2029) o mediante cuentas bancarias BCP, BBVA e Interbank.`,
+                  a: `Puedes congelar tu tarifa Desde $${precio.toLocaleString("en-US")} abonando el 50% de inicial en nuestra sede de Los Olivos (Av. Universitaria 2029) o por BCP, BBVA e Interbank.`,
                 },
               ],
               indiceSemilla: idxActual,
@@ -658,6 +665,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
         const slug = `plan-${slugEstadia}-${slugProd}-${slugEmis}`;
         const precio = Math.max(45, Math.round((precioBase * factorEmis) / 5) * 5);
         const titulo = `${nombreProd}: ${nombreEstadia} (${nombreEmis})`;
+        const esRetorno = slugProd.includes("madrid-a-lima");
 
         lista.push({
           slug,
@@ -672,16 +680,16 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
               slug,
               silo: "estadias-boe-madrid",
               siloNombre: `${nombreEstadia} · Salida desde Lima (LIM)`,
-              badgeSuperior: `Salida Aeropuerto Jorge Chávez (LIM) · ${nombreEmis}`,
-              codigoRuta: slugProd.includes("madrid-a-lima") ? "MAD → LIM" : "LIM → MAD",
+              badgeSuperior: `Salida Jorge Chávez (LIM) · ${nombreEmis}`,
+              codigoRuta: esRetorno ? "MAD → LIM" : "LIM → MAD",
               terminalBarajas: "Terminal T4 y T1 Madrid-Barajas",
               aerolineaDestacada: "Iberia · Air Europa · LATAM · Plus Ultra",
               tituloPrincipal: `${nombreProd} (${nombreEstadia}):`,
-              subtituloDorado: `${nombreEmis} Desde $${precio} USD`,
-              resumenEjecutivo: `Programa especializado para "${nombreEstadia}" (${detalleBoe}): gestionamos tu ${nombreProd} bajo la modalidad "${nombreEmis}" saliendo del Aeropuerto Internacional Jorge Chávez (LIM) con entrega de código PNR real, reserva de retorno activa, hotel verificable y seguro Schengen 30.000€.`,
-              zonaOMunicipioMadrid: "Madrid (MAD)",
+              subtituloDorado: `${nombreEmis} Desde $${precio.toLocaleString("en-US")}`,
+              resumenEjecutivo: `${detalleBoe}. Emitimos tu ${nombreProd.toLowerCase()} con código PNR verificable, reserva de retorno activa, hotel o Carta de Invitación y seguro Schengen 30.000€.`,
+              zonaOMunicipioMadrid: "Madrid-Barajas (T4 / T1)",
               origenPasajero: "Lima — Aeropuerto Jorge Chávez (LIM)",
-              modalidadClave: nombreEmis,
+              modalidadClave: "Bolsa BOE Calibrada",
               precioDesdeUSD: precio,
               keywords: [
                 `${slugProd.replace(/-/g, " ")} ${slugEstadia.replace(/-/g, " ")}`,
@@ -690,12 +698,12 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
               ],
               faqsExtra: [
                 {
-                  q: `¿Cómo se calibra el expediente para "${nombreEstadia}" en "${nombreProd}"?`,
-                  a: `${detalleBoe}. Alineamos tu boleto aéreo desde el Aeropuerto Internacional Jorge Chávez (LIM), tu reserva de retorno (MAD → LIM) y tu voucher hotelero o Carta de Invitación por la misma cantidad exacta de días.`,
+                  q: `¿Cómo se calibra el expediente para "${nombreEstadia}"?`,
+                  a: `${detalleBoe}. Alineamos tu boleto aéreo desde el Aeropuerto Jorge Chávez (LIM), tu reserva de retorno (MAD → LIM) y tu alojamiento exactamente por esa cantidad de días.`,
                 },
                 {
                   q: `¿Qué beneficio incluye la modalidad "${nombreEmis}"?`,
-                  a: `Te permite asegurar tu tarifa oficial Desde $${precio} USD con emisión verificable en aerolínea, Boleta o Factura Electrónica SUNAT (RUC 20614914239) y check-in realizado directamente por tu asesor.`,
+                  a: `Te permite asegurar tu tarifa oficial Desde $${precio.toLocaleString("en-US")} con código PNR verificable, comprobante SUNAT (RUC 20614914239) y check-in hecho por tu asesor.`,
                 },
               ],
               indiceSemilla: idxActual,
@@ -727,13 +735,13 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
               slug,
               silo: "rutas-espana-barajas",
               siloNombre: `Rutas Lima (LIM) → ${nombreRutaEsp}`,
-              badgeSuperior: `Salida Aeropuerto Jorge Chávez (LIM) · ${nombreMes} 2026`,
+              badgeSuperior: `Salida Jorge Chávez (LIM) · ${nombreMes} 2026`,
               codigoRuta: "LIM → MAD",
               terminalBarajas: "Terminal T4 / T1 Madrid-Barajas",
               aerolineaDestacada: "Iberia · Air Europa · Plus Ultra · LATAM",
-              tituloPrincipal: `Viajes a ${nombreRutaEsp} en ${nombreMes}:`,
-              subtituloDorado: `${nombrePaq} Desde $${precio} USD`,
-              resumenEjecutivo: `Programa integral saliendo desde el Aeropuerto Internacional Jorge Chávez (LIM) en Lima rumbo a ${nombreRutaEsp} para el mes de ${nombreMes}. Incluye boleto internacional LIM → MAD con código PNR, reserva de retorno RF 24h, hotel verificable, seguro Schengen 30.000€ y check-in realizado por tu asesor.`,
+              tituloPrincipal: `Viajes a ${nombreRutaEsp} (${nombreMes}):`,
+              subtituloDorado: `${nombrePaq} Desde $${precio.toLocaleString("en-US")}`,
+              resumenEjecutivo: `Salida desde el Aeropuerto Internacional Jorge Chávez (LIM) rumbo a ${nombreRutaEsp} en ${nombreMes}. Incluye vuelo con código PNR, retorno RF 24h, hotel verificable y seguro Schengen 30.000€.`,
               zonaOMunicipioMadrid: nombreRutaEsp,
               origenPasajero: "Lima — Aeropuerto Jorge Chávez (LIM)",
               modalidadClave: `Salida ${nombreMes}`,
@@ -745,12 +753,12 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
               ],
               faqsExtra: [
                 {
-                  q: `¿Cómo funciona la ruta desde Lima (Aeropuerto Jorge Chávez) hacia ${nombreRutaEsp} en ${nombreMes}?`,
-                  a: `Tu vuelo internacional sale del Aeropuerto Internacional Jorge Chávez (LIM) ingresando por el Aeropuerto Adolfo Suárez Madrid-Barajas (MAD) con tu expediente completo (PNR, retorno activo, alojamiento verificable y seguro Schengen 30.000€).`,
+                  q: `¿Cómo funciona la ruta desde Lima hacia ${nombreRutaEsp} en ${nombreMes}?`,
+                  a: `Tu vuelo sale del Aeropuerto Internacional Jorge Chávez (LIM) ingresando por Madrid-Barajas (MAD) con tu expediente completo (PNR, retorno activo, alojamiento y seguro 30.000€).`,
                 },
                 {
                   q: `¿Cuál es la tarifa en ${nombreMes} para ${nombreRutaEsp} y con cuánto se separa?`,
-                  a: `La tarifa referencial para ${nombreMes} parte Desde $${precio} USD por pasajero y puedes congelarla hoy mismo abonando el 50% de inicial en nuestra sede de Los Olivos (Av. Universitaria 2029) o por WhatsApp (+51 944 103 890).`,
+                  a: `La tarifa referencial para ${nombreMes} parte Desde $${precio.toLocaleString("en-US")} y puedes congelarla hoy abonando el 50% de inicial en Los Olivos o por WhatsApp (+51 944 103 890).`,
                 },
               ],
               indiceSemilla: idxActual,
@@ -784,14 +792,14 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
               siloNombre: `Comunidad Peruana en ${nombreBarrio}`,
               badgeSuperior: `Destino ${nombreBarrio} · ${nombreDur}`,
               codigoRuta: "LIM → MAD",
-              terminalBarajas: "Aeropuerto Madrid-Barajas (Conexión Metro/Cercanías)",
+              terminalBarajas: "Terminal T4 / T1 Madrid-Barajas",
               aerolineaDestacada: "Iberia · Air Europa · Plus Ultra · LATAM",
-              tituloPrincipal: `Viaje a ${nombreBarrio} (Madrid):`,
-              subtituloDorado: `${nombrePerfil} Desde $${precio} USD`,
-              resumenEjecutivo: `Especialistas en peruanos que viajan a ${nombreBarrio} en Madrid bajo la modalidad "${nombrePerfil}" (${nombreDur}). Alineamos tu vuelo, tu reserva de retorno activa (MAD → LIM) y tu alojamiento o Carta de Invitación en ${nombreBarrio}.`,
+              tituloPrincipal: `Viajes a ${nombreBarrio} (Madrid):`,
+              subtituloDorado: `${nombrePerfil} Desde $${precio.toLocaleString("en-US")}`,
+              resumenEjecutivo: `Programa saliendo del Aeropuerto Jorge Chávez (LIM) hacia ${nombreBarrio} (Madrid) en modalidad "${nombrePerfil}" (${nombreDur}), con retorno activo MAD → LIM, hotel o Carta de Invitación y seguro 30.000€.`,
               zonaOMunicipioMadrid: `${nombreBarrio}, Madrid`,
-              origenPasajero: "Lima, Perú",
-              modalidadClave: nombreDur.slice(0, 28),
+              origenPasajero: "Lima — Aeropuerto Jorge Chávez (LIM)",
+              modalidadClave: "Carpeta + PNR",
               precioDesdeUSD: precio,
               keywords: [
                 `viajar a ${nombreBarrio.toLowerCase()} madrid desde lima`,
@@ -800,12 +808,12 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
               ],
               faqsExtra: [
                 {
-                  q: `Mi familiar vive en ${nombreBarrio} (Madrid), ¿cómo armamos el expediente de "${nombrePerfil}"?`,
-                  a: `Si tu familiar en ${nombreBarrio} te envió Carta de Invitación, emitimos tu vuelo y retorno exactamente por los días de la carta. Si viajas sin carta, emitimos tu reserva de hotel verificable en Madrid junto con tu retorno RF y seguro Schengen.`,
+                  q: `Mi familiar vive en ${nombreBarrio} (Madrid), ¿cómo armamos el expediente?`,
+                  a: `Si cuentas con Carta de Invitación en ${nombreBarrio}, emitimos tu vuelo desde Lima (LIM) y retorno exactamente por esos días. Si viajas sin carta, incluimos reserva de hotel verificable en Madrid.`,
                 },
                 {
                   q: `¿Qué bolsa de viaje necesito para "${nombreDur}" en ${nombreBarrio}?`,
-                  a: `La norma oficial BOE 2026 exige 122,10 € por día con un mínimo de 1.098,90 € por persona (de 1 a 9 días). Nuestros asesores calibran tus fechas para que tu expediente sea 100% sólido.`,
+                  a: `La norma oficial BOE 2026 exige 122,10 € por día con un mínimo de 1.098,90 € por pasajero (de 1 a 9 días). Nuestros asesores calibran tus fechas para que tu carpeta sea 100% coherente.`,
                 },
               ],
               indiceSemilla: idxActual,
@@ -823,6 +831,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
         const slug = `servicio-${slugServ}-${slugMes}-${slugVar}`;
         const precio = Math.max(35, Math.round((precioBase * factorMes * factorVar) / 5) * 5);
         const titulo = `${nombreServ} en ${nombreMes} — ${nombreVar}`;
+        const esRetorno = slugServ.includes("madrid-a-lima");
 
         lista.push({
           slug,
@@ -838,14 +847,16 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
               silo: "expediente-servicios-madrid",
               siloNombre: "Servicios y Expedientes Migratorios Madrid",
               badgeSuperior: `${nombreVar} · Temporada ${nombreMes}`,
-              codigoRuta: slugServ.includes("madrid-a-lima") ? "MAD → LIM" : "LIM → MAD",
-              terminalBarajas: "Aeropuerto Adolfo Suárez Madrid-Barajas (T4 / T1)",
-              aerolineaDestacada: "Emisión Verificable PNR + IATA",
-              tituloPrincipal: `${nombreServ}`,
-              subtituloDorado: `Temporada ${nombreMes} Desde $${precio} USD`,
-              resumenEjecutivo: `Solicita hoy "${nombreServ}" para el mes de ${nombreMes} bajo nuestra modalidad "${nombreVar}". Más de 400 ventas registradas a Madrid respaldan nuestra gestión en Lima Norte (RUC 20614914239).`,
-              zonaOMunicipioMadrid: "Madrid (Barajas)",
-              origenPasajero: "Perú / España",
+              codigoRuta: esRetorno ? "MAD → LIM" : "LIM → MAD",
+              terminalBarajas: "Terminal T4 / T1 Madrid-Barajas",
+              aerolineaDestacada: "Iberia · Air Europa · LATAM · Plus Ultra",
+              tituloPrincipal: `${nombreServ} (${nombreMes}):`,
+              subtituloDorado: `${nombreVar} Desde $${precio.toLocaleString("en-US")}`,
+              resumenEjecutivo: `Gestiona hoy tu "${nombreServ}" para ${nombreMes} con código PNR real en sistema, check-in por asesor y respaldo formal en Los Olivos (RUC 20614914239).`,
+              zonaOMunicipioMadrid: "Madrid-Barajas (MAD)",
+              origenPasajero: esRetorno
+                ? "Madrid-Barajas (MAD)"
+                : "Lima — Aeropuerto Jorge Chávez (LIM)",
               modalidadClave: nombreVar,
               precioDesdeUSD: precio,
               keywords: [
@@ -856,11 +867,11 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
               faqsExtra: [
                 {
                   q: `¿Cómo solicito "${nombreServ}" para viajar en ${nombreMes}?`,
-                  a: `Escríbenos por WhatsApp al +51 944 103 890 o visítanos en Av. Universitaria 2029 (Los Olivos). Emitimos tu documentación oficial desde $${precio} USD con comprobante electrónico SUNAT.`,
+                  a: `Escríbenos por WhatsApp al +51 944 103 890 o visítanos en Av. Universitaria 2029 (Los Olivos). Emitimos tu documentación oficial desde $${precio.toLocaleString("en-US")} con comprobante SUNAT.`,
                 },
                 {
                   q: `¿En cuánto tiempo me entregan mi código PNR o carpeta verificable?`,
-                  a: `El código PNR de aerolínea, voucher de hotel y póliza Schengen se emiten el mismo día de tu reserva, y nuestro asesor se encarga personalmente de tu check-in antes del vuelo.`,
+                  a: `El código PNR de aerolínea, voucher de hotel y póliza Schengen se emiten el mismo día de tu reserva, y nuestro asesor realiza personalmente tu check-in.`,
                 },
               ],
               indiceSemilla: idxActual,

@@ -208,7 +208,7 @@ export function obtenerConfigAgenciaOficial(
         ? `¿Viajas desde ${referenciaZona}? Cotiza hoy en 2 Minutos por WhatsApp`
         : "Visítanos en Nuestra Oficina o Cotiza en 2 Minutos por WhatsApp",
       descripcion:
-        "Te esperamos de Lunes a Sábado de 9:00 AM a 7:00 PM en Av. Antúnez de Mayolo N. 814, Los Olivos (a 2 cuadras de la Municipalidad), o agenda una atención inmediata con nuestras asesoras de viaje.",
+        "Te esperamos de Lunes a Sábado de 9:00 AM a 7:00 PM en nuestra sede principal de Av. Universitaria 2029, Los Olivos, Lima, o agenda una atención inmediata por videollamada o WhatsApp con nuestras asesoras de viaje.",
       ctaTexto: "Hablar con una Asesora Ahora",
       waNumero: TELEFONO,
       waMensaje: referenciaZona

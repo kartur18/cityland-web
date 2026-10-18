@@ -92,7 +92,7 @@ const MODALIDADES_ESPANA = [
       "No pagas hotel innecesario: ajustamos tu boleto de ida y vuelta exactamente al periodo autorizado en tu Carta de Invitación.",
       "Incluye Póliza de Seguro Schengen de 30.000€ sin deducible por los mismos días de tu estancia.",
       "Verificación documental de tu Carta original y orientación sobre la bolsa de viaje obligatoria (mínimo 1.098,90 €).",
-      "Opciones de conexión desde Arequipa, Trujillo, Chiclayo, Piura o Cusco en un solo PNR.",
+      "Salidas desde el Aeropuerto Internacional Jorge Chávez (LIM) con check-in gestionado por tu asesor.",
     ],
     waTexto: "Cotizar con Carta de Invitación",
     waMensaje:
@@ -131,7 +131,7 @@ export default function EspanaLandingClient() {
             <div className="lg:col-span-7 text-left">
               <div className="inline-flex flex-wrap items-center gap-2 bg-white border border-slate-200 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-700 shadow-2xs mb-5">
                 <FlagIcon pais="España" className="w-3.5 h-2.5" />
-                <span>6 Años Especializados en Ruta Madrid & Barcelona · 12 Asesores</span>
+                <span>6 Años Especializados en Ruta Madrid & Barcelona · Salida Lima (LIM)</span>
               </div>
 
               <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#0a1628] tracking-tight leading-[1.12] mb-4">
@@ -174,15 +174,15 @@ export default function EspanaLandingClient() {
                   <span className="text-emerald-600 font-extrabold">✓</span> Agencia Formal RUC 20614914239
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <span className="text-emerald-600 font-extrabold">✓</span> Oficina en Los Olivos
+                  <span className="text-emerald-600 font-extrabold">✓</span> Oficina en Av. Universitaria 2029, Los Olivos
                 </span>
               </div>
             </div>
 
-            {/* Derecha: Tarjeta Luminosa de Madrid */}
+            {/* Derecha: Tarjeta Luminosa de Madrid (Foto 100% limpia sin textos encima) */}
             <div className="lg:col-span-5">
               <div className="card-interactive group bg-white rounded-3xl border border-slate-200/90 shadow-lg overflow-hidden">
-                <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-100">
+                <div className="relative h-60 sm:h-64 w-full overflow-hidden bg-slate-100">
                   <Image
                     src="/images/espana/plaza-mayor.jpg"
                     alt="Plaza Mayor de Madrid España - Cityland Travel"
@@ -191,7 +191,6 @@ export default function EspanaLandingClient() {
                     sizes="(max-width: 1024px) 100vw, 500px"
                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/65 to-transparent" />
 
                   <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
                     <span className="inline-flex items-center gap-1.5 bg-white/95 backdrop-blur-md text-[#0a1628] text-xs font-bold px-3 py-1 rounded-full shadow-xs">
@@ -202,43 +201,45 @@ export default function EspanaLandingClient() {
                       Carpeta Completa
                     </span>
                   </div>
+                </div>
 
-                  <div className="absolute bottom-3.5 left-4 right-4 z-10 text-white">
-                    <span className="text-[11px] font-bold text-amber-300 uppercase tracking-wider block">
+                {/* Pie Blanco Limpio */}
+                <div className="p-5 bg-white space-y-3">
+                  <div className="border-b border-slate-100 pb-2.5">
+                    <span className="text-[11px] font-extrabold text-red-600 uppercase tracking-wider block">
                       Vuelo Confirmado + Seguro 30.000€ + Hotel + Asesoría
                     </span>
-                    <h2 className="text-xl font-extrabold leading-tight">
+                    <h2 className="text-lg sm:text-xl font-extrabold text-[#0a1628] leading-tight mt-0.5">
                       Tu llegada a España con todo resuelto
                     </h2>
                   </div>
-                </div>
 
-                {/* Pie Blanco Limpio con "Desde $1,090" */}
-                <div className="p-5 flex items-center justify-between gap-4 bg-white">
-                  <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1">
-                      Carpeta Migratoria
-                    </span>
-                    <div className="flex items-baseline gap-1.5">
-                      <span className="text-xs font-extrabold uppercase text-red-600">Desde</span>
-                      <span className="text-3xl sm:text-4xl font-black text-[#0a1628] tracking-tight leading-none">
-                        $1,090
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1">
+                        Carpeta Migratoria
+                      </span>
+                      <div className="flex items-baseline gap-1.5">
+                        <span className="text-xs font-extrabold uppercase text-red-600">Desde</span>
+                        <span className="text-3xl sm:text-4xl font-black text-[#0a1628] tracking-tight leading-none">
+                          $1,090
+                        </span>
+                      </div>
+                      <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
+                        Separa con 50% ($545)
                       </span>
                     </div>
-                    <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                      Separa con 50% ($545)
-                    </span>
-                  </div>
 
-                  <a
-                    href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo verificar disponibilidad de fechas para viajar a España (Desde $1,090).\n\n📍 Ref Web: citylandtravel.com/espana [Tarjeta Principal]")}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0"
-                  >
-                    <WhatsAppIcon size={16} />
-                    <span>Verificar Fechas</span>
-                  </a>
+                    <a
+                      href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo verificar disponibilidad de fechas para viajar a España (Desde $1,090).\n\n📍 Ref Web: citylandtravel.com/espana [Tarjeta Principal]")}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0"
+                    >
+                      <WhatsAppIcon size={16} />
+                      <span>Verificar Fechas</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -335,7 +336,7 @@ export default function EspanaLandingClient() {
                 key={p.id}
                 className="card-interactive group bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-xs flex flex-col justify-between h-full"
               >
-                <div className="relative h-52 w-full overflow-hidden bg-slate-100">
+                <div className="relative h-48 w-full overflow-hidden bg-slate-100">
                   <Image
                     src={p.img}
                     alt={`Paquete a España ${p.mes}`}
@@ -343,7 +344,6 @@ export default function EspanaLandingClient() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/65 to-transparent" />
 
                   <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
                     <span className={`text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full ${p.tagColor}`}>
@@ -353,22 +353,21 @@ export default function EspanaLandingClient() {
                       50% Inicial
                     </span>
                   </div>
-
-                  <div className="absolute bottom-3 left-4 right-4 z-10 text-white">
-                    <span className="text-[10px] font-semibold text-amber-300 block">
-                      {p.monumento}
-                    </span>
-                    <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight leading-tight mt-0.5">
-                      {p.mes}
-                    </h3>
-                  </div>
                 </div>
 
                 <div className="p-5 flex flex-col justify-between flex-1 gap-4">
-                  <div className="flex items-center justify-between text-[11px] font-semibold text-slate-500 border-b border-slate-100 pb-3">
-                    <span>✓ Vuelo I/V</span>
-                    <span>✓ 30.000€</span>
-                    <span>✓ Hotel + Guía</span>
+                  <div>
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-red-600 block">
+                      {p.monumento}
+                    </span>
+                    <h3 className="text-xl font-extrabold text-[#0a1628] tracking-tight leading-tight mt-0.5 mb-3">
+                      {p.mes}
+                    </h3>
+                    <div className="flex items-center justify-between text-[11px] font-semibold text-slate-500 border-b border-slate-100 pb-3">
+                      <span>✓ Vuelo I/V</span>
+                      <span>✓ 30.000€</span>
+                      <span>✓ Hotel + Guía</span>
+                    </div>
                   </div>
 
                   <div className="flex items-end justify-between">
@@ -388,7 +387,7 @@ export default function EspanaLandingClient() {
                       </div>
                     </div>
                     <span className="text-xs font-bold text-emerald-700">
-                      Inicial ${Math.round(p.precio * 0.5)}
+                      Inicial ${Math.round(p.precio * 0.5).toLocaleString("en-US")}
                     </span>
                   </div>
 

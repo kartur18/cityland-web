@@ -183,6 +183,110 @@ export default function AirlineLandingTemplate({
       ? breadcrumbs[breadcrumbs.length - 1]?.url || ""
       : "";
 
+  // Determinar identidad visual según la vertical del destino para diferenciar diseños
+  const ctxLower = contextoGlobal.toLowerCase();
+  const paisUpper = (config.vitrina.pais || "").toUpperCase();
+  const esVerticalEuropa =
+    ["ES", "IT", "FR", "PT", "NL", "DE", "EU", "GB", "CH"].includes(paisUpper) ||
+    ctxLower.includes("madrid") ||
+    ctxLower.includes("barcelona") ||
+    ctxLower.includes("espana") ||
+    ctxLower.includes("españa") ||
+    ctxLower.includes("roma") ||
+    ctxLower.includes("italia") ||
+    ctxLower.includes("paris") ||
+    ctxLower.includes("europa") ||
+    ctxLower.includes("schengen");
+
+  const esVerticalCaribe =
+    !esVerticalEuropa &&
+    (["DO", "MX", "CO", "CU", "AW", "CW", "JM", "PA", "BS"].includes(paisUpper) ||
+      ctxLower.includes("punta cana") ||
+      ctxLower.includes("cancun") ||
+      ctxLower.includes("cancún") ||
+      ctxLower.includes("san andres") ||
+      ctxLower.includes("san andrés") ||
+      ctxLower.includes("cartagena") ||
+      ctxLower.includes("aruba") ||
+      ctxLower.includes("curacao") ||
+      ctxLower.includes("caribe") ||
+      ctxLower.includes("todo incluido"));
+
+  const esVerticalPeruSudamerica =
+    !esVerticalEuropa &&
+    !esVerticalCaribe &&
+    (["PE", "AR", "BR", "CL", "UY"].includes(paisUpper) ||
+      ctxLower.includes("cusco") ||
+      ctxLower.includes("machu picchu") ||
+      ctxLower.includes("arequipa") ||
+      ctxLower.includes("tarapoto") ||
+      ctxLower.includes("buenos aires") ||
+      ctxLower.includes("rio de janeiro"));
+
+  const temaHero = esVerticalEuropa
+    ? {
+        sectionBg:
+          "bg-gradient-to-br from-[#071120] via-[#0c1d36] to-[#1a0f1e] text-white border-b-4 border-amber-400",
+        badgeCls:
+          "bg-amber-400/15 border-amber-400/40 text-amber-300",
+        h1Cls: "text-white",
+        highlightCls: "text-amber-300",
+        pCls: "text-slate-200",
+        strongCls: "text-white",
+        chipCls:
+          "bg-white/10 border-white/20 text-white",
+        chipCheckCls: "bg-emerald-500/20 text-emerald-300",
+        btnSecCls:
+          "bg-white/10 hover:bg-white/20 text-white border-white/25",
+      }
+    : esVerticalCaribe
+    ? {
+        sectionBg:
+          "bg-gradient-to-br from-cyan-50/90 via-teal-50/50 to-white text-[#0a1628] border-b-2 border-teal-200",
+        badgeCls:
+          "bg-teal-50 border-teal-200 text-teal-900",
+        h1Cls: "text-[#0a1628]",
+        highlightCls: "text-teal-700",
+        pCls: "text-slate-600",
+        strongCls: "text-[#0a1628]",
+        chipCls:
+          "bg-white border-teal-200/80 text-slate-800 shadow-2xs",
+        chipCheckCls: "bg-teal-100 text-teal-800",
+        btnSecCls:
+          "bg-white hover:bg-teal-50 text-[#0a1628] border-teal-300",
+      }
+    : esVerticalPeruSudamerica
+    ? {
+        sectionBg:
+          "bg-gradient-to-br from-amber-50/90 via-orange-50/40 to-white text-[#0a1628] border-b-2 border-amber-200",
+        badgeCls:
+          "bg-amber-100/70 border-amber-300 text-amber-950",
+        h1Cls: "text-[#0a1628]",
+        highlightCls: "text-red-700",
+        pCls: "text-slate-600",
+        strongCls: "text-[#0a1628]",
+        chipCls:
+          "bg-white border-amber-200/90 text-slate-800 shadow-2xs",
+        chipCheckCls: "bg-amber-100 text-amber-900",
+        btnSecCls:
+          "bg-white hover:bg-amber-50 text-[#0a1628] border-amber-300",
+      }
+    : {
+        sectionBg:
+          "bg-gradient-to-b from-sky-50/90 via-white to-white text-[#0a1628] border-b border-slate-200/80",
+        badgeCls:
+          "bg-white border-slate-200/90 text-slate-700 shadow-2xs",
+        h1Cls: "text-[#0a1628]",
+        highlightCls: "text-red-600",
+        pCls: "text-slate-600",
+        strongCls: "text-[#0a1628]",
+        chipCls:
+          "bg-slate-50/90 hover:bg-white border-slate-200/80 text-slate-700 shadow-2xs",
+        chipCheckCls: "bg-emerald-100 text-emerald-700",
+        btnSecCls:
+          "bg-white hover:bg-slate-50 text-[#0a1628] border-slate-300",
+      };
+
   function armarUrlWaConAtribucion(mensajeBase: string, seccion: string): string {
     const limpio = mensajeBase.trim();
     if (limpio.includes("📍 Ref Web:")) {
@@ -207,11 +311,11 @@ export default function AirlineLandingTemplate({
               Promoción Activa
             </span>
             <span className="text-slate-200">
-              Separa tu viaje o paquete con el <strong className="text-amber-300">50% de inicial</strong> · Código PNR verificable
+              Separa con el <strong className="text-amber-300">50% de inicial</strong> · Salida Aeropuerto Jorge Chávez (LIM)
             </span>
           </div>
           <div className="hidden md:flex items-center gap-4 text-slate-300">
-            <span>🏢 RUC 20614914239 (Boleta y Factura SUNAT)</span>
+            <span>🏢 Av. Universitaria 2029, Los Olivos · RUC 20614914239</span>
             <span>•</span>
             <a
               href={armarUrlWaConAtribucion(config.waPrincipalMensaje, "Barra Superior")}
@@ -228,12 +332,14 @@ export default function AirlineLandingTemplate({
       {/* 1.8 Migas de Pan HTML Semánticas (Arquitectura Silo SEO) */}
       {breadcrumbs && breadcrumbs.length > 0 && <SeoBreadcrumbs migas={breadcrumbs} />}
 
-      {/* 2. Hero Luminoso y Comercial Estilo Aerolínea */}
-      <section className="bg-gradient-to-b from-sky-50/90 via-white to-white pt-8 pb-10 sm:pt-12 sm:pb-14 border-b border-slate-200/80">
+      {/* 2. Hero Compacto con Tema por Vertical y Botón WhatsApp Visible al Instante */}
+      <section className={`${temaHero.sectionBg} pt-6 pb-10 sm:pt-10 sm:pb-12`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             <div className="lg:col-span-7 text-left animate-fade-up">
-              <div className="inline-flex items-center gap-2 bg-white border border-slate-200/90 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-700 shadow-2xs mb-4">
+              <div
+                className={`inline-flex items-center gap-2 border px-3.5 py-1.5 rounded-full text-xs font-bold mb-3.5 ${temaHero.badgeCls}`}
+              >
                 <span className="flex items-center -space-x-1">
                   {config.banderasHero.map((pais) => (
                     <FlagIcon key={pais} pais={pais} className="w-3.5 h-2.5" />
@@ -242,38 +348,44 @@ export default function AirlineLandingTemplate({
                 <span>{config.badgeHero}</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[#0a1628] tracking-tight leading-[1.14] mb-4">
+              <h1
+                className={`text-2xl sm:text-3xl lg:text-[38px] font-extrabold tracking-tight leading-[1.15] mb-3.5 ${temaHero.h1Cls}`}
+              >
                 {config.tituloHero.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}{" "}
                 <span
-                  className={`text-red-600 ${
-                    config.tituloDestacadoHero.length <= 18 ? "inline-block" : ""
+                  className={`${temaHero.highlightCls} ${
+                    config.tituloDestacadoHero.length <= 22 ? "inline-block" : "block mt-1"
                   }`}
                 >
                   {config.tituloDestacadoHero.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                 </span>
               </h1>
 
-              <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6 max-w-xl">
+              <p
+                className={`text-sm sm:text-base leading-relaxed mb-5 max-w-xl line-clamp-3 ${temaHero.pCls}`}
+              >
                 {config.descripcionHero
                   .trim()
                   .replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")
                   .replace(/([^.!?])$/, "$1.")}{" "}
-                <strong className="text-[#0a1628] font-bold">
+                <strong className={`font-bold ${temaHero.strongCls}`}>
                   {config.negritaHero.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                 </strong>
               </p>
 
-              {/* Chips Comerciales Destacados */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mb-6 max-w-2xl">
+              {/* Chips Comerciales Compactos */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-5 max-w-2xl">
                 {config.checksHero.map((c) => (
                   <div
                     key={c}
-                    className="flex items-center gap-2 bg-slate-50/90 hover:bg-white border border-slate-200/80 rounded-xl px-3 py-2.5 text-xs font-bold text-slate-700 shadow-2xs transition-colors"
+                    className={`flex items-center gap-2 border rounded-xl px-3 py-2 text-xs font-bold transition-colors ${temaHero.chipCls}`}
                   >
-                    <span className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-[10px] font-extrabold shrink-0">
+                    <span
+                      className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-extrabold shrink-0 ${temaHero.chipCheckCls}`}
+                    >
                       ✓
                     </span>
-                    <span className="leading-snug">
+                    <span className="leading-snug truncate">
                       {c.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                     </span>
                   </div>
@@ -292,7 +404,7 @@ export default function AirlineLandingTemplate({
                 </a>
                 <a
                   href="#catalogo-principal"
-                  className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-[#0a1628] border border-slate-300 px-5 py-3.5 rounded-xl font-bold text-sm transition-colors"
+                  className={`inline-flex items-center justify-center gap-2 border px-5 py-3.5 rounded-xl font-bold text-sm transition-colors ${temaHero.btnSecCls}`}
                 >
                   <span>Ver Ofertas y Tarifas ↓</span>
                 </a>
@@ -301,7 +413,7 @@ export default function AirlineLandingTemplate({
 
             {/* Tarjeta Vitrina Promocional Derecha (Foto 100% limpia sin textos encima) */}
             <div className="lg:col-span-5 animate-fade-up delay-100">
-              <div className="card-interactive group bg-white rounded-3xl border-2 border-slate-200/90 shadow-xl overflow-hidden">
+              <div className="card-interactive group bg-white text-[#0a1628] rounded-3xl border-2 border-slate-200/90 shadow-xl overflow-hidden">
                 <div className="relative h-56 sm:h-60 w-full overflow-hidden bg-slate-100">
                   <Image
                     src={imgVitrina}
@@ -385,23 +497,57 @@ export default function AirlineLandingTemplate({
           </div>
 
           {/* Barra de Medios de Pago y Confianza Institucional */}
-          <div className="mt-8 pt-5 border-t border-slate-200/70 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-600">
-            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-              <span className="font-extrabold text-[#0a1628] uppercase tracking-wider text-[11px]">
+          <div
+            className={`mt-7 pt-4 border-t flex flex-wrap items-center justify-between gap-3 text-xs ${
+              esVerticalEuropa
+                ? "border-white/15 text-slate-200"
+                : "border-slate-200/70 text-slate-600"
+            }`}
+          >
+            <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
+              <span
+                className={`font-extrabold uppercase tracking-wider text-[11px] ${
+                  esVerticalEuropa ? "text-amber-300" : "text-[#0a1628]"
+                }`}
+              >
                 Medios de Pago Oficiales:
               </span>
-              <span className="bg-slate-100 border border-slate-200/80 px-2.5 py-1 rounded-lg font-semibold text-[11px]">
+              <span
+                className={`px-2.5 py-1 rounded-lg font-semibold text-[11px] border ${
+                  esVerticalEuropa
+                    ? "bg-white/10 border-white/15 text-white"
+                    : "bg-slate-100 border-slate-200/80 text-slate-700"
+                }`}
+              >
                 💳 Visa · Mastercard · Amex
               </span>
-              <span className="bg-slate-100 border border-slate-200/80 px-2.5 py-1 rounded-lg font-semibold text-[11px]">
+              <span
+                className={`px-2.5 py-1 rounded-lg font-semibold text-[11px] border ${
+                  esVerticalEuropa
+                    ? "bg-white/10 border-white/15 text-white"
+                    : "bg-slate-100 border-slate-200/80 text-slate-700"
+                }`}
+              >
                 🏦 BCP · BBVA · Interbank
               </span>
-              <span className="bg-slate-100 border border-slate-200/80 px-2.5 py-1 rounded-lg font-semibold text-[11px]">
+              <span
+                className={`px-2.5 py-1 rounded-lg font-semibold text-[11px] border ${
+                  esVerticalEuropa
+                    ? "bg-white/10 border-white/15 text-white"
+                    : "bg-slate-100 border-slate-200/80 text-slate-700"
+                }`}
+              >
                 📱 Yape / Plin Empresarial
               </span>
             </div>
-            <div className="flex items-center gap-2 text-[11px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200/70 px-3 py-1 rounded-lg">
-              <span>✓ Agencia Registrada RUC 20614914239 · Salidas Internacionales desde Lima (Aeropuerto Jorge Chávez)</span>
+            <div
+              className={`flex items-center gap-2 text-[11px] font-bold px-3 py-1 rounded-lg border ${
+                esVerticalEuropa
+                  ? "bg-emerald-500/15 border-emerald-400/30 text-emerald-300"
+                  : "bg-emerald-50 border-emerald-200/70 text-emerald-800"
+              }`}
+            >
+              <span>✓ Agencia RUC 20614914239 · Salidas desde Lima (Aeropuerto Jorge Chávez LIM)</span>
             </div>
           </div>
         </div>
