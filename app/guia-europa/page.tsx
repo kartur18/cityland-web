@@ -743,9 +743,9 @@ export default function GuiaEuropaPage() {
                     <Link
                       key={enl.href}
                       href={enl.href}
-                      className="text-xs font-semibold text-slate-700 hover:text-red-600 bg-slate-50 hover:bg-red-50/60 border border-slate-200/70 px-3 py-2 rounded-xl transition-colors flex items-center justify-between gap-2"
+                      className="text-xs font-semibold text-slate-700 hover:text-red-600 bg-slate-50 hover:bg-red-50/60 border border-slate-200/70 px-3 py-2.5 rounded-xl transition-colors flex items-center justify-between gap-2"
                     >
-                      <span className="truncate">{enl.nombre}</span>
+                      <span className="leading-snug">{enl.nombre}</span>
                       <span className="text-slate-400 shrink-0">→</span>
                     </Link>
                   ))}

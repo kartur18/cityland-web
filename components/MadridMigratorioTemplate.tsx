@@ -138,7 +138,7 @@ export default function MadridMigratorioTemplate({
                 Madrid-Barajas (MAD)
               </Link>
               <span>/</span>
-              <span className="text-white font-bold truncate max-w-[240px] sm:max-w-md">
+              <span className="text-white font-bold">
                 {datos.zonaOMunicipioMadrid}
               </span>
             </nav>
@@ -264,7 +264,7 @@ export default function MadridMigratorioTemplate({
                         <span className="text-xl font-black text-[#071120] leading-none">
                           MAD
                         </span>
-                        <span className="text-[11px] text-slate-600 block font-semibold mt-0.5 truncate max-w-[125px]">
+                        <span className="text-[11px] text-slate-600 block font-semibold mt-0.5">
                           Madrid-Barajas
                         </span>
                       </div>
@@ -611,14 +611,14 @@ export default function MadridMigratorioTemplate({
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 text-xs">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 text-xs">
               {datos.enlacesRelacionados.map((rel, idx) => (
                 <Link
                   key={idx}
                   href={rel.href}
                   className="flex items-center justify-between gap-2 bg-slate-50 hover:bg-red-50/70 px-3.5 py-2.5 rounded-xl border border-slate-200/80 transition-colors"
                 >
-                  <span className="font-semibold text-slate-700 hover:text-red-600 truncate">
+                  <span className="font-semibold text-slate-700 hover:text-red-600 leading-snug">
                     {rel.titulo}
                   </span>
                   <span className="font-black text-[#071120] shrink-0">

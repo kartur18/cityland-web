@@ -16,7 +16,7 @@ export function SeoBreadcrumbs({ migas }: { migas: MigaDePanSEO[] }) {
             <li key={`${m.url}-${idx}`} className="inline-flex items-center gap-1.5">
               {idx > 0 && <span className="text-slate-400 select-none">/</span>}
               {esUltimo ? (
-                <span className="font-bold text-[#0a1628] truncate max-w-[260px] sm:max-w-md" aria-current="page">
+                <span className="font-bold text-[#0a1628]" aria-current="page">
                   {m.nombre}
                 </span>
               ) : (
@@ -92,7 +92,7 @@ export function SeoSiloFooter({
                     href={item.href}
                     className="group flex items-baseline justify-between gap-2 text-xs text-slate-700 hover:text-red-600 transition-colors"
                   >
-                    <span className="font-medium group-hover:underline line-clamp-1">
+                    <span className="font-medium group-hover:underline leading-snug">
                       {item.titulo}
                     </span>
                     {item.etiqueta && (
@@ -117,7 +117,7 @@ export function SeoSiloFooter({
                     href={item.href}
                     className="group flex items-baseline justify-between gap-2 text-xs text-slate-700 hover:text-red-600 transition-colors"
                   >
-                    <span className="font-medium group-hover:underline line-clamp-1">
+                    <span className="font-medium group-hover:underline leading-snug">
                       {item.titulo}
                     </span>
                     {item.etiqueta && (
@@ -142,7 +142,7 @@ export function SeoSiloFooter({
                     href={item.href}
                     className="group flex items-baseline justify-between gap-2 text-xs text-slate-700 hover:text-red-600 transition-colors"
                   >
-                    <span className="font-medium group-hover:underline line-clamp-1">
+                    <span className="font-medium group-hover:underline leading-snug">
                       {item.titulo}
                     </span>
                     {item.etiqueta && (
@@ -159,7 +159,7 @@ export function SeoSiloFooter({
                     href={item.href}
                     className="group flex items-baseline justify-between gap-2 text-xs text-slate-700 hover:text-red-600 transition-colors"
                   >
-                    <span className="font-medium group-hover:underline line-clamp-1">
+                    <span className="font-medium group-hover:underline leading-snug">
                       {item.titulo}
                     </span>
                     {item.etiqueta && (
@@ -184,7 +184,7 @@ export function SeoSiloFooter({
                     href={item.href}
                     className="group flex items-baseline justify-between gap-2 text-xs text-slate-700 hover:text-red-600 transition-colors"
                   >
-                    <span className="font-medium group-hover:underline line-clamp-1">
+                    <span className="font-medium group-hover:underline leading-snug">
                       {item.titulo}
                     </span>
                     {item.etiqueta && (

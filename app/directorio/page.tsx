@@ -495,7 +495,7 @@ export function VistaCatalogoHub({ modoHub = "directorio" }: { modoHub?: ModoCat
                                 />
                               </div>
                               <div className="min-w-0 flex-1">
-                                <span className="font-bold text-[#0a1628] group-hover:text-red-600 line-clamp-2 leading-tight block">
+                                <span className="font-bold text-[#0a1628] group-hover:text-red-600 leading-tight block">
                                   {it.titulo}
                                 </span>
                                 <span className="text-[11px] font-extrabold text-emerald-700 mt-0.5 block">
@@ -556,7 +556,7 @@ export function VistaCatalogoHub({ modoHub = "directorio" }: { modoHub?: ModoCat
                             className="object-cover group-hover:scale-105 transition-transform"
                           />
                         </div>
-                        <span className="font-bold text-slate-800 group-hover:text-red-600 truncate">
+                        <span className="font-bold text-slate-800 group-hover:text-red-600 leading-snug">
                           ✈️ {r.origen} → {r.destino}
                         </span>
                       </div>
@@ -609,7 +609,7 @@ export function VistaCatalogoHub({ modoHub = "directorio" }: { modoHub?: ModoCat
                         <span className="text-[10px] font-bold uppercase text-red-600 block">
                           {b.categoria} · {b.lectura}
                         </span>
-                        <h3 className="text-xs sm:text-sm font-bold text-[#0a1628] line-clamp-2 leading-snug">
+                        <h3 className="text-xs sm:text-sm font-bold text-[#0a1628] leading-snug">
                           {b.titulo}
                         </h3>
                       </div>

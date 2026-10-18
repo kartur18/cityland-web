@@ -194,7 +194,7 @@ export default async function DestinoPage({
               {dest.tipo === "europa" ? "Europa & Exóticos" : "Caribe & América"}
             </Link>
             <span>/</span>
-            <span className="text-[#0a1628] font-bold truncate">{dest.ciudad}</span>
+            <span className="text-[#0a1628] font-bold">{dest.ciudad}</span>
           </nav>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
@@ -226,8 +226,8 @@ export default async function DestinoPage({
                 {dest.descripcion}
               </p>
 
-              {/* Chips de Inclusión Rápida */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 mb-7">
+              {/* Chips de Inclusión Rápida (100% completos sin cortar texto) */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-7">
                 {(
                   dest.inclusionesLista ?? [
                     "Boleto aéreo ida y vuelta desde Lima",
@@ -244,10 +244,10 @@ export default async function DestinoPage({
                   .map((inc) => (
                     <div
                       key={inc}
-                      className="flex items-center gap-2 bg-slate-50 border border-slate-200/80 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700"
+                      className="flex items-start gap-2 bg-slate-50 border border-slate-200/80 rounded-xl px-3.5 py-2.5 text-xs font-semibold text-slate-700"
                     >
-                      <span className="text-emerald-600 font-extrabold shrink-0">✓</span>
-                      <span className="truncate">{inc.replace(/^[^\wÁÉÍÓÚáéíóúÑñ]+\s*/, "")}</span>
+                      <span className="text-emerald-600 font-extrabold shrink-0 mt-0.5">✓</span>
+                      <span className="leading-snug">{inc.replace(/^[^\wÁÉÍÓÚáéíóúÑñ]+\s*/, "")}</span>
                     </div>
                   ))}
               </div>

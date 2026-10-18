@@ -260,14 +260,14 @@ export default function OfertasIndexPage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 text-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 text-xs">
             {muestraDistribuida.map((it) => (
               <Link
                 key={it.slug}
                 href={`/ofertas/${it.slug}`}
-                className="flex items-center justify-between gap-2 bg-slate-50 hover:bg-red-50/70 px-3 py-2 rounded-xl border border-slate-200/70 transition-colors"
+                className="flex items-center justify-between gap-2 bg-slate-50 hover:bg-red-50/70 px-3 py-2.5 rounded-xl border border-slate-200/70 transition-colors"
               >
-                <span className="font-semibold text-slate-700 hover:text-red-600 truncate">
+                <span className="font-semibold text-slate-700 hover:text-red-600 leading-snug">
                   {it.titulo}
                 </span>
                 <span className="font-extrabold text-[#0a1628] shrink-0">

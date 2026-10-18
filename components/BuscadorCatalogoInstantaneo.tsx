@@ -355,14 +355,14 @@ export default function BuscadorCatalogoInstantaneo({
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <span className="absolute top-2.5 left-2.5 text-[10px] font-extrabold uppercase tracking-wider text-white bg-[#0a1628]/90 px-2.5 py-1 rounded-full truncate max-w-[70%] shadow-xs">
+                      <span className="absolute top-2.5 left-2.5 text-[10px] font-extrabold uppercase tracking-wider text-white bg-[#0a1628]/90 px-2.5 py-1 rounded-full shadow-xs">
                         {item.clusterNombre}
                       </span>
                     </Link>
 
                     <div className="p-4 pb-3 space-y-2">
                       <div className="flex items-center justify-between gap-2 text-xs">
-                        <span className="font-bold text-slate-500 truncate">
+                        <span className="font-bold text-slate-500">
                           📍 {item.destinoOPais}
                         </span>
                         <span className="font-extrabold text-emerald-800 bg-emerald-50 border border-emerald-200/80 px-2 py-0.5 rounded-lg text-[11px] shrink-0">
@@ -372,7 +372,7 @@ export default function BuscadorCatalogoInstantaneo({
 
                       <Link
                         href={item.url}
-                        className="text-sm font-extrabold text-[#0a1628] group-hover:text-red-600 transition-colors leading-snug line-clamp-2 block"
+                        className="text-sm font-extrabold text-[#0a1628] group-hover:text-red-600 transition-colors leading-snug block"
                       >
                         {item.titulo}
                       </Link>

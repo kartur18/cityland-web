@@ -27,8 +27,8 @@ const PRIMARY_LINKS: {
 
 const TOP_BAR_LINKS: { label: string; href: string }[] = [
   { label: "🔍 Catálogo (+10,000 Ofertas)", href: "/directorio#buscador" },
-  { label: "🇪🇺 Guía Europa 2026 (BOE & PNR)", href: "/guia-europa" },
-  { label: "Seguros Schengen 30.000€", href: "/seguros" },
+  { label: "🇪🇺 Guía Europa 2026 (BOE)", href: "/guia-europa" },
+  { label: "Seguros 30.000€", href: "/seguros" },
   { label: "Luna de Miel & 15 Años", href: "/luna-de-miel" },
   { label: "Promociones Escolares", href: "/colegios" },
   { label: "Viajes Corporativos", href: "/empresas" },
@@ -60,20 +60,22 @@ export default function Navbar() {
   return (
     <>
       <header className="sticky top-0 z-50">
-        {/* Franja Superior Corporativa Tipo Aerolínea */}
+        {/* Franja Superior Corporativa Tipo Aerolínea (100% visible sin cortar textos ni teléfono) */}
         <div className="bg-[#0a1628] text-slate-300 text-[11px] py-1.5 border-b border-slate-800/80 hidden md:block">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
-            <div className="flex items-center gap-3 font-medium">
-              <span className="inline-flex items-center gap-1.5 text-white font-semibold">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
+            <div className="flex flex-wrap items-center gap-x-2.5 gap-y-0.5 font-medium">
+              <span className="inline-flex items-center gap-1.5 text-white font-semibold whitespace-nowrap">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
                 Cityland Travel E.I.R.L. · RUC 20614914239
               </span>
               <span className="text-slate-600">|</span>
-              <span className="truncate">Av. Antúnez de Mayolo 814, Los Olivos, Lima</span>
+              <span className="text-slate-200 whitespace-nowrap">
+                📍 Av. Antúnez de Mayolo 814, Los Olivos, Lima
+              </span>
             </div>
 
-            <div className="flex items-center gap-4 shrink-0">
-              {TOP_BAR_LINKS.map((item) => (
+            <div className="flex items-center gap-3.5 shrink-0">
+              {TOP_BAR_LINKS.slice(0, 3).map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -85,9 +87,9 @@ export default function Navbar() {
               <span className="text-slate-600">|</span>
               <a
                 href={`tel:${TELEFONO}`}
-                className="inline-flex items-center gap-1 text-amber-300 hover:text-amber-200 font-bold whitespace-nowrap"
+                className="inline-flex items-center gap-1.5 text-amber-300 hover:text-amber-200 font-bold whitespace-nowrap"
               >
-                <PhoneIcon className="w-3 h-3 fill-current" />
+                <PhoneIcon className="w-3 h-3 fill-current shrink-0" />
                 <span>{TELEFONO_FORMATEADO}</span>
               </a>
             </div>

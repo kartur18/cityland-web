@@ -301,32 +301,6 @@ export default function AirlineLandingTemplate({
       {/* 1. Cabecera Unificada de Cityland Travel */}
       <Navbar />
 
-      {/* 1.5 Cinta Promocional Superior de Alta Conversión */}
-      <div className="bg-[#0a1628] text-white border-b border-slate-800 py-2 px-4">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 text-[11px] sm:text-xs font-semibold">
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-red-600 text-white font-extrabold text-[10px] uppercase tracking-wider">
-              Promoción Activa
-            </span>
-            <span className="text-slate-200">
-              Separa con el <strong className="text-amber-300">50% de inicial</strong> · Salida Aeropuerto Jorge Chávez (LIM)
-            </span>
-          </div>
-          <div className="hidden md:flex items-center gap-4 text-slate-300">
-            <span>🏢 Av. Antúnez de Mayolo 814, Los Olivos · RUC 20614914239</span>
-            <span>•</span>
-            <a
-              href={armarUrlWaConAtribucion(config.waPrincipalMensaje, "Barra Superior")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-emerald-400 hover:text-emerald-300 font-bold"
-            >
-              WhatsApp Oficial: +51 944 103 890 →
-            </a>
-          </div>
-        </div>
-      </div>
-
       {/* 1.8 Migas de Pan HTML Semánticas (Arquitectura Silo SEO) */}
       {breadcrumbs && breadcrumbs.length > 0 && <SeoBreadcrumbs migas={breadcrumbs} />}
 
@@ -360,7 +334,7 @@ export default function AirlineLandingTemplate({
               </h1>
 
               <p
-                className={`text-sm sm:text-base leading-relaxed mb-5 max-w-xl line-clamp-3 ${temaHero.pCls}`}
+                className={`text-sm sm:text-base leading-relaxed mb-5 max-w-2xl ${temaHero.pCls}`}
               >
                 {config.descripcionHero
                   .trim()
@@ -371,19 +345,19 @@ export default function AirlineLandingTemplate({
                 </strong>
               </p>
 
-              {/* Chips Comerciales Compactos */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-5 max-w-2xl">
+              {/* Beneficios Comerciales 100% Completos (sin textos cortados) */}
+              <div className="flex flex-col gap-2 mb-6 max-w-2xl">
                 {config.checksHero.map((c) => (
                   <div
                     key={c}
-                    className={`flex items-center gap-2 border rounded-xl px-3 py-2 text-xs font-bold transition-colors ${temaHero.chipCls}`}
+                    className={`flex items-start sm:items-center gap-2.5 border rounded-xl px-3.5 py-2.5 text-xs sm:text-[13px] font-bold transition-colors ${temaHero.chipCls}`}
                   >
                     <span
-                      className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-extrabold shrink-0 ${temaHero.chipCheckCls}`}
+                      className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-extrabold shrink-0 mt-0.5 sm:mt-0 ${temaHero.chipCheckCls}`}
                     >
                       ✓
                     </span>
-                    <span className="leading-snug truncate">
+                    <span className="leading-snug">
                       {c.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                     </span>
                   </div>
@@ -438,7 +412,7 @@ export default function AirlineLandingTemplate({
                     <span className="text-[11px] font-extrabold text-red-600 uppercase tracking-wider block mb-0.5">
                       {config.vitrina.sobretitulo}
                     </span>
-                    <h2 className="text-base sm:text-lg font-extrabold text-[#0a1628] leading-snug line-clamp-2">
+                    <h2 className="text-base sm:text-lg font-extrabold text-[#0a1628] leading-snug">
                       {config.vitrina.titulo}
                     </h2>
                   </div>
@@ -622,15 +596,15 @@ export default function AirlineLandingTemplate({
                   {/* Título, subtítulo y beneficios en fondo blanco limpio */}
                   <div className="p-5 flex flex-col justify-between flex-1 gap-4">
                     <div>
-                      <span className="text-[11px] font-extrabold uppercase tracking-wider text-red-600 block mb-1 line-clamp-1">
+                      <span className="text-[11px] font-extrabold uppercase tracking-wider text-red-600 block mb-1">
                         {item.subtitulo.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                       </span>
-                      <h3 className="text-base sm:text-lg font-extrabold text-[#0a1628] leading-snug mb-2.5 line-clamp-2">
+                      <h3 className="text-base sm:text-lg font-extrabold text-[#0a1628] leading-snug mb-2.5">
                         {item.titulo.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                       </h3>
 
                       {item.resumenCorto.length > 55 ? (
-                        <p className="text-xs text-slate-600 leading-relaxed mb-3 line-clamp-2">
+                        <p className="text-xs text-slate-600 leading-relaxed mb-3">
                           {item.resumenCorto.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                         </p>
                       ) : (
