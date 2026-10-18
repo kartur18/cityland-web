@@ -2,11 +2,16 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
 import AirlineLandingTemplate from "@/components/AirlineLandingTemplate";
+import { SeoSiloFooter } from "@/components/SeoSiloFooter";
 import { obtenerConfigAgenciaOficial } from "@/lib/catalogo-agencia-oficial";
 import {
   AGENCIAS_LOCALES_SEO,
   buscarAgenciaLocal,
 } from "@/lib/catalogo-agencias-locales";
+import { obtenerEnlacesCruzadosSEO } from "@/lib/seo-arquitectura";
+
+export const revalidate = 86400;
+export const dynamicParams = true;
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -70,31 +75,28 @@ export default async function AgenciaLocalSlugPage({ params }: Props) {
     return AGENCIAS_LOCALES_SEO[idx];
   }).filter((a) => a && a.slug !== agencia.slug);
 
+  const enlacesCruzados = obtenerEnlacesCruzadosSEO(
+    `Agencia de Viajes ${agencia.zona} ${agencia.region} España Europa Caribe`,
+    agencia.slug
+  );
+
+  const migas = [
+    { nombre: "Inicio", url: "/" },
+    { nombre: "Cobertura Nacional y Distrital", url: "/agencia" },
+    { nombre: `Agencia de Viajes en ${agencia.zona}`, url: `/agencia/${agencia.slug}` },
+  ];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Inicio — Cityland Travel",
-            item: "https://citylandtravel.com/",
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "Cobertura Nacional y Distrital",
-            item: "https://citylandtravel.com/agencia",
-          },
-          {
-            "@type": "ListItem",
-            position: 3,
-            name: `Agencia de Viajes para ${agencia.zona}`,
-            item: `https://citylandtravel.com/agencia/${agencia.slug}`,
-          },
-        ],
+        itemListElement: migas.map((m, idx) => ({
+          "@type": "ListItem",
+          position: idx + 1,
+          name: m.nombre,
+          item: `https://citylandtravel.com${m.url}`,
+        })),
       },
       {
         "@type": ["TravelAgency", "LocalBusiness"],
@@ -110,10 +112,10 @@ export default async function AgenciaLocalSlugPage({ params }: Props) {
         },
         address: {
           "@type": "PostalAddress",
-          streetAddress: "Av. Antúnez de Mayolo N. 814",
+          streetAddress: "Av. Alfredo Mendiola, Los Olivos",
           addressLocality: "Los Olivos",
           addressRegion: "Lima",
-          postalCode: "15304",
+          postalCode: "15301",
           addressCountry: "PE",
         },
       },
@@ -126,7 +128,7 @@ export default async function AgenciaLocalSlugPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <AirlineLandingTemplate config={config}>
+      <AirlineLandingTemplate config={config} breadcrumbs={migas}>
         <section className="py-10 bg-white border-t border-slate-200/80">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <h2 className="text-xs font-extrabold uppercase tracking-wider text-[#0a1628] mb-3">
@@ -142,15 +144,14 @@ export default async function AgenciaLocalSlugPage({ params }: Props) {
                   Agencia de Viajes en {a.zona}
                 </Link>
               ))}
-              <Link
-                href="/directorio"
-                className="text-xs font-bold text-red-600 hover:underline px-3 py-1.5"
-              >
-                Ver catálogo completo de destinos y vuelos →
-              </Link>
             </div>
           </div>
         </section>
+
+        <SeoSiloFooter
+          enlaces={enlacesCruzados}
+          tituloContexto={agencia.zona}
+        />
       </AirlineLandingTemplate>
     </>
   );

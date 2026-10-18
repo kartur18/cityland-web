@@ -2,10 +2,18 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
 import AirlineLandingTemplate from "@/components/AirlineLandingTemplate";
+import { SeoSiloFooter } from "@/components/SeoSiloFooter";
 import {
   MIL_LANDINGS_COMERCIALES_SEO,
   buscarLandingComercial,
 } from "@/lib/catalogo-mil-landings-comerciales";
+import {
+  construirSchemaLandingSEO,
+  obtenerEnlacesCruzadosSEO,
+} from "@/lib/seo-arquitectura";
+
+export const revalidate = 86400;
+export const dynamicParams = true;
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -78,66 +86,33 @@ export default async function OfertaComercialPage({ params }: Props) {
     (_, i) => listaCluster[(Math.max(0, idxCluster) + i + 1) % listaCluster.length]
   ).filter((x) => x && x.slug !== item.slug);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Inicio — Cityland Travel",
-            item: "https://citylandtravel.com/",
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: item.clusterNombre,
-            item: "https://citylandtravel.com/directorio",
-          },
-          {
-            "@type": "ListItem",
-            position: 3,
-            name: item.titulo,
-            item: `https://citylandtravel.com/ofertas/${item.slug}`,
-          },
-        ],
-      },
-      {
-        "@type": "Product",
-        name: item.titulo,
-        description: item.metaDescription,
-        brand: {
-          "@type": "Brand",
-          name: "Cityland Travel",
-        },
-        offers: {
-          "@type": "AggregateOffer",
-          priceCurrency: "USD",
-          lowPrice: String(item.precioDesdeUSD),
-          offerCount: String(item.config.items.length),
-          availability: "https://schema.org/InStock",
-          url: `https://citylandtravel.com/ofertas/${item.slug}`,
-          seller: {
-            "@type": "TravelAgency",
-            name: "Cityland Travel E.I.R.L.",
-          },
-        },
-      },
-      {
-        "@type": "FAQPage",
-        mainEntity: item.faqs.map((f) => ({
-          "@type": "Question",
-          name: f.q,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: f.a,
-          },
-        })),
-      },
-    ],
-  };
+  const enlacesCruzados = obtenerEnlacesCruzadosSEO(
+    `${item.titulo} ${item.destinoOPais} ${item.clusterNombre}`,
+    item.slug
+  );
+
+  const migas = [
+    { nombre: "Inicio", url: "/" },
+    { nombre: "Ofertas y Paquetes", url: "/ofertas" },
+    { nombre: item.clusterNombre, url: enlacesCruzados.pilar.href },
+    { nombre: item.titulo, url: `/ofertas/${item.slug}` },
+  ];
+
+  const imgUrl = item.config.vitrina.img.startsWith("http")
+    ? item.config.vitrina.img
+    : `https://citylandtravel.com${item.config.vitrina.img}`;
+
+  const jsonLd = construirSchemaLandingSEO({
+    url: `https://citylandtravel.com/ofertas/${item.slug}`,
+    titulo: item.titulo,
+    descripcion: item.metaDescription,
+    precioDesdeUSD: item.precioDesdeUSD,
+    cantidadOfertas: item.config.items.length,
+    destinoOPais: item.destinoOPais,
+    imagenUrl: imgUrl,
+    migas,
+    faqs: item.faqs,
+  });
 
   return (
     <>
@@ -145,7 +120,7 @@ export default async function OfertaComercialPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <AirlineLandingTemplate config={item.config}>
+      <AirlineLandingTemplate config={item.config} breadcrumbs={migas}>
         {item.faqs.length > 0 && (
           <section className="py-12 bg-slate-50 border-t border-slate-200/80">
             <div className="max-w-5xl mx-auto px-4 sm:px-6">
@@ -184,15 +159,14 @@ export default async function OfertaComercialPage({ params }: Props) {
                   {r.titulo} (Desde ${r.precioDesdeUSD} USD)
                 </Link>
               ))}
-              <Link
-                href="/directorio"
-                className="text-xs font-bold text-red-600 hover:underline px-3 py-1.5"
-              >
-                Ver catálogo completo de 2,000 destinos y ofertas →
-              </Link>
             </div>
           </div>
         </section>
+
+        <SeoSiloFooter
+          enlaces={enlacesCruzados}
+          tituloContexto={item.destinoOPais}
+        />
       </AirlineLandingTemplate>
     </>
   );

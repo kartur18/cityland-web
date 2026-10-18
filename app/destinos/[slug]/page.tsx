@@ -17,6 +17,11 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import FlagIcon from "@/components/icons/FlagIcon";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import { SeoSiloFooter } from "@/components/SeoSiloFooter";
+import { obtenerEnlacesCruzadosSEO } from "@/lib/seo-arquitectura";
+
+export const revalidate = 86400;
+export const dynamicParams = true;
 
 const ALL_DESTINOS = [...DESTINOS_EUROPA, ...DESTINOS_CARIBE, ...DESTINOS_MASIVOS];
 
@@ -710,6 +715,11 @@ export default async function DestinoPage({
           </div>
         </div>
       </section>
+
+      <SeoSiloFooter
+        enlaces={obtenerEnlacesCruzadosSEO(`${dest.ciudad} ${dest.pais}`, dest.slug)}
+        tituloContexto={`${dest.ciudad} (${dest.pais})`}
+      />
 
       <Footer />
       <WhatsAppFloat />

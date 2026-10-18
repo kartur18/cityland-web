@@ -4,10 +4,18 @@ import Link from "next/link";
 import AirlineLandingTemplate, {
   ConfiguracionLandingAerolinea,
 } from "@/components/AirlineLandingTemplate";
+import { SeoSiloFooter } from "@/components/SeoSiloFooter";
 import {
   VIAJES_ESPECIALIZADOS_SEO,
   buscarViajeEspecializado,
 } from "@/lib/catalogo-viajes-especializados";
+import {
+  construirSchemaLandingSEO,
+  obtenerEnlacesCruzadosSEO,
+} from "@/lib/seo-arquitectura";
+
+export const revalidate = 86400;
+export const dynamicParams = true;
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -216,59 +224,33 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
     },
   };
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Inicio",
-            item: "https://citylandtravel.com/",
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: item.titulo,
-            item: `https://citylandtravel.com/viajes/${item.slug}`,
-          },
-        ],
-      },
-      {
-        "@type": "Product",
-        name: item.titulo,
-        description: item.metaDescription,
-        image: item.imagenHero.startsWith("http")
-          ? item.imagenHero
-          : `https://citylandtravel.com${item.imagenHero}`,
-        brand: { "@type": "Brand", name: "Cityland Travel" },
-        offers: {
-          "@type": "Offer",
-          priceCurrency: "USD",
-          price: String(item.precioDesdeUSD),
-          availability: "https://schema.org/InStock",
-          url: `https://citylandtravel.com/viajes/${item.slug}`,
-          seller: {
-            "@type": "TravelAgency",
-            name: "Cityland Travel E.I.R.L.",
-          },
-        },
-      },
-      {
-        "@type": "FAQPage",
-        mainEntity: item.faqs.map((f) => ({
-          "@type": "Question",
-          name: f.q,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: f.a,
-          },
-        })),
-      },
-    ],
-  };
+  const enlacesCruzados = obtenerEnlacesCruzadosSEO(
+    `${item.titulo} ${item.destinoOPais} ${item.badge}`,
+    item.slug
+  );
+
+  const migas = [
+    { nombre: "Inicio", url: "/" },
+    { nombre: "Viajes y Paquetes", url: "/viajes" },
+    { nombre: item.badge, url: enlacesCruzados.pilar.href },
+    { nombre: item.titulo, url: `/viajes/${item.slug}` },
+  ];
+
+  const imgUrl = item.imagenHero.startsWith("http")
+    ? item.imagenHero
+    : `https://citylandtravel.com${item.imagenHero}`;
+
+  const jsonLd = construirSchemaLandingSEO({
+    url: `https://citylandtravel.com/viajes/${item.slug}`,
+    titulo: item.titulo,
+    descripcion: item.metaDescription,
+    precioDesdeUSD: item.precioDesdeUSD,
+    cantidadOfertas: config.items.length,
+    destinoOPais: item.destinoOPais,
+    imagenUrl: imgUrl,
+    migas,
+    faqs: item.faqs,
+  });
 
   return (
     <>
@@ -276,7 +258,7 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <AirlineLandingTemplate config={config}>
+      <AirlineLandingTemplate config={config} breadcrumbs={migas}>
         {item.faqs.length > 0 && (
           <section className="py-12 bg-slate-50 border-t border-slate-200/80">
             <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -315,15 +297,14 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
                   {rel.titulo} (${rel.precioDesdeUSD} USD)
                 </Link>
               ))}
-              <Link
-                href="/directorio"
-                className="text-xs font-bold text-red-600 hover:underline px-3 py-1.5"
-              >
-                Ver todo el catálogo →
-              </Link>
             </div>
           </div>
         </section>
+
+        <SeoSiloFooter
+          enlaces={enlacesCruzados}
+          tituloContexto={item.destinoOPais}
+        />
       </AirlineLandingTemplate>
     </>
   );

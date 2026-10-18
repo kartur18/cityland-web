@@ -2,8 +2,16 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import AirlineLandingTemplate from "@/components/AirlineLandingTemplate";
+import { SeoSiloFooter } from "@/components/SeoSiloFooter";
 import { RUTAS_VUELOS_SEO, buscarRutaVuelo } from "@/lib/rutas-vuelos";
 import { DESTINOS_EUROPA, DESTINOS_CARIBE } from "@/components/constantes";
+import {
+  construirSchemaLandingSEO,
+  obtenerEnlacesCruzadosSEO,
+} from "@/lib/seo-arquitectura";
+
+export const revalidate = 86400;
+export const dynamicParams = true;
 
 const TODOS_DESTINOS = [...DESTINOS_EUROPA, ...DESTINOS_CARIBE];
 
@@ -71,56 +79,35 @@ export default async function RutaVueloPage({ params }: Props) {
     return TODOS_DESTINOS[idx];
   }).filter(Boolean);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Inicio — Cityland Travel",
-            item: "https://citylandtravel.com/",
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: `Vuelos de ${ruta.origen} a ${ruta.destino}`,
-            item: `https://citylandtravel.com/vuelos/${ruta.slug}`,
-          },
-        ],
-      },
-      {
-        "@type": "Product",
-        name: `Vuelos y Paquetes de ${ruta.origen} (${ruta.codigoOrigen}) a ${ruta.destino} (${ruta.codigoDestino})`,
-        description: ruta.metaDescription,
-        brand: {
-          "@type": "Brand",
-          name: "Cityland Travel",
-        },
-        offers: {
-          "@type": "AggregateOffer",
-          priceCurrency: "USD",
-          lowPrice: String(ruta.precioDesdeUSD),
-          offerCount: String(ruta.config.items.length),
-          availability: "https://schema.org/InStock",
-          url: `https://citylandtravel.com/vuelos/${ruta.slug}`,
-        },
-      },
-      {
-        "@type": "FAQPage",
-        mainEntity: ruta.faqs.map((f) => ({
-          "@type": "Question",
-          name: f.q,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: f.a,
-          },
-        })),
-      },
-    ],
-  };
+  const paisDestino = ruta.config.vitrina.pais || ruta.destino;
+
+  const enlacesCruzados = obtenerEnlacesCruzadosSEO(
+    `Vuelos de ${ruta.origen} a ${ruta.destino} ${paisDestino}`,
+    ruta.slug
+  );
+
+  const migas = [
+    { nombre: "Inicio", url: "/" },
+    { nombre: "Rutas de Vuelos", url: "/vuelos" },
+    { nombre: paisDestino, url: enlacesCruzados.pilar.href },
+    { nombre: `Vuelos de ${ruta.origen} a ${ruta.destino}`, url: `/vuelos/${ruta.slug}` },
+  ];
+
+  const imgUrl = ruta.config.vitrina.img.startsWith("http")
+    ? ruta.config.vitrina.img
+    : `https://citylandtravel.com${ruta.config.vitrina.img}`;
+
+  const jsonLd = construirSchemaLandingSEO({
+    url: `https://citylandtravel.com/vuelos/${ruta.slug}`,
+    titulo: `Vuelos y Paquetes de ${ruta.origen} (${ruta.codigoOrigen}) a ${ruta.destino} (${ruta.codigoDestino})`,
+    descripcion: ruta.metaDescription,
+    precioDesdeUSD: ruta.precioDesdeUSD,
+    cantidadOfertas: ruta.config.items.length,
+    destinoOPais: `${ruta.destino}, ${paisDestino}`,
+    imagenUrl: imgUrl,
+    migas,
+    faqs: ruta.faqs,
+  });
 
   return (
     <>
@@ -128,7 +115,7 @@ export default async function RutaVueloPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <AirlineLandingTemplate config={ruta.config}>
+      <AirlineLandingTemplate config={ruta.config} breadcrumbs={migas}>
         {ruta.faqs.length > 0 && (
           <section className="py-12 bg-slate-50 border-t border-slate-200/80">
             <div className="max-w-5xl mx-auto px-4 sm:px-6">
@@ -186,17 +173,16 @@ export default async function RutaVueloPage({ params }: Props) {
                       Paquete {d.ciudad} (Desde ${d.turistico} USD)
                     </Link>
                   ))}
-                  <Link
-                    href="/directorio"
-                    className="text-xs font-bold text-red-600 hover:underline px-3 py-1.5"
-                  >
-                    Ver todas las rutas →
-                  </Link>
                 </div>
               </div>
             )}
           </div>
         </section>
+
+        <SeoSiloFooter
+          enlaces={enlacesCruzados}
+          tituloContexto={`${ruta.destino} (${paisDestino})`}
+        />
       </AirlineLandingTemplate>
     </>
   );

@@ -7,6 +7,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
+import { SeoBreadcrumbs } from "@/components/SeoSiloFooter";
+import type { MigaDePanSEO } from "@/lib/seo-arquitectura";
 
 export interface TarjetaCatalogoAerolinea {
   id: string;
@@ -137,9 +139,11 @@ function calcularPrecioAntes(precioStr: string): string | null {
 
 export default function AirlineLandingTemplate({
   config,
+  breadcrumbs,
   children,
 }: {
   config: ConfiguracionLandingAerolinea;
+  breadcrumbs?: MigaDePanSEO[];
   children?: React.ReactNode;
 }) {
   const [filtro, setFiltro] = useState<string>("todos");
@@ -205,6 +209,9 @@ export default function AirlineLandingTemplate({
           </div>
         </div>
       </div>
+
+      {/* 1.8 Migas de Pan HTML Semánticas (Arquitectura Silo SEO) */}
+      {breadcrumbs && breadcrumbs.length > 0 && <SeoBreadcrumbs migas={breadcrumbs} />}
 
       {/* 2. Hero Luminoso y Comercial Estilo Aerolínea */}
       <section className="bg-gradient-to-b from-sky-50/90 via-white to-white pt-8 pb-10 sm:pt-12 sm:pb-14 border-b border-slate-200/80">

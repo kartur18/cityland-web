@@ -93,10 +93,16 @@ export const metadata: Metadata = {
   },
 };
 
+import { SCHEMA_ORGANIZACION_CITYLAND } from "@/lib/seo-arquitectura";
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es-PE" className={`${jakarta.variable} antialiased`} suppressHydrationWarning>
       <body className="font-[family-name:var(--font-jakarta)] text-[#0a1628] bg-white overflow-x-hidden m-0">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(SCHEMA_ORGANIZACION_CITYLAND) }}
+        />
         {children}
         <WhatsAppTracker />
         <Script
