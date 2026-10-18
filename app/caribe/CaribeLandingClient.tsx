@@ -131,16 +131,16 @@ export default function CaribeLandingClient() {
                         Desde
                       </span>
                       <span className="text-3xl sm:text-4xl font-black text-[#0a1628] tracking-tight leading-none">
-                        $1,290
+                        $1,049
                       </span>
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                      Separa con 50% ($645)
+                      Separa con 50% ($525)
                     </span>
                   </div>
 
                   <a
-                    href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Vi en su web el paquete Todo Incluido a Punta Cana (5 Días / 4 Noches) desde $1,290 USD. Deseo cotizar separando con el 50%.")}`}
+                    href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Vi en su web el paquete Todo Incluido a Punta Cana (5 Días / 4 Noches) desde $1,049 USD. Deseo cotizar separando con el 50%.\n\n📍 Ref Web: citylandtravel.com/caribe")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0"

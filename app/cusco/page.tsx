@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title:
     "Paquetes Turísticos a Cusco y Machu Picchu Todo Incluido desde Lima | Cityland Travel",
   description:
-    "Paquetes a Cusco y Machu Picchu saliendo desde Lima: 3 Días desde $449 USD, 4 Días Valle Sagrado desde $499 USD, 5 Días con Montaña de 7 Colores desde $589 USD y 6 Días con Laguna Humantay desde $679 USD. Vuelos, hotel, tren y entradas oficiales en Cityland Travel (RUC 20614914239).",
+    "Paquetes a Cusco y Machu Picchu saliendo desde Lima: 3 Días desde $289 USD, 4 Días Valle Sagrado desde $329 USD, 5 Días con Montaña de 7 Colores desde $399 USD y 6 Días con Laguna Humantay desde $469 USD. Vuelos, hotel, tren y entradas oficiales en Cityland Travel (RUC 20614914239).",
   keywords: [
     "paquetes turisticos a cusco todo incluido desde lima",
     "viajes a cusco y machu picchu precios 2026",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title:
       "Paquetes Turísticos a Cusco y Machu Picchu Todo Incluido desde Lima — Cityland Travel",
     description:
-      "Vuelos ida y vuelta + Hotel + Tren Turístico + Entradas a Machu Picchu, Valle Sagrado y Montaña de 7 Colores desde $449 USD. Separa hoy con el 50%.",
+      "Vuelos ida y vuelta + Hotel + Tren Turístico + Entradas a Machu Picchu, Valle Sagrado y Montaña de 7 Colores desde $289 USD. Separa hoy con el 50%.",
     siteName: "Cityland Travel",
     locale: "es_PE",
     images: [

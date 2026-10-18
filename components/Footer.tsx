@@ -61,10 +61,10 @@ export default function Footer() {
                 🇪🇺 Guía Europa 2026 (BOE 122€ & Verificador PNR)
               </Link>
               <Link href="/espana" className="block text-slate-300 hover:text-white transition-colors">
-                Vuelos y Paquetes a España (Desde $1,290)
+                Vuelos y Paquetes a España (Desde $1,090)
               </Link>
               <Link href="/italia" className="block text-emerald-300 hover:text-white font-semibold transition-colors">
-                🇮🇹 Vuelos y Paquetes a Italia (Desde $1,350)
+                🇮🇹 Vuelos y Paquetes a Italia (Desde $1,150)
               </Link>
               <Link href="/europa-turquia" className="block text-slate-300 hover:text-white transition-colors">
                 Circuitos a Europa & Turquía Sin Visa

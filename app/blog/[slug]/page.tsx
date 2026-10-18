@@ -233,7 +233,7 @@ export default async function BlogArticlePage({
                       Vuelo + Carpeta + Seguro 30.000€
                     </p>
                   </div>
-                  <span className="text-[14px] font-black text-[#e30613]">Desde $1,290</span>
+                  <span className="text-[14px] font-black text-[#e30613]">Desde $1,090</span>
                 </Link>
                 <Link
                   href="/italia"
@@ -248,7 +248,7 @@ export default async function BlogArticlePage({
                       Vuelo + Lettera Invito / Hotel
                     </p>
                   </div>
-                  <span className="text-[14px] font-black text-[#e30613]">Desde $1,350</span>
+                  <span className="text-[14px] font-black text-[#e30613]">Desde $1,150</span>
                 </Link>
                 <Link
                   href="/destinos/punta-cana"
@@ -263,7 +263,7 @@ export default async function BlogArticlePage({
                       Vuelo + Resort All Inclusive
                     </p>
                   </div>
-                  <span className="text-[14px] font-black text-[#e30613]">Desde $1,290</span>
+                  <span className="text-[14px] font-black text-[#e30613]">Desde $1,049</span>
                 </Link>
                 <Link
                   href="/destinos/cancun"
@@ -278,7 +278,7 @@ export default async function BlogArticlePage({
                       Vuelo + Resort + Chichén Itzá
                     </p>
                   </div>
-                  <span className="text-[14px] font-black text-[#e30613]">Desde $1,290</span>
+                  <span className="text-[14px] font-black text-[#e30613]">Desde $999</span>
                 </Link>
                 <Link
                   href="/destinos/cartagena"
@@ -293,7 +293,7 @@ export default async function BlogArticlePage({
                       Solo con DNI + Islas del Rosario
                     </p>
                   </div>
-                  <span className="text-[14px] font-black text-[#e30613]">Desde $799</span>
+                  <span className="text-[14px] font-black text-[#e30613]">Desde $599</span>
                 </Link>
               </div>
 

@@ -84,19 +84,19 @@ const BREADCRUMB_SCHEMA = {
     {
       "@type": "ListItem",
       position: 2,
-      name: "Paquetes Migratorios a España Desde $1,290 USD",
+      name: "Paquetes Migratorios a España Desde $1,090 USD",
       item: "https://citylandtravel.com/espana",
     },
     {
       "@type": "ListItem",
       position: 3,
-      name: "Paquetes al Caribe y Sudamérica Desde $789 USD",
+      name: "Paquetes al Caribe y Sudamérica Desde $589 USD",
       item: "https://citylandtravel.com/caribe",
     },
     {
       "@type": "ListItem",
       position: 4,
-      name: "Paquetes a Cusco y Machu Picchu Desde $449 USD",
+      name: "Paquetes a Cusco y Machu Picchu Desde $289 USD",
       item: "https://citylandtravel.com/cusco",
     },
     {

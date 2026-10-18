@@ -117,7 +117,7 @@ function generarAgenciasLocales(): AgenciaLocalSEO[] {
       tipoZona: "lima-callao",
       tiempoAtencion: desc,
       metaTitle: `Agencia de Viajes en ${zona} — Vuelos a Europa, Caribe y Perú | Cityland Travel`,
-      metaDescription: `¿Buscas una agencia de viajes confiable desde ${zona}? En Cityland Travel (RUC 20614914239) emitimos vuelos a España (Desde $1,290 USD), Caribe Todo Incluido, Cusco y Visas con impuestos incluidos. ${desc}.`,
+      metaDescription: `¿Buscas una agencia de viajes confiable desde ${zona}? En Cityland Travel (RUC 20614914239) emitimos vuelos a España (Desde $1,090 USD), Caribe Todo Incluido, Cusco y Visas con impuestos incluidos. ${desc}.`,
       keywords: [
         `agencia de viajes en ${zona.toLowerCase()}`,
         `agencias de viajes ${zona.toLowerCase()} lima`,

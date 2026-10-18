@@ -20,9 +20,9 @@ import {
   EMPRESA_RUC,
 } from "@/components/constantes";
 
-const rawTitle = "Paquetes y Vuelos a Italia Desde $1,350 | Cityland Travel";
+const rawTitle = "Paquetes y Vuelos a Italia Desde $1,150 | Cityland Travel";
 const rawDesc =
-  "Vuelos y paquetes a Milán, Roma, Turín, Florencia y Bolonia desde Lima (Desde $1,350): Seguro Schengen 30.000€, Lettera di Invito, Ospitalità 48h y Decreto Flussi.";
+  "Vuelos y paquetes a Milán, Roma, Turín, Florencia y Bolonia desde Lima (Desde $1,150): Seguro Schengen 30.000€, Lettera di Invito, Ospitalità 48h y Decreto Flussi.";
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO(rawTitle),
@@ -85,9 +85,9 @@ const MODALIDADES_ITALIA = [
     borde: "border-blue-600/30 bg-blue-50/30",
     titulo: "Vuelo + Carpeta Migratoria Italia o Visita con Lettera di Invito",
     subtitulo: "Milán (MXP/LIN), Roma (FCO), Turín (TRN), Florencia (FLR), Bolonia (BLQ) y Génova (GOA)",
-    precioUSD: 1350,
-    inicial50: 675,
-    etiquetaPrecio: "Desde $1,350 USD · Impuestos Incluidos",
+    precioUSD: 1150,
+    inicial50: 575,
+    etiquetaPrecio: "Desde $1,150 USD · Impuestos Incluidos",
     descripcion:
       "Ideal para peruanos que viajan por primera vez a Italia o visitan a un familiar residente con Lettera di Invito / Dichiarazione di Alloggio.",
     incluye: [
@@ -98,7 +98,7 @@ const MODALIDADES_ITALIA = [
       "Entrega de carpeta impresa ordenada para el control fronterizo (Madrid-Barajas, Ámsterdam-Schiphol, París-CDG o Roma-Fiumicino).",
     ],
     waMsg:
-      "¡Hola Cityland Travel! Quiero cotizar la Modalidad Vuelo + Carpeta Italia / Visita Familiar con Lettera di Invito (Desde $1,350 USD, separando con el 50%).",
+      "¡Hola Cityland Travel! Quiero cotizar la Modalidad Vuelo + Carpeta Italia / Visita Familiar con Lettera di Invito (Desde $1,150 USD, separando con el 50%).",
   },
   {
     id: "paquete-hotel-italia",
@@ -107,9 +107,9 @@ const MODALIDADES_ITALIA = [
     borde: "border-red-600/30 bg-red-50/25",
     titulo: "Paquete Turístico Italia con Hotel Confirmado (8D/7N o a Medida)",
     subtitulo: "Roma, Milán, Florencia y Venecia con estadía hotelera pagada",
-    precioUSD: 1650,
-    inicial50: 825,
-    etiquetaPrecio: "Desde $1,650 USD · Vuelo + Hotel + Seguro",
+    precioUSD: 1390,
+    inicial50: 695,
+    etiquetaPrecio: "Desde $1,390 USD · Vuelo + Hotel + Seguro",
     descripcion:
       "Para viajeros de vacaciones, parejas y familias que desean llegar a Italia con su hotel céntrico pagado, desayunos y traslados organizados.",
     incluye: [
@@ -117,10 +117,10 @@ const MODALIDADES_ITALIA = [
       "Estadía confirmada y pagada en hoteles 3★/4★ seleccionados con desayuno incluido.",
       "Seguro de asistencia Schengen por 30.000€ válido en toda la Unión Europea.",
       "Opciones de circuito conectado en tren de alta velocidad (Frecciarossa / Italo) entre Roma, Florencia, Venecia y Milán.",
-      "Facilidad de pago: congela tu tarifa hoy con el 50% ($825 USD) y completa en cuotas antes de viajar.",
+      "Facilidad de pago: congela tu tarifa hoy con el 50% ($695 USD) y completa en cuotas antes de viajar.",
     ],
     waMsg:
-      "¡Hola Cityland Travel! Quiero cotizar el Paquete Turístico a Italia con Hotel Confirmado (Desde $1,650 USD, separando con el 50%: $825 USD).",
+      "¡Hola Cityland Travel! Quiero cotizar el Paquete Turístico a Italia con Hotel Confirmado (Desde $1,390 USD, separando con el 50%: $695 USD).",
   },
   {
     id: "visado-d-residentes-italia",
@@ -128,21 +128,21 @@ const MODALIDADES_ITALIA = [
     badgeBg: "bg-emerald-700 text-white",
     borde: "border-emerald-600/30 bg-emerald-50/30",
     titulo: "Titulares de Visado Tipo D (Nulla Osta / Trabajo / Familia) y Residentes",
-    subtitulo: "Boletos Solo Ida (One-Way) desde $890 USD o Ida y Vuelta con 2 Maletas de 23 kg",
-    precioUSD: 890,
-    inicial50: 445,
-    etiquetaPrecio: "Solo Ida desde $890 USD · I/V 2 Maletas desde $1,420 USD",
+    subtitulo: "Boletos Solo Ida (One-Way) desde $740 USD o Ida y Vuelta con 2 Maletas de 23 kg",
+    precioUSD: 740,
+    inicial50: 370,
+    etiquetaPrecio: "Solo Ida desde $740 USD · I/V 2 Maletas desde $1,240 USD",
     descripcion:
       "Tarifas especiales para quienes ya cuentan con Visado Nacional Tipo D estampado por la Embajada de Italia en Lima o Permesso / Carta di Soggiorno vigente.",
     incluye: [
-      "Emisión legal de pasaje SOLO IDA (One-Way desde $890 USD) exclusivo para titulares de Visado D, Permesso di Soggiorno o pasaporte UE.",
-      "Tarifas con 2 maletas de 23 kg (46 kg en bodega + 10 kg en mano) desde $1,420 USD para mudanza, trabajo o reagrupación familiar.",
+      "Emisión legal de pasaje SOLO IDA (One-Way desde $740 USD) exclusivo para titulares de Visado D, Permesso di Soggiorno o pasaporte UE.",
+      "Tarifas con 2 maletas de 23 kg (46 kg en bodega + 10 kg en mano) desde $1,240 USD para mudanza, trabajo o reagrupación familiar.",
       "Pre-reserva aérea verificable para expediente consular (Nulla Osta al lavoro, Ricongiungimento Familiare o estudios en Italia).",
       "Asistencia gratuita de silla de ruedas (código SSR WCHR) en Lima y en el aeropuerto de conexión para padres y adultos mayores.",
       "Compra a distancia desde Milán, Turín o Roma para tus familiares que salen desde Lima o provincias del Perú en un solo PNR.",
     ],
     waMsg:
-      "¡Hola Cityland Travel! Cuento con Visado Tipo D / Permesso di Soggiorno (o compro desde Italia para un familiar) y deseo cotizar vuelo a Italia (Solo Ida desde $890 USD o con 2 maletas de 23 kg desde $1,420 USD).",
+      "¡Hola Cityland Travel! Cuento con Visado Tipo D / Permesso di Soggiorno (o compro desde Italia para un familiar) y deseo cotizar vuelo a Italia (Solo Ida desde $740 USD o con 2 maletas de 23 kg desde $1,240 USD).",
   },
 ];
 
@@ -151,8 +151,8 @@ const CIUDADES_ITALIA = [
     ciudad: "Milán",
     region: "Lombardía (Capital de la comunidad peruana en Italia)",
     iata: "MXP / LIN",
-    precioIdaVuelta: "$1,350",
-    precioRetornoLima: "$1,320",
+    precioIdaVuelta: "$1,150",
+    precioRetornoLima: "$1,120",
     aerolineas: "KLM (vía AMS), Air France (vía CDG), Iberia y Air Europa (vía MAD), LATAM",
     img: "https://images.unsplash.com/photo-1513581166391-887a96ddeafd?auto=format&fit=crop&w=900&q=80",
     ventaja:
@@ -165,8 +165,8 @@ const CIUDADES_ITALIA = [
     ciudad: "Roma",
     region: "Lazio (Capital de Italia y El Vaticano)",
     iata: "FCO",
-    precioIdaVuelta: "$1,350",
-    precioRetornoLima: "$1,320",
+    precioIdaVuelta: "$1,150",
+    precioRetornoLima: "$1,120",
     aerolineas: "Iberia, Air Europa, KLM, Air France y LATAM + ITA Airways",
     img: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=900&q=80",
     ventaja:
@@ -179,8 +179,8 @@ const CIUDADES_ITALIA = [
     ciudad: "Turín",
     region: "Piamonte (Segunda mayor comunidad peruana en el norte de Italia)",
     iata: "TRN",
-    precioIdaVuelta: "$1,380",
-    precioRetornoLima: "$1,350",
+    precioIdaVuelta: "$1,180",
+    precioRetornoLima: "$1,140",
     aerolineas: "KLM (vía Ámsterdam), Air France (vía París) e Iberia (vía Madrid)",
     img: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=900&q=80",
     ventaja:
@@ -193,8 +193,8 @@ const CIUDADES_ITALIA = [
     ciudad: "Florencia",
     region: "Toscana (Florencia, Prato, Pisa y Livorno)",
     iata: "FLR / PSA",
-    precioIdaVuelta: "$1,385",
-    precioRetornoLima: "$1,355",
+    precioIdaVuelta: "$1,180",
+    precioRetornoLima: "$1,140",
     aerolineas: "KLM, Air France e Iberia (conexión directa a Florencia-Peretola FLR)",
     img: "https://images.unsplash.com/photo-1543429257-3eb0b65d9c58?auto=format&fit=crop&w=900&q=80",
     ventaja:
@@ -207,8 +207,8 @@ const CIUDADES_ITALIA = [
     ciudad: "Bolonia",
     region: "Emilia-Romaña (Bolonia, Módena, Parma y Rímini)",
     iata: "BLQ",
-    precioIdaVuelta: "$1,375",
-    precioRetornoLima: "$1,345",
+    precioIdaVuelta: "$1,175",
+    precioRetornoLima: "$1,140",
     aerolineas: "Iberia, KLM y Air France hacia Bolonia Guglielmo Marconi (BLQ)",
     img: "https://images.unsplash.com/photo-1534445867742-43195f401b6c?auto=format&fit=crop&w=900&q=80",
     ventaja:
@@ -221,8 +221,8 @@ const CIUDADES_ITALIA = [
     ciudad: "Génova",
     region: "Liguria (Génova, La Spezia y Savona)",
     iata: "GOA",
-    precioIdaVuelta: "$1,385",
-    precioRetornoLima: "$1,355",
+    precioIdaVuelta: "$1,180",
+    precioRetornoLima: "$1,140",
     aerolineas: "KLM (vía AMS), Air France (vía CDG) e Iberia / ITA Airways",
     img: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=900&q=80",
     ventaja:
@@ -248,7 +248,7 @@ const FAQS_ITALIA = [
   },
   {
     q: "¿Puedo viajar con pasaje Solo Ida a Milán o Roma si tengo Nulla Osta (Decreto Flussi) o Ricongiungimento Familiare?",
-    a: "Sí. Si la Embajada de Italia en Lima ya estampó en tu pasaporte tu Visado Nacional Tipo D (por trabajo subordinado del Decreto Flussi / Nulla Osta, Ricongiungimento Familiare o estudios) o si posees Permesso di Soggiorno vigente, estás exento de comprar boleto de retorno y podemos emitir tu pasaje Solo Ida (desde $890 USD) o con 2 maletas de 23 kg.",
+    a: "Sí. Si la Embajada de Italia en Lima ya estampó en tu pasaporte tu Visado Nacional Tipo D (por trabajo subordinado del Decreto Flussi / Nulla Osta, Ricongiungimento Familiare o estudios) o si posees Permesso di Soggiorno vigente, estás exento de comprar boleto de retorno y podemos emitir tu pasaje Solo Ida (desde $740 USD) o con 2 maletas de 23 kg.",
   },
 ];
 
@@ -273,7 +273,7 @@ const JSON_LD_ITALIA = {
         {
           "@type": "ListItem",
           position: 3,
-          name: "Paquetes y Vuelos a Italia desde $1,350 USD",
+          name: "Paquetes y Vuelos a Italia desde $1,150 USD",
           item: "https://citylandtravel.com/italia",
         },
       ],
@@ -292,8 +292,8 @@ const JSON_LD_ITALIA = {
       offers: {
         "@type": "AggregateOffer",
         priceCurrency: "USD",
-        lowPrice: "1350",
-        highPrice: "1650",
+        lowPrice: "1150",
+        highPrice: "1390",
         offerCount: "3",
       },
     },
@@ -400,21 +400,21 @@ export default function ItaliaLandingPage() {
                   <span className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-300 block">
                     Carpeta / Visita
                   </span>
-                  <span className="text-base sm:text-lg font-black text-white">Desde $1,350</span>
-                  <span className="text-[11px] text-slate-300 block">Separa con 50% ($675)</span>
+                  <span className="text-base sm:text-lg font-black text-white">Desde $1,150</span>
+                  <span className="text-[11px] text-slate-300 block">Separa con 50% ($575)</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded-xl p-3">
                   <span className="text-[10px] font-extrabold uppercase tracking-wider text-amber-300 block">
                     Paquete con Hotel
                   </span>
-                  <span className="text-base sm:text-lg font-black text-white">Desde $1,650</span>
-                  <span className="text-[11px] text-slate-300 block">Separa con 50% ($825)</span>
+                  <span className="text-base sm:text-lg font-black text-white">Desde $1,390</span>
+                  <span className="text-[11px] text-slate-300 block">Separa con 50% ($695)</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded-xl p-3">
                   <span className="text-[10px] font-extrabold uppercase tracking-wider text-sky-300 block">
                     Visado D / Permesso
                   </span>
-                  <span className="text-base sm:text-lg font-black text-white">Desde $890</span>
+                  <span className="text-base sm:text-lg font-black text-white">Desde $740</span>
                   <span className="text-[11px] text-slate-300 block">Solo Ida / 2 Maletas</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded-xl p-3">
@@ -466,11 +466,11 @@ export default function ItaliaLandingPage() {
                         Carpeta / Lettera Invito
                       </span>
                       <div className="flex items-baseline gap-1 mt-0.5">
-                        <span className="text-2xl font-black text-[#0a1628]">$1,350</span>
+                        <span className="text-2xl font-black text-[#0a1628]">$1,150</span>
                         <span className="text-xs font-bold text-slate-500">USD</span>
                       </div>
                       <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                        Inicial 50%: $675 USD
+                        Inicial 50%: $575 USD
                       </span>
                     </div>
                     <div className="rounded-2xl bg-slate-50 border border-slate-200/80 p-3.5">
@@ -478,11 +478,11 @@ export default function ItaliaLandingPage() {
                         Paquete con Hotel (8D/7N)
                       </span>
                       <div className="flex items-baseline gap-1 mt-0.5">
-                        <span className="text-2xl font-black text-[#0a1628]">$1,650</span>
+                        <span className="text-2xl font-black text-[#0a1628]">$1,390</span>
                         <span className="text-xs font-bold text-slate-500">USD</span>
                       </div>
                       <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                        Inicial 50%: $825 USD
+                        Inicial 50%: $695 USD
                       </span>
                     </div>
                   </div>
@@ -510,7 +510,7 @@ export default function ItaliaLandingPage() {
 
                   <a
                     href={waItalia(
-                      "¡Hola Cityland Travel! Quiero cotizar mi viaje a Italia (Carpeta Desde $1,350 USD / Paquete con Hotel Desde $1,650 USD).",
+                      "¡Hola Cityland Travel! Quiero cotizar mi viaje a Italia (Carpeta Desde $1,150 USD / Paquete con Hotel Desde $1,390 USD).",
                       "Vitrina Hero"
                     )}
                     target="_blank"

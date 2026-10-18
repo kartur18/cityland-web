@@ -61,7 +61,7 @@ const AEROLINEAS_EUROPA = [
     ventajaClave:
       "Hasta 2 vuelos diarios en Airbus A350. El equipaje va facturado hasta tu destino final en España o Italia en un solo PNR.",
     slugUrl: "/viajes/aerolinea-iberia-lima-madrid",
-    precioRef: "$1,320",
+    precioRef: "$1,120",
   },
   {
     nombre: "Air Europa",
@@ -72,7 +72,7 @@ const AEROLINEAS_EUROPA = [
     ventajaClave:
       "Vuelo nocturno en Boeing 787 Dreamliner que aterriza por la mañana en Madrid, ideal para conectar el mismo día.",
     slugUrl: "/viajes/aerolinea-air-europa-lima-madrid",
-    precioRef: "$1,295",
+    precioRef: "$1,095",
   },
   {
     nombre: "Plus Ultra Líneas Aéreas",
@@ -83,7 +83,7 @@ const AEROLINEAS_EUROPA = [
     ventajaClave:
       "La favorita para largas estadías, estudiantes, reagrupación familiar y residentes que viajan con alto volumen de equipaje.",
     slugUrl: "/viajes/aerolinea-plus-ultra-lima-madrid",
-    precioRef: "$1,290",
+    precioRef: "$1,090",
   },
   {
     nombre: "LATAM Airlines",
@@ -94,7 +94,7 @@ const AEROLINEAS_EUROPA = [
     ventajaClave:
       "Mejor integración en un solo boleto electrónico saliendo desde Arequipa, Trujillo, Chiclayo, Piura, Cusco o Iquitos.",
     slugUrl: "/viajes/aerolinea-latam-lima-madrid",
-    precioRef: "$1,340",
+    precioRef: "$1,140",
   },
   {
     nombre: "KLM / Air France",
@@ -105,7 +105,7 @@ const AEROLINEAS_EUROPA = [
     ventajaClave:
       "Ruta preferida por la comunidad peruana que viaja directo al norte y centro de Italia (Milán-Linate/Malpensa, Turín y Bolonia).",
     slugUrl: "/viajes/aerolinea-klm-lima-amsterdam",
-    precioRef: "$1,380",
+    precioRef: "$1,180",
   },
 ];
 
@@ -122,13 +122,13 @@ const PERFILES_LEGALES = [
     requisitos: [
       "Pasaporte peruano biométrico con vigencia mínima de 3 meses posteriores a la fecha prevista de salida de Europa.",
       "Boleto aéreo de ida y vuelta confirmado con código PNR y E-Ticket de 13 dígitos (retorno dentro de los 90 días).",
-      "Reserva de hotel verificable por todas las noches del viaje (paquetes con hotel desde $1,590 y carpeta migratoria desde $1,290).",
+      "Reserva de hotel verificable por todas las noches del viaje (paquetes con hotel desde $1,350 y carpeta migratoria desde $1,090).",
       "Seguro médico internacional Schengen de 30.000€ sin deducible ni copago y con repatriación sanitaria.",
       "Medios económicos (Bolsa de Viaje BOE 2026): en España se exige acreditar 122,10 € por persona y día, con un mínimo obligatorio de 1.098,90 € por persona.",
     ],
     enlaces: [
-      { texto: "Paquetes a España con Carpeta Completa ($1,290)", href: "/espana" },
-      { texto: "Paquetes a Italia: Milán, Roma y Turín ($1,350)", href: "/italia" },
+      { texto: "Paquetes a España con Carpeta Completa ($1,090)", href: "/espana" },
+      { texto: "Paquetes a Italia: Milán, Roma y Turín ($1,150)", href: "/italia" },
       { texto: "Primer Viaje a Madrid paso a paso", href: "/viajes/primer-viaje-a-madrid" },
       { texto: "Primer Viaje a Roma paso a paso", href: "/viajes/primer-viaje-a-roma" },
     ],
@@ -222,7 +222,7 @@ const CLUSTERS_DIRECTORIO_EUROPA = [
   {
     titulo: "2. Vuelos Perú ↔ Italia y Resto de Europa Schengen",
     enlaces: [
-      { nombre: "Especial Italia: Milán, Roma y Turín ($1,350)", href: "/italia" },
+      { nombre: "Especial Italia: Milán, Roma y Turín ($1,150)", href: "/italia" },
       { nombre: "Vuelos Lima a Roma (Fiumicino)", href: "/vuelos/lima-roma" },
       { nombre: "Vuelos Lima a Milán (Malpensa/Linate)", href: "/vuelos/lima-milan" },
       { nombre: "Vuelos Lima a Turín", href: "/vuelos/lima-turin" },
@@ -239,8 +239,8 @@ const CLUSTERS_DIRECTORIO_EUROPA = [
   {
     titulo: "3. Paquetes Primer Viaje, Estudios RD 1155/2024 y Decreto Flussi",
     enlaces: [
-      { nombre: "Especial España Salidas Mensuales ($1,290)", href: "/espana" },
-      { nombre: "Especial Italia Salidas Mensuales ($1,350)", href: "/italia" },
+      { nombre: "Especial España Salidas Mensuales ($1,090)", href: "/espana" },
+      { nombre: "Especial Italia Salidas Mensuales ($1,150)", href: "/italia" },
       { nombre: "Circuitos Europa y Turquía Sin Visa", href: "/europa-turquia" },
       { nombre: "Primer Viaje a Madrid con Carpeta", href: "/viajes/primer-viaje-a-madrid" },
       { nombre: "Primer Viaje a Barcelona con Carpeta", href: "/viajes/primer-viaje-a-barcelona" },
@@ -424,7 +424,7 @@ export default function GuiaEuropaPage() {
                   <span className="text-[10px] font-extrabold uppercase tracking-wider text-rose-300 block">
                     Agencia Formal
                   </span>
-                  <span className="text-base sm:text-lg font-black text-white">Desde $1,290</span>
+                  <span className="text-base sm:text-lg font-black text-white">Desde $1,090</span>
                   <span className="text-[11px] text-slate-300 block">RUC 20614914239 · Lima</span>
                 </div>
               </div>
@@ -456,7 +456,7 @@ export default function GuiaEuropaPage() {
                       <span className="text-xs font-extrabold text-[#0a1628]">
                         1. Turismo con Reserva de Hotel (&lt; 90 días)
                       </span>
-                      <span className="text-xs font-black text-red-600">Desde $1,590</span>
+                      <span className="text-xs font-black text-red-600">Desde $1,350</span>
                     </div>
                     <p className="text-[11px] text-slate-600 mt-0.5">
                       Vuelo I/V + Reserva Hotel verificable + Seguro 30.000€ + Guía Barajas/Fiumicino
@@ -471,7 +471,7 @@ export default function GuiaEuropaPage() {
                       <span className="text-xs font-extrabold text-[#0a1628]">
                         2. Visita Familiar (Carta de Invitación / Ospitalità)
                       </span>
-                      <span className="text-xs font-black text-blue-700">Desde $1,290</span>
+                      <span className="text-xs font-black text-blue-700">Desde $1,090</span>
                     </div>
                     <p className="text-[11px] text-slate-600 mt-0.5">
                       Vuelo I/V coincidente con tu Carta + Seguro Schengen 30.000€ + Checklist 48h Italia

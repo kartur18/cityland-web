@@ -126,7 +126,7 @@ export default function ColegiosLandingClient() {
                         Desde
                       </span>
                       <span className="text-3xl sm:text-4xl font-black text-[#0a1628] tracking-tight leading-none">
-                        $399
+                        $319
                       </span>
                       <span className="text-xs font-bold text-slate-500">por alumno</span>
                     </div>
