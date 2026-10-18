@@ -124,23 +124,37 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
   },
 ];
 
-export function obtenerConfigAgenciaOficial(referenciaZona?: string): ConfiguracionLandingAerolinea {
+export function obtenerConfigAgenciaOficial(
+  referenciaZona?: string,
+  notaEspecifica?: string
+): ConfiguracionLandingAerolinea {
   const mencionZona = referenciaZona
-    ? `Atendemos de forma presencial en nuestra sede principal de Los Olivos (Av. Antúnez de Mayolo 814) y por videollamada o WhatsApp para pasajeros de ${referenciaZona}, con emisión inmediata de boletos y contrato formal.`
+    ? `${
+        notaEspecifica ? `${notaEspecifica}. ` : ""
+      }Atendemos de forma presencial en nuestra sede principal de Los Olivos (Av. Antúnez de Mayolo 814, Lima) y por videollamada o WhatsApp para viajeros de ${referenciaZona}, con emisión inmediata de boletos y contrato formal.`
     : "Atendemos de forma presencial en nuestra sede principal de Los Olivos (Av. Antúnez de Mayolo 814, Lima) y de manera digital para todo el Perú, con emisión inmediata de boletos y contrato formal.";
 
   return {
-    badgeHero: "Agencia de Viajes Formal · RUC 20614914239",
+    badgeHero: referenciaZona
+      ? `Atención Oficial para ${referenciaZona} · RUC 20614914239`
+      : "Agencia de Viajes Formal · RUC 20614914239",
     banderasHero: ["Perú", "España", "República Dominicana", "México"],
-    tituloHero: "Viaja con Respaldo y Tarifas Oficiales:",
-    tituloDestacadoHero: "Vuelos, Caribe Todo Incluido y Europa",
+    tituloHero: referenciaZona
+      ? `Agencia de Viajes para ${referenciaZona}:`
+      : "Viaja con Respaldo y Tarifas Oficiales:",
+    tituloDestacadoHero: referenciaZona
+      ? "Vuelos, Europa y Caribe Todo Incluido"
+      : "Vuelos, Caribe Todo Incluido y Europa",
     descripcionHero: mencionZona,
     negritaHero:
       "Separa tu paquete o vuelo hoy con el 50% de inicial y paga el saldo en cuotas antes de viajar.",
-    ctaPrincipalTexto: "Cotizar mi Viaje por WhatsApp",
+    ctaPrincipalTexto: referenciaZona
+      ? `Cotizar desde ${referenciaZona} por WhatsApp`
+      : "Cotizar mi Viaje por WhatsApp",
     waPrincipalNumero: TELEFONO,
-    waPrincipalMensaje:
-      "¡Hola Cityland Travel! Vi su página web y deseo recibir una cotización personalizada de viaje.",
+    waPrincipalMensaje: referenciaZona
+      ? `¡Hola Cityland Travel! Les escribo desde ${referenciaZona} y deseo recibir una cotización personalizada de viaje.`
+      : "¡Hola Cityland Travel! Vi su página web y deseo recibir una cotización personalizada de viaje.",
     checksHero: [
       "Oficina Física en Lima (RUC 20614914239)",
       "Código de Reserva Aéreo Verificable (PNR)",
@@ -155,18 +169,20 @@ export function obtenerConfigAgenciaOficial(referenciaZona?: string): Configurac
       alt: "Resort 5 estrellas en Punta Cana Todo Incluido — Cityland Travel",
       sobretitulo: "Paquete Estrella Temporada 2026",
       titulo: "Punta Cana Resort 5★ Todo Incluido (Vuelo + Hotel + Traslados)",
-      labelPrecio: "Tarifa por pasajero",
+      labelPrecio: "Tarifa referencial por pasajero",
       precio: "$1,099",
       moneda: "USD",
-      notaInferior: "Separa hoy con $550 USD (50% inicial) · Cupos confirmados",
+      notaInferior: "Separa hoy con $550 (50% inicial) · Sujeto a fecha",
       waNumero: TELEFONO,
       waMensaje:
-        "¡Hola Cityland Travel! Deseo cotizar el paquete estrella a Punta Cana Resort 5★ Todo Incluido desde $1,099 USD.",
+        "¡Hola Cityland Travel! Deseo cotizar el paquete estrella a Punta Cana Resort 5★ Todo Incluido desde $1,099.",
     },
 
     seccionCatalogo: {
       sobretitulo: "Catálogo Oficial Cityland Travel 2026",
-      titulo: "Paquetes Turísticos y Vuelos Más Solicitados",
+      titulo: referenciaZona
+        ? `Paquetes y Vuelos Más Solicitados por Viajeros de ${referenciaZona}`
+        : "Paquetes Turísticos y Vuelos Más Solicitados",
       filtros: [
         { id: "todos", label: "Todos los Destinos (6)" },
         { id: "caribe", label: "Caribe Todo Incluido (3)" },
@@ -198,13 +214,16 @@ export function obtenerConfigAgenciaOficial(referenciaZona?: string): Configurac
 
     bannerFinal: {
       sobretitulo: "Sede Central & Atención Nacional",
-      titulo: "Visítanos en Nuestra Oficina o Cotiza en 2 Minutos por WhatsApp",
+      titulo: referenciaZona
+        ? `¿Viajas desde ${referenciaZona}? Cotiza hoy en 2 Minutos por WhatsApp`
+        : "Visítanos en Nuestra Oficina o Cotiza en 2 Minutos por WhatsApp",
       descripcion:
         "Te esperamos de Lunes a Sábado de 9:00 AM a 7:00 PM en Av. Antúnez de Mayolo N. 814, Los Olivos (a 2 cuadras de la Municipalidad), o agenda una atención inmediata con nuestras asesoras de viaje.",
       ctaTexto: "Hablar con una Asesora Ahora",
       waNumero: TELEFONO,
-      waMensaje:
-        "¡Hola Cityland Travel! Deseo recibir atención de una asesora para cotizar mi próximo viaje.",
+      waMensaje: referenciaZona
+        ? `¡Hola Cityland Travel! Soy de ${referenciaZona} y deseo recibir atención de una asesora para cotizar mi próximo viaje.`
+        : "¡Hola Cityland Travel! Deseo recibir atención de una asesora para cotizar mi próximo viaje.",
       img: "/images/espana/plaza-mayor.jpg",
       alt: "Viajes Internacionales con Cityland Travel en Lima",
     },
@@ -212,8 +231,9 @@ export function obtenerConfigAgenciaOficial(referenciaZona?: string): Configurac
     waFlotante: {
       numero: TELEFONO,
       texto: "Cotizar por WhatsApp",
-      mensaje:
-        "¡Hola Cityland Travel! Vi su página web y deseo cotizar un viaje.",
+      mensaje: referenciaZona
+        ? `¡Hola Cityland Travel! Vi su página para ${referenciaZona} y deseo cotizar un viaje.`
+        : "¡Hola Cityland Travel! Vi su página web y deseo cotizar un viaje.",
     },
   };
 }

@@ -75,17 +75,35 @@ export default function WhatsAppTracker() {
         const telefonoFinal = NUMERO_WHATSAPP_OFICIAL; // 51944103890
 
         url.pathname = `/${telefonoFinal}`;
+        const etiquetaRef = `📍 Ref Web: citylandtravel.com${paginaOrigen} [${fuenteTrafico}]`;
         if (!textoActual) {
           url.searchParams.set(
             "text",
-            `¡Hola Cityland Travel! Vi su web oficial (${paginaOrigen}) y quiero cotizar mi próximo viaje.`
+            `¡Hola Cityland Travel! Vi su web oficial y quiero cotizar mi próximo viaje.\n\n${etiquetaRef}`
           );
+        } else if (!textoActual.includes("Ref Web:")) {
+          url.searchParams.set("text", `${textoActual.trim()}\n\n${etiquetaRef}`);
         }
         anchor.href = url.toString();
+
+        const grupoContenido = paginaOrigen.startsWith("/ofertas/")
+          ? "ofertas"
+          : paginaOrigen.startsWith("/vuelos/")
+          ? "vuelos"
+          : paginaOrigen.startsWith("/destinos/")
+          ? "destinos"
+          : paginaOrigen.startsWith("/viajes/")
+          ? "viajes"
+          : paginaOrigen.startsWith("/agencia")
+          ? "agencia"
+          : paginaOrigen.startsWith("/blog")
+          ? "blog"
+          : "hub_principal";
 
         if (typeof window.gtag === "function") {
           window.gtag("event", "click_whatsapp_consulta", {
             event_category: "Captacion_WhatsApp",
+            content_group: grupoContenido,
             landing_page: paginaOrigen,
             traffic_source: fuenteTrafico,
             button_selected: textoBoton,
@@ -100,6 +118,7 @@ export default function WhatsAppTracker() {
         lista.unshift({
           fecha: new Date().toLocaleString("es-PE"),
           pagina: paginaOrigen,
+          grupo: grupoContenido,
           fuente: fuenteTrafico,
           boton: textoBoton,
           destino: textoActual.slice(0, 80) || "Consulta general",

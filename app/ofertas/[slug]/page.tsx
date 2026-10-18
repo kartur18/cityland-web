@@ -11,6 +11,8 @@ import {
 import {
   construirSchemaLandingSEO,
   obtenerEnlacesCruzadosSEO,
+  optimizarMetaTitleSEO,
+  optimizarMetaDescriptionSEO,
 } from "@/lib/seo-arquitectura";
 
 export const revalidate = 86400;
@@ -34,9 +36,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ? item.config.vitrina.img
     : `https://citylandtravel.com${item.config.vitrina.img}`;
 
+  const title = optimizarMetaTitleSEO(item.metaTitle);
+  const description = optimizarMetaDescriptionSEO(item.metaDescription);
+
   return {
-    title: item.metaTitle,
-    description: item.metaDescription,
+    title,
+    description,
     keywords: item.keywords,
     alternates: {
       canonical: url,
@@ -44,8 +49,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       type: "website",
       url,
-      title: item.metaTitle,
-      description: item.metaDescription,
+      title,
+      description,
       siteName: "Cityland Travel",
       locale: "es_PE",
       images: [
@@ -59,8 +64,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: item.metaTitle,
-      description: item.metaDescription,
+      title,
+      description,
       images: [imgUrl],
     },
     other: {
@@ -81,11 +86,19 @@ export default async function OfertaComercialPage({ params }: Props) {
   const listaCluster = TODOS_LOS_RESUMENES_OFERTAS_SEO.filter(
     (x) => x.cluster === item.cluster
   );
-  const idxCluster = listaCluster.findIndex((x) => x.slug === item.slug);
-  const relacionadosCluster = Array.from(
-    { length: Math.min(12, Math.max(0, listaCluster.length - 1)) },
-    (_, i) => listaCluster[(Math.max(0, idxCluster) + i + 1) % listaCluster.length]
-  ).filter((x) => x && x.slug !== item.slug);
+  const idxCluster = Math.max(
+    0,
+    listaCluster.findIndex((x) => x.slug === item.slug)
+  );
+  const saltosSmallWorld = [1, 2, 3, 4, 5, 6, 24, 72, 180, 450, 1100, 2200];
+  const vistos = new Set<string>([item.slug]);
+  const relacionadosCluster = saltosSmallWorld
+    .map((salto) => listaCluster[(idxCluster + salto) % listaCluster.length])
+    .filter((x) => {
+      if (!x || vistos.has(x.slug)) return false;
+      vistos.add(x.slug);
+      return true;
+    });
 
   const enlacesCruzados = obtenerEnlacesCruzadosSEO(
     `${item.titulo} ${item.destinoOPais} ${item.clusterNombre}`,

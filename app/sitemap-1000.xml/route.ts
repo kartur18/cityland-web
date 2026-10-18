@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import sitemap from "@/app/sitemap";
+import { FECHA_ESTABLE_SITEMAP } from "@/lib/seo-arquitectura";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
+export const revalidate = 86400;
 
 export async function GET() {
   const items = sitemap();
@@ -12,7 +12,7 @@ ${items
   .map(
     (item) => `  <url>
     <loc>${item.url}</loc>
-    <lastmod>${new Date().toISOString()}</lastmod>
+    <lastmod>${FECHA_ESTABLE_SITEMAP}</lastmod>
     <changefreq>${item.changeFrequency || "weekly"}</changefreq>
     <priority>${item.priority ?? 0.8}</priority>
   </url>`
@@ -24,7 +24,7 @@ ${items
     status: 200,
     headers: {
       "Content-Type": "application/xml; charset=utf-8",
-      "Cache-Control": "public, max-age=0, must-revalidate",
+      "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=43200",
     },
   });
 }

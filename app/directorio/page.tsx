@@ -7,6 +7,9 @@ import BuscadorCatalogoInstantaneo from "@/components/BuscadorCatalogoInstantane
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
 import { DESTINOS_EUROPA, DESTINOS_CARIBE, BLOG_POSTS } from "@/components/constantes";
+import { DESTINOS_MASIVOS } from "@/lib/catalogo-destinos-masivo";
+import { BLOG_POSTS_MASIVOS } from "@/lib/catalogo-blog-masivo";
+import { AGENCIAS_LOCALES_SEO } from "@/lib/catalogo-agencias-locales";
 import { RUTAS_VUELOS_SEO } from "@/lib/rutas-vuelos";
 import { VIAJES_ESPECIALIZADOS_SEO } from "@/lib/catalogo-viajes-especializados";
 import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-comerciales";
@@ -18,6 +21,51 @@ export const metadata: Metadata = {
     "Explora más de 10,000 opciones de viajes a España, Barcelona, Italia, Europa, paquetes Todo Incluido, hoteles 5★, cruceros, visas y salidas desde todo el Perú en Cityland Travel (RUC 20614914239).",
   alternates: {
     canonical: "https://citylandtravel.com/directorio",
+  },
+};
+
+export type ModoCatalogoHub = "directorio" | "destinos" | "vuelos" | "viajes";
+
+const HERO_POR_MODO: Record<
+  ModoCatalogoHub,
+  {
+    badge: string;
+    h1: string;
+    descripcion: string;
+    waTexto: string;
+  }
+> = {
+  directorio: {
+    badge: "🌍 Cityland Travel E.I.R.L. · RUC 20614914239 · +10,000 Rutas y Programas",
+    h1: "Catálogo Oficial de Destinos, Vuelos, España, Italia y Experiencias",
+    descripcion:
+      "Explora más de 10,000 programas verificados a Madrid, Barcelona, Roma, Venecia, Florencia, circuitos por Europa, resorts Todo Incluido con nombre propio, cruceros y salidas desde todas las ciudades del Perú. Separa hoy con el 50% de inicial.",
+    waTexto:
+      "¡Hola Cityland Travel! Vi su catálogo de destinos y quiero cotizar mi próximo viaje.",
+  },
+  destinos: {
+    badge: "🌎 108 Destinos Principales + 9,020 Programas por Temporada y Hotel",
+    h1: "Destinos Turísticos Internacionales y Nacionales desde Perú",
+    descripcion:
+      "Descubre nuestras guías y paquetes completos a Europa, España, Italia, el Caribe Todo Incluido, Estados Unidos, Sudamérica, Asia y el interior del Perú con vuelos, traslados, seguro médico y hoteles seleccionados.",
+    waTexto:
+      "¡Hola Cityland Travel! Estuve viendo su catálogo de Destinos Turísticos y deseo cotizar un paquete de viaje.",
+  },
+  vuelos: {
+    badge: "✈️ 425 Rutas Aéreas desde Lima y Provincias · Código PNR Verificable",
+    h1: "Vuelos y Boletos Aéreos desde Lima y Todo el Perú con Impuestos Incluidos",
+    descripcion:
+      "Cotiza pasajes aéreos ida y vuelta con tarifas negociadas en Iberia, Air Europa, Plus Ultra, LATAM, Copa Airlines, Avianca y Sky hacia Madrid, Barcelona, Roma, Miami, Punta Cana, Cancún, Cusco y más de 400 rutas.",
+    waTexto:
+      "¡Hola Cityland Travel! Quiero cotizar boletos aéreos ida y vuelta para mis fechas de viaje.",
+  },
+  viajes: {
+    badge: "🧳 310 Guías Operativas · Equipaje 23 kg, Requisitos y Carpeta Migratoria",
+    h1: "Viajes Especializados, Equipaje de Bodega, Aerolíneas y Requisitos Migratorios",
+    descripcion:
+      "Soluciones especializadas para viajeros peruanos: asesoría para tu primer viaje internacional, tarifas con 2 maletas de 23 kg, comparativas por aerolínea, requisitos de ingreso sin visa y preparación de carpeta migratoria.",
+    waTexto:
+      "¡Hola Cityland Travel! Quiero asesoría sobre viajes especializados, equipaje o requisitos migratorios.",
   },
 };
 
@@ -163,10 +211,24 @@ const CLUSTERS_CONFIG: {
   },
 ];
 
-export default function DirectorioMaestroPage() {
+export function VistaCatalogoHub({ modoHub = "directorio" }: { modoHub?: ModoCatalogoHub }) {
+  const heroInfo = HERO_POR_MODO[modoHub];
   const destinosDestacados = [...DESTINOS_EUROPA, ...DESTINOS_CARIBE];
-  const rutasPrincipales = RUTAS_VUELOS_SEO.slice(0, 36);
-  const serviciosDestacados = VIAJES_ESPECIALIZADOS_SEO.slice(0, 24);
+
+  // Selección distribuida de rutas de vuelos (72 rutas espaciadas a lo largo de las 425 rutas)
+  const pasoVuelos = Math.max(1, Math.floor(RUTAS_VUELOS_SEO.length / 72));
+  const rutasPrincipales = Array.from({ length: 72 }, (_, i) => {
+    const idx = Math.min(RUTAS_VUELOS_SEO.length - 1, i * pasoVuelos);
+    return RUTAS_VUELOS_SEO[idx];
+  });
+
+  // Selección distribuida de viajes especializados (48 programas espaciados entre las 310 páginas)
+  const pasoViajes = Math.max(1, Math.floor(VIAJES_ESPECIALIZADOS_SEO.length / 48));
+  const serviciosDestacados = Array.from({ length: 48 }, (_, i) => {
+    const idx = Math.min(VIAJES_ESPECIALIZADOS_SEO.length - 1, i * pasoViajes);
+    return VIAJES_ESPECIALIZADOS_SEO[idx];
+  });
+
   const inicialesBuscador = TODOS_LOS_RESUMENES_OFERTAS_SEO.slice(0, 24).map((o, idx) => {
     const galeria = obtenerGaleriaPorTexto(`${o.titulo} ${o.destinoOPais} ${o.slug}`);
     return {
@@ -180,11 +242,9 @@ export default function DirectorioMaestroPage() {
       img: galeria[idx % 3] || galeria[0],
     };
   });
+
   const waUrl =
-    "https://wa.me/51944103890?text=" +
-    encodeURIComponent(
-      "¡Hola Cityland Travel! Vi su catálogo de destinos y quiero cotizar mi próximo viaje."
-    );
+    "https://wa.me/51944103890?text=" + encodeURIComponent(heroInfo.waTexto);
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col">
@@ -196,7 +256,7 @@ export default function DirectorioMaestroPage() {
           <div className="absolute inset-0 z-0">
             <Image
               src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=1400&q=80"
-              alt="Catálogo de Destinos Cityland Travel"
+              alt={heroInfo.h1}
               fill
               priority
               sizes="100vw"
@@ -208,13 +268,13 @@ export default function DirectorioMaestroPage() {
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
             <div className="max-w-3xl">
               <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-amber-300 px-3.5 py-1.5 rounded-full text-xs font-bold mb-4">
-                🌍 Cityland Travel E.I.R.L. · RUC 20614914239 · +10,000 Rutas y Programas
+                {heroInfo.badge}
               </span>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.12] mb-4">
-                Catálogo Oficial de Destinos, Vuelos, España, Italia y Experiencias
+                {heroInfo.h1}
               </h1>
               <p className="text-base sm:text-lg text-slate-200 leading-relaxed">
-                Explora más de 10,000 programas verificados a Madrid, Barcelona, Roma, Venecia, Florencia, circuitos por Europa, resorts Todo Incluido con nombre propio, cruceros y salidas desde todas las ciudades del Perú. Separa hoy con el 50% de inicial.
+                {heroInfo.descripcion}
               </p>
             </div>
 
@@ -289,14 +349,14 @@ export default function DirectorioMaestroPage() {
             </div>
           </section>
 
-          {/* 2. Paquetes Destacados con Imágenes */}
-          <section>
-            <div className="mb-8">
+          {/* 2. Paquetes Destacados con Imágenes + Índice de 108 Destinos */}
+          <section className="space-y-8">
+            <div>
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
-                Europa, Caribe, Norteamérica y Sudamérica
+                Europa, Caribe, Norteamérica, Asia y Sudamérica
               </span>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0a1628] tracking-tight">
-                Paquetes Turísticos Más Solicitados
+                Paquetes y Destinos Turísticos Más Solicitados
               </h2>
             </div>
 
@@ -345,6 +405,23 @@ export default function DirectorioMaestroPage() {
                 </Link>
               ))}
             </div>
+
+            <div className="bg-white rounded-3xl border border-slate-200 p-6 shadow-xs">
+              <h3 className="text-base font-extrabold text-[#0a1628] mb-3">
+                Índice Completo de Destinos Internacionales y Nacionales ({DESTINOS_MASIVOS.length + destinosDestacados.length} destinos)
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {DESTINOS_MASIVOS.map((d) => (
+                  <Link
+                    key={d.slug}
+                    href={`/destinos/${d.slug}`}
+                    className="text-xs font-medium bg-slate-50 hover:bg-red-50 text-slate-700 hover:text-red-600 border border-slate-200/80 px-3 py-1.5 rounded-lg transition-colors"
+                  >
+                    {d.ciudad} ({d.pais}) · ${d.migratorio ?? d.turistico}
+                  </Link>
+                ))}
+              </div>
+            </div>
           </section>
 
           {/* 3. Los 8 Clusters de las +9,000 Landings Comerciales (/ofertas/[slug]) */}
@@ -363,6 +440,14 @@ export default function DirectorioMaestroPage() {
                 const itemsCluster = TODOS_LOS_RESUMENES_OFERTAS_SEO.filter(
                   (x) => x.cluster === cl.id
                 );
+                // 36 puntos de entrada uniformemente espaciados a lo largo de todo el cluster
+                const cantidadMuestra = Math.min(36, itemsCluster.length);
+                const pasoCluster = Math.max(1, Math.floor(itemsCluster.length / Math.max(1, cantidadMuestra)));
+                const muestraCluster = Array.from({ length: cantidadMuestra }, (_, idx) => {
+                  const pos = Math.min(itemsCluster.length - 1, idx * pasoCluster);
+                  return itemsCluster[pos];
+                });
+
                 return (
                   <div
                     key={cl.id}
@@ -380,7 +465,7 @@ export default function DirectorioMaestroPage() {
                       <p className="text-xs text-slate-500 mb-4">{cl.sub}</p>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
-                        {itemsCluster.slice(0, 12).map((it, idx) => {
+                        {muestraCluster.slice(0, 12).map((it, idx) => {
                           const galeria = obtenerGaleriaPorTexto(
                             `${it.titulo} ${it.destinoOPais} ${it.slug}`
                           );
@@ -412,6 +497,20 @@ export default function DirectorioMaestroPage() {
                           );
                         })}
                       </div>
+
+                      {muestraCluster.length > 12 && (
+                        <div className="mt-3 pt-3 border-t border-slate-100 flex flex-wrap gap-1.5">
+                          {muestraCluster.slice(12).map((it) => (
+                            <Link
+                              key={it.slug}
+                              href={`/ofertas/${it.slug}`}
+                              className="text-[11px] font-medium bg-slate-50 hover:bg-red-50 text-slate-600 hover:text-red-600 border border-slate-200/60 px-2.5 py-1 rounded-lg transition-colors"
+                            >
+                              {it.titulo} · ${it.precioDesdeUSD}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
                 );
@@ -423,13 +522,13 @@ export default function DirectorioMaestroPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <section className="lg:col-span-7 bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-xs">
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
-                Boletos Aéreos con Impuestos Incluidos
+                Boletos Aéreos con Impuestos Incluidos ({RUTAS_VUELOS_SEO.length} rutas)
               </span>
               <h2 className="text-2xl font-extrabold text-[#0a1628] mb-4">
                 Rutas de Vuelos Más Cotizadas
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs sm:text-sm">
-                {rutasPrincipales.map((r, idx) => {
+                {rutasPrincipales.slice(0, 24).map((r, idx) => {
                   const galeria = obtenerGaleriaPorTexto(`${r.destino} ${r.slug}`);
                   const thumb = galeria[idx % 3] || galeria[0];
                   return (
@@ -458,6 +557,18 @@ export default function DirectorioMaestroPage() {
                     </Link>
                   );
                 })}
+              </div>
+
+              <div className="mt-4 pt-4 border-t border-slate-100 flex flex-wrap gap-1.5">
+                {rutasPrincipales.slice(24).map((r) => (
+                  <Link
+                    key={r.slug}
+                    href={`/vuelos/${r.slug}`}
+                    className="text-[11px] font-medium bg-slate-50 hover:bg-red-50 text-slate-700 hover:text-red-600 border border-slate-200/70 px-2.5 py-1 rounded-lg transition-colors"
+                  >
+                    ✈️ {r.origen} a {r.destino} (${r.precioDesdeUSD})
+                  </Link>
+                ))}
               </div>
             </section>
 
@@ -496,30 +607,77 @@ export default function DirectorioMaestroPage() {
                     </Link>
                   ))}
                 </div>
+
+                <div className="mt-4 pt-3 border-t border-slate-100 flex flex-wrap gap-1.5">
+                  {BLOG_POSTS_MASIVOS.slice(0, 12).map((b) => (
+                    <Link
+                      key={b.slug}
+                      href={`/blog/${b.slug}`}
+                      className="text-[11px] font-medium bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200/70 px-2.5 py-1 rounded-lg transition-colors"
+                    >
+                      📖 {b.titulo}
+                    </Link>
+                  ))}
+                </div>
               </div>
 
               <div className="mt-6 pt-5 border-t border-slate-100">
                 <span className="text-xs font-bold uppercase text-slate-400 block mb-2.5">
-                  Servicios y Equipaje Especializado
+                  Servicios, Equipaje 23 kg y Requisitos ({VIAJES_ESPECIALIZADOS_SEO.length} programas)
                 </span>
                 <div className="flex flex-wrap gap-1.5">
-                  {serviciosDestacados.slice(0, 10).map((s) => (
+                  {serviciosDestacados.map((s) => (
                     <Link
                       key={s.slug}
                       href={`/viajes/${s.slug}`}
                       className="text-[11px] font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded-lg transition-colors"
                     >
-                      {s.destinoOPais}
+                      {s.titulo}
                     </Link>
                   ))}
                 </div>
               </div>
             </section>
           </div>
+
+          {/* 5. Cobertura en Distritos de Lima y Provincias del Perú */}
+          <section className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-xs">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-4">
+              <div>
+                <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
+                  Atención Presencial en Los Olivos y Cobertura Nacional
+                </span>
+                <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a1628]">
+                  Agencia de Viajes por Distrito de Lima y Ciudades del Perú
+                </h2>
+              </div>
+              <Link
+                href="/agencia"
+                className="text-xs font-extrabold text-red-600 hover:underline"
+              >
+                Ver cobertura completa ({AGENCIAS_LOCALES_SEO.length} zonas) →
+              </Link>
+            </div>
+            <div className="flex flex-wrap gap-1.5">
+              {AGENCIAS_LOCALES_SEO.slice(0, 36).map((a) => (
+                <Link
+                  key={a.slug}
+                  href={`/agencia/${a.slug}`}
+                  className="text-[11px] font-medium bg-slate-50 hover:bg-red-50 text-slate-700 hover:text-red-600 border border-slate-200/80 px-2.5 py-1 rounded-lg transition-colors"
+                >
+                  📍 Agencia en {a.zona}
+                </Link>
+              ))}
+            </div>
+          </section>
         </div>
       </main>
 
       <Footer />
     </div>
   );
+}
+
+export default function DirectorioMaestroPage() {
+  return <VistaCatalogoHub modoHub="directorio" />;
 }

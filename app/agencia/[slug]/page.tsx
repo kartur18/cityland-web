@@ -8,7 +8,11 @@ import {
   AGENCIAS_LOCALES_SEO,
   buscarAgenciaLocal,
 } from "@/lib/catalogo-agencias-locales";
-import { obtenerEnlacesCruzadosSEO } from "@/lib/seo-arquitectura";
+import {
+  obtenerEnlacesCruzadosSEO,
+  optimizarMetaTitleSEO,
+  optimizarMetaDescriptionSEO,
+} from "@/lib/seo-arquitectura";
 
 export const revalidate = 86400;
 export const dynamicParams = true;
@@ -27,17 +31,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!agencia) return {};
 
   const url = `https://citylandtravel.com/agencia/${agencia.slug}`;
+  const title = optimizarMetaTitleSEO(agencia.metaTitle);
+  const description = optimizarMetaDescriptionSEO(agencia.metaDescription);
 
   return {
-    title: agencia.metaTitle,
-    description: agencia.metaDescription,
+    title,
+    description,
     keywords: agencia.keywords,
     alternates: { canonical: url },
     openGraph: {
       type: "website",
       url,
-      title: agencia.metaTitle,
-      description: agencia.metaDescription,
+      title,
+      description,
       siteName: "Cityland Travel",
       locale: "es_PE",
       images: [
@@ -45,14 +51,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           url: "https://citylandtravel.com/opengraph-image",
           width: 1200,
           height: 630,
-          alt: agencia.metaTitle,
+          alt: title,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: agencia.metaTitle,
-      description: agencia.metaDescription,
+      title,
+      description,
       images: ["https://citylandtravel.com/opengraph-image"],
     },
     other: {
@@ -67,13 +73,19 @@ export default async function AgenciaLocalSlugPage({ params }: Props) {
   const agencia = buscarAgenciaLocal(slug);
   if (!agencia) notFound();
 
-  const config = obtenerConfigAgenciaOficial(agencia.zona);
+  const config = obtenerConfigAgenciaOficial(agencia.zona, agencia.tiempoAtencion);
 
   const idxActual = AGENCIAS_LOCALES_SEO.findIndex((a) => a.slug === agencia.slug);
-  const agenciasCercanas = Array.from({ length: 12 }, (_, i) => {
-    const idx = (Math.max(0, idxActual) + i + 1) % AGENCIAS_LOCALES_SEO.length;
+  const SALTOS_AGENCIAS = [1, 2, 3, 4, 6, 10, 18, 30, 45, 60, 75, 90];
+  const vistosAgencias = new Set<string>([agencia.slug]);
+  const agenciasCercanas = SALTOS_AGENCIAS.map((salto) => {
+    const idx = (Math.max(0, idxActual) + salto) % AGENCIAS_LOCALES_SEO.length;
     return AGENCIAS_LOCALES_SEO[idx];
-  }).filter((a) => a && a.slug !== agencia.slug);
+  }).filter((a) => {
+    if (!a || vistosAgencias.has(a.slug)) return false;
+    vistosAgencias.add(a.slug);
+    return true;
+  });
 
   const enlacesCruzados = obtenerEnlacesCruzadosSEO(
     `Agencia de Viajes ${agencia.zona} ${agencia.region} España Europa Caribe`,
@@ -129,6 +141,36 @@ export default async function AgenciaLocalSlugPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <AirlineLandingTemplate config={config} breadcrumbs={migas}>
+        <section className="py-10 bg-slate-50 border-t border-slate-200/80">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6">
+            <h2 className="text-lg sm:text-xl font-extrabold text-[#0a1628] mb-4">
+              Atención y Reservas para Viajeros de {agencia.zona} ({agencia.region})
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-600 leading-relaxed">
+              <div className="bg-white rounded-2xl p-5 border border-slate-200/90">
+                <h3 className="text-sm font-extrabold text-[#0a1628] mb-1.5">
+                  ¿Cómo reservo mi paquete o vuelo desde {agencia.zona}?
+                </h3>
+                <p>
+                  {agencia.tiempoAtencion}. Emitimos tu código PNR aéreo verificable, vouchers de hotel y Boleta o Factura Electrónica SUNAT (RUC 20614914239) tanto de manera presencial en Los Olivos como 100% digital por WhatsApp (+51 944 103 890).
+                </p>
+              </div>
+              <div className="bg-white rounded-2xl p-5 border border-slate-200/90">
+                <h3 className="text-sm font-extrabold text-[#0a1628] mb-1.5">
+                  {agencia.tipoZona === "provincia"
+                    ? `¿Coordinan conexiones aéreas desde ${agencia.zona} vía Lima?`
+                    : `¿Qué facilidades de pago tienen para viajeros de ${agencia.zona}?`}
+                </h3>
+                <p>
+                  {agencia.tipoZona === "provincia"
+                    ? `Sí. Coordinamos tu itinerario desde ${agencia.zona} (${agencia.region}) hacia el Aeropuerto Internacional Jorge Chávez (LIM) para conectar con tus vuelos a España, Europa, el Caribe o Estados Unidos con tiempos de escala seguros.`
+                    : `Puedes separar tus paquetes internacionales o nacionales con el 50% de inicial mediante cuentas empresariales BCP, BBVA, Interbank, Yape, Plin o tarjeta, y programar el saldo antes de tu viaje.`}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="py-10 bg-white border-t border-slate-200/80">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <h2 className="text-xs font-extrabold uppercase tracking-wider text-[#0a1628] mb-3">

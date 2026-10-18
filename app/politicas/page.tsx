@@ -3,9 +3,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Políticas de Privacidad | Cityland Travel",
+  title: "Políticas de Privacidad y Términos | Cityland Travel",
   description:
-    "Política de privacidad, cookies y términos y condiciones de Cityland Travel, agencia de viajes en Lima.",
+    "Política de privacidad, cookies y términos y condiciones de servicio de Cityland Travel E.I.R.L. (RUC 20614914239), agencia de viajes en Lima.",
+  alternates: {
+    canonical: "https://citylandtravel.com/politicas",
+  },
 };
 
 export default function PoliticasPage() {
@@ -15,10 +18,10 @@ export default function PoliticasPage() {
       <main className="bg-white min-h-screen pt-28 pb-20">
         <div className="max-w-[800px] mx-auto px-5">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0a1628] tracking-tight leading-tight mb-4">
-            Políticas y Términos
+            Políticas y Términos de Servicio
           </h1>
           <p className="text-[14px] text-gray-400 mb-12">
-            Última actualización: octubre 2026
+            Documento oficial vigente · Temporada 2026
           </p>
 
           {/* Política de Privacidad */}

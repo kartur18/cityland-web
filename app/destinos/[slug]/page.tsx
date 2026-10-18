@@ -18,7 +18,11 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import FlagIcon from "@/components/icons/FlagIcon";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { SeoSiloFooter } from "@/components/SeoSiloFooter";
-import { obtenerEnlacesCruzadosSEO } from "@/lib/seo-arquitectura";
+import {
+  obtenerEnlacesCruzadosSEO,
+  optimizarMetaTitleSEO,
+  optimizarMetaDescriptionSEO,
+} from "@/lib/seo-arquitectura";
 
 export const revalidate = 86400;
 export const dynamicParams = true;
@@ -39,8 +43,12 @@ export async function generateMetadata({
   if (!dest) return { title: "Destino no encontrado" };
 
   const precioDesde = dest.migratorio ?? dest.turistico;
-  const title = `Paquete a ${dest.ciudad} (${dest.pais}) Desde $${precioDesde.toLocaleString("en-US")} USD — Todo Organizado desde Lima | Cityland Travel`;
-  const description = `${dest.descripcion} Paquetes a ${dest.ciudad} (${dest.duracion || "5 Días / 4 Noches"}) saliendo desde Lima Desde $${precioDesde.toLocaleString("en-US")} USD. Separa hoy con el 50% en Cityland Travel (RUC ${EMPRESA_RUC}).`;
+  const title = optimizarMetaTitleSEO(
+    `Paquete a ${dest.ciudad} (${dest.pais}) Desde $${precioDesde.toLocaleString("en-US")} | Cityland Travel`
+  );
+  const description = optimizarMetaDescriptionSEO(
+    `Paquetes a ${dest.ciudad} (${dest.duracion || "5 Días / 4 Noches"}) desde Lima desde $${precioDesde.toLocaleString("en-US")}. Separa con 50% en Cityland Travel (RUC ${EMPRESA_RUC}). ${dest.descripcion}`
+  );
   const canonicalUrl = `https://citylandtravel.com/destinos/${dest.slug}`;
 
   return {

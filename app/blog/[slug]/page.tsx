@@ -4,6 +4,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BLOG_POSTS, armarLinkWhatsApp } from "@/components/constantes";
 import { BLOG_POSTS_MASIVOS } from "@/lib/catalogo-blog-masivo";
+import {
+  optimizarMetaTitleSEO,
+  optimizarMetaDescriptionSEO,
+} from "@/lib/seo-arquitectura";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
@@ -26,17 +30,19 @@ export async function generateMetadata({
   if (!post) return { title: "Artículo no encontrado | Cityland Travel" };
 
   const canonical = `https://citylandtravel.com/blog/${post.slug}`;
+  const title = optimizarMetaTitleSEO(`${post.titulo} | Cityland Travel`);
+  const description = optimizarMetaDescriptionSEO(post.desc);
   return {
-    title: `${post.titulo} | Cityland Travel`,
-    description: post.desc,
+    title,
+    description,
     alternates: { canonical },
     openGraph: {
       type: "article",
       url: canonical,
-      title: post.titulo,
-      description: post.desc,
+      title,
+      description,
       images: [{ url: post.imagen, width: 1200, height: 630 }],
-      publishedTime: post.fecha,
+      publishedTime: "2026-03-15T12:00:00.000Z",
       authors: [post.autor],
     },
   };
@@ -48,15 +54,19 @@ export default async function BlogArticlePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = ALL_BLOG_POSTS.find((p) => p.slug === slug);
+  const idxActual = ALL_BLOG_POSTS.findIndex((p) => p.slug === slug);
+  const post = idxActual >= 0 ? ALL_BLOG_POSTS[idxActual] : undefined;
   if (!post) notFound();
 
   const imagenesUsadas = new Set<string>([post.imagen]);
-  const related = ALL_BLOG_POSTS.filter((p) => {
-    if (p.slug === slug || imagenesUsadas.has(p.imagen)) return false;
-    imagenesUsadas.add(p.imagen);
-    return true;
-  }).slice(0, 4);
+  const related: typeof ALL_BLOG_POSTS = [];
+  for (let i = 1; i < ALL_BLOG_POSTS.length && related.length < 4; i++) {
+    const cand = ALL_BLOG_POSTS[(idxActual + i) % ALL_BLOG_POSTS.length];
+    if (cand && cand.slug !== slug && !imagenesUsadas.has(cand.imagen)) {
+      imagenesUsadas.add(cand.imagen);
+      related.push(cand);
+    }
+  }
 
   const canonicalUrl = `https://citylandtravel.com/blog/${post.slug}`;
   const waHref = armarLinkWhatsApp(

@@ -12,6 +12,8 @@ import {
 import {
   construirSchemaLandingSEO,
   obtenerEnlacesCruzadosSEO,
+  optimizarMetaTitleSEO,
+  optimizarMetaDescriptionSEO,
 } from "@/lib/seo-arquitectura";
 
 export const revalidate = 86400;
@@ -31,17 +33,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!item) return {};
 
   const url = `https://citylandtravel.com/viajes/${item.slug}`;
+  const title = optimizarMetaTitleSEO(item.metaTitle);
+  const description = optimizarMetaDescriptionSEO(item.metaDescription);
 
   return {
-    title: item.metaTitle,
-    description: item.metaDescription,
+    title,
+    description,
     keywords: item.keywords,
     alternates: { canonical: url },
     openGraph: {
       type: "website",
       url,
-      title: item.metaTitle,
-      description: item.metaDescription,
+      title,
+      description,
       siteName: "Cityland Travel",
       locale: "es_PE",
       images: [
@@ -57,8 +61,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: item.metaTitle,
-      description: item.metaDescription,
+      title,
+      description,
       images: [
         item.imagenHero.startsWith("http")
           ? item.imagenHero
@@ -91,10 +95,15 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
     (v) => v.categoria === item.categoria
   );
   const idxCat = listaCat.findIndex((v) => v.slug === item.slug);
-  const relacionados = Array.from(
-    { length: Math.min(12, Math.max(0, listaCat.length - 1)) },
-    (_, i) => listaCat[(Math.max(0, idxCat) + i + 1) % listaCat.length]
-  ).filter((v) => v && v.slug !== item.slug);
+  const SALTOS_VIAJES = [1, 2, 3, 4, 6, 10, 16, 28, 45, 65, 90, 120];
+  const vistosViajes = new Set<string>([item.slug]);
+  const relacionados = SALTOS_VIAJES.map(
+    (salto) => listaCat[(Math.max(0, idxCat) + salto) % Math.max(1, listaCat.length)]
+  ).filter((v) => {
+    if (!v || vistosViajes.has(v.slug)) return false;
+    vistosViajes.add(v.slug);
+    return true;
+  });
 
   const precioGrupo = Math.max(25, Math.round(item.precioDesdeUSD * 0.94));
 

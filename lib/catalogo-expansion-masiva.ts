@@ -58,16 +58,26 @@ function construirObjetoLanding(params: {
   } = params;
 
   const tituloCompleto = `${tituloHero} ${tituloDestacado}`.trim();
-  const mitadBase = Math.max(25, Math.round(precioBase * 0.5));
-  const pCard1 = Math.max(45, Math.round((precioBase * 0.94) / 5) * 5);
+  const mitadBase = Math.max(20, Math.round(precioBase * 0.5));
+  const pCard1 = Math.max(
+    19,
+    Math.min(precioBase - 5, Math.round((precioBase * 0.92) / 5) * 5)
+  );
   const pCard2 = precioBase;
-  const pCard3 = Math.round((precioBase * 1.18) / 5) * 5;
-  const msgPrincipal = `¡Hola Cityland Travel! Vi en su web "${tituloCompleto}" (Desde $${precioBase.toLocaleString("en-US")} USD) y deseo recibir una cotización personalizada.`;
+  const pCard3 = Math.max(
+    precioBase + 10,
+    Math.round((precioBase * 1.18) / 5) * 5
+  );
+  const msgPrincipal = `¡Hola Cityland Travel! Vi en su web "${tituloCompleto}" (Desde $${precioBase.toLocaleString("en-US")}) y deseo recibir una cotización personalizada.`;
+
+  const esTramiteOSeguro =
+    cluster === "visas-seguros" ||
+    /(seguro-schengen|reserva-pnr|asesoria-visa)/i.test(slug);
 
   const fallbackRegion =
     cluster === "cruceros"
       ? "cruceros"
-      : cluster === "visas-seguros"
+      : esTramiteOSeguro
       ? "visasSeguros"
       : cluster === "empresas"
       ? "corporativo"
@@ -81,18 +91,39 @@ function construirObjetoLanding(params: {
   const faqs: { q: string; a: string }[] = [
     ...faqsExtra,
     {
-      q: `¿Cómo puedo separar "${tituloCompleto}" con el 50% de inicial?`,
-      a: `Puedes congelar tu tarifa promocional hoy mismo abonando el 50% ($${mitadBase.toLocaleString("en-US")} USD por pasajero) mediante transferencia bancaria BCP/BBVA/Interbank, tarjeta de crédito/débito o en nuestra oficina de Los Olivos (RUC 20614914239). El saldo restante se programa en cuotas antes de tu fecha de viaje.`,
+      q: esTramiteOSeguro
+        ? `¿Cómo inicio la gestión de "${tituloCompleto}" en Cityland Travel?`
+        : `¿Cómo puedo separar "${tituloCompleto}" con el 50% de inicial?`,
+      a: esTramiteOSeguro
+        ? `Puedes iniciar tu trámite o emisión hoy mismo desde $${precioBase.toLocaleString("en-US")} por WhatsApp (+51 944 103 890) o en nuestra oficina de Los Olivos (RUC 20614914239), recibiendo tu documentación oficial y comprobante electrónico SUNAT.`
+        : `Puedes congelar tu tarifa referencial abonando el 50% ($${mitadBase.toLocaleString("en-US")} por pasajero) mediante transferencia bancaria BCP/BBVA/Interbank, tarjeta o en nuestra sede de Los Olivos (RUC 20614914239), sujeto a disponibilidad de tu fecha exacta de viaje.`,
     },
     {
       q: esInternacional
-        ? `¿Qué documentos y respaldo migratorio incluye este programa a ${destinoOPais}?`
+        ? `¿Qué documentos y respaldo migratorio incluye este servicio para ${destinoOPais}?`
         : `¿Qué comprobantes y garantías recibo al reservar mi viaje a ${destinoOPais}?`,
       a: esInternacional
-        ? `Te entregamos código de reserva aérea PNR verificable en el sistema de la aerolínea, vouchers oficiales de hotel, seguro de asistencia internacional (cobertura Schengen 30.000€ para Europa) y asesoría personalizada. ${SALVEDAD_MIGRATORIA}`
-        : `Recibes de inmediato tu código PNR de aerolínea verificable, vouchers de alojamiento y excursiones, contrato de servicio turístico y Boleta o Factura Electrónica SUNAT emitida por Cityland Travel E.I.R.L. (RUC 20614914239).`,
+        ? `Te entregamos documentación verificable (código PNR de aerolínea, vouchers de alojamiento y/o póliza Schengen 30.000€ según la modalidad contratada) y orientación personalizada. ${SALVEDAD_MIGRATORIA}`
+        : `Recibes tu código de reserva verificable, vouchers de servicios contratados, contrato turístico y Boleta o Factura Electrónica SUNAT emitida por Cityland Travel E.I.R.L. (RUC 20614914239).`,
     },
   ];
+
+  const tituloCortoSEO =
+    tituloCompleto.length > 44
+      ? `${etiquetaVitrina} Desde $${precioBase.toLocaleString("en-US")}`
+      : `${tituloCompleto}`;
+  const metaTitle =
+    `${tituloCortoSEO} | Cityland Travel`.length > 60
+      ? `${etiquetaVitrina.slice(0, 36).trim()} Desde $${precioBase} | Cityland`
+      : `${tituloCortoSEO} | Cityland Travel`;
+
+  const descBase = `${etiquetaVitrina} (${destinoOPais}) desde $${precioBase.toLocaleString("en-US")}. ${
+    esTramiteOSeguro
+      ? "Atención formal RUC 20614914239 en Los Olivos y WhatsApp 944103890."
+      : `Separa con 50% ($${mitadBase.toLocaleString("en-US")}) en Cityland Travel · WhatsApp 944103890.`
+  }`;
+  const metaDescription =
+    descBase.length > 156 ? `${descBase.slice(0, 153).trim()}...` : descBase;
 
   return {
     slug,
@@ -101,8 +132,8 @@ function construirObjetoLanding(params: {
     titulo: tituloCompleto,
     destinoOPais,
     precioDesdeUSD: precioBase,
-    metaTitle: `${tituloCompleto} Desde $${precioBase.toLocaleString("en-US")} USD | Cityland Travel`,
-    metaDescription: `${descripcionHero} ${negritaHero} Separa con el 50% ($${mitadBase.toLocaleString("en-US")} USD) en Cityland Travel (RUC 20614914239 · WhatsApp +51 944 103 890).`,
+    metaTitle,
+    metaDescription,
     keywords,
     faqs,
     config: {
@@ -119,82 +150,108 @@ function construirObjetoLanding(params: {
       vitrina: {
         pais: destinoOPais,
         etiquetaIzq: destinoOPais,
-        etiquetaDer: precioBase >= 180 ? "Separa con 50%" : "Reserva Inmediata",
+        etiquetaDer: precioBase >= 180 ? "Separa con 50%" : "Emisión Inmediata",
         img: f0,
         alt: tituloCompleto,
         sobretitulo: duracionOServicio,
         titulo: etiquetaVitrina,
-        labelPrecio: "Tarifa Promocional por Pasajero",
+        labelPrecio: esTramiteOSeguro
+          ? "Tarifa Referencial del Servicio"
+          : "Tarifa Referencial por Pasajero",
         precio: `$${precioBase.toLocaleString("en-US")}`,
         moneda: "USD",
-        notaInferior: `Separa hoy con $${mitadBase.toLocaleString("en-US")} (50% de inicial)`,
+        notaInferior:
+          precioBase >= 180
+            ? `Separa con $${mitadBase.toLocaleString("en-US")} (50%) · Sujeto a fecha`
+            : "Emisión formal con Boleta o Factura SUNAT (RUC 20614914239)",
         waNumero: "51944103890",
         waMensaje: msgPrincipal,
       },
       seccionCatalogo: {
-        sobretitulo: `${clusterNombre} · Tarifas Oficiales en Dólares`,
-        titulo: `Modalidades y Paquetes Disponibles: ${destinoOPais}`,
+        sobretitulo: `${clusterNombre} · Cotización Personalizada`,
+        titulo: `Modalidades Disponibles: ${destinoOPais}`,
         filtros: [
           { id: "todos", label: "Todas las Opciones" },
-          { id: "ahorro", label: "Preventa / Económico" },
-          { id: "completo", label: "Programa Completo" },
-          { id: "vip", label: "Superior 4★-5★ / VIP" },
+          { id: "ahorro", label: esTramiteOSeguro ? "Gestión Base" : "Preventa / Base" },
+          { id: "completo", label: esTramiteOSeguro ? "Expediente Completo" : "Programa Clásico" },
+          { id: "vip", label: esTramiteOSeguro ? "Prioritario VIP" : "Superior / A Medida" },
         ],
       },
       items: [
         {
           id: `${slug}-1`,
-          titulo: `Opción Preventa Ahorro — ${etiquetaVitrina}`,
+          titulo: esTramiteOSeguro
+            ? `Modalidad Estándar — ${etiquetaVitrina}`
+            : `Opción Preventa / Base — ${etiquetaVitrina}`,
           pais: destinoOPais,
           filtro: "ahorro",
-          subtitulo: "Tarifa promocional anticipada · Separa con 50%",
+          subtitulo: esTramiteOSeguro
+            ? "Revisión de requisitos y emisión documentaria oficial"
+            : "Tarifa referencial anticipada · Separa con 50%",
           precioPrincipal: `$${pCard1.toLocaleString("en-US")}`,
-          precioSecundario: `$${Math.round(pCard1 * 0.5).toLocaleString("en-US")}`,
-          notaPrecio: "Tarifa promocional verificada · Impuestos incluidos",
-          tag: "Preventa 2026",
+          precioSecundario:
+            pCard1 >= 180 ? `$${Math.round(pCard1 * 0.5).toLocaleString("en-US")}` : undefined,
+          notaPrecio: esTramiteOSeguro
+            ? "Emisión formal RUC 20614914239 · Entrega digital y física"
+            : "Tarifa referencial según fecha · Cotiza cupos por WhatsApp",
+          tag: esTramiteOSeguro ? "Gestión Oficial" : "Preventa 2026",
           tagBg: "bg-emerald-600",
           img: f1,
-          alt: `Preventa ${tituloCompleto}`,
-          resumenCorto: `${duracionOServicio} · Reserva Verificable`,
+          alt: `Modalidad Base ${tituloCompleto}`,
+          resumenCorto: `${duracionOServicio} · Respaldo Formal`,
           checks: checksBase,
           waNumber: "51944103890",
-          waMensaje: `¡Hola Cityland Travel! Deseo cotizar la Opción Preventa Ahorro de "${tituloCompleto}" desde $${pCard1} USD.`,
+          waMensaje: `¡Hola Cityland Travel! Deseo cotizar la opción base de "${tituloCompleto}" (Desde $${pCard1}).`,
         },
         {
           id: `${slug}-2`,
-          titulo: `Programa Clásico Completo — ${etiquetaVitrina}`,
+          titulo: esTramiteOSeguro
+            ? `Asesoría y Gestión Completa — ${etiquetaVitrina}`
+            : `Programa Clásico Completo — ${etiquetaVitrina}`,
           pais: destinoOPais,
           filtro: "completo",
-          subtitulo: "La opción más elegida por viajeros peruanos",
+          subtitulo: esTramiteOSeguro
+            ? "Acompañamiento 1 a 1 + verificación integral de documentos"
+            : "La opción más solicitada por viajeros peruanos",
           precioPrincipal: `$${pCard2.toLocaleString("en-US")}`,
-          precioSecundario: `$${mitadBase.toLocaleString("en-US")}`,
-          notaPrecio: "Incluye vuelos, alojamiento, traslados y asistencia",
-          tag: "Más Vendido",
+          precioSecundario:
+            pCard2 >= 180 ? `$${mitadBase.toLocaleString("en-US")}` : undefined,
+          notaPrecio: esTramiteOSeguro
+            ? "Incluye validación de formatos, soporte directo y comprobante SUNAT"
+            : "Incluye servicios detallados del programa · Sujeto a fecha de viaje",
+          tag: "Más Solicitado",
           tagBg: "bg-red-600",
           img: f2,
           alt: `Programa Completo ${tituloCompleto}`,
-          resumenCorto: `${duracionOServicio} · Todo Organizado`,
+          resumenCorto: `${duracionOServicio} · Atención Especializada`,
           checks: checksPlus,
           waNumber: "51944103890",
-          waMensaje: `¡Hola Cityland Travel! Deseo cotizar el Programa Clásico Completo de "${tituloCompleto}" desde $${pCard2} USD.`,
+          waMensaje: `¡Hola Cityland Travel! Deseo cotizar la modalidad completa de "${tituloCompleto}" (Desde $${pCard2}).`,
         },
         {
           id: `${slug}-3`,
-          titulo: `Edición Superior VIP — ${etiquetaVitrina}`,
+          titulo: esTramiteOSeguro
+            ? `Atención Prioritaria / Urgente VIP — ${etiquetaVitrina}`
+            : `Edición Superior / A Medida — ${etiquetaVitrina}`,
           pais: destinoOPais,
           filtro: "vip",
-          subtitulo: "Hotelería superior céntrica + beneficios exclusivos",
+          subtitulo: esTramiteOSeguro
+            ? "Prioridad para viajes próximos + asesoría personalizada en sede o videollamada"
+            : "Categoría superior y fechas a elección del pasajero",
           precioPrincipal: `$${pCard3.toLocaleString("en-US")}`,
-          precioSecundario: `$${Math.round(pCard3 * 0.5).toLocaleString("en-US")}`,
-          notaPrecio: "Categoría 4★ Superior / 5★ y atención preferencial",
-          tag: "Categoría Superior",
+          precioSecundario:
+            pCard3 >= 180 ? `$${Math.round(pCard3 * 0.5).toLocaleString("en-US")}` : undefined,
+          notaPrecio: esTramiteOSeguro
+            ? "Atención preferencial inmediata con especialista consular/migratorio"
+            : "Cotización personalizada según temporada y número de viajeros",
+          tag: esTramiteOSeguro ? "Prioritario VIP" : "Superior / VIP",
           tagBg: "bg-[#0a1628]",
           img: f3,
           alt: `Edición Superior ${tituloCompleto}`,
-          resumenCorto: `${duracionOServicio} · Experiencia Premium`,
+          resumenCorto: `${duracionOServicio} · Servicio Preferencial`,
           checks: checksVip,
           waNumber: "51944103890",
-          waMensaje: `¡Hola Cityland Travel! Deseo cotizar la Edición Superior VIP de "${tituloCompleto}" desde $${pCard3} USD.`,
+          waMensaje: `¡Hola Cityland Travel! Deseo cotizar la opción prioritaria/superior de "${tituloCompleto}" (Desde $${pCard3}).`,
         },
       ],
       pilares: [
@@ -823,11 +880,37 @@ function generarIndiceExpansion(): ResumenLandingExpansion[] {
 
   // 2. Bloque 2: 80 Circuitos/Destinos × 8 Duraciones × 3 Enfoques = 1,920
   for (const [nombreCircuito, slugCircuito, pais, cluster, clusterNombre, precioBase, esInt] of CIRCUITOS_Y_DESTINOS_80) {
+    const esLejanoIntercontinental = /(madrid|barcelona|roma|paris|europa|turquia|estambul|tokio|japon|bangkok|tailandia|egipto|el-cairo|dubai|tierra-santa|londres|suiza|alemania|italia|francia|grecia|china)/i.test(
+      slugCircuito
+    );
+    const esEscapadaCortaNacional = /(paracas|ica|huacachina)/i.test(slugCircuito);
+
     for (const [textoDuracion, slugDuracion, factorDur] of DURACIONES_8) {
+      const esCortoEnLejano =
+        esLejanoIntercontinental &&
+        (slugDuracion === "4-dias-3-noches" || slugDuracion === "5-dias-4-noches");
+      const esLargoEnEscapada =
+        esEscapadaCortaNacional &&
+        (slugDuracion === "12-dias-11-noches" || slugDuracion === "15-dias-14-noches");
+
       for (const [prefijoEnf, nombreEnf, factorEnf] of ENFOQUES_DURACION) {
         const slug = `${prefijoEnf}-${slugCircuito}-${slugDuracion}`;
         const precio = Math.max(149, Math.round((precioBase * factorDur * factorEnf) / 10) * 10);
-        const titulo = `${nombreCircuito} (${textoDuracion}) — ${nombreEnf}`;
+
+        const etiquetaDuracionReal = esCortoEnLejano
+          ? `Extensión en Destino ${textoDuracion} (o Circuito 10-15 Días desde Lima)`
+          : esLargoEnEscapada
+          ? `Circuito Sur Peruano Completo (${textoDuracion})`
+          : textoDuracion;
+
+        const nombreCircuitoReal = esLargoEnEscapada
+          ? `${nombreCircuito}, Nazca, Arequipa y Cusco`
+          : nombreCircuito;
+
+        const titulo = esCortoEnLejano
+          ? `${nombreCircuito}: Módulo ${textoDuracion} y Paquetes desde Lima — ${nombreEnf}`
+          : `${nombreCircuitoReal} (${textoDuracion}) — ${nombreEnf}`;
+
         lista.push({
           slug,
           cluster,
@@ -840,28 +923,34 @@ function generarIndiceExpansion(): ResumenLandingExpansion[] {
               slug,
               cluster,
               clusterNombre,
-              badge: `${textoDuracion} · ${nombreEnf}`,
+              badge: `${etiquetaDuracionReal} · ${nombreEnf}`,
               banderas: esInt ? ["Perú", pais] : ["Perú"],
-              tituloHero: `${nombreCircuito} (${textoDuracion}):`,
+              tituloHero: esCortoEnLejano
+                ? `${nombreCircuito} (Módulo ${textoDuracion} / Ruta Completa):`
+                : `${nombreCircuitoReal} (${textoDuracion}):`,
               tituloDestacado: `${nombreEnf} Desde $${precio}`,
-              descripcionHero: `Programa organizado de ${textoDuracion} para disfrutar de ${nombreCircuito} con boletos aéreos, alojamiento verificado, traslados y excursiones principales.`,
-              negritaHero: `Congela tu tarifa promocional de ${textoDuracion} con el 50% de inicial en Cityland Travel.`,
+              descripcionHero: esCortoEnLejano
+                ? `Módulo de estadía y visitas en ${nombreCircuito} (${textoDuracion}) ideal para combinar con tu viaje internacional, o cotiza el paquete aéreo completo de 10 a 15 días saliendo desde Lima.`
+                : `Programa organizado de ${textoDuracion} para recorrer ${nombreCircuitoReal} con transporte, alojamiento seleccionado, traslados y excursiones principales.`,
+              negritaHero: `Cotiza tu fecha exacta por WhatsApp y separa con el 50% de inicial en Cityland Travel.`,
               destinoOPais: pais,
               precioBase: precio,
-              etiquetaVitrina: `${nombreCircuito} · ${textoDuracion}`,
-              duracionOServicio: `${textoDuracion} · ${nombreEnf}`,
+              etiquetaVitrina: `${nombreCircuitoReal} · ${textoDuracion}`,
+              duracionOServicio: `${etiquetaDuracionReal}`,
               checksBase: [
-                `Programa completo de ${textoDuracion} con vuelos desde Lima`,
-                `Alojamiento garantizado en ${pais} según itinerario`,
+                esCortoEnLejano
+                  ? `Módulo de ${textoDuracion} en destino o programa aéreo de 10 a 15 días desde Lima`
+                  : `Programa organizado de ${textoDuracion} con salidas desde Lima`,
+                `Alojamiento seleccionado en ${pais} según itinerario`,
                 "Traslados de llegada y salida + asistencia permanente",
               ],
               checksPlus: [
-                `Visitas y excursiones destacadas en ${nombreCircuito}`,
+                `Visitas y excursiones destacadas en ${nombreCircuitoReal}`,
                 "Desayunos diarios o régimen Todo Incluido según destino",
-                "Código de reserva PNR verificable y factura/boleta SUNAT",
+                "Reservas verificables y comprobante electrónico SUNAT",
               ],
               checksVip: [
-                "Hoteles de categoría superior en ubicación privilegiada",
+                "Hoteles de categoría superior en ubicación céntrica",
                 "Guías profesionales en español durante las visitas",
                 "Soporte directo 24/7 antes y durante todo tu viaje",
               ],
@@ -873,12 +962,16 @@ function generarIndiceExpansion(): ResumenLandingExpansion[] {
               ],
               faqsExtra: [
                 {
-                  q: `¿Cómo se distribuye el itinerario de ${textoDuracion} en ${nombreCircuito}?`,
-                  a: `El programa de ${textoDuracion} está diseñado para aprovechar cada día en ${nombreCircuito}, coordinando tus vuelos de llegada, traslados al hotel, días de visitas guiadas y retorno seguro a Lima.`,
+                  q: esCortoEnLejano
+                    ? `¿Cómo funciona la opción de ${textoDuracion} en ${nombreCircuito} si viajo desde Perú?`
+                    : `¿Cómo se distribuye el itinerario de ${textoDuracion} en ${nombreCircuitoReal}?`,
+                  a: esCortoEnLejano
+                    ? `Debido a la distancia aérea desde Lima hacia ${pais}, el módulo de ${textoDuracion} corresponde a la estadía y visitas en ${nombreCircuito} para combinar con otras ciudades. Si deseas el paquete con vuelos internacionales desde Lima, nuestras asesoras te cotizan el programa completo de 10 a 15 días por WhatsApp.`
+                    : `El programa de ${textoDuracion} está estructurado para aprovechar cada etapa en ${nombreCircuitoReal}, coordinando tus traslados, noches de hotel, visitas guiadas y retorno seguro.`,
                 },
                 {
-                  q: `¿Cuál es el precio de "${nombreEnf}" por ${textoDuracion} en ${nombreCircuito}?`,
-                  a: `La tarifa promocional empieza Desde $${precio} por pasajero. Puedes separar tu cupo con el 50% de inicial y pagar la diferencia en cuotas antes de viajar.`,
+                  q: `¿Cuál es la tarifa referencial de "${nombreEnf}" en ${nombreCircuitoReal}?`,
+                  a: `La tarifa referencial parte desde $${precio} por pasajero según modalidad y temporada. Escríbenos por WhatsApp (+51 944 103 890) con tu fecha de viaje para enviarte la cotización exacta.`,
                 },
               ],
             }),

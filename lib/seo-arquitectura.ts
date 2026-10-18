@@ -329,6 +329,50 @@ export function obtenerEnlacesCruzadosSEO(
 }
 
 /**
+ * Garantiza que cualquier título SEO (<title>) no supere los 60 caracteres
+ * ni duplique la marca Cityland Travel.
+ */
+export function optimizarMetaTitleSEO(tituloRaw: string): string {
+  const sinDobleUsd = tituloRaw
+    .replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (sinDobleUsd.length <= 60) return sinDobleUsd;
+
+  // Quitar sufijo largo primero y dejar marca corta
+  const baseSinMarca = sinDobleUsd
+    .replace(/\s*[|—-]\s*Cityland Travel(?:\s*Perú|\s*Lima)?.*$/i, "")
+    .replace(/\s*\([^)]{14,}\)/g, "")
+    .trim();
+
+  const conMarcaCompleta = `${baseSinMarca} | Cityland Travel`;
+  if (conMarcaCompleta.length <= 60) return conMarcaCompleta;
+
+  const conMarcaCorta = `${baseSinMarca} | Cityland`;
+  if (conMarcaCorta.length <= 60) return conMarcaCorta;
+
+  return `${baseSinMarca.slice(0, 47).trim()} | Cityland`;
+}
+
+/**
+ * Garantiza que cualquier metadescripción esté entre 90 y 156 caracteres
+ * para evitar truncamiento en los resultados de búsqueda de Google.
+ */
+export function optimizarMetaDescriptionSEO(descRaw: string): string {
+  const limpia = descRaw
+    .replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (limpia.length <= 156) return limpia;
+
+  const recorte = limpia.slice(0, 153);
+  const ultimoEspacio = recorte.lastIndexOf(" ");
+  return `${(ultimoEspacio > 110 ? recorte.slice(0, ultimoEspacio) : recorte).trim()}...`;
+}
+
+/**
  * Construye el grafo JSON-LD Schema.org completo para cualquier Landing Comercial / Turística.
  */
 export function construirSchemaLandingSEO(params: {
@@ -343,6 +387,9 @@ export function construirSchemaLandingSEO(params: {
   faqs?: { q: string; a: string }[];
 }) {
   const highPrice = Math.max(params.precioDesdeUSD + 150, Math.round(params.precioDesdeUSD * 1.45));
+  const esServicioDocumentario = /(visa|seguro|requisito|pasaporte|pnr|carta-de-invitacion)/i.test(
+    params.url
+  );
 
   const graph: Record<string, unknown>[] = [
     {
@@ -354,47 +401,68 @@ export function construirSchemaLandingSEO(params: {
         item: m.url.startsWith("http") ? m.url : `${URL_BASE_SEO}${m.url}`,
       })),
     },
-    {
-      "@type": ["Product", "TouristTrip"],
-      name: params.titulo,
-      description: params.descripcion,
-      image: [params.imagenUrl],
-      touristType: ["Viajeros desde Perú", "Familias", "Parejas", "Viajeros de Negocios"],
-      brand: {
-        "@type": "Brand",
-        name: "Cityland Travel",
-      },
-      provider: {
-        "@id": `${URL_BASE_SEO}/#organization`,
-      },
-      offers: {
-        "@type": "AggregateOffer",
-        priceCurrency: "USD",
-        lowPrice: String(params.precioDesdeUSD),
-        highPrice: String(highPrice),
-        offerCount: String(params.cantidadOfertas ?? 6),
-        priceValidUntil: "2027-12-31",
-        availability: "https://schema.org/InStock",
-        url: params.url,
-        seller: {
-          "@type": "TravelAgency",
-          name: "Cityland Travel E.I.R.L.",
-          taxID: "20614914239",
-          telephone: "+51944103890",
+    esServicioDocumentario
+      ? {
+          "@type": "Service",
+          name: params.titulo,
+          description: optimizarMetaDescriptionSEO(params.descripcion),
+          image: [params.imagenUrl],
+          provider: {
+            "@id": `${URL_BASE_SEO}/#organization`,
+          },
+          areaServed: {
+            "@type": "Country",
+            name: "Perú",
+          },
+          offers: {
+            "@type": "Offer",
+            priceCurrency: "USD",
+            price: String(params.precioDesdeUSD),
+            availability: "https://schema.org/InStock",
+            url: params.url,
+          },
+        }
+      : {
+          "@type": ["Product", "TouristTrip"],
+          name: params.titulo,
+          description: optimizarMetaDescriptionSEO(params.descripcion),
+          image: [params.imagenUrl],
+          touristType: ["Viajeros desde Perú", "Familias", "Parejas", "Viajeros de Negocios"],
+          brand: {
+            "@type": "Brand",
+            name: "Cityland Travel",
+          },
+          provider: {
+            "@id": `${URL_BASE_SEO}/#organization`,
+          },
+          offers: {
+            "@type": "AggregateOffer",
+            priceCurrency: "USD",
+            lowPrice: String(params.precioDesdeUSD),
+            highPrice: String(highPrice),
+            offerCount: String(params.cantidadOfertas ?? 3),
+            priceValidUntil: "2026-12-31",
+            availability: "https://schema.org/InStock",
+            url: params.url,
+            seller: {
+              "@type": "TravelAgency",
+              name: "Cityland Travel E.I.R.L.",
+              taxID: "20614914239",
+              telephone: "+51944103890",
+            },
+          },
         },
-      },
-    },
   ];
 
   if (params.faqs && params.faqs.length > 0) {
     graph.push({
       "@type": "FAQPage",
-      mainEntity: params.faqs.map((f) => ({
+      mainEntity: params.faqs.slice(0, 4).map((f) => ({
         "@type": "Question",
-        name: f.q,
+        name: f.q.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1"),
         acceptedAnswer: {
           "@type": "Answer",
-          text: f.a,
+          text: f.a.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1"),
         },
       })),
     });

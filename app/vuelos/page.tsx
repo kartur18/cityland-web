@@ -1,4 +1,4 @@
-import DirectorioMaestroPage from "../directorio/page";
+import { VistaCatalogoHub } from "../directorio/page";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,4 +10,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default DirectorioMaestroPage;
+export default function VuelosIndexPage() {
+  return <VistaCatalogoHub modoHub="vuelos" />;
+}

@@ -8,6 +8,8 @@ import { DESTINOS_EUROPA, DESTINOS_CARIBE } from "@/components/constantes";
 import {
   construirSchemaLandingSEO,
   obtenerEnlacesCruzadosSEO,
+  optimizarMetaTitleSEO,
+  optimizarMetaDescriptionSEO,
 } from "@/lib/seo-arquitectura";
 
 export const revalidate = 86400;
@@ -29,10 +31,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!ruta) return {};
 
   const url = `https://citylandtravel.com/vuelos/${ruta.slug}`;
+  const title = optimizarMetaTitleSEO(ruta.metaTitle);
+  const description = optimizarMetaDescriptionSEO(ruta.metaDescription);
 
   return {
-    title: ruta.metaTitle,
-    description: ruta.metaDescription,
+    title,
+    description,
     keywords: ruta.keywords,
     alternates: {
       canonical: url,
@@ -40,8 +44,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       type: "website",
       url,
-      title: ruta.metaTitle,
-      description: ruta.metaDescription,
+      title,
+      description,
       siteName: "Cityland Travel",
       locale: "es_PE",
       images: [
@@ -69,10 +73,16 @@ export default async function RutaVueloPage({ params }: Props) {
   }
 
   const idxActual = RUTAS_VUELOS_SEO.findIndex((r) => r.slug === ruta.slug);
-  const rutasRelacionadas = Array.from({ length: 12 }, (_, i) => {
-    const idx = (Math.max(0, idxActual) + i + 1) % RUTAS_VUELOS_SEO.length;
+  const SALTOS_VUELOS = [1, 2, 3, 4, 6, 12, 24, 48, 96, 160, 240, 320];
+  const vistosVuelos = new Set<string>([ruta.slug]);
+  const rutasRelacionadas = SALTOS_VUELOS.map((salto) => {
+    const idx = (Math.max(0, idxActual) + salto) % RUTAS_VUELOS_SEO.length;
     return RUTAS_VUELOS_SEO[idx];
-  }).filter((r) => r && r.slug !== ruta.slug);
+  }).filter((r) => {
+    if (!r || vistosVuelos.has(r.slug)) return false;
+    vistosVuelos.add(r.slug);
+    return true;
+  });
 
   const destinosRelacionados = Array.from({ length: 6 }, (_, i) => {
     const idx = (Math.max(0, idxActual) + i) % TODOS_DESTINOS.length;
