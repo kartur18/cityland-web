@@ -33,7 +33,7 @@ export default function Migratorio() {
             </h2>
 
             <p className="text-sm sm:text-base text-slate-600 mb-6 max-w-xl">
-              Carpeta completa para tu ingreso por Madrid-Barajas: Vuelo confirmado IATA, Seguro Schengen de 30.000€, Reserva de Hotel y Asesoría 1 a 1.
+              Carpeta completa para tu ingreso por Madrid-Barajas: Vuelo confirmado, Seguro Schengen de 30.000€, Reserva de Hotel y Asesoría 1 a 1.
             </p>
 
             <div className="flex flex-wrap items-center gap-3">

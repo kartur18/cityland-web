@@ -414,7 +414,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
         { titulo: "Sin Visa Schengen", sub: "Ingreso con pasaporte peruano vigente" },
         { titulo: "Santuario de Fátima", sub: "Circuitos culturales y religiosos" },
         { titulo: "Separa con 50%", sub: "Congela tu circuito en dólares" },
-        { titulo: "RUC 20614914239", sub: "Agencia acreditada en MINCETUR" },
+        { titulo: "RUC 20614914239", sub: "Agencia formal con sede en Los Olivos" },
       ],
       bannerFinal: {
         sobretitulo: "Descubre Portugal y España",
@@ -1284,7 +1284,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
         { titulo: "Malpensa y Linate", sub: "Conexiones rápidas todos los días" },
         { titulo: "Equipaje 23 kg", sub: "Opciones de 1 y 2 maletas en bodega" },
         { titulo: "Pago en Lima", sub: "Ideal para traer a tus familiares" },
-        { titulo: "RUC 20614914239", sub: "Agencia acreditada en MINCETUR" },
+        { titulo: "RUC 20614914239", sub: "Agencia formal con sede en Los Olivos" },
       ],
       bannerFinal: {
         sobretitulo: "Comunidad Peruana en Milán",
@@ -1574,7 +1574,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
         { titulo: "1h 20m Directo", sub: "Múltiples vuelos todos los días" },
         { titulo: "Laguna Azul", sub: "Paseo en bote y almuerzo amazónico" },
         { titulo: "Separa con 50%", sub: "Congela tu paquete y paga en cuotas" },
-        { titulo: "RUC 20614914239", sub: "Agencia formal registrada en MINCETUR" },
+        { titulo: "RUC 20614914239", sub: "Agencia formal con sede en Los Olivos" },
       ],
       bannerFinal: {
         sobretitulo: "Escapada a la Selva Peruana",
@@ -1719,7 +1719,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
         { titulo: "1h 50m Directo", sub: "Vuelos diarios sin escalas desde Lima" },
         { titulo: "Lodges en la Selva", sub: "Con alimentación y excursiones fluviales" },
         { titulo: "Separa con 50%", sub: "Congela tu paquete hoy mismo" },
-        { titulo: "RUC 20614914239", sub: "Agencia formal registrada en MINCETUR" },
+        { titulo: "RUC 20614914239", sub: "Agencia formal con sede en Los Olivos" },
       ],
       bannerFinal: {
         sobretitulo: "Maravilla Natural del Mundo",
@@ -1864,7 +1864,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
         { titulo: "1h 40m Directo", sub: "Vuelos diarios al aeropuerto de Juliaca" },
         { titulo: "Uros y Taquile", sub: "Lancha rápida y almuerzo frente al lago" },
         { titulo: "Conexión a Cusco", sub: "Opción de Ruta del Sol Puno – Cusco" },
-        { titulo: "RUC 20614914239", sub: "Agencia formal registrada en MINCETUR" },
+        { titulo: "RUC 20614914239", sub: "Agencia formal con sede en Los Olivos" },
       ],
       bannerFinal: {
         sobretitulo: "Turismo en el Altiplano Peruano",

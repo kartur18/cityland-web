@@ -10,7 +10,7 @@ export interface ViajeEspecializadoSEO {
   precioDesdeUSD: number;
   etiquetaPrecio: string;
   imagenHero: string;
-  galeria: [string, string, string];
+  galeria: [string, string, string, string];
   metaTitle: string;
   metaDescription: string;
   keywords: string[];
@@ -21,9 +21,9 @@ export interface ViajeEspecializadoSEO {
   waMensaje: string;
 }
 
-function obtenerFotosPorTexto(texto: string): [string, string, string, string] {
-  const [f0, f1, f2, f3] = obtenerGaleriaPorTexto(texto);
-  return [f0, f1, f2, f3];
+function obtenerFotosPorTexto(texto: string): [string, string, string, string, string] {
+  const [f0, f1, f2, f3, f4] = obtenerGaleriaPorTexto(texto);
+  return [f0, f1, f2, f3, f4];
 }
 
 const CIUDADES_PRIMER_VIAJE: [string, string, string, number][] = [
@@ -217,7 +217,7 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
       precioDesdeUSD: precio,
       etiquetaPrecio: "Paquete con Carpeta Completa Desde",
       imagenHero: fotos[0],
-      galeria: [fotos[1], fotos[2], fotos[3]],
+      galeria: [fotos[1], fotos[2], fotos[3], fotos[4]],
       metaTitle: `Primer Viaje a ${ciudad}, ${pais} Desde $${precio} USD (Carpeta Completa) | Cityland Travel`,
       metaDescription: `Viaja por primera vez de Lima a ${ciudad} (${pais}) con todo en regla Desde $${precio} USD (impuestos incluidos). Incluye boleto aéreo, reserva de hotel verificada, Seguro Schengen 30.000€ y asesoría paso a paso en Lima (RUC 20614914239).`,
       keywords: [
@@ -267,7 +267,7 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
       precioDesdeUSD: precio,
       etiquetaPrecio: "Vuelo con Equipaje Completo Desde",
       imagenHero: fotos[0],
-      galeria: [fotos[1], fotos[2], fotos[3]],
+      galeria: [fotos[1], fotos[2], fotos[3], fotos[4]],
       metaTitle: `Vuelos ${rutaNombre} con 2 Maletas de 23 kg Desde $${precio} USD | Cityland Travel`,
       metaDescription: `Compra tu pasaje aéreo de ${rutaNombre} con 2 maletas de 23 kg en bodega + equipaje de mano 10 kg Desde $${precio} USD (impuestos incluidos). Emitimos en ${aerolineas} con código PNR inmediato.`,
       keywords: [
@@ -316,7 +316,7 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
       precioDesdeUSD: precio,
       etiquetaPrecio: "Tarifa Aérea con Impuestos Desde",
       imagenHero: fotos[0],
-      galeria: [fotos[1], fotos[2], fotos[3]],
+      galeria: [fotos[1], fotos[2], fotos[3], fotos[4]],
       metaTitle: `Vuelos ${aerolinea} ${rutaNombre} Desde $${precio} USD (Impuestos Incluidos) | Cityland Travel`,
       metaDescription: `Reserva vuelos en ${aerolinea} para la ruta ${rutaNombre} Desde $${precio} USD con impuestos incluidos. Conoce la franquicia de equipaje, horarios y tarifas con maleta de 23 kg en Cityland Travel (RUC 20614914239).`,
       keywords: [
@@ -365,7 +365,7 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
       precioDesdeUSD: precio,
       etiquetaPrecio: "Tarifa Referencial Desde",
       imagenHero: fotos[0],
-      galeria: [fotos[1], fotos[2], fotos[3]],
+      galeria: [fotos[1], fotos[2], fotos[3], fotos[4]],
       metaTitle: `${titulo} Desde $${precio} USD | Cityland Travel Perú`,
       metaDescription: `${desc} Cotiza Desde $${precio} USD con impuestos incluidos en Cityland Travel E.I.R.L. (RUC 20614914239), oficina en Los Olivos, Lima.`,
       keywords: [
@@ -406,14 +406,14 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
     const esGuiaEspecial = slugReq === "requisitos-viajar-con-menores-de-edad-peru" || slugReq === "requisitos-carta-de-invitacion-espana-peru";
     const tituloFinal =
       slugReq === "requisitos-viajar-con-menores-de-edad-peru"
-        ? "Requisitos para Viajar con Menores de Edad desde Perú (Vuelos Nacionales e Internacionales)"
+        ? "Viajes con Menores de Edad desde Perú: Requisitos y Boletos"
         : slugReq === "requisitos-carta-de-invitacion-espana-peru"
-        ? "Requisitos de Carta de Invitación Policial para Viajar a España desde Perú"
-        : `Requisitos para Viajar a ${pais} desde Perú (Guía 2026 + Vuelos + Paquetes)`;
+        ? "Viajar a España con Carta de Invitación: Requisitos y Vuelos"
+        : `Requisitos y Paquetes para Viajar a ${pais} desde Perú`;
 
     const subtituloFinal = esGuiaEspecial
-      ? `Guía práctica para pasajeros peruanos (${ciudadesRef}) con emisión de boletos + asesoría documental incluida`
-      : `Todo lo que solicita migraciones en ${ciudadesRef} para ciudadanos peruanos + cotización de vuelos y paquetes Desde $${precio} USD`;
+      ? `Guía práctica para pasajeros peruanos (${ciudadesRef}) con emisión de boletos y asesoría documental incluida`
+      : `Todo lo que solicita migraciones en ${ciudadesRef} para ciudadanos peruanos + cotización de vuelos y paquetes desde $${precio}`;
 
     lista.push({
       slug: slugReq,
@@ -425,7 +425,7 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
       precioDesdeUSD: precio,
       etiquetaPrecio: "Vuelos y Paquetes con Asesoría Desde",
       imagenHero: fotos[0],
-      galeria: [fotos[1], fotos[2], fotos[3]],
+      galeria: [fotos[1], fotos[2], fotos[3], fotos[4]],
       metaTitle: `${tituloFinal} | Cityland Travel`,
       metaDescription: `Conoce los requisitos vigentes para ${pais} (${ciudadesRef}): documentos, pasaporte, seguro y solvencia. Cotiza tu vuelo o paquete Desde $${precio} USD con asesoría incluida en Cityland Travel.`,
       keywords: [

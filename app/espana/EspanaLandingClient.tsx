@@ -82,7 +82,7 @@ export default function EspanaLandingClient() {
               </h1>
 
               <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-7 max-w-xl">
-                Boleto aéreo confirmado IATA + Seguro Schengen de 30.000€ + Reserva de Hotel y Asesoría Barajas.{" "}
+                Boleto aéreo confirmado + Seguro Schengen de 30.000€ + Reserva de Hotel y Asesoría Barajas.{" "}
                 <strong className="text-[#0a1628] font-bold">
                   Separa hoy tu cupo con el 50% de inicial
                 </strong>
@@ -91,7 +91,7 @@ export default function EspanaLandingClient() {
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-7">
                 <a
-                  href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo reservar el Paquete Migratorio a España (Desde $890 USD) separando con el 50% de inicial.")}`}
+                  href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo reservar el Paquete Migratorio a España (Desde $890) separando con el 50% de inicial.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-wa-pulse inline-flex items-center justify-center gap-2.5 bg-red-600 hover:bg-red-700 text-white px-7 py-4 rounded-2xl text-sm sm:text-base font-bold shadow-md cursor-pointer"
@@ -147,7 +147,7 @@ export default function EspanaLandingClient() {
 
                   <div className="absolute bottom-3.5 left-4 right-4 z-10 text-white">
                     <span className="text-[11px] font-bold text-amber-300 uppercase tracking-wider block">
-                      Vuelo IATA + Seguro 30.000€ + Hotel + Asesoría
+                      Vuelo Confirmado + Seguro 30.000€ + Hotel + Asesoría
                     </span>
                     <h2 className="text-xl font-extrabold leading-tight">
                       Tu llegada a España con todo resuelto
@@ -155,7 +155,7 @@ export default function EspanaLandingClient() {
                   </div>
                 </div>
 
-                {/* Pie Blanco Limpio con "Desde $890 USD" */}
+                {/* Pie Blanco Limpio con "Desde $890" */}
                 <div className="p-5 flex items-center justify-between gap-4 bg-white">
                   <div>
                     <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1">
@@ -173,7 +173,7 @@ export default function EspanaLandingClient() {
                   </div>
 
                   <a
-                    href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo verificar disponibilidad de fechas para viajar a España (Desde $890 USD).")}`}
+                    href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo verificar disponibilidad de fechas para viajar a España (Desde $890).")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0"
@@ -201,7 +201,7 @@ export default function EspanaLandingClient() {
               </h2>
             </div>
             <p className="text-xs sm:text-sm font-semibold text-slate-500">
-              Todas las tarifas están expresadas en dólares americanos (USD)
+              Todas las tarifas están expresadas en dólares americanos
             </p>
           </div>
 
@@ -242,7 +242,7 @@ export default function EspanaLandingClient() {
 
                 <div className="p-5 flex flex-col justify-between flex-1 gap-4">
                   <div className="flex items-center justify-between text-[11px] font-semibold text-slate-500 border-b border-slate-100 pb-3">
-                    <span>✓ Vuelo IATA</span>
+                    <span>✓ Vuelo I/V</span>
                     <span>✓ 30.000€</span>
                     <span>✓ Hotel + Guía</span>
                   </div>
@@ -289,7 +289,7 @@ export default function EspanaLandingClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pb-12 mb-12 border-b border-slate-200/80">
             {[
-              { titulo: "Boleto Aéreo IATA", sub: "Iberia, Air Europa o LATAM con equipaje" },
+              { titulo: "Boleto Aéreo Confirmado", sub: "Iberia, Air Europa o LATAM con equipaje" },
               { titulo: "Seguro 30.000€", sub: "Póliza médica oficial Espacio Schengen" },
               { titulo: "Reserva de Hotel", sub: "Sustento verificable para migraciones" },
               { titulo: "Asesoría Barajas 1 a 1", sub: "Preparación completa antes de tu vuelo" },

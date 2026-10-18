@@ -96,6 +96,40 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
     (_, i) => listaCat[(Math.max(0, idxCat) + i + 1) % listaCat.length]
   ).filter((v) => v && v.slug !== item.slug);
 
+  const precioGrupo = Math.max(25, Math.round(item.precioDesdeUSD * 0.94));
+
+  const card1Titulo =
+    item.categoria === "primer-viaje"
+      ? `Carpeta Migratoria Completa — ${item.destinoOPais}`
+      : item.categoria === "dos-maletas"
+      ? `Tarifa Promo 2 Maletas de 23 kg — ${item.destinoOPais}`
+      : item.categoria === "aerolinea"
+      ? `${item.titulo} — Tarifa Económica`
+      : item.categoria === "requisitos"
+      ? `Paquete con Carpeta Documental — ${item.destinoOPais}`
+      : item.titulo;
+
+  const card2Titulo =
+    item.categoria === "primer-viaje"
+      ? `Paquete Turístico Superior 4★ — ${item.destinoOPais}`
+      : item.categoria === "dos-maletas"
+      ? `Tarifa Flexible + 2 Maletas 23 kg — ${item.destinoOPais}`
+      : item.categoria === "aerolinea"
+      ? `${item.destinoOPais} — Tarifa Flexible + 2 Maletas`
+      : item.categoria === "requisitos"
+      ? `Programa Turístico Todo Organizado — ${item.destinoOPais}`
+      : `${item.destinoOPais} — Programa Superior VIP`;
+
+  const card2Subtitulo =
+    item.categoria === "dos-maletas" || item.categoria === "aerolinea"
+      ? "Incluye 2 maletas de 23 kg + Selección de asiento + Cambios flexibles"
+      : "Hotelería seleccionada + Traslados + Cobertura total y asesoría 1 a 1";
+
+  const card3Titulo =
+    item.categoria === "dos-maletas" || item.categoria === "aerolinea"
+      ? `Tarifa Dúo, Familiar o Grupal — ${item.destinoOPais}`
+      : `Tarifa Especial Parejas, Familias y Grupos — ${item.destinoOPais}`;
+
   const config: ConfiguracionLandingAerolinea = {
     badgeHero: item.badge,
     banderasHero: ["Perú", item.destinoOPais],
@@ -118,7 +152,7 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
       titulo: item.titulo,
       labelPrecio: "Tarifa Promocional Vigente",
       precio: `$${item.precioDesdeUSD.toLocaleString("en-US")}`,
-      moneda: "USD",
+      moneda: "",
       notaInferior:
         item.precioDesdeUSD >= 200
           ? `Separa hoy con $${mitadPrecio.toLocaleString("en-US")} (50% inicial)`
@@ -132,13 +166,13 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
       filtros: [
         { id: "todos", label: "Todas las Opciones" },
         { id: "promo", label: "Tarifa Promocional" },
-        { id: "completo", label: "Programa Completo / VIP" },
+        { id: "completo", label: "Programa Superior / Flexible" },
       ],
     },
     items: [
       {
         id: `${item.slug}-base`,
-        titulo: item.titulo,
+        titulo: card1Titulo,
         pais: item.destinoOPais,
         filtro: "promo",
         subtitulo: item.etiquetaPrecio,
@@ -151,56 +185,57 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
         tag: "Más Solicitado",
         tagBg: "bg-red-600",
         img: item.galeria[0] || item.imagenHero,
-        alt: `${item.titulo} — Opción Promocional`,
-        resumenCorto: "Confirmación inmediata con código oficial",
+        alt: `${card1Titulo} — Opción Promocional`,
+        resumenCorto: "Confirmación inmediata con código PNR oficial",
         checks: [inc0, inc1, inc2],
         waNumber: "51944103890",
         waMensaje: item.waMensaje,
       },
       {
         id: `${item.slug}-plus`,
-        titulo: `${item.destinoOPais} — Programa Plus con Asistencia Total`,
+        titulo: card2Titulo,
         pais: item.destinoOPais,
         filtro: "completo",
-        subtitulo: "Servicio Integral + Prioridad + Asesoría Personalizada",
+        subtitulo: card2Subtitulo,
         precioPrincipal: `$${precioCompleto.toLocaleString("en-US")}`,
         precioSecundario:
           precioCompleto >= 200
             ? `$${Math.round(precioCompleto * 0.5).toLocaleString("en-US")}`
             : undefined,
         notaPrecio: "Incluye gestión integral y cobertura preferente",
-        tag: "Edición Plus",
+        tag: "Edición Superior",
         tagBg: "bg-blue-700",
         img: item.galeria[1] || item.imagenHero,
-        alt: `${item.destinoOPais} — Programa Plus`,
-        resumenCorto: "Ideal para viajar con total tranquilidad",
+        alt: card2Titulo,
+        resumenCorto: "Ideal para viajar con máxima comodidad y flexibilidad",
         checks: [inc1, inc2, inc3],
         waNumber: "51944103890",
-        waMensaje: `¡Hola Cityland Travel! Quiero cotizar la opción Programa Plus para ${item.titulo} (Desde $${precioCompleto} USD).`,
+        waMensaje: `¡Hola Cityland Travel! Quiero cotizar la opción "${card2Titulo}" (Desde $${precioCompleto}).`,
       },
       {
         id: `${item.slug}-grupo`,
-        titulo: `${item.destinoOPais} — Tarifa Especial Parejas, Familias y Grupos`,
+        titulo: card3Titulo,
         pais: item.destinoOPais,
         filtro: "promo",
         subtitulo: "Descuento adicional a partir de 2 o más pasajeros",
-        precioPrincipal: `$${Math.max(
-          25,
-          Math.round(item.precioDesdeUSD * 0.94)
-        ).toLocaleString("en-US")}`,
-        notaPrecio: "Tarifa corporativa o familiar por persona",
+        precioPrincipal: `$${precioGrupo.toLocaleString("en-US")}`,
+        precioSecundario:
+          precioGrupo >= 200
+            ? `$${Math.round(precioGrupo * 0.5).toLocaleString("en-US")}`
+            : undefined,
+        notaPrecio: "Tarifa preferencial por pasajero viajando acompañado",
         tag: "Descuento Dúo / Grupo",
         tagBg: "bg-emerald-700",
         img: item.galeria[2] || item.imagenHero,
-        alt: `${item.destinoOPais} — Tarifa Grupal y Familiar`,
-        resumenCorto: "Cotización a medida según tus fechas de viaje",
+        alt: card3Titulo,
+        resumenCorto: "Cotización personalizada según tus fechas de viaje",
         checks: [
           "Descuento preferencial viajando en pareja, familia o grupo",
           "Facilidad de pago con el 50% de inicial y cuotas programadas",
           "Atención presencial en Los Olivos o 100% digital por WhatsApp",
         ],
         waNumber: "51944103890",
-        waMensaje: `¡Hola Cityland Travel! Quiero cotizar tarifa para pareja/familia/grupo en: ${item.titulo}.`,
+        waMensaje: `¡Hola Cityland Travel! Quiero cotizar tarifa para pareja/familia/grupo en: ${item.titulo} (Desde $${precioGrupo}).`,
       },
     ],
     pilares: item.beneficiosClave.slice(0, 4).map((b) => ({
@@ -214,7 +249,7 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
       ctaTexto: "Hablar con un Especialista por WhatsApp",
       waNumero: "51944103890",
       waMensaje: item.waMensaje,
-      img: item.galeria[0] || item.imagenHero,
+      img: item.galeria[3] || item.galeria[0] || item.imagenHero,
       alt: item.titulo,
     },
     waFlotante: {
@@ -259,13 +294,48 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <AirlineLandingTemplate config={config} breadcrumbs={migas}>
+        <section className="py-12 bg-white border-t border-slate-200/80">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6">
+            <div className="bg-gradient-to-br from-slate-50 via-white to-sky-50/40 rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-2xs grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+              <div className="lg:col-span-6">
+                <span className="text-[11px] font-extrabold uppercase tracking-widest text-red-600 block mb-1.5">
+                  Información Oficial Verificada
+                </span>
+                <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a1628] tracking-tight leading-snug mb-3">
+                  Lo que debes saber sobre {item.destinoOPais}
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  {item.resumenEjecutivo.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                </p>
+              </div>
+              <div className="lg:col-span-6 bg-white rounded-2xl p-5 border border-slate-200/80 shadow-2xs">
+                <h3 className="text-xs font-extrabold uppercase tracking-wider text-[#0a1628] mb-3">
+                  ¿Qué incluye tu gestión con Cityland Travel?
+                </h3>
+                <ul className="space-y-2">
+                  {item.incluye.map((inc) => (
+                    <li key={inc} className="flex items-start gap-2.5 text-xs text-slate-700 font-medium">
+                      <span className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-[10px] font-extrabold shrink-0 mt-0.5">
+                        ✓
+                      </span>
+                      <span className="leading-snug">
+                        {inc.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {item.faqs.length > 0 && (
           <section className="py-12 bg-slate-50 border-t border-slate-200/80">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6">
               <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a1628] tracking-tight mb-6">
                 Preguntas Frecuentes sobre {item.destinoOPais}
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {item.faqs.map((f) => (
                   <div
                     key={f.q}

@@ -217,7 +217,7 @@ export default function AirlineLandingTemplate({
       <section className="bg-gradient-to-b from-sky-50/90 via-white to-white pt-8 pb-10 sm:pt-12 sm:pb-14 border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            <div className="lg:col-span-7 text-left">
+            <div className="lg:col-span-7 text-left animate-fade-up">
               <div className="inline-flex items-center gap-2 bg-white border border-slate-200/90 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-700 shadow-2xs mb-4">
                 <span className="flex items-center -space-x-1">
                   {config.banderasHero.map((pais) => (
@@ -227,9 +227,13 @@ export default function AirlineLandingTemplate({
                 <span>{config.badgeHero}</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#0a1628] tracking-tight leading-[1.12] mb-4">
+              <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[#0a1628] tracking-tight leading-[1.14] mb-4">
                 {config.tituloHero.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}{" "}
-                <span className="text-red-600">
+                <span
+                  className={`text-red-600 ${
+                    config.tituloDestacadoHero.length <= 18 ? "inline-block" : ""
+                  }`}
+                >
                   {config.tituloDestacadoHero.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                 </span>
               </h1>
@@ -249,7 +253,7 @@ export default function AirlineLandingTemplate({
                 {config.checksHero.map((c) => (
                   <div
                     key={c}
-                    className="flex items-center gap-2 bg-slate-50 border border-slate-200/80 rounded-xl px-3 py-2.5 text-xs font-bold text-slate-700"
+                    className="flex items-center gap-2 bg-slate-50/90 hover:bg-white border border-slate-200/80 rounded-xl px-3 py-2.5 text-xs font-bold text-slate-700 shadow-2xs transition-colors"
                   >
                     <span className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-[10px] font-extrabold shrink-0">
                       ✓
@@ -281,8 +285,8 @@ export default function AirlineLandingTemplate({
             </div>
 
             {/* Tarjeta Vitrina Promocional Derecha */}
-            <div className="lg:col-span-5">
-              <div className="group bg-white rounded-3xl border-2 border-slate-200/90 shadow-xl overflow-hidden">
+            <div className="lg:col-span-5 animate-fade-up delay-100">
+              <div className="card-interactive group bg-white rounded-3xl border-2 border-slate-200/90 shadow-xl overflow-hidden">
                 <div className="relative h-60 sm:h-64 w-full overflow-hidden bg-slate-100">
                   <Image
                     src={imgVitrina}
@@ -466,9 +470,15 @@ export default function AirlineLandingTemplate({
 
                   <div className="p-5 flex flex-col justify-between flex-1 gap-4">
                     <div>
-                      <div className="inline-block bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-1 rounded-lg mb-3">
-                        {item.resumenCorto.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
-                      </div>
+                      {item.resumenCorto.length > 55 ? (
+                        <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                          {item.resumenCorto.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                        </p>
+                      ) : (
+                        <div className="inline-block bg-sky-50/90 text-[#0a1628] border border-sky-200/70 text-[11px] font-bold px-2.5 py-1 rounded-lg mb-3">
+                          {item.resumenCorto.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                        </div>
+                      )}
 
                       <div className="space-y-1.5 text-xs font-medium text-slate-600 pt-2 border-t border-slate-100">
                         {item.checks.map((ck) => (
@@ -533,17 +543,20 @@ export default function AirlineLandingTemplate({
       {/* 4. Pilares en Línea Limpia + Banner Dividido Luminoso */}
       <section className="py-14 sm:py-18 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pb-12 mb-12 border-b border-slate-200/80">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 pb-12 mb-12 border-b border-slate-200/80">
             {config.pilares.map((p) => (
-              <div key={p.titulo} className="flex items-start gap-3">
-                <span className="w-7 h-7 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
+              <div
+                key={p.titulo}
+                className="flex items-start gap-3 bg-slate-50/70 rounded-2xl p-4 border border-slate-200/70"
+              >
+                <span className="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-extrabold text-xs shrink-0 mt-0.5">
                   ✓
                 </span>
                 <div>
                   <h3 className="text-sm font-extrabold text-[#0a1628]">
                     {p.titulo.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                   </h3>
-                  <p className="text-xs text-slate-500 mt-0.5">
+                  <p className="text-xs text-slate-600 mt-0.5 leading-relaxed">
                     {p.sub.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                   </p>
                 </div>
@@ -562,7 +575,7 @@ export default function AirlineLandingTemplate({
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              <div className="bg-slate-50/90 border border-slate-200/80 rounded-2xl p-5 flex flex-col justify-between">
+              <div className="card-interactive bg-slate-50/90 border border-slate-200/80 rounded-2xl p-5 flex flex-col justify-between">
                 <div>
                   <span className="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-[#0a1628] text-white font-extrabold text-xs mb-3">
                     01
@@ -571,7 +584,7 @@ export default function AirlineLandingTemplate({
                     Cotiza en 2 Minutos por WhatsApp u Oficina
                   </h3>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Escríbenos al <strong>+51 944 103 890</strong> o visítanos en nuestra sede de Los Olivos. Una especialista te enviará 3 opciones reales según tus fechas.
+                    Escríbenos al <strong>+51 944 103 890</strong> o visítanos en nuestra sede de Los Olivos. Una especialista te enviará opciones reales según tus fechas.
                   </p>
                 </div>
                 <span className="text-[11px] font-bold text-emerald-700 mt-3 block">
@@ -579,7 +592,7 @@ export default function AirlineLandingTemplate({
                 </span>
               </div>
 
-              <div className="bg-slate-50/90 border border-slate-200/80 rounded-2xl p-5 flex flex-col justify-between">
+              <div className="card-interactive bg-slate-50/90 border border-slate-200/80 rounded-2xl p-5 flex flex-col justify-between">
                 <div>
                   <span className="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-red-600 text-white font-extrabold text-xs mb-3">
                     02
@@ -596,7 +609,7 @@ export default function AirlineLandingTemplate({
                 </span>
               </div>
 
-              <div className="bg-slate-50/90 border border-slate-200/80 rounded-2xl p-5 flex flex-col justify-between">
+              <div className="card-interactive bg-slate-50/90 border border-slate-200/80 rounded-2xl p-5 flex flex-col justify-between">
                 <div>
                   <span className="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-emerald-600 text-white font-extrabold text-xs mb-3">
                     03

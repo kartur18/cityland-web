@@ -108,7 +108,7 @@ export default function BlogIndexPage() {
               <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-3 text-xs font-semibold text-slate-500 mb-3">
-                    <span>Actualizado: {articuloDestacado.fecha}</span>
+                    <span>{articuloDestacado.fecha.startsWith("Actualizado") ? articuloDestacado.fecha : `Actualizado: ${articuloDestacado.fecha}`}</span>
                     <span>•</span>
                     <span>{articuloDestacado.lectura} de lectura</span>
                   </div>

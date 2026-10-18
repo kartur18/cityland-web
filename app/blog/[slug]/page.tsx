@@ -133,7 +133,7 @@ export default async function BlogArticlePage({
               </p>
               <div className="flex flex-wrap items-center gap-3 text-[12px] font-semibold text-slate-500">
                 <span className="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">
-                  Actualizado: {post.fecha}
+                  {post.fecha.startsWith("Actualizado") ? post.fecha : `Actualizado: ${post.fecha}`}
                 </span>
                 <span>•</span>
                 <span>Lectura: {post.lectura}</span>

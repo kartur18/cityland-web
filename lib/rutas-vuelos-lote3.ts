@@ -269,7 +269,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         { titulo: "Costa del Sol", sub: "Málaga, Marbella, Torremolinos y Sevilla" },
         { titulo: "Equipaje Completo", sub: "23 kg en bodega + 10 kg en cabina" },
         { titulo: "Separa con 50%", sub: "Congela tu paquete turístico hoy" },
-        { titulo: "RUC 20614914239", sub: "Agencia formal registrada en MINCETUR" },
+        { titulo: "RUC 20614914239", sub: "Agencia formal con sede en Los Olivos" },
       ],
       bannerFinal: {
         sobretitulo: "Salidas hacia Andalucía",
@@ -559,7 +559,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         { titulo: "Vuelo Directo KLM", sub: "Opción sin escalas Lima – Ámsterdam" },
         { titulo: "Equipaje 23 kg", sub: "Tarifas con maleta de bodega" },
         { titulo: "Seguro Schengen", sub: "Cobertura obligatoria de 30.000€" },
-        { titulo: "RUC 20614914239", sub: "Agencia acreditada en MINCETUR" },
+        { titulo: "RUC 20614914239", sub: "Agencia formal con sede en Los Olivos" },
       ],
       bannerFinal: {
         sobretitulo: "Conexión Directa a los Países Bajos",
@@ -849,7 +849,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         { titulo: "5h 35m Directo", sub: "Vuelos sin escalas Miami – Lima" },
         { titulo: "Compra desde Perú", sub: "Paga en Lima para familiares en EE.UU." },
         { titulo: "Emisión Inmediata", sub: "Código de reserva PNR al instante" },
-        { titulo: "RUC 20614914239", sub: "Agencia acreditada en MINCETUR" },
+        { titulo: "RUC 20614914239", sub: "Agencia formal con sede en Los Olivos" },
       ],
       bannerFinal: {
         sobretitulo: "Atención para Peruanos en Estados Unidos",
@@ -1284,7 +1284,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         { titulo: "Solo con DNI", sub: "Volando vía Bogotá o Medellín" },
         { titulo: "Todo Incluido", sub: "Comidas y bebidas ilimitadas en la isla" },
         { titulo: "Separa con 50%", sub: "Congela tu paquete y paga en cuotas" },
-        { titulo: "RUC 20614914239", sub: "Agencia formal registrada en MINCETUR" },
+        { titulo: "RUC 20614914239", sub: "Agencia formal con sede en Los Olivos" },
       ],
       bannerFinal: {
         sobretitulo: "Caribe Colombiano Todo el Año",
@@ -1574,7 +1574,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         { titulo: "1h 30m Directo", sub: "Salidas diarias desde el Jorge Chávez" },
         { titulo: "Cañón del Colca", sub: "Tours con movilidad y guía oficial" },
         { titulo: "Separa con 50%", sub: "Congela tu paquete nacional hoy" },
-        { titulo: "RUC 20614914239", sub: "Agencia acreditada en MINCETUR" },
+        { titulo: "RUC 20614914239", sub: "Agencia formal con sede en Los Olivos" },
       ],
       bannerFinal: {
         sobretitulo: "Turismo Nacional Todo el Año",
@@ -1719,7 +1719,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
         { titulo: "Sol Todo el Año", sub: "Vichayito, Las Pocitas, Máncora y Punta Sal" },
         { titulo: "Traslados Incluidos", sub: "Recojo en aeropuerto de Piura o Talara" },
         { titulo: "Separa con 50%", sub: "Reserva tu hotel de playa con inicial" },
-        { titulo: "RUC 20614914239", sub: "Agencia formal registrada en MINCETUR" },
+        { titulo: "RUC 20614914239", sub: "Agencia formal con sede en Los Olivos" },
       ],
       bannerFinal: {
         sobretitulo: "Escapadas a las Playas del Norte",

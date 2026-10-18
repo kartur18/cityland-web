@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Paquetes Migratorios a España desde $890 USD — Cityland Travel",
     description:
-      "Vuelos confirmados IATA, seguro Schengen 30.000€, reserva de hotel y asesoría migratoria en Lima. Separa con 50%.",
+      "Vuelos confirmados, seguro Schengen 30.000€, reserva de hotel y asesoría migratoria en Lima. Separa con 50%.",
     images: ["https://citylandtravel.com/images/espana/plaza-mayor.jpg"],
   },
   other: {
@@ -178,7 +178,7 @@ const JSON_LD_ESPANA = {
           name: "¿Qué incluye el Paquete Migratorio a España de Cityland Travel?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Incluye boleto aéreo confirmado con aerolíneas IATA (Iberia, Air Europa o LATAM) con equipaje, seguro médico internacional Schengen de 30.000€ obligatorio, voucher de hotel para control fronterizo y asesoría migratoria personalizada 1 a 1 para pasar Barajas sin problemas.",
+            text: "Incluye boleto aéreo confirmado con aerolíneas oficiales (Iberia, Air Europa o LATAM) con equipaje, seguro médico internacional Schengen de 30.000€ obligatorio, voucher de hotel para control fronterizo y asesoría migratoria personalizada 1 a 1 para pasar Barajas sin problemas.",
           },
         },
         {
