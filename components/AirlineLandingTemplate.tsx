@@ -537,6 +537,70 @@ export default function AirlineLandingTemplate({
             ))}
           </div>
 
+          {/* Proceso Comercial en 3 Pasos para Cierre de Ventas */}
+          <div className="mb-12">
+            <div className="text-center max-w-2xl mx-auto mb-8">
+              <span className="inline-block text-[11px] font-extrabold uppercase tracking-widest text-red-600 bg-red-50 px-3 py-1 rounded-full mb-2">
+                Compra 100% Segura y Verificable
+              </span>
+              <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a1628] tracking-tight">
+                ¿Cómo separar tu viaje hoy mismo con Cityland Travel?
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              <div className="bg-slate-50/90 border border-slate-200/80 rounded-2xl p-5 flex flex-col justify-between">
+                <div>
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-[#0a1628] text-white font-extrabold text-xs mb-3">
+                    01
+                  </span>
+                  <h3 className="text-sm sm:text-base font-extrabold text-[#0a1628] mb-1.5">
+                    Cotiza en 2 Minutos por WhatsApp u Oficina
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Escríbenos al <strong>+51 944 103 890</strong> o visítanos en nuestra sede de Los Olivos. Una especialista te enviará 3 opciones reales según tus fechas.
+                  </p>
+                </div>
+                <span className="text-[11px] font-bold text-emerald-700 mt-3 block">
+                  ✓ Atención personalizada en tiempo real
+                </span>
+              </div>
+
+              <div className="bg-slate-50/90 border border-slate-200/80 rounded-2xl p-5 flex flex-col justify-between">
+                <div>
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-red-600 text-white font-extrabold text-xs mb-3">
+                    02
+                  </span>
+                  <h3 className="text-sm sm:text-base font-extrabold text-[#0a1628] mb-1.5">
+                    Congela tu Tarifa con el 50% de Inicial
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Bloqueamos tus espacios aéreos y hoteleros con código de reserva <strong>PNR verificable</strong> en el sistema oficial y emitimos tu Boleta o Factura SUNAT.
+                  </p>
+                </div>
+                <span className="text-[11px] font-bold text-emerald-700 mt-3 block">
+                  ✓ RUC 20614914239 · Pagos en cuotas sin intereses
+                </span>
+              </div>
+
+              <div className="bg-slate-50/90 border border-slate-200/80 rounded-2xl p-5 flex flex-col justify-between">
+                <div>
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-emerald-600 text-white font-extrabold text-xs mb-3">
+                    03
+                  </span>
+                  <h3 className="text-sm sm:text-base font-extrabold text-[#0a1628] mb-1.5">
+                    Recibe tu Carpeta y Viaja con Soporte 24/7
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Te entregamos tus boletos, vouchers de hotel, seguro de viaje y guía completa de embarque, con asistencia continua desde tu salida hasta tu regreso.
+                  </p>
+                </div>
+                <span className="text-[11px] font-bold text-emerald-700 mt-3 block">
+                  ✓ +5,000 viajeros peruanos atendidos con éxito
+                </span>
+              </div>
+            </div>
+          </div>
+
           <div className="rounded-3xl border border-slate-200/90 bg-gradient-to-br from-sky-50/50 via-white to-slate-50 shadow-sm overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-stretch">
             <div className="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-center">
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1.5">

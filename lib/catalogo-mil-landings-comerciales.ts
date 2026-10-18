@@ -1822,6 +1822,11 @@ const LANDINGS_CLUSTER_8: LandingComercialSEO[] = PROGRAMAS_RELIGIOSOS_EVENTOS.f
 // EXPORTACIÓN UNIFICADA DE LAS 1,020 NUEVAS LANDINGS COMERCIALES
 // (220 + 150 + 120 + 130 + 130 + 90 + 90 + 90 = 1,020 Landings)
 // ============================================================================
+import {
+  INDICE_EXPANSION_MASIVA,
+  buscarLandingExpansionMasiva,
+} from "@/lib/catalogo-expansion-masiva";
+
 export const MIL_LANDINGS_COMERCIALES_SEO: LandingComercialSEO[] = [
   ...LANDINGS_CLUSTER_1,
   ...LANDINGS_CLUSTER_2,
@@ -1833,10 +1838,38 @@ export const MIL_LANDINGS_COMERCIALES_SEO: LandingComercialSEO[] = [
   ...LANDINGS_CLUSTER_8,
 ];
 
+export interface ResumenOfertaComercialSEO {
+  slug: string;
+  cluster: LandingComercialSEO["cluster"];
+  clusterNombre: string;
+  titulo: string;
+  destinoOPais: string;
+  precioDesdeUSD: number;
+}
+
+export const TODOS_LOS_RESUMENES_OFERTAS_SEO: ResumenOfertaComercialSEO[] = [
+  ...MIL_LANDINGS_COMERCIALES_SEO.map((o) => ({
+    slug: o.slug,
+    cluster: o.cluster,
+    clusterNombre: o.clusterNombre,
+    titulo: o.titulo,
+    destinoOPais: o.destinoOPais,
+    precioDesdeUSD: o.precioDesdeUSD,
+  })),
+  ...INDICE_EXPANSION_MASIVA.map((e) => ({
+    slug: e.slug,
+    cluster: e.cluster,
+    clusterNombre: e.clusterNombre,
+    titulo: e.titulo,
+    destinoOPais: e.destinoOPais,
+    precioDesdeUSD: e.precioDesdeUSD,
+  })),
+];
+
 const MAPA_LANDINGS_COMERCIALES = new Map<string, LandingComercialSEO>(
   MIL_LANDINGS_COMERCIALES_SEO.map((item) => [item.slug, item])
 );
 
 export function buscarLandingComercial(slug: string): LandingComercialSEO | undefined {
-  return MAPA_LANDINGS_COMERCIALES.get(slug);
+  return MAPA_LANDINGS_COMERCIALES.get(slug) ?? buscarLandingExpansionMasiva(slug);
 }

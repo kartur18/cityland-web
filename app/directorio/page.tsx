@@ -8,12 +8,12 @@ import FlagIcon from "@/components/icons/FlagIcon";
 import { DESTINOS_EUROPA, DESTINOS_CARIBE, BLOG_POSTS } from "@/components/constantes";
 import { RUTAS_VUELOS_SEO } from "@/lib/rutas-vuelos";
 import { VIAJES_ESPECIALIZADOS_SEO } from "@/lib/catalogo-viajes-especializados";
-import { MIL_LANDINGS_COMERCIALES_SEO } from "@/lib/catalogo-mil-landings-comerciales";
+import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-comerciales";
 
 export const metadata: Metadata = {
-  title: "Catálogo de Destinos, Ofertas, Vuelos y Servicios Turísticos | Cityland Travel",
+  title: "Catálogo de +10,000 Destinos, Ofertas, España, Italia, Vuelos y Hoteles | Cityland Travel",
   description:
-    "Explora más de 2,000 opciones de viajes, paquetes turísticos Todo Incluido, cruceros, visas, trámite de pasaporte, viajes corporativos y grupales en Cityland Travel (RUC 20614914239).",
+    "Explora más de 10,000 opciones de viajes a España, Barcelona, Italia, Europa, paquetes Todo Incluido, hoteles 5★, cruceros, visas y salidas desde todo el Perú en Cityland Travel (RUC 20614914239).",
   alternates: {
     canonical: "https://citylandtravel.com/directorio",
   },
@@ -193,13 +193,13 @@ export default function DirectorioMaestroPage() {
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
             <div className="max-w-3xl">
               <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-amber-300 px-3.5 py-1.5 rounded-full text-xs font-bold mb-4">
-                🌍 Cityland Travel E.I.R.L. · RUC 20614914239 · +2,000 Rutas y Programas
+                🌍 Cityland Travel E.I.R.L. · RUC 20614914239 · +10,000 Rutas y Programas
               </span>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.12] mb-4">
-                Catálogo Oficial de Destinos, Vuelos y Experiencias
+                Catálogo Oficial de Destinos, Vuelos, España, Italia y Experiencias
               </h1>
               <p className="text-base sm:text-lg text-slate-200 leading-relaxed">
-                Explora nuestras divisiones especializadas, paquetes turísticos Todo Incluido, cruceros, trámites consulares y programas para empresas, colegios y grupos. Separa hoy con el 50% de inicial.
+                Explora más de 10,000 programas verificados a Madrid, Barcelona, Roma, Venecia, Florencia, circuitos por Europa, resorts Todo Incluido con nombre propio, cruceros y salidas desde todas las ciudades del Perú. Separa hoy con el 50% de inicial.
               </p>
             </div>
 
@@ -326,20 +326,20 @@ export default function DirectorioMaestroPage() {
             </div>
           </section>
 
-          {/* 3. Los 8 Clusters de las 1,020 Nuevas Landings Comerciales (/ofertas/[slug]) */}
+          {/* 3. Los 8 Clusters de las +9,000 Landings Comerciales (/ofertas/[slug]) */}
           <section className="space-y-8">
             <div>
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
-                Cobertura Mundial, Corporativa y Grupal
+                Cobertura Mundial, Europa, Hoteles 5★, Provincias y Grupos
               </span>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0a1628] tracking-tight">
-                Catálogo Especializado por Producto y Tipo de Viajero
+                Catálogo Especializado por Producto y Tipo de Viajero (+9,020 Ofertas)
               </h2>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {CLUSTERS_CONFIG.map((cl) => {
-                const itemsCluster = MIL_LANDINGS_COMERCIALES_SEO.filter(
+                const itemsCluster = TODOS_LOS_RESUMENES_OFERTAS_SEO.filter(
                   (x) => x.cluster === cl.id
                 );
                 return (
@@ -353,13 +353,13 @@ export default function DirectorioMaestroPage() {
                           {cl.titulo}
                         </h3>
                         <span className="bg-red-50 text-red-600 text-[11px] font-extrabold px-2.5 py-0.5 rounded-full shrink-0">
-                          {itemsCluster.length} programas
+                          {itemsCluster.length.toLocaleString("es-PE")} programas
                         </span>
                       </div>
                       <p className="text-xs text-slate-500 mb-4">{cl.sub}</p>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                        {itemsCluster.slice(0, 14).map((it) => (
+                        {itemsCluster.slice(0, 16).map((it) => (
                           <Link
                             key={it.slug}
                             href={`/ofertas/${it.slug}`}

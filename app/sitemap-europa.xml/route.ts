@@ -3,13 +3,13 @@ import { DESTINOS_EUROPA } from "@/components/constantes";
 import { DESTINOS_MASIVOS } from "@/lib/catalogo-destinos-masivo";
 import { RUTAS_VUELOS_SEO } from "@/lib/rutas-vuelos";
 import { VIAJES_ESPECIALIZADOS_SEO } from "@/lib/catalogo-viajes-especializados";
-import { MIL_LANDINGS_COMERCIALES_SEO } from "@/lib/catalogo-mil-landings-comerciales";
+import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-comerciales";
 import { FECHA_ESTABLE_SITEMAP, URL_BASE_SEO } from "@/lib/seo-arquitectura";
 
 export const revalidate = 86400;
 
 const REGEX_EUROPA =
-  /espana|españa|madrid|barcelona|sevilla|valencia|granada|andaluc|ibiza|mallorca|italia|roma|venecia|florencia|milan|milán|vaticano|toscana|napoles|amalfi|europa|paris|parís|francia|suiza|londres|turquia|turquía|estambul|capadocia|schengen|lisboa|portugal|atenas|grecia|amsterdam/i;
+  /espana|españa|madrid|barcelona|sevilla|valencia|granada|andaluc|ibiza|mallorca|italia|roma|venecia|florencia|milan|milán|vaticano|toscana|napoles|amalfi|europa|paris|parís|francia|suiza|londres|turquia|turquía|estambul|capadocia|schengen|lisboa|portugal|atenas|grecia|amsterdam|praga|viena|berlin|munich/i;
 
 export async function GET() {
   const urls: { loc: string; priority: string }[] = [
@@ -31,7 +31,7 @@ export async function GET() {
     }
   }
 
-  for (const o of MIL_LANDINGS_COMERCIALES_SEO) {
+  for (const o of TODOS_LOS_RESUMENES_OFERTAS_SEO) {
     if (REGEX_EUROPA.test(`${o.slug} ${o.titulo} ${o.destinoOPais}`)) {
       urls.push({ loc: `${URL_BASE_SEO}/ofertas/${o.slug}`, priority: "0.94" });
     }

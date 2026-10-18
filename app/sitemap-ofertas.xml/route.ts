@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { MIL_LANDINGS_COMERCIALES_SEO } from "@/lib/catalogo-mil-landings-comerciales";
+import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-comerciales";
 import { FECHA_ESTABLE_SITEMAP, URL_BASE_SEO } from "@/lib/seo-arquitectura";
 
 export const revalidate = 86400;
@@ -13,7 +13,7 @@ export async function GET() {
     <changefreq>daily</changefreq>
     <priority>0.98</priority>
   </url>
-${MIL_LANDINGS_COMERCIALES_SEO.map(
+${TODOS_LOS_RESUMENES_OFERTAS_SEO.map(
   (o) => `  <url>
     <loc>${URL_BASE_SEO}/ofertas/${o.slug}</loc>
     <lastmod>${FECHA_ESTABLE_SITEMAP}</lastmod>

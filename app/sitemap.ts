@@ -5,7 +5,7 @@ import { DESTINOS_MASIVOS } from "@/lib/catalogo-destinos-masivo";
 import { VIAJES_ESPECIALIZADOS_SEO } from "@/lib/catalogo-viajes-especializados";
 import { AGENCIAS_LOCALES_SEO } from "@/lib/catalogo-agencias-locales";
 import { BLOG_POSTS_MASIVOS } from "@/lib/catalogo-blog-masivo";
-import { MIL_LANDINGS_COMERCIALES_SEO } from "@/lib/catalogo-mil-landings-comerciales";
+import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-comerciales";
 
 const BASE = "https://citylandtravel.com";
 const FECHA_SITEMAP = new Date("2026-10-17T12:00:00.000Z");
@@ -13,7 +13,7 @@ const FECHA_SITEMAP = new Date("2026-10-17T12:00:00.000Z");
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = FECHA_SITEMAP;
 
-  const ofertasComerciales = MIL_LANDINGS_COMERCIALES_SEO.map((o) => ({
+  const ofertasComerciales = TODOS_LOS_RESUMENES_OFERTAS_SEO.map((o) => ({
     url: `${BASE}/ofertas/${o.slug}`,
     lastModified: now,
     changeFrequency: "weekly" as const,

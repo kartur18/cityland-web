@@ -2,7 +2,7 @@ import { DESTINOS_EUROPA, DESTINOS_CARIBE } from "@/components/constantes";
 import { DESTINOS_MASIVOS } from "@/lib/catalogo-destinos-masivo";
 import { RUTAS_VUELOS_SEO } from "@/lib/rutas-vuelos";
 import { VIAJES_ESPECIALIZADOS_SEO } from "@/lib/catalogo-viajes-especializados";
-import { MIL_LANDINGS_COMERCIALES_SEO } from "@/lib/catalogo-mil-landings-comerciales";
+import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-comerciales";
 import { AGENCIAS_LOCALES_SEO } from "@/lib/catalogo-agencias-locales";
 
 export const URL_BASE_SEO = "https://citylandtravel.com";
@@ -283,10 +283,10 @@ export function obtenerEnlacesCruzadosSEO(
     };
   });
 
-  const ofertasCoincidentes = MIL_LANDINGS_COMERCIALES_SEO.filter(
+  const ofertasCoincidentes = TODOS_LOS_RESUMENES_OFERTAS_SEO.filter(
     (o) => o.slug !== slugActual && coincide(`${o.titulo} ${o.destinoOPais} ${o.slug}`)
   );
-  const poolOfertas = ofertasCoincidentes.length >= 6 ? ofertasCoincidentes : MIL_LANDINGS_COMERCIALES_SEO;
+  const poolOfertas = ofertasCoincidentes.length >= 6 ? ofertasCoincidentes : TODOS_LOS_RESUMENES_OFERTAS_SEO;
   const ofertas: EnlaceSiloSEO[] = Array.from({ length: 8 }, (_, i) => {
     const o = poolOfertas[(hash + i * 7) % poolOfertas.length];
     return {

@@ -5,6 +5,7 @@ import AirlineLandingTemplate from "@/components/AirlineLandingTemplate";
 import { SeoSiloFooter } from "@/components/SeoSiloFooter";
 import {
   MIL_LANDINGS_COMERCIALES_SEO,
+  TODOS_LOS_RESUMENES_OFERTAS_SEO,
   buscarLandingComercial,
 } from "@/lib/catalogo-mil-landings-comerciales";
 import {
@@ -77,7 +78,7 @@ export default async function OfertaComercialPage({ params }: Props) {
     notFound();
   }
 
-  const listaCluster = MIL_LANDINGS_COMERCIALES_SEO.filter(
+  const listaCluster = TODOS_LOS_RESUMENES_OFERTAS_SEO.filter(
     (x) => x.cluster === item.cluster
   );
   const idxCluster = listaCluster.findIndex((x) => x.slug === item.slug);
