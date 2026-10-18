@@ -16,9 +16,9 @@ import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-com
 import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
 
 export const metadata: Metadata = {
-  title: "Catálogo de +10,000 Destinos, Ofertas, España, Italia, Vuelos y Hoteles | Cityland Travel",
+  title: "Catálogo de +20,000 Destinos, Ofertas, España, Italia, Vuelos y Hoteles | Cityland Travel",
   description:
-    "Explora más de 10,000 opciones de viajes a España, Barcelona, Italia, Europa, paquetes Todo Incluido, hoteles 5★, cruceros, visas y salidas desde todo el Perú en Cityland Travel (RUC 20614914239).",
+    "Explora más de 20,000 opciones de viajes a España, Barcelona, Italia, Europa, paquetes Todo Incluido, hoteles 5★, cruceros, visas y salidas desde todo el Perú en Cityland Travel (RUC 20614914239).",
   alternates: {
     canonical: "https://citylandtravel.com/directorio",
   },
@@ -36,15 +36,15 @@ const HERO_POR_MODO: Record<
   }
 > = {
   directorio: {
-    badge: "🌍 Cityland Travel E.I.R.L. · RUC 20614914239 · +10,000 Rutas y Programas",
+    badge: "🌍 Cityland Travel E.I.R.L. · RUC 20614914239 · +20,000 Rutas y Programas",
     h1: "Catálogo Oficial de Destinos, Vuelos, España, Italia y Experiencias",
     descripcion:
-      "Explora más de 10,000 programas verificados a Madrid, Barcelona, Roma, Venecia, Florencia, circuitos por Europa, resorts Todo Incluido con nombre propio, cruceros y salidas desde todas las ciudades del Perú. Separa hoy con el 50% de inicial.",
+      "Explora más de 20,000 programas verificados a Madrid, Barcelona, Roma, Venecia, Florencia, circuitos por Europa, resorts Todo Incluido con nombre propio, cruceros y salidas desde todas las ciudades del Perú. Separa hoy con el 50% de inicial.",
     waTexto:
       "¡Hola Cityland Travel! Vi su catálogo de destinos y quiero cotizar mi próximo viaje.",
   },
   destinos: {
-    badge: "🌎 108 Destinos Principales + 9,020 Programas por Temporada y Hotel",
+    badge: "🌎 108 Destinos Principales + 19,020 Programas por Temporada y Hotel",
     h1: "Destinos Turísticos Internacionales y Nacionales desde Perú",
     descripcion:
       "Descubre nuestras guías y paquetes completos a Europa, España, Italia, el Caribe Todo Incluido, Estados Unidos, Sudamérica, Asia y el interior del Perú con vuelos, traslados, seguro médico y hoteles seleccionados.",
@@ -52,7 +52,7 @@ const HERO_POR_MODO: Record<
       "¡Hola Cityland Travel! Estuve viendo su catálogo de Destinos Turísticos y deseo cotizar un paquete de viaje.",
   },
   vuelos: {
-    badge: "✈️ 425 Rutas Aéreas desde Lima y Provincias · Código PNR Verificable",
+    badge: "✈️ 438 Rutas Aéreas desde Lima, Provincias y Europa · Código PNR Verificable",
     h1: "Vuelos y Boletos Aéreos desde Lima y Todo el Perú con Impuestos Incluidos",
     descripcion:
       "Cotiza pasajes aéreos ida y vuelta con tarifas negociadas en Iberia, Air Europa, Plus Ultra, LATAM, Copa Airlines, Avianca y Sky hacia Madrid, Barcelona, Roma, Miami, Punta Cana, Cancún, Cusco y más de 400 rutas.",
@@ -293,10 +293,10 @@ export function VistaCatalogoHub({ modoHub = "directorio" }: { modoHub?: ModoCat
         </section>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 space-y-16">
-          {/* 0. Buscador Instantáneo de las +10,000 Páginas */}
+          {/* 0. Buscador Instantáneo de las +20,000 Páginas */}
           <BuscadorCatalogoInstantaneo
             itemsIniciales={inicialesBuscador}
-            totalInicial={10003}
+            totalInicial={20016}
           />
 
           {/* 1. Divisiones Comerciales con Fotografías Reales */}
@@ -424,14 +424,14 @@ export function VistaCatalogoHub({ modoHub = "directorio" }: { modoHub?: ModoCat
             </div>
           </section>
 
-          {/* 3. Los 8 Clusters de las +9,000 Landings Comerciales (/ofertas/[slug]) */}
+          {/* 3. Los 8 Clusters de las +19,000 Landings Comerciales (/ofertas/[slug]) */}
           <section className="space-y-8">
             <div>
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
                 Cobertura Mundial, Europa, Hoteles 5★, Provincias y Grupos
               </span>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0a1628] tracking-tight">
-                Catálogo Especializado por Producto y Tipo de Viajero (+9,020 Ofertas)
+                Catálogo Especializado por Producto y Tipo de Viajero (+19,020 Ofertas)
               </h2>
             </div>
 

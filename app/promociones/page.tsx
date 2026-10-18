@@ -248,7 +248,7 @@ export default function PromocionesPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <BuscadorCatalogoInstantaneo
           itemsIniciales={iniciales}
-          totalInicial={10003}
+          totalInicial={20016}
         />
       </div>
     </AirlineLandingTemplate>

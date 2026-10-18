@@ -8,7 +8,7 @@ import { BLOG_POSTS_MASIVOS } from "@/lib/catalogo-blog-masivo";
 import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-comerciales";
 
 const BASE = "https://citylandtravel.com";
-const FECHA_SITEMAP = new Date("2026-10-17T12:00:00.000Z");
+const FECHA_SITEMAP = new Date("2026-10-18T18:30:00.000Z");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = FECHA_SITEMAP;

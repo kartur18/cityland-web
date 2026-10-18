@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 const CONFIG_OFERTAS: ConfiguracionLandingAerolinea = {
-  badgeHero: "Catálogo Comercial Oficial · +9,020 Programas Verificados (RUC 20614914239)",
+  badgeHero: "Catálogo Comercial Oficial · +19,020 Programas Verificados (RUC 20614914239)",
   banderasHero: ["España", "Italia", "República Dominicana", "México", "Perú"],
   tituloHero: "Catálogo de Ofertas de",
   tituloDestacadoHero: "Paquetes, Cruceros, Hoteles 5★ y Servicios",
@@ -29,7 +29,7 @@ const CONFIG_OFERTAS: ConfiguracionLandingAerolinea = {
   waPrincipalMensaje:
     "¡Hola Cityland Travel! Estuve revisando el catálogo de Ofertas de Viajes en su web y quiero cotizar mi viaje.",
   checksHero: [
-    "Más de 9,020 opciones por destino, hotel y mes",
+    "Más de 19,020 opciones por destino, hotel y mes",
     "Separa con 50% y congela tu tarifa referencial",
     "Atención presencial en Los Olivos y por WhatsApp",
   ],
@@ -239,7 +239,7 @@ export default function OfertasIndexPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 space-y-12">
         <BuscadorCatalogoInstantaneo
           itemsIniciales={iniciales}
-          totalInicial={10003}
+          totalInicial={20016}
         />
 
         <section className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-xs">
@@ -256,7 +256,7 @@ export default function OfertasIndexPage() {
               href="/directorio"
               className="text-xs font-extrabold text-red-600 hover:underline"
             >
-              Ver directorio completo de +10,000 páginas →
+              Ver directorio completo de +20,000 páginas →
             </Link>
           </div>
 
