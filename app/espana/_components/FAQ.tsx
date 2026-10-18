@@ -4,8 +4,8 @@ import { useState } from "react";
 
 const faqs = [
   {
-    question: "¿Qué incluye el paquete de $699?",
-    answer: "Vuelo de ida, itinerario de retorno para migraciones (requisito Schengen), reserva de hotel, seguro de viaje, guía PDF, check-in y asesoría personalizada."
+    question: "¿Qué incluye el paquete desde $1,290?",
+    answer: "Boleto aéreo ida y vuelta confirmado (código PNR + E-Ticket IATA), reserva de hotel o validación de Carta de Invitación, seguro Schengen de 30.000€ sin deducible y asesoría personalizada."
   },
   {
     question: "¿Qué documentos necesito?",
@@ -13,11 +13,11 @@ const faqs = [
   },
   {
     question: "¿Cómo es la forma de pago?",
-    answer: "70% de adelanto, saldo 1-2 meses antes del viaje. Aceptamos transferencia, Yape, Plin y tarjetas."
+    answer: "50% de adelanto para congelar tu tarifa y cupo aéreo, y el saldo antes del viaje. Aceptamos transferencia, Yape, Plin y tarjetas."
   },
   {
-    question: "¿Por qué $699 si los vuelos cuestan más?",
-    answer: "Compramos en volumen con mayoristas y trasladamos el ahorro. El paquete incluye mucho más que solo el vuelo."
+    question: "¿Por qué la tarifa dice Desde $1,290?",
+    answer: "Porque el precio depende del mes de salida y anticipación (Noviembre $1,290, Primavera $1,299, Enero $1,490 y Diciembre $1,590)."
   },
   {
     question: "¿Puedo elegir mi fecha?",

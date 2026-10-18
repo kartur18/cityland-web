@@ -10,7 +10,7 @@ import {
 
 const rawTitle = "Circuitos a Europa y Turquía Sin Visa | Cityland Travel";
 const rawDesc =
-  "Circuitos a Europa, Turquía (Capadocia) y Dubái sin visa desde Lima: Turquía Desde $1,790, Europa 15 Días Desde $2,890 y España Desde $890. Separa con 50%.";
+  "Circuitos a Europa, Turquía (Capadocia) y Dubái sin visa desde Lima: Turquía Desde $1,890, Europa 15 Días Desde $2,890 y España Desde $1,290. Separa con 50%.";
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO(rawTitle),
@@ -74,12 +74,12 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
     sobretitulo: "Vuelos + Hoteles 4★/5★ + Crucero Bósforo + Capadocia",
     titulo: "Turquía Mágica & Capadocia",
     labelPrecio: "Circuito completo",
-    precio: "$1,790",
+    precio: "$1,890",
     moneda: "",
-    notaInferior: "Separa hoy con 50% ($895)",
+    notaInferior: "Separa hoy con 50% ($945)",
     waNumero: "51944103890",
     waMensaje:
-      "¡Hola Cityland Travel! Deseo cotizar el paquete a Turquía (Estambul y Capadocia · 10 Días) desde $1,790.",
+      "¡Hola Cityland Travel! Deseo cotizar el paquete a Turquía (Estambul y Capadocia · 10 Días) desde $1,890.",
   },
   seccionCatalogo: {
     sobretitulo: "Grandes Viajes con Salidas desde Lima",
@@ -97,8 +97,8 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       pais: "Turquía",
       filtro: "turquia-dubai",
       subtitulo: "10 Días / 9 Noches · No Requiere Visa",
-      precioPrincipal: "$1,790",
-      notaPrecio: "Separa con 50% ($895)",
+      precioPrincipal: "$1,890",
+      notaPrecio: "Separa con 50% ($945)",
       tag: "#1 Exótico Sin Visa",
       tagBg: "bg-red-600 text-white",
       img: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=85",
@@ -131,8 +131,8 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       pais: "España",
       filtro: "europa",
       subtitulo: "8 Días / 7 Noches · Tren Alta Velocidad AVE",
-      precioPrincipal: "$1,490",
-      notaPrecio: "Separa con 50% ($745)",
+      precioPrincipal: "$1,690",
+      notaPrecio: "Separa con 50% ($845)",
       tag: "Madrid + Barcelona",
       tagBg: "bg-red-600 text-white",
       img: "/images/espana/gran-via-metropolis.jpg",
@@ -181,13 +181,13 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       titulo: "Carpeta Migratoria a España · Salidas Mensuales",
       pais: "España",
       filtro: "europa",
-      subtitulo: "Noviembre ($890) · Dic/Ene ($1,090) · Primavera ($899)",
-      precioPrincipal: "$890",
-      notaPrecio: "Separa hoy con $445 (50%)",
+      subtitulo: "Noviembre ($1,290) · Dic/Ene ($1,590) · Primavera ($1,299)",
+      precioPrincipal: "$1,290",
+      notaPrecio: "Separa hoy con $645 (50%)",
       tag: "Especial Barajas",
       tagBg: "bg-red-600 text-white",
       img: "/images/espana/plaza-mayor.jpg",
-      alt: "Paquete Migratorio a España desde $890 - Cityland Travel",
+      alt: "Paquete Migratorio a España desde $1,290 - Cityland Travel",
       resumenCorto:
         "Boleto aéreo confirmado + Seguro Schengen 30.000€ + Reserva de hotel verificable y preparación personalizada 1 a 1 para tu ingreso en Madrid-Barajas.",
       checks: ["Boleto Aéreo Confirmado", "Seguro Schengen 30.000€", "Asesoría 1 a 1 Barajas"],

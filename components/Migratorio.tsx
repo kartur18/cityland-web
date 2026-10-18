@@ -11,9 +11,9 @@ export default function Migratorio() {
     categoria: "europa",
     destino: "España / Madrid",
     tipo: "Paquete Europa / Migratorio",
-    precioUSD: 890,
+    precioUSD: 1290,
     mensajePersonalizado:
-      "¡Hola Cityland Travel! Me interesa el paquete a España desde $890 USD. Deseo información para separar con el 50%.",
+      "¡Hola Cityland Travel! Me interesa el paquete a España desde $1,290 USD. Deseo información para separar con el 50%.",
   });
 
   return (
@@ -29,7 +29,7 @@ export default function Migratorio() {
 
             <h2 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-5xl text-[#0a1628] tracking-tight leading-[0.96] mb-3">
               ESPECIAL ESPAÑA & EUROPA{" "}
-              <span className="text-red-600">DESDE $890</span>
+              <span className="text-red-600">DESDE $1,290</span>
             </h2>
 
             <p className="text-sm sm:text-base text-slate-600 mb-6 max-w-xl">

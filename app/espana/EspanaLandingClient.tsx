@@ -15,49 +15,49 @@ export const PAQUETES_ESPANA = [
     id: "noviembre",
     mes: "NOVIEMBRE",
     subtitulo: "Salidas programadas 2026",
-    precio: 890,
-    precioRegular: 1150,
+    precio: 1290,
+    precioRegular: 1590,
     tag: "Promoción",
     tagColor: "bg-blue-600 text-white",
     img: "/images/espana/gran-via-metropolis.jpg",
     monumento: "Gran Vía · Madrid",
-    waUrl: `https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar el Paquete a España para NOVIEMBRE (Desde $890). Quisiera separar con el 50% de inicial.\n\n📍 Ref Web: citylandtravel.com/espana [Noviembre]")}`,
+    waUrl: `https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar el Paquete a España para NOVIEMBRE (Desde $1,290). Quisiera separar con el 50% de inicial.\n\n📍 Ref Web: citylandtravel.com/espana [Noviembre]")}`,
   },
   {
     id: "diciembre",
     mes: "DICIEMBRE",
     subtitulo: "Navidad & Fin de Año",
-    precio: 1090,
-    precioRegular: 1390,
+    precio: 1590,
+    precioRegular: 1890,
     tag: "Alta Demanda",
     tagColor: "bg-red-600 text-white",
     img: "/images/espana/puerta-de-alcala.jpg",
     monumento: "Puerta de Alcalá · Madrid",
-    waUrl: `https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar el Paquete a España para DICIEMBRE (Desde $1,090). Quisiera separar con el 50% de inicial.\n\n📍 Ref Web: citylandtravel.com/espana [Diciembre]")}`,
+    waUrl: `https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar el Paquete a España para DICIEMBRE (Desde $1,590). Quisiera separar con el 50% de inicial.\n\n📍 Ref Web: citylandtravel.com/espana [Diciembre]")}`,
   },
   {
     id: "enero",
     mes: "ENERO",
     subtitulo: "Inicio de Año 2027",
-    precio: 1050,
-    precioRegular: 1350,
+    precio: 1490,
+    precioRegular: 1790,
     tag: "Cupos Limitados",
     tagColor: "bg-amber-600 text-white",
     img: "/images/espana/cibeles.jpg",
     monumento: "Plaza de Cibeles · Madrid",
-    waUrl: `https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar el Paquete a España para ENERO (Desde $1,050). Quisiera separar con el 50% de inicial.\n\n📍 Ref Web: citylandtravel.com/espana [Enero]")}`,
+    waUrl: `https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar el Paquete a España para ENERO (Desde $1,490). Quisiera separar con el 50% de inicial.\n\n📍 Ref Web: citylandtravel.com/espana [Enero]")}`,
   },
   {
     id: "mar-abr-may",
     mes: "MARZO • ABRIL • MAYO",
     subtitulo: "Primavera Europea 2027",
-    precio: 899,
-    precioRegular: 1180,
+    precio: 1299,
+    precioRegular: 1590,
     tag: "Mejor Tarifa",
     tagColor: "bg-emerald-600 text-white",
     img: "/images/espana/palacio-real.jpg",
     monumento: "Palacio Real · Madrid",
-    waUrl: `https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar el Paquete a España para MARZO/ABRIL/MAYO (Desde $899). Quisiera separar con el 50% de inicial.\n\n📍 Ref Web: citylandtravel.com/espana [Primavera]")}`,
+    waUrl: `https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar el Paquete a España para MARZO/ABRIL/MAYO (Desde $1,299). Quisiera separar con el 50% de inicial.\n\n📍 Ref Web: citylandtravel.com/espana [Primavera]")}`,
   },
 ];
 
@@ -68,8 +68,8 @@ const MODALIDADES_ESPANA = [
     badgeClass: "bg-red-600 text-white",
     titulo: "Paquete con Reserva de Hotel Verificable + Seguro 30.000€",
     subtitulo: "Ideal si viajas por turismo y NO cuentas con Carta de Invitación policial",
-    etiquetaPrecio: "Desde $890",
-    detallePrecio: "Separa hoy con $445 (50% inicial)",
+    etiquetaPrecio: "Desde $1,590",
+    detallePrecio: "Separa hoy con $795 (50% inicial)",
     puntos: [
       "Boleto aéreo Lima – Madrid / Barcelona (Ida y Vuelta dentro de 90 días) con PNR y E-Ticket IATA de 13 dígitos.",
       "Reserva de hotel verificable por todas las noches del viaje para control fronterizo en Barajas o El Prat.",
@@ -78,7 +78,7 @@ const MODALIDADES_ESPANA = [
     ],
     waTexto: "Cotizar Paquete con Hotel",
     waMensaje:
-      "¡Hola Cityland Travel! Deseo cotizar la Modalidad 1: Paquete a España con Reserva de Hotel Verificable + Seguro 30.000€ (Desde $890).\n\n📍 Ref Web: citylandtravel.com/espana [Modalidad Hotel]",
+      "¡Hola Cityland Travel! Deseo cotizar la Modalidad 1: Paquete a España con Reserva de Hotel Verificable + Seguro 30.000€ (Desde $1,590).\n\n📍 Ref Web: citylandtravel.com/espana [Modalidad Hotel]",
   },
   {
     id: "carta-invitacion",
@@ -86,8 +86,8 @@ const MODALIDADES_ESPANA = [
     badgeClass: "bg-blue-700 text-white",
     titulo: "Vuelo Ida y Vuelta + Seguro 30.000€ (Con Carta de Invitación)",
     subtitulo: "Si ya tienes Carta de Invitación original tramitada en Comisaría de Policía en España",
-    etiquetaPrecio: "Ahorra el Hotel",
-    detallePrecio: "Emitimos en las fechas exactas de tu Carta",
+    etiquetaPrecio: "Desde $1,290",
+    detallePrecio: "Separa hoy con $645 (50% inicial)",
     puntos: [
       "No pagas hotel innecesario: ajustamos tu boleto de ida y vuelta exactamente al periodo autorizado en tu Carta de Invitación.",
       "Incluye Póliza de Seguro Schengen de 30.000€ sin deducible por los mismos días de tu estancia.",
@@ -96,7 +96,7 @@ const MODALIDADES_ESPANA = [
     ],
     waTexto: "Cotizar con Carta de Invitación",
     waMensaje:
-      "¡Hola Cityland Travel! Cuento con Carta de Invitación para España y deseo cotizar la Modalidad 2 (Vuelo Ida y Vuelta + Seguro Schengen 30.000€ sin hotel).\n\n📍 Ref Web: citylandtravel.com/espana [Modalidad Carta Invitación]",
+      "¡Hola Cityland Travel! Cuento con Carta de Invitación para España y deseo cotizar la Modalidad 2 (Vuelo Ida y Vuelta + Seguro Schengen 30.000€ sin hotel, Desde $1,290).\n\n📍 Ref Web: citylandtravel.com/espana [Modalidad Carta Invitación]",
   },
   {
     id: "visado-d-tie",
@@ -104,11 +104,11 @@ const MODALIDADES_ESPANA = [
     badgeClass: "bg-emerald-700 text-white",
     titulo: "Boleto Solo Ida (One-Way) o 2 Maletas de 23 kg (46 kg)",
     subtitulo: "Exclusivo para titulares de Visado Nacional Tipo D, TIE vigente o pasaporte europeo",
-    etiquetaPrecio: "Franquicia 46 kg",
-    detallePrecio: "Iberia · Air Europa · Plus Ultra · LATAM",
+    etiquetaPrecio: "Desde $890 Solo Ida",
+    detallePrecio: "O $1,390 I/V con 2 Maletas (46 kg)",
     puntos: [
-      "Emisión legal de pasaje Solo Ida (One-Way) para estudiantes, reagrupación familiar, permiso de trabajo o residentes TIE.",
-      "Tarifas especiales con 2 maletas de 23 kg en bodega (total 46 kg) + 10 kg en cabina.",
+      "Emisión legal de pasaje Solo Ida (One-Way desde $890) para estudiantes, reagrupación familiar, permiso de trabajo o residentes TIE.",
+      "Tarifas especiales Ida y Vuelta con 2 maletas de 23 kg en bodega (total 46 kg) desde $1,390.",
       "Seguro médico internacional sin copagos ni carencias para trámites consulares (RD 1155/2024).",
       "También emitimos vuelos desde Madrid o Barcelona hacia Lima y compra desde España para familiares en Perú.",
     ],
@@ -149,7 +149,7 @@ export default function EspanaLandingClient() {
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-7">
                 <a
-                  href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo reservar el Paquete a España (Desde $890) separando con el 50% de inicial.\n\n📍 Ref Web: citylandtravel.com/espana [Hero CTA]")}`}
+                  href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo reservar el Paquete a España (Desde $1,290) separando con el 50% de inicial.\n\n📍 Ref Web: citylandtravel.com/espana [Hero CTA]")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-wa-pulse inline-flex items-center justify-center gap-2.5 bg-red-600 hover:bg-red-700 text-white px-7 py-4 rounded-2xl text-sm sm:text-base font-bold shadow-md cursor-pointer"
@@ -213,7 +213,7 @@ export default function EspanaLandingClient() {
                   </div>
                 </div>
 
-                {/* Pie Blanco Limpio con "Desde $890" */}
+                {/* Pie Blanco Limpio con "Desde $1,290" */}
                 <div className="p-5 flex items-center justify-between gap-4 bg-white">
                   <div>
                     <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1">
@@ -222,16 +222,16 @@ export default function EspanaLandingClient() {
                     <div className="flex items-baseline gap-1.5">
                       <span className="text-xs font-extrabold uppercase text-red-600">Desde</span>
                       <span className="text-3xl sm:text-4xl font-black text-[#0a1628] tracking-tight leading-none">
-                        $890
+                        $1,290
                       </span>
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                      Separa con 50% ($445)
+                      Separa con 50% ($645)
                     </span>
                   </div>
 
                   <a
-                    href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo verificar disponibilidad de fechas para viajar a España (Desde $890).\n\n📍 Ref Web: citylandtravel.com/espana [Tarjeta Principal]")}`}
+                    href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo verificar disponibilidad de fechas para viajar a España (Desde $1,290).\n\n📍 Ref Web: citylandtravel.com/espana [Tarjeta Principal]")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0"

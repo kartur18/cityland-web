@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title:
     "Viajes de Promoción y Graduación Todo Incluido (Cusco, Punta Sal, Tarapoto, Cartagena y Punta Cana) | Cityland Travel",
   description:
-    "Agencia especializada en viajes de promoción para colegios (primaria y secundaria), institutos y universidades en Lima. Paquetes Todo Incluido a Tarapoto desde $399 USD, Punta Sal desde $449 USD, Cusco desde $489 USD, Cartagena desde $699 USD y Punta Cana desde $1,049 USD. Contrato formal y pagos en cuotas (RUC 20614914239).",
+    "Agencia especializada en viajes de promoción para colegios (primaria y secundaria), institutos y universidades en Lima. Paquetes Todo Incluido a Tarapoto desde $399 USD, Cusco desde $489 USD, Punta Sal desde $529 USD, Cartagena desde $799 USD y Punta Cana desde $1,290 USD. Contrato formal y pagos en cuotas (RUC 20614914239).",
   keywords: [
     "viajes de promocion escolar todo incluido lima peru",
     "paquetes de viajes de promocion a cusco 2026",

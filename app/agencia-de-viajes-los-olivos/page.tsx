@@ -5,7 +5,7 @@ import { obtenerConfigAgenciaOficial } from "@/lib/catalogo-agencia-oficial";
 export const metadata: Metadata = {
   title: "Agencia de Viajes en Los Olivos — Sede Central Cityland Travel",
   description:
-    "Sede principal de Cityland Travel en Av. Antúnez de Mayolo N. 814, Los Olivos (RUC 20614914239). Paquetes a Punta Cana, Cancún, Cartagena, Cusco y vuelos a España desde $890 USD.",
+    "Sede principal de Cityland Travel en Av. Antúnez de Mayolo N. 814, Los Olivos (RUC 20614914239). Paquetes a Punta Cana, Cancún, Cartagena, Cusco y vuelos a España desde $1,290 USD.",
   alternates: { canonical: "https://citylandtravel.com/agencia-de-viajes-los-olivos" },
 };
 

@@ -22,7 +22,7 @@ export const BLOG_POSTS_MASIVOS: BlogPost[] = [
 <h3>4. LATAM Airlines</h3>
 <p>Ofrece vuelos directos operados en Boeing 787 con entretenimiento a bordo en pantallas individuales y acumulación de millas LATAM Pass, además de excelentes conexiones desde provincias del Perú (Arequipa, Cusco, Trujillo, Piura y Chiclayo).</p>
 <h3>Tarifas referenciales y cómo congelar tu cupo</h3>
-<p>En Cityland Travel contamos con tarifas de agencia <strong>Desde $890 USD</strong> (ida y vuelta o paquetes con carpeta migratoria completa). Puedes separar tu asiento con el 50% de inicial y completar el saldo en cuotas programadas antes de tu viaje.</p>`,
+<p>En Cityland Travel contamos con tarifas de agencia <strong>Desde $1,290 USD</strong> (ida y vuelta o paquetes con carpeta migratoria completa). Puedes separar tu asiento con el 50% de inicial y completar el saldo en cuotas programadas antes de tu viaje.</p>`,
   },
   {
     slug: "como-viajar-de-provincias-peru-a-espana-boleto-unico",
@@ -57,7 +57,7 @@ export const BLOG_POSTS_MASIVOS: BlogPost[] = [
 <p>Todo ciudadano peruano que ingresa sin visa por turismo a España (hasta 90 días) debe demostrar ante la Policía Nacional en el Aeropuerto de Madrid-Barajas o Barcelona-El Prat dónde se alojará durante toda su estancia.</p>
 <h3>Opción 1: Reserva de Hotel Confirmada y Verificable</h3>
 <p>Es la alternativa más práctica, rápida y segura cuando no deseas depender de trámites policiales en España. La reserva debe cubrir exactamente desde la noche de tu llegada hasta la fecha de tu vuelo de retorno.</p>
-<p>En nuestro paquete <strong>Especial España ($890 USD)</strong> incluimos tu reserva hotelera verificable junto con tu vuelo confirmado y tu Seguro Schengen de 30.000€.</p>
+<p>En nuestro paquete <strong>Especial España ($1,590 USD con hotel o $1,290 USD con carta de invitación)</strong> incluimos tu carpeta migratoria verificable junto con tu vuelo confirmado y tu Seguro Schengen de 30.000€.</p>
 <h3>Opción 2: Carta de Invitación Policial</h3>
 <p>Solo es válida si un familiar o amigo residente legal en España la tramita presencialmente ante la Comisaría de Policía de su municipio, paga las tasas oficiales y te envía el <strong>documento original físico con sello húmedo o código seguro de verificación</strong> a Perú antes de tu vuelo (una simple carta redactada en Word o correo electrónico no tiene validez migratoria).</p>`,
   },
@@ -95,10 +95,10 @@ export const BLOG_POSTS_MASIVOS: BlogPost[] = [
 <h3>¿Por qué elegir Punta Cana (República Dominicana)?</h3>
 <p>1. <strong>No exige visa para peruanos:</strong> Solo necesitas tu pasaporte vigente y llenar el formulario digital gratuito E-Ticket.<br>
 2. <strong>Vuelos directos desde Lima:</strong> Llegas en poco más de 5 horas sin escalas.<br>
-3. <strong>Resorts diseñados para el descanso familiar:</strong> Playas de aguas tranquilas en Bávaro y Bayahíbe, parques acuáticos dentro del hotel y excursión a Isla Saona. Paquetes Todo Incluido <strong>Desde $1,099 USD</strong>.</p>
+3. <strong>Resorts diseñados para el descanso familiar:</strong> Playas de aguas tranquilas en Bávaro y Bayahíbe, parques acuáticos dentro del hotel y excursión a Isla Saona. Paquetes Todo Incluido <strong>Desde $1,290 USD</strong>.</p>
 <h3>¿Por qué elegir Cancún y la Riviera Maya (México)?</h3>
 <p>1. <strong>Cultura maya y parques temáticos únicos:</strong> Combina playas turquesas con Chichén Itzá, cenotes sagrados, Tulum y parques como Xcaret o Xel-Há.<br>
-2. <strong>Requisito migratorio:</strong> Recuerda que los peruanos ingresan a México con Visa Mexicana o presentando una Visa vigente y múltiple de Estados Unidos, Canadá, Reino Unido, Japón o del Espacio Schengen. Paquetes Todo Incluido <strong>Desde $1,049 USD</strong>.</p>`,
+2. <strong>Requisito migratorio:</strong> Recuerda que los peruanos ingresan a México con Visa Mexicana o presentando una Visa vigente y múltiple de Estados Unidos, Canadá, Reino Unido, Japón o del Espacio Schengen. Paquetes Todo Incluido <strong>Desde $1,290 USD</strong>.</p>`,
   },
   {
     slug: "que-incluye-un-resort-all-inclusive-caribe",
@@ -133,7 +133,7 @@ export const BLOG_POSTS_MASIVOS: BlogPost[] = [
 <h3>Trámites clave que gestionamos por ti en Cityland Travel:</h3>
 <p>1. <strong>Formulario Check-Mig de Migración Colombia:</strong> Se completa en línea entre 72 horas y 1 hora antes de cada vuelo internacional hacia y desde Colombia.<br>
 2. <strong>Tarjeta de Turismo de San Andrés Islas:</strong> Obligatoria únicamente si visitas el archipiélago de San Andrés, Providencia y Santa Catalina (aprox. $38 USD por persona antes de abordar).<br>
-3. <strong>Paquetes recomendados:</strong> Cartagena 4D/3N <strong>Desde $699 USD</strong>, Medellín y Guatapé 4D/3N <strong>Desde $679 USD</strong> y San Andrés Todo Incluido <strong>Desde $749 USD</strong>.</p>`,
+3. <strong>Paquetes recomendados:</strong> Cartagena 4D/3N <strong>Desde $799 USD</strong>, Medellín y Guatapé 4D/3N <strong>Desde $789 USD</strong> y San Andrés Todo Incluido <strong>Desde $890 USD</strong>.</p>`,
   },
   {
     slug: "permiso-notarial-viaje-menores-peru-requisitos",
@@ -256,13 +256,13 @@ export const BLOG_POSTS_MASIVOS: BlogPost[] = [
     contenido: `<h2>Diseña tu viaje de bodas con atenciones especiales para recién casados</h2>
 <p>Al reservar tu Luna de Miel en Cityland Travel registramos tu reserva bajo código <em>Honeymooner</em> para gestionar atenciones de cortesía en hoteles y resorts seleccionados (decoración romántica, botella de espumante o cena especial según disponibilidad del establecimiento).</p>
 <h3>Destinos favoritos y tarifas referenciales por persona:</h3>
-<p>1. <strong>Punta Cana Luxury Adults Only (5D/4N):</strong> Desde $1,190 USD Todo Incluido.<br>
-2. <strong>Cancún & Riviera Maya Romántico (5D/4N):</strong> Desde $1,149 USD Todo Incluido.<br>
-3. <strong>Aruba — One Happy Island (5D/4N):</strong> Desde $1,249 USD en Eagle Beach / Palm Beach.<br>
+<p>1. <strong>Punta Cana Luxury Adults Only (5D/4N):</strong> Desde $1,390 USD Todo Incluido.<br>
+2. <strong>Cancún & Riviera Maya Romántico (5D/4N):</strong> Desde $1,350 USD Todo Incluido.<br>
+3. <strong>Aruba — One Happy Island (5D/4N):</strong> Desde $1,390 USD en Eagle Beach / Palm Beach.<br>
 4. <strong>Crucero por el Caribe Sur Sin Visa (8D/7N):</strong> Desde $1,490 USD.<br>
-5. <strong>París, Venecia, Florencia & Roma (12D/11N):</strong> Desde $2,290 USD.<br>
-6. <strong>Grecia & Crucero por Santorini y Mykonos (10D/9N):</strong> Desde $2,490 USD.<br>
-7. <strong>Dubái & Desierto Árabe Sin Visa (8D/7N):</strong> Desde $1,990 USD.</p>`,
+5. <strong>París, Venecia, Florencia & Roma (12D/11N):</strong> Desde $2,490 USD.<br>
+6. <strong>Grecia & Crucero por Santorini y Mykonos (10D/9N):</strong> Desde $2,690 USD.<br>
+7. <strong>Dubái & Desierto Árabe Sin Visa (8D/7N):</strong> Desde $2,190 USD.</p>`,
   },
   {
     slug: "vuelos-de-estados-unidos-a-lima-para-peruanos",

@@ -3,9 +3,9 @@ import PanamaMedellinLanding from "./PanamaMedellinLanding";
 
 export const metadata: Metadata = {
   title:
-    "Paquete Panamá + Medellín 7 Días desde $799 USD (Salidas desde Lima) | Cityland Travel",
+    "Paquete Panamá + Medellín 7 Días desde $949 USD (Salidas desde Lima) | Cityland Travel",
   description:
-    "Viaja a Panamá y Medellín 7 días / 6 noches desde $799 USD con Cityland Travel (RUC 20614914239). Vuelos Copa Airlines desde Lima, hoteles, desayunos, traslados y tours (Canal de Panamá, Comuna 13 y Chiva Rumbera). Separa con el 50%.",
+    "Viaja a Panamá y Medellín 7 días / 6 noches desde $949 USD con Cityland Travel (RUC 20614914239). Vuelos Copa Airlines desde Lima, hoteles, desayunos, traslados y tours (Canal de Panamá, Comuna 13 y Chiva Rumbera). Separa con el 50%.",
   keywords: [
     "paquete panama y medellin desde lima",
     "viaje a panama y medellin 2026",
@@ -17,9 +17,9 @@ export const metadata: Metadata = {
     canonical: "https://citylandtravel.com/paquetes/panama-medellin",
   },
   openGraph: {
-    title: "Paquete Panamá + Medellín 7 Días desde $799 USD | Cityland Travel",
+    title: "Paquete Panamá + Medellín 7 Días desde $949 USD | Cityland Travel",
     description:
-      "Viaja a Panamá y Medellín 7 días desde $799 USD. Vuelos Copa Airlines, hoteles, desayunos, traslados y tours. Separa con 50%.",
+      "Viaja a Panamá y Medellín 7 días desde $949 USD. Vuelos Copa Airlines, hoteles, desayunos, traslados y tours. Separa con 50%.",
     url: "https://citylandtravel.com/paquetes/panama-medellin",
     type: "website",
     locale: "es_PE",
@@ -35,9 +35,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Paquete Panamá + Medellín desde $799 USD | Cityland Travel",
+    title: "Paquete Panamá + Medellín desde $949 USD | Cityland Travel",
     description:
-      "Viaja a Panamá y Medellín 7 días desde $799 USD. Vuelos Copa Airlines, hoteles, desayunos, traslados y tours.",
+      "Viaja a Panamá y Medellín 7 días desde $949 USD. Vuelos Copa Airlines, hoteles, desayunos, traslados y tours.",
     images: ["https://citylandtravel.com/images/paquetes/panama-medellin/hero-panama.jpg"],
   },
 };
@@ -57,7 +57,7 @@ const JSON_LD_PANAMA_MEDELLIN = {
         {
           "@type": "ListItem",
           position: 2,
-          name: "Paquete Panamá + Medellín desde $799 USD",
+          name: "Paquete Panamá + Medellín desde $949 USD",
           item: "https://citylandtravel.com/paquetes/panama-medellin",
         },
       ],
@@ -72,7 +72,7 @@ const JSON_LD_PANAMA_MEDELLIN = {
       offers: {
         "@type": "Offer",
         priceCurrency: "USD",
-        price: "799",
+        price: "949",
         availability: "https://schema.org/InStock",
         url: "https://citylandtravel.com/paquetes/panama-medellin",
       },

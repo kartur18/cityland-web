@@ -8,9 +8,9 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
     pais: "España",
     filtro: "europa",
     subtitulo: "Vuelo Confirmado + Carpeta Migratoria Completa",
-    precioPrincipal: "$890",
-    precioSecundario: "$445",
-    notaPrecio: "Separa con $445 USD (50% inicial)",
+    precioPrincipal: "$1,290",
+    precioSecundario: "$645",
+    notaPrecio: "Separa con $645 USD (50% inicial)",
     tag: "Más Solicitado",
     tagBg: "bg-red-600 text-white",
     img: "/images/espana/gran-via-metropolis.jpg",
@@ -20,7 +20,7 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
     checks: ["Seguro Schengen 30.000€", "Equipaje 23 kg + 10 kg", "Asesoría Migratoria 1 a 1"],
     waNumber: TELEFONO,
     waMensaje:
-      "¡Hola Cityland Travel! Deseo cotizar el Paquete y Vuelo a España (Desde $890 USD).",
+      "¡Hola Cityland Travel! Deseo cotizar el Paquete y Vuelo a España (Desde $1,290 USD).",
   },
   {
     id: "paquete-punta-cana",
@@ -28,9 +28,9 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
     pais: "República Dominicana",
     filtro: "caribe",
     subtitulo: "5 Días / 4 Noches · Playa Bávaro",
-    precioPrincipal: "$1,099",
-    precioSecundario: "$550",
-    notaPrecio: "Separa con $550 USD (50% inicial)",
+    precioPrincipal: "$1,290",
+    precioSecundario: "$645",
+    notaPrecio: "Separa con $645 USD (50% inicial)",
     tag: "Todo Incluido",
     tagBg: "bg-amber-400 text-slate-950",
     img: "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=85",
@@ -40,7 +40,7 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
     checks: ["Vuelo + Resort 5★", "Bebidas y Buffet 24h", "Traslados Incluidos"],
     waNumber: TELEFONO,
     waMensaje:
-      "¡Hola Cityland Travel! Deseo cotizar el paquete Punta Cana 5D/4N Todo Incluido (Desde $1,099 USD).",
+      "¡Hola Cityland Travel! Deseo cotizar el paquete Punta Cana 5D/4N Todo Incluido (Desde $1,290 USD).",
   },
   {
     id: "paquete-cancun",
@@ -48,9 +48,9 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
     pais: "México",
     filtro: "caribe",
     subtitulo: "5 Días / 4 Noches · Zona Hotelera",
-    precioPrincipal: "$1,049",
-    precioSecundario: "$525",
-    notaPrecio: "Separa con $525 USD (50% inicial)",
+    precioPrincipal: "$1,290",
+    precioSecundario: "$645",
+    notaPrecio: "Separa con $645 USD (50% inicial)",
     tag: "Playa &Familia",
     tagBg: "bg-sky-600 text-white",
     img: "https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=1200&q=85",
@@ -60,7 +60,7 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
     checks: ["Vuelo Directo Confirmado", "Resort Todo Incluido", "Asistencia 24/7"],
     waNumber: TELEFONO,
     waMensaje:
-      "¡Hola Cityland Travel! Deseo cotizar el paquete Cancún 5D/4N Todo Incluido (Desde $1,049 USD).",
+      "¡Hola Cityland Travel! Deseo cotizar el paquete Cancún 5D/4N Todo Incluido (Desde $1,290 USD).",
   },
   {
     id: "paquete-cartagena",
@@ -68,9 +68,9 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
     pais: "Colombia",
     filtro: "caribe",
     subtitulo: "4 Días / 3 Noches · Viaja Solo con DNI",
-    precioPrincipal: "$699",
-    precioSecundario: "$350",
-    notaPrecio: "Separa con $350 USD (50% inicial)",
+    precioPrincipal: "$799",
+    precioSecundario: "$400",
+    notaPrecio: "Separa con $400 USD (50% inicial)",
     tag: "Solo con DNI",
     tagBg: "bg-emerald-600 text-white",
     img: "https://images.unsplash.com/photo-1583531352515-8884af319dc1?w=1200&q=85",
@@ -80,7 +80,7 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
     checks: ["No Requiere Pasaporte", "Vuelo + Hotel + Traslados", "Excursión Islas del Rosario"],
     waNumber: TELEFONO,
     waMensaje:
-      "¡Hola Cityland Travel! Deseo cotizar el paquete Cartagena 4D/3N (Desde $699 USD).",
+      "¡Hola Cityland Travel! Deseo cotizar el paquete Cartagena 4D/3N (Desde $799 USD).",
   },
   {
     id: "paquete-turquia",
@@ -88,9 +88,9 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
     pais: "Turquía",
     filtro: "europa",
     subtitulo: "10 Días / 9 Noches · Sin Visa para Peruanos",
-    precioPrincipal: "$1,790",
-    precioSecundario: "$895",
-    notaPrecio: "Separa con $895 USD (50% inicial)",
+    precioPrincipal: "$1,890",
+    precioSecundario: "$945",
+    notaPrecio: "Separa con $945 USD (50% inicial)",
     tag: "Sin Visa",
     tagBg: "bg-purple-600 text-white",
     img: "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?w=1200&q=85",
@@ -100,7 +100,7 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
     checks: ["Vuelos Internacionales", "Hoteles + Guía en Español", "Ingreso Solo con Pasaporte"],
     waNumber: TELEFONO,
     waMensaje:
-      "¡Hola Cityland Travel! Deseo cotizar el circuito Turquía Mágica 10 Días (Desde $1,790 USD).",
+      "¡Hola Cityland Travel! Deseo cotizar el circuito Turquía Mágica 10 Días (Desde $1,890 USD).",
   },
   {
     id: "paquete-cusco",
@@ -108,9 +108,9 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
     pais: "Perú",
     filtro: "peru",
     subtitulo: "4 Días / 3 Noches · Tren Turístico Incluido",
-    precioPrincipal: "$399",
-    precioSecundario: "$200",
-    notaPrecio: "Separa con $200 USD (50% inicial)",
+    precioPrincipal: "$499",
+    precioSecundario: "$250",
+    notaPrecio: "Separa con $250 USD (50% inicial)",
     tag: "Perú Imperdible",
     tagBg: "bg-red-600 text-white",
     img: "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=1200&q=85",
@@ -120,7 +120,7 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
     checks: ["Vuelo + Hotel 3★/4★", "Tren + Entrada Machu Picchu", "Traslados y Guía Oficial"],
     waNumber: TELEFONO,
     waMensaje:
-      "¡Hola Cityland Travel! Deseo cotizar el paquete Cusco & Machu Picchu 4D/3N (Desde $399 USD).",
+      "¡Hola Cityland Travel! Deseo cotizar el paquete Cusco & Machu Picchu 4D/3N (Desde $499 USD).",
   },
 ];
 
@@ -170,12 +170,12 @@ export function obtenerConfigAgenciaOficial(
       sobretitulo: "Paquete Estrella Temporada 2026",
       titulo: "Punta Cana Resort 5★ Todo Incluido (Vuelo + Hotel + Traslados)",
       labelPrecio: "Tarifa referencial por pasajero",
-      precio: "$1,099",
+      precio: "$1,290",
       moneda: "USD",
-      notaInferior: "Separa hoy con $550 (50% inicial) · Sujeto a fecha",
+      notaInferior: "Separa hoy con $645 (50% inicial) · Sujeto a fecha",
       waNumero: TELEFONO,
       waMensaje:
-        "¡Hola Cityland Travel! Deseo cotizar el paquete estrella a Punta Cana Resort 5★ Todo Incluido desde $1,099.",
+        "¡Hola Cityland Travel! Deseo cotizar el paquete estrella a Punta Cana Resort 5★ Todo Incluido desde $1,290.",
     },
 
     seccionCatalogo: {

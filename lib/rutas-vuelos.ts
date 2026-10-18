@@ -27,9 +27,9 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
     codigoOrigen: "LIM",
     codigoDestino: "MAD",
     metaTitle:
-      "Vuelos de Lima a Madrid Desde $890 USD (Ida y Vuelta / Carpeta Migratoria) | Cityland Travel",
+      "Vuelos de Lima a Madrid Desde $1,290 USD | Cityland Travel",
     metaDescription:
-      "Cotiza vuelos de Lima a Madrid (LIM - MAD) Desde $890 USD con impuestos incluidos. Salidas confirmadas en Iberia, Air Europa, Plus Ultra y LATAM con equipaje de 23 kg, Seguro Schengen 30.000€ y asesoría migratoria en Lima (RUC 20614914239).",
+      "Cotiza vuelos de Lima a Madrid (LIM - MAD) Desde $1,290 USD con impuestos incluidos. Salidas en Iberia, Air Europa, Plus Ultra y LATAM con 23 kg y Seguro Schengen.",
     keywords: [
       "vuelos de lima a madrid",
       "pasajes aereos lima madrid",
@@ -38,14 +38,14 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
       "viajar de lima a madrid requisitos",
       "cityland travel lima madrid",
     ],
-    precioDesdeUSD: 890,
+    precioDesdeUSD: 1290,
     faqs: [
       {
         q: "¿Qué aerolíneas tienen vuelos directos de Lima a Madrid?",
         a: "Operan vuelos directos sin escalas entre Lima (LIM) y Madrid (MAD) Iberia, Air Europa, Plus Ultra Líneas Aéreas y LATAM Airlines, con una duración aproximada de 11 horas y 50 minutos.",
       },
       {
-        q: "¿El precio Desde $890 USD incluye impuestos?",
+        q: "¿El precio Desde $1,290 USD incluye impuestos?",
         a: "Sí. Todas nuestras tarifas referenciales incluyen impuestos aeroportuarios y cargos obligatorios. Tarifa sujeta a disponibilidad y condiciones aplicables.",
       },
     ],
@@ -76,12 +76,12 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Madrid-Barajas (MAD)",
         titulo: "Vuelos Directos y con Escala Lima – Madrid",
         labelPrecio: "Tarifa referencial con impuestos incluidos",
-        precio: "$890",
+        precio: "$1,290",
         moneda: "USD",
         notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
         waNumero: "51944103890",
         waMensaje:
-          "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Madrid (Desde $890 USD). ¿Me pueden ayudar?",
+          "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Madrid (Desde $1,290 USD). ¿Me pueden ayudar?",
       },
       seccionCatalogo: {
         sobretitulo: "Opciones de Tarifa Verificadas (Impuestos Incluidos)",
@@ -98,9 +98,9 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           titulo: "Paquete Lima a Madrid + Carpeta Migratoria",
           pais: "España",
           filtro: "paquete",
-          subtitulo: "Salidas Noviembre y Primavera · Todo listo para Barajas",
-          precioPrincipal: "$890",
-          precioSecundario: "$445",
+          subtitulo: "Salidas confirmadas · Todo listo para Barajas",
+          precioPrincipal: "$1,290",
+          precioSecundario: "$645",
           notaPrecio: "Paquete turístico · Incluye impuestos (Verif. Oct 2026)",
           tag: "Más Solicitado",
           tagBg: "bg-red-600",
@@ -114,16 +114,16 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           ],
           waNumber: "51944103890",
           waMensaje:
-            "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Paquete de Lima a Madrid (Desde $890 USD). ¿Me pueden ayudar?",
+            "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para el Paquete de Lima a Madrid (Desde $1,290 USD). ¿Me pueden ayudar?",
         },
         {
           id: "lim-mad-idavuelta",
-          titulo: "Boleto Lima – Madrid – Lima (Ida y Vuelta)",
+          titulo: "Boleto Lima – Madrid – Lima (Ida y Vuelta · 2 Maletas)",
           pais: "España",
           filtro: "vuelo",
-          subtitulo: "Tarifa especial para vacaciones o visita familiar",
-          precioPrincipal: "$990",
-          precioSecundario: "$495",
+          subtitulo: "Tarifa especial para vacaciones o visita familiar con equipaje",
+          precioPrincipal: "$1,390",
+          precioSecundario: "$695",
           notaPrecio: "Boleto Ida y Vuelta · Incluye impuestos",
           tag: "Ida y Vuelta",
           tagBg: "bg-blue-700",
@@ -137,7 +137,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           ],
           waNumber: "51944103890",
           waMensaje:
-            "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio de boleto Ida y Vuelta de Lima a Madrid (Desde $990 USD). ¿Me pueden ayudar?",
+            "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio de boleto Ida y Vuelta de Lima a Madrid (Desde $1,390 USD). ¿Me pueden ayudar?",
         },
         {
           id: "lim-mad-soloida",
@@ -145,8 +145,8 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           pais: "España",
           filtro: "vuelo",
           subtitulo: "Exclusivo con DNI español, TIE vigente o Visa de Estudios/Trabajo",
-          precioPrincipal: "$690",
-          precioSecundario: "$345",
+          precioPrincipal: "$890",
+          precioSecundario: "$445",
           notaPrecio: "Boleto Solo Ida · Incluye impuestos",
           tag: "Residentes / Visa",
           tagBg: "bg-emerald-700",
@@ -160,7 +160,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           ],
           waNumber: "51944103890",
           waMensaje:
-            "Hola, encontré Cityland Travel en Google. Tengo residencia/visado y quiero consultar precio de boleto Solo Ida de Lima a Madrid (Desde $690 USD). ¿Me pueden ayudar?",
+            "Hola, encontré Cityland Travel en Google. Tengo residencia/visado y quiero consultar precio de boleto Solo Ida de Lima a Madrid (Desde $890 USD). ¿Me pueden ayudar?",
         },
       ],
       pilares: [
@@ -208,9 +208,9 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
     codigoOrigen: "MAD",
     codigoDestino: "LIM",
     metaTitle:
-      "Vuelos de Madrid a Lima Desde $790 USD (Ida y Vuelta o Traer Familiares) | Cityland Travel",
+      "Vuelos de Madrid a Lima Desde $1,190 USD | Cityland Travel",
     metaDescription:
-      "Pasajes aéreos de Madrid a Lima (MAD - LIM) Desde $790 USD con impuestos incluidos. Ideal para peruanos en España que visitan Perú o desean comprar pasajes en Lima para traer a sus familiares.",
+      "Pasajes aéreos de Madrid a Lima (MAD - LIM) Desde $1,190 USD con impuestos incluidos. Ideal para peruanos en España o para traer familiares desde Lima.",
     keywords: [
       "vuelos de madrid a lima",
       "pasajes madrid lima ida y vuelta",
@@ -218,7 +218,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
       "comprar pasaje en peru desde espana",
       "vuelos directos madrid lima iberia air europa",
     ],
-    precioDesdeUSD: 790,
+    precioDesdeUSD: 1190,
     faqs: [
       {
         q: "Vivo en Madrid, ¿puedo comprar con ustedes el pasaje para traer a mis familiares desde Lima?",
@@ -251,12 +251,12 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
         sobretitulo: "Aeropuerto Madrid-Barajas (MAD) → Jorge Chávez (LIM)",
         titulo: "Vuelos Madrid – Lima y Reunificación Familiar",
         labelPrecio: "Tarifa referencial con impuestos incluidos",
-        precio: "$790",
+        precio: "$1,190",
         moneda: "USD",
         notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
         waNumero: "51944103890",
         waMensaje:
-          "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Madrid a Lima (Desde $790 USD). ¿Me pueden ayudar?",
+          "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Madrid a Lima (Desde $1,190 USD). ¿Me pueden ayudar?",
       },
       seccionCatalogo: {
         sobretitulo: "Tarifas Referenciales MAD ↔ LIM",
@@ -274,8 +274,8 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           pais: "Perú",
           filtro: "vuelo",
           subtitulo: "Para residentes en España que viajan de visita al Perú",
-          precioPrincipal: "$850",
-          precioSecundario: "$425",
+          precioPrincipal: "$1,250",
+          precioSecundario: "$625",
           notaPrecio: "Boleto Ida y Vuelta · Incluye impuestos",
           tag: "Ida y Vuelta",
           tagBg: "bg-blue-700",
@@ -289,7 +289,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           ],
           waNumber: "51944103890",
           waMensaje:
-            "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio de vuelo Ida y Vuelta de Madrid a Lima (Desde $850 USD). ¿Me pueden ayudar?",
+            "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio de vuelo Ida y Vuelta de Madrid a Lima (Desde $1,250 USD). ¿Me pueden ayudar?",
         },
         {
           id: "mad-lim-soloida",
@@ -297,8 +297,8 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           pais: "Perú",
           filtro: "vuelo",
           subtitulo: "Retorno al Perú con equipaje de bodega incluido",
-          precioPrincipal: "$590",
-          precioSecundario: "$295",
+          precioPrincipal: "$850",
+          precioSecundario: "$425",
           notaPrecio: "Boleto Solo Ida · Incluye impuestos",
           tag: "Solo Ida",
           tagBg: "bg-emerald-700",
@@ -312,7 +312,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           ],
           waNumber: "51944103890",
           waMensaje:
-            "Hola, encontré Cityland Travel en Google. Quiero consultar precio de vuelo Solo Ida de Madrid a Lima (Desde $590 USD). ¿Me pueden ayudar?",
+            "Hola, encontré Cityland Travel en Google. Quiero consultar precio de vuelo Solo Ida de Madrid a Lima (Desde $850 USD). ¿Me pueden ayudar?",
         },
         {
           id: "mad-lim-familiar",
@@ -320,8 +320,8 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           pais: "España",
           filtro: "familiar",
           subtitulo: "Tú gestionas desde España y nosotros atendemos a tu familiar en Lima",
-          precioPrincipal: "$890",
-          precioSecundario: "$445",
+          precioPrincipal: "$1,290",
+          precioSecundario: "$645",
           notaPrecio: "Paquete completo desde Lima · Incluye impuestos",
           tag: "Reunificación",
           tagBg: "bg-red-600",
@@ -335,7 +335,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           ],
           waNumber: "51944103890",
           waMensaje:
-            "Hola, vivo en España y encontré Cityland Travel en Google. Quiero información para comprar el viaje de un familiar de Lima a Madrid (Desde $890 USD). ¿Me pueden ayudar?",
+            "Hola, vivo en España y encontré Cityland Travel en Google. Quiero información para comprar el viaje de un familiar de Lima a Madrid (Desde $1,290 USD). ¿Me pueden ayudar?",
         },
       ],
       pilares: [
@@ -371,16 +371,16 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
     codigoOrigen: "LIM",
     codigoDestino: "BCN",
     metaTitle:
-      "Vuelos de Lima a Barcelona Desde $920 USD (Con Seguro Schengen y Equipaje) | Cityland Travel",
+      "Vuelos de Lima a Barcelona Desde $1,320 USD | Cityland Travel",
     metaDescription:
-      "Cotiza vuelos de Lima a Barcelona (LIM - BCN) Desde $920 USD con impuestos incluidos. Conexiones rápidas con Iberia, LATAM, Air Europa y Avianca, Seguro Schengen 30.000€ y carpeta migratoria completa.",
+      "Cotiza vuelos de Lima a Barcelona (LIM - BCN) Desde $1,320 USD con impuestos incluidos. Conexiones rápidas con Iberia, LATAM y Air Europa, más Seguro Schengen.",
     keywords: [
       "vuelos de lima a barcelona",
       "pasajes aereos lima barcelona",
       "vuelos baratos lima a barcelona",
       "viajar a barcelona desde peru requisitos",
     ],
-    precioDesdeUSD: 920,
+    precioDesdeUSD: 1320,
     faqs: [
       {
         q: "¿El equipaje va directo desde Lima hasta Barcelona?",
@@ -413,12 +413,12 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
         sobretitulo: "Conexiones rápidas vía Madrid, Bogotá o São Paulo",
         titulo: "Vuelos y Paquetes Lima – Barcelona",
         labelPrecio: "Tarifa referencial con impuestos incluidos",
-        precio: "$920",
+        precio: "$1,320",
         moneda: "USD",
         notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
         waNumero: "51944103890",
         waMensaje:
-          "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Barcelona (Desde $920 USD). ¿Me pueden ayudar?",
+          "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Barcelona (Desde $1,320 USD). ¿Me pueden ayudar?",
       },
       seccionCatalogo: {
         sobretitulo: "Tarifas Referenciales LIM → BCN",
@@ -436,8 +436,8 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           pais: "España",
           filtro: "paquete",
           subtitulo: "Vuelo hasta El Prat (BCN) + Seguro Schengen + Reserva Hotel",
-          precioPrincipal: "$920",
-          precioSecundario: "$460",
+          precioPrincipal: "$1,320",
+          precioSecundario: "$660",
           notaPrecio: "Paquete turístico/migratorio · Incluye impuestos",
           tag: "Más Vendido BCN",
           tagBg: "bg-red-600",
@@ -451,16 +451,16 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           ],
           waNumber: "51944103890",
           waMensaje:
-            "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio del Paquete de Lima a Barcelona (Desde $920 USD). ¿Me pueden ayudar?",
+            "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio del Paquete de Lima a Barcelona (Desde $1,320 USD). ¿Me pueden ayudar?",
         },
         {
           id: "lim-bcn-idavuelta",
-          titulo: "Vuelo Lima – Barcelona – Lima (Ida y Vuelta)",
+          titulo: "Vuelo Lima – Barcelona – Lima (Ida y Vuelta · 2 Maletas)",
           pais: "España",
           filtro: "vuelo",
           subtitulo: "Ideal para vacaciones o visita familiar en Cataluña",
-          precioPrincipal: "$1,020",
-          precioSecundario: "$510",
+          precioPrincipal: "$1,390",
+          precioSecundario: "$695",
           notaPrecio: "Boleto Ida y Vuelta · Incluye impuestos",
           tag: "Ida y Vuelta",
           tagBg: "bg-blue-700",
@@ -474,7 +474,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           ],
           waNumber: "51944103890",
           waMensaje:
-            "Hola, encontré Cityland Travel en Google. Quiero consultar precio de vuelo Ida y Vuelta de Lima a Barcelona (Desde $1,020 USD). ¿Me pueden ayudar?",
+            "Hola, encontré Cityland Travel en Google. Quiero consultar precio de vuelo Ida y Vuelta de Lima a Barcelona (Desde $1,390 USD). ¿Me pueden ayudar?",
         },
         {
           id: "lim-bcn-madrid-tour",
@@ -482,8 +482,8 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           pais: "España",
           filtro: "paquete",
           subtitulo: "Entrando por Madrid y saliendo por Barcelona con tren AVE",
-          precioPrincipal: "$1,490",
-          precioSecundario: "$745",
+          precioPrincipal: "$1,890",
+          precioSecundario: "$945",
           notaPrecio: "Paquete turístico · Incluye impuestos",
           tag: "2 Ciudades + Tren AVE",
           tagBg: "bg-amber-600",
@@ -497,7 +497,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           ],
           waNumber: "51944103890",
           waMensaje:
-            "Hola, encontré Cityland Travel en Google. Quiero consultar el paquete turístico Madrid & Barcelona (Desde $1,490 USD). ¿Me pueden ayudar?",
+            "Hola, encontré Cityland Travel en Google. Quiero consultar el paquete turístico Madrid & Barcelona (Desde $1,890 USD). ¿Me pueden ayudar?",
         },
       ],
       pilares: [
@@ -533,16 +533,16 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
     codigoOrigen: "BCN",
     codigoDestino: "LIM",
     metaTitle:
-      "Vuelos de Barcelona a Lima Desde $820 USD (Ida y Vuelta o Traer Familiares) | Cityland Travel",
+      "Vuelos de Barcelona a Lima Desde $1,220 USD | Cityland Travel",
     metaDescription:
-      "Pasajes aéreos de Barcelona a Lima (BCN - LIM) Desde $820 USD con impuestos incluidos. Tarifas con equipaje de 23 kg para peruanos en Cataluña o compra de pasajes para familiares en Perú.",
+      "Pasajes aéreos de Barcelona a Lima (BCN - LIM) Desde $1,220 USD con impuestos incluidos. Tarifas con equipaje de 23 kg para peruanos en Cataluña y familias.",
     keywords: [
       "vuelos de barcelona a lima",
       "pasajes barcelona lima ida y vuelta",
       "vuelos economicos barcelona a lima",
       "traer familiar de lima a barcelona",
     ],
-    precioDesdeUSD: 820,
+    precioDesdeUSD: 1220,
     faqs: [
       {
         q: "¿Puedo comprar desde Barcelona el pasaje para traer a un familiar desde Lima?",
@@ -576,12 +576,12 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
         sobretitulo: "Aeropuerto Barcelona-El Prat (BCN) → Lima Jorge Chávez (LIM)",
         titulo: "Vuelos Barcelona – Lima y Emisión Familiar",
         labelPrecio: "Tarifa referencial con impuestos incluidos",
-        precio: "$820",
+        precio: "$1,220",
         moneda: "USD",
         notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
         waNumero: "51944103890",
         waMensaje:
-          "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Barcelona a Lima (Desde $820 USD). ¿Me pueden ayudar?",
+          "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Barcelona a Lima (Desde $1,220 USD). ¿Me pueden ayudar?",
       },
       seccionCatalogo: {
         sobretitulo: "Tarifas Verificadas BCN ↔ LIM",
@@ -599,8 +599,8 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           pais: "Perú",
           filtro: "vuelo",
           subtitulo: "Para residentes en Cataluña que visitan el Perú",
-          precioPrincipal: "$880",
-          precioSecundario: "$440",
+          precioPrincipal: "$1,280",
+          precioSecundario: "$640",
           notaPrecio: "Boleto Ida y Vuelta · Incluye impuestos",
           tag: "Ida y Vuelta",
           tagBg: "bg-blue-700",
@@ -614,7 +614,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           ],
           waNumber: "51944103890",
           waMensaje:
-            "Hola, encontré Cityland Travel en Google. Quiero consultar precio de vuelo Ida y Vuelta de Barcelona a Lima (Desde $880 USD). ¿Me pueden ayudar?",
+            "Hola, encontré Cityland Travel en Google. Quiero consultar precio de vuelo Ida y Vuelta de Barcelona a Lima (Desde $1,280 USD). ¿Me pueden ayudar?",
         },
         {
           id: "bcn-lim-soloida",
@@ -622,8 +622,8 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           pais: "Perú",
           filtro: "vuelo",
           subtitulo: "Retorno al Perú con equipaje completo",
-          precioPrincipal: "$620",
-          precioSecundario: "$310",
+          precioPrincipal: "$880",
+          precioSecundario: "$440",
           notaPrecio: "Boleto Solo Ida · Incluye impuestos",
           tag: "Solo Ida",
           tagBg: "bg-emerald-700",
@@ -637,7 +637,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           ],
           waNumber: "51944103890",
           waMensaje:
-            "Hola, encontré Cityland Travel en Google. Quiero consultar precio de vuelo Solo Ida de Barcelona a Lima (Desde $620 USD). ¿Me pueden ayudar?",
+            "Hola, encontré Cityland Travel en Google. Quiero consultar precio de vuelo Solo Ida de Barcelona a Lima (Desde $880 USD). ¿Me pueden ayudar?",
         },
         {
           id: "bcn-lim-familiar",
@@ -645,8 +645,8 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           pais: "España",
           filtro: "familiar",
           subtitulo: "Atendemos a tu familia en nuestra oficina de Lima",
-          precioPrincipal: "$920",
-          precioSecundario: "$460",
+          precioPrincipal: "$1,320",
+          precioSecundario: "$660",
           notaPrecio: "Paquete completo desde Lima · Incluye impuestos",
           tag: "Reunificación",
           tagBg: "bg-red-600",
@@ -660,7 +660,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           ],
           waNumber: "51944103890",
           waMensaje:
-            "Hola, vivo en Barcelona y encontré Cityland Travel en Google. Quiero cotizar el viaje de un familiar desde Lima a Barcelona (Desde $920 USD). ¿Me pueden ayudar?",
+            "Hola, vivo en Barcelona y encontré Cityland Travel en Google. Quiero cotizar el viaje de un familiar desde Lima a Barcelona (Desde $1,320 USD). ¿Me pueden ayudar?",
         },
       ],
       pilares: [
@@ -696,16 +696,16 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
     codigoOrigen: "LIM",
     codigoDestino: "MIA",
     metaTitle:
-      "Vuelos y Paquetes de Lima a Miami Desde $549 USD (Vuelos Directos) | Cityland Travel",
+      "Vuelos y Paquetes de Lima a Miami Desde $690 USD | Cityland Travel",
     metaDescription:
-      "Cotiza vuelos directos de Lima a Miami (LIM - MIA) Desde $549 USD ida y vuelta con impuestos incluidos, o paquete completo con hotel y compras Desde $1,190 USD. Agencia Cityland Travel en Lima.",
+      "Cotiza vuelos directos de Lima a Miami (LIM - MIA) Desde $690 USD ida y vuelta con impuestos incluidos, o paquete completo con hotel Desde $1,390 USD.",
     keywords: [
       "vuelos de lima a miami",
       "pasajes aereos lima miami",
       "vuelos directos lima miami latam sky",
       "paquetes a miami desde lima",
     ],
-    precioDesdeUSD: 549,
+    precioDesdeUSD: 690,
     faqs: [
       {
         q: "¿Cuánto dura el vuelo directo de Lima a Miami?",
@@ -739,12 +739,12 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Miami International (MIA)",
         titulo: "Vuelos Directos y Paquetes Lima – Miami",
         labelPrecio: "Vuelo Ida y Vuelta con impuestos incluidos",
-        precio: "$549",
+        precio: "$690",
         moneda: "USD",
         notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
         waNumero: "51944103890",
         waMensaje:
-          "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Miami (Desde $549 USD). ¿Me pueden ayudar?",
+          "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Miami (Desde $690 USD). ¿Me pueden ayudar?",
       },
       seccionCatalogo: {
         sobretitulo: "Tarifas Referenciales LIM → MIA",
@@ -762,8 +762,8 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           pais: "Estados Unidos",
           filtro: "vuelo",
           subtitulo: "Vuelos directos en Sky Airline, LATAM o American Airlines",
-          precioPrincipal: "$549",
-          precioSecundario: "$275",
+          precioPrincipal: "$690",
+          precioSecundario: "$345",
           notaPrecio: "Boleto Ida y Vuelta · Incluye impuestos",
           tag: "Solo Vuelo",
           tagBg: "bg-blue-700",
@@ -777,7 +777,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           ],
           waNumber: "51944103890",
           waMensaje:
-            "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio del vuelo Ida y Vuelta de Lima a Miami (Desde $549 USD). ¿Me pueden ayudar?",
+            "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio del vuelo Ida y Vuelta de Lima a Miami (Desde $690 USD). ¿Me pueden ayudar?",
         },
         {
           id: "lim-mia-paquete",
@@ -785,8 +785,8 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           pais: "Estados Unidos",
           filtro: "paquete",
           subtitulo: "Vuelo + Hotel + Traslados + Paseo en Barco por Biscayne Bay",
-          precioPrincipal: "$1,190",
-          precioSecundario: "$595",
+          precioPrincipal: "$1,390",
+          precioSecundario: "$695",
           notaPrecio: "Paquete turístico · Incluye impuestos",
           tag: "Paquete Completo",
           tagBg: "bg-red-600",
@@ -800,7 +800,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           ],
           waNumber: "51944103890",
           waMensaje:
-            "Hola, encontré Cityland Travel en Google. Quiero consultar el Paquete a Miami de 5 días / 4 noches (Desde $1,190 USD). ¿Me pueden ayudar?",
+            "Hola, encontré Cityland Travel en Google. Quiero consultar el Paquete a Miami de 5 días / 4 noches (Desde $1,390 USD). ¿Me pueden ayudar?",
         },
         {
           id: "lim-mia-orlando",
@@ -808,8 +808,8 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           pais: "Estados Unidos",
           filtro: "paquete",
           subtitulo: "Playas de Miami + Magia en los Parques de Orlando",
-          precioPrincipal: "$1,590",
-          precioSecundario: "$795",
+          precioPrincipal: "$1,690",
+          precioSecundario: "$845",
           notaPrecio: "Paquete turístico · Incluye impuestos",
           tag: "Especial Familias",
           tagBg: "bg-amber-600",
@@ -823,7 +823,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           ],
           waNumber: "51944103890",
           waMensaje:
-            "Hola, encontré Cityland Travel en Google. Quiero consultar el paquete combinado Miami + Orlando (Desde $1,590 USD). ¿Me pueden ayudar?",
+            "Hola, encontré Cityland Travel en Google. Quiero consultar el paquete combinado Miami + Orlando (Desde $1,690 USD). ¿Me pueden ayudar?",
         },
       ],
       pilares: [
@@ -859,16 +859,16 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
     codigoOrigen: "LIM",
     codigoDestino: "EZE",
     metaTitle:
-      "Vuelos y Paquetes de Lima a Buenos Aires Desde $429 USD (Solo con DNI) | Cityland Travel",
+      "Vuelos y Paquetes de Lima a Buenos Aires Desde $529 USD | Cityland Travel",
     metaDescription:
-      "Viaja de Lima a Buenos Aires, Argentina Desde $429 USD ida y vuelta con impuestos incluidos. Vuelos directos en LATAM, Sky, Aerolíneas Argentinas y JetSMART. ¡Viaja solo con tu DNI peruano vigente!",
+      "Viaja de Lima a Buenos Aires, Argentina Desde $529 USD ida y vuelta con impuestos incluidos. Vuelos directos en LATAM, Sky, Aerolíneas Argentinas y JetSMART.",
     keywords: [
       "vuelos de lima a buenos aires",
       "pasajes a buenos aires desde lima",
       "paquetes a buenos aires desde lima",
       "viajar a argentina desde peru con dni",
     ],
-    precioDesdeUSD: 429,
+    precioDesdeUSD: 529,
     faqs: [
       {
         q: "¿Puedo viajar de Lima a Buenos Aires solo con DNI?",
@@ -902,12 +902,12 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Ezeiza (EZE) / Aeroparque (AEP)",
         titulo: "Vuelos y Paquetes Lima – Buenos Aires",
         labelPrecio: "Vuelo Ida y Vuelta con impuestos incluidos",
-        precio: "$429",
+        precio: "$529",
         moneda: "USD",
         notaInferior: "Tarifa sujeta a disponibilidad y condiciones aplicables",
         waNumero: "51944103890",
         waMensaje:
-          "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Buenos Aires (Desde $429 USD). ¿Me pueden ayudar?",
+          "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Buenos Aires (Desde $529 USD). ¿Me pueden ayudar?",
       },
       seccionCatalogo: {
         sobretitulo: "Tarifas Referenciales LIM → BUE",
@@ -925,8 +925,8 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           pais: "Argentina",
           filtro: "vuelo",
           subtitulo: "Vuelos directos a Ezeiza (EZE) o Aeroparque (AEP)",
-          precioPrincipal: "$429",
-          precioSecundario: "$215",
+          precioPrincipal: "$529",
+          precioSecundario: "$265",
           notaPrecio: "Boleto Ida y Vuelta · Incluye impuestos",
           tag: "Solo Vuelo",
           tagBg: "bg-blue-700",
@@ -940,7 +940,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           ],
           waNumber: "51944103890",
           waMensaje:
-            "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio del vuelo Ida y Vuelta de Lima a Buenos Aires (Desde $429 USD). ¿Me pueden ayudar?",
+            "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio del vuelo Ida y Vuelta de Lima a Buenos Aires (Desde $529 USD). ¿Me pueden ayudar?",
         },
         {
           id: "lim-bue-paquete",
@@ -948,8 +948,8 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           pais: "Argentina",
           filtro: "paquete",
           subtitulo: "Vuelos + Hotel con Desayuno + City Tour + Delta del Tigre",
-          precioPrincipal: "$749",
-          precioSecundario: "$375",
+          precioPrincipal: "$849",
+          precioSecundario: "$425",
           notaPrecio: "Paquete turístico · Incluye impuestos",
           tag: "Más Vendido",
           tagBg: "bg-red-600",
@@ -963,7 +963,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           ],
           waNumber: "51944103890",
           waMensaje:
-            "Hola, encontré Cityland Travel en Google. Quiero consultar el Paquete a Buenos Aires de 5 días / 4 noches (Desde $749 USD). ¿Me pueden ayudar?",
+            "Hola, encontré Cityland Travel en Google. Quiero consultar el Paquete a Buenos Aires de 5 días / 4 noches (Desde $849 USD). ¿Me pueden ayudar?",
         },
         {
           id: "lim-bue-bariloche",
@@ -971,8 +971,8 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           pais: "Argentina",
           filtro: "paquete",
           subtitulo: "Capital del Tango + Paisajes de la Patagonia Argentina",
-          precioPrincipal: "$1,190",
-          precioSecundario: "$595",
+          precioPrincipal: "$1,290",
+          precioSecundario: "$645",
           notaPrecio: "Paquete turístico · Incluye impuestos",
           tag: "Combinado",
           tagBg: "bg-emerald-700",
@@ -986,7 +986,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           ],
           waNumber: "51944103890",
           waMensaje:
-            "Hola, encontré Cityland Travel en Google. Quiero consultar el paquete Buenos Aires + Bariloche (Desde $1,190 USD). ¿Me pueden ayudar?",
+            "Hola, encontré Cityland Travel en Google. Quiero consultar el paquete Buenos Aires + Bariloche (Desde $1,290 USD). ¿Me pueden ayudar?",
         },
       ],
       pilares: [
@@ -1017,6 +1017,48 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
   },
 ];
 
+const ESCALA_COMERCIAL_RUTAS_BASE: Record<
+  string,
+  { desde: number; items: [number, number, number] }
+> = {
+  "lima-punta-cana": { desde: 749, items: [1290, 749, 1449] },
+  "lima-cancun": { desde: 699, items: [1290, 699, 1429] },
+  "lima-cartagena": { desde: 489, items: [799, 489, 989] },
+  "lima-medellin": { desde: 469, items: [789, 469, 989] },
+  "lima-cusco": { desde: 169, items: [499, 449, 169] },
+  "lima-roma": { desde: 1350, items: [1350, 1990, 1420] },
+  "lima-paris": { desde: 1350, items: [1350, 2890, 1790] },
+  "lima-rio-de-janeiro": { desde: 589, items: [949, 589, 1149] },
+  "lima-santiago": { desde: 349, items: [349, 749, 849] },
+  "lima-bogota": { desde: 449, items: [449, 749, 890] },
+  "lima-panama": { desde: 529, items: [829, 529, 990] },
+  "lima-valencia": { desde: 1330, items: [1330, 1390, 920] },
+  "lima-malaga": { desde: 1340, items: [1340, 1790, 1410] },
+  "lima-milan": { desde: 1350, items: [1350, 1420, 1990] },
+  "lima-amsterdam": { desde: 1360, items: [1360, 1990, 1460] },
+  "lima-estambul": { desde: 1450, items: [1890, 1450, 2390] },
+  "miami-lima": { desde: 650, items: [650, 420, 1090] },
+  "buenos-aires-lima": { desde: 499, items: [499, 329, 949] },
+  "santiago-lima": { desde: 349, items: [349, 229, 799] },
+  "lima-san-andres": { desde: 529, items: [890, 529, 1090] },
+  "lima-aruba": { desde: 699, items: [1390, 699, 1590] },
+  "lima-arequipa": { desde: 149, items: [419, 149, 599] },
+  "lima-piura": { desde: 159, items: [459, 159, 599] },
+  "lima-sevilla": { desde: 1340, items: [1340, 1410, 1790] },
+  "lima-bilbao": { desde: 1350, items: [1350, 1420, 1850] },
+  "lima-lisboa": { desde: 1340, items: [1340, 1890, 1410] },
+  "lima-frankfurt": { desde: 1380, items: [1380, 1450, 1950] },
+  "lima-nueva-york": { desde: 749, items: [749, 1490, 1790] },
+  "lima-orlando": { desde: 699, items: [1490, 699, 1690] },
+  "roma-lima": { desde: 1250, items: [1250, 890, 1350] },
+  "paris-lima": { desde: 1250, items: [1250, 890, 1350] },
+  "milan-lima": { desde: 1240, items: [1240, 880, 1350] },
+  "lima-sao-paulo": { desde: 529, items: [529, 849, 1490] },
+  "lima-tarapoto": { desde: 149, items: [419, 149, 489] },
+  "lima-iquitos": { desde: 169, items: [499, 169, 629] },
+  "lima-puno": { desde: 159, items: [419, 159, 599] },
+};
+
 function normalizarImagenesRutaBase(ruta: RutaVueloSEO): RutaVueloSEO {
   const textoClave =
     ruta.destino === "Lima"
@@ -1025,18 +1067,53 @@ function normalizarImagenesRutaBase(ruta: RutaVueloSEO): RutaVueloSEO {
   const [f0, f1, f2, f3, f4] = obtenerGaleriaPorTexto(textoClave);
   const fotosItems = [f1, f2, f3];
 
+  const escala = ESCALA_COMERCIAL_RUTAS_BASE[ruta.slug];
+  const desdeUSD = escala ? escala.desde : ruta.precioDesdeUSD;
+  const desdeFmt = `$${desdeUSD.toLocaleString("en-US")}`;
+
+  const metaTitleBase = `Vuelos de ${ruta.origen} a ${ruta.destino} Desde ${desdeFmt} | Cityland`;
+  const metaTitle =
+    metaTitleBase.length > 60
+      ? `Vuelos ${ruta.origen} a ${ruta.destino} ${desdeFmt} | Cityland`
+      : metaTitleBase;
+
+  const metaDescriptionBase = `Cotiza vuelos y paquetes de ${ruta.origen} (${ruta.codigoOrigen}) a ${ruta.destino} (${ruta.codigoDestino}) Desde ${desdeFmt} USD con impuestos incluidos en Cityland Travel.`;
+  const metaDescription =
+    metaDescriptionBase.length > 158
+      ? `${metaDescriptionBase.slice(0, 155).trim()}...`
+      : metaDescriptionBase;
+
   return {
     ...ruta,
+    precioDesdeUSD: desdeUSD,
+    metaTitle,
+    metaDescription,
+    faqs: ruta.faqs.map((f) => ({
+      q: f.q.replace(/Desde \$[\d,]+/g, `Desde ${desdeFmt}`),
+      a: f.a.replace(/Desde \$[\d,]+/g, `Desde ${desdeFmt}`),
+    })),
     config: {
       ...ruta.config,
       vitrina: {
         ...ruta.config.vitrina,
         img: f0,
+        precio: desdeFmt,
+        waMensaje: `Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de ${ruta.origen} a ${ruta.destino} (Desde ${desdeFmt} USD). ¿Me pueden ayudar?`,
       },
-      items: ruta.config.items.map((item, idx) => ({
-        ...item,
-        img: fotosItems[idx % fotosItems.length],
-      })),
+      items: ruta.config.items.map((item, idx) => {
+        const pNum = escala
+          ? escala.items[idx] ?? desdeUSD
+          : Number(item.precioPrincipal.replace(/[^0-9]/g, "")) || desdeUSD;
+        const pPrincipalFmt = `$${pNum.toLocaleString("en-US")}`;
+        const pSecundarioFmt = `$${Math.round(pNum * 0.5).toLocaleString("en-US")}`;
+        return {
+          ...item,
+          img: fotosItems[idx % fotosItems.length],
+          precioPrincipal: pPrincipalFmt,
+          precioSecundario: pSecundarioFmt,
+          waMensaje: item.waMensaje?.replace(/Desde \$[\d,]+/g, `Desde ${pPrincipalFmt}`),
+        };
+      }),
       bannerFinal: {
         ...ruta.config.bannerFinal,
         img: f4,
