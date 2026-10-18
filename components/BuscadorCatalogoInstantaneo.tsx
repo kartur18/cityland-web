@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
@@ -12,6 +13,7 @@ interface ItemResultado {
   cluster: string;
   clusterNombre: string;
   precioDesdeUSD: number;
+  img?: string;
 }
 
 const CATEGORIAS = [
@@ -328,7 +330,7 @@ export default function BuscadorCatalogoInstantaneo({
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {items.map((item) => {
               const inicial50 = Math.round(item.precioDesdeUSD * 0.5);
               const waHref =
@@ -338,41 +340,65 @@ export default function BuscadorCatalogoInstantaneo({
                 );
               const fueCopiado = copiadoSlug === item.slug;
               const fueResumenCopiado = copiadoResumenSlug === item.slug;
+              const imgUrl =
+                item.img ||
+                "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1200&q=85";
 
               return (
                 <div
                   key={item.slug}
-                  className="bg-slate-50/80 hover:bg-white rounded-2xl border border-slate-200/90 hover:border-slate-300 p-4 transition-all hover:shadow-md flex flex-col justify-between gap-3"
+                  className="group bg-white rounded-2xl border border-slate-200/90 hover:border-slate-300 overflow-hidden transition-all hover:shadow-lg flex flex-col justify-between"
                 >
                   <div>
-                    <div className="flex items-center justify-between gap-2 mb-1.5">
-                      <span className="text-[10px] font-extrabold uppercase tracking-wider text-red-600 bg-red-50 px-2.5 py-0.5 rounded-full truncate">
-                        {item.clusterNombre}
-                      </span>
-                      <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/70 px-2 py-0.5 rounded-full shrink-0">
-                        Separa con ${inicial50}
-                      </span>
-                    </div>
-
                     <Link
                       href={item.url}
-                      className="text-sm font-extrabold text-[#0a1628] hover:text-red-600 transition-colors leading-snug line-clamp-2 block"
+                      className="relative block h-40 w-full bg-slate-100 overflow-hidden"
                     >
-                      {item.titulo}
+                      <Image
+                        src={imgUrl}
+                        alt={item.titulo}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/35" />
+
+                      <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between gap-2">
+                        <span className="text-[10px] font-extrabold uppercase tracking-wider text-white bg-red-600/95 backdrop-blur-xs px-2.5 py-1 rounded-full truncate shadow-xs">
+                          {item.clusterNombre}
+                        </span>
+                        <span className="text-[11px] font-extrabold text-emerald-950 bg-emerald-300/95 backdrop-blur-xs px-2.5 py-0.5 rounded-full shrink-0 shadow-xs">
+                          Separa con ${inicial50}
+                        </span>
+                      </div>
+
+                      <div className="absolute bottom-2.5 left-3 right-3 flex items-end justify-between gap-2 text-white">
+                        <span className="text-xs font-bold text-slate-100 truncate drop-shadow-xs">
+                          📍 {item.destinoOPais}
+                        </span>
+                        <div className="text-right shrink-0 bg-[#0a1628]/85 backdrop-blur-xs px-2.5 py-1 rounded-xl border border-white/15">
+                          <span className="text-[9px] uppercase font-bold text-amber-300 block leading-none">
+                            Desde
+                          </span>
+                          <span className="text-sm font-black text-white leading-tight">
+                            ${item.precioDesdeUSD}{" "}
+                            <span className="text-[10px] font-bold text-slate-300">USD</span>
+                          </span>
+                        </div>
+                      </div>
                     </Link>
 
-                    <div className="flex items-baseline justify-between mt-2">
-                      <span className="text-[11px] font-semibold text-slate-500 truncate pr-2">
-                        📍 {item.destinoOPais}
-                      </span>
-                      <span className="text-base font-black text-[#0a1628] shrink-0">
-                        Desde ${item.precioDesdeUSD}{" "}
-                        <span className="text-[10px] font-bold text-slate-500">USD</span>
-                      </span>
+                    <div className="p-4 pb-3">
+                      <Link
+                        href={item.url}
+                        className="text-sm font-extrabold text-[#0a1628] group-hover:text-red-600 transition-colors leading-snug line-clamp-2 block"
+                      >
+                        {item.titulo}
+                      </Link>
                     </div>
                   </div>
 
-                  <div className="pt-2.5 border-t border-slate-200/70 flex items-center justify-between gap-1.5">
+                  <div className="px-4 pb-4 pt-2.5 border-t border-slate-100 flex items-center justify-between gap-1.5">
                     <Link
                       href={item.url}
                       className="flex-1 text-center text-[11px] font-extrabold text-white bg-[#0a1628] hover:bg-slate-800 px-2.5 py-2 rounded-xl transition-colors"
@@ -387,7 +413,7 @@ export default function BuscadorCatalogoInstantaneo({
                       className={`text-[11px] font-bold px-2.5 py-2 rounded-xl border transition-all cursor-pointer ${
                         fueCopiado
                           ? "bg-emerald-600 text-white border-emerald-600"
-                          : "bg-white hover:bg-slate-100 text-slate-700 border-slate-200"
+                          : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"
                       }`}
                     >
                       {fueCopiado ? "✓ Link" : "🔗 Link"}
@@ -400,7 +426,7 @@ export default function BuscadorCatalogoInstantaneo({
                       className={`text-[11px] font-bold px-2.5 py-2 rounded-xl border transition-all cursor-pointer ${
                         fueResumenCopiado
                           ? "bg-emerald-600 text-white border-emerald-600"
-                          : "bg-white hover:bg-slate-100 text-slate-700 border-slate-200"
+                          : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"
                       }`}
                     >
                       {fueResumenCopiado ? "✓ Texto" : "📋 Texto"}

@@ -5,6 +5,7 @@ import { RUTAS_VUELOS_SEO } from "@/lib/rutas-vuelos";
 import { VIAJES_ESPECIALIZADOS_SEO } from "@/lib/catalogo-viajes-especializados";
 import { AGENCIAS_LOCALES_SEO } from "@/lib/catalogo-agencias-locales";
 import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-comerciales";
+import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
 
 export interface ItemBuscadorCatalogo {
   slug: string;
@@ -14,6 +15,7 @@ export interface ItemBuscadorCatalogo {
   cluster: string;
   clusterNombre: string;
   precioDesdeUSD: number;
+  img: string;
   searchNorm: string;
 }
 
@@ -31,8 +33,10 @@ function obtenerIndiceUnificado(): ItemBuscadorCatalogo[] {
 
   const lista: ItemBuscadorCatalogo[] = [];
 
-  for (const o of TODOS_LOS_RESUMENES_OFERTAS_SEO) {
+  for (let i = 0; i < TODOS_LOS_RESUMENES_OFERTAS_SEO.length; i++) {
+    const o = TODOS_LOS_RESUMENES_OFERTAS_SEO[i];
     const url = `/ofertas/${o.slug}`;
+    const galeria = obtenerGaleriaPorTexto(`${o.titulo} ${o.destinoOPais} ${o.slug}`);
     lista.push({
       slug: o.slug,
       url,
@@ -41,15 +45,18 @@ function obtenerIndiceUnificado(): ItemBuscadorCatalogo[] {
       cluster: o.cluster,
       clusterNombre: o.clusterNombre,
       precioDesdeUSD: o.precioDesdeUSD,
+      img: galeria[i % 3] || galeria[0],
       searchNorm: normalizarTexto(
         `${o.titulo} ${o.destinoOPais} ${o.clusterNombre} ${o.slug.replace(/-/g, " ")}`
       ),
     });
   }
 
-  for (const r of RUTAS_VUELOS_SEO) {
+  for (let i = 0; i < RUTAS_VUELOS_SEO.length; i++) {
+    const r = RUTAS_VUELOS_SEO[i];
     const url = `/vuelos/${r.slug}`;
     const titulo = `Vuelos de ${r.origen} (${r.codigoOrigen}) a ${r.destino} (${r.codigoDestino})`;
+    const galeria = obtenerGaleriaPorTexto(`${r.destino} ${r.slug}`);
     lista.push({
       slug: `vuelo-${r.slug}`,
       url,
@@ -58,11 +65,14 @@ function obtenerIndiceUnificado(): ItemBuscadorCatalogo[] {
       cluster: "vuelos",
       clusterNombre: "Vuelos y Boletos Aéreos",
       precioDesdeUSD: r.precioDesdeUSD,
+      img: galeria[i % 3] || galeria[0],
       searchNorm: normalizarTexto(`${titulo} ${r.origen} ${r.destino} ${r.slug.replace(/-/g, " ")}`),
     });
   }
 
-  for (const d of [...DESTINOS_EUROPA, ...DESTINOS_CARIBE, ...DESTINOS_MASIVOS]) {
+  const todosDestinos = [...DESTINOS_EUROPA, ...DESTINOS_CARIBE, ...DESTINOS_MASIVOS];
+  for (let i = 0; i < todosDestinos.length; i++) {
+    const d = todosDestinos[i];
     const url = `/destinos/${d.slug}`;
     const precio = Number(String(d.turistico).replace(/[^0-9]/g, "")) || 890;
     const titulo = `Paquete a ${d.ciudad}, ${d.pais} (${d.duracion})`;
@@ -74,12 +84,15 @@ function obtenerIndiceUnificado(): ItemBuscadorCatalogo[] {
       cluster: "destinos",
       clusterNombre: "Destinos Principales",
       precioDesdeUSD: precio,
+      img: d.img || obtenerGaleriaPorTexto(`${d.ciudad} ${d.pais}`)[0],
       searchNorm: normalizarTexto(`${titulo} ${d.ciudad} ${d.pais} ${d.slug.replace(/-/g, " ")}`),
     });
   }
 
-  for (const v of VIAJES_ESPECIALIZADOS_SEO) {
+  for (let i = 0; i < VIAJES_ESPECIALIZADOS_SEO.length; i++) {
+    const v = VIAJES_ESPECIALIZADOS_SEO[i];
     const url = `/viajes/${v.slug}`;
+    const galeria = obtenerGaleriaPorTexto(`${v.titulo} ${v.destinoOPais} ${v.slug}`);
     lista.push({
       slug: `viaje-${v.slug}`,
       url,
@@ -88,13 +101,16 @@ function obtenerIndiceUnificado(): ItemBuscadorCatalogo[] {
       cluster: "especializados",
       clusterNombre: "Programas Especializados",
       precioDesdeUSD: v.precioDesdeUSD,
+      img: galeria[i % 3] || galeria[0],
       searchNorm: normalizarTexto(`${v.titulo} ${v.destinoOPais} ${v.slug.replace(/-/g, " ")}`),
     });
   }
 
-  for (const a of AGENCIAS_LOCALES_SEO) {
+  for (let i = 0; i < AGENCIAS_LOCALES_SEO.length; i++) {
+    const a = AGENCIAS_LOCALES_SEO[i];
     const url = `/agencia/${a.slug}`;
     const titulo = `Agencia de Viajes Cityland Travel para ${a.zona} (${a.region})`;
+    const galeria = obtenerGaleriaPorTexto(`${a.zona} ${a.region} ${a.slug}`);
     lista.push({
       slug: `agencia-${a.slug}`,
       url,
@@ -103,6 +119,7 @@ function obtenerIndiceUnificado(): ItemBuscadorCatalogo[] {
       cluster: "agencias",
       clusterNombre: "Atención por Ciudad y Distrito",
       precioDesdeUSD: 299,
+      img: galeria[i % 3] || galeria[0],
       searchNorm: normalizarTexto(`${titulo} ${a.zona} ${a.region} ${a.slug.replace(/-/g, " ")}`),
     });
   }
@@ -161,6 +178,7 @@ export async function GET(req: NextRequest) {
         cluster: item.cluster,
         clusterNombre: item.clusterNombre,
         precioDesdeUSD: item.precioDesdeUSD,
+        img: item.img,
       });
     }
   }

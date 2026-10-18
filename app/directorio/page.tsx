@@ -10,6 +10,7 @@ import { DESTINOS_EUROPA, DESTINOS_CARIBE, BLOG_POSTS } from "@/components/const
 import { RUTAS_VUELOS_SEO } from "@/lib/rutas-vuelos";
 import { VIAJES_ESPECIALIZADOS_SEO } from "@/lib/catalogo-viajes-especializados";
 import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-comerciales";
+import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
 
 export const metadata: Metadata = {
   title: "Catálogo de +10,000 Destinos, Ofertas, España, Italia, Vuelos y Hoteles | Cityland Travel",
@@ -166,15 +167,19 @@ export default function DirectorioMaestroPage() {
   const destinosDestacados = [...DESTINOS_EUROPA, ...DESTINOS_CARIBE];
   const rutasPrincipales = RUTAS_VUELOS_SEO.slice(0, 36);
   const serviciosDestacados = VIAJES_ESPECIALIZADOS_SEO.slice(0, 24);
-  const inicialesBuscador = TODOS_LOS_RESUMENES_OFERTAS_SEO.slice(0, 24).map((o) => ({
-    slug: o.slug,
-    url: `/ofertas/${o.slug}`,
-    titulo: o.titulo,
-    destinoOPais: o.destinoOPais,
-    cluster: o.cluster,
-    clusterNombre: o.clusterNombre,
-    precioDesdeUSD: o.precioDesdeUSD,
-  }));
+  const inicialesBuscador = TODOS_LOS_RESUMENES_OFERTAS_SEO.slice(0, 24).map((o, idx) => {
+    const galeria = obtenerGaleriaPorTexto(`${o.titulo} ${o.destinoOPais} ${o.slug}`);
+    return {
+      slug: o.slug,
+      url: `/ofertas/${o.slug}`,
+      titulo: o.titulo,
+      destinoOPais: o.destinoOPais,
+      cluster: o.cluster,
+      clusterNombre: o.clusterNombre,
+      precioDesdeUSD: o.precioDesdeUSD,
+      img: galeria[idx % 3] || galeria[0],
+    };
+  });
   const waUrl =
     "https://wa.me/51944103890?text=" +
     encodeURIComponent(
@@ -374,21 +379,38 @@ export default function DirectorioMaestroPage() {
                       </div>
                       <p className="text-xs text-slate-500 mb-4">{cl.sub}</p>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                        {itemsCluster.slice(0, 16).map((it) => (
-                          <Link
-                            key={it.slug}
-                            href={`/ofertas/${it.slug}`}
-                            className="flex items-center justify-between bg-slate-50 hover:bg-red-50/70 px-3 py-2 rounded-xl border border-slate-200/70 transition-colors"
-                          >
-                            <span className="font-semibold text-slate-700 truncate pr-2">
-                              {it.titulo}
-                            </span>
-                            <span className="font-extrabold text-[#0a1628] shrink-0">
-                              ${it.precioDesdeUSD}
-                            </span>
-                          </Link>
-                        ))}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+                        {itemsCluster.slice(0, 12).map((it, idx) => {
+                          const galeria = obtenerGaleriaPorTexto(
+                            `${it.titulo} ${it.destinoOPais} ${it.slug}`
+                          );
+                          const thumb = galeria[idx % 3] || galeria[0];
+                          return (
+                            <Link
+                              key={it.slug}
+                              href={`/ofertas/${it.slug}`}
+                              className="group flex items-center gap-2.5 bg-slate-50 hover:bg-red-50/70 p-2 rounded-xl border border-slate-200/70 transition-colors"
+                            >
+                              <div className="relative w-12 h-12 rounded-lg overflow-hidden shrink-0 bg-slate-200">
+                                <Image
+                                  src={thumb}
+                                  alt={it.titulo}
+                                  fill
+                                  sizes="48px"
+                                  className="object-cover group-hover:scale-105 transition-transform"
+                                />
+                              </div>
+                              <div className="min-w-0 flex-1">
+                                <span className="font-bold text-[#0a1628] group-hover:text-red-600 line-clamp-2 leading-tight block">
+                                  {it.titulo}
+                                </span>
+                                <span className="text-[11px] font-extrabold text-emerald-700 mt-0.5 block">
+                                  Desde ${it.precioDesdeUSD} USD
+                                </span>
+                              </div>
+                            </Link>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>
@@ -407,20 +429,35 @@ export default function DirectorioMaestroPage() {
                 Rutas de Vuelos Más Cotizadas
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs sm:text-sm">
-                {rutasPrincipales.map((r) => (
-                  <Link
-                    key={r.slug}
-                    href={`/vuelos/${r.slug}`}
-                    className="flex items-center justify-between bg-slate-50 hover:bg-red-50/70 px-3.5 py-2.5 rounded-xl border border-slate-200/70 transition-colors"
-                  >
-                    <span className="font-semibold text-slate-800 truncate pr-2">
-                      ✈️ {r.origen} → {r.destino}
-                    </span>
-                    <span className="font-extrabold text-[#0a1628] shrink-0">
-                      ${r.precioDesdeUSD} USD
-                    </span>
-                  </Link>
-                ))}
+                {rutasPrincipales.map((r, idx) => {
+                  const galeria = obtenerGaleriaPorTexto(`${r.destino} ${r.slug}`);
+                  const thumb = galeria[idx % 3] || galeria[0];
+                  return (
+                    <Link
+                      key={r.slug}
+                      href={`/vuelos/${r.slug}`}
+                      className="group flex items-center justify-between gap-2.5 bg-slate-50 hover:bg-red-50/70 p-2 rounded-xl border border-slate-200/70 transition-colors"
+                    >
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <div className="relative w-11 h-11 rounded-lg overflow-hidden shrink-0 bg-slate-200">
+                          <Image
+                            src={thumb}
+                            alt={`Vuelos a ${r.destino}`}
+                            fill
+                            sizes="44px"
+                            className="object-cover group-hover:scale-105 transition-transform"
+                          />
+                        </div>
+                        <span className="font-bold text-slate-800 group-hover:text-red-600 truncate">
+                          ✈️ {r.origen} → {r.destino}
+                        </span>
+                      </div>
+                      <span className="font-extrabold text-[#0a1628] shrink-0 pr-1">
+                        ${r.precioDesdeUSD} USD
+                      </span>
+                    </Link>
+                  );
+                })}
               </div>
             </section>
 

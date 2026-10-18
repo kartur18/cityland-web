@@ -4,6 +4,7 @@ import AirlineLandingTemplate, {
 } from "@/components/AirlineLandingTemplate";
 import BuscadorCatalogoInstantaneo from "@/components/BuscadorCatalogoInstantaneo";
 import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-comerciales";
+import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
 
 export const metadata: Metadata = {
   title:
@@ -228,15 +229,19 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
 };
 
 export default function PromocionesPage() {
-  const iniciales = TODOS_LOS_RESUMENES_OFERTAS_SEO.slice(0, 24).map((o) => ({
-    slug: o.slug,
-    url: `/ofertas/${o.slug}`,
-    titulo: o.titulo,
-    destinoOPais: o.destinoOPais,
-    cluster: o.cluster,
-    clusterNombre: o.clusterNombre,
-    precioDesdeUSD: o.precioDesdeUSD,
-  }));
+  const iniciales = TODOS_LOS_RESUMENES_OFERTAS_SEO.slice(0, 24).map((o, idx) => {
+    const galeria = obtenerGaleriaPorTexto(`${o.titulo} ${o.destinoOPais} ${o.slug}`);
+    return {
+      slug: o.slug,
+      url: `/ofertas/${o.slug}`,
+      titulo: o.titulo,
+      destinoOPais: o.destinoOPais,
+      cluster: o.cluster,
+      clusterNombre: o.clusterNombre,
+      precioDesdeUSD: o.precioDesdeUSD,
+      img: galeria[idx % 3] || galeria[0],
+    };
+  });
 
   return (
     <AirlineLandingTemplate config={CONFIG_PROMOCIONES}>
