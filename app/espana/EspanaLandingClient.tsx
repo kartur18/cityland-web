@@ -1,249 +1,240 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
-import PlaneIcon from "@/components/icons/PlaneIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
-import ModuloSeguridadYCalculadoraEuropa from "@/components/ModuloSeguridadYCalculadoraEuropa";
 
-// ── 4 Planes Oficiales según Fecha de Viaje ($699, $799, $899, $999) ──
 export const PAQUETES_ESPANA = [
   {
     id: "promo-699",
-    mes: "PLAN PROMO $699",
-    subtitulo: "Fines de Febrero · Marzo · Abril · Mayo",
+    nombre: "Plan Promo",
+    temporada: "Fines de Febrero · Marzo · Abril · Mayo",
     precio: 699,
-    precioRegular: 1090,
     separaCon: 350,
-    tag: "Tarifa Promo",
+    tag: "Temporada Promo",
     tagColor: "bg-emerald-600 text-white",
+    destacado: false,
     img: "/images/espana/palacio-real.jpg",
-    monumento: "Palacio Real · Madrid",
-    waUrl: `https://wa.me/51944103890?text=${encodeURIComponent("¡Hola! Quiero más información del paquete a Madrid desde $699.\n\n📍 Ref Web: citylandtravel.com/espana [Plan Promo $699]")}`,
+    lugar: "Madrid · Barcelona · Valencia",
+    beneficioExtra: "Ideal si programas tu viaje con anticipación",
+    waTexto: "Elegir Plan Promo",
+    waUrl: `https://wa.me/51944103890?text=${encodeURIComponent(
+      "¡Hola! Quiero más información del paquete a Madrid desde $699.\n\n📍 Ref Web: citylandtravel.com/espana [Plan Promo $699]"
+    )}`,
   },
   {
     id: "smart-799",
-    mes: "PLAN SMART $799",
-    subtitulo: "Junio · Septiembre · Octubre · Noviembre",
+    nombre: "Plan Smart",
+    temporada: "Junio · Septiembre · Octubre · Noviembre",
     precio: 799,
-    precioRegular: 1190,
     separaCon: 400,
     tag: "⭐ El Más Pedido",
-    tagColor: "bg-amber-500 text-slate-950",
+    tagColor: "bg-amber-400 text-slate-950",
+    destacado: true,
     img: "/images/espana/gran-via-metropolis.jpg",
-    monumento: "Gran Vía · Madrid",
-    waUrl: `https://wa.me/51944103890?text=${encodeURIComponent("¡Hola! Quiero más información del paquete Smart a Madrid desde $799.\n\n📍 Ref Web: citylandtravel.com/espana [Plan Smart $799]")}`,
+    lugar: "Madrid · Barcelona · Sevilla",
+    beneficioExtra: "Incluye asesoría personalizada 1 a 1 para Barajas",
+    waTexto: "Elegir Plan Smart",
+    waUrl: `https://wa.me/51944103890?text=${encodeURIComponent(
+      "¡Hola! Quiero más información del paquete Smart a Madrid desde $799.\n\n📍 Ref Web: citylandtravel.com/espana [Plan Smart $799]"
+    )}`,
   },
   {
     id: "plus-899",
-    mes: "PLAN PLUS $899",
-    subtitulo: "Enero · 1ra Quincena Febrero · Conexiones",
+    nombre: "Plan Plus",
+    temporada: "Enero · 1ra Quincena Feb · Conexiones",
     precio: 899,
-    precioRegular: 1290,
     separaCon: 450,
     tag: "Salidas Cercanas",
     tagColor: "bg-blue-600 text-white",
+    destacado: false,
     img: "/images/espana/cibeles.jpg",
-    monumento: "Plaza de Cibeles · Madrid",
-    waUrl: `https://wa.me/51944103890?text=${encodeURIComponent("¡Hola! Quiero más información del paquete Plus a España desde $899.\n\n📍 Ref Web: citylandtravel.com/espana [Plan Plus $899]")}`,
+    lugar: "Madrid + Conexión en España",
+    beneficioExtra: "Para viajar pronto o conectar a otra ciudad española",
+    waTexto: "Elegir Plan Plus",
+    waUrl: `https://wa.me/51944103890?text=${encodeURIComponent(
+      "¡Hola! Quiero más información del paquete Plus a España desde $899.\n\n📍 Ref Web: citylandtravel.com/espana [Plan Plus $899]"
+    )}`,
   },
   {
     id: "full-999",
-    mes: "PLAN FULL $999",
-    subtitulo: "Diciembre · Julio · Agosto · Maleta 23 kg",
+    nombre: "Plan Full 23 kg",
+    temporada: "Diciembre · Julio · Agosto · Bodega 23 kg",
     precio: 999,
-    precioRegular: 1390,
     separaCon: 500,
-    tag: "Alta + Bodega 23 kg",
+    tag: "Alta + Maleta 23 kg",
     tagColor: "bg-red-600 text-white",
+    destacado: false,
     img: "/images/espana/puerta-de-alcala.jpg",
-    monumento: "Puerta de Alcalá · Madrid",
-    waUrl: `https://wa.me/51944103890?text=${encodeURIComponent("¡Hola! Quiero más información del paquete Full a España con maleta de 23 kg desde $999.\n\n📍 Ref Web: citylandtravel.com/espana [Plan Full $999]")}`,
+    lugar: "Toda España · Temporada Alta",
+    beneficioExtra: "Incluye maleta grande de 23 kg en bodega + 10 kg mano",
+    waTexto: "Elegir Plan Full",
+    waUrl: `https://wa.me/51944103890?text=${encodeURIComponent(
+      "¡Hola! Quiero más información del paquete Full a España con maleta de 23 kg desde $999.\n\n📍 Ref Web: citylandtravel.com/espana [Plan Full $999]"
+    )}`,
   },
 ];
 
-const MODALIDADES_ESPANA = [
+const DOCUMENTOS_CARPETA = [
   {
-    id: "paquete-migratorio-hotel",
-    badge: "Modalidad 1 · Viaje sin Carta de Invitación",
-    badgeClass: "bg-red-600 text-white",
-    titulo: "Paquete Migratorio Completo con Reserva de Hotel + Seguro 30.000€",
-    subtitulo: "Ideal si viajas por tu cuenta y necesitas presentar alojamiento confirmado en el aeropuerto",
-    etiquetaPrecio: "Desde $699 USD",
-    detallePrecio: "Separa hoy con $350 (50% inicial)",
-    puntos: [
-      "Tu pasaje de avión de ida emitido a tu nombre (Lima → Madrid, Barcelona, Valencia, Sevilla, etc.).",
-      "Tu boleto de regreso reservado en sistema el día de tu viaje para presentar tu ida y vuelta en el aeropuerto y en Migraciones.",
-      "Tu reserva de hotel confirmada por los días declarados en tu viaje.",
-      "Póliza de Seguro Médico Schengen por 30.000€ sin deducible + Check-in hecho 24h antes.",
-    ],
-    waTexto: "Cotizar Paquete con Hotel ($699)",
-    waMensaje:
-      "¡Hola! Quiero más información del paquete a Madrid desde $699 (Modalidad con Reserva de Hotel).\n\n📍 Ref Web: citylandtravel.com/espana [Modalidad Hotel $699]",
+    numero: "01",
+    titulo: "Pasaje de avión de ida emitido",
+    detalle: "Boleto oficial a tu nombre desde Lima hacia Madrid, Barcelona o tu ciudad de destino.",
   },
   {
-    id: "carta-invitacion",
-    badge: "Modalidad 2 · Con Carta de Invitación Policial",
-    badgeClass: "bg-blue-700 text-white",
-    titulo: "Paquete Migratorio Sincronizado con tu Carta de Invitación",
-    subtitulo: "Si un familiar o amigo en España ya te tramitó la Carta de Invitación en la Comisaría",
-    etiquetaPrecio: "Desde $699 USD",
-    detallePrecio: "Separa hoy con $350 (50% inicial)",
-    puntos: [
-      "No gastas en hotel innecesario: cuadramos las fechas exactas de tu salida, tu boleto de regreso para Migraciones y tu seguro con los días de tu Carta.",
-      "Incluye Seguro Médico Schengen de 30.000€ sin deducible por exactamente el período de tu Carta de Invitación.",
-      "Revisión de tu Carta original y cálculo exacto de tu bolsa de viaje obligatoria (BOE: 122,10 €/día, mínimo 1.098,90 €).",
-      "Check-in hecho 24h antes + preparación 1 a 1 para responder con seguridad en Barajas.",
-    ],
-    waTexto: "Cotizar con Carta de Invitación",
-    waMensaje:
-      "¡Hola! Tengo Carta de Invitación para España y quiero más información del paquete desde $699.\n\n📍 Ref Web: citylandtravel.com/espana [Modalidad Carta Invitación $699]",
+    numero: "02",
+    titulo: "Boleto de regreso reservado para Migraciones",
+    detalle: "Reserva activa en sistema el día de tu vuelo para acreditar tu retorno sin pagar el doble.",
   },
   {
-    id: "smart-asesoria-maleta",
-    badge: "Modalidad 3 · Plan Smart $799 / Plan Full $999",
-    badgeClass: "bg-emerald-700 text-white",
-    titulo: "Paquete Smart ($799) o Full con Maleta de 23 kg en Bodega ($999)",
-    subtitulo: "Para quienes viajan en temporada media/alta o llevan equipaje grande de 23 kg en bodega",
-    etiquetaPrecio: "$799 / $999 USD",
-    detallePrecio: "Separa con $400 o $500 (50%)",
-    puntos: [
-      "Plan Smart ($799 USD): salidas en junio, septiembre, octubre y noviembre con carpeta migratoria completa y asesoría VIP.",
-      "Plan Full ($999 USD): salidas en temporada alta (diciembre, julio, agosto) o con maleta grande de 23 kg en bodega.",
-      "También emitimos boletos para quienes ya tienen Visado Nacional Tipo D (estudios/trabajo) o tarjeta TIE.",
-      "Pago en cuotas flexibles hasta antes de tu fecha de vuelo con contrato formal RUC 20614914239.",
-    ],
-    waTexto: "Cotizar Plan Smart $799 / Full $999",
-    waMensaje:
-      "¡Hola! Quiero más información del paquete Smart a Madrid desde $799.\n\n📍 Ref Web: citylandtravel.com/espana [Modalidad Smart $799 / Full $999]",
+    numero: "03",
+    titulo: "Reserva de hotel confirmada (o cuadre con tu Carta)",
+    detalle: "Alojamiento verificable por tus días de viaje o sincronizado con tu Carta de Invitación.",
+  },
+  {
+    numero: "04",
+    titulo: "Seguro médico Schengen de 30.000€",
+    detalle: "Póliza internacional obligatoria con 0€ de deducible y cobertura médica completa.",
+  },
+  {
+    numero: "05",
+    titulo: "Check-in 24h antes y guía para el aeropuerto",
+    detalle: "Entregamos tus pases de abordar listos y te explicamos paso a paso cómo pasar el control.",
+  },
+];
+
+const FAQS_ESPANA = [
+  {
+    q: "¿Por qué conviene el Paquete Migratorio en vez de comprar un vuelo ida y vuelta tradicional?",
+    a: "Si viajas a España para quedarte, trabajar o reencontrarte con tu familia, un pasaje redondo tradicional cuesta entre $1,500 y $1,800 USD y terminas perdiendo el tramo de vuelta. Con nuestro Paquete Migratorio viajas con tu pasaje de ida emitido y tu boleto de regreso reservado en sistema para cumplir con el requisito del aeropuerto y Migraciones, ahorrando más de $700 USD.",
+  },
+  {
+    q: "¿De qué depende que me aplique el plan de $699, $799, $899 o $999?",
+    a: "Depende únicamente de la fecha en que desees volar y si llevas maleta de bodega: el Plan Promo ($699) aplica de fines de febrero a mayo; el Plan Smart ($799) en junio, septiembre, octubre y noviembre; el Plan Plus ($899) para salidas cercanas o con conexión interna; y el Plan Full ($999) para temporada alta (diciembre, julio y agosto) o con maleta de 23 kg en bodega.",
+  },
+  {
+    q: "¿Qué pasa si un familiar en España me envía Carta de Invitación?",
+    a: "Si ya cuentas con Carta de Invitación Policial tramitada en España, no necesitas reserva de hotel. Nosotros cuadramos las fechas exactas de tu pasaje, tu boleto de regreso para Migraciones y tu seguro Schengen de 30.000€ con los días autorizados en tu Carta.",
+  },
+  {
+    q: "¿Cómo puedo separar mi paquete y dónde queda la oficina?",
+    a: "Puedes separar cualquiera de los 4 planes con el 50% y pagar el saldo en cuotas antes de tu viaje. Te atendemos en nuestra oficina de Av. Antúnez de Mayolo 814, Los Olivos (Lima) o 100% por WhatsApp con contrato formal y RUC 20614914239.",
   },
 ];
 
 export default function EspanaLandingClient() {
+  const [diasViaje, setDiasViaje] = useState(10);
+  const montoBoe = Math.max(1098.9, Math.round(diasViaje * 122.1 * 100) / 100);
+
   return (
     <div className="bg-white min-h-screen text-[#0a1628] antialiased">
       <Navbar />
 
-      {/* 1. Hero Claro, Luminoso y Simétrico */}
-      <section className="bg-gradient-to-b from-sky-50/60 via-white to-white pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-slate-200/80">
+      {/* ═══════════════════════════════════════════════════════════════════════
+          1. HERO LIMPIO, ORDENADO Y SIN REPETICIONES
+         ═══════════════════════════════════════════════════════════════════════ */}
+      <section className="bg-gradient-to-b from-slate-50 to-white pt-8 pb-14 sm:pt-12 sm:pb-18 border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Izquierda */}
-            <div className="lg:col-span-7 text-left">
-              <div className="inline-flex flex-wrap items-center gap-2 bg-white border border-slate-200 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-700 shadow-2xs mb-5">
-                <FlagIcon pais="España" className="w-3.5 h-2.5" />
-                <span>6 Años Especializados en Ruta Madrid & Barcelona · Salida Lima (LIM)</span>
+            {/* Izquierda: Mensaje claro + 2 botones de 1 sola línea */}
+            <div className="lg:col-span-6 text-left">
+              <div className="inline-flex items-center gap-2 bg-white border border-slate-200 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-700 shadow-2xs mb-5">
+                <FlagIcon pais="España" className="w-4 h-3" />
+                <span>Especialistas en Ruta Lima → Madrid y Barcelona</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#0a1628] tracking-tight leading-[1.12] mb-4">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0a1628] tracking-tight leading-[1.1] mb-4">
                 Paquete Migratorio a{" "}
                 <span className="text-red-600">España desde $699 USD</span>
               </h1>
 
-              <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-7 max-w-xl">
-                Viaja tranquilo con los <strong>5 documentos que te piden en el aeropuerto</strong>: tu pasaje de avión de ida + tu{" "}
-                <strong className="text-[#0a1628]">boleto de regreso reservado en sistema para Migraciones</strong> + reserva de hotel + Seguro Schengen de 30.000€ + check-in 24h antes.{" "}
-                <strong className="text-emerald-700 font-extrabold">
-                  Separa hoy con el 50% ($350 USD)
-                </strong>
-                .
+              <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-7">
+                Viaja tranquilo con toda tu carpeta lista para presentar en Lima y en Madrid-Barajas. No pagues el doble por un retorno que no vas a usar: armamos tu expediente completo y puedes separar tu cupo con el{" "}
+                <strong className="text-[#0a1628]">50% de inicial</strong>.
               </p>
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-7">
                 <a
-                  href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola! Quiero más información del paquete a Madrid desde $699.\n\n📍 Ref Web: citylandtravel.com/espana [Hero $699]")}`}
+                  href={`https://wa.me/51944103890?text=${encodeURIComponent(
+                    "¡Hola! Quiero más información del paquete a Madrid desde $699.\n\n📍 Ref Web: citylandtravel.com/espana [Hero Principal]"
+                  )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-wa-pulse inline-flex items-center justify-center gap-2.5 bg-red-600 hover:bg-red-700 text-white px-7 py-4 rounded-2xl text-sm sm:text-base font-bold shadow-md cursor-pointer"
+                  className="btn-wa-pulse inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#1fb858] text-white px-7 py-4 rounded-2xl text-sm sm:text-base font-extrabold shadow-md whitespace-nowrap cursor-pointer"
                 >
-                  <PlaneIcon className="w-5 h-5 fill-none stroke-current stroke-2" />
-                  <span>COTIZAR PAQUETE DESDE $699 · Separa con $350</span>
+                  <WhatsAppIcon size={18} />
+                  <span>Cotizar por WhatsApp</span>
                 </a>
 
                 <a
                   href="#tarifas"
-                  className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-[#0a1628] border border-slate-300 px-6 py-4 rounded-2xl text-sm sm:text-base font-bold transition-all cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-[#0a1628] border border-slate-300 px-6 py-4 rounded-2xl text-sm sm:text-base font-bold transition-all whitespace-nowrap cursor-pointer"
                 >
-                  <span>Ver Planes $699 · $799 · $899 · $999 ↓</span>
+                  <span>Ver los 4 planes por fecha ↓</span>
                 </a>
               </div>
 
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-bold text-slate-700 pt-5 border-t border-slate-200/80">
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-bold text-slate-600 pt-5 border-t border-slate-200">
                 <span className="flex items-center gap-1.5">
-                  <span className="text-emerald-600 font-extrabold">✓</span> Solvencia BOE: 122,10 €/día
+                  <span className="text-emerald-600 font-black">✓</span> Agencia Formal RUC 20614914239
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <span className="text-emerald-600 font-extrabold">✓</span> Agencia Formal RUC 20614914239
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <span className="text-emerald-600 font-extrabold">✓</span> Oficina en Av. Antúnez de Mayolo 814, Los Olivos
+                  <span className="text-emerald-600 font-black">✓</span> Oficina en Av. Antúnez de Mayolo 814, Los Olivos
                 </span>
               </div>
             </div>
 
-            {/* Derecha: Tarjeta Luminosa de Madrid */}
-            <div className="lg:col-span-5">
-              <div className="card-interactive group bg-white rounded-3xl border border-slate-200/90 shadow-lg overflow-hidden">
-                <div className="relative h-60 sm:h-64 w-full overflow-hidden bg-slate-100">
+            {/* Derecha: Tarjeta Visual con los 5 Documentos Incluidos (Sin repetir precios ni botones) */}
+            <div className="lg:col-span-6">
+              <div className="bg-white rounded-3xl border border-slate-200/90 shadow-lg overflow-hidden">
+                <div className="relative h-52 sm:h-56 w-full overflow-hidden bg-slate-100">
                   <Image
                     src="/images/espana/plaza-mayor.jpg"
                     alt="Plaza Mayor de Madrid España - Cityland Travel"
                     fill
                     priority
-                    sizes="(max-width: 1024px) 100vw, 500px"
-                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    sizes="(max-width: 1024px) 100vw, 560px"
+                    className="object-cover"
                   />
-
-                  <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
-                    <span className="inline-flex items-center gap-1.5 bg-white/95 backdrop-blur-md text-[#0a1628] text-xs font-bold px-3 py-1 rounded-full shadow-xs">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/80 via-transparent to-transparent" />
+                  <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between text-white">
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold bg-black/40 backdrop-blur-xs px-3 py-1 rounded-full">
                       <FlagIcon pais="España" className="w-3.5 h-2.5" />
-                      Plaza Mayor · Madrid
+                      Madrid · Barajas T4 / T1
                     </span>
-                    <span className="bg-red-600 text-white text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full shadow-xs">
-                      5 Documentos Incluidos
+                    <span className="bg-red-600 text-white text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full">
+                      Carpeta Completa
                     </span>
                   </div>
                 </div>
 
-                {/* Pie Blanco Limpio */}
-                <div className="p-5 bg-white space-y-3">
-                  <div className="border-b border-slate-100 pb-2.5">
-                    <span className="text-[11px] font-extrabold text-red-600 uppercase tracking-wider block">
-                      Pasaje Ida + Regreso Reservado + Hotel + Seguro 30.000€ + Check-in
-                    </span>
-                    <h2 className="text-lg sm:text-xl font-extrabold text-[#0a1628] leading-tight mt-0.5">
-                      Tu llegada a España con todo en regla
-                    </h2>
-                  </div>
-
-                  <div className="flex items-center justify-between gap-4">
-                    <div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1">
-                        Paquete Migratorio
-                      </span>
-                      <div className="flex items-baseline gap-1.5">
-                        <span className="text-xs font-extrabold uppercase text-red-600">Desde</span>
-                        <span className="text-3xl sm:text-4xl font-black text-[#0a1628] tracking-tight leading-none">
-                          $699
+                <div className="p-5 sm:p-6">
+                  <h2 className="text-base sm:text-lg font-extrabold text-[#0a1628] mb-3.5">
+                    ¿Qué incluye tu Paquete Migratorio a España?
+                  </h2>
+                  <div className="space-y-2.5">
+                    {DOCUMENTOS_CARPETA.map((doc) => (
+                      <div
+                        key={doc.numero}
+                        className="flex items-start gap-3 p-2.5 rounded-xl bg-slate-50 border border-slate-200/70"
+                      >
+                        <span className="w-6 h-6 rounded-lg bg-red-600 text-white text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
+                          {doc.numero}
                         </span>
+                        <div>
+                          <h3 className="text-xs sm:text-sm font-extrabold text-[#0a1628] leading-snug">
+                            {doc.titulo}
+                          </h3>
+                          <p className="text-xs text-slate-600 leading-relaxed">
+                            {doc.detalle}
+                          </p>
+                        </div>
                       </div>
-                      <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                        Separa con 50% ($350 USD)
-                      </span>
-                    </div>
-
-                    <a
-                      href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola! Quiero más información del paquete a Madrid desde $699.\n\n📍 Ref Web: citylandtravel.com/espana [Tarjeta Principal $699]")}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0"
-                    >
-                      <WhatsAppIcon size={16} />
-                      <span>Cotizar $699</span>
-                    </a>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -252,159 +243,95 @@ export default function EspanaLandingClient() {
         </div>
       </section>
 
-      {/* BLOQUE EXPLICATIVO EN SENCILLO PERUANO: ¿ES IDA Y VUELTA O ME ESTÁN ENGAÑANDO? */}
-      <section className="py-12 sm:py-16 bg-amber-50/80 border-b border-amber-200/80">
+      {/* ═══════════════════════════════════════════════════════════════════════
+          2. LOS 4 PLANES OFICIALES (SIMÉTRICOS, ALINEADOS Y SIN REPETIR DATOS)
+         ═══════════════════════════════════════════════════════════════════════ */}
+      <section id="tarifas" className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="bg-white rounded-3xl p-6 sm:p-10 border-2 border-amber-300 shadow-md">
-            <div className="max-w-3xl mb-6">
-              <span className="inline-block bg-amber-400 text-slate-950 text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full mb-3">
-                La Verdad Clara · Sin Letra Chica
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0a1628]">
-                ¿El Paquete es ida y vuelta? Así funciona para que no gastes el doble por gusto
-              </h2>
-              <p className="text-sm sm:text-base text-slate-700 mt-3 leading-relaxed">
-                Si tú viajas a España para <strong>quedarte a trabajar, hacer tu vida allá o reencontrarte con tu familia</strong>, no tiene sentido que pagues $1,500 o $1,800 por un avión de regreso al que <strong>no te vas a subir</strong>. Pero como en el Aeropuerto Jorge Chávez y en Migraciones de Madrid-Barajas <strong>sí es obligatorio mostrar tu boleto de regreso</strong> para que te dejen viajar, nuestro Paquete Migratorio te entrega todo listo:
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-              {[
-                {
-                  num: "1",
-                  titulo: "Pasaje de avión de ida",
-                  desc: "Boleto oficial emitido a tu nombre para volar de Lima a España.",
-                },
-                {
-                  num: "2",
-                  titulo: "Boleto de regreso para Migraciones",
-                  desc: "Reserva oficial activa en sistema el día de tu vuelo para demostrar tu retorno sin pagar doble.",
-                },
-                {
-                  num: "3",
-                  titulo: "Reserva de hotel confirmada",
-                  desc: "Alojamiento verificable por los días declarados (o cuadre exacto con tu Carta de Invitación).",
-                },
-                {
-                  num: "4",
-                  titulo: "Seguro médico de 30.000€",
-                  desc: "Póliza Schengen obligatoria sin deducible ni copago por todos los días de tu viaje.",
-                },
-                {
-                  num: "5",
-                  titulo: "Check-in 24h antes y guía",
-                  desc: "Dejamos listos tus pases de abordar y te preparamos paso a paso para pasar Migraciones tranquilo.",
-                },
-              ].map((paso) => (
-                <div
-                  key={paso.num}
-                  className="bg-slate-50 rounded-2xl p-4 border border-slate-200"
-                >
-                  <div className="w-8 h-8 rounded-xl bg-red-600 text-white font-black flex items-center justify-center text-sm mb-2.5">
-                    {paso.num}
-                  </div>
-                  <h3 className="text-sm font-extrabold text-[#0a1628] mb-1">
-                    {paso.titulo}
-                  </h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    {paso.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. LOS 4 PLANES OFICIALES POR TEMPORADA ($699, $799, $899, $999) */}
-      <section id="tarifas" className="py-14 sm:py-20 bg-slate-50/70 border-b border-slate-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
-            <div>
-              <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
-                Escala Oficial de Precios según tu Fecha de Viaje
-              </span>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight">
-                Elige tu Plan a España ($699 · $799 · $899 · $999)
-              </h2>
-            </div>
-            <p className="text-xs sm:text-sm font-semibold text-slate-500">
-              Separa con el 50% y paga el resto en cuotas antes de tu vuelo
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1.5">
+              Tarifas Oficiales según Temporada
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-black text-[#0a1628] tracking-tight">
+              Elige tu Plan según tu Fecha de Viaje
+            </h2>
+            <p className="text-sm text-slate-600 mt-2">
+              Todos los planes incluyen los 5 documentos de tu carpeta migratoria y facilidades de pago en cuotas.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             {PAQUETES_ESPANA.map((p) => (
               <article
                 key={p.id}
-                className="card-interactive group bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-xs flex flex-col justify-between h-full"
+                className={`bg-white rounded-3xl overflow-hidden flex flex-col justify-between h-full transition-shadow hover:shadow-lg ${
+                  p.destacado
+                    ? "border-2 border-amber-400 shadow-md ring-2 ring-amber-400/20"
+                    : "border border-slate-200 shadow-xs"
+                }`}
               >
-                <div className="relative h-48 w-full overflow-hidden bg-slate-100">
-                  <Image
-                    src={p.img}
-                    alt={`Paquete a España ${p.mes}`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                  />
+                <div>
+                  {/* Imagen con 1 sola etiqueta limpia */}
+                  <div className="relative h-44 w-full overflow-hidden bg-slate-100">
+                    <Image
+                      src={p.img}
+                      alt={`${p.nombre} a España`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                      className="object-cover"
+                    />
+                    <div className="absolute top-3 left-3">
+                      <span
+                        className={`text-[11px] font-extrabold uppercase px-3 py-1 rounded-full shadow-xs ${p.tagColor}`}
+                      >
+                        {p.tag}
+                      </span>
+                    </div>
+                  </div>
 
-                  <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
-                    <span className={`text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full ${p.tagColor}`}>
-                      {p.tag}
+                  {/* Cuerpo simétrico */}
+                  <div className="p-5">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
+                      {p.lugar}
                     </span>
-                    <span className="text-[10px] font-bold bg-white/95 text-[#0a1628] px-2.5 py-1 rounded-full shadow-2xs">
-                      Separa con ${p.separaCon}
-                    </span>
+                    <h3 className="text-xl font-black text-[#0a1628] mt-0.5">
+                      {p.nombre}
+                    </h3>
+
+                    <p className="text-xs font-semibold text-red-600 mt-1 min-h-[34px] flex items-center">
+                      📅 {p.temporada}
+                    </p>
+
+                    {/* Bloque único de precio */}
+                    <div className="my-4 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80">
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-xs font-bold text-slate-500">Desde</span>
+                        <span className="text-3xl font-black text-[#0a1628] tracking-tight">
+                          ${p.precio}
+                        </span>
+                        <span className="text-xs font-bold text-slate-500">USD</span>
+                      </div>
+                      <span className="text-xs font-extrabold text-emerald-700 block mt-1">
+                        ✓ Separa con el 50% (${p.separaCon} USD)
+                      </span>
+                    </div>
+
+                    <p className="text-xs text-slate-600 leading-relaxed min-h-[36px]">
+                      {p.beneficioExtra}
+                    </p>
                   </div>
                 </div>
 
-                <div className="p-5 flex flex-col justify-between flex-1 gap-4">
-                  <div>
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-red-600 block">
-                      {p.monumento}
-                    </span>
-                    <h3 className="text-xl font-extrabold text-[#0a1628] tracking-tight leading-tight mt-0.5 mb-1">
-                      {p.mes}
-                    </h3>
-                    <p className="text-xs text-slate-600 font-medium mb-3">
-                      {p.subtitulo}
-                    </p>
-                    <div className="flex items-center justify-between text-[11px] font-semibold text-slate-500 border-b border-slate-100 pb-3">
-                      <span>✓ Ida + Regreso RF</span>
-                      <span>✓ 30.000€</span>
-                      <span>✓ Hotel + Guía</span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-end justify-between">
-                    <div>
-                      <div className="flex items-center gap-1.5 mb-0.5">
-                        <span className="text-[10px] font-extrabold uppercase text-red-600">
-                          Desde
-                        </span>
-                        <span className="text-[11px] font-semibold text-slate-400 line-through">
-                          ${p.precioRegular.toLocaleString("en-US")}
-                        </span>
-                      </div>
-                      <div className="flex items-baseline gap-1">
-                        <span className="text-2xl sm:text-3xl font-black text-[#0a1628] tracking-tight leading-none">
-                          ${p.precio.toLocaleString("en-US")}
-                        </span>
-                      </div>
-                    </div>
-                    <span className="text-xs font-bold text-emerald-700">
-                      50%: ${p.separaCon} USD
-                    </span>
-                  </div>
-
+                {/* Botón de 1 sola línea (nunca se deforma) */}
+                <div className="px-5 pb-5 pt-2">
                   <a
                     href={p.waUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-wa-pulse w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white py-3 px-4 rounded-xl text-xs sm:text-sm font-bold cursor-pointer"
+                    className="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1fb858] text-white py-3.5 px-4 rounded-xl text-xs sm:text-sm font-extrabold whitespace-nowrap transition-colors cursor-pointer"
                   >
                     <WhatsAppIcon size={16} />
-                    <span>Quiero el {p.mes}</span>
+                    <span>{p.waTexto}</span>
                   </a>
                 </div>
               </article>
@@ -413,175 +340,178 @@ export default function EspanaLandingClient() {
         </div>
       </section>
 
-      {/* 3. LAS 3 MODALIDADES SEGÚN TU PERFIL DE VIAJE */}
-      <section id="modalidades" className="py-14 sm:py-20 bg-white border-b border-slate-200/80">
+      {/* ═══════════════════════════════════════════════════════════════════════
+          3. GUÍA PRÁCTICA: HOTEL VS CARTA DE INVITACIÓN + CALCULADORA BOE SIMPLE
+         ═══════════════════════════════════════════════════════════════════════ */}
+      <section className="py-14 sm:py-20 bg-white border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-10">
-            <div className="max-w-3xl">
-              <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
-                Soluciones Reales según tu Situación Documental
-              </span>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight">
-                3 Modalidades para Viajar a España desde Perú
-              </h2>
-            </div>
-            <Link
-              href="/paquetes-migratorios"
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold text-red-600 hover:underline shrink-0"
-            >
-              <span>Ver las 1,000 Super-Landings de Paquetes Migratorios →</span>
-            </Link>
-          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            {/* Izquierda: ¿Viajas con Hotel o con Carta de Invitación? */}
+            <div className="lg:col-span-7 bg-slate-50 rounded-3xl p-6 sm:p-8 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <span className="text-xs font-extrabold uppercase tracking-wider text-red-600 block mb-1">
+                  Adaptamos tu Carpeta a tu Caso
+                </span>
+                <h2 className="text-xl sm:text-2xl font-black text-[#0a1628] mb-4">
+                  ¿Viajas con Reserva de Hotel o tienes Carta de Invitación?
+                </h2>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {MODALIDADES_ESPANA.map((m) => (
-              <div
-                key={m.id}
-                className="rounded-3xl border border-slate-200/90 bg-slate-50/60 p-6 sm:p-7 flex flex-col justify-between shadow-2xs hover:shadow-md transition-shadow"
-              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                  <div className="bg-white rounded-2xl p-5 border border-slate-200">
+                    <span className="inline-block text-[11px] font-extrabold uppercase bg-red-50 text-red-700 px-2.5 py-1 rounded-md mb-2">
+                      Opción A · Sin Carta
+                    </span>
+                    <h3 className="text-base font-extrabold text-[#0a1628] mb-1.5">
+                      Con Reserva de Hotel
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      Si no tienes quien te tramite la Carta Policial en España, emitimos tu reserva de hotel verificable cuadrando exactamente con los días de tu vuelo y tu bolsa de viaje.
+                    </p>
+                  </div>
+
+                  <div className="bg-white rounded-2xl p-5 border border-slate-200">
+                    <span className="inline-block text-[11px] font-extrabold uppercase bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md mb-2">
+                      Opción B · Con Familiar
+                    </span>
+                    <h3 className="text-base font-extrabold text-[#0a1628] mb-1.5">
+                      Con Carta de Invitación
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      Si tu familiar en España te envió la Carta original, no gastas en hotel: sincronizamos tu pasaje, tu regreso reservado y tu seguro 30.000€ con las fechas exactas de tu Carta.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-2xl p-4 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                 <div>
-                  <span className={`inline-block text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full mb-3.5 ${m.badgeClass}`}>
-                    {m.badge}
+                  <span className="text-xs font-extrabold text-[#0a1628] block">
+                    ¿Ya compraste tu pasaje de avión por tu cuenta?
                   </span>
-                  <h3 className="text-lg sm:text-xl font-extrabold text-[#0a1628] leading-snug mb-1.5">
-                    {m.titulo}
-                  </h3>
-                  <p className="text-xs text-slate-600 mb-4">{m.subtitulo}</p>
+                  <span className="text-xs text-slate-600">
+                    También armamos <strong>Solo tu Carpeta Migratoria</strong> (regreso reservado + hotel + seguro + check-in) desde <strong>$85 USD</strong>.
+                  </span>
+                </div>
+                <a
+                  href={`https://wa.me/51944103890?text=${encodeURIComponent(
+                    "¡Hola! Ya tengo mi pasaje y quiero contratar Solo la Carpeta Migratoria para España ($85 USD).\n\n📍 Ref Web: citylandtravel.com/espana [Solo Carpeta]"
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-extrabold text-white bg-[#0a1628] hover:bg-slate-800 px-4 py-2.5 rounded-xl whitespace-nowrap shrink-0"
+                >
+                  Pedir Solo Carpeta →
+                </a>
+              </div>
+            </div>
 
-                  <div className="bg-white rounded-2xl p-4 border border-slate-200/80 mb-5">
-                    <div className="flex items-baseline justify-between gap-2 pb-3 mb-3 border-b border-slate-100">
-                      <span className="text-xl font-black text-[#0a1628]">{m.etiquetaPrecio}</span>
-                      <span className="text-[11px] font-bold text-emerald-700">{m.detallePrecio}</span>
-                    </div>
-                    <ul className="space-y-2">
-                      {m.puntos.map((pt) => (
-                        <li key={pt} className="flex items-start gap-2 text-xs text-slate-700 leading-relaxed">
-                          <span className="text-emerald-600 font-extrabold shrink-0 mt-0.5">✓</span>
-                          <span>{pt}</span>
-                        </li>
-                      ))}
-                    </ul>
+            {/* Derecha: Calculadora Simple de Bolsa de Viaje España (BOE) */}
+            <div className="lg:col-span-5 bg-[#0a1628] text-white rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
+              <div>
+                <span className="inline-block bg-amber-400/20 text-amber-300 text-[11px] font-extrabold uppercase px-3 py-1 rounded-full mb-3">
+                  Requisito BOE España 2026
+                </span>
+                <h3 className="text-xl sm:text-2xl font-black mb-2">
+                  Calculadora Rápida de Bolsa de Viaje
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-5">
+                  En Madrid-Barajas piden acreditar <strong>122,10 € por día</strong> (con un mínimo fijo de <strong>1.098,90 €</strong> si tu viaje dura de 1 a 9 días). Por eso armamos tu carpeta por 8 a 10 días para que pases con el mínimo legal:
+                </p>
+
+                <div className="bg-white/10 rounded-2xl p-4 border border-white/15 mb-5">
+                  <div className="flex items-center justify-between text-xs font-bold mb-2">
+                    <span>Días declarados en tu carpeta:</span>
+                    <span className="text-amber-300 text-sm font-black">{diasViaje} días</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={5}
+                    max={30}
+                    value={diasViaje}
+                    onChange={(e) => setDiasViaje(Number(e.target.value))}
+                    className="w-full accent-amber-400 cursor-pointer"
+                  />
+                  <div className="flex justify-between text-[11px] text-slate-400 mt-1">
+                    <span>5 días</span>
+                    <span>9 días (Ideal)</span>
+                    <span>30 días</span>
                   </div>
                 </div>
 
-                <a
-                  href={`https://wa.me/51944103890?text=${encodeURIComponent(m.waMensaje)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-wa-pulse w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white py-3.5 px-4 rounded-xl text-xs sm:text-sm font-bold cursor-pointer"
-                >
-                  <WhatsAppIcon size={16} />
-                  <span>{m.waTexto}</span>
-                </a>
+                <div className="bg-emerald-500/15 border border-emerald-400/40 rounded-2xl p-4 mb-5">
+                  <span className="text-xs text-emerald-200 block">
+                    Bolsa de viaje a demostrar (efectivo o tarjeta):
+                  </span>
+                  <span className="text-3xl font-black text-white">
+                    {montoBoe.toLocaleString("es-ES", { minimumFractionDigits: 2 })} €
+                  </span>
+                </div>
               </div>
-            ))}
+
+              <a
+                href={`https://wa.me/51944103890?text=${encodeURIComponent(
+                  `¡Hola! Quiero asesoría para mi paquete a España (calculé ${diasViaje} días de estadía).\n\n📍 Ref Web: citylandtravel.com/espana [Calculadora BOE]`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1fb858] text-white py-3.5 px-4 rounded-xl text-xs sm:text-sm font-extrabold whitespace-nowrap"
+              >
+                <WhatsAppIcon size={16} />
+                <span>Consultar mi caso por WhatsApp</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 4. MÓDULO INTERACTIVO: CALCULADORA BOE 2026 + PRE-CALIFICADOR + VERIFICADOR PNR/IATA */}
-      <ModuloSeguridadYCalculadoraEuropa
-        destinoInicial="Madrid (España)"
-        refWebRuta="/espana"
-      />
-
-      {/* 5. Sección Luminosa de Respaldo Barajas + Enlaces Rápidos a las Super-Landings */}
-      <section className="py-14 sm:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="rounded-3xl border border-slate-200/90 bg-gradient-to-br from-slate-50 via-white to-sky-50/40 shadow-sm overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-stretch mb-10">
-            <div className="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-center">
-              <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">
-                Control Migratorio Madrid-Barajas & Barcelona-El Prat
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0a1628] tracking-tight leading-snug mb-2">
-                ¿Dudas sobre requisitos, Carta de Invitación o el sistema EES 2026?
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 mb-6 max-w-xl">
-                Nuestro equipo de 12 asesores especialistas prepara contigo la carpeta exacta que solicita la Policía Nacional en el aeropuerto: solvencia económica BOE, reserva verificable o Carta de Invitación y seguro Schengen de 30.000€.
-              </p>
-
-              <div className="flex flex-wrap items-center gap-3">
-                <a
-                  href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola! Quiero más información del paquete a Madrid desde $699 y asesoría para Barajas.\n\n📍 Ref Web: citylandtravel.com/espana [Asesoría Barajas]")}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold cursor-pointer"
-                >
-                  <WhatsAppIcon size={18} />
-                  <span>Hablar con Asesora Especialista</span>
-                </a>
-                <Link
-                  href="/paquetes-migratorios"
-                  className="inline-flex items-center gap-1.5 bg-white hover:bg-slate-50 text-[#0a1628] border border-slate-300 px-5 py-3.5 rounded-xl text-xs sm:text-sm font-bold transition-colors"
-                >
-                  <span>Explorar las 400 Super-Landings de España →</span>
-                </Link>
-              </div>
-            </div>
-
-            <div className="lg:col-span-5 relative min-h-[260px] sm:min-h-[320px] w-full overflow-hidden">
-              <Image
-                src="/images/espana/barajas.jpg"
-                alt="Aeropuerto Adolfo Suárez Madrid-Barajas Terminal 4"
-                fill
-                sizes="(max-width: 1024px) 100vw, 500px"
-                className="object-cover"
-              />
-            </div>
+      {/* ═══════════════════════════════════════════════════════════════════════
+          4. PREGUNTAS FRECUENTES CLARAS + DESTINOS EN ESPAÑA
+         ═══════════════════════════════════════════════════════════════════════ */}
+      <section className="py-14 sm:py-20 bg-slate-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl sm:text-3xl font-black text-[#0a1628]">
+              Preguntas Frecuentes sobre el Paquete a España
+            </h2>
           </div>
 
-          {/* Enlaces Internos a las Super-Landings de Ciudades de España */}
-          <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200/80">
-            <h4 className="text-xs font-extrabold uppercase tracking-wider text-[#0a1628] mb-3">
-              Super-Landings de Paquetes Migratorios por Ciudad en España (Desde $699 USD):
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {[
-                { label: "🇪🇸 Paquete Madrid desde $699", href: "/paquetes-migratorios/paquete-migratorio-madrid-desde-699" },
-                { label: "🇪🇸 Paquete Smart Madrid $799", href: "/paquetes-migratorios/paquete-migratorio-madrid-smart-799" },
-                { label: "🇪🇸 Paquete Barcelona desde $699", href: "/paquetes-migratorios/paquete-migratorio-barcelona-desde-699" },
-                { label: "🇪🇸 Paquete Valencia desde $699", href: "/paquetes-migratorios/paquete-migratorio-valencia-desde-699" },
-                { label: "🇪🇸 Paquete Sevilla desde $699", href: "/paquetes-migratorios/paquete-migratorio-sevilla-desde-699" },
-                { label: "🇪🇸 Paquete Málaga desde $699", href: "/paquetes-migratorios/paquete-migratorio-malaga-desde-699" },
-                { label: "🇪🇸 Paquete Bilbao desde $699", href: "/paquetes-migratorios/paquete-migratorio-bilbao-desde-699" },
-                { label: "🇪🇸 Paquete Zaragoza desde $699", href: "/paquetes-migratorios/paquete-migratorio-zaragoza-desde-699" },
-                { label: "🇪🇸 Paquete Alicante desde $699", href: "/paquetes-migratorios/paquete-migratorio-alicante-desde-699" },
-                { label: "🇪🇸 Paquete Murcia desde $699", href: "/paquetes-migratorios/paquete-migratorio-murcia-desde-699" },
-                { label: "🇪🇸 Paquete Palma de Mallorca desde $699", href: "/paquetes-migratorios/paquete-migratorio-palma-de-mallorca-desde-699" },
-                { label: "🇮🇹 Paquetes Migratorios Italia", href: "/italia" },
-                { label: "🇫🇷 Paquetes Migratorios Francia", href: "/francia" },
-                { label: "📂 Ver las 1,000 Super-Landings", href: "/paquetes-migratorios" },
-              ].map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-xs font-semibold text-slate-700 hover:text-red-600 bg-white hover:bg-red-50 border border-slate-200/80 px-3 py-1.5 rounded-full transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+            {FAQS_ESPANA.map((faq) => (
+              <div
+                key={faq.q}
+                className="bg-white rounded-2xl p-6 border border-slate-200 shadow-2xs"
+              >
+                <h3 className="text-sm sm:text-base font-extrabold text-[#0a1628] mb-2">
+                  {faq.q}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  {faq.a}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Enlaces limpios por ciudad */}
+          <div className="bg-white rounded-2xl p-5 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <span className="text-xs font-extrabold uppercase tracking-wider text-red-600 block">
+                Salidas a toda España y Europa
+              </span>
+              <p className="text-sm font-bold text-[#0a1628]">
+                Madrid · Barcelona · Valencia · Sevilla · Málaga · Bilbao · Zaragoza
+              </p>
             </div>
+            <Link
+              href="/paquetes-migratorios"
+              className="text-xs font-extrabold text-white bg-red-600 hover:bg-red-700 px-5 py-3 rounded-xl whitespace-nowrap shrink-0"
+            >
+              Ver catálogo de destinos →
+            </Link>
           </div>
         </div>
       </section>
 
       <Footer />
-
-      {/* 6. Botón Flotante */}
-      <div className="fixed bottom-5 right-5 z-50">
-        <a
-          href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola! Quiero más información del paquete a Madrid desde $699.\n\n📍 Ref Web: citylandtravel.com/espana [Botón Flotante]")}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-wa-pulse flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-xl cursor-pointer"
-          aria-label="Chatear por WhatsApp"
-        >
-          <WhatsAppIcon size={22} />
-          <span className="hidden sm:inline font-bold text-xs sm:text-sm">
-            WhatsApp España ($699)
-          </span>
-        </a>
-      </div>
     </div>
   );
 }

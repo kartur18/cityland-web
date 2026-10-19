@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
-import ModuloSeguridadYCalculadoraEuropa from "@/components/ModuloSeguridadYCalculadoraEuropa";
-import {
-  PLANES_MIGRATORIOS_OFICIALES,
-  obtenerSuperLandingsPorSilo,
-} from "@/lib/catalogo-paquetes-migratorios-1000";
+import FlagIcon from "@/components/icons/FlagIcon";
 import { buildWhatsAppHref } from "@/components/constantes";
 import {
   URL_BASE_SEO,
@@ -20,101 +17,111 @@ export const metadata: Metadata = {
   title:
     "Paquetes Migratorios a Francia 2026 (París, Lyon, Marsella, Niza) desde $699 USD | Cityland Travel",
   description:
-    "Viaja desde Perú a París, Lyon, Marsella, Niza y Toulouse con nuestro Paquete Migratorio desde $699 USD (separa con $350). Incluye pasaje de ida + boleto de regreso reservado para Migraciones + hotel o guía Attestation d'accueil + seguro Schengen 30.000€ + check-in 24h antes.",
-  keywords: [
-    "paquete migratorio francia desde peru",
-    "viajar a paris desde lima requisitos",
-    "pasajes a paris desde lima economicos",
-    "attestation d accueil francia peruanos",
-    "paquete migratorio paris 699",
-    "cityland travel francia",
-  ],
+    "Viaja desde Perú a París, Lyon, Marsella, Niza y Toulouse con nuestro Paquete Migratorio desde $699 USD. Incluye pasaje de ida + boleto de regreso reservado para Migraciones + hotel + seguro Schengen 30.000€ + check-in 24h antes.",
   alternates: {
     canonical: `${URL_BASE_SEO}/francia`,
   },
-  openGraph: {
-    type: "website",
-    locale: "es_PE",
-    url: `${URL_BASE_SEO}/francia`,
-    siteName: "Cityland Travel",
-    title:
-      "Paquetes Migratorios a Francia 2026 (París, Lyon, Marsella, Niza) desde $699 USD | Cityland Travel",
-    description:
-      "Salidas desde Lima a París (CDG/Orly), Lyon, Marsella, Niza y Toulouse con carpeta migratoria completa desde $699 USD.",
-    images: [
-      {
-        url: `${URL_BASE_SEO}/images/destinos/paris.webp`,
-        width: 1200,
-        height: 630,
-        alt: "Paquetes Migratorios a Francia desde Perú — Cityland Travel",
-      },
-    ],
-  },
 };
+
+const PLANES_FRANCIA = [
+  {
+    id: "promo-699",
+    nombre: "Plan Promo",
+    temporada: "Fines de Febrero · Marzo · Abril · Mayo",
+    precio: 699,
+    separaCon: 350,
+    tag: "Temporada Promo",
+    tagColor: "bg-emerald-600 text-white",
+    destacado: false,
+    detalle: "Ideal si programas tu viaje a París o Francia con anticipación.",
+    waTexto: "Elegir Plan Promo",
+  },
+  {
+    id: "smart-799",
+    nombre: "Plan Smart",
+    temporada: "Junio · Septiembre · Octubre · Noviembre",
+    precio: 799,
+    separaCon: 400,
+    tag: "⭐ El Más Pedido",
+    tagColor: "bg-amber-400 text-slate-950",
+    destacado: true,
+    detalle: "Incluye guía Attestation d'accueil y preparación 1 a 1 para tu escala.",
+    waTexto: "Elegir Plan Smart",
+  },
+  {
+    id: "plus-899",
+    nombre: "Plan Plus",
+    temporada: "Enero · 1ra Quincena Feb · Conexiones",
+    precio: 899,
+    separaCon: 450,
+    tag: "Salidas Cercanas",
+    tagColor: "bg-blue-600 text-white",
+    destacado: false,
+    detalle: "Para salidas cercanas o conexión a Lyon, Marsella, Niza o Toulouse.",
+    waTexto: "Elegir Plan Plus",
+  },
+  {
+    id: "full-999",
+    nombre: "Plan Full 23 kg",
+    temporada: "Diciembre · Julio · Agosto · Bodega 23 kg",
+    precio: 999,
+    separaCon: 500,
+    tag: "Alta + Maleta 23 kg",
+    tagColor: "bg-red-600 text-white",
+    destacado: false,
+    detalle: "Temporada alta o incluye maleta grande de 23 kg en bodega.",
+    waTexto: "Elegir Plan Full",
+  },
+];
 
 const CIUDADES_FRANCIA = [
   {
     ciudad: "París",
-    aeropuerto: "Aeropuerto Charles de Gaulle (CDG) / Orly (ORY)",
-    aerolineas: "Air France, KLM, Iberia y Air Europa (vía Madrid)",
-    descripcion:
-      "Principal puerta de entrada de peruanos a Francia. Conexiones directas en tren TGV a toda Francia y Bélgica.",
-    imagen: "/images/destinos/paris.webp",
+    aeropuerto: "Charles de Gaulle (CDG) / Orly (ORY)",
+    aerolineas: "Air France, KLM, Iberia y Air Europa",
+    descripcion: "Principal puerta de entrada a Francia con trenes TGV directos a todo el país.",
     slugLanding: "paquete-migratorio-paris-desde-699",
   },
   {
     ciudad: "Lyon",
-    aeropuerto: "Aeropuerto de Lyon-Saint Exupéry (LYS)",
+    aeropuerto: "Lyon-Saint Exupéry (LYS)",
     aerolineas: "Iberia, Air France y KLM",
-    descripcion:
-      "Segundo polo económico e industrial de Francia, con gran demanda laboral en servicios, gastronomía y logística.",
-    imagen: "/images/destinos/paris.webp",
+    descripcion: "Segundo polo económico de Francia con amplia demanda en servicios y gastronomía.",
     slugLanding: "paquete-migratorio-lyon-desde-699",
   },
   {
     ciudad: "Marsella",
-    aeropuerto: "Aeropuerto de Marsella-Provenza (MRS)",
+    aeropuerto: "Marsella-Provenza (MRS)",
     aerolineas: "Iberia y Air France",
-    descripcion:
-      "Principal puerto del sur de Francia en el Mediterráneo, con clima cálido y amplia comunidad hispanohablante.",
-    imagen: "/images/destinos/paris.webp",
+    descripcion: "Principal puerto del Mediterráneo francés con clima cálido todo el año.",
     slugLanding: "paquete-migratorio-marsella-desde-699",
   },
   {
     ciudad: "Niza",
-    aeropuerto: "Aeropuerto de Niza Costa Azul (NCE)",
+    aeropuerto: "Niza Costa Azul (NCE)",
     aerolineas: "Iberia, Air France y KLM",
-    descripcion:
-      "Capital de la Costa Azul francesa, con alta demanda en hotelería, turismo, cuidado de personas y servicios.",
-    imagen: "/images/destinos/paris.webp",
+    descripcion: "Capital de la Costa Azul con alta actividad en hotelería y turismo.",
     slugLanding: "paquete-migratorio-niza-desde-699",
   },
   {
     ciudad: "Toulouse",
-    aeropuerto: "Aeropuerto de Toulouse-Blagnac (TLS)",
+    aeropuerto: "Toulouse-Blagnac (TLS)",
     aerolineas: "Iberia y Air France",
-    descripcion:
-      "Ciudad del suroeste francés muy cercana a España, con fuerte vínculo cultural hispano y excelente calidad de vida.",
-    imagen: "/images/destinos/paris.webp",
+    descripcion: "Ciudad del suroeste francés muy cercana a España y de gran calidad de vida.",
     slugLanding: "paquete-migratorio-toulouse-desde-699",
   },
 ];
 
 export default function FranciaPage() {
-  const landingsFrancia = obtenerSuperLandingsPorSilo("francia-europa").slice(
-    0,
-    24
-  );
-
   const msgHero =
-    "¡Hola! Quiero más información del paquete migratorio a Francia (París / Lyon / Marsella) desde $699.\n📍 Ref Web: citylandtravel.com/francia [Paquete Francia $699]";
+    "¡Hola! Quiero más información del paquete migratorio a Francia (París / Lyon / Marsella) desde $699.\n📍 Ref Web: citylandtravel.com/francia [Hero Principal]";
 
   const schemaFrancia = construirSchemaLandingSEO({
     url: `${URL_BASE_SEO}/francia`,
     titulo:
       "Paquetes Migratorios a Francia (París, Lyon, Marsella, Niza, Toulouse) desde $699 USD",
     descripcion:
-      "Viaja desde Perú a Francia con tus 5 documentos en regla: pasaje de avión de ida, boleto de regreso reservado para Migraciones, reserva de hotel o guía Attestation d'accueil, seguro Schengen 30.000€ y check-in 24h antes.",
+      "Viaja desde Perú a Francia con tus 5 documentos en regla: pasaje de avión de ida, boleto de regreso reservado para Migraciones, reserva de hotel, seguro Schengen 30.000€ y check-in 24h antes.",
     precioDesdeUSD: 699,
     cantidadOfertas: 4,
     destinoOPais: "Francia",
@@ -129,12 +136,8 @@ export default function FranciaPage() {
     ],
     faqs: [
       {
-        q: "¿Qué documentos piden a los peruanos para entrar a Francia en 2026?",
-        a: "En el Aeropuerto Charles de Gaulle (París) o al hacer conexión en Europa te solicitan: 1) Pasaporte peruano vigente, 2) Tu pasaje de ida + boleto de regreso dentro de los 90 días, 3) Reserva de hotel confirmada (120 €/día) o Attestation d'accueil original tramitada en la alcaldía (Mairie) por tu familiar (32,50 €/día), y 4) Seguro médico Schengen de 30.000 €.",
-      },
-      {
-        q: "¿El paquete a Francia desde $699 incluye el boleto de regreso para Migraciones?",
-        a: "Sí. Incluye tu pasaje de avión de ida + tu boleto de regreso reservado en sistema para presentar en el aeropuerto y en Migraciones + tu reserva de hotel + tu seguro médico de 30.000€ + tu check-in 24h antes.",
+        q: "¿Qué documentos piden a los peruanos para entrar a Francia?",
+        a: "Te solicitan: 1) Pasaporte peruano vigente, 2) Pasaje de ida + boleto de regreso dentro de los 90 días, 3) Reserva de hotel confirmada o Attestation d'accueil tramitada en la alcaldía francesa por tu familiar, y 4) Seguro médico Schengen de 30.000€.",
       },
     ],
   });
@@ -154,226 +157,242 @@ export default function FranciaPage() {
 
       <Navbar />
 
-      {/* HERO FRANCIA */}
-      <section className="relative pt-28 pb-16 sm:pt-36 sm:pb-24 bg-slate-950 text-white overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="/images/destinos/paris.webp"
-            alt="Paquetes Migratorios a París y Francia desde Perú"
-            className="w-full h-full object-cover opacity-35"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-900/70" />
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="max-w-3xl">
-            <div className="inline-flex flex-wrap items-center gap-2 bg-amber-400/15 border border-amber-400/35 px-4 py-1.5 rounded-full text-xs font-extrabold text-amber-300 mb-5">
-              <span>🇫🇷 Especialistas en Ruta Lima → París, Lyon, Marsella y Niza</span>
-              <span>•</span>
-              <span>Separa con el 50% ($350 USD)</span>
-            </div>
-
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] mb-5">
-              Paquete Migratorio a Francia desde{" "}
-              <span className="text-amber-400">$699 USD</span>
-            </h1>
-
-            <p className="text-base sm:text-xl text-slate-200 leading-relaxed mb-6">
-              Viaja a <strong className="text-white">París, Lyon, Marsella, Niza o Toulouse</strong> con todos los documentos que exigen en Lima y en la Police Aux Frontières de Francia: tu{" "}
-              <strong className="text-amber-300">
-                pasaje de ida + boleto de regreso reservado para Migraciones + hotel confirmable + seguro 30.000€ + check-in 24h antes
-              </strong>
-              .
-            </p>
-
-            <div className="flex flex-wrap gap-3">
-              <a
-                href={buildWhatsAppHref(msgHero)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-black px-7 py-4 rounded-2xl text-sm sm:text-base shadow-xl transition-all"
-              >
-                <WhatsAppIcon className="w-5 h-5" />
-                Cotizar Paquete a Francia desde $699
-              </a>
-              <Link
-                href="/paquetes-migratorios"
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-6 py-4 rounded-2xl text-sm transition-all"
-              >
-                Ver las 1,000 Super-Landings →
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* EXPLICACIÓN EN SENCILLO PERUANO */}
-      <section className="py-12 sm:py-16 bg-white border-b border-slate-200">
+      {/* 1. HERO SIMÉTRICO FRANCIA */}
+      <section className="bg-gradient-to-br from-[#09152b] via-[#13254a] to-[#0a1628] text-white pt-10 pb-14 sm:pt-14 sm:pb-18 border-b-4 border-sky-400">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="bg-amber-50 rounded-3xl p-6 sm:p-10 border-2 border-amber-300">
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-3">
-              🇫🇷 ¿Cómo funciona el Paquete Migratorio a Francia y por qué ahorras más de $800 USD?
-            </h2>
-            <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-6">
-              Si viajas a París, Lyon o Marsella para quedarte a trabajar o reunirte con tu familia, no te conviene gastar $1,600 USD en un boleto de regreso cerrado que vas a perder. Por eso nuestro <strong>Paquete Migratorio a Francia</strong> te entrega los <strong>5 documentos obligatorios</strong>:
-              {" "}1) Tu pasaje de avión de ida emitido, 2) Tu boleto de regreso reservado en sistema para presentar en el aeropuerto, 3) Tu reserva de hotel en Francia (o cuadre con tu <em>Attestation d&apos;accueil</em> de la alcaldía francesa), 4) Tu seguro Schengen de 30.000€ y 5) Tu check-in listo 24h antes.
-            </p>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div className="lg:col-span-6">
+              <div className="inline-flex items-center gap-2 bg-sky-400/15 border border-sky-400/35 px-3.5 py-1.5 rounded-full text-xs font-extrabold text-sky-200 mb-5">
+                <FlagIcon pais="Francia" className="w-4 h-3" />
+                <span>Especialistas en Ruta Lima → París, Lyon, Marsella y Niza</span>
+              </div>
 
-            {/* LOS 4 PLANES OFICIALES */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-              {PLANES_MIGRATORIOS_OFICIALES.map((plan) => {
-                const msg = `${plan.mensajeWhatsAppBase} a Francia (París / Lyon / Marsella).\n📍 Ref Web: citylandtravel.com/francia [${plan.nombre} Francia $${plan.precioUSD}]`;
-                return (
-                  <div
-                    key={plan.id}
-                    className={`rounded-2xl p-5 flex flex-col justify-between border ${
-                      plan.destacado
-                        ? "bg-slate-900 text-white border-amber-400 ring-2 ring-amber-400"
-                        : "bg-white text-slate-900 border-slate-200"
-                    }`}
-                  >
-                    <div>
-                      <span
-                        className={`inline-block text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full mb-2 ${
-                          plan.destacado
-                            ? "bg-amber-400 text-slate-950"
-                            : "bg-slate-100 text-slate-700"
-                        }`}
-                      >
-                        {plan.etiqueta}
-                      </span>
-                      <h3 className="text-lg font-black">{plan.nombre}</h3>
-                      <p
-                        className={`text-xs font-semibold mt-0.5 mb-3 ${
-                          plan.destacado ? "text-amber-300" : "text-amber-700"
-                        }`}
-                      >
-                        📅 {plan.temporada}
-                      </p>
-                      <div className="text-3xl font-black mb-2">
-                        ${plan.precioUSD}{" "}
-                        <span className="text-xs font-bold opacity-70">USD</span>
-                      </div>
-                      <div
-                        className={`rounded-lg px-3 py-1.5 text-xs font-bold mb-4 ${
-                          plan.destacado
-                            ? "bg-emerald-500/20 text-emerald-300"
-                            : "bg-emerald-50 text-emerald-800"
-                        }`}
-                      >
-                        Separa con 50%: <strong>${plan.separaConUSD} USD</strong>
-                      </div>
-                      <ul className="space-y-1.5 text-xs mb-5 opacity-90">
-                        {plan.incluye.map((inc, idx) => (
-                          <li key={idx} className="flex items-start gap-1.5">
-                            <span className="text-emerald-500 font-bold">✓</span>
-                            <span>{inc}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.1] mb-4">
+                Paquete Migratorio a{" "}
+                <span className="text-amber-400">Francia desde $699 USD</span>
+              </h1>
 
-                    <a
-                      href={buildWhatsAppHref(msg)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-white font-extrabold text-xs transition-all"
-                    >
-                      <WhatsAppIcon className="w-4 h-4" />
-                      Cotizar ${plan.precioUSD} USD
-                    </a>
-                  </div>
-                );
-              })}
+              <p className="text-base sm:text-lg text-slate-200 leading-relaxed mb-7">
+                Viaja a París, Lyon, Marsella, Niza o Toulouse con todos los documentos que piden en Lima y al ingresar a Francia, sin gastar el doble en un regreso cerrado. Separa hoy con el{" "}
+                <strong className="text-white">50% de inicial</strong>.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-6">
+                <a
+                  href={buildWhatsAppHref(msgHero)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-wa-pulse inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-extrabold px-7 py-4 rounded-2xl text-sm sm:text-base shadow-xl whitespace-nowrap transition-all"
+                >
+                  <WhatsAppIcon className="w-5 h-5" />
+                  <span>Cotizar por WhatsApp</span>
+                </a>
+                <a
+                  href="#tarifas-francia"
+                  className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-6 py-4 rounded-2xl text-sm sm:text-base whitespace-nowrap transition-all"
+                >
+                  <span>Ver los 4 planes por fecha ↓</span>
+                </a>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-300 pt-4 border-t border-white/15">
+                <span>✓ Agencia Formal RUC 20614914239</span>
+                <span>✓ Oficina en Av. Antúnez de Mayolo 814, Los Olivos</span>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* CIUDADES DE FRANCIA */}
-      <section className="py-12 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-2">
-            Principales Destinos en Francia para Peruanos
-          </h2>
-          <p className="text-slate-600 text-sm sm:text-base mb-8">
-            Elige la ciudad francesa a la que viajas para ver su guía migratoria completa y cotizar tu paquete desde $699 USD:
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {CIUDADES_FRANCIA.map((c) => (
-              <div
-                key={c.ciudad}
-                className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg transition-all flex flex-col justify-between"
-              >
-                <div>
-                  <div className="relative h-48 bg-slate-900">
-                    <img
-                      src={c.imagen}
-                      alt={`Paquete Migratorio a ${c.ciudad}, Francia`}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent" />
-                    <div className="absolute bottom-3 left-4 right-4 text-white">
-                      <span className="text-xs font-bold text-amber-300">
-                        🇫🇷 Francia · Desde $699 USD
-                      </span>
-                      <h3 className="text-xl font-black">{c.ciudad}</h3>
-                    </div>
-                  </div>
-                  <div className="p-5">
-                    <p className="text-xs font-bold text-slate-700 mb-1">
-                      ✈️ {c.aeropuerto}
-                    </p>
-                    <p className="text-xs text-slate-500 mb-3">
-                      Aerolíneas: {c.aerolineas}
-                    </p>
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      {c.descripcion}
-                    </p>
+            {/* Derecha: Foto de París + 5 Documentos */}
+            <div className="lg:col-span-6">
+              <div className="bg-white text-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
+                <div className="relative h-48 sm:h-52 w-full bg-slate-900">
+                  <Image
+                    src="/images/destinos/paris.webp"
+                    alt="París, Francia — Paquete Migratorio"
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/80 via-transparent to-transparent" />
+                  <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold bg-black/45 px-3 py-1 rounded-full">
+                      <FlagIcon pais="Francia" className="w-4 h-3" />
+                      París (CDG / Orly) · Lyon · Marsella
+                    </span>
+                    <span className="bg-sky-600 text-white text-[11px] font-extrabold uppercase px-3 py-1 rounded-full">
+                      Carpeta Completa
+                    </span>
                   </div>
                 </div>
-                <div className="p-5 pt-0 flex gap-2">
-                  <Link
-                    href={`/paquetes-migratorios/${c.slugLanding}`}
-                    className="flex-1 text-center py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-extrabold"
-                  >
-                    Ver Super-Landing {c.ciudad}
-                  </Link>
+
+                <div className="p-5 sm:p-6">
+                  <h2 className="text-base sm:text-lg font-black text-[#0a1628] mb-3">
+                    ¿Qué incluye tu Paquete Migratorio a Francia?
+                  </h2>
+                  <div className="space-y-2 text-xs sm:text-sm">
+                    {[
+                      "1. Pasaje de avión de ida emitido desde Lima hacia París o tu ciudad en Francia.",
+                      "2. Boleto de regreso reservado en sistema para presentar en Migraciones.",
+                      "3. Reserva de hotel confirmada en Francia (o cuadre con tu Attestation d'accueil).",
+                      "4. Seguro médico Schengen de 30.000€ sin deducible.",
+                      "5. Check-in hecho 24h antes y guía paso a paso para tu escala o llegada.",
+                    ].map((punto) => (
+                      <div
+                        key={punto}
+                        className="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200/70 font-medium text-slate-700"
+                      >
+                        <span className="text-emerald-600 font-black">✓</span>
+                        <span>{punto}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
-
-          {/* Enlaces internos al Silo 3 (Francia y Europa) */}
-          <div className="bg-white rounded-2xl p-6 border border-slate-200">
-            <h3 className="text-lg font-extrabold text-slate-900 mb-4">
-              Rutas y Modalidades Especializadas a Francia y Europa Occidental
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
-              {landingsFrancia.map((item) => (
-                <Link
-                  key={item.slug}
-                  href={`/paquetes-migratorios/${item.slug}`}
-                  className="text-xs font-semibold text-slate-700 hover:text-amber-700 bg-slate-50 hover:bg-amber-50 p-3 rounded-xl border border-slate-200 transition-colors flex items-center justify-between"
-                >
-                  <span className="truncate">
-                    🇫🇷 {item.titulo}
-                  </span>
-                  <span className="text-amber-700 font-black ml-2 shrink-0">
-                    ${item.precioPromo}
-                  </span>
-                </Link>
-              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <ModuloSeguridadYCalculadoraEuropa
-        destinoInicial="París / Ámsterdam / Otra ciudad UE"
-        refWebRuta="/francia"
-      />
+      {/* 2. LOS 4 PLANES OFICIALES FRANCIA */}
+      <section id="tarifas-francia" className="py-14 sm:py-20 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-sky-700 block mb-1.5">
+              Tarifas Oficiales según Temporada
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-black text-[#0a1628] tracking-tight">
+              Elige tu Plan a Francia según tu Fecha
+            </h2>
+            <p className="text-sm text-slate-600 mt-2">
+              Separa hoy con el 50% y completa el pago en cuotas antes de tu vuelo.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+            {PLANES_FRANCIA.map((plan) => {
+              const msg = `¡Hola! Quiero más información del ${plan.nombre} a Francia desde $${plan.precio}.\n📍 Ref Web: citylandtravel.com/francia [${plan.nombre} $${plan.precio}]`;
+              return (
+                <div
+                  key={plan.id}
+                  className={`rounded-3xl p-6 flex flex-col justify-between h-full transition-shadow hover:shadow-lg ${
+                    plan.destacado
+                      ? "bg-white border-2 border-amber-400 shadow-md"
+                      : "bg-slate-50/70 border border-slate-200 shadow-xs"
+                  }`}
+                >
+                  <div>
+                    <span
+                      className={`inline-block text-[11px] font-extrabold uppercase px-3 py-1 rounded-full mb-3 ${plan.tagColor}`}
+                    >
+                      {plan.tag}
+                    </span>
+                    <h3 className="text-xl font-black text-[#0a1628]">
+                      {plan.nombre}
+                    </h3>
+                    <p className="text-xs font-semibold text-sky-700 mt-1 min-h-[34px] flex items-center">
+                      📅 {plan.temporada}
+                    </p>
+
+                    <div className="my-4 p-3.5 rounded-2xl bg-white border border-slate-200">
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-xs font-bold text-slate-500">Desde</span>
+                        <span className="text-3xl font-black text-[#0a1628]">
+                          ${plan.precio}
+                        </span>
+                        <span className="text-xs font-bold text-slate-500">USD</span>
+                      </div>
+                      <span className="text-xs font-extrabold text-emerald-700 block mt-1">
+                        ✓ Separa con el 50% (${plan.separaCon} USD)
+                      </span>
+                    </div>
+
+                    <p className="text-xs text-slate-600 leading-relaxed mb-5">
+                      {plan.detalle}
+                    </p>
+                  </div>
+
+                  <a
+                    href={buildWhatsAppHref(msg)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-white font-extrabold text-xs sm:text-sm whitespace-nowrap transition-all"
+                  >
+                    <WhatsAppIcon className="w-4 h-4" />
+                    <span>{plan.waTexto}</span>
+                  </a>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. DESTINOS PRINCIPALES EN FRANCIA */}
+      <section className="py-14 sm:py-18 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
+                Ciudades de Destino en Francia
+              </h2>
+              <p className="text-sm text-slate-600 mt-1">
+                Vuelos con Air France, KLM, Iberia y Air Europa saliendo desde Lima.
+              </p>
+            </div>
+            <Link
+              href="/paquetes-migratorios"
+              className="text-xs font-extrabold text-sky-700 hover:underline"
+            >
+              Ver catálogo completo de Europa →
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {CIUDADES_FRANCIA.map((c) => {
+              const msgCiudad = `¡Hola! Quiero más información del paquete migratorio a ${c.ciudad}, Francia desde $699.\n📍 Ref Web: citylandtravel.com/francia [Ciudad ${c.ciudad}]`;
+              return (
+                <div
+                  key={c.ciudad}
+                  className="bg-white rounded-2xl border border-slate-200 p-6 flex flex-col justify-between shadow-2xs hover:shadow-md transition-all"
+                >
+                  <div>
+                    <span className="text-xs font-bold text-sky-700 block mb-1">
+                      ✈️ {c.aeropuerto}
+                    </span>
+                    <h3 className="text-xl font-black text-slate-900 mb-2">
+                      Lima → {c.ciudad}
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                      {c.descripcion}
+                    </p>
+                    <p className="text-[11px] font-semibold text-slate-500 mb-5">
+                      Aerolíneas: {c.aerolineas}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2 pt-3 border-t border-slate-100">
+                    <Link
+                      href={`/paquetes-migratorios/${c.slugLanding}`}
+                      className="flex-1 text-center py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold whitespace-nowrap"
+                    >
+                      Ver Paquete
+                    </Link>
+                    <a
+                      href={buildWhatsAppHref(msgCiudad)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-white text-xs font-extrabold whitespace-nowrap"
+                    >
+                      <WhatsAppIcon className="w-3.5 h-3.5" />
+                      <span>Cotizar</span>
+                    </a>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       <Footer />
       <WhatsAppFloat />

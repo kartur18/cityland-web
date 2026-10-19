@@ -4,7 +4,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
-import ModuloSeguridadYCalculadoraEuropa from "@/components/ModuloSeguridadYCalculadoraEuropa";
 import BuscadorPaquetesMigratoriosClient, {
   type ItemResumenSuperLanding,
 } from "./BuscadorPaquetesMigratoriosClient";
@@ -20,7 +19,7 @@ export const metadata: Metadata = {
   title:
     "Paquetes Migratorios a España, Italia, Francia y Europa desde $699 USD | Cityland Travel",
   description:
-    "Viaja seguro desde Perú a Madrid, Barcelona, Milán, Roma, París y toda Europa desde $699 USD (separa con $350). Incluye pasaje de ida + boleto de regreso reservado para Migraciones + hotel + seguro 30.000€ + check-in 24h antes.",
+    "Viaja seguro desde Perú a Madrid, Barcelona, Milán, Roma, París y toda Europa desde $699 USD. Incluye pasaje de ida + boleto de regreso reservado para Migraciones + hotel + seguro 30.000€ + check-in 24h antes.",
   keywords: [
     "paquete migratorio españa desde peru",
     "paquete migratorio madrid 699",
@@ -41,7 +40,7 @@ export const metadata: Metadata = {
     title:
       "Paquetes Migratorios a España, Italia, Francia y Europa desde $699 USD | Cityland Travel",
     description:
-      "Pasaje de ida + boleto de regreso reservado para Migraciones + reserva de hotel + seguro Schengen 30.000€ + check-in 24h antes. Separa con el 50% ($350 USD).",
+      "Pasaje de ida + boleto de regreso reservado para Migraciones + reserva de hotel + seguro Schengen 30.000€ + check-in 24h antes. Separa con el 50%.",
     images: [
       {
         url: `${URL_BASE_SEO}/images/destinos/madrid.webp`,
@@ -84,7 +83,7 @@ export default function PaquetesMigratoriosHubPage() {
     }));
 
   const msgHero =
-    "¡Hola! Quiero más información del paquete a Madrid desde $699.\n📍 Ref Web: citylandtravel.com/paquetes-migratorios [Hub Paquetes Migratorios $699]";
+    "¡Hola! Quiero más información del paquete migratorio a Europa desde $699.\n📍 Ref Web: citylandtravel.com/paquetes-migratorios [Hub Principal]";
 
   const schemaHub = construirSchemaLandingSEO({
     url: `${URL_BASE_SEO}/paquetes-migratorios`,
@@ -105,12 +104,12 @@ export default function PaquetesMigratoriosHubPage() {
     ],
     faqs: [
       {
-        q: "¿El paquete migratorio es ida y vuelta? ¿Por qué cuesta desde $699 USD?",
-        a: "Si viajas a Europa para quedarte, trabajar o hacer tu vida allá, no tiene sentido gastar $1,500 USD en un avión de regreso al que no te vas a subir. Pero como en el aeropuerto te exigen mostrar tu regreso para dejarte viajar, nuestro Paquete Migratorio incluye tu pasaje de avión de ida + tu boleto de regreso reservado en sistema para Migraciones + tu reserva de hotel + tu seguro médico de 30.000€ + tu check-in hecho 24h antes.",
+        q: "¿Qué incluye el Paquete Migratorio a Europa?",
+        a: "Incluye los 5 documentos que te piden en el aeropuerto: 1) Pasaje de avión de ida emitido, 2) Boleto de regreso reservado en sistema para Migraciones, 3) Reserva de hotel confirmada, 4) Seguro médico de 30.000€ y 5) Check-in hecho 24h antes.",
       },
       {
-        q: "¿Cuáles son los 4 precios según la fecha de viaje?",
-        a: "Contamos con 4 planes oficiales: Plan Promo $699 USD (fines de Feb, Mar, Abr y May — separa con $350), Plan Smart $799 USD (Oct, Nov, Jun y Sep — separa con $400), Plan Plus $899 USD (salidas cercanas Ene/1ra quincena Feb o vuelos con conexión — separa con $450) y Plan Full $999 USD (temporada alta Dic/Jul/Ago o con maleta grande de 23 kg en bodega — separa con $500).",
+        q: "¿Cuáles son los planes según la fecha de viaje?",
+        a: "Contamos con 4 planes oficiales según temporada: Plan Promo ($699 USD), Plan Smart ($799 USD), Plan Plus ($899 USD) y Plan Full con maleta de 23 kg ($999 USD). Todos se separan con el 50%.",
       },
     ],
   });
@@ -130,170 +129,121 @@ export default function PaquetesMigratoriosHubPage() {
 
       <Navbar />
 
-      {/* HERO PRINCIPAL */}
-      <section className="relative pt-28 pb-16 sm:pt-36 sm:pb-24 bg-slate-950 text-white overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="/images/destinos/madrid.webp"
-            alt="Paquetes Migratorios a España, Italia y Francia desde Perú"
-            className="w-full h-full object-cover opacity-30"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-900/75" />
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="max-w-3xl">
-            <div className="inline-flex flex-wrap items-center gap-2 bg-amber-400/15 border border-amber-400/35 px-4 py-1.5 rounded-full text-xs font-extrabold text-amber-300 mb-5">
-              <span>🇪🇸 España · 🇮🇹 Italia · 🇫🇷 Francia · 🇪🇺 Toda Europa</span>
-              <span>•</span>
-              <span>Agencia Peruana RUC 20614914239</span>
-            </div>
-
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] mb-5">
-              Paquetes Migratorios a Europa desde{" "}
-              <span className="text-amber-400">$699 USD</span>
-            </h1>
-
-            <p className="text-base sm:text-xl text-slate-200 leading-relaxed mb-6">
-              Viaja tranquilo y con todos tus papeles en regla desde Lima y provincias. Incluye tu{" "}
-              <strong className="text-white">pasaje de avión de ida</strong> + tu{" "}
-              <strong className="text-amber-300">
-                boleto de regreso reservado para Migraciones
-              </strong>{" "}
-              + <strong className="text-white">reserva de hotel</strong> +{" "}
-              <strong className="text-white">seguro médico 30.000€</strong> +{" "}
-              <strong className="text-white">check-in y preparación paso a paso</strong>.
-            </p>
-
-            <div className="flex flex-wrap gap-3 mb-8">
-              <a
-                href={buildWhatsAppHref(msgHero)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-black px-7 py-4 rounded-2xl text-sm sm:text-base shadow-xl transition-all"
-              >
-                <WhatsAppIcon className="w-5 h-5" />
-                Cotizar Paquete desde $699 (Separa con $350)
-              </a>
-              <Link
-                href="/espana"
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-5 py-4 rounded-2xl text-sm transition-all"
-              >
-                🇪🇸 Ver España
-              </Link>
-              <Link
-                href="/italia"
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-5 py-4 rounded-2xl text-sm transition-all"
-              >
-                🇮🇹 Ver Italia
-              </Link>
-              <Link
-                href="/francia"
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-5 py-4 rounded-2xl text-sm transition-all"
-              >
-                🇫🇷 Ver Francia
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* EXPLICACIÓN EN SENCILLO PERUANO: ¿ES IDA Y VUELTA O ME ESTÁN ENGAÑANDO? */}
-      <section className="py-12 sm:py-16 bg-amber-50/70 border-b border-amber-200/70">
+      {/* HERO LIMPIO Y ORDENADO */}
+      <section className="relative pt-12 pb-14 sm:pt-16 sm:pb-20 bg-[#0a1628] text-white overflow-hidden border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="bg-white rounded-3xl p-6 sm:p-10 border-2 border-amber-300 shadow-lg">
-            <div className="max-w-3xl mb-8">
-              <span className="inline-block bg-amber-400 text-slate-950 text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full mb-3">
-                Hablemos claro y sin rodeos
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
-                ¿El Paquete Migratorio es ida y vuelta? Así funciona para que ahorres más de $800 USD
-              </h2>
-              <p className="text-slate-700 text-sm sm:text-base mt-3 leading-relaxed">
-                Mucha gente nos pregunta: <em>«¿Por qué cuesta desde $699 si en otras agencias me cobran $1,500 o $1,800?»</em>. La respuesta es súper sencilla:
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div className="lg:col-span-7">
+              <div className="inline-flex flex-wrap items-center gap-2 bg-amber-400/15 border border-amber-400/35 px-4 py-1.5 rounded-full text-xs font-extrabold text-amber-300 mb-5">
+                <span>🇪🇸 España · 🇮🇹 Italia · 🇫🇷 Francia · 🇪🇺 Europa</span>
+                <span>•</span>
+                <span>RUC 20614914239</span>
+              </div>
+
+              <h1 className="text-3xl sm:text-5xl font-black tracking-tight leading-[1.1] mb-4">
+                Paquetes Migratorios a Europa{" "}
+                <span className="text-amber-400">desde $699 USD</span>
+              </h1>
+
+              <p className="text-base sm:text-lg text-slate-200 leading-relaxed mb-7 max-w-2xl">
+                Viaja tranquilo desde Lima y provincias con toda tu carpeta lista para el aeropuerto y Migraciones, sin pagar el doble por un retorno cerrado que no vas a utilizar. Separa tu cupo con el{" "}
+                <strong className="text-white">50% de inicial</strong>.
               </p>
-              <p className="text-slate-800 text-sm sm:text-base mt-3 leading-relaxed font-medium bg-amber-50 p-4 rounded-2xl border border-amber-200">
-                Si tú viajas a España, Italia o Francia para <strong>quedarte a trabajar, estudiar o reunirte con tu familia</strong>, no tiene sentido que pagues $1,500 por un avión de regreso al que <strong>no te vas a subir</strong>. Pero como en el Aeropuerto Jorge Chávez y en Migraciones de Europa <strong>sí te exigen mostrar tu boleto de regreso</strong> para dejarte subir al avión, nosotros armamos tu <strong>Paquete Migratorio Completo</strong> con los 5 documentos que te piden en el aeropuerto:
-              </p>
+
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href={buildWhatsAppHref(msgHero)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-extrabold px-6 py-4 rounded-2xl text-sm sm:text-base shadow-xl whitespace-nowrap transition-all"
+                >
+                  <WhatsAppIcon className="w-5 h-5" />
+                  <span>Cotizar por WhatsApp</span>
+                </a>
+                <Link
+                  href="/espana"
+                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-5 py-4 rounded-2xl text-sm whitespace-nowrap transition-all"
+                >
+                  🇪🇸 España
+                </Link>
+                <Link
+                  href="/italia"
+                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-5 py-4 rounded-2xl text-sm whitespace-nowrap transition-all"
+                >
+                  🇮🇹 Italia
+                </Link>
+                <Link
+                  href="/francia"
+                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-5 py-4 rounded-2xl text-sm whitespace-nowrap transition-all"
+                >
+                  🇫🇷 Francia
+                </Link>
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-              <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200">
-                <div className="w-9 h-9 rounded-xl bg-amber-400 text-slate-950 font-black flex items-center justify-center mb-3">
-                  1
-                </div>
-                <h3 className="font-extrabold text-slate-900 text-sm mb-1">
-                  Tu pasaje de avión de ida
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Boleto oficial emitido a tu nombre para volar desde Lima a tu destino en Europa.
-                </p>
-              </div>
-
-              <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200">
-                <div className="w-9 h-9 rounded-xl bg-amber-400 text-slate-950 font-black flex items-center justify-center mb-3">
-                  2
-                </div>
-                <h3 className="font-extrabold text-slate-900 text-sm mb-1">
-                  Tu boleto de regreso para Migraciones
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Reserva oficial activa en sistema el día de tu viaje para que presentes tu ida y vuelta en el aeropuerto sin gastar el doble.
-                </p>
-              </div>
-
-              <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200">
-                <div className="w-9 h-9 rounded-xl bg-amber-400 text-slate-950 font-black flex items-center justify-center mb-3">
-                  3
-                </div>
-                <h3 className="font-extrabold text-slate-900 text-sm mb-1">
-                  Tu reserva de hotel confirmada
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Alojamiento verificable por los días declarados (o cuadramos todo con las fechas de tu Carta de Invitación).
-                </p>
-              </div>
-
-              <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200">
-                <div className="w-9 h-9 rounded-xl bg-amber-400 text-slate-950 font-black flex items-center justify-center mb-3">
-                  4
-                </div>
-                <h3 className="font-extrabold text-slate-900 text-sm mb-1">
-                  Tu seguro médico obligatorio
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Póliza europea Schengen de 30.000 € sin deducible ni copago, obligatoria para ingresar a Europa.
-                </p>
-              </div>
-
-              <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200">
-                <div className="w-9 h-9 rounded-xl bg-amber-400 text-slate-950 font-black flex items-center justify-center mb-3">
-                  5
-                </div>
-                <h3 className="font-extrabold text-slate-900 text-sm mb-1">
-                  Check-in y preparación 1 a 1
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Hacemos tu check-in 24h antes, te entregamos tu carpeta impresa/PDF y te explicamos cómo responder en Migraciones.
-                </p>
+            {/* Derecha: Los 5 documentos de la carpeta en una tarjeta limpia */}
+            <div className="lg:col-span-5">
+              <div className="bg-white text-slate-900 rounded-3xl p-6 shadow-2xl border border-slate-200">
+                <span className="inline-block bg-amber-100 text-amber-900 text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full mb-3">
+                  Expediente Completo sin Letra Chica
+                </span>
+                <h2 className="text-lg sm:text-xl font-black text-[#0a1628] mb-3">
+                  Los 5 documentos incluidos en tu paquete:
+                </h2>
+                <ul className="space-y-2.5 text-xs sm:text-sm text-slate-700">
+                  <li className="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200/70">
+                    <span className="w-5 h-5 rounded-md bg-[#0a1628] text-amber-300 text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
+                      1
+                    </span>
+                    <span>
+                      <strong>Pasaje de avión de ida</strong> emitido a tu nombre.
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200/70">
+                    <span className="w-5 h-5 rounded-md bg-[#0a1628] text-amber-300 text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
+                      2
+                    </span>
+                    <span>
+                      <strong>Boleto de regreso reservado en sistema</strong> para presentar en Migraciones.
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200/70">
+                    <span className="w-5 h-5 rounded-md bg-[#0a1628] text-amber-300 text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
+                      3
+                    </span>
+                    <span>
+                      <strong>Reserva de hotel confirmada</strong> (o cuadre con tu Carta de Invitación).
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200/70">
+                    <span className="w-5 h-5 rounded-md bg-[#0a1628] text-amber-300 text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
+                      4
+                    </span>
+                    <span>
+                      <strong>Seguro médico Schengen de 30.000€</strong> sin deducible.
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200/70">
+                    <span className="w-5 h-5 rounded-md bg-[#0a1628] text-amber-300 text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
+                      5
+                    </span>
+                    <span>
+                      <strong>Check-in 24h antes</strong> y preparación 1 a 1 para tu viaje.
+                    </span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* DIRECTORIO INTERACTIVO DE LAS 1,000 SUPER-LANDINGS + 4 PLANES */}
+      {/* PLANES Y BUSCADOR DE LAS 1,000 RUTAS */}
       <section className="py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <BuscadorPaquetesMigratoriosClient items={resumenItems} />
         </div>
       </section>
-
-      {/* PLANIFICADOR Y CALCULADORA BOE */}
-      <ModuloSeguridadYCalculadoraEuropa
-        destinoInicial="Madrid (España)"
-        refWebRuta="/paquetes-migratorios"
-      />
 
       <Footer />
       <WhatsAppFloat />
