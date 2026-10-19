@@ -120,7 +120,7 @@ export default function Migratorio() {
           {/* Derecha */}
           <div className="lg:col-span-5 relative min-h-[280px] sm:min-h-[360px] w-full overflow-hidden">
             <Image
-              src="/images/espana/gran-via-metropolis.jpg"
+              src="/images/espana/palacio-real.jpg"
               alt="Paquete Migratorio a Europa desde $699 USD - Cityland Travel"
               fill
               sizes="(max-width: 1024px) 100vw, 500px"

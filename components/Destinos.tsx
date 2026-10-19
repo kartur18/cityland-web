@@ -8,12 +8,12 @@ import FlagIcon from "@/components/icons/FlagIcon";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 const CATEGORIAS = [
-  { id: "all", label: "Todos" },
+  { id: "all", label: "Todos los Destinos" },
+  { id: "europa", label: "España, Italia & Europa" },
   { id: "caribe", label: "Caribe & Colombia" },
-  { id: "europa", label: "España & Europa" },
-  { id: "exoticos", label: "Turquía" },
+  { id: "sudamerica", label: "Perú & Sudamérica" },
+  { id: "exoticos", label: "Turquía & Dubái" },
   { id: "norteamerica", label: "Miami & Orlando" },
-  { id: "sudamerica", label: "Sudamérica" },
 ] as const;
 
 export default function Destinos() {
@@ -43,7 +43,7 @@ export default function Destinos() {
               <button
                 key={cat.id}
                 onClick={() => setCatFiltro(cat.id)}
-                className={`shrink-0 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                className={`shrink-0 px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
                   catFiltro === cat.id
                     ? "bg-[#0a1628] text-white shadow-xs"
                     : "bg-white text-slate-600 hover:text-slate-900 border border-slate-200"
@@ -58,22 +58,37 @@ export default function Destinos() {
         {/* Grilla Luminosa y Simétrica */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {paquetesFiltrados.map((paquete) => {
+            const esMigratorio = paquete.tipoViaje === "migratorio";
             const waHref = buildWaUrl({
               categoria: paquete.categoria,
               destino: paquete.ciudad,
               tipo: paquete.tituloComercial,
               precioUSD: paquete.precioUSD,
               duracion: paquete.duracion,
-              mensajePersonalizado: `¡Hola Cityland Travel! Vi en su web el paquete a ${paquete.ciudad} (${paquete.duracion}) desde $${paquete.precioUSD} USD. Deseo cotizar separando con el 50%.`,
+              mensajePersonalizado: esMigratorio
+                ? `¡Hola! Quiero más información del paquete migratorio a ${paquete.ciudad} desde $${paquete.precioUSD}.`
+                : `¡Hola Cityland Travel! Vi en su web el paquete a ${paquete.ciudad} (${paquete.duracion}) desde $${paquete.precioUSD} USD. Deseo cotizar separando con el 50%.`,
             });
+
+            const detalleHref =
+              paquete.slug === "madrid"
+                ? "/espana"
+                : paquete.slug === "milan"
+                ? "/italia"
+                : paquete.slug === "paris"
+                ? "/francia"
+                : `/destinos/${paquete.slug}`;
 
             return (
               <article
                 key={paquete.id}
                 className="card-interactive group rounded-3xl overflow-hidden bg-white border border-slate-200/90 shadow-xs flex flex-col justify-between h-full"
               >
-                {/* Fotografía 100% Limpia (Sin sombras ni textos encima de la imagen) */}
-                <div className="relative h-56 w-full overflow-hidden bg-slate-100">
+                {/* Fotografía 100% Limpia */}
+                <Link
+                  href={detalleHref}
+                  className="relative h-56 w-full overflow-hidden bg-slate-100 block"
+                >
                   <Image
                     src={paquete.img}
                     alt={paquete.alt}
@@ -91,20 +106,23 @@ export default function Destinos() {
                       {paquete.duracion}
                     </span>
                   </div>
-                </div>
+                </Link>
 
                 {/* Cuerpo Blanco Limpio y Ordenado */}
                 <div className="p-5 flex flex-col justify-between flex-1 gap-4">
                   <div>
-                    <h3 className="text-lg sm:text-xl font-extrabold text-[#0a1628] leading-tight mb-1.5">
-                      {paquete.ciudad}
-                    </h3>
+                    <Link href={detalleHref}>
+                      <h3 className="text-lg sm:text-xl font-extrabold text-[#0a1628] group-hover:text-red-600 transition-colors leading-tight mb-1.5">
+                        {paquete.ciudad}
+                      </h3>
+                    </Link>
                     <p className="text-xs font-semibold text-slate-600 leading-snug mb-3">
                       {paquete.resaltado}
                     </p>
                     <div className="flex items-center gap-3 text-[11px] font-semibold text-slate-500">
                       <span className="flex items-center gap-1">
-                        <span className="text-emerald-600 font-bold">✓</span> Vuelo I/V
+                        <span className="text-emerald-600 font-bold">✓</span>{" "}
+                        {esMigratorio ? "Pasaje + Retorno" : "Vuelo I/V"}
                       </span>
                       <span className="flex items-center gap-1">
                         <span className="text-emerald-600 font-bold">✓</span> Hotel
@@ -131,32 +149,29 @@ export default function Destinos() {
                         <span className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] leading-none">
                           ${paquete.precioUSD.toLocaleString("en-US")}
                         </span>
+                        <span className="text-[11px] font-bold text-slate-500">USD</span>
                       </div>
                       <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
                         Separa con 50% (${Math.round(paquete.precioUSD * 0.5).toLocaleString("en-US")})
                       </span>
                     </div>
 
-                    <div className="flex flex-col items-end gap-1">
+                    <div className="flex items-center gap-2 shrink-0">
+                      <Link
+                        href={detalleHref}
+                        className="inline-flex items-center justify-center bg-slate-100 hover:bg-slate-200 text-[#0a1628] px-3.5 py-2.5 rounded-xl text-xs font-extrabold whitespace-nowrap transition-colors"
+                      >
+                        Ver Detalles
+                      </Link>
                       <a
                         href={waHref}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn-wa-pulse inline-flex items-center gap-1.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold cursor-pointer"
+                        className="btn-wa-pulse inline-flex items-center justify-center gap-1.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 py-2.5 rounded-xl text-xs font-extrabold whitespace-nowrap cursor-pointer shadow-xs"
                       >
                         <WhatsAppIcon size={15} />
                         <span>Cotizar</span>
                       </a>
-                      <Link
-                        href={
-                          paquete.slug === "madrid"
-                            ? "/espana"
-                            : `/destinos/${paquete.slug}`
-                        }
-                        className="text-[11px] font-semibold text-slate-400 hover:text-[#0a1628] transition-colors"
-                      >
-                        Ver detalles →
-                      </Link>
                     </div>
                   </div>
                 </div>

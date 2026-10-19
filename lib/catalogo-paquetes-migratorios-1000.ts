@@ -2361,6 +2361,7 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
     subtituloHero: string;
     ganchoPeruano: string;
     detalleExtraOrigen?: string;
+    imagenOverride?: string;
     indice: number;
   }): ResumenSuperLanding => {
     const {
@@ -2373,8 +2374,11 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
       subtituloHero,
       ganchoPeruano,
       detalleExtraOrigen,
+      imagenOverride,
       indice,
     } = params;
+
+    const heroFinal = imagenOverride || ciudadCfg.imagenHero;
 
     return {
       slug,
@@ -2385,7 +2389,7 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
       origenPasajero,
       titulo: tituloH1,
       subtitulo: subtituloHero,
-      imagenHero: ciudadCfg.imagenHero,
+      imagenHero: heroFinal,
       precioPromo: 699,
       precioSmart: 799,
       precioPlus: 899,
@@ -2433,7 +2437,7 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
           origenPasajero,
           aerolineas: ciudadCfg.aerolineas,
           monumentoDestacado: ciudadCfg.monumento,
-          imagenHero: ciudadCfg.imagenHero,
+          imagenHero: heroFinal,
           galeriaCiudad: ciudadCfg.galeria,
           tituloH1,
           subtituloHero,
@@ -2466,63 +2470,117 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
     };
   };
 
-  // 1. SILO ESPAÑA: 25 ciudades × 16 intenciones = 400 Super-Landings
-  for (const c of CIUDADES_ESPANA) {
-    for (const int of INTENCIONES_ESPANA) {
-      const idx = lista.length;
-      lista.push(
-        armarItem({
-          slug: `espana-${c.slugCiudad}-${int.slugIntencion}`,
-          silo: "espana",
-          siloNombre: "Paquetes Migratorios a España",
-          ciudadCfg: c,
-          origenPasajero: "Lima y Todo el Perú",
-          tituloH1: int.focoTitulo(c.ciudad),
-          subtituloHero: int.focoSubtitulo(c.ciudad),
-          ganchoPeruano: int.focoGancho(c.ciudad),
-          indice: idx,
-        })
-      );
-    }
-  }
+  const FOTOS_POOL_ESPANA = [
+    ...CIUDADES_ESPANA.map((c) => c.imagenHero),
+    "/images/espana/palacio-real.jpg",
+    "/images/espana/puerta-de-alcala.jpg",
+    "/images/espana/plaza-mayor.jpg",
+    "/images/espana/parque-retiro.jpg",
+    "/images/espana/barajas-t4.jpg",
+    "/images/espana/avion-aterrizaje.jpg",
+  ];
+  const FOTOS_POOL_ITALIA = CIUDADES_ITALIA.map((c) => c.imagenHero);
+  const FOTOS_POOL_EUROPA = CIUDADES_FRANCIA_EUROPA.map((c) => c.imagenHero);
+  const FOTOS_POOL_TODAS = [
+    ...FOTOS_POOL_ESPANA,
+    ...FOTOS_POOL_ITALIA,
+    ...FOTOS_POOL_EUROPA,
+  ];
 
-  // 2. SILO ITALIA: 25 ciudades × 10 intenciones = 250 Super-Landings
-  for (const c of CIUDADES_ITALIA) {
-    for (const int of INTENCIONES_ITALIA) {
-      const idx = lista.length;
-      lista.push(
-        armarItem({
-          slug: `italia-${c.slugCiudad}-${int.slugIntencion}`,
-          silo: "italia",
-          siloNombre: "Paquetes Migratorios a Italia",
-          ciudadCfg: c,
-          origenPasajero: "Lima y Todo el Perú",
-          tituloH1: int.focoTitulo(c.ciudad),
-          subtituloHero: int.focoSubtitulo(c.ciudad),
-          ganchoPeruano: int.focoGancho(c.ciudad),
-          indice: idx,
-        })
-      );
-    }
-  }
+  // 1, 2 y 3. SILOS ESPAÑA (400), ITALIA (250) Y FRANCIA/EUROPA (150)
+  // Ordenados por ronda de intención e intercalando ciudades para que las primeras 65 tarjetas
+  // sean las 65 ciudades distintas de Europa sin repetir ni una sola imagen.
+  const maxRondas = Math.max(
+    INTENCIONES_ESPANA.length,
+    INTENCIONES_ITALIA.length,
+    INTENCIONES_FRANCIA_EUROPA.length
+  );
 
-  // 3. SILO FRANCIA Y RESTO DE EUROPA: 15 ciudades × 10 intenciones = 150 Super-Landings
-  for (const c of CIUDADES_FRANCIA_EUROPA) {
-    for (const int of INTENCIONES_FRANCIA_EUROPA) {
-      const idx = lista.length;
-      lista.push(
-        armarItem({
-          slug: `europa-${c.slugCiudad}-${int.slugIntencion}`,
-          silo: "francia-europa",
-          siloNombre: `Paquetes Migratorios a ${c.pais}`,
-          ciudadCfg: c,
-          origenPasajero: "Lima y Todo el Perú",
-          tituloH1: int.focoTitulo(c.ciudad, c.pais),
-          subtituloHero: int.focoSubtitulo(c.ciudad),
-          ganchoPeruano: int.focoGancho(c.ciudad, c.pais),
-          indice: idx,
-        })
-      );
+  for (let r = 0; r < maxRondas; r++) {
+    const maxCiudades = Math.max(
+      CIUDADES_ESPANA.length,
+      CIUDADES_ITALIA.length,
+      CIUDADES_FRANCIA_EUROPA.length
+    );
+
+    for (let cIdx = 0; cIdx < maxCiudades; cIdx++) {
+      // A) España (25 ciudades × 16 intenciones = 400)
+      if (r < INTENCIONES_ESPANA.length && cIdx < CIUDADES_ESPANA.length) {
+        const c = CIUDADES_ESPANA[cIdx];
+        const int = INTENCIONES_ESPANA[r];
+        const idx = lista.length;
+        const imgVar =
+          r === 0
+            ? c.imagenHero
+            : FOTOS_POOL_ESPANA[(cIdx + r * 3) % FOTOS_POOL_ESPANA.length];
+        lista.push(
+          armarItem({
+            slug: `espana-${c.slugCiudad}-${int.slugIntencion}`,
+            silo: "espana",
+            siloNombre: "Paquetes Migratorios a España",
+            ciudadCfg: c,
+            origenPasajero: "Lima y Todo el Perú",
+            tituloH1: int.focoTitulo(c.ciudad),
+            subtituloHero: int.focoSubtitulo(c.ciudad),
+            ganchoPeruano: int.focoGancho(c.ciudad),
+            imagenOverride: imgVar,
+            indice: idx,
+          })
+        );
+      }
+
+      // B) Italia (25 ciudades × 10 intenciones = 250)
+      if (r < INTENCIONES_ITALIA.length && cIdx < CIUDADES_ITALIA.length) {
+        const c = CIUDADES_ITALIA[cIdx];
+        const int = INTENCIONES_ITALIA[r];
+        const idx = lista.length;
+        const imgVar =
+          r === 0
+            ? c.imagenHero
+            : FOTOS_POOL_ITALIA[(cIdx + r * 3) % FOTOS_POOL_ITALIA.length];
+        lista.push(
+          armarItem({
+            slug: `italia-${c.slugCiudad}-${int.slugIntencion}`,
+            silo: "italia",
+            siloNombre: "Paquetes Migratorios a Italia",
+            ciudadCfg: c,
+            origenPasajero: "Lima y Todo el Perú",
+            tituloH1: int.focoTitulo(c.ciudad),
+            subtituloHero: int.focoSubtitulo(c.ciudad),
+            ganchoPeruano: int.focoGancho(c.ciudad),
+            imagenOverride: imgVar,
+            indice: idx,
+          })
+        );
+      }
+
+      // C) Francia y Resto de Europa (15 ciudades × 10 intenciones = 150)
+      if (
+        r < INTENCIONES_FRANCIA_EUROPA.length &&
+        cIdx < CIUDADES_FRANCIA_EUROPA.length
+      ) {
+        const c = CIUDADES_FRANCIA_EUROPA[cIdx];
+        const int = INTENCIONES_FRANCIA_EUROPA[r];
+        const idx = lista.length;
+        const imgVar =
+          r === 0
+            ? c.imagenHero
+            : FOTOS_POOL_EUROPA[(cIdx + r * 2) % FOTOS_POOL_EUROPA.length];
+        lista.push(
+          armarItem({
+            slug: `europa-${c.slugCiudad}-${int.slugIntencion}`,
+            silo: "francia-europa",
+            siloNombre: `Paquetes Migratorios a ${c.pais}`,
+            ciudadCfg: c,
+            origenPasajero: "Lima y Todo el Perú",
+            tituloH1: int.focoTitulo(c.ciudad, c.pais),
+            subtituloHero: int.focoSubtitulo(c.ciudad),
+            ganchoPeruano: int.focoGancho(c.ciudad, c.pais),
+            imagenOverride: imgVar,
+            indice: idx,
+          })
+        );
+      }
     }
   }
 
@@ -2535,9 +2593,15 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
     CIUDADES_FRANCIA_EUROPA[0], // París
   ];
 
+  let contadorSalidas = 0;
   for (const orig of ORIGENES_PERU) {
     for (const c of TOP_5_EUROPA) {
       const idx = lista.length;
+      const imgSalida =
+        contadorSalidas < 5
+          ? c.imagenHero
+          : FOTOS_POOL_TODAS[contadorSalidas % FOTOS_POOL_TODAS.length];
+      contadorSalidas++;
       lista.push(
         armarItem({
           slug: `desde-${orig.slugOrigen}-a-${c.slugCiudad}`,
@@ -2549,6 +2613,7 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
           subtituloHero: `Planes de $699, $799, $899 y $999 USD · Separa hoy con el 50%`,
           ganchoPeruano: `Armamos tu paquete migratorio completo hacia ${c.ciudad} (${c.pais}) con pasaje de avión de ida, boleto de regreso reservado para Migraciones, reserva de hotel y seguro médico obligatorio.`,
           detalleExtraOrigen: orig.detalleSalida,
+          imagenOverride: imgSalida,
           indice: idx,
         })
       );
@@ -2556,9 +2621,15 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
   }
 
   // 5. SILO DUDAS Y OBJECIONES MIGRATORIAS: 20 temas × 5 destinos top = 100 Super-Landings
+  let contadorGuias = 0;
   for (const tema of TEMAS_DUDAS_MIGRATORIAS) {
     for (const c of TOP_5_EUROPA) {
       const idx = lista.length;
+      const imgGuia =
+        contadorGuias < 5
+          ? c.imagenHero
+          : FOTOS_POOL_TODAS[(contadorGuias + 17) % FOTOS_POOL_TODAS.length];
+      contadorGuias++;
       lista.push(
         armarItem({
           slug: `guia-${c.slugCiudad}-${tema.slugTema}`,
@@ -2569,6 +2640,7 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
           tituloH1: tema.tituloTema(c.ciudad),
           subtituloHero: tema.subtituloTema(c.ciudad),
           ganchoPeruano: tema.ganchoTema(c.ciudad),
+          imagenOverride: imgGuia,
           indice: idx,
         })
       );

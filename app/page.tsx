@@ -18,17 +18,17 @@ export default function LandingPage() {
       <Navbar />
 
       <main id="main-content">
-        {/* 1. Hero Cinemático Estilo Aerolínea */}
+        {/* 1. Hero Principal con Prioridad en Europa $699 y Caribe */}
         <Hero />
 
-        {/* 2. Franja Limpia de Respaldo */}
-        <ProofBar />
+        {/* 2. Paquetes Migratorios a España, Italia y Francia ($699 · $799 · $899 · $999) */}
+        <Migratorio />
 
-        {/* 3. Catálogo Fotográfico de Destinos */}
+        {/* 3. Catálogo Fotográfico de Destinos Más Vendidos */}
         <Destinos />
 
-        {/* 4. Banner Visual Especial España */}
-        <Migratorio />
+        {/* 4. Franja Limpia de Respaldo */}
+        <ProofBar />
 
         {/* 5. Experiencias Reales de Viajeros */}
         <Testimonios />

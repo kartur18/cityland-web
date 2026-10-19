@@ -90,8 +90,6 @@ export default function BuscadorCatalogoInstantaneo({
   const [items, setItems] = useState<ItemResultado[]>(itemsIniciales);
   const [totalMatches, setTotalMatches] = useState(totalInicial);
   const [cargando, setCargando] = useState(false);
-  const [copiadoSlug, setCopiadoSlug] = useState<string | null>(null);
-  const [copiadoResumenSlug, setCopiadoResumenSlug] = useState<string | null>(null);
   const [limite, setLimite] = useState(24);
 
   const consultarCatalogo = useCallback(
@@ -125,30 +123,6 @@ export default function BuscadorCatalogoInstantaneo({
     }, 140);
     return () => clearTimeout(timer);
   }, [busqueda, cluster, origen, mes, limite, consultarCatalogo]);
-
-  const copiarEnlace = async (item: ItemResultado) => {
-    const fullUrl = `https://citylandtravel.com${item.url}`;
-    try {
-      await navigator.clipboard.writeText(fullUrl);
-      setCopiadoSlug(item.slug);
-      setTimeout(() => setCopiadoSlug(null), 2200);
-    } catch {
-      // Fallback
-    }
-  };
-
-  const copiarResumenWhatsApp = async (item: ItemResultado) => {
-    const fullUrl = `https://citylandtravel.com${item.url}`;
-    const inicial50 = Math.round(item.precioDesdeUSD * 0.5);
-    const texto = `✈️ *${item.titulo}*\n📍 Destino: ${item.destinoOPais}\n💰 Tarifa desde: *$${item.precioDesdeUSD} USD* (Separa hoy con el 50%: *$${inicial50} USD*)\n🏢 Cityland Travel E.I.R.L. · RUC 20614914239\n🔗 Ver programa oficial:\n${fullUrl}`;
-    try {
-      await navigator.clipboard.writeText(texto);
-      setCopiadoResumenSlug(item.slug);
-      setTimeout(() => setCopiadoResumenSlug(null), 2200);
-    } catch {
-      // Fallback
-    }
-  };
 
   const limpiarFiltros = () => {
     setBusqueda("");
@@ -325,30 +299,27 @@ export default function BuscadorCatalogoInstantaneo({
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {items.map((item) => {
               const inicial50 = Math.round(item.precioDesdeUSD * 0.5);
               const waHref =
                 "https://wa.me/51944103890?text=" +
                 encodeURIComponent(
-                  `¡Hola Cityland Travel! Vi en su buscador el programa "${item.titulo}" desde $${item.precioDesdeUSD.toLocaleString("en-US")} USD (separando con el 50%: $${inicial50.toLocaleString("en-US")} USD) y quiero cotizar mis fechas.`
+                  `¡Hola! Quiero más información del programa "${item.titulo}" desde $${item.precioDesdeUSD.toLocaleString("en-US")} USD.\n\n📍 Ref Web: citylandtravel.com${item.url}`
                 );
-              const fueCopiado = copiadoSlug === item.slug;
-              const fueResumenCopiado = copiadoResumenSlug === item.slug;
               const imgUrl =
                 item.img ||
-                "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1200&q=85";
+                "/images/espana/gran-via-metropolis.jpg";
 
               return (
                 <div
                   key={item.slug}
-                  className="group bg-white rounded-2xl border border-slate-200/90 hover:border-slate-300 overflow-hidden transition-all hover:shadow-lg flex flex-col justify-between"
+                  className="group bg-white rounded-3xl border border-slate-200/90 hover:border-slate-300 overflow-hidden transition-all hover:shadow-lg flex flex-col justify-between"
                 >
                   <div>
-                    {/* Imagen 100% limpia sin sombras negras ni textos encima */}
                     <Link
                       href={item.url}
-                      className="relative block h-40 w-full bg-slate-100 overflow-hidden"
+                      className="relative block h-48 w-full bg-slate-100 overflow-hidden"
                     >
                       <Image
                         src={imgUrl}
@@ -357,83 +328,59 @@ export default function BuscadorCatalogoInstantaneo({
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <span className="absolute top-2.5 left-2.5 text-[10px] font-extrabold uppercase tracking-wider text-white bg-[#0a1628]/90 px-2.5 py-1 rounded-full shadow-xs">
+                      <span className="absolute top-3 left-3 text-[10px] font-extrabold uppercase tracking-wider text-white bg-[#0a1628]/90 px-3 py-1 rounded-full shadow-xs">
                         {item.clusterNombre}
                       </span>
                     </Link>
 
-                    <div className="p-4 pb-3 space-y-2">
+                    <div className="p-5 pb-4 space-y-2.5">
                       <div className="flex items-center justify-between gap-2 text-xs">
-                        <span className="font-bold text-slate-500">
+                        <span className="font-bold text-slate-500 truncate">
                           📍 {item.destinoOPais}
                         </span>
-                        <span className="font-extrabold text-emerald-800 bg-emerald-50 border border-emerald-200/80 px-2 py-0.5 rounded-lg text-[11px] shrink-0">
+                        <span className="font-extrabold text-emerald-800 bg-emerald-50 border border-emerald-200/80 px-2.5 py-0.5 rounded-lg text-[11px] shrink-0 whitespace-nowrap">
                           Separa con ${inicial50.toLocaleString("en-US")}
                         </span>
                       </div>
 
                       <Link
                         href={item.url}
-                        className="text-sm font-extrabold text-[#0a1628] group-hover:text-red-600 transition-colors leading-snug block"
+                        className="text-base font-extrabold text-[#0a1628] group-hover:text-red-600 transition-colors leading-snug block"
                       >
                         {item.titulo}
                       </Link>
-
-                      <div className="pt-1 flex items-baseline justify-between">
-                        <span className="text-[11px] font-bold text-slate-400 uppercase">
-                          Tarifa desde
-                        </span>
-                        <span className="text-base font-black text-[#0a1628]">
-                          ${item.precioDesdeUSD.toLocaleString("en-US")}{" "}
-                          <span className="text-[11px] font-bold text-slate-500">USD</span>
-                        </span>
-                      </div>
                     </div>
                   </div>
 
-                  <div className="px-4 pb-4 pt-2.5 border-t border-slate-100 flex items-center justify-between gap-1.5">
-                    <Link
-                      href={item.url}
-                      className="flex-1 text-center text-[11px] font-extrabold text-white bg-[#0a1628] hover:bg-slate-800 px-2.5 py-2 rounded-xl transition-colors"
-                    >
-                      Abrir página →
-                    </Link>
+                  <div className="px-5 pb-5 pt-3.5 border-t border-slate-100 flex items-center justify-between gap-3">
+                    <div>
+                      <span className="text-[10px] font-extrabold text-red-600 uppercase tracking-wider block">
+                        Desde
+                      </span>
+                      <span className="text-xl font-black text-[#0a1628] leading-none">
+                        ${item.precioDesdeUSD.toLocaleString("en-US")}{" "}
+                        <span className="text-[11px] font-bold text-slate-500">USD</span>
+                      </span>
+                    </div>
 
-                    <button
-                      type="button"
-                      onClick={() => copiarEnlace(item)}
-                      title="Copiar link directo de esta página"
-                      className={`text-[11px] font-bold px-2.5 py-2 rounded-xl border transition-all cursor-pointer ${
-                        fueCopiado
-                          ? "bg-emerald-600 text-white border-emerald-600"
-                          : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"
-                      }`}
-                    >
-                      {fueCopiado ? "✓ Link" : "🔗 Link"}
-                    </button>
+                    <div className="flex items-center gap-2 shrink-0">
+                      <Link
+                        href={item.url}
+                        className="inline-flex items-center justify-center text-xs font-extrabold text-[#0a1628] bg-slate-100 hover:bg-slate-200 px-3.5 py-2.5 rounded-xl transition-colors whitespace-nowrap"
+                      >
+                        Ver Detalles
+                      </Link>
 
-                    <button
-                      type="button"
-                      onClick={() => copiarResumenWhatsApp(item)}
-                      title="Copiar cotización lista para pegar en WhatsApp"
-                      className={`text-[11px] font-bold px-2.5 py-2 rounded-xl border transition-all cursor-pointer ${
-                        fueResumenCopiado
-                          ? "bg-emerald-600 text-white border-emerald-600"
-                          : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"
-                      }`}
-                    >
-                      {fueResumenCopiado ? "✓ Texto" : "📋 Texto"}
-                    </button>
-
-                    <a
-                      href={waHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Cotizar por WhatsApp"
-                      className="inline-flex items-center justify-center bg-[#25D366] hover:bg-[#20ba5a] text-white p-2 rounded-xl transition-colors"
-                    >
-                      <WhatsAppIcon className="w-4 h-4" />
-                    </a>
+                      <a
+                        href={waHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-wa-pulse inline-flex items-center justify-center gap-1.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 py-2.5 rounded-xl text-xs font-extrabold transition-colors whitespace-nowrap shadow-xs"
+                      >
+                        <WhatsAppIcon className="w-4 h-4 shrink-0" />
+                        <span>Cotizar</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               );
