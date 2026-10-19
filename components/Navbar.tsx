@@ -17,8 +17,8 @@ const PRIMARY_LINKS: {
 }[] = [
   { label: "España", href: "/espana", highlight: true, badgeColor: "red", flag: "España" },
   { label: "Italia", href: "/italia", highlight: true, badgeColor: "sky", flag: "Italia" },
-  { label: "Francia", href: "/francia", highlight: true, badgeColor: "sky" },
-  { label: "Paquetes Migratorios", href: "/paquetes-migratorios", highlight: true, badgeColor: "red" },
+  { label: "Francia", href: "/francia", highlight: true, badgeColor: "sky", flag: "Francia" },
+  { label: "Paquetes Migratorios", href: "/paquetes-migratorios", highlight: true, badgeColor: "red", flag: "Europa" },
   { label: "Caribe & Miami", href: "/caribe", highlight: true, badgeColor: "sky", flag: "República Dominicana" },
   { label: "Cusco", href: "/cusco" },
   { label: "Perú & Playas", href: "/peru" },

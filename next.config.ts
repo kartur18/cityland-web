@@ -66,6 +66,40 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: "/paquetes-migratorio",
+        destination: "/paquetes-migratorios",
+        permanent: true,
+      },
+      {
+        source: "/paquetes-migratorio/:slug*",
+        destination: "/paquetes-migratorios/:slug*",
+        permanent: true,
+      },
+      {
+        source: "/paquete-migratorio",
+        destination: "/paquetes-migratorios",
+        permanent: true,
+      },
+      {
+        source: "/paquete-migratorio/:slug*",
+        destination: "/paquetes-migratorios/:slug*",
+        permanent: true,
+      },
+      {
+        source: "/paquete-migratorios",
+        destination: "/paquetes-migratorios",
+        permanent: true,
+      },
+      {
+        source: "/paquete-migratorios/:slug*",
+        destination: "/paquetes-migratorios/:slug*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
