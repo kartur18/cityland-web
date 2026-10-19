@@ -82,12 +82,20 @@ function crearObjetoMadrid(params: {
   const idaVueltaFmt = precioIdaYVueltaUSD.toLocaleString("en-US");
   const soloIdaFmt = precioSoloIdaVisa.toLocaleString("en-US");
 
-  const metaTitle =
-    `${tituloPrincipal} Desde $${precioFmt} | Cityland`.length > 60
-      ? `${tituloPrincipal.slice(0, 38).trim()} Desde $${precioFmt} | Cityland`
-      : `${tituloPrincipal} Desde $${precioFmt} | Cityland`;
+  const tituloSinDosPuntos = tituloPrincipal.replace(/:\s*$/, "").trim();
+  const baseTitle = `${tituloSinDosPuntos} Desde $${precioFmt} | Cityland`;
+  let metaTitle = baseTitle;
+  if (baseTitle.length > 60) {
+    const recorte = tituloSinDosPuntos.slice(0, 38);
+    const ultEspacio = recorte.lastIndexOf(" ");
+    const limpio = (ultEspacio > 18 ? recorte.slice(0, ultEspacio) : recorte)
+      .replace(/[\s(:—–-]+$/, "")
+      .replace(/\([^)]*$/, "")
+      .trim();
+    metaTitle = `${limpio} Desde $${precioFmt} | Cityland`;
+  }
 
-  const descRaw = `${tituloPrincipal} (${subtituloDorado}). Incluye PNR, retorno RF 24h, hotel verificable, seguro Schengen 30.000€ y check-in. Separa con $${mitadFmt} (50%) en Los Olivos.`;
+  const descRaw = `${tituloSinDosPuntos} (${subtituloDorado}). Incluye PNR, retorno RF 24h, hotel verificable, seguro Schengen 30.000€ y check-in. Separa con $${mitadFmt} (50%) en Los Olivos.`;
   const metaDescription =
     descRaw.length > 156 ? `${descRaw.slice(0, 153).trim()}...` : descRaw;
 
@@ -655,7 +663,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
               ],
               faqsExtra: [
                 {
-                  q: `¿Qué incluye "${nombreMod}" hacia ${zonaNombre} con ${nombreAero}?`,
+                  q: `¿Qué incluye ${nombreMod} hacia ${zonaNombre} con ${nombreAero}?`,
                   a: `${descMod}. Llegarás por ${terminalAero} con tu código PNR activo en el sistema de ${nombreAero} y tu carpeta verificable lista.`,
                 },
                 {
@@ -677,7 +685,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
         const idxActual = contador++;
         const slug = `plan-${slugEstadia}-${slugProd}-${slugEmis}`;
         const precio = Math.max(45, Math.round((precioBase * factorEmis) / 5) * 5);
-        const titulo = `${nombreProd}: ${nombreEstadia} (${nombreEmis})`;
+        const titulo = `${nombreProd}: ${nombreEstadia} · ${nombreEmis}`;
         const esRetorno = slugProd.includes("madrid-a-lima");
 
         lista.push({
@@ -697,7 +705,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
               codigoRuta: esRetorno ? "MAD → LIM" : "LIM → MAD",
               terminalBarajas: "Terminal T4 y T1 Madrid-Barajas",
               aerolineaDestacada: "Iberia · Air Europa · LATAM · Plus Ultra",
-              tituloPrincipal: `${nombreProd} (${nombreEstadia}):`,
+              tituloPrincipal: `${nombreProd} — ${nombreEstadia}:`,
               subtituloDorado: `${nombreEmis} Desde $${precio.toLocaleString("en-US")}`,
               resumenEjecutivo: `${detalleBoe}. Emitimos tu ${nombreProd.toLowerCase()} con código PNR verificable, reserva de retorno activa, hotel o Carta de Invitación y seguro Schengen 30.000€.`,
               zonaOMunicipioMadrid: "Madrid-Barajas (T4 / T1)",
@@ -711,11 +719,11 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
               ],
               faqsExtra: [
                 {
-                  q: `¿Cómo se calibra el expediente para "${nombreEstadia}"?`,
+                  q: `¿Cómo se calibra el expediente para ${nombreEstadia}?`,
                   a: `${detalleBoe}. Alineamos tu boleto aéreo desde el Aeropuerto Jorge Chávez (LIM), tu reserva de retorno (MAD → LIM) y tu alojamiento exactamente por esa cantidad de días.`,
                 },
                 {
-                  q: `¿Qué beneficio incluye la modalidad "${nombreEmis}"?`,
+                  q: `¿Qué beneficio incluye la modalidad ${nombreEmis}?`,
                   a: `Te permite asegurar tu tarifa oficial Desde $${precio.toLocaleString("en-US")} con código PNR verificable, comprobante SUNAT (RUC 20614914239) y check-in hecho por tu asesor.`,
                 },
               ],
@@ -741,7 +749,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
           siloNombre: `Rutas Lima (LIM) → ${nombreRutaEsp}`,
           titulo,
           zonaOMunicipio: nombreRutaEsp,
-          modalidad: `${nombrePaq} (${nombreMes})`,
+          modalidad: `${nombrePaq} · ${nombreMes}`,
           precioDesdeUSD: precio,
           constructorDatos: () =>
             crearObjetoMadrid({
@@ -752,7 +760,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
               codigoRuta: "LIM → MAD",
               terminalBarajas: "Terminal T4 / T1 Madrid-Barajas",
               aerolineaDestacada: "Iberia · Air Europa · Plus Ultra · LATAM",
-              tituloPrincipal: `Viajes a ${nombreRutaEsp} (${nombreMes}):`,
+              tituloPrincipal: `Viajes a ${nombreRutaEsp} en ${nombreMes}:`,
               subtituloDorado: `${nombrePaq} Desde $${precio.toLocaleString("en-US")}`,
               resumenEjecutivo: `Salida desde el Aeropuerto Internacional Jorge Chávez (LIM) rumbo a ${nombreRutaEsp} en ${nombreMes}. Incluye vuelo con código PNR, retorno RF 24h, hotel verificable y seguro Schengen 30.000€.`,
               zonaOMunicipioMadrid: nombreRutaEsp,
@@ -789,6 +797,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
         const slug = `destino-${slugBarrio}-${slugPerfil}-${slugDur}`;
         const precio = Math.max(75, Math.round((precioBase * factorDur) / 5) * 5);
         const titulo = `Viajar a ${nombreBarrio} (Madrid): ${nombrePerfil} — ${nombreDur}`;
+        const duracionLimpia = nombreDur.replace(/\s*\([^)]*\)/g, "").trim();
 
         lista.push({
           slug,
@@ -809,7 +818,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
               aerolineaDestacada: "Iberia · Air Europa · Plus Ultra · LATAM",
               tituloPrincipal: `Viajes a ${nombreBarrio} (Madrid):`,
               subtituloDorado: `${nombrePerfil} Desde $${precio.toLocaleString("en-US")}`,
-              resumenEjecutivo: `Programa saliendo del Aeropuerto Jorge Chávez (LIM) hacia ${nombreBarrio} (Madrid) en modalidad "${nombrePerfil}" (${nombreDur}), con retorno activo MAD → LIM, hotel o Carta de Invitación y seguro 30.000€.`,
+              resumenEjecutivo: `Programa saliendo del Aeropuerto Jorge Chávez (LIM) hacia ${nombreBarrio} en Madrid bajo la modalidad de ${nombrePerfil} (${duracionLimpia}), con retorno activo MAD → LIM, hotel o Carta de Invitación y seguro Schengen 30.000€.`,
               zonaOMunicipioMadrid: `${nombreBarrio}, Madrid`,
               origenPasajero: "Lima — Aeropuerto Jorge Chávez (LIM)",
               modalidadClave: "Carpeta + PNR",
@@ -825,7 +834,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
                   a: `Si cuentas con Carta de Invitación en ${nombreBarrio}, emitimos tu vuelo desde Lima (LIM) y retorno exactamente por esos días. Si viajas sin carta, incluimos reserva de hotel verificable en Madrid.`,
                 },
                 {
-                  q: `¿Qué bolsa de viaje necesito para "${nombreDur}" en ${nombreBarrio}?`,
+                  q: `¿Qué bolsa de viaje necesito para ${duracionLimpia.toLowerCase()} en ${nombreBarrio}?`,
                   a: `La norma oficial BOE 2026 exige 122,10 € por día con un mínimo de 1.098,90 € por pasajero (de 1 a 9 días). Nuestros asesores calibran tus fechas para que tu carpeta sea 100% coherente.`,
                 },
               ],
@@ -863,9 +872,9 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
               codigoRuta: esRetorno ? "MAD → LIM" : "LIM → MAD",
               terminalBarajas: "Terminal T4 / T1 Madrid-Barajas",
               aerolineaDestacada: "Iberia · Air Europa · LATAM · Plus Ultra",
-              tituloPrincipal: `${nombreServ} (${nombreMes}):`,
+              tituloPrincipal: `${nombreServ} — ${nombreMes}:`,
               subtituloDorado: `${nombreVar} Desde $${precio.toLocaleString("en-US")}`,
-              resumenEjecutivo: `Gestiona hoy tu "${nombreServ}" para ${nombreMes} con código PNR real en sistema, check-in por asesor y respaldo formal en Los Olivos (RUC 20614914239).`,
+              resumenEjecutivo: `Gestiona hoy tu ${nombreServ} para ${nombreMes} con código PNR real en sistema, check-in realizado por tu asesor y respaldo formal en nuestra sede de Los Olivos (RUC 20614914239).`,
               zonaOMunicipioMadrid: "Madrid-Barajas (MAD)",
               origenPasajero: esRetorno
                 ? "Madrid-Barajas (MAD)"
@@ -879,7 +888,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
               ],
               faqsExtra: [
                 {
-                  q: `¿Cómo solicito "${nombreServ}" para viajar en ${nombreMes}?`,
+                  q: `¿Cómo solicito ${nombreServ} para viajar en ${nombreMes}?`,
                   a: `Escríbenos por WhatsApp al +51 944 103 890 o visítanos en Av. Antúnez de Mayolo 814 (Los Olivos). Emitimos tu documentación oficial desde $${precio.toLocaleString("en-US")} con comprobante SUNAT.`,
                 },
                 {

@@ -15,6 +15,15 @@ export interface ResumenLandingExpansion {
 const SALVEDAD_MIGRATORIA =
   "Recuerda que la decisión final de admisión en frontera corresponde siempre a las autoridades migratorias de cada país; en Cityland Travel preparamos tu expediente completo y verificable para que viajes con total respaldo.";
 
+export function limpiarParentesisDobles(texto: string): string {
+  return texto
+    .replace(/\(([^()]+)\)\s*\(([^()]+)\)/g, "($1 · $2)")
+    .replace(/\(([^()]*)\(([^()]+)\)([^()]*)\)/g, (_, a: string, b: string, c: string) => {
+      const partes = [a.trim(), b.trim(), c.trim()].filter(Boolean);
+      return `(${partes.join(" · ")})`;
+    });
+}
+
 function construirObjetoLanding(params: {
   slug: string;
   cluster: LandingComercialSEO["cluster"];
@@ -42,13 +51,10 @@ function construirObjetoLanding(params: {
     clusterNombre,
     badge,
     banderas,
-    tituloHero,
     tituloDestacado,
-    descripcionHero,
     negritaHero,
     destinoOPais,
     precioBase,
-    etiquetaVitrina,
     duracionOServicio,
     checksBase,
     checksPlus,
@@ -58,7 +64,11 @@ function construirObjetoLanding(params: {
     faqsExtra,
   } = params;
 
-  const tituloCompleto = `${tituloHero} ${tituloDestacado}`.trim();
+  const tituloHero = limpiarParentesisDobles(params.tituloHero);
+  const etiquetaVitrina = limpiarParentesisDobles(params.etiquetaVitrina);
+  const descripcionHero = limpiarParentesisDobles(params.descripcionHero.replace(/"/g, ""));
+
+  const tituloCompleto = limpiarParentesisDobles(`${tituloHero} ${tituloDestacado}`.trim());
   const mitadBase = Math.max(20, Math.round(precioBase * 0.5));
   const pCard1 = Math.max(
     19,
@@ -69,7 +79,7 @@ function construirObjetoLanding(params: {
     precioBase + 10,
     Math.round((precioBase * 1.18) / 5) * 5
   );
-  const msgPrincipal = `¡Hola Cityland Travel! Vi en su web "${tituloCompleto}" (Desde $${precioBase.toLocaleString("en-US")}) y deseo recibir una cotización personalizada.`;
+  const msgPrincipal = `¡Hola Cityland Travel! Vi en su web ${tituloCompleto} (Desde $${precioBase.toLocaleString("en-US")}) y deseo recibir una cotización personalizada.`;
 
   const esTramiteOSeguro =
     cluster === "visas-seguros" ||
@@ -90,11 +100,14 @@ function construirObjetoLanding(params: {
   );
 
   const faqs: { q: string; a: string }[] = [
-    ...faqsExtra,
+    ...faqsExtra.map((f) => ({
+      q: limpiarParentesisDobles(f.q.replace(/"/g, "")),
+      a: limpiarParentesisDobles(f.a.replace(/"/g, "")),
+    })),
     {
       q: esTramiteOSeguro
-        ? `¿Cómo inicio la gestión de "${tituloCompleto}" en Cityland Travel?`
-        : `¿Cómo puedo separar "${tituloCompleto}" con el 50% de inicial?`,
+        ? `¿Cómo inicio la gestión de ${tituloCompleto} en Cityland Travel?`
+        : `¿Cómo puedo separar ${tituloCompleto} con el 50% de inicial?`,
       a: esTramiteOSeguro
         ? `Puedes iniciar tu trámite o emisión hoy mismo desde $${precioBase.toLocaleString("en-US")} por WhatsApp (+51 944 103 890) o en nuestra oficina de Los Olivos (RUC 20614914239), recibiendo tu documentación oficial y comprobante electrónico SUNAT.`
         : `Puedes congelar tu tarifa referencial abonando el 50% ($${mitadBase.toLocaleString("en-US")} por pasajero) mediante transferencia bancaria BCP/BBVA/Interbank, tarjeta o en nuestra sede de Los Olivos (RUC 20614914239), sujeto a disponibilidad de tu fecha exacta de viaje.`,
@@ -1180,6 +1193,11 @@ function generarIndiceExpansion(): ResumenLandingExpansion[] {
   const expansion20k = generarIndiceExpansion20k(construirObjetoLanding);
   for (let i = 0; i < expansion20k.length; i++) {
     lista.push(expansion20k[i]);
+  }
+
+  for (let i = 0; i < lista.length; i++) {
+    lista[i].titulo = limpiarParentesisDobles(lista[i].titulo);
+    lista[i].clusterNombre = limpiarParentesisDobles(lista[i].clusterNombre);
   }
 
   return lista;

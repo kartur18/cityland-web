@@ -3,6 +3,7 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import FlagIcon from "@/components/icons/FlagIcon";
 
 export interface PlanMadridReal {
   etiqueta: string;
@@ -107,6 +108,16 @@ export default function MadridMigratorioTemplate({
 
   // Limpiar cualquier doble USD en subtituloDorado por seguridad
   const subtituloLimpio = datos.subtituloDorado.replace(/\s+USD\b/gi, " USD");
+  const esRutaRetornoLima = datos.codigoRuta === "MAD → LIM";
+  const migaFinal = datos.zonaOMunicipioMadrid.startsWith("Madrid-Barajas")
+    ? datos.tituloPrincipal.replace(/:\s*$/, "")
+    : datos.zonaOMunicipioMadrid;
+  const etiquetaLlegadaDerecha = esRutaRetornoLima
+    ? "Jorge Chávez (Lima)"
+    : datos.zonaOMunicipioMadrid.startsWith("Madrid-Barajas") ||
+      datos.zonaOMunicipioMadrid === "Madrid Centro"
+    ? "Madrid-Barajas"
+    : datos.zonaOMunicipioMadrid;
 
   return (
     <div className="min-h-screen bg-[#f8fafc] text-slate-900 flex flex-col">
@@ -139,7 +150,7 @@ export default function MadridMigratorioTemplate({
               </Link>
               <span>/</span>
               <span className="text-white font-bold">
-                {datos.zonaOMunicipioMadrid}
+                {migaFinal}
               </span>
             </nav>
 
@@ -149,9 +160,16 @@ export default function MadridMigratorioTemplate({
                 <div
                   className={`inline-flex flex-wrap items-center gap-2 border px-3.5 py-1.5 rounded-full text-[11px] font-extrabold tracking-wide ${tema.badgeBg}`}
                 >
-                  <span>🇪🇸 {tema.selloTexto}</span>
+                  <span className="inline-flex items-center gap-1.5">
+                    <FlagIcon pais="España" className="w-3.5 h-2.5" />
+                    <span>{tema.selloTexto}</span>
+                  </span>
                   <span>•</span>
-                  <span>Salida: Aeropuerto Jorge Chávez (LIM)</span>
+                  <span>
+                    {esRutaRetornoLima
+                      ? "Salida: Madrid-Barajas (MAD)"
+                      : "Salida: Aeropuerto Jorge Chávez (LIM)"}
+                  </span>
                 </div>
 
                 <h1 className="text-2xl sm:text-3xl lg:text-[40px] font-black tracking-tight leading-[1.14]">
@@ -233,13 +251,13 @@ export default function MadridMigratorioTemplate({
                     <div className="flex items-center justify-between gap-3">
                       <div>
                         <span className="text-[10px] font-bold text-slate-500 uppercase block">
-                          Salida Perú
+                          {esRutaRetornoLima ? "Salida España" : "Salida Perú"}
                         </span>
                         <span className="text-xl font-black text-[#071120] leading-none">
-                          LIM
+                          {esRutaRetornoLima ? "MAD" : "LIM"}
                         </span>
                         <span className="text-[11px] text-slate-600 block font-semibold mt-0.5">
-                          Jorge Chávez (Lima)
+                          {esRutaRetornoLima ? "Madrid-Barajas" : "Jorge Chávez (Lima)"}
                         </span>
                       </div>
 
@@ -259,13 +277,13 @@ export default function MadridMigratorioTemplate({
 
                       <div className="text-right">
                         <span className="text-[10px] font-bold text-slate-500 uppercase block">
-                          Llegada España
+                          {esRutaRetornoLima ? "Llegada Perú" : "Destino / Conexión"}
                         </span>
                         <span className="text-xl font-black text-[#071120] leading-none">
-                          MAD
+                          {esRutaRetornoLima ? "LIM" : "MAD"}
                         </span>
-                        <span className="text-[11px] text-slate-600 block font-semibold mt-0.5">
-                          Madrid-Barajas
+                        <span className="text-[11px] text-slate-600 block font-semibold mt-0.5 max-w-[140px] truncate">
+                          {etiquetaLlegadaDerecha}
                         </span>
                       </div>
                     </div>

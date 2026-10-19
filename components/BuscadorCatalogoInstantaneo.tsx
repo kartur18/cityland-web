@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import FlagIcon from "@/components/icons/FlagIcon";
 
 interface ItemResultado {
   slug: string;
@@ -59,11 +60,11 @@ const MESES_TEMPORADAS = [
   { id: "semana santa", label: "Semana Santa" },
 ];
 
-const ATAJOS_RAPIDOS = [
-  { label: "🇪🇸 Madrid", q: "madrid" },
-  { label: "🇪🇸 Barcelona", q: "barcelona" },
-  { label: "🇮🇹 Roma y Vaticano", q: "roma" },
-  { label: "🇮🇹 Venecia y Florencia", q: "venecia" },
+const ATAJOS_RAPIDOS: { label: string; q: string; flag?: string }[] = [
+  { label: "Madrid", q: "madrid", flag: "España" },
+  { label: "Barcelona", q: "barcelona", flag: "España" },
+  { label: "Roma y Vaticano", q: "roma", flag: "Italia" },
+  { label: "Venecia y Florencia", q: "venecia", flag: "Italia" },
   { label: "🚄 Madrid + Barcelona AVE", q: "madrid y barcelona tren ave" },
   { label: "🏖️ Punta Cana", q: "punta cana" },
   { label: "🏖️ Cancún y Riviera Maya", q: "cancun" },
@@ -288,12 +289,13 @@ export default function BuscadorCatalogoInstantaneo({
                 setBusqueda(activo ? "" : at.q);
                 setLimite(24);
               }}
-              className={`text-xs font-bold px-3 py-1.5 rounded-full border transition-all whitespace-nowrap cursor-pointer ${
+              className={`inline-flex items-center text-xs font-bold px-3 py-1.5 rounded-full border transition-all whitespace-nowrap cursor-pointer ${
                 activo
                   ? "bg-[#0a1628] text-white border-[#0a1628] shadow-xs"
                   : "bg-slate-50 hover:bg-red-50 text-slate-700 hover:text-red-600 border-slate-200/80"
               }`}
             >
+              {at.flag && <FlagIcon pais={at.flag} className="w-3.5 h-2.5 mr-1.5" />}
               {at.label}
             </button>
           );

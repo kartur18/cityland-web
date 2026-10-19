@@ -1,8 +1,9 @@
 /**
  * Diccionario Maestro y Motor de Imágenes Verificadas por Ciudad, Destino y Servicio
- * Garantiza que cada una de las 2,016 páginas muestre fotografías 100% coherentes
- * con su destino o servicio específico, sin cruces de monumentos entre ciudades
- * ni imágenes repetidas dentro de una misma landing.
+ * Garantiza que cada una de las páginas del ecosistema muestre fotografías 100% coherentes
+ * con su destino de llegada o servicio específico, sin cruces de monumentos entre países,
+ * sin fotos de Lima cuando Lima es solo la ciudad de salida, y sin rellenos de aviones
+ * en las galerías de postales de destino.
  */
 
 export type GaleriaDestino = [string, string, string, string, string];
@@ -31,7 +32,7 @@ export const IMG_GRUPO_ESTUDIANTES =
 export const IMG_PAREJA_ROMANTICA =
   "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=1200&q=85";
 
-// ── Playas y Resorts Generales (para segundos/terceros slots de destinos de playa) ──
+// ── Playas y Resorts Generales (para destinos de sol y playa) ──
 export const IMG_PLAYA_SOLEADA =
   "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85";
 export const IMG_RESORT_CARIBE_1 =
@@ -59,12 +60,15 @@ function norm(s: string): string {
 }
 
 // ── Galerías Específicas de 5 Imágenes Únicas por Ciudad / Destino / Servicio ──
+// NOTA: Las primeras 4 posiciones [0, 1, 2, 3] de cada destino turístico contienen
+// exclusivamente fotografías reales del destino/región (sin aviones ni fotos de otros países)
+// para que tanto el Hero como la galería "Postales y Experiencias" sean 100% coherentes.
 const GALERIAS_ESPECIFICAS: Array<{
   match: RegExp;
   galeria: GaleriaDestino;
 }> = [
   // =========================================================================
-  // 1. SEGMENTOS DE SERVICIO PURO (Cruceros, Visas, Pasaporte, Seguros)
+  // 1. SEGMENTOS DE SERVICIO PURO (Cruceros, Visas, Pasaporte, Corporativo)
   // =========================================================================
   {
     match: /^(?!.*(rio[- ]sena|crucero[- ]nilo|rio[- ]nilo|amazonas|iquitos|bosforo|danubio|guadalquivir|rias[- ]baixas|lago[- ]ness)).*(\bcruceros?\b|\bmsc\b|\broyal caribbean|\bnorwegian|\bcococay|\bicon of the seas|\bcosta cruceros|\bdisney cruise)/,
@@ -73,7 +77,7 @@ const GALERIAS_ESPECIFICAS: Array<{
       IMG_CRUCERO_2,
       IMG_CRUCERO_3,
       IMG_RESORT_CARIBE_1,
-      IMG_AVION_ALA,
+      IMG_MAR_TURQUESA_BOTE,
     ],
   },
   {
@@ -90,224 +94,45 @@ const GALERIAS_ESPECIFICAS: Array<{
     match: /vuelos[- ]corporativos[- ]cusco[- ]arequipa|pasajes[- ]corporativos[- ]piura[- ]iquitos|corporativos[- ]mineria/,
     galeria: [
       IMG_OFICINA_CORPORATIVA,
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
-      IMG_HOTEL_LUJO_PISCINA,
       IMG_EDIFICIOS_FINANCIEROS,
-    ],
-  },
-
-  // =========================================================================
-  // 2. DESTINOS DEL PERÚ (Granularidad por Ciudad, Costa, Selva y Sierra)
-  // =========================================================================
-  // 2A. Playas del Norte del Perú (Punta Sal, Máncora, Vichayito, Zorritos, Tumbes, Piura, Talara)
-  {
-    match: /punta[- ]sal|decameron[- ]punta[- ]sal|zorritos|tumbes|manglares/,
-    galeria: [
-      IMG_RESORT_PISCINA_MAR,
-      IMG_PLAYA_SOLEADA,
-      IMG_HOTEL_LUJO_PISCINA,
-      IMG_MAR_TURQUESA_BOTE,
-      IMG_AVION_ALA,
-    ],
-  },
-  {
-    match: /mancora|vichayito|pocitas|el[- ]nuro|organos|cabo[- ]blanco|talara|piura|colan|catacaos|sechura|sullana/,
-    galeria: [
-      IMG_PLAYA_SOLEADA,
-      IMG_RESORT_PISCINA_MAR,
-      IMG_MAR_TURQUESA_BOTE,
+      IMG_AEROPUERTO_INTERNACIONAL,
       IMG_HOTEL_LUJO_PISCINA,
       IMG_AVION_ALA,
     ],
   },
-  // 2B. Costa Sur Cercana (Paracas, Islas Ballestas, Ica, Huacachina, Nazca, Pisco, Chincha, Lunahuaná)
-  {
-    match: /paracas|ballestas|huacachina|\bica\b|nazca|pisco|chincha|lunahuana|canete/,
-    galeria: [
-      "https://images.unsplash.com/photo-1723134087756-3fdd46625a84?w=1200&q=85",
-      IMG_PLAYA_SOLEADA,
-      IMG_RESORT_PISCINA_MAR,
-      IMG_FAMILIA_VIAJE,
-      IMG_VIAJERO_MALETA,
-    ],
-  },
-  // 2C. Selva Peruana (Tarapoto, Sauce, Laguna Azul, Ahuashiyacu, Lamas, Moyobamba, Tingo María)
-  {
-    match: /tarapoto|laguna[- ]azul|ahuashiyacu|\blamas\b|moyobamba|rioja|tingo[- ]maria|alto[- ]mayo/,
-    galeria: [
-      "https://images.unsplash.com/photo-1620658927695-c33df6fb8130?w=1200&q=85",
-      "https://images.unsplash.com/photo-1699575678956-aefa714b67f0?w=1200&q=85",
-      IMG_RESORT_PISCINA_MAR,
-      IMG_FAMILIA_VIAJE,
-      IMG_AVION_ALA,
-    ],
-  },
-  // 2D. Iquitos, Río Amazonas, Puerto Maldonado, Tambopata, Pucallpa
-  {
-    match: /iquitos|amazonas|pacaya[- ]samiria|puerto[- ]maldonado|tambopata|sandoval|pucallpa/,
-    galeria: [
-      "https://images.unsplash.com/photo-1699575678956-aefa714b67f0?w=1200&q=85",
-      "https://images.unsplash.com/photo-1620658927695-c33df6fb8130?w=1200&q=85",
-      IMG_FAMILIA_VIAJE,
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
-    ],
-  },
-  // 2E. Selva Central (Oxapampa, Pozuzo, Villa Rica, Chanchamayo, La Merced, Satipo)
-  {
-    match: /oxapampa|pozuzo|villa[- ]rica|chanchamayo|la[- ]merced|satipo|selva[- ]central/,
-    galeria: [
-      "/images/destinos/oxapampa-peru.jpg",
-      "https://images.unsplash.com/photo-1620658927695-c33df6fb8130?w=1200&q=85",
-      IMG_FAMILIA_VIAJE,
-      IMG_VIAJERO_MALETA,
-      IMG_AVION_ALA,
-    ],
-  },
-  // 2F. Chachapoyas, Kuélap, Gocta, Jaén
-  {
-    match: /chachapoyas|kuelap|gocta|jaen/,
-    galeria: [
-      "/images/destinos/chachapoyas-kuelap.jpg",
-      "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
-      IMG_VIAJERO_MALETA,
-      IMG_AVION_ALA,
-      IMG_FAMILIA_VIAJE,
-    ],
-  },
-  // 2G. Arequipa y Cañón del Colca
-  {
-    match: /arequipa|colca|perumin|chivay|misti|santa[- ]catalina|sillar|camana|mollendo|moquegua|\bilo\b|tacna/,
-    galeria: [
-      "https://images.unsplash.com/photo-1787929759288-1b4aa7af30f6?w=1200&q=85",
-      "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
-      IMG_AVION_ALA,
-      IMG_FAMILIA_VIAJE,
-      IMG_AEROPUERTO_INTERNACIONAL,
-    ],
-  },
-  // 2H. Puno, Juliaca y Lago Titicaca
-  {
-    match: /\bpuno\b|juliaca|titicaca|\buros\b|taquile|sillustani/,
-    galeria: [
-      "https://images.unsplash.com/photo-1522409994346-2682217b9a3e?w=1200&q=85",
-      "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
-      IMG_AVION_ALA,
-      IMG_FAMILIA_VIAJE,
-      IMG_AEROPUERTO_INTERNACIONAL,
-    ],
-  },
-  // 2I. Huaraz, Laguna 69, Pastoruri y Cordillera Blanca
-  {
-    match: /huaraz|laguna[- ]69|pastoruri|llanganuco|chavin|cordillera[- ]blanca|ancash|chimbote/,
-    galeria: [
-      "/images/destinos/huaraz-laguna69.jpg",
-      "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
-      IMG_VIAJERO_MALETA,
-      IMG_FAMILIA_VIAJE,
-      IMG_AVION_ALA,
-    ],
-  },
-  // 2J. Trujillo, Huanchaco, Chan Chan
-  {
-    match: /trujillo|huanchaco|chan[- ]chan|pacasmayo|chepen|moche/,
-    galeria: [
-      "/images/destinos/trujillo-peru.jpg",
-      IMG_PLAYA_SOLEADA,
-      IMG_FAMILIA_VIAJE,
-      IMG_AVION_ALA,
-      IMG_VIAJERO_MALETA,
-    ],
-  },
-  // 2K. Chiclayo, Sipán, Lambayeque
-  {
-    match: /chiclayo|sipan|lambayeque|pimentel|ferrenafe/,
-    galeria: [
-      "/images/destinos/chiclayo-peru.jpg",
-      "/images/destinos/trujillo-peru.jpg",
-      IMG_FAMILIA_VIAJE,
-      IMG_AVION_ALA,
-      IMG_VIAJERO_MALETA,
-    ],
-  },
-  // 2L. Cajamarca
-  {
-    match: /cajamarca|banos[- ]del[- ]inca|cumbemayo/,
-    galeria: [
-      "/images/destinos/cajamarca-peru.jpg",
-      "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
-      IMG_AVION_ALA,
-      IMG_FAMILIA_VIAJE,
-      IMG_VIAJERO_MALETA,
-    ],
-  },
-  // 2M. Ayacucho, Aguas Turquesas de Millpu, Huancayo, Jauja, Tarma, Huánuco, Abancay, Andahuaylas
-  {
-    match: /ayacucho|millpu|huancayo|jauja|tarma|huanuco|abancay|andahuaylas/,
-    galeria: [
-      "/images/destinos/ayacucho-peru.jpg",
-      "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
-      IMG_AVION_ALA,
-      IMG_FAMILIA_VIAJE,
-      IMG_VIAJERO_MALETA,
-    ],
-  },
-  // 2N. Cusco, Machu Picchu, Valle Sagrado, Montaña 7 Colores, Laguna Humantay
-  {
-    match: /cusco|machu[- ]picchu|valle[- ]sagrado|vinicunca|7[- ]colores|siete[- ]colores|humantay|maras|moray|ollantaytambo|aguas[- ]calientes|choquequirao|camino[- ]inca|salkantay|sicuani|quillabamba/,
-    galeria: [
-      "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=85",
-      "https://images.unsplash.com/photo-1545330785-15356daae141?w=1200&q=85",
-      "https://images.unsplash.com/photo-1716618704106-b335685a6b4d?w=1200&q=85",
-      "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=1200&q=85",
-      "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
-    ],
-  },
-  // 2O. Lima, Callao, Caral, Chancay, Huacho, Barranca (cuando Lima es el destino principal)
-  {
-    match: /miraflores|barranco|caral|chancay|huacho|barranca|pachacamac|cieneguilla|chosica/,
-    galeria: [
-      "/images/destinos/lima-plaza-mayor.jpg",
-      "/images/destinos/lima-costa-verde.jpg",
-      IMG_FAMILIA_VIAJE,
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
-    ],
-  },
 
   // =========================================================================
-  // 3. ITALIA, FRANCIA Y RESTO DE EUROPA (Evaluados ANTES de la regla general de Madrid/España
+  // 2. ITALIA, FRANCIA Y RESTO DE EUROPA (Evaluados ANTES de España y Perú
   //    para que rutas combinadas como "Lima a Madrid y Roma/París/Lisboa" muestren la ciudad destino)
   // =========================================================================
   {
-    match: /\b(venecia)\b/,
+    match: /\b(venecia|padua)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1200&q=85",
       "https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=1200&q=85",
-      "/images/espana/barajas.jpg",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
+      "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=1200&q=85",
+      "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=85",
+      "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&q=85",
     ],
   },
   {
-    match: /\b(milan|turin|genova|bolonia|verona)\b/,
+    match: /\b(milan|turin|genova|bolonia|verona|bergamo|brescia|modena|parma)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1513581166391-887a96ddeafd?w=1200&q=85",
       "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&q=85",
-      "/images/espana/barajas.jpg",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
+      "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=1200&q=85",
+      "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1200&q=85",
+      "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=85",
     ],
   },
   {
-    match: /\b(florencia|pisa|toscana|napoles|amalfi|capri|bari|catania|palermo)\b/,
+    match: /\b(florencia|pisa|toscana|napoles|amalfi|amalfitana|capri|bari|catania|palermo)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&q=85",
+      "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=1200&q=85",
+      "https://images.unsplash.com/photo-1533676802871-eca1ae998cd5?w=1200&q=85",
       "https://images.unsplash.com/photo-1513581166391-887a96ddeafd?w=1200&q=85",
-      "/images/espana/barajas.jpg",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
+      "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=85",
     ],
   },
   {
@@ -316,48 +141,48 @@ const GALERIAS_ESPECIFICAS: Array<{
       "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=85",
       "https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=1200&q=85",
       "https://images.unsplash.com/photo-1529260830199-42c24126f198?w=1200&q=85",
-      "/images/espana/barajas.jpg",
-      IMG_AVION_ALA,
+      "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1200&q=85",
+      "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&q=85",
     ],
   },
   {
-    match: /\b(paris|francia|lyon|marsella|niza|toulouse|burdeos|lourdes|normandia|eurodisney|disneyland[- ]paris)\b/,
+    match: /\b(paris|francia|lyon|marsella|niza|cannes|monaco|toulouse|burdeos|lourdes|normandia|eurodisney|disneyland[- ]paris)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=85",
       "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1200&q=85",
       "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=1200&q=85",
       "https://images.unsplash.com/photo-1549144511-f099e773c147?w=1200&q=85",
-      IMG_AVION_ALA,
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
     match: /amsterdam|paises[- ]bajos|holanda|bruselas|brujas|belgica/,
     galeria: [
       "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200&q=85",
-      "/images/espana/barajas.jpg",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
-      IMG_VIAJERO_MALETA,
+      "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?w=1200&q=85",
+      "https://images.unsplash.com/photo-1558551649-e44c8f992010?w=1200&q=85",
+      "https://images.unsplash.com/photo-1491557345352-5929e343eb89?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
     match: /londres|manchester|edimburgo|escocia|dublin|irlanda|reino[- ]unido|inglaterra/,
     galeria: [
       "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1200&q=85",
-      "/images/espana/barajas.jpg",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
-      IMG_VIAJERO_MALETA,
+      "https://images.unsplash.com/photo-1529655683826-aba9b3e77383?w=1200&q=85",
+      "https://images.unsplash.com/photo-1486299267070-83823f5448dd?w=1200&q=85",
+      "https://images.unsplash.com/photo-1506377585622-bedcbb027afc?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
     match: /lisboa|oporto|\bfaro\b|fatima|portugal/,
     galeria: [
       "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1200&q=85",
-      "/images/espana/barajas.jpg",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
-      IMG_VIAJERO_MALETA,
+      "https://images.unsplash.com/photo-1513735492246-483525079686?w=1200&q=85",
+      "https://images.unsplash.com/photo-1558102822-da570eb113ed?w=1200&q=85",
+      "https://images.unsplash.com/photo-1548707309-dcebeab9ea9b?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
@@ -365,19 +190,19 @@ const GALERIAS_ESPECIFICAS: Array<{
     galeria: [
       "/images/destinos/suiza-alpes.jpg",
       "/images/destinos/zurich.jpg",
-      "/images/espana/barajas.jpg",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
+      "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=1200&q=85",
+      "https://images.unsplash.com/photo-1527668752968-14dc70a27c95?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
-    match: /frankfurt|munich|berlin|hamburgo|dusseldorf|stuttgart|alemania|baviera/,
+    match: /frankfurt|munich|berlin|hamburgo|dusseldorf|stuttgart|alemania|baviera|neuschwanstein/,
     galeria: [
       "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1200&q=85",
-      "/images/destinos/viena.jpg",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
-      IMG_VIAJERO_MALETA,
+      "https://images.unsplash.com/photo-1560969184-10fe8719e047?w=1200&q=85",
+      "https://images.unsplash.com/photo-1595867818082-083862f3d630?w=1200&q=85",
+      "https://images.unsplash.com/photo-1528728329032-2972f65dfb3f?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
@@ -385,9 +210,9 @@ const GALERIAS_ESPECIFICAS: Array<{
     galeria: [
       "/images/destinos/praga.jpg",
       "/images/destinos/viena.jpg",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
-      IMG_VIAJERO_MALETA,
+      "/images/destinos/budapest.jpg",
+      "https://images.unsplash.com/photo-1528728329032-2972f65dfb3f?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
@@ -395,19 +220,19 @@ const GALERIAS_ESPECIFICAS: Array<{
     galeria: [
       "/images/destinos/viena.jpg",
       "/images/destinos/praga.jpg",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
-      IMG_VIAJERO_MALETA,
+      "/images/destinos/budapest.jpg",
+      "/images/destinos/suiza-alpes.jpg",
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
-    match: /budapest|hungria|varsovia|cracovia|polonia|bucarest|rumania|zagreb|dubrovnik|croacia/,
+    match: /budapest|hungria|varsovia|cracovia|polonia|bucarest|rumania|zagreb|dubrovnik|plitvice|croacia/,
     galeria: [
       "/images/destinos/budapest.jpg",
       "/images/destinos/praga.jpg",
       "/images/destinos/viena.jpg",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
+      "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
@@ -415,53 +240,53 @@ const GALERIAS_ESPECIFICAS: Array<{
     galeria: [
       "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1200&q=85",
       "/images/destinos/atenas-acropolis.jpg",
+      "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1200&q=85",
+      "https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?w=1200&q=85",
       IMG_RESORT_PISCINA_MAR,
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
     ],
   },
   {
     match: /estocolmo|suecia|copenhague|dinamarca|oslo|noruega|fiordos|helsinki|finlandia|islandia|auroras/,
     galeria: [
+      "https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=1200&q=85",
+      "https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?w=1200&q=85",
       "/images/destinos/suiza-alpes.jpg",
       "/images/destinos/zurich.jpg",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
-      IMG_VIAJERO_MALETA,
+      "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=1200&q=85",
     ],
   },
 
   // =========================================================================
-  // 4. ESPAÑA (Granularidad por Ciudad, evaluada antes del fallback general de Madrid)
+  // 3. ESPAÑA (Granularidad por Ciudad, evaluada antes del fallback general de Madrid)
   // =========================================================================
   {
     match: /barcelona|girona|tarragona|lleida|cataluna|sagrada[- ]familia/,
     galeria: [
       "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&q=85",
       "https://images.unsplash.com/photo-1511527661048-7fe73d85e9a4?w=1200&q=85",
+      "https://images.unsplash.com/photo-1561632669-7f55f7975606?w=1200&q=85",
+      "/images/espana/gran-via-metropolis.jpg",
       "/images/espana/barajas.jpg",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
     ],
   },
   {
-    match: /valencia|alicante|murcia|albacete|castellon/,
+    match: /valencia|alicante|murcia|castellon/,
     galeria: [
       "/images/destinos/valencia-artes.jpg",
       "https://images.unsplash.com/photo-1561632669-7f55f7975606?w=1200&q=85",
+      "/images/destinos/mallorca.jpg",
+      "/images/espana/palacio-real.jpg",
       "/images/espana/barajas.jpg",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
     ],
   },
   {
-    match: /\b(sevilla|granada|cordoba|cordoba[- ]espana|jerez|andalucia|alhambra|cadiz|huelva)\b/,
+    match: /^(?!.*cordoba[- ]argentina).*\b(sevilla|granada|cordoba|cordoba[- ]espana|jerez|andalucia|alhambra|cadiz|huelva)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=1200&q=85",
       "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1200&q=85",
+      "https://images.unsplash.com/photo-1561632669-7f55f7975606?w=1200&q=85",
+      "/images/espana/palacio-real.jpg",
       "/images/espana/barajas.jpg",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
     ],
   },
   {
@@ -469,9 +294,9 @@ const GALERIAS_ESPECIFICAS: Array<{
     galeria: [
       "https://images.unsplash.com/photo-1561632669-7f55f7975606?w=1200&q=85",
       "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=1200&q=85",
+      "/images/destinos/mallorca.jpg",
+      "/images/espana/palacio-real.jpg",
       "/images/espana/barajas.jpg",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
     ],
   },
   {
@@ -479,9 +304,9 @@ const GALERIAS_ESPECIFICAS: Array<{
     galeria: [
       "/images/destinos/mallorca.jpg",
       "https://images.unsplash.com/photo-1561632669-7f55f7975606?w=1200&q=85",
+      "/images/destinos/tenerife.jpg",
+      "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&q=85",
       "/images/espana/barajas.jpg",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
     ],
   },
   {
@@ -489,54 +314,56 @@ const GALERIAS_ESPECIFICAS: Array<{
     galeria: [
       "/images/destinos/tenerife.jpg",
       "/images/destinos/mallorca.jpg",
+      "https://images.unsplash.com/photo-1561632669-7f55f7975606?w=1200&q=85",
+      IMG_PLAYA_SOLEADA,
       "/images/espana/barajas.jpg",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
     ],
   },
   {
-    match: /\b(bilbao|san[- ]sebastian|pais[- ]vasco|pamplona|logrono)\b/,
+    // Norte de España: Bilbao, San Sebastián (excluyendo Alcobendas y San Sebastián de los Reyes en Madrid), Navarra y Logroño (La Rioja)
+    match: /^(?!.*(alcobendas|de[- ]los[- ]reyes)).*\b(bilbao|san[- ]sebastian|pais[- ]vasco|pamplona|navarra|logrono|la[- ]rioja)\b/,
     galeria: [
       "/images/destinos/bilbao-guggenheim.jpg",
+      "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1200&q=85",
+      "/images/espana/palacio-real.jpg",
+      "/images/espana/puerta-de-alcala.jpg",
       "/images/espana/barajas.jpg",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
-      IMG_VIAJERO_MALETA,
     ],
   },
   {
-    match: /\b(santiago[- ]de[- ]compostela|vigo|la[- ]coruna|galicia|oviedo|gijon|asturias|santander)\b/,
+    match: /\b(santiago[- ]de[- ]compostela|vigo|la[- ]coruna|a[- ]coruna|galicia|oviedo|gijon|asturias|santander)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1200&q=85",
       "/images/destinos/bilbao-guggenheim.jpg",
+      "/images/espana/palacio-real.jpg",
+      "/images/espana/plaza-mayor.jpg",
       "/images/espana/barajas.jpg",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
     ],
   },
   {
-    match: /\b(zaragoza|salamanca|valladolid|valladolid[- ]espana|burgos|leon[- ]espana|badajoz)\b/,
+    // Castilla, Aragón y Extremadura (excluyendo menciones a Valladolid de Yucatán en tours de Cancún/Chichén Itzá)
+    match: /^(?!.*(cancun|chichen[- ]itza|cenote|riviera[- ]maya|yucatan|mexico)).*\b(zaragoza|salamanca|valladolid|valladolid[- ]espana|burgos|leon[- ]espana|leon[- ]zamora|badajoz|caceres|extremadura|albacete|ciudad[- ]real)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=1200&q=85",
       "/images/espana/palacio-real.jpg",
+      "/images/espana/plaza-mayor.jpg",
+      "/images/espana/puerta-de-alcala.jpg",
       "/images/espana/barajas.jpg",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
     ],
   },
   {
-    match: /madrid|toledo|barajas|\bespana\b/,
+    match: /madrid|toledo|segovia|avila|alcala[- ]de[- ]henares|aranjuez|guadalajara[- ]via[- ]madrid|barajas|\bespana\b/,
     galeria: [
       "/images/espana/gran-via-metropolis.jpg",
-      "/images/espana/barajas.jpg",
       "/images/espana/palacio-real.jpg",
       "/images/espana/puerta-de-alcala.jpg",
       "/images/espana/plaza-mayor.jpg",
+      "/images/espana/cibeles.jpg",
     ],
   },
 
   // =========================================================================
-  // 5. TURQUÍA, MEDIO ORIENTE, ASIA Y EXÓTICOS
+  // 4. TURQUÍA, MEDIO ORIENTE, EGIPTO, MARRUECOS, ASIA Y EXÓTICOS
   // =========================================================================
   {
     match: /estambul|capadocia|pamukkale|efeso|turquia/,
@@ -545,27 +372,37 @@ const GALERIAS_ESPECIFICAS: Array<{
       "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=85",
       "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=85",
       "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=1200&q=85",
-      IMG_AVION_ALA,
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
-    match: /dubai|abu[- ]dhabi|emiratos/,
+    match: /dubai|abu[- ]dhabi|abu[- ]dabi|emiratos/,
     galeria: [
       "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=85",
       "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1200&q=85",
       "https://images.unsplash.com/photo-1546412414-e1885259563a?w=1200&q=85",
       "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=1200&q=85",
-      IMG_AVION_ALA,
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
-    match: /el[- ]cairo|egipto|\bnilo\b|luxor|piramides|marruecos|marrakech|sahara/,
+    match: /marruecos|marrakech|sahara|fez|casablanca|rabat|tanger/,
+    galeria: [
+      "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=1200&q=85",
+      "https://images.unsplash.com/photo-1539650116574-8efeb43e2750?w=1200&q=85",
+      "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=1200&q=85",
+      "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
+    ],
+  },
+  {
+    match: /el[- ]cairo|egipto|\bnilo\b|luxor|piramides|asuan/,
     galeria: [
       "https://images.unsplash.com/photo-1539650116574-8efeb43e2750?w=1200&q=85",
-      "/images/destinos/jerusalen.jpg",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
-      IMG_VIAJERO_MALETA,
+      "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?w=1200&q=85",
+      "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=1200&q=85",
+      IMG_CRUCERO_1,
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
@@ -573,43 +410,43 @@ const GALERIAS_ESPECIFICAS: Array<{
     galeria: [
       "/images/destinos/jerusalen.jpg",
       "https://images.unsplash.com/photo-1539650116574-8efeb43e2750?w=1200&q=85",
-      IMG_VIAJERO_MALETA,
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
+      "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?w=1200&q=85",
+      "https://images.unsplash.com/photo-1548013146-72479768bada?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
     match: /tokio|kioto|osaka|japon|seul|corea|pekin|beijing|shanghai|china/,
     galeria: [
       "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=1200&q=85",
+      "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&q=85",
+      "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1200&q=85",
       "https://images.unsplash.com/photo-1528181304800-259b08848526?w=1200&q=85",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
-      IMG_VIAJERO_MALETA,
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
-    match: /bangkok|phuket|phi[- ]phi|tailandia|\bbali\b|indonesia|singapur/,
+    match: /bangkok|phuket|phi[- ]phi|tailandia|\bbali\b|indonesia|singapur|maldivas|india|taj[- ]mahal/,
     galeria: [
       "https://images.unsplash.com/photo-1528181304800-259b08848526?w=1200&q=85",
       "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=1200&q=85",
+      "https://images.unsplash.com/photo-1548013146-72479768bada?w=1200&q=85",
       IMG_RESORT_PISCINA_MAR,
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
+      IMG_PLAYA_SOLEADA,
     ],
   },
 
   // =========================================================================
-  // 6. ESTADOS UNIDOS Y CANADÁ (Granularidad por Ciudad)
+  // 5. ESTADOS UNIDOS Y CANADÁ (Granularidad por Ciudad)
   // =========================================================================
   {
     match: /orlando|disney[- ]world|magic[- ]kingdom|universal[- ]studios/,
     galeria: [
       "https://images.unsplash.com/photo-1597466599360-3b9775841aec?w=1200&q=85",
       "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=1200&q=85",
-      IMG_FAMILIA_VIAJE,
+      "https://images.unsplash.com/photo-1506966953602-c20cc11f75e3?w=1200&q=85",
       IMG_HOTEL_LUJO_PISCINA,
-      IMG_AVION_ALA,
+      IMG_RESORT_PISCINA_MAR,
     ],
   },
   {
@@ -617,9 +454,9 @@ const GALERIAS_ESPECIFICAS: Array<{
     galeria: [
       "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=1200&q=85",
       "https://images.unsplash.com/photo-1506966953602-c20cc11f75e3?w=1200&q=85",
+      "https://images.unsplash.com/photo-1597466599360-3b9775841aec?w=1200&q=85",
       IMG_HOTEL_LUJO_PISCINA,
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
+      IMG_PLAYA_SOLEADA,
     ],
   },
   {
@@ -629,7 +466,7 @@ const GALERIAS_ESPECIFICAS: Array<{
       "https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1200&q=85",
       "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=1200&q=85",
       IMG_EDIFICIOS_FINANCIEROS,
-      IMG_AVION_ALA,
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
@@ -637,43 +474,43 @@ const GALERIAS_ESPECIFICAS: Array<{
     galeria: [
       "/images/destinos/las-vegas.jpg",
       "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1200&q=85",
+      "https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da?w=1200&q=85",
       IMG_HOTEL_LUJO_PISCINA,
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
+      IMG_EDIFICIOS_FINANCIEROS,
     ],
   },
   {
-    match: /los[- ]angeles|san[- ]francisco|san[- ]diego|california|hollywood|seattle|portland|houston|dallas|austin|san[- ]antonio/,
+    match: /los[- ]angeles|san[- ]francisco|san[- ]diego|california|hollywood|seattle|portland|houston|dallas|austin|san[- ]antonio|estados[- ]unidos/,
     galeria: [
       "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1200&q=85",
+      "https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da?w=1200&q=85",
       "/images/destinos/las-vegas.jpg",
-      IMG_FAMILIA_VIAJE,
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
+      "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
     match: /toronto|montreal|vancouver|calgary|ottawa|niagara|canada/,
     galeria: [
       "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=1200&q=85",
+      "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=1200&q=85",
       "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=85",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
-      IMG_VIAJERO_MALETA,
+      "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
 
   // =========================================================================
-  // 7. MÉXICO, CARIBE Y CENTROAMÉRICA (Granularidad por Destino)
+  // 6. MÉXICO, CARIBE Y CENTROAMÉRICA (Granularidad por Destino)
   // =========================================================================
   {
-    match: /ciudad[- ]de[- ]mexico|\bcdmx\b|guadalajara|monterrey|guadalupe|teotihuacan|taxco|cuernavaca/,
+    match: /^(?!.*(cancun|riviera[- ]maya|tulum)).*(ciudad[- ]de[- ]mexico|\bcdmx\b|guadalajara|monterrey|guadalupe|teotihuacan|taxco|cuernavaca)/,
     galeria: [
       "/images/destinos/ciudad-de-mexico.jpg",
       "https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?w=1200&q=85",
       "https://images.unsplash.com/photo-1568402102990-bc541580b59f?w=1200&q=85",
-      IMG_FAMILIA_VIAJE,
-      IMG_AVION_ALA,
+      "https://images.unsplash.com/photo-1518638150340-f706e86654de?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
@@ -687,7 +524,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /punta[- ]cana|bavaro|bayahibe|la[- ]romana|santo[- ]domingo|puerto[- ]plata|samana|isla[- ]saona|republica[- ]dominicana/,
+    match: /punta[- ]cana|bavaro|bayahibe|la[- ]romana|santo[- ]domingo|puerto[- ]plata|samana|cayo[- ]levantado|isla[- ]saona|republica[- ]dominicana/,
     galeria: [
       "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=85",
       "https://images.unsplash.com/photo-1580541631950-7282082b53ce?w=1200&q=85",
@@ -697,13 +534,13 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /la[- ]habana|varadero|\bcuba\b/,
+    match: /la[- ]habana|varadero|cayo[- ]santa[- ]maria|cayo[- ]coco|holguin|trinidad[- ]cuba|\bcuba\b/,
     galeria: [
       "https://images.unsplash.com/photo-1500759285222-a95626b934cb?w=1200&q=85",
       IMG_PLAYA_SOLEADA,
       IMG_RESORT_CARIBE_1,
       IMG_MAR_TURQUESA_BOTE,
-      IMG_AVION_ALA,
+      IMG_PLAYA_ARENA_BLANCA,
     ],
   },
   {
@@ -713,11 +550,11 @@ const GALERIAS_ESPECIFICAS: Array<{
       IMG_MAR_TURQUESA_BOTE,
       IMG_PLAYA_SOLEADA,
       IMG_RESORT_CARIBE_1,
-      IMG_AVION_ALA,
+      IMG_PLAYA_ARENA_BLANCA,
     ],
   },
   {
-    match: /aruba|curazao|curacao|bonaire|bahamas|nassau|jamaica|montego[- ]bay|puerto[- ]rico|san[- ]juan|san[- ]martin|roatan|costa[- ]rica|san[- ]jose|guatemala|san[- ]salvador|barbados|isla[- ]margarita/,
+    match: /aruba|curazao|curacao|bonaire|bahamas|nassau|jamaica|montego[- ]bay|puerto[- ]rico|san[- ]juan|san[- ]martin|roatan|costa[- ]rica|guanacaste|san[- ]jose|guatemala|antigua[- ]atitlan|tikal|san[- ]salvador|barbados|isla[- ]margarita/,
     galeria: [
       IMG_MAR_TURQUESA_BOTE,
       "https://images.unsplash.com/photo-1580541631950-7282082b53ce?w=1200&q=85",
@@ -738,7 +575,7 @@ const GALERIAS_ESPECIFICAS: Array<{
   },
 
   // =========================================================================
-  // 8. SUDAMÉRICA (Granularidad por Ciudad)
+  // 7. SUDAMÉRICA (Granularidad por Ciudad)
   // =========================================================================
   {
     match: /cartagena|baru|islas[- ]del[- ]rosario|santa[- ]marta|tayrona|barranquilla/,
@@ -747,7 +584,7 @@ const GALERIAS_ESPECIFICAS: Array<{
       "https://images.unsplash.com/photo-1536708880921-03a9306ec47d?w=1200&q=85",
       IMG_MAR_TURQUESA_BOTE,
       IMG_RESORT_PISCINA_MAR,
-      IMG_AVION_ALA,
+      IMG_PLAYA_SOLEADA,
     ],
   },
   {
@@ -756,18 +593,18 @@ const GALERIAS_ESPECIFICAS: Array<{
       "/images/paquetes/panama-medellin/medellin-skyline.png",
       "/images/paquetes/panama-medellin/chiva-medellin.png",
       "https://images.unsplash.com/photo-1536708880921-03a9306ec47d?w=1200&q=85",
-      IMG_FAMILIA_VIAJE,
-      IMG_AVION_ALA,
+      "https://images.unsplash.com/photo-1568632234157-ce7aecd03d0d?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
-    match: /bogota|zipaquira|monserrate|\bcali\b|pereira|eje[- ]cafetero|bucaramanga|caracas|venezuela/,
+    match: /bogota|zipaquira|monserrate|\bcali\b|pereira|salento|eje[- ]cafetero|bucaramanga|caracas|venezuela|\bcolombia\b/,
     galeria: [
       "https://images.unsplash.com/photo-1568632234157-ce7aecd03d0d?w=1200&q=85",
       "https://images.unsplash.com/photo-1536708880921-03a9306ec47d?w=1200&q=85",
-      IMG_FAMILIA_VIAJE,
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
+      "/images/paquetes/panama-medellin/medellin-skyline.png",
+      "https://images.unsplash.com/photo-1583531352515-8884af319dc1?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
@@ -776,8 +613,8 @@ const GALERIAS_ESPECIFICAS: Array<{
       "/images/destinos/bariloche.jpg",
       "/images/destinos/perito-moreno.jpg",
       "/images/destinos/ushuaia.jpg",
-      IMG_AVION_ALA,
-      IMG_FAMILIA_VIAJE,
+      "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
@@ -786,8 +623,8 @@ const GALERIAS_ESPECIFICAS: Array<{
       "/images/destinos/perito-moreno.jpg",
       "/images/destinos/bariloche.jpg",
       "/images/destinos/ushuaia.jpg",
-      IMG_AVION_ALA,
-      IMG_VIAJERO_MALETA,
+      "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
@@ -796,8 +633,8 @@ const GALERIAS_ESPECIFICAS: Array<{
       "/images/destinos/ushuaia.jpg",
       "/images/destinos/perito-moreno.jpg",
       "/images/destinos/bariloche.jpg",
-      IMG_AVION_ALA,
-      IMG_VIAJERO_MALETA,
+      "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
@@ -805,9 +642,9 @@ const GALERIAS_ESPECIFICAS: Array<{
     galeria: [
       "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=1200&q=85",
       "https://images.unsplash.com/photo-1612294037637-ec328d0e075e?w=1200&q=85",
-      IMG_FAMILIA_VIAJE,
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
+      "/images/destinos/bariloche.jpg",
+      "/images/destinos/perito-moreno.jpg",
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
@@ -815,39 +652,40 @@ const GALERIAS_ESPECIFICAS: Array<{
     galeria: [
       "https://images.unsplash.com/photo-1706587531457-8c574be27a08?w=1200&q=85",
       "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85",
-      IMG_FAMILIA_VIAJE,
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
+      "https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?w=1200&q=85",
+      IMG_RESORT_PISCINA_MAR,
+      IMG_HOTEL_LUJO_PISCINA,
+    ],
+  },
+  {
+    // Playas y destinos turísticos de Brasil evaluados ANTES de São Paulo corporativo (para que "Morro de São Paulo" reciba playas)
+    match: /rio[- ]de[- ]janeiro|buzios|arraial|florianopolis|camboriu|maceio|maragogi|salvador[- ]de[- ]bahia|morro[- ]sao[- ]paulo|morro[- ]de[- ]sao[- ]paulo|praia[- ]do[- ]forte|copacabana|natal|pipa|recife|porto[- ]de[- ]galinhas|fortaleza|jericoacoara|fernando[- ]de[- ]noronha|gramado|canela|\bbrasil\b/,
+    galeria: [
+      "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85",
+      "https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?w=1200&q=85",
+      IMG_PLAYA_SOLEADA,
+      IMG_RESORT_PISCINA_MAR,
+      IMG_MAR_TURQUESA_BOTE,
     ],
   },
   {
     match: /sao[- ]paulo|brasilia/,
     galeria: [
       "https://images.unsplash.com/photo-1543059080-f9b1272213d5?w=1200&q=85",
-      IMG_EDIFICIOS_FINANCIEROS,
-      IMG_OFICINA_CORPORATIVA,
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
-    ],
-  },
-  {
-    match: /rio[- ]de[- ]janeiro|buzios|arraial|florianopolis|maceio|salvador[- ]de[- ]bahia|copacabana|\bbrasil\b/,
-    galeria: [
       "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85",
       "https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?w=1200&q=85",
-      IMG_PLAYA_SOLEADA,
-      IMG_RESORT_PISCINA_MAR,
-      IMG_AVION_ALA,
+      IMG_EDIFICIOS_FINANCIEROS,
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
-    match: /santiago|vina[- ]del[- ]mar|valparaiso|antofagasta|iquique|calama|atacama|concepcion|puerto[- ]montt|\bchile\b/,
+    match: /santiago|vina[- ]del[- ]mar|valparaiso|farellones|antofagasta|iquique|calama|atacama|torres[- ]del[- ]paine|isla[- ]de[- ]pascua|rapa[- ]nui|concepcion|puerto[- ]montt|pucon|\bchile\b/,
     galeria: [
       "https://images.unsplash.com/photo-1557974040-3bec341da09b?w=1200&q=85",
-      "/images/destinos/bariloche.jpg",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
-      IMG_VIAJERO_MALETA,
+      "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&q=85",
+      "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&q=85",
+      "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
@@ -856,8 +694,8 @@ const GALERIAS_ESPECIFICAS: Array<{
       "/images/destinos/punta-del-este.jpg",
       "/images/destinos/montevideo.jpg",
       IMG_PLAYA_SOLEADA,
-      IMG_FAMILIA_VIAJE,
-      IMG_AVION_ALA,
+      IMG_RESORT_PISCINA_MAR,
+      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
@@ -865,9 +703,9 @@ const GALERIAS_ESPECIFICAS: Array<{
     galeria: [
       "/images/destinos/montevideo.jpg",
       "/images/destinos/punta-del-este.jpg",
-      IMG_FAMILIA_VIAJE,
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
+      IMG_PLAYA_SOLEADA,
+      IMG_HOTEL_LUJO_PISCINA,
+      IMG_RESORT_PISCINA_MAR,
     ],
   },
   {
@@ -876,8 +714,8 @@ const GALERIAS_ESPECIFICAS: Array<{
       "/images/destinos/galapagos.jpg",
       "/images/destinos/quito.jpg",
       IMG_MAR_TURQUESA_BOTE,
-      IMG_FAMILIA_VIAJE,
-      IMG_AVION_ALA,
+      IMG_PLAYA_SOLEADA,
+      IMG_RESORT_PISCINA_MAR,
     ],
   },
   {
@@ -885,9 +723,9 @@ const GALERIAS_ESPECIFICAS: Array<{
     galeria: [
       "/images/destinos/quito.jpg",
       "/images/destinos/galapagos.jpg",
-      IMG_FAMILIA_VIAJE,
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
+      "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
+      IMG_MAR_TURQUESA_BOTE,
     ],
   },
   {
@@ -895,9 +733,188 @@ const GALERIAS_ESPECIFICAS: Array<{
     galeria: [
       "/images/destinos/salar-de-uyuni.jpg",
       "https://images.unsplash.com/photo-1522409994346-2682217b9a3e?w=1200&q=85",
-      IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
-      IMG_VIAJERO_MALETA,
+      "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
+      "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
+    ],
+  },
+
+  // =========================================================================
+  // 8. DESTINOS DEL PERÚ (Granularidad por Ciudad, Costa, Selva y Sierra)
+  // =========================================================================
+  // 8A. Cusco, Machu Picchu, Valle Sagrado, Montaña 7 Colores, Laguna Humantay (evaluado primero en Perú para circuitos combinados)
+  {
+    match: /cusco|machu[- ]picchu|valle[- ]sagrado|vinicunca|7[- ]colores|siete[- ]colores|humantay|maras|moray|ollantaytambo|aguas[- ]calientes|choquequirao|camino[- ]inca|salkantay|sicuani|quillabamba/,
+    galeria: [
+      "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=85",
+      "https://images.unsplash.com/photo-1545330785-15356daae141?w=1200&q=85",
+      "https://images.unsplash.com/photo-1716618704106-b335685a6b4d?w=1200&q=85",
+      "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=1200&q=85",
+      "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
+    ],
+  },
+  // 8B. Playas del Norte del Perú (Punta Sal, Máncora, Vichayito, Zorritos, Tumbes, Piura, Talara)
+  {
+    match: /punta[- ]sal|decameron[- ]punta[- ]sal|zorritos|tumbes|manglares/,
+    galeria: [
+      IMG_RESORT_PISCINA_MAR,
+      IMG_PLAYA_SOLEADA,
+      IMG_HOTEL_LUJO_PISCINA,
+      IMG_MAR_TURQUESA_BOTE,
+      IMG_PLAYA_ARENA_BLANCA,
+    ],
+  },
+  {
+    match: /mancora|vichayito|pocitas|el[- ]nuro|organos|cabo[- ]blanco|talara|piura|colan|catacaos|sechura|sullana/,
+    galeria: [
+      IMG_PLAYA_SOLEADA,
+      IMG_RESORT_PISCINA_MAR,
+      IMG_MAR_TURQUESA_BOTE,
+      IMG_HOTEL_LUJO_PISCINA,
+      IMG_PLAYA_ARENA_BLANCA,
+    ],
+  },
+  // 8C. Costa Sur Cercana (Paracas, Islas Ballestas, Ica, Huacachina, Nazca, Pisco, Chincha, Lunahuaná)
+  {
+    match: /paracas|ballestas|huacachina|\bica\b|nazca|pisco|chincha|lunahuana|canete/,
+    galeria: [
+      "https://images.unsplash.com/photo-1723134087756-3fdd46625a84?w=1200&q=85",
+      IMG_PLAYA_SOLEADA,
+      IMG_RESORT_PISCINA_MAR,
+      IMG_MAR_TURQUESA_BOTE,
+      IMG_HOTEL_LUJO_PISCINA,
+    ],
+  },
+  // 8D. Selva Peruana (Tarapoto, Sauce, Laguna Azul, Ahuashiyacu, Lamas, Moyobamba, Tingo María)
+  {
+    match: /tarapoto|laguna[- ]azul|ahuashiyacu|\blamas\b|moyobamba|rioja[- ]peru|nueva[- ]cajamarca|tingo[- ]maria|alto[- ]mayo/,
+    galeria: [
+      "https://images.unsplash.com/photo-1620658927695-c33df6fb8130?w=1200&q=85",
+      "https://images.unsplash.com/photo-1699575678956-aefa714b67f0?w=1200&q=85",
+      "/images/destinos/oxapampa-peru.jpg",
+      IMG_RESORT_PISCINA_MAR,
+      IMG_HOTEL_LUJO_PISCINA,
+    ],
+  },
+  // 8E. Iquitos, Río Amazonas, Puerto Maldonado, Tambopata, Pucallpa
+  {
+    match: /iquitos|amazonas|pacaya[- ]samiria|puerto[- ]maldonado|tambopata|sandoval|pucallpa/,
+    galeria: [
+      "https://images.unsplash.com/photo-1699575678956-aefa714b67f0?w=1200&q=85",
+      "https://images.unsplash.com/photo-1620658927695-c33df6fb8130?w=1200&q=85",
+      "/images/destinos/oxapampa-peru.jpg",
+      IMG_RESORT_PISCINA_MAR,
+      IMG_HOTEL_LUJO_PISCINA,
+    ],
+  },
+  // 8F. Selva Central (Oxapampa, Pozuzo, Villa Rica, Chanchamayo, La Merced, Satipo)
+  {
+    match: /oxapampa|pozuzo|villa[- ]rica|chanchamayo|la[- ]merced|satipo|selva[- ]central/,
+    galeria: [
+      "/images/destinos/oxapampa-peru.jpg",
+      "https://images.unsplash.com/photo-1620658927695-c33df6fb8130?w=1200&q=85",
+      "https://images.unsplash.com/photo-1699575678956-aefa714b67f0?w=1200&q=85",
+      "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
+    ],
+  },
+  // 8G. Chachapoyas, Kuélap, Gocta, Jaén
+  {
+    match: /chachapoyas|kuelap|gocta|jaen/,
+    galeria: [
+      "/images/destinos/chachapoyas-kuelap.jpg",
+      "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
+      "https://images.unsplash.com/photo-1620658927695-c33df6fb8130?w=1200&q=85",
+      "/images/destinos/cajamarca-peru.jpg",
+      IMG_HOTEL_LUJO_PISCINA,
+    ],
+  },
+  // 8H. Arequipa y Cañón del Colca
+  {
+    match: /arequipa|colca|perumin|chivay|misti|santa[- ]catalina|sillar|camana|mollendo|moquegua|\bilo\b|tacna/,
+    galeria: [
+      "https://images.unsplash.com/photo-1787929759288-1b4aa7af30f6?w=1200&q=85",
+      "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
+      "https://images.unsplash.com/photo-1545330785-15356daae141?w=1200&q=85",
+      "https://images.unsplash.com/photo-1522409994346-2682217b9a3e?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
+    ],
+  },
+  // 8I. Puno, Juliaca y Lago Titicaca
+  {
+    match: /\bpuno\b|juliaca|titicaca|\buros\b|taquile|sillustani/,
+    galeria: [
+      "https://images.unsplash.com/photo-1522409994346-2682217b9a3e?w=1200&q=85",
+      "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
+      "https://images.unsplash.com/photo-1545330785-15356daae141?w=1200&q=85",
+      "https://images.unsplash.com/photo-1787929759288-1b4aa7af30f6?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
+    ],
+  },
+  // 8J. Huaraz, Laguna 69, Pastoruri y Cordillera Blanca
+  {
+    match: /huaraz|laguna[- ]69|pastoruri|llanganuco|chavin|cordillera[- ]blanca|ancash|chimbote/,
+    galeria: [
+      "/images/destinos/huaraz-laguna69.jpg",
+      "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
+      "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&q=85",
+      "https://images.unsplash.com/photo-1545330785-15356daae141?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
+    ],
+  },
+  // 8K. Trujillo, Huanchaco, Chan Chan
+  {
+    match: /trujillo|huanchaco|chan[- ]chan|pacasmayo|chepen|moche/,
+    galeria: [
+      "/images/destinos/trujillo-peru.jpg",
+      "/images/destinos/chiclayo-peru.jpg",
+      IMG_PLAYA_SOLEADA,
+      "https://images.unsplash.com/photo-1723134087756-3fdd46625a84?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
+    ],
+  },
+  // 8L. Chiclayo, Sipán, Lambayeque
+  {
+    match: /chiclayo|sipan|lambayeque|pimentel|ferrenafe/,
+    galeria: [
+      "/images/destinos/chiclayo-peru.jpg",
+      "/images/destinos/trujillo-peru.jpg",
+      IMG_PLAYA_SOLEADA,
+      "https://images.unsplash.com/photo-1723134087756-3fdd46625a84?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
+    ],
+  },
+  // 8M. Cajamarca
+  {
+    match: /cajamarca|banos[- ]del[- ]inca|cumbemayo/,
+    galeria: [
+      "/images/destinos/cajamarca-peru.jpg",
+      "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
+      "/images/destinos/chachapoyas-kuelap.jpg",
+      "/images/destinos/ayacucho-peru.jpg",
+      IMG_HOTEL_LUJO_PISCINA,
+    ],
+  },
+  // 8N. Ayacucho, Aguas Turquesas de Millpu, Huancayo, Jauja, Tarma, Huánuco, Abancay, Andahuaylas
+  {
+    match: /ayacucho|millpu|huancayo|jauja|tarma|huanuco|abancay|andahuaylas/,
+    galeria: [
+      "/images/destinos/ayacucho-peru.jpg",
+      "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
+      "/images/destinos/cajamarca-peru.jpg",
+      "https://images.unsplash.com/photo-1545330785-15356daae141?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
+    ],
+  },
+  // 8O. Lima, Callao, Caral, Chancay, Huacho, Barranca (solo cuando el tour es específicamente por Lima/Caral)
+  {
+    match: /miraflores|barranco|caral|chancay|huacho|barranca|pachacamac|cieneguilla|chosica|city[- ]tour[- ]lima/,
+    galeria: [
+      "/images/destinos/lima-plaza-mayor.jpg",
+      "/images/destinos/lima-costa-verde.jpg",
+      "https://images.unsplash.com/photo-1723134087756-3fdd46625a84?w=1200&q=85",
+      IMG_HOTEL_LUJO_PISCINA,
+      IMG_PLAYA_SOLEADA,
     ],
   },
 
@@ -920,8 +937,8 @@ const GALERIAS_ESPECIFICAS: Array<{
       IMG_GRUPO_ESTUDIANTES,
       IMG_FAMILIA_VIAJE,
       IMG_HOTEL_LUJO_PISCINA,
+      IMG_RESORT_PISCINA_MAR,
       IMG_AVION_ALA,
-      IMG_AEROPUERTO_INTERNACIONAL,
     ],
   },
   {
@@ -931,7 +948,7 @@ const GALERIAS_ESPECIFICAS: Array<{
       IMG_RESORT_CARIBE_1,
       IMG_HOTEL_LUJO_PISCINA,
       IMG_PLAYA_SOLEADA,
-      IMG_AVION_ALA,
+      IMG_MAR_TURQUESA_BOTE,
     ],
   },
 ];
@@ -949,22 +966,29 @@ const FALLBACK_POR_REGION: Record<string, GaleriaDestino> = {
     "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1200&q=85",
     "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=85",
     "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200&q=85",
+    "/images/espana/gran-via-metropolis.jpg",
     IMG_HOTEL_LUJO_PISCINA,
-    IMG_AVION_ALA,
+  ],
+  exoticos: [
+    "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?w=1200&q=85",
+    "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=85",
+    "https://images.unsplash.com/photo-1539650116574-8efeb43e2750?w=1200&q=85",
+    "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=1200&q=85",
+    IMG_HOTEL_LUJO_PISCINA,
   ],
   turquia: [
     "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?w=1200&q=85",
     "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=85",
     "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=85",
     "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=1200&q=85",
-    IMG_AVION_ALA,
+    IMG_HOTEL_LUJO_PISCINA,
   ],
   caribe: [
     IMG_RESORT_CARIBE_1,
     "https://images.unsplash.com/photo-1580541631950-7282082b53ce?w=1200&q=85",
     IMG_MAR_TURQUESA_BOTE,
     IMG_PLAYA_SOLEADA,
-    IMG_AVION_ALA,
+    IMG_PLAYA_ARENA_BLANCA,
   ],
   mexico: [
     "https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=1200&q=85",
@@ -977,43 +1001,43 @@ const FALLBACK_POR_REGION: Record<string, GaleriaDestino> = {
     "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=1200&q=85",
     "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=1200&q=85",
     "https://images.unsplash.com/photo-1597466599360-3b9775841aec?w=1200&q=85",
+    "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1200&q=85",
     IMG_HOTEL_LUJO_PISCINA,
-    IMG_AVION_ALA,
   ],
   usaCanada: [
     "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=1200&q=85",
     "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=1200&q=85",
     "https://images.unsplash.com/photo-1597466599360-3b9775841aec?w=1200&q=85",
+    "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=1200&q=85",
     IMG_HOTEL_LUJO_PISCINA,
-    IMG_AVION_ALA,
   ],
   norteamerica: [
     "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=1200&q=85",
     "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=1200&q=85",
     "https://images.unsplash.com/photo-1597466599360-3b9775841aec?w=1200&q=85",
+    "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1200&q=85",
     IMG_HOTEL_LUJO_PISCINA,
-    IMG_AVION_ALA,
   ],
   sudamerica: [
     "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85",
     "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=1200&q=85",
     "https://images.unsplash.com/photo-1583531352515-8884af319dc1?w=1200&q=85",
+    "https://images.unsplash.com/photo-1557974040-3bec341da09b?w=1200&q=85",
     IMG_HOTEL_LUJO_PISCINA,
-    IMG_AVION_ALA,
   ],
   peru: [
     "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=85",
     "https://images.unsplash.com/photo-1545330785-15356daae141?w=1200&q=85",
     "https://images.unsplash.com/photo-1716618704106-b335685a6b4d?w=1200&q=85",
-    IMG_HOTEL_LUJO_PISCINA,
-    IMG_AVION_ALA,
+    "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=1200&q=85",
+    "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
   ],
   cruceros: [
     IMG_CRUCERO_1,
     IMG_CRUCERO_2,
     IMG_CRUCERO_3,
     IMG_RESORT_CARIBE_1,
-    IMG_AVION_ALA,
+    IMG_MAR_TURQUESA_BOTE,
   ],
   visasSeguros: [
     IMG_PASAPORTE_VIAJE,
@@ -1038,9 +1062,13 @@ const FALLBACK_POR_REGION: Record<string, GaleriaDestino> = {
   ],
 };
 
+// Expresión regular estricta que detecta ÚNICAMENTE cuando Lima es la ciudad de LLEGADA (retorno hacia Lima)
+const REGEX_DESTINO_FINAL_LIMA =
+  /\b(vuelo-retorno-madrid-a-lima|vuelo-madrid-a-lima-retorno|boleto-madrid-a-lima-solo-ida|vuelo-retorno-hacia-lima)\b|^(vuelos-con-2-maletas-)?(madrid|barcelona|roma|milan|paris|amsterdam|londres|lisboa|zurich|frankfurt|miami|nueva-york|new-york|orlando|los-angeles|newark|houston|chicago|atlanta|washington|boston|toronto|montreal|cancun|ciudad-de-mexico|punta-cana|santo-domingo|panama|bogota|medellin|cartagena|san-andres|aruba|curazao|buenos-aires|santiago|sao-paulo|rio-de-janeiro|quito|guayaquil|la-paz|santa-cruz|montevideo|asuncion|caracas|cusco|arequipa|piura|trujillo|chiclayo|iquitos|tarapoto|tacna|juliaca|puno|cajamarca|pucallpa|tumbes|talara|ayacucho|jauja|huancayo|puerto-maldonado|jaen|chachapoyas|huaraz)-(a-)?lima\b|\b(vuelos?|pasajes?|boletos?)\s+(de|desde)\s+(?!lima\b)[a-z0-9-]+\s+(a|hacia)\s+lima\b/;
+
 /**
  * Devuelve una tupla de 5 imágenes [vitrina, card1, card2, card3, banner]
- * 100% coherentes con el destino, ciudad o servicio indicado en `texto`.
+ * 100% coherentes con el destino de llegada, ciudad o servicio indicado en `texto`.
  */
 export function obtenerGaleriaPorTexto(
   texto: string,
@@ -1048,9 +1076,12 @@ export function obtenerGaleriaPorTexto(
 ): GaleriaDestino {
   const t = norm(texto);
 
-  // Caso especial: rutas de vuelo cuyo destino final es Lima (ej. "madrid-lima", "miami-lima", "Vuelos de Roma a Lima")
-  // Si es una ruta hacia Lima desde el extranjero o provincia, mostramos 100% Lima + aviación, ¡nunca monumentos de otra ciudad ni Machu Picchu!
-  if (/(-lima\b|\ba lima\b|\bhacia lima\b)/.test(t) && !t.includes("lima a ")) {
+  // Caso especial: rutas de vuelo cuyo destino final de llegada es explícitamente Lima (ej. "madrid-lima", "miami-lima", "Vuelos de Roma a Lima")
+  if (
+    REGEX_DESTINO_FINAL_LIMA.test(t) &&
+    !t.includes("lima-madrid-lima") &&
+    !t.includes("madrid-lima-madrid")
+  ) {
     return [
       "/images/destinos/lima-plaza-mayor.jpg",
       "/images/destinos/lima-costa-verde.jpg",
@@ -1060,26 +1091,29 @@ export function obtenerGaleriaPorTexto(
     ];
   }
 
-  // Quitamos ciudades de origen cuando van seguidas de un destino (ej. "lima-madrid", "arequipa-madrid", "de Arequipa a Madrid")
+  // Limpiamos toda mención a Lima o provincias como ciudad de ORIGEN / SALIDA para que jamás contamine el destino de llegada
   const tSinOrigen = t
     .replace(
-      /\b(vuelos?|viajes?|paquetes?|tours?|ofertas?|boletos?|pasajes?)\s+(de|desde)\s+(lima|arequipa|trujillo|chiclayo|piura|cusco|iquitos|tarapoto|tacna|juliaca|cajamarca|pucallpa|tumbes|talara|ayacucho|jauja|huancayo|puerto[- ]maldonado|jaen|chachapoyas|huaraz|tingo[- ]maria)\s+(a|hacia)\s+/g,
+      /\b(vuelos?|viajes?|paquetes?|tours?|ofertas?|boletos?|pasajes?|salidas?|rutas?)\s+(de|desde|saliendo\s+de)\s+(lima|arequipa|trujillo|chiclayo|piura|cusco|iquitos|tarapoto|tacna|juliaca|cajamarca|pucallpa|tumbes|talara|ayacucho|jauja|huancayo|puerto[- ]maldonado|jaen|chachapoyas|huaraz|tingo[- ]maria)\s+(a|hacia|rumbo\s+a)\s+/g,
       ""
     )
     .replace(
-      /^(lima|arequipa|trujillo|chiclayo|piura|cusco|iquitos|tarapoto|tacna|juliaca|cajamarca|pucallpa|tumbes|talara|ayacucho|jauja|puerto-maldonado|jaen|chachapoyas|huaraz|tingo-maria)-/,
+      /\b(lima|arequipa|trujillo|chiclayo|piura|cusco|iquitos|tarapoto|tacna|juliaca|cajamarca|pucallpa|tumbes|talara|ayacucho|jauja|puerto[- ]maldonado|jaen|chachapoyas|huaraz|tingo[- ]maria)[- ]a[- ]/g,
       ""
     )
-    .replace(/\b(desde|en)\s+lima\b/g, "");
+    .replace(
+      /^(vuelos-con-2-maletas-|aerolinea-[a-z-]+-)?(lima|arequipa|trujillo|chiclayo|piura|cusco|iquitos|tarapoto|tacna|juliaca|cajamarca|pucallpa|tumbes|talara|ayacucho|jauja|puerto-maldonado|jaen|chachapoyas|huaraz|tingo-maria)-/,
+      ""
+    )
+    .replace(
+      /\b(desde|saliendo[- ]de|salida[- ]de|salida|en)[- ](lima|aeropuerto[- ]jorge[- ]chavez|jorge[- ]chavez|sede[- ]los[- ]olivos|los[- ]olivos)\b/g,
+      ""
+    )
+    .replace(/\blima[- ](?=madrid|barcelona|roma|milan|paris|amsterdam|miami|nueva-york|orlando|cancun|punta-cana|panama|bogota|medellin|cartagena|buenos-aires|santiago|sao-paulo|cusco)/g, "")
+    .replace(/\b(aeropuerto[- ]jorge[- ]chavez|jorge[- ]chavez|los[- ]olivos)\b/g, "");
 
   for (const entry of GALERIAS_ESPECIFICAS) {
     if (entry.match.test(tSinOrigen)) {
-      return entry.galeria;
-    }
-  }
-
-  for (const entry of GALERIAS_ESPECIFICAS) {
-    if (entry.match.test(t)) {
       return entry.galeria;
     }
   }

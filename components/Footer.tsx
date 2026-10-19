@@ -4,6 +4,7 @@ import Link from "next/link";
 import { WA_LINK, TELEFONO, TELEFONO_FORMATEADO } from "@/components/constantes";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import PhoneIcon from "@/components/icons/PhoneIcon";
+import FlagIcon from "@/components/icons/FlagIcon";
 
 export default function Footer() {
   return (
@@ -57,14 +58,17 @@ export default function Footer() {
               <Link href="/directorio#buscador" className="block text-amber-300 hover:text-amber-200 font-bold transition-colors">
                 🔍 Buscador Oficial (+10,000 Programas)
               </Link>
-              <Link href="/guia-europa" className="block text-sky-300 hover:text-white font-bold transition-colors">
-                🇪🇺 Guía Europa 2026 (BOE 122€ & Verificador PNR)
+              <Link href="/guia-europa" className="inline-flex items-center gap-1.5 text-sky-300 hover:text-white font-bold transition-colors">
+                <FlagIcon pais="Europa" className="w-3.5 h-2.5" />
+                <span>Guía Europa 2026 (BOE 122€ & Verificador PNR)</span>
               </Link>
-              <Link href="/espana" className="block text-slate-300 hover:text-white transition-colors">
-                Vuelos y Paquetes a España (Desde $1,090)
+              <Link href="/espana" className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors">
+                <FlagIcon pais="España" className="w-3.5 h-2.5" />
+                <span>Vuelos y Paquetes a España (Desde $1,090)</span>
               </Link>
-              <Link href="/italia" className="block text-emerald-300 hover:text-white font-semibold transition-colors">
-                🇮🇹 Vuelos y Paquetes a Italia (Desde $1,150)
+              <Link href="/italia" className="flex items-center gap-1.5 text-emerald-300 hover:text-white font-semibold transition-colors">
+                <FlagIcon pais="Italia" className="w-3.5 h-2.5" />
+                <span>Vuelos y Paquetes a Italia (Desde $1,150)</span>
               </Link>
               <Link href="/europa-turquia" className="block text-slate-300 hover:text-white transition-colors">
                 Circuitos a Europa & Turquía Sin Visa

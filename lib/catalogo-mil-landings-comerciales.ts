@@ -141,7 +141,6 @@ function armarLandingComercial(params: {
     banderas,
     tituloHero,
     tituloDestacado,
-    descripcionHero,
     negritaHero,
     destinoOPais,
     precioBase,
@@ -163,12 +162,19 @@ function armarLandingComercial(params: {
     precioCard3,
     tagCard3,
     keywords,
-    faqs,
   } = params;
 
-  const tituloCompleto = `${tituloHero} ${tituloDestacado}`.trim();
+  const limpiar = (s: string) =>
+    s
+      .replace(/"/g, "")
+      .replace(/\(([^()]+)\)\s*\(([^()]+)\)/g, "($1 · $2)");
+
+  const descripcionHero = limpiar(params.descripcionHero);
+  const faqs = params.faqs.map((f) => ({ q: limpiar(f.q), a: limpiar(f.a) }));
+
+  const tituloCompleto = limpiar(`${tituloHero} ${tituloDestacado}`.trim());
   const mitadBase = Math.max(20, Math.round(precioBase * 0.5));
-  const msgPrincipal = `¡Hola Cityland Travel! Vi su promoción web de "${tituloCompleto}" (Desde $${precioBase.toLocaleString("en-US")} USD) y deseo recibir una cotización personalizada.`;
+  const msgPrincipal = `¡Hola Cityland Travel! Vi su promoción web de ${tituloCompleto} (Desde $${precioBase.toLocaleString("en-US")} USD) y deseo recibir una cotización personalizada.`;
 
   const fallbackRegion =
     cluster === "cruceros"
