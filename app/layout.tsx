@@ -40,6 +40,15 @@ export const metadata: Metadata = {
   creator: "Cityland Travel E.I.R.L.",
   publisher: "Cityland Travel E.I.R.L.",
   category: "travel",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    shortcut: ["/icon-192.png"],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   robots: {
     index: true,
     follow: true,
