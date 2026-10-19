@@ -7,12 +7,20 @@ import { AGENCIAS_LOCALES_SEO } from "@/lib/catalogo-agencias-locales";
 import { BLOG_POSTS_MASIVOS } from "@/lib/catalogo-blog-masivo";
 import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-comerciales";
 import { INDICE_MADRID_10K } from "@/lib/catalogo-madrid-10k";
+import { CATALOGO_PAQUETES_MIGRATORIOS_1000 } from "@/lib/catalogo-paquetes-migratorios-1000";
 
 const BASE = "https://citylandtravel.com";
-const FECHA_SITEMAP = new Date("2026-10-18T19:00:00.000Z");
+const FECHA_SITEMAP = new Date("2026-10-19T15:00:00.000Z");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = FECHA_SITEMAP;
+
+  const paquetesMigratorios = CATALOGO_PAQUETES_MIGRATORIOS_1000.map((p) => ({
+    url: `${BASE}/paquetes-migratorios/${p.slug}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.96,
+  }));
 
   const madridEspecializado = INDICE_MADRID_10K.map((m) => ({
     url: `${BASE}/madrid/${m.slug}`,
@@ -73,9 +81,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/ofertas`, lastModified: now, changeFrequency: "daily", priority: 0.98 },
     { url: `${BASE}/viajes`, lastModified: now, changeFrequency: "daily", priority: 0.98 },
     { url: `${BASE}/agencia`, lastModified: now, changeFrequency: "daily", priority: 0.97 },
+    { url: `${BASE}/paquetes-migratorios`, lastModified: now, changeFrequency: "daily", priority: 1 },
     { url: `${BASE}/espana`, lastModified: now, changeFrequency: "daily", priority: 0.99 },
     { url: `${BASE}/madrid`, lastModified: now, changeFrequency: "daily", priority: 0.99 },
     { url: `${BASE}/italia`, lastModified: now, changeFrequency: "daily", priority: 0.99 },
+    { url: `${BASE}/francia`, lastModified: now, changeFrequency: "daily", priority: 0.99 },
     { url: `${BASE}/caribe`, lastModified: now, changeFrequency: "daily", priority: 0.98 },
     { url: `${BASE}/visas`, lastModified: now, changeFrequency: "daily", priority: 0.97 },
     { url: `${BASE}/cusco`, lastModified: now, changeFrequency: "daily", priority: 0.97 },
@@ -100,6 +110,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/agencia-de-viajes-surco`, lastModified: now, changeFrequency: "weekly", priority: 0.94 },
     { url: `${BASE}/agencia-de-viajes-san-martin-de-porres`, lastModified: now, changeFrequency: "weekly", priority: 0.94 },
     { url: `${BASE}/paquetes/panama-medellin`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    ...paquetesMigratorios,
     ...madridEspecializado,
     ...ofertasComerciales,
     ...rutasVuelos,

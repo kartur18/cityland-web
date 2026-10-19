@@ -17,15 +17,16 @@ const PRIMARY_LINKS: {
 }[] = [
   { label: "España", href: "/espana", highlight: true, badgeColor: "red", flag: "España" },
   { label: "Italia", href: "/italia", highlight: true, badgeColor: "sky", flag: "Italia" },
+  { label: "Francia", href: "/francia", highlight: true, badgeColor: "sky" },
+  { label: "Paquetes Migratorios", href: "/paquetes-migratorios", highlight: true, badgeColor: "red" },
   { label: "Caribe & Miami", href: "/caribe", highlight: true, badgeColor: "sky", flag: "República Dominicana" },
-  { label: "Europa & Turquía", href: "/europa-turquia" },
   { label: "Cusco", href: "/cusco" },
   { label: "Perú & Playas", href: "/peru" },
   { label: "Visas", href: "/visas" },
-  { label: "Cruceros", href: "/cruceros" },
 ];
 
 const TOP_BAR_LINKS: { label: string; href: string }[] = [
+  { label: "🇪🇺 1,000 Paquetes Migratorios ($699)", href: "/paquetes-migratorios" },
   { label: "🔍 Catálogo (+10,000 Ofertas)", href: "/directorio#buscador" },
   { label: "✈️ Guía Europa 2026 (BOE)", href: "/guia-europa" },
   { label: "Seguros 30.000€", href: "/seguros" },
@@ -35,9 +36,10 @@ const TOP_BAR_LINKS: { label: string; href: string }[] = [
 ];
 
 const ALL_MOBILE_LINKS: { label: string; href: string; highlight?: boolean }[] = [
+  { label: "🇪🇺 Paquetes Migratorios Europa ($699 · $799 · $899 · $999)", href: "/paquetes-migratorios", highlight: true },
   { label: "🔍 Buscador de +10,000 Ofertas y Hoteles", href: "/directorio#buscador", highlight: true },
   ...PRIMARY_LINKS,
-  ...TOP_BAR_LINKS.slice(1),
+  ...TOP_BAR_LINKS.slice(2),
 ];
 
 export default function Navbar() {

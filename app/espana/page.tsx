@@ -5,23 +5,24 @@ import {
   optimizarMetaDescriptionSEO,
 } from "@/lib/seo-arquitectura";
 
-const rawTitle = "Paquetes y Vuelos a España Desde $1,090 | Cityland Travel";
+const rawTitle =
+  "Paquetes Migratorios a España y Madrid Desde $699 USD | Cityland Travel";
 const rawDesc =
-  "Paquetes y vuelos a España desde Lima (Desde $1,090): boleto aéreo, Seguro Schengen 30.000€, hotel o Carta de Invitación y calculadora BOE (122,10 €/día).";
+  "Paquete migratorio a España desde Lima ($699, $799, $899 y $999 según fecha): pasaje de avión de ida + boleto de regreso reservado para Migraciones + hotel + seguro Schengen 30.000€ + check-in 24h antes.";
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO(rawTitle),
   description: optimizarMetaDescriptionSEO(rawDesc),
   keywords: [
     "paquetes migratorios a espana desde lima",
+    "paquete migratorio madrid 699",
+    "paquete migratorio madrid 799",
     "viajar a espana desde peru 2026",
     "paquete migratorio espana precio dolares",
     "requisitos para viajar a espana peruanos 2026",
     "bolsa de viaje espana 2026 boe 122 euros",
     "carta de invitacion espana vuelos",
     "seguro schengen 30000 euros lima peru",
-    "vuelos lima madrid con 2 maletas",
-    "asesoria migratoria barajas madrid peru",
     "cityland travel espana",
   ],
   alternates: {
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
         url: "https://citylandtravel.com/images/espana/plaza-mayor.jpg",
         width: 1200,
         height: 630,
-        alt: "Paquetes y Vuelos a España desde Lima - Cityland Travel",
+        alt: "Paquetes Migratorios a España desde $699 USD - Cityland Travel",
       },
     ],
   },
@@ -70,17 +71,17 @@ const JSON_LD_ESPANA = {
         {
           "@type": "ListItem",
           position: 2,
-          name: "Paquetes Migratorios a España desde $1,090 USD",
+          name: "Paquetes Migratorios a España desde $699 USD",
           item: "https://citylandtravel.com/espana",
         },
       ],
     },
     {
       "@type": "TouristTrip",
-      name: "Paquete Migratorio a España desde Lima (Carpeta Completa)",
+      name: "Paquete Migratorio a España desde Lima (5 Documentos Completos)",
       image: "https://citylandtravel.com/images/espana/plaza-mayor.jpg",
       description:
-        "Paquete migratorio formal a España con boleto aéreo confirmado (Iberia, Air Europa o LATAM), seguro Schengen 30.000€, reserva de hotel y asesoría 1 a 1 para pasar el control migratorio de Barajas.",
+        "Paquete migratorio formal a España con pasaje de avión de ida, boleto de regreso reservado en sistema para Migraciones, reserva de hotel confirmada, seguro Schengen 30.000€ y check-in 24h antes.",
       provider: {
         "@type": "TravelAgency",
         name: "Cityland Travel",
@@ -88,14 +89,23 @@ const JSON_LD_ESPANA = {
       offers: {
         "@type": "AggregateOffer",
         priceCurrency: "USD",
-        lowPrice: "1090",
-        highPrice: "1350",
+        lowPrice: "699",
+        highPrice: "999",
         offerCount: "4",
         offers: [
           {
             "@type": "Offer",
-            name: "Paquete Migratorio España — Salida Noviembre",
-            price: "1090",
+            name: "Plan Promo España — Fines de Febrero, Marzo, Abril y Mayo",
+            price: "699",
+            priceCurrency: "USD",
+            priceValidUntil: "2027-05-31",
+            availability: "https://schema.org/InStock",
+            url: "https://citylandtravel.com/espana",
+          },
+          {
+            "@type": "Offer",
+            name: "Plan Smart España — Junio, Septiembre, Octubre y Noviembre",
+            price: "799",
             priceCurrency: "USD",
             priceValidUntil: "2026-11-30",
             availability: "https://schema.org/InStock",
@@ -103,28 +113,19 @@ const JSON_LD_ESPANA = {
           },
           {
             "@type": "Offer",
-            name: "Paquete Migratorio España — Salida Diciembre",
-            price: "1290",
+            name: "Plan Plus España — Salidas cercanas Enero / 1ra quincena Febrero",
+            price: "899",
+            priceCurrency: "USD",
+            priceValidUntil: "2027-02-15",
+            availability: "https://schema.org/InStock",
+            url: "https://citylandtravel.com/espana",
+          },
+          {
+            "@type": "Offer",
+            name: "Plan Full 23kg España — Temporada Alta Diciembre / Julio / Agosto",
+            price: "999",
             priceCurrency: "USD",
             priceValidUntil: "2026-12-31",
-            availability: "https://schema.org/InStock",
-            url: "https://citylandtravel.com/espana",
-          },
-          {
-            "@type": "Offer",
-            name: "Paquete Migratorio España — Salida Enero",
-            price: "1190",
-            priceCurrency: "USD",
-            priceValidUntil: "2027-01-31",
-            availability: "https://schema.org/InStock",
-            url: "https://citylandtravel.com/espana",
-          },
-          {
-            "@type": "Offer",
-            name: "Paquete Migratorio España — Salidas Marzo · Abril · Mayo",
-            price: "1090",
-            priceCurrency: "USD",
-            priceValidUntil: "2027-05-31",
             availability: "https://schema.org/InStock",
             url: "https://citylandtravel.com/espana",
           },
@@ -172,34 +173,18 @@ const JSON_LD_ESPANA = {
       mainEntity: [
         {
           "@type": "Question",
-          name: "¿Los peruanos necesitamos visa para viajar a España en 2026?",
+          name: "¿El paquete a España desde $699 USD es ida y vuelta?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "No. Los ciudadanos peruanos están exentos de visa consular para ingresar a España y a todo el Espacio Schengen por estancias de hasta 90 días. Lo indispensable es llevar la carpeta migratoria completa (boleto de ida y vuelta, seguro Schengen de 30.000€, reserva de hospedaje y sustento económico).",
+            text: "Si viajas a España para quedarte, no tiene sentido gastar $1,500 en un avión de regreso al que no te vas a subir. Por eso nuestro Paquete Migratorio incluye tu pasaje de avión de ida emitido + tu boleto de regreso reservado en sistema para presentar en el aeropuerto y en Migraciones + tu reserva de hotel + tu seguro Schengen de 30.000€ + tu check-in hecho 24h antes.",
           },
         },
         {
           "@type": "Question",
-          name: "¿Qué incluye el Paquete Migratorio a España de Cityland Travel?",
+          name: "¿Cuánto cuesta el paquete a España según el mes de viaje y cómo se separa?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Incluye boleto aéreo confirmado con aerolíneas oficiales (Iberia, Air Europa o LATAM) con equipaje, seguro médico internacional Schengen de 30.000€ obligatorio, voucher de hotel para control fronterizo y asesoría migratoria personalizada 1 a 1 para pasar Barajas sin problemas.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "¿Cuánto cuesta el paquete a España y cómo se separa?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Las tarifas promocionales según mes de salida son: Noviembre Desde $1,090 USD, Diciembre Desde $1,290 USD, Enero Desde $1,190 USD y Marzo/Abril/Mayo Desde $1,090 USD (Paquete con Hotel Desde $1,350 USD). Se separa hoy con el 50% de inicial y el saldo se cancela antes del vuelo.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "¿Dónde está ubicada la oficina de Cityland Travel en Lima?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Nuestra oficina física está en Av. Antúnez de Mayolo N. 814, Los Olivos, Lima (Cityland Travel E.I.R.L. · RUC 20614914239). Atendemos de lunes a sábado de 9:00 am a 7:00 pm y emitimos boleta o factura electrónica SUNAT.",
+            text: "Contamos con 4 planes oficiales según tu fecha de viaje: Plan Promo $699 USD (fines de Feb, Mar, Abr, May — separa con $350), Plan Smart $799 USD (Jun, Sep, Oct, Nov — separa con $400), Plan Plus $899 USD (salidas cercanas Ene/1ra quincena Feb — separa con $450) y Plan Full $999 USD (temporada alta Dic/Jul/Ago o con maleta de 23 kg en bodega — separa con $500).",
           },
         },
       ],

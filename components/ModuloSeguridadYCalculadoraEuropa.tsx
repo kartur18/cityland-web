@@ -87,9 +87,13 @@ const DESTINOS_SELECTOR = [
 ];
 
 export default function ModuloSeguridadYCalculadoraEuropa({
-  destinoInicial = "Madrid (España)",
+  destinoInicial,
+  ciudadPorDefecto,
+  refWebRuta,
 }: {
   destinoInicial?: string;
+  ciudadPorDefecto?: string;
+  refWebRuta?: string;
 }) {
   const [tabActiva, setTabActiva] = useState<"precalificador" | "calculadora" | "seguridad">(
     "precalificador"
@@ -97,7 +101,9 @@ export default function ModuloSeguridadYCalculadoraEuropa({
 
   // Estado Pestaña 1: Pre-calificador de Viaje
   const [perfil, setPerfil] = useState<PerfilViajero>("turismo");
-  const [destinoElegido, setDestinoElegido] = useState<string>(destinoInicial);
+  const [destinoElegido, setDestinoElegido] = useState<string>(
+    ciudadPorDefecto || destinoInicial || "Madrid (España)"
+  );
   const [equipaje, setEquipaje] = useState<"1x23kg" | "2x23kg">("1x23kg");
   const [mesViaje, setMesViaje] = useState<string>("Próximos 30 a 60 días");
 
@@ -198,7 +204,8 @@ export default function ModuloSeguridadYCalculadoraEuropa({
   };
 
   const datosPerfilActual = infoPerfil[perfil];
-  const mensajeWaPrecalificado = `¡Hola Cityland Travel! Utilicé su Planificador Oficial Europa y deseo cotizar:\n• Modalidad: ${datosPerfilActual.titulo}\n• Ruta / Destino: ${destinoElegido}\n• Equipaje requerido: ${equipaje === "2x23kg" ? "2 maletas de 23 kg en bodega" : "1 maleta de 23 kg en bodega"}\n• Fecha estimada: ${mesViaje}\n• Producto: ${datosPerfilActual.servicioRecomendado}`;
+  const sufijoRef = refWebRuta ? `\n📍 Ref Web: citylandtravel.com${refWebRuta}` : "";
+  const mensajeWaPrecalificado = `¡Hola Cityland Travel! Utilicé su Planificador Oficial Europa y deseo cotizar:\n• Modalidad: ${datosPerfilActual.titulo}\n• Ruta / Destino: ${destinoElegido}\n• Equipaje requerido: ${equipaje === "2x23kg" ? "2 maletas de 23 kg en bodega" : "1 maleta de 23 kg en bodega"}\n• Fecha estimada: ${mesViaje}\n• Producto: ${datosPerfilActual.servicioRecomendado}${sufijoRef}`;
 
   return (
     <section className="py-14 sm:py-20 bg-gradient-to-b from-slate-900 via-[#0a1628] to-[#0f213c] text-white border-y border-slate-800">

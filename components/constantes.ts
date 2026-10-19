@@ -91,6 +91,10 @@ export function armarLinkWhatsApp(mensaje: string, refWeb?: string): string {
   return waLink(mensaje, "general", refWeb);
 }
 
+export function buildWhatsAppHref(mensaje: string, refWeb?: string): string {
+  return waLink(mensaje, "europa", refWeb);
+}
+
 export const WA_LINK = buildWaUrl({
   categoria: "general",
   mensajePersonalizado:

@@ -88,7 +88,10 @@ export default function Footer() {
               Destinos Internacionales
             </h4>
             <div className="space-y-2.5 text-xs">
-              <Link href="/directorio#buscador" className="block text-amber-300 hover:text-amber-200 font-bold transition-colors">
+              <Link href="/paquetes-migratorios" className="block text-amber-300 hover:text-amber-200 font-bold transition-colors">
+                🇪🇺 1,000 Paquetes Migratorios (Desde $699)
+              </Link>
+              <Link href="/directorio#buscador" className="block text-slate-200 hover:text-white font-semibold transition-colors">
                 🔍 Buscador Oficial (+10,000 Programas)
               </Link>
               <Link href="/guia-europa" className="inline-flex items-center gap-1.5 text-sky-300 hover:text-white font-bold transition-colors">
@@ -97,11 +100,14 @@ export default function Footer() {
               </Link>
               <Link href="/espana" className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors">
                 <FlagIcon pais="España" className="w-3.5 h-2.5" />
-                <span>Vuelos y Paquetes a España (Desde $1,090)</span>
+                <span>Paquete Migratorio España (Desde $699)</span>
               </Link>
               <Link href="/italia" className="flex items-center gap-1.5 text-emerald-300 hover:text-white font-semibold transition-colors">
                 <FlagIcon pais="Italia" className="w-3.5 h-2.5" />
-                <span>Vuelos y Paquetes a Italia (Desde $1,150)</span>
+                <span>Paquete Migratorio Italia (Desde $699)</span>
+              </Link>
+              <Link href="/francia" className="block text-sky-200 hover:text-white font-semibold transition-colors">
+                🇫🇷 Paquete Migratorio Francia (Desde $699)
               </Link>
               <Link href="/europa-turquia" className="block text-slate-300 hover:text-white transition-colors">
                 Circuitos a Europa & Turquía Sin Visa

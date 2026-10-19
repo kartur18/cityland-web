@@ -118,21 +118,21 @@ const GALERIAS_ESPECIFICAS: Array<{
   {
     match: /\b(milan|turin|genova|bolonia|verona|bergamo|brescia|modena|parma)\b/,
     galeria: [
+      "/images/destinos/milan.webp",
       "https://images.unsplash.com/photo-1513581166391-887a96ddeafd?w=1200&q=85",
       "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&q=85",
       "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=1200&q=85",
       "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1200&q=85",
-      "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=85",
     ],
   },
   {
     match: /\b(florencia|pisa|toscana|napoles|amalfi|amalfitana|capri|bari|catania|palermo)\b/,
     galeria: [
+      "https://images.unsplash.com/photo-1543429257-3eb0b65d9c58?w=1200&q=85",
       "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&q=85",
       "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=1200&q=85",
       "https://images.unsplash.com/photo-1533676802871-eca1ae998cd5?w=1200&q=85",
-      "https://images.unsplash.com/photo-1513581166391-887a96ddeafd?w=1200&q=85",
-      "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=85",
+      "/images/destinos/milan.webp",
     ],
   },
   {
@@ -142,17 +142,17 @@ const GALERIAS_ESPECIFICAS: Array<{
       "https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=1200&q=85",
       "https://images.unsplash.com/photo-1529260830199-42c24126f198?w=1200&q=85",
       "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1200&q=85",
-      "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&q=85",
+      "/images/destinos/milan.webp",
     ],
   },
   {
     match: /\b(paris|francia|lyon|marsella|niza|cannes|monaco|toulouse|burdeos|lourdes|normandia|eurodisney|disneyland[- ]paris)\b/,
     galeria: [
+      "/images/destinos/paris.webp",
       "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=85",
       "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1200&q=85",
       "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=1200&q=85",
       "https://images.unsplash.com/photo-1549144511-f099e773c147?w=1200&q=85",
-      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
@@ -178,11 +178,11 @@ const GALERIAS_ESPECIFICAS: Array<{
   {
     match: /lisboa|oporto|\bfaro\b|fatima|portugal/,
     galeria: [
+      "/images/destinos/lisboa.webp",
       "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1200&q=85",
       "https://images.unsplash.com/photo-1513735492246-483525079686?w=1200&q=85",
       "https://images.unsplash.com/photo-1558102822-da570eb113ed?w=1200&q=85",
       "https://images.unsplash.com/photo-1548707309-dcebeab9ea9b?w=1200&q=85",
-      IMG_HOTEL_LUJO_PISCINA,
     ],
   },
   {
@@ -260,32 +260,32 @@ const GALERIAS_ESPECIFICAS: Array<{
   // 3. ESPAÑA (Granularidad por Ciudad, evaluada antes del fallback general de Madrid)
   // =========================================================================
   {
-    match: /barcelona|girona|tarragona|lleida|cataluna|sagrada[- ]familia/,
+    match: /barcelona|girona|tarragona|lleida|hospitalet|badalona|terrassa|sabadell|cataluna|sagrada[- ]familia/,
     galeria: [
+      "/images/destinos/barcelona.webp",
       "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&q=85",
       "https://images.unsplash.com/photo-1511527661048-7fe73d85e9a4?w=1200&q=85",
       "https://images.unsplash.com/photo-1561632669-7f55f7975606?w=1200&q=85",
-      "/images/espana/gran-via-metropolis.jpg",
       "/images/espana/barajas.jpg",
     ],
   },
   {
-    match: /valencia|alicante|murcia|castellon/,
+    match: /valencia|alicante|elche|murcia|cartagena[- ]espana|castellon/,
     galeria: [
       "/images/destinos/valencia-artes.jpg",
       "https://images.unsplash.com/photo-1561632669-7f55f7975606?w=1200&q=85",
       "/images/destinos/mallorca.jpg",
-      "/images/espana/palacio-real.jpg",
+      "https://images.unsplash.com/photo-1558642084-fd07fae5282e?w=1200&q=85",
       "/images/espana/barajas.jpg",
     ],
   },
   {
     match: /^(?!.*cordoba[- ]argentina).*\b(sevilla|granada|cordoba|cordoba[- ]espana|jerez|andalucia|alhambra|cadiz|huelva)\b/,
     galeria: [
-      "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=1200&q=85",
-      "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1200&q=85",
+      "https://images.unsplash.com/photo-1558642084-fd07fae5282e?w=1200&q=85",
+      "https://images.unsplash.com/photo-1509840841025-9088ba78a826?w=1200&q=85",
       "https://images.unsplash.com/photo-1561632669-7f55f7975606?w=1200&q=85",
-      "/images/espana/palacio-real.jpg",
+      "/images/destinos/valencia-artes.jpg",
       "/images/espana/barajas.jpg",
     ],
   },
@@ -293,9 +293,9 @@ const GALERIAS_ESPECIFICAS: Array<{
     match: /\b(malaga|marbella|costa[- ]del[- ]sol|almeria)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1561632669-7f55f7975606?w=1200&q=85",
-      "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=1200&q=85",
+      "https://images.unsplash.com/photo-1558642084-fd07fae5282e?w=1200&q=85",
       "/images/destinos/mallorca.jpg",
-      "/images/espana/palacio-real.jpg",
+      "https://images.unsplash.com/photo-1509840841025-9088ba78a826?w=1200&q=85",
       "/images/espana/barajas.jpg",
     ],
   },
@@ -305,7 +305,7 @@ const GALERIAS_ESPECIFICAS: Array<{
       "/images/destinos/mallorca.jpg",
       "https://images.unsplash.com/photo-1561632669-7f55f7975606?w=1200&q=85",
       "/images/destinos/tenerife.jpg",
-      "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&q=85",
+      "/images/destinos/barcelona.webp",
       "/images/espana/barajas.jpg",
     ],
   },
@@ -321,22 +321,22 @@ const GALERIAS_ESPECIFICAS: Array<{
   },
   {
     // Norte de España: Bilbao, San Sebastián (excluyendo Alcobendas y San Sebastián de los Reyes en Madrid), Navarra y Logroño (La Rioja)
-    match: /^(?!.*(alcobendas|de[- ]los[- ]reyes)).*\b(bilbao|san[- ]sebastian|pais[- ]vasco|pamplona|navarra|logrono|la[- ]rioja)\b/,
+    match: /^(?!.*(alcobendas|de[- ]los[- ]reyes)).*\b(bilbao|vitoria|san[- ]sebastian|pais[- ]vasco|pamplona|navarra|logrono|la[- ]rioja)\b/,
     galeria: [
       "/images/destinos/bilbao-guggenheim.jpg",
-      "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1200&q=85",
-      "/images/espana/palacio-real.jpg",
-      "/images/espana/puerta-de-alcala.jpg",
+      "/images/destinos/valencia-artes.jpg",
+      "https://images.unsplash.com/photo-1558642084-fd07fae5282e?w=1200&q=85",
+      "/images/destinos/barcelona.webp",
       "/images/espana/barajas.jpg",
     ],
   },
   {
     match: /\b(santiago[- ]de[- ]compostela|vigo|la[- ]coruna|a[- ]coruna|galicia|oviedo|gijon|asturias|santander)\b/,
     galeria: [
-      "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1200&q=85",
       "/images/destinos/bilbao-guggenheim.jpg",
-      "/images/espana/palacio-real.jpg",
-      "/images/espana/plaza-mayor.jpg",
+      "https://images.unsplash.com/photo-1509840841025-9088ba78a826?w=1200&q=85",
+      "https://images.unsplash.com/photo-1558642084-fd07fae5282e?w=1200&q=85",
+      "/images/destinos/valencia-artes.jpg",
       "/images/espana/barajas.jpg",
     ],
   },
@@ -344,10 +344,10 @@ const GALERIAS_ESPECIFICAS: Array<{
     // Castilla, Aragón y Extremadura (excluyendo menciones a Valladolid de Yucatán en tours de Cancún/Chichén Itzá)
     match: /^(?!.*(cancun|chichen[- ]itza|cenote|riviera[- ]maya|yucatan|mexico)).*\b(zaragoza|salamanca|valladolid|valladolid[- ]espana|burgos|leon[- ]espana|leon[- ]zamora|badajoz|caceres|extremadura|albacete|ciudad[- ]real)\b/,
     galeria: [
-      "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=1200&q=85",
+      "https://images.unsplash.com/photo-1509840841025-9088ba78a826?w=1200&q=85",
+      "https://images.unsplash.com/photo-1558642084-fd07fae5282e?w=1200&q=85",
       "/images/espana/palacio-real.jpg",
       "/images/espana/plaza-mayor.jpg",
-      "/images/espana/puerta-de-alcala.jpg",
       "/images/espana/barajas.jpg",
     ],
   },

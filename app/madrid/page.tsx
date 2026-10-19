@@ -11,11 +11,13 @@ import {
 
 export const metadata: Metadata = {
   title:
-    "Viajes y Paquetes Migratorios a Madrid desde Lima (Desde $869) | Cityland Travel",
+    "Paquetes Migratorios a Madrid desde Lima ($699 · $799 · $899 · $999) | Cityland Travel",
   description:
-    "Especialistas #1 en Perú en Paquetes Migratorios y Vuelos a Madrid-Barajas (T4/T1): Boleto aéreo + Reserva de Retorno RF 24h + Reserva de Hotel verificable + Seguro Schengen 30.000€ + Check-in por asesor desde $869 USD. Solo Carpeta desde $75 USD.",
+    "Especialistas #1 en Perú en Paquetes Migratorios a Madrid-Barajas (T4/T1) desde $699 USD (separa con $350): Pasaje de avión de ida + Boleto de regreso reservado para Migraciones + Reserva de Hotel + Seguro Schengen 30.000€ + Check-in 24h antes.",
   keywords: [
     "paquete migratorio a madrid desde lima",
+    "paquete migratorio madrid 699",
+    "paquete migratorio madrid 799",
     "viajar a madrid por primera vez desde peru",
     "reserva de retorno y hotel para madrid barajas",
     "carpeta migratoria para viajar a espana",
@@ -34,86 +36,86 @@ const DATOS_HUB_MADRID: DatosLandingMadridSEO = {
   codigoRuta: "LIM → MAD",
   terminalBarajas: "Terminal T4 y T1 Madrid-Barajas",
   aerolineaDestacada: "Iberia · Air Europa · Plus Ultra · LATAM",
-  tituloPrincipal: "Paquetes Migratorios y Vuelos a Madrid:",
-  subtituloDorado: "Expediente Completo Desde $869 USD",
+  tituloPrincipal: "Paquetes Migratorios a Madrid:",
+  subtituloDorado: "5 Documentos Listos Desde $699 USD",
   resumenEjecutivo:
-    "Somos la agencia peruana especialista en el corredor aéreo Lima – Madrid. Nuestro paquete migratorio incluye tu boleto de ingreso, reserva de retorno activa (MAD → LIM 24h) verificable en sistema, voucher de hotel en Madrid (o calibración a tu Carta de Invitación), seguro Schengen 30.000€ y check-in hecho por tu asesor.",
+    "Si viajas a Madrid para quedarte, no tiene sentido pagar $1,500 por un avión de regreso al que no te vas a subir. Tu Paquete Migratorio incluye los 5 documentos que te piden en el aeropuerto: tu pasaje de avión de ida emitido, tu boleto de regreso reservado en sistema para Migraciones, tu reserva de hotel confirmada (o cuadre con tu Carta de Invitación), tu seguro médico Schengen de 30.000€ y tu check-in hecho 24h antes.",
   zonaOMunicipioMadrid: "Madrid (Barajas T4 / T1)",
   origenPasajero: "Lima y Todo el Perú",
-  modalidadClave: "Paquete Migratorio + RF 24h",
-  precioDesdeUSD: 869,
+  modalidadClave: "Paquete Migratorio Completo",
+  precioDesdeUSD: 699,
   precioCarpetaSolaUSD: 75,
-  precioIdaYVueltaUSD: 1090,
+  precioIdaYVueltaUSD: 999,
   imagenHero:
-    "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1400&q=85",
+    "/images/destinos/madrid.webp",
   imagenSecundaria:
     "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=1200&q=85",
   metaTitle:
-    "Viajes y Paquetes Migratorios a Madrid desde Lima (Desde $869) | Cityland Travel",
+    "Paquetes Migratorios a Madrid desde Lima ($699 · $799 · $899 · $999) | Cityland Travel",
   metaDescription:
-    "Paquetes migratorios a Madrid desde $869 USD con boleto aéreo, reserva de retorno RF 24h, hotel verificable, seguro Schengen 30.000€ y check-in por asesor.",
+    "Paquetes migratorios a Madrid desde $699 USD con pasaje de avión de ida, boleto de regreso reservado para Migraciones, hotel verificable, seguro Schengen 30.000€ y check-in 24h antes.",
   keywords: [
     "paquete migratorio madrid",
-    "vuelos a madrid desde lima",
+    "paquete madrid 699",
     "carpeta migratoria espana",
   ],
   planesReales: [
     {
-      etiqueta: "★ Más Vendido (266+ Ventas)",
-      titulo: "Paquete Migratorio Completo a Madrid",
-      precioUSD: 869,
-      subtitulo: "Boleto LIM → MAD + Retorno RF 24h + Hotel + Seguro + Check-in",
+      etiqueta: "Plan Promo · Separa con $350",
+      titulo: "Plan Promo Paquete Migratorio Madrid ($699)",
+      precioUSD: 699,
+      subtitulo: "Salidas fines de Febrero, Marzo, Abril y Mayo",
+      incluye: [
+        "Pasaje de avión de ida emitido (Lima → Madrid)",
+        "Boleto de regreso reservado en sistema para Migraciones",
+        "Reserva de hotel verificable en Madrid (o cuadre con Carta)",
+        "Seguro médico Schengen 30.000€ + Check-in 24h antes",
+      ],
+      waMensaje:
+        "¡Hola! Quiero más información del paquete a Madrid desde $699.",
+    },
+    {
+      etiqueta: "★ El Más Pedido · Separa con $400",
+      titulo: "Plan Smart Paquete Migratorio Madrid ($799)",
+      precioUSD: 799,
+      subtitulo: "Salidas Junio, Septiembre, Octubre y Noviembre + Asesoría VIP",
       destacado: true,
       incluye: [
-        "Boleto aéreo Lima – Madrid con código PNR verificable",
-        "Reserva de retorno activa (MAD → LIM) para control migratorio",
-        "Reserva de hotel verificable en Madrid o ajuste a Carta de Invitación",
-        "Seguro médico Schengen 30.000€ + Check-in hecho por tu asesor",
-      ],
-      waMensaje:
-        "¡Hola Cityland Travel! Quiero cotizar el Paquete Migratorio Completo a Madrid (Desde $869 USD).",
-    },
-    {
-      etiqueta: "Si Ya Compraste tu Vuelo",
-      titulo: "Solo Carpeta Migratoria Express Madrid",
-      precioUSD: 75,
-      subtitulo: "Para pasajeros que ya tienen boleto y necesitan sus requisitos",
-      incluye: [
-        "Reserva de retorno PNR activa en sistema (24h antes de tu vuelo)",
-        "Voucher de hotel verificable en Madrid por los días declarados",
+        "Pasaje de avión de ida emitido + Boleto de regreso para Migraciones",
+        "Reserva de hotel confirmada o sincronización con Carta de Invitación",
         "Seguro médico Schengen oficial de 30.000€ sin franquicia",
-        "Check-in, asignación de asiento y cálculo de bolsa BOE",
+        "Check-in 24h antes, elección de asiento y preparación 1 a 1",
       ],
       waMensaje:
-        "¡Hola Cityland Travel! Ya tengo mi pasaje a Madrid y quiero contratar Solo la Carpeta Migratoria (Desde $75 USD).",
+        "¡Hola! Quiero más información del paquete Smart a Madrid desde $799.",
     },
     {
-      etiqueta: "Con Visa / Residencia / Retorno",
-      titulo: "Boleto Solo Ida (LIM → MAD o MAD → LIM)",
-      precioUSD: 729,
-      subtitulo: "Para visa de estudios, trabajo, reagrupación, DNI o retorno a Lima",
+      etiqueta: "Salidas Cercanas · Separa con $450",
+      titulo: "Plan Plus Paquete Migratorio Madrid ($899)",
+      precioUSD: 899,
+      subtitulo: "Salidas Enero, 1ra quincena Febrero o conexión a otra ciudad",
       incluye: [
-        "Boleto electrónico IATA de 13 dígitos (Iberia, Air Europa, LATAM, Plus Ultra)",
-        "Equipaje de mano 10 kg + maleta de bodega de 23 kg",
-        "Opción de agregar 2da maleta de 23 kg a tarifa preferencial",
-        "Check-in hecho por tu asesor y factura electrónica SUNAT",
+        "Pasaje de avión de ida + Boleto de regreso reservado para Migraciones",
+        "Conexión disponible a Barcelona, Valencia, Sevilla, Milán o París",
+        "Reserva de hotel + Seguro Schengen 30.000€ + Check-in 24h antes",
+        "Preparación personalizada de preguntas de Migraciones",
       ],
       waMensaje:
-        "¡Hola Cityland Travel! Quiero cotizar un Boleto Solo Ida (Lima-Madrid o Madrid-Lima) desde $729 USD.",
+        "¡Hola! Quiero más información del paquete Plus a Madrid desde $899.",
     },
     {
-      etiqueta: "Ida y Vuelta Cerrado",
-      titulo: "Paquete Lima – Madrid – Lima Confirmado",
-      precioUSD: 1090,
-      subtitulo: "Vuelo redondo emitido + reserva hotelera + seguro Schengen",
+      etiqueta: "Temporada Alta / 23 kg · Separa con $500",
+      titulo: "Plan Full Madrid con Maleta 23 kg ($999)",
+      precioUSD: 999,
+      subtitulo: "Salidas Diciembre, Julio, Agosto o incluye maleta de 23 kg en bodega",
       incluye: [
-        "Boleto aéreo ida y vuelta cerrado con fechas fijas",
-        "Alojamiento seleccionado en Madrid y seguro Schengen 30.000€",
-        "Preparación integral de carpeta para control en Barajas T4/T1",
-        "Separa con el 50% ($545 USD) y paga en cuotas antes de viajar",
+        "Pasaje de avión de ida + Maleta de 23 kg en bodega + 10 kg en mano",
+        "Boleto de regreso reservado en sistema para Migraciones",
+        "Reserva de hotel en Madrid + Seguro Schengen 30.000€",
+        "Separa hoy con el 50% ($500 USD) y paga en cuotas antes de viajar",
       ],
       waMensaje:
-        "¡Hola Cityland Travel! Quiero cotizar el Paquete Ida y Vuelta Cerrado Lima – Madrid – Lima (Desde $1,090 USD).",
+        "¡Hola! Quiero más información del paquete Full a Madrid con maleta de 23 kg desde $999.",
     },
   ],
   pasosExpediente: [
@@ -125,30 +127,30 @@ const DATOS_HUB_MADRID: DatosLandingMadridSEO = {
     },
     {
       paso: "02",
-      titulo: "Emisión de Boleto Principal con Código PNR",
+      titulo: "Emisión de tu Pasaje de Avión de Ida (Separa con 50%)",
       detalle:
-        "Emitimos tu pasaje con Iberia, Air Europa, Plus Ultra o LATAM (puedes separar con el 50% de inicial en oficina de Los Olivos o por BCP/BBVA/Interbank).",
+        "Emitimos tu pasaje con Iberia, Air Europa, Plus Ultra o LATAM (puedes separar desde $350 USD en oficina de Los Olivos o cuentas empresa BCP/BBVA/Interbank).",
     },
     {
       paso: "03",
-      titulo: "Activación de Retorno RF + Hotel + Seguro",
+      titulo: "Boleto de Regreso para Migraciones + Hotel + Seguro",
       detalle:
-        "Activamos tu reserva de retorno MAD → LIM verificable en sistema para el día de tu viaje, junto con tu voucher de hotel y seguro Schengen 30.000€.",
+        "Dejamos activo en sistema tu boleto de regreso para el control migratorio el día de tu viaje, junto con tu reserva de hotel y seguro Schengen 30.000€.",
     },
     {
       paso: "04",
-      titulo: "Check-in por tu Asesor y Entrega de Carpeta",
+      titulo: "Check-in 24h Antes y Entrega de Carpeta Lista",
       detalle:
-        "Tu asesor realiza tu check-in, elige tu asiento y te entrega tu carpeta ordenada lista para presentar en el Jorge Chávez y en Madrid-Barajas.",
+        "Tu asesor realiza tu check-in 24h antes, elige tu asiento y te entrega tu carpeta impresa/PDF lista para presentar en el Jorge Chávez y en Madrid-Barajas.",
     },
   ],
   checklistBarajas: [
     {
-      requisito: "Boleto o Reserva Activa de Retorno (MAD → LIM)",
+      requisito: "Boleto de Regreso Activo para Migraciones (MAD → LIM)",
       detalleOficial:
         "En el mostrador de Lima y en el control de Madrid-Barajas (T4 y T1) exigen acreditar fecha de salida del Espacio Schengen dentro de los 90 días.",
       comoTeAyudamos:
-        "Incluimos la reserva de retorno activa 24h antes de tu vuelo en el Paquete Migratorio ($869 USD) o emitimos boleto ida y vuelta cerrado ($1,090 USD).",
+        "Tu Paquete Migratorio (desde $699 USD) incluye tu boleto de regreso reservado en sistema el día de tu viaje para cumplir al 100% con el requisito sin pagar el doble.",
     },
     {
       requisito: "Hospedaje Verificable en Madrid o Carta de Invitación",
