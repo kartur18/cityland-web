@@ -568,39 +568,6 @@ export default async function DestinoPage({
                 })}
               </div>
             </div>
-
-            {/* Respaldo Legal y Garantías */}
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs">
-              <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a1628] tracking-tight mb-4">
-                ¿Por qué reservar tu viaje a {dest.ciudad} con Cityland Travel?
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/60">
-                  <div className="text-sm font-extrabold text-[#0a1628] mb-1">
-                    Código PNR Verificable
-                  </div>
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    Entregamos tu reserva aérea oficial verificable directamente en la web de la aerolínea.
-                  </p>
-                </div>
-                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/60">
-                  <div className="text-sm font-extrabold text-[#0a1628] mb-1">
-                    Agencia Formal en Lima
-                  </div>
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    Cityland Travel E.I.R.L. (RUC {EMPRESA_RUC}) con oficina física en {EMPRESA_DIRECCION}.
-                  </p>
-                </div>
-                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/60">
-                  <div className="text-sm font-extrabold text-[#0a1628] mb-1">
-                    Asistencia 24/7 en Ruta
-                  </div>
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    Acompañamiento antes, durante y después de tu vuelo con check-in y tarjetas de embarque.
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Columna Lateral Sticky (4 cols) */}

@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import FlagIcon from "@/components/icons/FlagIcon";
 import BuscadorPaquetesMigratoriosClient, {
   type ItemResumenSuperLanding,
 } from "./BuscadorPaquetesMigratoriosClient";
@@ -53,18 +54,6 @@ export const metadata: Metadata = {
   },
 };
 
-function obtenerBanderaPorPais(pais: string): string {
-  if (pais === "España") return "🇪🇸";
-  if (pais === "Italia") return "🇮🇹";
-  if (pais === "Francia") return "🇫🇷";
-  if (pais === "Países Bajos") return "🇳🇱";
-  if (pais === "Bélgica") return "🇧🇪";
-  if (pais === "Portugal") return "🇵🇹";
-  if (pais === "Alemania") return "🇩🇪";
-  if (pais === "Suiza") return "🇨🇭";
-  return "🇪🇺";
-}
-
 export default function PaquetesMigratoriosHubPage() {
   const resumenItems: ItemResumenSuperLanding[] =
     INDICE_PAQUETES_MIGRATORIOS_1000.map((item) => ({
@@ -73,7 +62,7 @@ export default function PaquetesMigratoriosHubPage() {
       siloNombre: item.siloNombre,
       paisDestino: item.pais,
       ciudadDestino: item.ciudadDestino,
-      banderaPais: obtenerBanderaPorPais(item.pais),
+      banderaPais: item.pais,
       intencionNombre: item.siloNombre,
       h1Principal: item.titulo,
       subtituloDorado: item.subtitulo,
@@ -136,7 +125,25 @@ export default function PaquetesMigratoriosHubPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             <div className="lg:col-span-6">
               <div className="inline-flex flex-wrap items-center gap-2 bg-amber-400/15 border border-amber-400/35 px-4 py-1.5 rounded-full text-xs font-extrabold text-amber-300 mb-5">
-                <span>🇪🇸 España · 🇮🇹 Italia · 🇫🇷 Francia · 🇪🇺 Europa</span>
+                <span className="inline-flex items-center gap-1.5">
+                  <FlagIcon pais="España" className="w-3.5 h-2.5" />
+                  <span>España</span>
+                </span>
+                <span>·</span>
+                <span className="inline-flex items-center gap-1.5">
+                  <FlagIcon pais="Italia" className="w-3.5 h-2.5" />
+                  <span>Italia</span>
+                </span>
+                <span>·</span>
+                <span className="inline-flex items-center gap-1.5">
+                  <FlagIcon pais="Francia" className="w-3.5 h-2.5" />
+                  <span>Francia</span>
+                </span>
+                <span>·</span>
+                <span className="inline-flex items-center gap-1.5">
+                  <FlagIcon pais="Europa" className="w-3.5 h-2.5" />
+                  <span>Europa</span>
+                </span>
                 <span>•</span>
                 <span>RUC 20614914239</span>
               </div>
@@ -165,19 +172,22 @@ export default function PaquetesMigratoriosHubPage() {
                   href="/espana"
                   className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-5 py-4 rounded-2xl text-sm whitespace-nowrap transition-all"
                 >
-                  🇪🇸 España
+                  <FlagIcon pais="España" className="w-4 h-3" />
+                  <span>España</span>
                 </Link>
                 <Link
                   href="/italia"
                   className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-5 py-4 rounded-2xl text-sm whitespace-nowrap transition-all"
                 >
-                  🇮🇹 Italia
+                  <FlagIcon pais="Italia" className="w-4 h-3" />
+                  <span>Italia</span>
                 </Link>
                 <Link
                   href="/francia"
                   className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-5 py-4 rounded-2xl text-sm whitespace-nowrap transition-all"
                 >
-                  🇫🇷 Francia
+                  <FlagIcon pais="Francia" className="w-4 h-3" />
+                  <span>Francia</span>
                 </Link>
               </div>
 
@@ -201,8 +211,15 @@ export default function PaquetesMigratoriosHubPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/80 via-transparent to-transparent" />
                   <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between text-white">
-                    <span className="text-xs font-bold bg-black/45 px-3 py-1 rounded-full">
-                      🇪🇸 Madrid · 🇮🇹 Milán · 🇫🇷 París
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold bg-black/55 px-3 py-1 rounded-full">
+                      <FlagIcon pais="España" className="w-3.5 h-2.5" />
+                      <span>Madrid</span>
+                      <span>·</span>
+                      <FlagIcon pais="Italia" className="w-3.5 h-2.5" />
+                      <span>Milán</span>
+                      <span>·</span>
+                      <FlagIcon pais="Francia" className="w-3.5 h-2.5" />
+                      <span>París</span>
                     </span>
                     <span className="bg-amber-400 text-slate-950 text-[11px] font-black uppercase px-3 py-1 rounded-full">
                       Carpeta Completa

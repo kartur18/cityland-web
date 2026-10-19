@@ -316,60 +316,29 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
             destinoInicial={item.destinoOPais}
           />
         )}
-        <section className="py-12 bg-white border-t border-slate-200/80">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6">
-            <div className="bg-gradient-to-br from-slate-50 via-white to-sky-50/40 rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-2xs grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-              <div className="lg:col-span-6">
-                <span className="text-[11px] font-extrabold uppercase tracking-widest text-red-600 block mb-1.5">
-                  Respaldo Oficial · RUC 20614914239
-                </span>
-                <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a1628] tracking-tight leading-snug mb-3">
-                  Garantías para tu viaje a {item.destinoOPais}
-                </h2>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  Emitimos todos nuestros programas saliendo desde el Aeropuerto Internacional Jorge Chávez (LIM) con código de reserva PNR de 6 caracteres verificable en la aerolínea, vouchers confirmados y atención presencial en Av. Antúnez de Mayolo 814, Los Olivos.
-                </p>
-              </div>
-              <div className="lg:col-span-6 bg-white rounded-2xl p-5 border border-slate-200/80 shadow-2xs">
-                <h3 className="text-xs font-extrabold uppercase tracking-wider text-[#0a1628] mb-3">
-                  ¿Qué incluye tu gestión con Cityland Travel?
-                </h3>
-                <ul className="space-y-2">
-                  {item.incluye.map((inc) => (
-                    <li key={inc} className="flex items-start gap-2.5 text-xs text-slate-700 font-medium">
-                      <span className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-[10px] font-extrabold shrink-0 mt-0.5">
-                        ✓
-                      </span>
-                      <span className="leading-snug">
-                        {inc.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {item.faqs.length > 0 && (
           <section className="py-12 bg-slate-50 border-t border-slate-200/80">
-            <div className="max-w-5xl mx-auto px-4 sm:px-6">
-              <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a1628] tracking-tight mb-6">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6">
+              <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a1628] tracking-tight mb-6 text-center">
                 Preguntas Frecuentes sobre {item.destinoOPais}
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-3">
                 {item.faqs.map((f) => (
-                  <div
+                  <details
                     key={f.q}
-                    className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-2xs"
+                    className="group bg-white rounded-2xl px-5 py-4 border border-slate-200/90 shadow-2xs transition-colors open:border-amber-400"
                   >
-                    <h3 className="text-sm font-extrabold text-[#0a1628] mb-2">
-                      {f.q.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
-                    </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed">
+                    <summary className="flex items-center justify-between gap-3 cursor-pointer list-none text-sm font-extrabold text-[#0a1628]">
+                      <span>{f.q.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}</span>
+                      <span className="text-slate-400 group-open:rotate-180 transition-transform text-xs shrink-0">
+                        ▼
+                      </span>
+                    </summary>
+                    <p className="mt-2.5 pt-2.5 border-t border-slate-100 text-xs sm:text-sm text-slate-600 leading-relaxed">
                       {f.a.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                     </p>
-                  </div>
+                  </details>
                 ))}
               </div>
             </div>

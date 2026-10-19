@@ -393,27 +393,22 @@ export default function MadridMigratorioTemplate({
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {datos.checklistBarajas.map((item, idx) => (
                 <div
                   key={idx}
-                  className="bg-white rounded-2xl p-6 border border-slate-200 flex flex-col justify-between"
+                  className="bg-white rounded-2xl p-5 border border-slate-200 flex flex-col justify-between"
                 >
-                  <div>
-                    <div className="flex items-center justify-between gap-2 mb-2">
-                      <h3 className="text-base font-extrabold text-[#071120]">
-                        {idx + 1}. {item.requisito}
-                      </h3>
-                      <span className="text-xs font-bold text-emerald-700 shrink-0">
-                        ✓ Incluido
-                      </span>
-                    </div>
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
-                      {item.detalleOficial}
-                    </p>
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <h3 className="text-sm sm:text-base font-extrabold text-[#071120]">
+                      {idx + 1}. {item.requisito}
+                    </h3>
+                    <span className="text-xs font-bold text-emerald-700 shrink-0">
+                      ✓ Incluido
+                    </span>
                   </div>
-                  <p className="text-xs sm:text-sm text-emerald-800 font-semibold pt-3 border-t border-slate-100">
-                    ✓ {item.comoTeAyudamos}
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    {item.comoTeAyudamos}
                   </p>
                 </div>
               ))}
@@ -421,26 +416,29 @@ export default function MadridMigratorioTemplate({
           </div>
         </section>
 
-        {/* 4. PREGUNTAS FRECUENTES */}
-        <section className="py-14 sm:py-18 bg-white border-b border-slate-200">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6">
-            <h2 className="text-2xl sm:text-3xl font-black text-[#071120] text-center mb-8">
+        {/* 4. PREGUNTAS FRECUENTES EN ACORDEÓN COMPACTO */}
+        <section className="py-12 sm:py-16 bg-white border-b border-slate-200">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6">
+            <h2 className="text-2xl sm:text-3xl font-black text-[#071120] text-center mb-6">
               Preguntas Frecuentes
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-3">
               {datos.faqs.map((f, i) => (
-                <div
+                <details
                   key={i}
-                  className="bg-slate-50 rounded-2xl p-5 sm:p-6 border border-slate-200"
+                  className="group bg-slate-50 rounded-2xl px-5 py-4 border border-slate-200 transition-colors open:bg-white open:border-amber-400"
                 >
-                  <h3 className="text-sm sm:text-base font-extrabold text-[#071120] mb-2">
-                    {f.q}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  <summary className="flex items-center justify-between gap-3 cursor-pointer list-none text-sm font-extrabold text-[#071120]">
+                    <span>{f.q}</span>
+                    <span className="text-slate-400 group-open:rotate-180 transition-transform text-xs shrink-0">
+                      ▼
+                    </span>
+                  </summary>
+                  <p className="mt-2.5 pt-2.5 border-t border-slate-100 text-xs sm:text-sm text-slate-600 leading-relaxed">
                     {f.a}
                   </p>
-                </div>
+                </details>
               ))}
             </div>
           </div>

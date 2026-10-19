@@ -320,24 +320,25 @@ export default function SuperLandingMigratorioTemplate({
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="p-6 rounded-2xl bg-white border border-slate-200">
-                <span className="text-xs font-extrabold uppercase text-blue-700 block mb-2">
+              <div className="p-5 rounded-2xl bg-white border border-slate-200">
+                <span className="text-xs font-extrabold uppercase text-blue-700 block mb-1.5">
                   🚆 Transporte al centro
                 </span>
                 <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
                   {datos.infoLlegadaCiudad.comoLlegarCentro}
                 </p>
               </div>
-              <div className="p-6 rounded-2xl bg-white border border-slate-200">
-                <span className="text-xs font-extrabold uppercase text-emerald-700 block mb-2">
-                  🇵🇪 Comunidad peruana en {datos.ciudadDestino}
+              <div className="p-5 rounded-2xl bg-white border border-slate-200">
+                <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase text-emerald-700 mb-1.5">
+                  <FlagIcon pais="Perú" className="w-3.5 h-2.5 shrink-0" />
+                  <span>Comunidad peruana en {datos.ciudadDestino}</span>
                 </span>
                 <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
                   {datos.infoLlegadaCiudad.zonasPeruanos}
                 </p>
               </div>
-              <div className="p-6 rounded-2xl bg-white border border-slate-200">
-                <span className="text-xs font-extrabold uppercase text-amber-700 block mb-2">
+              <div className="p-5 rounded-2xl bg-white border border-slate-200">
+                <span className="text-xs font-extrabold uppercase text-amber-700 block mb-1.5">
                   ✈️ Recomendación para tu viaje
                 </span>
                 <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
@@ -348,25 +349,28 @@ export default function SuperLandingMigratorioTemplate({
           </div>
         </section>
 
-        {/* 4. PREGUNTAS FRECUENTES + RUTAS RELACIONADAS */}
-        <section className="py-14 sm:py-18 bg-white">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6">
-            <h2 className="text-2xl sm:text-3xl font-black text-[#0a1628] text-center mb-8">
+        {/* 4. PREGUNTAS FRECUENTES EN ACORDEÓN COMPACTO + RUTAS RELACIONADAS */}
+        <section className="py-12 sm:py-16 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6">
+            <h2 className="text-2xl sm:text-3xl font-black text-[#0a1628] text-center mb-6">
               Preguntas Frecuentes sobre tu Viaje a {datos.ciudadDestino}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+            <div className="space-y-3 mb-12">
               {datos.faqs.map((faq) => (
-                <div
+                <details
                   key={faq.q}
-                  className="p-6 rounded-2xl bg-slate-50 border border-slate-200"
+                  className="group rounded-2xl bg-slate-50 border border-slate-200 px-5 py-4 transition-colors open:bg-white open:border-amber-400"
                 >
-                  <h3 className="text-sm font-black text-[#0a1628] mb-2">
-                    {faq.q}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  <summary className="flex items-center justify-between gap-3 cursor-pointer list-none text-sm font-extrabold text-[#0a1628]">
+                    <span>{faq.q}</span>
+                    <span className="text-slate-400 group-open:rotate-180 transition-transform text-xs shrink-0">
+                      ▼
+                    </span>
+                  </summary>
+                  <p className="mt-2.5 pt-2.5 border-t border-slate-100 text-xs sm:text-sm text-slate-600 leading-relaxed">
                     {faq.a}
                   </p>
-                </div>
+                </details>
               ))}
             </div>
 

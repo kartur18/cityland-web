@@ -25,8 +25,8 @@ const PRIMARY_LINKS: {
   { label: "Visas", href: "/visas" },
 ];
 
-const TOP_BAR_LINKS: { label: string; href: string }[] = [
-  { label: "🇪🇺 1,000 Paquetes Migratorios ($699)", href: "/paquetes-migratorios" },
+const TOP_BAR_LINKS: { label: string; href: string; flag?: string }[] = [
+  { label: "1,000 Paquetes Migratorios ($699)", href: "/paquetes-migratorios", flag: "Europa" },
   { label: "🔍 Catálogo (+10,000 Ofertas)", href: "/directorio#buscador" },
   { label: "✈️ Guía Europa 2026 (BOE)", href: "/guia-europa" },
   { label: "Seguros 30.000€", href: "/seguros" },
@@ -35,8 +35,12 @@ const TOP_BAR_LINKS: { label: string; href: string }[] = [
   { label: "Viajes Corporativos", href: "/empresas" },
 ];
 
-const ALL_MOBILE_LINKS: { label: string; href: string; highlight?: boolean }[] = [
-  { label: "🇪🇺 Paquetes Migratorios Europa ($699 · $799 · $899 · $999)", href: "/paquetes-migratorios", highlight: true },
+const ALL_MOBILE_LINKS: {
+  label: string;
+  href: string;
+  highlight?: boolean;
+  flag?: string;
+}[] = [
   { label: "🔍 Buscador de +10,000 Ofertas y Hoteles", href: "/directorio#buscador", highlight: true },
   ...PRIMARY_LINKS,
   ...TOP_BAR_LINKS.slice(2),
@@ -81,9 +85,12 @@ export default function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="hover:text-white font-semibold transition-colors whitespace-nowrap"
+                  className="inline-flex items-center gap-1.5 hover:text-white font-semibold transition-colors whitespace-nowrap"
                 >
-                  {item.label}
+                  {item.flag && (
+                    <FlagIcon pais={item.flag} className="w-3.5 h-2.5 shrink-0" />
+                  )}
+                  <span>{item.label}</span>
                 </Link>
               ))}
               <span className="text-slate-600">|</span>
@@ -248,7 +255,12 @@ export default function Navbar() {
                 link.highlight ? "text-red-600" : "text-[#0a1628]"
               }`}
             >
-              <span>{link.label}</span>
+              <span className="inline-flex items-center gap-2">
+                {link.flag && (
+                  <FlagIcon pais={link.flag} className="w-4 h-3 shrink-0" />
+                )}
+                <span>{link.label}</span>
+              </span>
               <span className="text-xs text-slate-400">→</span>
             </Link>
           ))}

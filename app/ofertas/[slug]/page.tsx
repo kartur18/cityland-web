@@ -137,23 +137,26 @@ export default async function OfertaComercialPage({ params }: Props) {
       <AirlineLandingTemplate config={item.config} breadcrumbs={migas}>
         {item.faqs.length > 0 && (
           <section className="py-12 bg-slate-50 border-t border-slate-200/80">
-            <div className="max-w-5xl mx-auto px-4 sm:px-6">
-              <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a1628] tracking-tight mb-6">
-                Preguntas Frecuentes: {item.titulo}
+            <div className="max-w-4xl mx-auto px-4 sm:px-6">
+              <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a1628] tracking-tight mb-6 text-center">
+                Preguntas Frecuentes
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-3">
                 {item.faqs.map((f) => (
-                  <div
+                  <details
                     key={f.q}
-                    className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-2xs"
+                    className="group bg-white rounded-2xl px-5 py-4 border border-slate-200/90 shadow-2xs transition-colors open:border-amber-400"
                   >
-                    <h3 className="text-sm font-extrabold text-[#0a1628] mb-2">
-                      {f.q.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
-                    </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed">
+                    <summary className="flex items-center justify-between gap-3 cursor-pointer list-none text-sm font-extrabold text-[#0a1628]">
+                      <span>{f.q.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}</span>
+                      <span className="text-slate-400 group-open:rotate-180 transition-transform text-xs shrink-0">
+                        ▼
+                      </span>
+                    </summary>
+                    <p className="mt-2.5 pt-2.5 border-t border-slate-100 text-xs sm:text-sm text-slate-600 leading-relaxed">
                       {f.a.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                     </p>
-                  </div>
+                  </details>
                 ))}
               </div>
             </div>

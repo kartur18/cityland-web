@@ -2284,65 +2284,56 @@ function construirLos4Planes(
 
 function construirExplicacionIdaYVuelta(ciudad: string, pais: string) {
   return {
-    pregunta: `¿Es pasaje de ida y vuelta a ${ciudad}? ¿Por qué cuesta desde $699 y no $1,500 dólares?`,
-    respuestaDirecta: `Te hablamos con total sinceridad y en sencillo: si tú viajas para quedarte en ${ciudad} (${pais}) por trabajo, familia o un nuevo comienzo, NO tiene sentido que gastes $1,500 a $1,800 dólares comprando un avión de regreso al que no te vas a subir.`,
-    ahorroExplicado: `Pero como en el counter del Aeropuerto Jorge Chávez en Lima y en Migraciones de Europa sí es obligatorio presentar boleto de regreso y hotel como turista, nuestro Paquete Migratorio te resuelve todo legalmente por una fracción del precio:`,
+    pregunta: `¿Qué incluye tu Paquete Migratorio a ${ciudad}?`,
+    respuestaDirecta: `Viaja a ${ciudad} (${pais}) con toda tu carpeta lista para el aeropuerto sin pagar el doble por un retorno cerrado que no vas a usar.`,
+    ahorroExplicado: `Estos son los 5 documentos incluidos en tu paquete:`,
     documentosIncluidos: [
       {
         icono: "✈️",
-        titulo: `1. Tu pasaje de avión de ida a ${ciudad}`,
-        descripcion:
-          "Boleto aéreo real y emitido a tu nombre para volar desde el Aeropuerto Internacional Jorge Chávez de Lima hacia tu destino en Europa.",
+        titulo: `1. Pasaje de avión de ida a ${ciudad}`,
+        descripcion: "Boleto aéreo emitido a tu nombre saliendo desde Lima.",
       },
       {
         icono: "🎫",
-        titulo: "2. Tu boleto de regreso reservado para Migraciones",
-        descripcion:
-          "24 horas antes de tu vuelo activamos en el sistema oficial una reserva de regreso a Lima a tu nombre. Así muestras tu ida y vuelta en el aeropuerto sin pagar por un vuelo de vuelta que no vas a usar.",
+        titulo: "2. Boleto de regreso reservado",
+        descripcion: "Reserva de retorno activa en sistema 24h antes para Migraciones.",
       },
       {
         icono: "🏨",
-        titulo: `3. Tu reserva de hotel confirmada en ${ciudad}`,
-        descripcion:
-          "Si no tienes Carta de Invitación policial de un familiar, te entregamos tu reserva de hotel confirmada por todos los días que declararás en tu viaje.",
+        titulo: `3. Reserva de hotel en ${ciudad}`,
+        descripcion: "Alojamiento confirmado o cuadre con tu Carta de Invitación.",
       },
       {
         icono: "🛡️",
-        titulo: "4. Tu seguro médico de viaje obligatorio",
-        descripcion:
-          "Póliza de asistencia médica internacional con cobertura de 30.000 euros válida en España, Italia, Francia y todo el Espacio Schengen.",
+        titulo: "4. Seguro médico Schengen 30.000€",
+        descripcion: "Póliza internacional obligatoria sin deducible para toda Europa.",
       },
       {
         icono: "📋",
-        titulo: "5. Tu check-in hecho y preparación paso a paso",
-        descripcion:
-          "Nosotros hacemos tu check-in 24 horas antes y te explicamos en simple qué preguntas hace el oficial de Migraciones, cómo responder con seguridad y cuánto llevar de bolsa de viaje.",
+        titulo: "5. Check-in 24h antes y asesoría",
+        descripcion: "Tarjetas de embarque listas y guía práctica 1 a 1 para tu viaje.",
       },
     ],
   };
 }
 
-function construirFaqsPeruano(ciudad: string, pais: string): { q: string; a: string }[] {
+function construirFaqsPeruano(ciudad: string, _pais: string): { q: string; a: string }[] {
   return [
     {
-      q: `¿De qué depende que el paquete a ${ciudad} cueste $699, $799, $899 o $999?`,
-      a: `Depende de la fecha en que quieras viajar: el Plan de $699 aplica comprando con anticipación para fines de Febrero, Marzo, Abril y Mayo. El Plan Smart de $799 aplica para temporada media (Octubre, Noviembre, Junio y Septiembre) e incluye check-in y asesoría 1 a 1. El Plan Plus de $899 es para fechas cercanas o vuelos con conexión, y el Plan Full de $999 es para temporada alta (Diciembre, Julio y Agosto) o cuando deseas incluir maleta grande de 23 kg en bodega.`,
-    },
-    {
-      q: `¿Me van a dejar subir al avión en Lima e ingresar a ${ciudad} con este paquete?`,
-      a: `Sí, porque tu carpeta migratoria incluye exactamente todos los documentos que revisa la aerolínea en el Aeropuerto Jorge Chávez y las autoridades en Europa: tu pasaje de ida emitido, tu boleto de regreso reservado activo en sistema el día de tu vuelo, tu reserva de hotel confirmada (o ajuste a tu Carta de Invitación) y tu seguro médico de viaje. Recuerda siempre llevar tu pasaporte vigente y tu bolsa de viaje económica.`,
+      q: `¿Puedo embarcar en Lima e ingresar a ${ciudad} con este paquete?`,
+      a: `Sí. Tu carpeta incluye los 5 documentos que revisan la aerolínea en Lima y Migraciones en Europa: pasaje de ida, retorno reservado en sistema, hotel, seguro 30.000€ y check-in.`,
     },
     {
       q: `¿Cómo funciona la separación con el 50%?`,
-      a: `Congelas el precio de tu paquete abonando solo el 50% de inicial ($350 USD en el plan de $699, $400 USD en el plan de $799, $450 USD en el plan de $899 o $500 USD en el plan de $999). El otro 50% lo terminas de pagar en partes antes de tu fecha de vuelo.`,
-    },
-    {
-      q: `¿Tienen oficina física en Lima donde pueda ir en persona a pagar y recoger mis documentos?`,
-      a: `¡Claro que sí! Somos Cityland Travel E.I.R.L. (RUC 20614914239). Te esperamos en nuestra oficina de Av. Antúnez de Mayolo N.° 814, Los Olivos, Lima, de lunes a sábado de 9:00 a. m. a 7:00 p. m. También atendemos a clientes de todo el Perú por WhatsApp y videollamada.`,
+      a: `Congelas tu tarifa hoy abonando el 50% de inicial y completas el otro 50% en cuotas programadas antes de tu fecha de vuelo.`,
     },
     {
       q: `¿Necesito tener Carta de Invitación de un familiar en ${ciudad}?`,
-      a: `No es necesario. Si no tienes Carta de Invitación, nuestro paquete ya incluye una Reserva de Hotel confirmada en ${ciudad} a tu nombre para que acredites tu alojamiento como turista. Y si ya tienes tu Carta de Invitación original, ajustamos las fechas de tu boleto de regreso y seguro médico exactamente a los días de tu carta.`,
+      a: `No es necesario. Tu paquete ya incluye Reserva de Hotel confirmada en ${ciudad}; y si tienes Carta de Invitación, cuadramos tus fechas a tu carta.`,
+    },
+    {
+      q: `¿Dónde queda su oficina física para atenderme en persona?`,
+      a: `Te esperamos en Av. Antúnez de Mayolo 814, Los Olivos, Lima (Cityland Travel E.I.R.L. · RUC 20614914239), o por WhatsApp desde todo el Perú.`,
     },
   ];
 }

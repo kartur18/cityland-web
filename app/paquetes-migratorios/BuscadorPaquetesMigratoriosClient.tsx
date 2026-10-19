@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import FlagIcon from "@/components/icons/FlagIcon";
 import { buildWhatsAppHref } from "@/components/constantes";
 import {
   PLANES_MIGRATORIOS_OFICIALES,
@@ -25,13 +26,17 @@ export interface ItemResumenSuperLanding {
   precioDesdeUSD: number;
 }
 
-const PESTAÑAS_SILO: { id: "todos" | SiloMigratorioId; etiqueta: string }[] = [
-  { id: "todos", etiqueta: "Todas las rutas (1,000)" },
-  { id: "espana", etiqueta: "🇪🇸 España (400)" },
-  { id: "italia", etiqueta: "🇮🇹 Italia (250)" },
-  { id: "francia-europa", etiqueta: "🇫🇷 Francia y Europa (150)" },
-  { id: "salidas-peru", etiqueta: "🇵🇪 Salidas Perú (100)" },
-  { id: "guias-dudas", etiqueta: "🛡️ Guías Migratorias (100)" },
+const PESTAÑAS_SILO: {
+  id: "todos" | SiloMigratorioId;
+  etiqueta: string;
+  bandera?: string;
+}[] = [
+  { id: "todos", etiqueta: "Todas las rutas (1,000)", bandera: "Europa" },
+  { id: "espana", etiqueta: "España (400)", bandera: "España" },
+  { id: "italia", etiqueta: "Italia (250)", bandera: "Italia" },
+  { id: "francia-europa", etiqueta: "Francia y Europa (150)", bandera: "Francia" },
+  { id: "salidas-peru", etiqueta: "Salidas Perú (100)", bandera: "Perú" },
+  { id: "guias-dudas", etiqueta: "Guías Migratorias (100)" },
 ];
 
 function limpiarNombrePlan(nombre: string): string {
@@ -206,13 +211,16 @@ export default function BuscadorPaquetesMigratoriosClient({
                   setSiloActivo(tab.id);
                   setLimiteVisible(24);
                 }}
-                className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all cursor-pointer ${
+                className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all cursor-pointer ${
                   activo
                     ? "bg-slate-900 text-amber-400 shadow-xs"
                     : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-100"
                 }`}
               >
-                {tab.etiqueta}
+                {tab.bandera && (
+                  <FlagIcon pais={tab.bandera} className="w-4 h-3 shrink-0" />
+                )}
+                <span>{tab.etiqueta}</span>
               </button>
             );
           })}
@@ -236,8 +244,14 @@ export default function BuscadorPaquetesMigratoriosClient({
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-3 left-3">
-                      <span className="bg-slate-900/90 text-white text-[11px] font-extrabold px-3 py-1 rounded-full">
-                        {item.banderaPais} {item.ciudadDestino}, {item.paisDestino}
+                      <span className="inline-flex items-center gap-1.5 bg-slate-900/90 text-white text-[11px] font-extrabold px-3 py-1 rounded-full">
+                        <FlagIcon
+                          pais={item.paisDestino}
+                          className="w-3.5 h-2.5 shrink-0"
+                        />
+                        <span>
+                          {item.ciudadDestino}, {item.paisDestino}
+                        </span>
                       </span>
                     </div>
                   </div>
