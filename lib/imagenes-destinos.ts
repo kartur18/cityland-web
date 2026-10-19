@@ -105,65 +105,142 @@ const GALERIAS_ESPECIFICAS: Array<{
   // 2. ITALIA, FRANCIA Y RESTO DE EUROPA (Evaluados ANTES de España y Perú
   //    para que rutas combinadas como "Lima a Madrid y Roma/París/Lisboa" muestren la ciudad destino)
   // =========================================================================
+  // ── ITALIA (Reglas individuales por ciudad con su foto real verificada) ──
   {
-    match: /\b(venecia|padua)\b/,
-    galeria: [
-      "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1200&q=85",
-      "https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=1200&q=85",
-      "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=1200&q=85",
-      "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=85",
-      "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&q=85",
-    ],
+    match: /\bpadua\b/,
+    galeria: ["/images/destinos/padua.jpg", "/images/destinos/venecia.jpg", "/images/destinos/verona.jpg", "/images/destinos/bolonia.jpg", "/images/destinos/milan.webp"],
   },
   {
-    match: /\b(milan|turin|genova|bolonia|verona|bergamo|brescia|modena|parma)\b/,
-    galeria: [
-      "/images/destinos/milan.webp",
-      "https://images.unsplash.com/photo-1513581166391-887a96ddeafd?w=1200&q=85",
-      "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&q=85",
-      "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=1200&q=85",
-      "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1200&q=85",
-    ],
+    match: /\bvenecia\b/,
+    galeria: ["/images/destinos/venecia.jpg", "/images/destinos/padua.jpg", "/images/destinos/verona.jpg", "/images/destinos/milan.webp", "/images/destinos/roma.jpg"],
   },
   {
-    match: /\b(florencia|pisa|toscana|napoles|amalfi|amalfitana|capri|bari|catania|palermo)\b/,
-    galeria: [
-      "https://images.unsplash.com/photo-1543429257-3eb0b65d9c58?w=1200&q=85",
-      "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&q=85",
-      "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=1200&q=85",
-      "https://images.unsplash.com/photo-1533676802871-eca1ae998cd5?w=1200&q=85",
-      "/images/destinos/milan.webp",
-    ],
+    match: /\bturin\b/,
+    galeria: ["/images/destinos/turin.jpg", "/images/destinos/milan.webp", "/images/destinos/genova.jpg", "/images/destinos/como.jpg", "/images/destinos/roma.jpg"],
+  },
+  {
+    match: /\bgenova\b/,
+    galeria: ["/images/destinos/genova.jpg", "/images/destinos/turin.jpg", "/images/destinos/milan.webp", "/images/destinos/pisa.jpg", "/images/destinos/florencia.jpg"],
+  },
+  {
+    match: /\bbolonia\b/,
+    galeria: ["/images/destinos/bolonia.jpg", "/images/destinos/modena.jpg", "/images/destinos/parma.jpg", "/images/destinos/florencia.jpg", "/images/destinos/milan.webp"],
+  },
+  {
+    match: /\bverona\b/,
+    galeria: ["/images/destinos/verona.jpg", "/images/destinos/venecia.jpg", "/images/destinos/padua.jpg", "/images/destinos/milan.webp", "/images/destinos/brescia.jpg"],
+  },
+  {
+    match: /\bbergamo\b/,
+    galeria: ["/images/destinos/bergamo.jpg", "/images/destinos/milan.webp", "/images/destinos/brescia.jpg", "/images/destinos/como.jpg", "/images/destinos/monza.jpg"],
+  },
+  {
+    match: /\bbrescia\b/,
+    galeria: ["/images/destinos/brescia.jpg", "/images/destinos/bergamo.jpg", "/images/destinos/verona.jpg", "/images/destinos/milan.webp", "/images/destinos/como.jpg"],
+  },
+  {
+    match: /\bmodena\b/,
+    galeria: ["/images/destinos/modena.jpg", "/images/destinos/bolonia.jpg", "/images/destinos/parma.jpg", "/images/destinos/florencia.jpg", "/images/destinos/milan.webp"],
+  },
+  {
+    match: /\bparma\b/,
+    galeria: ["/images/destinos/parma.jpg", "/images/destinos/modena.jpg", "/images/destinos/bolonia.jpg", "/images/destinos/milan.webp", "/images/destinos/florencia.jpg"],
+  },
+  {
+    match: /\bmonza\b/,
+    galeria: ["/images/destinos/monza.jpg", "/images/destinos/milan.webp", "/images/destinos/como.jpg", "/images/destinos/bergamo.jpg", "/images/destinos/turin.jpg"],
+  },
+  {
+    match: /\bcomo\b/,
+    galeria: ["/images/destinos/como.jpg", "/images/destinos/milan.webp", "/images/destinos/monza.jpg", "/images/destinos/bergamo.jpg", "/images/destinos/turin.jpg"],
+  },
+  {
+    match: /\bvicenza\b/,
+    galeria: ["/images/destinos/vicenza.jpg", "/images/destinos/verona.jpg", "/images/destinos/padua.jpg", "/images/destinos/venecia.jpg", "/images/destinos/milan.webp"],
+  },
+  {
+    match: /\bmilan\b/,
+    galeria: ["/images/destinos/milan.webp", "/images/destinos/monza.jpg", "/images/destinos/como.jpg", "/images/destinos/bergamo.jpg", "/images/destinos/turin.jpg"],
+  },
+  {
+    match: /\bpisa\b/,
+    galeria: ["/images/destinos/pisa.jpg", "/images/destinos/florencia.jpg", "/images/destinos/prato.jpg", "/images/destinos/genova.jpg", "/images/destinos/roma.jpg"],
+  },
+  {
+    match: /\bprato\b/,
+    galeria: ["/images/destinos/prato.jpg", "/images/destinos/florencia.jpg", "/images/destinos/pisa.jpg", "/images/destinos/bolonia.jpg", "/images/destinos/roma.jpg"],
+  },
+  {
+    match: /\b(florencia|toscana)\b/,
+    galeria: ["/images/destinos/florencia.jpg", "/images/destinos/pisa.jpg", "/images/destinos/prato.jpg", "/images/destinos/bolonia.jpg", "/images/destinos/roma.jpg"],
+  },
+  {
+    match: /\b(napoles|amalfi|amalfitana|capri)\b/,
+    galeria: ["/images/destinos/napoles.jpg", "/images/destinos/roma.jpg", "/images/destinos/bari.jpg", "/images/destinos/palermo.jpg", "/images/destinos/catania.jpg"],
+  },
+  {
+    match: /\bbari\b/,
+    galeria: ["/images/destinos/bari.jpg", "/images/destinos/napoles.jpg", "/images/destinos/ancona.jpg", "/images/destinos/roma.jpg", "/images/destinos/catania.jpg"],
+  },
+  {
+    match: /\bcatania\b/,
+    galeria: ["/images/destinos/catania.jpg", "/images/destinos/palermo.jpg", "/images/destinos/napoles.jpg", "/images/destinos/bari.jpg", "/images/destinos/roma.jpg"],
+  },
+  {
+    match: /\bpalermo\b/,
+    galeria: ["/images/destinos/palermo.jpg", "/images/destinos/catania.jpg", "/images/destinos/napoles.jpg", "/images/destinos/roma.jpg", "/images/destinos/bari.jpg"],
+  },
+  {
+    match: /\bperugia\b/,
+    galeria: ["/images/destinos/perugia.jpg", "/images/destinos/florencia.jpg", "/images/destinos/roma.jpg", "/images/destinos/ancona.jpg", "/images/destinos/bolonia.jpg"],
+  },
+  {
+    match: /\bancona\b/,
+    galeria: ["/images/destinos/ancona.jpg", "/images/destinos/rimini.jpg", "/images/destinos/bolonia.jpg", "/images/destinos/bari.jpg", "/images/destinos/perugia.jpg"],
+  },
+  {
+    match: /\brimini\b/,
+    galeria: ["/images/destinos/rimini.jpg", "/images/destinos/bolonia.jpg", "/images/destinos/ancona.jpg", "/images/destinos/venecia.jpg", "/images/destinos/florencia.jpg"],
   },
   {
     match: /\b(roma|vaticano|italia)\b/,
-    galeria: [
-      "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=85",
-      "https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=1200&q=85",
-      "https://images.unsplash.com/photo-1529260830199-42c24126f198?w=1200&q=85",
-      "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1200&q=85",
-      "/images/destinos/milan.webp",
-    ],
+    galeria: ["/images/destinos/roma.jpg", "/images/destinos/florencia.jpg", "/images/destinos/venecia.jpg", "/images/destinos/milan.webp", "/images/destinos/napoles.jpg"],
+  },
+
+  // ── FRANCIA (Reglas individuales por ciudad con su foto real verificada) ──
+  {
+    match: /\blyon\b/,
+    galeria: ["/images/destinos/lyon.jpg", "/images/destinos/paris.webp", "/images/destinos/marsella.jpg", "/images/destinos/niza.jpg", "/images/destinos/toulouse.jpg"],
   },
   {
-    match: /\b(paris|francia|lyon|marsella|niza|cannes|monaco|toulouse|burdeos|lourdes|normandia|eurodisney|disneyland[- ]paris)\b/,
-    galeria: [
-      "/images/destinos/paris.webp",
-      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=85",
-      "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1200&q=85",
-      "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=1200&q=85",
-      "https://images.unsplash.com/photo-1549144511-f099e773c147?w=1200&q=85",
-    ],
+    match: /\bmarsella\b/,
+    galeria: ["/images/destinos/marsella.jpg", "/images/destinos/niza.jpg", "/images/destinos/lyon.jpg", "/images/destinos/toulouse.jpg", "/images/destinos/paris.webp"],
   },
   {
-    match: /amsterdam|paises[- ]bajos|holanda|bruselas|brujas|belgica/,
-    galeria: [
-      "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200&q=85",
-      "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?w=1200&q=85",
-      "https://images.unsplash.com/photo-1558551649-e44c8f992010?w=1200&q=85",
-      "https://images.unsplash.com/photo-1491557345352-5929e343eb89?w=1200&q=85",
-      IMG_HOTEL_LUJO_PISCINA,
-    ],
+    match: /\b(niza|cannes|monaco)\b/,
+    galeria: ["/images/destinos/niza.jpg", "/images/destinos/marsella.jpg", "/images/destinos/lyon.jpg", "/images/destinos/paris.webp", "/images/destinos/burdeos.jpg"],
+  },
+  {
+    match: /\btoulouse\b/,
+    galeria: ["/images/destinos/toulouse.jpg", "/images/destinos/burdeos.jpg", "/images/destinos/marsella.jpg", "/images/destinos/lyon.jpg", "/images/destinos/paris.webp"],
+  },
+  {
+    match: /\bburdeos\b/,
+    galeria: ["/images/destinos/burdeos.jpg", "/images/destinos/toulouse.jpg", "/images/destinos/lyon.jpg", "/images/destinos/paris.webp", "/images/destinos/niza.jpg"],
+  },
+  {
+    match: /\b(paris|francia|lourdes|normandia|eurodisney|disneyland[- ]paris)\b/,
+    galeria: ["/images/destinos/paris.webp", "/images/destinos/lyon.jpg", "/images/destinos/marsella.jpg", "/images/destinos/niza.jpg", "/images/destinos/burdeos.jpg"],
+  },
+
+  // ── RESTO DE EUROPA (Reglas individuales por ciudad) ──
+  {
+    match: /bruselas|brujas|belgica/,
+    galeria: ["/images/destinos/bruselas.jpg", "/images/destinos/amsterdam.jpg", "/images/destinos/paris.webp", "/images/destinos/frankfurt.jpg", IMG_HOTEL_LUJO_PISCINA],
+  },
+  {
+    match: /amsterdam|paises[- ]bajos|holanda/,
+    galeria: ["/images/destinos/amsterdam.jpg", "/images/destinos/bruselas.jpg", "/images/destinos/berlin.jpg", "/images/destinos/paris.webp", IMG_HOTEL_LUJO_PISCINA],
   },
   {
     match: /londres|manchester|edimburgo|escocia|dublin|irlanda|reino[- ]unido|inglaterra/,
@@ -176,180 +253,154 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /lisboa|oporto|\bfaro\b|fatima|portugal/,
-    galeria: [
-      "/images/destinos/lisboa.webp",
-      "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1200&q=85",
-      "https://images.unsplash.com/photo-1513735492246-483525079686?w=1200&q=85",
-      "https://images.unsplash.com/photo-1558102822-da570eb113ed?w=1200&q=85",
-      "https://images.unsplash.com/photo-1548707309-dcebeab9ea9b?w=1200&q=85",
-    ],
+    match: /\boporto\b/,
+    galeria: ["/images/destinos/oporto.jpg", "/images/destinos/lisboa.webp", "https://images.unsplash.com/photo-1513735492246-483525079686?w=1200&q=85", "/images/destinos/madrid.webp", IMG_HOTEL_LUJO_PISCINA],
   },
   {
-    match: /zurich|ginebra|basilea|lucerna|interlaken|zermatt|suiza|alpes/,
-    galeria: [
-      "/images/destinos/suiza-alpes.jpg",
-      "/images/destinos/zurich.jpg",
-      "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=1200&q=85",
-      "https://images.unsplash.com/photo-1527668752968-14dc70a27c95?w=1200&q=85",
-      IMG_HOTEL_LUJO_PISCINA,
-    ],
+    match: /lisboa|\bfaro\b|fatima|portugal/,
+    galeria: ["/images/destinos/lisboa.webp", "/images/destinos/oporto.jpg", "https://images.unsplash.com/photo-1513735492246-483525079686?w=1200&q=85", "https://images.unsplash.com/photo-1558102822-da570eb113ed?w=1200&q=85", "https://images.unsplash.com/photo-1548707309-dcebeab9ea9b?w=1200&q=85"],
   },
   {
-    match: /frankfurt|munich|berlin|hamburgo|dusseldorf|stuttgart|alemania|baviera|neuschwanstein/,
-    galeria: [
-      "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1200&q=85",
-      "https://images.unsplash.com/photo-1560969184-10fe8719e047?w=1200&q=85",
-      "https://images.unsplash.com/photo-1595867818082-083862f3d630?w=1200&q=85",
-      "https://images.unsplash.com/photo-1528728329032-2972f65dfb3f?w=1200&q=85",
-      IMG_HOTEL_LUJO_PISCINA,
-    ],
+    match: /\bginebra\b/,
+    galeria: ["/images/destinos/ginebra.jpg", "/images/destinos/zurich.jpg", "/images/destinos/suiza-alpes.jpg", "/images/destinos/lyon.jpg", IMG_HOTEL_LUJO_PISCINA],
+  },
+  {
+    match: /zurich|basilea|lucerna|interlaken|zermatt|suiza|alpes/,
+    galeria: ["/images/destinos/zurich.jpg", "/images/destinos/suiza-alpes.jpg", "/images/destinos/ginebra.jpg", "/images/destinos/munich.jpg", IMG_HOTEL_LUJO_PISCINA],
+  },
+  {
+    match: /\bberlin\b/,
+    galeria: ["/images/destinos/berlin.jpg", "/images/destinos/frankfurt.jpg", "/images/destinos/munich.jpg", "/images/destinos/praga.jpg", IMG_HOTEL_LUJO_PISCINA],
+  },
+  {
+    match: /\bmunich\b|baviera|neuschwanstein/,
+    galeria: ["/images/destinos/munich.jpg", "/images/destinos/frankfurt.jpg", "/images/destinos/berlin.jpg", "/images/destinos/viena.jpg", IMG_HOTEL_LUJO_PISCINA],
+  },
+  {
+    match: /frankfurt|hamburgo|dusseldorf|stuttgart|alemania/,
+    galeria: ["/images/destinos/frankfurt.jpg", "/images/destinos/berlin.jpg", "/images/destinos/munich.jpg", "/images/destinos/amsterdam.jpg", IMG_HOTEL_LUJO_PISCINA],
   },
   {
     match: /praga|republica[- ]checa/,
-    galeria: [
-      "/images/destinos/praga.jpg",
-      "/images/destinos/viena.jpg",
-      "/images/destinos/budapest.jpg",
-      "https://images.unsplash.com/photo-1528728329032-2972f65dfb3f?w=1200&q=85",
-      IMG_HOTEL_LUJO_PISCINA,
-    ],
+    galeria: ["/images/destinos/praga.jpg", "/images/destinos/viena.jpg", "/images/destinos/budapest.jpg", "/images/destinos/berlin.jpg", IMG_HOTEL_LUJO_PISCINA],
   },
   {
     match: /viena|salzburgo|austria/,
-    galeria: [
-      "/images/destinos/viena.jpg",
-      "/images/destinos/praga.jpg",
-      "/images/destinos/budapest.jpg",
-      "/images/destinos/suiza-alpes.jpg",
-      IMG_HOTEL_LUJO_PISCINA,
-    ],
+    galeria: ["/images/destinos/viena.jpg", "/images/destinos/praga.jpg", "/images/destinos/budapest.jpg", "/images/destinos/suiza-alpes.jpg", IMG_HOTEL_LUJO_PISCINA],
   },
   {
     match: /budapest|hungria|varsovia|cracovia|polonia|bucarest|rumania|zagreb|dubrovnik|plitvice|croacia/,
-    galeria: [
-      "/images/destinos/budapest.jpg",
-      "/images/destinos/praga.jpg",
-      "/images/destinos/viena.jpg",
-      "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200&q=85",
-      IMG_HOTEL_LUJO_PISCINA,
-    ],
+    galeria: ["/images/destinos/budapest.jpg", "/images/destinos/praga.jpg", "/images/destinos/viena.jpg", "/images/destinos/venecia.jpg", IMG_HOTEL_LUJO_PISCINA],
   },
   {
     match: /atenas|santorini|mykonos|grecia|islas[- ]griegas/,
-    galeria: [
-      "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1200&q=85",
-      "/images/destinos/atenas-acropolis.jpg",
-      "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1200&q=85",
-      "https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?w=1200&q=85",
-      IMG_RESORT_PISCINA_MAR,
-    ],
+    galeria: ["https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1200&q=85", "/images/destinos/atenas-acropolis.jpg", "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1200&q=85", "https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?w=1200&q=85", IMG_RESORT_PISCINA_MAR],
   },
   {
     match: /estocolmo|suecia|copenhague|dinamarca|oslo|noruega|fiordos|helsinki|finlandia|islandia|auroras/,
-    galeria: [
-      "https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=1200&q=85",
-      "https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?w=1200&q=85",
-      "/images/destinos/suiza-alpes.jpg",
-      "/images/destinos/zurich.jpg",
-      "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=1200&q=85",
-    ],
+    galeria: ["https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=1200&q=85", "https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?w=1200&q=85", "/images/destinos/suiza-alpes.jpg", "/images/destinos/zurich.jpg", "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=1200&q=85"],
   },
 
-  // =========================================================================
-  // 3. ESPAÑA (Granularidad por Ciudad, evaluada antes del fallback general de Madrid)
-  // =========================================================================
+  // ── ESPAÑA (Reglas individuales por ciudad con su foto real verificada) ──
   {
-    match: /barcelona|girona|tarragona|lleida|hospitalet|badalona|terrassa|sabadell|cataluna|sagrada[- ]familia/,
-    galeria: [
-      "/images/destinos/barcelona.webp",
-      "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&q=85",
-      "https://images.unsplash.com/photo-1511527661048-7fe73d85e9a4?w=1200&q=85",
-      "https://images.unsplash.com/photo-1561632669-7f55f7975606?w=1200&q=85",
-      "/images/espana/barajas.jpg",
-    ],
+    match: /\bhospitalet\b/,
+    galeria: ["/images/destinos/hospitalet.jpg", "/images/destinos/barcelona.webp", "/images/destinos/badalona.jpg", "/images/destinos/terrassa.jpg", "/images/espana/barajas.jpg"],
   },
   {
-    match: /valencia|alicante|elche|murcia|cartagena[- ]espana|castellon/,
-    galeria: [
-      "/images/destinos/valencia-artes.jpg",
-      "https://images.unsplash.com/photo-1561632669-7f55f7975606?w=1200&q=85",
-      "/images/destinos/mallorca.jpg",
-      "https://images.unsplash.com/photo-1558642084-fd07fae5282e?w=1200&q=85",
-      "/images/espana/barajas.jpg",
-    ],
+    match: /\bbadalona\b/,
+    galeria: ["/images/destinos/badalona.jpg", "/images/destinos/barcelona.webp", "/images/destinos/hospitalet.jpg", "/images/destinos/sabadell.jpg", "/images/espana/barajas.jpg"],
   },
   {
-    match: /^(?!.*cordoba[- ]argentina).*\b(sevilla|granada|cordoba|cordoba[- ]espana|jerez|andalucia|alhambra|cadiz|huelva)\b/,
-    galeria: [
-      "https://images.unsplash.com/photo-1558642084-fd07fae5282e?w=1200&q=85",
-      "https://images.unsplash.com/photo-1509840841025-9088ba78a826?w=1200&q=85",
-      "https://images.unsplash.com/photo-1561632669-7f55f7975606?w=1200&q=85",
-      "/images/destinos/valencia-artes.jpg",
-      "/images/espana/barajas.jpg",
-    ],
+    match: /\bterrassa\b/,
+    galeria: ["/images/destinos/terrassa.jpg", "/images/destinos/sabadell.jpg", "/images/destinos/barcelona.webp", "/images/destinos/hospitalet.jpg", "/images/espana/barajas.jpg"],
+  },
+  {
+    match: /\bsabadell\b/,
+    galeria: ["/images/destinos/sabadell.jpg", "/images/destinos/terrassa.jpg", "/images/destinos/barcelona.webp", "/images/destinos/badalona.jpg", "/images/espana/barajas.jpg"],
+  },
+  {
+    match: /barcelona|girona|tarragona|lleida|cataluna|sagrada[- ]familia/,
+    galeria: ["/images/destinos/barcelona.webp", "/images/destinos/badalona.jpg", "/images/destinos/hospitalet.jpg", "/images/destinos/terrassa.jpg", "/images/espana/barajas.jpg"],
+  },
+  {
+    match: /\balicante\b/,
+    galeria: ["/images/destinos/alicante.jpg", "/images/destinos/elche.jpg", "/images/destinos/valencia-artes.jpg", "/images/destinos/murcia.jpg", "/images/espana/barajas.jpg"],
+  },
+  {
+    match: /\belche\b/,
+    galeria: ["/images/destinos/elche.jpg", "/images/destinos/alicante.jpg", "/images/destinos/valencia-artes.jpg", "/images/destinos/murcia.jpg", "/images/espana/barajas.jpg"],
+  },
+  {
+    match: /cartagena[- ]espana/,
+    galeria: ["/images/destinos/cartagena-espana.jpg", "/images/destinos/murcia.jpg", "/images/destinos/alicante.jpg", "/images/destinos/valencia-artes.jpg", "/images/espana/barajas.jpg"],
+  },
+  {
+    match: /\bmurcia\b/,
+    galeria: ["/images/destinos/murcia.jpg", "/images/destinos/cartagena-espana.jpg", "/images/destinos/alicante.jpg", "/images/destinos/valencia-artes.jpg", "/images/espana/barajas.jpg"],
+  },
+  {
+    match: /valencia|castellon/,
+    galeria: ["/images/destinos/valencia-artes.jpg", "/images/destinos/alicante.jpg", "/images/destinos/mallorca.jpg", "/images/destinos/murcia.jpg", "/images/espana/barajas.jpg"],
+  },
+  {
+    match: /\b(granada|alhambra)\b/,
+    galeria: ["/images/destinos/granada.jpg", "/images/destinos/sevilla.jpg", "/images/destinos/malaga.jpg", "/images/destinos/jerez.jpg", "/images/espana/barajas.jpg"],
+  },
+  {
+    match: /\bjerez\b/,
+    galeria: ["/images/destinos/jerez.jpg", "/images/destinos/sevilla.jpg", "/images/destinos/malaga.jpg", "/images/destinos/granada.jpg", "/images/espana/barajas.jpg"],
+  },
+  {
+    match: /^(?!.*cordoba[- ]argentina).*\b(sevilla|cordoba|cordoba[- ]espana|andalucia|cadiz|huelva)\b/,
+    galeria: ["/images/destinos/sevilla.jpg", "/images/destinos/granada.jpg", "/images/destinos/malaga.jpg", "/images/destinos/jerez.jpg", "/images/espana/barajas.jpg"],
   },
   {
     match: /\b(malaga|marbella|costa[- ]del[- ]sol|almeria)\b/,
-    galeria: [
-      "https://images.unsplash.com/photo-1561632669-7f55f7975606?w=1200&q=85",
-      "https://images.unsplash.com/photo-1558642084-fd07fae5282e?w=1200&q=85",
-      "/images/destinos/mallorca.jpg",
-      "https://images.unsplash.com/photo-1509840841025-9088ba78a826?w=1200&q=85",
-      "/images/espana/barajas.jpg",
-    ],
+    galeria: ["/images/destinos/malaga.jpg", "/images/destinos/sevilla.jpg", "/images/destinos/granada.jpg", "/images/destinos/mallorca.jpg", "/images/espana/barajas.jpg"],
   },
   {
     match: /\b(mallorca|palma[- ]de[- ]mallorca|ibiza|menorca|baleares)\b/,
-    galeria: [
-      "/images/destinos/mallorca.jpg",
-      "https://images.unsplash.com/photo-1561632669-7f55f7975606?w=1200&q=85",
-      "/images/destinos/tenerife.jpg",
-      "/images/destinos/barcelona.webp",
-      "/images/espana/barajas.jpg",
-    ],
+    galeria: ["/images/destinos/mallorca.jpg", "/images/destinos/tenerife.jpg", "/images/destinos/valencia-artes.jpg", "/images/destinos/barcelona.webp", "/images/espana/barajas.jpg"],
   },
   {
     match: /\b(tenerife|gran[- ]canaria|canarias|teide)\b/,
-    galeria: [
-      "/images/destinos/tenerife.jpg",
-      "/images/destinos/mallorca.jpg",
-      "https://images.unsplash.com/photo-1561632669-7f55f7975606?w=1200&q=85",
-      IMG_PLAYA_SOLEADA,
-      "/images/espana/barajas.jpg",
-    ],
+    galeria: ["/images/destinos/tenerife.jpg", "/images/destinos/mallorca.jpg", "/images/destinos/malaga.jpg", IMG_PLAYA_SOLEADA, "/images/espana/barajas.jpg"],
   },
   {
-    // Norte de España: Bilbao, San Sebastián (excluyendo Alcobendas y San Sebastián de los Reyes en Madrid), Navarra y Logroño (La Rioja)
-    match: /^(?!.*(alcobendas|de[- ]los[- ]reyes)).*\b(bilbao|vitoria|san[- ]sebastian|pais[- ]vasco|pamplona|navarra|logrono|la[- ]rioja)\b/,
-    galeria: [
-      "/images/destinos/bilbao-guggenheim.jpg",
-      "/images/destinos/valencia-artes.jpg",
-      "https://images.unsplash.com/photo-1558642084-fd07fae5282e?w=1200&q=85",
-      "/images/destinos/barcelona.webp",
-      "/images/espana/barajas.jpg",
-    ],
+    match: /\bvitoria\b/,
+    galeria: ["/images/destinos/vitoria.jpg", "/images/destinos/bilbao-guggenheim.jpg", "/images/destinos/pamplona.jpg", "/images/destinos/zaragoza.jpg", "/images/espana/barajas.jpg"],
   },
   {
-    match: /\b(santiago[- ]de[- ]compostela|vigo|la[- ]coruna|a[- ]coruna|galicia|oviedo|gijon|asturias|santander)\b/,
-    galeria: [
-      "/images/destinos/bilbao-guggenheim.jpg",
-      "https://images.unsplash.com/photo-1509840841025-9088ba78a826?w=1200&q=85",
-      "https://images.unsplash.com/photo-1558642084-fd07fae5282e?w=1200&q=85",
-      "/images/destinos/valencia-artes.jpg",
-      "/images/espana/barajas.jpg",
-    ],
+    match: /\b(pamplona|navarra)\b/,
+    galeria: ["/images/destinos/pamplona.jpg", "/images/destinos/vitoria.jpg", "/images/destinos/bilbao-guggenheim.jpg", "/images/destinos/zaragoza.jpg", "/images/espana/barajas.jpg"],
   },
   {
-    // Castilla, Aragón y Extremadura (excluyendo menciones a Valladolid de Yucatán en tours de Cancún/Chichén Itzá)
-    match: /^(?!.*(cancun|chichen[- ]itza|cenote|riviera[- ]maya|yucatan|mexico)).*\b(zaragoza|salamanca|valladolid|valladolid[- ]espana|burgos|leon[- ]espana|leon[- ]zamora|badajoz|caceres|extremadura|albacete|ciudad[- ]real)\b/,
-    galeria: [
-      "https://images.unsplash.com/photo-1509840841025-9088ba78a826?w=1200&q=85",
-      "https://images.unsplash.com/photo-1558642084-fd07fae5282e?w=1200&q=85",
-      "/images/espana/palacio-real.jpg",
-      "/images/espana/plaza-mayor.jpg",
-      "/images/espana/barajas.jpg",
-    ],
+    match: /^(?!.*(alcobendas|de[- ]los[- ]reyes)).*\b(bilbao|san[- ]sebastian|pais[- ]vasco|logrono|la[- ]rioja)\b/,
+    galeria: ["/images/destinos/bilbao-guggenheim.jpg", "/images/destinos/vitoria.jpg", "/images/destinos/pamplona.jpg", "/images/destinos/gijon.jpg", "/images/espana/barajas.jpg"],
+  },
+  {
+    match: /\bvigo\b/,
+    galeria: ["/images/destinos/vigo.jpg", "/images/destinos/a-coruna.jpg", "/images/destinos/gijon.jpg", "/images/destinos/oviedo.jpg", "/images/espana/barajas.jpg"],
+  },
+  {
+    match: /\b(a[- ]coruna|la[- ]coruna)\b/,
+    galeria: ["/images/destinos/a-coruna.jpg", "/images/destinos/vigo.jpg", "/images/destinos/gijon.jpg", "/images/destinos/oviedo.jpg", "/images/espana/barajas.jpg"],
+  },
+  {
+    match: /\bgijon\b/,
+    galeria: ["/images/destinos/gijon.jpg", "/images/destinos/oviedo.jpg", "/images/destinos/a-coruna.jpg", "/images/destinos/bilbao-guggenheim.jpg", "/images/espana/barajas.jpg"],
+  },
+  {
+    match: /\b(oviedo|asturias|santiago[- ]de[- ]compostela|galicia|santander)\b/,
+    galeria: ["/images/destinos/oviedo.jpg", "/images/destinos/gijon.jpg", "/images/destinos/a-coruna.jpg", "/images/destinos/vigo.jpg", "/images/espana/barajas.jpg"],
+  },
+  {
+    match: /\bzaragoza\b/,
+    galeria: ["/images/destinos/zaragoza.jpg", "/images/destinos/valladolid.jpg", "/images/destinos/pamplona.jpg", "/images/espana/palacio-real.jpg", "/images/espana/barajas.jpg"],
+  },
+  {
+    match: /^(?!.*(cancun|chichen[- ]itza|cenote|riviera[- ]maya|yucatan|mexico)).*\b(salamanca|valladolid|valladolid[- ]espana|burgos|leon[- ]espana|leon[- ]zamora|badajoz|caceres|extremadura|albacete|ciudad[- ]real)\b/,
+    galeria: ["/images/destinos/valladolid.jpg", "/images/destinos/zaragoza.jpg", "/images/espana/palacio-real.jpg", "/images/espana/plaza-mayor.jpg", "/images/espana/barajas.jpg"],
   },
   {
     match: /madrid|toledo|segovia|avila|alcala[- ]de[- ]henares|aranjuez|guadalajara[- ]via[- ]madrid|barajas|\bespana\b/,

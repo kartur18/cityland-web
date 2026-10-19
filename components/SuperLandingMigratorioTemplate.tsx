@@ -67,9 +67,7 @@ export default function SuperLandingMigratorioTemplate({
       <Navbar />
 
       <main className="flex-1 pb-20 sm:pb-0">
-        {/* ═══════════════════════════════════════════════════════════════════════
-            1. HERO SIMÉTRICO: MENSAJE CLARO + FOTO DEL DESTINO Y 5 DOCUMENTOS
-           ═══════════════════════════════════════════════════════════════════════ */}
+        {/* 1. HERO SIMÉTRICO: MENSAJE CLARO + FOTO REAL ÚNICA DEL DESTINO (SIN CAJAS ANIDADAS) */}
         <section
           className={`relative bg-gradient-to-br ${estilo.heroBg} text-white pt-6 pb-12 sm:pt-10 sm:pb-16 overflow-hidden border-b-4 ${estilo.borderHero}`}
         >
@@ -129,29 +127,29 @@ export default function SuperLandingMigratorioTemplate({
                     href={waCotizarGeneral}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-wa-pulse inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#1fb858] text-white font-extrabold px-6 py-4 rounded-2xl shadow-xl text-sm sm:text-base whitespace-nowrap transition-all cursor-pointer"
+                    className="btn-wa-pulse inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#1fb858] text-white font-extrabold px-7 py-4 rounded-2xl shadow-xl text-sm sm:text-base whitespace-nowrap transition-all cursor-pointer"
                   >
                     <WhatsAppIcon className="w-5 h-5" />
                     <span>Cotizar por WhatsApp</span>
                   </a>
                   <a
                     href="#planes-precios"
-                    className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold px-5 py-4 rounded-2xl text-xs sm:text-sm whitespace-nowrap transition-all"
+                    className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold px-6 py-4 rounded-2xl text-xs sm:text-sm whitespace-nowrap transition-all"
                   >
                     <span>Ver los 4 planes por fecha ↓</span>
                   </a>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs text-slate-300 pt-2">
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs text-slate-300 pt-2 border-t border-white/15">
                   <span>✓ Agencia Formal RUC 20614914239</span>
                   <span>✓ Oficina en Av. Antúnez de Mayolo 814, Los Olivos</span>
                 </div>
               </div>
 
-              {/* Derecha: Foto del Destino + Los 5 Documentos Incluidos */}
+              {/* Derecha: Foto grande del Destino + Lista limpia sin recuadros internos */}
               <div className="lg:col-span-6">
                 <div className="bg-white text-slate-900 rounded-3xl shadow-2xl overflow-hidden border border-white/20">
-                  <div className="relative h-48 sm:h-52 w-full bg-slate-100 overflow-hidden">
+                  <div className="relative h-56 sm:h-64 w-full bg-slate-100 overflow-hidden">
                     <Image
                       src={datos.imagenHero}
                       alt={`${datos.ciudadDestino}, ${datos.pais} - ${datos.monumentoDestacado}`}
@@ -161,7 +159,7 @@ export default function SuperLandingMigratorioTemplate({
                       className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/80 via-transparent to-transparent" />
-                    <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
+                    <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between text-white">
                       <span className="inline-flex items-center gap-1.5 text-xs font-bold bg-black/45 backdrop-blur-xs px-3 py-1 rounded-full">
                         <FlagIcon pais={datos.banderaPais} className="w-3.5 h-2.5" />
                         <span>{datos.monumentoDestacado}</span>
@@ -172,30 +170,24 @@ export default function SuperLandingMigratorioTemplate({
                     </div>
                   </div>
 
-                  <div className="p-5">
+                  <div className="p-5 sm:p-6">
                     <h2 className="text-sm sm:text-base font-extrabold text-[#0a1628] mb-3">
-                      📂 Los 5 documentos incluidos en tu paquete a {datos.ciudadDestino}:
+                      Los 5 documentos incluidos en tu paquete a {datos.ciudadDestino}:
                     </h2>
-                    <div className="space-y-2">
-                      {datos.explicacionIdaYVuelta.documentosIncluidos.map((doc, idx) => (
-                        <div
+                    <ul className="divide-y divide-slate-100 text-xs sm:text-sm text-slate-700">
+                      {datos.explicacionIdaYVuelta.documentosIncluidos.map((doc) => (
+                        <li
                           key={doc.titulo}
-                          className="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200/80"
+                          className="py-2 flex items-center gap-2.5"
                         >
-                          <span className="w-5 h-5 rounded-md bg-[#0a1628] text-amber-300 text-[11px] font-black flex items-center justify-center shrink-0 mt-0.5">
-                            {idx + 1}
+                          <span className="text-emerald-600 font-black shrink-0">✓</span>
+                          <span>
+                            <strong className="text-[#0a1628]">{doc.titulo}:</strong>{" "}
+                            <span className="text-slate-600">{doc.descripcion}</span>
                           </span>
-                          <div>
-                            <h3 className="text-xs font-extrabold text-[#0a1628] leading-snug">
-                              {doc.titulo}
-                            </h3>
-                            <p className="text-[11px] text-slate-600 leading-relaxed">
-                              {doc.descripcion}
-                            </p>
-                          </div>
-                        </div>
+                        </li>
                       ))}
-                    </div>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -203,9 +195,7 @@ export default function SuperLandingMigratorioTemplate({
           </div>
         </section>
 
-        {/* ═══════════════════════════════════════════════════════════════════════
-            2. LOS 4 PLANES OFICIALES SEGÚN FECHA (SIMÉTRICOS Y SIN REPETICIONES)
-           ═══════════════════════════════════════════════════════════════════════ */}
+        {/* 2. LOS 4 PLANES OFICIALES SEGÚN FECHA (TARJETAS LIMPIAS SIN RECUADROS INTERNOS) */}
         <section id="planes-precios" className="py-14 sm:py-18 bg-white border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="text-center max-w-2xl mx-auto mb-10">
@@ -231,33 +221,26 @@ export default function SuperLandingMigratorioTemplate({
                     key={plan.id}
                     className={`rounded-3xl p-6 flex flex-col justify-between h-full transition-shadow hover:shadow-lg ${
                       plan.destacado
-                        ? "bg-white border-2 border-emerald-500 shadow-md ring-2 ring-emerald-500/15"
+                        ? "bg-white border-2 border-amber-400 shadow-md"
                         : "bg-white border border-slate-200 shadow-xs"
                     }`}
                   >
                     <div>
-                      <div className="flex items-center justify-between gap-2 mb-3">
-                        <span
-                          className={`text-[11px] font-extrabold uppercase px-3 py-1 rounded-full ${plan.colorBadge}`}
-                        >
-                          {plan.etiqueta}
-                        </span>
-                        {plan.destacado && (
-                          <span className="text-[11px] font-black text-emerald-700">
-                            ★ Más pedido
-                          </span>
-                        )}
-                      </div>
+                      <span
+                        className={`inline-block text-[11px] font-extrabold uppercase px-3 py-1 rounded-full mb-3 ${plan.colorBadge}`}
+                      >
+                        {plan.etiqueta}
+                      </span>
 
                       <h3 className="text-xl font-black text-[#0a1628]">
                         {nombreLimpio}
                       </h3>
 
-                      <p className="text-xs font-semibold text-amber-800 bg-amber-50 border border-amber-200/80 rounded-xl p-2.5 mt-2.5 min-h-[52px] flex items-center">
+                      <p className="text-xs font-semibold text-red-600 mt-1 min-h-[34px] flex items-center">
                         📅 {plan.fechasIdeales}
                       </p>
 
-                      <div className="my-4 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80">
+                      <div className="my-4 py-3.5 border-y border-slate-100">
                         <div className="flex items-baseline gap-1">
                           <span className="text-xs font-bold text-slate-500">Desde</span>
                           <span className="text-3xl font-black text-[#0a1628]">
@@ -270,7 +253,7 @@ export default function SuperLandingMigratorioTemplate({
                         </span>
                       </div>
 
-                      <ul className="space-y-2 text-xs text-slate-700 mb-6">
+                      <ul className="space-y-2 text-xs text-slate-600 mb-6">
                         {plan.incluye.slice(0, 3).map((item) => (
                           <li key={item} className="flex items-start gap-2">
                             <span className="text-emerald-600 font-black mt-0.5 shrink-0">
@@ -286,11 +269,7 @@ export default function SuperLandingMigratorioTemplate({
                       href={waUrlPlan}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`w-full inline-flex items-center justify-center gap-2 font-extrabold py-3.5 px-4 rounded-xl text-xs sm:text-sm whitespace-nowrap transition-colors cursor-pointer ${
-                        plan.destacado
-                          ? "bg-[#25D366] hover:bg-[#1fb858] text-white"
-                          : "bg-[#0a1628] hover:bg-slate-800 text-white"
-                      }`}
+                      className="w-full inline-flex items-center justify-center gap-2 font-extrabold py-3.5 px-4 rounded-xl text-xs sm:text-sm whitespace-nowrap transition-colors cursor-pointer bg-[#25D366] hover:bg-[#1fb858] text-white"
                     >
                       <WhatsAppIcon className="w-4 h-4" />
                       <span>Elegir {nombreLimpio}</span>
@@ -323,18 +302,16 @@ export default function SuperLandingMigratorioTemplate({
           </div>
         </section>
 
-        {/* ═══════════════════════════════════════════════════════════════════════
-            3. GUÍA LOCAL Y FOTOS REALES DE LA CIUDAD DESTINO
-           ═══════════════════════════════════════════════════════════════════════ */}
+        {/* 3. GUÍA PRÁCTICA DE LLEGADA A LA CIUDAD (SIN REPETIR LA FOTO DEL HERO) */}
         <section className="py-14 sm:py-18 bg-slate-50 border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
               <div>
                 <span className="text-xs font-extrabold uppercase tracking-wider text-red-600 block mb-1">
-                  Destino Verificado · {datos.regionDestino}
+                  Guía Práctica de Destino · {datos.regionDestino}
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-black text-[#0a1628]">
-                  Tu Llegada a {datos.ciudadDestino} ({datos.pais})
+                  Información Clave para tu Llegada a {datos.ciudadDestino}
                 </h2>
               </div>
               <p className="text-xs sm:text-sm text-slate-600">
@@ -342,46 +319,26 @@ export default function SuperLandingMigratorioTemplate({
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
-              {datos.galeriaCiudad.map((imgUrl, idx) => (
-                <div
-                  key={`${imgUrl}-${idx}`}
-                  className="relative h-52 sm:h-60 rounded-2xl overflow-hidden border border-slate-200 bg-slate-100"
-                >
-                  <Image
-                    src={imgUrl}
-                    alt={`${datos.ciudadDestino} (${datos.pais}) - Vista ${idx + 1}`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover"
-                  />
-                  <div className="absolute bottom-3 left-3 bg-[#0a1628]/85 text-white text-[11px] font-bold px-3 py-1 rounded-full">
-                    📍 {datos.ciudadDestino}, {datos.pais}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              <div className="p-5 rounded-2xl bg-white border border-slate-200">
-                <span className="text-xs font-extrabold uppercase text-blue-700 block mb-1.5">
-                  🚆 Cómo ir del aeropuerto al centro
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="p-6 rounded-2xl bg-white border border-slate-200">
+                <span className="text-xs font-extrabold uppercase text-blue-700 block mb-2">
+                  🚆 Transporte al centro
                 </span>
                 <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
                   {datos.infoLlegadaCiudad.comoLlegarCentro}
                 </p>
               </div>
-              <div className="p-5 rounded-2xl bg-white border border-slate-200">
-                <span className="text-xs font-extrabold uppercase text-emerald-700 block mb-1.5">
-                  🇵🇪 Zonas con comunidad peruana
+              <div className="p-6 rounded-2xl bg-white border border-slate-200">
+                <span className="text-xs font-extrabold uppercase text-emerald-700 block mb-2">
+                  🇵🇪 Comunidad peruana en {datos.ciudadDestino}
                 </span>
                 <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
                   {datos.infoLlegadaCiudad.zonasPeruanos}
                 </p>
               </div>
-              <div className="p-5 rounded-2xl bg-white border border-slate-200">
-                <span className="text-xs font-extrabold uppercase text-amber-700 block mb-1.5">
-                  ✈️ Consejo para tu llegada
+              <div className="p-6 rounded-2xl bg-white border border-slate-200">
+                <span className="text-xs font-extrabold uppercase text-amber-700 block mb-2">
+                  ✈️ Recomendación para tu viaje
                 </span>
                 <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
                   {datos.infoLlegadaCiudad.consejoLocal}
@@ -391,9 +348,7 @@ export default function SuperLandingMigratorioTemplate({
           </div>
         </section>
 
-        {/* ═══════════════════════════════════════════════════════════════════════
-            4. PREGUNTAS FRECUENTES + ENLACES RELACIONADOS
-           ═══════════════════════════════════════════════════════════════════════ */}
+        {/* 4. PREGUNTAS FRECUENTES + RUTAS RELACIONADAS */}
         <section className="py-14 sm:py-18 bg-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6">
             <h2 className="text-2xl sm:text-3xl font-black text-[#0a1628] text-center mb-8">
@@ -403,12 +358,12 @@ export default function SuperLandingMigratorioTemplate({
               {datos.faqs.map((faq) => (
                 <div
                   key={faq.q}
-                  className="p-5 rounded-2xl bg-slate-50 border border-slate-200"
+                  className="p-6 rounded-2xl bg-slate-50 border border-slate-200"
                 >
-                  <h3 className="text-sm font-black text-[#0a1628] mb-1.5">
+                  <h3 className="text-sm font-black text-[#0a1628] mb-2">
                     {faq.q}
                   </h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                     {faq.a}
                   </p>
                 </div>
@@ -443,7 +398,7 @@ export default function SuperLandingMigratorioTemplate({
                         {rel.titulo}
                       </span>
                     </div>
-                    <span className="text-xs font-black text-emerald-700 bg-emerald-50 px-2 py-1 rounded-lg shrink-0">
+                    <span className="text-xs font-black text-emerald-700 shrink-0">
                       ${rel.precioDesde}
                     </span>
                   </Link>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
@@ -129,11 +130,11 @@ export default function PaquetesMigratoriosHubPage() {
 
       <Navbar />
 
-      {/* HERO LIMPIO Y ORDENADO */}
-      <section className="relative pt-12 pb-14 sm:pt-16 sm:pb-20 bg-[#0a1628] text-white overflow-hidden border-b border-slate-800">
+      {/* HERO LIMPIO Y ORDENADO (SIN CAJAS METIDAS DENTRO DE CAJAS) */}
+      <section className="relative pt-10 pb-14 sm:pt-14 sm:pb-18 bg-[#0a1628] text-white overflow-hidden border-b-4 border-amber-400">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-6">
               <div className="inline-flex flex-wrap items-center gap-2 bg-amber-400/15 border border-amber-400/35 px-4 py-1.5 rounded-full text-xs font-extrabold text-amber-300 mb-5">
                 <span>🇪🇸 España · 🇮🇹 Italia · 🇫🇷 Francia · 🇪🇺 Europa</span>
                 <span>•</span>
@@ -145,12 +146,12 @@ export default function PaquetesMigratoriosHubPage() {
                 <span className="text-amber-400">desde $699 USD</span>
               </h1>
 
-              <p className="text-base sm:text-lg text-slate-200 leading-relaxed mb-7 max-w-2xl">
+              <p className="text-base sm:text-lg text-slate-200 leading-relaxed mb-7">
                 Viaja tranquilo desde Lima y provincias con toda tu carpeta lista para el aeropuerto y Migraciones, sin pagar el doble por un retorno cerrado que no vas a utilizar. Separa tu cupo con el{" "}
                 <strong className="text-white">50% de inicial</strong>.
               </p>
 
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3 mb-6">
                 <a
                   href={buildWhatsAppHref(msgHero)}
                   target="_blank"
@@ -179,59 +180,73 @@ export default function PaquetesMigratoriosHubPage() {
                   🇫🇷 Francia
                 </Link>
               </div>
+
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-300 pt-4 border-t border-white/15">
+                <span>✓ Agencia Formal RUC 20614914239</span>
+                <span>✓ Oficina en Av. Antúnez de Mayolo 814, Los Olivos</span>
+              </div>
             </div>
 
-            {/* Derecha: Los 5 documentos de la carpeta en una tarjeta limpia */}
-            <div className="lg:col-span-5">
-              <div className="bg-white text-slate-900 rounded-3xl p-6 shadow-2xl border border-slate-200">
-                <span className="inline-block bg-amber-100 text-amber-900 text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full mb-3">
-                  Expediente Completo sin Letra Chica
-                </span>
-                <h2 className="text-lg sm:text-xl font-black text-[#0a1628] mb-3">
-                  Los 5 documentos incluidos en tu paquete:
-                </h2>
-                <ul className="space-y-2.5 text-xs sm:text-sm text-slate-700">
-                  <li className="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200/70">
-                    <span className="w-5 h-5 rounded-md bg-[#0a1628] text-amber-300 text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
-                      1
+            {/* Derecha: Foto limpia + Los 5 documentos sin cajas anidadas */}
+            <div className="lg:col-span-6">
+              <div className="bg-white text-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
+                <div className="relative h-56 sm:h-64 w-full bg-slate-900">
+                  <Image
+                    src="/images/destinos/madrid.webp"
+                    alt="Madrid, Milán y París — Paquetes Migratorios a Europa"
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/80 via-transparent to-transparent" />
+                  <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between text-white">
+                    <span className="text-xs font-bold bg-black/45 px-3 py-1 rounded-full">
+                      🇪🇸 Madrid · 🇮🇹 Milán · 🇫🇷 París
                     </span>
-                    <span>
-                      <strong>Pasaje de avión de ida</strong> emitido a tu nombre.
+                    <span className="bg-amber-400 text-slate-950 text-[11px] font-black uppercase px-3 py-1 rounded-full">
+                      Carpeta Completa
                     </span>
-                  </li>
-                  <li className="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200/70">
-                    <span className="w-5 h-5 rounded-md bg-[#0a1628] text-amber-300 text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
-                      2
-                    </span>
-                    <span>
-                      <strong>Boleto de regreso reservado en sistema</strong> para presentar en Migraciones.
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200/70">
-                    <span className="w-5 h-5 rounded-md bg-[#0a1628] text-amber-300 text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
-                      3
-                    </span>
-                    <span>
-                      <strong>Reserva de hotel confirmada</strong> (o cuadre con tu Carta de Invitación).
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200/70">
-                    <span className="w-5 h-5 rounded-md bg-[#0a1628] text-amber-300 text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
-                      4
-                    </span>
-                    <span>
-                      <strong>Seguro médico Schengen de 30.000€</strong> sin deducible.
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200/70">
-                    <span className="w-5 h-5 rounded-md bg-[#0a1628] text-amber-300 text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
-                      5
-                    </span>
-                    <span>
-                      <strong>Check-in 24h antes</strong> y preparación 1 a 1 para tu viaje.
-                    </span>
-                  </li>
-                </ul>
+                  </div>
+                </div>
+
+                <div className="p-5 sm:p-6">
+                  <h2 className="text-sm sm:text-base font-black text-[#0a1628] mb-3">
+                    Los 5 documentos incluidos en tu paquete:
+                  </h2>
+                  <ul className="divide-y divide-slate-100 text-xs sm:text-sm text-slate-700">
+                    <li className="py-2 flex items-center gap-2.5">
+                      <span className="text-emerald-600 font-black">✓</span>
+                      <span>
+                        <strong>1. Pasaje de avión de ida</strong> emitido a tu nombre.
+                      </span>
+                    </li>
+                    <li className="py-2 flex items-center gap-2.5">
+                      <span className="text-emerald-600 font-black">✓</span>
+                      <span>
+                        <strong>2. Boleto de regreso reservado</strong> en sistema para Migraciones.
+                      </span>
+                    </li>
+                    <li className="py-2 flex items-center gap-2.5">
+                      <span className="text-emerald-600 font-black">✓</span>
+                      <span>
+                        <strong>3. Reserva de hotel confirmada</strong> (o cuadre con Carta de Invitación).
+                      </span>
+                    </li>
+                    <li className="py-2 flex items-center gap-2.5">
+                      <span className="text-emerald-600 font-black">✓</span>
+                      <span>
+                        <strong>4. Seguro médico Schengen de 30.000€</strong> sin deducible.
+                      </span>
+                    </li>
+                    <li className="pt-2 flex items-center gap-2.5">
+                      <span className="text-emerald-600 font-black">✓</span>
+                      <span>
+                        <strong>5. Check-in 24h antes</strong> y preparación 1 a 1 para tu viaje.
+                      </span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>

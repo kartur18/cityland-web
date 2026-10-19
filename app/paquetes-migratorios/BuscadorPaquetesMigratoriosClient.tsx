@@ -77,14 +77,14 @@ export default function BuscadorPaquetesMigratoriosClient({
   };
 
   return (
-    <div className="space-y-12">
-      {/* Bloque 1: Los 4 Planes Oficiales Simétricos */}
-      <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xs">
+    <div className="space-y-14">
+      {/* Bloque 1: Los 4 Planes Oficiales (Sin cajas dentro de cajas) */}
+      <div>
         <div className="text-center max-w-2xl mx-auto mb-8">
           <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1.5">
             Escala Oficial según Temporada
           </span>
-          <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
+          <h2 className="text-2xl sm:text-4xl font-black text-slate-900">
             Elige tu Plan según tu Fecha de Viaje
           </h2>
           <p className="text-slate-600 text-sm mt-1.5">
@@ -92,25 +92,25 @@ export default function BuscadorPaquetesMigratoriosClient({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {PLANES_MIGRATORIOS_OFICIALES.map((plan) => {
             const nombreLimpio = limpiarNombrePlan(plan.nombre);
             const msgPlan = `${plan.mensajeWhatsAppBase} a Europa.\n📍 Ref Web: citylandtravel.com/paquetes-migratorios [${nombreLimpio} $${plan.precioUSD}]`;
             return (
               <div
                 key={plan.id}
-                className={`rounded-2xl p-5 flex flex-col justify-between h-full border transition-shadow hover:shadow-md ${
+                className={`rounded-3xl p-6 flex flex-col justify-between h-full bg-white transition-shadow hover:shadow-lg ${
                   plan.destacado
-                    ? "bg-white border-2 border-amber-400 shadow-sm"
-                    : "bg-slate-50/70 border-slate-200"
+                    ? "border-2 border-amber-400 shadow-md"
+                    : "border border-slate-200 shadow-xs"
                 }`}
               >
                 <div>
                   <span
-                    className={`inline-block text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full mb-2.5 ${
+                    className={`inline-block text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full mb-3 ${
                       plan.destacado
                         ? "bg-amber-400 text-slate-950"
-                        : "bg-slate-200 text-slate-700"
+                        : "bg-slate-100 text-slate-700"
                     }`}
                   >
                     {plan.etiqueta}
@@ -122,7 +122,7 @@ export default function BuscadorPaquetesMigratoriosClient({
                     📅 {plan.temporada}
                   </p>
 
-                  <div className="my-3.5 p-3 rounded-xl bg-white border border-slate-200">
+                  <div className="my-4 py-3.5 border-y border-slate-100">
                     <div className="flex items-baseline gap-1">
                       <span className="text-xs font-bold text-slate-500">Desde</span>
                       <span className="text-3xl font-black text-slate-900">
@@ -135,7 +135,7 @@ export default function BuscadorPaquetesMigratoriosClient({
                     </span>
                   </div>
 
-                  <ul className="space-y-1.5 text-xs text-slate-600 mb-5">
+                  <ul className="space-y-2 text-xs text-slate-600 mb-6">
                     {plan.incluye.slice(0, 3).map((inc, idx) => (
                       <li key={idx} className="flex items-start gap-1.5">
                         <span className="text-emerald-600 font-bold shrink-0">✓</span>
@@ -149,7 +149,7 @@ export default function BuscadorPaquetesMigratoriosClient({
                   href={buildWhatsAppHref(msgPlan)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-white font-extrabold text-xs sm:text-sm whitespace-nowrap transition-all"
+                  className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-white font-extrabold text-xs sm:text-sm whitespace-nowrap transition-all"
                 >
                   <WhatsAppIcon className="w-4 h-4" />
                   <span>Elegir {nombreLimpio}</span>
@@ -160,15 +160,15 @@ export default function BuscadorPaquetesMigratoriosClient({
         </div>
       </div>
 
-      {/* Bloque 2: Buscador Instantáneo */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs">
+      {/* Bloque 2: Buscador Instantáneo con Fotos Únicas por Ciudad */}
+      <div>
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
           <div>
-            <h2 className="text-xl sm:text-2xl font-black text-slate-900">
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
               Catálogo por Ciudad y Destino en Europa
             </h2>
             <p className="text-sm text-slate-600 mt-0.5">
-              Busca tu ciudad de destino en España, Italia o Francia.
+              Cada ciudad cuenta con su ruta e itinerario personalizado saliendo desde Perú.
             </p>
           </div>
           <div className="relative w-full md:w-96">
@@ -179,8 +179,8 @@ export default function BuscadorPaquetesMigratoriosClient({
                 setBusqueda(e.target.value);
                 setLimiteVisible(24);
               }}
-              placeholder="Buscar ciudad: Madrid, Milán, Roma, París..."
-              className="w-full pl-4 pr-10 py-3 rounded-xl border border-slate-300 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+              placeholder="Buscar ciudad: Madrid, Milán, Roma, París, Lyon..."
+              className="w-full pl-4 pr-10 py-3 rounded-xl bg-white border border-slate-300 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
             />
             {busqueda && (
               <button
@@ -209,7 +209,7 @@ export default function BuscadorPaquetesMigratoriosClient({
                 className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all cursor-pointer ${
                   activo
                     ? "bg-slate-900 text-amber-400 shadow-xs"
-                    : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                    : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-100"
                 }`}
               >
                 {tab.etiqueta}
@@ -225,10 +225,10 @@ export default function BuscadorPaquetesMigratoriosClient({
             return (
               <article
                 key={item.slug}
-                className="group bg-white rounded-2xl border border-slate-200 hover:border-amber-400 overflow-hidden shadow-2xs hover:shadow-md transition-all flex flex-col justify-between h-full"
+                className="group bg-white rounded-3xl border border-slate-200 hover:border-amber-400 overflow-hidden shadow-2xs hover:shadow-md transition-all flex flex-col justify-between h-full"
               >
                 <div>
-                  <div className="relative h-44 overflow-hidden bg-slate-900">
+                  <div className="relative h-48 overflow-hidden bg-slate-900">
                     <img
                       src={item.imagenHero}
                       alt={item.h1Principal}
@@ -236,7 +236,7 @@ export default function BuscadorPaquetesMigratoriosClient({
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-3 left-3">
-                      <span className="bg-slate-900/90 text-white text-[11px] font-extrabold px-2.5 py-1 rounded-full">
+                      <span className="bg-slate-900/90 text-white text-[11px] font-extrabold px-3 py-1 rounded-full">
                         {item.banderaPais} {item.ciudadDestino}, {item.paisDestino}
                       </span>
                     </div>
@@ -246,19 +246,19 @@ export default function BuscadorPaquetesMigratoriosClient({
                     <span className="text-[11px] font-bold text-red-600 uppercase tracking-wider block">
                       {item.intencionNombre}
                     </span>
-                    <h3 className="text-base font-extrabold text-slate-900 leading-snug line-clamp-2 mt-0.5 mb-2 min-h-[44px]">
+                    <h3 className="text-base font-extrabold text-slate-900 leading-snug line-clamp-2 mt-0.5 mb-3 min-h-[44px]">
                       {item.h1Principal}
                     </h3>
-                    <div className="flex items-baseline justify-between pt-2 border-t border-slate-100">
+                    <div className="flex items-baseline justify-between pt-3 border-t border-slate-100">
                       <div>
                         <span className="text-[11px] text-slate-500 mr-1">Desde</span>
-                        <span className="text-xl font-black text-slate-900">
+                        <span className="text-2xl font-black text-slate-900">
                           ${item.precioDesdeUSD}
                         </span>
                         <span className="text-[11px] font-bold text-slate-500 ml-1">USD</span>
                       </div>
-                      <span className="text-[11px] font-bold text-emerald-700">
-                        Separa con 50%
+                      <span className="text-xs font-extrabold text-emerald-700">
+                        ✓ Separa con 50%
                       </span>
                     </div>
                   </div>
@@ -267,7 +267,7 @@ export default function BuscadorPaquetesMigratoriosClient({
                 <div className="px-5 pb-5 pt-0 flex items-center gap-2">
                   <Link
                     href={`/paquetes-migratorios/${item.slug}`}
-                    className="flex-1 text-center py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-extrabold whitespace-nowrap transition-colors"
+                    className="flex-1 text-center py-3 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-extrabold whitespace-nowrap transition-colors"
                   >
                     Ver Detalles
                   </Link>
@@ -275,7 +275,7 @@ export default function BuscadorPaquetesMigratoriosClient({
                     href={buildWhatsAppHref(msgCard)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-1.5 py-2.5 px-3.5 rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-white text-xs font-extrabold whitespace-nowrap transition-colors"
+                    className="inline-flex items-center justify-center gap-1.5 py-3 px-4 rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-white text-xs font-extrabold whitespace-nowrap transition-colors"
                   >
                     <WhatsAppIcon className="w-3.5 h-3.5" />
                     <span>Cotizar</span>
@@ -284,7 +284,7 @@ export default function BuscadorPaquetesMigratoriosClient({
                     type="button"
                     onClick={() => copiarEnlace(item.slug)}
                     title="Copiar enlace"
-                    className="py-2.5 px-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-colors cursor-pointer"
+                    className="py-3 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-colors cursor-pointer"
                   >
                     {copiadoSlug === item.slug ? "✓" : "🔗"}
                   </button>

@@ -39,7 +39,7 @@ const PLANES_ITALIA = [
     tag: "Temporada Promo",
     tagColor: "bg-emerald-600 text-white",
     destacado: false,
-    img: "/images/destinos/roma.webp",
+    img: "/images/destinos/roma.jpg",
     lugar: "Roma · Milán",
     detalle: "Ideal si programas tu viaje con anticipación a Italia.",
     waTexto: "Elegir Plan Promo",
@@ -69,7 +69,7 @@ const PLANES_ITALIA = [
     tag: "Salidas Cercanas",
     tagColor: "bg-blue-600 text-white",
     destacado: false,
-    img: "/images/destinos/florencia.webp",
+    img: "/images/destinos/florencia.jpg",
     lugar: "Turín · Florencia · Bolonia · Génova",
     detalle: "Para salidas próximas o conexión hasta tu ciudad final en Italia.",
     waTexto: "Elegir Plan Plus",
@@ -84,7 +84,7 @@ const PLANES_ITALIA = [
     tag: "Alta + Maleta 23 kg",
     tagColor: "bg-red-600 text-white",
     destacado: false,
-    img: "/images/destinos/venecia.webp",
+    img: "/images/destinos/venecia.jpg",
     lugar: "Toda Italia · Temporada Alta",
     detalle: "Incluye maleta grande de 23 kg en bodega despachada hasta destino final.",
     waTexto: "Elegir Plan Full",
@@ -107,7 +107,7 @@ const CIUDADES_ITALIA = [
     region: "Lazio · Capital de Italia",
     iata: "FCO",
     aerolineas: "Iberia, Air Europa, KLM, Air France y LATAM",
-    img: "/images/destinos/roma.webp",
+    img: "/images/destinos/roma.jpg",
     ventaja: "Conexiones de 1 sola escala hacia Roma-Fiumicino (FCO) con tren directo a Roma Termini.",
     href: "/paquetes-migratorios/paquete-migratorio-roma-desde-699",
   },
@@ -116,7 +116,7 @@ const CIUDADES_ITALIA = [
     region: "Piamonte · Norte de Italia",
     iata: "TRN",
     aerolineas: "KLM, Air France e Iberia",
-    img: "/images/destinos/turin.webp",
+    img: "/images/destinos/turin.jpg",
     ventaja: "Aterriza directo en Turín-Caselle (TRN) con tu equipaje conectado desde Lima.",
     href: "/paquetes-migratorios/paquete-migratorio-turin-desde-699",
   },
@@ -125,7 +125,7 @@ const CIUDADES_ITALIA = [
     region: "Toscana · Florencia, Prato y Pisa",
     iata: "FLR",
     aerolineas: "KLM, Air France e Iberia",
-    img: "/images/destinos/florencia.webp",
+    img: "/images/destinos/florencia.jpg",
     ventaja: "Conexión directa al aeropuerto Amerigo Vespucci (FLR) para residentes en Toscana.",
     href: "/paquetes-migratorios/paquete-migratorio-florencia-desde-699",
   },
@@ -134,7 +134,7 @@ const CIUDADES_ITALIA = [
     region: "Emilia-Romaña · Bolonia, Módena y Parma",
     iata: "BLQ",
     aerolineas: "Iberia, KLM y Air France",
-    img: "/images/destinos/bolonia.webp",
+    img: "/images/destinos/bolonia.jpg",
     ventaja: "Conexión rápida en 7 minutos desde el aeropuerto (BLQ) hasta Bologna Centrale.",
     href: "/paquetes-migratorios/paquete-migratorio-bolonia-desde-699",
   },
@@ -143,7 +143,7 @@ const CIUDADES_ITALIA = [
     region: "Liguria · Génova y La Spezia",
     iata: "GOA",
     aerolineas: "KLM, Air France e Iberia",
-    img: "/images/destinos/genova.webp",
+    img: "/images/destinos/genova.jpg",
     ventaja: "Llegada al Aeropuerto Cristoforo Colombo (GOA), histórico punto peruano en Liguria.",
     href: "/paquetes-migratorios/paquete-migratorio-genova-desde-699",
   },
@@ -173,7 +173,7 @@ export default function ItaliaLandingPage() {
     <div className="bg-white min-h-screen text-[#0a1628] antialiased">
       <Navbar />
 
-      {/* 1. HERO SIMÉTRICO Y LIMPIO */}
+      {/* 1. HERO SIMÉTRICO Y LIMPIO (SIN CAJAS ANIDADAS) */}
       <section className="bg-gradient-to-br from-[#071a14] via-[#0c2920] to-[#0a1628] text-white pt-10 pb-14 sm:pt-14 sm:pb-18 border-b-4 border-emerald-400">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -220,10 +220,10 @@ export default function ItaliaLandingPage() {
               </div>
             </div>
 
-            {/* Derecha: Los 5 Documentos Incluidos */}
+            {/* Derecha: Foto limpia + 5 Documentos sin cajas anidadas */}
             <div className="lg:col-span-6">
               <div className="bg-white text-[#0a1628] rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
-                <div className="relative h-48 sm:h-52 w-full bg-slate-900">
+                <div className="relative h-56 sm:h-64 w-full bg-slate-900">
                   <Image
                     src="/images/destinos/milan.webp"
                     alt="Milán y Roma — Paquetes Migratorios a Italia"
@@ -233,7 +233,7 @@ export default function ItaliaLandingPage() {
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/80 via-transparent to-transparent" />
-                  <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
+                  <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between text-white">
                     <span className="inline-flex items-center gap-1.5 text-xs font-bold bg-black/45 px-3 py-1 rounded-full">
                       <FlagIcon pais="Italia" className="w-4 h-3" />
                       Milán · Roma · Turín · Florencia
@@ -245,26 +245,41 @@ export default function ItaliaLandingPage() {
                 </div>
 
                 <div className="p-5 sm:p-6">
-                  <h2 className="text-base sm:text-lg font-black text-[#0a1628] mb-3">
-                    ¿Qué incluye tu Paquete Migratorio a Italia?
+                  <h2 className="text-sm sm:text-base font-black text-[#0a1628] mb-3">
+                    Los 5 documentos incluidos en tu paquete a Italia:
                   </h2>
-                  <div className="space-y-2 text-xs sm:text-sm">
-                    {[
-                      "1. Pasaje de avión de ida emitido desde Lima hasta tu ciudad en Italia.",
-                      "2. Boleto de regreso reservado en sistema para presentar en Migraciones.",
-                      "3. Reserva de hotel confirmada o formato de Lettera di Invito / Ospitalità 48h.",
-                      "4. Seguro médico Schengen de 30.000€ sin deducible.",
-                      "5. Check-in hecho 24h antes y asesoría según tu aeropuerto de escala.",
-                    ].map((punto) => (
-                      <div
-                        key={punto}
-                        className="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200/70 font-medium text-slate-700"
-                      >
-                        <span className="text-emerald-600 font-black">✓</span>
-                        <span>{punto}</span>
-                      </div>
-                    ))}
-                  </div>
+                  <ul className="divide-y divide-slate-100 text-xs sm:text-sm text-slate-700">
+                    <li className="py-2 flex items-center gap-2.5">
+                      <span className="text-emerald-600 font-black">✓</span>
+                      <span>
+                        <strong>1. Pasaje de avión de ida</strong> emitido desde Lima hasta tu ciudad en Italia.
+                      </span>
+                    </li>
+                    <li className="py-2 flex items-center gap-2.5">
+                      <span className="text-emerald-600 font-black">✓</span>
+                      <span>
+                        <strong>2. Boleto de regreso reservado</strong> en sistema para Migraciones.
+                      </span>
+                    </li>
+                    <li className="py-2 flex items-center gap-2.5">
+                      <span className="text-emerald-600 font-black">✓</span>
+                      <span>
+                        <strong>3. Reserva de hotel confirmada</strong> o formato Lettera di Invito / Ospitalità 48h.
+                      </span>
+                    </li>
+                    <li className="py-2 flex items-center gap-2.5">
+                      <span className="text-emerald-600 font-black">✓</span>
+                      <span>
+                        <strong>4. Seguro médico Schengen de 30.000€</strong> sin deducible.
+                      </span>
+                    </li>
+                    <li className="pt-2 flex items-center gap-2.5">
+                      <span className="text-emerald-600 font-black">✓</span>
+                      <span>
+                        <strong>5. Check-in hecho 24h antes</strong> y asesoría según tu escala.
+                      </span>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -272,7 +287,7 @@ export default function ItaliaLandingPage() {
         </div>
       </section>
 
-      {/* 2. LOS 4 PLANES OFICIALES A ITALIA (SIMÉTRICOS Y ORDENADOS) */}
+      {/* 2. LOS 4 PLANES OFICIALES A ITALIA (FOTOS REALES DISTINTAS Y SIN CAJAS INTERNAS) */}
       <section id="tarifas-italia" className="py-14 sm:py-20 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto mb-10">
@@ -326,7 +341,7 @@ export default function ItaliaLandingPage() {
                       📅 {p.temporada}
                     </p>
 
-                    <div className="my-4 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80">
+                    <div className="my-4 py-3.5 border-y border-slate-100">
                       <div className="flex items-baseline gap-1">
                         <span className="text-xs font-bold text-slate-500">Desde</span>
                         <span className="text-3xl font-black text-[#0a1628]">
@@ -362,7 +377,7 @@ export default function ItaliaLandingPage() {
         </div>
       </section>
 
-      {/* 3. LAS 6 CIUDADES PRINCIPALES DE ITALIA */}
+      {/* 3. LAS 6 CIUDADES PRINCIPALES DE ITALIA (CADA UNA CON SU FOTO REAL ÚNICA) */}
       <section className="py-14 sm:py-20 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto mb-10">
