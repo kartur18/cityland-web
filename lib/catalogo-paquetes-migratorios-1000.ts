@@ -2736,20 +2736,104 @@ const MAPA_POR_SLUG = new Map<string, ResumenSuperLanding>(
 export function obtenerSuperLandingPorSlug(
   slug: string
 ): DatosSuperLandingMigratorio | null {
-  const directo = MAPA_POR_SLUG.get(slug);
+  const limpio = decodeURIComponent(slug).trim().toLowerCase();
+  const directo = MAPA_POR_SLUG.get(limpio);
   if (directo) return directo.construirDatos();
 
-  // Soporte de slugs amigables cortos (ej. paquete-migratorio-madrid-desde-699)
-  const m699 = slug.match(/^paquete-migratorio-(.+)-desde-699$/);
-  const m799 = slug.match(/^paquete-migratorio-(.+)-smart-799$/);
-  const ciudadSlug = m699?.[1] || m799?.[1];
-  const sufijo = m799 ? "plan-smart-799" : "plan-promo-699";
-
-  if (ciudadSlug) {
-    for (const prefijo of ["espana", "italia", "europa"]) {
-      const cand = MAPA_POR_SLUG.get(`${prefijo}-${ciudadSlug}-${sufijo}`);
-      if (cand) return cand.construirDatos();
+  // 1. Equivalencias entre sufijos de intención (plan-promo-699 <-> paquete-migratorio-699, etc.)
+  const reemplazosSufijo: [ string, string ][] = [
+    ["-plan-promo-699", "-paquete-migratorio-699"],
+    ["-paquete-migratorio-699", "-plan-promo-699"],
+    ["-plan-smart-799", "-paquete-smart-799"],
+    ["-paquete-smart-799", "-plan-smart-799"],
+    ["-plan-plus-899", "-paquete-plus-899"],
+    ["-plan-plus-899", "-paquete-plus-conexion-899"],
+    ["-plan-full-999", "-paquete-full-999"],
+    ["-plan-full-999", "-paquete-full-maleta-999"],
+  ];
+  for (const [de, a] of reemplazosSufijo) {
+    if (limpio.endsWith(de)) {
+      const alt = MAPA_POR_SLUG.get(limpio.slice(0, -de.length) + a);
+      if (alt) return alt.construirDatos();
     }
+  }
+
+  // 2. Soporte de slugs cortos (ej. paquete-migratorio-madrid-desde-699, paquete-migratorio-milan-desde-699, paquete-migratorio-paris-desde-699)
+  const mCorto = limpio.match(
+    /^paquete-migratorio-(.+?)(?:-(desde-699|699|smart-799|799|plus-899|899|full-999|999))?$/
+  );
+  if (mCorto) {
+    const ciudadSlug = mCorto[1];
+    const tipo = mCorto[2] || "desde-699";
+    const sufijosProbar = tipo.includes("799")
+      ? ["plan-smart-799", "paquete-smart-799"]
+      : tipo.includes("899")
+      ? ["plan-plus-899", "paquete-plus-899", "paquete-plus-conexion-899"]
+      : tipo.includes("999")
+      ? ["plan-full-999", "paquete-full-999", "paquete-full-maleta-999"]
+      : ["plan-promo-699", "paquete-migratorio-699"];
+
+    for (const prefijo of ["espana", "italia", "europa"]) {
+      for (const suf of sufijosProbar) {
+        const cand = MAPA_POR_SLUG.get(`${prefijo}-${ciudadSlug}-${suf}`);
+        if (cand) return cand.construirDatos();
+      }
+    }
+  }
+
+  // 3. Soporte de salidas desde Perú con sufijos regionales (ej. desde-los-olivos-lima-norte-a-madrid)
+  const mDesde = limpio.match(/^desde-(.+)-a-([a-z0-9-]+)$/);
+  if (mDesde) {
+    const origenRaw = mDesde[1];
+    const ciudadRaw = mDesde[2];
+    const origMatch = ORIGENES_PERU.find(
+      (o) =>
+        origenRaw === o.slugOrigen ||
+        origenRaw.startsWith(o.slugOrigen) ||
+        o.slugOrigen.startsWith(origenRaw)
+    );
+    if (origMatch) {
+      const candDesde = MAPA_POR_SLUG.get(
+        `desde-${origMatch.slugOrigen}-a-${ciudadRaw}`
+      );
+      if (candDesde) return candDesde.construirDatos();
+    }
+  }
+
+  // 4. Soporte de guías con variaciones de artículos (ej. guia-madrid-como-funciona-el-boleto-de-regreso-para-migraciones)
+  if (limpio.startsWith("guia-")) {
+    const sinArticulos = limpio.replace(/-(el|la|los|las|de|del|en|un|una)-/g, "-");
+    for (const item of INDICE_PAQUETES_MIGRATORIOS_1000) {
+      if (item.silo === "guias-dudas") {
+        const itemSinArt = item.slug.replace(
+          /-(el|la|los|las|de|del|en|un|una)-/g,
+          "-"
+        );
+        if (itemSinArt === sinArticulos) {
+          return item.construirDatos();
+        }
+      }
+    }
+  }
+
+  // 5. Respaldo inteligente por ciudad: si el slug menciona cualquiera de las 65 ciudades, devolver la landing principal de esa ciudad
+  const todasCiudades = [
+    ...CIUDADES_ESPANA,
+    ...CIUDADES_ITALIA,
+    ...CIUDADES_FRANCIA_EUROPA,
+  ];
+  const ciudadEncontrada = todasCiudades.find(
+    (c) =>
+      limpio === c.slugCiudad ||
+      limpio.includes(`-${c.slugCiudad}-`) ||
+      limpio.endsWith(`-${c.slugCiudad}`) ||
+      limpio.startsWith(`${c.slugCiudad}-`)
+  );
+  if (ciudadEncontrada) {
+    const fallbackCiudad = INDICE_PAQUETES_MIGRATORIOS_1000.find(
+      (item) => item.ciudadDestino === ciudadEncontrada.ciudad
+    );
+    if (fallbackCiudad) return fallbackCiudad.construirDatos();
   }
 
   return null;
