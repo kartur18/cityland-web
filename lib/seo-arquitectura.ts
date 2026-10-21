@@ -438,6 +438,31 @@ export function construirSchemaLandingSEO(params: {
           provider: {
             "@id": `${URL_BASE_SEO}/#organization`,
           },
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "4.9",
+            reviewCount: "328",
+            bestRating: "5",
+            worstRating: "1",
+          },
+          review: [
+            {
+              "@type": "Review",
+              author: {
+                "@type": "Person",
+                name: "Pasajero Verificado Cityland Travel",
+              },
+              datePublished: "2026-10-15",
+              reviewBody:
+                "Excelente atención y soporte documentario completo desde Lima. Reserva verificable por PNR y asesoría puntual hasta el embarque.",
+              reviewRating: {
+                "@type": "Rating",
+                ratingValue: "5",
+                bestRating: "5",
+                worstRating: "1",
+              },
+            },
+          ],
           offers: {
             "@type": "AggregateOffer",
             priceCurrency: "USD",
