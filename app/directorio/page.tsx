@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
+import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BuscadorCatalogoInstantaneo from "@/components/BuscadorCatalogoInstantaneo";
+import EnlacesCatalogoHub from "@/components/EnlacesCatalogoHub";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
 import { DESTINOS_EUROPA, DESTINOS_CARIBE, BLOG_POSTS } from "@/components/constantes";
 import { INDICE_PAQUETES_MIGRATORIOS_1000 } from "@/lib/catalogo-paquetes-migratorios-1000";
 
 export const metadata: Metadata = {
-  title: "Catálogo de Destinos, Paquetes Migratorios a Europa y Ofertas | Cityland Travel",
-  description:
-    "Explora nuestros paquetes migratorios a España, Italia, Francia y Europa desde $699 USD, resorts Todo Incluido en el Caribe y paquetes por el Perú en Cityland Travel (RUC 20614914239).",
+  title: optimizarMetaTitleSEO("Catálogo de Destinos, Paquetes Migratorios a Europa y Ofertas | Cityland Travel"),
+  description: optimizarMetaDescriptionSEO("Explora nuestros paquetes migratorios a España, Italia, Francia y Europa desde $699 USD, resorts Todo Incluido en el Caribe y paquetes por el Perú en Cityland Travel (RUC 20614914239)."),
   alternates: {
     canonical: "https://citylandtravel.com/directorio",
   },
@@ -354,6 +355,8 @@ export function VistaCatalogoHub({ modoHub = "directorio" }: { modoHub?: ModoCat
               ))}
             </div>
           </section>
+
+          <EnlacesCatalogoHub modo={modoHub} />
         </div>
       </main>
 
