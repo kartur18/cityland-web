@@ -6,7 +6,6 @@ import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-com
 import { INDICE_MADRID_10K } from "@/lib/catalogo-madrid-10k";
 
 export const URL_BASE_SEO = "https://citylandtravel.com";
-export const FECHA_ESTABLE_SITEMAP = "2026-10-18T18:30:00.000Z";
 
 export interface MigaDePanSEO {
   nombre: string;
