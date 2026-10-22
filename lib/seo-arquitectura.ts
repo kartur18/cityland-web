@@ -389,7 +389,6 @@ export function construirSchemaLandingSEO(params: {
   migas: MigaDePanSEO[];
   faqs?: { q: string; a: string }[];
 }) {
-  const highPrice = Math.max(params.precioDesdeUSD + 150, Math.round(params.precioDesdeUSD * 1.45));
   const esServicioDocumentario = /(visa|seguro|requisito|pasaporte|pnr|carta-de-invitacion)/i.test(
     params.url
   );
@@ -442,9 +441,7 @@ export function construirSchemaLandingSEO(params: {
             "@type": "AggregateOffer",
             priceCurrency: "USD",
             lowPrice: String(params.precioDesdeUSD),
-            highPrice: String(highPrice),
-            offerCount: String(params.cantidadOfertas ?? 3),
-            priceValidUntil: "2026-12-31",
+            ...(params.cantidadOfertas ? { offerCount: String(params.cantidadOfertas) } : {}),
             availability: "https://schema.org/InStock",
             url: params.url,
             seller: {
