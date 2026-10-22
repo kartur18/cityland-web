@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import AirlineLandingTemplate, {
   ConfiguracionLandingAerolinea,
 } from "@/components/AirlineLandingTemplate";
@@ -6,10 +7,8 @@ import BuscadorCatalogoInstantaneo from "@/components/BuscadorCatalogoInstantane
 import { INDICE_PAQUETES_MIGRATORIOS_1000 } from "@/lib/catalogo-paquetes-migratorios-1000";
 
 export const metadata: Metadata = {
-  title:
-    "Promociones y Ofertas de Viajes 2026 desde Lima (Separa con 50%) | Cityland Travel",
-  description:
-    "Aprovecha nuestras promociones de viajes y preventas 2026 desde Lima: Paquetes Migratorios a Europa desde $699 USD, Punta Cana y Cancún Todo Incluido desde $999 USD, Cartagena desde $599 USD y Cusco desde $329 USD. Separa con el 50% en Cityland Travel (RUC 20614914239).",
+  title: optimizarMetaTitleSEO("Promociones y Ofertas de Viajes 2026 desde Lima (Separa con 50%) | Cityland Travel"),
+  description: optimizarMetaDescriptionSEO("Aprovecha nuestras promociones de viajes y preventas 2026 desde Lima: Paquetes Migratorios a Europa desde $699 USD, Punta Cana y Cancún Todo Incluido desde $999 USD, Cartagena desde $599 USD y Cusco desde $329 USD. Separa con el 50% en Cityland Travel (RUC 20614914239)."),
   keywords: [
     "promociones de viajes desde lima",
     "ofertas paquetes turisticos 2026 peru",

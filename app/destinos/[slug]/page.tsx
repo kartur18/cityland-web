@@ -139,7 +139,13 @@ export default async function DestinoPage({
           {
             "@type": "ListItem",
             position: 2,
-            name: `Paquete a ${dest.ciudad}`,
+            name: dest.tipo === "europa" ? "Europa & Exóticos" : "Caribe & América",
+            item: `https://citylandtravel.com${dest.tipo === "europa" ? "/espana" : "/caribe"}`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: dest.ciudad,
             item: `https://citylandtravel.com/destinos/${dest.slug}`,
           },
         ],
@@ -665,7 +671,7 @@ export default async function DestinoPage({
               </h2>
             </div>
             <Link
-              href="/caribe"
+              href="/destinos"
               className="text-xs font-extrabold text-red-600 hover:underline hidden sm:inline"
             >
               Ver catálogo completo →

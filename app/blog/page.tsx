@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -9,9 +10,8 @@ import { BLOG_POSTS, armarLinkWhatsApp } from "@/components/constantes";
 import { BLOG_POSTS_MASIVOS } from "@/lib/catalogo-blog-masivo";
 
 export const metadata: Metadata = {
-  title: "Blog y Guías de Viaje Oficiales para Peruanos | Cityland Travel",
-  description:
-    "Lee nuestras guías actualizadas para viajar desde Perú: requisitos migratorios para España y Europa, bolsa de viaje, seguro Schengen 30.000€, visa americana, resorts Todo Incluido y consejos de viaje.",
+  title: optimizarMetaTitleSEO("Blog y Guías de Viaje Oficiales para Peruanos | Cityland Travel"),
+  description: optimizarMetaDescriptionSEO("Lee nuestras guías actualizadas para viajar desde Perú: requisitos migratorios para España y Europa, bolsa de viaje, seguro Schengen 30.000€, visa americana, resorts Todo Incluido y consejos de viaje."),
   alternates: {
     canonical: "https://citylandtravel.com/blog",
   },

@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
+import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import PanamaMedellinLanding from "./PanamaMedellinLanding";
 
 export const metadata: Metadata = {
-  title:
-    "Paquete Panamá + Medellín 7 Días desde $799 USD (Salidas desde Lima) | Cityland Travel",
-  description:
-    "Viaja a Panamá y Medellín 7 días / 6 noches desde $799 USD con Cityland Travel (RUC 20614914239). Vuelos Copa Airlines desde Lima, hoteles, desayunos, traslados y tours (Canal de Panamá, Comuna 13 y Chiva Rumbera). Separa con el 50%.",
+  title: optimizarMetaTitleSEO("Paquete Panamá + Medellín 7 Días desde $799 USD (Salidas desde Lima) | Cityland Travel"),
+  description: optimizarMetaDescriptionSEO("Viaja a Panamá y Medellín 7 días / 6 noches desde $799 USD con Cityland Travel (RUC 20614914239). Vuelos Copa Airlines desde Lima, hoteles, desayunos, traslados y tours (Canal de Panamá, Comuna 13 y Chiva Rumbera). Separa con el 50%."),
   keywords: [
     "paquete panama y medellin desde lima",
     "viaje a panama y medellin 2026",

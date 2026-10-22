@@ -42,7 +42,6 @@ export async function generateMetadata({
       title,
       description,
       images: [{ url: post.imagen, width: 1200, height: 630 }],
-      publishedTime: "2026-03-15T12:00:00.000Z",
       authors: [post.autor],
     },
   };
@@ -89,6 +88,12 @@ export default async function BlogArticlePage({
           {
             "@type": "ListItem",
             position: 2,
+            name: "Guías del Viajero",
+            item: "https://citylandtravel.com/blog",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
             name: post.titulo,
             item: canonicalUrl,
           },

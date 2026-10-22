@@ -1,13 +1,12 @@
 import { Metadata } from "next";
+import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import AirlineLandingTemplate, {
   ConfiguracionLandingAerolinea,
 } from "@/components/AirlineLandingTemplate";
 
 export const metadata: Metadata = {
-  title:
-    "Agencia de Viajes Corporativos para Empresas en Lima · Factura Electrónica RUC | Cityland Travel",
-  description:
-    "Gestión integral de viajes corporativos y pasajes aéreos para empresas en Lima y todo el Perú. Emisión inmediata de vuelos nacionales e internacionales con Factura Electrónica (RUC 20614914239), hoteles ejecutivos, traslados y viajes de incentivos.",
+  title: optimizarMetaTitleSEO("Agencia de Viajes Corporativos para Empresas en Lima · Factura Electrónica RUC | Cityland Travel"),
+  description: optimizarMetaDescriptionSEO("Gestión integral de viajes corporativos y pasajes aéreos para empresas en Lima y todo el Perú. Emisión inmediata de vuelos nacionales e internacionales con Factura Electrónica (RUC 20614914239), hoteles ejecutivos, traslados y viajes de incentivos."),
   keywords: [
     "agencia de viajes corporativos en lima peru",
     "pasajes aereos para empresas con factura ruc",

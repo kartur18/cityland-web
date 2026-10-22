@@ -1,13 +1,12 @@
 import { Metadata } from "next";
+import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import AirlineLandingTemplate, {
   ConfiguracionLandingAerolinea,
 } from "@/components/AirlineLandingTemplate";
 
 export const metadata: Metadata = {
-  title:
-    "Paquetes a Playas del Norte y Selva Peruana: Punta Sal, Máncora, Tarapoto, Iquitos y Arequipa | Cityland Travel",
-  description:
-    "Viajes nacionales Todo Incluido saliendo desde Lima: Royal Decameron Punta Sal desde $489 USD, Máncora desde $319 USD, Tarapoto y Laguna Azul desde $289 USD, Iquitos Río Amazonas desde $349 USD, Arequipa Cañón del Colca desde $289 USD y Paracas-Ica desde $229 USD. Separa con el 50% en Cityland Travel (RUC 20614914239).",
+  title: optimizarMetaTitleSEO("Paquetes a Playas del Norte y Selva Peruana: Punta Sal, Máncora, Tarapoto, Iquitos y Arequipa | Cityland Travel"),
+  description: optimizarMetaDescriptionSEO("Viajes nacionales Todo Incluido saliendo desde Lima: Royal Decameron Punta Sal desde $489 USD, Máncora desde $319 USD, Tarapoto y Laguna Azul desde $289 USD, Iquitos Río Amazonas desde $349 USD, Arequipa Cañón del Colca desde $289 USD y Paracas-Ica desde $229 USD. Separa con el 50% en Cityland Travel (RUC 20614914239)."),
   keywords: [
     "paquetes a punta sal todo incluido decameron desde lima",
     "viajes a tarapoto todo incluido precios 2026",

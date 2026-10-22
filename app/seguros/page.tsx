@@ -1,13 +1,12 @@
 import { Metadata } from "next";
+import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import AirlineLandingTemplate, {
   ConfiguracionLandingAerolinea,
 } from "@/components/AirlineLandingTemplate";
 
 export const metadata: Metadata = {
-  title:
-    "Seguro de Viaje Internacional y Seguro Schengen 30.000€ Obligatorio en Perú | Cityland Travel",
-  description:
-    "Emisión inmediata de Seguro de Viaje Internacional en Lima: Seguro Schengen obligatorio de 30.000€ para España y Europa desde $65 USD, Asistencia Médica para Estados Unidos desde $75 USD, Caribe desde $49 USD, Embarazadas y Adultos Mayores. Póliza oficial en PDF en 5 minutos (RUC 20614914239).",
+  title: optimizarMetaTitleSEO("Seguro de Viaje Internacional y Seguro Schengen 30.000€ Obligatorio en Perú | Cityland Travel"),
+  description: optimizarMetaDescriptionSEO("Emisión inmediata de Seguro de Viaje Internacional en Lima: Seguro Schengen obligatorio de 30.000€ para España y Europa desde $65 USD, Asistencia Médica para Estados Unidos desde $75 USD, Caribe desde $49 USD, Embarazadas y Adultos Mayores. Póliza oficial en PDF en 5 minutos (RUC 20614914239)."),
   keywords: [
     "seguro schengen 30000 euros precio peru",
     "seguro de viaje obligatorio para espana desde lima",

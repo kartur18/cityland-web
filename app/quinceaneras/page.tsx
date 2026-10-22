@@ -1,13 +1,12 @@
 import { Metadata } from "next";
+import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import AirlineLandingTemplate, {
   ConfiguracionLandingAerolinea,
 } from "@/components/AirlineLandingTemplate";
 
 export const metadata: Metadata = {
-  title:
-    "Viajes de Quinceañeras 2026 desde Perú: Europa, Disney Orlando, Crucero y Caribe | Cityland Travel",
-  description:
-    "El regalo soñado de 15 años: programas exclusivos de Viajes de Quinceañeras a Europa y Disneyland París, Disney Orlando + Crucero Bahamas, Punta Cana y Cancún Todo Incluido saliendo de Lima con acompañamiento y seguridad total. Cityland Travel (RUC 20614914239).",
+  title: optimizarMetaTitleSEO("Viajes de Quinceañeras 2026 desde Perú: Europa, Disney Orlando, Crucero y Caribe | Cityland Travel"),
+  description: optimizarMetaDescriptionSEO("El regalo soñado de 15 años: programas exclusivos de Viajes de Quinceañeras a Europa y Disneyland París, Disney Orlando + Crucero Bahamas, Punta Cana y Cancún Todo Incluido saliendo de Lima con acompañamiento y seguridad total. Cityland Travel (RUC 20614914239)."),
   keywords: [
     "viajes de quinceaneras desde peru",
     "paquetes de 15 anos a europa y disney",

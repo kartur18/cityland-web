@@ -1,12 +1,11 @@
 import { Metadata } from "next";
+import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import VisasLandingClient from "./VisasLandingClient";
 import { SERVICIOS_VISAS } from "./datos";
 
 export const metadata: Metadata = {
-  title:
-    "Trámite y Asesoría de Visa Americana, Canadá, México y España en Lima | Cityland Travel",
-  description:
-    "Asesoría experta para tramitar tu Visa Americana B1/B2 (primera vez y renovación sin entrevista), Visa de Canadá y eTA, Visa de México y Visados a España en Lima, Perú. Llenado DS-160, adelanto de cita y simulacro de entrevista en Los Olivos (RUC 20614914239).",
+  title: optimizarMetaTitleSEO("Trámite y Asesoría de Visa Americana, Canadá, México y España en Lima | Cityland Travel"),
+  description: optimizarMetaDescriptionSEO("Asesoría experta para tramitar tu Visa Americana B1/B2 (primera vez y renovación sin entrevista), Visa de Canadá y eTA, Visa de México y Visados a España en Lima, Perú. Llenado DS-160, adelanto de cita y simulacro de entrevista en Los Olivos (RUC 20614914239)."),
   keywords: [
     "tramite de visa americana en lima peru",
     "asesoria visa americana b1 b2 lima",
