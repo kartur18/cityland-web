@@ -5,12 +5,14 @@ import {
   INDICE_MADRID_10K,
   buscarLandingMadrid10k,
 } from "@/lib/catalogo-madrid-10k";
+import { enriquecerLandingMadrid } from "@/lib/contenido-madrid";
 import {
   URL_BASE_SEO,
   construirSchemaLandingSEO,
   optimizarMetaTitleSEO,
   optimizarMetaDescriptionSEO,
 } from "@/lib/seo-arquitectura";
+import { precioMinimoVisible } from "@/lib/tipo-producto-madrid";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -68,8 +70,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function MadridSlugPage({ params }: Props) {
   const { slug } = await params;
-  const datos = buscarLandingMadrid10k(slug);
-  if (!datos) notFound();
+  const base = buscarLandingMadrid10k(slug);
+  if (!base) notFound();
+  const datos = enriquecerLandingMadrid(base);
 
   const urlActual = `${URL_BASE_SEO}/madrid/${datos.slug}`;
 
@@ -77,8 +80,12 @@ export default async function MadridSlugPage({ params }: Props) {
     url: urlActual,
     titulo: `${datos.tituloPrincipal} ${datos.subtituloDorado}`,
     descripcion: datos.metaDescription,
-    precioDesdeUSD: datos.precioDesdeUSD,
-    cantidadOfertas: 4,
+    // El JSON-LD declara el menor precio que el visitante ve en las tarjetas, no el "Desde" del titular.
+    precioDesdeUSD: precioMinimoVisible(datos.planesReales, datos.precioDesdeUSD),
+    precioMaximoUSD: Math.max(...datos.planesReales.map((p) => p.precioUSD)),
+    cantidadOfertas: datos.planesReales.length,
+    tipoSchema:
+      datos.tipo === "SERVICIO" ? "servicio" : datos.tipo === "MIGRATORIO" ? "paquete" : "producto",
     destinoOPais: "España",
     imagenUrl: datos.imagenHero,
     migas: [

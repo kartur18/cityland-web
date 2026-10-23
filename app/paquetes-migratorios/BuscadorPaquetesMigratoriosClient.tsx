@@ -4,6 +4,8 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
+import NotaPrecio from "@/components/NotaPrecio";
+import { quitarPrecioDeTitulo } from "@/lib/formato-precio";
 import { buildWhatsAppHref } from "@/components/constantes";
 import {
   PLANES_MIGRATORIOS_OFICIALES,
@@ -136,7 +138,7 @@ export default function BuscadorPaquetesMigratoriosClient({
                       <span className="text-xs font-bold text-slate-500">USD</span>
                     </div>
                     <span className="text-xs font-extrabold text-emerald-700 block mt-1">
-                      ✓ Separa con 50% (${plan.separaConUSD} USD)
+                      ✓ Separa con 50% (desde ${plan.separaConUSD} USD)
                     </span>
                   </div>
 
@@ -163,6 +165,7 @@ export default function BuscadorPaquetesMigratoriosClient({
             );
           })}
         </div>
+        <NotaPrecio className="mt-5 text-center" />
       </div>
 
       {/* Bloque 2: Buscador Instantáneo con Fotos Únicas por Ciudad */}
@@ -261,7 +264,7 @@ export default function BuscadorPaquetesMigratoriosClient({
                       {item.intencionNombre}
                     </span>
                     <h3 className="text-base font-extrabold text-slate-900 leading-snug line-clamp-2 mt-0.5 mb-3 min-h-[44px]">
-                      {item.h1Principal}
+                      {quitarPrecioDeTitulo(item.h1Principal)}
                     </h3>
                     <div className="flex items-baseline justify-between pt-3 border-t border-slate-100">
                       <div>

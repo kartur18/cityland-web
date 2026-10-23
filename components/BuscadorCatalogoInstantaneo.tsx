@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
+import NotaPrecio from "@/components/NotaPrecio";
+import { quitarPrecioDeTitulo } from "@/lib/formato-precio";
 
 interface ItemResultado {
   slug: string;
@@ -323,7 +325,7 @@ export default function BuscadorCatalogoInstantaneo({
                     >
                       <Image
                         src={imgUrl}
-                        alt={item.titulo}
+                        alt={quitarPrecioDeTitulo(item.titulo)}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -339,7 +341,7 @@ export default function BuscadorCatalogoInstantaneo({
                           📍 {item.destinoOPais}
                         </span>
                         <span className="font-extrabold text-emerald-800 bg-emerald-50 border border-emerald-200/80 px-2.5 py-0.5 rounded-lg text-[11px] shrink-0 whitespace-nowrap">
-                          Separa con ${inicial50.toLocaleString("en-US")}
+                          Separa desde ${inicial50.toLocaleString("en-US")}
                         </span>
                       </div>
 
@@ -347,7 +349,7 @@ export default function BuscadorCatalogoInstantaneo({
                         href={item.url}
                         className="text-base font-extrabold text-[#0a1628] group-hover:text-red-600 transition-colors leading-snug block"
                       >
-                        {item.titulo}
+                        {quitarPrecioDeTitulo(item.titulo)}
                       </Link>
                     </div>
                   </div>
@@ -386,6 +388,7 @@ export default function BuscadorCatalogoInstantaneo({
               );
             })}
           </div>
+          <NotaPrecio className="mt-5 text-center" />
 
           {totalMatches > items.length && limite < 96 && (
             <div className="mt-6 text-center">

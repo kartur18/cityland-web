@@ -20,9 +20,9 @@ const SEDES_DISTRITALES_DESTACADAS = [
   { href: "/agencia-de-viajes-san-martin-de-porres", label: "San Martín de Porres" },
   { href: "/agencia-de-viajes-independencia", label: "Independencia" },
   { href: "/agencia-de-viajes-comas", label: "Comas" },
-  { href: "/agencia-de-viajes-carabayllo", label: "Carabayllo" },
-  { href: "/agencia-de-viajes-puente-piedra", label: "Puente Piedra" },
-  { href: "/agencia-de-viajes-callao", label: "Callao" },
+  { href: "/agencia/carabayllo", label: "Carabayllo" },
+  { href: "/agencia/puente-piedra", label: "Puente Piedra" },
+  { href: "/agencia/callao", label: "Callao" },
 ];
 
 const CONFIG_AGENCIA_CENTRAL = obtenerConfigAgenciaOficial(

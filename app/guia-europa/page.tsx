@@ -5,6 +5,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
+import NotaPrecio from "@/components/NotaPrecio";
+import { textoPrecio } from "@/lib/formato-precio";
 import { PLANES_MIGRATORIOS_OFICIALES } from "@/lib/catalogo-paquetes-migratorios-1000";
 import {
   optimizarMetaTitleSEO,
@@ -115,7 +117,7 @@ export default function GuiaEuropaPage() {
                     href="#planes"
                     className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-5 py-3.5 rounded-xl text-sm whitespace-nowrap transition-colors"
                   >
-                    Ver Planes ($699 a $999) ↓
+                    Ver Planes (desde $699 a $999) ↓
                   </a>
                 </div>
               </div>
@@ -188,7 +190,7 @@ export default function GuiaEuropaPage() {
                         {p.etiqueta}
                       </span>
                       <span className="text-xs font-bold text-emerald-700">
-                        Separa con ${p.separaConUSD}
+                        Separa desde ${p.separaConUSD}
                       </span>
                     </div>
 
@@ -223,12 +225,13 @@ export default function GuiaEuropaPage() {
                     className="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white font-extrabold text-xs sm:text-sm py-3 px-4 rounded-xl shadow-xs transition-all whitespace-nowrap"
                   >
                     <WhatsAppIcon className="w-4 h-4 shrink-0" />
-                    <span>Cotizar Plan ${p.precioUSD}</span>
+                    <span>Cotizar este plan</span>
                   </a>
                 </div>
               );
             })}
           </div>
+          <NotaPrecio className="mt-5 text-center" />
         </section>
 
         {/* 3. RUTAS POR PAÍS CON FOTOS REALES ÚNICAS */}
@@ -277,7 +280,7 @@ export default function GuiaEuropaPage() {
                       </p>
                     </div>
                     <div className="pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs font-extrabold text-[#0a1628]">
-                      <span>Separa con el 50% ($350 USD)</span>
+                      <span>Separa con el 50% (desde $350 USD)</span>
                       <span className="text-red-600 group-hover:translate-x-1 transition-transform">
                         Ver ciudades →
                       </span>
@@ -304,10 +307,10 @@ export default function GuiaEuropaPage() {
                 className="bg-white rounded-2xl p-6 border border-slate-200 shadow-2xs"
               >
                 <h3 className="text-sm sm:text-base font-extrabold text-[#0a1628] mb-2">
-                  {f.q}
+                  {textoPrecio(f.q)}
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  {f.a}
+                  {textoPrecio(f.a)}
                 </p>
               </div>
             ))}

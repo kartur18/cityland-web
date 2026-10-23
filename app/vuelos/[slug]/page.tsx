@@ -4,6 +4,9 @@ import Link from "next/link";
 import VuelosJorgeChavezTemplate from "@/components/VuelosJorgeChavezTemplate";
 import ModuloSeguridadYCalculadoraEuropa from "@/components/ModuloSeguridadYCalculadoraEuropa";
 import { SeoSiloFooter } from "@/components/SeoSiloFooter";
+import GuiaRapidaLanding from "@/components/GuiaRapidaLanding";
+import { guiaVuelo } from "@/lib/contenido-guia";
+import { formatoUSD, textoPrecio } from "@/lib/formato-precio";
 import { RUTAS_VUELOS_SEO, buscarRutaVuelo } from "@/lib/rutas-vuelos";
 import { DESTINOS_EUROPA, DESTINOS_CARIBE } from "@/components/constantes";
 import {
@@ -113,6 +116,8 @@ export default async function RutaVueloPage({ params }: Props) {
     ? ruta.config.vitrina.img
     : `https://citylandtravel.com${ruta.config.vitrina.img}`;
 
+  const guia = guiaVuelo(ruta);
+
   const jsonLd = construirSchemaLandingSEO({
     url: `https://citylandtravel.com/vuelos/${ruta.slug}`,
     titulo: `Vuelos y Paquetes de ${ruta.origen} (${ruta.codigoOrigen}) a ${ruta.destino} (${ruta.codigoDestino})`,
@@ -122,7 +127,7 @@ export default async function RutaVueloPage({ params }: Props) {
     destinoOPais: `${ruta.destino}, ${paisDestino}`,
     imagenUrl: imgUrl,
     migas,
-    faqs: ruta.faqs,
+    faqs: [...guia.faqs, ...ruta.faqs],
   });
 
   return (
@@ -150,10 +155,10 @@ export default async function RutaVueloPage({ params }: Props) {
                     className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-2xs"
                   >
                     <h3 className="text-sm font-extrabold text-[#0a1628] mb-2">
-                      {f.q.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                      {textoPrecio(f.q)}
                     </h3>
                     <p className="text-xs text-slate-600 leading-relaxed">
-                      {f.a.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                      {textoPrecio(f.a)}
                     </p>
                   </div>
                 ))}
@@ -161,6 +166,8 @@ export default async function RutaVueloPage({ params }: Props) {
             </div>
           </section>
         )}
+
+        <GuiaRapidaLanding guia={guia} />
 
         <section className="py-10 bg-white border-t border-slate-200/80">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-6">
@@ -175,7 +182,7 @@ export default async function RutaVueloPage({ params }: Props) {
                     href={`/vuelos/${r.slug}`}
                     className="text-xs font-semibold text-slate-700 hover:text-red-600 bg-slate-50 hover:bg-red-50 border border-slate-200/80 px-3 py-1.5 rounded-full transition-colors"
                   >
-                    Vuelos {r.origen} a {r.destino} (${r.precioDesdeUSD})
+                    Vuelos {r.origen} a {r.destino} (desde {formatoUSD(r.precioDesdeUSD)})
                   </Link>
                 ))}
               </div>
@@ -193,7 +200,7 @@ export default async function RutaVueloPage({ params }: Props) {
                       href={`/destinos/${d.slug}`}
                       className="text-xs font-semibold text-slate-600 hover:text-[#0a1628] bg-slate-100 hover:bg-slate-200/70 px-3 py-1.5 rounded-full transition-colors"
                     >
-                      Paquete {d.ciudad} (Desde ${d.turistico})
+                      Paquete {d.ciudad} (Desde {formatoUSD(d.turistico)})
                     </Link>
                   ))}
                 </div>

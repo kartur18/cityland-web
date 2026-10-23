@@ -80,9 +80,10 @@ const JSON_LD_VISAS = {
             name: "Cityland Travel E.I.R.L.",
           },
           offers: {
-            "@type": "Offer",
+            "@type": "AggregateOffer",
+            offerCount: "1",
             priceCurrency: "USD",
-            price: String(v.tarifaDesdeUSD),
+            lowPrice: String(v.tarifaDesdeUSD),
             availability: "https://schema.org/InStock",
             url: "https://citylandtravel.com/visas",
           },

@@ -4,6 +4,10 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import BarraConversionMovil from "@/components/BarraConversionMovil";
+import NotaPrecio from "@/components/NotaPrecio";
+import { textoPrecio } from "@/lib/formato-precio";
+import { imagenSinRepetir } from "@/lib/imagenes-destinos";
 import type { RutaVueloSEO } from "@/lib/rutas-vuelos";
 
 interface Props {
@@ -19,7 +23,10 @@ export default function VuelosJorgeChavezTemplate({
 }: Props) {
   const { origen, destino, codigoOrigen, codigoDestino, precioDesdeUSD, config } = ruta;
   const mitad = Math.max(50, Math.round(precioDesdeUSD * 0.5));
-  const refWeb = `\n\n📍 Ref Web: https://citylandtravel.com/vuelos/${ruta.slug}`;
+  // El CRM lee "Ref Web: citylandtravel.com/<ruta>": sin https://
+  const refWeb = `\n\n📍 Ref Web: citylandtravel.com/vuelos/${ruta.slug}`;
+  const imagenesUsadas = new Set<string>();
+  const imgVitrina = imagenSinRepetir(config.vitrina.img, imagenesUsadas);
   const waHref = `https://wa.me/51944103890?text=${encodeURIComponent(
     config.waPrincipalMensaje + refWeb
   )}`;
@@ -55,7 +62,7 @@ export default function VuelosJorgeChavezTemplate({
           </nav>
           <span className="text-[11px] font-bold text-emerald-400 flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            Emisión Oficial PNR + Boleto IATA 13 Dígitos · RUC 20614914239
+            Agencia formal · RUC 20614914239
           </span>
         </div>
       </div>
@@ -111,7 +118,7 @@ export default function VuelosJorgeChavezTemplate({
 
                 <div className="mt-4 pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-300">
                   <span>
-                    <strong className="text-white">Equipaje:</strong> Mano 10 kg + Bodega 23 kg (Opción 2x23 kg)
+                    <strong className="text-white">Equipaje:</strong> según aerolínea y tarifa; tu asesor lo confirma
                   </span>
                   <span>
                     <strong className="text-white">Check-in:</strong> Gestionado por tu asesor
@@ -120,8 +127,8 @@ export default function VuelosJorgeChavezTemplate({
               </div>
 
               <p className="text-sm sm:text-base text-slate-200 leading-relaxed">
-                {config.descripcionHero}{" "}
-                <strong className="text-white font-bold">{config.negritaHero}</strong>
+                {textoPrecio(config.descripcionHero)}{" "}
+                <strong className="text-white font-bold">{textoPrecio(config.negritaHero)}</strong>
               </p>
 
               <div className="flex flex-wrap items-center gap-3 pt-1">
@@ -140,7 +147,7 @@ export default function VuelosJorgeChavezTemplate({
                     ${precioDesdeUSD.toLocaleString("en-US")} USD
                   </span>
                   <span className="text-slate-300 ml-1.5">
-                    (Separa con ${mitad} USD)
+                    (Separa desde ${mitad} USD)
                   </span>
                 </div>
               </div>
@@ -151,7 +158,7 @@ export default function VuelosJorgeChavezTemplate({
               <div className="bg-white text-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
                 <div className="relative h-56 sm:h-64 w-full bg-slate-900">
                   <Image
-                    src={config.vitrina.img}
+                    src={imgVitrina}
                     alt={`Vuelos de ${origen} a ${destino}`}
                     fill
                     priority
@@ -162,7 +169,7 @@ export default function VuelosJorgeChavezTemplate({
                     {codigoOrigen} → {codigoDestino}
                   </div>
                   <div className="absolute top-3 right-3 bg-emerald-600 text-white text-[11px] font-extrabold px-3 py-1 rounded-full">
-                    Código PNR Verificable
+                    Tarifa referencial
                   </div>
                 </div>
 
@@ -177,7 +184,7 @@ export default function VuelosJorgeChavezTemplate({
                       </h2>
                     </div>
                     <div className="text-right shrink-0">
-                      <span className="text-[10px] font-bold uppercase text-slate-400 block">
+                      <span className="text-[10px] font-bold uppercase text-slate-600 block">
                         Desde
                       </span>
                       <span className="text-2xl font-black text-emerald-700">
@@ -189,11 +196,11 @@ export default function VuelosJorgeChavezTemplate({
                     </div>
                   </div>
 
-                  <ul className="space-y-2 text-xs text-slate-700">
+                  <ul className="space-y-2 text-sm text-slate-700">
                     {config.checksHero.map((ck) => (
                       <li key={ck} className="flex items-start gap-2">
                         <span className="text-emerald-600 font-black mt-0.5">✓</span>
-                        <span>{ck}</span>
+                        <span>{textoPrecio(ck)}</span>
                       </li>
                     ))}
                     <li className="flex items-start gap-2">
@@ -239,7 +246,9 @@ export default function VuelosJorgeChavezTemplate({
             const itemWa = `https://wa.me/51944103890?text=${encodeURIComponent(
               (item.waMensaje || config.waPrincipalMensaje) + refWeb
             )}`;
-            const esDestacado = idx === 1 || idx === 2;
+            // Solo se resalta la tarjeta que el propio dato marca como la mejor tarifa
+            const esDestacado = /mejor|recomendad/i.test(item.tag);
+            const imgItem = imagenSinRepetir(item.img, imagenesUsadas);
             return (
               <div
                 key={item.id}
@@ -253,7 +262,7 @@ export default function VuelosJorgeChavezTemplate({
                   {/* Imagen 100% limpia sin textos encimados */}
                   <div className="relative h-48 w-full bg-slate-100">
                     <Image
-                      src={item.img}
+                      src={imgItem}
                       alt={item.alt}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
@@ -272,9 +281,9 @@ export default function VuelosJorgeChavezTemplate({
                       Opción {idx + 1} · Ruta {codigoOrigen} → {codigoDestino}
                     </span>
                     <h3 className="text-lg font-black text-[#071120] leading-snug mb-1.5">
-                      {item.titulo}
+                      {textoPrecio(item.titulo)}
                     </h3>
-                    <p className="text-xs text-slate-500 mb-4">{item.subtitulo}</p>
+                    <p className="text-sm text-slate-600 mb-4">{textoPrecio(item.subtitulo)}</p>
 
                     <div className="bg-slate-50 rounded-2xl p-3.5 border border-slate-200/80 mb-4 flex items-baseline justify-between">
                       <div>
@@ -289,15 +298,15 @@ export default function VuelosJorgeChavezTemplate({
                         </span>
                       </div>
                       <span className="text-[11px] font-semibold text-emerald-700 text-right">
-                        Impuestos incluidos
+                        {textoPrecio(item.notaPrecio || "Según aerolínea y tarifa; tu asesor lo confirma")}
                       </span>
                     </div>
 
-                    <ul className="space-y-2 text-xs text-slate-700 mb-5">
+                    <ul className="space-y-2 text-sm text-slate-700 mb-5">
                       {item.checks.map((c) => (
                         <li key={c} className="flex items-start gap-2">
                           <span className="text-emerald-600 font-bold mt-0.5">✓</span>
-                          <span>{c}</span>
+                          <span>{textoPrecio(c)}</span>
                         </li>
                       ))}
                     </ul>
@@ -319,12 +328,18 @@ export default function VuelosJorgeChavezTemplate({
             );
           })}
         </div>
+        <NotaPrecio className="mt-6 text-center" />
       </section>
 
       {/* Contenido adicional de la página (Calculadora Schengen, FAQs, Rutas Relacionadas) */}
       {children}
 
       <Footer />
+
+      <BarraConversionMovil
+        precio={`$${precioDesdeUSD.toLocaleString("en-US")}`}
+        href={waHref}
+      />
     </div>
   );
 }

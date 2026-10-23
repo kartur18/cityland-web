@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { buildWaUrl, WA_LINK } from "@/components/constantes";
 import FlagIcon from "@/components/icons/FlagIcon";
+import NotaPrecio from "@/components/NotaPrecio";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import ArrowRightIcon from "@/components/icons/ArrowRightIcon";
 
@@ -38,7 +39,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-6 max-w-xl">
-              Especialistas en <strong className="text-[#0a1628] font-bold">Paquetes Migratorios a Europa desde $699 USD</strong> (pasaje, retorno reservado, hotel, seguro 30.000€ y check-in) y vacaciones Todo Incluido al Caribe.{" "}
+              Especialistas en <strong className="text-[#0a1628] font-bold">Paquetes Migratorios a Europa desde $699 USD (solo ida)</strong> (pasaje, retorno reservado, hotel, seguro 30.000€ y check-in) y vacaciones Todo Incluido al Caribe.{" "}
               <strong className="text-emerald-700 font-bold">
                 Separa hoy con el 50% de inicial.
               </strong>
@@ -51,21 +52,21 @@ export default function Hero() {
                 className="inline-flex items-center gap-1.5 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 px-3.5 py-1.5 rounded-full text-xs font-extrabold transition-colors whitespace-nowrap"
               >
                 <FlagIcon pais="España" className="w-3.5 h-2.5" />
-                <span>España desde $699</span>
+                <span>España solo ida desde $699</span>
               </Link>
               <Link
                 href="/italia"
                 className="inline-flex items-center gap-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 px-3.5 py-1.5 rounded-full text-xs font-extrabold transition-colors whitespace-nowrap"
               >
                 <FlagIcon pais="Italia" className="w-3.5 h-2.5" />
-                <span>Italia desde $699</span>
+                <span>Italia solo ida desde $699</span>
               </Link>
               <Link
                 href="/francia"
                 className="inline-flex items-center gap-1.5 bg-blue-50 hover:bg-blue-100 text-blue-800 border border-blue-200 px-3.5 py-1.5 rounded-full text-xs font-extrabold transition-colors whitespace-nowrap"
               >
                 <FlagIcon pais="Francia" className="w-3.5 h-2.5" />
-                <span>Francia desde $699</span>
+                <span>Francia solo ida desde $699</span>
               </Link>
               <Link
                 href="/caribe"
@@ -117,7 +118,7 @@ export default function Hero() {
               <div className="relative h-60 sm:h-64 w-full overflow-hidden bg-slate-100">
                 <Image
                   src="/images/espana/gran-via-metropolis.jpg"
-                  alt="Paquete Migratorio a España, Italia y Francia desde $699 USD - Cityland Travel"
+                  alt="Paquete Migratorio a España, Italia y Francia desde $699 USD (solo ida) - Cityland Travel"
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 500px"
@@ -147,14 +148,14 @@ export default function Hero() {
                     Paquete Migratorio a Europa
                   </h2>
                   <p className="text-xs font-semibold text-slate-500 mt-1">
-                    4 planes según tu fecha: <strong className="text-[#0a1628]">$699 · $799 · $899 · $999 USD</strong>
+                    4 planes de solo ida desde <strong className="text-[#0a1628]">$699 · $799 · $899 · $999 USD</strong>, según tu fecha
                   </p>
                 </div>
 
                 <div className="flex items-center justify-between gap-4">
                   <div>
                     <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1.5">
-                      Tarifa Promo Anticipada
+                      Solo ida · Tarifa Promo Anticipada
                     </span>
                     <div className="flex items-baseline gap-1.5">
                       <span className="text-xs font-extrabold uppercase text-red-600">Desde</span>
@@ -164,7 +165,7 @@ export default function Hero() {
                       <span className="text-xs font-bold text-slate-500">USD</span>
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-700 block mt-1">
-                      Separa con 50% ($350 USD)
+                      Separa con 50% (desde $350 USD)
                     </span>
                   </div>
 
@@ -178,6 +179,7 @@ export default function Hero() {
                     <span>Cotizar Ahora</span>
                   </a>
                 </div>
+                <NotaPrecio className="text-[11px]" />
               </div>
             </div>
           </div>

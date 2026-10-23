@@ -5,6 +5,7 @@ import {
   INDICE_PAQUETES_MIGRATORIOS_1000,
   obtenerSuperLandingPorSlug,
 } from "@/lib/catalogo-paquetes-migratorios-1000";
+import { enriquecerLandingMigratorio } from "@/lib/contenido-migratorios";
 import {
   URL_BASE_SEO,
   construirSchemaLandingSEO,
@@ -71,8 +72,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PaqueteMigratorioSlugPage({ params }: Props) {
   const { slug } = await params;
-  const datos = obtenerSuperLandingPorSlug(slug);
-  if (!datos) notFound();
+  const base = obtenerSuperLandingPorSlug(slug);
+  if (!base) notFound();
+  const datos = enriquecerLandingMigratorio(base);
 
   const urlActual = `${URL_BASE_SEO}/paquetes-migratorios/${datos.slug}`;
   const imagenAbsoluta = datos.imagenHero.startsWith("/")

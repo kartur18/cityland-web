@@ -261,9 +261,10 @@ const JSON_LD_SEGUROS = {
           image: s.img.startsWith("http") ? s.img : `https://citylandtravel.com${s.img}`,
           provider: { "@type": "TravelAgency", name: "Cityland Travel" },
           offers: {
-            "@type": "Offer",
+            "@type": "AggregateOffer",
+            offerCount: "1",
             priceCurrency: "USD",
-            price: s.precioPrincipal.replace(/[^0-9]/g, ""),
+            lowPrice: s.precioPrincipal.replace(/[^0-9]/g, ""),
             availability: "https://schema.org/InStock",
             url: "https://citylandtravel.com/seguros",
           },

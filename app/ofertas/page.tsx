@@ -7,8 +7,8 @@ import BuscadorCatalogoInstantaneo from "@/components/BuscadorCatalogoInstantane
 import { INDICE_PAQUETES_MIGRATORIOS_1000 } from "@/lib/catalogo-paquetes-migratorios-1000";
 
 export const metadata: Metadata = {
-  title: optimizarMetaTitleSEO("Ofertas de Viajes, Paquetes Migratorios desde $699 y Caribe | Cityland Travel"),
-  description: optimizarMetaDescriptionSEO("Descubre nuestras ofertas vigentes en paquetes migratorios a España, Italia y Francia desde $699 USD, resorts All Inclusive en el Caribe, cruceros sin visa y Cusco."),
+  title: optimizarMetaTitleSEO("Ofertas de Viajes, Paquetes Migratorios solo ida desde $699 y Caribe | Cityland Travel"),
+  description: optimizarMetaDescriptionSEO("Descubre nuestras ofertas vigentes en paquetes migratorios a España, Italia y Francia desde $699 USD (solo ida), resorts All Inclusive en el Caribe, cruceros sin visa y Cusco."),
   alternates: {
     canonical: "https://citylandtravel.com/ofertas",
   },
@@ -20,14 +20,14 @@ const CONFIG_OFERTAS: ConfiguracionLandingAerolinea = {
   tituloHero: "Catálogo de Ofertas de",
   tituloDestacadoHero: "Paquetes a Europa, Caribe y Perú",
   descripcionHero:
-    "Explora nuestras ofertas organizadas por prioridad comercial: paquetes migratorios a España, Italia y Francia desde $699 USD, resorts All Inclusive en el Caribe y circuitos por el Perú.",
+    "Explora nuestras ofertas organizadas por prioridad comercial: paquetes migratorios a España, Italia y Francia desde $699 USD (solo ida), resorts All Inclusive en el Caribe y circuitos por el Perú.",
   negritaHero: "Separa hoy con el 50% de inicial y congela tu tarifa oficial",
   ctaPrincipalTexto: "Cotizar Oferta por WhatsApp",
   waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
     "¡Hola Cityland Travel! Estuve revisando el catálogo de Ofertas de Viajes en su web y quiero cotizar mi viaje.",
   checksHero: [
-    "Paquetes Migratorios a Europa: $699 · $799 · $899 · $999",
+    "Paquetes Migratorios a Europa (solo ida): $699 · $799 · $899 · $999",
     "Separa con el 50% y congela tu tarifa",
     "Atención presencial en Los Olivos y por WhatsApp",
   ],
@@ -39,7 +39,7 @@ const CONFIG_OFERTAS: ConfiguracionLandingAerolinea = {
     alt: "Oferta Paquete Migratorio a España y Europa desde $699 — Cityland Travel",
     sobretitulo: "Pasaje de Ida + Boleto de Regreso Reservado + Hotel + Seguro 30.000€",
     titulo: "Paquete Migratorio a España, Italia y Francia",
-    labelPrecio: "Planes $699 · $799 · $899 · $999",
+    labelPrecio: "Planes de solo ida $699 · $799 · $899 · $999",
     precio: "$699",
     moneda: "USD",
     notaInferior: "Separa hoy con $350 (50% inicial)",
@@ -63,7 +63,7 @@ const CONFIG_OFERTAS: ConfiguracionLandingAerolinea = {
       titulo: "Paquete Migratorio a Madrid o Barcelona",
       pais: "España",
       filtro: "europa",
-      subtitulo: "Planes según tu fecha: $699 · $799 · $899 · $999",
+      subtitulo: "Planes de solo ida según tu fecha: $699 · $799 · $899 · $999",
       precioPrincipal: "$699",
       precioSecundario: "USD",
       notaPrecio: "Separa con $350 (50% inicial)",
@@ -86,7 +86,7 @@ const CONFIG_OFERTAS: ConfiguracionLandingAerolinea = {
       titulo: "Paquete Migratorio a Milán, Roma y Turín",
       pais: "Italia",
       filtro: "europa",
-      subtitulo: "Planes según tu fecha: $699 · $799 · $899 · $999",
+      subtitulo: "Planes de solo ida según tu fecha: $699 · $799 · $899 · $999",
       precioPrincipal: "$699",
       precioSecundario: "USD",
       notaPrecio: "Separa con $350 (50% inicial)",
@@ -183,7 +183,7 @@ const CONFIG_OFERTAS: ConfiguracionLandingAerolinea = {
   ],
   pilares: [
     {
-      titulo: "Desde $699 USD",
+      titulo: "Solo ida desde $699 USD",
       sub: "Paquetes migratorios completos a España, Italia y Francia según tu fecha",
     },
     {

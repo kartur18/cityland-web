@@ -262,9 +262,10 @@ const JSON_LD_CRUCEROS = {
           image: c.img,
           provider: { "@type": "TravelAgency", name: "Cityland Travel" },
           offers: {
-            "@type": "Offer",
+            "@type": "AggregateOffer",
+            offerCount: "1",
             priceCurrency: "USD",
-            price: c.precioPrincipal.replace(/[^0-9]/g, ""),
+            lowPrice: c.precioPrincipal.replace(/[^0-9]/g, ""),
             availability: "https://schema.org/InStock",
             url: "https://citylandtravel.com/cruceros",
           },

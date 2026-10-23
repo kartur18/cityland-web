@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
-import { PRECIO_DESDE_EUROPA } from "@/components/constantes";
+import { PRECIO_IDA_VUELTA_MADRID_DESDE, PRECIO_MIGRATORIO_DESDE } from "@/components/constantes";
 
-export const alt = `Cityland Travel — Paquetes a Europa desde $${PRECIO_DESDE_EUROPA}`;
+export const alt = `Cityland Travel — Paquete migratorio España (solo ida + gestión) desde US$ ${PRECIO_MIGRATORIO_DESDE}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -75,12 +75,20 @@ export default async function Image() {
           <div
             style={{
               display: "flex",
+              flexDirection: "column" as const,
+              alignItems: "center",
+              gap: "6px",
               fontSize: "28px",
               color: "rgba(255,255,255,0.6)",
               textAlign: "center" as const,
             }}
           >
-            Paquetes migratorios y turísticos desde ${PRECIO_DESDE_EUROPA}
+            <div style={{ display: "flex" }}>
+              Paquete migratorio España (solo ida + gestión) desde US$ {PRECIO_MIGRATORIO_DESDE}
+            </div>
+            <div style={{ display: "flex" }}>
+              Vuelos Lima-Madrid ida y vuelta desde US$ {PRECIO_IDA_VUELTA_MADRID_DESDE.toLocaleString("en-US")}
+            </div>
           </div>
 
           <div

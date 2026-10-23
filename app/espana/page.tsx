@@ -4,6 +4,7 @@ import {
   optimizarMetaTitleSEO,
   optimizarMetaDescriptionSEO,
 } from "@/lib/seo-arquitectura";
+import { textoPrecio } from "@/lib/formato-precio";
 
 const rawTitle =
   "Paquetes Migratorios a España y Madrid Desde $699 USD | Cityland Travel";
@@ -96,7 +97,7 @@ const JSON_LD_ESPANA = {
           {
             "@type": "Offer",
             name: "Plan Promo España — Fines de Febrero, Marzo, Abril y Mayo",
-            price: "699",
+            priceSpecification: { "@type": "PriceSpecification", minPrice: "699", priceCurrency: "USD" },
             priceCurrency: "USD",
             priceValidUntil: "2027-05-31",
             availability: "https://schema.org/InStock",
@@ -105,7 +106,7 @@ const JSON_LD_ESPANA = {
           {
             "@type": "Offer",
             name: "Plan Smart España — Junio, Septiembre, Octubre y Noviembre",
-            price: "799",
+            priceSpecification: { "@type": "PriceSpecification", minPrice: "799", priceCurrency: "USD" },
             priceCurrency: "USD",
             priceValidUntil: "2026-11-30",
             availability: "https://schema.org/InStock",
@@ -114,7 +115,7 @@ const JSON_LD_ESPANA = {
           {
             "@type": "Offer",
             name: "Plan Plus España — Salidas cercanas Enero / 1ra quincena Febrero",
-            price: "899",
+            priceSpecification: { "@type": "PriceSpecification", minPrice: "899", priceCurrency: "USD" },
             priceCurrency: "USD",
             priceValidUntil: "2027-02-15",
             availability: "https://schema.org/InStock",
@@ -123,7 +124,7 @@ const JSON_LD_ESPANA = {
           {
             "@type": "Offer",
             name: "Plan Full 23kg España — Temporada Alta Diciembre / Julio / Agosto",
-            price: "999",
+            priceSpecification: { "@type": "PriceSpecification", minPrice: "999", priceCurrency: "USD" },
             priceCurrency: "USD",
             priceValidUntil: "2026-12-31",
             availability: "https://schema.org/InStock",
@@ -176,7 +177,7 @@ const JSON_LD_ESPANA = {
           name: "¿El paquete a España desde $699 USD es ida y vuelta?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Si viajas a España para quedarte, no tiene sentido gastar $1,500 en un avión de regreso al que no te vas a subir. Por eso nuestro Paquete Migratorio incluye tu pasaje de avión de ida emitido + tu boleto de regreso reservado en sistema para presentar en el aeropuerto y en Migraciones + tu reserva de hotel + tu seguro Schengen de 30.000€ + tu check-in hecho 24h antes.",
+            text: textoPrecio("Si viajas a España para quedarte, no tiene sentido gastar $1,500 en un avión de regreso al que no te vas a subir. Por eso nuestro Paquete Migratorio incluye tu pasaje de avión de ida emitido + tu boleto de regreso reservado en sistema para presentar en el aeropuerto y en Migraciones + tu reserva de hotel + tu seguro Schengen de 30.000€ + tu check-in hecho 24h antes."),
           },
         },
         {
@@ -184,7 +185,7 @@ const JSON_LD_ESPANA = {
           name: "¿Cuánto cuesta el paquete a España según el mes de viaje y cómo se separa?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Contamos con 4 planes oficiales según tu fecha de viaje: Plan Promo $699 USD (fines de Feb, Mar, Abr, May — separa con $350), Plan Smart $799 USD (Jun, Sep, Oct, Nov — separa con $400), Plan Plus $899 USD (salidas cercanas Ene/1ra quincena Feb — separa con $450) y Plan Full $999 USD (temporada alta Dic/Jul/Ago o con maleta de 23 kg en bodega — separa con $500).",
+            text: textoPrecio("Contamos con 4 planes oficiales según tu fecha de viaje: Plan Promo $699 USD (fines de Feb, Mar, Abr, May — separa con $350), Plan Smart $799 USD (Jun, Sep, Oct, Nov — separa con $400), Plan Plus $899 USD (salidas cercanas Ene/1ra quincena Feb — separa con $450) y Plan Full $999 USD (temporada alta Dic/Jul/Ago o con maleta de 23 kg en bodega — separa con $500)."),
           },
         },
       ],

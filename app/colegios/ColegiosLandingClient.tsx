@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
+import NotaPrecio from "@/components/NotaPrecio";
 import { PAQUETES_COLEGIOS } from "./datos";
 
 const FILTROS_PROMO = [
@@ -273,6 +274,7 @@ export default function ColegiosLandingClient() {
               );
             })}
           </div>
+          <NotaPrecio className="mt-6 text-center" />
         </div>
       </section>
 

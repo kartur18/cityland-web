@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import PlaneIcon from "@/components/icons/PlaneIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
+import NotaPrecio from "@/components/NotaPrecio";
 import { DESTINOS_TOP_PERU } from "./datos";
 
 const FILTROS = [
@@ -135,7 +136,7 @@ export default function CaribeLandingClient() {
                       </span>
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                      Separa con 50% ($525)
+                      Separa con 50% (desde $525)
                     </span>
                   </div>
 
@@ -257,7 +258,7 @@ export default function CaribeLandingClient() {
                       <div>
                         <div className="flex items-center gap-1.5 mb-0.5">
                           <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                            Regular
+                            Antes desde
                           </span>
                           <span className="text-[11px] font-semibold text-slate-400 line-through">
                             ${d.precioRegularUSD.toLocaleString("en-US")}
@@ -272,7 +273,7 @@ export default function CaribeLandingClient() {
                           </span>
                         </div>
                         <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                          Separa con 50% (${inicialUSD})
+                          Separa desde ${inicialUSD} (50%)
                         </span>
                       </div>
 
@@ -299,6 +300,7 @@ export default function CaribeLandingClient() {
               );
             })}
           </div>
+          <NotaPrecio className="mt-6 text-center" />
         </div>
       </section>
 

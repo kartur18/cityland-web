@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
@@ -85,55 +86,10 @@ export interface ConfiguracionLandingAerolinea {
   };
 }
 
-import {
-  obtenerGaleriaPorTexto,
-  IMG_AVION_ALA,
-  IMG_AEROPUERTO_INTERNACIONAL,
-  IMG_VIAJERO_MALETA,
-  IMG_FAMILIA_VIAJE,
-  IMG_PASAPORTE_VIAJE,
-} from "@/lib/imagenes-destinos";
-
-const FALLBACKS_NEUTROS_UNIVERSALES: string[] = [
-  IMG_AVION_ALA,
-  IMG_AEROPUERTO_INTERNACIONAL,
-  IMG_VIAJERO_MALETA,
-  IMG_FAMILIA_VIAJE,
-  IMG_PASAPORTE_VIAJE,
-];
-
-function obtenerImagenUnica(
-  imgOriginal: string,
-  contextoTexto: string,
-  usadas: Set<string>
-): string {
-  if (imgOriginal && !usadas.has(imgOriginal)) {
-    usadas.add(imgOriginal);
-    return imgOriginal;
-  }
-  const galeriaEspecifica = obtenerGaleriaPorTexto(contextoTexto);
-  const candidatos = [...galeriaEspecifica, ...FALLBACKS_NEUTROS_UNIVERSALES];
-  for (const cand of candidatos) {
-    if (!usadas.has(cand)) {
-      usadas.add(cand);
-      return cand;
-    }
-  }
-  return imgOriginal;
-}
-
-function calcularPrecioAntes(precioStr: string): string | null {
-  const limpio = precioStr.replace(/[^0-9]/g, "");
-  const num = parseInt(limpio, 10);
-  if (!num || isNaN(num) || num <= 0) return null;
-  const antes =
-    num < 100
-      ? num + 20
-      : num < 400
-      ? Math.ceil((num * 1.22) / 5) * 5
-      : Math.ceil((num * 1.2) / 10) * 10;
-  return `$${antes.toLocaleString("en-US")}`;
-}
+import { imagenSinRepetir } from "@/lib/imagenes-destinos";
+import BarraConversionMovil from "@/components/BarraConversionMovil";
+import NotaPrecio from "@/components/NotaPrecio";
+import { textoPrecio } from "@/lib/formato-precio";
 
 export default function AirlineLandingTemplate({
   config,
@@ -145,41 +101,30 @@ export default function AirlineLandingTemplate({
   children?: React.ReactNode;
 }) {
   const [filtro, setFiltro] = useState<string>("todos");
+  const rutaActual = usePathname() || "";
 
   // Garantizamos que ninguna imagen se repita entre vitrina, tarjetas y banner final
   const contextoGlobal = `${config.vitrina.titulo} ${config.tituloHero} ${config.tituloDestacadoHero} ${config.vitrina.pais}`;
   const imagenesUsadas = new Set<string>();
-  const imgVitrina = obtenerImagenUnica(
-    config.vitrina.img,
-    contextoGlobal,
-    imagenesUsadas
-  );
+  const imgVitrina = imagenSinRepetir(config.vitrina.img, imagenesUsadas);
 
   const itemsConImagenUnica = config.items.map((item) => ({
     ...item,
-    imgRender: obtenerImagenUnica(
-      item.img,
-      `${item.id} ${item.titulo} ${item.alt} ${contextoGlobal}`,
-      imagenesUsadas
-    ),
+    imgRender: imagenSinRepetir(item.img, imagenesUsadas),
   }));
 
-  const imgBannerFinal = obtenerImagenUnica(
-    config.bannerFinal.img,
-    `${config.bannerFinal.titulo} ${contextoGlobal}`,
-    imagenesUsadas
-  );
+  const imgBannerFinal = imagenSinRepetir(config.bannerFinal.img, imagenesUsadas);
 
   const itemsMostrados =
     filtro === "todos"
       ? itemsConImagenUnica
       : itemsConImagenUnica.filter((i) => i.filtro === filtro);
 
-  const precioAntesVitrina = calcularPrecioAntes(config.vitrina.precio);
+  // Ruta para "Ref Web": la última miga y, si no hay migas, la página actual (el CRM la lee como citylandtravel.com/<ruta>)
   const rutaOrigenSeo =
-    breadcrumbs && breadcrumbs.length > 0
+    (breadcrumbs && breadcrumbs.length > 0
       ? breadcrumbs[breadcrumbs.length - 1]?.url || ""
-      : "";
+      : "") || rutaActual;
 
   // Determinar identidad visual según la vertical del destino para diferenciar diseños
   const ctxLower = contextoGlobal.toLowerCase();
@@ -290,9 +235,7 @@ export default function AirlineLandingTemplate({
     if (limpio.includes("📍 Ref Web:")) {
       return `https://wa.me/51944103890?text=${encodeURIComponent(limpio)}`;
     }
-    const sufijo = rutaOrigenSeo
-      ? `\n\n📍 Ref Web: citylandtravel.com${rutaOrigenSeo} [${seccion}]`
-      : `\n\n📍 Ref Web: citylandtravel.com [${seccion}]`;
+    const sufijo = `\n\n📍 Ref Web: citylandtravel.com${rutaOrigenSeo} [${seccion}]`;
     return `https://wa.me/51944103890?text=${encodeURIComponent(`${limpio}${sufijo}`)}`;
   }
 
@@ -323,25 +266,22 @@ export default function AirlineLandingTemplate({
               <h1
                 className={`text-2xl sm:text-3xl lg:text-[38px] font-extrabold tracking-tight leading-[1.15] mb-3.5 ${temaHero.h1Cls}`}
               >
-                {config.tituloHero.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}{" "}
+                {textoPrecio(config.tituloHero)}{" "}
                 <span
                   className={`${temaHero.highlightCls} ${
                     config.tituloDestacadoHero.length <= 22 ? "inline-block" : "block mt-1"
                   }`}
                 >
-                  {config.tituloDestacadoHero.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                  {textoPrecio(config.tituloDestacadoHero)}
                 </span>
               </h1>
 
               <p
                 className={`text-sm sm:text-base leading-relaxed mb-5 max-w-2xl ${temaHero.pCls}`}
               >
-                {config.descripcionHero
-                  .trim()
-                  .replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")
-                  .replace(/([^.!?])$/, "$1.")}{" "}
+                {textoPrecio(config.descripcionHero.trim()).replace(/([^.!?])$/, "$1.")}{" "}
                 <strong className={`font-bold ${temaHero.strongCls}`}>
-                  {config.negritaHero.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                  {textoPrecio(config.negritaHero)}
                 </strong>
               </p>
 
@@ -358,7 +298,7 @@ export default function AirlineLandingTemplate({
                       ✓
                     </span>
                     <span className="leading-snug">
-                      {c.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                      {textoPrecio(c)}
                     </span>
                   </div>
                 ))}
@@ -402,7 +342,7 @@ export default function AirlineLandingTemplate({
                       {config.vitrina.etiquetaIzq}
                     </span>
                     <span className="bg-red-600 text-white text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full shadow-xs">
-                      {config.vitrina.etiquetaDer}
+                      {textoPrecio(config.vitrina.etiquetaDer)}
                     </span>
                   </div>
                 </div>
@@ -410,24 +350,19 @@ export default function AirlineLandingTemplate({
                 <div className="p-5 bg-white space-y-3.5">
                   <div className="border-b border-slate-100 pb-3">
                     <span className="text-[11px] font-extrabold text-red-600 uppercase tracking-wider block mb-0.5">
-                      {config.vitrina.sobretitulo}
+                      {textoPrecio(config.vitrina.sobretitulo)}
                     </span>
                     <h2 className="text-base sm:text-lg font-extrabold text-[#0a1628] leading-snug">
-                      {config.vitrina.titulo}
+                      {textoPrecio(config.vitrina.titulo)}
                     </h2>
                   </div>
 
                   <div className="flex items-center justify-between gap-4">
                     <div>
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                          {config.vitrina.labelPrecio}
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600">
+                          {textoPrecio(config.vitrina.labelPrecio)}
                         </span>
-                        {precioAntesVitrina && (
-                          <span className="bg-red-50 text-red-600 text-[10px] font-extrabold px-2 py-0.5 rounded-full">
-                            Oferta
-                          </span>
-                        )}
                       </div>
                       <div className="flex items-baseline gap-1.5">
                         <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
@@ -442,14 +377,9 @@ export default function AirlineLandingTemplate({
                               {config.vitrina.moneda.replace(/\bUSD\b\s*[·•-]?\s*/gi, "").trim()}
                             </span>
                           )}
-                        {precioAntesVitrina && (
-                          <span className="text-xs font-semibold text-slate-400 line-through ml-1">
-                            {precioAntesVitrina}
-                          </span>
-                        )}
                       </div>
                       <span className="text-[11px] font-semibold text-emerald-700 block mt-1">
-                        {config.vitrina.notaInferior.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                        {textoPrecio(config.vitrina.notaInferior)}
                       </span>
                     </div>
 
@@ -560,7 +490,6 @@ export default function AirlineLandingTemplate({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {itemsMostrados.map((item) => {
               const esInicial = item.precioSecundario?.trim().startsWith("$");
-              const precioAntesItem = calcularPrecioAntes(item.precioPrincipal);
               const msg =
                 item.waMensaje ||
                 `¡Hola Cityland Travel! Vi su página web y deseo cotizar: ${item.titulo} (${item.subtitulo}) desde ${item.precioPrincipal}.`;
@@ -597,30 +526,30 @@ export default function AirlineLandingTemplate({
                   <div className="p-5 flex flex-col justify-between flex-1 gap-4">
                     <div>
                       <span className="text-[11px] font-extrabold uppercase tracking-wider text-red-600 block mb-1">
-                        {item.subtitulo.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                        {textoPrecio(item.subtitulo)}
                       </span>
                       <h3 className="text-base sm:text-lg font-extrabold text-[#0a1628] leading-snug mb-2.5">
-                        {item.titulo.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                        {textoPrecio(item.titulo)}
                       </h3>
 
                       {item.resumenCorto.length > 55 ? (
-                        <p className="text-xs text-slate-600 leading-relaxed mb-3">
-                          {item.resumenCorto.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                        <p className="text-sm text-slate-600 leading-relaxed mb-3">
+                          {textoPrecio(item.resumenCorto)}
                         </p>
                       ) : (
                         <div className="inline-block bg-sky-50/90 text-[#0a1628] border border-sky-200/70 text-[11px] font-bold px-2.5 py-1 rounded-lg mb-3">
-                          {item.resumenCorto.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                          {textoPrecio(item.resumenCorto)}
                         </div>
                       )}
 
-                      <div className="space-y-1.5 text-xs font-medium text-slate-600 pt-2.5 border-t border-slate-100">
+                      <div className="space-y-1.5 text-sm font-medium text-slate-600 pt-2.5 border-t border-slate-100">
                         {item.checks.map((ck) => (
                           <div key={ck} className="flex items-start gap-2">
                             <span className="text-emerald-600 font-extrabold shrink-0 mt-0.5">
                               ✓
                             </span>
                             <span className="leading-snug">
-                              {ck.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                              {textoPrecio(ck)}
                             </span>
                           </div>
                         ))}
@@ -630,14 +559,9 @@ export default function AirlineLandingTemplate({
                     <div className="pt-3.5 border-t border-slate-100 flex items-center justify-between gap-3">
                       <div>
                         <div className="flex items-center gap-1.5 mb-1">
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 leading-none">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600 leading-none">
                             Tarifa Promo
                           </span>
-                          {precioAntesItem && (
-                            <span className="text-[11px] font-semibold text-slate-400 line-through leading-none">
-                              {precioAntesItem}
-                            </span>
-                          )}
                         </div>
                         <div className="flex items-baseline gap-1">
                           <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
@@ -648,10 +572,9 @@ export default function AirlineLandingTemplate({
                           </span>
                         </div>
                         <span className="text-[11px] font-semibold text-emerald-700 block mt-1">
-                          {(esInicial
-                            ? `Separa con ${item.precioSecundario} (50% inicial)`
-                            : item.notaPrecio
-                          ).replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                          {textoPrecio(
+                            esInicial ? `Separa con ${item.precioSecundario} (50% inicial)` : item.notaPrecio
+                          )}
                         </span>
                       </div>
 
@@ -670,6 +593,7 @@ export default function AirlineLandingTemplate({
               );
             })}
           </div>
+          <NotaPrecio className="mt-6 text-center" />
         </div>
       </section>
 
@@ -687,10 +611,10 @@ export default function AirlineLandingTemplate({
                 </span>
                 <div>
                   <h3 className="text-sm font-extrabold text-[#0a1628]">
-                    {p.titulo.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                    {textoPrecio(p.titulo)}
                   </h3>
-                  <p className="text-xs text-slate-600 mt-0.5 leading-relaxed">
-                    {p.sub.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                  <p className="text-sm text-slate-600 mt-0.5 leading-relaxed">
+                    {textoPrecio(p.sub)}
                   </p>
                 </div>
               </div>
@@ -703,10 +627,10 @@ export default function AirlineLandingTemplate({
                 {config.bannerFinal.sobretitulo}
               </span>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0a1628] tracking-tight leading-tight mb-3">
-                {config.bannerFinal.titulo.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                {textoPrecio(config.bannerFinal.titulo)}
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 max-w-xl">
-                {config.bannerFinal.descripcion.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                {textoPrecio(config.bannerFinal.descripcion)}
               </p>
 
               <div className="flex flex-wrap items-center gap-3">
@@ -748,30 +672,10 @@ export default function AirlineLandingTemplate({
       <Footer />
 
       {/* 6. Barra Sticky de Conversión Móvil (estilo agencias líderes) + Botón Flotante en Escritorio */}
-      <div className="sm:hidden fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200 px-4 py-2.5 shadow-[0_-8px_24px_rgba(10,22,40,0.12)] flex items-center justify-between gap-3">
-        <div className="min-w-0">
-          <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block leading-none">
-            Tarifa desde
-          </span>
-          <div className="flex items-baseline gap-1 mt-0.5">
-            <span className="text-lg font-black text-[#0a1628] leading-none">
-              {config.vitrina.precio.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
-            </span>
-            <span className="text-[10px] font-bold text-emerald-700 truncate">
-              · Separa con 50%
-            </span>
-          </div>
-        </div>
-        <a
-          href={armarUrlWaConAtribucion(config.waFlotante.mensaje, "Barra Móvil")}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white font-extrabold px-4 py-2.5 rounded-xl text-xs shadow-md shrink-0"
-        >
-          <WhatsAppIcon size={16} />
-          <span>WhatsApp Ahora</span>
-        </a>
-      </div>
+      <BarraConversionMovil
+        precio={config.vitrina.precio.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+        href={armarUrlWaConAtribucion(config.waFlotante.mensaje, "Barra Móvil")}
+      />
 
       <div className="hidden sm:block fixed bottom-5 right-5 z-50">
         <a

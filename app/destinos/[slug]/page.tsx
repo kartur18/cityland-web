@@ -19,6 +19,8 @@ import FlagIcon from "@/components/icons/FlagIcon";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { SeoSiloFooter } from "@/components/SeoSiloFooter";
 import ModuloSeguridadYCalculadoraEuropa from "@/components/ModuloSeguridadYCalculadoraEuropa";
+import NotaPrecio from "@/components/NotaPrecio";
+import { formatoUSD, textoPrecio } from "@/lib/formato-precio";
 import {
   obtenerEnlacesCruzadosSEO,
   optimizarMetaTitleSEO,
@@ -153,15 +155,16 @@ export default async function DestinoPage({
       {
         "@type": "Product",
         name: `Paquete de Viaje a ${dest.ciudad}, ${dest.pais} (${dest.duracion || "5 Días / 4 Noches"})`,
-        description: dest.descripcion,
+        description: textoPrecio(dest.descripcion),
         image: dest.img.startsWith("http")
           ? dest.img
           : `https://citylandtravel.com${dest.img}`,
         brand: { "@type": "Brand", name: "Cityland Travel" },
         offers: {
-          "@type": "Offer",
+          "@type": "AggregateOffer",
           priceCurrency: "USD",
-          price: String(precioPrincipal),
+          lowPrice: String(precioPrincipal),
+          offerCount: String(dest.migratorio ? 2 : 1),
           availability: "https://schema.org/InStock",
           url: `https://citylandtravel.com/destinos/${dest.slug}`,
           seller: {
@@ -229,7 +232,7 @@ export default async function DestinoPage({
               </h1>
 
               <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6 max-w-2xl">
-                {dest.descripcion}
+                {textoPrecio(dest.descripcion)}
               </p>
 
               {/* Chips de Inclusión Rápida (100% completos sin cortar texto) */}
@@ -253,7 +256,7 @@ export default async function DestinoPage({
                       className="flex items-start gap-2 bg-slate-50 border border-slate-200/80 rounded-xl px-3.5 py-2.5 text-xs font-semibold text-slate-700"
                     >
                       <span className="text-emerald-600 font-extrabold shrink-0 mt-0.5">✓</span>
-                      <span className="leading-snug">{inc.replace(/^[^\wÁÉÍÓÚáéíóúÑñ]+\s*/, "")}</span>
+                      <span className="leading-snug">{textoPrecio(inc.replace(/^[^\wÁÉÍÓÚáéíóúÑñ]+\s*/, ""))}</span>
                     </div>
                   ))}
               </div>
@@ -274,7 +277,7 @@ export default async function DestinoPage({
                 >
                   <WhatsAppIcon size={18} />
                   <span>
-                    Cotizar {dest.ciudad} (Desde ${precioPrincipal.toLocaleString("en-US")})
+                    Cotizar {dest.ciudad} (Desde {formatoUSD(precioPrincipal)})
                   </span>
                 </a>
                 <a
@@ -322,24 +325,24 @@ export default async function DestinoPage({
 
                   <div className="flex items-center justify-between gap-4">
                     <div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1">
-                        Tarifa por pasajero (Impuestos incluidos)
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600 block leading-none mb-1">
+                        Tarifa referencial por pasajero
                       </span>
                       <div className="flex items-baseline gap-1.5">
                         <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
                           Desde
                         </span>
                         <span className="font-[family-name:var(--font-bebas)] text-4xl text-[#0a1628] leading-none">
-                          ${precioPrincipal.toLocaleString("en-US")}
+                          {formatoUSD(precioPrincipal)}
                         </span>
                         {dest.regularPrice && (
-                          <span className="text-xs text-slate-400 line-through ml-1">
-                            ${dest.regularPrice.toLocaleString("en-US")}
+                          <span className="text-xs text-slate-400 ml-1">
+                            antes desde <span className="line-through">${dest.regularPrice.toLocaleString("en-US")}</span>
                           </span>
                         )}
                       </div>
                       <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                        Separa hoy con ${mitadPrecio.toLocaleString("en-US")} (50% inicial)
+                        Separa hoy desde {formatoUSD(mitadPrecio)} (50% inicial)
                       </span>
                     </div>
 
@@ -371,7 +374,7 @@ export default async function DestinoPage({
                 <span className="text-xs font-extrabold uppercase tracking-wider text-slate-500">
                   Postales y Experiencias en {dest.ciudad}
                 </span>
-                <span className="text-xs text-slate-400 font-medium">
+                <span className="text-xs text-slate-600 font-medium">
                   Salidas desde Lima — Aeropuerto Jorge Chávez (LIM)
                 </span>
               </div>
@@ -421,8 +424,10 @@ export default async function DestinoPage({
                         Vuelo + Carpeta Migratoria a {dest.ciudad}
                       </h3>
                       <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                        {dest.migraDesc ||
-                          "Boleto aéreo confirmado + Seguro Schengen 30.000€ + Reserva de alojamiento verificada y asesoría de ingreso."}
+                        {textoPrecio(
+                          dest.migraDesc ||
+                            "Boleto aéreo confirmado + Seguro Schengen 30.000€ + Reserva de alojamiento verificada y asesoría de ingreso."
+                        )}
                       </p>
                     </div>
                     <div className="pt-3 border-t border-blue-200/60 flex items-center justify-between gap-2">
@@ -462,7 +467,7 @@ export default async function DestinoPage({
                       Programa Completo en {dest.ciudad} ({dest.duracion || "5 Días / 4 Noches"})
                     </h3>
                     <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                      {dest.turiDesc}
+                      {textoPrecio(dest.turiDesc)}
                     </p>
                   </div>
                   <div className="pt-3 border-t border-emerald-200/60 flex items-center justify-between gap-2">
@@ -508,7 +513,7 @@ export default async function DestinoPage({
                     <div className="pt-3 border-t border-slate-200 flex items-center justify-between gap-2">
                       <div>
                         <span className="text-[10px] font-bold uppercase text-slate-500 block">
-                          Inicial 50%
+                          Inicial 50% desde
                         </span>
                         <span className="text-2xl font-extrabold text-emerald-700 leading-none">
                           ${Math.round(dest.turistico * 0.5).toLocaleString("en-US")}
@@ -533,6 +538,7 @@ export default async function DestinoPage({
                   </div>
                 )}
               </div>
+              <NotaPrecio className="mt-4" extra="Impuestos y tasas según fecha y aerolínea." />
             </div>
 
             {/* Itinerario Día por Día */}
@@ -546,12 +552,11 @@ export default async function DestinoPage({
 
               <div className="space-y-4">
                 {dest.itinerario.map((paso, index) => {
-                  const partes = paso.split(/[:–-]/);
-                  const tieneEtiqueta = partes.length > 1 && partes[0].length < 22;
-                  const tituloPaso = tieneEtiqueta ? partes[0].trim() : `Etapa ${index + 1}`;
-                  const detallePaso = tieneEtiqueta
-                    ? partes.slice(1).join(":").trim()
-                    : paso;
+                  // Solo el primer ":" separa la etiqueta ("Día 1: ..."); cortar también en guiones rompía "check-in"
+                  const posSeparador = paso.indexOf(":");
+                  const tieneEtiqueta = posSeparador > 0 && posSeparador < 22;
+                  const tituloPaso = tieneEtiqueta ? paso.slice(0, posSeparador).trim() : `Etapa ${index + 1}`;
+                  const detallePaso = tieneEtiqueta ? paso.slice(posSeparador + 1).trim() : paso;
 
                   return (
                     <div
@@ -566,7 +571,7 @@ export default async function DestinoPage({
                           {tituloPaso}
                         </span>
                         <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
-                          {detallePaso}
+                          {textoPrecio(detallePaso)}
                         </p>
                       </div>
                     </div>
@@ -598,7 +603,7 @@ export default async function DestinoPage({
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-300">Separa hoy con (50%):</span>
+                  <span className="text-slate-300">Inicial 50%, desde:</span>
                   <span className="text-sm font-bold text-amber-300">
                     ${mitadPrecio.toLocaleString("en-US")}
                   </span>

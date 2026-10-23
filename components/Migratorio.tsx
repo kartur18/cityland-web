@@ -5,6 +5,7 @@ import Link from "next/link";
 import { buildWaUrl } from "@/components/constantes";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
+import NotaPrecio from "@/components/NotaPrecio";
 
 export default function Migratorio() {
   const waUrlPromo = buildWaUrl({
@@ -32,7 +33,7 @@ export default function Migratorio() {
 
             <h2 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-6xl text-white tracking-tight leading-[0.95] mb-3">
               PAQUETE MIGRATORIO A EUROPA{" "}
-              <span className="text-amber-400">DESDE $699 USD</span>
+              <span className="text-amber-400">SOLO IDA DESDE $699 USD</span>
             </h2>
 
             <p className="text-sm sm:text-base text-slate-200 mb-6 max-w-2xl leading-relaxed">
@@ -46,7 +47,9 @@ export default function Migratorio() {
                 <span className="text-[10px] font-extrabold uppercase text-emerald-300 block">
                   Plan Promo
                 </span>
-                <span className="text-xl font-black text-white">$699</span>
+                <span className="text-xl font-black text-white">
+                  <span className="text-[11px] font-bold text-slate-300 mr-1">Desde</span>$699
+                </span>
                 <span className="text-[11px] text-slate-300 block">
                   Feb – May
                 </span>
@@ -55,7 +58,9 @@ export default function Migratorio() {
                 <span className="text-[10px] font-extrabold uppercase text-amber-300 block">
                   Plan Smart ⭐
                 </span>
-                <span className="text-xl font-black text-white">$799</span>
+                <span className="text-xl font-black text-white">
+                  <span className="text-[11px] font-bold text-slate-300 mr-1">Desde</span>$799
+                </span>
                 <span className="text-[11px] text-amber-200 block">
                   Jun / Sep – Nov
                 </span>
@@ -64,7 +69,9 @@ export default function Migratorio() {
                 <span className="text-[10px] font-extrabold uppercase text-sky-300 block">
                   Plan Plus
                 </span>
-                <span className="text-xl font-black text-white">$899</span>
+                <span className="text-xl font-black text-white">
+                  <span className="text-[11px] font-bold text-slate-300 mr-1">Desde</span>$899
+                </span>
                 <span className="text-[11px] text-slate-300 block">
                   Salidas cercanas
                 </span>
@@ -73,12 +80,15 @@ export default function Migratorio() {
                 <span className="text-[10px] font-extrabold uppercase text-purple-300 block">
                   Plan Full 23 kg
                 </span>
-                <span className="text-xl font-black text-white">$999</span>
+                <span className="text-xl font-black text-white">
+                  <span className="text-[11px] font-bold text-slate-300 mr-1">Desde</span>$999
+                </span>
                 <span className="text-[11px] text-slate-300 block">
                   Alta + Bodega 23 kg
                 </span>
               </div>
             </div>
+            <NotaPrecio oscuro className="-mt-4 mb-6" />
 
             <div className="flex flex-wrap items-center gap-3">
               <a
@@ -121,7 +131,7 @@ export default function Migratorio() {
           <div className="lg:col-span-5 relative min-h-[280px] sm:min-h-[360px] w-full overflow-hidden">
             <Image
               src="/images/espana/palacio-real.jpg"
-              alt="Paquete Migratorio a Europa desde $699 USD - Cityland Travel"
+              alt="Paquete Migratorio a Europa desde $699 USD (solo ida) - Cityland Travel"
               fill
               sizes="(max-width: 1024px) 100vw, 500px"
               className="object-cover"

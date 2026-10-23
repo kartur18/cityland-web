@@ -238,7 +238,7 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     pais: "España",
     bandera: "🇪🇸",
     categoria: "europa",
-    duracion: "Planes $699 · $799 · $899 · $999",
+    duracion: "Planes desde $699 · $799 · $899 · $999",
     precioUSD: 699,
     precioSoles: 2620,
     precioRegularUSD: 999,
@@ -278,7 +278,7 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     pais: "Italia",
     bandera: "🇮🇹",
     categoria: "europa",
-    duracion: "Planes $699 · $799 · $899 · $999",
+    duracion: "Planes desde $699 · $799 · $899 · $999",
     precioUSD: 699,
     precioSoles: 2620,
     precioRegularUSD: 999,
@@ -318,7 +318,7 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     pais: "Francia",
     bandera: "🇫🇷",
     categoria: "europa",
-    duracion: "Planes $699 · $799 · $899 · $999",
+    duracion: "Planes desde $699 · $799 · $899 · $999",
     precioUSD: 699,
     precioSoles: 2620,
     precioRegularUSD: 999,
@@ -1246,7 +1246,10 @@ export const DESTINOS_CARIBE: Destino[] = PAQUETES_COMPLETOS
     ],
   }));
 
-export const PRECIO_DESDE_EUROPA = 699;
+// Paquete migratorio a España: solo ida + gestión (pasaje de ida, retorno reservado, hotel, seguro).
+export const PRECIO_MIGRATORIO_DESDE = 699;
+// Pasaje Lima-Madrid ida y vuelta (producto distinto del paquete migratorio).
+export const PRECIO_IDA_VUELTA_MADRID_DESDE = 1090;
 export const PRECIO_DESDE_CARIBE = 589;
 
 // ── Testimonios Reales de Viajeros Peruanos ──
@@ -1309,7 +1312,7 @@ export const FAQS = [
   },
   {
     pregunta: "¿Por qué los precios dicen 'Desde'?",
-    respuesta: "Porque los pasajes aéreos varían según tus fechas y anticipación. Escríbenos por WhatsApp y te damos el precio final exacto en menos de 2 minutos.",
+    respuesta: "Porque los pasajes aéreos varían según tus fechas y anticipación. Escríbenos por WhatsApp y te damos tu cotización exacta en menos de 2 minutos.",
   },
 ];
 

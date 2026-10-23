@@ -8,12 +8,13 @@ import BuscadorCatalogoInstantaneo from "@/components/BuscadorCatalogoInstantane
 import EnlacesCatalogoHub from "@/components/EnlacesCatalogoHub";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
+import { textoPrecio } from "@/lib/formato-precio";
 import { DESTINOS_EUROPA, DESTINOS_CARIBE, BLOG_POSTS } from "@/components/constantes";
 import { INDICE_PAQUETES_MIGRATORIOS_1000 } from "@/lib/catalogo-paquetes-migratorios-1000";
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO("Catálogo de Destinos, Paquetes Migratorios a Europa y Ofertas | Cityland Travel"),
-  description: optimizarMetaDescriptionSEO("Explora nuestros paquetes migratorios a España, Italia, Francia y Europa desde $699 USD, resorts Todo Incluido en el Caribe y paquetes por el Perú en Cityland Travel (RUC 20614914239)."),
+  description: optimizarMetaDescriptionSEO("Explora nuestros paquetes migratorios a España, Italia, Francia y Europa desde $699 USD (solo ida), resorts Todo Incluido en el Caribe y paquetes por el Perú en Cityland Travel (RUC 20614914239)."),
   alternates: {
     canonical: "https://citylandtravel.com/directorio",
   },
@@ -34,7 +35,7 @@ const HERO_POR_MODO: Record<
     badge: "🌍 Cityland Travel E.I.R.L. · RUC 20614914239 · Atención en Los Olivos",
     h1: "Catálogo Oficial de Paquetes a Europa, Caribe y Perú",
     descripcion:
-      "Encuentra en segundos tu paquete migratorio a España, Italia o Francia desde $699 USD (planes $699, $799, $899 y $999 según tu fecha), o vacaciones Todo Incluido al Caribe y Perú. Separa hoy con el 50% de inicial.",
+      "Encuentra en segundos tu paquete migratorio a España, Italia o Francia desde $699 USD, solo ida (planes $699, $799, $899 y $999 según tu fecha), o vacaciones Todo Incluido al Caribe y Perú. Separa hoy con el 50% de inicial.",
     waTexto:
       "¡Hola Cityland Travel! Vi su catálogo de destinos y quiero cotizar mi próximo viaje.",
   },
@@ -58,7 +59,7 @@ const HERO_POR_MODO: Record<
     badge: "🧳 Guías Operativas · Equipaje 23 kg y Carpeta Migratoria",
     h1: "Viajes Especializados, Equipaje de Bodega y Requisitos Migratorios",
     descripcion:
-      "Soluciones especializadas para viajeros peruanos: paquetes migratorios desde $699 USD, tarifas con maleta de 23 kg, requisitos de ingreso sin visa y preparación paso a paso.",
+      "Soluciones especializadas para viajeros peruanos: paquetes migratorios desde $699 USD (solo ida), tarifas con maleta de 23 kg, requisitos de ingreso sin visa y preparación paso a paso.",
     waTexto:
       "¡Hola Cityland Travel! Quiero asesoría sobre paquetes de viaje, equipaje o requisitos migratorios.",
   },
@@ -68,28 +69,28 @@ const DIVISIONES_VISUALES = [
   {
     titulo: "Paquetes Migratorios a España",
     subtitulo: "Madrid, Barcelona, Valencia, Sevilla y 25 ciudades · 4 planes según fecha",
-    precio: "Desde $699",
+    precio: "Solo ida desde $699",
     img: "/images/espana/gran-via-metropolis.jpg",
     href: "/espana",
   },
   {
     titulo: "Paquetes Migratorios a Italia",
     subtitulo: "Milán, Roma, Turín, Florencia, Bolonia, Génova y Venecia",
-    precio: "Desde $699",
+    precio: "Solo ida desde $699",
     img: "/images/destinos/florencia.jpg",
     href: "/italia",
   },
   {
     titulo: "Paquetes Migratorios a Francia",
     subtitulo: "París, Lyon, Marsella, Niza, Toulouse y Burdeos",
-    precio: "Desde $699",
+    precio: "Solo ida desde $699",
     img: "/images/destinos/lyon.jpg",
     href: "/francia",
   },
   {
     titulo: "1,000 Rutas Migratorias Europa",
     subtitulo: "Buscador completo por ciudad europea y salida desde todo el Perú",
-    precio: "Desde $699",
+    precio: "Solo ida desde $699",
     img: "/images/destinos/barcelona.webp",
     href: "/paquetes-migratorios",
   },
@@ -151,7 +152,7 @@ export function VistaCatalogoHub({ modoHub = "directorio" }: { modoHub?: ModoCat
         <section className="relative overflow-hidden bg-[#0a1628] text-white pt-12 pb-16 sm:pt-16 sm:pb-20">
           <div className="absolute inset-0 z-0">
             <Image
-              src="/images/espana/barajas-t4.jpg"
+              src="/images/espana/barajas.jpg"
               alt={heroInfo.h1}
               fill
               priority
@@ -170,7 +171,7 @@ export function VistaCatalogoHub({ modoHub = "directorio" }: { modoHub?: ModoCat
                 {heroInfo.h1}
               </h1>
               <p className="text-base sm:text-lg text-slate-200 leading-relaxed">
-                {heroInfo.descripcion}
+                {textoPrecio(heroInfo.descripcion)}
               </p>
             </div>
 

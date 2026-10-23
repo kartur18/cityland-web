@@ -1037,7 +1037,7 @@ const ESCALA_COMERCIAL_RUTAS_BASE: Record<
   "lima-rio-de-janeiro": { desde: 450, items: [749, 450, 899] },
   "lima-santiago": { desde: 299, items: [299, 549, 649] },
   "lima-bogota": { desde: 340, items: [340, 589, 699] },
-  "lima-panama": { desde: 420, items: [699, 420, 829] },
+  "lima-panama": { desde: 470, items: [699, 470, 829] },
   "lima-valencia": { desde: 1130, items: [1130, 1210, 720] },
   "lima-malaga": { desde: 1140, items: [1140, 1450, 1220] },
   "lima-milan": { desde: 1150, items: [1150, 1240, 1390] },
@@ -1054,14 +1054,14 @@ const ESCALA_COMERCIAL_RUTAS_BASE: Record<
   "lima-bilbao": { desde: 1150, items: [1150, 1230, 1490] },
   "lima-lisboa": { desde: 1150, items: [1150, 1490, 1230] },
   "lima-frankfurt": { desde: 1180, items: [1180, 1260, 1550] },
-  "lima-nueva-york": { desde: 580, items: [580, 1090, 1350] },
+  "lima-nueva-york": { desde: 650, items: [650, 1090, 1350] },
   "lima-orlando": { desde: 520, items: [1090, 520, 1290] },
   "roma-lima": { desde: 1120, items: [1120, 740, 1150] },
   "paris-lima": { desde: 1140, items: [1140, 750, 1180] },
   "milan-lima": { desde: 1120, items: [1120, 740, 1150] },
   "lima-sao-paulo": { desde: 420, items: [420, 689, 1090] },
   "lima-tarapoto": { desde: 99, items: [289, 99, 369] },
-  "lima-iquitos": { desde: 109, items: [319, 109, 429] },
+  "lima-iquitos": { desde: 129, items: [319, 129, 429] },
   "lima-puno": { desde: 109, items: [299, 109, 419] },
 };
 
@@ -1070,8 +1070,9 @@ function normalizarImagenesRutaBase(ruta: RutaVueloSEO): RutaVueloSEO {
     ruta.destino === "Lima"
       ? `${ruta.slug} ${ruta.origen} a Lima`
       : `${ruta.destino} ${ruta.config.vitrina.pais}`;
-  const [f0, f1, f2, f3, f4] = obtenerGaleriaPorTexto(textoClave);
-  const fotosItems = [f1, f2, f3];
+  const [f0, , , , f4] = obtenerGaleriaPorTexto(textoClave);
+  // Las tarjetas dicen "Boleto de X a <destino>": llevan la foto del destino, no la de ciudades vecinas de la galería.
+  const fotosItems = [f0, f0, f0];
 
   const escala = ESCALA_COMERCIAL_RUTAS_BASE[ruta.slug];
   const desdeUSD = escala ? escala.desde : ruta.precioDesdeUSD;

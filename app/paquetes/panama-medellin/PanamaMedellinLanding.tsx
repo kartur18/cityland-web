@@ -65,16 +65,18 @@ export default function PanamaMedellinLanding() {
                 Tarifa Preventa · Separa con 50%
               </span>
               <div className="flex items-baseline gap-3 mb-2">
-                <span className="text-slate-400 text-sm line-through font-semibold">$1,050</span>
+                <span className="text-slate-400 text-sm font-semibold">
+                  Antes desde <span className="line-through">$1,050</span>
+                </span>
                 <span className="bg-red-100 text-red-700 text-xs font-black px-2 py-0.5 rounded-full">
-                  Ahorra $251
+                  Ahorra desde $251
                 </span>
               </div>
               <div className="text-4xl md:text-5xl font-black text-[#0a1628] leading-none mb-2">
                 Desde $799
               </div>
               <p className="text-xs text-slate-500 mb-6">
-                Por persona en habitación doble · Impuestos aéreos incluidos
+                Por persona en habitación doble. Precio referencial; varía según fecha y disponibilidad.
               </p>
 
               <a
@@ -225,7 +227,7 @@ export default function PanamaMedellinLanding() {
           className="flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-3 rounded-xl text-[15px] shadow-[0_4px_15px_rgba(37,211,102,0.3)]"
         >
           <WaIcon s={18} />
-          Cotizar Panamá + Medellín — $799
+          Cotizar Panamá + Medellín — Desde $799
         </a>
       </div>
     </div>

@@ -9,6 +9,16 @@ declare global {
   }
 }
 
+const REF_WEB_ENLACE = /(Ref Web:\s*)(?:https?:\/\/)?(?:www\.)?citylandtravel\.com(\/[^\s[]*)?/;
+
+// Deja siempre "Ref Web: citylandtravel.com/<ruta>" (sin protocolo); conserva la ruta si el texto ya traía una.
+export function completarRefWeb(texto: string, rutaActual: string): string {
+  return texto.replace(REF_WEB_ENLACE, (_todo, prefijo: string, ruta?: string) => {
+    const rutaFinal = ruta && ruta !== "/" ? ruta : rutaActual || "/";
+    return `${prefijo}citylandtravel.com${rutaFinal}`;
+  });
+}
+
 function detectarFuenteTrafico(): string {
   if (typeof window === "undefined") return "Directo";
   try {
@@ -83,6 +93,9 @@ export default function WhatsAppTracker() {
           );
         } else if (!textoActual.includes("Ref Web:")) {
           url.searchParams.set("text", `${textoActual.trim()}\n\n${etiquetaRef}`);
+        } else if (REF_WEB_ENLACE.test(textoActual)) {
+          // El CRM atribuye por "Ref Web: citylandtravel.com/<ruta>": si el enlace trae el dominio sin ruta (Navbar, Footer, plantillas) se completa con la página actual.
+          url.searchParams.set("text", completarRefWeb(textoActual, paginaOrigen));
         }
         anchor.href = url.toString();
 
