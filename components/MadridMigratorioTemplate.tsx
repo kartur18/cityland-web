@@ -466,7 +466,7 @@ export default function MadridMigratorioTemplate({
                   href={rel.href}
                   className="flex items-center justify-between gap-2 bg-white hover:border-amber-400 px-4 py-3 rounded-xl border border-slate-200 transition-colors"
                 >
-                  <span className="font-semibold text-slate-700 truncate">
+                  <span className="font-semibold text-slate-700 line-clamp-2">
                     {rel.titulo}
                   </span>
                   <span className="font-black text-emerald-700 shrink-0">
@@ -480,9 +480,11 @@ export default function MadridMigratorioTemplate({
       </main>
 
       <Footer />
+      {/* Espaciador para que la barra móvil no tape el pie */}
+      <div className="h-16 sm:hidden" aria-hidden="true" />
 
       {/* Barra móvil inferior */}
-      <div className="sm:hidden fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200 px-4 py-2.5 flex items-center justify-between gap-3">
+      <div className="sm:hidden fixed bottom-0 inset-x-0 z-30 bg-white/95 backdrop-blur-md border-t border-slate-200 px-4 py-2.5 flex items-center justify-between gap-3">
         <div>
           <span className="text-[10px] font-extrabold uppercase text-slate-500 block">
             Madrid · Separa con 50%

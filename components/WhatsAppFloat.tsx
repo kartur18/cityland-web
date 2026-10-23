@@ -35,10 +35,13 @@ export default function WhatsAppFloat() {
         </a>
       </aside>
 
+      {/* Espaciador para que la barra móvil no tape el pie */}
+      <div className="h-16 md:hidden" aria-hidden="true" />
+
       {/* Mobile bottom bar */}
       <aside
         aria-label="Barra de contacto móvil"
-        className="hidden max-md:block fixed bottom-0 left-0 right-0 z-[999] bg-white/95 backdrop-blur-xl p-2.5 px-4 shadow-[0_-2px_16px_rgba(0,0,0,.08)] border-t border-slate-100"
+        className="hidden max-md:block fixed bottom-0 left-0 right-0 z-30 bg-white/95 backdrop-blur-xl p-2.5 px-4 shadow-[0_-2px_16px_rgba(0,0,0,.08)] border-t border-slate-100"
       >
         <div className="flex gap-2 items-center">
           <div className="flex-1 min-w-0">

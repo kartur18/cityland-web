@@ -209,7 +209,7 @@ export default function Footer() {
           <p className="text-[11px] text-slate-400 leading-relaxed text-center sm:text-left">
             * Tarifas referenciales expresadas en dólares estadounidenses (US$). Incluyen impuestos y cargos obligatorios según el programa detallado. Tarifas sujetas a disponibilidad aérea/hotelera y condiciones aplicables según fecha exacta de salida (Temporada 2026).
           </p>
-          <div className="flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-3 text-center sm:text-left">
+          <div className="flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 gap-3 text-center sm:text-left">
             <span>&copy; 2026 Cityland Travel E.I.R.L. · RUC: 20614914239 · Todos los derechos reservados.</span>
             <span>Lima, Perú · Agencia de Viajes y Turismo</span>
           </div>

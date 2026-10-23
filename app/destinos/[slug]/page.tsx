@@ -322,7 +322,7 @@ export default async function DestinoPage({
 
                   <div className="flex items-center justify-between gap-4">
                     <div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-none mb-1">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600 block leading-none mb-1">
                         Tarifa por pasajero (Impuestos incluidos)
                       </span>
                       <div className="flex items-baseline gap-1.5">
@@ -371,7 +371,7 @@ export default async function DestinoPage({
                 <span className="text-xs font-extrabold uppercase tracking-wider text-slate-500">
                   Postales y Experiencias en {dest.ciudad}
                 </span>
-                <span className="text-xs text-slate-400 font-medium">
+                <span className="text-xs text-slate-600 font-medium">
                   Salidas desde Lima — Aeropuerto Jorge Chávez (LIM)
                 </span>
               </div>
@@ -546,12 +546,11 @@ export default async function DestinoPage({
 
               <div className="space-y-4">
                 {dest.itinerario.map((paso, index) => {
-                  const partes = paso.split(/[:–-]/);
-                  const tieneEtiqueta = partes.length > 1 && partes[0].length < 22;
-                  const tituloPaso = tieneEtiqueta ? partes[0].trim() : `Etapa ${index + 1}`;
-                  const detallePaso = tieneEtiqueta
-                    ? partes.slice(1).join(":").trim()
-                    : paso;
+                  // Solo el primer ":" separa la etiqueta ("Día 1: ..."); cortar también en guiones rompía "check-in"
+                  const posSeparador = paso.indexOf(":");
+                  const tieneEtiqueta = posSeparador > 0 && posSeparador < 22;
+                  const tituloPaso = tieneEtiqueta ? paso.slice(0, posSeparador).trim() : `Etapa ${index + 1}`;
+                  const detallePaso = tieneEtiqueta ? paso.slice(posSeparador + 1).trim() : paso;
 
                   return (
                     <div
