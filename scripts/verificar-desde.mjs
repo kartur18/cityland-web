@@ -59,6 +59,8 @@ function montosSinDesde(texto) {
   let total = 0;
   let finCubierto = -1;
   for (const m of texto.matchAll(RE_MONTO)) {
+    // Cobertura de seguro o fondos (US$ 30,000 / 50,000): no es un precio de venta.
+    if (Number(m[0].replace(/[^\d.,]/g, "").replace(/,/g, "")) >= 10000) continue;
     total++;
     const idx = m.index;
     const antes = texto.slice(Math.max(0, idx - VENTANA), idx);
@@ -128,6 +130,7 @@ function textosMeta(meta) {
 // ---------- acumuladores ----------
 const familias = {};
 const ejemplos = {};
+const detalleHubs = [];
 const fam = (nombre) =>
   (familias[nombre] ??= { paginas: 0, fallos: 0, conPrecios: 0, montos: 0, montosSinDesde: 0, paginasConViolacion: 0, sinNota: 0, metaSinDesde: 0, offerFijo: 0, jsonldTextoSinDesde: 0 });
 const anotar = (nombre, tipo, detalle) => {
@@ -192,6 +195,7 @@ async function revisar(nombre, etiqueta, mod, params, props = {}) {
     }
   }
   if (viol) f.paginasConViolacion++;
+  if (nombre === "hubs") detalleHubs.push({ ruta: etiqueta, montos: total, sinDesde: malos.length, nota: total ? (tieneNota(texto) ? "si" : "NO") : "-", meta: textosMeta(meta).filter((t) => montosSinDesde(t).malos.length).length, offerFijo: ld.fijos.length });
 }
 
 // ---------- catalogos ----------
@@ -260,6 +264,10 @@ console.table(familias);
 for (const [k, v] of Object.entries(ejemplos)) {
   console.log(`\n${k}:`);
   for (const e of v) console.log("  ", e);
+}
+if (detalleHubs.length) {
+  console.log("\nHubs, pagina por pagina:");
+  console.table(detalleHubs);
 }
 let violaciones = 0;
 for (const f of Object.values(familias)) {

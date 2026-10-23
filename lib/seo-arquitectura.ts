@@ -4,6 +4,7 @@ import { RUTAS_VUELOS_SEO } from "@/lib/rutas-vuelos";
 import { VIAJES_ESPECIALIZADOS_SEO } from "@/lib/catalogo-viajes-especializados";
 import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-comerciales";
 import { INDICE_MADRID_10K } from "@/lib/catalogo-madrid-10k";
+import { asegurarDesde, formatoUSD, textoPrecio } from "@/lib/formato-precio";
 
 export const URL_BASE_SEO = "https://citylandtravel.com";
 
@@ -267,7 +268,7 @@ export function obtenerEnlacesCruzadosSEO(
     return {
       titulo: `Paquete a ${d.ciudad} (${d.pais})`,
       href: `/destinos/${d.slug}`,
-      etiqueta: `Desde $${d.migratorio ?? d.turistico}`,
+      etiqueta: `Desde ${formatoUSD(d.migratorio ?? d.turistico)}`,
     };
   });
 
@@ -280,7 +281,7 @@ export function obtenerEnlacesCruzadosSEO(
     return {
       titulo: `Vuelos de ${r.origen} a ${r.destino}`,
       href: `/vuelos/${r.slug}`,
-      etiqueta: `Desde $${r.precioDesdeUSD.toLocaleString("en-US")}`,
+      etiqueta: `Desde ${formatoUSD(r.precioDesdeUSD)}`,
     };
   });
 
@@ -293,7 +294,7 @@ export function obtenerEnlacesCruzadosSEO(
     return {
       titulo: o.titulo,
       href: `/ofertas/${o.slug}`,
-      etiqueta: `Desde $${o.precioDesdeUSD.toLocaleString("en-US")}`,
+      etiqueta: `Desde ${formatoUSD(o.precioDesdeUSD)}`,
     };
   });
 
@@ -306,7 +307,7 @@ export function obtenerEnlacesCruzadosSEO(
     return {
       titulo: v.titulo,
       href: `/viajes/${v.slug}`,
-      etiqueta: `Desde $${v.precioDesdeUSD.toLocaleString("en-US")}`,
+      etiqueta: `Desde ${formatoUSD(v.precioDesdeUSD)}`,
     };
   });
 
@@ -316,7 +317,7 @@ export function obtenerEnlacesCruzadosSEO(
     return {
       titulo: m.titulo,
       href: `/madrid/${m.slug}`,
-      etiqueta: `$${m.precioDesdeUSD.toLocaleString("en-US")}`,
+      etiqueta: `Desde ${formatoUSD(m.precioDesdeUSD)}`,
     };
   });
 
@@ -330,15 +331,21 @@ export function obtenerEnlacesCruzadosSEO(
   };
 }
 
+// Corta en el ultimo espacio y descarta un parentesis o monto a medio escribir ("($50 | Cityland").
+function recortarEnPalabra(texto: string, max: number, minimo: number): string {
+  if (texto.length <= max) return texto;
+  const corte = texto.slice(0, max);
+  const espacio = corte.lastIndexOf(" ");
+  const base = espacio > minimo ? corte.slice(0, espacio) : corte;
+  return base.replace(/\s*\([^)]*$/, "").replace(/[\s,;:·|—–-]+$/, "").trim();
+}
+
 /**
  * Garantiza que cualquier título SEO (<title>) no supere los 60 caracteres
  * ni duplique la marca Cityland Travel.
  */
 export function optimizarMetaTitleSEO(tituloRaw: string): string {
-  const sinDobleUsd = tituloRaw
-    .replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")
-    .replace(/\s+/g, " ")
-    .trim();
+  const sinDobleUsd = textoPrecio(tituloRaw.replace(/\s+/g, " ").trim());
 
   if (sinDobleUsd.length <= 60) return sinDobleUsd;
 
@@ -354,7 +361,7 @@ export function optimizarMetaTitleSEO(tituloRaw: string): string {
   const conMarcaCorta = `${baseSinMarca} | Cityland`;
   if (conMarcaCorta.length <= 60) return conMarcaCorta;
 
-  return `${baseSinMarca.slice(0, 47).trim()} | Cityland`;
+  return `${recortarEnPalabra(baseSinMarca, 47, 20)} | Cityland`;
 }
 
 /**
@@ -362,16 +369,11 @@ export function optimizarMetaTitleSEO(tituloRaw: string): string {
  * para evitar truncamiento en los resultados de búsqueda de Google.
  */
 export function optimizarMetaDescriptionSEO(descRaw: string): string {
-  const limpia = descRaw
-    .replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")
-    .replace(/\s+/g, " ")
-    .trim();
+  const limpia = textoPrecio(descRaw.replace(/\s+/g, " ").trim());
 
   if (limpia.length <= 156) return limpia;
 
-  const recorte = limpia.slice(0, 153);
-  const ultimoEspacio = recorte.lastIndexOf(" ");
-  return `${(ultimoEspacio > 110 ? recorte.slice(0, ultimoEspacio) : recorte).trim()}...`;
+  return `${recortarEnPalabra(limpia, 153, 110)}...`;
 }
 
 /**
@@ -402,14 +404,14 @@ export function construirSchemaLandingSEO(params: {
       itemListElement: params.migas.map((m, idx) => ({
         "@type": "ListItem",
         position: idx + 1,
-        name: m.nombre,
+        name: asegurarDesde(m.nombre),
         item: m.url.startsWith("http") ? m.url : `${URL_BASE_SEO}${m.url}`,
       })),
     },
     esServicioDocumentario
       ? {
           "@type": "Service",
-          name: params.titulo,
+          name: asegurarDesde(params.titulo),
           description: optimizarMetaDescriptionSEO(params.descripcion),
           image: [params.imagenUrl],
           provider: {
@@ -420,16 +422,17 @@ export function construirSchemaLandingSEO(params: {
             name: "Perú",
           },
           offers: {
-            "@type": "Offer",
+            "@type": "AggregateOffer",
             priceCurrency: "USD",
-            price: String(params.precioDesdeUSD),
+            lowPrice: String(params.precioDesdeUSD),
+            offerCount: "1",
             availability: "https://schema.org/InStock",
             url: params.url,
           },
         }
       : {
           "@type": esProductoSimple ? "Product" : ["Product", "TouristTrip"],
-          name: params.titulo,
+          name: asegurarDesde(params.titulo),
           description: optimizarMetaDescriptionSEO(params.descripcion),
           image: [params.imagenUrl],
           ...(esProductoSimple
@@ -443,14 +446,10 @@ export function construirSchemaLandingSEO(params: {
             "@id": `${URL_BASE_SEO}/#organization`,
           },
           offers: {
-            ...(esProductoSimple
-              ? { "@type": "Offer", price: String(params.precioDesdeUSD) }
-              : {
-                  "@type": "AggregateOffer",
-                  lowPrice: String(params.precioDesdeUSD),
-                  ...(params.precioMaximoUSD ? { highPrice: String(params.precioMaximoUSD) } : {}),
-                  ...(params.cantidadOfertas ? { offerCount: String(params.cantidadOfertas) } : {}),
-                }),
+            "@type": "AggregateOffer",
+            lowPrice: String(params.precioDesdeUSD),
+            ...(params.precioMaximoUSD ? { highPrice: String(params.precioMaximoUSD) } : {}),
+            offerCount: String(esProductoSimple ? 1 : (params.cantidadOfertas ?? 1)),
             priceCurrency: "USD",
             availability: "https://schema.org/InStock",
             url: params.url,
@@ -469,10 +468,10 @@ export function construirSchemaLandingSEO(params: {
       "@type": "FAQPage",
       mainEntity: params.faqs.slice(0, 4).map((f) => ({
         "@type": "Question",
-        name: f.q.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1"),
+        name: textoPrecio(f.q),
         acceptedAnswer: {
           "@type": "Answer",
-          text: f.a.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1"),
+          text: textoPrecio(f.a),
         },
       })),
     });

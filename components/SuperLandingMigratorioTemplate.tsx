@@ -4,6 +4,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
+import NotaPrecio from "@/components/NotaPrecio";
+import { asegurarDesde, formatoUSD, quitarPrecioDeTitulo } from "@/lib/formato-precio";
 import type { DatosSuperLandingMigratorio } from "@/lib/catalogo-paquetes-migratorios-1000";
 
 function obtenerEstiloSilo(silo: DatosSuperLandingMigratorio["silo"], pais: string) {
@@ -109,16 +111,16 @@ export default function SuperLandingMigratorioTemplate({
                 </div>
 
                 <h1 className="text-2xl sm:text-4xl lg:text-[42px] font-black tracking-tight leading-[1.12]">
-                  {datos.tituloH1}
+                  {asegurarDesde(datos.tituloH1)}
                   <span
                     className={`text-transparent bg-clip-text bg-gradient-to-r ${estilo.gradSubtitulo} block mt-2 text-lg sm:text-2xl font-extrabold`}
                   >
-                    {datos.subtituloHero}
+                    {asegurarDesde(datos.subtituloHero)}
                   </span>
                 </h1>
 
                 <p className="text-sm sm:text-base text-slate-200 leading-relaxed">
-                  {datos.ganchoPeruano}
+                  {asegurarDesde(datos.ganchoPeruano)}
                 </p>
 
                 {/* Botones de 1 sola línea */}
@@ -183,7 +185,7 @@ export default function SuperLandingMigratorioTemplate({
                           <span className="text-emerald-600 font-black shrink-0">✓</span>
                           <span>
                             <strong className="text-[#0a1628]">{doc.titulo}:</strong>{" "}
-                            <span className="text-slate-600">{doc.descripcion}</span>
+                            <span className="text-slate-600">{asegurarDesde(doc.descripcion)}</span>
                           </span>
                         </li>
                       ))}
@@ -229,7 +231,7 @@ export default function SuperLandingMigratorioTemplate({
                       <span
                         className={`inline-block text-[11px] font-extrabold uppercase px-3 py-1 rounded-full mb-3 ${plan.colorBadge}`}
                       >
-                        {plan.etiqueta}
+                        {asegurarDesde(plan.etiqueta)}
                       </span>
 
                       <h3 className="text-xl font-black text-[#0a1628]">
@@ -237,19 +239,19 @@ export default function SuperLandingMigratorioTemplate({
                       </h3>
 
                       <p className="text-xs font-semibold text-red-600 mt-1 min-h-[34px] flex items-center">
-                        📅 {plan.fechasIdeales}
+                        📅 {asegurarDesde(plan.fechasIdeales)}
                       </p>
 
                       <div className="my-4 py-3.5 border-y border-slate-100">
                         <div className="flex items-baseline gap-1">
                           <span className="text-xs font-bold text-slate-500">Desde</span>
                           <span className="text-3xl font-black text-[#0a1628]">
-                            ${plan.precioUSD}
+                            {formatoUSD(plan.precioUSD)}
                           </span>
                           <span className="text-xs font-bold text-slate-500">USD</span>
                         </div>
                         <span className="text-xs font-extrabold text-emerald-700 block mt-1">
-                          ✓ Separa con el 50% (${plan.inicial50USD} USD)
+                          ✓ Separa con el 50% (desde {formatoUSD(plan.inicial50USD)} USD)
                         </span>
                       </div>
 
@@ -259,7 +261,7 @@ export default function SuperLandingMigratorioTemplate({
                             <span className="text-emerald-600 font-black mt-0.5 shrink-0">
                               ✓
                             </span>
-                            <span>{item}</span>
+                            <span>{asegurarDesde(item)}</span>
                           </li>
                         ))}
                       </ul>
@@ -279,6 +281,7 @@ export default function SuperLandingMigratorioTemplate({
                 );
               })}
             </div>
+            <NotaPrecio className="text-center mt-5" />
 
             {/* Franja limpia para quienes ya tienen pasaje */}
             <div className="mt-8 rounded-2xl bg-slate-900 text-white p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -297,7 +300,7 @@ export default function SuperLandingMigratorioTemplate({
                 className="inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black px-5 py-3 rounded-xl text-xs whitespace-nowrap shrink-0"
               >
                 <WhatsAppIcon className="w-4 h-4" />
-                <span>Pedir Solo Carpeta ($85)</span>
+                <span>Pedir Solo Carpeta</span>
               </a>
             </div>
           </div>
@@ -363,13 +366,13 @@ export default function SuperLandingMigratorioTemplate({
                   className="group rounded-2xl bg-slate-50 border border-slate-200 px-5 py-4 transition-colors open:bg-white open:border-amber-400"
                 >
                   <summary className="flex items-center justify-between gap-3 cursor-pointer list-none text-sm font-extrabold text-[#0a1628]">
-                    <span>{faq.q}</span>
+                    <span>{asegurarDesde(faq.q)}</span>
                     <span className="text-slate-400 group-open:rotate-180 transition-transform text-xs shrink-0">
                       ▼
                     </span>
                   </summary>
                   <p className="mt-2.5 pt-2.5 border-t border-slate-100 text-sm text-slate-600 leading-relaxed">
-                    {faq.a}
+                    {asegurarDesde(faq.a)}
                   </p>
                 </details>
               ))}
@@ -400,11 +403,11 @@ export default function SuperLandingMigratorioTemplate({
                         {rel.pais} · {rel.ciudad}
                       </span>
                       <span className="text-xs font-bold text-slate-800 line-clamp-2">
-                        {rel.titulo}
+                        {quitarPrecioDeTitulo(rel.titulo)}
                       </span>
                     </div>
                     <span className="text-xs font-black text-emerald-700 shrink-0">
-                      ${rel.precioDesde}
+                      Desde {formatoUSD(rel.precioDesde)}
                     </span>
                   </Link>
                 ))}

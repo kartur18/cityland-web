@@ -5,6 +5,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import BarraConversionMovil from "@/components/BarraConversionMovil";
+import NotaPrecio from "@/components/NotaPrecio";
+import { textoPrecio } from "@/lib/formato-precio";
 import { imagenSinRepetir } from "@/lib/imagenes-destinos";
 import type { RutaVueloSEO } from "@/lib/rutas-vuelos";
 
@@ -125,8 +127,8 @@ export default function VuelosJorgeChavezTemplate({
               </div>
 
               <p className="text-sm sm:text-base text-slate-200 leading-relaxed">
-                {config.descripcionHero}{" "}
-                <strong className="text-white font-bold">{config.negritaHero}</strong>
+                {textoPrecio(config.descripcionHero)}{" "}
+                <strong className="text-white font-bold">{textoPrecio(config.negritaHero)}</strong>
               </p>
 
               <div className="flex flex-wrap items-center gap-3 pt-1">
@@ -145,7 +147,7 @@ export default function VuelosJorgeChavezTemplate({
                     ${precioDesdeUSD.toLocaleString("en-US")} USD
                   </span>
                   <span className="text-slate-300 ml-1.5">
-                    (Separa con ${mitad} USD)
+                    (Separa desde ${mitad} USD)
                   </span>
                 </div>
               </div>
@@ -198,7 +200,7 @@ export default function VuelosJorgeChavezTemplate({
                     {config.checksHero.map((ck) => (
                       <li key={ck} className="flex items-start gap-2">
                         <span className="text-emerald-600 font-black mt-0.5">✓</span>
-                        <span>{ck}</span>
+                        <span>{textoPrecio(ck)}</span>
                       </li>
                     ))}
                     <li className="flex items-start gap-2">
@@ -279,9 +281,9 @@ export default function VuelosJorgeChavezTemplate({
                       Opción {idx + 1} · Ruta {codigoOrigen} → {codigoDestino}
                     </span>
                     <h3 className="text-lg font-black text-[#071120] leading-snug mb-1.5">
-                      {item.titulo}
+                      {textoPrecio(item.titulo)}
                     </h3>
-                    <p className="text-sm text-slate-600 mb-4">{item.subtitulo}</p>
+                    <p className="text-sm text-slate-600 mb-4">{textoPrecio(item.subtitulo)}</p>
 
                     <div className="bg-slate-50 rounded-2xl p-3.5 border border-slate-200/80 mb-4 flex items-baseline justify-between">
                       <div>
@@ -296,7 +298,7 @@ export default function VuelosJorgeChavezTemplate({
                         </span>
                       </div>
                       <span className="text-[11px] font-semibold text-emerald-700 text-right">
-                        {item.notaPrecio || "Según aerolínea y tarifa; tu asesor lo confirma"}
+                        {textoPrecio(item.notaPrecio || "Según aerolínea y tarifa; tu asesor lo confirma")}
                       </span>
                     </div>
 
@@ -304,7 +306,7 @@ export default function VuelosJorgeChavezTemplate({
                       {item.checks.map((c) => (
                         <li key={c} className="flex items-start gap-2">
                           <span className="text-emerald-600 font-bold mt-0.5">✓</span>
-                          <span>{c}</span>
+                          <span>{textoPrecio(c)}</span>
                         </li>
                       ))}
                     </ul>
@@ -326,6 +328,7 @@ export default function VuelosJorgeChavezTemplate({
             );
           })}
         </div>
+        <NotaPrecio className="mt-6 text-center" />
       </section>
 
       {/* Contenido adicional de la página (Calculadora Schengen, FAQs, Rutas Relacionadas) */}

@@ -8,6 +8,7 @@ import ModuloSeguridadYCalculadoraEuropa from "@/components/ModuloSeguridadYCalc
 import { SeoSiloFooter } from "@/components/SeoSiloFooter";
 import GuiaRapidaLanding from "@/components/GuiaRapidaLanding";
 import { guiaViaje } from "@/lib/contenido-guia";
+import { formatoUSD, textoPrecio } from "@/lib/formato-precio";
 import {
   VIAJES_ESPECIALIZADOS_SEO,
   buscarViajeEspecializado,
@@ -334,13 +335,13 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
                     className="group bg-white rounded-2xl px-5 py-4 border border-slate-200/90 shadow-2xs transition-colors open:border-amber-400"
                   >
                     <summary className="flex items-center justify-between gap-3 cursor-pointer list-none text-sm font-extrabold text-[#0a1628]">
-                      <span>{f.q.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}</span>
+                      <span>{textoPrecio(f.q)}</span>
                       <span className="text-slate-400 group-open:rotate-180 transition-transform text-xs shrink-0">
                         ▼
                       </span>
                     </summary>
                     <p className="mt-2.5 pt-2.5 border-t border-slate-100 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                      {f.a.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                      {textoPrecio(f.a)}
                     </p>
                   </details>
                 ))}
@@ -363,7 +364,7 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
                   href={`/viajes/${rel.slug}`}
                   className="text-xs font-semibold text-slate-700 hover:text-red-600 bg-slate-50 hover:bg-red-50 border border-slate-200/80 px-3 py-1.5 rounded-full transition-colors"
                 >
-                  {rel.titulo} (${rel.precioDesdeUSD})
+                  {rel.titulo} (desde {formatoUSD(rel.precioDesdeUSD)})
                 </Link>
               ))}
             </div>

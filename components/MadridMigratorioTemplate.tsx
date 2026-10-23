@@ -4,6 +4,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
+import NotaPrecio from "@/components/NotaPrecio";
+import { asegurarDesde, formatoUSD } from "@/lib/formato-precio";
 import {
   etiquetaPrecioEnlace,
   etiquetaPrecioTarjeta,
@@ -130,7 +132,7 @@ export default function MadridMigratorioTemplate({
     `¡Hola! Ya tengo mi pasaje y quiero contratar Solo la Carpeta Migratoria para Madrid ($${datos.precioCarpetaSolaUSD} USD).${refTag} [Solo Carpeta]`
   )}`;
 
-  const subtituloLimpio = datos.subtituloDorado.replace(/\s+USD\b/gi, " USD");
+  const subtituloLimpio = asegurarDesde(datos.subtituloDorado.replace(/\s+USD\b/gi, " USD"));
   const migaFinal = datos.zonaOMunicipioMadrid.startsWith("Madrid-Barajas")
     ? datos.tituloPrincipal.replace(/:\s*$/, "")
     : datos.zonaOMunicipioMadrid;
@@ -183,7 +185,7 @@ export default function MadridMigratorioTemplate({
                 </div>
 
                 <h1 className="text-2xl sm:text-4xl lg:text-[42px] font-black tracking-tight leading-[1.12]">
-                  {datos.tituloPrincipal}
+                  {asegurarDesde(datos.tituloPrincipal)}
                   <span
                     className={`text-transparent bg-clip-text bg-gradient-to-r ${tema.subtituloGrad} block mt-2 text-xl sm:text-2xl lg:text-3xl font-extrabold`}
                   >
@@ -192,7 +194,7 @@ export default function MadridMigratorioTemplate({
                 </h1>
 
                 <p className="text-sm sm:text-base text-slate-200 leading-relaxed">
-                  {datos.resumenEjecutivo}
+                  {asegurarDesde(datos.resumenEjecutivo)}
                 </p>
 
                 <div className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
@@ -328,7 +330,7 @@ export default function MadridMigratorioTemplate({
                 const tituloLimpio = limpiarTituloPlan(plan.titulo);
                 const mitadPlan = Math.round(plan.precioUSD * 0.5);
                 const waPlan = `https://wa.me/51944103890?text=${encodeURIComponent(
-                  `${plan.waMensaje}${refTag} [${tituloLimpio} $${plan.precioUSD}]`
+                  `${plan.waMensaje}${refTag} [${tituloLimpio} desde ${formatoUSD(plan.precioUSD)}]`
                 )}`;
                 return (
                   <article
@@ -354,19 +356,19 @@ export default function MadridMigratorioTemplate({
                         {tituloLimpio}
                       </h3>
                       <p className="text-xs font-semibold text-red-600 mt-1 min-h-[34px] flex items-center">
-                        📅 {plan.subtitulo}
+                        📅 {asegurarDesde(plan.subtitulo)}
                       </p>
 
                       <div className="my-4 py-3.5 border-y border-slate-100">
                         <div className="flex items-baseline gap-1">
                           <span className="text-xs font-bold text-slate-500">{etiquetaDesde}</span>
                           <span className="text-3xl font-black text-[#071120]">
-                            ${plan.precioUSD.toLocaleString("en-US")}
+                            {formatoUSD(plan.precioUSD)}
                           </span>
                           <span className="text-xs font-bold text-slate-500">USD</span>
                         </div>
                         <span className="text-xs font-extrabold text-emerald-700 block mt-1">
-                          ✓ Separa con el 50% (${mitadPlan} USD)
+                          ✓ Separa con el 50% (desde {formatoUSD(mitadPlan)} USD)
                         </span>
                       </div>
 
@@ -376,7 +378,7 @@ export default function MadridMigratorioTemplate({
                             <span className="text-emerald-600 font-black mt-0.5 shrink-0">
                               ✓
                             </span>
-                            <span>{item}</span>
+                            <span>{asegurarDesde(item)}</span>
                           </li>
                         ))}
                       </ul>
@@ -389,12 +391,13 @@ export default function MadridMigratorioTemplate({
                       className="w-full inline-flex items-center justify-center gap-2 font-extrabold py-3.5 px-4 rounded-xl text-xs sm:text-sm whitespace-nowrap transition-all bg-[#25D366] hover:bg-[#1fb858] text-white"
                     >
                       <WhatsAppIcon className="w-4 h-4" />
-                      <span>{esMigratorio ? "Elegir Plan" : "Cotizar"} (${plan.precioUSD})</span>
+                      <span>{esMigratorio ? "Elegir este plan" : "Cotizar por WhatsApp"}</span>
                     </a>
                   </article>
                 );
               })}
             </div>
+            <NotaPrecio className="text-center mt-5" />
 
             {/* Franja para quienes ya compraron su pasaje (solo en paquetes migratorios) */}
             {esMigratorio && (
@@ -414,7 +417,7 @@ export default function MadridMigratorioTemplate({
                 className="inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-[#071120] font-black px-5 py-3 rounded-xl text-xs whitespace-nowrap shrink-0"
               >
                 <WhatsAppIcon className="w-4 h-4" />
-                <span>Pedir Solo Carpeta (${carpetaFmt})</span>
+                <span>Pedir Solo Carpeta</span>
               </a>
             </div>
             )}
@@ -470,13 +473,13 @@ export default function MadridMigratorioTemplate({
                   className="group bg-slate-50 rounded-2xl px-5 py-4 border border-slate-200 transition-colors open:bg-white open:border-amber-400"
                 >
                   <summary className="flex items-center justify-between gap-3 cursor-pointer list-none text-sm font-extrabold text-[#071120]">
-                    <span>{f.q}</span>
+                    <span>{asegurarDesde(f.q)}</span>
                     <span className="text-slate-400 group-open:rotate-180 transition-transform text-xs shrink-0">
                       ▼
                     </span>
                   </summary>
                   <p className="mt-2.5 pt-2.5 border-t border-slate-100 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {f.a}
+                    {asegurarDesde(f.a)}
                   </p>
                 </details>
               ))}
@@ -513,7 +516,7 @@ export default function MadridMigratorioTemplate({
                     <span className="block text-[10px] font-bold text-slate-500">
                       {etiquetaPrecioEnlace(rel.tipo ?? "MIGRATORIO")}
                     </span>
-                    <span className="font-black text-emerald-700">${rel.precio}</span>
+                    <span className="font-black text-emerald-700">{formatoUSD(rel.precio)}</span>
                   </span>
                 </Link>
               ))}

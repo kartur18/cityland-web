@@ -24,6 +24,12 @@ export function precioDesdeFrase(n: number): string {
 // Un monto: "$699", "US$ 1,090" o "699 USD". Misma forma que usa scripts/verificar-desde.mjs.
 const RE_MONTO = /(?:US\$|\$)\s?\d[\d.,]*(?:\s?USD)?|\d[\d.,]*\s?(?:USD|dólares|dolares)\b/gi;
 const VENTANA_DESDE = 40;
+// Cobertura de seguro o fondos (US$ 30,000 / 50,000): no es un precio de venta.
+const MONTO_MAXIMO_DE_PRECIO = 10000;
+function esMontoDeCobertura(monto: string): boolean {
+  const n = Number(monto.replace(/[^\d.,]/g, "").replace(/,/g, ""));
+  return Number.isFinite(n) && n >= MONTO_MAXIMO_DE_PRECIO;
+}
 // Entre dos montos de una misma lista ("$699, $799 y $899"; "de $699 a $999") el "desde" del primero cubre a los demas.
 const UNION_DE_LISTA = /^[\s,;·|/–-]*(?:(?:y|o|e|a|hasta)\s+)?$/i;
 
@@ -37,6 +43,7 @@ export function asegurarDesde(texto: string): string {
 
   for (const m of texto.matchAll(RE_MONTO)) {
     const idx = m.index ?? 0;
+    if (esMontoDeCobertura(m[0])) continue;
     const antes = texto.slice(Math.max(0, idx - VENTANA_DESDE), idx);
     const pos = antes.toLowerCase().lastIndexOf("desde");
     const yaTieneDesde = pos >= 0 && !new RegExp(RE_MONTO.source, "i").test(antes.slice(pos + 5));
@@ -59,4 +66,32 @@ export function asegurarDesde(texto: string): string {
     }
   }
   return salida + texto.slice(cursor);
+}
+
+// Para etiquetas de enlace que ya muestran el precio en una "chapa" aparte: quita "($899)" o "Desde $699" del titulo
+// y, si queda otro monto en la frase, lo deja con "desde".
+export function quitarPrecioDeTitulo(titulo: string): string {
+  const limpio = titulo
+    .replace(/\s*\((?:desde\s+)?(?:US\$|\$)\s?\d[\d.,]*(?:\s?USD)?\)/gi, "")
+    .replace(/\s*[—–-]?\s*\bdesde\s+(?:US\$|\$)\s?\d[\d.,]*(?:\s?USD)?/gi, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+  return asegurarDesde(limpio);
+}
+
+// Cambia afirmaciones que suenan a monto definitivo por la forma referencial. No inventa inclusiones: solo las retira.
+export function suavizarPromesaDePrecio(texto: string): string {
+  return texto
+    .replace(
+      /Tarifa (?:por pasajero|promocional verificada)\s*(?:[·(-]\s*)*\(?\s*Impuestos incluidos\s*\)?/gi,
+      NOTA_IMPUESTOS_REFERENCIAL.replace(/\.$/, "")
+    )
+    .replace(/Incluyen impuestos y cargos obligatorios según el programa detallado\./gi, `${NOTA_IMPUESTOS_REFERENCIAL}`)
+    .replace(/\bimpuestos incluidos\b/gi, "impuestos y tasas según fecha y aerolínea")
+    .replace(/Precio más bajo garantizado/gi, "Tarifa de preventa sujeta a disponibilidad");
+}
+
+// Texto de precio para pantalla, metas y JSON-LD: sin "USD" repetido, sin promesas de monto final y con "desde".
+export function textoPrecio(texto: string): string {
+  return asegurarDesde(suavizarPromesaDePrecio(texto.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")));
 }
