@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
@@ -85,55 +86,8 @@ export interface ConfiguracionLandingAerolinea {
   };
 }
 
-import {
-  obtenerGaleriaPorTexto,
-  IMG_AVION_ALA,
-  IMG_AEROPUERTO_INTERNACIONAL,
-  IMG_VIAJERO_MALETA,
-  IMG_FAMILIA_VIAJE,
-  IMG_PASAPORTE_VIAJE,
-} from "@/lib/imagenes-destinos";
-
-const FALLBACKS_NEUTROS_UNIVERSALES: string[] = [
-  IMG_AVION_ALA,
-  IMG_AEROPUERTO_INTERNACIONAL,
-  IMG_VIAJERO_MALETA,
-  IMG_FAMILIA_VIAJE,
-  IMG_PASAPORTE_VIAJE,
-];
-
-function obtenerImagenUnica(
-  imgOriginal: string,
-  contextoTexto: string,
-  usadas: Set<string>
-): string {
-  if (imgOriginal && !usadas.has(imgOriginal)) {
-    usadas.add(imgOriginal);
-    return imgOriginal;
-  }
-  const galeriaEspecifica = obtenerGaleriaPorTexto(contextoTexto);
-  const candidatos = [...galeriaEspecifica, ...FALLBACKS_NEUTROS_UNIVERSALES];
-  for (const cand of candidatos) {
-    if (!usadas.has(cand)) {
-      usadas.add(cand);
-      return cand;
-    }
-  }
-  return imgOriginal;
-}
-
-function calcularPrecioAntes(precioStr: string): string | null {
-  const limpio = precioStr.replace(/[^0-9]/g, "");
-  const num = parseInt(limpio, 10);
-  if (!num || isNaN(num) || num <= 0) return null;
-  const antes =
-    num < 100
-      ? num + 20
-      : num < 400
-      ? Math.ceil((num * 1.22) / 5) * 5
-      : Math.ceil((num * 1.2) / 10) * 10;
-  return `$${antes.toLocaleString("en-US")}`;
-}
+import { imagenSinRepetir } from "@/lib/imagenes-destinos";
+import BarraConversionMovil from "@/components/BarraConversionMovil";
 
 export default function AirlineLandingTemplate({
   config,
@@ -145,41 +99,30 @@ export default function AirlineLandingTemplate({
   children?: React.ReactNode;
 }) {
   const [filtro, setFiltro] = useState<string>("todos");
+  const rutaActual = usePathname() || "";
 
   // Garantizamos que ninguna imagen se repita entre vitrina, tarjetas y banner final
   const contextoGlobal = `${config.vitrina.titulo} ${config.tituloHero} ${config.tituloDestacadoHero} ${config.vitrina.pais}`;
   const imagenesUsadas = new Set<string>();
-  const imgVitrina = obtenerImagenUnica(
-    config.vitrina.img,
-    contextoGlobal,
-    imagenesUsadas
-  );
+  const imgVitrina = imagenSinRepetir(config.vitrina.img, imagenesUsadas);
 
   const itemsConImagenUnica = config.items.map((item) => ({
     ...item,
-    imgRender: obtenerImagenUnica(
-      item.img,
-      `${item.id} ${item.titulo} ${item.alt} ${contextoGlobal}`,
-      imagenesUsadas
-    ),
+    imgRender: imagenSinRepetir(item.img, imagenesUsadas),
   }));
 
-  const imgBannerFinal = obtenerImagenUnica(
-    config.bannerFinal.img,
-    `${config.bannerFinal.titulo} ${contextoGlobal}`,
-    imagenesUsadas
-  );
+  const imgBannerFinal = imagenSinRepetir(config.bannerFinal.img, imagenesUsadas);
 
   const itemsMostrados =
     filtro === "todos"
       ? itemsConImagenUnica
       : itemsConImagenUnica.filter((i) => i.filtro === filtro);
 
-  const precioAntesVitrina = calcularPrecioAntes(config.vitrina.precio);
+  // Ruta para "Ref Web": la última miga y, si no hay migas, la página actual (el CRM la lee como citylandtravel.com/<ruta>)
   const rutaOrigenSeo =
-    breadcrumbs && breadcrumbs.length > 0
+    (breadcrumbs && breadcrumbs.length > 0
       ? breadcrumbs[breadcrumbs.length - 1]?.url || ""
-      : "";
+      : "") || rutaActual;
 
   // Determinar identidad visual según la vertical del destino para diferenciar diseños
   const ctxLower = contextoGlobal.toLowerCase();
@@ -290,9 +233,7 @@ export default function AirlineLandingTemplate({
     if (limpio.includes("📍 Ref Web:")) {
       return `https://wa.me/51944103890?text=${encodeURIComponent(limpio)}`;
     }
-    const sufijo = rutaOrigenSeo
-      ? `\n\n📍 Ref Web: citylandtravel.com${rutaOrigenSeo} [${seccion}]`
-      : `\n\n📍 Ref Web: citylandtravel.com [${seccion}]`;
+    const sufijo = `\n\n📍 Ref Web: citylandtravel.com${rutaOrigenSeo} [${seccion}]`;
     return `https://wa.me/51944103890?text=${encodeURIComponent(`${limpio}${sufijo}`)}`;
   }
 
@@ -420,14 +361,9 @@ export default function AirlineLandingTemplate({
                   <div className="flex items-center justify-between gap-4">
                     <div>
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600">
                           {config.vitrina.labelPrecio}
                         </span>
-                        {precioAntesVitrina && (
-                          <span className="bg-red-50 text-red-600 text-[10px] font-extrabold px-2 py-0.5 rounded-full">
-                            Oferta
-                          </span>
-                        )}
                       </div>
                       <div className="flex items-baseline gap-1.5">
                         <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
@@ -442,11 +378,6 @@ export default function AirlineLandingTemplate({
                               {config.vitrina.moneda.replace(/\bUSD\b\s*[·•-]?\s*/gi, "").trim()}
                             </span>
                           )}
-                        {precioAntesVitrina && (
-                          <span className="text-xs font-semibold text-slate-400 line-through ml-1">
-                            {precioAntesVitrina}
-                          </span>
-                        )}
                       </div>
                       <span className="text-[11px] font-semibold text-emerald-700 block mt-1">
                         {config.vitrina.notaInferior.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
@@ -560,7 +491,6 @@ export default function AirlineLandingTemplate({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {itemsMostrados.map((item) => {
               const esInicial = item.precioSecundario?.trim().startsWith("$");
-              const precioAntesItem = calcularPrecioAntes(item.precioPrincipal);
               const msg =
                 item.waMensaje ||
                 `¡Hola Cityland Travel! Vi su página web y deseo cotizar: ${item.titulo} (${item.subtitulo}) desde ${item.precioPrincipal}.`;
@@ -604,7 +534,7 @@ export default function AirlineLandingTemplate({
                       </h3>
 
                       {item.resumenCorto.length > 55 ? (
-                        <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                        <p className="text-sm text-slate-600 leading-relaxed mb-3">
                           {item.resumenCorto.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                         </p>
                       ) : (
@@ -613,7 +543,7 @@ export default function AirlineLandingTemplate({
                         </div>
                       )}
 
-                      <div className="space-y-1.5 text-xs font-medium text-slate-600 pt-2.5 border-t border-slate-100">
+                      <div className="space-y-1.5 text-sm font-medium text-slate-600 pt-2.5 border-t border-slate-100">
                         {item.checks.map((ck) => (
                           <div key={ck} className="flex items-start gap-2">
                             <span className="text-emerald-600 font-extrabold shrink-0 mt-0.5">
@@ -630,14 +560,9 @@ export default function AirlineLandingTemplate({
                     <div className="pt-3.5 border-t border-slate-100 flex items-center justify-between gap-3">
                       <div>
                         <div className="flex items-center gap-1.5 mb-1">
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 leading-none">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600 leading-none">
                             Tarifa Promo
                           </span>
-                          {precioAntesItem && (
-                            <span className="text-[11px] font-semibold text-slate-400 line-through leading-none">
-                              {precioAntesItem}
-                            </span>
-                          )}
                         </div>
                         <div className="flex items-baseline gap-1">
                           <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
@@ -689,7 +614,7 @@ export default function AirlineLandingTemplate({
                   <h3 className="text-sm font-extrabold text-[#0a1628]">
                     {p.titulo.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                   </h3>
-                  <p className="text-xs text-slate-600 mt-0.5 leading-relaxed">
+                  <p className="text-sm text-slate-600 mt-0.5 leading-relaxed">
                     {p.sub.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
                   </p>
                 </div>
@@ -748,30 +673,10 @@ export default function AirlineLandingTemplate({
       <Footer />
 
       {/* 6. Barra Sticky de Conversión Móvil (estilo agencias líderes) + Botón Flotante en Escritorio */}
-      <div className="sm:hidden fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200 px-4 py-2.5 shadow-[0_-8px_24px_rgba(10,22,40,0.12)] flex items-center justify-between gap-3">
-        <div className="min-w-0">
-          <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block leading-none">
-            Tarifa desde
-          </span>
-          <div className="flex items-baseline gap-1 mt-0.5">
-            <span className="text-lg font-black text-[#0a1628] leading-none">
-              {config.vitrina.precio.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
-            </span>
-            <span className="text-[10px] font-bold text-emerald-700 truncate">
-              · Separa con 50%
-            </span>
-          </div>
-        </div>
-        <a
-          href={armarUrlWaConAtribucion(config.waFlotante.mensaje, "Barra Móvil")}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white font-extrabold px-4 py-2.5 rounded-xl text-xs shadow-md shrink-0"
-        >
-          <WhatsAppIcon size={16} />
-          <span>WhatsApp Ahora</span>
-        </a>
-      </div>
+      <BarraConversionMovil
+        precio={config.vitrina.precio.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+        href={armarUrlWaConAtribucion(config.waFlotante.mensaje, "Barra Móvil")}
+      />
 
       <div className="hidden sm:block fixed bottom-5 right-5 z-50">
         <a

@@ -1070,8 +1070,9 @@ function normalizarImagenesRutaBase(ruta: RutaVueloSEO): RutaVueloSEO {
     ruta.destino === "Lima"
       ? `${ruta.slug} ${ruta.origen} a Lima`
       : `${ruta.destino} ${ruta.config.vitrina.pais}`;
-  const [f0, f1, f2, f3, f4] = obtenerGaleriaPorTexto(textoClave);
-  const fotosItems = [f1, f2, f3];
+  const [f0, , , , f4] = obtenerGaleriaPorTexto(textoClave);
+  // Las tarjetas dicen "Boleto de X a <destino>": llevan la foto del destino, no la de ciudades vecinas de la galería.
+  const fotosItems = [f0, f0, f0];
 
   const escala = ESCALA_COMERCIAL_RUTAS_BASE[ruta.slug];
   const desdeUSD = escala ? escala.desde : ruta.precioDesdeUSD;

@@ -20,77 +20,6 @@ export interface ItemBuscadorCatalogo {
   searchNorm: string;
 }
 
-const POOL_FOTOS_UNICAS_RESPALDO = [
-  "/images/espana/gran-via-metropolis.jpg",
-  "/images/destinos/barcelona.webp",
-  "/images/destinos/milan.webp",
-  "/images/destinos/roma.jpg",
-  "/images/destinos/paris.webp",
-  "/images/destinos/valencia.webp",
-  "/images/destinos/sevilla.webp",
-  "/images/destinos/turin.jpg",
-  "/images/destinos/florencia.jpg",
-  "/images/destinos/lyon.jpg",
-  "/images/destinos/zaragoza.jpg",
-  "/images/destinos/malaga.webp",
-  "/images/destinos/bolonia.jpg",
-  "/images/destinos/genova.jpg",
-  "/images/destinos/marsella.jpg",
-  "/images/destinos/murcia.jpg",
-  "/images/destinos/mallorca.webp",
-  "/images/destinos/napoles.jpg",
-  "/images/destinos/venecia.jpg",
-  "/images/destinos/niza.jpg",
-  "/images/destinos/bilbao.webp",
-  "/images/destinos/alicante.jpg",
-  "/images/destinos/verona.jpg",
-  "/images/destinos/bergamo.jpg",
-  "/images/destinos/toulouse.jpg",
-  "/images/destinos/valladolid.jpg",
-  "/images/destinos/vigo.jpg",
-  "/images/destinos/padua.jpg",
-  "/images/destinos/bari.jpg",
-  "/images/destinos/burdeos.jpg",
-  "/images/destinos/gijon.jpg",
-  "/images/destinos/a-coruna.jpg",
-  "/images/destinos/palermo.jpg",
-  "/images/destinos/catania.jpg",
-  "/images/destinos/bruselas.jpg",
-  "/images/destinos/vitoria.jpg",
-  "/images/destinos/granada.jpg",
-  "/images/destinos/pisa.jpg",
-  "/images/destinos/parma.jpg",
-  "/images/destinos/amsterdam.jpg",
-  "/images/destinos/elche.jpg",
-  "/images/destinos/oviedo.jpg",
-  "/images/destinos/modena.jpg",
-  "/images/destinos/brescia.jpg",
-  "/images/destinos/lisboa.jpg",
-  "/images/destinos/santander.jpg",
-  "/images/destinos/pamplona.jpg",
-  "/images/destinos/trieste.jpg",
-  "/images/destinos/cagliari.jpg",
-  "/images/destinos/oporto.jpg",
-  "/images/destinos/san-sebastian.jpg",
-  "/images/destinos/salamanca.jpg",
-  "/images/destinos/perugia.jpg",
-  "/images/destinos/rimini.jpg",
-  "/images/destinos/berlin.jpg",
-  "/images/destinos/burgos.jpg",
-  "/images/destinos/tarragona.jpg",
-  "/images/destinos/salerno.jpg",
-  "/images/destinos/pescara.jpg",
-  "/images/destinos/frankfurt.jpg",
-  "/images/destinos/como.jpg",
-  "/images/destinos/munich.jpg",
-  "/images/destinos/zurich.jpg",
-  "/images/destinos/ginebra.jpg",
-  "/images/espana/palacio-real.jpg",
-  "/images/espana/puerta-de-alcala.jpg",
-  "/images/espana/plaza-mayor.jpg",
-  "/images/espana/parque-retiro.jpg",
-];
-
 function normalizarTexto(texto: string): string {
   return texto
     .toLowerCase()
@@ -172,9 +101,9 @@ function obtenerIndiceUnificado(): ItemBuscadorCatalogo[] {
       titulo,
       destinoOPais: r.destino,
       cluster: "vuelos",
-      clusterNombre: "Vuelos y Boletos Aéreos",
+      clusterNombre: "Vuelos y Boletos AÃ©reos",
       precioDesdeUSD: r.precioDesdeUSD,
-      img: galeria[i % 3] || galeria[0],
+      img: galeria[0],
       searchNorm: normalizarTexto(`${titulo} ${r.origen} ${r.destino} ${r.slug.replace(/-/g, " ")}`),
     });
   }
@@ -204,7 +133,7 @@ function obtenerIndiceUnificado(): ItemBuscadorCatalogo[] {
       slug: `madrid-${m.slug}`,
       url,
       titulo: m.titulo,
-      destinoOPais: "España",
+      destinoOPais: "EspaÃ±a",
       cluster: "mundiales",
       clusterNombre: m.siloNombre,
       precioDesdeUSD: m.precioDesdeUSD,
@@ -251,7 +180,6 @@ export async function GET(req: NextRequest) {
   const palabras = q ? q.split(/\s+/).filter(Boolean).slice(0, 8) : [];
 
   const resultados: Omit<ItemBuscadorCatalogo, "searchNorm">[] = [];
-  const imagenesUsadas = new Set<string>();
   let totalMatches = 0;
 
   for (let i = 0; i < indice.length; i++) {
@@ -282,21 +210,7 @@ export async function GET(req: NextRequest) {
 
     totalMatches++;
     if (resultados.length < limit) {
-      let imgFinal = item.img;
-      if (imagenesUsadas.has(imgFinal)) {
-        for (let k = 0; k < POOL_FOTOS_UNICAS_RESPALDO.length; k++) {
-          const candidata =
-            POOL_FOTOS_UNICAS_RESPALDO[
-              (resultados.length + k) % POOL_FOTOS_UNICAS_RESPALDO.length
-            ];
-          if (!imagenesUsadas.has(candidata)) {
-            imgFinal = candidata;
-            break;
-          }
-        }
-      }
-      imagenesUsadas.add(imgFinal);
-
+      // Si la foto se repite se deja la misma: cambiarla por otra de una lista fija mezclaba regiones (Punta Cana con Valencia).
       resultados.push({
         slug: item.slug,
         url: item.url,
@@ -305,7 +219,7 @@ export async function GET(req: NextRequest) {
         cluster: item.cluster,
         clusterNombre: item.clusterNombre,
         precioDesdeUSD: item.precioDesdeUSD,
-        img: imgFinal,
+        img: item.img,
       });
     }
   }

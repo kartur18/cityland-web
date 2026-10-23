@@ -253,7 +253,7 @@ export default function SuperLandingMigratorioTemplate({
                         </span>
                       </div>
 
-                      <ul className="space-y-2 text-xs text-slate-600 mb-6">
+                      <ul className="space-y-2 text-sm text-slate-600 mb-6">
                         {plan.incluye.slice(0, 3).map((item) => (
                           <li key={item} className="flex items-start gap-2">
                             <span className="text-emerald-600 font-black mt-0.5 shrink-0">
@@ -269,10 +269,11 @@ export default function SuperLandingMigratorioTemplate({
                       href={waUrlPlan}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full inline-flex items-center justify-center gap-2 font-extrabold py-3.5 px-4 rounded-xl text-xs sm:text-sm whitespace-nowrap transition-colors cursor-pointer bg-[#25D366] hover:bg-[#1fb858] text-white"
+                      aria-label={`Elegir ${nombreLimpio} por WhatsApp`}
+                      className="w-full inline-flex items-center justify-center gap-2 font-extrabold py-3.5 px-4 min-h-[44px] rounded-xl text-sm transition-colors cursor-pointer bg-[#25D366] hover:bg-[#1fb858] text-white"
                     >
                       <WhatsAppIcon className="w-4 h-4" />
-                      <span>Elegir {nombreLimpio}</span>
+                      <span>Elegir este plan</span>
                     </a>
                   </article>
                 );
@@ -324,7 +325,7 @@ export default function SuperLandingMigratorioTemplate({
                 <span className="text-xs font-extrabold uppercase text-blue-700 block mb-1.5">
                   🚆 Transporte al centro
                 </span>
-                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                <p className="text-sm text-slate-700 leading-relaxed">
                   {datos.infoLlegadaCiudad.comoLlegarCentro}
                 </p>
               </div>
@@ -333,7 +334,7 @@ export default function SuperLandingMigratorioTemplate({
                   <FlagIcon pais="Perú" className="w-3.5 h-2.5 shrink-0" />
                   <span>Comunidad peruana en {datos.ciudadDestino}</span>
                 </span>
-                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                <p className="text-sm text-slate-700 leading-relaxed">
                   {datos.infoLlegadaCiudad.zonasPeruanos}
                 </p>
               </div>
@@ -341,7 +342,7 @@ export default function SuperLandingMigratorioTemplate({
                 <span className="text-xs font-extrabold uppercase text-amber-700 block mb-1.5">
                   ✈️ Recomendación para tu viaje
                 </span>
-                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                <p className="text-sm text-slate-700 leading-relaxed">
                   {datos.infoLlegadaCiudad.consejoLocal}
                 </p>
               </div>
@@ -367,7 +368,7 @@ export default function SuperLandingMigratorioTemplate({
                       ▼
                     </span>
                   </summary>
-                  <p className="mt-2.5 pt-2.5 border-t border-slate-100 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  <p className="mt-2.5 pt-2.5 border-t border-slate-100 text-sm text-slate-600 leading-relaxed">
                     {faq.a}
                   </p>
                 </details>
@@ -395,10 +396,10 @@ export default function SuperLandingMigratorioTemplate({
                     className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-amber-400 transition-colors flex items-center justify-between gap-2"
                   >
                     <div className="min-w-0">
-                      <span className="text-[10px] font-bold uppercase text-slate-400 block">
+                      <span className="text-[10px] font-bold uppercase text-slate-600 block">
                         {rel.pais} · {rel.ciudad}
                       </span>
-                      <span className="text-xs font-bold text-slate-800 line-clamp-1">
+                      <span className="text-xs font-bold text-slate-800 line-clamp-2">
                         {rel.titulo}
                       </span>
                     </div>
@@ -414,7 +415,7 @@ export default function SuperLandingMigratorioTemplate({
       </main>
 
       {/* Barra móvil inferior */}
-      <div className="fixed bottom-0 inset-x-0 z-40 sm:hidden bg-white/95 backdrop-blur-md border-t border-slate-200 px-3.5 py-2.5 flex items-center justify-between gap-3 shadow-2xl">
+      <div className="fixed bottom-0 inset-x-0 z-30 sm:hidden bg-white/95 backdrop-blur-md border-t border-slate-200 px-3.5 py-2.5 flex items-center justify-between gap-3 shadow-2xl">
         <div>
           <span className="text-[10px] font-extrabold uppercase text-slate-500 block">
             {datos.ciudadDestino} · Separa con 50%
@@ -435,6 +436,8 @@ export default function SuperLandingMigratorioTemplate({
       </div>
 
       <Footer />
+      {/* Espaciador para que la barra móvil no tape el pie */}
+      <div className="h-16 sm:hidden" aria-hidden="true" />
     </div>
   );
 }

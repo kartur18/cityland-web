@@ -151,7 +151,7 @@ export function VistaCatalogoHub({ modoHub = "directorio" }: { modoHub?: ModoCat
         <section className="relative overflow-hidden bg-[#0a1628] text-white pt-12 pb-16 sm:pt-16 sm:pb-20">
           <div className="absolute inset-0 z-0">
             <Image
-              src="/images/espana/barajas-t4.jpg"
+              src="/images/espana/barajas.jpg"
               alt={heroInfo.h1}
               fill
               priority

@@ -275,7 +275,8 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
     s.destino === "Lima"
       ? s.slug
       : `${s.destino} ${s.paisDestino}`;
-  const [f0, f1, f2, f3, f4] = obtenerGaleriaPorTexto(
+  // Las tarjetas dicen "Boleto a <destino>": llevan la foto del destino, no la de ciudades vecinas de la galería.
+  const [f0, , , , f4] = obtenerGaleriaPorTexto(
     textoBusqueda,
     s.modalidad === "europa" || esRetornoEuropa
       ? "europa"
@@ -384,7 +385,7 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
           notaPrecio: "Tarifa sujeta a disponibilidad y condiciones aplicables",
           tag: "Mejor Tarifa",
           tagBg: "bg-emerald-600 text-white",
-          img: f2,
+          img: f0,
           alt: `Boleto de ${s.origen} a ${s.destino}`,
           resumenCorto: `Boleto confirmado ${s.codigoOrigen} → ${s.codigoDestino} con impuestos incluidos y código PNR verificable.`,
           checks: [
@@ -406,7 +407,7 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
           notaPrecio: "Tarifa sujeta a disponibilidad y condiciones aplicables",
           tag: "Doble Equipaje 46 kg",
           tagBg: "bg-blue-600 text-white",
-          img: f3,
+          img: f0,
           alt: `Vuelo con maleta 23 kg de ${s.origen} a ${s.destino}`,
           resumenCorto: `Incluye franquicia ampliada de equipaje en bodega + cabina 10 kg en ruta ${s.origen} – ${s.destino}.`,
           checks: [
@@ -434,7 +435,7 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
           notaPrecio: "Tarifa sujeta a disponibilidad y condiciones aplicables",
           tag: esRetornoEuropa ? "Traer Familiar a Europa" : "Todo Resuelto",
           tagBg: "bg-red-600 text-white",
-          img: f1,
+          img: f0,
           alt: `Paquete a ${s.destino} desde ${s.origen}`,
           resumenCorto: esRetornoEuropa
             ? `Compra desde ${s.origen} el viaje completo para tus padres, hijos o pareja saliendo de Lima o provincias hacia ${s.origen}.`
