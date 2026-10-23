@@ -5,6 +5,7 @@ import {
   INDICE_MADRID_10K,
   buscarLandingMadrid10k,
 } from "@/lib/catalogo-madrid-10k";
+import { enriquecerLandingMadrid } from "@/lib/contenido-madrid";
 import {
   URL_BASE_SEO,
   construirSchemaLandingSEO,
@@ -68,8 +69,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function MadridSlugPage({ params }: Props) {
   const { slug } = await params;
-  const datos = buscarLandingMadrid10k(slug);
-  if (!datos) notFound();
+  const base = buscarLandingMadrid10k(slug);
+  if (!base) notFound();
+  const datos = enriquecerLandingMadrid(base);
 
   const urlActual = `${URL_BASE_SEO}/madrid/${datos.slug}`;
 
