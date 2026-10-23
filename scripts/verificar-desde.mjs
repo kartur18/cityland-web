@@ -1,11 +1,14 @@
 // Verifica la regla "todo precio publico lleva 'Desde' y una nota de precio referencial".
 // Renderiza muestras de cada familia de landings y TODOS los hubs, y revisa tres cosas:
 //   1. Texto visible (y alt/aria-label/title): cada monto en dolares debe tener "desde" (sin importar mayusculas)
-//      a menos de 40 caracteres antes y sin otro monto en medio (si no, el "desde" cubre a otro precio).
+//      justo antes ("Desde $699", "desde: $699") o estar en una lista unida por conectores ("desde $699, $799 y $899").
+//      Un "desde Lima" lejano o un monto intermedio NO cubren al monto.
 //   2. Metas (title, description, openGraph, twitter): mismo criterio.
 //   3. JSON-LD: ningun Offer con precio fijo (usar AggregateOffer con lowPrice o priceSpecification.minPrice)
 //      y los montos dentro de textos del JSON-LD (FAQ, descripciones) tambien llevan "desde".
-// Ademas toda pagina con montos debe incluir la nota referencial ("referencial" + "fecha" + "disponibilidad").
+// Toda pagina con montos en su contenido (sin Navbar ni Footer) debe llevar la nota referencial. Tambien se vetan las
+// promesas de monto definitivo ("impuestos incluidos", "precio final", ...) y se revisa el listado de /api/catalogo.
+// Los montos de 10,000 o mas (cobertura de seguro) se ignoran: no son un precio de venta.
 // Uso: node --import ./scripts/_registrar-loader.mjs scripts/verificar-desde.mjs [--n=500|todas] [--seed=11] [--detalle=6]
 import { renderToStaticMarkup } from "react-dom/server";
 import { readdirSync, statSync, existsSync } from "node:fs";
