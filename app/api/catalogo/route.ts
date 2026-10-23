@@ -7,6 +7,7 @@ import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-com
 import { INDICE_MADRID_10K } from "@/lib/catalogo-madrid-10k";
 import { INDICE_PAQUETES_MIGRATORIOS_1000 } from "@/lib/catalogo-paquetes-migratorios-1000";
 import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
+import { quitarPrecioDeTitulo } from "@/lib/formato-precio";
 
 export interface ItemBuscadorCatalogo {
   slug: string;
@@ -214,7 +215,8 @@ export async function GET(req: NextRequest) {
       resultados.push({
         slug: item.slug,
         url: item.url,
-        titulo: item.titulo,
+        // El precio va aparte en precioDesdeUSD (siempre un "desde"): el titulo no lo repite como monto fijo.
+        titulo: quitarPrecioDeTitulo(item.titulo),
         destinoOPais: item.destinoOPais,
         cluster: item.cluster,
         clusterNombre: item.clusterNombre,

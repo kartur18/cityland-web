@@ -279,6 +279,30 @@ if (!SOLO || SOLO === "hubs") {
   }
 }
 
+// /api/catalogo: los titulos del listado no deben repetir montos fijos (el precio va en precioDesdeUSD).
+if (!SOLO || SOLO === "api") {
+  const ruta = await imp("app/api/catalogo/route.ts");
+  const { NextRequest } = await import("next/server");
+  const f = fam("api");
+  for (const q of ["", "madrid", "milan", "paris", "cancun", "crucero", "visa", "seguro", "cusco", "punta cana", "maleta", "carta"]) {
+    const res = await ruta.GET(new NextRequest(`http://localhost/api/catalogo?limit=96&q=${encodeURIComponent(q)}`));
+    const j = await res.json();
+    f.paginas++;
+    for (const it of j.items) {
+      f.montos += montosSinDesde(it.titulo).total;
+      const r = montosSinDesde(it.titulo);
+      if (r.malos.length) {
+        f.montosSinDesde += r.malos.length;
+        anotar("api", "titulo con monto sin desde", `q=${q} :: ${it.titulo.slice(0, 110)}`);
+      }
+      if (!(it.precioDesdeUSD > 0)) {
+        f.fallos++;
+        anotar("api", "item sin precioDesdeUSD", it.slug);
+      }
+    }
+  }
+}
+
 // ---------- reporte ----------
 console.log(`Verificacion "Desde" en ${((Date.now() - t0) / 1000).toFixed(1)} s (muestra n=${N}, seed=${SEED})`);
 console.table(familias);

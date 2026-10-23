@@ -24,6 +24,7 @@ const STUB_DE = {
 };
 
 export async function resolve(spec, ctx, next) {
+  if (spec === "next/server") return next("next/server.js", ctx);
   if (spec.endsWith(".css")) return { url: "data:text/javascript,export default {}", shortCircuit: true };
   if (STUB_DE[spec]) return { url: pathToFileURL(path.join(STUBS, STUB_DE[spec])).href, shortCircuit: true };
   if (spec.startsWith("@/")) {

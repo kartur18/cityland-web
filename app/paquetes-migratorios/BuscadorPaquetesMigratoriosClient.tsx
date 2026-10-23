@@ -5,6 +5,7 @@ import Link from "next/link";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
 import NotaPrecio from "@/components/NotaPrecio";
+import { quitarPrecioDeTitulo } from "@/lib/formato-precio";
 import { buildWhatsAppHref } from "@/components/constantes";
 import {
   PLANES_MIGRATORIOS_OFICIALES,
@@ -263,7 +264,7 @@ export default function BuscadorPaquetesMigratoriosClient({
                       {item.intencionNombre}
                     </span>
                     <h3 className="text-base font-extrabold text-slate-900 leading-snug line-clamp-2 mt-0.5 mb-3 min-h-[44px]">
-                      {item.h1Principal}
+                      {quitarPrecioDeTitulo(item.h1Principal)}
                     </h3>
                     <div className="flex items-baseline justify-between pt-3 border-t border-slate-100">
                       <div>
