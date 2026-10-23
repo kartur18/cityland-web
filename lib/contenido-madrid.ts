@@ -357,7 +357,7 @@ function enlacesContextuales(d: DatosLandingMadridSEO, semilla: number): DatosLa
       vistos.add(r.slug);
       clavesVistas.add(clave);
       tomadas++;
-      salida.push({ titulo: r.titulo, href: `/madrid/${r.slug}`, precio: r.precioDesdeUSD });
+      salida.push({ titulo: r.titulo, href: `/madrid/${r.slug}`, precio: r.precioDesdeUSD, tipo: r.tipo });
     }
   }
   return salida.length >= 4 ? salida : d.enlacesRelacionados;

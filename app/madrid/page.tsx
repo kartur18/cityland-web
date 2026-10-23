@@ -39,9 +39,9 @@ const DATOS_HUB_MADRID: DatosLandingMadridSEO = {
   zonaOMunicipioMadrid: "Madrid (Barajas T4 / T1)",
   origenPasajero: "Lima y Todo el Perú",
   modalidadClave: "Paquete Migratorio Completo",
+  tipo: "MIGRATORIO",
   precioDesdeUSD: 699,
   precioCarpetaSolaUSD: 85,
-  precioIdaYVueltaUSD: 999,
   imagenHero: "/images/destinos/madrid.webp",
   imagenSecundaria: "/images/espana/plaza-mayor.jpg",
   metaTitle:
@@ -186,6 +186,7 @@ const DATOS_HUB_MADRID: DatosLandingMadridSEO = {
     titulo: it.titulo,
     href: `/madrid/${it.slug}`,
     precio: it.precioDesdeUSD,
+    tipo: it.tipo,
   })),
 };
 

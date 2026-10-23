@@ -4,6 +4,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
+import {
+  etiquetaPrecioEnlace,
+  etiquetaPrecioTarjeta,
+  precioMinimoVisible,
+  type TipoProductoMadrid,
+} from "@/lib/tipo-producto-madrid";
 
 export interface PlanMadridReal {
   etiqueta: string;
@@ -29,9 +35,9 @@ export interface DatosLandingMadridSEO {
   zonaOMunicipioMadrid: string;
   origenPasajero: string;
   modalidadClave: string;
+  tipo: TipoProductoMadrid;
   precioDesdeUSD: number;
   precioCarpetaSolaUSD: number;
-  precioIdaYVueltaUSD: number;
   imagenHero: string;
   imagenSecundaria: string;
   metaTitle: string;
@@ -41,7 +47,7 @@ export interface DatosLandingMadridSEO {
   pasosExpediente: { paso: string; titulo: string; detalle: string }[];
   checklistBarajas: { requisito: string; detalleOficial: string; comoTeAyudamos: string }[];
   faqs: { q: string; a: string }[];
-  enlacesRelacionados: { titulo: string; href: string; precio: number }[];
+  enlacesRelacionados: { titulo: string; href: string; precio: number; tipo?: TipoProductoMadrid }[];
 }
 
 function obtenerTemaSilo(silo: string) {
@@ -99,15 +105,25 @@ export default function MadridMigratorioTemplate({
   datos: DatosLandingMadridSEO;
 }) {
   const tema = obtenerTemaSilo(datos.silo);
-  const precioFmt = datos.precioDesdeUSD.toLocaleString("en-US");
+  const esMigratorio = datos.tipo === "MIGRATORIO";
+  const esServicio = datos.tipo === "SERVICIO";
+  const precioFmt = precioMinimoVisible(datos.planesReales, datos.precioDesdeUSD).toLocaleString("en-US");
+  const etiquetaDesde = etiquetaPrecioTarjeta(datos.tipo);
   const carpetaFmt = datos.precioCarpetaSolaUSD.toLocaleString("en-US");
 
   const refTag = datos.slug
     ? `\n\n📍 Ref Web: citylandtravel.com/madrid/${datos.slug}`
     : `\n\n📍 Ref Web: citylandtravel.com/madrid`;
 
+  const consultaWa = {
+    MIGRATORIO: `del paquete migratorio a ${datos.zonaOMunicipioMadrid}`,
+    IDA_Y_VUELTA: `del pasaje de ida y vuelta a ${datos.zonaOMunicipioMadrid}`,
+    SOLO_IDA_VISA: `del pasaje de solo ida a ${datos.zonaOMunicipioMadrid}`,
+    RETORNO_MAD_LIM: "del boleto Madrid → Lima",
+    SERVICIO: `del servicio "${datos.tituloPrincipal.replace(/:\s*$/, "")}"`,
+  }[datos.tipo];
   const waUrlPrincipal = `https://wa.me/51944103890?text=${encodeURIComponent(
-    `¡Hola! Quiero más información del paquete migratorio a ${datos.zonaOMunicipioMadrid} desde $${datos.precioDesdeUSD}.${refTag} [Hero Principal]`
+    `¡Hola! Quiero más información ${consultaWa} desde $${datos.precioDesdeUSD}.${refTag} [Hero Principal]`
   )}`;
 
   const waUrlSoloCarpeta = `https://wa.me/51944103890?text=${encodeURIComponent(
@@ -193,7 +209,7 @@ export default function MadridMigratorioTemplate({
                     href="#planes-madrid"
                     className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold px-6 py-4 rounded-2xl text-xs sm:text-sm whitespace-nowrap transition-all"
                   >
-                    <span>Ver los 4 planes por fecha ↓</span>
+                    <span>{esMigratorio ? "Ver los 4 planes por fecha ↓" : "Ver la tarifa ↓"}</span>
                   </a>
                 </div>
 
@@ -229,8 +245,19 @@ export default function MadridMigratorioTemplate({
 
                   <div className="p-5 sm:p-6">
                     <h2 className="text-sm sm:text-base font-extrabold text-[#071120] mb-3">
-                      Los 5 documentos incluidos en tu Paquete Migratorio:
+                      {esMigratorio ? "Los 5 documentos incluidos en tu Paquete Migratorio:" : "Qué incluye esta tarifa:"}
                     </h2>
+                    {!esMigratorio && (
+                      <ul className="divide-y divide-slate-100 text-xs sm:text-sm text-slate-700">
+                        {datos.planesReales[0].incluye.map((item, i) => (
+                          <li key={i} className="py-2 flex items-center gap-2.5">
+                            <span className="text-emerald-600 font-black">✓</span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    {esMigratorio && (
                     <ul className="divide-y divide-slate-100 text-xs sm:text-sm text-slate-700">
                       <li className="py-2 flex items-center gap-2.5">
                         <span className="text-emerald-600 font-black">✓</span>
@@ -263,6 +290,7 @@ export default function MadridMigratorioTemplate({
                         </span>
                       </li>
                     </ul>
+                    )}
                   </div>
                 </div>
               </div>
@@ -275,17 +303,27 @@ export default function MadridMigratorioTemplate({
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="text-center max-w-2xl mx-auto mb-10">
               <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1.5">
-                Tarifas Oficiales según Temporada
+                {esMigratorio ? "Tarifas Oficiales según Temporada" : "Tarifa Oficial"}
               </span>
               <h2 className="text-2xl sm:text-4xl font-black text-[#071120] tracking-tight">
-                Elige tu Plan para Viajar a {datos.zonaOMunicipioMadrid}
+                {esMigratorio ? `Elige tu Plan para Viajar a ${datos.zonaOMunicipioMadrid}` : "Tu tarifa y qué incluye"}
               </h2>
               <p className="text-sm text-slate-600 mt-2">
-                Separa cualquiera de los 4 planes con el 50% y paga el saldo en cuotas antes de tu vuelo.
+                {esMigratorio
+                  ? "Separa cualquiera de los 4 planes con el 50% y paga el saldo en cuotas antes de tu vuelo."
+                  : esServicio
+                    ? "Escríbenos por WhatsApp y tu asesor te confirma el detalle del servicio."
+                    : "Separa con el 50% y paga el saldo antes de tu vuelo."}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+            <div
+              className={
+                esMigratorio
+                  ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch"
+                  : "grid grid-cols-1 max-w-md mx-auto gap-6 items-stretch"
+              }
+            >
               {datos.planesReales.map((plan, idx) => {
                 const tituloLimpio = limpiarTituloPlan(plan.titulo);
                 const mitadPlan = Math.round(plan.precioUSD * 0.5);
@@ -321,7 +359,7 @@ export default function MadridMigratorioTemplate({
 
                       <div className="my-4 py-3.5 border-y border-slate-100">
                         <div className="flex items-baseline gap-1">
-                          <span className="text-xs font-bold text-slate-500">Desde</span>
+                          <span className="text-xs font-bold text-slate-500">{etiquetaDesde}</span>
                           <span className="text-3xl font-black text-[#071120]">
                             ${plan.precioUSD.toLocaleString("en-US")}
                           </span>
@@ -351,14 +389,15 @@ export default function MadridMigratorioTemplate({
                       className="w-full inline-flex items-center justify-center gap-2 font-extrabold py-3.5 px-4 rounded-xl text-xs sm:text-sm whitespace-nowrap transition-all bg-[#25D366] hover:bg-[#1fb858] text-white"
                     >
                       <WhatsAppIcon className="w-4 h-4" />
-                      <span>Elegir Plan (${plan.precioUSD})</span>
+                      <span>{esMigratorio ? "Elegir Plan" : "Cotizar"} (${plan.precioUSD})</span>
                     </a>
                   </article>
                 );
               })}
             </div>
 
-            {/* Franja limpia para quienes ya compraron su pasaje */}
+            {/* Franja para quienes ya compraron su pasaje (solo en paquetes migratorios) */}
+            {esMigratorio && (
             <div className="mt-8 rounded-2xl bg-[#071120] text-white p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div>
                 <span className="text-xs font-extrabold uppercase tracking-wider text-amber-300 block">
@@ -378,6 +417,7 @@ export default function MadridMigratorioTemplate({
                 <span>Pedir Solo Carpeta (${carpetaFmt})</span>
               </a>
             </div>
+            )}
           </div>
         </section>
 
@@ -404,7 +444,7 @@ export default function MadridMigratorioTemplate({
                       {idx + 1}. {item.requisito}
                     </h3>
                     <span className="text-xs font-bold text-emerald-700 shrink-0">
-                      ✓ Incluido
+                      {esMigratorio ? "✓ Incluido" : "Requisito"}
                     </span>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
@@ -469,8 +509,11 @@ export default function MadridMigratorioTemplate({
                   <span className="font-semibold text-slate-700 truncate">
                     {rel.titulo}
                   </span>
-                  <span className="font-black text-emerald-700 shrink-0">
-                    ${rel.precio}
+                  <span className="text-right shrink-0 leading-tight">
+                    <span className="block text-[10px] font-bold text-slate-500">
+                      {etiquetaPrecioEnlace(rel.tipo ?? "MIGRATORIO")}
+                    </span>
+                    <span className="font-black text-emerald-700">${rel.precio}</span>
                   </span>
                 </Link>
               ))}
@@ -488,7 +531,7 @@ export default function MadridMigratorioTemplate({
             Madrid · Separa con 50%
           </span>
           <span className="text-sm font-black text-[#071120]">
-            Desde ${precioFmt} USD
+            {etiquetaDesde} ${precioFmt} USD
           </span>
         </div>
         <a

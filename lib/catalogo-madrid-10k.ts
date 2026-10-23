@@ -1,5 +1,7 @@
 import type { DatosLandingMadridSEO } from "@/components/MadridMigratorioTemplate";
 import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
+import { construirPlanesMadrid, textosMetaMadrid } from "@/lib/planes-madrid";
+import { tipoDeProductoMadrid, type TipoProductoMadrid } from "@/lib/tipo-producto-madrid";
 
 export interface ResumenLandingMadrid {
   slug: string;
@@ -8,6 +10,7 @@ export interface ResumenLandingMadrid {
   titulo: string;
   zonaOMunicipio: string;
   modalidad: string;
+  tipo: TipoProductoMadrid;
   precioDesdeUSD: number;
   constructorDatos: () => DatosLandingMadridSEO;
 }
@@ -29,9 +32,10 @@ function crearObjetoMadrid(params: {
   zonaOMunicipioMadrid: string;
   origenPasajero: string;
   modalidadClave: string;
+  tipo: TipoProductoMadrid;
+  nombreProducto: string;
   precioDesdeUSD: number;
   precioCarpetaSolaUSD?: number;
-  precioIdaYVueltaUSD?: number;
   keywords: string[];
   faqsExtra: { q: string; a: string }[];
   indiceSemilla: number;
@@ -50,9 +54,10 @@ function crearObjetoMadrid(params: {
     zonaOMunicipioMadrid,
     origenPasajero,
     modalidadClave,
+    tipo,
+    nombreProducto,
     precioDesdeUSD,
     precioCarpetaSolaUSD = 85,
-    precioIdaYVueltaUSD = Math.max(1090, Math.round((precioDesdeUSD * 1.26) / 10) * 10),
     keywords,
     faqsExtra,
     indiceSemilla,
@@ -76,11 +81,8 @@ function crearObjetoMadrid(params: {
   const img1 = "/images/espana/barajas.jpg";
 
   const mitad = Math.max(35, Math.round(precioDesdeUSD * 0.5));
-  const precioSoloIdaVisa = Math.max(699, Math.round((precioDesdeUSD * 0.89) / 10) * 10);
   const precioFmt = precioDesdeUSD.toLocaleString("en-US");
   const mitadFmt = mitad.toLocaleString("en-US");
-  const idaVueltaFmt = precioIdaYVueltaUSD.toLocaleString("en-US");
-  const soloIdaFmt = precioSoloIdaVisa.toLocaleString("en-US");
 
   const tituloSinDosPuntos = tituloPrincipal.replace(/:\s*$/, "").trim();
   const baseTitle = `${tituloSinDosPuntos} Desde $${precioFmt} | Cityland`;
@@ -95,13 +97,24 @@ function crearObjetoMadrid(params: {
     metaTitle = `${limpio} Desde $${precioFmt} | Cityland`;
   }
 
-  const descRaw = `${tituloSinDosPuntos} (${subtituloDorado}). Incluye PNR, retorno RF 24h, hotel verificable, seguro Schengen 30.000€ y check-in. Separa con $${mitadFmt} (50%) en Los Olivos.`;
+  const textos = textosMetaMadrid({
+    tipo,
+    tituloSinDosPuntos,
+    subtituloDorado,
+    mitadFmt,
+    precioFmt,
+    zona: zonaOMunicipioMadrid,
+    nombreProducto,
+    precioCarpetaSolaUSD,
+    salvedadLegal: SALVEDAD_LEGAL,
+  });
+  const descRaw = textos.descripcion;
   const metaDescription =
     descRaw.length > 156 ? `${descRaw.slice(0, 153).trim()}...` : descRaw;
 
   // Enlaces relacionados determinísticos dentro del silo /madrid/[slug]
   const totalActual = INDICE_MADRID_10K.length;
-  const enlacesRelacionados: { titulo: string; href: string; precio: number }[] = [];
+  const enlacesRelacionados: DatosLandingMadridSEO["enlacesRelacionados"] = [];
   if (totalActual > 16) {
     const paso = Math.max(1, Math.floor(totalActual / 16));
     for (let i = 0; i < 12; i++) {
@@ -112,6 +125,7 @@ function crearObjetoMadrid(params: {
           titulo: item.titulo,
           href: `/madrid/${item.slug}`,
           precio: item.precioDesdeUSD,
+          tipo: item.tipo,
         });
       }
     }
@@ -131,69 +145,22 @@ function crearObjetoMadrid(params: {
     zonaOMunicipioMadrid,
     origenPasajero,
     modalidadClave,
+    tipo,
     precioDesdeUSD,
     precioCarpetaSolaUSD,
-    precioIdaYVueltaUSD,
     imagenHero: img0,
     imagenSecundaria: img1,
     metaTitle,
     metaDescription,
     keywords,
-    planesReales: [
-      {
-        etiqueta: "Plan Promo · Separa con $350 (50%)",
-        titulo: `Plan Promo a ${zonaOMunicipioMadrid} ($699)`,
-        precioUSD: 699,
-        subtitulo: `Salidas fines de Feb, Mar, Abr y May · 5 Documentos Incluidos`,
-        incluye: [
-          `Pasaje de avión de ida emitido (${codigoRuta})`,
-          "Boleto de regreso reservado en sistema para Migraciones",
-          `Reserva de hotel verificable en ${zonaOMunicipioMadrid} o cuadre con Carta`,
-          "Seguro Schengen 30.000€ sin deducible + Check-in 24h antes",
-        ],
-        waMensaje: `¡Hola! Quiero más información del paquete a ${zonaOMunicipioMadrid} desde $699.`,
-      },
-      {
-        etiqueta: "★ El Más Pedido · Separa con $400 (50%)",
-        titulo: `Plan Smart a ${zonaOMunicipioMadrid} ($799)`,
-        precioUSD: 799,
-        subtitulo: "Salidas Jun, Sep, Oct y Nov + Asesoría Migratoria 1 a 1",
-        destacado: true,
-        incluye: [
-          `Pasaje de avión de ida emitido + Boleto de regreso para Migraciones`,
-          `Reserva de hotel en ${zonaOMunicipioMadrid} o sincronización con Carta de Invitación`,
-          "Seguro médico internacional Schengen de 30.000€ sin franquicia",
-          "Check-in 24h antes, elección de asiento y preparación paso a paso",
-        ],
-        waMensaje: `¡Hola! Quiero más información del paquete Smart a ${zonaOMunicipioMadrid} desde $799.`,
-      },
-      {
-        etiqueta: "Salidas Cercanas · Separa con $450 (50%)",
-        titulo: `Plan Plus a ${zonaOMunicipioMadrid} ($899)`,
-        precioUSD: 899,
-        subtitulo: "Salidas Enero, 1ra quincena Febrero o rutas con conexión",
-        incluye: [
-          "Pasaje de avión de ida + Boleto de regreso reservado para Migraciones",
-          `Voucher de hotel verificable en ${zonaOMunicipioMadrid} por tus días de estadía`,
-          "Seguro médico Schengen oficial de 30.000€ sin franquicia",
-          "Revisión de bolsa de viaje BOE y check-in 24h antes garantizado",
-        ],
-        waMensaje: `¡Hola! Quiero más información del paquete Plus a ${zonaOMunicipioMadrid} desde $899.`,
-      },
-      {
-        etiqueta: "Temporada Alta / 23 kg · Separa con $500",
-        titulo: `Plan Full ${zonaOMunicipioMadrid} con Maleta 23 kg ($999)`,
-        precioUSD: 999,
-        subtitulo: "Salidas Dic, Jul, Ago o incluye maleta grande de 23 kg en bodega",
-        incluye: [
-          `Pasaje de avión de ida (${aerolineaDestacada}) + Maleta 23 kg en bodega`,
-          "Boleto de regreso reservado en sistema para Migraciones",
-          "Reserva de hotel + Seguro Schengen 30.000€ + Check-in 24h antes",
-          "Contrato formal y comprobante SUNAT (RUC 20614914239)",
-        ],
-        waMensaje: `¡Hola! Quiero más información del paquete Full a ${zonaOMunicipioMadrid} con maleta de 23 kg desde $999.`,
-      },
-    ],
+    planesReales: construirPlanesMadrid({
+      tipo,
+      zona: zonaOMunicipioMadrid,
+      codigoRuta,
+      aerolinea: aerolineaDestacada,
+      precio: precioDesdeUSD,
+      nombreProducto,
+    }),
     pasosExpediente: [
       {
         paso: "01",
@@ -248,17 +215,7 @@ function crearObjetoMadrid(params: {
           "Incluimos tu póliza oficial en español lista para presentar en el control migratorio de Barajas.",
       },
     ],
-    faqs: [
-      ...faqsExtra,
-      {
-        q: `¿Qué incluye el Paquete Migratorio a ${zonaOMunicipioMadrid} (Desde $${precioFmt} USD)?`,
-        a: `Incluye tu boleto aéreo desde el Aeropuerto Jorge Chávez (Lima), reserva de retorno activa (MAD → LIM) 24h antes, reserva de hotel verificable en ${zonaOMunicipioMadrid}, seguro Schengen 30.000€ y check-in gestionado por tu asesor. ${SALVEDAD_LEGAL}`,
-      },
-      {
-        q: `Si ya compré mi pasaje a Madrid por mi cuenta, ¿pueden armarme solo la Carpeta Migratoria?`,
-        a: `¡Sí! Nuestro servicio de Solo Carpeta Migratoria Express (desde $${precioCarpetaSolaUSD} USD) incluye reserva de retorno activa 24h antes, hotel verificable, seguro Schengen 30.000€ y check-in.`,
-      },
-    ],
+    faqs: [...faqsExtra, ...textos.faqs],
     enlacesRelacionados,
   };
 }
@@ -629,6 +586,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
         const precio = Math.round((precioBase * factorMod * factorAero) / 10) * 10;
         const titulo = `${zonaNombre}: ${nombreMod} (${nombreAero})`;
         const esRetorno = slugMod.includes("retorno-madrid-a-lima");
+        const tipo = tipoDeProductoMadrid(slugMod);
 
         lista.push({
           slug,
@@ -637,6 +595,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
           titulo,
           zonaOMunicipio: zonaNombre,
           modalidad: nombreMod,
+          tipo,
           precioDesdeUSD: precio,
           constructorDatos: () =>
             crearObjetoMadrid({
@@ -655,6 +614,8 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
                 ? "Madrid-Barajas (MAD)"
                 : "Lima — Aeropuerto Jorge Chávez (LIM)",
               modalidadClave: "PNR + Retorno RF",
+              tipo,
+              nombreProducto: nombreMod,
               precioDesdeUSD: precio,
               keywords: [
                 `viajar a ${zonaNombre.toLowerCase()} desde lima`,
@@ -687,6 +648,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
         const precio = Math.max(45, Math.round((precioBase * factorEmis) / 5) * 5);
         const titulo = `${nombreProd}: ${nombreEstadia} · ${nombreEmis}`;
         const esRetorno = slugProd.includes("madrid-a-lima");
+        const tipo = tipoDeProductoMadrid(slugProd);
 
         lista.push({
           slug,
@@ -695,6 +657,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
           titulo,
           zonaOMunicipio: "Madrid (Barajas T4 / T1)",
           modalidad: `${nombreProd} · ${nombreEstadia}`,
+          tipo,
           precioDesdeUSD: precio,
           constructorDatos: () =>
             crearObjetoMadrid({
@@ -711,6 +674,8 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
               zonaOMunicipioMadrid: "Madrid-Barajas (T4 / T1)",
               origenPasajero: "Lima — Aeropuerto Jorge Chávez (LIM)",
               modalidadClave: "Bolsa BOE Calibrada",
+              tipo,
+              nombreProducto: nombreProd,
               precioDesdeUSD: precio,
               keywords: [
                 `${slugProd.replace(/-/g, " ")} ${slugEstadia.replace(/-/g, " ")}`,
@@ -742,6 +707,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
         const slug = `ruta-${slugRutaEsp}-en-${slugMes}-${slugPaq}`;
         const precio = Math.round(((precioBase + suplementoRuta) * factorMes) / 10) * 10;
         const titulo = `Viajes a ${nombreRutaEsp} en ${nombreMes}: ${nombrePaq}`;
+        const tipo = tipoDeProductoMadrid(slugPaq);
 
         lista.push({
           slug,
@@ -750,6 +716,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
           titulo,
           zonaOMunicipio: nombreRutaEsp,
           modalidad: `${nombrePaq} · ${nombreMes}`,
+          tipo,
           precioDesdeUSD: precio,
           constructorDatos: () =>
             crearObjetoMadrid({
@@ -766,6 +733,8 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
               zonaOMunicipioMadrid: nombreRutaEsp,
               origenPasajero: "Lima — Aeropuerto Jorge Chávez (LIM)",
               modalidadClave: `Salida ${nombreMes}`,
+              tipo,
+              nombreProducto: nombrePaq,
               precioDesdeUSD: precio,
               keywords: [
                 `viajar a ${nombreRutaEsp.toLowerCase()} desde lima en ${nombreMes.toLowerCase()}`,
@@ -798,6 +767,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
         const precio = Math.max(75, Math.round((precioBase * factorDur) / 5) * 5);
         const titulo = `Viajar a ${nombreBarrio} (Madrid): ${nombrePerfil} — ${nombreDur}`;
         const duracionLimpia = nombreDur.replace(/\s*\([^)]*\)/g, "").trim();
+        const tipo = tipoDeProductoMadrid(slugPerfil);
 
         lista.push({
           slug,
@@ -806,6 +776,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
           titulo,
           zonaOMunicipio: `${nombreBarrio} (Madrid)`,
           modalidad: nombrePerfil,
+          tipo,
           precioDesdeUSD: precio,
           constructorDatos: () =>
             crearObjetoMadrid({
@@ -822,6 +793,8 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
               zonaOMunicipioMadrid: `${nombreBarrio}, Madrid`,
               origenPasajero: "Lima — Aeropuerto Jorge Chávez (LIM)",
               modalidadClave: "Carpeta + PNR",
+              tipo,
+              nombreProducto: nombrePerfil,
               precioDesdeUSD: precio,
               keywords: [
                 `viajar a ${nombreBarrio.toLowerCase()} madrid desde lima`,
@@ -854,6 +827,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
         const precio = Math.max(35, Math.round((precioBase * factorMes * factorVar) / 5) * 5);
         const titulo = `${nombreServ} en ${nombreMes} — ${nombreVar}`;
         const esRetorno = slugServ.includes("madrid-a-lima");
+        const tipo = tipoDeProductoMadrid(slugServ);
 
         lista.push({
           slug,
@@ -862,6 +836,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
           titulo,
           zonaOMunicipio: "Madrid (MAD)",
           modalidad: nombreServ,
+          tipo,
           precioDesdeUSD: precio,
           constructorDatos: () =>
             crearObjetoMadrid({
@@ -880,6 +855,8 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
                 ? "Madrid-Barajas (MAD)"
                 : "Lima — Aeropuerto Jorge Chávez (LIM)",
               modalidadClave: nombreVar,
+              tipo,
+              nombreProducto: nombreServ,
               precioDesdeUSD: precio,
               keywords: [
                 `${slugServ.replace(/-/g, " ")} ${nombreMes.toLowerCase()}`,

@@ -382,15 +382,19 @@ export function construirSchemaLandingSEO(params: {
   titulo: string;
   descripcion: string;
   precioDesdeUSD: number;
+  precioMaximoUSD?: number;
   cantidadOfertas?: number;
   destinoOPais: string;
   imagenUrl: string;
   migas: MigaDePanSEO[];
   faqs?: { q: string; a: string }[];
+  // Tipo explicito: si se omite se deduce de la URL (heuristica antigua, solo para las demas familias de landings).
+  tipoSchema?: "paquete" | "producto" | "servicio";
 }) {
-  const esServicioDocumentario = /(visa|seguro|requisito|pasaporte|pnr|carta-de-invitacion)/i.test(
-    params.url
-  );
+  const esServicioDocumentario = params.tipoSchema
+    ? params.tipoSchema === "servicio"
+    : /(visa|seguro|requisito|pasaporte|pnr|carta-de-invitacion)/i.test(params.url);
+  const esProductoSimple = params.tipoSchema === "producto";
 
   const graph: Record<string, unknown>[] = [
     {
@@ -424,11 +428,13 @@ export function construirSchemaLandingSEO(params: {
           },
         }
       : {
-          "@type": ["Product", "TouristTrip"],
+          "@type": esProductoSimple ? "Product" : ["Product", "TouristTrip"],
           name: params.titulo,
           description: optimizarMetaDescriptionSEO(params.descripcion),
           image: [params.imagenUrl],
-          touristType: ["Viajeros desde Perú", "Familias", "Parejas", "Viajeros de Negocios"],
+          ...(esProductoSimple
+            ? {}
+            : { touristType: ["Viajeros desde Perú", "Familias", "Parejas", "Viajeros de Negocios"] }),
           brand: {
             "@type": "Brand",
             name: "Cityland Travel",
@@ -437,10 +443,15 @@ export function construirSchemaLandingSEO(params: {
             "@id": `${URL_BASE_SEO}/#organization`,
           },
           offers: {
-            "@type": "AggregateOffer",
+            ...(esProductoSimple
+              ? { "@type": "Offer", price: String(params.precioDesdeUSD) }
+              : {
+                  "@type": "AggregateOffer",
+                  lowPrice: String(params.precioDesdeUSD),
+                  ...(params.precioMaximoUSD ? { highPrice: String(params.precioMaximoUSD) } : {}),
+                  ...(params.cantidadOfertas ? { offerCount: String(params.cantidadOfertas) } : {}),
+                }),
             priceCurrency: "USD",
-            lowPrice: String(params.precioDesdeUSD),
-            ...(params.cantidadOfertas ? { offerCount: String(params.cantidadOfertas) } : {}),
             availability: "https://schema.org/InStock",
             url: params.url,
             seller: {
