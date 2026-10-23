@@ -5,6 +5,8 @@ import { WA_LINK, TELEFONO, TELEFONO_FORMATEADO } from "@/components/constantes"
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import PhoneIcon from "@/components/icons/PhoneIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
+import { formatoUSD } from "@/lib/formato-precio";
+import { tarifasMigratorio } from "@/lib/precios-migratorio";
 
 export default function Footer() {
   return (
@@ -105,11 +107,11 @@ export default function Footer() {
               </Link>
               <Link href="/italia" className="flex items-center gap-1.5 text-emerald-300 hover:text-white font-semibold transition-colors">
                 <FlagIcon pais="Italia" className="w-3.5 h-2.5" />
-                <span>Paquete Migratorio Italia (Solo ida desde $699)</span>
+                <span>Paquete Migratorio Italia (Solo ida desde {formatoUSD(tarifasMigratorio("Italia").promo)})</span>
               </Link>
               <Link href="/francia" className="flex items-center gap-1.5 text-sky-200 hover:text-white font-semibold transition-colors">
                 <FlagIcon pais="Francia" className="w-3.5 h-2.5 shrink-0" />
-                <span>Paquete Migratorio Francia (Solo ida desde $699)</span>
+                <span>Paquete Migratorio Francia (Solo ida desde {formatoUSD(tarifasMigratorio("Francia").promo)})</span>
               </Link>
               <Link href="/europa-turquia" className="block text-slate-300 hover:text-white transition-colors">
                 Circuitos a Europa & Turquía Sin Visa

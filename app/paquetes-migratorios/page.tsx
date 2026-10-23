@@ -11,6 +11,7 @@ import BuscadorPaquetesMigratoriosClient, {
 } from "./BuscadorPaquetesMigratoriosClient";
 import { INDICE_PAQUETES_MIGRATORIOS_1000 } from "@/lib/catalogo-paquetes-migratorios-1000";
 import { buildWhatsAppHref } from "@/components/constantes";
+import { listaPreciosPlanes, tarifasMigratorio } from "@/lib/precios-migratorio";
 import {
   URL_BASE_SEO,
   construirSchemaLandingSEO, optimizarMetaTitleSEO, optimizarMetaDescriptionSEO
@@ -96,7 +97,7 @@ export default function PaquetesMigratoriosHubPage() {
       },
       {
         q: "¿Cuáles son los planes según la fecha de viaje?",
-        a: "Contamos con 4 planes oficiales según temporada: Plan Promo ($699 USD), Plan Smart ($799 USD), Plan Plus ($899 USD) y Plan Full con maleta de 23 kg ($999 USD). Todos se separan con el 50%.",
+        a: `Contamos con 4 planes oficiales según temporada: Plan Promo ($699 USD), Plan Smart ($799 USD), Plan Plus ($899 USD) y Plan Full con maleta de 23 kg ($999 USD) para España. Para Italia y Francia los planes van desde ${listaPreciosPlanes(tarifasMigratorio("Italia"))} USD. Todos se separan con el 50%.`,
       },
     ],
   });

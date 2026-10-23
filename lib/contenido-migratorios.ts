@@ -13,30 +13,31 @@ import {
   sinPuntoFinal,
   type FaqUnica,
 } from "@/lib/contenido-unico";
+import type { NivelPlanMigratorio } from "@/lib/precios-migratorio";
 
 type Enlace = DatosSuperLandingMigratorio["enlacesRelacionados"][number];
 
-// Cada mes se asocia al plan que la propia pagina publica para esa temporada.
-const PLAN_POR_MES: Record<string, string> = {
-  enero: "899",
-  febrero: "899",
-  marzo: "699",
-  abril: "699",
-  mayo: "699",
-  junio: "799",
-  julio: "999",
-  agosto: "999",
-  septiembre: "799",
-  octubre: "799",
-  noviembre: "799",
-  diciembre: "999",
+// Cada mes se asocia al plan que la propia pagina publica para esa temporada (el precio depende del pais).
+const PLAN_POR_MES: Record<string, NivelPlanMigratorio> = {
+  enero: "plus",
+  febrero: "plus",
+  marzo: "promo",
+  abril: "promo",
+  mayo: "promo",
+  junio: "smart",
+  julio: "full",
+  agosto: "full",
+  septiembre: "smart",
+  octubre: "smart",
+  noviembre: "smart",
+  diciembre: "full",
 };
 
-const NOMBRE_PLAN: Record<string, string> = {
-  "699": "Plan Promo",
-  "799": "Plan Smart",
-  "899": "Plan Plus",
-  "999": "Plan Full",
+const NOMBRE_PLAN: Record<NivelPlanMigratorio, string> = {
+  promo: "Plan Promo",
+  smart: "Plan Smart",
+  plus: "Plan Plus",
+  full: "Plan Full",
 };
 
 type Angulo =
@@ -70,11 +71,11 @@ function detectarAngulo(slug: string): Angulo {
   return "general";
 }
 
-function planDelSlug(slug: string): string {
-  if (/full/.test(slug)) return "999";
-  if (/plus/.test(slug)) return "899";
-  if (/smart/.test(slug)) return "799";
-  return "699";
+function planDelSlug(slug: string): NivelPlanMigratorio {
+  if (/full/.test(slug)) return "full";
+  if (/plus/.test(slug)) return "plus";
+  if (/smart/.test(slug)) return "smart";
+  return "promo";
 }
 
 function origenDesdeTitulo(titulo: string): string {

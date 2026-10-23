@@ -3,14 +3,25 @@
  * (España, Italia, Francia, Resto de Europa Schengen, Salidas desde Perú y Dudas Reales)
  *
  * Estructura Comercial Unificada:
- * - 4 Planes Oficiales según la fecha de viaje ($699 · $799 · $899 · $999 USD), todos separando con el 50%.
+ * - 4 Planes Oficiales según la fecha de viaje, todos separando con el 50%. Los precios salen de lib/precios-migratorio.ts
+ *   (España y resto de Europa: $699 · $799 · $899 · $999; Italia y Francia: $849 · $949 · $1,049 · $1,149).
  * - Explicación en lenguaje 100% sencillo peruano (sin tecnicismos confusos):
  *   Pasaje de avión de ida + Boleto de regreso reservado para Migraciones + Reserva de hotel + Seguro médico + Preparación paso a paso.
  * - Fotografías 100% reales y coherentes con cada ciudad europea de destino.
  */
+import { formatoUSD as usd } from "@/lib/formato-precio";
+import {
+  TARIFAS_MIGRATORIO_BASE,
+  ahorroFrenteARedondo,
+  inicialSeparacion,
+  listaPreciosPlanes,
+  tarifasMigratorio,
+  type NivelPlanMigratorio,
+  type TarifasMigratorio,
+} from "@/lib/precios-migratorio";
 
 export interface PlanSuperLanding {
-  id: "699" | "799" | "899" | "999";
+  id: NivelPlanMigratorio;
   nombre: string;
   etiqueta: string;
   precioUSD: number;
@@ -58,6 +69,8 @@ export interface DatosSuperLandingMigratorio {
     }[];
   };
   planes: [PlanSuperLanding, PlanSuperLanding, PlanSuperLanding, PlanSuperLanding];
+  // Mínimo visible de la página (precio del Plan Promo de su país); el JSON-LD usa este mismo valor.
+  precioDesdeUSD: number;
   infoLlegadaCiudad: {
     comoLlegarCentro: string;
     zonasPeruanos: string;
@@ -86,10 +99,10 @@ export interface ResumenSuperLanding {
   titulo: string;
   subtitulo: string;
   imagenHero: string;
-  precioPromo: 699;
-  precioSmart: 799;
-  precioPlus: 899;
-  precioFull: 999;
+  precioPromo: number;
+  precioSmart: number;
+  precioPlus: number;
+  precioFull: number;
   construirDatos: () => DatosSuperLandingMigratorio;
 }
 
@@ -1618,42 +1631,43 @@ const CIUDADES_FRANCIA_EUROPA: ConfigCiudadEuropa[] = [
 ];
 
 // ── 16 Intenciones Comerciales para España (25 ciudades × 16 = 400 Super-Landings) ──
+// Cada texto recibe las tarifas del país de la página (t), así un cambio de precio en lib/precios-migratorio.ts llega a todo.
 const INTENCIONES_ESPANA: {
   slugIntencion: string;
   etiquetaCorta: string;
-  focoTitulo: (ciudad: string) => string;
-  focoSubtitulo: (ciudad: string) => string;
-  focoGancho: (ciudad: string) => string;
+  focoTitulo: (ciudad: string, t: TarifasMigratorio) => string;
+  focoSubtitulo: (ciudad: string, t: TarifasMigratorio) => string;
+  focoGancho: (ciudad: string, t: TarifasMigratorio) => string;
 }[] = [
   {
     slugIntencion: "plan-promo-699",
-    etiquetaCorta: "Plan Promo $699",
-    focoTitulo: (c) => `Paquete Migratorio a ${c} — Plan Promo Desde $699`,
-    focoSubtitulo: (c) => `Separa con el 50% ($350 USD) · Pasaje + Retorno para Migraciones + Hotel + Seguro`,
-    focoGancho: (c) =>
-      `La tarifa promocional de $699 USD para viajar a ${c} comprando con anticipación (salidas fines de Febrero, Marzo, Abril y Mayo). Incluye todos tus documentos listos para presentar en el aeropuerto.`,
+    etiquetaCorta: "Plan Promo",
+    focoTitulo: (c, t) => `Paquete Migratorio a ${c} — Plan Promo Desde ${usd(t.promo)}`,
+    focoSubtitulo: (_c, t) => `Separa con el 50% (${usd(inicialSeparacion(t.promo))} USD) · Pasaje + Retorno para Migraciones + Hotel + Seguro`,
+    focoGancho: (c, t) =>
+      `La tarifa promocional de ${usd(t.promo)} USD para viajar a ${c} comprando con anticipación (salidas fines de Febrero, Marzo, Abril y Mayo). Incluye todos tus documentos listos para presentar en el aeropuerto.`,
   },
   {
     slugIntencion: "plan-smart-799",
-    etiquetaCorta: "Plan Smart $799",
-    focoTitulo: (c) => `Paquete Migratorio Smart a ${c} Desde $799`,
-    focoSubtitulo: (c) => `Separa con $400 USD (50%) · Incluye Check-in 24h Antes + Asesoría 1 a 1`,
+    etiquetaCorta: "Plan Smart",
+    focoTitulo: (c, t) => `Paquete Migratorio Smart a ${c} Desde ${usd(t.smart)}`,
+    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.smart))} USD (50%) · Incluye Check-in 24h Antes + Asesoría 1 a 1`,
     focoGancho: (c) =>
       `Nuestro paquete más pedido para viajar a ${c} en temporada media (Octubre, Noviembre, Junio y Septiembre). Incluye tu vuelo de ida, tu boleto de regreso reservado para Migraciones, hotel, seguro y check-in hecho por tu asesor.`,
   },
   {
     slugIntencion: "plan-plus-899",
-    etiquetaCorta: "Plan Plus $899",
-    focoTitulo: (c) => `Paquete Migratorio Plus a ${c} Desde $899`,
-    focoSubtitulo: (c) => `Separa con $450 USD (50%) · Ideal para Fechas Próximas y Conexión Directa`,
+    etiquetaCorta: "Plan Plus",
+    focoTitulo: (c, t) => `Paquete Migratorio Plus a ${c} Desde ${usd(t.plus)}`,
+    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.plus))} USD (50%) · Ideal para Fechas Próximas y Conexión Directa`,
     focoGancho: (c) =>
       `Diseñado para quienes necesitan viajar pronto a ${c} (Enero y primera quincena de Febrero) o desean conexión garantizada con carpeta migratoria completa lista para el control en el aeropuerto.`,
   },
   {
     slugIntencion: "plan-full-999",
-    etiquetaCorta: "Plan Full $999",
-    focoTitulo: (c) => `Paquete Migratorio Full a ${c} con Maleta 23 kg Desde $999`,
-    focoSubtitulo: (c) => `Separa con $500 USD (50%) · Temporada Alta o con Maleta Grande de Bodega`,
+    etiquetaCorta: "Plan Full",
+    focoTitulo: (c, t) => `Paquete Migratorio Full a ${c} con Maleta 23 kg Desde ${usd(t.full)}`,
+    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.full))} USD (50%) · Temporada Alta o con Maleta Grande de Bodega`,
     focoGancho: (c) =>
       `La opción más completa para viajar a ${c} en temporada de alta demanda (Diciembre, Julio y Agosto) o llevando tu maleta grande de 23 kg en bodega más toda tu documentación migratoria.`,
   },
@@ -1661,31 +1675,31 @@ const INTENCIONES_ESPANA: {
     slugIntencion: "sin-carta-de-invitacion-con-hotel",
     etiquetaCorta: "Sin Carta de Invitación (Con Hotel)",
     focoTitulo: (c) => `Viajar a ${c} Sin Carta de Invitación (Con Reserva de Hotel)`,
-    focoSubtitulo: (c) => `Paquete Migratorio Completo Desde $699 y $799 · Separa con el 50%`,
+    focoSubtitulo: (_c, t) => `Paquete Migratorio Completo Desde ${usd(t.promo)} y ${usd(t.smart)} · Separa con el 50%`,
     focoGancho: (c) =>
       `¿Tu familiar o amigo en ${c} no puede tramitarte la Carta de Invitación en la comisaría? No te preocupes: armamos tu paquete con Reserva de Hotel confirmada a tu nombre para que pases Migraciones sin ningún problema.`,
   },
   {
     slugIntencion: "con-carta-de-invitacion",
     etiquetaCorta: "Con Carta de Invitación",
-    focoTitulo: (c) => `Paquete a ${c} con Carta de Invitación Familiar Desde $699`,
-    focoSubtitulo: (c) => `Calibramos tu Boleto y Seguro Exactamente a las Fechas de tu Carta`,
+    focoTitulo: (c, t) => `Paquete a ${c} con Carta de Invitación Familiar Desde ${usd(t.promo)}`,
+    focoSubtitulo: () => `Calibramos tu Boleto y Seguro Exactamente a las Fechas de tu Carta`,
     focoGancho: (c) =>
       `Si ya tienes tu Carta de Invitación original para ${c}, no gastes en hotel innecesario: emitimos tu pasaje de ida, tu reserva de regreso y tu seguro médico ajustados día por día a tu carta policial.`,
   },
   {
     slugIntencion: "separar-con-50-por-ciento",
     etiquetaCorta: "Separar con el 50%",
-    focoTitulo: (c) => `Viaja a ${c} Separando con el 50% de Inicial (Desde $350 USD)`,
-    focoSubtitulo: (c) => `Planes de $699, $799, $899 y $999 · Congela tu Cupo Hoy en Los Olivos`,
-    focoGancho: (c) =>
-      `Asegura tu tarifa a ${c} hoy mismo abonando solo la mitad (desde $350 USD en el plan de $699 o $400 USD en el plan Smart de $799) y completa el saldo antes de tu fecha de vuelo.`,
+    focoTitulo: (c, t) => `Viaja a ${c} Separando con el 50% de Inicial (Desde ${usd(inicialSeparacion(t.promo))} USD)`,
+    focoSubtitulo: (_c, t) => `Planes de ${listaPreciosPlanes(t)} · Congela tu Cupo Hoy en Los Olivos`,
+    focoGancho: (c, t) =>
+      `Asegura tu tarifa a ${c} hoy mismo abonando solo la mitad (desde ${usd(inicialSeparacion(t.promo))} USD en el plan de ${usd(t.promo)} o ${usd(inicialSeparacion(t.smart))} USD en el plan Smart de ${usd(t.smart)}) y completa el saldo antes de tu fecha de vuelo.`,
   },
   {
     slugIntencion: "primer-viaje-paso-a-paso",
     etiquetaCorta: "Primer Viaje desde Perú",
     focoTitulo: (c) => `Primer Viaje a ${c} desde Perú — Paquete Migratorio Paso a Paso`,
-    focoSubtitulo: (c) => `Te Preparamos para el Aeropuerto · Tarifas $699 · $799 · $899 · $999`,
+    focoSubtitulo: (_c, t) => `Te Preparamos para el Aeropuerto · Tarifas ${usd(t.promo)} · ${usd(t.smart)} · ${usd(t.plus)} · ${usd(t.full)}`,
     focoGancho: (c) =>
       `Si es tu primera vez saliendo del Perú rumbo a ${c}, te entregamos todos los documentos impresos y te explicamos en sencillo qué responder en el counter de Lima y en Migraciones.`,
   },
@@ -1693,7 +1707,7 @@ const INTENCIONES_ESPANA: {
     slugIntencion: "salidas-octubre-noviembre",
     etiquetaCorta: "Salidas Octubre y Noviembre",
     focoTitulo: (c) => `Paquete Migratorio a ${c} — Salidas Octubre y Noviembre`,
-    focoSubtitulo: (c) => `Tarifa Smart $799 y Plus $899 · Separa Hoy con el 50%`,
+    focoSubtitulo: (_c, t) => `Tarifa Smart ${usd(t.smart)} y Plus ${usd(t.plus)} · Separa Hoy con el 50%`,
     focoGancho: (c) =>
       `Aprovecha la temporada de otoño para viajar a ${c} con menos filas en el aeropuerto y toda tu carpeta migratoria (pasaje de ida + regreso reservado + hotel + seguro) lista.`,
   },
@@ -1701,7 +1715,7 @@ const INTENCIONES_ESPANA: {
     slugIntencion: "salidas-diciembre-navidad",
     etiquetaCorta: "Salidas Diciembre y Fin de Año",
     focoTitulo: (c) => `Paquete Migratorio a ${c} en Diciembre y Navidad`,
-    focoSubtitulo: (c) => `Cupos de Temporada Alta ($899 y $999) · Separa con el 50%`,
+    focoSubtitulo: (_c, t) => `Cupos de Temporada Alta (${usd(t.plus)} y ${usd(t.full)}) · Separa con el 50%`,
     focoGancho: (c) =>
       `Viaja a ${c} para reencontrarte con tu familia en Navidad y Año Nuevo o empezar el año en España con todos tus documentos de ingreso en regla.`,
   },
@@ -1709,47 +1723,47 @@ const INTENCIONES_ESPANA: {
     slugIntencion: "salidas-enero",
     etiquetaCorta: "Salidas Enero",
     focoTitulo: (c) => `Paquete Migratorio a ${c} — Salidas de Enero`,
-    focoSubtitulo: (c) => `Empieza el Año en España · Planes $799 y $899 (Separa con 50%)`,
+    focoSubtitulo: (_c, t) => `Empieza el Año en España · Planes ${usd(t.smart)} y ${usd(t.plus)} (Separa con 50%)`,
     focoGancho: (c) =>
       `Enero es uno de los meses favoritos de los peruanos para viajar a ${c} y empezar una nueva etapa con pasaje, reserva de regreso, hotel y seguro médico completos.`,
   },
   {
     slugIntencion: "salidas-febrero",
     etiquetaCorta: "Salidas Febrero",
-    focoTitulo: (c) => `Paquete Migratorio a ${c} — Salidas de Febrero Desde $699`,
-    focoSubtitulo: (c) => `Tarifas Promo $699 y Smart $799 · Separa con $350 USD`,
-    focoGancho: (c) =>
-      `En la segunda quincena de Febrero empiezan las tarifas promocionales desde $699 USD para viajar a ${c} ahorrando más de $800 dólares frente a un boleto redondo tradicional.`,
+    focoTitulo: (c, t) => `Paquete Migratorio a ${c} — Salidas de Febrero Desde ${usd(t.promo)}`,
+    focoSubtitulo: (_c, t) => `Tarifas Promo ${usd(t.promo)} y Smart ${usd(t.smart)} · Separa con ${usd(inicialSeparacion(t.promo))} USD`,
+    focoGancho: (c, t) =>
+      `En la segunda quincena de Febrero empiezan las tarifas promocionales desde ${usd(t.promo)} USD para viajar a ${c} ahorrando más de ${usd(ahorroFrenteARedondo(t.promo))} dólares frente a un boleto redondo tradicional.`,
   },
   {
     slugIntencion: "salidas-marzo",
     etiquetaCorta: "Salidas Marzo",
-    focoTitulo: (c) => `Paquete Migratorio a ${c} — Salidas de Marzo Desde $699`,
-    focoSubtitulo: (c) => `Mejor Temporada de Precio ($699 y $799) · Separa con el 50%`,
-    focoGancho: (c) =>
-      `Marzo marca el inicio de la primavera en ${c} y tiene cupos en el Plan Promo de $699 USD con pasaje de ida, boleto de regreso reservado para Migraciones, hotel y seguro.`,
+    focoTitulo: (c, t) => `Paquete Migratorio a ${c} — Salidas de Marzo Desde ${usd(t.promo)}`,
+    focoSubtitulo: (_c, t) => `Mejor Temporada de Precio (${usd(t.promo)} y ${usd(t.smart)}) · Separa con el 50%`,
+    focoGancho: (c, t) =>
+      `Marzo marca el inicio de la primavera en ${c} y tiene cupos en el Plan Promo de ${usd(t.promo)} USD con pasaje de ida, boleto de regreso reservado para Migraciones, hotel y seguro.`,
   },
   {
     slugIntencion: "salidas-abril",
     etiquetaCorta: "Salidas Abril",
-    focoTitulo: (c) => `Paquete Migratorio a ${c} — Salidas de Abril Desde $699`,
-    focoSubtitulo: (c) => `Clima Primaveral y Tarifa Promo $699 · Separa Hoy con $350`,
-    focoGancho: (c) =>
-      `Viaja en Abril a ${c} cuando empieza la temporada alta de contrataciones en España, asegurando hoy tu paquete desde $699 USD con el 50% de inicial.`,
+    focoTitulo: (c, t) => `Paquete Migratorio a ${c} — Salidas de Abril Desde ${usd(t.promo)}`,
+    focoSubtitulo: (_c, t) => `Clima Primaveral y Tarifa Promo ${usd(t.promo)} · Separa Hoy con ${usd(inicialSeparacion(t.promo))}`,
+    focoGancho: (c, t) =>
+      `Viaja en Abril a ${c} cuando empieza la temporada alta de contrataciones en España, asegurando hoy tu paquete desde ${usd(t.promo)} USD con el 50% de inicial.`,
   },
   {
     slugIntencion: "salidas-mayo",
     etiquetaCorta: "Salidas Mayo",
-    focoTitulo: (c) => `Paquete Migratorio a ${c} — Salidas de Mayo Desde $699`,
-    focoSubtitulo: (c) => `Plan Promo $699 y Smart $799 · Carpeta Migratoria Completa`,
-    focoGancho: (c) =>
-      `Reserva con tiempo tu salida de Mayo hacia ${c} desde $699 USD y recibe tu carpeta completa con pasaje, reserva de regreso, alojamiento y seguro médico.`,
+    focoTitulo: (c, t) => `Paquete Migratorio a ${c} — Salidas de Mayo Desde ${usd(t.promo)}`,
+    focoSubtitulo: (_c, t) => `Plan Promo ${usd(t.promo)} y Smart ${usd(t.smart)} · Carpeta Migratoria Completa`,
+    focoGancho: (c, t) =>
+      `Reserva con tiempo tu salida de Mayo hacia ${c} desde ${usd(t.promo)} USD y recibe tu carpeta completa con pasaje, reserva de regreso, alojamiento y seguro médico.`,
   },
   {
     slugIntencion: "viaje-en-pareja-o-familia",
     etiquetaCorta: "En Pareja o Familia",
-    focoTitulo: (c) => `Paquete Migratorio a ${c} para Parejas y Familias Desde $699`,
-    focoSubtitulo: (c) => `Mismo Vuelo, Asientos Juntos y Reserva Familiar Unificada`,
+    focoTitulo: (c, t) => `Paquete Migratorio a ${c} para Parejas y Familias Desde ${usd(t.promo)}`,
+    focoSubtitulo: () => `Mismo Vuelo, Asientos Juntos y Reserva Familiar Unificada`,
     focoGancho: (c) =>
       `Si viajas en pareja o en familia hacia ${c}, emitimos sus pasajes en el mismo vuelo, reservamos habitación doble o familiar y calculamos su bolsa de viaje conjunta.`,
   },
@@ -1759,39 +1773,39 @@ const INTENCIONES_ESPANA: {
 const INTENCIONES_ITALIA: {
   slugIntencion: string;
   etiquetaCorta: string;
-  focoTitulo: (ciudad: string) => string;
-  focoSubtitulo: (ciudad: string) => string;
-  focoGancho: (ciudad: string) => string;
+  focoTitulo: (ciudad: string, t: TarifasMigratorio) => string;
+  focoSubtitulo: (ciudad: string, t: TarifasMigratorio) => string;
+  focoGancho: (ciudad: string, t: TarifasMigratorio) => string;
 }[] = [
   {
     slugIntencion: "paquete-migratorio-699",
-    etiquetaCorta: "Plan Promo $699",
-    focoTitulo: (c) => `Paquete Migratorio a ${c} (Italia) — Plan Promo Desde $699`,
-    focoSubtitulo: (c) => `Separa con $350 USD (50%) · Pasaje + Regreso para Migraciones + Hotel + Seguro`,
-    focoGancho: (c) =>
-      `Viaja a ${c} comprando con anticipación desde $699 USD. Te entregamos tu pasaje de ida, tu boleto de regreso reservado para el control migratorio, tu reserva de hotel y tu seguro médico.`,
+    etiquetaCorta: "Plan Promo",
+    focoTitulo: (c, t) => `Paquete Migratorio a ${c} (Italia) — Plan Promo Desde ${usd(t.promo)}`,
+    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.promo))} USD (50%) · Pasaje + Regreso para Migraciones + Hotel + Seguro`,
+    focoGancho: (c, t) =>
+      `Viaja a ${c} comprando con anticipación desde ${usd(t.promo)} USD. Te entregamos tu pasaje de ida, tu boleto de regreso reservado para el control migratorio, tu reserva de hotel y tu seguro médico.`,
   },
   {
     slugIntencion: "paquete-smart-799",
-    etiquetaCorta: "Plan Smart $799",
-    focoTitulo: (c) => `Paquete Migratorio Smart a ${c} (Italia) Desde $799`,
-    focoSubtitulo: (c) => `Separa con $400 USD (50%) · Incluye Check-in 24h Antes y Asesoría`,
+    etiquetaCorta: "Plan Smart",
+    focoTitulo: (c, t) => `Paquete Migratorio Smart a ${c} (Italia) Desde ${usd(t.smart)}`,
+    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.smart))} USD (50%) · Incluye Check-in 24h Antes y Asesoría`,
     focoGancho: (c) =>
       `El plan preferido por la comunidad peruana que viaja a ${c}: incluye vuelo confirmado, reserva de regreso activa el día del viaje, hotel o Lettera di Invito y preparación 1 a 1.`,
   },
   {
     slugIntencion: "paquete-plus-conexion-899",
-    etiquetaCorta: "Plan Plus Conexión $899",
-    focoTitulo: (c) => `Paquete Migratorio Plus a ${c} con Conexión Directa ($899)`,
-    focoSubtitulo: (c) => `Separa con $450 USD (50%) · Ideal para Salidas Próximas a Italia`,
+    etiquetaCorta: "Plan Plus Conexión",
+    focoTitulo: (c, t) => `Paquete Migratorio Plus a ${c} con Conexión Directa (${usd(t.plus)})`,
+    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.plus))} USD (50%) · Ideal para Salidas Próximas a Italia`,
     focoGancho: (c) =>
       `Para quienes viajan pronto a ${c} con conexión directa desde Lima (vía Madrid, Ámsterdam o París) y desean toda su carpeta migratoria lista para el aeropuerto.`,
   },
   {
     slugIntencion: "paquete-full-maleta-999",
-    etiquetaCorta: "Plan Full Maleta 23 kg ($999)",
-    focoTitulo: (c) => `Paquete Migratorio Full a ${c} con Maleta de 23 kg ($999)`,
-    focoSubtitulo: (c) => `Separa con $500 USD (50%) · Temporada Alta o Equipaje de Bodega`,
+    etiquetaCorta: "Plan Full Maleta 23 kg",
+    focoTitulo: (c, t) => `Paquete Migratorio Full a ${c} con Maleta de 23 kg (${usd(t.full)})`,
+    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.full))} USD (50%) · Temporada Alta o Equipaje de Bodega`,
     focoGancho: (c) =>
       `Viaja a ${c} llevando tu maleta grande de 23 kg en bodega y todos tus documentos obligatorios para el ingreso a Italia y la Unión Europea.`,
   },
@@ -1799,15 +1813,15 @@ const INTENCIONES_ITALIA: {
     slugIntencion: "sin-carta-de-invitacion-con-hotel",
     etiquetaCorta: "Sin Invitación (Con Hotel)",
     focoTitulo: (c) => `Viajar a ${c} Sin Lettera di Invito (Con Reserva de Hotel)`,
-    focoSubtitulo: (c) => `Paquete Migratorio Completo Desde $699 y $799 · Separa con el 50%`,
+    focoSubtitulo: (_c, t) => `Paquete Migratorio Completo Desde ${usd(t.promo)} y ${usd(t.smart)} · Separa con el 50%`,
     focoGancho: (c) =>
       `Si no tienes quién te envíe carta de invitación en ${c}, nosotros incluimos tu Reserva de Hotel confirmada a tu nombre para que pases el control migratorio con total respaldo.`,
   },
   {
     slugIntencion: "con-lettera-di-invito-familiar",
     etiquetaCorta: "Con Lettera di Invito",
-    focoTitulo: (c) => `Paquete a ${c} con Lettera di Invito Familiar Desde $699`,
-    focoSubtitulo: (c) => `Revisamos tu Invitación y Ajustamos tu Boleto y Seguro Médico`,
+    focoTitulo: (c, t) => `Paquete a ${c} con Lettera di Invito Familiar Desde ${usd(t.promo)}`,
+    focoSubtitulo: () => `Revisamos tu Invitación y Ajustamos tu Boleto y Seguro Médico`,
     focoGancho: (c) =>
       `Si tu familiar en ${c} te envía la Lettera di Invito (Dichiarazione di Alloggio) con copia de su Permesso di Soggiorno o DNI italiano, armamos tu vuelo y seguro exactos a esas fechas.`,
   },
@@ -1815,7 +1829,7 @@ const INTENCIONES_ITALIA: {
     slugIntencion: "entrando-por-madrid-barajas",
     etiquetaCorta: "Entrando por Madrid en Español",
     focoTitulo: (c) => `Viajar a ${c} Entrando por Madrid-Barajas (Control en Español)`,
-    focoSubtitulo: (c) => `La Ruta Favorita de los Peruanos hacia Italia · Desde $699 y $799`,
+    focoSubtitulo: (_c, t) => `La Ruta Favorita de los Peruanos hacia Italia · Desde ${usd(t.promo)} y ${usd(t.smart)}`,
     focoGancho: (c) =>
       `Muchos peruanos prefieren viajar a ${c} haciendo su entrada a Europa por Madrid-Barajas porque la entrevista migratoria es 100% en español y luego conectan el mismo día a Italia.`,
   },
@@ -1823,15 +1837,15 @@ const INTENCIONES_ITALIA: {
     slugIntencion: "declaracion-ospitalita-48-horas",
     etiquetaCorta: "Guía Ospitalità 48h",
     focoTitulo: (c) => `Viaje a ${c} + Guía de Dichiarazione di Ospitalità (48 Horas)`,
-    focoSubtitulo: (c) => `Todo tu Expediente Listo desde Lima · Planes desde $699 a $999`,
+    focoSubtitulo: (_c, t) => `Todo tu Expediente Listo desde Lima · Planes desde ${usd(t.promo)} a ${usd(t.full)}`,
     focoGancho: (c) =>
       `Además de entregarte tu pasaje, reserva de regreso, hotel y seguro para volar a ${c}, te orientamos sobre el registro de hospitalidad dentro de las 48 horas de llegar a Italia.`,
   },
   {
     slugIntencion: "separar-con-50-por-ciento",
     etiquetaCorta: "Separar con el 50%",
-    focoTitulo: (c) => `Viaja a ${c} Separando Hoy con el 50% (Desde $350 USD)`,
-    focoSubtitulo: (c) => `Congela tu Tarifa en Nuestra Oficina de Los Olivos`,
+    focoTitulo: (c, t) => `Viaja a ${c} Separando Hoy con el 50% (Desde ${usd(inicialSeparacion(t.promo))} USD)`,
+    focoSubtitulo: () => `Congela tu Tarifa en Nuestra Oficina de Los Olivos`,
     focoGancho: (c) =>
       `Asegura tu paquete migratorio a ${c} con solo el 50% de adelanto (en efectivo, transferencia o Yape/Plin en nuestra oficina de Los Olivos) y paga el resto antes de viajar.`,
   },
@@ -1839,49 +1853,50 @@ const INTENCIONES_ITALIA: {
     slugIntencion: "primer-viaje-desde-peru",
     etiquetaCorta: "Primer Viaje a Italia",
     focoTitulo: (c) => `Primer Viaje a ${c} desde Perú — Carpeta Migratoria Completa`,
-    focoSubtitulo: (c) => `Asesoría Paso a Paso para el Aeropuerto · Desde $699 USD`,
+    focoSubtitulo: (_c, t) => `Asesoría Paso a Paso para el Aeropuerto · Desde ${usd(t.promo)} USD`,
     focoGancho: (c) =>
       `¿Viajas por primera vez desde Lima hacia ${c}? Te preparamos paso a paso para que sepas qué documentos mostrar en el Aeropuerto Jorge Chávez y al aterrizar en Europa.`,
   },
 ];
 
 // ── 10 Intenciones Comerciales para Francia y Resto de Europa (15 ciudades × 10 = 150 Super-Landings) ──
+// Francia lleva las tarifas de Italia; Alemania, Suiza, Portugal, Países Bajos y Bélgica, las de España.
 const INTENCIONES_FRANCIA_EUROPA: {
   slugIntencion: string;
   etiquetaCorta: string;
-  focoTitulo: (ciudad: string, pais: string) => string;
-  focoSubtitulo: (ciudad: string) => string;
-  focoGancho: (ciudad: string, pais: string) => string;
+  focoTitulo: (ciudad: string, pais: string, t: TarifasMigratorio) => string;
+  focoSubtitulo: (ciudad: string, t: TarifasMigratorio) => string;
+  focoGancho: (ciudad: string, pais: string, t: TarifasMigratorio) => string;
 }[] = [
   {
     slugIntencion: "paquete-migratorio-699",
-    etiquetaCorta: "Plan Promo $699",
-    focoTitulo: (c, p) => `Paquete Migratorio a ${c} (${p}) — Plan Promo Desde $699`,
-    focoSubtitulo: () => `Separa con $350 USD (50%) · Pasaje + Regreso para Migraciones + Hotel + Seguro`,
-    focoGancho: (c, p) =>
-      `Viaja a ${c} (${p}) ahorrando más de $800 dólares con nuestro Plan Promo anticipado de $699 USD: incluye vuelo de ida, reserva de regreso para Migraciones, hotel y seguro médico.`,
+    etiquetaCorta: "Plan Promo",
+    focoTitulo: (c, p, t) => `Paquete Migratorio a ${c} (${p}) — Plan Promo Desde ${usd(t.promo)}`,
+    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.promo))} USD (50%) · Pasaje + Regreso para Migraciones + Hotel + Seguro`,
+    focoGancho: (c, p, t) =>
+      `Viaja a ${c} (${p}) ahorrando más de ${usd(ahorroFrenteARedondo(t.promo))} dólares con nuestro Plan Promo anticipado de ${usd(t.promo)} USD: incluye vuelo de ida, reserva de regreso para Migraciones, hotel y seguro médico.`,
   },
   {
     slugIntencion: "paquete-smart-799",
-    etiquetaCorta: "Plan Smart $799",
-    focoTitulo: (c, p) => `Paquete Migratorio Smart a ${c} (${p}) Desde $799`,
-    focoSubtitulo: () => `Separa con $400 USD (50%) · Check-in 24h Antes + Asesoría Personalizada`,
+    etiquetaCorta: "Plan Smart",
+    focoTitulo: (c, p, t) => `Paquete Migratorio Smart a ${c} (${p}) Desde ${usd(t.smart)}`,
+    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.smart))} USD (50%) · Check-in 24h Antes + Asesoría Personalizada`,
     focoGancho: (c) =>
       `Nuestro paquete más vendido para viajar a ${c} en temporada media con todos tus documentos listos para presentar en Lima y en el control fronterizo europeo.`,
   },
   {
     slugIntencion: "paquete-plus-899",
-    etiquetaCorta: "Plan Plus $899",
-    focoTitulo: (c, p) => `Paquete Migratorio Plus a ${c} (${p}) Desde $899`,
-    focoSubtitulo: () => `Separa con $450 USD (50%) · Salidas Próximas y Conexión Directa`,
+    etiquetaCorta: "Plan Plus",
+    focoTitulo: (c, p, t) => `Paquete Migratorio Plus a ${c} (${p}) Desde ${usd(t.plus)}`,
+    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.plus))} USD (50%) · Salidas Próximas y Conexión Directa`,
     focoGancho: (c) =>
       `Ideal si buscas viajar pronto a ${c} con conexión garantizada y carpeta migratoria completa verificada antes de tu embarque.`,
   },
   {
     slugIntencion: "paquete-full-999",
-    etiquetaCorta: "Plan Full $999",
-    focoTitulo: (c, p) => `Paquete Migratorio Full a ${c} (${p}) con Maleta 23 kg ($999)`,
-    focoSubtitulo: () => `Separa con $500 USD (50%) · Temporada Alta o Maleta Grande en Bodega`,
+    etiquetaCorta: "Plan Full",
+    focoTitulo: (c, p, t) => `Paquete Migratorio Full a ${c} (${p}) con Maleta 23 kg (${usd(t.full)})`,
+    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.full))} USD (50%) · Temporada Alta o Maleta Grande en Bodega`,
     focoGancho: (c) =>
       `Para quienes viajan a ${c} en temporada alta o necesitan llevar maleta grande de 23 kg en bodega junto con toda su documentación migratoria.`,
   },
@@ -1889,14 +1904,14 @@ const INTENCIONES_FRANCIA_EUROPA: {
     slugIntencion: "sin-carta-de-invitacion-con-hotel",
     etiquetaCorta: "Con Reserva de Hotel",
     focoTitulo: (c, p) => `Viajar a ${c} (${p}) Sin Carta de Invitación — Con Reserva de Hotel`,
-    focoSubtitulo: () => `Carpeta Completa Desde $699 y $799 · Separa con el 50%`,
+    focoSubtitulo: (_c, t) => `Carpeta Completa Desde ${usd(t.promo)} y ${usd(t.smart)} · Separa con el 50%`,
     focoGancho: (c, p) =>
       `En ${p} el trámite municipal de invitación suele demorar; por eso la forma más rápida y segura de viajar a ${c} es con nuestra Reserva de Hotel confirmada incluida en tu paquete.`,
   },
   {
     slugIntencion: "con-invitacion-familiar",
     etiquetaCorta: "Visita Familiar",
-    focoTitulo: (c, p) => `Paquete a ${c} (${p}) para Visitar Familiares Desde $699`,
+    focoTitulo: (c, p, t) => `Paquete a ${c} (${p}) para Visitar Familiares Desde ${usd(t.promo)}`,
     focoSubtitulo: () => `Boleto + Regreso para Migraciones + Seguro Médico Schengen`,
     focoGancho: (c) =>
       `Si tienes familia o amigos esperándote en ${c}, armamos tu carpeta con las fechas exactas de tu viaje y te preparamos para pasar tranquilo el control del aeropuerto.`,
@@ -1905,14 +1920,14 @@ const INTENCIONES_FRANCIA_EUROPA: {
     slugIntencion: "entrando-por-madrid-barajas",
     etiquetaCorta: "Vía Madrid en Español",
     focoTitulo: (c) => `Viajar a ${c} Entrando por Madrid-Barajas (Control en Español)`,
-    focoSubtitulo: (c) => `Pasa Migraciones en Español y Conecta a ${c} · Desde $699`,
+    focoSubtitulo: (c, t) => `Pasa Migraciones en Español y Conecta a ${c} · Desde ${usd(t.promo)}`,
     focoGancho: (c) =>
       `¿No hablas francés, inglés o alemán? Armamos tu ruta desde Lima entrando primero por Madrid-Barajas (donde respondes en español) y conectando directo a ${c}.`,
   },
   {
     slugIntencion: "separar-con-50-por-ciento",
     etiquetaCorta: "Separar con 50%",
-    focoTitulo: (c, p) => `Viaja a ${c} (${p}) Separando con el 50% (Desde $350 USD)`,
+    focoTitulo: (c, p, t) => `Viaja a ${c} (${p}) Separando con el 50% (Desde ${usd(inicialSeparacion(t.promo))} USD)`,
     focoSubtitulo: () => `Atención Presencial en Av. Antúnez de Mayolo 814, Los Olivos`,
     focoGancho: (c) =>
       `Congela hoy tu paquete hacia ${c} con la mitad del valor y paga el saldo restante antes de tu vuelo con total respaldo formal (RUC 20614914239).`,
@@ -1921,7 +1936,7 @@ const INTENCIONES_FRANCIA_EUROPA: {
     slugIntencion: "requisitos-migraciones-2026",
     etiquetaCorta: "Requisitos 2026",
     focoTitulo: (c, p) => `Requisitos para Viajar a ${c} (${p}) desde Perú — Paquete Completo`,
-    focoSubtitulo: () => `Todo Resuelto en un Solo Paquete ($699 · $799 · $899 · $999)`,
+    focoSubtitulo: (_c, t) => `Todo Resuelto en un Solo Paquete (${usd(t.promo)} · ${usd(t.smart)} · ${usd(t.plus)} · ${usd(t.full)})`,
     focoGancho: (c) =>
       `Cumple al 100% con lo que piden en Lima y al llegar a ${c}: pasaporte vigente, pasaje de ida, boleto de regreso reservado, reserva de hotel, seguro médico y bolsa de viaje.`,
   },
@@ -1929,7 +1944,7 @@ const INTENCIONES_FRANCIA_EUROPA: {
     slugIntencion: "primer-viaje-desde-lima",
     etiquetaCorta: "Primer Viaje",
     focoTitulo: (c, p) => `Primer Viaje a ${c} (${p}) desde Lima — Asesoría Completa`,
-    focoSubtitulo: () => `Te Entregamos tu Carpeta Lista para el Aeropuerto · Desde $699`,
+    focoSubtitulo: (_c, t) => `Te Entregamos tu Carpeta Lista para el Aeropuerto · Desde ${usd(t.promo)}`,
     focoGancho: (c) =>
       `Viaja tranquilo en tu primera salida hacia ${c}: nosotros nos encargamos de tu check-in 24 horas antes y de dejarte cada documento ordenado en tu carpeta.`,
   },
@@ -1939,7 +1954,8 @@ const INTENCIONES_FRANCIA_EUROPA: {
 const ORIGENES_PERU: {
   slugOrigen: string;
   nombreOrigen: string;
-  detalleSalida: string;
+  // Función cuando el texto menciona un precio: recibe las tarifas del país de destino.
+  detalleSalida: string | ((t: TarifasMigratorio) => string);
 }[] = [
   {
     slugOrigen: "los-olivos",
@@ -2039,77 +2055,78 @@ const ORIGENES_PERU: {
   {
     slugOrigen: "tacna",
     nombreOrigen: "Tacna y Moquegua",
-    detalleSalida: "Para viajeros del sur del Perú: reserva tu paquete desde $699 con el 50% y viaja con todos tus documentos en regla.",
+    detalleSalida: (t) =>
+      `Para viajeros del sur del Perú: reserva tu paquete desde ${usd(t.promo)} con el 50% y viaja con todos tus documentos en regla.`,
   },
 ];
 
 // ── 20 Temas de Dudas y Objeciones Reales para Silo 5 (20 × 5 = 100 Super-Landings) ──
 const TEMAS_DUDAS_MIGRATORIAS: {
   slugTema: string;
-  tituloTema: (ciudad: string) => string;
-  subtituloTema: (ciudad: string) => string;
-  ganchoTema: (ciudad: string) => string;
+  tituloTema: (ciudad: string, t: TarifasMigratorio) => string;
+  subtituloTema: (ciudad: string, t: TarifasMigratorio) => string;
+  ganchoTema: (ciudad: string, t: TarifasMigratorio) => string;
 }[] = [
   {
     slugTema: "como-funciona-boleto-de-regreso-para-migraciones",
     tituloTema: (c) => `¿Es Ida y Vuelta? Cómo Funciona el Boleto de Regreso para Migraciones a ${c}`,
-    subtituloTema: () => `Pasaje de Ida + Boleto de Regreso Reservado en Sistema · Desde $699`,
+    subtituloTema: (_c, t) => `Pasaje de Ida + Boleto de Regreso Reservado en Sistema · Desde ${usd(t.promo)}`,
     ganchoTema: (c) =>
       `Te explicamos en palabras simples cómo viajar a ${c} para quedarte sin gastar $1,500 en un avión de regreso que no vas a usar: tu paquete incluye tu pasaje de ida + tu boleto de regreso reservado activo el día de tu vuelo para presentar tu ida y vuelta en el aeropuerto.`,
   },
   {
     slugTema: "por-que-cuesta-699-paquete-migratorio-europa",
-    tituloTema: (c) => `¿Por Qué Cuesta Desde $699 el Paquete Migratorio a ${c}? (Explicado Claro)`,
-    subtituloTema: () => `Ahorra Más de $800 Dólares Viajando con Todos tus Documentos en Regla`,
-    ganchoTema: (c) =>
-      `Un pasaje redondo tradicional cuesta $1,500 USD porque pagas dos vuelos cerrados. Con nuestro Paquete Migratorio a ${c} pagas desde $699 USD porque vuelas con tu pasaje de ida + tu reserva de regreso activa para Migraciones + hotel + seguro.`,
+    tituloTema: (c, t) => `¿Por Qué Cuesta Desde ${usd(t.promo)} el Paquete Migratorio a ${c}? (Explicado Claro)`,
+    subtituloTema: (_c, t) => `Ahorra Más de ${usd(ahorroFrenteARedondo(t.promo))} Dólares Viajando con Todos tus Documentos en Regla`,
+    ganchoTema: (c, t) =>
+      `Un pasaje redondo tradicional cuesta $1,500 USD porque pagas dos vuelos cerrados. Con nuestro Paquete Migratorio a ${c} pagas desde ${usd(t.promo)} USD porque vuelas con tu pasaje de ida + tu reserva de regreso activa para Migraciones + hotel + seguro.`,
   },
   {
     slugTema: "viajar-sin-carta-de-invitacion-con-reserva-de-hotel",
     tituloTema: (c) => `Cómo Viajar a ${c} Sin Carta de Invitación (Con Reserva de Hotel)`,
-    subtituloTema: () => `La Opción Más Rápida y Segura para Pasar el Control · Desde $699`,
+    subtituloTema: (_c, t) => `La Opción Más Rápida y Segura para Pasar el Control · Desde ${usd(t.promo)}`,
     ganchoTema: (c) =>
       `No necesitas esperar meses por una Carta de Invitación policial: con nuestra Reserva de Hotel confirmada en ${c} cumples al 100% con el requisito de alojamiento en el aeropuerto.`,
   },
   {
     slugTema: "cuanto-dinero-llevar-bolsa-de-viaje-europa-2026",
     tituloTema: (c) => `Cuánto Dinero Llevar de Bolsa de Viaje a ${c} en 2026 (En Efectivo o Tarjeta)`,
-    subtituloTema: () => `Calculamos tu Bolsa Exacta + Carpeta Migratoria Desde $699`,
+    subtituloTema: (_c, t) => `Calculamos tu Bolsa Exacta + Carpeta Migratoria Desde ${usd(t.promo)}`,
     ganchoTema: (c) =>
       `Te orientamos sobre cuántos euros llevar en efectivo o tarjeta para tu entrada a ${c} según los días que figuren en tu reserva de hotel y boleto de regreso.`,
   },
   {
     slugTema: "que-preguntan-en-migraciones-aeropuerto-barajas",
     tituloTema: (c) => `Qué Preguntan en Migraciones al Viajar a ${c} y Cómo Responder Tranquilo`,
-    subtituloTema: () => `Incluye Preparación 1 a 1 + Todos tus Documentos Desde $699`,
+    subtituloTema: (_c, t) => `Incluye Preparación 1 a 1 + Todos tus Documentos Desde ${usd(t.promo)}`,
     ganchoTema: (c) =>
       `La clave para pasar tranquilo en el aeropuerto rumbo a ${c} es que tus respuestas coincidan con los documentos impresos de tu carpeta: motivo turístico, días de estancia, hotel y retorno.`,
   },
   {
     slugTema: "documentos-para-viajar-por-primera-vez-a-europa",
     tituloTema: (c) => `Los 5 Documentos Obligatorios para Viajar por Primera Vez a ${c}`,
-    subtituloTema: () => `Te Armamos toda la Carpeta Lista en Los Olivos · Desde $699`,
+    subtituloTema: (_c, t) => `Te Armamos toda la Carpeta Lista en Los Olivos · Desde ${usd(t.promo)}`,
     ganchoTema: (c) =>
       `Para subir al avión en Lima e ingresar a ${c} necesitas 5 cosas: Pasaporte vigente, Pasaje de ida, Boleto de regreso reservado, Reserva de hotel (o Carta) y Seguro médico. Nosotros te armamos todo.`,
   },
   {
     slugTema: "separar-paquete-migratorio-con-50-por-ciento",
     tituloTema: (c) => `Cómo Separar tu Paquete Migratorio a ${c} con el 50% de Inicial`,
-    subtituloTema: () => `Separa con $350, $400, $450 o $500 USD según tu Fecha de Viaje`,
+    subtituloTema: (_c, t) => `Separa con ${usd(inicialSeparacion(t.promo))}, ${usd(inicialSeparacion(t.smart))}, ${usd(inicialSeparacion(t.plus))} o ${usd(inicialSeparacion(t.full))} USD según tu Fecha de Viaje`,
     ganchoTema: (c) =>
       `Congela hoy el precio de tu viaje a ${c} pagando solo el 50% en nuestra oficina de Av. Antúnez de Mayolo 814 (Los Olivos) o por cuentas empresariales y completa el resto antes de volar.`,
   },
   {
     slugTema: "seguro-medico-schengen-obligatorio-para-peruanos",
     tituloTema: (c) => `Seguro Médico Obligatorio para Viajar a ${c} (Incluido en tu Paquete)`,
-    subtituloTema: () => `Póliza Oficial de 30.000€ Sin Deducible + Vuelo y Hotel Desde $699`,
-    ganchoTema: (c) =>
-      `Todos nuestros paquetes migratorios a ${c} ($699, $799, $899 y $999) ya incluyen tu póliza de seguro médico internacional obligatoria para ingresar a Europa.`,
+    subtituloTema: (_c, t) => `Póliza Oficial de 30.000€ Sin Deducible + Vuelo y Hotel Desde ${usd(t.promo)}`,
+    ganchoTema: (c, t) =>
+      `Todos nuestros paquetes migratorios a ${c} (${usd(t.promo)}, ${usd(t.smart)}, ${usd(t.plus)} y ${usd(t.full)}) ya incluyen tu póliza de seguro médico internacional obligatoria para ingresar a Europa.`,
   },
   {
     slugTema: "diferencia-entre-carta-de-invitacion-y-reserva-de-hotel",
     tituloTema: (c) => `Carta de Invitación vs. Reserva de Hotel para Viajar a ${c}: ¿Cuál Conviene?`,
-    subtituloTema: () => `Te Asesoramos y Armamos tu Paquete Ideal Desde $699 y $799`,
+    subtituloTema: (_c, t) => `Te Asesoramos y Armamos tu Paquete Ideal Desde ${usd(t.promo)} y ${usd(t.smart)}`,
     ganchoTema: (c) =>
       `Conoce por qué el 85% de los peruanos que viajan a ${c} prefieren entrar con Reserva de Hotel confirmada sin hacer pasar trámites ni multas a sus familiares en Europa.`,
   },
@@ -2122,7 +2139,7 @@ const TEMAS_DUDAS_MIGRATORIAS: {
   },
   {
     slugTema: "viajar-a-europa-en-pareja-paquete-migratorio",
-    tituloTema: (c) => `Paquete Migratorio a ${c} para Parejas y Esposos Desde $699 c/u`,
+    tituloTema: (c, t) => `Paquete Migratorio a ${c} para Parejas y Esposos Desde ${usd(t.promo)} c/u`,
     subtituloTema: () => `Vuelo Juntos + Habitación Doble Confirmada + Preparación en Pareja`,
     ganchoTema: (c) =>
       `Viajar en pareja a ${c} es mucho más sencillo cuando ambos llevan una sola reserva de hotel matrimonial, asientos contiguos y la misma fecha de retorno reservada.`,
@@ -2130,14 +2147,14 @@ const TEMAS_DUDAS_MIGRATORIAS: {
   {
     slugTema: "viajar-a-europa-en-familia-con-hijos-desde-peru",
     tituloTema: (c) => `Viajar en Familia a ${c} desde Perú — Paquete y Requisitos con Menores`,
-    subtituloTema: () => `Orientación sobre Permiso Notarial + Carpeta Familiar Desde $699`,
+    subtituloTema: (_c, t) => `Orientación sobre Permiso Notarial + Carpeta Familiar Desde ${usd(t.promo)}`,
     ganchoTema: (c) =>
       `Si viajas con tus hijos hacia ${c}, te orientamos sobre la autorización notarial de viaje en Lima y armamos la carpeta familiar completa con hotel y seguros.`,
   },
   {
     slugTema: "paquete-migratorio-con-maleta-de-23-kilos",
     tituloTema: (c) => `Paquete Migratorio a ${c} con Maleta Grande de 23 kg en Bodega`,
-    subtituloTema: () => `Lleva Toda tu Ropa de Abrigo · Plan Full $999 (Separa con $500)`,
+    subtituloTema: (_c, t) => `Lleva Toda tu Ropa de Abrigo · Plan Full ${usd(t.full)} (Separa con ${usd(inicialSeparacion(t.full))})`,
     ganchoTema: (c) =>
       `Si te vas a quedar en ${c} y necesitas llevar tu maleta grande de 23 kg en bodega además de tu equipaje de mano de 10 kg, nuestro Plan Full te incluye todo.`,
   },
@@ -2151,7 +2168,7 @@ const TEMAS_DUDAS_MIGRATORIAS: {
   {
     slugTema: "entrar-a-italia-o-francia-via-madrid-barajas",
     tituloTema: (c) => `Cómo Viajar a ${c} Entrando por Madrid-Barajas (Control en Español)`,
-    subtituloTema: () => `La Estrategia Más Segura para Peruanos · Planes desde $699 a $999`,
+    subtituloTema: (_c, t) => `La Estrategia Más Segura para Peruanos · Planes desde ${usd(t.promo)} a ${usd(t.full)}`,
     ganchoTema: (c) =>
       `Al hacer tu primera parada europea en Madrid-Barajas pasas Migraciones hablando en tu propio idioma y luego continúas tranquilo hacia ${c}.`,
   },
@@ -2166,22 +2183,22 @@ const TEMAS_DUDAS_MIGRATORIAS: {
     slugTema: "agencia-formal-en-los-olivos-para-viajar-a-europa",
     tituloTema: (c) => `Agencia de Viajes Formal en Los Olivos para tu Paquete Migratorio a ${c}`,
     subtituloTema: () => `Av. Antúnez de Mayolo 814, Los Olivos · RUC 20614914239`,
-    ganchoTema: (c) =>
-      `Ven en persona con tu familia a nuestra oficina en Los Olivos: revisa nuestros paquetes de $699, $799, $899 y $999 a ${c}, separa con contrato formal y viaja seguro.`,
+    ganchoTema: (c, t) =>
+      `Ven en persona con tu familia a nuestra oficina en Los Olivos: revisa nuestros paquetes de ${usd(t.promo)}, ${usd(t.smart)}, ${usd(t.plus)} y ${usd(t.full)} a ${c}, separa con contrato formal y viaja seguro.`,
   },
   {
     slugTema: "fechas-mas-economicas-699-para-viajar-a-europa",
-    tituloTema: (c) => `En Qué Meses Aplica la Tarifa de $699 USD para Viajar a ${c}`,
-    subtituloTema: () => `Calendario Transparente de Precios: $699 · $799 · $899 · $999`,
-    ganchoTema: (c) =>
-      `Te mostramos con total transparencia qué meses cuestan $699 (fines de Febrero, Marzo, Abril y Mayo), cuáles cuestan $799 (temporada media) y cuáles $899 o $999 (fechas próximas o temporada alta) para volar a ${c}.`,
+    tituloTema: (c, t) => `En Qué Meses Aplica la Tarifa de ${usd(t.promo)} USD para Viajar a ${c}`,
+    subtituloTema: (_c, t) => `Calendario Transparente de Precios: ${usd(t.promo)} · ${usd(t.smart)} · ${usd(t.plus)} · ${usd(t.full)}`,
+    ganchoTema: (c, t) =>
+      `Te mostramos con total transparencia qué meses cuestan ${usd(t.promo)} (fines de Febrero, Marzo, Abril y Mayo), cuáles cuestan ${usd(t.smart)} (temporada media) y cuáles ${usd(t.plus)} o ${usd(t.full)} (fechas próximas o temporada alta) para volar a ${c}.`,
   },
   {
     slugTema: "paquete-smart-799-con-checkin-y-asesoria",
-    tituloTema: (c) => `Qué Incluye el Paquete Migratorio Smart de $799 USD a ${c}`,
-    subtituloTema: () => `El Paquete Favorito de Nuestros Clientes · Separa Hoy con $400 USD`,
-    ganchoTema: (c) =>
-      `El Plan Smart de $799 a ${c} incluye pasaje de ida, boleto de regreso reservado para Migraciones, hotel confirmado, seguro médico, check-in 24h antes y preparación personalizada.`,
+    tituloTema: (c, t) => `Qué Incluye el Paquete Migratorio Smart de ${usd(t.smart)} USD a ${c}`,
+    subtituloTema: (_c, t) => `El Paquete Favorito de Nuestros Clientes · Separa Hoy con ${usd(inicialSeparacion(t.smart))} USD`,
+    ganchoTema: (c, t) =>
+      `El Plan Smart de ${usd(t.smart)} a ${c} incluye pasaje de ida, boleto de regreso reservado para Migraciones, hotel confirmado, seguro médico, check-in 24h antes y preparación personalizada.`,
   },
   {
     slugTema: "como-verificar-tu-reserva-de-vuelo-y-hotel-para-migraciones",
@@ -2194,16 +2211,17 @@ const TEMAS_DUDAS_MIGRATORIAS: {
 
 function construirLos4Planes(
   ciudad: string,
-  slugLanding: string
+  slugLanding: string,
+  t: TarifasMigratorio
 ): [PlanSuperLanding, PlanSuperLanding, PlanSuperLanding, PlanSuperLanding] {
   const refBase = `📍 Ref Web: citylandtravel.com/paquetes-migratorios/${slugLanding}`;
   return [
     {
-      id: "699",
+      id: "promo",
       nombre: "Plan Promo Anticipado",
       etiqueta: "Ahorro Anticipado",
-      precioUSD: 699,
-      inicial50USD: 350,
+      precioUSD: t.promo,
+      inicial50USD: inicialSeparacion(t.promo),
       fechasIdeales: "Salidas fines de Febrero, Marzo, Abril y Mayo (comprando con anticipación)",
       colorBadge: "bg-blue-600 text-white",
       resumen:
@@ -2215,15 +2233,15 @@ function construirLos4Planes(
         "Seguro médico de viaje obligatorio para Europa (cobertura 30.000€)",
         "Guía paso a paso en PDF con las preguntas y respuestas de Migraciones",
       ],
-      waTextoBoton: "Quiero el Plan $699",
-      waMensaje: `¡Hola! Quiero más información del paquete a ${ciudad} desde $699.\n\n${refBase} [Plan $699]`,
+      waTextoBoton: `Quiero el Plan ${usd(t.promo)}`,
+      waMensaje: `¡Hola! Quiero más información del paquete a ${ciudad} desde ${usd(t.promo)}.\n\n${refBase} [Plan ${usd(t.promo)}]`,
     },
     {
-      id: "799",
+      id: "smart",
       nombre: "Plan Smart (Más Pedido)",
       etiqueta: "★ Más Pedido por Peruanos",
-      precioUSD: 799,
-      inicial50USD: 400,
+      precioUSD: t.smart,
+      inicial50USD: inicialSeparacion(t.smart),
       fechasIdeales: "Salidas en temporada media (Octubre, Noviembre, Junio y Septiembre)",
       destacado: true,
       colorBadge: "bg-emerald-600 text-white",
@@ -2236,15 +2254,15 @@ function construirLos4Planes(
         "Seguro médico de viaje internacional (30.000€ sin deducible)",
         "Check-in hecho por tu asesor 24h antes + Asesoría personalizada 1 a 1",
       ],
-      waTextoBoton: "Quiero el Plan Smart $799",
-      waMensaje: `¡Hola! Quiero más información del paquete Smart a ${ciudad} desde $799.\n\n${refBase} [Plan Smart $799]`,
+      waTextoBoton: `Quiero el Plan Smart ${usd(t.smart)}`,
+      waMensaje: `¡Hola! Quiero más información del paquete Smart a ${ciudad} desde ${usd(t.smart)}.\n\n${refBase} [Plan Smart ${usd(t.smart)}]`,
     },
     {
-      id: "899",
+      id: "plus",
       nombre: "Plan Plus Próximo / Conexión",
       etiqueta: "Salidas Cercanas / Conexión",
-      precioUSD: 899,
-      inicial50USD: 450,
+      precioUSD: t.plus,
+      inicial50USD: inicialSeparacion(t.plus),
       fechasIdeales: "Salidas próximas (Enero y 1ra quincena de Febrero) o rutas con conexión",
       colorBadge: "bg-amber-600 text-white",
       resumen:
@@ -2256,15 +2274,15 @@ function construirLos4Planes(
         "Selección de asiento + Check-in gestionado 24 horas antes del vuelo",
         "Carpeta migratoria física impresa entregada en nuestra oficina de Los Olivos",
       ],
-      waTextoBoton: "Quiero el Plan Plus $899",
-      waMensaje: `¡Hola! Quiero más información del paquete Plus a ${ciudad} desde $899.\n\n${refBase} [Plan Plus $899]`,
+      waTextoBoton: `Quiero el Plan Plus ${usd(t.plus)}`,
+      waMensaje: `¡Hola! Quiero más información del paquete Plus a ${ciudad} desde ${usd(t.plus)}.\n\n${refBase} [Plan Plus ${usd(t.plus)}]`,
     },
     {
-      id: "999",
+      id: "full",
       nombre: "Plan Full Alta Demanda / 23 kg",
       etiqueta: "Temporada Alta / Maleta 23 kg",
-      precioUSD: 999,
-      inicial50USD: 500,
+      precioUSD: t.full,
+      inicial50USD: inicialSeparacion(t.full),
       fechasIdeales: "Temporada alta (Diciembre, Julio y Agosto) o con maleta grande de 23 kg",
       colorBadge: "bg-red-600 text-white",
       resumen:
@@ -2276,8 +2294,8 @@ function construirLos4Planes(
         "Check-in, asignación de asiento y cálculo exacto de tu bolsa de viaje",
         "Atención prioritaria 1 a 1 hasta que pases el control y llegues a tu destino",
       ],
-      waTextoBoton: "Quiero el Plan Full $999",
-      waMensaje: `¡Hola! Quiero más información del paquete Full a ${ciudad} desde $999.\n\n${refBase} [Plan Full $999]`,
+      waTextoBoton: `Quiero el Plan Full ${usd(t.full)}`,
+      waMensaje: `¡Hola! Quiero más información del paquete Full a ${ciudad} desde ${usd(t.full)}.\n\n${refBase} [Plan Full ${usd(t.full)}]`,
     },
   ];
 }
@@ -2369,6 +2387,7 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
 
     // El hero es siempre la foto de SU ciudad: el alt y la etiqueta del monumento salen de la misma ciudad.
     const heroFinal = ciudadCfg.imagenHero;
+    const t = tarifasMigratorio(ciudadCfg.pais);
 
     return {
       slug,
@@ -2380,10 +2399,10 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
       titulo: tituloH1,
       subtitulo: subtituloHero,
       imagenHero: heroFinal,
-      precioPromo: 699,
-      precioSmart: 799,
-      precioPlus: 899,
-      precioFull: 999,
+      precioPromo: t.promo,
+      precioSmart: t.smart,
+      precioPlus: t.plus,
+      precioFull: t.full,
       construirDatos: () => {
         const total = INDICE_PAQUETES_MIGRATORIOS_1000.length;
         const enlacesRelacionados: DatosSuperLandingMigratorio["enlacesRelacionados"] = [];
@@ -2397,7 +2416,7 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
                 href: `/paquetes-migratorios/${candidato.slug}`,
                 ciudad: candidato.ciudadDestino,
                 pais: candidato.pais,
-                precioDesde: 699,
+                precioDesde: candidato.precioPromo,
               });
             }
           }
@@ -2408,7 +2427,7 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
           metaTitleRaw.length > 62
             ? `${tituloH1.slice(0, 48).trim()}... | Cityland`
             : metaTitleRaw;
-        const metaDescRaw = `${ganchoPeruano} Planes de $699, $799, $899 y $999 USD según tu fecha. Separa con el 50% en Los Olivos (RUC 20614914239).`;
+        const metaDescRaw = `${ganchoPeruano} Planes de ${listaPreciosPlanes(t)} USD según tu fecha. Separa con el 50% en Los Olivos (RUC 20614914239).`;
         const metaDescription =
           metaDescRaw.length > 158
             ? `${metaDescRaw.slice(0, 155).trim()}...`
@@ -2438,7 +2457,8 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
             ciudadCfg.ciudad,
             ciudadCfg.pais
           ),
-          planes: construirLos4Planes(ciudadCfg.ciudad, slug),
+          planes: construirLos4Planes(ciudadCfg.ciudad, slug, t),
+          precioDesdeUSD: t.promo,
           infoLlegadaCiudad: {
             comoLlegarCentro: ciudadCfg.comoLlegarCentro,
             zonasPeruanos: ciudadCfg.zonasPeruanos,
@@ -2449,8 +2469,8 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
           metaDescription,
           keywords: [
             `paquete migratorio a ${ciudadCfg.ciudad.toLowerCase()}`,
-            `viajar a ${ciudadCfg.ciudad.toLowerCase()} desde peru 699`,
-            `paquete smart ${ciudadCfg.ciudad.toLowerCase()} 799`,
+            `viajar a ${ciudadCfg.ciudad.toLowerCase()} desde peru ${t.promo}`,
+            `paquete smart ${ciudadCfg.ciudad.toLowerCase()} ${t.smart}`,
             `boleto de regreso para migraciones ${ciudadCfg.ciudad.toLowerCase()}`,
             `viajar a ${ciudadCfg.pais.toLowerCase()} sin carta de invitacion`,
           ],
@@ -2481,6 +2501,7 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
       if (r < INTENCIONES_ESPANA.length && cIdx < CIUDADES_ESPANA.length) {
         const c = CIUDADES_ESPANA[cIdx];
         const int = INTENCIONES_ESPANA[r];
+        const t = tarifasMigratorio(c.pais);
         const idx = lista.length;
         lista.push(
           armarItem({
@@ -2489,9 +2510,9 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
             siloNombre: "Paquetes Migratorios a España",
             ciudadCfg: c,
             origenPasajero: "Lima y Todo el Perú",
-            tituloH1: int.focoTitulo(c.ciudad),
-            subtituloHero: int.focoSubtitulo(c.ciudad),
-            ganchoPeruano: int.focoGancho(c.ciudad),
+            tituloH1: int.focoTitulo(c.ciudad, t),
+            subtituloHero: int.focoSubtitulo(c.ciudad, t),
+            ganchoPeruano: int.focoGancho(c.ciudad, t),
             indice: idx,
           })
         );
@@ -2501,6 +2522,7 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
       if (r < INTENCIONES_ITALIA.length && cIdx < CIUDADES_ITALIA.length) {
         const c = CIUDADES_ITALIA[cIdx];
         const int = INTENCIONES_ITALIA[r];
+        const t = tarifasMigratorio(c.pais);
         const idx = lista.length;
         lista.push(
           armarItem({
@@ -2509,9 +2531,9 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
             siloNombre: "Paquetes Migratorios a Italia",
             ciudadCfg: c,
             origenPasajero: "Lima y Todo el Perú",
-            tituloH1: int.focoTitulo(c.ciudad),
-            subtituloHero: int.focoSubtitulo(c.ciudad),
-            ganchoPeruano: int.focoGancho(c.ciudad),
+            tituloH1: int.focoTitulo(c.ciudad, t),
+            subtituloHero: int.focoSubtitulo(c.ciudad, t),
+            ganchoPeruano: int.focoGancho(c.ciudad, t),
             indice: idx,
           })
         );
@@ -2524,6 +2546,7 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
       ) {
         const c = CIUDADES_FRANCIA_EUROPA[cIdx];
         const int = INTENCIONES_FRANCIA_EUROPA[r];
+        const t = tarifasMigratorio(c.pais);
         const idx = lista.length;
         lista.push(
           armarItem({
@@ -2532,9 +2555,9 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
             siloNombre: `Paquetes Migratorios a ${c.pais}`,
             ciudadCfg: c,
             origenPasajero: "Lima y Todo el Perú",
-            tituloH1: int.focoTitulo(c.ciudad, c.pais),
-            subtituloHero: int.focoSubtitulo(c.ciudad),
-            ganchoPeruano: int.focoGancho(c.ciudad, c.pais),
+            tituloH1: int.focoTitulo(c.ciudad, c.pais, t),
+            subtituloHero: int.focoSubtitulo(c.ciudad, t),
+            ganchoPeruano: int.focoGancho(c.ciudad, c.pais, t),
             indice: idx,
           })
         );
@@ -2553,6 +2576,7 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
 
   for (const orig of ORIGENES_PERU) {
     for (const c of TOP_5_EUROPA) {
+      const t = tarifasMigratorio(c.pais);
       const idx = lista.length;
       lista.push(
         armarItem({
@@ -2562,9 +2586,10 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
           ciudadCfg: c,
           origenPasajero: orig.nombreOrigen,
           tituloH1: `Paquete Migratorio a ${c.ciudad} para Viajeros de ${orig.nombreOrigen}`,
-          subtituloHero: `Planes de $699, $799, $899 y $999 USD · Separa hoy con el 50%`,
+          subtituloHero: `Planes de ${listaPreciosPlanes(t)} USD · Separa hoy con el 50%`,
           ganchoPeruano: `Armamos tu paquete migratorio completo hacia ${c.ciudad} (${c.pais}) con pasaje de avión de ida, boleto de regreso reservado para Migraciones, reserva de hotel y seguro médico obligatorio.`,
-          detalleExtraOrigen: orig.detalleSalida,
+          detalleExtraOrigen:
+            typeof orig.detalleSalida === "function" ? orig.detalleSalida(t) : orig.detalleSalida,
           indice: idx,
         })
       );
@@ -2574,6 +2599,7 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
   // 5. SILO DUDAS Y OBJECIONES MIGRATORIAS: 20 temas × 5 destinos top = 100 Super-Landings
   for (const tema of TEMAS_DUDAS_MIGRATORIAS) {
     for (const c of TOP_5_EUROPA) {
+      const t = tarifasMigratorio(c.pais);
       const idx = lista.length;
       lista.push(
         armarItem({
@@ -2582,9 +2608,9 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
           siloNombre: "Guías y Solución de Dudas Migratorias",
           ciudadCfg: c,
           origenPasajero: "Lima y Todo el Perú",
-          tituloH1: tema.tituloTema(c.ciudad),
-          subtituloHero: tema.subtituloTema(c.ciudad),
-          ganchoPeruano: tema.ganchoTema(c.ciudad),
+          tituloH1: tema.tituloTema(c.ciudad, t),
+          subtituloHero: tema.subtituloTema(c.ciudad, t),
+          ganchoPeruano: tema.ganchoTema(c.ciudad, t),
           indice: idx,
         })
       );
@@ -2608,14 +2634,15 @@ export interface PlanMigratorioOficialResumen {
   mensajeWhatsAppBase: string;
 }
 
+// Escala general (España y resto de Europa). Italia y Francia tienen la suya en lib/precios-migratorio.ts.
 export const PLANES_MIGRATORIOS_OFICIALES: PlanMigratorioOficialResumen[] = [
   {
     id: "promo-699",
     nombre: "Plan Promo",
     etiqueta: "Ahorro Anticipado",
     temporada: "Fines de Febrero, Marzo, Abril y Mayo",
-    precioUSD: 699,
-    separaConUSD: 350,
+    precioUSD: TARIFAS_MIGRATORIO_BASE.promo,
+    separaConUSD: inicialSeparacion(TARIFAS_MIGRATORIO_BASE.promo),
     incluye: [
       "Pasaje de avión de ida emitido a tu nombre",
       "Boleto de regreso reservado en sistema para Migraciones",
@@ -2623,15 +2650,15 @@ export const PLANES_MIGRATORIOS_OFICIALES: PlanMigratorioOficialResumen[] = [
       "Seguro médico de viaje obligatorio (30.000€)",
       "Check-in 24h antes + Guía paso a paso de Migraciones",
     ],
-    mensajeWhatsAppBase: "¡Hola! Quiero más información del paquete desde $699",
+    mensajeWhatsAppBase: `¡Hola! Quiero más información del paquete desde ${usd(TARIFAS_MIGRATORIO_BASE.promo)}`,
   },
   {
     id: "smart-799",
     nombre: "Plan Smart",
     etiqueta: "★ El Más Pedido",
     temporada: "Junio, Septiembre, Octubre y Noviembre",
-    precioUSD: 799,
-    separaConUSD: 400,
+    precioUSD: TARIFAS_MIGRATORIO_BASE.smart,
+    separaConUSD: inicialSeparacion(TARIFAS_MIGRATORIO_BASE.smart),
     destacado: true,
     incluye: [
       "Pasaje de avión de ida con equipaje de cabina 10 kg",
@@ -2640,15 +2667,15 @@ export const PLANES_MIGRATORIOS_OFICIALES: PlanMigratorioOficialResumen[] = [
       "Seguro médico Schengen 30.000€ sin deducible",
       "Check-in hecho 24h antes + Asesoría personalizada 1 a 1",
     ],
-    mensajeWhatsAppBase: "¡Hola! Quiero más información del paquete Smart desde $799",
+    mensajeWhatsAppBase: `¡Hola! Quiero más información del paquete Smart desde ${usd(TARIFAS_MIGRATORIO_BASE.smart)}`,
   },
   {
     id: "plus-899",
     nombre: "Plan Plus",
     etiqueta: "Salidas Cercanas / Conexión",
     temporada: "Enero, 1ra quincena de Febrero o vuelos con conexión",
-    precioUSD: 899,
-    separaConUSD: 450,
+    precioUSD: TARIFAS_MIGRATORIO_BASE.plus,
+    separaConUSD: inicialSeparacion(TARIFAS_MIGRATORIO_BASE.plus),
     incluye: [
       "Pasaje de avión de ida confirmado en aerolíneas oficiales",
       "Boleto de regreso reservado para Migraciones + Hotel",
@@ -2656,15 +2683,15 @@ export const PLANES_MIGRATORIOS_OFICIALES: PlanMigratorioOficialResumen[] = [
       "Selección de asiento + Check-in hecho 24h antes",
       "Carpeta física impresa entregada en nuestra sede de Los Olivos",
     ],
-    mensajeWhatsAppBase: "¡Hola! Quiero más información del paquete Plus desde $899",
+    mensajeWhatsAppBase: `¡Hola! Quiero más información del paquete Plus desde ${usd(TARIFAS_MIGRATORIO_BASE.plus)}`,
   },
   {
     id: "full-999",
     nombre: "Plan Full 23 kg",
     etiqueta: "Temporada Alta / Maleta 23 kg",
     temporada: "Diciembre, Julio, Agosto o incluye maleta de 23 kg en bodega",
-    precioUSD: 999,
-    separaConUSD: 500,
+    precioUSD: TARIFAS_MIGRATORIO_BASE.full,
+    separaConUSD: inicialSeparacion(TARIFAS_MIGRATORIO_BASE.full),
     incluye: [
       "Pasaje de avión de ida + Maleta de 23 kg en bodega + 10 kg mano",
       "Boleto de regreso reservado en sistema para Migraciones",
@@ -2672,7 +2699,7 @@ export const PLANES_MIGRATORIOS_OFICIALES: PlanMigratorioOficialResumen[] = [
       "Check-in, asignación de asiento y cálculo de bolsa de viaje",
       "Atención prioritaria 1 a 1 hasta tu ingreso a Europa",
     ],
-    mensajeWhatsAppBase: "¡Hola! Quiero más información del paquete Full con maleta de 23 kg desde $999",
+    mensajeWhatsAppBase: `¡Hola! Quiero más información del paquete Full con maleta de 23 kg desde ${usd(TARIFAS_MIGRATORIO_BASE.full)}`,
   },
 ];
 

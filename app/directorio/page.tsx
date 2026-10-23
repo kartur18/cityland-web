@@ -8,7 +8,8 @@ import BuscadorCatalogoInstantaneo from "@/components/BuscadorCatalogoInstantane
 import EnlacesCatalogoHub from "@/components/EnlacesCatalogoHub";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
-import { textoPrecio } from "@/lib/formato-precio";
+import { formatoUSD, textoPrecio } from "@/lib/formato-precio";
+import { tarifasMigratorio } from "@/lib/precios-migratorio";
 import { DESTINOS_EUROPA, DESTINOS_CARIBE, BLOG_POSTS } from "@/components/constantes";
 import { INDICE_PAQUETES_MIGRATORIOS_1000 } from "@/lib/catalogo-paquetes-migratorios-1000";
 
@@ -76,14 +77,14 @@ const DIVISIONES_VISUALES = [
   {
     titulo: "Paquetes Migratorios a Italia",
     subtitulo: "Milán, Roma, Turín, Florencia, Bolonia, Génova y Venecia",
-    precio: "Solo ida desde $699",
+    precio: `Solo ida desde ${formatoUSD(tarifasMigratorio("Italia").promo)}`,
     img: "/images/destinos/florencia.jpg",
     href: "/italia",
   },
   {
     titulo: "Paquetes Migratorios a Francia",
     subtitulo: "París, Lyon, Marsella, Niza, Toulouse y Burdeos",
-    precio: "Solo ida desde $699",
+    precio: `Solo ida desde ${formatoUSD(tarifasMigratorio("Francia").promo)}`,
     img: "/images/destinos/lyon.jpg",
     href: "/francia",
   },

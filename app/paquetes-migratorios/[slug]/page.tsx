@@ -85,7 +85,7 @@ export default async function PaqueteMigratorioSlugPage({ params }: Props) {
     url: urlActual,
     titulo: `${datos.tituloH1} — ${datos.subtituloHero}`,
     descripcion: datos.metaDescription,
-    precioDesdeUSD: 699,
+    precioDesdeUSD: datos.precioDesdeUSD,
     cantidadOfertas: 4,
     destinoOPais: datos.pais,
     imagenUrl: imagenAbsoluta,
