@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import AirlineLandingTemplate from "@/components/AirlineLandingTemplate";
 import { SeoSiloFooter } from "@/components/SeoSiloFooter";
+import GuiaRapidaLanding from "@/components/GuiaRapidaLanding";
+import { guiaOferta } from "@/lib/contenido-guia";
 import {
   MIL_LANDINGS_COMERCIALES_SEO,
   TODOS_LOS_RESUMENES_OFERTAS_SEO,
@@ -116,6 +118,8 @@ export default async function OfertaComercialPage({ params }: Props) {
     ? item.config.vitrina.img
     : `https://citylandtravel.com${item.config.vitrina.img}`;
 
+  const guia = guiaOferta(item);
+
   const jsonLd = construirSchemaLandingSEO({
     url: `https://citylandtravel.com/ofertas/${item.slug}`,
     titulo: item.titulo,
@@ -125,7 +129,7 @@ export default async function OfertaComercialPage({ params }: Props) {
     destinoOPais: item.destinoOPais,
     imagenUrl: imgUrl,
     migas,
-    faqs: item.faqs,
+    faqs: [...guia.faqs, ...item.faqs],
   });
 
   return (
@@ -162,6 +166,8 @@ export default async function OfertaComercialPage({ params }: Props) {
             </div>
           </section>
         )}
+
+        <GuiaRapidaLanding guia={guia} />
 
         <section className="py-10 bg-white border-t border-slate-200/80">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">

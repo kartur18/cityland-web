@@ -4,6 +4,8 @@ import Link from "next/link";
 import VuelosJorgeChavezTemplate from "@/components/VuelosJorgeChavezTemplate";
 import ModuloSeguridadYCalculadoraEuropa from "@/components/ModuloSeguridadYCalculadoraEuropa";
 import { SeoSiloFooter } from "@/components/SeoSiloFooter";
+import GuiaRapidaLanding from "@/components/GuiaRapidaLanding";
+import { guiaVuelo } from "@/lib/contenido-guia";
 import { RUTAS_VUELOS_SEO, buscarRutaVuelo } from "@/lib/rutas-vuelos";
 import { DESTINOS_EUROPA, DESTINOS_CARIBE } from "@/components/constantes";
 import {
@@ -113,6 +115,8 @@ export default async function RutaVueloPage({ params }: Props) {
     ? ruta.config.vitrina.img
     : `https://citylandtravel.com${ruta.config.vitrina.img}`;
 
+  const guia = guiaVuelo(ruta);
+
   const jsonLd = construirSchemaLandingSEO({
     url: `https://citylandtravel.com/vuelos/${ruta.slug}`,
     titulo: `Vuelos y Paquetes de ${ruta.origen} (${ruta.codigoOrigen}) a ${ruta.destino} (${ruta.codigoDestino})`,
@@ -122,7 +126,7 @@ export default async function RutaVueloPage({ params }: Props) {
     destinoOPais: `${ruta.destino}, ${paisDestino}`,
     imagenUrl: imgUrl,
     migas,
-    faqs: ruta.faqs,
+    faqs: [...guia.faqs, ...ruta.faqs],
   });
 
   return (
@@ -161,6 +165,8 @@ export default async function RutaVueloPage({ params }: Props) {
             </div>
           </section>
         )}
+
+        <GuiaRapidaLanding guia={guia} />
 
         <section className="py-10 bg-white border-t border-slate-200/80">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-6">

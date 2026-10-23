@@ -54,9 +54,12 @@ function muestra(arr, n, seed) {
   return a.slice(0, n);
 }
 
-function textoVisible(html) {
+function textoVisible(html, sinMarco = false) {
   const alts = [];
-  let h = html
+  let h = sinMarco
+    ? html.replace(/<header[\s\S]*?<\/header>/gi, " ").replace(/<footer[\s\S]*?<\/footer>/gi, " ")
+    : html;
+  h = h
     .replace(/<script[\s\S]*?<\/script>/gi, " ")
     .replace(/<style[\s\S]*?<\/style>/gi, " ")
     .replace(/<img[^>]*\salt="([^"]*)"[^>]*>/gi, (_, a) => {
@@ -75,32 +78,7 @@ function shingles(t) {
   return s;
 }
 
-const resultados = {};
-for (const [fam, cargar] of Object.entries(FAMILIAS)) {
-  if (SOLO && SOLO !== fam) continue;
-  if (DUMP && !DUMP.startsWith(fam + ":")) continue;
-  const { pagina, slugs } = await cargar();
-  if (DUMP) {
-    const el = await pagina({ params: Promise.resolve({ slug: DUMP.split(":")[1] }) });
-    console.log(textoVisible(renderToStaticMarkup(el)));
-    continue;
-  }
-  const elegidos = muestra(slugs, N, 12345);
-  const sets = [];
-  let palabrasTot = 0;
-  let fallos = 0;
-  const t0 = Date.now();
-  for (const slug of elegidos) {
-    try {
-      const el = await pagina({ params: Promise.resolve({ slug }) });
-      const t = textoVisible(renderToStaticMarkup(el));
-      palabrasTot += palabras(t).length;
-      sets.push(shingles(t));
-    } catch (e) {
-      fallos++;
-      if (fallos < 3) console.error(fam, slug, String(e).slice(0, 300));
-    }
-  }
+const metricas = (sets) => {
   let suma = 0;
   let pares = 0;
   for (let i = 0; i < sets.length; i++) {
@@ -121,13 +99,61 @@ for (const [fam, cargar] of Object.entries(FAMILIAS)) {
     for (const x of s) if (frec.get(x) > 1) c++;
     comp += s.size ? c / s.size : 0;
   }
+  return {
+    jaccard: +((100 * suma) / Math.max(1, pares)).toFixed(1),
+    compartido: +((100 * comp) / Math.max(1, sets.length)).toFixed(1),
+  };
+};
+
+const resultados = {};
+for (const [fam, cargar] of Object.entries(FAMILIAS)) {
+  if (SOLO && SOLO !== fam) continue;
+  if (DUMP && !DUMP.startsWith(fam + ":")) continue;
+  const { pagina, slugs } = await cargar();
+  if (DUMP) {
+    // "familia:#12" toma el slug en la posicion 12 del catalogo; --marco=no quita cabecera y pie
+    const pedido = DUMP.split(":")[1];
+    const slug = pedido.startsWith("#") ? slugs[Number(pedido.slice(1))] : pedido;
+    console.log("SLUG:", slug);
+    const el = await pagina({ params: Promise.resolve({ slug }) });
+    console.log(textoVisible(renderToStaticMarkup(el), arg("marco") === "no"));
+    continue;
+  }
+  const elegidos = muestra(slugs, N, 12345);
+  const setsTodo = [];
+  const setsMain = [];
+  let palabrasTot = 0;
+  let palabrasMain = 0;
+  let fallos = 0;
+  const t0 = Date.now();
+  for (const slug of elegidos) {
+    try {
+      const el = await pagina({ params: Promise.resolve({ slug }) });
+      const html = renderToStaticMarkup(el);
+      const t = textoVisible(html);
+      const tm = textoVisible(html, true);
+      palabrasTot += palabras(t).length;
+      palabrasMain += palabras(tm).length;
+      setsTodo.push(shingles(t));
+      setsMain.push(shingles(tm));
+    } catch (e) {
+      fallos++;
+      if (fallos < 3) console.error(fam, slug, String(e).slice(0, 300));
+    }
+  }
+  const a = metricas(setsTodo);
+  const b = metricas(setsMain);
+  const n = Math.max(1, setsTodo.length);
   resultados[fam] = {
     total: slugs.length,
-    muestra: sets.length,
+    muestra: setsTodo.length,
     fallos,
-    palabrasMedias: Math.round(palabrasTot / Math.max(1, sets.length)),
-    jaccardMedioPct: +((100 * suma) / Math.max(1, pares)).toFixed(1),
-    textoCompartidoPct: +((100 * comp) / Math.max(1, sets.length)).toFixed(1),
+    palabras: Math.round(palabrasTot / n),
+    jaccardPct: a.jaccard,
+    compartidoPct: a.compartido,
+    palabrasSinMarco: Math.round(palabrasMain / n),
+    jaccardSinMarcoPct: b.jaccard,
+    compartidoSinMarcoPct: b.compartido,
     segundos: +((Date.now() - t0) / 1000).toFixed(1),
   };
   console.error(fam, JSON.stringify(resultados[fam]));

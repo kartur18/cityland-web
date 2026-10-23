@@ -6,6 +6,8 @@ import AirlineLandingTemplate, {
 } from "@/components/AirlineLandingTemplate";
 import ModuloSeguridadYCalculadoraEuropa from "@/components/ModuloSeguridadYCalculadoraEuropa";
 import { SeoSiloFooter } from "@/components/SeoSiloFooter";
+import GuiaRapidaLanding from "@/components/GuiaRapidaLanding";
+import { guiaViaje } from "@/lib/contenido-guia";
 import {
   VIAJES_ESPECIALIZADOS_SEO,
   buscarViajeEspecializado,
@@ -292,6 +294,8 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
     `${item.slug} ${item.titulo} ${item.destinoOPais} ${item.badge}`
   );
 
+  const guia = guiaViaje(item);
+
   const jsonLd = construirSchemaLandingSEO({
     url: `https://citylandtravel.com/viajes/${item.slug}`,
     titulo: item.titulo,
@@ -301,7 +305,7 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
     destinoOPais: item.destinoOPais,
     imagenUrl: imgUrl,
     migas,
-    faqs: item.faqs,
+    faqs: [...guia.faqs, ...item.faqs],
   });
 
   return (
@@ -344,6 +348,8 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
             </div>
           </section>
         )}
+
+        <GuiaRapidaLanding guia={guia} />
 
         <section className="py-10 bg-white border-t border-slate-200/80">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
