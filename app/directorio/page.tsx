@@ -8,6 +8,7 @@ import BuscadorCatalogoInstantaneo from "@/components/BuscadorCatalogoInstantane
 import EnlacesCatalogoHub from "@/components/EnlacesCatalogoHub";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
+import { textoPrecio } from "@/lib/formato-precio";
 import { DESTINOS_EUROPA, DESTINOS_CARIBE, BLOG_POSTS } from "@/components/constantes";
 import { INDICE_PAQUETES_MIGRATORIOS_1000 } from "@/lib/catalogo-paquetes-migratorios-1000";
 
@@ -170,7 +171,7 @@ export function VistaCatalogoHub({ modoHub = "directorio" }: { modoHub?: ModoCat
                 {heroInfo.h1}
               </h1>
               <p className="text-base sm:text-lg text-slate-200 leading-relaxed">
-                {heroInfo.descripcion}
+                {textoPrecio(heroInfo.descripcion)}
               </p>
             </div>
 

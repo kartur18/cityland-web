@@ -79,9 +79,10 @@ const JSON_LD_CUSCO = {
             name: "Cityland Travel",
           },
           offers: {
-            "@type": "Offer",
+            "@type": "AggregateOffer",
+            offerCount: "1",
             priceCurrency: "USD",
-            price: String(p.precioUSD),
+            lowPrice: String(p.precioUSD),
             availability: "https://schema.org/InStock",
             url: "https://citylandtravel.com/cusco",
           },

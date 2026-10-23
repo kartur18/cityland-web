@@ -13,6 +13,8 @@ import Footer from "@/components/Footer";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
+import NotaPrecio from "@/components/NotaPrecio";
+import { textoPrecio } from "@/lib/formato-precio";
 
 const ALL_BLOG_POSTS = [...BLOG_POSTS, ...BLOG_POSTS_MASIVOS];
 
@@ -142,10 +144,10 @@ export default async function BlogArticlePage({
                 {post.categoria} · Guía Oficial
               </span>
               <h1 className="text-[clamp(26px,3.6vw,40px)] font-extrabold text-[#0b2347] tracking-tight leading-[1.12] mb-4">
-                {post.titulo.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                {textoPrecio(post.titulo)}
               </h1>
               <p className="text-slate-600 text-[15px] sm:text-[16px] leading-relaxed mb-5">
-                {post.desc.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                {textoPrecio(post.desc)}
               </p>
               <div className="flex flex-wrap items-center gap-3 text-[12px] font-semibold text-slate-500">
                 <span className="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md">
@@ -185,9 +187,10 @@ export default async function BlogArticlePage({
               <article
                 className="article-body min-w-0"
                 dangerouslySetInnerHTML={{
-                  __html: post.contenido.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1"),
+                  __html: textoPrecio(post.contenido),
                 }}
               />
+              {/\$\s?\d/.test(post.contenido) && <NotaPrecio className="mt-6" />}
             </AnimateOnScroll>
 
             <div className="mt-8 pt-6 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-50 rounded-xl p-5">
@@ -301,6 +304,7 @@ export default async function BlogArticlePage({
                   <span className="text-[14px] font-black text-[#e30613]">Desde $599</span>
                 </Link>
               </div>
+              <NotaPrecio className="mb-4" />
 
               <a
                 href={waHref}

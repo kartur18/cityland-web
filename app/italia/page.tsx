@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
+import NotaPrecio from "@/components/NotaPrecio";
 import {
   optimizarMetaTitleSEO,
   optimizarMetaDescriptionSEO,
@@ -350,7 +351,7 @@ export default function ItaliaLandingPage() {
                         <span className="text-xs font-bold text-slate-500">USD</span>
                       </div>
                       <span className="text-xs font-extrabold text-emerald-700 block mt-1">
-                        ✓ Separa con el 50% (${p.separaCon} USD)
+                        ✓ Separa con el 50% (desde ${p.separaCon} USD)
                       </span>
                     </div>
 
@@ -374,6 +375,7 @@ export default function ItaliaLandingPage() {
               </article>
             ))}
           </div>
+          <NotaPrecio className="mt-6 text-center" />
         </div>
       </section>
 

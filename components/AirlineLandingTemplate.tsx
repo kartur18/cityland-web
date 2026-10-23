@@ -342,7 +342,7 @@ export default function AirlineLandingTemplate({
                       {config.vitrina.etiquetaIzq}
                     </span>
                     <span className="bg-red-600 text-white text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full shadow-xs">
-                      {config.vitrina.etiquetaDer}
+                      {textoPrecio(config.vitrina.etiquetaDer)}
                     </span>
                   </div>
                 </div>
@@ -350,10 +350,10 @@ export default function AirlineLandingTemplate({
                 <div className="p-5 bg-white space-y-3.5">
                   <div className="border-b border-slate-100 pb-3">
                     <span className="text-[11px] font-extrabold text-red-600 uppercase tracking-wider block mb-0.5">
-                      {config.vitrina.sobretitulo}
+                      {textoPrecio(config.vitrina.sobretitulo)}
                     </span>
                     <h2 className="text-base sm:text-lg font-extrabold text-[#0a1628] leading-snug">
-                      {config.vitrina.titulo}
+                      {textoPrecio(config.vitrina.titulo)}
                     </h2>
                   </div>
 
@@ -361,7 +361,7 @@ export default function AirlineLandingTemplate({
                     <div>
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600">
-                          {config.vitrina.labelPrecio}
+                          {textoPrecio(config.vitrina.labelPrecio)}
                         </span>
                       </div>
                       <div className="flex items-baseline gap-1.5">

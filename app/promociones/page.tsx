@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     url: "https://citylandtravel.com/promociones",
     title: "Promociones y Preventa de Viajes 2026 — Cityland Travel",
     description:
-      "Tarifas promocionales en dólares con impuestos incluidos a Europa desde $699, Caribe, Sudamérica y Perú. Separa hoy con el 50%.",
+      "Tarifas promocionales en dólares (impuestos y tasas según fecha y aerolínea) a Europa desde $699, Caribe, Sudamérica y Perú. Separa hoy con el 50%.",
     siteName: "Cityland Travel",
     locale: "es_PE",
   },

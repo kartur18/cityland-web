@@ -69,9 +69,10 @@ const JSON_LD_PANAMA_MEDELLIN = {
       image: "https://citylandtravel.com/images/paquetes/panama-medellin/hero-panama.jpg",
       provider: { "@type": "TravelAgency", name: "Cityland Travel" },
       offers: {
-        "@type": "Offer",
+        "@type": "AggregateOffer",
+        offerCount: "1",
         priceCurrency: "USD",
-        price: "799",
+        lowPrice: "799",
         availability: "https://schema.org/InStock",
         url: "https://citylandtravel.com/paquetes/panama-medellin",
       },

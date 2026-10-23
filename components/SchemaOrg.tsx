@@ -141,9 +141,10 @@ const OFFERS = {
         url: "https://citylandtravel.com",
       },
       offers: {
-        "@type": "Offer",
+        "@type": "AggregateOffer",
+        offerCount: "1",
         priceCurrency: "USD",
-        price: String(paquete.precioUSD),
+        lowPrice: String(paquete.precioUSD),
         availability: "https://schema.org/InStock",
         url: `https://citylandtravel.com/destinos/${paquete.slug}`,
       },

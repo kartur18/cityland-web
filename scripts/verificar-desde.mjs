@@ -53,7 +53,7 @@ const RE_MONTO = /(?:US\$|\$)\s?(\d[\d.,]*)(?:\s?USD)?|(\d[\d.,]*)\s?(?:USD|dól
 
 // Devuelve los montos sin "desde" valido. Un "desde" cubre al primer monto que le sigue y a los demas de la misma
 // lista unidos solo por conectores ("desde $699, $799 y $899"); cualquier otro texto en medio corta la cobertura.
-const UNION_LISTA = /^[s,;·|/–-]*(?:(?:y|o|e|a|hasta)s+)?$/i;
+const UNION_LISTA = /^[\s,;·|/–-]*(?:(?:y|o|e|a|hasta)\s+)?$/i;
 function montosSinDesde(texto) {
   const malos = [];
   let total = 0;
@@ -63,10 +63,8 @@ function montosSinDesde(texto) {
     if (Number(m[0].replace(/[^\d.,]/g, "").replace(/,/g, "")) >= 10000) continue;
     total++;
     const idx = m.index;
-    const antes = texto.slice(Math.max(0, idx - VENTANA), idx);
-    const pos = antes.toLowerCase().lastIndexOf("desde");
-    let ok = false;
-    if (pos >= 0) ok = !/(?:US$|$)s?d|ds?USD/i.test(antes.slice(pos + 5));
+    // "desde" debe estar justo antes del monto ("desde Lima: planes de $699" NO cubre ese monto).
+    let ok = /desde[\s:]*$/i.test(texto.slice(Math.max(0, idx - VENTANA), idx));
     if (!ok && finCubierto >= 0 && UNION_LISTA.test(texto.slice(finCubierto, idx))) ok = true;
     if (ok) finCubierto = idx + m[0].length;
     else {
@@ -132,7 +130,7 @@ const familias = {};
 const ejemplos = {};
 const detalleHubs = [];
 const fam = (nombre) =>
-  (familias[nombre] ??= { paginas: 0, fallos: 0, conPrecios: 0, montos: 0, montosSinDesde: 0, paginasConViolacion: 0, sinNota: 0, metaSinDesde: 0, offerFijo: 0, jsonldTextoSinDesde: 0 });
+  (familias[nombre] ??= { paginas: 0, fallos: 0, conPrecios: 0, montos: 0, montosSinDesde: 0, paginasConViolacion: 0, sinNota: 0, metaSinDesde: 0, offerFijo: 0, jsonldTextoSinDesde: 0, promesaPrecio: 0, metaLargo: 0 });
 const anotar = (nombre, tipo, detalle) => {
   const k = `${nombre} / ${tipo}`;
   (ejemplos[k] ??= []);
@@ -156,11 +154,14 @@ async function revisar(nombre, etiqueta, mod, params, props = {}) {
   f.paginas++;
   const texto = textoVisible(html);
   const { total, malos } = montosSinDesde(texto);
+  // Sin el Navbar y el Footer, que repiten "solo ida desde $699" en todas las paginas y llevan su propia nota.
+  const textoContenido = textoVisible(html.replace(/<header[\s\S]*?<\/header>/i, " ").replace(/<footer[\s\S]*?<\/footer>/i, " "));
+  const montosContenido = montosSinDesde(textoContenido).total;
   let viol = 0;
   if (total > 0) {
     f.conPrecios++;
     f.montos += total;
-    if (!tieneNota(texto)) {
+    if (!tieneNota(montosContenido > 0 ? textoContenido : texto)) {
       f.sinNota++;
       viol++;
       anotar(nombre, "sin nota referencial", etiqueta);
@@ -194,6 +195,23 @@ async function revisar(nombre, etiqueta, mod, params, props = {}) {
       break;
     }
   }
+  // Promesas de monto definitivo (visible, metas y textos del JSON-LD)
+  const PROMESA = /impuestos incluidos|precio final(?! ser[aá] confirmado)|tarifa final|precio fijo|oferta garantizada|precio garantizado|tarifa garantizada|garantizamos (?:el )?precio/i;
+  for (const t of [texto, ...textosMeta(meta), ...ld.textos]) {
+    const pm = t.match(PROMESA);
+    if (pm) {
+      f.promesaPrecio++;
+      viol++;
+      anotar(nombre, "promesa de monto definitivo", `${etiqueta} :: ...${t.slice(Math.max(0, pm.index - 40), pm.index + 50)}`);
+      break;
+    }
+  }
+  // Informativo (no falla): largos de title (60) y description (160) de las metas
+  const mt = typeof meta?.title === "string" ? meta.title : meta?.title?.absolute ?? "";
+  if (mt.length > 60 || String(meta?.description ?? "").length > 160) {
+    f.metaLargo++;
+    anotar(nombre, "meta fuera de largo (informativo)", `${etiqueta} :: title=${mt.length} desc=${String(meta?.description ?? "").length}`);
+  }
   if (viol) f.paginasConViolacion++;
   if (nombre === "hubs") detalleHubs.push({ ruta: etiqueta, montos: total, sinDesde: malos.length, nota: total ? (tieneNota(texto) ? "si" : "NO") : "-", meta: textosMeta(meta).filter((t) => montosSinDesde(t).malos.length).length, offerFijo: ld.fijos.length });
 }
@@ -208,6 +226,8 @@ const { VIAJES_ESPECIALIZADOS_SEO } = await imp("lib/catalogo-viajes-especializa
 const { DESTINOS_EUROPA, DESTINOS_CARIBE } = await imp("components/constantes.ts");
 const { DESTINOS_MASIVOS } = await imp("lib/catalogo-destinos-masivo.ts");
 const { AGENCIAS_LOCALES_SEO } = await imp("lib/catalogo-agencias-locales.ts");
+const { BLOG_POSTS } = await imp("components/constantes.ts");
+const { BLOG_POSTS_MASIVOS } = await imp("lib/catalogo-blog-masivo.ts");
 
 const dinamicas = [
   ["madrid", "app/madrid/[slug]/page.tsx", INDICE_MADRID_10K.map((x) => x.slug)],
@@ -217,6 +237,7 @@ const dinamicas = [
   ["viajes", "app/viajes/[slug]/page.tsx", VIAJES_ESPECIALIZADOS_SEO.map((x) => x.slug)],
   ["destinos", "app/destinos/[slug]/page.tsx", [...DESTINOS_EUROPA, ...DESTINOS_CARIBE, ...DESTINOS_MASIVOS].map((x) => x.slug)],
   ["agencia", "app/agencia/[slug]/page.tsx", AGENCIAS_LOCALES_SEO.map((x) => x.slug)],
+  ["blog", "app/blog/[slug]/page.tsx", [...BLOG_POSTS, ...BLOG_POSTS_MASIVOS].map((x) => x.slug)],
 ];
 const SOLO = arg("familia", "");
 
@@ -271,7 +292,7 @@ if (detalleHubs.length) {
 }
 let violaciones = 0;
 for (const f of Object.values(familias)) {
-  violaciones += f.fallos + f.montosSinDesde + f.sinNota + f.metaSinDesde + f.offerFijo + f.jsonldTextoSinDesde;
+  violaciones += f.fallos + f.montosSinDesde + f.sinNota + f.metaSinDesde + f.offerFijo + f.jsonldTextoSinDesde + f.promesaPrecio;
 }
 if (violaciones > 0) {
   console.error(`\nFALLA: ${violaciones} violaciones.`);

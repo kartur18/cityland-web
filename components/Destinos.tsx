@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PAQUETES_COMPLETOS, buildWaUrl } from "@/components/constantes";
 import FlagIcon from "@/components/icons/FlagIcon";
+import NotaPrecio from "@/components/NotaPrecio";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 const CATEGORIAS = [
@@ -136,23 +137,28 @@ export default function Destinos() {
                   <div className="pt-3.5 border-t border-slate-100 flex items-center justify-between gap-3">
                     <div>
                       <div className="flex items-center gap-1.5 mb-0.5">
+                        {paquete.precioRegularUSD ? (
+                          <>
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                              Antes desde
+                            </span>
+                            <span className="text-[11px] font-semibold text-slate-400 line-through">
+                              ${paquete.precioRegularUSD.toLocaleString("en-US")}
+                            </span>
+                          </>
+                        ) : null}
+                      </div>
+                      <div className="flex items-baseline gap-1">
                         <span className="text-[10px] font-extrabold uppercase tracking-wider text-red-600">
                           Desde
                         </span>
-                        {paquete.precioRegularUSD && (
-                          <span className="text-[11px] font-semibold text-slate-400 line-through">
-                            ${paquete.precioRegularUSD.toLocaleString("en-US")}
-                          </span>
-                        )}
-                      </div>
-                      <div className="flex items-baseline gap-1">
                         <span className="font-[family-name:var(--font-bebas)] text-3xl sm:text-4xl text-[#0a1628] leading-none">
                           ${paquete.precioUSD.toLocaleString("en-US")}
                         </span>
                         <span className="text-[11px] font-bold text-slate-500">USD</span>
                       </div>
                       <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                        Separa con 50% (${Math.round(paquete.precioUSD * 0.5).toLocaleString("en-US")})
+                        Separa con 50% (desde ${Math.round(paquete.precioUSD * 0.5).toLocaleString("en-US")})
                       </span>
                     </div>
 
@@ -179,6 +185,7 @@ export default function Destinos() {
             );
           })}
         </div>
+        <NotaPrecio className="mt-6 text-center" />
       </div>
     </section>
   );

@@ -7,6 +7,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
+import { textoPrecio } from "@/lib/formato-precio";
+import NotaPrecio from "@/components/NotaPrecio";
 
 export const PAQUETES_ESPANA = [
   {
@@ -334,7 +336,7 @@ export default function EspanaLandingClient() {
                         <span className="text-xs font-bold text-slate-500">USD</span>
                       </div>
                       <span className="text-xs font-extrabold text-emerald-700 block mt-1">
-                        ✓ Separa con el 50% (${p.separaCon} USD)
+                        ✓ Separa con el 50% (desde ${p.separaCon} USD)
                       </span>
                     </div>
 
@@ -358,6 +360,7 @@ export default function EspanaLandingClient() {
               </article>
             ))}
           </div>
+          <NotaPrecio className="mt-6 text-center" />
         </div>
       </section>
 
@@ -557,10 +560,10 @@ export default function EspanaLandingClient() {
                 className="bg-slate-50 rounded-2xl p-6 border border-slate-200"
               >
                 <h3 className="text-sm sm:text-base font-extrabold text-[#0a1628] mb-2">
-                  {faq.q}
+                  {textoPrecio(faq.q)}
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  {faq.a}
+                  {textoPrecio(faq.a)}
                 </p>
               </div>
             ))}

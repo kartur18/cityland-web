@@ -5,6 +5,7 @@ import Link from "next/link";
 import { buildWaUrl } from "@/components/constantes";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
+import NotaPrecio from "@/components/NotaPrecio";
 
 export default function Migratorio() {
   const waUrlPromo = buildWaUrl({
@@ -46,7 +47,9 @@ export default function Migratorio() {
                 <span className="text-[10px] font-extrabold uppercase text-emerald-300 block">
                   Plan Promo
                 </span>
-                <span className="text-xl font-black text-white">$699</span>
+                <span className="text-xl font-black text-white">
+                  <span className="text-[11px] font-bold text-slate-300 mr-1">Desde</span>$699
+                </span>
                 <span className="text-[11px] text-slate-300 block">
                   Feb – May
                 </span>
@@ -55,7 +58,9 @@ export default function Migratorio() {
                 <span className="text-[10px] font-extrabold uppercase text-amber-300 block">
                   Plan Smart ⭐
                 </span>
-                <span className="text-xl font-black text-white">$799</span>
+                <span className="text-xl font-black text-white">
+                  <span className="text-[11px] font-bold text-slate-300 mr-1">Desde</span>$799
+                </span>
                 <span className="text-[11px] text-amber-200 block">
                   Jun / Sep – Nov
                 </span>
@@ -64,7 +69,9 @@ export default function Migratorio() {
                 <span className="text-[10px] font-extrabold uppercase text-sky-300 block">
                   Plan Plus
                 </span>
-                <span className="text-xl font-black text-white">$899</span>
+                <span className="text-xl font-black text-white">
+                  <span className="text-[11px] font-bold text-slate-300 mr-1">Desde</span>$899
+                </span>
                 <span className="text-[11px] text-slate-300 block">
                   Salidas cercanas
                 </span>
@@ -73,12 +80,15 @@ export default function Migratorio() {
                 <span className="text-[10px] font-extrabold uppercase text-purple-300 block">
                   Plan Full 23 kg
                 </span>
-                <span className="text-xl font-black text-white">$999</span>
+                <span className="text-xl font-black text-white">
+                  <span className="text-[11px] font-bold text-slate-300 mr-1">Desde</span>$999
+                </span>
                 <span className="text-[11px] text-slate-300 block">
                   Alta + Bodega 23 kg
                 </span>
               </div>
             </div>
+            <NotaPrecio oscuro className="-mt-4 mb-6" />
 
             <div className="flex flex-wrap items-center gap-3">
               <a

@@ -90,10 +90,11 @@ const JSON_LD_CARIBE = {
             name: "Cityland Travel E.I.R.L.",
           },
           offers: {
-            "@type": "Offer",
+            "@type": "AggregateOffer",
+            offerCount: "1",
             url: `https://citylandtravel.com/caribe#${d.id}`,
             priceCurrency: "USD",
-            price: String(d.precioUSD),
+            lowPrice: String(d.precioUSD),
             availability: "https://schema.org/InStock",
           },
         },

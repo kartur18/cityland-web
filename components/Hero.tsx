@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { buildWaUrl, WA_LINK } from "@/components/constantes";
 import FlagIcon from "@/components/icons/FlagIcon";
+import NotaPrecio from "@/components/NotaPrecio";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import ArrowRightIcon from "@/components/icons/ArrowRightIcon";
 
@@ -147,7 +148,7 @@ export default function Hero() {
                     Paquete Migratorio a Europa
                   </h2>
                   <p className="text-xs font-semibold text-slate-500 mt-1">
-                    4 planes de solo ida según tu fecha: <strong className="text-[#0a1628]">$699 · $799 · $899 · $999 USD</strong>
+                    4 planes de solo ida desde <strong className="text-[#0a1628]">$699 · $799 · $899 · $999 USD</strong>, según tu fecha
                   </p>
                 </div>
 
@@ -164,7 +165,7 @@ export default function Hero() {
                       <span className="text-xs font-bold text-slate-500">USD</span>
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-700 block mt-1">
-                      Separa con 50% ($350 USD)
+                      Separa con 50% (desde $350 USD)
                     </span>
                   </div>
 
@@ -178,6 +179,7 @@ export default function Hero() {
                     <span>Cotizar Ahora</span>
                   </a>
                 </div>
+                <NotaPrecio className="text-[11px]" />
               </div>
             </div>
           </div>

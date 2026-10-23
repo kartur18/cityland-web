@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { EnlaceContextual, FaqUnica } from "@/lib/contenido-unico";
+import { textoPrecio } from "@/lib/formato-precio";
 
 export interface GuiaRapida {
   titulo: string;
@@ -20,7 +21,7 @@ export default function GuiaRapidaLanding({ guia }: { guia: GuiaRapida }) {
         </h2>
         <div className="space-y-2 text-sm text-slate-600 leading-relaxed">
           {guia.intro.map((p) => (
-            <p key={p}>{p}</p>
+            <p key={p}>{textoPrecio(p)}</p>
           ))}
         </div>
 
@@ -33,7 +34,7 @@ export default function GuiaRapidaLanding({ guia }: { guia: GuiaRapida }) {
               >
                 <span className="text-xs font-extrabold text-red-600">Paso {i + 1}</span>
                 <h3 className="text-sm font-extrabold text-[#0a1628] mt-0.5">{paso.titulo}</h3>
-                <p className="mt-1 text-xs text-slate-600 leading-relaxed">{paso.detalle}</p>
+                <p className="mt-1 text-xs text-slate-600 leading-relaxed">{textoPrecio(paso.detalle)}</p>
               </li>
             ))}
           </ol>
@@ -47,13 +48,13 @@ export default function GuiaRapidaLanding({ guia }: { guia: GuiaRapida }) {
                 className="group bg-white rounded-2xl px-5 py-4 border border-slate-200/90 shadow-2xs transition-colors open:border-amber-400"
               >
                 <summary className="flex items-center justify-between gap-3 cursor-pointer list-none text-sm font-extrabold text-[#0a1628]">
-                  <span>{f.q}</span>
+                  <span>{textoPrecio(f.q)}</span>
                   <span className="text-slate-400 group-open:rotate-180 transition-transform text-xs shrink-0">
                     ▼
                   </span>
                 </summary>
                 <p className="mt-2.5 pt-2.5 border-t border-slate-100 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  {f.a}
+                  {textoPrecio(f.a)}
                 </p>
               </details>
             ))}

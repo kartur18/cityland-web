@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
+import NotaPrecio from "@/components/NotaPrecio";
 import { SERVICIOS_VISAS } from "./datos";
 
 const FILTROS_VISA = [
@@ -275,6 +276,7 @@ export default function VisasLandingClient() {
               );
             })}
           </div>
+          <NotaPrecio className="mt-6 text-center" />
         </div>
       </section>
 

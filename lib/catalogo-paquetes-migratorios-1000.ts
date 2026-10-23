@@ -1823,7 +1823,7 @@ const INTENCIONES_ITALIA: {
     slugIntencion: "declaracion-ospitalita-48-horas",
     etiquetaCorta: "Guía Ospitalità 48h",
     focoTitulo: (c) => `Viaje a ${c} + Guía de Dichiarazione di Ospitalità (48 Horas)`,
-    focoSubtitulo: (c) => `Todo tu Expediente Listo desde Lima · Planes $699 a $999`,
+    focoSubtitulo: (c) => `Todo tu Expediente Listo desde Lima · Planes desde $699 a $999`,
     focoGancho: (c) =>
       `Además de entregarte tu pasaje, reserva de regreso, hotel y seguro para volar a ${c}, te orientamos sobre el registro de hospitalidad dentro de las 48 horas de llegar a Italia.`,
   },
@@ -2151,7 +2151,7 @@ const TEMAS_DUDAS_MIGRATORIAS: {
   {
     slugTema: "entrar-a-italia-o-francia-via-madrid-barajas",
     tituloTema: (c) => `Cómo Viajar a ${c} Entrando por Madrid-Barajas (Control en Español)`,
-    subtituloTema: () => `La Estrategia Más Segura para Peruanos · Planes $699 a $999`,
+    subtituloTema: () => `La Estrategia Más Segura para Peruanos · Planes desde $699 a $999`,
     ganchoTema: (c) =>
       `Al hacer tu primera parada europea en Madrid-Barajas pasas Migraciones hablando en tu propio idioma y luego continúas tranquilo hacia ${c}.`,
   },

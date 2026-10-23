@@ -238,7 +238,7 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     pais: "España",
     bandera: "🇪🇸",
     categoria: "europa",
-    duracion: "Planes $699 · $799 · $899 · $999",
+    duracion: "Planes desde $699 · $799 · $899 · $999",
     precioUSD: 699,
     precioSoles: 2620,
     precioRegularUSD: 999,
@@ -278,7 +278,7 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     pais: "Italia",
     bandera: "🇮🇹",
     categoria: "europa",
-    duracion: "Planes $699 · $799 · $899 · $999",
+    duracion: "Planes desde $699 · $799 · $899 · $999",
     precioUSD: 699,
     precioSoles: 2620,
     precioRegularUSD: 999,
@@ -318,7 +318,7 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     pais: "Francia",
     bandera: "🇫🇷",
     categoria: "europa",
-    duracion: "Planes $699 · $799 · $899 · $999",
+    duracion: "Planes desde $699 · $799 · $899 · $999",
     precioUSD: 699,
     precioSoles: 2620,
     precioRegularUSD: 999,
@@ -1312,7 +1312,7 @@ export const FAQS = [
   },
   {
     pregunta: "¿Por qué los precios dicen 'Desde'?",
-    respuesta: "Porque los pasajes aéreos varían según tus fechas y anticipación. Escríbenos por WhatsApp y te damos el precio final exacto en menos de 2 minutos.",
+    respuesta: "Porque los pasajes aéreos varían según tus fechas y anticipación. Escríbenos por WhatsApp y te damos tu cotización exacta en menos de 2 minutos.",
   },
 ];
 

@@ -23,7 +23,8 @@ export function precioDesdeFrase(n: number): string {
 
 // Un monto: "$699", "US$ 1,090" o "699 USD". Misma forma que usa scripts/verificar-desde.mjs.
 const RE_MONTO = /(?:US\$|\$)\s?\d[\d.,]*(?:\s?USD)?|\d[\d.,]*\s?(?:USD|dólares|dolares)\b/gi;
-const VENTANA_DESDE = 40;
+const DESDE_JUSTO_ANTES = /desde[\s:]*$/i;
+const sinEtiquetas = (s: string) => s.replace(/<[^>]*>/g, "");
 // Cobertura de seguro o fondos (US$ 30,000 / 50,000): no es un precio de venta.
 const MONTO_MAXIMO_DE_PRECIO = 10000;
 function esMontoDeCobertura(monto: string): boolean {
@@ -35,8 +36,13 @@ const UNION_DE_LISTA = /^[\s,;·|/–-]*(?:(?:y|o|e|a|hasta)\s+)?$/i;
 
 // Red de seguridad para textos generados (metas, FAQ, descripciones): antepone "desde" a cada monto que no lo tenga.
 // Los componentes y helpers dedicados ya usan precioDesde(); esto cubre las frases libres de los catalogos.
-export function asegurarDesde(texto: string): string {
-  if (!texto || !/\d/.test(texto)) return texto;
+export function asegurarDesde(entrada: string): string {
+  if (!entrada || !/\d/.test(entrada)) return entrada;
+  // "entre $150 y $250" es un rango: "desde $150 hasta $250".
+  const texto = entrada.replace(
+    /\bentre\s+((?:US\$|\$)\s?\d[\d.,]*(?:\s?USD)?)\s+y\s+((?:US\$|\$)\s?\d[\d.,]*(?:\s?USD)?)/gi,
+    "desde $1 hasta $2"
+  );
   let salida = "";
   let cursor = 0;
   let finCubierto = -1;
@@ -44,10 +50,8 @@ export function asegurarDesde(texto: string): string {
   for (const m of texto.matchAll(RE_MONTO)) {
     const idx = m.index ?? 0;
     if (esMontoDeCobertura(m[0])) continue;
-    const antes = texto.slice(Math.max(0, idx - VENTANA_DESDE), idx);
-    const pos = antes.toLowerCase().lastIndexOf("desde");
-    const yaTieneDesde = pos >= 0 && !new RegExp(RE_MONTO.source, "i").test(antes.slice(pos + 5));
-    const enLista = finCubierto >= 0 && UNION_DE_LISTA.test(texto.slice(finCubierto, idx));
+    const yaTieneDesde = DESDE_JUSTO_ANTES.test(sinEtiquetas(texto.slice(Math.max(0, idx - 40), idx)));
+    const enLista = finCubierto >= 0 && UNION_DE_LISTA.test(sinEtiquetas(texto.slice(finCubierto, idx)));
 
     salida += texto.slice(cursor, idx);
     cursor = idx;
@@ -55,9 +59,12 @@ export function asegurarDesde(texto: string): string {
     if (yaTieneDesde || enLista) continue;
 
     // "Separa con $350" -> "Separa desde $350"; "plan de $699" -> "plan desde $699"; el resto antepone "desde ".
-    const reSepara = /(Separa(?:\s+hoy)?|separa(?:\s+hoy)?)\s+con\s+$/;
+    const reSepara = /(separa(?:\s+hoy)?)\s+con\s+$/i;
+    const reMasDe = /\b(?:más|mas|a partir)\s+de\s+$/i;
     if (reSepara.test(salida)) {
       salida = salida.replace(reSepara, "$1 desde ");
+    } else if (reMasDe.test(salida)) {
+      salida = salida.replace(reMasDe, "desde ");
     } else if (/\b[Dd]e\s+$/.test(salida)) {
       salida = salida.replace(/\b([Dd])e(\s+)$/, (_t, d: string, e: string) => `${d}esde${e}`);
     } else {

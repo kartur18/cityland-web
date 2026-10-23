@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import PlaneIcon from "@/components/icons/PlaneIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
+import NotaPrecio from "@/components/NotaPrecio";
 import { PAQUETES_CUSCO } from "./datos";
 
 export default function CuscoLandingClient() {
@@ -118,7 +119,7 @@ export default function CuscoLandingClient() {
                       </span>
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                      Separa con 50% ($165)
+                      Separa con 50% (desde $165)
                     </span>
                   </div>
 
@@ -213,7 +214,7 @@ export default function CuscoLandingClient() {
                         <div>
                           <div className="flex items-center gap-1.5 mb-0.5">
                             <span className="text-[10px] font-bold uppercase text-slate-400">
-                              Regular
+                              Antes desde
                             </span>
                             <span className="text-[11px] font-semibold text-slate-400 line-through">
                               ${p.precioRegularUSD}
@@ -229,7 +230,7 @@ export default function CuscoLandingClient() {
                           </div>
                         </div>
                         <span className="text-[11px] font-bold text-emerald-700">
-                          Inicial ${inicialUSD}
+                          Inicial desde ${inicialUSD}
                         </span>
                       </div>
 
@@ -248,6 +249,7 @@ export default function CuscoLandingClient() {
               );
             })}
           </div>
+          <NotaPrecio className="mt-6 text-center" />
         </div>
       </section>
 
