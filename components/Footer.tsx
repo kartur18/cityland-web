@@ -90,7 +90,7 @@ export default function Footer() {
             <div className="space-y-2.5 text-xs">
               <Link href="/paquetes-migratorios" className="flex items-center gap-1.5 text-amber-300 hover:text-amber-200 font-bold transition-colors">
                 <FlagIcon pais="Europa" className="w-3.5 h-2.5 shrink-0" />
-                <span>1,000 Paquetes Migratorios (Desde $699)</span>
+                <span>1,000 Paquetes Migratorios (Solo ida desde $699)</span>
               </Link>
               <Link href="/directorio#buscador" className="block text-slate-200 hover:text-white font-semibold transition-colors">
                 🔍 Buscador Oficial (+10,000 Programas)
@@ -101,15 +101,15 @@ export default function Footer() {
               </Link>
               <Link href="/espana" className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors">
                 <FlagIcon pais="España" className="w-3.5 h-2.5" />
-                <span>Paquete Migratorio España (Desde $699)</span>
+                <span>Paquete Migratorio España (Solo ida desde $699)</span>
               </Link>
               <Link href="/italia" className="flex items-center gap-1.5 text-emerald-300 hover:text-white font-semibold transition-colors">
                 <FlagIcon pais="Italia" className="w-3.5 h-2.5" />
-                <span>Paquete Migratorio Italia (Desde $699)</span>
+                <span>Paquete Migratorio Italia (Solo ida desde $699)</span>
               </Link>
               <Link href="/francia" className="flex items-center gap-1.5 text-sky-200 hover:text-white font-semibold transition-colors">
                 <FlagIcon pais="Francia" className="w-3.5 h-2.5 shrink-0" />
-                <span>Paquete Migratorio Francia (Desde $699)</span>
+                <span>Paquete Migratorio Francia (Solo ida desde $699)</span>
               </Link>
               <Link href="/europa-turquia" className="block text-slate-300 hover:text-white transition-colors">
                 Circuitos a Europa & Turquía Sin Visa

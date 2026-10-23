@@ -8,7 +8,7 @@ import { INDICE_PAQUETES_MIGRATORIOS_1000 } from "@/lib/catalogo-paquetes-migrat
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO("Promociones y Ofertas de Viajes 2026 desde Lima (Separa con 50%) | Cityland Travel"),
-  description: optimizarMetaDescriptionSEO("Aprovecha nuestras promociones de viajes y preventas 2026 desde Lima: Paquetes Migratorios a Europa desde $699 USD, Punta Cana y Cancún Todo Incluido desde $999 USD, Cartagena desde $599 USD y Cusco desde $329 USD. Separa con el 50% en Cityland Travel (RUC 20614914239)."),
+  description: optimizarMetaDescriptionSEO("Aprovecha nuestras promociones de viajes y preventas 2026 desde Lima: Paquetes Migratorios a Europa desde $699 USD (solo ida), Punta Cana y Cancún Todo Incluido desde $999 USD, Cartagena desde $599 USD y Cusco desde $329 USD. Separa con el 50% en Cityland Travel (RUC 20614914239)."),
   keywords: [
     "promociones de viajes desde lima",
     "ofertas paquetes turisticos 2026 peru",
@@ -36,14 +36,14 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
   tituloHero: "Promociones y Ofertas de",
   tituloDestacadoHero: "Viajes a Europa y el Caribe desde Lima",
   descripcionHero:
-    "Congela tu tarifa promocional en dólares para viajar a España, Italia o Francia desde $699 USD, o disfrutar de vacaciones Todo Incluido en el Caribe y el Perú con respaldo de agencia formal.",
+    "Congela tu tarifa promocional en dólares para viajar a España, Italia o Francia desde $699 USD (solo ida), o disfrutar de vacaciones Todo Incluido en el Caribe y el Perú con respaldo de agencia formal.",
   negritaHero: "Separa cualquiera de nuestras promociones con el 50% de inicial",
   ctaPrincipalTexto: "Consultar Promociones por WhatsApp",
   waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
     "¡Hola Cityland Travel! Quiero consultar las Promociones y Preventas de Viajes vigentes saliendo desde Lima.",
   checksHero: [
-    "Paquetes Migratorios a Europa: $699 · $799 · $899 · $999",
+    "Paquetes Migratorios a Europa (solo ida): $699 · $799 · $899 · $999",
     "Separa con el 50% y congela tu precio",
     "Atención en oficina física en Los Olivos y por WhatsApp",
   ],
@@ -52,10 +52,10 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
     etiquetaIzq: "Promo Europa · Salidas Confirmadas",
     etiquetaDer: "#1 Más Vendido",
     img: "/images/espana/gran-via-metropolis.jpg",
-    alt: "Promoción Paquete Migratorio a España e Italia desde $699 USD — Cityland Travel",
+    alt: "Promoción Paquete Migratorio a España e Italia desde $699 USD (solo ida) — Cityland Travel",
     sobretitulo: "Pasaje + Boleto de Regreso Reservado + Hotel + Seguro 30.000€",
     titulo: "Promo Paquete Migratorio a España, Italia y Francia",
-    labelPrecio: "Planes $699 · $799 · $899 · $999",
+    labelPrecio: "Planes de solo ida $699 · $799 · $899 · $999",
     precio: "$699",
     moneda: "USD",
     notaInferior: "Separa hoy con $350 (50% inicial)",
@@ -79,7 +79,7 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
       titulo: "Promo Madrid y Barcelona + Carpeta Migratoria",
       pais: "España",
       filtro: "europa",
-      subtitulo: "Planes según tu fecha: $699 · $799 · $899 · $999",
+      subtitulo: "Planes de solo ida según tu fecha: $699 · $799 · $899 · $999",
       precioPrincipal: "$699",
       precioSecundario: "USD",
       notaPrecio: "Separa con $350 (50% inicial)",
@@ -102,7 +102,7 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
       titulo: "Promo Milán, Roma y Turín + Carpeta Migratoria",
       pais: "Italia",
       filtro: "europa",
-      subtitulo: "Planes según tu fecha: $699 · $799 · $899 · $999",
+      subtitulo: "Planes de solo ida según tu fecha: $699 · $799 · $899 · $999",
       precioPrincipal: "$699",
       precioSecundario: "USD",
       notaPrecio: "Separa con $350 (50% inicial)",
@@ -199,7 +199,7 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
   ],
   pilares: [
     {
-      titulo: "Desde $699 USD",
+      titulo: "Solo ida desde $699 USD",
       sub: "Paquetes migratorios a España, Italia y Francia con todo en regla",
     },
     {

@@ -127,7 +127,7 @@ function obtenerIndiceUnificado(): ItemBuscadorCatalogo[] {
   for (let i = 0; i < todosDestinos.length; i++) {
     const d = todosDestinos[i];
     const url = `/destinos/${d.slug}`;
-    const precio = Number(String(d.turistico).replace(/[^0-9]/g, "")) || 699;
+    const precio = Number(String(d.turistico).replace(/[^0-9]/g, ""));
     const titulo = `Paquete a ${d.ciudad}, ${d.pais} (${d.duracion})`;
     lista.push({
       slug: `destino-${d.slug}`,

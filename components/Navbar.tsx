@@ -26,7 +26,7 @@ const PRIMARY_LINKS: {
 ];
 
 const TOP_BAR_LINKS: { label: string; href: string; flag?: string }[] = [
-  { label: "1,000 Paquetes Migratorios ($699)", href: "/paquetes-migratorios", flag: "Europa" },
+  { label: "1,000 Paquetes Migratorios (solo ida desde $699)", href: "/paquetes-migratorios", flag: "Europa" },
   { label: "🔍 Catálogo (+10,000 Ofertas)", href: "/directorio#buscador" },
   { label: "✈️ Guía Europa 2026 (BOE)", href: "/guia-europa" },
   { label: "Seguros 30.000€", href: "/seguros" },

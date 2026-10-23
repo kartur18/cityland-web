@@ -181,7 +181,7 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       titulo: "Paquete Migratorio a España, Italia y Francia",
       pais: "España",
       filtro: "europa",
-      subtitulo: "Planes según fecha: $699 · $799 · $899 · $999",
+      subtitulo: "Planes de solo ida según fecha: $699 · $799 · $899 · $999",
       precioPrincipal: "$699",
       notaPrecio: "Separa hoy con $350 (50%)",
       tag: "#1 Más Vendido",

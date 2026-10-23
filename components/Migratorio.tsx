@@ -32,7 +32,7 @@ export default function Migratorio() {
 
             <h2 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-6xl text-white tracking-tight leading-[0.95] mb-3">
               PAQUETE MIGRATORIO A EUROPA{" "}
-              <span className="text-amber-400">DESDE $699 USD</span>
+              <span className="text-amber-400">SOLO IDA DESDE $699 USD</span>
             </h2>
 
             <p className="text-sm sm:text-base text-slate-200 mb-6 max-w-2xl leading-relaxed">
@@ -121,7 +121,7 @@ export default function Migratorio() {
           <div className="lg:col-span-5 relative min-h-[280px] sm:min-h-[360px] w-full overflow-hidden">
             <Image
               src="/images/espana/palacio-real.jpg"
-              alt="Paquete Migratorio a Europa desde $699 USD - Cityland Travel"
+              alt="Paquete Migratorio a Europa desde $699 USD (solo ida) - Cityland Travel"
               fill
               sizes="(max-width: 1024px) 100vw, 500px"
               className="object-cover"

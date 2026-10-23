@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
-import { PRECIO_DESDE_EUROPA } from "@/components/constantes";
+import { PRECIO_IDA_VUELTA_MADRID_DESDE, PRECIO_MIGRATORIO_DESDE } from "@/components/constantes";
 import WhatsAppTracker from "@/components/WhatsAppTracker";
 import "./globals.css";
 
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   title:
     "Cityland Travel — Agencia de Viajes en Lima | España, Caribe y Europa (Separa con 50%)",
   description:
-    "Agencia de viajes formal en Lima, Perú (RUC 20614914239 · Oficina en Los Olivos). Paquetes turísticos Todo Incluido a Punta Cana, Cancún, Cartagena y Paquetes Migratorios a España Desde $1,090 USD con Seguro Schengen 30.000€. Separa hoy con el 50% de inicial.",
+    "Agencia de viajes formal en Lima, Perú (RUC 20614914239 · Oficina en Los Olivos). Paquetes turísticos Todo Incluido a Punta Cana, Cancún, Cartagena y Paquete Migratorio a España (solo ida + gestión) desde US$ 699 y vuelos Lima-Madrid ida y vuelta desde US$ 1,090, con Seguro Schengen 30.000€. Separa hoy con el 50% de inicial.",
   keywords: [
     "agencia de viajes en lima",
     "agencia de viajes en los olivos",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://citylandtravel.com/",
-    title: `Cityland Travel — Paquetes al Caribe y España desde $${PRECIO_DESDE_EUROPA} USD | Separa con 50%`,
+    title: `Cityland Travel — Paquete migratorio España (solo ida + gestión) desde US$ ${PRECIO_MIGRATORIO_DESDE} | Lima-Madrid ida y vuelta desde US$ ${PRECIO_IDA_VUELTA_MADRID_DESDE.toLocaleString("en-US")}`,
     description:
       "Agencia de viajes formal en Lima (RUC 20614914239). Paquetes a Punta Cana, Cancún, Cartagena, España y Europa con vuelos confirmados. +5,000 viajeros felices.",
     siteName: "Cityland Travel",
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Cityland Travel — Paquetes al Caribe y España desde $${PRECIO_DESDE_EUROPA} USD`,
+    title: `Cityland Travel — Paquete migratorio España (solo ida + gestión) desde US$ ${PRECIO_MIGRATORIO_DESDE}`,
     description:
       "Agencia de viajes formal en Lima (RUC 20614914239). Vuelos y paquetes turísticos y migratorios. Separa con 50%. Respuesta en 2 min por WhatsApp.",
     images: ["https://citylandtravel.com/opengraph-image"],
