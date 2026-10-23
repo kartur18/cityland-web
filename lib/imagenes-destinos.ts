@@ -66,6 +66,10 @@ function norm(s: string): string {
 const GALERIAS_ESPECIFICAS: Array<{
   match: RegExp;
   galeria: GaleriaDestino;
+  // Ciudades/regiones de Europa: entre ellas gana la que el texto nombra primero.
+  eu?: boolean;
+  // Regla de país entero: solo entra si ninguna ciudad concreta casó antes.
+  pais?: boolean;
 }> = [
   // =========================================================================
   // 1. SEGMENTOS DE SERVICIO PURO (Cruceros, Visas, Pasaporte, Corporativo)
@@ -81,7 +85,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /\bds-160|\bds160|\bvisa[- ]americana|\bvisa[- ]canadiense|\bvisa[- ]china|\bvisa[- ]mexicana|\bpasaporte[- ]electronico|\brelaciones exteriores/,
+    match: /\b(?:ds-160|ds160|visa[- ]americana|visa[- ]canadiense|visa[- ]china|visa[- ]mexicana|pasaporte[- ]electronico|relaciones exteriores)\b/,
     galeria: [
       IMG_PASAPORTE_VIAJE,
       IMG_AEROPUERTO_INTERNACIONAL,
@@ -91,7 +95,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /vuelos[- ]corporativos[- ]cusco[- ]arequipa|pasajes[- ]corporativos[- ]piura[- ]iquitos|corporativos[- ]mineria/,
+    match: /\b(?:vuelos[- ]corporativos[- ]cusco[- ]arequipa|pasajes[- ]corporativos[- ]piura[- ]iquitos|corporativos[- ]mineria)\b/,
     galeria: [
       IMG_OFICINA_CORPORATIVA,
       IMG_EDIFICIOS_FINANCIEROS,
@@ -107,303 +111,361 @@ const GALERIAS_ESPECIFICAS: Array<{
   // =========================================================================
   // ── ITALIA (Reglas individuales por ciudad con su foto real verificada) ──
   {
-    match: /\bpadua\b/,
-    galeria: ["/images/destinos/padua.jpg", "/images/destinos/venecia.jpg", "/images/destinos/verona.jpg", "/images/destinos/bolonia.jpg", "/images/destinos/milan.webp"],
+    match: /\b(?:padua)\b/,
+    eu: true,
+    galeria: ["/images/destinos/padua.jpg", "/images/destinos/venecia.jpg", "/images/destinos/verona.jpg", "/images/destinos/bolonia.jpg", "/images/destinos/vicenza.jpg"],
   },
   {
-    match: /\bvenecia\b/,
+    match: /\b(?:venecia)\b/,
+    eu: true,
     galeria: ["/images/destinos/venecia.jpg", "/images/destinos/padua.jpg", "/images/destinos/verona.jpg", "/images/destinos/milan.webp", "/images/destinos/roma.jpg"],
   },
   {
-    match: /\bturin\b/,
+    match: /\b(?:turin)\b/,
+    eu: true,
     galeria: ["/images/destinos/turin.jpg", "/images/destinos/milan.webp", "/images/destinos/genova.jpg", "/images/destinos/como.jpg", "/images/destinos/roma.jpg"],
   },
   {
-    match: /\bgenova\b/,
+    match: /\b(?:genova)\b/,
+    eu: true,
     galeria: ["/images/destinos/genova.jpg", "/images/destinos/turin.jpg", "/images/destinos/milan.webp", "/images/destinos/pisa.jpg", "/images/destinos/florencia.jpg"],
   },
   {
-    match: /\bbolonia\b/,
-    galeria: ["/images/destinos/bolonia.jpg", "/images/destinos/modena.jpg", "/images/destinos/parma.jpg", "/images/destinos/florencia.jpg", "/images/destinos/milan.webp"],
+    match: /\b(?:bolonia)\b/,
+    eu: true,
+    galeria: ["/images/destinos/bolonia.jpg", "/images/destinos/modena.jpg", "/images/destinos/parma.jpg", "/images/destinos/florencia.jpg", "/images/destinos/rimini.jpg"],
   },
   {
-    match: /\bverona\b/,
+    match: /\b(?:verona)\b/,
+    eu: true,
     galeria: ["/images/destinos/verona.jpg", "/images/destinos/venecia.jpg", "/images/destinos/padua.jpg", "/images/destinos/milan.webp", "/images/destinos/brescia.jpg"],
   },
   {
-    match: /\bbergamo\b/,
+    match: /\b(?:bergamo)\b/,
+    eu: true,
     galeria: ["/images/destinos/bergamo.jpg", "/images/destinos/milan.webp", "/images/destinos/brescia.jpg", "/images/destinos/como.jpg", "/images/destinos/monza.jpg"],
   },
   {
-    match: /\bbrescia\b/,
+    match: /\b(?:brescia)\b/,
+    eu: true,
     galeria: ["/images/destinos/brescia.jpg", "/images/destinos/bergamo.jpg", "/images/destinos/verona.jpg", "/images/destinos/milan.webp", "/images/destinos/como.jpg"],
   },
   {
-    match: /\bmodena\b/,
-    galeria: ["/images/destinos/modena.jpg", "/images/destinos/bolonia.jpg", "/images/destinos/parma.jpg", "/images/destinos/florencia.jpg", "/images/destinos/milan.webp"],
+    match: /\b(?:modena)\b/,
+    eu: true,
+    galeria: ["/images/destinos/modena.jpg", "/images/destinos/bolonia.jpg", "/images/destinos/parma.jpg", "/images/destinos/florencia.jpg", "/images/destinos/rimini.jpg"],
   },
   {
-    match: /\bparma\b/,
+    match: /\b(?:parma)\b/,
+    eu: true,
     galeria: ["/images/destinos/parma.jpg", "/images/destinos/modena.jpg", "/images/destinos/bolonia.jpg", "/images/destinos/milan.webp", "/images/destinos/florencia.jpg"],
   },
   {
-    match: /\bmonza\b/,
+    match: /\b(?:monza)\b/,
+    eu: true,
     galeria: ["/images/destinos/monza.jpg", "/images/destinos/milan.webp", "/images/destinos/como.jpg", "/images/destinos/bergamo.jpg", "/images/destinos/turin.jpg"],
   },
   {
-    match: /\bcomo\b/,
+    match: /\b(?:como)\b/,
+    eu: true,
     galeria: ["/images/destinos/como.jpg", "/images/destinos/milan.webp", "/images/destinos/monza.jpg", "/images/destinos/bergamo.jpg", "/images/destinos/turin.jpg"],
   },
   {
-    match: /\bvicenza\b/,
-    galeria: ["/images/destinos/vicenza.jpg", "/images/destinos/verona.jpg", "/images/destinos/padua.jpg", "/images/destinos/venecia.jpg", "/images/destinos/milan.webp"],
+    match: /\b(?:vicenza)\b/,
+    eu: true,
+    galeria: ["/images/destinos/vicenza.jpg", "/images/destinos/verona.jpg", "/images/destinos/padua.jpg", "/images/destinos/venecia.jpg", "/images/destinos/brescia.jpg"],
   },
   {
-    match: /\bmilan\b/,
+    match: /\b(?:milan)\b/,
+    eu: true,
     galeria: ["/images/destinos/milan.webp", "/images/destinos/monza.jpg", "/images/destinos/como.jpg", "/images/destinos/bergamo.jpg", "/images/destinos/turin.jpg"],
   },
   {
-    match: /\bpisa\b/,
+    match: /\b(?:pisa)\b/,
+    eu: true,
     galeria: ["/images/destinos/pisa.jpg", "/images/destinos/florencia.jpg", "/images/destinos/prato.jpg", "/images/destinos/genova.jpg", "/images/destinos/roma.jpg"],
   },
   {
-    match: /\bprato\b/,
+    match: /\b(?:prato)\b/,
+    eu: true,
     galeria: ["/images/destinos/prato.jpg", "/images/destinos/florencia.jpg", "/images/destinos/pisa.jpg", "/images/destinos/bolonia.jpg", "/images/destinos/roma.jpg"],
   },
   {
-    match: /\b(florencia|toscana)\b/,
+    match: /\b(?:florencia|toscana)\b/,
+    eu: true,
     galeria: ["/images/destinos/florencia.jpg", "/images/destinos/pisa.jpg", "/images/destinos/prato.jpg", "/images/destinos/bolonia.jpg", "/images/destinos/roma.jpg"],
   },
   {
-    match: /\b(napoles|amalfi|amalfitana|capri)\b/,
+    match: /\b(?:napoles|amalfi|amalfitana|capri)\b/,
+    eu: true,
     galeria: ["/images/destinos/napoles.jpg", "/images/destinos/roma.jpg", "/images/destinos/bari.jpg", "/images/destinos/palermo.jpg", "/images/destinos/catania.jpg"],
   },
   {
-    match: /\bbari\b/,
+    match: /\b(?:bari)\b/,
+    eu: true,
     galeria: ["/images/destinos/bari.jpg", "/images/destinos/napoles.jpg", "/images/destinos/ancona.jpg", "/images/destinos/roma.jpg", "/images/destinos/catania.jpg"],
   },
   {
-    match: /\bcatania\b/,
+    match: /\b(?:catania)\b/,
+    eu: true,
     galeria: ["/images/destinos/catania.jpg", "/images/destinos/palermo.jpg", "/images/destinos/napoles.jpg", "/images/destinos/bari.jpg", "/images/destinos/roma.jpg"],
   },
   {
-    match: /\bpalermo\b/,
+    match: /\b(?:palermo)\b/,
+    eu: true,
     galeria: ["/images/destinos/palermo.jpg", "/images/destinos/catania.jpg", "/images/destinos/napoles.jpg", "/images/destinos/roma.jpg", "/images/destinos/bari.jpg"],
   },
   {
-    match: /\bperugia\b/,
+    match: /\b(?:perugia)\b/,
+    eu: true,
     galeria: ["/images/destinos/perugia.jpg", "/images/destinos/florencia.jpg", "/images/destinos/roma.jpg", "/images/destinos/ancona.jpg", "/images/destinos/bolonia.jpg"],
   },
   {
-    match: /\bancona\b/,
+    match: /\b(?:ancona)\b/,
+    eu: true,
     galeria: ["/images/destinos/ancona.jpg", "/images/destinos/rimini.jpg", "/images/destinos/bolonia.jpg", "/images/destinos/bari.jpg", "/images/destinos/perugia.jpg"],
   },
   {
-    match: /\brimini\b/,
+    match: /\b(?:rimini)\b/,
+    eu: true,
     galeria: ["/images/destinos/rimini.jpg", "/images/destinos/bolonia.jpg", "/images/destinos/ancona.jpg", "/images/destinos/venecia.jpg", "/images/destinos/florencia.jpg"],
   },
   {
-    match: /\b(roma|vaticano|italia)\b/,
+    match: /\b(?:roma|romano|romanos|vaticano|vaticanos|coliseo|fontana[- ]di[- ]trevi)\b/,
+    eu: true,
+    galeria: ["/images/destinos/roma.jpg", "/images/destinos/florencia.jpg", "/images/destinos/venecia.jpg", "/images/destinos/milan.webp", "/images/destinos/napoles.jpg"],
+  },
+  {
+    match: /\b(?:italia|italiano|italiana)\b/,
+    eu: true,
+    pais: true,
     galeria: ["/images/destinos/roma.jpg", "/images/destinos/florencia.jpg", "/images/destinos/venecia.jpg", "/images/destinos/milan.webp", "/images/destinos/napoles.jpg"],
   },
 
   // ── FRANCIA (Reglas individuales por ciudad con su foto real verificada) ──
   {
-    match: /\blyon\b/,
+    match: /\b(?:lyon)\b/,
+    eu: true,
     galeria: ["/images/destinos/lyon.jpg", "/images/destinos/paris.webp", "/images/destinos/marsella.jpg", "/images/destinos/niza.jpg", "/images/destinos/toulouse.jpg"],
   },
   {
-    match: /\bmarsella\b/,
+    match: /\b(?:marsella)\b/,
+    eu: true,
     galeria: ["/images/destinos/marsella.jpg", "/images/destinos/niza.jpg", "/images/destinos/lyon.jpg", "/images/destinos/toulouse.jpg", "/images/destinos/paris.webp"],
   },
   {
-    match: /\b(niza|cannes|monaco)\b/,
+    match: /\b(?:niza|cannes|monaco)\b/,
+    eu: true,
     galeria: ["/images/destinos/niza.jpg", "/images/destinos/marsella.jpg", "/images/destinos/lyon.jpg", "/images/destinos/paris.webp", "/images/destinos/burdeos.jpg"],
   },
   {
-    match: /\btoulouse\b/,
+    match: /\b(?:toulouse)\b/,
+    eu: true,
     galeria: ["/images/destinos/toulouse.jpg", "/images/destinos/burdeos.jpg", "/images/destinos/marsella.jpg", "/images/destinos/lyon.jpg", "/images/destinos/paris.webp"],
   },
   {
-    match: /\bburdeos\b/,
+    match: /\b(?:burdeos)\b/,
+    eu: true,
     galeria: ["/images/destinos/burdeos.jpg", "/images/destinos/toulouse.jpg", "/images/destinos/lyon.jpg", "/images/destinos/paris.webp", "/images/destinos/niza.jpg"],
   },
   {
-    match: /\b(paris|francia|lourdes|normandia|eurodisney|disneyland[- ]paris)\b/,
+    match: /\b(?:paris|lourdes|normandia|eurodisney|disneyland[- ]paris|torre[- ]eiffel|louvre|versalles|rio[- ]sena)\b/,
+    eu: true,
+    galeria: ["/images/destinos/paris.webp", "/images/destinos/lyon.jpg", "/images/destinos/marsella.jpg", "/images/destinos/niza.jpg", "/images/destinos/burdeos.jpg"],
+  },
+  {
+    match: /\b(?:francia|frances|francesa)\b/,
+    eu: true,
+    pais: true,
     galeria: ["/images/destinos/paris.webp", "/images/destinos/lyon.jpg", "/images/destinos/marsella.jpg", "/images/destinos/niza.jpg", "/images/destinos/burdeos.jpg"],
   },
 
   // ── RESTO DE EUROPA (Reglas individuales por ciudad) ──
   {
-    match: /bruselas|brujas|belgica/,
-    galeria: ["/images/destinos/bruselas.jpg", "/images/destinos/amsterdam.jpg", "/images/destinos/paris.webp", "/images/destinos/frankfurt.jpg", IMG_HOTEL_LUJO_PISCINA],
+    match: /\b(?:bruselas|brujas|belgica)\b/,
+    eu: true,
+    galeria: ["/images/destinos/bruselas.jpg", "/images/destinos/amsterdam.jpg", "/images/destinos/paris.webp", "/images/destinos/frankfurt.jpg", "/images/destinos/berlin.jpg"],
   },
   {
-    match: /amsterdam|paises[- ]bajos|holanda/,
-    galeria: ["/images/destinos/amsterdam.jpg", "/images/destinos/bruselas.jpg", "/images/destinos/berlin.jpg", "/images/destinos/paris.webp", IMG_HOTEL_LUJO_PISCINA],
+    match: /\b(?:amsterdam|paises[- ]bajos|holanda)\b/,
+    eu: true,
+    galeria: ["/images/destinos/amsterdam.jpg", "/images/destinos/bruselas.jpg", "/images/destinos/berlin.jpg", "/images/destinos/paris.webp", "/images/destinos/frankfurt.jpg"],
   },
   {
-    match: /londres|manchester|edimburgo|escocia|dublin|irlanda|reino[- ]unido|inglaterra/,
+    match: /\b(?:londres|manchester|edimburgo|escocia|dublin|irlanda|reino[- ]unido|inglaterra)\b/,
+    eu: true,
     galeria: [
       "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1200&q=85",
       "https://images.unsplash.com/photo-1529655683826-aba9b3e77383?w=1200&q=85",
       "https://images.unsplash.com/photo-1486299267070-83823f5448dd?w=1200&q=85",
       "https://images.unsplash.com/photo-1506377585622-bedcbb027afc?w=1200&q=85",
-      IMG_HOTEL_LUJO_PISCINA,
+      "/images/destinos/amsterdam.jpg",
     ],
   },
   {
-    match: /\boporto\b/,
-    galeria: ["/images/destinos/oporto.jpg", "/images/destinos/lisboa.webp", "https://images.unsplash.com/photo-1513735492246-483525079686?w=1200&q=85", "/images/destinos/madrid.webp", IMG_HOTEL_LUJO_PISCINA],
+    match: /\b(?:oporto)\b/,
+    eu: true,
+    galeria: ["/images/destinos/oporto.jpg", "/images/destinos/lisboa.webp", "https://images.unsplash.com/photo-1513735492246-483525079686?w=1200&q=85", "/images/destinos/madrid.webp", "/images/destinos/sevilla.jpg"],
   },
   {
-    match: /lisboa|\bfaro\b|fatima|portugal/,
+    match: /\b(?:lisboa|faro|fatima|portugal)\b/,
+    eu: true,
     galeria: ["/images/destinos/lisboa.webp", "/images/destinos/oporto.jpg", "https://images.unsplash.com/photo-1513735492246-483525079686?w=1200&q=85", "https://images.unsplash.com/photo-1558102822-da570eb113ed?w=1200&q=85", "https://images.unsplash.com/photo-1548707309-dcebeab9ea9b?w=1200&q=85"],
   },
   {
-    match: /\bginebra\b/,
-    galeria: ["/images/destinos/ginebra.jpg", "/images/destinos/zurich.jpg", "/images/destinos/suiza-alpes.jpg", "/images/destinos/lyon.jpg", IMG_HOTEL_LUJO_PISCINA],
+    match: /\b(?:ginebra)\b/,
+    eu: true,
+    galeria: ["/images/destinos/ginebra.jpg", "/images/destinos/zurich.jpg", "/images/destinos/suiza-alpes.jpg", "/images/destinos/lyon.jpg", "/images/destinos/munich.jpg"],
   },
   {
-    match: /zurich|basilea|lucerna|interlaken|zermatt|suiza|alpes/,
-    galeria: ["/images/destinos/zurich.jpg", "/images/destinos/suiza-alpes.jpg", "/images/destinos/ginebra.jpg", "/images/destinos/munich.jpg", IMG_HOTEL_LUJO_PISCINA],
+    match: /\b(?:zurich|basilea|lucerna|interlaken|zermatt|suiza|alpes)\b/,
+    eu: true,
+    galeria: ["/images/destinos/zurich.jpg", "/images/destinos/suiza-alpes.jpg", "/images/destinos/ginebra.jpg", "/images/destinos/munich.jpg", "/images/destinos/viena.jpg"],
   },
   {
-    match: /\bberlin\b/,
-    galeria: ["/images/destinos/berlin.jpg", "/images/destinos/frankfurt.jpg", "/images/destinos/munich.jpg", "/images/destinos/praga.jpg", IMG_HOTEL_LUJO_PISCINA],
+    match: /\b(?:berlin)\b/,
+    eu: true,
+    galeria: ["/images/destinos/berlin.jpg", "/images/destinos/frankfurt.jpg", "/images/destinos/munich.jpg", "/images/destinos/praga.jpg", "/images/destinos/amsterdam.jpg"],
   },
   {
-    match: /\bmunich\b|baviera|neuschwanstein/,
-    galeria: ["/images/destinos/munich.jpg", "/images/destinos/frankfurt.jpg", "/images/destinos/berlin.jpg", "/images/destinos/viena.jpg", IMG_HOTEL_LUJO_PISCINA],
+    match: /\b(?:munich|baviera|neuschwanstein)\b/,
+    eu: true,
+    galeria: ["/images/destinos/munich.jpg", "/images/destinos/frankfurt.jpg", "/images/destinos/berlin.jpg", "/images/destinos/viena.jpg", "/images/destinos/zurich.jpg"],
   },
   {
-    match: /frankfurt|hamburgo|dusseldorf|stuttgart|alemania/,
-    galeria: ["/images/destinos/frankfurt.jpg", "/images/destinos/berlin.jpg", "/images/destinos/munich.jpg", "/images/destinos/amsterdam.jpg", IMG_HOTEL_LUJO_PISCINA],
+    match: /\b(?:frankfurt|hamburgo|dusseldorf|stuttgart|alemania)\b/,
+    eu: true,
+    galeria: ["/images/destinos/frankfurt.jpg", "/images/destinos/berlin.jpg", "/images/destinos/munich.jpg", "/images/destinos/amsterdam.jpg", "/images/destinos/bruselas.jpg"],
   },
   {
-    match: /praga|republica[- ]checa/,
-    galeria: ["/images/destinos/praga.jpg", "/images/destinos/viena.jpg", "/images/destinos/budapest.jpg", "/images/destinos/berlin.jpg", IMG_HOTEL_LUJO_PISCINA],
+    match: /\b(?:praga|republica[- ]checa)\b/,
+    eu: true,
+    galeria: ["/images/destinos/praga.jpg", "/images/destinos/viena.jpg", "/images/destinos/budapest.jpg", "/images/destinos/berlin.jpg", "/images/destinos/munich.jpg"],
   },
   {
-    match: /viena|salzburgo|austria/,
-    galeria: ["/images/destinos/viena.jpg", "/images/destinos/praga.jpg", "/images/destinos/budapest.jpg", "/images/destinos/suiza-alpes.jpg", IMG_HOTEL_LUJO_PISCINA],
+    match: /\b(?:viena|salzburgo|austria)\b/,
+    eu: true,
+    galeria: ["/images/destinos/viena.jpg", "/images/destinos/praga.jpg", "/images/destinos/budapest.jpg", "/images/destinos/suiza-alpes.jpg", "/images/destinos/munich.jpg"],
   },
   {
-    match: /budapest|hungria|varsovia|cracovia|polonia|bucarest|rumania|zagreb|dubrovnik|plitvice|croacia/,
-    galeria: ["/images/destinos/budapest.jpg", "/images/destinos/praga.jpg", "/images/destinos/viena.jpg", "/images/destinos/venecia.jpg", IMG_HOTEL_LUJO_PISCINA],
+    match: /\b(?:budapest|hungria|varsovia|cracovia|polonia|bucarest|rumania|zagreb|dubrovnik|plitvice|croacia)\b/,
+    eu: true,
+    galeria: ["/images/destinos/budapest.jpg", "/images/destinos/praga.jpg", "/images/destinos/viena.jpg", "/images/destinos/venecia.jpg", "/images/destinos/berlin.jpg"],
   },
   {
-    match: /atenas|santorini|mykonos|grecia|islas[- ]griegas/,
+    match: /\b(?:atenas|santorini|mykonos|grecia|islas[- ]griegas)\b/,
+    eu: true,
     galeria: ["https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1200&q=85", "/images/destinos/atenas-acropolis.jpg", "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1200&q=85", "https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?w=1200&q=85", IMG_RESORT_PISCINA_MAR],
   },
   {
-    match: /estocolmo|suecia|copenhague|dinamarca|oslo|noruega|fiordos|helsinki|finlandia|islandia|auroras/,
+    match: /\b(?:estocolmo|suecia|copenhague|dinamarca|oslo|noruega|fiordos|helsinki|finlandia|islandia|auroras)\b/,
+    eu: true,
     galeria: ["https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=1200&q=85", "https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?w=1200&q=85", "/images/destinos/suiza-alpes.jpg", "/images/destinos/zurich.jpg", "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=1200&q=85"],
   },
 
   // ── ESPAÑA (Reglas individuales por ciudad con su foto real verificada) ──
   {
-    match: /\bhospitalet\b/,
-    galeria: ["/images/destinos/hospitalet.jpg", "/images/destinos/barcelona.webp", "/images/destinos/badalona.jpg", "/images/destinos/terrassa.jpg", "/images/espana/barajas.jpg"],
+    match: /\b(?:hospitalet)\b/,
+    galeria: ["/images/destinos/hospitalet.jpg", "/images/destinos/barcelona.webp", "/images/destinos/badalona.jpg", "/images/destinos/terrassa.jpg", "/images/destinos/sabadell.jpg"],
   },
   {
-    match: /\bbadalona\b/,
-    galeria: ["/images/destinos/badalona.jpg", "/images/destinos/barcelona.webp", "/images/destinos/hospitalet.jpg", "/images/destinos/sabadell.jpg", "/images/espana/barajas.jpg"],
+    match: /\b(?:badalona)\b/,
+    galeria: ["/images/destinos/badalona.jpg", "/images/destinos/barcelona.webp", "/images/destinos/hospitalet.jpg", "/images/destinos/sabadell.jpg", "/images/destinos/terrassa.jpg"],
   },
   {
-    match: /\bterrassa\b/,
-    galeria: ["/images/destinos/terrassa.jpg", "/images/destinos/sabadell.jpg", "/images/destinos/barcelona.webp", "/images/destinos/hospitalet.jpg", "/images/espana/barajas.jpg"],
+    match: /\b(?:terrassa)\b/,
+    galeria: ["/images/destinos/terrassa.jpg", "/images/destinos/sabadell.jpg", "/images/destinos/barcelona.webp", "/images/destinos/hospitalet.jpg", "/images/destinos/badalona.jpg"],
   },
   {
-    match: /\bsabadell\b/,
-    galeria: ["/images/destinos/sabadell.jpg", "/images/destinos/terrassa.jpg", "/images/destinos/barcelona.webp", "/images/destinos/badalona.jpg", "/images/espana/barajas.jpg"],
+    match: /\b(?:sabadell)\b/,
+    galeria: ["/images/destinos/sabadell.jpg", "/images/destinos/terrassa.jpg", "/images/destinos/barcelona.webp", "/images/destinos/badalona.jpg", "/images/destinos/hospitalet.jpg"],
   },
   {
-    match: /barcelona|girona|tarragona|lleida|cataluna|sagrada[- ]familia/,
-    galeria: ["/images/destinos/barcelona.webp", "/images/destinos/badalona.jpg", "/images/destinos/hospitalet.jpg", "/images/destinos/terrassa.jpg", "/images/espana/barajas.jpg"],
+    match: /\b(?:barcelona|girona|tarragona|lleida|cataluna|sagrada[- ]familia)\b/,
+    galeria: ["/images/destinos/barcelona.webp", "/images/destinos/badalona.jpg", "/images/destinos/hospitalet.jpg", "/images/destinos/terrassa.jpg", "/images/destinos/sabadell.jpg"],
   },
   {
-    match: /\balicante\b/,
-    galeria: ["/images/destinos/alicante.jpg", "/images/destinos/elche.jpg", "/images/destinos/valencia-artes.jpg", "/images/destinos/murcia.jpg", "/images/espana/barajas.jpg"],
+    match: /\b(?:alicante)\b/,
+    galeria: ["/images/destinos/alicante.jpg", "/images/destinos/elche.jpg", "/images/destinos/valencia-artes.jpg", "/images/destinos/murcia.jpg", "/images/destinos/cartagena-espana.jpg"],
   },
   {
-    match: /\belche\b/,
-    galeria: ["/images/destinos/elche.jpg", "/images/destinos/alicante.jpg", "/images/destinos/valencia-artes.jpg", "/images/destinos/murcia.jpg", "/images/espana/barajas.jpg"],
+    match: /\b(?:elche)\b/,
+    galeria: ["/images/destinos/elche.jpg", "/images/destinos/alicante.jpg", "/images/destinos/valencia-artes.jpg", "/images/destinos/murcia.jpg", "/images/destinos/cartagena-espana.jpg"],
   },
   {
-    match: /cartagena[- ]espana/,
-    galeria: ["/images/destinos/cartagena-espana.jpg", "/images/destinos/murcia.jpg", "/images/destinos/alicante.jpg", "/images/destinos/valencia-artes.jpg", "/images/espana/barajas.jpg"],
+    match: /\b(?:cartagena[- ]espana)\b/,
+    galeria: ["/images/destinos/cartagena-espana.jpg", "/images/destinos/murcia.jpg", "/images/destinos/alicante.jpg", "/images/destinos/valencia-artes.jpg", "/images/destinos/elche.jpg"],
   },
   {
-    match: /\bmurcia\b/,
-    galeria: ["/images/destinos/murcia.jpg", "/images/destinos/cartagena-espana.jpg", "/images/destinos/alicante.jpg", "/images/destinos/valencia-artes.jpg", "/images/espana/barajas.jpg"],
+    match: /\b(?:murcia)\b/,
+    galeria: ["/images/destinos/murcia.jpg", "/images/destinos/cartagena-espana.jpg", "/images/destinos/alicante.jpg", "/images/destinos/valencia-artes.jpg", "/images/destinos/elche.jpg"],
   },
   {
-    match: /valencia|castellon/,
-    galeria: ["/images/destinos/valencia-artes.jpg", "/images/destinos/alicante.jpg", "/images/destinos/mallorca.jpg", "/images/destinos/murcia.jpg", "/images/espana/barajas.jpg"],
+    match: /\b(?:valencia|castellon)\b/,
+    galeria: ["/images/destinos/valencia-artes.jpg", "/images/destinos/alicante.jpg", "/images/destinos/mallorca.jpg", "/images/destinos/murcia.jpg", "/images/destinos/elche.jpg"],
   },
   {
-    match: /\b(granada|alhambra)\b/,
-    galeria: ["/images/destinos/granada.jpg", "/images/destinos/sevilla.jpg", "/images/destinos/malaga.jpg", "/images/destinos/jerez.jpg", "/images/espana/barajas.jpg"],
+    match: /\b(?:granada|alhambra)\b/,
+    galeria: ["/images/destinos/granada.jpg", "/images/destinos/sevilla.jpg", "/images/destinos/malaga.jpg", "/images/destinos/jerez.jpg", "/images/destinos/murcia.jpg"],
   },
   {
-    match: /\bjerez\b/,
-    galeria: ["/images/destinos/jerez.jpg", "/images/destinos/sevilla.jpg", "/images/destinos/malaga.jpg", "/images/destinos/granada.jpg", "/images/espana/barajas.jpg"],
+    match: /\b(?:jerez)\b/,
+    galeria: ["/images/destinos/jerez.jpg", "/images/destinos/sevilla.jpg", "/images/destinos/malaga.jpg", "/images/destinos/granada.jpg", "/images/destinos/murcia.jpg"],
   },
   {
     match: /^(?!.*cordoba[- ]argentina).*\b(sevilla|cordoba|cordoba[- ]espana|andalucia|cadiz|huelva)\b/,
-    galeria: ["/images/destinos/sevilla.jpg", "/images/destinos/granada.jpg", "/images/destinos/malaga.jpg", "/images/destinos/jerez.jpg", "/images/espana/barajas.jpg"],
+    galeria: ["/images/destinos/sevilla.jpg", "/images/destinos/granada.jpg", "/images/destinos/malaga.jpg", "/images/destinos/jerez.jpg", "/images/destinos/murcia.jpg"],
   },
   {
-    match: /\b(malaga|marbella|costa[- ]del[- ]sol|almeria)\b/,
-    galeria: ["/images/destinos/malaga.jpg", "/images/destinos/sevilla.jpg", "/images/destinos/granada.jpg", "/images/destinos/mallorca.jpg", "/images/espana/barajas.jpg"],
+    match: /\b(?:malaga|marbella|costa[- ]del[- ]sol|almeria)\b/,
+    galeria: ["/images/destinos/malaga.jpg", "/images/destinos/sevilla.jpg", "/images/destinos/granada.jpg", "/images/destinos/mallorca.jpg", "/images/destinos/murcia.jpg"],
   },
   {
-    match: /\b(mallorca|palma[- ]de[- ]mallorca|ibiza|menorca|baleares)\b/,
-    galeria: ["/images/destinos/mallorca.jpg", "/images/destinos/tenerife.jpg", "/images/destinos/valencia-artes.jpg", "/images/destinos/barcelona.webp", "/images/espana/barajas.jpg"],
+    match: /\b(?:mallorca|palma[- ]de[- ]mallorca|ibiza|menorca|baleares)\b/,
+    galeria: ["/images/destinos/mallorca.jpg", "/images/destinos/tenerife.jpg", "/images/destinos/valencia-artes.jpg", "/images/destinos/barcelona.webp", "/images/destinos/alicante.jpg"],
   },
   {
-    match: /\b(tenerife|gran[- ]canaria|canarias|teide)\b/,
-    galeria: ["/images/destinos/tenerife.jpg", "/images/destinos/mallorca.jpg", "/images/destinos/malaga.jpg", IMG_PLAYA_SOLEADA, "/images/espana/barajas.jpg"],
+    match: /\b(?:tenerife|gran[- ]canaria|canarias|teide)\b/,
+    galeria: ["/images/destinos/tenerife.jpg", "/images/destinos/mallorca.jpg", "/images/destinos/malaga.jpg", IMG_PLAYA_SOLEADA, IMG_PLAYA_ARENA_BLANCA],
   },
   {
-    match: /\bvitoria\b/,
-    galeria: ["/images/destinos/vitoria.jpg", "/images/destinos/bilbao-guggenheim.jpg", "/images/destinos/pamplona.jpg", "/images/destinos/zaragoza.jpg", "/images/espana/barajas.jpg"],
+    match: /\b(?:vitoria)\b/,
+    galeria: ["/images/destinos/vitoria.jpg", "/images/destinos/bilbao-guggenheim.jpg", "/images/destinos/pamplona.jpg", "/images/destinos/zaragoza.jpg", "/images/destinos/gijon.jpg"],
   },
   {
-    match: /\b(pamplona|navarra)\b/,
-    galeria: ["/images/destinos/pamplona.jpg", "/images/destinos/vitoria.jpg", "/images/destinos/bilbao-guggenheim.jpg", "/images/destinos/zaragoza.jpg", "/images/espana/barajas.jpg"],
+    match: /\b(?:pamplona|navarra)\b/,
+    galeria: ["/images/destinos/pamplona.jpg", "/images/destinos/vitoria.jpg", "/images/destinos/bilbao-guggenheim.jpg", "/images/destinos/zaragoza.jpg", "/images/destinos/gijon.jpg"],
   },
   {
     match: /^(?!.*(alcobendas|de[- ]los[- ]reyes)).*\b(bilbao|san[- ]sebastian|pais[- ]vasco|logrono|la[- ]rioja)\b/,
-    galeria: ["/images/destinos/bilbao-guggenheim.jpg", "/images/destinos/vitoria.jpg", "/images/destinos/pamplona.jpg", "/images/destinos/gijon.jpg", "/images/espana/barajas.jpg"],
+    galeria: ["/images/destinos/bilbao-guggenheim.jpg", "/images/destinos/vitoria.jpg", "/images/destinos/pamplona.jpg", "/images/destinos/gijon.jpg", "/images/destinos/zaragoza.jpg"],
   },
   {
-    match: /\bvigo\b/,
-    galeria: ["/images/destinos/vigo.jpg", "/images/destinos/a-coruna.jpg", "/images/destinos/gijon.jpg", "/images/destinos/oviedo.jpg", "/images/espana/barajas.jpg"],
+    match: /\b(?:vigo)\b/,
+    galeria: ["/images/destinos/vigo.jpg", "/images/destinos/a-coruna.jpg", "/images/destinos/gijon.jpg", "/images/destinos/oviedo.jpg", "/images/destinos/bilbao-guggenheim.jpg"],
   },
   {
-    match: /\b(a[- ]coruna|la[- ]coruna)\b/,
-    galeria: ["/images/destinos/a-coruna.jpg", "/images/destinos/vigo.jpg", "/images/destinos/gijon.jpg", "/images/destinos/oviedo.jpg", "/images/espana/barajas.jpg"],
+    match: /\b(?:a[- ]coruna|la[- ]coruna)\b/,
+    galeria: ["/images/destinos/a-coruna.jpg", "/images/destinos/vigo.jpg", "/images/destinos/gijon.jpg", "/images/destinos/oviedo.jpg", "/images/destinos/bilbao-guggenheim.jpg"],
   },
   {
-    match: /\bgijon\b/,
-    galeria: ["/images/destinos/gijon.jpg", "/images/destinos/oviedo.jpg", "/images/destinos/a-coruna.jpg", "/images/destinos/bilbao-guggenheim.jpg", "/images/espana/barajas.jpg"],
+    match: /\b(?:gijon)\b/,
+    galeria: ["/images/destinos/gijon.jpg", "/images/destinos/oviedo.jpg", "/images/destinos/a-coruna.jpg", "/images/destinos/bilbao-guggenheim.jpg", "/images/destinos/vigo.jpg"],
   },
   {
-    match: /\b(oviedo|asturias|santiago[- ]de[- ]compostela|galicia|santander)\b/,
-    galeria: ["/images/destinos/oviedo.jpg", "/images/destinos/gijon.jpg", "/images/destinos/a-coruna.jpg", "/images/destinos/vigo.jpg", "/images/espana/barajas.jpg"],
+    match: /\b(?:oviedo|asturias|santiago[- ]de[- ]compostela|galicia|santander)\b/,
+    galeria: ["/images/destinos/oviedo.jpg", "/images/destinos/gijon.jpg", "/images/destinos/a-coruna.jpg", "/images/destinos/vigo.jpg", "/images/destinos/bilbao-guggenheim.jpg"],
   },
   {
-    match: /\bzaragoza\b/,
-    galeria: ["/images/destinos/zaragoza.jpg", "/images/destinos/valladolid.jpg", "/images/destinos/pamplona.jpg", "/images/espana/palacio-real.jpg", "/images/espana/barajas.jpg"],
+    match: /\b(?:zaragoza)\b/,
+    galeria: ["/images/destinos/zaragoza.jpg", "/images/destinos/valladolid.jpg", "/images/destinos/pamplona.jpg", "/images/espana/palacio-real.jpg", "/images/destinos/vitoria.jpg"],
   },
   {
     match: /^(?!.*(cancun|chichen[- ]itza|cenote|riviera[- ]maya|yucatan|mexico)).*\b(salamanca|valladolid|valladolid[- ]espana|burgos|leon[- ]espana|leon[- ]zamora|badajoz|caceres|extremadura|albacete|ciudad[- ]real)\b/,
-    galeria: ["/images/destinos/valladolid.jpg", "/images/destinos/zaragoza.jpg", "/images/espana/palacio-real.jpg", "/images/espana/plaza-mayor.jpg", "/images/espana/barajas.jpg"],
+    galeria: ["/images/destinos/valladolid.jpg", "/images/destinos/zaragoza.jpg", "/images/espana/palacio-real.jpg", "/images/espana/plaza-mayor.jpg", "/images/destinos/vitoria.jpg"],
   },
   {
-    match: /madrid|toledo|segovia|avila|alcala[- ]de[- ]henares|aranjuez|guadalajara[- ]via[- ]madrid|barajas|\bespana\b/,
+    match: /\b(?:madrid|toledo|segovia|avila|alcala[- ]de[- ]henares|aranjuez|guadalajara[- ]via[- ]madrid|barajas|espana)\b/,
     galeria: [
       "/images/espana/gran-via-metropolis.jpg",
       "/images/espana/palacio-real.jpg",
@@ -417,7 +479,7 @@ const GALERIAS_ESPECIFICAS: Array<{
   // 4. TURQUÍA, MEDIO ORIENTE, EGIPTO, MARRUECOS, ASIA Y EXÓTICOS
   // =========================================================================
   {
-    match: /estambul|capadocia|pamukkale|efeso|turquia/,
+    match: /\b(?:estambul|capadocia|pamukkale|efeso|turquia)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?w=1200&q=85",
       "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=85",
@@ -427,7 +489,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /dubai|abu[- ]dhabi|abu[- ]dabi|emiratos/,
+    match: /\b(?:dubai|abu[- ]dhabi|abu[- ]dabi|emiratos)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=85",
       "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1200&q=85",
@@ -437,7 +499,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /marruecos|marrakech|sahara|fez|casablanca|rabat|tanger/,
+    match: /\b(?:marruecos|marrakech|sahara|fez|casablanca|rabat|tanger)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=1200&q=85",
       "https://images.unsplash.com/photo-1539650116574-8efeb43e2750?w=1200&q=85",
@@ -447,7 +509,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /el[- ]cairo|egipto|\bnilo\b|luxor|piramides|asuan/,
+    match: /\b(?:el[- ]cairo|egipto|nilo|luxor|piramides|asuan)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1539650116574-8efeb43e2750?w=1200&q=85",
       "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?w=1200&q=85",
@@ -457,7 +519,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /jerusalen|tel[- ]aviv|tierra[- ]santa|israel|petra|jordania/,
+    match: /\b(?:jerusalen|tel[- ]aviv|tierra[- ]santa|israel|petra|jordania)\b/,
     galeria: [
       "/images/destinos/jerusalen.jpg",
       "https://images.unsplash.com/photo-1539650116574-8efeb43e2750?w=1200&q=85",
@@ -467,7 +529,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /tokio|kioto|osaka|japon|seul|corea|pekin|beijing|shanghai|china/,
+    match: /\b(?:tokio|kioto|osaka|japon|seul|corea|pekin|beijing|shanghai|china)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=1200&q=85",
       "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&q=85",
@@ -477,7 +539,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /bangkok|phuket|phi[- ]phi|tailandia|\bbali\b|indonesia|singapur|maldivas|india|taj[- ]mahal/,
+    match: /\b(?:bangkok|phuket|phi[- ]phi|tailandia|bali|indonesia|singapur|maldivas|india|taj[- ]mahal)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1528181304800-259b08848526?w=1200&q=85",
       "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=1200&q=85",
@@ -491,7 +553,7 @@ const GALERIAS_ESPECIFICAS: Array<{
   // 5. ESTADOS UNIDOS Y CANADÁ (Granularidad por Ciudad)
   // =========================================================================
   {
-    match: /orlando|disney[- ]world|magic[- ]kingdom|universal[- ]studios/,
+    match: /\b(?:orlando|disney[- ]world|magic[- ]kingdom|universal[- ]studios)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1597466599360-3b9775841aec?w=1200&q=85",
       "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=1200&q=85",
@@ -501,7 +563,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /miami|fort[- ]lauderdale|west[- ]palm[- ]beach|tampa|jacksonville|florida/,
+    match: /\b(?:miami|fort[- ]lauderdale|west[- ]palm[- ]beach|tampa|jacksonville|florida)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=1200&q=85",
       "https://images.unsplash.com/photo-1506966953602-c20cc11f75e3?w=1200&q=85",
@@ -511,7 +573,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /nueva[- ]york|new[- ]york|manhattan|newark|paterson|nueva[- ]jersey|boston|hartford|stamford|connecticut|filadelfia|washington|baltimore|chicago|detroit|mineapolis|atlanta|charlotte/,
+    match: /\b(?:nueva[- ]york|new[- ]york|manhattan|newark|paterson|nueva[- ]jersey|boston|hartford|stamford|connecticut|filadelfia|washington|baltimore|chicago|detroit|mineapolis|atlanta|charlotte)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=1200&q=85",
       "https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1200&q=85",
@@ -521,7 +583,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /las[- ]vegas|gran[- ]canon|phoenix|denver|salt[- ]lake/,
+    match: /\b(?:las[- ]vegas|gran[- ]canon|phoenix|denver|salt[- ]lake)\b/,
     galeria: [
       "/images/destinos/las-vegas.jpg",
       "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1200&q=85",
@@ -531,7 +593,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /los[- ]angeles|san[- ]francisco|san[- ]diego|california|hollywood|seattle|portland|houston|dallas|austin|san[- ]antonio|estados[- ]unidos/,
+    match: /\b(?:los[- ]angeles|san[- ]francisco|san[- ]diego|california|hollywood|seattle|portland|houston|dallas|austin|san[- ]antonio|estados[- ]unidos)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1200&q=85",
       "https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da?w=1200&q=85",
@@ -541,7 +603,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /toronto|montreal|vancouver|calgary|ottawa|niagara|canada/,
+    match: /\b(?:toronto|montreal|vancouver|calgary|ottawa|niagara|canada)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=1200&q=85",
       "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=1200&q=85",
@@ -551,11 +613,22 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
 
+  // 8D. Selva Peruana (va antes del Caribe: 'San Martín' es una región de Tarapoto) (Tarapoto, Sauce, Laguna Azul, Ahuashiyacu, Lamas, Moyobamba, Tingo María)
+  {
+    match: /\b(?:tarapoto|laguna[- ]azul|ahuashiyacu|lamas|moyobamba|rioja[- ]peru|nueva[- ]cajamarca|tingo[- ]maria|alto[- ]mayo)\b/,
+    galeria: [
+      "https://images.unsplash.com/photo-1620658927695-c33df6fb8130?w=1200&q=85",
+      "https://images.unsplash.com/photo-1699575678956-aefa714b67f0?w=1200&q=85",
+      "/images/destinos/oxapampa-peru.jpg",
+      IMG_RESORT_PISCINA_MAR,
+      IMG_HOTEL_LUJO_PISCINA,
+    ],
+  },
   // =========================================================================
   // 6. MÉXICO, CARIBE Y CENTROAMÉRICA (Granularidad por Destino)
   // =========================================================================
   {
-    match: /^(?!.*(cancun|riviera[- ]maya|tulum)).*(ciudad[- ]de[- ]mexico|\bcdmx\b|guadalajara|monterrey|guadalupe|teotihuacan|taxco|cuernavaca)/,
+    match: /^(?!.*(cancun|riviera[- ]maya|tulum)).*\b(?:ciudad[- ]de[- ]mexico|cdmx|guadalajara|monterrey|guadalupe|teotihuacan|taxco|cuernavaca)\b/,
     galeria: [
       "/images/destinos/ciudad-de-mexico.jpg",
       "https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?w=1200&q=85",
@@ -565,7 +638,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /cancun|riviera[- ]maya|playa[- ]del[- ]carmen|tulum|cozumel|chichen[- ]itza|xcaret|los[- ]cabos|puerto[- ]vallarta|\bmexico\b/,
+    match: /\b(?:cancun|riviera[- ]maya|playa[- ]del[- ]carmen|tulum|cozumel|chichen[- ]itza|xcaret|los[- ]cabos|puerto[- ]vallarta|mexico)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=1200&q=85",
       "https://images.unsplash.com/photo-1552074284-5e88ef1aef18?w=1200&q=85",
@@ -575,7 +648,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /punta[- ]cana|bavaro|bayahibe|la[- ]romana|santo[- ]domingo|puerto[- ]plata|samana|cayo[- ]levantado|isla[- ]saona|republica[- ]dominicana/,
+    match: /\b(?:punta[- ]cana|bavaro|bayahibe|la[- ]romana|santo[- ]domingo|puerto[- ]plata|samana|cayo[- ]levantado|isla[- ]saona|republica[- ]dominicana)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=85",
       "https://images.unsplash.com/photo-1580541631950-7282082b53ce?w=1200&q=85",
@@ -585,7 +658,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /la[- ]habana|varadero|cayo[- ]santa[- ]maria|cayo[- ]coco|holguin|trinidad[- ]cuba|\bcuba\b/,
+    match: /\b(?:la[- ]habana|varadero|cayo[- ]santa[- ]maria|cayo[- ]coco|holguin|trinidad[- ]cuba|cuba)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1500759285222-a95626b934cb?w=1200&q=85",
       IMG_PLAYA_SOLEADA,
@@ -595,7 +668,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /san[- ]andres|johnny[- ]cay/,
+    match: /\b(?:san[- ]andres|johnny[- ]cay)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=1200&q=85",
       IMG_MAR_TURQUESA_BOTE,
@@ -605,7 +678,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /aruba|curazao|curacao|bonaire|bahamas|nassau|jamaica|montego[- ]bay|puerto[- ]rico|san[- ]juan|san[- ]martin|roatan|costa[- ]rica|guanacaste|san[- ]jose|guatemala|antigua[- ]atitlan|tikal|san[- ]salvador|barbados|isla[- ]margarita/,
+    match: /\b(?:aruba|curazao|curacao|bonaire|bahamas|nassau|jamaica|montego[- ]bay|puerto[- ]rico|san[- ]juan|san[- ]martin(?![- ]de[- ]porres)|roatan|costa[- ]rica|guanacaste|san[- ]jose|guatemala|antigua[- ]atitlan|tikal|san[- ]salvador|barbados|isla[- ]margarita)\b/,
     galeria: [
       IMG_MAR_TURQUESA_BOTE,
       "https://images.unsplash.com/photo-1580541631950-7282082b53ce?w=1200&q=85",
@@ -615,7 +688,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /panama|playa[- ]blanca[- ]panama|san[- ]blas|bocas[- ]del[- ]toro/,
+    match: /\b(?:panama|playa[- ]blanca[- ]panama|san[- ]blas|bocas[- ]del[- ]toro)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1578894381163-e72c17f2d45f?w=1200&q=85",
       "/images/paquetes/panama-medellin/hero-panama.jpg",
@@ -629,7 +702,7 @@ const GALERIAS_ESPECIFICAS: Array<{
   // 7. SUDAMÉRICA (Granularidad por Ciudad)
   // =========================================================================
   {
-    match: /cartagena|baru|islas[- ]del[- ]rosario|santa[- ]marta|tayrona|barranquilla/,
+    match: /\b(?:cartagena|baru|islas[- ]del[- ]rosario|santa[- ]marta|tayrona|barranquilla)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1583531352515-8884af319dc1?w=1200&q=85",
       "https://images.unsplash.com/photo-1536708880921-03a9306ec47d?w=1200&q=85",
@@ -639,7 +712,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /medellin|guatape|comuna[- ]13|penol/,
+    match: /\b(?:medellin|guatape|comuna[- ]13|penol)\b/,
     galeria: [
       "/images/paquetes/panama-medellin/medellin-skyline.png",
       "/images/paquetes/panama-medellin/chiva-medellin.png",
@@ -649,7 +722,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /bogota|zipaquira|monserrate|\bcali\b|pereira|salento|eje[- ]cafetero|bucaramanga|caracas|venezuela|\bcolombia\b/,
+    match: /\b(?:bogota|zipaquira|monserrate|cali|pereira|salento|eje[- ]cafetero|bucaramanga|caracas|venezuela|colombia)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1568632234157-ce7aecd03d0d?w=1200&q=85",
       "https://images.unsplash.com/photo-1536708880921-03a9306ec47d?w=1200&q=85",
@@ -659,7 +732,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /bariloche/,
+    match: /\b(?:bariloche)\b/,
     galeria: [
       "/images/destinos/bariloche.jpg",
       "/images/destinos/perito-moreno.jpg",
@@ -669,7 +742,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /calafate|perito[- ]moreno|glaciar|patagonia/,
+    match: /\b(?:calafate|perito[- ]moreno|glaciar|patagonia)\b/,
     galeria: [
       "/images/destinos/perito-moreno.jpg",
       "/images/destinos/bariloche.jpg",
@@ -679,7 +752,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /ushuaia|fin[- ]del[- ]mundo/,
+    match: /\b(?:ushuaia|fin[- ]del[- ]mundo)\b/,
     galeria: [
       "/images/destinos/ushuaia.jpg",
       "/images/destinos/perito-moreno.jpg",
@@ -689,7 +762,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /buenos[- ]aires|cordoba[- ]argentina|rosario|mendoza|salta|argentina/,
+    match: /\b(?:buenos[- ]aires|cordoba[- ]argentina|rosario|mendoza|salta|argentina)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=1200&q=85",
       "https://images.unsplash.com/photo-1612294037637-ec328d0e075e?w=1200&q=85",
@@ -699,7 +772,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /iguazu|foz[- ]de[- ]iguazu/,
+    match: /\b(?:iguazu|foz[- ]de[- ]iguazu)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1706587531457-8c574be27a08?w=1200&q=85",
       "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85",
@@ -710,7 +783,7 @@ const GALERIAS_ESPECIFICAS: Array<{
   },
   {
     // Playas y destinos turísticos de Brasil evaluados ANTES de São Paulo corporativo (para que "Morro de São Paulo" reciba playas)
-    match: /rio[- ]de[- ]janeiro|buzios|arraial|florianopolis|camboriu|maceio|maragogi|salvador[- ]de[- ]bahia|morro[- ]sao[- ]paulo|morro[- ]de[- ]sao[- ]paulo|praia[- ]do[- ]forte|copacabana|natal|pipa|recife|porto[- ]de[- ]galinhas|fortaleza|jericoacoara|fernando[- ]de[- ]noronha|gramado|canela|\bbrasil\b/,
+    match: /\b(?:rio[- ]de[- ]janeiro|buzios|arraial|florianopolis|camboriu|maceio|maragogi|salvador[- ]de[- ]bahia|morro[- ]sao[- ]paulo|morro[- ]de[- ]sao[- ]paulo|praia[- ]do[- ]forte|copacabana|natal|pipa|recife|porto[- ]de[- ]galinhas|fortaleza|jericoacoara|fernando[- ]de[- ]noronha|gramado|canela|brasil)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85",
       "https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?w=1200&q=85",
@@ -720,7 +793,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /sao[- ]paulo|brasilia/,
+    match: /\b(?:sao[- ]paulo|brasilia)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1543059080-f9b1272213d5?w=1200&q=85",
       "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=85",
@@ -730,7 +803,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /santiago|vina[- ]del[- ]mar|valparaiso|farellones|antofagasta|iquique|calama|atacama|torres[- ]del[- ]paine|isla[- ]de[- ]pascua|rapa[- ]nui|concepcion|puerto[- ]montt|pucon|\bchile\b/,
+    match: /\b(?:santiago|vina[- ]del[- ]mar|valparaiso|farellones|antofagasta|iquique|calama|atacama|torres[- ]del[- ]paine|isla[- ]de[- ]pascua|rapa[- ]nui|concepcion|puerto[- ]montt|pucon|chile)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1557974040-3bec341da09b?w=1200&q=85",
       "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&q=85",
@@ -740,7 +813,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /punta[- ]del[- ]este/,
+    match: /\b(?:punta[- ]del[- ]este)\b/,
     galeria: [
       "/images/destinos/punta-del-este.jpg",
       "/images/destinos/montevideo.jpg",
@@ -750,7 +823,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /montevideo|colonia|uruguay|asuncion|paraguay/,
+    match: /\b(?:montevideo|colonia|uruguay|asuncion|paraguay)\b/,
     galeria: [
       "/images/destinos/montevideo.jpg",
       "/images/destinos/punta-del-este.jpg",
@@ -760,7 +833,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /galapagos/,
+    match: /\b(?:galapagos)\b/,
     galeria: [
       "/images/destinos/galapagos.jpg",
       "/images/destinos/quito.jpg",
@@ -770,7 +843,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /quito|guayaquil|cuenca|ecuador|mitad[- ]del[- ]mundo/,
+    match: /\b(?:quito|guayaquil|cuenca|ecuador|mitad[- ]del[- ]mundo)\b/,
     galeria: [
       "/images/destinos/quito.jpg",
       "/images/destinos/galapagos.jpg",
@@ -780,7 +853,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /uyuni|la[- ]paz|santa[- ]cruz|cochabamba|bolivia/,
+    match: /\b(?:uyuni|la[- ]paz|santa[- ]cruz|cochabamba|bolivia)\b/,
     galeria: [
       "/images/destinos/salar-de-uyuni.jpg",
       "https://images.unsplash.com/photo-1522409994346-2682217b9a3e?w=1200&q=85",
@@ -795,7 +868,7 @@ const GALERIAS_ESPECIFICAS: Array<{
   // =========================================================================
   // 8A. Cusco, Machu Picchu, Valle Sagrado, Montaña 7 Colores, Laguna Humantay (evaluado primero en Perú para circuitos combinados)
   {
-    match: /cusco|machu[- ]picchu|valle[- ]sagrado|vinicunca|7[- ]colores|siete[- ]colores|humantay|maras|moray|ollantaytambo|aguas[- ]calientes|choquequirao|camino[- ]inca|salkantay|sicuani|quillabamba/,
+    match: /\b(?:cusco|machu[- ]picchu|valle[- ]sagrado|vinicunca|7[- ]colores|siete[- ]colores|humantay|maras|moray|ollantaytambo|aguas[- ]calientes|choquequirao|camino[- ]inca|salkantay|sicuani|quillabamba)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=85",
       "https://images.unsplash.com/photo-1545330785-15356daae141?w=1200&q=85",
@@ -806,7 +879,7 @@ const GALERIAS_ESPECIFICAS: Array<{
   },
   // 8B. Playas del Norte del Perú (Punta Sal, Máncora, Vichayito, Zorritos, Tumbes, Piura, Talara)
   {
-    match: /punta[- ]sal|decameron[- ]punta[- ]sal|zorritos|tumbes|manglares/,
+    match: /\b(?:punta[- ]sal|decameron[- ]punta[- ]sal|zorritos|tumbes|manglares)\b/,
     galeria: [
       IMG_RESORT_PISCINA_MAR,
       IMG_PLAYA_SOLEADA,
@@ -816,7 +889,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /mancora|vichayito|pocitas|el[- ]nuro|organos|cabo[- ]blanco|talara|piura|colan|catacaos|sechura|sullana/,
+    match: /\b(?:mancora|vichayito|pocitas|el[- ]nuro|organos|cabo[- ]blanco|talara|piura|colan|catacaos|sechura|sullana)\b/,
     galeria: [
       IMG_PLAYA_SOLEADA,
       IMG_RESORT_PISCINA_MAR,
@@ -827,7 +900,7 @@ const GALERIAS_ESPECIFICAS: Array<{
   },
   // 8C. Costa Sur Cercana (Paracas, Islas Ballestas, Ica, Huacachina, Nazca, Pisco, Chincha, Lunahuaná)
   {
-    match: /paracas|ballestas|huacachina|\bica\b|nazca|pisco|chincha|lunahuana|canete/,
+    match: /\b(?:paracas|ballestas|huacachina|ica|nazca|pisco|chincha|lunahuana|canete)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1723134087756-3fdd46625a84?w=1200&q=85",
       IMG_PLAYA_SOLEADA,
@@ -836,20 +909,9 @@ const GALERIAS_ESPECIFICAS: Array<{
       IMG_HOTEL_LUJO_PISCINA,
     ],
   },
-  // 8D. Selva Peruana (Tarapoto, Sauce, Laguna Azul, Ahuashiyacu, Lamas, Moyobamba, Tingo María)
-  {
-    match: /tarapoto|laguna[- ]azul|ahuashiyacu|\blamas\b|moyobamba|rioja[- ]peru|nueva[- ]cajamarca|tingo[- ]maria|alto[- ]mayo/,
-    galeria: [
-      "https://images.unsplash.com/photo-1620658927695-c33df6fb8130?w=1200&q=85",
-      "https://images.unsplash.com/photo-1699575678956-aefa714b67f0?w=1200&q=85",
-      "/images/destinos/oxapampa-peru.jpg",
-      IMG_RESORT_PISCINA_MAR,
-      IMG_HOTEL_LUJO_PISCINA,
-    ],
-  },
   // 8E. Iquitos, Río Amazonas, Puerto Maldonado, Tambopata, Pucallpa
   {
-    match: /iquitos|amazonas|pacaya[- ]samiria|puerto[- ]maldonado|tambopata|sandoval|pucallpa/,
+    match: /\b(?:iquitos|amazonas|pacaya[- ]samiria|puerto[- ]maldonado|tambopata|sandoval|pucallpa)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1699575678956-aefa714b67f0?w=1200&q=85",
       "https://images.unsplash.com/photo-1620658927695-c33df6fb8130?w=1200&q=85",
@@ -860,7 +922,7 @@ const GALERIAS_ESPECIFICAS: Array<{
   },
   // 8F. Selva Central (Oxapampa, Pozuzo, Villa Rica, Chanchamayo, La Merced, Satipo)
   {
-    match: /oxapampa|pozuzo|villa[- ]rica|chanchamayo|la[- ]merced|satipo|selva[- ]central/,
+    match: /\b(?:oxapampa|pozuzo|villa[- ]rica|chanchamayo|la[- ]merced|satipo|selva[- ]central)\b/,
     galeria: [
       "/images/destinos/oxapampa-peru.jpg",
       "https://images.unsplash.com/photo-1620658927695-c33df6fb8130?w=1200&q=85",
@@ -871,7 +933,7 @@ const GALERIAS_ESPECIFICAS: Array<{
   },
   // 8G. Chachapoyas, Kuélap, Gocta, Jaén
   {
-    match: /chachapoyas|kuelap|gocta|jaen/,
+    match: /\b(?:chachapoyas|kuelap|gocta|jaen)\b/,
     galeria: [
       "/images/destinos/chachapoyas-kuelap.jpg",
       "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
@@ -882,7 +944,7 @@ const GALERIAS_ESPECIFICAS: Array<{
   },
   // 8H. Arequipa y Cañón del Colca
   {
-    match: /arequipa|colca|perumin|chivay|misti|santa[- ]catalina|sillar|camana|mollendo|moquegua|\bilo\b|tacna/,
+    match: /\b(?:arequipa|colca|perumin|chivay|misti|santa[- ]catalina|sillar|camana|mollendo|moquegua|ilo|tacna)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1787929759288-1b4aa7af30f6?w=1200&q=85",
       "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
@@ -893,7 +955,7 @@ const GALERIAS_ESPECIFICAS: Array<{
   },
   // 8I. Puno, Juliaca y Lago Titicaca
   {
-    match: /\bpuno\b|juliaca|titicaca|\buros\b|taquile|sillustani/,
+    match: /\b(?:puno|juliaca|titicaca|uros|taquile|sillustani)\b/,
     galeria: [
       "https://images.unsplash.com/photo-1522409994346-2682217b9a3e?w=1200&q=85",
       "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
@@ -904,7 +966,7 @@ const GALERIAS_ESPECIFICAS: Array<{
   },
   // 8J. Huaraz, Laguna 69, Pastoruri y Cordillera Blanca
   {
-    match: /huaraz|laguna[- ]69|pastoruri|llanganuco|chavin|cordillera[- ]blanca|ancash|chimbote/,
+    match: /\b(?:huaraz|laguna[- ]69|pastoruri|llanganuco|chavin|cordillera[- ]blanca|ancash|chimbote)\b/,
     galeria: [
       "/images/destinos/huaraz-laguna69.jpg",
       "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
@@ -915,7 +977,7 @@ const GALERIAS_ESPECIFICAS: Array<{
   },
   // 8K. Trujillo, Huanchaco, Chan Chan
   {
-    match: /trujillo|huanchaco|chan[- ]chan|pacasmayo|chepen|moche/,
+    match: /\b(?:trujillo|huanchaco|chan[- ]chan|pacasmayo|chepen|moche)\b/,
     galeria: [
       "/images/destinos/trujillo-peru.jpg",
       "/images/destinos/chiclayo-peru.jpg",
@@ -926,7 +988,7 @@ const GALERIAS_ESPECIFICAS: Array<{
   },
   // 8L. Chiclayo, Sipán, Lambayeque
   {
-    match: /chiclayo|sipan|lambayeque|pimentel|ferrenafe/,
+    match: /\b(?:chiclayo|sipan|lambayeque|pimentel|ferrenafe)\b/,
     galeria: [
       "/images/destinos/chiclayo-peru.jpg",
       "/images/destinos/trujillo-peru.jpg",
@@ -937,7 +999,7 @@ const GALERIAS_ESPECIFICAS: Array<{
   },
   // 8M. Cajamarca
   {
-    match: /cajamarca|banos[- ]del[- ]inca|cumbemayo/,
+    match: /\b(?:cajamarca|banos[- ]del[- ]inca|cumbemayo)\b/,
     galeria: [
       "/images/destinos/cajamarca-peru.jpg",
       "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
@@ -948,7 +1010,7 @@ const GALERIAS_ESPECIFICAS: Array<{
   },
   // 8N. Ayacucho, Aguas Turquesas de Millpu, Huancayo, Jauja, Tarma, Huánuco, Abancay, Andahuaylas
   {
-    match: /ayacucho|millpu|huancayo|jauja|tarma|huanuco|abancay|andahuaylas/,
+    match: /\b(?:ayacucho|millpu|huancayo|jauja|tarma|huanuco|abancay|andahuaylas)\b/,
     galeria: [
       "/images/destinos/ayacucho-peru.jpg",
       "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=1200&q=85",
@@ -959,7 +1021,7 @@ const GALERIAS_ESPECIFICAS: Array<{
   },
   // 8O. Lima, Callao, Caral, Chancay, Huacho, Barranca (solo cuando el tour es específicamente por Lima/Caral)
   {
-    match: /miraflores|barranco|caral|chancay|huacho|barranca|pachacamac|cieneguilla|chosica|city[- ]tour[- ]lima/,
+    match: /\b(?:miraflores|barranco|caral|chancay|huacho|barranca|pachacamac|cieneguilla|chosica|san[- ]martin[- ]de[- ]porres|city[- ]tour[- ]lima)\b/,
     galeria: [
       "/images/destinos/lima-plaza-mayor.jpg",
       "/images/destinos/lima-costa-verde.jpg",
@@ -973,7 +1035,7 @@ const GALERIAS_ESPECIFICAS: Array<{
   // 9. SEGMENTOS B2B / GRUPOS (cuando no matchearon un destino específico arriba)
   // =========================================================================
   {
-    match: /corporativ|empresa|ejecutiv|negocio|feria|congreso|convencion|ruc/,
+    match: /\b(?:corporativ|empresa|ejecutiv|negocio|feria|congreso|convencion|ruc\b)/,
     galeria: [
       IMG_OFICINA_CORPORATIVA,
       IMG_EDIFICIOS_FINANCIEROS,
@@ -983,7 +1045,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /colegio|escolar|promocion[- ]escolar|graduacion|universidad|instituto|estudiante|deportiv|futbol|voley|basquet|natacion|atletismo|karate|taekwondo|baile|danza|delegacion|apafa|comites[- ]de[- ]aula/,
+    match: /\b(?:colegio|escolar|promocion[- ]escolar|graduacion|universidad|instituto|estudiante|deportiv|futbol|voley|basquet|natacion|atletismo|karate|taekwondo|baile|danza|delegacion|apafa|comites[- ]de[- ]aula)/,
     galeria: [
       IMG_GRUPO_ESTUDIANTES,
       IMG_FAMILIA_VIAJE,
@@ -993,7 +1055,7 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
   {
-    match: /luna[- ]de[- ]miel|novios|boda|pareja|romantic|quinceaner|15[- ]anos/,
+    match: /\b(?:luna[- ]de[- ]miel|novios|boda|pareja|romantic|quinceaner|15[- ]anos)/,
     galeria: [
       IMG_PAREJA_ROMANTICA,
       IMG_RESORT_CARIBE_1,
@@ -1003,6 +1065,30 @@ const GALERIAS_ESPECIFICAS: Array<{
     ],
   },
 ];
+
+const INICIO_EUROPA = GALERIAS_ESPECIFICAS.findIndex((e) => e.eu);
+
+// "Roma-Milán" o "conexión París/Lyon": entre ciudades de Europa gana la nombrada primero.
+function galeriaEuropaPrimeraCiudad(t: string): GaleriaDestino | null {
+  let mejor: { pos: number; galeria: GaleriaDestino } | null = null;
+  for (const e of GALERIAS_ESPECIFICAS) {
+    if (!e.eu || e.pais) continue;
+    const m = e.match.exec(t);
+    if (m && (mejor === null || m.index < mejor.pos)) mejor = { pos: m.index, galeria: e.galeria };
+  }
+  return mejor ? mejor.galeria : null;
+}
+
+function buscarGaleria(texto: string): GaleriaDestino | null {
+  for (let i = 0; i < GALERIAS_ESPECIFICAS.length; i++) {
+    if (i === INICIO_EUROPA) {
+      const europa = galeriaEuropaPrimeraCiudad(texto);
+      if (europa) return europa;
+    }
+    if (GALERIAS_ESPECIFICAS[i].match.test(texto)) return GALERIAS_ESPECIFICAS[i].galeria;
+  }
+  return null;
+}
 
 // ── Fallbacks por Región (sin mezclar ciudades incompatibles) ──
 const FALLBACK_POR_REGION: Record<string, GaleriaDestino> = {
@@ -1163,11 +1249,8 @@ export function obtenerGaleriaPorTexto(
     .replace(/\blima[- ](?=madrid|barcelona|roma|milan|paris|amsterdam|miami|nueva-york|orlando|cancun|punta-cana|panama|bogota|medellin|cartagena|buenos-aires|santiago|sao-paulo|cusco)/g, "")
     .replace(/\b(aeropuerto[- ]jorge[- ]chavez|jorge[- ]chavez|los[- ]olivos)\b/g, "");
 
-  for (const entry of GALERIAS_ESPECIFICAS) {
-    if (entry.match.test(tSinOrigen)) {
-      return entry.galeria;
-    }
-  }
+  const hallada = buscarGaleria(tSinOrigen) ?? (tSinOrigen !== t ? buscarGaleria(t) : null);
+  if (hallada) return hallada;
 
   if (regionFallback && FALLBACK_POR_REGION[regionFallback]) {
     return FALLBACK_POR_REGION[regionFallback];
