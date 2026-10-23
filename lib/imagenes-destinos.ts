@@ -1258,3 +1258,29 @@ export function obtenerGaleriaPorTexto(
 
   return FALLBACK_POR_REGION.default;
 }
+
+const NEUTRALES_SIN_REPETIR = [
+  IMG_AVION_ALA,
+  IMG_AEROPUERTO_INTERNACIONAL,
+  IMG_VIAJERO_MALETA,
+  IMG_FAMILIA_VIAJE,
+  IMG_PASAPORTE_VIAJE,
+];
+
+/**
+ * Evita repetir la misma foto entre vitrina, tarjetas y banner: si ya se usó, devuelve una neutral de aviación.
+ * No saca fotos de la galería de la ciudad porque traen ciudades vecinas bajo textos como "Boleto de Lima a Alicante".
+ */
+export function imagenSinRepetir(img: string, usadas: Set<string>): string {
+  if (img && !usadas.has(img)) {
+    usadas.add(img);
+    return img;
+  }
+  for (const candidata of NEUTRALES_SIN_REPETIR) {
+    if (!usadas.has(candidata)) {
+      usadas.add(candidata);
+      return candidata;
+    }
+  }
+  return img;
+}
