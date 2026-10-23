@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
+import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import Link from "next/link";
 import AirlineLandingTemplate from "@/components/AirlineLandingTemplate";
 import { obtenerConfigAgenciaOficial } from "@/lib/catalogo-agencia-oficial";
 import { AGENCIAS_LOCALES_SEO } from "@/lib/catalogo-agencias-locales";
 
 export const metadata: Metadata = {
-  title: "Agencia de Viajes Oficial en Lima y Perú (RUC 20614914239) | Cityland Travel",
-  description:
-    "Conoce Cityland Travel E.I.R.L., agencia de viajes formal en Lima Norte (Los Olivos) con atención presencial y en todo el Perú para vuelos, paquetes turísticos, cruceros y visas.",
+  title: optimizarMetaTitleSEO("Agencia de Viajes Oficial en Lima y Perú (RUC 20614914239) | Cityland Travel"),
+  description: optimizarMetaDescriptionSEO("Conoce Cityland Travel E.I.R.L., agencia de viajes formal en Lima Norte (Los Olivos) con atención presencial y en todo el Perú para vuelos, paquetes turísticos, cruceros y visas."),
   alternates: {
     canonical: "https://citylandtravel.com/agencia",
   },

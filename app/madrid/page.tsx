@@ -4,15 +4,12 @@ import MadridMigratorioTemplate, {
 } from "@/components/MadridMigratorioTemplate";
 import { INDICE_MADRID_10K } from "@/lib/catalogo-madrid-10k";
 import {
-  URL_BASE_SEO,
-  SCHEMA_ORGANIZACION_CITYLAND,
+  URL_BASE_SEO, optimizarMetaTitleSEO, optimizarMetaDescriptionSEO
 } from "@/lib/seo-arquitectura";
 
 export const metadata: Metadata = {
-  title:
-    "Paquetes Migratorios a Madrid desde Lima ($699 · $799 · $899 · $999) | Cityland Travel",
-  description:
-    "Especialistas en Perú en Paquetes Migratorios a Madrid-Barajas (T4/T1) desde $699 USD (separa con $350): Pasaje de avión de ida + Boleto de regreso reservado para Migraciones + Reserva de Hotel + Seguro Schengen 30.000€ + Check-in 24h antes.",
+  title: optimizarMetaTitleSEO("Paquetes Migratorios a Madrid desde Lima ($699 · $799 · $899 · $999) | Cityland Travel"),
+  description: optimizarMetaDescriptionSEO("Especialistas en Perú en Paquetes Migratorios a Madrid-Barajas (T4/T1) desde $699 USD (separa con $350): Pasaje de avión de ida + Boleto de regreso reservado para Migraciones + Reserva de Hotel + Seguro Schengen 30.000€ + Check-in 24h antes."),
   keywords: [
     "paquete migratorio a madrid desde lima",
     "paquete migratorio madrid 699",
@@ -198,7 +195,15 @@ export default function MadridHubPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(SCHEMA_ORGANIZACION_CITYLAND),
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Inicio", item: URL_BASE_SEO },
+              { "@type": "ListItem", position: 2, name: "España", item: `${URL_BASE_SEO}/espana` },
+              { "@type": "ListItem", position: 3, name: "Especialistas Madrid", item: `${URL_BASE_SEO}/madrid` },
+            ],
+          }),
         }}
       />
       <MadridMigratorioTemplate datos={DATOS_HUB_MADRID} />

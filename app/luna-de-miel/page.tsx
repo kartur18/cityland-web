@@ -1,13 +1,12 @@
 import { Metadata } from "next";
+import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import AirlineLandingTemplate, {
   ConfiguracionLandingAerolinea,
 } from "@/components/AirlineLandingTemplate";
 
 export const metadata: Metadata = {
-  title:
-    "Paquetes de Luna de Miel, Bodas en la Playa y Viajes de 15 Años desde Lima | Cityland Travel",
-  description:
-    "Paquetes románticos de Luna de Miel Todo Incluido en Resorts 5★ Solo Adultos (Punta Cana, Cancún, Cartagena y Santorini) y Viajes de Quinceañeras a Disney Orlando, Crucero y Europa. Separa con el 50% en Cityland Travel (RUC 20614914239).",
+  title: optimizarMetaTitleSEO("Paquetes de Luna de Miel, Bodas en la Playa y Viajes de 15 Años desde Lima | Cityland Travel"),
+  description: optimizarMetaDescriptionSEO("Paquetes románticos de Luna de Miel Todo Incluido en Resorts 5★ Solo Adultos (Punta Cana, Cancún, Cartagena y Santorini) y Viajes de Quinceañeras a Disney Orlando, Crucero y Europa. Separa con el 50% en Cityland Travel (RUC 20614914239)."),
   keywords: [
     "paquetes de luna de miel todo incluido desde lima",
     "viajes para parejas resorts solo adultos punta cana cancun",

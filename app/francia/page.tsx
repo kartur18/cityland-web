@@ -9,15 +9,12 @@ import FlagIcon from "@/components/icons/FlagIcon";
 import { buildWhatsAppHref } from "@/components/constantes";
 import {
   URL_BASE_SEO,
-  SCHEMA_ORGANIZACION_CITYLAND,
-  construirSchemaLandingSEO,
+  construirSchemaLandingSEO, optimizarMetaTitleSEO, optimizarMetaDescriptionSEO
 } from "@/lib/seo-arquitectura";
 
 export const metadata: Metadata = {
-  title:
-    "Paquetes Migratorios a Francia 2026 (París, Lyon, Marsella, Niza) desde $699 USD | Cityland Travel",
-  description:
-    "Viaja desde Perú a París, Lyon, Marsella, Niza, Toulouse y Burdeos con nuestro Paquete Migratorio desde $699 USD. Incluye pasaje de ida + boleto de regreso reservado para Migraciones + hotel + seguro Schengen 30.000€ + check-in 24h antes.",
+  title: optimizarMetaTitleSEO("Paquetes Migratorios a Francia 2026 (París, Lyon, Marsella, Niza) desde $699 USD | Cityland Travel"),
+  description: optimizarMetaDescriptionSEO("Viaja desde Perú a París, Lyon, Marsella, Niza, Toulouse y Burdeos con nuestro Paquete Migratorio desde $699 USD. Incluye pasaje de ida + boleto de regreso reservado para Migraciones + hotel + seguro Schengen 30.000€ + check-in 24h antes."),
   alternates: {
     canonical: `${URL_BASE_SEO}/francia`,
   },
@@ -171,12 +168,6 @@ export default function FranciaPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(SCHEMA_ORGANIZACION_CITYLAND),
-        }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFrancia) }}

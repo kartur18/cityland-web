@@ -1,12 +1,11 @@
 import { Metadata } from "next";
+import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import CaribeLandingClient from "./CaribeLandingClient";
 import { DESTINOS_TOP_PERU } from "./datos";
 
 export const metadata: Metadata = {
-  title:
-    "Paquetes a Punta Cana, Cancún, Cartagena, Medellín, Río de Janeiro y Miami desde Lima | Cityland Travel",
-  description:
-    "Paquetes turísticos Todo Incluido saliendo desde Lima: Medellín desde $589 USD, Cartagena desde $599 USD, Río de Janeiro desde $749 USD, Cancún desde $999 USD, Punta Cana desde $1,049 USD y Miami desde $999 USD. Separa hoy con el 50% de inicial en Cityland Travel (RUC 20614914239 · Los Olivos).",
+  title: optimizarMetaTitleSEO("Paquetes a Punta Cana, Cancún, Cartagena, Medellín, Río de Janeiro y Miami desde Lima | Cityland Travel"),
+  description: optimizarMetaDescriptionSEO("Paquetes turísticos Todo Incluido saliendo desde Lima: Medellín desde $589 USD, Cartagena desde $599 USD, Río de Janeiro desde $749 USD, Cancún desde $999 USD, Punta Cana desde $1,049 USD y Miami desde $999 USD. Separa hoy con el 50% de inicial en Cityland Travel (RUC 20614914239 · Los Olivos)."),
   keywords: [
     "paquetes turisticos punta cana todo incluido desde lima",
     "paquetes a cancun todo incluido desde lima peru",

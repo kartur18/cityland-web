@@ -1,12 +1,11 @@
 import { Metadata } from "next";
+import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import CuscoLandingClient from "./CuscoLandingClient";
 import { PAQUETES_CUSCO } from "./datos";
 
 export const metadata: Metadata = {
-  title:
-    "Paquetes Turísticos a Cusco y Machu Picchu Todo Incluido desde Lima | Cityland Travel",
-  description:
-    "Paquetes a Cusco y Machu Picchu saliendo desde Lima: 3 Días desde $289 USD, 4 Días Valle Sagrado desde $329 USD, 5 Días con Montaña de 7 Colores desde $399 USD y 6 Días con Laguna Humantay desde $469 USD. Vuelos, hotel, tren y entradas oficiales en Cityland Travel (RUC 20614914239).",
+  title: optimizarMetaTitleSEO("Paquetes Turísticos a Cusco y Machu Picchu Todo Incluido desde Lima | Cityland Travel"),
+  description: optimizarMetaDescriptionSEO("Paquetes a Cusco y Machu Picchu saliendo desde Lima: 3 Días desde $289 USD, 4 Días Valle Sagrado desde $329 USD, 5 Días con Montaña de 7 Colores desde $399 USD y 6 Días con Laguna Humantay desde $469 USD. Vuelos, hotel, tren y entradas oficiales en Cityland Travel (RUC 20614914239)."),
   keywords: [
     "paquetes turisticos a cusco todo incluido desde lima",
     "viajes a cusco y machu picchu precios 2026",

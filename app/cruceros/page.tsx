@@ -1,13 +1,12 @@
 import { Metadata } from "next";
+import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import AirlineLandingTemplate, {
   ConfiguracionLandingAerolinea,
 } from "@/components/AirlineLandingTemplate";
 
 export const metadata: Metadata = {
-  title:
-    "Cruceros Todo Incluido Sin Visa desde Panamá, Cartagena, Miami y Europa | Cityland Travel",
-  description:
-    "Cruceros Royal Caribbean, MSC y Norwegian saliendo desde Lima: Crucero Caribe Sur sin visa americana (saliendo de Panamá o Cartagena) desde $1,090 USD, Bahamas desde Miami y Mediterráneo por Europa. Separa con el 50% en Cityland Travel (RUC 20614914239).",
+  title: optimizarMetaTitleSEO("Cruceros Todo Incluido Sin Visa desde Panamá, Cartagena, Miami y Europa | Cityland Travel"),
+  description: optimizarMetaDescriptionSEO("Cruceros Royal Caribbean, MSC y Norwegian saliendo desde Lima: Crucero Caribe Sur sin visa americana (saliendo de Panamá o Cartagena) desde $1,090 USD, Bahamas desde Miami y Mediterráneo por Europa. Separa con el 50% en Cityland Travel (RUC 20614914239)."),
   keywords: [
     "cruceros sin visa para peruanos 2026",
     "crucero por el caribe desde panama y cartagena",

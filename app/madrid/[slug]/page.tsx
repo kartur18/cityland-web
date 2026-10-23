@@ -7,8 +7,9 @@ import {
 } from "@/lib/catalogo-madrid-10k";
 import {
   URL_BASE_SEO,
-  SCHEMA_ORGANIZACION_CITYLAND,
   construirSchemaLandingSEO,
+  optimizarMetaTitleSEO,
+  optimizarMetaDescriptionSEO,
 } from "@/lib/seo-arquitectura";
 
 interface Props {
@@ -29,11 +30,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const datos = buscarLandingMadrid10k(slug);
   if (!datos) return {};
 
+  const title = optimizarMetaTitleSEO(datos.metaTitle);
+  const description = optimizarMetaDescriptionSEO(datos.metaDescription);
   const urlCanonica = `${URL_BASE_SEO}/madrid/${datos.slug}`;
 
   return {
-    title: datos.metaTitle,
-    description: datos.metaDescription,
+    title,
+    description,
     keywords: datos.keywords,
     alternates: {
       canonical: urlCanonica,
@@ -43,8 +46,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       locale: "es_PE",
       url: urlCanonica,
       siteName: "Cityland Travel",
-      title: datos.metaTitle,
-      description: datos.metaDescription,
+      title,
+      description,
       images: [
         {
           url: datos.imagenHero,
@@ -56,8 +59,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: datos.metaTitle,
-      description: datos.metaDescription,
+      title,
+      description,
       images: [datos.imagenHero],
     },
   };
@@ -89,12 +92,6 @@ export default async function MadridSlugPage({ params }: Props) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(SCHEMA_ORGANIZACION_CITYLAND),
-        }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaLanding) }}

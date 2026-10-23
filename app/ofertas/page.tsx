@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import AirlineLandingTemplate, {
   ConfiguracionLandingAerolinea,
 } from "@/components/AirlineLandingTemplate";
@@ -6,9 +7,8 @@ import BuscadorCatalogoInstantaneo from "@/components/BuscadorCatalogoInstantane
 import { INDICE_PAQUETES_MIGRATORIOS_1000 } from "@/lib/catalogo-paquetes-migratorios-1000";
 
 export const metadata: Metadata = {
-  title: "Ofertas de Viajes, Paquetes Migratorios desde $699 y Caribe | Cityland Travel",
-  description:
-    "Descubre nuestras ofertas vigentes en paquetes migratorios a España, Italia y Francia desde $699 USD, resorts All Inclusive en el Caribe, cruceros sin visa y Cusco.",
+  title: optimizarMetaTitleSEO("Ofertas de Viajes, Paquetes Migratorios desde $699 y Caribe | Cityland Travel"),
+  description: optimizarMetaDescriptionSEO("Descubre nuestras ofertas vigentes en paquetes migratorios a España, Italia y Francia desde $699 USD, resorts All Inclusive en el Caribe, cruceros sin visa y Cusco."),
   alternates: {
     canonical: "https://citylandtravel.com/ofertas",
   },

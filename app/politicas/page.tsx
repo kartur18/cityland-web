@@ -1,11 +1,11 @@
 import { Metadata } from "next";
+import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Políticas de Privacidad y Términos | Cityland Travel",
-  description:
-    "Política de privacidad, cookies y términos y condiciones de servicio de Cityland Travel E.I.R.L. (RUC 20614914239), agencia de viajes en Lima.",
+  title: optimizarMetaTitleSEO("Políticas de Privacidad y Términos | Cityland Travel"),
+  description: optimizarMetaDescriptionSEO("Política de privacidad, cookies y términos y condiciones de servicio de Cityland Travel E.I.R.L. (RUC 20614914239), agencia de viajes en Lima."),
   alternates: {
     canonical: "https://citylandtravel.com/politicas",
   },

@@ -13,15 +13,12 @@ import { INDICE_PAQUETES_MIGRATORIOS_1000 } from "@/lib/catalogo-paquetes-migrat
 import { buildWhatsAppHref } from "@/components/constantes";
 import {
   URL_BASE_SEO,
-  SCHEMA_ORGANIZACION_CITYLAND,
-  construirSchemaLandingSEO,
+  construirSchemaLandingSEO, optimizarMetaTitleSEO, optimizarMetaDescriptionSEO
 } from "@/lib/seo-arquitectura";
 
 export const metadata: Metadata = {
-  title:
-    "Paquetes Migratorios a España, Italia, Francia y Europa desde $699 USD | Cityland Travel",
-  description:
-    "Viaja seguro desde Perú a Madrid, Barcelona, Milán, Roma, París y toda Europa desde $699 USD. Incluye pasaje de ida + boleto de regreso reservado para Migraciones + hotel + seguro 30.000€ + check-in 24h antes.",
+  title: optimizarMetaTitleSEO("Paquetes Migratorios a España, Italia, Francia y Europa desde $699 USD | Cityland Travel"),
+  description: optimizarMetaDescriptionSEO("Viaja seguro desde Perú a Madrid, Barcelona, Milán, Roma, París y toda Europa desde $699 USD. Incluye pasaje de ida + boleto de regreso reservado para Migraciones + hotel + seguro 30.000€ + check-in 24h antes."),
   keywords: [
     "paquete migratorio españa desde peru",
     "paquete migratorio madrid 699",
@@ -106,12 +103,6 @@ export default function PaquetesMigratoriosHubPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(SCHEMA_ORGANIZACION_CITYLAND),
-        }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaHub) }}
