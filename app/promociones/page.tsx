@@ -5,6 +5,10 @@ import AirlineLandingTemplate, {
 } from "@/components/AirlineLandingTemplate";
 import BuscadorCatalogoInstantaneo from "@/components/BuscadorCatalogoInstantaneo";
 import { INDICE_PAQUETES_MIGRATORIOS_1000 } from "@/lib/catalogo-paquetes-migratorios-1000";
+import { formatoUSD } from "@/lib/formato-precio";
+import { inicialSeparacion, tarifasMigratorio } from "@/lib/precios-migratorio";
+
+const TARIFAS_ITALIA = tarifasMigratorio("Italia");
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO("Promociones y Ofertas de Viajes 2026 desde Lima (Separa con 50%) | Cityland Travel"),
@@ -55,7 +59,7 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
     alt: "Promoción Paquete Migratorio a España e Italia desde $699 USD (solo ida) — Cityland Travel",
     sobretitulo: "Pasaje + Boleto de Regreso Reservado + Hotel + Seguro 30.000€",
     titulo: "Promo Paquete Migratorio a España, Italia y Francia",
-    labelPrecio: "Planes de solo ida $699 · $799 · $899 · $999",
+    labelPrecio: `Solo ida: España desde ${formatoUSD(tarifasMigratorio("España").promo)} · Italia y Francia desde ${formatoUSD(TARIFAS_ITALIA.promo)}`,
     precio: "$699",
     moneda: "USD",
     notaInferior: "Separa hoy con $350 (50% inicial)",
@@ -102,10 +106,10 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
       titulo: "Promo Milán, Roma y Turín + Carpeta Migratoria",
       pais: "Italia",
       filtro: "europa",
-      subtitulo: "Planes de solo ida según tu fecha: $699 · $799 · $899 · $999",
-      precioPrincipal: "$699",
+      subtitulo: `Planes de solo ida según tu fecha: ${formatoUSD(TARIFAS_ITALIA.promo)} · ${formatoUSD(TARIFAS_ITALIA.smart)} · ${formatoUSD(TARIFAS_ITALIA.plus)} · ${formatoUSD(TARIFAS_ITALIA.full)}`,
+      precioPrincipal: formatoUSD(TARIFAS_ITALIA.promo),
       precioSecundario: "USD",
-      notaPrecio: "Separa con $350 (50% inicial)",
+      notaPrecio: `Separa con ${formatoUSD(inicialSeparacion(TARIFAS_ITALIA.promo))} (50% inicial)`,
       tag: "Ruta Italia",
       tagBg: "bg-emerald-600 text-white",
       img: "/images/destinos/milan.webp",
@@ -118,7 +122,7 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
         "Seguro médico 30.000€ + Check-in",
       ],
       waNumber: "51944103890",
-      waMensaje: "¡Hola! Quiero más información del paquete migratorio a Italia desde $699.",
+      waMensaje: `¡Hola! Quiero más información del paquete migratorio a Italia desde ${formatoUSD(TARIFAS_ITALIA.promo)}.`,
     },
     {
       id: "promo-punta-cana-all-inclusive",

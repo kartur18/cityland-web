@@ -6,6 +6,7 @@ import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
 import NotaPrecio from "@/components/NotaPrecio";
 import { quitarPrecioDeTitulo } from "@/lib/formato-precio";
+import { listaPreciosPlanes, tarifasMigratorio } from "@/lib/precios-migratorio";
 import { buildWhatsAppHref } from "@/components/constantes";
 import {
   PLANES_MIGRATORIOS_OFICIALES,
@@ -95,7 +96,8 @@ export default function BuscadorPaquetesMigratoriosClient({
             Elige tu Plan según tu Fecha de Viaje
           </h2>
           <p className="text-slate-600 text-sm mt-1.5">
-            Separa tu cupo con el 50% y completa el pago en cuotas antes de tu vuelo.
+            Separa tu cupo con el 50% y completa el pago en cuotas antes de tu vuelo. Tarifas de España; para Italia y
+            Francia los planes van desde {listaPreciosPlanes(tarifasMigratorio("Italia"))} USD.
           </p>
         </div>
 

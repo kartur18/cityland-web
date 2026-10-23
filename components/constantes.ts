@@ -1,4 +1,10 @@
 // ── Constantes Comerciales y Datos de Cityland Travel ──
+import { formatoUSD } from "@/lib/formato-precio";
+import { inicialSeparacion, tarifasMigratorio } from "@/lib/precios-migratorio";
+
+const TARIFAS_ITALIA = tarifasMigratorio("Italia");
+const TARIFAS_FRANCIA = tarifasMigratorio("Francia");
+
 export const EMPRESA_NOMBRE = "Cityland Travel";
 export const EMPRESA_RAZON_SOCIAL = "Cityland Travel E.I.R.L.";
 export const EMPRESA_RUC = "20614914239";
@@ -278,20 +284,20 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     pais: "Italia",
     bandera: "🇮🇹",
     categoria: "europa",
-    duracion: "Planes desde $699 · $799 · $899 · $999",
-    precioUSD: 699,
-    precioSoles: 2620,
-    precioRegularUSD: 999,
+    duracion: `Planes desde ${formatoUSD(TARIFAS_ITALIA.promo)} · ${formatoUSD(TARIFAS_ITALIA.smart)} · ${formatoUSD(TARIFAS_ITALIA.plus)} · ${formatoUSD(TARIFAS_ITALIA.full)}`,
+    precioUSD: TARIFAS_ITALIA.promo,
+    precioSoles: Math.round(TARIFAS_ITALIA.promo * TIPO_CAMBIO_REF),
+    precioRegularUSD: TARIFAS_ITALIA.full,
     tag: "PAQUETE MIGRATORIO ITALIA",
     tagColor: "hot",
     img: "/images/destinos/milan.webp",
-    alt: "Paquete Migratorio a Milán, Roma y Turín desde Lima desde $699 USD",
+    alt: `Paquete Migratorio a Milán, Roma y Turín desde Lima desde ${formatoUSD(TARIFAS_ITALIA.promo)} USD`,
     tituloComercial: "Paquete Migratorio a Italia: Milán, Roma, Turín y Florencia",
     resaltado: "Pasaje de Ida + Retorno Reservado + Hotel / Dichiarazione + Seguro 30.000€",
     inclusiones: {
       vuelo: true,
       hotel: "Reserva de hotel en Italia o formato Ospitalità",
-      alimentacion: "Según plan elegido ($699 a $999)",
+      alimentacion: `Según plan elegido (${formatoUSD(TARIFAS_ITALIA.promo)} a ${formatoUSD(TARIFAS_ITALIA.full)})`,
       traslados: true,
       seguro: "Seguro médico Schengen 30.000€",
       tour: "Carpeta Migratoria Italia + Guía 48h Questura",
@@ -304,12 +310,12 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     descripcion:
       "Diseñado para la gran comunidad peruana que viaja a Milán, Roma, Turín, Florencia, Bolonia o Génova. Te entregamos tu carpeta migratoria completa con todos los requisitos que exige la Polizia di Frontiera italiana.",
     itinerario: [
-      "Paso 1: Separa tu paquete a Italia con el 50% de inicial ($350 USD en el Plan Promo de $699).",
+      `Paso 1: Separa tu paquete a Italia con el 50% de inicial (${formatoUSD(inicialSeparacion(TARIFAS_ITALIA.promo))} USD en el Plan Promo de ${formatoUSD(TARIFAS_ITALIA.promo)}).`,
       "Paso 2: Emisión de pasaje aéreo, seguro médico de 30.000€ y reserva de alojamiento en tu ciudad de llegada.",
       "Paso 3: Activación de retorno reservado 24h antes, check-in y asesoría paso a paso para tu ingreso a Italia.",
     ],
     tipoViaje: "migratorio",
-    migratorioUSD: 699,
+    migratorioUSD: TARIFAS_ITALIA.promo,
   },
   {
     id: "francia-paris-lyon-migratorio",
@@ -318,20 +324,20 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     pais: "Francia",
     bandera: "🇫🇷",
     categoria: "europa",
-    duracion: "Planes desde $699 · $799 · $899 · $999",
-    precioUSD: 699,
-    precioSoles: 2620,
-    precioRegularUSD: 999,
+    duracion: `Planes desde ${formatoUSD(TARIFAS_FRANCIA.promo)} · ${formatoUSD(TARIFAS_FRANCIA.smart)} · ${formatoUSD(TARIFAS_FRANCIA.plus)} · ${formatoUSD(TARIFAS_FRANCIA.full)}`,
+    precioUSD: TARIFAS_FRANCIA.promo,
+    precioSoles: Math.round(TARIFAS_FRANCIA.promo * TIPO_CAMBIO_REF),
+    precioRegularUSD: TARIFAS_FRANCIA.full,
     tag: "PAQUETE MIGRATORIO FRANCIA",
     tagColor: "promo",
     img: "/images/destinos/paris.webp",
-    alt: "Paquete Migratorio a París y Francia desde Lima desde $699 USD",
+    alt: `Paquete Migratorio a París y Francia desde Lima desde ${formatoUSD(TARIFAS_FRANCIA.promo)} USD`,
     tituloComercial: "Paquete Migratorio a Francia: París, Lyon, Marsella y Niza",
     resaltado: "Pasaje de Ida + Retorno Reservado + Hotel / Attestation + Seguro 30.000€",
     inclusiones: {
       vuelo: true,
       hotel: "Reserva de hotel confirmada en Francia",
-      alimentacion: "Según plan elegido ($699 a $999)",
+      alimentacion: `Según plan elegido (${formatoUSD(TARIFAS_FRANCIA.promo)} a ${formatoUSD(TARIFAS_FRANCIA.full)})`,
       traslados: true,
       seguro: "Seguro médico Schengen 30.000€",
       tour: "Carpeta Migratoria Completa + Check-in 24h antes",
@@ -344,12 +350,12 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     descripcion:
       "Viaja seguro a París, Lyon, Marsella o cualquier ciudad de Francia y Europa con tu carpeta migratoria completa: pasaje emitido, retorno reservado para Migraciones, hotel confirmado y seguro médico obligatorio.",
     itinerario: [
-      "Paso 1: Reserva tu paquete con el 50% de inicial ($350 USD en el Plan de $699).",
+      `Paso 1: Reserva tu paquete con el 50% de inicial (${formatoUSD(inicialSeparacion(TARIFAS_FRANCIA.promo))} USD en el Plan Promo de ${formatoUSD(TARIFAS_FRANCIA.promo)}).`,
       "Paso 2: Emisión de boleto aéreo, seguro Schengen 30.000€ y reserva de hotel confirmada.",
       "Paso 3: Check-in 24h antes, activación de retorno en sistema y entrega de carpeta física en Los Olivos.",
     ],
     tipoViaje: "migratorio",
-    migratorioUSD: 699,
+    migratorioUSD: TARIFAS_FRANCIA.promo,
   },
   {
     id: "punta-cana-all-inclusive",

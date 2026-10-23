@@ -7,6 +7,8 @@ import FlagIcon from "@/components/icons/FlagIcon";
 import NotaPrecio from "@/components/NotaPrecio";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import ArrowRightIcon from "@/components/icons/ArrowRightIcon";
+import { formatoUSD } from "@/lib/formato-precio";
+import { tarifasMigratorio } from "@/lib/precios-migratorio";
 
 export default function Hero() {
   const waUrlEuropa = buildWaUrl({
@@ -59,14 +61,14 @@ export default function Hero() {
                 className="inline-flex items-center gap-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 px-3.5 py-1.5 rounded-full text-xs font-extrabold transition-colors whitespace-nowrap"
               >
                 <FlagIcon pais="Italia" className="w-3.5 h-2.5" />
-                <span>Italia solo ida desde $699</span>
+                <span>Italia solo ida desde {formatoUSD(tarifasMigratorio("Italia").promo)}</span>
               </Link>
               <Link
                 href="/francia"
                 className="inline-flex items-center gap-1.5 bg-blue-50 hover:bg-blue-100 text-blue-800 border border-blue-200 px-3.5 py-1.5 rounded-full text-xs font-extrabold transition-colors whitespace-nowrap"
               >
                 <FlagIcon pais="Francia" className="w-3.5 h-2.5" />
-                <span>Francia solo ida desde $699</span>
+                <span>Francia solo ida desde {formatoUSD(tarifasMigratorio("Francia").promo)}</span>
               </Link>
               <Link
                 href="/caribe"

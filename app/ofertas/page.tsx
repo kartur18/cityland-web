@@ -5,6 +5,10 @@ import AirlineLandingTemplate, {
 } from "@/components/AirlineLandingTemplate";
 import BuscadorCatalogoInstantaneo from "@/components/BuscadorCatalogoInstantaneo";
 import { INDICE_PAQUETES_MIGRATORIOS_1000 } from "@/lib/catalogo-paquetes-migratorios-1000";
+import { formatoUSD } from "@/lib/formato-precio";
+import { inicialSeparacion, tarifasMigratorio } from "@/lib/precios-migratorio";
+
+const TARIFAS_ITALIA = tarifasMigratorio("Italia");
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO("Ofertas de Viajes, Paquetes Migratorios solo ida desde $699 y Caribe | Cityland Travel"),
@@ -39,7 +43,7 @@ const CONFIG_OFERTAS: ConfiguracionLandingAerolinea = {
     alt: "Oferta Paquete Migratorio a España y Europa desde $699 — Cityland Travel",
     sobretitulo: "Pasaje de Ida + Boleto de Regreso Reservado + Hotel + Seguro 30.000€",
     titulo: "Paquete Migratorio a España, Italia y Francia",
-    labelPrecio: "Planes de solo ida $699 · $799 · $899 · $999",
+    labelPrecio: `Solo ida: España desde ${formatoUSD(tarifasMigratorio("España").promo)} · Italia y Francia desde ${formatoUSD(TARIFAS_ITALIA.promo)}`,
     precio: "$699",
     moneda: "USD",
     notaInferior: "Separa hoy con $350 (50% inicial)",
@@ -86,10 +90,10 @@ const CONFIG_OFERTAS: ConfiguracionLandingAerolinea = {
       titulo: "Paquete Migratorio a Milán, Roma y Turín",
       pais: "Italia",
       filtro: "europa",
-      subtitulo: "Planes de solo ida según tu fecha: $699 · $799 · $899 · $999",
-      precioPrincipal: "$699",
+      subtitulo: `Planes de solo ida según tu fecha: ${formatoUSD(TARIFAS_ITALIA.promo)} · ${formatoUSD(TARIFAS_ITALIA.smart)} · ${formatoUSD(TARIFAS_ITALIA.plus)} · ${formatoUSD(TARIFAS_ITALIA.full)}`,
+      precioPrincipal: formatoUSD(TARIFAS_ITALIA.promo),
       precioSecundario: "USD",
-      notaPrecio: "Separa con $350 (50% inicial)",
+      notaPrecio: `Separa con ${formatoUSD(inicialSeparacion(TARIFAS_ITALIA.promo))} (50% inicial)`,
       tag: "Especial Italia",
       tagBg: "bg-emerald-600 text-white",
       img: "/images/destinos/milan.webp",
@@ -102,7 +106,7 @@ const CONFIG_OFERTAS: ConfiguracionLandingAerolinea = {
         "Seguro Schengen 30.000€ + Check-in",
       ],
       waNumber: "51944103890",
-      waMensaje: "¡Hola! Quiero más información del paquete migratorio a Italia desde $699.",
+      waMensaje: `¡Hola! Quiero más información del paquete migratorio a Italia desde ${formatoUSD(TARIFAS_ITALIA.promo)}.`,
     },
     {
       id: "oferta-punta-cana-resorts",

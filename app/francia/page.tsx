@@ -12,10 +12,15 @@ import {
   URL_BASE_SEO,
   construirSchemaLandingSEO, optimizarMetaTitleSEO, optimizarMetaDescriptionSEO
 } from "@/lib/seo-arquitectura";
+import { formatoUSD } from "@/lib/formato-precio";
+import { inicialSeparacion, tarifasMigratorio } from "@/lib/precios-migratorio";
+
+const TARIFAS = tarifasMigratorio("Francia");
+const DESDE = formatoUSD(TARIFAS.promo);
 
 export const metadata: Metadata = {
-  title: optimizarMetaTitleSEO("Paquetes Migratorios a Francia 2026 (París, Lyon, Marsella, Niza) desde $699 USD | Cityland Travel"),
-  description: optimizarMetaDescriptionSEO("Viaja desde Perú a París, Lyon, Marsella, Niza, Toulouse y Burdeos con nuestro Paquete Migratorio desde $699 USD. Incluye pasaje de ida + boleto de regreso reservado para Migraciones + hotel + seguro Schengen 30.000€ + check-in 24h antes."),
+  title: optimizarMetaTitleSEO(`Paquetes Migratorios a Francia 2026 (París, Lyon, Marsella, Niza) desde ${DESDE} USD | Cityland Travel`),
+  description: optimizarMetaDescriptionSEO(`Viaja desde Perú a París, Lyon, Marsella, Niza, Toulouse y Burdeos con nuestro Paquete Migratorio desde ${DESDE} USD. Incluye pasaje de ida + boleto de regreso reservado para Migraciones + hotel + seguro Schengen 30.000€ + check-in 24h antes.`),
   alternates: {
     canonical: `${URL_BASE_SEO}/francia`,
   },
@@ -23,11 +28,11 @@ export const metadata: Metadata = {
 
 const PLANES_FRANCIA = [
   {
-    id: "promo-699",
+    id: "promo",
     nombre: "Plan Promo",
     temporada: "Fines de Febrero · Marzo · Abril · Mayo",
-    precio: 699,
-    separaCon: 350,
+    precio: TARIFAS.promo,
+    separaCon: inicialSeparacion(TARIFAS.promo),
     tag: "Temporada Promo",
     tagColor: "bg-emerald-600 text-white",
     destacado: false,
@@ -37,11 +42,11 @@ const PLANES_FRANCIA = [
     waTexto: "Elegir Plan Promo",
   },
   {
-    id: "smart-799",
+    id: "smart",
     nombre: "Plan Smart",
     temporada: "Junio · Septiembre · Octubre · Noviembre",
-    precio: 799,
-    separaCon: 400,
+    precio: TARIFAS.smart,
+    separaCon: inicialSeparacion(TARIFAS.smart),
     tag: "⭐ El Más Pedido",
     tagColor: "bg-amber-400 text-slate-950",
     destacado: true,
@@ -51,11 +56,11 @@ const PLANES_FRANCIA = [
     waTexto: "Elegir Plan Smart",
   },
   {
-    id: "plus-899",
+    id: "plus",
     nombre: "Plan Plus",
     temporada: "Enero · 1ra Quincena Feb · Conexiones",
-    precio: 899,
-    separaCon: 450,
+    precio: TARIFAS.plus,
+    separaCon: inicialSeparacion(TARIFAS.plus),
     tag: "Salidas Cercanas",
     tagColor: "bg-blue-600 text-white",
     destacado: false,
@@ -65,11 +70,11 @@ const PLANES_FRANCIA = [
     waTexto: "Elegir Plan Plus",
   },
   {
-    id: "full-999",
+    id: "full",
     nombre: "Plan Full 23 kg",
     temporada: "Diciembre · Julio · Agosto · Bodega 23 kg",
-    precio: 999,
-    separaCon: 500,
+    precio: TARIFAS.full,
+    separaCon: inicialSeparacion(TARIFAS.full),
     tag: "Alta + Maleta 23 kg",
     tagColor: "bg-red-600 text-white",
     destacado: false,
@@ -139,15 +144,15 @@ const CIUDADES_FRANCIA = [
 
 export default function FranciaPage() {
   const msgHero =
-    "¡Hola! Quiero más información del paquete migratorio a Francia (París / Lyon / Marsella) desde $699.\n📍 Ref Web: citylandtravel.com/francia [Hero Principal]";
+    `¡Hola! Quiero más información del paquete migratorio a Francia (París / Lyon / Marsella) desde ${DESDE}.\n📍 Ref Web: citylandtravel.com/francia [Hero Principal]`;
 
   const schemaFrancia = construirSchemaLandingSEO({
     url: `${URL_BASE_SEO}/francia`,
     titulo:
-      "Paquetes Migratorios a Francia (París, Lyon, Marsella, Niza, Toulouse) desde $699 USD",
+      `Paquetes Migratorios a Francia (París, Lyon, Marsella, Niza, Toulouse) desde ${DESDE} USD`,
     descripcion:
       "Viaja desde Perú a Francia con tus 5 documentos en regla: pasaje de avión de ida, boleto de regreso reservado para Migraciones, reserva de hotel, seguro Schengen 30.000€ y check-in 24h antes.",
-    precioDesdeUSD: 699,
+    precioDesdeUSD: TARIFAS.promo,
     cantidadOfertas: 4,
     destinoOPais: "Francia",
     imagenUrl: `${URL_BASE_SEO}/images/destinos/paris.webp`,
@@ -188,7 +193,7 @@ export default function FranciaPage() {
 
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.1] mb-4">
                 Paquete Migratorio a{" "}
-                <span className="text-amber-400">Francia desde $699 USD</span>
+                <span className="text-amber-400">Francia desde {DESDE} USD</span>
               </h1>
 
               <p className="text-base sm:text-lg text-slate-200 leading-relaxed mb-7">
@@ -304,7 +309,7 @@ export default function FranciaPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             {PLANES_FRANCIA.map((plan) => {
-              const msg = `¡Hola! Quiero más información del ${plan.nombre} a Francia desde $${plan.precio}.\n📍 Ref Web: citylandtravel.com/francia [${plan.nombre} $${plan.precio}]`;
+              const msg = `¡Hola! Quiero más información del ${plan.nombre} a Francia desde ${formatoUSD(plan.precio)}.\n📍 Ref Web: citylandtravel.com/francia [${plan.nombre} ${formatoUSD(plan.precio)}]`;
               return (
                 <article
                   key={plan.id}
@@ -347,12 +352,12 @@ export default function FranciaPage() {
                         <div className="flex items-baseline gap-1">
                           <span className="text-xs font-bold text-slate-500">Desde</span>
                           <span className="text-3xl font-black text-[#0a1628]">
-                            ${plan.precio}
+                            {formatoUSD(plan.precio)}
                           </span>
                           <span className="text-xs font-bold text-slate-500">USD</span>
                         </div>
                         <span className="text-xs font-extrabold text-emerald-700 block mt-1">
-                          ✓ Separa con el 50% (desde ${plan.separaCon} USD)
+                          ✓ Separa con el 50% (desde {formatoUSD(plan.separaCon)} USD)
                         </span>
                       </div>
 
@@ -403,7 +408,7 @@ export default function FranciaPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
             {CIUDADES_FRANCIA.map((c) => {
-              const msgCiudad = `¡Hola! Quiero más información del paquete migratorio a ${c.ciudad}, Francia desde $699.\n📍 Ref Web: citylandtravel.com/francia [Ciudad ${c.ciudad}]`;
+              const msgCiudad = `¡Hola! Quiero más información del paquete migratorio a ${c.ciudad}, Francia desde ${DESDE}.\n📍 Ref Web: citylandtravel.com/francia [Ciudad ${c.ciudad}]`;
               return (
                 <div
                   key={c.ciudad}

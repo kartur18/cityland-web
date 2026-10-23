@@ -48,7 +48,7 @@ export default function SuperLandingMigratorioTemplate({
   const estilo = obtenerEstiloSilo(datos.silo, datos.pais);
 
   const waCotizarGeneral = `https://wa.me/51944103890?text=${encodeURIComponent(
-    `¡Hola! Quiero más información del paquete migratorio a ${datos.ciudadDestino} (${datos.pais}) desde $699.\n\n📍 Ref Web: citylandtravel.com/paquetes-migratorios/${datos.slug} [Hero Principal]`
+    `¡Hola! Quiero más información del paquete migratorio a ${datos.ciudadDestino} (${datos.pais}) desde ${formatoUSD(datos.precioDesdeUSD)}.\n\n📍 Ref Web: citylandtravel.com/paquetes-migratorios/${datos.slug} [Hero Principal]`
   )}`;
 
   const waSoloCarpeta = `https://wa.me/51944103890?text=${encodeURIComponent(
@@ -424,7 +424,7 @@ export default function SuperLandingMigratorioTemplate({
             {datos.ciudadDestino} · Separa con 50%
           </span>
           <span className="text-sm font-black text-[#0a1628]">
-            Desde $699 USD
+            Desde {formatoUSD(datos.precioDesdeUSD)} USD
           </span>
         </div>
         <a

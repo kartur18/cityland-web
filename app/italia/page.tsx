@@ -11,9 +11,14 @@ import {
   optimizarMetaTitleSEO,
   optimizarMetaDescriptionSEO,
 } from "@/lib/seo-arquitectura";
+import { formatoUSD } from "@/lib/formato-precio";
+import { inicialSeparacion, tarifasMigratorio } from "@/lib/precios-migratorio";
+
+const TARIFAS = tarifasMigratorio("Italia");
+const DESDE = formatoUSD(TARIFAS.promo);
 
 const rawTitle =
-  "Paquetes Migratorios a Italia (Milán, Roma, Turín, Florencia) Desde $699 USD | Cityland Travel";
+  `Paquetes Migratorios a Italia (Milán, Roma, Turín, Florencia) Desde ${DESDE} USD | Cityland Travel`;
 const rawDesc =
   "Paquetes migratorios a Milán, Roma, Turín, Florencia y Bolonia desde Lima: pasaje de ida + boleto de regreso reservado para Migraciones + hotel o Lettera di Invito + Seguro 30.000€ + check-in.";
 
@@ -32,11 +37,11 @@ function waItalia(mensaje: string, seccion: string): string {
 
 const PLANES_ITALIA = [
   {
-    id: "promo-699",
+    id: "promo",
     nombre: "Plan Promo",
     temporada: "Fines de Febrero · Marzo · Abril · Mayo",
-    precio: 699,
-    separaCon: 350,
+    precio: TARIFAS.promo,
+    separaCon: inicialSeparacion(TARIFAS.promo),
     tag: "Temporada Promo",
     tagColor: "bg-emerald-600 text-white",
     destacado: false,
@@ -44,14 +49,14 @@ const PLANES_ITALIA = [
     lugar: "Roma · Milán",
     detalle: "Ideal si programas tu viaje con anticipación a Italia.",
     waTexto: "Elegir Plan Promo",
-    waMsg: "¡Hola! Quiero más información del paquete migratorio a Italia desde $699.",
+    waMsg: `¡Hola! Quiero más información del paquete migratorio a Italia desde ${DESDE}.`,
   },
   {
-    id: "smart-799",
+    id: "smart",
     nombre: "Plan Smart",
     temporada: "Junio · Septiembre · Octubre · Noviembre",
-    precio: 799,
-    separaCon: 400,
+    precio: TARIFAS.smart,
+    separaCon: inicialSeparacion(TARIFAS.smart),
     tag: "⭐ El Más Pedido",
     tagColor: "bg-amber-400 text-slate-950",
     destacado: true,
@@ -59,14 +64,14 @@ const PLANES_ITALIA = [
     lugar: "Milán · Roma · Turín",
     detalle: "Incluye formato de Lettera di Invito / Ospitalità 48h y asesoría VIP.",
     waTexto: "Elegir Plan Smart",
-    waMsg: "¡Hola! Quiero más información del paquete Smart a Italia desde $799.",
+    waMsg: `¡Hola! Quiero más información del paquete Smart a Italia desde ${formatoUSD(TARIFAS.smart)}.`,
   },
   {
-    id: "plus-899",
+    id: "plus",
     nombre: "Plan Plus",
     temporada: "Enero · 1ra Quincena Feb · Conexiones",
-    precio: 899,
-    separaCon: 450,
+    precio: TARIFAS.plus,
+    separaCon: inicialSeparacion(TARIFAS.plus),
     tag: "Salidas Cercanas",
     tagColor: "bg-blue-600 text-white",
     destacado: false,
@@ -74,14 +79,14 @@ const PLANES_ITALIA = [
     lugar: "Turín · Florencia · Bolonia · Génova",
     detalle: "Para salidas próximas o conexión hasta tu ciudad final en Italia.",
     waTexto: "Elegir Plan Plus",
-    waMsg: "¡Hola! Quiero más información del paquete Plus a Italia desde $899.",
+    waMsg: `¡Hola! Quiero más información del paquete Plus a Italia desde ${formatoUSD(TARIFAS.plus)}.`,
   },
   {
-    id: "full-999",
+    id: "full",
     nombre: "Plan Full 23 kg",
     temporada: "Diciembre · Julio · Agosto · Bodega 23 kg",
-    precio: 999,
-    separaCon: 500,
+    precio: TARIFAS.full,
+    separaCon: inicialSeparacion(TARIFAS.full),
     tag: "Alta + Maleta 23 kg",
     tagColor: "bg-red-600 text-white",
     destacado: false,
@@ -89,7 +94,7 @@ const PLANES_ITALIA = [
     lugar: "Toda Italia · Temporada Alta",
     detalle: "Incluye maleta grande de 23 kg en bodega despachada hasta destino final.",
     waTexto: "Elegir Plan Full",
-    waMsg: "¡Hola! Quiero más información del paquete Full a Italia con maleta de 23 kg desde $999.",
+    waMsg: `¡Hola! Quiero más información del paquete Full a Italia con maleta de 23 kg desde ${formatoUSD(TARIFAS.full)}.`,
   },
 ];
 
@@ -186,7 +191,7 @@ export default function ItaliaLandingPage() {
 
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.1] mb-4">
                 Paquete Migratorio a{" "}
-                <span className="text-emerald-400">Italia desde $699 USD</span>
+                <span className="text-emerald-400">Italia desde {DESDE} USD</span>
               </h1>
 
               <p className="text-base sm:text-lg text-slate-200 leading-relaxed mb-7">
@@ -197,7 +202,7 @@ export default function ItaliaLandingPage() {
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-6">
                 <a
                   href={waItalia(
-                    "¡Hola! Quiero más información del paquete migratorio a Italia (Milán / Roma / Turín) desde $699.",
+                    `¡Hola! Quiero más información del paquete migratorio a Italia (Milán / Roma / Turín) desde ${DESDE}.`,
                     "Hero Principal"
                   )}
                   target="_blank"
@@ -346,12 +351,12 @@ export default function ItaliaLandingPage() {
                       <div className="flex items-baseline gap-1">
                         <span className="text-xs font-bold text-slate-500">Desde</span>
                         <span className="text-3xl font-black text-[#0a1628]">
-                          ${p.precio}
+                          {formatoUSD(p.precio)}
                         </span>
                         <span className="text-xs font-bold text-slate-500">USD</span>
                       </div>
                       <span className="text-xs font-extrabold text-emerald-700 block mt-1">
-                        ✓ Separa con el 50% (desde ${p.separaCon} USD)
+                        ✓ Separa con el 50% (desde {formatoUSD(p.separaCon)} USD)
                       </span>
                     </div>
 
@@ -439,7 +444,7 @@ export default function ItaliaLandingPage() {
                   </Link>
                   <a
                     href={waItalia(
-                      `¡Hola! Quiero más información del paquete migratorio a ${c.ciudad} desde $699.`,
+                      `¡Hola! Quiero más información del paquete migratorio a ${c.ciudad} desde ${DESDE}.`,
                       `Ciudad ${c.ciudad}`
                     )}
                     target="_blank"

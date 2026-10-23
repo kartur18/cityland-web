@@ -8,6 +8,10 @@ import FlagIcon from "@/components/icons/FlagIcon";
 import NotaPrecio from "@/components/NotaPrecio";
 import { textoPrecio } from "@/lib/formato-precio";
 import { PLANES_MIGRATORIOS_OFICIALES } from "@/lib/catalogo-paquetes-migratorios-1000";
+import { formatoUSD } from "@/lib/formato-precio";
+import { listaPreciosPlanes, tarifasMigratorio } from "@/lib/precios-migratorio";
+
+const TARIFAS_ITALIA_FRANCIA = tarifasMigratorio("Italia");
 import {
   optimizarMetaTitleSEO,
   optimizarMetaDescriptionSEO,
@@ -40,7 +44,7 @@ const RUTAS_PRINCIPALES = [
     ciudades: "Milán, Roma, Turín, Florencia, Bolonia, Génova y Venecia",
     img: "/images/destinos/milan.webp",
     href: "/italia",
-    precio: "Desde $699 USD",
+    precio: `Desde ${formatoUSD(tarifasMigratorio("Italia").promo)} USD`,
   },
   {
     pais: "Francia",
@@ -48,14 +52,14 @@ const RUTAS_PRINCIPALES = [
     ciudades: "París, Lyon, Marsella, Niza, Toulouse y Burdeos",
     img: "/images/destinos/paris.webp",
     href: "/francia",
-    precio: "Desde $699 USD",
+    precio: `Desde ${formatoUSD(tarifasMigratorio("Francia").promo)} USD`,
   },
 ];
 
 const FAQS_GUIA_EUROPA = [
   {
     q: "¿De qué depende que el paquete a Europa cueste $699, $799, $899 o $999?",
-    a: "Depende de tu fecha de viaje: $699 USD aplica comprando con anticipación para fines de Febrero, Marzo, Abril y Mayo. $799 USD (Plan Smart) aplica para Junio, Septiembre, Octubre y Noviembre. $899 USD (Plan Plus) es para salidas cercanas o con conexión, y $999 USD (Plan Full) es para temporada alta (Diciembre, Julio y Agosto) o incluye maleta de 23 kg en bodega.",
+    a: `Depende de tu fecha de viaje: $699 USD aplica comprando con anticipación para fines de Febrero, Marzo, Abril y Mayo. $799 USD (Plan Smart) aplica para Junio, Septiembre, Octubre y Noviembre. $899 USD (Plan Plus) es para salidas cercanas o con conexión, y $999 USD (Plan Full) es para temporada alta (Diciembre, Julio y Agosto) o incluye maleta de 23 kg en bodega. Esos montos son de España; para Italia y Francia los planes van desde ${listaPreciosPlanes(TARIFAS_ITALIA_FRANCIA)} USD.`,
   },
   {
     q: "¿Qué incluye exactamente la Carpeta Migratoria?",
@@ -161,6 +165,9 @@ export default function GuiaEuropaPage() {
             <h2 className="text-2xl sm:text-4xl font-black text-[#0a1628]">
               Elige tu Plan Migratorio a Europa
             </h2>
+            <p className="text-sm text-slate-600 mt-2">
+              Tarifas de España. Para Italia y Francia los planes van desde {listaPreciosPlanes(TARIFAS_ITALIA_FRANCIA)} USD.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
