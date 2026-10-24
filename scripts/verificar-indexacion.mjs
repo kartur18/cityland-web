@@ -4,7 +4,9 @@ const BASE = process.argv[2] || "http://localhost:3100";
 
 const DEBEN_INDEXARSE = [
   "/",
-  "/madrid",
+  "/espana",
+  "/hoteles",
+  "/vuelos/lima-madrid",
   "/blog/cuanto-dinero-llevar-espana-bolsa-de-viaje",
   "/destinos/medellin",
   "/viajes/requisitos-viajar-a-espana-desde-peru",

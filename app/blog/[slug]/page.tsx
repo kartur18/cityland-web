@@ -2,7 +2,12 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BLOG_POSTS, armarLinkWhatsApp } from "@/components/constantes";
+import {
+  BLOG_POSTS,
+  PRECIO_IDA_VUELTA_MADRID_DESDE,
+  PRECIO_MIGRATORIO_DESDE,
+  armarLinkWhatsApp,
+} from "@/components/constantes";
 import { BLOG_POSTS_MASIVOS } from "@/lib/catalogo-blog-masivo";
 import {
   optimizarMetaTitleSEO,
@@ -229,19 +234,32 @@ export default async function BlogArticlePage({
 
               <div className="space-y-2.5 mb-5">
                 <Link
+                  href="/vuelos/lima-madrid"
+                  className="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-blue-50/60 border border-slate-200/80 transition-colors"
+                >
+                  <div>
+                    <p className="text-[13px] font-bold text-[#0b2347] flex items-center gap-2">
+                      <FlagIcon pais="España" className="w-4 h-3" />
+                      <span>Pasaje Lima–Madrid ida y vuelta</span>
+                    </p>
+                    <p className="text-[11px] text-slate-500 mt-0.5">Para turismo o visita familiar</p>
+                  </div>
+                  <span className="text-[14px] font-black text-[#e30613]">
+                    Desde ${PRECIO_IDA_VUELTA_MADRID_DESDE.toLocaleString("en-US")}
+                  </span>
+                </Link>
+                <Link
                   href="/espana"
                   className="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-blue-50/60 border border-slate-200/80 transition-colors"
                 >
                   <div>
                     <p className="text-[13px] font-bold text-[#0b2347] flex items-center gap-2">
                       <FlagIcon pais="España" className="w-4 h-3" />
-                      <span>Especial España</span>
+                      <span>Paquete migratorio a España</span>
                     </p>
-                    <p className="text-[11px] text-slate-500 mt-0.5">
-                      Vuelo + Carpeta + Seguro 30.000€
-                    </p>
+                    <p className="text-[11px] text-slate-500 mt-0.5">Pasaje de ida + carpeta para Migraciones</p>
                   </div>
-                  <span className="text-[14px] font-black text-[#e30613]">Desde $1,090</span>
+                  <span className="text-[14px] font-black text-[#e30613]">Desde ${PRECIO_MIGRATORIO_DESDE}</span>
                 </Link>
                 <Link
                   href="/italia"

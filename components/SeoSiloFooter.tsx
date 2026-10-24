@@ -197,10 +197,10 @@ export function SeoSiloFooter({
               ))}
               <li className="pt-1">
                 <Link
-                  href="/madrid"
+                  href="/espana"
                   className="text-xs font-extrabold text-red-600 hover:underline"
                 >
-                  Central de Paquetes Migratorios a Madrid →
+                  Paquete migratorio a España y Madrid →
                 </Link>
               </li>
               <li>

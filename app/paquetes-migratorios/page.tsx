@@ -34,7 +34,7 @@ import {
 } from "@/lib/seo-arquitectura";
 
 export const metadata: Metadata = {
-  title: optimizarMetaTitleSEO("Paquetes Migratorios a España, Italia, Francia y Europa desde $699 USD | Cityland Travel"),
+  title: optimizarMetaTitleSEO("Paquetes migratorios a Europa desde $699 | Cityland"),
   description: optimizarMetaDescriptionSEO("Viaja seguro desde Perú a Madrid, Barcelona, Milán, Roma, París y toda Europa desde $699 USD. Incluye pasaje de ida + boleto de regreso reservado para Migraciones + hotel + seguro 30.000€ + check-in 24h antes."),
   keywords: [
     "paquete migratorio españa desde peru",

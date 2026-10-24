@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { robotsSegunRuta } from "@/lib/indexacion";
+import { tituloSeoUnico } from "@/lib/titulos-seo";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import VuelosJorgeChavezTemplate from "@/components/VuelosJorgeChavezTemplate";
@@ -38,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!ruta) return {};
 
   const url = `https://citylandtravel.com/vuelos/${ruta.slug}`;
-  const title = optimizarMetaTitleSEO(ruta.metaTitle);
+  const title = tituloSeoUnico(`/vuelos/${ruta.slug}`, optimizarMetaTitleSEO(ruta.metaTitle));
   const description = optimizarMetaDescriptionSEO(ruta.metaDescription);
 
   return {

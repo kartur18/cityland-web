@@ -159,13 +159,6 @@ export default function MadridMigratorioTemplate({
               <Link href="/espana" className="hover:text-amber-300 transition-colors">
                 España
               </Link>
-              <span>/</span>
-              <Link
-                href="/madrid"
-                className="hover:text-amber-300 transition-colors font-semibold text-amber-300"
-              >
-                Madrid-Barajas
-              </Link>
               {datos.slug && (
                 <>
                   <span>/</span>
@@ -495,10 +488,10 @@ export default function MadridMigratorioTemplate({
                 Rutas Relacionadas a Madrid y España
               </h2>
               <Link
-                href="/madrid"
+                href="/espana"
                 className="text-xs font-extrabold text-red-600 hover:underline"
               >
-                Ver central de paquetes a Madrid →
+                Ver el paquete migratorio a España →
               </Link>
             </div>
 

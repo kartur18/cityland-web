@@ -1,6 +1,10 @@
-// Títulos propios para páginas indexables cuyo título automático salía igual a otro: al recortar a 60 caracteres
-// se perdía lo que las diferencia (ciudad de salida, mes, modalidad). Detectado con Search Console el 24-oct-2026.
+import { PRECIO_IDA_VUELTA_MADRID_DESDE } from "@/components/constantes";
+
+// Títulos escritos a mano: páginas cuyo título automático salía igual a otro (al recortar a 60 caracteres se perdía
+// la ciudad, el mes o la modalidad) y páginas clave que deben usar las palabras que la gente busca. 24-oct-2026.
 export const TITULOS_SEO_UNICOS: Readonly<Record<string, string>> = {
+  "/vuelos/lima-madrid": `Pasajes Lima–Madrid ida y vuelta desde $${PRECIO_IDA_VUELTA_MADRID_DESDE.toLocaleString("en-US")} | Cityland`,
+
   "/paquetes-migratorios/desde-chiclayo-a-madrid": "Paquete migratorio a Madrid desde Chiclayo | Cityland",
   "/paquetes-migratorios/desde-tacna-a-madrid": "Paquete migratorio a Madrid desde Tacna | Cityland",
   "/paquetes-migratorios/desde-miraflores-a-madrid": "Paquete migratorio a Madrid desde Miraflores | Cityland",

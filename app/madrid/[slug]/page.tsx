@@ -94,7 +94,6 @@ export default async function MadridSlugPage({ params }: Props) {
     migas: [
       { nombre: "Inicio", url: URL_BASE_SEO },
       { nombre: "España", url: `${URL_BASE_SEO}/espana` },
-      { nombre: "Especialistas Madrid", url: `${URL_BASE_SEO}/madrid` },
       { nombre: datos.tituloPrincipal, url: urlActual },
     ],
     faqs: datos.faqs,

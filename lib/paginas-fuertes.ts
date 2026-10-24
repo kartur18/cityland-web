@@ -75,7 +75,6 @@ export const PAGINAS_FUERTES: ReadonlySet<string> = new Set([
   "/destinos/tarapoto-selva",
   "/directorio",
   "/espana",
-  "/madrid",
   "/madrid/aranjuez-valdemoro-madrid-paquete-migratorio-completo-iberia-directo-t4",
   "/madrid/burgos-via-madrid-pasaje-con-2-maletas-23kg-air-europa-directo-t1",
   "/madrid/canarias-tenerife-via-madrid-pasaje-con-2-maletas-23kg-plus-ultra-t1",

@@ -179,6 +179,18 @@ export default function Footer() {
               <Link href="/colegios" className="block text-slate-300 hover:text-white transition-colors">
                 Viajes de Promoción Escolar y Grupos
               </Link>
+              <Link href="/institutos" className="block text-slate-300 hover:text-white transition-colors">
+                Viajes de Promoción para Institutos
+              </Link>
+              <Link href="/hoteles" className="block text-slate-300 hover:text-white transition-colors">
+                Reserva de Hoteles
+              </Link>
+              <Link href="/tours" className="block text-slate-300 hover:text-white transition-colors">
+                Tours en el Perú y el Mundo
+              </Link>
+              <Link href="/traslados" className="block text-slate-300 hover:text-white transition-colors">
+                Traslados Aeropuerto–Hotel
+              </Link>
               <Link href="/blog" className="block text-slate-300 hover:text-white transition-colors">
                 Guías y Consejos de Viaje
               </Link>

@@ -71,6 +71,8 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // /madrid y /espana vendían el mismo paquete y competían en Google: queda una sola página fuerte (24-oct-2026).
+      { source: "/madrid", destination: "/espana", permanent: true },
       // Páginas que Google conocía (con apariciones o clics) y ya no existen: van a la más parecida (24-oct-2026).
       { source: "/ofertas/paquetes-a-barcelona-desde-huancayo", destination: "/destinos/barcelona-espana", permanent: true },
       { source: "/ofertas/paquetes-a-cajamarca-inca-desde-chimbote", destination: "/destinos/cajamarca-banos-del-inca-cumbemayo", permanent: true },
