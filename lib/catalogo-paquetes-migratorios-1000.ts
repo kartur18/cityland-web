@@ -2121,7 +2121,7 @@ const TEMAS_DUDAS_MIGRATORIAS: {
     tituloTema: (c) => `Seguro Médico para Viajar a ${c} (Incluido en tu Paquete)`,
     subtituloTema: (_c, t) => `Póliza Oficial de 30.000€ Sin Deducible + Vuelo y Hotel Desde ${usd(t.promo)}`,
     ganchoTema: (c, t) =>
-      `Todos nuestros paquetes migratorios a ${c} (${usd(t.promo)}, ${usd(t.smart)}, ${usd(t.plus)} y ${usd(t.full)}) ya incluyen tu póliza de seguro médico internacional, recomendada para viajar a Europa.`,
+      `Todos nuestros paquetes migratorios a ${c} (${usd(t.promo)}, ${usd(t.smart)}, ${usd(t.plus)} y ${usd(t.full)}) ya incluyen tu póliza de seguro médico internacional para viajar a Europa.`,
   },
   {
     slugTema: "diferencia-entre-carta-de-invitacion-y-reserva-de-hotel",

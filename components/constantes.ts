@@ -1625,7 +1625,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "seguro-schengen-30000-euros-peru-precio",
     titulo: "Seguro Schengen de 30.000 € desde Perú: ¿es obligatorio?, qué debe cubrir y cuánto cuesta",
     tituloSeo: "Seguro Schengen desde Perú: ¿es obligatorio?",
-    desc: "Para peruanos que entran sin visa, el Consulado de España lo considera recomendable; es obligatorio si pides visa. Qué debe cubrir y cuánto cuesta.",
+    desc: "Para entrar a España sin visa, el Consulado lo considera recomendable; Francia sí lo exige. Qué debe cubrir un buen seguro para Europa y cuánto cuesta.",
     categoria: "Europa",
     catColor: "bg-red-600",
     fecha: "Actualizado octubre 2026",
@@ -1633,7 +1633,8 @@ export const BLOG_POSTS: BlogPost[] = [
     imagen: "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800&q=80",
     autor: "Equipo Cityland Travel",
     contenido: `<h2>La respuesta corta</h2>
-<p>Si eres peruano y entras a España o a otro país del espacio Schengen <strong>sin visa</strong> (turismo o visita de hasta 90 días), el seguro médico <strong>no es un requisito obligatorio</strong>: el Consulado General de España en Lima lo califica como <strong>recomendable</strong>.</p>
+<p>Si eres peruano y entras a España <strong>sin visa</strong> (turismo o visita de hasta 90 días), el seguro médico <strong>no es un requisito obligatorio</strong>: el Consulado General de España en Lima lo califica como <strong>recomendable</strong>.</p>
+<p>Ojo: cada país fija sus reglas. <strong>Francia sí lo exige</strong> a todos los viajeros, con o sin visa: un seguro que cubra gastos médicos, hospitalización, fallecimiento y repatriación (mira los <a href="/viajes/requisitos-viajar-a-francia-desde-peru">requisitos para viajar a Francia</a>).</p>
 <p>El seguro con cobertura mínima de 30.000 € es obligatorio para quienes necesitan pedir una <strong>visa Schengen</strong> de corta duración. Los peruanos no la necesitan para viajar por turismo.</p>
 
 <h2>Entonces, ¿vale la pena llevarlo?</h2>
@@ -1655,7 +1656,7 @@ export const BLOG_POSTS: BlogPost[] = [
 </ul>
 
 <h2>¿Y para otros destinos?</h2>
-<p>Algunos países sí lo exigen. Por ejemplo, para entrar a <a href="/viajes/requisitos-viajar-a-curazao-desde-peru">Curazao</a> el seguro es obligatorio, con una cobertura mínima de US$ 15,000.</p>
+<p>Algunos países sí lo exigen. Por ejemplo, <a href="/viajes/requisitos-viajar-a-francia-desde-peru">Francia</a> pide un seguro con hospitalización y repatriación, y para entrar a <a href="/viajes/requisitos-viajar-a-curazao-desde-peru">Curazao</a> es obligatorio con una cobertura mínima de US$ 15,000.</p>
 
 <h2>Cuánto cuesta</h2>
 <p>Depende de los días de viaje, de tu edad y de la cobertura. En Cityland Travel emitimos el seguro para Europa desde US$ 65 (precio referencial), en PDF. Si compras un paquete con nosotros, puede venir incluido. Mira las opciones en <a href="/seguros">seguros de viaje</a>.</p>

@@ -48,7 +48,7 @@ const CONFIG_SEGUROS: ConfiguracionLandingAerolinea = {
   tituloHero: "Seguro de Viaje Internacional y",
   tituloDestacadoHero: "Póliza Schengen 30.000€",
   descripcionHero:
-    "Viaja protegido a España, Europa, Estados Unidos y el Caribe. Para Europa, el Consulado de España lo recomienda a quien entra sin visa; en destinos como Curazao es obligatorio. Emitimos tu póliza al instante y te la enviamos en PDF lista para llevar.",
+    "Viaja protegido a España, Europa, Estados Unidos y el Caribe. Para España, el Consulado lo recomienda a quien entra sin visa; Francia y Curazao sí lo exigen. Emitimos tu póliza al instante y te la enviamos en PDF lista para llevar.",
   negritaHero: "Cobertura médica 24/7 sin deducible y pérdida de equipaje",
   ctaPrincipalTexto: "Emitir mi Seguro por WhatsApp",
   waPrincipalNumero: "51944103890",
@@ -61,7 +61,7 @@ const CONFIG_SEGUROS: ConfiguracionLandingAerolinea = {
   ],
   vitrina: {
     pais: "España",
-    etiquetaIzq: "Recomendado para Europa",
+    etiquetaIzq: "España y espacio Schengen",
     etiquetaDer: "30.000€ Oficial",
     img: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=85",
     alt: "Seguro Schengen de 30.000 euros para viajar a España desde Perú",
