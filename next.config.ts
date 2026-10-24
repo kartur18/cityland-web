@@ -21,7 +21,8 @@ const nextConfig: NextConfig = {
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' data: https://fonts.gstatic.com",
       "img-src 'self' data: blob: https:",
-      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.google.com https://va.vercel-scripts.com https://vitals.vercel-insights.com",
+      // Google Ads (AW-18093363482) manda la conversión a ad.doubleclick.net y googleadservices: sin ellos la CSP la bloqueaba en cada carga (auditoría 23-oct).
+      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://ad.doubleclick.net https://googleads.g.doubleclick.net https://www.googleadservices.com https://www.google.com https://va.vercel-scripts.com https://vitals.vercel-insights.com",
       "frame-ancestors 'self'",
       "object-src 'none'",
       "base-uri 'self'",
