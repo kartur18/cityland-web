@@ -5,11 +5,11 @@ import AirlineLandingTemplate, {
 } from "@/components/AirlineLandingTemplate";
 
 export const metadata: Metadata = {
-  title: optimizarMetaTitleSEO("Seguro de Viaje Internacional y Seguro Schengen 30.000€ Obligatorio en Perú | Cityland Travel"),
-  description: optimizarMetaDescriptionSEO("Emisión inmediata de Seguro de Viaje Internacional en Lima: Seguro Schengen obligatorio de 30.000€ para España y Europa desde $65 USD, Asistencia Médica para Estados Unidos desde $75 USD, Caribe desde $49 USD, Embarazadas y Adultos Mayores. Póliza oficial en PDF en 5 minutos (RUC 20614914239)."),
+  title: optimizarMetaTitleSEO("Seguro de viaje y Schengen 30.000 € en Lima | Cityland Travel"),
+  description: optimizarMetaDescriptionSEO("Seguro de viaje en Lima: Schengen de 30.000 € para Europa desde $65 USD, Estados Unidos desde $75 y Caribe desde $49. Póliza en PDF por WhatsApp."),
   keywords: [
     "seguro schengen 30000 euros precio peru",
-    "seguro de viaje obligatorio para espana desde lima",
+    "seguro de viaje para espana desde lima",
     "seguro medico internacional para viajar a europa",
     "seguro de viaje para estados unidos y caribe peru",
     "assist card universal assistance lima los olivos",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title:
       "Seguro de Viaje Internacional y Seguro Schengen 30.000€ — Cityland Travel",
     description:
-      "Recibe tu póliza oficial en PDF en 5 minutos por WhatsApp. Cobertura de 30.000€ para migraciones en Madrid-Barajas, EE.UU., Caribe y Sudamérica.",
+      "Recibe tu póliza en PDF en 5 minutos por WhatsApp. Cobertura de 30.000 € para Europa y planes para EE. UU., el Caribe y Sudamérica.",
     siteName: "Cityland Travel",
     locale: "es_PE",
     images: [
@@ -48,7 +48,7 @@ const CONFIG_SEGUROS: ConfiguracionLandingAerolinea = {
   tituloHero: "Seguro de Viaje Internacional y",
   tituloDestacadoHero: "Póliza Schengen 30.000€",
   descripcionHero:
-    "Cumple con el requisito obligatorio de ingreso a España, Europa, Estados Unidos y el Caribe. Emitimos tu póliza oficial verificable al instante y te la enviamos en PDF lista para presentar en aeropuerto.",
+    "Viaja protegido a España, Europa, Estados Unidos y el Caribe. Para Europa, el Consulado de España lo recomienda a quien entra sin visa; en destinos como Curazao es obligatorio. Emitimos tu póliza al instante y te la enviamos en PDF lista para llevar.",
   negritaHero: "Cobertura médica 24/7 sin deducible y pérdida de equipaje",
   ctaPrincipalTexto: "Emitir mi Seguro por WhatsApp",
   waPrincipalNumero: "51944103890",
@@ -61,10 +61,10 @@ const CONFIG_SEGUROS: ConfiguracionLandingAerolinea = {
   ],
   vitrina: {
     pais: "España",
-    etiquetaIzq: "Requisito Obligatorio Europa",
+    etiquetaIzq: "Recomendado para Europa",
     etiquetaDer: "30.000€ Oficial",
     img: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=85",
-    alt: "Seguro Schengen 30.000 Euros obligatorio para viajar a España desde Perú",
+    alt: "Seguro Schengen de 30.000 euros para viajar a España desde Perú",
     sobretitulo: "Cobertura Médica + Repatriación + Equipaje",
     titulo: "Seguro Schengen 30.000€ para España",
     labelPrecio: "Póliza Oficial",
@@ -88,19 +88,19 @@ const CONFIG_SEGUROS: ConfiguracionLandingAerolinea = {
   items: [
     {
       id: "seguro-schengen-espana",
-      titulo: "Seguro Schengen Obligatorio · 30.000€",
+      titulo: "Seguro Schengen · 30.000€",
       pais: "España",
       filtro: "europa",
       subtitulo: "Válido en los 29 países de Europa",
       precioPrincipal: "$65",
       precioSecundario: "USD",
       notaPrecio: "Certificado oficial para Madrid-Barajas",
-      tag: "#1 Requisito Barajas",
+      tag: "Para Europa",
       tagBg: "bg-red-600 text-white",
       img: "/images/espana/barajas.jpg",
-      alt: "Seguro Schengen 30.000 Euros obligatorio para ingresar a España por Barajas",
+      alt: "Seguro Schengen de 30.000 euros para viajar a España",
       resumenCorto:
-        "Cumple al 100% con la normativa de la Unión Europea: mínimo 30.000€ en asistencia médica por accidente o enfermedad, repatriación sanitaria y cero deducible.",
+        "Con la misma cobertura que se exige para la visa Schengen: mínimo 30.000 € en asistencia médica por accidente o enfermedad, repatriación sanitaria y cero deducible.",
       checks: ["30.000€ Cobertura Oficial", "Cero deducible ni copago", "Entrega inmediata en PDF"],
       waNumber: "51944103890",
     },
@@ -130,7 +130,7 @@ const CONFIG_SEGUROS: ConfiguracionLandingAerolinea = {
       subtitulo: "Punta Cana, Cancún, Colombia y Brasil",
       precioPrincipal: "$49",
       precioSecundario: "USD",
-      notaPrecio: "Obligatorio para ingreso a varios destinos",
+      notaPrecio: "Obligatorio en destinos como Curazao",
       tag: "Playas & Familia",
       tagBg: "bg-emerald-600 text-white",
       img: "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=85",
