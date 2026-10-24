@@ -319,8 +319,262 @@ const CURAZAO: GuiaRequisitos = {
   destinoCotizador: "Curazao",
 };
 
+const PUNTA_CANA: GuiaRequisitos = {
+  slug: "requisitos-viajar-a-punta-cana-desde-peru",
+  pais: "Punta Cana",
+  h1: "Requisitos para viajar a Punta Cana desde Perú en 2026",
+  tituloSeo: "Requisitos para viajar a Punta Cana desde Perú",
+  descripcion:
+    "Los peruanos no necesitan visa ni tarjeta de turista para República Dominicana. Pasaporte, E-Ticket, pasaje de regreso y qué más te piden para Punta Cana.",
+  actualizado: ACTUALIZADO,
+  fechaIso: FECHA_ISO,
+  respuestaCorta: [
+    "No necesitas visa ni tarjeta de turista para entrar a República Dominicana.",
+    "Tu pasaporte debe tener al menos 6 meses de vigencia.",
+    "El formulario electrónico E-Ticket es obligatorio y gratis: llénalo antes de ir al aeropuerto.",
+    "Te piden pasaje de ida y vuelta, dirección donde te alojas y dinero suficiente.",
+    "Desde el Perú no te piden vacuna contra la fiebre amarilla.",
+  ],
+  contenido: `<h2>¿Necesitas visa?</h2>
+<p>No. La Cancillería de República Dominicana pone al Perú en la lista de países cuyos ciudadanos <strong>no necesitan visa ni tarjeta de turista</strong> para entrar como turistas.</p>
+
+<h2>Lo que te piden para entrar</h2>
+<p>Según el Ministerio de Turismo de República Dominicana, los turistas deben cumplir con esto:</p>
+<div class="tabla-guia"><table>
+<thead><tr><th>Requisito</th><th>Qué llevar</th></tr></thead>
+<tbody>
+<tr><td>Pasaporte</td><td>Con al menos 6 meses de vigencia.</td></tr>
+<tr><td>E-Ticket</td><td>Formulario electrónico de entrada y salida. Obligatorio y gratis.</td></tr>
+<tr><td>Pasaje</td><td>De ida y de regreso. La aerolínea lo revisa antes de dejarte subir.</td></tr>
+<tr><td>Alojamiento</td><td>Una dirección en República Dominicana: la reserva de tu hotel.</td></tr>
+<tr><td>Dinero</td><td>Prueba de que puedes cubrir tus gastos durante el viaje.</td></tr>
+</tbody></table></div>
+<p>Ojo con el pasaporte: República Dominicana deja entrar con pasaporte solo "vigente" a ciudadanos de algunos países (como la Unión Europea, Estados Unidos, Brasil, Chile, Argentina, Colombia y Ecuador), pero el Perú no está en esa lista. Para los peruanos rigen los 6 meses de vigencia.</p>
+
+<h2>El E-Ticket, paso a paso</h2>
+<ul>
+<li>Se llena gratis en la página oficial <a href="https://eticket.migracion.gob.do/" target="_blank" rel="noopener">eticket.migracion.gob.do</a>.</li>
+<li>Ya no tiene que ser 72 horas antes: puedes llenarlo apenas tengas los datos de tu vuelo, pero <strong>antes de llegar al mostrador de la aerolínea</strong>, porque te lo piden ahí.</li>
+<li>Si viajas en familia, una sola persona puede llenarlo por todos: hasta 7 personas por formulario.</li>
+<li>Guarda la confirmación que te da el sistema y tenla a mano en el aeropuerto.</li>
+</ul>
+<p>Desconfía de páginas que te cobren por el E-Ticket: el oficial es gratis.</p>
+
+<h2>¿Cuántos días te puedes quedar?</h2>
+<p>Si te quedas más de 30 días, al salir pagas una tasa adicional según el tiempo total de tu estadía. El impuesto de salida de US$ 20 ya viene incluido en el precio del pasaje.</p>
+
+<h2>¿Necesitas la vacuna contra la fiebre amarilla?</h2>
+<p>Desde el Perú, no. República Dominicana solo la pide a quienes llegan desde algunos estados de Brasil (Espírito Santo, Minas Gerais, Río de Janeiro y São Paulo). Si haces escala en uno de esos aeropuertos por menos de 12 horas, tampoco te la piden.</p>
+
+<h2>¿Y el seguro de viaje?</h2>
+<p>No está en la lista de requisitos de entrada, pero conviene llevarlo: una atención médica en el extranjero se paga, y puede costar mucho más que el seguro.</p>
+
+<h2>Errores comunes</h2>
+<ul>
+<li><strong>Pasaporte con menos de 6 meses de vigencia.</strong> Para los peruanos no basta con que esté vigente.</li>
+<li><strong>Llegar al aeropuerto sin el E-Ticket.</strong> La aerolínea te lo pide antes de embarcar.</li>
+<li><strong>Comprar solo el pasaje de ida.</strong> Sin pasaje de regreso, la aerolínea no te deja subir.</li>
+</ul>`,
+  faqs: [
+    {
+      q: "¿Los peruanos necesitan visa para ir a Punta Cana?",
+      a: "No. Los peruanos no necesitan visa ni tarjeta de turista para entrar a República Dominicana como turistas.",
+    },
+    {
+      q: "¿Cuánta vigencia debe tener mi pasaporte?",
+      a: "Al menos 6 meses. La excepción de pasaporte solo vigente no aplica a los peruanos.",
+    },
+    {
+      q: "¿El E-Ticket cuesta?",
+      a: "No. El formulario oficial es gratis en eticket.migracion.gob.do.",
+    },
+    {
+      q: "¿Me piden vacuna contra la fiebre amarilla si viajo desde Lima?",
+      a: "No. Solo se la piden a quienes llegan desde algunos estados de Brasil.",
+    },
+    {
+      q: "¿Cuántos días me puedo quedar?",
+      a: "Si te quedas más de 30 días, pagas una tasa adicional al salir del país.",
+    },
+  ],
+  fuentes: [
+    {
+      nombre: "Cancillería de República Dominicana: listado de países y condiciones de visado",
+      url: "https://nld.mirex.gob.do/consular/amsterdam/listado-de-paises-y-condiciones-de-visado/",
+    },
+    {
+      nombre: "Ministerio de Turismo de República Dominicana: requisitos de entrada",
+      url: "https://es.godominicanrepublic.com/planea-tu-viaje/requisitos-de-viaje",
+    },
+    { nombre: "E-Ticket oficial de Migración de República Dominicana", url: "https://eticket.migracion.gob.do/" },
+  ],
+  destinoCotizador: "Punta Cana",
+};
+
+const DUBAI: GuiaRequisitos = {
+  slug: "requisitos-viajar-a-dubai-desde-peru",
+  pais: "Dubái",
+  h1: "Requisitos para viajar a Dubái desde Perú en 2026",
+  tituloSeo: "Requisitos para viajar a Dubái desde Perú 2026",
+  descripcion:
+    "Los peruanos no tramitan visa antes de viajar a Dubái: al llegar les sellan una visa de 90 días. Pasaporte, escalas y qué llevar para entrar a los Emiratos.",
+  actualizado: ACTUALIZADO,
+  fechaIso: FECHA_ISO,
+  respuestaCorta: [
+    "No tramitas visa antes de viajar: te la sellan al llegar a Dubái.",
+    "Es una visa de visita de varias entradas, válida 6 meses, para un total de 90 días.",
+    "Lleva tu pasaporte con al menos 6 meses de vigencia.",
+    "Si haces escala en Europa o en Brasil, como peruano no necesitas visa para la escala.",
+  ],
+  contenido: `<h2>¿Necesitas visa?</h2>
+<p>No necesitas tramitarla antes. El Perú está en la lista de países cuyos ciudadanos reciben la visa al llegar: en migración de Dubái te sellan en el pasaporte una <strong>visa de visita de varias entradas</strong>, válida por 6 meses desde que te la ponen, para un total de <strong>90 días</strong> de estadía.</p>
+
+<h2>Lo que conviene llevar</h2>
+<div class="tabla-guia"><table>
+<thead><tr><th>Requisito</th><th>Qué llevar</th></tr></thead>
+<tbody>
+<tr><td>Pasaporte</td><td>Con al menos 6 meses de vigencia. Las aerolíneas lo revisan antes de dejarte subir.</td></tr>
+<tr><td>Pasaje</td><td>Ten a mano tu pasaje de regreso o de salida a otro país.</td></tr>
+<tr><td>Alojamiento</td><td>La reserva de tu hotel.</td></tr>
+<tr><td>Seguro de viaje</td><td>No es requisito para la visa al llegar, pero la atención médica en los Emiratos es cara.</td></tr>
+</tbody></table></div>
+
+<h2>Las escalas</h2>
+<p>Desde Lima no hay vuelo directo a Dubái: lo normal es hacer escala en Europa o en Brasil. Como peruano no necesitas visa para esas escalas.</p>
+
+<h2>Medicamentos</h2>
+<p>Los Emiratos controlan algunos medicamentos que en el Perú se compran sin problema. Si viajas con medicinas, llévalas en su caja original y con la receta médica.</p>
+
+<h2>Errores comunes</h2>
+<ul>
+<li><strong>Pasaporte con poca vigencia.</strong> Renuévalo si le quedan menos de 6 meses.</li>
+<li><strong>Pagar una "visa para Dubái" por internet.</strong> Los peruanos la reciben al llegar; desconfía de páginas que te la quieran vender.</li>
+<li><strong>Quedarte más de 90 días.</strong> Es el máximo de la visa que te sellan al llegar.</li>
+</ul>`,
+  faqs: [
+    {
+      q: "¿Los peruanos necesitan visa para Dubái?",
+      a: "No tienen que tramitarla antes. Al llegar les sellan una visa de visita de varias entradas para 90 días en total.",
+    },
+    {
+      q: "¿Cuánto tiempo me puedo quedar en Dubái?",
+      a: "Hasta 90 días en total, dentro de los 6 meses de validez de la visa que te sellan al llegar.",
+    },
+    {
+      q: "¿Cuánta vigencia debe tener mi pasaporte?",
+      a: "Lleva al menos 6 meses de vigencia: es lo que revisan las aerolíneas.",
+    },
+    {
+      q: "¿Necesito visa para la escala en Europa?",
+      a: "No. Los peruanos no necesitan visa para el espacio Schengen en viajes cortos.",
+    },
+  ],
+  fuentes: [
+    {
+      nombre: "Emirates: información de visas para los Emiratos Árabes Unidos",
+      url: "https://www.emirates.com/english/before-you-fly/visa-passport-information/uae-visa-information/",
+    },
+  ],
+  destinoCotizador: "Dubái",
+};
+
+const FRANCIA: GuiaRequisitos = {
+  slug: "requisitos-viajar-a-francia-desde-peru",
+  pais: "Francia",
+  h1: "Requisitos para viajar a Francia desde Perú en 2026",
+  tituloSeo: "Requisitos para viajar a Francia desde Perú 2026",
+  descripcion:
+    "Peruanos sin visa hasta 90 días: Francia sí exige seguro médico, pide 65 € o 120 € por día según tu alojamiento y la attestation d'accueil si te recibe un familiar.",
+  actualizado: ACTUALIZADO,
+  fechaIso: FECHA_ISO,
+  respuestaCorta: [
+    "No necesitas visa para turismo o visita: hasta 90 días dentro de cada periodo de 180 días.",
+    "A diferencia de España, Francia sí exige un seguro médico que cubra hospitalización y repatriación.",
+    "Dinero: 65 € por día si tienes reserva de hotel y 120 € por día si no la tienes.",
+    "Si te recibe un familiar, él tramita la attestation d'accueil en su municipio y tú llevas 32,50 € por día.",
+  ],
+  contenido: `<h2>¿Necesitas visa?</h2>
+<p>No, si vas por turismo, a visitar a tu familia o por negocios. Francia es parte del espacio Schengen, y los peruanos pueden entrar sin visa por un máximo de <strong>90 días dentro de cada periodo de 180 días</strong>.</p>
+
+<h2>Lo que te pueden pedir al llegar</h2>
+<p>El sitio oficial France-Visas aclara que estos requisitos valen "tengas o no visa". La policía de frontera puede pedirte:</p>
+<div class="tabla-guia"><table>
+<thead><tr><th>Requisito</th><th>Qué llevar</th></tr></thead>
+<tbody>
+<tr><td>Pasaporte</td><td>Emitido hace menos de 10 años y vigente al menos 3 meses después de la fecha en que sales.</td></tr>
+<tr><td>Alojamiento</td><td>Reserva de hotel por toda la estancia, o attestation d'accueil si te quedas con un familiar o amigo.</td></tr>
+<tr><td>Dinero</td><td>65 € por día con reserva de hotel, 120 € por día sin ella, o 32,50 € por día con attestation d'accueil.</td></tr>
+<tr><td>Pasaje de regreso</td><td>O dinero suficiente para comprarlo.</td></tr>
+<tr><td>Seguro médico</td><td>Obligatorio: debe cubrir gastos médicos, hospitalización y fallecimiento, incluida la repatriación.</td></tr>
+</tbody></table></div>
+
+<h2>El seguro en Francia sí es obligatorio</h2>
+<p>En España, el Consulado lo califica como recomendable para quien entra sin visa. En Francia no: France-Visas indica que debes llevar un certificado de seguro que cubra todos los gastos médicos, de hospitalización y de fallecimiento durante tu estancia, incluida la repatriación por motivos médicos. Llévalo impreso.</p>
+
+<h2>Cuánto dinero llevar</h2>
+<div class="tabla-guia"><table>
+<thead><tr><th>Ejemplo por persona</th><th>Con hotel (65 €/día)</th><th>Sin reserva (120 €/día)</th><th>Con attestation (32,50 €/día)</th></tr></thead>
+<tbody>
+<tr><td>7 días</td><td>455 €</td><td>840 €</td><td>227,50 €</td></tr>
+<tr><td>15 días</td><td>975 €</td><td>1.800 €</td><td>487,50 €</td></tr>
+<tr><td>30 días</td><td>1.950 €</td><td>3.600 €</td><td>975 €</td></tr>
+</tbody></table></div>
+<p>Si tu reserva de hotel cubre solo una parte del viaje, se calcula 65 € por día para esos días y 120 € por día para el resto.</p>
+
+<h2>Si te quedas en casa de un familiar o amigo: la attestation d'accueil</h2>
+<ul>
+<li>La pide la persona que te recibe, en la municipalidad (mairie) de donde vive.</li>
+<li>Cuesta 30 € en timbre fiscal, que no se devuelve si la rechazan.</li>
+<li>La municipalidad tiene hasta un mes para responder: pídela con tiempo.</li>
+<li>Una vez validada, tu familiar te envía el original para que lo lleves en el viaje.</li>
+</ul>
+
+${BLOQUE_EES_ETIAS}
+
+<h2>Errores comunes</h2>
+<ul>
+<li><strong>Viajar sin seguro creyendo que es como España.</strong> Francia lo exige.</li>
+<li><strong>Calcular el dinero con la tabla de España.</strong> Francia tiene sus propios montos.</li>
+<li><strong>Pedir la attestation d'accueil a última hora.</strong> La municipalidad puede tardar hasta un mes.</li>
+<li><strong>Pasaporte por vencer.</strong> Debe tener al menos 3 meses de vigencia después de tu salida.</li>
+</ul>`,
+  faqs: [
+    {
+      q: "¿Necesito visa para viajar a Francia desde Perú?",
+      a: "No para turismo, visita o negocios de hasta 90 días dentro de cada periodo de 180 días.",
+    },
+    {
+      q: "¿El seguro es obligatorio para Francia?",
+      a: "Sí. France-Visas pide un certificado de seguro que cubra gastos médicos, hospitalización, fallecimiento y repatriación, tengas o no visa.",
+    },
+    {
+      q: "¿Cuánto dinero llevo para 15 días en hotel?",
+      a: "975 € por persona (65 € por día).",
+    },
+    {
+      q: "¿Qué es la attestation d'accueil?",
+      a: "Es el documento que tramita en su municipalidad la persona que te recibe en Francia. Cuesta 30 € y puede tardar hasta un mes.",
+    },
+    {
+      q: "¿Puedo entrar por Madrid y luego ir a París?",
+      a: "Sí. Son parte del espacio Schengen y los 90 días cuentan para todos esos países juntos.",
+    },
+  ],
+  fuentes: [
+    { nombre: "France-Visas: tu llegada a Francia", url: "https://france-visas.gouv.fr/votre-arrivee-en-france" },
+    {
+      nombre: "Service-Public (Francia): attestation d'accueil",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2191",
+    },
+  ],
+  destinoCotizador: "París",
+};
+
 export const GUIAS_REQUISITOS: Readonly<Record<string, GuiaRequisitos>> = {
   [ESPANA.slug]: ESPANA,
   [ITALIA.slug]: ITALIA,
+  [FRANCIA.slug]: FRANCIA,
   [CURAZAO.slug]: CURAZAO,
+  [PUNTA_CANA.slug]: PUNTA_CANA,
+  [DUBAI.slug]: DUBAI,
 };
