@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { robotsSegunRuta } from "@/lib/indexacion";
 import { notFound } from "next/navigation";
 import SuperLandingMigratorioTemplate from "@/components/SuperLandingMigratorioTemplate";
 import {
@@ -42,6 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     keywords: datos.keywords,
+    robots: robotsSegunRuta(`/paquetes-migratorios/${datos.slug}`),
     alternates: {
       canonical: urlCanonica,
     },

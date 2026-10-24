@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { robotsSegunRuta } from "@/lib/indexacion";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import VuelosJorgeChavezTemplate from "@/components/VuelosJorgeChavezTemplate";
@@ -44,6 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     keywords: ruta.keywords,
+    robots: robotsSegunRuta(`/vuelos/${ruta.slug}`),
     alternates: {
       canonical: url,
     },

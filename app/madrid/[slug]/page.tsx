@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { robotsSegunRuta } from "@/lib/indexacion";
 import { notFound } from "next/navigation";
 import MadridMigratorioTemplate from "@/components/MadridMigratorioTemplate";
 import {
@@ -40,6 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     keywords: datos.keywords,
+    robots: robotsSegunRuta(`/madrid/${datos.slug}`),
     alternates: {
       canonical: urlCanonica,
     },

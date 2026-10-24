@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { robotsSegunRuta } from "@/lib/indexacion";
 import Link from "next/link";
 import AirlineLandingTemplate, {
   ConfiguracionLandingAerolinea,
@@ -47,6 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     keywords: item.keywords,
+    robots: robotsSegunRuta(`/viajes/${item.slug}`),
     alternates: { canonical: url },
     openGraph: {
       type: "website",
