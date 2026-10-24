@@ -32,7 +32,7 @@ export async function generateMetadata({
   if (!post) return { title: "Artículo no encontrado | Cityland Travel" };
 
   const canonical = `https://citylandtravel.com/blog/${post.slug}`;
-  const title = optimizarMetaTitleSEO(`${post.titulo} | Cityland Travel`);
+  const title = optimizarMetaTitleSEO(`${post.tituloSeo ?? post.titulo} | Cityland Travel`);
   const description = optimizarMetaDescriptionSEO(post.desc);
   return {
     title,

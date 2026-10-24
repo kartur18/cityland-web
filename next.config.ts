@@ -71,6 +71,12 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Dos artículos competían por "bolsa de viaje para España": se juntaron en la guía que más aparecía en Google.
+      {
+        source: "/blog/bolsa-de-viaje-espana-2026-boe-122-euros-calculo",
+        destination: "/blog/cuanto-dinero-llevar-espana-bolsa-de-viaje",
+        permanent: true,
+      },
       {
         source: "/paquetes-migratorio",
         destination: "/paquetes-migratorios",

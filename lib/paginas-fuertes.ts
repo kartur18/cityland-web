@@ -34,7 +34,6 @@ export const PAGINAS_FUERTES: ReadonlySet<string> = new Set([
   "/agencia-de-viajes-lima-norte",
   "/agencia-de-viajes-san-miguel",
   "/blog",
-  "/blog/bolsa-de-viaje-espana-2026-boe-122-euros-calculo",
   "/blog/carta-invitacion-espana-peru-requisitos",
   "/blog/como-tramitar-visa-americana-b1-b2-peru",
   "/blog/como-verificar-codigo-reserva-pnr-aerolinea",
