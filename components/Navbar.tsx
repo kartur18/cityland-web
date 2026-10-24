@@ -133,7 +133,7 @@ export default function Navbar() {
               </div>
             </Link>
 
-            {/* Enlaces Principales Desktop (Encajan 100% sin cortar el botón derecho) */}
+            {/* Enlaces Principales Desktop */}
             <div className="hidden lg:flex items-center gap-1 xl:gap-1.5">
               {PRIMARY_LINKS.map((link) =>
                 link.highlight ? (
@@ -172,7 +172,8 @@ export default function Navbar() {
                 className="inline-flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-[#0a1628] px-3.5 py-2.5 rounded-full text-xs font-extrabold transition-colors whitespace-nowrap"
               >
                 <span>🔍</span>
-                <span>Buscar</span>
+                {/* A 1280 px la palabra empujaba fuera el «Cotizar por WhatsApp»: el ícono basta hasta xl. */}
+                <span className="hidden xl:inline">Buscar</span>
               </Link>
               <a
                 href={WA_LINK}
@@ -194,9 +195,10 @@ export default function Navbar() {
               >
                 🔍
               </Link>
+              {/* Bajo 640 px no entra junto al logo, «Cotizar» y el menú: el menú quedaba fuera de la pantalla (360-390 px). España sigue en el menú. */}
               <Link
                 href="/espana"
-                className="inline-flex items-center gap-1 bg-red-50 text-red-600 px-2.5 py-1.5 rounded-full text-xs font-extrabold border border-red-200/60"
+                className="hidden sm:inline-flex items-center gap-1 bg-red-50 text-red-600 px-2.5 py-1.5 rounded-full text-xs font-extrabold border border-red-200/60"
               >
                 <FlagIcon pais="España" className="w-3 h-2" />
                 <span>España</span>

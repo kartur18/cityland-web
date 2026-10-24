@@ -15,7 +15,7 @@ import { INDICE_PAQUETES_MIGRATORIOS_1000 } from "@/lib/catalogo-paquetes-migrat
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO("Catálogo de Destinos, Paquetes Migratorios a Europa y Ofertas | Cityland Travel"),
-  description: optimizarMetaDescriptionSEO("Explora nuestros paquetes migratorios a España, Italia, Francia y Europa desde $699 USD (solo ida), resorts Todo Incluido en el Caribe y paquetes por el Perú en Cityland Travel (RUC 20614914239)."),
+  description: optimizarMetaDescriptionSEO(`Explora nuestros paquetes migratorios a España desde ${formatoUSD(tarifasMigratorio("España").promo)} USD, Italia y Francia desde ${formatoUSD(tarifasMigratorio("Italia").promo)} USD (solo ida), resorts Todo Incluido en el Caribe y paquetes por el Perú en Cityland Travel (RUC 20614914239).`),
   alternates: {
     canonical: "https://citylandtravel.com/directorio",
   },
@@ -36,7 +36,7 @@ const HERO_POR_MODO: Record<
     badge: "🌍 Cityland Travel E.I.R.L. · RUC 20614914239 · Atención en Los Olivos",
     h1: "Catálogo Oficial de Paquetes a Europa, Caribe y Perú",
     descripcion:
-      "Encuentra en segundos tu paquete migratorio a España, Italia o Francia desde $699 USD, solo ida (planes $699, $799, $899 y $999 según tu fecha), o vacaciones Todo Incluido al Caribe y Perú. Separa hoy con el 50% de inicial.",
+      `Encuentra en segundos tu paquete migratorio a España desde ${formatoUSD(tarifasMigratorio("España").promo)} USD o a Italia y Francia desde ${formatoUSD(tarifasMigratorio("Italia").promo)} USD, solo ida (el plan cambia según tu fecha), o vacaciones Todo Incluido al Caribe y Perú. Separa hoy con el 50% de inicial.`,
     waTexto:
       "¡Hola Cityland Travel! Vi su catálogo de destinos y quiero cotizar mi próximo viaje.",
   },

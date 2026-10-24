@@ -120,7 +120,7 @@ export default function Hero() {
               <div className="relative h-60 sm:h-64 w-full overflow-hidden bg-slate-100">
                 <Image
                   src="/images/espana/gran-via-metropolis.jpg"
-                  alt="Paquete Migratorio a España, Italia y Francia desde $699 USD (solo ida) - Cityland Travel"
+                  alt="Paquete Migratorio a Europa: España, Italia y Francia (solo ida) - Cityland Travel"
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 500px"
@@ -150,7 +150,7 @@ export default function Hero() {
                     Paquete Migratorio a Europa
                   </h2>
                   <p className="text-xs font-semibold text-slate-500 mt-1">
-                    4 planes de solo ida desde <strong className="text-[#0a1628]">$699 · $799 · $899 · $999 USD</strong>, según tu fecha
+                    Solo ida: España desde <strong className="text-[#0a1628]">{formatoUSD(tarifasMigratorio("España").promo)}</strong> · Italia y Francia desde <strong className="text-[#0a1628]">{formatoUSD(tarifasMigratorio("Italia").promo)} USD</strong>, según tu fecha
                   </p>
                 </div>
 
