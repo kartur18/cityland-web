@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { robotsSegunRuta } from "@/lib/indexacion";
+import { tituloSeoUnico } from "@/lib/titulos-seo";
 import Link from "next/link";
 import AirlineLandingTemplate from "@/components/AirlineLandingTemplate";
 import { SeoSiloFooter } from "@/components/SeoSiloFooter";
@@ -40,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ? item.config.vitrina.img
     : `https://citylandtravel.com${item.config.vitrina.img}`;
 
-  const title = optimizarMetaTitleSEO(item.metaTitle);
+  const title = tituloSeoUnico(`/ofertas/${item.slug}`, optimizarMetaTitleSEO(item.metaTitle));
   const description = optimizarMetaDescriptionSEO(item.metaDescription);
 
   return {

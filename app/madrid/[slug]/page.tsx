@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { robotsSegunRuta } from "@/lib/indexacion";
+import { tituloSeoUnico } from "@/lib/titulos-seo";
 import { notFound } from "next/navigation";
 import MadridMigratorioTemplate from "@/components/MadridMigratorioTemplate";
 import {
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const datos = buscarLandingMadrid10k(slug);
   if (!datos) return {};
 
-  const title = optimizarMetaTitleSEO(datos.metaTitle);
+  const title = tituloSeoUnico(`/madrid/${datos.slug}`, optimizarMetaTitleSEO(datos.metaTitle));
   const description = optimizarMetaDescriptionSEO(datos.metaDescription);
   const urlCanonica = `${URL_BASE_SEO}/madrid/${datos.slug}`;
 
