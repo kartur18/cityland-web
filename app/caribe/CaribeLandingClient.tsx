@@ -254,16 +254,9 @@ export default function CaribeLandingClient() {
                     </div>
 
                     {/* Precio + Botón de WhatsApp Alineados */}
-                    <div className="pt-3.5 border-t border-slate-100 flex items-center justify-between gap-3">
+                    {/* Sin «Antes desde»: no hay un precio anterior real que mostrar. */}
+                    <div className="pt-3.5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
                       <div>
-                        <div className="flex items-center gap-1.5 mb-0.5">
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                            Antes desde
-                          </span>
-                          <span className="text-[11px] font-semibold text-slate-400 line-through">
-                            ${d.precioRegularUSD.toLocaleString("en-US")}
-                          </span>
-                        </div>
                         <div className="flex items-baseline gap-1.5">
                           <span className="text-xs font-extrabold uppercase tracking-wider text-red-600">
                             Desde

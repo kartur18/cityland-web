@@ -64,14 +64,6 @@ export default function PanamaMedellinLanding() {
               <span className="inline-block bg-amber-100 text-amber-800 text-xs font-extrabold uppercase tracking-wider px-3 py-1 rounded-full mb-3">
                 Tarifa Preventa · Separa con 50%
               </span>
-              <div className="flex items-baseline gap-3 mb-2">
-                <span className="text-slate-400 text-sm font-semibold">
-                  Antes desde <span className="line-through">$1,050</span>
-                </span>
-                <span className="bg-red-100 text-red-700 text-xs font-black px-2 py-0.5 rounded-full">
-                  Ahorra desde $251
-                </span>
-              </div>
               <div className="text-4xl md:text-5xl font-black text-[#0a1628] leading-none mb-2">
                 Desde $799
               </div>

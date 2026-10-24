@@ -335,11 +335,6 @@ export default async function DestinoPage({
                         <span className="font-[family-name:var(--font-bebas)] text-4xl text-[#0a1628] leading-none">
                           {formatoUSD(precioPrincipal)}
                         </span>
-                        {dest.regularPrice && (
-                          <span className="text-xs text-slate-400 ml-1">
-                            antes desde <span className="line-through">${dest.regularPrice.toLocaleString("en-US")}</span>
-                          </span>
-                        )}
                       </div>
                       <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
                         Separa hoy desde {formatoUSD(mitadPrecio)} (50% inicial)

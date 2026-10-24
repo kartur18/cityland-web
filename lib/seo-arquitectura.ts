@@ -331,13 +331,20 @@ export function obtenerEnlacesCruzadosSEO(
   };
 }
 
+const PALABRA_COLGADA = /\s+(?:a|al|de|del|y|e|o|u|con|por|en|para|la|el|los|las|desde|como|sin|all|todo|\$)$/i;
+
 // Corta en el ultimo espacio y descarta un parentesis o monto a medio escribir ("($50 | Cityland").
 function recortarEnPalabra(texto: string, max: number, minimo: number): string {
   if (texto.length <= max) return texto;
   const corte = texto.slice(0, max);
   const espacio = corte.lastIndexOf(" ");
   const base = espacio > minimo ? corte.slice(0, espacio) : corte;
-  return base.replace(/\s*\([^)]*$/, "").replace(/[\s,;:·|—–-]+$/, "").trim();
+  let limpio = base.replace(/\s*\([^)]*$/, "").replace(/[\s,;:·|—–-]+$/, "").trim();
+  // Sin palabra colgada al final: «Plan Promo Desde», «Paquetes Migratorios a», «Ocho Ríos All» (44 títulos del sitemap, auditoría 23-oct).
+  while (PALABRA_COLGADA.test(limpio) && limpio.length > minimo) {
+    limpio = limpio.replace(PALABRA_COLGADA, "").replace(/[\s,;:·|—–-]+$/, "").trim();
+  }
+  return limpio;
 }
 
 /**
