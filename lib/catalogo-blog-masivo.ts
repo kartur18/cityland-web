@@ -220,7 +220,7 @@ export const BLOG_POSTS_MASIVOS: BlogPost[] = [
     imagen: "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=900&q=80",
     autor: "Equipo Cityland Travel",
     contenido: `<h2>Transparencia total en cada emisión de Cityland Travel</h2>
-<p>En <strong>Cityland Travel E.I.R.L. (RUC 20614914239)</strong> trabajamos con total transparencia para tu tranquilidad. Cada vez que emitimos un pasaje o paquete aéreo, te entregamos dos identificadores oficiales que puedes comprobar tú mismo en el portal de la aerolínea:</p>
+<p>En <strong>Cityland Group E.I.R.L. (RUC 20614914239)</strong> trabajamos con total transparencia para tu tranquilidad. Cada vez que emitimos un pasaje o paquete aéreo, te entregamos dos identificadores oficiales que puedes comprobar tú mismo en el portal de la aerolínea:</p>
 <h3>1. Código de Reserva PNR (6 caracteres alfanuméricos)</h3>
 <p>Es una combinación de 6 letras y números (por ejemplo, <code>K8M4P2</code>). Con este código y el primer apellido del pasajero puedes entrar a la sección <em>"Mis Viajes"</em> o <em>"Gestionar tu reserva"</em> en la web oficial de Iberia, Air Europa, Plus Ultra, LATAM, Sky, Copa Airlines o Avianca y ver tu itinerario en tiempo real.</p>
 <h3>2. Número de Boleto Electrónico E-Ticket (13 dígitos)</h3>
@@ -295,7 +295,7 @@ export const BLOG_POSTS_MASIVOS: BlogPost[] = [
     contenido: `<h2>Seguridad y acompañamiento humano antes, durante y después de tu vuelo</h2>
 <p>Comprar un viaje internacional en un portal extranjero sin oficinas en el Perú puede convertirse en un dolor de cabeza cuando una aerolínea reprograma un horario, cuando necesitas corregir un nombre o cuando tienes dudas sobre los requisitos migratorios.</p>
 <h3>Por qué miles de viajeros peruanos confían en Cityland Travel:</h3>
-<p>1. <strong>Empresa peruana formal y verificable:</strong> Cityland Travel E.I.R.L. con RUC 20614914239.<br>
+<p>1. <strong>Empresa peruana formal y verificable:</strong> Cityland Group E.I.R.L. con RUC 20614914239.<br>
 2. <strong>Oficina física propia en Lima:</strong> Visítanos en Av. Antúnez de Mayolo N. 814, Los Olivos (lunes a sábado de 9:00 a.m. a 7:00 p.m.).<br>
 3. <strong>Especialistas en carpeta migratoria europea:</strong> Revisamos documento por documento tu vuelo de retorno, voucher de hotel y seguro Schengen de 30.000€.<br>
 4. <strong>Facilidad de pago con el 50%:</strong> Separa tus paquetes promocionales en dólares y completa el saldo antes de viajar.<br>

@@ -171,7 +171,7 @@ export default async function DestinoPage({
           url: `https://citylandtravel.com/destinos/${dest.slug}`,
           seller: {
             "@type": "TravelAgency",
-            name: "Cityland Travel E.I.R.L.",
+            name: "Cityland Group E.I.R.L.",
           },
         },
       },

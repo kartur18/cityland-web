@@ -471,7 +471,7 @@ const LANDINGS_CLUSTER_1: LandingComercialSEO[] = DESTINOS_MUNDIALES.flatMap((d)
         },
         {
           q: `¿Cómo puedo reservar mi viaje a ${d.ciudad} con el 50%?`,
-          a: `Puedes congelar tu tarifa promocional abonando el 50% en nuestra oficina de Los Olivos o por transferencia empresarial a nombre de Cityland Travel E.I.R.L. (RUC 20614914239).`,
+          a: `Puedes congelar tu tarifa promocional abonando el 50% en nuestra oficina de Los Olivos o por transferencia empresarial a nombre de Cityland Group E.I.R.L. (RUC 20614914239).`,
         },
       ],
     }),
@@ -611,7 +611,7 @@ const LANDINGS_CLUSTER_1: LandingComercialSEO[] = DESTINOS_MUNDIALES.flatMap((d)
       checksVip: [
         `Separa tu combo Vuelo + Hotel con el 50% de inicial`,
         `Paga con tarjetas Visa/Mastercard, transferencia BCP/BBVA/Interbank o Yape`,
-        `Respaldo legal de Cityland Travel E.I.R.L. (RUC 20614914239)`,
+        `Respaldo legal de Cityland Group E.I.R.L. (RUC 20614914239)`,
       ],
       tituloCard1: `Vuelo + Hotel Smart en ${d.ciudad}`,
       subCard1: "Tarifa promo aérea + Hotel céntrico",
@@ -828,7 +828,7 @@ const LANDINGS_CLUSTER_2: LandingComercialSEO[] = DESTINOS_PLAYA_RESORTS.flatMap
         },
         {
           q: `¿Cómo puedo reservar mi viaje a ${d.nombre} en cuotas?`,
-          a: `Puedes congelar la tarifa Desde $${pBase.toLocaleString("en-US")} USD abonando el 50% de inicial en nuestra sede de Los Olivos o cuentas empresa BCP/BBVA/Interbank de Cityland Travel E.I.R.L. (RUC 20614914239).`,
+          a: `Puedes congelar la tarifa Desde $${pBase.toLocaleString("en-US")} USD abonando el 50% de inicial en nuestra sede de Los Olivos o cuentas empresa BCP/BBVA/Interbank de Cityland Group E.I.R.L. (RUC 20614914239).`,
         },
       ],
     });
@@ -1106,7 +1106,7 @@ const VARIANTES_VISAS_SEGUROS: {
     checksHero: [
       "Evaluación personalizada de perfil migratorio o cobertura médica",
       "Atención presencial en Lima Norte (Los Olivos) y 100% digital a todo el Perú",
-      "Respaldo formal de agencia registrada Cityland Travel E.I.R.L.",
+      "Respaldo formal de agencia registrada Cityland Group E.I.R.L.",
     ],
   },
 ];
@@ -1469,7 +1469,7 @@ const LANDINGS_CLUSTER_6: LandingComercialSEO[] = SOLUCIONES_EMPRESAS.flatMap((e
       checksVip: [
         "Tarifas preferenciales en Cabina Ejecutiva (Business Class) y Flota VIP",
         "Organización llave en mano de viajes de incentivos para tus colaboradores",
-        "Convenio corporativo directo con Cityland Travel E.I.R.L. (RUC 20614914239)",
+        "Convenio corporativo directo con Cityland Group E.I.R.L. (RUC 20614914239)",
       ],
       tituloCard1: `Tarifa Corporativa Flexible — ${e.titulo}`,
       subCard1: "Emisión rápida + Factura Electrónica RUC 20",
@@ -1491,7 +1491,7 @@ const LANDINGS_CLUSTER_6: LandingComercialSEO[] = SOLUCIONES_EMPRESAS.flatMap((e
       faqs: [
         {
           q: `¿Cómo funciona la modalidad "${v.etiqueta}" en ${e.titulo}?`,
-          a: `${v.desc(e.titulo)} Emitimos Factura Electrónica y Liquidaciones de Cobranza oficiales de Cityland Travel E.I.R.L. (RUC 20614914239).`,
+          a: `${v.desc(e.titulo)} Emitimos Factura Electrónica y Liquidaciones de Cobranza oficiales de Cityland Group E.I.R.L. (RUC 20614914239).`,
         },
         {
           q: "¿Cómo solicitamos una cotización corporativa para nuestra empresa?",

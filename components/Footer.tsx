@@ -1,7 +1,6 @@
-import AnimateOnScroll from "@/components/AnimateOnScroll";
 import Image from "next/image";
 import Link from "next/link";
-import { WA_LINK, TELEFONO, TELEFONO_FORMATEADO } from "@/components/constantes";
+import { WA_LINK, TELEFONO, TELEFONO_FORMATEADO, OFICINAS } from "@/components/constantes";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import PhoneIcon from "@/components/icons/PhoneIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
@@ -27,13 +26,19 @@ export default function Footer() {
             </div>
             
             <p className="text-xs text-slate-300 leading-relaxed mb-5 max-w-sm">
-              Agencia de viajes física y formal con más de 10 años de experiencia conectando a miles de familias y viajeros peruanos con el mundo.
+              Agencia de viajes formal con dos oficinas en Los Olivos. Cotizamos y emitimos vuelos, paquetes y seguros con comprobante electrónico.
             </p>
 
-            <div className="space-y-1.5 text-xs text-slate-400 mb-6">
-              <p><strong className="text-white">Razón Social:</strong> Cityland Travel E.I.R.L.</p>
-              <p><strong className="text-white">RUC:</strong> 20614914239</p>
-              <p><strong className="text-white">Oficina:</strong> Av. Antúnez de Mayolo N. 814, Los Olivos, Lima</p>
+            <div className="space-y-3 text-xs text-slate-400 mb-6">
+              {OFICINAS.map((o) => (
+                <p key={o.ruc}>
+                  <strong className="text-white block">{o.direccion}</strong>
+                  {o.razonSocial} · RUC {o.ruc}
+                </p>
+              ))}
+              <Link href="/canales-oficiales" className="inline-block text-emerald-300 hover:text-emerald-200 font-semibold">
+                Verifica nuestros canales oficiales
+              </Link>
             </div>
 
             {/* Medios de pago */}
@@ -53,7 +58,7 @@ export default function Footer() {
             {/* Redes Sociales Oficiales (SEO Entity Graph rel="me") */}
             <div>
               <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2.5">
-                Comunidad Oficial Verificada (+27,000 Viajeros)
+                Síguenos en redes
               </p>
               <div className="flex flex-wrap gap-2.5">
                 <a
@@ -92,10 +97,10 @@ export default function Footer() {
             <div className="space-y-2.5 text-xs">
               <Link href="/paquetes-migratorios" className="flex items-center gap-1.5 text-amber-300 hover:text-amber-200 font-bold transition-colors">
                 <FlagIcon pais="Europa" className="w-3.5 h-2.5 shrink-0" />
-                <span>1,000 Paquetes Migratorios (Solo ida desde $699)</span>
+                <span>Paquetes Migratorios (Solo ida desde $699)</span>
               </Link>
               <Link href="/directorio#buscador" className="block text-slate-200 hover:text-white font-semibold transition-colors">
-                🔍 Buscador Oficial (+10,000 Programas)
+                🔍 Buscador de paquetes y destinos
               </Link>
               <Link href="/guia-europa" className="inline-flex items-center gap-1.5 text-sky-300 hover:text-white font-bold transition-colors">
                 <FlagIcon pais="Europa" className="w-3.5 h-2.5" />
@@ -173,12 +178,14 @@ export default function Footer() {
               Sede Central & Contacto
             </h4>
             <div className="space-y-3 mb-6 text-xs text-slate-300">
-              <div className="flex items-start gap-2.5">
-                <svg viewBox="0 0 24 24" className="w-4 h-4 text-red-500 shrink-0 mt-0.5 fill-current">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                </svg>
-                <span>Av. Antúnez de Mayolo N. 814, Los Olivos, Lima</span>
-              </div>
+              {OFICINAS.map((o) => (
+                <div key={o.ruc} className="flex items-start gap-2.5">
+                  <svg viewBox="0 0 24 24" className="w-4 h-4 text-red-500 shrink-0 mt-0.5 fill-current" aria-hidden="true">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                  <span>{o.direccion}</span>
+                </div>
+              ))}
               
               <a href={`tel:${TELEFONO}`} className="flex items-center gap-2.5 hover:text-white transition-colors">
                 <PhoneIcon className="w-4 h-4 fill-current text-slate-400 shrink-0" />
@@ -212,7 +219,7 @@ export default function Footer() {
             * Tarifas referenciales expresadas en dólares estadounidenses (US$). Precio referencial por persona; varía según fecha y disponibilidad. Impuestos y tasas según fecha y aerolínea. Sujetas a disponibilidad aérea/hotelera y condiciones aplicables según fecha exacta de salida (Temporada 2026).
           </p>
           <div className="flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 gap-3 text-center sm:text-left">
-            <span>&copy; 2026 Cityland Travel E.I.R.L. · RUC: 20614914239 · Todos los derechos reservados.</span>
+            <span>&copy; 2026 Cityland Travel · Cityland Group E.I.R.L. (RUC 20614914239) y Cityland Travel S.A.C. (RUC 20611406305)</span>
             <span>Lima, Perú · Agencia de Viajes y Turismo</span>
           </div>
         </div>

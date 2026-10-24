@@ -19,9 +19,8 @@ export default function WhatsAppFloat() {
         className="fixed bottom-6 right-6 z-[998] flex items-center gap-3 max-md:hidden group"
       >
         <div className="bg-white/95 backdrop-blur-md text-[#0a1628] text-xs font-semibold px-3.5 py-2 rounded-xl shadow-lg border border-slate-100 flex items-center gap-2 group-hover:scale-105 transition-transform">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
           <span>
-            ¡Asesores en línea! <strong>Separa con 50%</strong>
+            Cotiza por WhatsApp · <strong>Separa con 50%</strong>
           </span>
         </div>
         <a
@@ -49,8 +48,7 @@ export default function WhatsAppFloat() {
               Separa tu paquete con 50%
             </strong>
             <span className="text-[10px] text-slate-500 flex items-center gap-1">
-              <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
-              Asesores disponibles · Respuesta &lt; 2 min
+              Escríbenos y te cotizamos por WhatsApp
             </span>
           </div>
           <a

@@ -87,7 +87,7 @@ const JSON_LD_CARIBE = {
           image: d.img.startsWith("http") ? d.img : `https://citylandtravel.com${d.img}`,
           provider: {
             "@type": "TravelAgency",
-            name: "Cityland Travel E.I.R.L.",
+            name: "Cityland Group E.I.R.L.",
           },
           offers: {
             "@type": "AggregateOffer",
@@ -103,7 +103,7 @@ const JSON_LD_CARIBE = {
     {
       "@type": ["TravelAgency", "LocalBusiness"],
       name: "Cityland Travel",
-      legalName: "Cityland Travel E.I.R.L.",
+      legalName: "Cityland Group E.I.R.L.",
       url: "https://citylandtravel.com/caribe",
       taxID: "20614914239",
       telephone: "+51944103890",
@@ -146,7 +146,7 @@ const JSON_LD_CARIBE = {
           name: "¿Cómo separo mi paquete turístico en Cityland Travel?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Puedes congelar tu tarifa promocional hoy con el 50% de inicial en nuestra oficina física en Av. Antúnez de Mayolo N. 814, Los Olivos (Lima) o mediante cuentas bancarias empresariales de Cityland Travel E.I.R.L. (RUC 20614914239).",
+            text: "Puedes congelar tu tarifa promocional hoy con el 50% de inicial en nuestra oficina física en Av. Antúnez de Mayolo N. 814, Los Olivos (Lima) o mediante cuentas bancarias empresariales de Cityland Group E.I.R.L. (RUC 20614914239).",
           },
         },
       ],

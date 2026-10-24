@@ -118,7 +118,7 @@ function construirObjetoLanding(params: {
         : `¿Qué comprobantes y garantías recibo al reservar mi viaje a ${destinoOPais}?`,
       a: esInternacional
         ? `Te entregamos documentación verificable (código PNR de aerolínea, vouchers de alojamiento y/o póliza Schengen 30.000€ según la modalidad contratada) y orientación personalizada. ${SALVEDAD_MIGRATORIA}`
-        : `Recibes tu código de reserva verificable, vouchers de servicios contratados, contrato turístico y Boleta o Factura Electrónica SUNAT emitida por Cityland Travel E.I.R.L. (RUC 20614914239).`,
+        : `Recibes tu código de reserva verificable, vouchers de servicios contratados, contrato turístico y Boleta o Factura Electrónica SUNAT emitida por Cityland Group E.I.R.L. (RUC 20614914239).`,
     },
   ];
 

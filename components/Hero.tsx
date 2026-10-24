@@ -29,8 +29,7 @@ export default function Hero() {
           <div className="lg:col-span-7 text-left">
             <div className="inline-flex items-center gap-2 bg-white border border-slate-200 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-700 shadow-2xs mb-5">
               <span className="w-2 h-2 rounded-full bg-emerald-500" />
-              <span>Agencia Oficial en Lima · RUC 20614914239</span>
-              <span className="text-amber-500 font-extrabold ml-1">★ 4.9 Google</span>
+              <span>Agencia formal en Lima · RUC 20614914239</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#0a1628] tracking-tight leading-[1.12] mb-4">

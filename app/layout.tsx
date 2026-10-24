@@ -37,9 +37,9 @@ export const metadata: Metadata = {
     "viajes a turquia desde peru sin visa",
     "agencia de viajes formal ruc 20614914239",
   ],
-  authors: [{ name: "Cityland Travel E.I.R.L.", url: "https://citylandtravel.com" }],
-  creator: "Cityland Travel E.I.R.L.",
-  publisher: "Cityland Travel E.I.R.L.",
+  authors: [{ name: "Cityland Travel", url: "https://citylandtravel.com" }],
+  creator: "Cityland Travel",
+  publisher: "Cityland Group E.I.R.L.",
   category: "travel",
   icons: {
     icon: [
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     url: "https://citylandtravel.com/",
     title: `Cityland Travel — Paquete migratorio España (solo ida + gestión) desde US$ ${PRECIO_MIGRATORIO_DESDE} | Lima-Madrid ida y vuelta desde US$ ${PRECIO_IDA_VUELTA_MADRID_DESDE.toLocaleString("en-US")}`,
     description:
-      "Agencia de viajes formal en Lima (RUC 20614914239). Paquetes a Punta Cana, Cancún, Cartagena, España y Europa con vuelos confirmados. +5,000 viajeros felices.",
+      "Agencia de viajes formal en Lima (RUC 20614914239). Paquetes a Punta Cana, Cancún, Cartagena, España y Europa con vuelos confirmados. Oficinas en Los Olivos.",
     siteName: "Cityland Travel",
     locale: "es_PE",
     images: [
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `Cityland Travel — Paquete migratorio España (solo ida + gestión) desde US$ ${PRECIO_MIGRATORIO_DESDE}`,
     description:
-      "Agencia de viajes formal en Lima (RUC 20614914239). Vuelos y paquetes turísticos y migratorios. Separa con 50%. Respuesta en 2 min por WhatsApp.",
+      "Agencia de viajes formal en Lima (RUC 20614914239). Vuelos y paquetes turísticos y migratorios. Separa con 50% y cotiza por WhatsApp.",
     images: ["https://citylandtravel.com/opengraph-image"],
   },
   alternates: {

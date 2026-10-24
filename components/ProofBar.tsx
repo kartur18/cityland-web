@@ -1,11 +1,10 @@
-"use client";
-
+// Solo datos comprobables: nada de años, viajeros ni calificaciones que no se puedan sustentar.
 export default function ProofBar() {
   const ITEMS = [
-    { valor: "10+ AÑOS", label: "Trayectoria formal en Lima" },
-    { valor: "5,000+", label: "Viajeros al Caribe y Europa" },
-    { valor: "4.9 / 5.0 ★", label: "Calificación en Google (+500 reseñas)" },
-    { valor: "RUC 20614914239", label: "Agencia Formal · Los Olivos, Lima" },
+    { valor: "2 OFICINAS", label: "Atención presencial en Los Olivos" },
+    { valor: "SEPARA CON 50%", label: "El saldo lo pagas antes de viajar" },
+    { valor: "BOLETA O FACTURA", label: "Comprobante electrónico SUNAT" },
+    { valor: "RUC 20614914239", label: "Cityland Group E.I.R.L." },
   ];
 
   return (

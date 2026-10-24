@@ -380,13 +380,13 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
       imagenHero: fotos[0],
       galeria: [fotos[1], fotos[2], fotos[3], fotos[4]],
       metaTitle: `${titulo} Desde $${precio} USD | Cityland Travel Perú`,
-      metaDescription: `${desc} Cotiza Desde $${precio} USD con impuestos incluidos en Cityland Travel E.I.R.L. (RUC 20614914239), oficina en Los Olivos, Lima.`,
+      metaDescription: `${desc} Cotiza Desde $${precio} USD con impuestos incluidos en Cityland Group E.I.R.L. (RUC 20614914239), oficina en Los Olivos, Lima.`,
       keywords: [
         slugGrupo.replace(/-/g, " "),
         `${titulo.toLowerCase()} lima`,
         "agencia de viajes cityland travel",
       ],
-      resumenEjecutivo: `${desc} En Cityland Travel E.I.R.L. (RUC 20614914239) organizamos viajes individuales, grupales, estudiantiles y corporativos con contrato formal, boleta/factura electrónica y atención personalizada.`,
+      resumenEjecutivo: `${desc} En Cityland Group E.I.R.L. (RUC 20614914239) organizamos viajes individuales, grupales, estudiantiles y corporativos con contrato formal, boleta/factura electrónica y atención personalizada.`,
       incluye: [
         "Atención directa en nuestra Central WhatsApp (+51 944 103 890) y oficina en Los Olivos",
         "Contrato formal y comprobantes electrónicos (Boleta o Factura RUC 20614914239)",
@@ -395,7 +395,7 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
         "Asistencia permanente 24/7 antes y durante todo el viaje",
       ],
       beneficiosClave: [
-        { titulo: "Agencia Formal Registrada", desc: "Cityland Travel E.I.R.L. (RUC 20614914239) con oficina física en Av. Antúnez de Mayolo 814, Los Olivos." },
+        { titulo: "Agencia Formal Registrada", desc: "Cityland Group E.I.R.L. (RUC 20614914239) con oficina física en Av. Antúnez de Mayolo 814, Los Olivos." },
         { titulo: "Bloqueos y Cupos Garantizados", desc: "Aseguramos espacios aéreos y hoteleros con códigos de reserva oficiales." },
         { titulo: "Cero Costos Ocultos", desc: "Cotizaciones claras en dólares con impuestos incluidos desde el primer momento." },
       ],

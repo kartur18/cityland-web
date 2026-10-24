@@ -223,7 +223,7 @@ export default function ModuloSeguridadYCalculadoraEuropa({
               Planifica tu Viaje a España e Italia con Respaldo Verificable
             </h2>
             <p className="text-slate-300 text-sm sm:text-base mt-2 leading-relaxed">
-              6 años de experiencia en la ruta Lima–Madrid y 12 asesores especializados. Diferenciamos con total transparencia turismo sin visa, visitas con Carta de Invitación, viajes con Visado D (RD 1155/2024 / Decreto Flussi) y boletos para residentes.
+              Asesoras especializadas en la ruta Lima–Madrid. Diferenciamos con total transparencia turismo sin visa, visitas con Carta de Invitación, viajes con Visado D (RD 1155/2024 / Decreto Flussi) y boletos para residentes.
             </p>
           </div>
 
@@ -752,7 +752,7 @@ export default function ModuloSeguridadYCalculadoraEuropa({
         {/* Pie Institucional de Transparencia Legal */}
         <div className="mt-8 pt-5 border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-4 text-[11px] text-slate-400">
           <p className="max-w-4xl leading-relaxed">
-            <strong className="text-slate-200">Transparencia Institucional:</strong> Cityland Travel E.I.R.L. (RUC 20614914239 · Av. Antúnez de Mayolo N. 814, Los Olivos, Lima) es una agencia de viajes y turismo formal. Emitimos boletos aéreos verificables, reservas de hotel y seguros Schengen. La información sobre requisitos se basa en fuentes oficiales vigentes (BOE, Consulado de España en Lima, Embajada de Italia en Lima y Unión Europea) y no sustituye el asesoramiento jurídico de extranjería ni las decisiones soberanas de las autoridades fronterizas.
+            <strong className="text-slate-200">Transparencia Institucional:</strong> Cityland Group E.I.R.L. (RUC 20614914239 · Av. Antúnez de Mayolo N. 814, Los Olivos, Lima) es una agencia de viajes y turismo formal. Emitimos boletos aéreos verificables, reservas de hotel y seguros Schengen. La información sobre requisitos se basa en fuentes oficiales vigentes (BOE, Consulado de España en Lima, Embajada de Italia en Lima y Unión Europea) y no sustituye el asesoramiento jurídico de extranjería ni las decisiones soberanas de las autoridades fronterizas.
           </p>
           <Link
             href="/guia-europa"

@@ -115,7 +115,7 @@ export default async function AgenciaLocalSlugPage({ params }: Props) {
       {
         "@type": ["TravelAgency", "LocalBusiness"],
         name: `Cityland Travel — Atención para ${agencia.zona}`,
-        legalName: "Cityland Travel E.I.R.L.",
+        legalName: "Cityland Group E.I.R.L.",
         taxID: "20614914239",
         url: `https://citylandtravel.com/agencia/${agencia.slug}`,
         telephone: "+51944103890",

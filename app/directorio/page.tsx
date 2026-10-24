@@ -33,7 +33,7 @@ const HERO_POR_MODO: Record<
   }
 > = {
   directorio: {
-    badge: "🌍 Cityland Travel E.I.R.L. · RUC 20614914239 · Atención en Los Olivos",
+    badge: "🌍 Cityland Group E.I.R.L. · RUC 20614914239 · Atención en Los Olivos",
     h1: "Catálogo Oficial de Paquetes a Europa, Caribe y Perú",
     descripcion:
       `Encuentra en segundos tu paquete migratorio a España desde ${formatoUSD(tarifasMigratorio("España").promo)} USD o a Italia y Francia desde ${formatoUSD(tarifasMigratorio("Italia").promo)} USD, solo ida (el plan cambia según tu fecha), o vacaciones Todo Incluido al Caribe y Perú. Separa hoy con el 50% de inicial.`,

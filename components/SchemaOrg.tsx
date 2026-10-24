@@ -1,112 +1,6 @@
-import {
-  TELEFONO,
-  TELEFONO_FORMATEADO,
-  FAQS,
-  PAQUETES_COMPLETOS,
-} from "@/components/constantes";
+import { TELEFONO_FORMATEADO, FAQS, PAQUETES_COMPLETOS } from "@/components/constantes";
 
-const TRAVEL_AGENCY = {
-  "@context": "https://schema.org",
-  "@type": ["TravelAgency", "LocalBusiness"],
-  "@id": "https://citylandtravel.com/#organization",
-  name: "Cityland Travel",
-  legalName: "Cityland Travel E.I.R.L.",
-  url: "https://citylandtravel.com",
-  logo: "https://citylandtravel.com/logo-oficial.png",
-  image: "https://citylandtravel.com/images/espana/plaza-mayor.jpg",
-  description:
-    "Agencia de viajes formal en Lima (RUC 20614914239) especializada en paquetes migratorios a España y Europa, y paquetes turísticos Todo Incluido al Caribe, Sudamérica y Turquía.",
-  telephone: TELEFONO,
-  priceRange: "$$",
-  taxID: "20614914239",
-  foundingDate: "2015",
-  areaServed: {
-    "@type": "Country",
-    name: "Perú",
-  },
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Av. Antúnez de Mayolo N. 814",
-    addressLocality: "Los Olivos",
-    addressRegion: "Lima",
-    postalCode: "15304",
-    addressCountry: "PE",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: -11.9556,
-    longitude: -77.0642,
-  },
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ],
-      opens: "09:00",
-      closes: "19:00",
-    },
-  ],
-  sameAs: [
-    "https://www.facebook.com/citylandtravel",
-    "https://www.instagram.com/citylandtravel",
-    "https://www.tiktok.com/@citylandtravel",
-  ],
-};
-
-const WEBSITE_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": "https://citylandtravel.com/#website",
-  url: "https://citylandtravel.com",
-  name: "Cityland Travel — Agencia de Viajes en Lima",
-  publisher: {
-    "@id": "https://citylandtravel.com/#organization",
-  },
-  inLanguage: "es-PE",
-};
-
-const BREADCRUMB_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Inicio — Cityland Travel",
-      item: "https://citylandtravel.com/",
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Paquetes Migratorios a España Desde $1,090 USD",
-      item: "https://citylandtravel.com/espana",
-    },
-    {
-      "@type": "ListItem",
-      position: 3,
-      name: "Paquetes al Caribe y Sudamérica Desde $589 USD",
-      item: "https://citylandtravel.com/caribe",
-    },
-    {
-      "@type": "ListItem",
-      position: 4,
-      name: "Paquetes a Cusco y Machu Picchu Desde $289 USD",
-      item: "https://citylandtravel.com/cusco",
-    },
-    {
-      "@type": "ListItem",
-      position: 5,
-      name: "Trámite de Visas (EE.UU., Canadá, México, España) Desde $110 USD",
-      item: "https://citylandtravel.com/visas",
-    },
-  ],
-};
+// La organización y el sitio web ya los publica el layout (SCHEMA_ORGANIZACION_CITYLAND); aquí solo va lo propio del inicio.
 
 const FAQ_SCHEMA = {
   "@context": "https://schema.org",
@@ -135,11 +29,7 @@ const OFFERS = {
       image: paquete.img.startsWith("http")
         ? paquete.img
         : `https://citylandtravel.com${paquete.img}`,
-      provider: {
-        "@type": "TravelAgency",
-        name: "Cityland Travel",
-        url: "https://citylandtravel.com",
-      },
+      provider: { "@id": "https://citylandtravel.com/#organization" },
       offers: {
         "@type": "AggregateOffer",
         offerCount: "1",
@@ -155,18 +45,6 @@ const OFFERS = {
 export default function SchemaOrg() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(TRAVEL_AGENCY) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_SCHEMA) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_SCHEMA) }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}

@@ -41,8 +41,9 @@ export const SCHEMA_ORGANIZACION_CITYLAND = {
     {
       "@type": ["TravelAgency", "Organization", "LocalBusiness"],
       "@id": `${URL_BASE_SEO}/#organization`,
-      name: "Cityland Travel E.I.R.L.",
-      alternateName: ["Cityland Travel", "Cityland Travel Agencia de Viajes en Lima"],
+      name: "Cityland Travel",
+      legalName: "Cityland Group E.I.R.L.",
+      alternateName: ["Cityland Travel Agencia de Viajes en Lima"],
       url: URL_BASE_SEO,
       logo: {
         "@type": "ImageObject",
@@ -54,6 +55,7 @@ export const SCHEMA_ORGANIZACION_CITYLAND = {
       sameAs: [
         "https://www.facebook.com/citylandtraveloficial",
         "https://www.instagram.com/citylandtravel/",
+        "https://www.tiktok.com/@citylandtravel",
       ],
       taxID: "20614914239",
       vatID: "PE20614914239",
@@ -63,25 +65,21 @@ export const SCHEMA_ORGANIZACION_CITYLAND = {
       paymentAccepted: "Transferencia Bancaria, Tarjeta de Crédito, Débito, Yape, Plin, Efectivo",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "Av. Antúnez de Mayolo 814, Los Olivos, Lima",
+        streetAddress: "Av. Santiago Antúnez de Mayolo 814, Urb. Mercurio",
         addressLocality: "Los Olivos",
         addressRegion: "Lima",
-        postalCode: "15301",
         addressCountry: "PE",
       },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: -11.9965,
-        longitude: -77.0785,
-      },
+      // Mismo horario que se muestra en la web (Mapa y Footer).
       openingHoursSpecification: [
         {
           "@type": "OpeningHoursSpecification",
           dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
           opens: "09:00",
-          closes: "20:00",
+          closes: "19:00",
         },
       ],
+      subOrganization: { "@id": `${URL_BASE_SEO}/#oficina-gamarra` },
       areaServed: [
         { "@type": "Country", name: "Perú" },
         { "@type": "City", name: "Lima" },
@@ -103,6 +101,24 @@ export const SCHEMA_ORGANIZACION_CITYLAND = {
           availableLanguage: ["Spanish"],
         },
       ],
+    },
+    {
+      "@type": ["TravelAgency", "LocalBusiness"],
+      "@id": `${URL_BASE_SEO}/#oficina-gamarra`,
+      name: "Cityland Travel – Oficina Angélica Gamarra",
+      legalName: "Cityland Travel S.A.C.",
+      taxID: "20611406305",
+      url: URL_BASE_SEO,
+      telephone: "+51944103890",
+      priceRange: "$$",
+      parentOrganization: { "@id": `${URL_BASE_SEO}/#organization` },
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Av. Angélica Gamarra 763",
+        addressLocality: "Los Olivos",
+        addressRegion: "Lima",
+        addressCountry: "PE",
+      },
     },
     {
       "@type": "WebSite",
@@ -462,7 +478,7 @@ export function construirSchemaLandingSEO(params: {
             url: params.url,
             seller: {
               "@type": "TravelAgency",
-              name: "Cityland Travel E.I.R.L.",
+              name: "Cityland Group E.I.R.L.",
               taxID: "20614914239",
               telephone: "+51944103890",
             },

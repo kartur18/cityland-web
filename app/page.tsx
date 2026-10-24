@@ -4,7 +4,7 @@ import Hero from "@/components/Hero";
 import ProofBar from "@/components/ProofBar";
 import Destinos from "@/components/Destinos";
 import Migratorio from "@/components/Migratorio";
-import Testimonios from "@/components/Testimonios";
+import ConfianzaReal from "@/components/ConfianzaReal";
 import FAQ from "@/components/FAQ";
 import Mapa from "@/components/Mapa";
 import Footer from "@/components/Footer";
@@ -30,8 +30,8 @@ export default function LandingPage() {
         {/* 4. Franja Limpia de Respaldo */}
         <ProofBar />
 
-        {/* 5. Experiencias Reales de Viajeros */}
-        <Testimonios />
+        {/* 5. Oficinas, RUC y canales oficiales (datos comprobables) */}
+        <ConfianzaReal />
 
         {/* 6. Preguntas Frecuentes Compactas */}
         <FAQ />
