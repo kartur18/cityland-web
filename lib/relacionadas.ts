@@ -29,7 +29,12 @@ function normalizar(texto: string): string[] {
     .filter((t) => t.length > 2 && !/^\d+$/.test(t) && !PALABRAS_VACIAS.has(t));
 }
 
-export function crearRelacionador(items: readonly ItemRelacionable[], maxLista = 1200) {
+// `admitir` filtra solo la salida: la página actual puede no estar admitida y aun así recibir enlaces.
+export function crearRelacionador(
+  items: readonly ItemRelacionable[],
+  maxLista = 1200,
+  admitir: (href: string) => boolean = () => true,
+) {
   let tokensPorItem: string[][] | null = null;
   let invertido: Map<string, number[]> | null = null;
   let posPorSlug: Map<string, number> | null = null;
@@ -69,7 +74,7 @@ export function crearRelacionador(items: readonly ItemRelacionable[], maxLista =
     const titulosVistos = new Set<string>([items[pos].titulo]);
     for (const { j } of ordenados) {
       const it = items[j];
-      if (titulosVistos.has(it.titulo)) continue;
+      if (titulosVistos.has(it.titulo) || !admitir(it.href)) continue;
       titulosVistos.add(it.titulo);
       salida.push({ href: it.href, titulo: it.titulo });
       if (salida.length >= max) break;

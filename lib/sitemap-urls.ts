@@ -8,7 +8,7 @@ import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-com
 import { INDICE_MADRID_10K } from "@/lib/catalogo-madrid-10k";
 import { CATALOGO_PAQUETES_MIGRATORIOS_1000 } from "@/lib/catalogo-paquetes-migratorios-1000";
 import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
-import { PAGINAS_FUERTES } from "@/lib/paginas-fuertes";
+import { esIndexable } from "@/lib/indexacion";
 
 // Fuente única de URLs indexables: cada URL vive en un solo sitemap hijo.
 export const FECHA_SITEMAP = "2026-10-19T15:00:00.000Z";
@@ -83,16 +83,12 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
   ],
 };
 
-// Se anuncian a Google: lo que ya tuvo impresiones, los hubs (un solo nivel de ruta) y todo el blog.
-// Las demás landings siguen existiendo y sirviendo; solo dejan de empujarse por el sitemap.
-const esFuerte = (ruta: string): boolean =>
-  ruta === "/" || ruta.split("/").length <= 2 || ruta.startsWith("/blog/") || PAGINAS_FUERTES.has(ruta);
-
+// Se anuncian a Google solo las páginas indexables (ver lib/indexacion.ts); el sitemap y el meta robots usan la misma regla.
 export function urlsDeSitemap(id: IdSitemap): string[] {
   const vistas = new Set<string>();
   // Las URLs ya reclamadas por un sitemap anterior no se repiten en los siguientes.
   for (const previo of IDS_SITEMAP) {
-    const lista = GRUPOS[previo]().filter(esFuerte).map((r) => (r === "/" ? URL_BASE_SEO : abs(r)));
+    const lista = GRUPOS[previo]().filter(esIndexable).map((r) => (r === "/" ? URL_BASE_SEO : abs(r)));
     if (previo === id) return lista.filter((u) => !vistas.has(u) && vistas.add(u));
     lista.forEach((u) => vistas.add(u));
   }

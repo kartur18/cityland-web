@@ -647,3 +647,17 @@ export const PAGINAS_FUERTES: ReadonlySet<string> = new Set([
   "/vuelos/vancouver-lima",
   "/vuelos/washington-lima",
 ]);
+
+// Páginas que ya trajeron chats de WhatsApp con "Ref Web" (CRM, 10 al 24-oct-2026), aunque Google aún no las muestre.
+export const PAGINAS_CON_CLIENTES: ReadonlySet<string> = new Set([
+  "/destinos/orlando-parques-disney-universal",
+  "/destinos/turquia",
+  "/ofertas/asesoria-visa-americana-b1-b2-lima-edicion-vip",
+  "/ofertas/decameron-isleno-san-andres-paquete-todo-incluido",
+  "/ofertas/formula-1-gran-premio-brasil-temporada-2027",
+  "/ofertas/paquete-walt-disney-world-orlando-preventa-50-inicial",
+  "/ofertas/rutas-peru-circuito-playas-del-norte-peru-vacaciones-escolares-mayo-preventa-con-50-por-ciento",
+  "/ofertas/temporada-julio-gramado-y-canela-programa-familiar-completo",
+  "/ofertas/tour-futbol-madrid-y-barcelona-salida-desde-lima",
+  "/paquetes-migratorios/desde-miraflores-a-madrid",
+]);

@@ -3,6 +3,7 @@ import { DESTINOS_MASIVOS } from "@/lib/catalogo-destinos-masivo";
 import { RUTAS_VUELOS_SEO } from "@/lib/rutas-vuelos";
 import { VIAJES_ESPECIALIZADOS_SEO } from "@/lib/catalogo-viajes-especializados";
 import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-comerciales";
+import { esIndexable } from "@/lib/indexacion";
 
 type ModoHub = "directorio" | "destinos" | "vuelos" | "viajes";
 
@@ -28,7 +29,7 @@ function enlacesDelModo(modo: ModoHub): { titulo: string; enlaces: EnlaceHub[] }
     case "destinos":
       return {
         titulo: "Más destinos desde Lima",
-        enlaces: DESTINOS_MASIVOS.slice(0, MAX_ENLACES).map((d) => ({
+        enlaces: DESTINOS_MASIVOS.filter((d) => esIndexable(`/destinos/${d.slug}`)).slice(0, MAX_ENLACES).map((d) => ({
           href: `/destinos/${d.slug}`,
           texto: `${d.ciudad} (${d.pais})`,
         })),
@@ -36,7 +37,7 @@ function enlacesDelModo(modo: ModoHub): { titulo: string; enlaces: EnlaceHub[] }
     case "vuelos":
       return {
         titulo: "Rutas de vuelos disponibles",
-        enlaces: RUTAS_VUELOS_SEO.slice(0, MAX_ENLACES).map((r) => ({
+        enlaces: RUTAS_VUELOS_SEO.filter((r) => esIndexable(`/vuelos/${r.slug}`)).slice(0, MAX_ENLACES).map((r) => ({
           href: `/vuelos/${r.slug}`,
           texto: `Vuelos de ${r.origen} a ${r.destino}`,
         })),
@@ -44,7 +45,7 @@ function enlacesDelModo(modo: ModoHub): { titulo: string; enlaces: EnlaceHub[] }
     case "viajes":
       return {
         titulo: "Guías y tarifas especializadas",
-        enlaces: VIAJES_ESPECIALIZADOS_SEO.slice(0, MAX_ENLACES).map((v) => ({
+        enlaces: VIAJES_ESPECIALIZADOS_SEO.filter((v) => esIndexable(`/viajes/${v.slug}`)).slice(0, MAX_ENLACES).map((v) => ({
           href: `/viajes/${v.slug}`,
           texto: v.titulo,
         })),
@@ -52,7 +53,7 @@ function enlacesDelModo(modo: ModoHub): { titulo: string; enlaces: EnlaceHub[] }
     default:
       return {
         titulo: "Ofertas y paquetes del catálogo",
-        enlaces: TODOS_LOS_RESUMENES_OFERTAS_SEO.slice(0, MAX_ENLACES).map((o) => ({
+        enlaces: TODOS_LOS_RESUMENES_OFERTAS_SEO.filter((o) => esIndexable(`/ofertas/${o.slug}`)).slice(0, MAX_ENLACES).map((o) => ({
           href: `/ofertas/${o.slug}`,
           texto: o.titulo,
         })),

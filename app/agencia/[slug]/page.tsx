@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { robotsSegunRuta } from "@/lib/indexacion";
 import Link from "next/link";
 import AirlineLandingTemplate from "@/components/AirlineLandingTemplate";
 import { SeoSiloFooter } from "@/components/SeoSiloFooter";
@@ -38,6 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     keywords: agencia.keywords,
+    robots: robotsSegunRuta(`/agencia/${agencia.slug}`),
     alternates: { canonical: url },
     openGraph: {
       type: "website",

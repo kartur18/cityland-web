@@ -19,7 +19,9 @@ import {
   type FaqUnica,
 } from "@/lib/contenido-unico";
 import { crearRelacionador } from "@/lib/relacionadas";
+import { esIndexable } from "@/lib/indexacion";
 
+// Los enlaces "relacionados" solo apuntan a páginas que Google puede guardar.
 const relacionarOfertas = crearRelacionador(
   TODOS_LOS_RESUMENES_OFERTAS_SEO.map((o) => ({
     slug: o.slug,
@@ -28,6 +30,7 @@ const relacionarOfertas = crearRelacionador(
     extra: o.destinoOPais,
   })),
   4000,
+  esIndexable,
 );
 
 const relacionarViajes = crearRelacionador(
@@ -37,6 +40,8 @@ const relacionarViajes = crearRelacionador(
     href: `/viajes/${v.slug}`,
     extra: v.destinoOPais,
   })),
+  1200,
+  esIndexable,
 );
 
 const relacionarVuelos = crearRelacionador(
@@ -46,6 +51,8 @@ const relacionarVuelos = crearRelacionador(
     href: `/vuelos/${r.slug}`,
     extra: `${r.origen} ${r.destino} ${r.config.vitrina.pais ?? ""}`,
   })),
+  1200,
+  esIndexable,
 );
 
 function limpiarLugar(texto: string): string {

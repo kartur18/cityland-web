@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { robotsSegunRuta } from "@/lib/indexacion";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -65,6 +66,7 @@ export async function generateMetadata({
       `agencia de viajes ${dest.ciudad.toLowerCase()} peru`,
       "cityland travel",
     ],
+    robots: robotsSegunRuta(`/destinos/${dest.slug}`),
     alternates: {
       canonical: canonicalUrl,
     },

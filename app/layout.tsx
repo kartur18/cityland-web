@@ -4,6 +4,7 @@ import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { PRECIO_IDA_VUELTA_MADRID_DESDE, PRECIO_MIGRATORIO_DESDE } from "@/components/constantes";
 import WhatsAppTracker from "@/components/WhatsAppTracker";
+import { ROBOTS_INDEXABLE } from "@/lib/indexacion";
 import "./globals.css";
 
 const GOOGLE_ADS_ID = "AW-18093363482";
@@ -49,17 +50,7 @@ export const metadata: Metadata = {
     shortcut: ["/icon-192.png"],
     apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
-    },
-  },
+  robots: ROBOTS_INDEXABLE,
   openGraph: {
     type: "website",
     url: "https://citylandtravel.com/",
