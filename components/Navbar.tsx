@@ -172,8 +172,8 @@ export default function Navbar() {
                 className="inline-flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-[#0a1628] px-3.5 py-2.5 rounded-full text-xs font-extrabold transition-colors whitespace-nowrap"
               >
                 <span>🔍</span>
-                {/* A 1280 px la palabra empujaba fuera el «Cotizar por WhatsApp»: el ícono basta hasta xl. */}
-                <span className="hidden xl:inline">Buscar</span>
+                {/* A 1280 px las palabras empujaban fuera el botón de WhatsApp: el ícono basta hasta 2xl. */}
+                <span className="hidden 2xl:inline">Buscar</span>
               </Link>
               <a
                 href={WA_LINK}
@@ -182,7 +182,8 @@ export default function Navbar() {
                 className="btn-wa-pulse inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 xl:px-5 py-2.5 rounded-full text-xs font-bold shadow-md cursor-pointer whitespace-nowrap"
               >
                 <WhatsAppIcon size={15} />
-                <span>Cotizar por WhatsApp</span>
+                <span className="2xl:hidden">Cotizar</span>
+                <span className="hidden 2xl:inline">Cotizar por WhatsApp</span>
               </a>
             </div>
 
