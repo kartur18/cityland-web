@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { buildWaUrl, WA_LINK } from "@/components/constantes";
+import { buildWaUrl } from "@/components/constantes";
+import CotizadorWhatsApp from "@/components/CotizadorWhatsApp";
 import FlagIcon from "@/components/icons/FlagIcon";
 import NotaPrecio from "@/components/NotaPrecio";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
@@ -78,26 +79,17 @@ export default function Hero() {
               </Link>
             </div>
 
-            {/* 2 Botones Alineados */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-7">
-              <a
-                href={WA_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-wa-pulse inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-7 py-4 rounded-2xl text-sm sm:text-base font-extrabold shadow-md whitespace-nowrap cursor-pointer"
-              >
-                <WhatsAppIcon size={20} />
-                <span>Cotizar por WhatsApp</span>
-              </a>
-
-              <a
-                href="#paquetes"
-                className="inline-flex items-center justify-center gap-2 bg-[#0a1628] hover:bg-slate-800 text-white px-6 py-4 rounded-2xl text-sm sm:text-base font-extrabold transition-all whitespace-nowrap cursor-pointer"
-              >
-                <span>Ver Paquetes y Precios</span>
-                <ArrowRightIcon className="w-4 h-4 fill-none stroke-current stroke-2" />
-              </a>
+            {/* Cotizador: el botón funciona aunque no llenen nada; si llenan, la asesora recibe destino, mes y pasajeros */}
+            <div className="mb-4 max-w-xl">
+              <CotizadorWhatsApp titulo="Cotiza tu viaje en 30 segundos" origen="Cotizador inicio" />
             </div>
+            <a
+              href="#paquetes"
+              className="inline-flex items-center gap-2 min-h-[44px] mb-5 text-sm font-extrabold text-[#0a1628] hover:text-red-600 transition-colors"
+            >
+              <span>Ver paquetes y precios</span>
+              <ArrowRightIcon className="w-4 h-4 fill-none stroke-current stroke-2" />
+            </a>
 
             {/* 3 Checks Limpios en Línea */}
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-bold text-slate-700 pt-5 border-t border-slate-200/80">

@@ -17,8 +17,12 @@ const CATEGORIAS = [
   { id: "norteamerica", label: "Miami & Orlando" },
 ] as const;
 
+// En celular los 24 destinos sumaban ~11,000 px de scroll antes de llegar al resto del inicio.
+const VISIBLES_AL_INICIO = 6;
+
 export default function Destinos() {
   const [catFiltro, setCatFiltro] = useState<string>("all");
+  const [verTodos, setVerTodos] = useState(false);
 
   const paquetesFiltrados =
     catFiltro === "all"
@@ -43,7 +47,10 @@ export default function Destinos() {
             {CATEGORIAS.map((cat) => (
               <button
                 key={cat.id}
-                onClick={() => setCatFiltro(cat.id)}
+                onClick={() => {
+                  setCatFiltro(cat.id);
+                  setVerTodos(cat.id !== "all");
+                }}
                 className={`shrink-0 px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
                   catFiltro === cat.id
                     ? "bg-[#0a1628] text-white shadow-xs"
@@ -58,7 +65,7 @@ export default function Destinos() {
 
         {/* Grilla Luminosa y Simétrica */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {paquetesFiltrados.map((paquete) => {
+          {paquetesFiltrados.map((paquete, indice) => {
             const esMigratorio = paquete.tipoViaje === "migratorio";
             const waHref = buildWaUrl({
               categoria: paquete.categoria,
@@ -80,10 +87,12 @@ export default function Destinos() {
                 ? "/francia"
                 : `/destinos/${paquete.slug}`;
 
+            // Las tarjetas ocultas siguen en el HTML (enlaces para Google); solo se muestran al pedir "Ver todos".
+            const oculta = !verTodos && indice >= VISIBLES_AL_INICIO;
             return (
               <article
                 key={paquete.id}
-                className="card-interactive group rounded-3xl overflow-hidden bg-white border border-slate-200/90 shadow-xs flex flex-col justify-between h-full"
+                className={`card-interactive group rounded-3xl overflow-hidden bg-white border border-slate-200/90 shadow-xs flex-col justify-between h-full ${oculta ? "hidden" : "flex"}`}
               >
                 {/* Fotografía 100% Limpia */}
                 <Link
@@ -174,6 +183,17 @@ export default function Destinos() {
             );
           })}
         </div>
+        {!verTodos && paquetesFiltrados.length > VISIBLES_AL_INICIO && (
+          <div className="mt-8 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setVerTodos(true)}
+              className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-xl bg-white border border-slate-300 text-sm font-extrabold text-[#0a1628] hover:bg-slate-100 cursor-pointer"
+            >
+              Ver los {paquetesFiltrados.length} destinos
+            </button>
+          </div>
+        )}
         <NotaPrecio className="mt-6 text-center" />
       </div>
     </section>

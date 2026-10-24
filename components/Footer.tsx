@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { WA_LINK, TELEFONO, TELEFONO_FORMATEADO, OFICINAS } from "@/components/constantes";
+import CotizadorWhatsApp from "@/components/CotizadorWhatsApp";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import PhoneIcon from "@/components/icons/PhoneIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
@@ -11,6 +12,21 @@ export default function Footer() {
   return (
     <footer className="bg-[#0a1628] text-white/70 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-14 pb-12">
+        {/* Último empujón antes del pie: el cotizador aparece en todas las páginas que usan el Footer */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center mb-12 pb-12 border-b border-slate-800">
+          <div className="lg:col-span-5">
+            <p className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight text-balance">
+              ¿A dónde quieres viajar?
+            </p>
+            <p className="text-sm text-slate-300 mt-2">
+              Cuéntanos destino, mes y cuántos viajan. Te respondemos por WhatsApp con precio y fechas.
+            </p>
+          </div>
+          <div className="lg:col-span-7">
+            <CotizadorWhatsApp titulo="Cotiza en 30 segundos" origen="Cotizador pie" />
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 mb-12">
           
           {/* Brand & Legal Info */}
