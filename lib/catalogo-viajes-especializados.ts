@@ -468,7 +468,7 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
         `Asesoría y revisión gratuita de tus documentos al comprar tu pasaje o paquete hacia ${ciudadesRef}`,
         `Boleto aéreo de ida y vuelta hacia ${ciudadesRef} con código PNR verificable`,
         "Reserva de hotel confirmada o validación de Carta de Invitación familiar",
-        "Seguro médico internacional obligatorio según normativa del país de destino",
+        "Seguro médico internacional según lo que pida el país de destino",
         "Apoyo con formularios electrónicos migratorios y check-in previo al vuelo",
       ],
       beneficiosClave: [

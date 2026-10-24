@@ -1603,7 +1603,7 @@ const CIUDADES_FRANCIA_EUROPA: ConfigCiudadEuropa[] = [
     zonasPeruanos:
       "Altstetten, Oerlikon, Wiedikon, Aussersihl y Winterthur.",
     consejoLocal:
-      "Suiza forma parte del Espacio Schengen, por lo que los peruanos ingresan con los mismos requisitos de seguro médico, reserva de hotel y boleto de regreso.",
+      "Suiza forma parte del Espacio Schengen, por lo que los peruanos ingresan con las mismas reglas: reserva de hotel, boleto de regreso y medios económicos, y conviene llevar seguro médico.",
   },
   {
     slugCiudad: "ginebra",
@@ -2118,10 +2118,10 @@ const TEMAS_DUDAS_MIGRATORIAS: {
   },
   {
     slugTema: "seguro-medico-schengen-obligatorio-para-peruanos",
-    tituloTema: (c) => `Seguro Médico Obligatorio para Viajar a ${c} (Incluido en tu Paquete)`,
+    tituloTema: (c) => `Seguro Médico para Viajar a ${c} (Incluido en tu Paquete)`,
     subtituloTema: (_c, t) => `Póliza Oficial de 30.000€ Sin Deducible + Vuelo y Hotel Desde ${usd(t.promo)}`,
     ganchoTema: (c, t) =>
-      `Todos nuestros paquetes migratorios a ${c} (${usd(t.promo)}, ${usd(t.smart)}, ${usd(t.plus)} y ${usd(t.full)}) ya incluyen tu póliza de seguro médico internacional obligatoria para ingresar a Europa.`,
+      `Todos nuestros paquetes migratorios a ${c} (${usd(t.promo)}, ${usd(t.smart)}, ${usd(t.plus)} y ${usd(t.full)}) ya incluyen tu póliza de seguro médico internacional, recomendada para viajar a Europa.`,
   },
   {
     slugTema: "diferencia-entre-carta-de-invitacion-y-reserva-de-hotel",
@@ -2230,7 +2230,7 @@ function construirLos4Planes(
         `Pasaje de avión de ida confirmado (Lima ➔ ${ciudad}) con bolso/equipaje de mano`,
         "Boleto de regreso reservado para Migraciones (activo el día de tu vuelo)",
         `Reserva de hotel confirmada en ${ciudad} por los días de estancia declarados`,
-        "Seguro médico de viaje obligatorio para Europa (cobertura 30.000€)",
+        "Seguro médico de viaje para Europa (cobertura 30.000€)",
         "Guía paso a paso en PDF con las preguntas y respuestas de Migraciones",
       ],
       waTextoBoton: `Quiero el Plan ${usd(t.promo)}`,
@@ -2270,7 +2270,7 @@ function construirLos4Planes(
       incluye: [
         `Pasaje de avión confirmado (Lima ➔ ${ciudad}) en aerolíneas de primer nivel`,
         "Boleto de regreso reservado para Migraciones + Reserva de hotel confirmada",
-        "Seguro médico obligatorio para toda la Unión Europea (30.000€)",
+        "Seguro médico válido en todo el espacio Schengen (30.000€)",
         "Selección de asiento + Check-in gestionado 24 horas antes del vuelo",
         "Carpeta migratoria física impresa entregada en nuestra oficina de Los Olivos",
       ],
@@ -2587,7 +2587,7 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
           origenPasajero: orig.nombreOrigen,
           tituloH1: `Paquete Migratorio a ${c.ciudad} para Viajeros de ${orig.nombreOrigen}`,
           subtituloHero: `Planes de ${listaPreciosPlanes(t)} USD · Separa hoy con el 50%`,
-          ganchoPeruano: `Armamos tu paquete migratorio completo hacia ${c.ciudad} (${c.pais}) con pasaje de avión de ida, boleto de regreso reservado para Migraciones, reserva de hotel y seguro médico obligatorio.`,
+          ganchoPeruano: `Armamos tu paquete migratorio completo hacia ${c.ciudad} (${c.pais}) con pasaje de avión de ida, boleto de regreso reservado para Migraciones, reserva de hotel y seguro médico.`,
           detalleExtraOrigen:
             typeof orig.detalleSalida === "function" ? orig.detalleSalida(t) : orig.detalleSalida,
           indice: idx,
@@ -2647,7 +2647,7 @@ export const PLANES_MIGRATORIOS_OFICIALES: PlanMigratorioOficialResumen[] = [
       "Pasaje de avión de ida emitido a tu nombre",
       "Boleto de regreso reservado en sistema para Migraciones",
       "Reserva de hotel confirmada por los días declarados",
-      "Seguro médico de viaje obligatorio (30.000€)",
+      "Seguro médico de viaje (30.000€)",
       "Check-in 24h antes + Guía paso a paso de Migraciones",
     ],
     mensajeWhatsAppBase: `¡Hola! Quiero más información del paquete desde ${usd(TARIFAS_MIGRATORIO_BASE.promo)}`,
@@ -2679,7 +2679,7 @@ export const PLANES_MIGRATORIOS_OFICIALES: PlanMigratorioOficialResumen[] = [
     incluye: [
       "Pasaje de avión de ida confirmado en aerolíneas oficiales",
       "Boleto de regreso reservado para Migraciones + Hotel",
-      "Seguro médico obligatorio Schengen de 30.000€",
+      "Seguro médico Schengen de 30.000€",
       "Selección de asiento + Check-in hecho 24h antes",
       "Carpeta física impresa entregada en nuestra sede de Los Olivos",
     ],

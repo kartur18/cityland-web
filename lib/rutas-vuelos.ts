@@ -174,7 +174,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
         },
         {
           titulo: "Seguro Schengen 30.000€",
-          sub: "Cobertura oficial exigida en el Aeropuerto de Barajas",
+          sub: "Cobertura de 30.000 € recomendada para viajar a Europa",
         },
         {
           titulo: "Sede Física en Lima",
