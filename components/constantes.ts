@@ -1623,22 +1623,57 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "seguro-schengen-30000-euros-peru-precio",
-    titulo: "Seguro de Viaje Schengen de 30.000€ desde Perú: Requisitos oficiales y cuánto cuesta",
-    desc: "Por qué es obligatorio el seguro médico internacional sin deducible para entrar a España, Italia o Francia, y cómo adquirirlo en Lima.",
+    titulo: "Seguro Schengen de 30.000 € desde Perú: ¿es obligatorio?, qué debe cubrir y cuánto cuesta",
+    tituloSeo: "Seguro Schengen desde Perú: ¿es obligatorio?",
+    desc: "Para peruanos que entran sin visa, el Consulado de España lo considera recomendable; es obligatorio si pides visa. Qué debe cubrir y cuánto cuesta.",
     categoria: "Europa",
     catColor: "bg-red-600",
-    fecha: "Actualizado 2026",
-    lectura: "4 min",
+    fecha: "Actualizado octubre 2026",
+    lectura: "5 min",
     imagen: "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800&q=80",
     autor: "Equipo Cityland Travel",
-    contenido: `<h2>¿Qué exige la Unión Europea sobre el Seguro Schengen?</h2>
-<p>Para ingresar sin visa a cualquiera de los 29 países del Espacio Schengen (incluyendo España, Italia, Francia, Alemania y Países Bajos), todo viajero peruano debe portar una póliza de asistencia médica internacional vigente durante todos los días de su viaje.</p>
-<h3>Requisitos obligatorios de tu póliza:</h3>
-<p>1. <strong>Cobertura médica mínima de 30.000 euros</strong> (o su equivalente superior en dólares) por accidente o enfermedad repentina.<br>
-2. <strong>Cero deducible (Sin franquicia):</strong> el viajero no debe pagar copagos para recibir atención de urgencia.<br>
-3. <strong>Cobertura de repatriación sanitaria y funeraria</strong> incluida.<br>
-4. Vigencia exacta desde el día de aterrizaje en Europa hasta la fecha de tu vuelo de retorno.</p>
-<p>En Cityland Travel emitimos tu póliza oficial Schengen al instante o la incluimos directamente dentro de tu paquete migratorio o turístico.</p>`,
+    contenido: `<h2>La respuesta corta</h2>
+<p>Si eres peruano y entras a España o a otro país del espacio Schengen <strong>sin visa</strong> (turismo o visita de hasta 90 días), el seguro médico <strong>no es un requisito obligatorio</strong>: el Consulado General de España en Lima lo califica como <strong>recomendable</strong>.</p>
+<p>El seguro con cobertura mínima de 30.000 € es obligatorio para quienes necesitan pedir una <strong>visa Schengen</strong> de corta duración. Los peruanos no la necesitan para viajar por turismo.</p>
+
+<h2>Entonces, ¿vale la pena llevarlo?</h2>
+<p>Sí. Que no sea obligatorio no quiere decir que no lo necesites:</p>
+<ul>
+<li>Si te enfermas o tienes un accidente, la atención se cobra, y en Europa puede costar miles de euros.</li>
+<li>Si te pasa algo grave, el seguro cubre el traslado de regreso al Perú (repatriación), que por tu cuenta es muy caro.</li>
+<li>Es un documento más que respalda tu viaje si en el control migratorio te preguntan por tus planes.</li>
+</ul>
+
+<h2>Qué debe cubrir un buen seguro para Europa</h2>
+<p>Si lo vas a sacar, busca lo mismo que se exige a quienes piden visa. Así vas cubierto de verdad:</p>
+<ul>
+<li>Gastos médicos de al menos <strong>30.000 €</strong> por accidente o enfermedad.</li>
+<li><strong>Hospitalización y atención de emergencia.</strong></li>
+<li><strong>Repatriación</strong> al Perú, también en caso de fallecimiento.</li>
+<li>Validez en <strong>todos los países del espacio Schengen</strong> y por <strong>todos los días</strong> de tu viaje.</li>
+<li>De preferencia, <strong>sin deducible</strong>, para no pagar nada de tu bolsillo en una urgencia.</li>
+</ul>
+
+<h2>¿Y para otros destinos?</h2>
+<p>Algunos países sí lo exigen. Por ejemplo, para entrar a <a href="/viajes/requisitos-viajar-a-curazao-desde-peru">Curazao</a> el seguro es obligatorio, con una cobertura mínima de US$ 15,000.</p>
+
+<h2>Cuánto cuesta</h2>
+<p>Depende de los días de viaje, de tu edad y de la cobertura. En Cityland Travel emitimos el seguro para Europa desde US$ 65 (precio referencial), en PDF. Si compras un paquete con nosotros, puede venir incluido. Mira las opciones en <a href="/seguros">seguros de viaje</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Me pueden negar la entrada a España por no tener seguro?</h3>
+<p>Para peruanos sin visa, el Consulado no lo pone como requisito obligatorio. La policía de frontera decide con el conjunto de tus documentos, así que llevarlo suma.</p>
+<h3>¿Me sirve el seguro de mi tarjeta de crédito?</h3>
+<p>Algunas tarjetas incluyen seguro de viaje. Pregunta en tu banco cuánto cubre, si incluye repatriación y si vale en Europa, y pide el certificado antes de viajar.</p>
+<h3>¿El mismo seguro me sirve para Italia o Francia?</h3>
+<p>Sí, si la póliza dice que cubre todo el espacio Schengen.</p>
+
+<p>Más detalle sobre lo que te pueden pedir al llegar: <a href="/viajes/requisitos-viajar-a-espana-desde-peru">requisitos para viajar a España desde Perú</a>.</p>
+
+<h2>Fuente oficial</h2>
+<ul>
+<li><a href="https://www.exteriores.gob.es/Consulados/lima/es/Comunicacion/Noticias/Paginas/Articulos/20160315_NOT1.aspx" target="_blank" rel="noopener">Consulado General de España en Lima: requisitos para peruanos sin visa</a></li>
+</ul>`,
   },
   {
     slug: "viajes-promocion-escolar-cusco-caribe-consejos",
