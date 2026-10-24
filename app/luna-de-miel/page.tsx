@@ -3,9 +3,11 @@ import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-ar
 import AirlineLandingTemplate, {
   ConfiguracionLandingAerolinea,
 } from "@/components/AirlineLandingTemplate";
+import BloqueGuiaServicio from "@/components/BloqueGuiaServicio";
+import { guiaLunaDeMiel } from "@/lib/guias-servicios";
 
 export const metadata: Metadata = {
-  title: optimizarMetaTitleSEO("Paquetes de Luna de Miel, Bodas en la Playa y Viajes de 15 Años desde Lima | Cityland Travel"),
+  title: optimizarMetaTitleSEO("Paquetes de luna de miel 2026 todo incluido | Cityland"),
   description: optimizarMetaDescriptionSEO("Paquetes románticos de Luna de Miel Todo Incluido en Resorts 5★ Solo Adultos (Punta Cana, Cancún, Cartagena y Santorini) y Viajes de Quinceañeras a Disney Orlando, Crucero y Europa. Separa con el 50% en Cityland Travel (RUC 20614914239)."),
   keywords: [
     "paquetes de luna de miel todo incluido desde lima",
@@ -43,10 +45,10 @@ export const metadata: Metadata = {
 };
 
 const CONFIG_LUNA_DE_MIEL: ConfiguracionLandingAerolinea = {
-  badgeHero: "Resorts 5★ Solo Adultos · Atención VIP para Novios y Quinceañeras",
+  badgeHero: "Resorts 5★ Solo Adultos · Atención para Recién Casados",
   banderasHero: ["República Dominicana", "México", "Colombia", "Estados Unidos"],
-  tituloHero: "Luna de Miel Soñada y Viajes de",
-  tituloDestacadoHero: "Quinceañeras Todo Incluido",
+  tituloHero: "Paquetes de Luna de Miel",
+  tituloDestacadoHero: "Todo Incluido desde Lima",
   descripcionHero:
     "Celebramos los momentos más importantes de tu vida con habitaciones de lujo frente al mar, atenciones románticas para recién casados y programas inolvidables de 15 años.",
   negritaHero: "Separa hoy con el 50% de inicial y congela tu tarifa de temporada",
@@ -216,7 +218,7 @@ const CONFIG_LUNA_DE_MIEL: ConfiguracionLandingAerolinea = {
     sobretitulo: "Planificación a Medida con Asesora Especializada",
     titulo: "¿Planeando tu boda, aniversario o el viaje de 15 años de tu hija?",
     descripcion:
-      "Te ayudamos a comparar los mejores resorts y rutas según el mes de tu celebración para que tengan clima soleado garantizado y beneficios exclusivos.",
+      "Te ayudamos a comparar los mejores resorts y rutas según el mes de tu celebración para que viajen en la mejor temporada y con los beneficios para recién casados de cada hotel.",
     ctaTexto: "Hablar con Asesora de Luna de Miel / 15 Años",
     waNumero: "51944103890",
     waMensaje:
@@ -280,7 +282,11 @@ export default function LunaDeMielPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD_LUNA_MIEL) }}
       />
-      <AirlineLandingTemplate config={CONFIG_LUNA_DE_MIEL} />
+      <AirlineLandingTemplate config={CONFIG_LUNA_DE_MIEL}>
+        <BloqueGuiaServicio
+          guia={guiaLunaDeMiel(Object.fromEntries(CONFIG_LUNA_DE_MIEL.items.map((i) => [i.id, i.precioPrincipal])))}
+        />
+      </AirlineLandingTemplate>
     </>
   );
 }

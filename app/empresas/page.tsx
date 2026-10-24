@@ -3,9 +3,11 @@ import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-ar
 import AirlineLandingTemplate, {
   ConfiguracionLandingAerolinea,
 } from "@/components/AirlineLandingTemplate";
+import BloqueGuiaServicio from "@/components/BloqueGuiaServicio";
+import { guiaEmpresas } from "@/lib/guias-servicios";
 
 export const metadata: Metadata = {
-  title: optimizarMetaTitleSEO("Agencia de Viajes Corporativos para Empresas en Lima · Factura Electrónica RUC | Cityland Travel"),
+  title: optimizarMetaTitleSEO("Agencia de viajes corporativos en Lima | Cityland"),
   description: optimizarMetaDescriptionSEO("Gestión integral de viajes corporativos y pasajes aéreos para empresas en Lima y todo el Perú. Emisión inmediata de vuelos nacionales e internacionales con Factura Electrónica (RUC 20614914239), hoteles ejecutivos, traslados y viajes de incentivos."),
   keywords: [
     "agencia de viajes corporativos en lima peru",
@@ -48,14 +50,14 @@ const CONFIG_EMPRESAS: ConfiguracionLandingAerolinea = {
   tituloDestacadoHero: "Vuelos para Empresas en Perú",
   descripcionHero:
     "Optimizamos el presupuesto de viajes de tu empresa con emisión inmediata de pasajes aéreos nacionales e internacionales, hoteles ejecutivos, cambios flexibles y facturación electrónica al instante.",
-  negritaHero: "Asesor corporativo asignado 24/7 para tu equipo y gerencia",
+  negritaHero: "Un asesor corporativo asignado para tu equipo y gerencia",
   ctaPrincipalTexto: "Contactar Ejecutivo Corporativo",
   waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
     "¡Hola Cityland Travel! Me comunico en representación de mi empresa para cotizar vuelos / servicios corporativos con Factura RUC.",
   checksHero: [
     "Factura Electrónica Deducción SUNAT",
-    "Emisión y Cambios de Vuelos 24/7",
+    "Emisión y Cambios de Vuelos",
     "Viajes de Incentivos y Convenciones",
   ],
   vitrina: {
@@ -135,7 +137,7 @@ const CONFIG_EMPRESAS: ConfiguracionLandingAerolinea = {
       alt: "Viajes de incentivos y premiación para empresas en Perú",
       resumenCorto:
         "Premia a tus mejores vendedores o colaboradores con viajes Todo Incluido a Punta Cana, Cartagena o Cusco. Organizamos vuelos, salón de eventos y cenas corporativas.",
-      checks: ["Bloqueo aéreo grupal", "Salas de reunión en resort", "100% deducible con factura"],
+      checks: ["Bloqueo aéreo grupal", "Salas de reunión en resort", "Factura a nombre de tu empresa"],
       waNumber: "51944103890",
     },
     {
@@ -267,7 +269,11 @@ export default function EmpresasPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD_EMPRESAS) }}
       />
-      <AirlineLandingTemplate config={CONFIG_EMPRESAS} />
+      <AirlineLandingTemplate config={CONFIG_EMPRESAS}>
+        <BloqueGuiaServicio
+          guia={guiaEmpresas(Object.fromEntries(CONFIG_EMPRESAS.items.map((i) => [i.id, i.precioPrincipal])))}
+        />
+      </AirlineLandingTemplate>
     </>
   );
 }
