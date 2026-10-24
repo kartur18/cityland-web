@@ -62,25 +62,6 @@ export const BLOG_POSTS_MASIVOS: BlogPost[] = [
 <p>Solo es válida si un familiar o amigo residente legal en España la tramita presencialmente ante la Comisaría de Policía de su municipio, paga las tasas oficiales y te envía el <strong>documento original físico con sello húmedo o código seguro de verificación</strong> a Perú antes de tu vuelo (una simple carta redactada en Word o correo electrónico no tiene validez migratoria).</p>`,
   },
   {
-    slug: "requisitos-viajar-italia-roma-milan-peruanos",
-    titulo: "Requisitos para viajar a Italia (Roma, Milán y Turín) desde Perú sin visa",
-    desc: "Documentación obligatoria, Dichiarazione di Ospitalità, reserva hotelera, Seguro Schengen 30.000€ y vuelos vía Madrid o Ámsterdam.",
-    categoria: "Europa",
-    catColor: "bg-emerald-600",
-    fecha: "Actualizado 2026",
-    lectura: "5 min",
-    imagen: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=900&q=80",
-    autor: "Equipo Cityland Travel",
-    contenido: `<h2>Documentación para ingresar a Italia como turista peruano</h2>
-<p>Italia alberga una de las comunidades peruanas más grandes de Europa en ciudades como Milán, Turín, Roma, Florencia y Génova. Al pertenecer al Espacio Schengen, los peruanos no requieren visa consular para estadías de hasta 90 días.</p>
-<h3>Los 5 documentos que debes llevar impresos en tu equipaje de mano:</h3>
-<p>1. <strong>Pasaporte peruano vigente:</strong> Con al menos 6 meses de vigencia restante.<br>
-2. <strong>Boleto aéreo de ida y vuelta:</strong> Con retorno confirmado antes de cumplir los 90 días.<br>
-3. <strong>Alojamiento acreditado:</strong> Reserva de hotel confirmada en Roma/Milán o formulario oficial de <em>Lettera di Invito / Dichiarazione di Ospitalità</em> firmado por el anfitrión residente en Italia adjuntando copia de su Permesso di Soggiorno o Carta d'Identità.<br>
-4. <strong>Seguro médico Schengen de 30.000€:</strong> Sin deducible y válido en toda la Unión Europea.<br>
-5. <strong>Solvencia económica:</strong> Efectivo en euros y/o tarjetas internacionales activas.</p>`,
-  },
-  {
     slug: "punta-cana-vs-cancun-cual-elegir-desde-lima",
     titulo: "Punta Cana vs. Cancún desde Lima: ¿Cuál conviene más para tus vacaciones Todo Incluido?",
     desc: "Comparativa de playas, resorts 5 estrellas, requisitos de visa para peruanos, vida nocturna, parques y precios en dólares.",

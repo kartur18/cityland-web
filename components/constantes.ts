@@ -1367,29 +1367,6 @@ export const BLOG_POSTS: BlogPost[] = [
 <p>El vuelo en globo aerostático al amanecer sobre los valles de Capadocia, el crucero privado por el Estrecho del Bósforo entre Europa y Asia, y las compras de especias y joyas en el Gran Bazar de Estambul.</p>`,
   },
   {
-    slug: "requisitos-viajar-espana-desde-peru-2026",
-    titulo: "Requisitos para viajar a España desde Perú en 2026 (Carpeta Migratoria Completa)",
-    desc: "Lista actualizada de documentos exigidos en el Aeropuerto de Madrid-Barajas y Barcelona-El Prat para turistas peruanos sin visa.",
-    categoria: "Migratorio",
-    catColor: "bg-red-600",
-    fecha: "Actualizado 2026",
-    lectura: "6 min",
-    imagen: "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=800&q=80",
-    autor: "Equipo Cityland Travel",
-    contenido: `<h2>Documentos obligatorios para ingresar a España como turista peruano</h2>
-<p>Los ciudadanos peruanos no requieren visa consular para viajes turísticos o de visita familiar de hasta 90 días dentro del Espacio Schengen. Sin embargo, al llegar al control fronterizo de Madrid-Barajas o Barcelona-El Prat, la Policía Nacional puede solicitar la acreditación de tu viaje.</p>
-<h3>1. Pasaporte peruano vigente</h3>
-<p>Tu pasaporte biométrico o mecanizado debe tener una vigencia mínima de 3 meses posteriores a la fecha prevista de salida de Europa (se recomienda mínimo 6 meses).</p>
-<h3>2. Boleto aéreo de ida y vuelta confirmada</h3>
-<p>Debes contar con reserva aérea de retorno (PNR verificable en aerolínea) dentro del plazo máximo de 90 días.</p>
-<h3>3. Seguro médico internacional Schengen (Mínimo 30.000€)</h3>
-<p>El seguro debe cubrir gastos médicos de urgencia, hospitalización y repatriación por un mínimo de 30.000 euros sin deducible durante todos los días de tu estancia.</p>
-<h3>4. Justificación de alojamiento</h3>
-<p>Si vas por turismo, debes presentar tu reserva de hotel confirmada por toda la estadía. Si te alojas con un familiar o amigo residente en España, necesitas la <strong>Carta de Invitación original</strong> tramitada ante una Comisaría de Policía en España.</p>
-<h3>5. Acreditación de medios económicos</h3>
-<p>Se exige demostrar solvencia económica (efectivo en euros y/o tarjetas bancarias internacionales habilitadas para compras en el exterior).</p>`,
-  },
-  {
     slug: "equipaje-permitido-iberia-air-europa-plus-ultra",
     titulo: "Equipaje permitido en vuelos de Lima a Madrid: Iberia, Air Europa, Plus Ultra y LATAM",
     desc: "Guía práctica de maletas de mano (10 kg) y equipaje de bodega (23 kg) en las 4 aerolíneas que vuelan directo de Lima a España.",
@@ -1447,22 +1424,87 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "carta-invitacion-espana-peru-requisitos",
-    titulo: "Carta de Invitación para España desde Perú: Requisitos, precio y cómo usarla en 2026",
-    desc: "Todo lo que tu familiar o amigo en España debe tramitar ante la Policía Nacional para acreditar tu alojamiento al viajar desde Lima.",
+    titulo: "Carta de invitación para España desde Perú: quién la pide, requisitos y cuánto cuesta en 2026",
+    tituloSeo: "Carta de invitación para España 2026: requisitos",
+    desc: "La pide tu familiar o amigo en España en la comisaría. Requisitos, tasa de unos 75 € en 2026, cuánto tiempo vale y qué más te piden en el aeropuerto.",
     categoria: "Migratorio",
     catColor: "bg-red-600",
-    fecha: "Actualizado 2026",
-    lectura: "5 min",
+    fecha: "Actualizado octubre 2026",
+    lectura: "7 min",
     imagen: "/images/espana/plaza-mayor.jpg",
     autor: "Equipo Cityland Travel",
-    contenido: `<h2>¿Para qué sirve la Carta de Invitación para viajar a España?</h2>
-<p>La Carta de Invitación es el documento oficial que reemplaza a la reserva de hotel cuando un ciudadano peruano viaja a España para alojarse en la vivienda de un familiar o amigo (ciudadano español o residente legal en España).</p>
-<h3>1. ¿Dónde se tramita?</h3>
-<p>La solicita tu anfitrión en España ante la <strong>Comisaría de Policía Nacional</strong> de su lugar de residencia, presentando su DNI o TIE, escritura o contrato de alquiler de la vivienda y el volante de empadronamiento colectivo.</p>
-<h3>2. ¿Es suficiente solo con la Carta de Invitación?</h3>
-<p>No. La Carta de Invitación únicamente acredita el alojamiento. Al pasar el control migratorio en Madrid-Barajas o Barcelona-El Prat también debes presentar: <strong>boleto aéreo de ida y vuelta confirmado</strong>, <strong>Seguro Schengen con cobertura mínima de 30.000 euros</strong> y tu <strong>sustento económico (bolsa de viaje)</strong>.</p>
-<h3>3. ¿Debes llevar el documento original?</h3>
-<p>Sí, tu familiar debe enviarte la Carta de Invitación física original por courier a Lima antes de tu vuelo para presentarla en el mostrador de la aerolínea y en el control fronterizo.</p>`,
+    contenido: `<h2>La respuesta corta</h2>
+<p>La carta de invitación es el documento con el que un familiar o amigo que vive en España demuestra que te va a alojar en su casa. <strong>La pide él, no tú</strong>, en la comisaría de policía de donde vive. En 2026 la tasa ronda los <strong>75 €</strong> y la carta vale por <strong>9 meses</strong>.</p>
+<p>Ojo: la carta solo reemplaza a la reserva de hotel. No reemplaza el pasaje de regreso ni el dinero que te pueden pedir en el aeropuerto.</p>
+
+<h2>¿Quién puede invitarte?</h2>
+<p>Según la Orden PRE/1283/2007, que regula la carta, puede invitarte una persona que sea:</p>
+<ul>
+<li>Ciudadana española.</li>
+<li>Ciudadana de otro país de la Unión Europea (o su familiar con el mismo régimen).</li>
+<li>Extranjera con <strong>residencia legal en España</strong>.</li>
+</ul>
+<p>Quien te invita se compromete a darte alojamiento durante tu estancia, en su vivienda habitual o en una segunda vivienda.</p>
+
+<h2>¿Dónde y cómo se pide?</h2>
+<p>Tu familiar o amigo la solicita en la <strong>comisaría de la Policía Nacional de su lugar de residencia</strong>, normalmente con cita previa. La policía puede llamarlo a una entrevista; si no se presenta, la solicitud se da por abandonada.</p>
+<p>Si la respuesta es favorable, tiene <strong>un mes</strong> para pagar la tasa y recoger la carta con el comprobante de pago.</p>
+
+<h2>Documentos que debe presentar quien te invita</h2>
+<ul>
+<li>Su documento de identidad: DNI, NIE o pasaporte, y su dirección.</li>
+<li>Una prueba de que tiene vivienda: escritura de la casa o contrato de alquiler.</li>
+<li>Qué relación tiene contigo (familia o amistad).</li>
+<li>Tus datos y el número de tu pasaporte.</li>
+<li>Las fechas aproximadas de tu llegada y tu salida.</li>
+</ul>
+<p>Algunas comisarías piden papeles adicionales, como el certificado de empadronamiento. Conviene que tu familiar pregunte al sacar la cita.</p>
+<p>Lo normal es una carta por persona. La norma solo permite incluir a varias personas en una misma carta de forma excepcional.</p>
+
+<h2>¿Cuánto cuesta?</h2>
+<p>Se paga con el <strong>formulario 790, código 012</strong> de la Policía Nacional. En 2026 la tasa ronda los 75 €. El monto exacto lo publica la Policía Nacional cada año, así que conviene revisarlo al momento de pagar.</p>
+
+<h2>¿Cuánto tiempo vale?</h2>
+<p>La carta vale durante los <strong>9 meses</strong> siguientes a la notificación de la resolución. Tu viaje tiene que caer dentro de ese plazo y respetar el máximo de 90 días como turista.</p>
+
+<h2>Cuando ya la tengas</h2>
+<ul>
+<li>Pide a tu familiar que te envíe la <strong>carta original</strong> por courier y llévala en tu equipaje de mano.</li>
+<li>Lleva también una copia del documento de identidad de quien te invita y la dirección exacta donde te vas a quedar.</li>
+<li>Pídela con tiempo: entre la cita, el trámite y el envío por courier pueden pasar varias semanas.</li>
+</ul>
+
+<h2>Lo que la carta no reemplaza</h2>
+<p>La norma es clara: la carta <strong>solo justifica el alojamiento</strong>. En el control migratorio también te pueden pedir:</p>
+<ul>
+<li>Pasaporte vigente (al menos 3 meses después de tu salida de Europa).</li>
+<li>Pasaje de regreso dentro de los 90 días.</li>
+<li><a href="/blog/cuanto-dinero-llevar-espana-bolsa-de-viaje">Dinero suficiente (bolsa de viaje)</a>: aunque te alojes gratis, te pueden pedir 122,10 € por día, con un mínimo de 1.098,90 € por persona.</li>
+<li>Seguro médico: el Consulado de España en Lima lo considera recomendable.</li>
+</ul>
+<p>Aquí tienes la lista completa: <a href="/viajes/requisitos-viajar-a-espana-desde-peru">requisitos para viajar a España desde Perú</a>. Y si dudas entre hotel o carta, mira <a href="/blog/diferencia-reserva-hotel-y-carta-invitacion-espana">la diferencia entre reserva de hotel y carta de invitación</a>.</p>
+
+<h2>Errores comunes</h2>
+<ul>
+<li><strong>Pedirla a última hora.</strong> Si la carta no llega antes del vuelo, tendrás que reservar hotel.</li>
+<li><strong>Viajar solo con una foto de la carta.</strong> Lleva el original.</li>
+<li><strong>Creer que la carta reemplaza la bolsa de viaje.</strong> No la reemplaza.</li>
+<li><strong>Fechas que no coinciden.</strong> Las fechas de la carta deben cuadrar con tu pasaje.</li>
+</ul>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿La puedo pedir yo desde Lima?</h3>
+<p>No. La pide siempre la persona que te invita, en España.</p>
+<h3>¿Mi familiar tiene que ser español?</h3>
+<p>No. También puede ser un extranjero con residencia legal en España, o un ciudadano de otro país de la Unión Europea.</p>
+<h3>¿Me pueden negar la entrada aunque tenga la carta?</h3>
+<p>Sí. La decisión final la toma la policía de frontera, y te pueden pedir el resto de los requisitos. Por eso conviene llevar todo completo.</p>
+
+<h2>Fuentes oficiales</h2>
+<ul>
+<li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-9609" target="_blank" rel="noopener">Orden PRE/1283/2007 (BOE): carta de invitación</a></li>
+<li><a href="https://www.exteriores.gob.es/Consulados/lima/es/Comunicacion/Noticias/Paginas/Articulos/20160315_NOT1.aspx" target="_blank" rel="noopener">Consulado General de España en Lima: requisitos para peruanos sin visa</a></li>
+</ul>`,
   },
   {
     slug: "mejor-epoca-viajar-punta-cana-cancun",
@@ -1552,7 +1594,7 @@ export const BLOG_POSTS: BlogPost[] = [
 <li>Pasaporte vigente.</li>
 <li>Boleto de regreso o de salida del espacio Schengen.</li>
 <li>Reserva de hotel o carta de invitación.</li>
-<li><a href="/blog/seguro-schengen-30000-euros-peru-precio">Seguro de viaje con cobertura mínima de 30.000 €</a>.</li>
+<li><a href="/blog/seguro-schengen-30000-euros-peru-precio">Seguro médico de viaje</a> (el Consulado de España en Lima lo considera recomendable).</li>
 <li>Algo que muestre el motivo del viaje (itinerario, reservas de tours, invitación a un evento).</li>
 </ul>
 <p>Aquí tienes la lista completa: <a href="/viajes/requisitos-viajar-a-espana-desde-peru">requisitos para viajar a España desde Perú</a>.</p>

@@ -71,6 +71,17 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Artículos del blog que competían con las guías de requisitos por la misma búsqueda (24-oct-2026).
+      {
+        source: "/blog/requisitos-viajar-espana-desde-peru-2026",
+        destination: "/viajes/requisitos-viajar-a-espana-desde-peru",
+        permanent: true,
+      },
+      {
+        source: "/blog/requisitos-viajar-italia-roma-milan-peruanos",
+        destination: "/viajes/requisitos-viajar-a-italia-desde-peru",
+        permanent: true,
+      },
       // Dos artículos competían por "bolsa de viaje para España": se juntaron en la guía que más aparecía en Google.
       {
         source: "/blog/bolsa-de-viaje-espana-2026-boe-122-euros-calculo",
