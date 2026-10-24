@@ -1,4 +1,4 @@
-import { TELEFONO, TELEFONO_FORMATEADO, buildWaUrl } from "@/components/constantes";
+import { TELEFONO, TELEFONO_FORMATEADO, buildWaUrl, OFICINAS } from "@/components/constantes";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 export default function Mapa() {
@@ -21,9 +21,17 @@ export default function Mapa() {
             </h2>
 
             <div className="space-y-3.5 mb-6 text-xs sm:text-sm text-slate-600">
-              <p>
-                <strong className="text-[#0a1628]">Dirección:</strong> Av. Antúnez de Mayolo N. 814, Los Olivos, Lima
-              </p>
+              {OFICINAS.map((o) => (
+                <p key={o.ruc}>
+                  <strong className="text-[#0a1628]">{o.nombre}:</strong> {o.direccion}
+                  <span className="block text-xs text-slate-500">
+                    {o.razonSocial} · RUC {o.ruc} ·{" "}
+                    <a href={o.mapa} target="_blank" rel="noopener noreferrer" className="font-bold text-emerald-700 hover:underline">
+                      Cómo llegar
+                    </a>
+                  </span>
+                </p>
+              ))}
               <p>
                 <strong className="text-[#0a1628]">Horario:</strong> Lunes a Sábado: 9:00 AM – 7:00 PM
               </p>
@@ -32,9 +40,6 @@ export default function Mapa() {
                 <a href={`tel:${TELEFONO}`} className="text-emerald-700 font-bold hover:underline">
                   {TELEFONO_FORMATEADO}
                 </a>
-              </p>
-              <p>
-                <strong className="text-[#0a1628]">Razón Social:</strong> Cityland Travel E.I.R.L. · RUC 20614914239
               </p>
             </div>
 

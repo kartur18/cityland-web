@@ -137,7 +137,7 @@ function generarAgenciasLocales(): AgenciaLocalSEO[] {
       tipoZona: "provincia",
       tiempoAtencion: `Emisión remota inmediata para viajeros de ${ciudad} (${departamento}) con boletos conectados vía Lima y envío digital de documentos + atención presencial cuando pases por Lima`,
       metaTitle: `Agencia de Viajes para ${ciudad} (${departamento}) — Vuelos a Europa, EE. UU. y Caribe | Cityland Travel`,
-      metaDescription: `Viaja desde ${ciudad} (${departamento}) a Madrid, Barcelona, Roma, Miami, Cancún y Punta Cana con boleto único conectado vía Lima. Agencia formal Cityland Travel E.I.R.L. (RUC 20614914239), precios en dólares con impuestos incluidos.`,
+      metaDescription: `Viaja desde ${ciudad} (${departamento}) a Madrid, Barcelona, Roma, Miami, Cancún y Punta Cana con boleto único conectado vía Lima. Agencia formal Cityland Group E.I.R.L. (RUC 20614914239), precios en dólares con impuestos incluidos.`,
       keywords: [
         `agencia de viajes en ${ciudad.toLowerCase()}`,
         `vuelos desde ${ciudad.toLowerCase()} a espana`,

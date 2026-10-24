@@ -79,6 +79,7 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
     "/agencia-de-viajes-miraflores",
     "/agencia-de-viajes-surco",
     "/agencia-de-viajes-san-martin-de-porres",
+    "/canales-oficiales",
     "/politicas",
   ],
 };

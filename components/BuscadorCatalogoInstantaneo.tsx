@@ -20,7 +20,7 @@ interface ItemResultado {
 }
 
 const CATEGORIAS = [
-  { id: "todos", label: "Todas las categorías (+10,000)" },
+  { id: "todos", label: "Todas las categorías" },
   { id: "mundiales", label: "🌍 Paquetes Mundiales, España e Italia" },
   { id: "all-inclusive", label: "🏖️ Resorts Todo Incluido & Hoteles 5★" },
   { id: "tours", label: "🚄 Circuitos Combinados y Tours" },

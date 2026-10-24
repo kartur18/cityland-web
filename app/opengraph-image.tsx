@@ -98,7 +98,7 @@ export default async function Image() {
               marginTop: "16px",
             }}
           >
-            {["✈ +5,000 viajes", "⭐ 4.9/5 Google", "⚡ Respuesta en 2h"].map((t) => (
+            {["Separa con 50%", "Oficinas en Los Olivos", "Cotiza por WhatsApp"].map((t) => (
               <div
                 key={t}
                 style={{

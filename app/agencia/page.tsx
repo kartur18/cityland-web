@@ -7,7 +7,7 @@ import { AGENCIAS_LOCALES_SEO } from "@/lib/catalogo-agencias-locales";
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO("Agencia de Viajes Oficial en Lima y Perú (RUC 20614914239) | Cityland Travel"),
-  description: optimizarMetaDescriptionSEO("Conoce Cityland Travel E.I.R.L., agencia de viajes formal en Lima Norte (Los Olivos) con atención presencial y en todo el Perú para vuelos, paquetes turísticos, cruceros y visas."),
+  description: optimizarMetaDescriptionSEO("Conoce Cityland Group E.I.R.L., agencia de viajes formal en Lima Norte (Los Olivos) con atención presencial y en todo el Perú para vuelos, paquetes turísticos, cruceros y visas."),
   alternates: {
     canonical: "https://citylandtravel.com/agencia",
   },

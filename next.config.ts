@@ -23,6 +23,8 @@ const nextConfig: NextConfig = {
       "img-src 'self' data: blob: https:",
       // Google Ads (AW-18093363482) manda la conversión a ad.doubleclick.net y googleadservices: sin ellos la CSP la bloqueaba en cada carga (auditoría 23-oct).
       "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://ad.doubleclick.net https://googleads.g.doubleclick.net https://www.googleadservices.com https://www.google.com https://va.vercel-scripts.com https://vitals.vercel-insights.com",
+      // El mapa de la oficina (inicio) es un iframe de Google Maps: sin frame-src la CSP lo bloqueaba.
+      "frame-src https://www.google.com https://maps.google.com",
       "frame-ancestors 'self'",
       "object-src 'none'",
       "base-uri 'self'",

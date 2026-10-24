@@ -26,8 +26,8 @@ const PRIMARY_LINKS: {
 ];
 
 const TOP_BAR_LINKS: { label: string; href: string; flag?: string }[] = [
-  { label: "1,000 Paquetes Migratorios (solo ida desde $699)", href: "/paquetes-migratorios", flag: "Europa" },
-  { label: "🔍 Catálogo (+10,000 Ofertas)", href: "/directorio#buscador" },
+  { label: "Paquetes Migratorios (solo ida desde $699)", href: "/paquetes-migratorios", flag: "Europa" },
+  { label: "🔍 Catálogo de ofertas", href: "/directorio#buscador" },
   { label: "✈️ Guía Europa 2026 (BOE)", href: "/guia-europa" },
   { label: "Seguros 30.000€", href: "/seguros" },
   { label: "Luna de Miel & 15 Años", href: "/luna-de-miel" },
@@ -41,7 +41,7 @@ const ALL_MOBILE_LINKS: {
   highlight?: boolean;
   flag?: string;
 }[] = [
-  { label: "🔍 Buscador de +10,000 Ofertas y Hoteles", href: "/directorio#buscador", highlight: true },
+  { label: "🔍 Buscador de ofertas y hoteles", href: "/directorio#buscador", highlight: true },
   ...PRIMARY_LINKS,
   ...TOP_BAR_LINKS.slice(2),
 ];
@@ -72,7 +72,7 @@ export default function Navbar() {
             <div className="flex flex-wrap items-center gap-x-2.5 gap-y-0.5 font-medium">
               <span className="inline-flex items-center gap-1.5 text-white font-semibold whitespace-nowrap">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
-                Cityland Travel E.I.R.L. · RUC 20614914239
+                Cityland Group E.I.R.L. · RUC 20614914239
               </span>
               <span className="text-slate-600">|</span>
               <span className="text-slate-200 whitespace-nowrap">
@@ -168,7 +168,7 @@ export default function Navbar() {
             <div className="hidden lg:flex items-center gap-2 shrink-0">
               <Link
                 href="/directorio#buscador"
-                title="Buscar entre +10,000 paquetes, hoteles y destinos"
+                title="Buscar paquetes, hoteles y destinos"
                 className="inline-flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-[#0a1628] px-3.5 py-2.5 rounded-full text-xs font-extrabold transition-colors whitespace-nowrap"
               >
                 <span>🔍</span>
@@ -280,7 +280,7 @@ export default function Navbar() {
               <span>Cotizar por WhatsApp</span>
             </a>
             <p className="text-center text-[11px] text-slate-400">
-              Cityland Travel E.I.R.L. · RUC 20614914239 · Los Olivos, Lima
+              Cityland Group E.I.R.L. · RUC 20614914239 · Los Olivos, Lima
             </p>
           </div>
         </div>

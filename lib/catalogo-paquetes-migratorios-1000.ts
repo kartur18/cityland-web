@@ -2351,7 +2351,7 @@ function construirFaqsPeruano(ciudad: string, _pais: string): { q: string; a: st
     },
     {
       q: `¿Dónde queda su oficina física para atenderme en persona?`,
-      a: `Te esperamos en Av. Antúnez de Mayolo 814, Los Olivos, Lima (Cityland Travel E.I.R.L. · RUC 20614914239), o por WhatsApp desde todo el Perú.`,
+      a: `Te esperamos en Av. Antúnez de Mayolo 814, Los Olivos, Lima (Cityland Group E.I.R.L. · RUC 20614914239), o por WhatsApp desde todo el Perú.`,
     },
   ];
 }

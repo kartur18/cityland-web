@@ -6,10 +6,36 @@ const TARIFAS_ITALIA = tarifasMigratorio("Italia");
 const TARIFAS_FRANCIA = tarifasMigratorio("Francia");
 
 export const EMPRESA_NOMBRE = "Cityland Travel";
-export const EMPRESA_RAZON_SOCIAL = "Cityland Travel E.I.R.L.";
+export const EMPRESA_RAZON_SOCIAL = "Cityland Group E.I.R.L.";
 export const EMPRESA_RUC = "20614914239";
 export const EMPRESA_DIRECCION = "Av. Antúnez de Mayolo N. 814, Los Olivos, Lima";
 export const EMPRESA_HORARIO = "Lunes a Sábado: 9:00 am - 7:00 pm";
+
+// Las dos oficinas reales, cada una con su razón social (RUC verificados en SUNAT y en el sistema interno).
+export const OFICINAS = [
+  {
+    nombre: "Oficina Antúnez de Mayolo",
+    direccion: "Av. Santiago Antúnez de Mayolo 814, Urb. Mercurio, Los Olivos, Lima",
+    razonSocial: "Cityland Group E.I.R.L.",
+    ruc: "20614914239",
+    mapa: "https://www.google.com/maps/search/?api=1&query=Av.+Antunez+de+Mayolo+814+Los+Olivos+Lima",
+  },
+  {
+    nombre: "Oficina Angélica Gamarra",
+    direccion: "Av. Angélica Gamarra 763, Los Olivos, Lima",
+    razonSocial: "Cityland Travel S.A.C.",
+    ruc: "20611406305",
+    mapa: "https://www.google.com/maps/search/?api=1&query=Av.+Angelica+Gamarra+763+Los+Olivos+Lima",
+  },
+] as const;
+
+// Números de WhatsApp que usa Cityland con sus clientes; la página /canales-oficiales los publica.
+export const WHATSAPP_OFICIALES = [
+  { numero: "+51 944 103 890", uso: "Cotizaciones desde la web y ventas" },
+  { numero: "+51 941 551 530", uso: "Ventas y atención de clientes" },
+] as const;
+
+export const RESENAS_GOOGLE_URL = "https://www.google.com/maps/search/?api=1&query=Cityland+Travel+Los+Olivos";
 
 // Número oficial único de WhatsApp y Central Comercial (conectado a la Bandeja Cityland Travel)
 export const NUMERO_WHATSAPP_OFICIAL = "51944103890";
@@ -1258,42 +1284,6 @@ export const PRECIO_MIGRATORIO_DESDE = 699;
 export const PRECIO_IDA_VUELTA_MADRID_DESDE = 1090;
 export const PRECIO_DESDE_CARIBE = 589;
 
-// ── Testimonios Reales de Viajeros Peruanos ──
-export const TESTIMONIOS = [
-  {
-    nombre: "Ana R. & Familia",
-    foto: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80",
-    iniciales: "AR",
-    color: "#1a4a8a",
-    ruta: "Lima ➔ Punta Cana · All Inclusive",
-    texto: "Viajamos 4 personas con todo resuelto: comidas, barra libre y catamarán a Saona. Separamos con 50% en su oficina de Los Olivos. 100% recomendados.",
-  },
-  {
-    nombre: "Carlos & Mariana",
-    foto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80",
-    iniciales: "CM",
-    color: "#059669",
-    ruta: "Lima ➔ Madrid · Especial Europa",
-    texto: "Nos armaron la carpeta con seguro Schengen 30.000€ y voucher de hotel. Pasamos el filtro migratorio en Barajas en 5 minutos sin ningún problema.",
-  },
-  {
-    nombre: "Fernando C.",
-    foto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80",
-    iniciales: "FC",
-    color: "#d97706",
-    ruta: "Lima ➔ Cancún · Todo Incluido",
-    texto: "El mejor precio de Lima con tour a Chichén Itzá incluido. Congelamos con el 50% de inicial y cancelamos el saldo un mes antes de volar.",
-  },
-  {
-    nombre: "Diana & Jorge",
-    foto: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80",
-    iniciales: "DJ",
-    color: "#7c3aed",
-    ruta: "Lima ➔ Cartagena · 4D/3N",
-    texto: "Hotel frente al mar impecable y tour a Islas del Rosario incluido. Nos atendieron rápido por WhatsApp y pagamos con transferencia BCP.",
-  },
-];
-
 // ── Preguntas Frecuentes (FAQ) ──
 export const FAQS = [
   {
@@ -1557,7 +1547,7 @@ export const BLOG_POSTS: BlogPost[] = [
     contenido: `<h2>Claves para un viaje de promoción escolar 100% seguro</h2>
 <p>Elegir la agencia de viajes adecuada para la promoción de primaria o secundaria requiere verificar la formalidad legal y operativa de la empresa.</p>
 <h3>1. Verifica el RUC activo en SUNAT y la oficina física en Lima</h3>
-<p>Contrata únicamente con agencias constituidas con oficina física real en Lima (como Cityland Travel E.I.R.L., RUC 20614914239) que entreguen contrato formal, boletas/facturas electrónicas y códigos de reserva aérea verificables para cada alumno.</p>
+<p>Contrata únicamente con agencias constituidas con oficina física real en Lima (como Cityland Group E.I.R.L., RUC 20614914239) que entreguen contrato formal, boletas/facturas electrónicas y códigos de reserva aérea verificables para cada alumno.</p>
 <h3>2. Destinos favoritos de las promociones peruanas</h3>
 <p>En rutas nacionales destacan <strong>Cusco & Machu Picchu</strong>, <strong>Tarapoto (Laguna Azul)</strong> y las <strong>Playas de Máncora / Punta Sal</strong>. En rutas internacionales lideran <strong>Punta Cana Todo Incluido</strong>, <strong>Cartagena de Indias</strong> y <strong>Cancún</strong>, siempre acompañados por un tour conductor con asistencia médica 24/7.</p>`,
   },

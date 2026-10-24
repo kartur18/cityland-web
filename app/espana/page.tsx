@@ -136,7 +136,7 @@ const JSON_LD_ESPANA = {
     {
       "@type": ["TravelAgency", "LocalBusiness"],
       name: "Cityland Travel",
-      legalName: "Cityland Travel E.I.R.L.",
+      legalName: "Cityland Group E.I.R.L.",
       url: "https://citylandtravel.com",
       taxID: "20614914239",
       telephone: "+51944103890",

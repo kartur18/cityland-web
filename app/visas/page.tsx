@@ -77,7 +77,7 @@ const JSON_LD_VISAS = {
           description: v.resumenCorto,
           provider: {
             "@type": "TravelAgency",
-            name: "Cityland Travel E.I.R.L.",
+            name: "Cityland Group E.I.R.L.",
           },
           offers: {
             "@type": "AggregateOffer",

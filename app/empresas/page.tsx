@@ -69,7 +69,7 @@ const CONFIG_EMPRESAS: ConfiguracionLandingAerolinea = {
     labelPrecio: "Vuelos Corporativos",
     precio: "$109",
     moneda: "USD · Con Factura",
-    notaInferior: "Cityland Travel E.I.R.L. · RUC 20614914239",
+    notaInferior: "Cityland Group E.I.R.L. · RUC 20614914239",
     waNumero: "51944103890",
     waMensaje:
       "¡Hola Cityland Travel! Deseo afiliar a mi empresa para emisión de vuelos y hoteles corporativos con factura.",
@@ -196,7 +196,7 @@ const CONFIG_EMPRESAS: ConfiguracionLandingAerolinea = {
   pilares: [
     {
       titulo: "Factura Electrónica RUC",
-      sub: "Emitimos comprobantes formales de Cityland Travel E.I.R.L. (RUC 20614914239)",
+      sub: "Emitimos comprobantes formales de Cityland Group E.I.R.L. (RUC 20614914239)",
     },
     {
       titulo: "Respuesta en Minutos",
@@ -250,7 +250,7 @@ const JSON_LD_EMPRESAS = {
       name: "Gestión de Viajes Corporativos y Emisión de Pasajes para Empresas (Factura RUC)",
       provider: {
         "@type": "TravelAgency",
-        name: "Cityland Travel E.I.R.L.",
+        name: "Cityland Group E.I.R.L.",
         taxID: "20614914239",
       },
       areaServed: "PE",
