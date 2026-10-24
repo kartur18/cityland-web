@@ -1710,6 +1710,137 @@ export const BLOG_POSTS: BlogPost[] = [
 <h3>2. Temporada de Ofertas (Noviembre a Marzo)</h3>
 <p>Encontrarás paisajes verdes espectaculares en el Valle Sagrado y tarifas promocionales más bajas tanto en vuelos Lima – Cusco como en hoteles de 3, 4 y 5 estrellas.</p>`,
   },
+  {
+    slug: "que-preguntan-en-migraciones-espana-barajas",
+    titulo: "¿Qué te preguntan en migraciones al llegar a España? Guía para peruanos 2026",
+    tituloSeo: "Qué te preguntan en migraciones de España",
+    desc: "Qué revisa la policía en Barajas a los peruanos que entran sin visa, qué papeles llevar, qué dice la norma del boleto de regreso y qué pasa si te niegan la entrada.",
+    categoria: "Europa",
+    catColor: "bg-red-500",
+    fecha: "Actualizado octubre 2026",
+    lectura: "7 min",
+    imagen: "/images/espana/barajas.jpg",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>La respuesta corta</h2>
+<p>Al llegar a Madrid-Barajas pasas por el control de pasaportes. A los peruanos, que entran sin visa, la policía les hace un <strong>control completo</strong>: revisa tu pasaporte y te puede preguntar a qué vas, dónde te vas a alojar, cuántos días te quedas, cuándo regresas y con qué dinero cuentas. También te puede pedir los papeles que lo demuestren.</p>
+<p>No siempre preguntan todo, pero tienes que poder responder y mostrar cada cosa si te la piden.</p>
+
+<h2>Qué revisa la policía, según la norma</h2>
+<p>El Código de fronteras Schengen (Reglamento UE 2016/399, artículo 8) dice que a quien no es europeo se le hace un control minucioso al entrar. El policía comprueba:</p>
+<ul>
+<li>Que tu pasaporte sea válido y no tenga señales de falsificación.</li>
+<li>Tus entradas y salidas anteriores, para ver que no pases de 90 días dentro de cada periodo de 180.</li>
+<li>De dónde vienes, a dónde vas y el motivo de tu viaje.</li>
+<li>Que tengas dinero suficiente para tu estancia y para regresar.</li>
+<li>Que no tengas alertas en las bases de datos europeas.</li>
+</ul>
+
+<h2>Las preguntas más comunes y qué mostrar</h2>
+<div class="tabla-guia"><table>
+<thead><tr><th>Te pueden preguntar</th><th>Qué mostrar</th></tr></thead>
+<tbody>
+<tr><td>¿A qué viene a España?</td><td>Turismo, visita familiar o negocios. Ayuda llevar tu itinerario, reservas de tours o la invitación a un evento.</td></tr>
+<tr><td>¿Dónde se va a alojar?</td><td>La reserva de hotel a tu nombre por todas las noches, o la <a href="/blog/carta-invitacion-espana-peru-requisitos">carta de invitación</a> original si te alojas con un familiar o amigo.</td></tr>
+<tr><td>¿Cuántos días se queda?</td><td>Lo mismo que dicen tu boleto y tu alojamiento. Como turista, máximo 90 días.</td></tr>
+<tr><td>¿Cuándo regresa?</td><td>Tu boleto de regreso a tu país o de salida hacia otro país.</td></tr>
+<tr><td>¿Con cuánto dinero viaja?</td><td>En 2026, 122,10 € por día y un mínimo de 1.098,90 €: en efectivo, o con tu tarjeta y el estado de cuenta impreso. Detalle en nuestra guía de la <a href="/blog/cuanto-dinero-llevar-espana-bolsa-de-viaje">bolsa de viaje</a>.</td></tr>
+</tbody>
+</table></div>
+
+<h2>El boleto de regreso: lo que dice la norma española</h2>
+<p>La <strong>Orden PRE/1282/2007</strong> dice que, si la policía lo pide, debes demostrar que tienes boleto para regresar a tu país o para salir hacia otro, y que ese boleto sea <strong>nominativo, intransferible y cerrado</strong>, es decir, a tu nombre y con fecha fija. La misma norma dice que, si no lo tienes, se te niega la entrada.</p>
+<p>El reglamento de extranjería (Real Decreto 1155/2024, artículo 8) también pone el boleto de vuelta o de circuito turístico entre los documentos que te pueden pedir, sea cual sea el motivo de tu viaje.</p>
+
+<h2>Consejos para pasar el control tranquilo</h2>
+<ul>
+<li>Lleva todos tus papeles impresos y juntos en una carpeta, además de tenerlos en el celular.</li>
+<li>Responde con la verdad y con lo mismo que dicen tus papeles: fechas, hotel o dirección de tu familiar.</li>
+<li>Ten a mano la dirección y el teléfono del lugar donde te vas a alojar.</li>
+<li>Entrar sin visa es solo para turismo, visitas o negocios. Si vas a trabajar, necesitas visa.</li>
+</ul>
+
+<h2>Las huellas y la foto al entrar</h2>
+<p>Desde el <strong>10 de abril de 2026</strong> funciona en todo el espacio Schengen el Sistema de Entradas y Salidas (EES). Al pasar el control te toman las huellas y una foto, y el sistema anota la fecha y el lugar de tu entrada y tu salida. Reemplaza al sello en el pasaporte y sirve para controlar el límite de 90 días.</p>
+
+<h2>¿Qué pasa si te niegan la entrada?</h2>
+<ul>
+<li>La policía tiene que darte la negativa <strong>por escrito y con el motivo exacto</strong> (Ley Orgánica 4/2000, artículo 26).</li>
+<li>Tienes derecho a <strong>abogado</strong>, gratuito si no tienes recursos, y a <strong>intérprete</strong>.</li>
+<li>Puedes presentar un recurso, pero eso no detiene tu regreso. También se puede recurrir después, a través del consulado (Real Decreto 1155/2024, artículo 15).</li>
+<li>El regreso se hace en un máximo de <strong>72 horas</strong>. Mientras tanto esperas en el aeropuerto, y la aerolínea paga tu pasaje de vuelta y tu manutención.</li>
+<li>Se avisa al consulado del Perú.</li>
+</ul>
+
+<h2>Antes de viajar, revisa también</h2>
+<ul>
+<li><a href="/viajes/requisitos-viajar-a-espana-desde-peru">Requisitos para viajar a España desde Perú</a></li>
+<li><a href="/blog/cuanto-cuesta-viajar-a-espana-desde-peru">Cuánto cuesta viajar a España desde Perú</a></li>
+<li><a href="/blog/seguro-schengen-30000-euros-peru-precio">Seguro de viaje para Europa</a></li>
+</ul>
+
+<h2>Fuentes oficiales</h2>
+<ul>
+<li><a href="https://www.boe.es/buscar/doc.php?id=DOUE-L-2016-80504" target="_blank" rel="noopener">Reglamento (UE) 2016/399, Código de fronteras Schengen (BOE)</a></li>
+<li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-9608" target="_blank" rel="noopener">Orden PRE/1282/2007: medios económicos y boleto de regreso (BOE)</a></li>
+<li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099" target="_blank" rel="noopener">Real Decreto 1155/2024, reglamento de extranjería (BOE)</a></li>
+<li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2000-544" target="_blank" rel="noopener">Ley Orgánica 4/2000, de extranjería (BOE)</a></li>
+<li><a href="https://home-affairs.ec.europa.eu/policies/schengen/smart-borders/entry-exit-system_en" target="_blank" rel="noopener">Comisión Europea: Sistema de Entradas y Salidas (EES)</a></li>
+</ul>
+<p>La decisión final de dejarte entrar es de la policía de frontera. Esta guía resume las normas al 24 de octubre de 2026.</p>`,
+  },
+  {
+    slug: "cuanto-cuesta-viajar-a-espana-desde-peru",
+    titulo: "¿Cuánto cuesta viajar a España desde Perú en 2026?",
+    tituloSeo: "Cuánto cuesta viajar a España desde Perú 2026",
+    desc: "Pasaje, bolsa de viaje, alojamiento, seguro, pasaporte y ETIAS: lo que cuesta viajar a España desde Perú en 2026, con montos oficiales y precios de referencia.",
+    categoria: "Europa",
+    catColor: "bg-red-500",
+    fecha: "Actualizado octubre 2026",
+    lectura: "5 min",
+    imagen: "/images/espana/gran-via-metropolis.jpg",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>La respuesta corta</h2>
+<p>Para viajar a España como turista desde Perú, lo que más pesa es el <strong>pasaje</strong> (ida y vuelta Lima–Madrid desde US$ ${PRECIO_IDA_VUELTA_MADRID_DESDE.toLocaleString("en-US")} por persona con nosotros, según la temporada) y el <strong>alojamiento</strong>. Además, tienes que llevar el dinero que te pueden pedir en el aeropuerto: en 2026, un mínimo de <strong>1.098,90 € por persona</strong>. Ese dinero no se le paga a nadie: es para tus gastos en España.</p>
+
+<h2>Lo que cuesta, punto por punto</h2>
+<div class="tabla-guia"><table>
+<thead><tr><th>Concepto</th><th>Cuánto</th><th>Qué saber</th></tr></thead>
+<tbody>
+<tr><td>Pasaje Lima–Madrid ida y vuelta</td><td>Desde US$ ${PRECIO_IDA_VUELTA_MADRID_DESDE.toLocaleString("en-US")}</td><td>Precio de referencia por persona en Cityland Travel. Cambia según la fecha y los asientos disponibles.</td></tr>
+<tr><td>Bolsa de viaje</td><td>122,10 € por día, mínimo 1.098,90 €</td><td>Es tu dinero para gastos. Te lo pueden pedir en el control del aeropuerto (Orden PRE/1282/2007).</td></tr>
+<tr><td>Alojamiento</td><td>Según el hotel y las noches</td><td>Si te alojas con un familiar o amigo, él tramita en España la carta de invitación; la tasa ronda los 75 €.</td></tr>
+<tr><td>Seguro de viaje</td><td>Según tus días y tu edad</td><td>Para España es recomendable, no obligatorio. Si también visitas Francia, allá sí lo exigen.</td></tr>
+<tr><td>Pasaporte electrónico</td><td>S/ 120,90</td><td>Tarifa de Migraciones. Confírmala en su web antes de pagar.</td></tr>
+<tr><td>ETIAS</td><td>Todavía no se cobra</td><td>Cuando empiece a funcionar costará 20 €. A octubre de 2026 la Unión Europea no ha anunciado la fecha.</td></tr>
+</tbody>
+</table></div>
+
+<h2>¿Cuánto dinero llevar según tus días?</h2>
+<p>Multiplica tus días por 122,10 €. Si te da menos de 1.098,90 €, vale el mínimo. Por ejemplo: hasta 9 días, 1.098,90 €; 15 días, 1.831,50 €; 30 días, 3.663 €. Si viajan dos, cada uno debe tener su parte. Más detalles y cómo demostrarlo en la guía de la <a href="/blog/cuanto-dinero-llevar-espana-bolsa-de-viaje">bolsa de viaje para España</a>.</p>
+<p>Para pasar los euros a soles, usa el tipo de cambio del día de tu banco.</p>
+
+<h2>¿Cómo pagar tu viaje?</h2>
+<ul>
+<li>Separas tu pasaje o paquete con el <strong>50%</strong> y pagas el resto antes de viajar.</li>
+<li>Pagas en nuestras oficinas de Los Olivos o por transferencia, Yape, Plin o tarjeta.</li>
+<li>Recibes tu boleta o factura electrónica.</li>
+</ul>
+
+<h2>Antes de comprar, revisa</h2>
+<ul>
+<li><a href="/viajes/requisitos-viajar-a-espana-desde-peru">Requisitos para viajar a España desde Perú</a></li>
+<li><a href="/blog/que-preguntan-en-migraciones-espana-barajas">Qué te preguntan en migraciones al llegar a España</a></li>
+<li><a href="/vuelos/lima-madrid">Pasajes Lima–Madrid ida y vuelta</a></li>
+</ul>
+
+<h2>Fuentes</h2>
+<ul>
+<li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-9608" target="_blank" rel="noopener">Orden PRE/1282/2007: medios económicos (BOE)</a></li>
+<li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2007-9609" target="_blank" rel="noopener">Orden PRE/1283/2007: carta de invitación (BOE)</a></li>
+<li><a href="https://home-affairs.ec.europa.eu/policies/schengen/smart-borders/european-travel-information-authorisation-system_en" target="_blank" rel="noopener">Comisión Europea: ETIAS</a></li>
+</ul>
+<p>Los precios de pasaje son de referencia al 24 de octubre de 2026 y no incluyen alojamiento ni seguro.</p>`,
+  },
 ];
 
 

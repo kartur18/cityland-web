@@ -10,6 +10,8 @@ import { GUIAS_REQUISITOS, type GuiaRequisitos } from "@/lib/guias-requisitos";
 const OTRAS_GUIAS = [
   { href: "/blog/cuanto-dinero-llevar-espana-bolsa-de-viaje", texto: "Bolsa de viaje para España" },
   { href: "/blog/carta-invitacion-espana-peru-requisitos", texto: "Carta de invitación para España" },
+  { href: "/blog/que-preguntan-en-migraciones-espana-barajas", texto: "Qué preguntan en migraciones de España" },
+  { href: "/blog/cuanto-cuesta-viajar-a-espana-desde-peru", texto: "Cuánto cuesta viajar a España" },
 ];
 
 // Formato de guía (no de venta): respuesta corta, cotizador con el destino, el detalle, preguntas y fuentes oficiales.
