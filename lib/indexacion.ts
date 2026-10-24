@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PAGINAS_CON_CLIENTES, PAGINAS_FUERTES } from "@/lib/paginas-fuertes";
+import { PAGINAS_CON_CLIENTES, PAGINAS_CON_VISITAS_GSC, PAGINAS_FUERTES } from "@/lib/paginas-fuertes";
 
 // Google solo guarda lo que ya rinde o responde una búsqueda real: inicio, hubs de un nivel, blog, los ~130 destinos,
 // las guías de requisitos, las páginas con impresiones y las que trajeron chats.
@@ -11,7 +11,8 @@ export function esIndexable(ruta: string): boolean {
     ruta.startsWith("/destinos/") ||
     ruta.startsWith("/viajes/requisitos-") ||
     PAGINAS_FUERTES.has(ruta) ||
-    PAGINAS_CON_CLIENTES.has(ruta)
+    PAGINAS_CON_CLIENTES.has(ruta) ||
+    PAGINAS_CON_VISITAS_GSC.has(ruta)
   );
 }
 

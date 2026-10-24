@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { robotsSegunRuta } from "@/lib/indexacion";
+import { tituloSeoUnico } from "@/lib/titulos-seo";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -47,8 +48,11 @@ export async function generateMetadata({
   if (!dest) return { title: "Destino no encontrado" };
 
   const precioDesde = dest.migratorio ?? dest.turistico;
-  const title = optimizarMetaTitleSEO(
-    `Paquete a ${dest.ciudad} (${dest.pais}) Desde $${precioDesde.toLocaleString("en-US")} | Cityland Travel`
+  const title = tituloSeoUnico(
+    `/destinos/${dest.slug}`,
+    optimizarMetaTitleSEO(
+      `Paquete a ${dest.ciudad} (${dest.pais}) Desde ${precioDesde.toLocaleString("en-US")} | Cityland Travel`
+    )
   );
   const description = optimizarMetaDescriptionSEO(
     `Paquetes a ${dest.ciudad} (${dest.duracion || "5 Días / 4 Noches"}) desde Lima desde $${precioDesde.toLocaleString("en-US")}. Separa con 50% en Cityland Travel (RUC ${EMPRESA_RUC}). ${dest.descripcion}`

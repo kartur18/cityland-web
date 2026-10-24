@@ -71,6 +71,16 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Páginas que Google conocía (con apariciones o clics) y ya no existen: van a la más parecida (24-oct-2026).
+      { source: "/ofertas/paquetes-a-barcelona-desde-huancayo", destination: "/destinos/barcelona-espana", permanent: true },
+      { source: "/ofertas/paquetes-a-cajamarca-inca-desde-chimbote", destination: "/destinos/cajamarca-banos-del-inca-cumbemayo", permanent: true },
+      { source: "/ofertas/paquetes-a-mancora-punta-sal-desde-cajamarca", destination: "/destinos/mancora-vichayito", permanent: true },
+      { source: "/ofertas/paquetes-a-mancora-punta-sal-desde-piura", destination: "/destinos/mancora-vichayito", permanent: true },
+      { source: "/vuelos/arequipa-cancun", destination: "/vuelos/lima-cancun", permanent: true },
+      { source: "/vuelos/chiclayo-paris", destination: "/vuelos/lima-paris", permanent: true },
+      { source: "/vuelos/iquitos-buenos-aires", destination: "/vuelos/lima-buenos-aires", permanent: true },
+      { source: "/vuelos/juliaca-paris", destination: "/vuelos/lima-paris", permanent: true },
+      { source: "/vuelos/tacna-punta-cana", destination: "/vuelos/lima-punta-cana", permanent: true },
       // Artículos del blog que competían con las guías de requisitos por la misma búsqueda (24-oct-2026).
       {
         source: "/blog/requisitos-viajar-espana-desde-peru-2026",
