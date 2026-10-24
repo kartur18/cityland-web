@@ -47,7 +47,6 @@ export const PAGINAS_FUERTES: ReadonlySet<string> = new Set([
   "/blog/permiso-notarial-viaje-menores-peru-requisitos",
   "/blog/punta-cana-vs-cancun-cual-elegir-desde-lima",
   "/blog/regla-no-show-vuelos-europa-perder-tramo-ida",
-  "/blog/requisitos-viajar-italia-roma-milan-peruanos",
   "/blog/seguro-schengen-30000-euros-peru-precio",
   "/blog/turquia-sin-visa-peruanos",
   "/blog/viajes-quinceaneras-europa-disney-que-incluyen",

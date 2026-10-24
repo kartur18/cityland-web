@@ -8,6 +8,8 @@ import AirlineLandingTemplate, {
 import ModuloSeguridadYCalculadoraEuropa from "@/components/ModuloSeguridadYCalculadoraEuropa";
 import { SeoSiloFooter } from "@/components/SeoSiloFooter";
 import GuiaRapidaLanding from "@/components/GuiaRapidaLanding";
+import GuiaRequisitosPagina from "@/components/GuiaRequisitosPagina";
+import { GUIAS_REQUISITOS } from "@/lib/guias-requisitos";
 import { guiaViaje } from "@/lib/contenido-guia";
 import { formatoUSD, textoPrecio } from "@/lib/formato-precio";
 import {
@@ -37,6 +39,28 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
+
+  const guiaRequisitos = GUIAS_REQUISITOS[slug];
+  if (guiaRequisitos) {
+    const urlGuia = `https://citylandtravel.com/viajes/${guiaRequisitos.slug}`;
+    const tituloGuia = optimizarMetaTitleSEO(`${guiaRequisitos.tituloSeo} | Cityland Travel`);
+    const descripcionGuia = optimizarMetaDescriptionSEO(guiaRequisitos.descripcion);
+    return {
+      title: tituloGuia,
+      description: descripcionGuia,
+      robots: robotsSegunRuta(`/viajes/${guiaRequisitos.slug}`),
+      alternates: { canonical: urlGuia },
+      openGraph: {
+        type: "article",
+        url: urlGuia,
+        title: tituloGuia,
+        description: descripcionGuia,
+        siteName: "Cityland Travel",
+        locale: "es_PE",
+      },
+    };
+  }
+
   const item = buscarViajeEspecializado(slug);
   if (!item) return {};
 
@@ -83,6 +107,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ViajeEspecializadoPage({ params }: Props) {
   const { slug } = await params;
+
+  // Las guías de requisitos escritas a mano se muestran como guía, no como página de venta.
+  const guiaRequisitos = GUIAS_REQUISITOS[slug];
+  if (guiaRequisitos) return <GuiaRequisitosPagina guia={guiaRequisitos} />;
+
   const item = buscarViajeEspecializado(slug);
 
   if (!item) {
