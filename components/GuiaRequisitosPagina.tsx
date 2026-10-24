@@ -101,6 +101,25 @@ export default function GuiaRequisitosPagina({ guia }: { guia: GuiaRequisitos })
 
           <article className="article-body min-w-0" dangerouslySetInnerHTML={{ __html: guia.contenido }} />
 
+          {guia.productos && (
+            <section className="space-y-3">
+              <h2 className="text-2xl font-extrabold text-[#0a1628]">¿Listo para viajar a {guia.pais}?</h2>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {guia.productos.map((p) => (
+                  <Link
+                    key={p.href}
+                    href={p.href}
+                    className="block rounded-2xl border border-slate-200 bg-white p-5 hover:border-emerald-400 hover:shadow-md transition"
+                  >
+                    <p className="font-extrabold text-[#0a1628]">{p.titulo}</p>
+                    <p className="text-sm text-slate-600 mt-1">{p.detalle}</p>
+                    <p className="text-sm font-black text-[#e30613] mt-3">{p.precio} →</p>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
+
           <section className="space-y-4">
             <h2 className="text-2xl font-extrabold text-[#0a1628]">Preguntas frecuentes</h2>
             <div className="divide-y divide-slate-200 border-y border-slate-200">

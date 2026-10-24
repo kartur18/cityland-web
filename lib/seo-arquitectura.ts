@@ -158,7 +158,7 @@ export function detectarPilarPorTexto(texto: string): {
     return {
       titulo: "Silo Principal: Paquetes Migratorios y Vuelos a Madrid y España",
       subtitulo: "Vuelo desde Lima (LIM) + retorno RF 24h + hotel verificable + seguro Schengen 30.000€",
-      href: "/madrid",
+      href: "/espana",
       regionClave: "espana",
     };
   }

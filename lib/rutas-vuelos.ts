@@ -95,10 +95,10 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
       items: [
         {
           id: "lim-mad-paquete",
-          titulo: "Paquete Lima a Madrid + Carpeta Migratoria",
+          titulo: "Paquete turístico Lima–Madrid: vuelo, hotel y seguro",
           pais: "España",
           filtro: "paquete",
-          subtitulo: "Salidas confirmadas · Todo listo para Barajas",
+          subtitulo: "Para turismo o visita familiar · Todo listo para Barajas",
           precioPrincipal: "$1,290",
           precioSecundario: "$645",
           notaPrecio: "Paquete turístico · Incluye impuestos (Verif. Oct 2026)",
@@ -110,7 +110,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           checks: [
             "Boleto aéreo desde Lima con equipaje de mano + bodega 23 kg",
             "Seguro médico internacional Schengen de 30.000€",
-            "Voucher de reserva de hotel y asesoría de entrevista",
+            "Reserva de hotel y asesoría antes de viajar",
           ],
           waNumber: "51944103890",
           waMensaje:
@@ -1064,6 +1064,11 @@ const ESCALA_COMERCIAL_RUTAS_BASE: Record<
   "lima-iquitos": { desde: 129, items: [319, 129, 429] },
   "lima-puno": { desde: 109, items: [299, 109, 419] },
 };
+
+// Las rutas con precio de referencia propio son las que vendemos de verdad: siempre visibles en Google.
+export const RUTAS_VUELOS_PRINCIPALES: ReadonlySet<string> = new Set(
+  Object.keys(ESCALA_COMERCIAL_RUTAS_BASE).map((slug) => `/vuelos/${slug}`)
+);
 
 function normalizarImagenesRutaBase(ruta: RutaVueloSEO): RutaVueloSEO {
   const textoClave =

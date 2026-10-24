@@ -1,3 +1,5 @@
+import { PRECIO_IDA_VUELTA_MADRID_DESDE, PRECIO_MIGRATORIO_DESDE } from "@/components/constantes";
+
 // Guías de requisitos escritas a mano y verificadas en fuentes oficiales (24-oct-2026).
 // Reemplazan a la plantilla de venta en /viajes/<slug>: quien busca "requisitos para viajar a…" quiere una guía.
 
@@ -16,6 +18,8 @@ export interface GuiaRequisitos {
   faqs: { q: string; a: string }[];
   fuentes: { nombre: string; url: string }[];
   destinoCotizador: string;
+  // Lo que vendemos para ese destino, para quien ya leyó los requisitos y quiere viajar.
+  productos?: { titulo: string; detalle: string; precio: string; href: string }[];
 }
 
 const ACTUALIZADO = "24 de octubre de 2026";
@@ -119,6 +123,20 @@ ${BLOQUE_EES_ETIAS}
     { nombre: "Orden PRE/1283/2007 (BOE): carta de invitación", url: "https://www.boe.es/buscar/act.php?id=BOE-A-2007-9609" },
   ],
   destinoCotizador: "España",
+  productos: [
+    {
+      titulo: "Pasaje Lima–Madrid ida y vuelta",
+      detalle: "Para turismo o para visitar a tu familia. Vuelos directos y opción con 2 maletas.",
+      precio: `Desde US$ ${PRECIO_IDA_VUELTA_MADRID_DESDE.toLocaleString("en-US")}`,
+      href: "/vuelos/lima-madrid",
+    },
+    {
+      titulo: "Paquete migratorio a España",
+      detalle: "Pasaje de ida con la carpeta lista para el aeropuerto: hotel, regreso reservado y seguro.",
+      precio: `Desde US$ ${PRECIO_MIGRATORIO_DESDE}`,
+      href: "/espana",
+    },
+  ],
 };
 
 const ITALIA: GuiaRequisitos = {

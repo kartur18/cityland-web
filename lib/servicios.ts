@@ -1,0 +1,215 @@
+// Páginas de cada cosa que vende Cityland y que no tenía página propia (24-oct-2026).
+// Solo afirmaciones comprobables: nada de precios, tiempos ni coberturas que no estén en el catálogo.
+
+export interface ServicioCityland {
+  ruta: string;
+  h1: string;
+  // ≤ 49 caracteres: se le suma " | Cityland".
+  tituloSeo: string;
+  descripcion: string;
+  intro: string;
+  queCotizamos: { titulo: string; detalle: string }[];
+  pasos: string[];
+  ejemplosTitulo: string;
+  ejemplos: { texto: string; href: string }[];
+  faqs: { q: string; a: string }[];
+  mensajeWhatsApp: string;
+  relacionados: { texto: string; href: string }[];
+}
+
+const PASOS_COMUNES_FINAL = [
+  "Separas con el 50% en la oficina o por transferencia, Yape, Plin o tarjeta.",
+  "Recibes tu confirmación por escrito y tu boleta o factura electrónica.",
+];
+
+export const SERVICIOS: Readonly<Record<string, ServicioCityland>> = {
+  hoteles: {
+    ruta: "/hoteles",
+    h1: "Reserva de hoteles en el Perú y el extranjero",
+    tituloSeo: "Reserva de hoteles en Perú y el extranjero",
+    descripcion:
+      "Reservamos tu hotel solo o con vuelo: resorts todo incluido en el Caribe, hoteles en Cusco, Paracas o Máncora y en Europa. Separa con el 50% en Los Olivos.",
+    intro:
+      "Te buscamos el hotel que va con tu viaje y tu presupuesto, y te decimos por escrito qué incluye antes de que pagues: régimen de comidas, tipo de habitación y condiciones de cambio.",
+    queCotizamos: [
+      { titulo: "Resorts todo incluido", detalle: "Punta Cana, Cancún y Riviera Maya, Cartagena, San Andrés y Panamá." },
+      { titulo: "Hoteles en el Perú", detalle: "Cusco, Paracas, Máncora, Punta Sal, Arequipa y la selva." },
+      { titulo: "Vuelo + hotel", detalle: "Todo en una sola reserva, con traslados cuando el paquete los incluye." },
+      { titulo: "Hoteles para viajes de trabajo", detalle: "Con factura electrónica a nombre de tu empresa." },
+    ],
+    pasos: [
+      "Nos escribes el destino, las fechas, cuántos viajan y tu presupuesto.",
+      "Te enviamos opciones con lo que incluye cada una.",
+      ...PASOS_COMUNES_FINAL,
+    ],
+    ejemplosTitulo: "Hoteles que más nos piden",
+    ejemplos: [
+      { texto: "Decameron Barú, Cartagena", href: "/ofertas/decameron-baru-cartagena-paquete-todo-incluido" },
+      { texto: "Dreams Natura, Cancún", href: "/ofertas/dreams-natura-cancun-paquete-todo-incluido" },
+      { texto: "Hard Rock, Punta Cana", href: "/ofertas/hard-rock-hotel-punta-cana-vuelo-mas-hotel-traslados" },
+      { texto: "Barceló Maya, Riviera Maya", href: "/ofertas/estadia-hotel-barcelo-maya-riviera-5-dias-4-noches-todo-incluido" },
+      { texto: "Decameron Isleño, San Andrés", href: "/ofertas/decameron-isleno-san-andres-paquete-todo-incluido" },
+      { texto: "DoubleTree, Paracas", href: "/ofertas/estadia-hotel-doubletree-hilton-paracas-tarifa-grupos-y-amigos" },
+      { texto: "Aranwa Vichayito, Máncora", href: "/ofertas/estadia-hotel-aranwa-vichayito-mancora-aniversario-y-bodas" },
+    ],
+    faqs: [
+      { q: "¿Puedo reservar solo el hotel, sin vuelo?", a: "Sí. Te cotizamos solo el hotel o el paquete con vuelo, lo que te convenga." },
+      {
+        q: "¿Qué significa «todo incluido»?",
+        a: "Que las comidas y bebidas dentro del hotel ya están pagadas. Lo que entra exactamente cambia de un hotel a otro, por eso te lo detallamos por escrito en tu cotización.",
+      },
+      { q: "¿Cómo sé que mi reserva está hecha?", a: "Te enviamos el voucher de tu reserva con su código de confirmación." },
+      { q: "¿Me dan factura?", a: "Sí. Emitimos boleta o factura electrónica." },
+    ],
+    mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un hotel.",
+    relacionados: [
+      { texto: "Caribe todo incluido", href: "/caribe" },
+      { texto: "Luna de miel", href: "/luna-de-miel" },
+      { texto: "Traslados", href: "/traslados" },
+      { texto: "Tours", href: "/tours" },
+    ],
+  },
+
+  tours: {
+    ruta: "/tours",
+    h1: "Tours en el Perú y el mundo, con salida desde Lima",
+    tituloSeo: "Tours en Cusco, Arequipa, Huaraz y más",
+    descripcion:
+      "Tours y paquetes por el Perú desde Lima: Cusco y Machu Picchu, Arequipa y el Colca, Huaraz, Paracas, Iquitos y más. También circuitos por Europa. Cotiza por WhatsApp.",
+    intro:
+      "Puedes comprar solo el tour o el viaje completo con vuelo, hotel y tours. En tu cotización te detallamos qué incluye cada día, para que no tengas sorpresas al llegar.",
+    queCotizamos: [
+      { titulo: "Cusco y Machu Picchu", detalle: "De 4 a 6 días, con Montaña de 7 Colores, Humantay o Puno." },
+      { titulo: "Sur y norte del Perú", detalle: "Arequipa y el Colca, Paracas, Huacachina y Nazca, Trujillo y Chiclayo." },
+      { titulo: "Sierra y selva", detalle: "Huaraz, Iquitos, Tarapoto, Chachapoyas y Kuélap, Oxapampa." },
+      { titulo: "Circuitos por Europa", detalle: "Madrid, París y Roma, y otros recorridos por varios países." },
+    ],
+    pasos: [
+      "Nos dices el destino, las fechas y cuántos viajan.",
+      "Te enviamos el itinerario día por día con lo que incluye.",
+      ...PASOS_COMUNES_FINAL,
+    ],
+    ejemplosTitulo: "Tours que más nos piden",
+    ejemplos: [
+      { texto: "Cusco y Machu Picchu en 4 días", href: "/destinos/cusco-machu-picchu-4-dias" },
+      { texto: "Cusco, Montaña de 7 Colores y Humantay", href: "/destinos/cusco-montana-7-colores-humantay-5-dias" },
+      { texto: "Arequipa y el Colca", href: "/destinos/arequipa-colca" },
+      { texto: "Paracas, Huacachina y Nazca", href: "/destinos/paracas-ica-huacachina-nazca" },
+      { texto: "Huaraz: Laguna 69 y Pastoruri", href: "/destinos/huaraz-laguna-69-pastoruri-chavin" },
+      { texto: "Iquitos y el río Amazonas", href: "/destinos/iquitos-crucero-rio-amazonas-lodge" },
+      { texto: "Chachapoyas, Kuélap y Gocta", href: "/destinos/chachapoyas-kuelap-catarata-gocta" },
+      { texto: "Madrid, París y Roma en 12 días", href: "/destinos/madrid-paris-roma-12-dias" },
+    ],
+    faqs: [
+      {
+        q: "¿El tour incluye el pasaje desde Lima?",
+        a: "Depende de lo que elijas: puedes comprar solo el tour o el paquete con vuelo y hotel. En tu cotización figura qué incluye.",
+      },
+      {
+        q: "¿Hacen tours para grupos, colegios o empresas?",
+        a: "Sí. Para grupos te armamos una sola cotización con las fechas y la lista de pasajeros.",
+      },
+      { q: "¿Puedo pagar en partes?", a: "Separas con el 50% y pagas el resto antes del viaje." },
+    ],
+    mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un tour.",
+    relacionados: [
+      { texto: "Cusco", href: "/cusco" },
+      { texto: "Perú y playas", href: "/peru" },
+      { texto: "Hoteles", href: "/hoteles" },
+      { texto: "Viajes para institutos", href: "/institutos" },
+    ],
+  },
+
+  traslados: {
+    ruta: "/traslados",
+    h1: "Traslados del aeropuerto al hotel",
+    tituloSeo: "Traslados aeropuerto–hotel para tu viaje",
+    descripcion:
+      "Te cotizamos el traslado entre el aeropuerto y tu hotel, solo o dentro de tu paquete: Punta Cana, Cancún, Cartagena, San Andrés, Madrid y más. Cotiza por WhatsApp.",
+    intro:
+      "Llegar a un aeropuerto que no conoces y buscar taxi cansa. Con el traslado reservado, ya sabes quién te lleva al hotel y cuánto pagas antes de viajar.",
+    queCotizamos: [
+      { titulo: "Traslado compartido", detalle: "Vas con otros viajeros del mismo vuelo o la misma zona. Es la opción más económica." },
+      { titulo: "Traslado privado", detalle: "Solo para ti y tu grupo, sin esperar a otros pasajeros." },
+      { titulo: "Dentro de tu paquete", detalle: "Muchos de nuestros paquetes ya lo incluyen: figura en tu cotización." },
+    ],
+    pasos: [
+      "Nos escribes tu vuelo, tu hotel y cuántos viajan.",
+      "Te cotizamos el traslado compartido o privado, según el destino.",
+      ...PASOS_COMUNES_FINAL,
+    ],
+    ejemplosTitulo: "Paquetes que ya incluyen traslados",
+    ejemplos: [
+      { texto: "Hard Rock, Punta Cana", href: "/ofertas/hard-rock-hotel-punta-cana-vuelo-mas-hotel-traslados" },
+      { texto: "RIU Bambú, Punta Cana", href: "/ofertas/estadia-hotel-riu-bambu-punta-cana-6-dias-5-noches-vuelo-y-traslados" },
+      { texto: "Hilton La Romana", href: "/ofertas/estadia-hotel-hilton-la-romana-6-dias-5-noches-vuelo-y-traslados" },
+      { texto: "GHL Sunrise, San Andrés", href: "/ofertas/ghl-sunrise-san-andres-vuelo-mas-hotel-traslados" },
+      { texto: "Zuana Beach, Santa Marta", href: "/ofertas/zuana-beach-resort-santa-marta-vuelo-mas-hotel-traslados" },
+      { texto: "RIU Ocho Ríos, Jamaica", href: "/ofertas/hotel-riu-ocho-rios-jamaica-vuelo-mas-hotel-traslados" },
+      { texto: "Hotel en Madrid con traslados", href: "/ofertas/hotel-agumar-madrid-vuelo-mas-hotel-traslados" },
+    ],
+    faqs: [
+      {
+        q: "¿Mi paquete incluye el traslado?",
+        a: "Depende del paquete. En tu cotización figura si lo incluye; si no, te lo agregamos.",
+      },
+      { q: "¿Puedo pedir solo el traslado?", a: "Sí. Escríbenos con tu vuelo, tu hotel y cuántos viajan." },
+      {
+        q: "¿Cuál conviene, compartido o privado?",
+        a: "El compartido cuesta menos; el privado sale apenas llegas y es más cómodo si viajas con niños o mucho equipaje.",
+      },
+    ],
+    mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un traslado aeropuerto–hotel.",
+    relacionados: [
+      { texto: "Hoteles", href: "/hoteles" },
+      { texto: "Caribe todo incluido", href: "/caribe" },
+      { texto: "Tours", href: "/tours" },
+      { texto: "Vuelos", href: "/vuelos" },
+    ],
+  },
+
+  institutos: {
+    ruta: "/institutos",
+    h1: "Viajes de promoción para institutos y universidades",
+    tituloSeo: "Viajes de promoción para institutos",
+    descripcion:
+      "Viajes de fin de carrera, de estudio y de promoción para institutos y universidades: Cusco, Tarapoto, Máncora, Punta Cana, Cartagena y más. Una sola cotización para el grupo.",
+    intro:
+      "Organizar el viaje de toda una promoción es trabajo: fechas, pagos y lista de pasajeros. Coordinamos con el delegado o el comité y te damos una sola cotización para todo el grupo.",
+    queCotizamos: [
+      { titulo: "Viajes de fin de carrera", detalle: "Playas del norte, selva o Caribe para celebrar con tu promoción." },
+      { titulo: "Viajes de estudio", detalle: "Cusco, Arequipa y otras rutas con visitas guiadas." },
+      { titulo: "Congresos y ferias", detalle: "Vuelo, hotel y traslados para delegaciones." },
+      { titulo: "Grupos grandes", detalle: "Una sola cotización con las fechas y la lista de pasajeros." },
+    ],
+    pasos: [
+      "El delegado nos escribe el destino, las fechas posibles y cuántos viajan.",
+      "Te enviamos la cotización del grupo con lo que incluye.",
+      ...PASOS_COMUNES_FINAL,
+    ],
+    ejemplosTitulo: "Destinos que más eligen las promociones",
+    ejemplos: [
+      { texto: "Cusco y Machu Picchu", href: "/destinos/cusco-machu-picchu-4-dias" },
+      { texto: "Promoción a Tarapoto", href: "/ofertas/cotizacion-viaje-de-promocion-escolar-tarapoto" },
+      { texto: "Máncora y Vichayito", href: "/destinos/mancora-vichayito" },
+      { texto: "Barceló Maya para grupos", href: "/ofertas/barcelo-maya-grand-resort-viaje-de-amigos-grupos" },
+      { texto: "Decameron Panamá para grupos", href: "/ofertas/decameron-panama-playa-blanca-viaje-de-amigos-grupos" },
+      { texto: "Convenciones en Paracas", href: "/ofertas/convencion-corporativa-paracas-grupos-y-delegaciones" },
+    ],
+    faqs: [
+      {
+        q: "¿Con cuánto tiempo debemos reservar?",
+        a: "Mientras antes, mejor: para un grupo grande hay más opciones de vuelos y hoteles. Lo ideal es empezar a cotizar varios meses antes.",
+      },
+      { q: "¿Emiten factura a nombre del instituto?", a: "Sí. Emitimos boleta o factura electrónica." },
+      { q: "¿También hacen viajes de colegio?", a: "Sí. Mira nuestros viajes de promoción escolar." },
+    ],
+    mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un viaje de promoción para mi instituto.",
+    relacionados: [
+      { texto: "Promociones escolares", href: "/colegios" },
+      { texto: "Viajes corporativos", href: "/empresas" },
+      { texto: "Tours", href: "/tours" },
+      { texto: "Hoteles", href: "/hoteles" },
+    ],
+  },
+};
