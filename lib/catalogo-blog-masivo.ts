@@ -302,28 +302,6 @@ export const BLOG_POSTS_MASIVOS: BlogPost[] = [
 5. <strong>Atención directa por WhatsApp oficial (+51 944 103 890):</strong> Un asesor real te acompaña hasta tu retorno a casa.</p>`,
   },
   {
-    slug: "bolsa-de-viaje-espana-2026-boe-122-euros-calculo",
-    titulo: "Bolsa de viaje para España en 2026 según el BOE: Cómo acreditar los 122,10 € por día y el mínimo de 1.098,90 €",
-    desc: "Cálculo oficial de medios económicos en el Aeropuerto de Madrid-Barajas y Barcelona-El Prat según la Orden PRE/1282/2007.",
-    categoria: "Europa",
-    catColor: "bg-red-600",
-    fecha: "Actualizado 2026",
-    lectura: "5 min",
-    imagen: "/images/espana/plaza-mayor.jpg",
-    autor: "Equipo Cityland Travel",
-    contenido: `<h2>¿Cuánto dinero exige acreditar España a los turistas peruanos en 2026?</h2>
-<p>Conforme a la <strong>Orden PRE/1282/2007 del Boletín Oficial del Estado (BOE)</strong> y al Salario Mínimo Interprofesional (SMI) vigente en España, todo viajero extracomunitario que ingresa por turismo o visita familiar (hasta 90 días) debe estar en condiciones de acreditar medios económicos equivalentes al 10% del SMI bruto por día.</p>
-<h3>1. Las dos reglas matemáticas oficiales en 2026:</h3>
-<p>• <strong>Monto diario por persona:</strong> <strong>122,10 €</strong> por cada día de estancia programada en España.<br>
-• <strong>Mínimo obligatorio por persona:</strong> <strong>1.098,90 €</strong> por cada viajero (equivalente al 90% del SMI vigente), incluso si tu viaje dura menos de 9 días.</p>
-<h3>2. Ejemplos prácticos de cálculo:</h3>
-<p>• <strong>Viaje de 7 o 9 días (1 persona):</strong> Se aplica el mínimo legal de <strong>1.098,90 €</strong>.<br>
-• <strong>Viaje de 15 días (1 persona):</strong> 15 días × 122,10 € = <strong>1.831,50 €</strong>.<br>
-• <strong>Viaje de 20 días (1 persona):</strong> 20 días × 122,10 € = <strong>2.442,00 €</strong>.</p>
-<h3>3. ¿Cómo se demuestra la solvencia económica en Madrid-Barajas?</h3>
-<p>Puedes acreditarla combinando efectivo en euros, tarjetas de crédito o débito internacionales habilitadas para compras en el exterior (acompañadas de extracto bancario reciente que muestre el saldo o línea disponible) o cheques certificados. Recuerda que contar con <strong>Carta de Invitación policial</strong> acredita tu alojamiento, pero <strong>no exime</strong> de demostrar esta bolsa de viaje.</p>`,
-  },
-  {
     slug: "regla-no-show-vuelos-europa-perder-tramo-ida",
     titulo: "Regla del No-Show en vuelos a España e Italia: Por qué no presentarte a un tramo cancela todo tu boleto",
     desc: "Qué ocurre si pierdes tu vuelo doméstico de conexión o el primer tramo de tu pasaje internacional y cómo reprogramar a tiempo.",

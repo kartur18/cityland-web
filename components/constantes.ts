@@ -251,6 +251,8 @@ export interface Destino {
 export interface BlogPost {
   slug: string;
   titulo: string;
+  // Título corto para Google (≤ 48 caracteres + marca) cuando el H1 es más largo.
+  tituloSeo?: string;
   desc: string;
   categoria: string;
   catColor: string;
@@ -1500,20 +1502,82 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "cuanto-dinero-llevar-espana-bolsa-de-viaje",
-    titulo: "Cuánto dinero exigen llevar a España como bolsa de viaje para peruanos en 2026",
-    desc: "Cálculo oficial del monto diario exigido en el Aeropuerto de Madrid-Barajas y cómo acreditarlo en efectivo o tarjetas.",
+    titulo: "Bolsa de viaje para España 2026: cuánto dinero te pueden pedir si viajas desde Perú",
+    tituloSeo: "Bolsa de viaje para España 2026: cuánto llevar",
+    desc: "En 2026 te pueden pedir 122,10 € por día y un mínimo de 1.098,90 € por persona. Montos por días, cómo demostrarlo y qué pasa con la carta de invitación.",
     categoria: "Europa",
     catColor: "bg-red-500",
-    fecha: "Actualizado 2026",
-    lectura: "4 min",
+    fecha: "Actualizado octubre 2026",
+    lectura: "7 min",
     imagen: "/images/espana/palacio-real.jpg",
     autor: "Equipo Cityland Travel",
-    contenido: `<h2>¿Cuál es el monto de la bolsa de viaje para entrar a España?</h2>
-<p>Al ingresar como turista al Espacio Schengen por España, las autoridades fronterizas pueden solicitar que demuestres solvencia económica suficiente para cubrir los días que permanecerás en el país.</p>
-<h3>1. Monto oficial BOE 2026 por día y mínimo total</h3>
-<p>De acuerdo con la Orden PRE/1282/2007 del Boletín Oficial del Estado (BOE) y el SMI vigente en España, la cuantía exigida en 2026 es de <strong>122,10 euros por persona por cada día de estancia</strong>, con un mínimo obligatorio de <strong>1.098,90 euros por persona</strong> aunque tu viaje dure menos de 9 días.</p>
-<h3>2. ¿Cómo se puede demostrar el dinero?</h3>
-<p>Puedes acreditarlo combinando <strong>dinero en efectivo (euros)</strong>, tarjetas de crédito o débito internacionales a tu nombre acompañadas de un extracto bancario reciente o certificación de saldo disponible. En Cityland Travel te orientamos sobre cómo organizar tu viaje y los días de tu itinerario para cumplir este requisito sin inconvenientes.</p>`,
+    contenido: `<h2>La respuesta corta</h2>
+<p>Si entras a España como turista desde Perú, en el control migratorio te pueden pedir que demuestres <strong>122,10 € por cada día de estancia</strong>, con un <strong>mínimo de 1.098,90 € por persona</strong>, aunque tu viaje sea más corto. Son las cifras de 2026, calculadas sobre el salario mínimo de España.</p>
+<p>No siempre lo piden, pero si lo piden y no lo puedes demostrar, el policía puede negarte la entrada. Por eso conviene llevarlo listo.</p>
+
+<h2>¿De dónde sale el monto?</h2>
+<p>Lo fija la <strong>Orden PRE/1282/2007</strong>, publicada en el Boletín Oficial del Estado (BOE). Esa norma dice que cada extranjero que entra por turismo debe tener medios económicos equivalentes al <strong>10% del salario mínimo interprofesional (SMI) por cada día</strong> que se va a quedar, y como mínimo el <strong>90% del SMI</strong> en total, sin importar cuántos días dure el viaje.</p>
+<p>Con el SMI vigente en 2026 (1.221 € al mes en 14 pagas), eso da 122,10 € por día y 1.098,90 € como mínimo. Si España sube el salario mínimo, estos montos suben con él.</p>
+
+<h2>Cuánto llevar según los días de tu viaje</h2>
+<p>Montos por persona. Si viajan dos, cada uno debe demostrar su parte.</p>
+<div class="tabla-guia"><table>
+<thead><tr><th>Días en España</th><th>Monto por persona</th></tr></thead>
+<tbody>
+<tr><td>Hasta 9 días</td><td>1.098,90 € (mínimo)</td></tr>
+<tr><td>10 días</td><td>1.221,00 €</td></tr>
+<tr><td>15 días</td><td>1.831,50 €</td></tr>
+<tr><td>20 días</td><td>2.442,00 €</td></tr>
+<tr><td>30 días</td><td>3.663,00 €</td></tr>
+<tr><td>60 días</td><td>7.326,00 €</td></tr>
+<tr><td>90 días (máximo como turista)</td><td>10.989,00 €</td></tr>
+</tbody>
+</table></div>
+<p>Para calcular tu caso: multiplica tus días por 122,10 €. Si el resultado es menor que 1.098,90 €, vale el mínimo.</p>
+
+<h2>¿Cómo se demuestra el dinero?</h2>
+<p>La misma norma acepta estas formas, y puedes combinarlas:</p>
+<ul>
+<li><strong>Efectivo</strong> en euros (o en otra moneda que se pueda cambiar).</li>
+<li><strong>Tarjetas de crédito o débito</strong> a tu nombre, acompañadas del <strong>extracto de la cuenta o la libreta bancaria al día</strong>, para que se vea el saldo o la línea disponible.</li>
+<li><strong>Cheques de viaje, cheques certificados o cartas de pago.</strong></li>
+</ul>
+<p>Un detalle que muchos no saben: la norma dice que <strong>no se aceptan cartas del banco ni extractos bancarios sacados de internet</strong>. Pide en tu banco un estado de cuenta reciente e impreso.</p>
+
+<h2>¿La carta de invitación reemplaza a la bolsa de viaje?</h2>
+<p>No. La <a href="/blog/carta-invitacion-espana-peru-requisitos">carta de invitación</a> sirve para demostrar dónde te vas a alojar (reemplaza a la reserva de hotel), pero no reemplaza el dinero. Aunque te quedes en casa de un familiar, te pueden pedir la bolsa de viaje igual.</p>
+
+<h2>Lo que te pueden pedir junto con la bolsa de viaje</h2>
+<ul>
+<li>Pasaporte vigente.</li>
+<li>Boleto de regreso o de salida del espacio Schengen.</li>
+<li>Reserva de hotel o carta de invitación.</li>
+<li><a href="/blog/seguro-schengen-30000-euros-peru-precio">Seguro de viaje con cobertura mínima de 30.000 €</a>.</li>
+<li>Algo que muestre el motivo del viaje (itinerario, reservas de tours, invitación a un evento).</li>
+</ul>
+<p>Aquí tienes la lista completa: <a href="/viajes/requisitos-viajar-a-espana-desde-peru">requisitos para viajar a España desde Perú</a>.</p>
+
+<h2>Errores comunes</h2>
+<ul>
+<li><strong>Llevar el extracto del banco en el celular.</strong> La norma no acepta extractos de internet; llévalo impreso.</li>
+<li><strong>Contar el dinero de toda la familia en una sola tarjeta sin papeles.</strong> El monto es por persona: ten claro cuánto corresponde a cada uno.</li>
+<li><strong>Calcular solo los días en Madrid.</strong> Si vas a recorrer otros países de Europa, cuenta todos los días de tu estancia.</li>
+<li><strong>Viajar con 10.000 € o más en efectivo sin declararlo.</strong> En la Unión Europea, el efectivo desde 10.000 € se declara en la aduana al entrar.</li>
+<li><strong>Olvidar avisar al banco que viajas.</strong> Si tu tarjeta se bloquea en Europa, te quedas sin cómo pagar.</li>
+</ul>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Siempre piden la bolsa de viaje en Barajas?</h3>
+<p>No a todos, pero el policía puede pedirla en cualquier momento del control. Lo seguro es llevarla.</p>
+<h3>¿Los soles sirven?</h3>
+<p>Lo que importa es demostrar el valor en euros. Lo más práctico es llevar euros en efectivo o tarjetas con su extracto impreso.</p>
+<h3>¿Cuánto es en soles?</h3>
+<p>Depende del tipo de cambio del día. Toma el monto en euros de la tabla y conviértelo con el tipo de cambio de tu banco antes de viajar.</p>
+<h3>¿Esto aplica si voy a Italia o Francia?</h3>
+<p>Cada país del espacio Schengen fija su propio monto. Esta guía es para España. Para Italia, mira los <a href="/viajes/requisitos-viajar-a-italia-desde-peru">requisitos para viajar a Italia desde Perú</a>.</p>
+
+<h2>¿Viajas a España?</h2>
+<p>En Cityland Travel armamos tu viaje con pasaje, reserva de hotel y seguro, y revisamos contigo cuánto te corresponde llevar según tus días. Escríbenos por WhatsApp con tu fecha y cuántos viajan.</p>`,
   },
   {
     slug: "seguro-schengen-30000-euros-peru-precio",
