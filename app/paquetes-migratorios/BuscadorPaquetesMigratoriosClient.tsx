@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
 import NotaPrecio from "@/components/NotaPrecio";
@@ -34,7 +35,7 @@ const PESTAÑAS_SILO: {
   etiqueta: string;
   bandera?: string;
 }[] = [
-  { id: "todos", etiqueta: "Todas las rutas (1,000)", bandera: "Europa" },
+  { id: "todos", etiqueta: "Todas las rutas", bandera: "Europa" },
   { id: "espana", etiqueta: "España (400)", bandera: "España" },
   { id: "italia", etiqueta: "Italia (250)", bandera: "Italia" },
   { id: "francia-europa", etiqueta: "Francia y Europa (150)", bandera: "Francia" },
@@ -242,11 +243,12 @@ export default function BuscadorPaquetesMigratoriosClient({
               >
                 <div>
                   <div className="relative h-48 overflow-hidden bg-slate-900">
-                    <img
+                    <Image
                       src={item.imagenHero}
                       alt={item.h1Principal}
-                      loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-3 left-3">
                       <span className="inline-flex items-center gap-1.5 bg-slate-900/90 text-white text-[11px] font-extrabold px-3 py-1 rounded-full">

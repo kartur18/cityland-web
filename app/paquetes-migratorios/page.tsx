@@ -10,6 +10,22 @@ import BuscadorPaquetesMigratoriosClient, {
   type ItemResumenSuperLanding,
 } from "./BuscadorPaquetesMigratoriosClient";
 import { INDICE_PAQUETES_MIGRATORIOS_1000 } from "@/lib/catalogo-paquetes-migratorios-1000";
+import { esIndexable } from "@/lib/indexacion";
+
+// Un representante por tipo y ciudad (75 de 1,000): las variaciones son el mismo producto y mandaban ~700 KB al celular.
+// Primero las páginas que Google puede guardar, para que el buscador enlace a esas.
+function representantesPorCiudad() {
+  const vistos = new Set<string>();
+  const indexable = (slug: string) => (esIndexable(`/paquetes-migratorios/${slug}`) ? 1 : 0);
+  return [...INDICE_PAQUETES_MIGRATORIOS_1000]
+    .sort((a, b) => indexable(b.slug) - indexable(a.slug))
+    .filter((item) => {
+      const clave = `${item.silo}|${item.ciudadDestino}`;
+      if (vistos.has(clave)) return false;
+      vistos.add(clave);
+      return true;
+    });
+}
 import { buildWhatsAppHref } from "@/components/constantes";
 import { listaPreciosPlanes, tarifasMigratorio } from "@/lib/precios-migratorio";
 import {
@@ -54,7 +70,7 @@ export const metadata: Metadata = {
 
 export default function PaquetesMigratoriosHubPage() {
   const resumenItems: ItemResumenSuperLanding[] =
-    INDICE_PAQUETES_MIGRATORIOS_1000.map((item) => ({
+    representantesPorCiudad().map((item) => ({
       slug: item.slug,
       siloId: item.silo,
       siloNombre: item.siloNombre,
@@ -78,9 +94,9 @@ export default function PaquetesMigratoriosHubPage() {
     titulo:
       "Paquetes Migratorios a España, Italia, Francia y Europa desde $699 USD",
     descripcion:
-      "Centro oficial de Paquetes Migratorios de Cityland Travel (RUC 20614914239). 1,000 rutas y guías especializadas para viajar desde Perú con los 5 documentos que piden en el aeropuerto.",
+      "Centro oficial de Paquetes Migratorios de Cityland Travel (RUC 20614914239). Rutas y guías para viajar desde Perú con los 5 documentos que piden en el aeropuerto.",
     precioDesdeUSD: 699,
-    cantidadOfertas: 1000,
+    cantidadOfertas: 4,
     destinoOPais: "Europa",
     imagenUrl: `${URL_BASE_SEO}/images/destinos/madrid.webp`,
     migas: [
