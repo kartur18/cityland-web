@@ -3,9 +3,11 @@ import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-ar
 import AirlineLandingTemplate, {
   ConfiguracionLandingAerolinea,
 } from "@/components/AirlineLandingTemplate";
+import BloqueGuiaServicio from "@/components/BloqueGuiaServicio";
+import { guiaQuinceaneras } from "@/lib/guias-servicios";
 
 export const metadata: Metadata = {
-  title: optimizarMetaTitleSEO("Viajes de Quinceañeras 2026 desde Perú: Europa, Disney Orlando, Crucero y Caribe | Cityland Travel"),
+  title: optimizarMetaTitleSEO("Viajes de quinceañeras: Disney, Europa y crucero | Cityland"),
   description: optimizarMetaDescriptionSEO("El regalo soñado de 15 años: programas exclusivos de Viajes de Quinceañeras a Europa y Disneyland París, Disney Orlando + Crucero Bahamas, Punta Cana y Cancún Todo Incluido saliendo de Lima con acompañamiento y seguridad total. Cityland Travel (RUC 20614914239)."),
   keywords: [
     "viajes de quinceaneras desde peru",
@@ -171,7 +173,7 @@ const CONFIG_QUINCEANERAS: ConfiguracionLandingAerolinea = {
   pilares: [
     {
       titulo: "Seguridad Total",
-      sub: "Asistencia permanente 24/7, seguro médico internacional y hoteles verificados",
+      sub: "Seguro médico internacional y hoteles verificados",
     },
     {
       titulo: "En Grupo o En Familia",
@@ -206,5 +208,11 @@ const CONFIG_QUINCEANERAS: ConfiguracionLandingAerolinea = {
 };
 
 export default function QuinceanerasPage() {
-  return <AirlineLandingTemplate config={CONFIG_QUINCEANERAS} />;
+  return (
+    <AirlineLandingTemplate config={CONFIG_QUINCEANERAS}>
+      <BloqueGuiaServicio
+        guia={guiaQuinceaneras(Object.fromEntries(CONFIG_QUINCEANERAS.items.map((i) => [i.id, i.precioPrincipal])))}
+      />
+    </AirlineLandingTemplate>
+  );
 }

@@ -16,7 +16,7 @@ const FILTROS_PROMO = [
   { id: "internacional", label: "Internacionales (Cartagena, Punta Cana & Cancún)" },
 ] as const;
 
-export default function ColegiosLandingClient() {
+export default function ColegiosLandingClient({ children }: { children?: React.ReactNode }) {
   const [filtro, setFiltro] = useState<string>("todos");
 
   const lista =
@@ -349,6 +349,8 @@ export default function ColegiosLandingClient() {
           </div>
         </div>
       </section>
+
+      {children}
 
       <Footer />
 

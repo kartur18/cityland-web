@@ -2,9 +2,11 @@ import { Metadata } from "next";
 import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import ColegiosLandingClient from "./ColegiosLandingClient";
 import { PAQUETES_COLEGIOS } from "./datos";
+import BloqueGuiaServicio from "@/components/BloqueGuiaServicio";
+import { guiaColegios } from "@/lib/guias-servicios";
 
 export const metadata: Metadata = {
-  title: optimizarMetaTitleSEO("Viajes de Promoción y Graduación Todo Incluido (Cusco, Punta Sal, Tarapoto, Cartagena y Punta Cana) | Cityland Travel"),
+  title: optimizarMetaTitleSEO("Viajes de promoción: Cusco, Tarapoto, Punta Cana | Cityland"),
   description: optimizarMetaDescriptionSEO("Agencia especializada en viajes de promoción para colegios (primaria y secundaria), institutos y universidades en Lima. Paquetes Todo Incluido a Tarapoto desde $319 USD, Cusco desde $369 USD, Punta Sal desde $489 USD, Cartagena desde $649 USD y Punta Cana desde $1,090 USD. Contrato formal y pagos en cuotas (RUC 20614914239)."),
   keywords: [
     "viajes de promocion escolar todo incluido lima peru",
@@ -99,7 +101,9 @@ export default function ColegiosPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD_COLEGIOS) }}
       />
-      <ColegiosLandingClient />
+      <ColegiosLandingClient>
+        <BloqueGuiaServicio guia={guiaColegios(Object.fromEntries(PAQUETES_COLEGIOS.map((p) => [p.id, p.precioTexto])))} />
+      </ColegiosLandingClient>
     </>
   );
 }
