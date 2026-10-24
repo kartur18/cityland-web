@@ -162,7 +162,7 @@ const GRUPOS_Y_SEGUROS: [string, string, string, number, string][] = [
   ["Viajes a Ferias Internacionales, Congresos y Ruedas de Negocio", "viajes-congresos-ferias-internacionales", "Europa, EE. UU., China y Latinoamérica", 890, "Boletos aéreos corporativos, hoteles junto al recinto ferial, traslados ejecutivos, seguro de negocios y factura deducible."],
   ["Boletos Aéreos Grupales para Delegaciones Deportivas y Culturales", "pasajes-aereos-grupos-delegaciones-peru", "Perú y el Mundo", 129, "Tarifas de grupo a partir de 10 pasajeros con nombres flexibles hasta días antes del vuelo y franquicia de equipaje especial."],
   ["Seguro de Viaje Schengen 30.000€ Oficial para España", "seguro-schengen-espana-30000-euros", "España y Unión Europea", 55, "Póliza oficial sin deducible con cobertura médica mínima de 30.000 euros, repatriación sanitaria y certificado inmediato para Madrid-Barajas."],
-  ["Seguro Médico Internacional Schengen para Italia, Francia y Europa", "seguro-schengen-italia-francia", "Espacio Schengen (29 países)", 55, "Emisión inmediata en PDF verificable para migraciones en Roma, Milán, París, Ámsterdam o Frankfurt con asistencia en español 24/7."],
+  ["Seguro Médico Internacional Schengen para Italia, Francia y Europa", "seguro-schengen-italia-francia", "Espacio Schengen (29 países)", 55, "Emisión inmediata en PDF, válida en Roma, Milán, París, Ámsterdam o Frankfurt, con asistencia en español 24/7."],
   ["Seguro de Viaje Médico para Estados Unidos y Canadá", "seguro-viaje-estados-unidos-cobertura-medica", "EE. UU. y Canadá", 65, "Alta cobertura médica de $60,000 a $150,000 USD para proteger tu viaje familiar o de negocios ante los altos costos médicos en Norteamérica."],
   ["Seguro de Asistencia al Viajero para el Caribe y Sudamérica", "seguro-viaje-caribe-todo-incluido", "Punta Cana, Cancún, Colombia y Brasil", 39, "Cobertura médica, pérdida de equipaje, demora de vuelos y asistencia odontológica de urgencia para tus vacaciones familiares."],
   ["Asesoría Documental y Preparación de Carpeta de Viaje Internacional", "reserva-vuelo-hotel-para-tramite-visa", "Trámites Consulares y Europa", 120, "Preparación integral de tu expediente de viaje con itinerario aéreo, reserva de alojamiento y seguro médico para trámites consulares o ingreso a Europa."],
@@ -473,7 +473,7 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
       ],
       beneficiosClave: [
         { titulo: "Asesoría Incluida con tu Viaje", desc: `Al emitir tu boleto o paquete con nosotros, verificamos cada documento requerido para ${pais}.` },
-        { titulo: "Todo en un Solo Lugar", desc: "Emitimos tu pasaje aéreo, hotel, seguro médico y carpeta documental lista para presentar." },
+        { titulo: "Todo en un Solo Lugar", desc: "Emitimos tu pasaje aéreo, hotel, seguro médico y carpeta documental ordenada." },
         { titulo: "Atención Centralizada", desc: "Resuelve tus dudas por WhatsApp al +51 944 103 890 o visítanos en nuestra sede de Los Olivos." },
       ],
       faqs: [

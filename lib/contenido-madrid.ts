@@ -183,7 +183,7 @@ function construirCtx(d: DatosLandingMadridSEO): Ctx {
           }
         : {
             q: `¿Cómo se arma ${producto ?? "el servicio"} con ${estadia ?? "esta salida"}?`,
-            a: `${detalle}. Alineamos pasaje, retorno y alojamiento a esa condición y te entregamos la carpeta lista para Lima y Barajas.`,
+            a: `${detalle}. Alineamos pasaje, retorno y alojamiento a esa condición y te entregamos la carpeta ordenada.`,
           },
     };
   }
@@ -257,9 +257,9 @@ function checklistUnica(ctx: Ctx, original: DatosLandingMadridSEO["checklistBara
     ? `Como tu vuelo sale de Madrid-Barajas, dejamos el pasaje hacia Lima emitido con código PNR y la carpeta lista para presentar.`
     : elegir(
         [
-          `Dejamos activa la reserva de retorno MAD → LIM para ${ctx.destino}; la revisan en Lima antes de embarcar y de nuevo en la ${ctx.terminal}.`,
-          `Antes del vuelo activamos tu retorno MAD → LIM en el sistema, listo para mostrarlo en Lima y al llegar a la ${ctx.terminal}.`,
-          `Con ${ctx.aerolinea} el retorno MAD → LIM queda activo 24 horas antes del embarque y verificable por la aerolínea y por migración.`,
+          `Dejamos activa la reserva de retorno MAD → LIM para ${ctx.destino}. La reserva de regreso no es un boleto emitido: si quieres viajar con el regreso emitido, te cotizamos ida y vuelta.`,
+          `Antes del vuelo activamos tu reserva de retorno MAD → LIM en el sistema. La reserva de regreso no es un boleto emitido: si quieres viajar con el regreso emitido, te cotizamos ida y vuelta.`,
+          `Con ${ctx.aerolinea}, la reserva de retorno MAD → LIM queda activa 24 horas antes del embarque. La reserva de regreso no es un boleto emitido: si quieres viajar con el regreso emitido, te cotizamos ida y vuelta.`,
         ],
         s,
       );
@@ -285,8 +285,8 @@ function checklistUnica(ctx: Ctx, original: DatosLandingMadridSEO["checklistBara
         );
   const seguro = elegir(
     [
-      `Te entregamos la póliza oficial en español, lista para mostrar al llegar a la ${ctx.terminal}.`,
-      `La póliza de 30.000 € sin deducible viaja contigo impresa o digital para el control de ${ctx.destino}.`,
+      `Te entregamos la póliza en español; para España es recomendable, no obligatoria.`,
+      `La póliza de 30.000 € sin deducible viaja contigo impresa o digital.`,
     ],
     s,
     3,

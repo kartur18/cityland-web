@@ -97,7 +97,7 @@ function construirContexto(d: DatosSuperLandingMigratorio): Contexto {
   const mes = extraerMes(d.slug.replace(/^.*salidas-/, ""));
   const idPlan = angulo === "salidas" && mes ? PLAN_POR_MES[mes] : planDelSlug(d.slug);
   const plan = d.planes.find((p) => p.id === idPlan) ?? d.planes[0];
-  const cinco = "pasaje de ida, retorno reservado en sistema, hotel, seguro de 30.000 € y check-in";
+  const cinco = "pasaje de ida, reserva de regreso, hotel, seguro de 30.000 € y check-in";
 
   let apertura: string;
   let faqAngulo: FaqUnica;
@@ -135,14 +135,14 @@ function construirContexto(d: DatosSuperLandingMigratorio): Contexto {
       apertura = `Si es tu primer viaje a ${pais}, te guiamos paso a paso con la carpeta migratoria completa para ${ciudad}.`;
       faqAngulo = {
         q: `¿Qué debo tener listo en mi primer viaje a ${ciudad}?`,
-        a: `Cinco documentos: ${cinco}. Tu asesor te los entrega revisados y te orienta antes del embarque.`,
+        a: `Tu pasaporte vigente y una carpeta con ${cinco}. Tu asesor te la entrega revisada y te orienta antes del embarque. La reserva de regreso no es un boleto emitido: si quieres viajar con el regreso emitido, te cotizamos ida y vuelta.`,
       };
       break;
     case "requisitos":
       apertura = `Estos son los requisitos que revisan al viajar a ${ciudad} (${pais}) desde Perú, reunidos en una sola carpeta para el aeropuerto.`;
       faqAngulo = {
         q: `¿Qué requisitos revisan para viajar a ${ciudad}?`,
-        a: `Revisan ${cinco}. Los armamos a tu nombre y coherentes con tus fechas de viaje.`,
+        a: `Te pueden pedir pasaporte, boleto de regreso, alojamiento y dinero suficiente. Tu carpeta lleva ${cinco}. La reserva de regreso no es un boleto emitido: si quieres viajar con el regreso emitido, te cotizamos ida y vuelta.`,
       };
       break;
     case "salidas": {
@@ -150,7 +150,7 @@ function construirContexto(d: DatosSuperLandingMigratorio): Contexto {
       apertura = `Para salir hacia ${ciudad} en ${mes ?? "la fecha elegida"}${mes ? ` (${notaDelMes(mes)})` : ""}, esta temporada corresponde al ${nombrePlan}.`;
       faqAngulo = {
         q: `¿Qué plan corresponde a una salida a ${ciudad} en ${mes ?? "esa fecha"}?`,
-        a: `${nombrePlan}: ${minuscula(plan.fechasIdeales)}. Todos los planes incluyen los 5 documentos y se separan con el 50%.`,
+        a: `${nombrePlan}: ${minuscula(plan.fechasIdeales)}. Todos los planes incluyen la misma carpeta y se separan con el 50%.`,
       };
       break;
     }

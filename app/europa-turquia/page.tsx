@@ -189,7 +189,7 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       img: "/images/espana/plaza-mayor.jpg",
       alt: "Paquete Migratorio a España desde $699 - Cityland Travel",
       resumenCorto:
-        "Pasaje de avión de ida emitido + Boleto de regreso reservado 24h antes + Reserva de hotel confirmada + Seguro Schengen 30.000€ + Check-in y guía paso a paso.",
+        "Pasaje de avión de ida emitido + Reserva de regreso + Reserva de hotel confirmada + Seguro Schengen 30.000€ + Check-in y guía paso a paso.",
       checks: ["Pasaje de Ida + Retorno Reservado", "Seguro Schengen 30.000€", "Reserva de Hotel + Check-in 24h antes"],
       waNumber: "51944103890",
     },

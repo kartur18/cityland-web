@@ -9,6 +9,7 @@ import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
 import { textoPrecio } from "@/lib/formato-precio";
 import NotaPrecio from "@/components/NotaPrecio";
+import AvisoRegresoReservado from "@/components/AvisoRegresoReservado";
 
 export const PAQUETES_ESPANA = [
   {
@@ -128,8 +129,8 @@ const CIUDADES_ESPANA = [
 
 const FAQS_ESPANA = [
   {
-    q: "¿Por qué conviene el Paquete Migratorio en vez de comprar un vuelo ida y vuelta tradicional?",
-    a: "Si viajas a España para quedarte, trabajar o reencontrarte con tu familia, un pasaje redondo tradicional cuesta entre $1,500 y $1,800 USD y terminas perdiendo el tramo de vuelta. Con nuestro Paquete Migratorio viajas con tu pasaje de ida emitido y tu boleto de regreso reservado en sistema para cumplir con el requisito del aeropuerto y Migraciones, ahorrando más de $700 USD.",
+    q: "¿Qué diferencia hay entre el paquete migratorio y un pasaje de ida y vuelta?",
+    a: "El pasaje de ida y vuelta lleva los dos vuelos emitidos. El paquete migratorio lleva tu pasaje de ida emitido y una reserva del vuelo de regreso, además de hotel, seguro y check-in. Si quieres viajar con el regreso emitido, elige ida y vuelta.",
   },
   {
     q: "¿De qué depende que me aplique el plan de $699, $799, $899 o $999?",
@@ -137,7 +138,7 @@ const FAQS_ESPANA = [
   },
   {
     q: "¿Qué pasa si un familiar en España me envía Carta de Invitación?",
-    a: "Si ya cuentas con Carta de Invitación Policial tramitada en España, no necesitas reserva de hotel. Nosotros cuadramos las fechas exactas de tu pasaje, tu boleto de regreso para Migraciones y tu seguro Schengen de 30.000€ con los días autorizados en tu Carta.",
+    a: "Si ya cuentas con Carta de Invitación Policial tramitada en España, no necesitas reserva de hotel. Nosotros cuadramos las fechas exactas de tu pasaje, tu reserva de regreso y tu seguro Schengen de 30.000€ con los días autorizados en tu Carta.",
   },
   {
     q: "¿Cómo puedo separar mi paquete y dónde queda la oficina?",
@@ -170,7 +171,7 @@ export default function EspanaLandingClient() {
               </h1>
 
               <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-7">
-                Viaja tranquilo con toda tu carpeta lista para presentar en Lima y en Madrid-Barajas. No pagues el doble por un retorno que no vas a usar: armamos tu expediente completo y puedes separar tu cupo con el{" "}
+                Pagas tu pasaje de ida y te armamos la carpeta del viaje: reserva de regreso, hotel, seguro y check-in. Puedes separar tu cupo con el{" "}
                 <strong className="text-[#0a1628]">50% de inicial</strong>.
               </p>
 
@@ -243,7 +244,7 @@ export default function EspanaLandingClient() {
                     <li className="py-2 flex items-center gap-2.5">
                       <span className="text-emerald-600 font-black">✓</span>
                       <span>
-                        <strong>2. Boleto de regreso reservado</strong> en sistema para Migraciones.
+                        <strong>2. Reserva del vuelo de regreso</strong> (no es un boleto emitido).
                       </span>
                     </li>
                     <li className="py-2 flex items-center gap-2.5">
@@ -265,6 +266,7 @@ export default function EspanaLandingClient() {
                       </span>
                     </li>
                   </ul>
+                  <AvisoRegresoReservado className="mt-4" />
                 </div>
               </div>
             </div>

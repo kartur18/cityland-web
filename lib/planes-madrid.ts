@@ -20,7 +20,7 @@ function planesMigratorios(zona: string, codigoRuta: string, aerolinea: string):
       subtitulo: `Salidas fines de Feb, Mar, Abr y May · 5 Documentos Incluidos`,
       incluye: [
         `Pasaje de avión de ida emitido (${codigoRuta})`,
-        "Boleto de regreso reservado en sistema para Migraciones",
+        "Reserva del vuelo de regreso",
         `Reserva de hotel verificable en ${zona} o cuadre con Carta`,
         "Seguro Schengen 30.000€ sin deducible + Check-in 24h antes",
       ],
@@ -33,7 +33,7 @@ function planesMigratorios(zona: string, codigoRuta: string, aerolinea: string):
       subtitulo: "Salidas Jun, Sep, Oct y Nov + Asesoría Migratoria 1 a 1",
       destacado: true,
       incluye: [
-        `Pasaje de avión de ida emitido + Boleto de regreso para Migraciones`,
+        `Pasaje de avión de ida emitido + Reserva de regreso`,
         `Reserva de hotel en ${zona} o sincronización con Carta de Invitación`,
         "Seguro médico internacional Schengen de 30.000€ sin franquicia",
         "Check-in 24h antes, elección de asiento y preparación paso a paso",
@@ -46,7 +46,7 @@ function planesMigratorios(zona: string, codigoRuta: string, aerolinea: string):
       precioUSD: 899,
       subtitulo: "Salidas Enero, 1ra quincena Febrero o rutas con conexión",
       incluye: [
-        "Pasaje de avión de ida + Boleto de regreso reservado para Migraciones",
+        "Pasaje de avión de ida + Reserva de regreso",
         `Voucher de hotel verificable en ${zona} por tus días de estadía`,
         "Seguro médico Schengen oficial de 30.000€ sin franquicia",
         "Revisión de bolsa de viaje BOE y check-in 24h antes garantizado",
@@ -60,7 +60,7 @@ function planesMigratorios(zona: string, codigoRuta: string, aerolinea: string):
       subtitulo: "Salidas Dic, Jul, Ago o incluye maleta grande de 23 kg en bodega",
       incluye: [
         `Pasaje de avión de ida (${aerolinea}) + Maleta 23 kg en bodega`,
-        "Boleto de regreso reservado en sistema para Migraciones",
+        "Reserva del vuelo de regreso",
         "Reserva de hotel + Seguro Schengen 30.000€ + Check-in 24h antes",
         "Contrato formal y comprobante SUNAT (RUC 20614914239)",
       ],

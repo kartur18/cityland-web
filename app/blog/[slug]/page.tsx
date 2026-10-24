@@ -257,7 +257,7 @@ export default async function BlogArticlePage({
                       <FlagIcon pais="España" className="w-4 h-3" />
                       <span>Paquete migratorio a España</span>
                     </p>
-                    <p className="text-[11px] text-slate-500 mt-0.5">Pasaje de ida + carpeta para Migraciones</p>
+                    <p className="text-[11px] text-slate-500 mt-0.5">Pasaje de ida + reserva de regreso, hotel y seguro</p>
                   </div>
                   <span className="text-[14px] font-black text-[#e30613]">Desde ${PRECIO_MIGRATORIO_DESDE}</span>
                 </Link>

@@ -37,7 +37,7 @@ export default function Migratorio() {
             </h2>
 
             <p className="text-sm sm:text-base text-slate-200 mb-6 max-w-2xl leading-relaxed">
-              Incluye los <strong className="text-amber-300">5 documentos</strong> que te piden en Lima y en Migraciones de Europa: tu pasaje de ida emitido, tu boleto de regreso reservado en sistema, reserva de hotel confirmada, seguro médico de 30.000€ y check-in 24h antes. Separa hoy con el{" "}
+              Incluye <strong className="text-amber-300">5 cosas</strong>: tu pasaje de ida emitido, una reserva del vuelo de regreso, reserva de hotel confirmada, seguro médico de 30.000€ y check-in 24h antes. Separa hoy con el{" "}
               <strong className="text-white">50% de inicial</strong>.
             </p>
 

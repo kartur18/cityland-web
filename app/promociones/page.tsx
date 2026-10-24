@@ -57,7 +57,7 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
     etiquetaDer: "#1 Más Vendido",
     img: "/images/espana/gran-via-metropolis.jpg",
     alt: "Promoción Paquete Migratorio a España e Italia desde $699 USD (solo ida) — Cityland Travel",
-    sobretitulo: "Pasaje + Boleto de Regreso Reservado + Hotel + Seguro 30.000€",
+    sobretitulo: "Pasaje + Reserva de Regreso + Hotel + Seguro 30.000€",
     titulo: "Promo Paquete Migratorio a España, Italia y Francia",
     labelPrecio: `Solo ida: España desde ${formatoUSD(tarifasMigratorio("España").promo)} · Italia y Francia desde ${formatoUSD(TARIFAS_ITALIA.promo)}`,
     precio: "$699",
@@ -92,7 +92,7 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
       img: "/images/espana/puerta-de-alcala.jpg",
       alt: "Promoción viaje a Madrid desde Lima",
       resumenCorto:
-        "Pasaje de avión de ida emitido + Boleto de regreso reservado 24h antes + Reserva de hotel confirmada + Seguro Schengen 30.000€ + Check-in.",
+        "Pasaje de avión de ida emitido + Reserva de regreso + Reserva de hotel confirmada + Seguro Schengen 30.000€ + Check-in.",
       checks: [
         "Pasaje de ida + Retorno reservado",
         "Seguro Schengen 30.000€",
@@ -115,7 +115,7 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
       img: "/images/destinos/milan.webp",
       alt: "Promoción viaje a Milán y Roma desde Lima",
       resumenCorto:
-        "Pasaje hacia Milán, Roma o Turín + Boleto de regreso reservado + Reserva de hotel o formato Ospitalità 48h + Seguro médico de 30.000€.",
+        "Pasaje hacia Milán, Roma o Turín + Reserva de regreso + Reserva de hotel o formato Ospitalità 48h + Seguro médico de 30.000€.",
       checks: [
         "Pasaje de ida + Retorno reservado",
         "Hotel confirmado o guía Ospitalità",
@@ -204,7 +204,7 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
   pilares: [
     {
       titulo: "Solo ida desde $699 USD",
-      sub: "Paquetes migratorios a España, Italia y Francia con todo en regla",
+      sub: "Paquetes migratorios a España, Italia y Francia: pasaje de ida, reserva de regreso, hotel y seguro",
     },
     {
       titulo: "Separa con 50%",

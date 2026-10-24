@@ -6,7 +6,7 @@
  * - 4 Planes Oficiales según la fecha de viaje, todos separando con el 50%. Los precios salen de lib/precios-migratorio.ts
  *   (España y resto de Europa: $699 · $799 · $899 · $999; Italia y Francia: $849 · $949 · $1,049 · $1,149).
  * - Explicación en lenguaje 100% sencillo peruano (sin tecnicismos confusos):
- *   Pasaje de avión de ida + Boleto de regreso reservado para Migraciones + Reserva de hotel + Seguro médico + Preparación paso a paso.
+ *   Pasaje de avión de ida + Reserva de regreso + Reserva de hotel + Seguro médico + Preparación paso a paso.
  * - Fotografías 100% reales y coherentes con cada ciudad europea de destino.
  */
 import { formatoUSD as usd } from "@/lib/formato-precio";
@@ -1643,7 +1643,7 @@ const INTENCIONES_ESPANA: {
     slugIntencion: "plan-promo-699",
     etiquetaCorta: "Plan Promo",
     focoTitulo: (c, t) => `Paquete Migratorio a ${c} — Plan Promo Desde ${usd(t.promo)}`,
-    focoSubtitulo: (_c, t) => `Separa con el 50% (${usd(inicialSeparacion(t.promo))} USD) · Pasaje + Retorno para Migraciones + Hotel + Seguro`,
+    focoSubtitulo: (_c, t) => `Separa con el 50% (${usd(inicialSeparacion(t.promo))} USD) · Pasaje + Reserva de regreso + Hotel + Seguro`,
     focoGancho: (c, t) =>
       `La tarifa promocional de ${usd(t.promo)} USD para viajar a ${c} comprando con anticipación (salidas fines de Febrero, Marzo, Abril y Mayo). Incluye todos tus documentos listos para presentar en el aeropuerto.`,
   },
@@ -1653,7 +1653,7 @@ const INTENCIONES_ESPANA: {
     focoTitulo: (c, t) => `Paquete Migratorio Smart a ${c} Desde ${usd(t.smart)}`,
     focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.smart))} USD (50%) · Incluye Check-in 24h Antes + Asesoría 1 a 1`,
     focoGancho: (c) =>
-      `Nuestro paquete más pedido para viajar a ${c} en temporada media (Octubre, Noviembre, Junio y Septiembre). Incluye tu vuelo de ida, tu boleto de regreso reservado para Migraciones, hotel, seguro y check-in hecho por tu asesor.`,
+      `Nuestro paquete más pedido para viajar a ${c} en temporada media (Octubre, Noviembre, Junio y Septiembre). Incluye tu vuelo de ida, tu reserva de regreso, hotel, seguro y check-in hecho por tu asesor.`,
   },
   {
     slugIntencion: "plan-plus-899",
@@ -1717,7 +1717,7 @@ const INTENCIONES_ESPANA: {
     focoTitulo: (c) => `Paquete Migratorio a ${c} en Diciembre y Navidad`,
     focoSubtitulo: (_c, t) => `Cupos de Temporada Alta (${usd(t.plus)} y ${usd(t.full)}) · Separa con el 50%`,
     focoGancho: (c) =>
-      `Viaja a ${c} para reencontrarte con tu familia en Navidad y Año Nuevo o empezar el año en España con todos tus documentos de ingreso en regla.`,
+      `Viaja a ${c} para reencontrarte con tu familia en Navidad y Año Nuevo o empezar el año en España con tu carpeta de viaje armada.`,
   },
   {
     slugIntencion: "salidas-enero",
@@ -1741,7 +1741,7 @@ const INTENCIONES_ESPANA: {
     focoTitulo: (c, t) => `Paquete Migratorio a ${c} — Salidas de Marzo Desde ${usd(t.promo)}`,
     focoSubtitulo: (_c, t) => `Mejor Temporada de Precio (${usd(t.promo)} y ${usd(t.smart)}) · Separa con el 50%`,
     focoGancho: (c, t) =>
-      `Marzo marca el inicio de la primavera en ${c} y tiene cupos en el Plan Promo de ${usd(t.promo)} USD con pasaje de ida, boleto de regreso reservado para Migraciones, hotel y seguro.`,
+      `Marzo marca el inicio de la primavera en ${c} y tiene cupos en el Plan Promo de ${usd(t.promo)} USD con pasaje de ida, reserva de regreso, hotel y seguro.`,
   },
   {
     slugIntencion: "salidas-abril",
@@ -1781,9 +1781,9 @@ const INTENCIONES_ITALIA: {
     slugIntencion: "paquete-migratorio-699",
     etiquetaCorta: "Plan Promo",
     focoTitulo: (c, t) => `Paquete Migratorio a ${c} (Italia) — Plan Promo Desde ${usd(t.promo)}`,
-    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.promo))} USD (50%) · Pasaje + Regreso para Migraciones + Hotel + Seguro`,
+    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.promo))} USD (50%) · Pasaje + Reserva de regreso + Hotel + Seguro`,
     focoGancho: (c, t) =>
-      `Viaja a ${c} comprando con anticipación desde ${usd(t.promo)} USD. Te entregamos tu pasaje de ida, tu boleto de regreso reservado para el control migratorio, tu reserva de hotel y tu seguro médico.`,
+      `Viaja a ${c} comprando con anticipación desde ${usd(t.promo)} USD. Te entregamos tu pasaje de ida, tu reserva de regreso, tu reserva de hotel y tu seguro médico.`,
   },
   {
     slugIntencion: "paquete-smart-799",
@@ -1807,7 +1807,7 @@ const INTENCIONES_ITALIA: {
     focoTitulo: (c, t) => `Paquete Migratorio Full a ${c} con Maleta de 23 kg (${usd(t.full)})`,
     focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.full))} USD (50%) · Temporada Alta o Equipaje de Bodega`,
     focoGancho: (c) =>
-      `Viaja a ${c} llevando tu maleta grande de 23 kg en bodega y todos tus documentos obligatorios para el ingreso a Italia y la Unión Europea.`,
+      `Viaja a ${c} llevando tu maleta grande de 23 kg en bodega y tu carpeta de viaje armada.`,
   },
   {
     slugIntencion: "sin-carta-de-invitacion-con-hotel",
@@ -1872,9 +1872,9 @@ const INTENCIONES_FRANCIA_EUROPA: {
     slugIntencion: "paquete-migratorio-699",
     etiquetaCorta: "Plan Promo",
     focoTitulo: (c, p, t) => `Paquete Migratorio a ${c} (${p}) — Plan Promo Desde ${usd(t.promo)}`,
-    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.promo))} USD (50%) · Pasaje + Regreso para Migraciones + Hotel + Seguro`,
+    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.promo))} USD (50%) · Pasaje + Reserva de regreso + Hotel + Seguro`,
     focoGancho: (c, p, t) =>
-      `Viaja a ${c} (${p}) ahorrando más de ${usd(ahorroFrenteARedondo(t.promo))} dólares con nuestro Plan Promo anticipado de ${usd(t.promo)} USD: incluye vuelo de ida, reserva de regreso para Migraciones, hotel y seguro médico.`,
+      `Viaja a ${c} (${p}) ahorrando más de ${usd(ahorroFrenteARedondo(t.promo))} dólares con nuestro Plan Promo anticipado de ${usd(t.promo)} USD: incluye vuelo de ida, reserva de regreso, hotel y seguro médico.`,
   },
   {
     slugIntencion: "paquete-smart-799",
@@ -1912,7 +1912,7 @@ const INTENCIONES_FRANCIA_EUROPA: {
     slugIntencion: "con-invitacion-familiar",
     etiquetaCorta: "Visita Familiar",
     focoTitulo: (c, p, t) => `Paquete a ${c} (${p}) para Visitar Familiares Desde ${usd(t.promo)}`,
-    focoSubtitulo: () => `Boleto + Regreso para Migraciones + Seguro Médico Schengen`,
+    focoSubtitulo: () => `Boleto + Reserva de regreso + Seguro Médico Schengen`,
     focoGancho: (c) =>
       `Si tienes familia o amigos esperándote en ${c}, armamos tu carpeta con las fechas exactas de tu viaje y te preparamos para pasar tranquilo el control del aeropuerto.`,
   },
@@ -1938,7 +1938,7 @@ const INTENCIONES_FRANCIA_EUROPA: {
     focoTitulo: (c, p) => `Requisitos para Viajar a ${c} (${p}) desde Perú — Paquete Completo`,
     focoSubtitulo: (_c, t) => `Todo Resuelto en un Solo Paquete (${usd(t.promo)} · ${usd(t.smart)} · ${usd(t.plus)} · ${usd(t.full)})`,
     focoGancho: (c) =>
-      `Cumple al 100% con lo que piden en Lima y al llegar a ${c}: pasaporte vigente, pasaje de ida, boleto de regreso reservado, reserva de hotel, seguro médico y bolsa de viaje.`,
+      `Te ayudamos a ordenar lo que te pueden pedir en Lima y al llegar a ${c}: pasaporte vigente, pasaje, boleto de regreso, reserva de hotel, seguro médico y bolsa de viaje.`,
   },
   {
     slugIntencion: "primer-viaje-desde-lima",
@@ -2056,7 +2056,7 @@ const ORIGENES_PERU: {
     slugOrigen: "tacna",
     nombreOrigen: "Tacna y Moquegua",
     detalleSalida: (t) =>
-      `Para viajeros del sur del Perú: reserva tu paquete desde ${usd(t.promo)} con el 50% y viaja con todos tus documentos en regla.`,
+      `Para viajeros del sur del Perú: reserva tu paquete desde ${usd(t.promo)} con el 50% y viaja con tu carpeta de viaje armada.`,
   },
 ];
 
@@ -2069,17 +2069,17 @@ const TEMAS_DUDAS_MIGRATORIAS: {
 }[] = [
   {
     slugTema: "como-funciona-boleto-de-regreso-para-migraciones",
-    tituloTema: (c) => `¿Es Ida y Vuelta? Cómo Funciona el Boleto de Regreso para Migraciones a ${c}`,
-    subtituloTema: (_c, t) => `Pasaje de Ida + Boleto de Regreso Reservado en Sistema · Desde ${usd(t.promo)}`,
+    tituloTema: (c) => `¿Es Ida y Vuelta? Cómo Funciona la Reserva de Regreso a ${c}`,
+    subtituloTema: (_c, t) => `Pasaje de Ida + Reserva de Regreso · Desde ${usd(t.promo)}`,
     ganchoTema: (c) =>
-      `Te explicamos en palabras simples cómo viajar a ${c} para quedarte sin gastar $1,500 en un avión de regreso que no vas a usar: tu paquete incluye tu pasaje de ida + tu boleto de regreso reservado activo el día de tu vuelo para presentar tu ida y vuelta en el aeropuerto.`,
+      `Te explicamos en palabras simples cómo funciona el paquete para viajar a ${c}: incluye tu pasaje de ida emitido y una reserva del vuelo de regreso. La reserva de regreso no es un boleto emitido: si quieres viajar con el regreso emitido, te cotizamos ida y vuelta.`,
   },
   {
     slugTema: "por-que-cuesta-699-paquete-migratorio-europa",
     tituloTema: (c, t) => `¿Por Qué Cuesta Desde ${usd(t.promo)} el Paquete Migratorio a ${c}? (Explicado Claro)`,
-    subtituloTema: (_c, t) => `Ahorra Más de ${usd(ahorroFrenteARedondo(t.promo))} Dólares Viajando con Todos tus Documentos en Regla`,
+    subtituloTema: () => `Pasaje de Ida + Reserva de Regreso + Hotel + Seguro`,
     ganchoTema: (c, t) =>
-      `Un pasaje redondo tradicional cuesta $1,500 USD porque pagas dos vuelos cerrados. Con nuestro Paquete Migratorio a ${c} pagas desde ${usd(t.promo)} USD porque vuelas con tu pasaje de ida + tu reserva de regreso activa para Migraciones + hotel + seguro.`,
+      `Un pasaje de ida y vuelta cuesta más porque pagas dos vuelos emitidos. El paquete migratorio a ${c} cuesta desde ${usd(t.promo)} USD porque incluye el pasaje de ida emitido y una reserva de regreso, más hotel y seguro. En el control de frontera te pueden pedir tu boleto de vuelta: si quieres llevarlo emitido, elige ida y vuelta.`,
   },
   {
     slugTema: "viajar-sin-carta-de-invitacion-con-reserva-de-hotel",
@@ -2104,10 +2104,10 @@ const TEMAS_DUDAS_MIGRATORIAS: {
   },
   {
     slugTema: "documentos-para-viajar-por-primera-vez-a-europa",
-    tituloTema: (c) => `Los 5 Documentos Obligatorios para Viajar por Primera Vez a ${c}`,
+    tituloTema: (c) => `Los Documentos que te Pueden Pedir al Viajar por Primera Vez a ${c}`,
     subtituloTema: (_c, t) => `Te Armamos toda la Carpeta Lista en Los Olivos · Desde ${usd(t.promo)}`,
     ganchoTema: (c) =>
-      `Para subir al avión en Lima e ingresar a ${c} necesitas 5 cosas: Pasaporte vigente, Pasaje de ida, Boleto de regreso reservado, Reserva de hotel (o Carta) y Seguro médico. Nosotros te armamos todo.`,
+      `Para ingresar a ${c} te pueden pedir pasaporte vigente, boleto de regreso, reserva de hotel (o carta de invitación), dinero suficiente y seguro médico. Te ayudamos a armar tu carpeta.`,
   },
   {
     slugTema: "separar-paquete-migratorio-con-50-por-ciento",
@@ -2132,7 +2132,7 @@ const TEMAS_DUDAS_MIGRATORIAS: {
   },
   {
     slugTema: "como-pasar-migraciones-tranquilo-desde-peru",
-    tituloTema: (c) => `Cómo Viajar a ${c} desde Perú con Todo en Regla y Sin Miedo en el Aeropuerto`,
+    tituloTema: (c) => `Cómo Viajar a ${c} desde Perú: Qué Llevar al Aeropuerto`,
     subtituloTema: () => `Agencia Formal RUC 20614914239 · Más de 5,000 Pasajeros Asesorados`,
     ganchoTema: (c) =>
       `Olvídate de agencias informales por redes sociales: en Cityland Travel te atendemos cara a cara en Los Olivos y te entregamos documentos 100% reales y verificables para tu viaje a ${c}.`,
@@ -2161,7 +2161,7 @@ const TEMAS_DUDAS_MIGRATORIAS: {
   {
     slugTema: "solo-carpeta-migratoria-si-ya-compre-mi-pasaje",
     tituloTema: (c) => `¿Ya Compraste tu Pasaje a ${c}? Armamos Solo tu Carpeta Migratoria`,
-    subtituloTema: () => `Boleto de Regreso para Migraciones + Reserva de Hotel + Seguro + Check-in`,
+    subtituloTema: () => `Reserva de Regreso + Reserva de Hotel + Seguro + Check-in`,
     ganchoTema: (c) =>
       `Si ya compraste un pasaje de solo ida a ${c} por internet y no te dejan embarcar sin retorno ni hotel, nosotros te armamos la carpeta documental completa en 24 horas.`,
   },
@@ -2177,7 +2177,7 @@ const TEMAS_DUDAS_MIGRATORIAS: {
     tituloTema: (c) => `Qué Te Piden en el Counter del Aeropuerto Jorge Chávez al Volar a ${c}`,
     subtituloTema: () => `Preparamos tu Carpeta para Pasar el Counter de Lima sin Observaciones`,
     ganchoTema: (c) =>
-      `El primer filtro no está en Europa, sino en el counter de la aerolínea en Lima: ahí verifican que tengas tu boleto de regreso activo, tu hotel y tu seguro antes de entregarte tu tarjeta de embarque hacia ${c}.`,
+      `El primer filtro no está en Europa, sino en el counter de la aerolínea en Lima: ahí pueden revisar tus documentos de viaje antes de entregarte tu tarjeta de embarque hacia ${c}.`,
   },
   {
     slugTema: "agencia-formal-en-los-olivos-para-viajar-a-europa",
@@ -2198,7 +2198,7 @@ const TEMAS_DUDAS_MIGRATORIAS: {
     tituloTema: (c, t) => `Qué Incluye el Paquete Migratorio Smart de ${usd(t.smart)} USD a ${c}`,
     subtituloTema: (_c, t) => `El Paquete Favorito de Nuestros Clientes · Separa Hoy con ${usd(inicialSeparacion(t.smart))} USD`,
     ganchoTema: (c, t) =>
-      `El Plan Smart de ${usd(t.smart)} a ${c} incluye pasaje de ida, boleto de regreso reservado para Migraciones, hotel confirmado, seguro médico, check-in 24h antes y preparación personalizada.`,
+      `El Plan Smart de ${usd(t.smart)} a ${c} incluye pasaje de ida, reserva de regreso, hotel confirmado, seguro médico, check-in 24h antes y preparación personalizada.`,
   },
   {
     slugTema: "como-verificar-tu-reserva-de-vuelo-y-hotel-para-migraciones",
@@ -2228,7 +2228,7 @@ function construirLos4Planes(
         "Para quienes planifican su viaje con tiempo y quieren el precio más bajo con todos los documentos para el aeropuerto.",
       incluye: [
         `Pasaje de avión de ida confirmado (Lima ➔ ${ciudad}) con bolso/equipaje de mano`,
-        "Boleto de regreso reservado para Migraciones (activo el día de tu vuelo)",
+        "Reserva del vuelo de regreso (activa el día de tu vuelo)",
         `Reserva de hotel confirmada en ${ciudad} por los días de estancia declarados`,
         "Seguro médico de viaje para Europa (cobertura 30.000€)",
         "Guía paso a paso en PDF con las preguntas y respuestas de Migraciones",
@@ -2249,7 +2249,7 @@ function construirLos4Planes(
         "Nuestro paquete estrella: incluye tu check-in hecho 24h antes por tu asesor y preparación personalizada 1 a 1.",
       incluye: [
         `Pasaje de avión de ida confirmado (Lima ➔ ${ciudad}) con equipaje de cabina 10 kg`,
-        "Boleto de regreso reservado para Migraciones (activo 24h antes de tu embarque)",
+        "Reserva del vuelo de regreso (activa 24h antes de tu embarque)",
         `Reserva de hotel verificable en ${ciudad} (o ajuste a tu Carta de Invitación)`,
         "Seguro médico de viaje internacional (30.000€ sin deducible)",
         "Check-in hecho por tu asesor 24h antes + Asesoría personalizada 1 a 1",
@@ -2269,7 +2269,7 @@ function construirLos4Planes(
         "Ideal si quieres viajar pronto o necesitas conexión aérea directa hacia tu ciudad final en España, Italia o Francia.",
       incluye: [
         `Pasaje de avión confirmado (Lima ➔ ${ciudad}) en aerolíneas de primer nivel`,
-        "Boleto de regreso reservado para Migraciones + Reserva de hotel confirmada",
+        "Reserva de regreso + Reserva de hotel confirmada",
         "Seguro médico válido en todo el espacio Schengen (30.000€)",
         "Selección de asiento + Check-in gestionado 24 horas antes del vuelo",
         "Carpeta migratoria física impresa entregada en nuestra oficina de Los Olivos",
@@ -2289,7 +2289,7 @@ function construirLos4Planes(
         "Para quienes viajan en meses de alta demanda o necesitan llevar maleta grande de 23 kg en la bodega del avión.",
       incluye: [
         `Pasaje de avión confirmado a ${ciudad} + Maleta de 23 kg en bodega + 10 kg en mano`,
-        "Boleto de regreso reservado para Migraciones activo en sistema",
+        "Reserva del vuelo de regreso activa en sistema",
         `Reserva de hotel confirmada en ${ciudad} + Seguro médico de viaje 30.000€`,
         "Check-in, asignación de asiento y cálculo exacto de tu bolsa de viaje",
         "Atención prioritaria 1 a 1 hasta que pases el control y llegues a tu destino",
@@ -2303,7 +2303,7 @@ function construirLos4Planes(
 function construirExplicacionIdaYVuelta(ciudad: string, pais: string) {
   return {
     pregunta: `¿Qué incluye tu Paquete Migratorio a ${ciudad}?`,
-    respuestaDirecta: `Viaja a ${ciudad} (${pais}) con toda tu carpeta lista para el aeropuerto sin pagar el doble por un retorno cerrado que no vas a usar.`,
+    respuestaDirecta: `Viaja a ${ciudad} (${pais}) con tu carpeta de viaje armada: pasaje de ida, reserva de regreso, hotel y seguro.`,
     ahorroExplicado: `Estos son los 5 documentos incluidos en tu paquete:`,
     documentosIncluidos: [
       {
@@ -2313,8 +2313,8 @@ function construirExplicacionIdaYVuelta(ciudad: string, pais: string) {
       },
       {
         icono: "🎫",
-        titulo: "2. Boleto de regreso reservado",
-        descripcion: "Reserva de retorno activa en sistema 24h antes para Migraciones.",
+        titulo: "2. Reserva del vuelo de regreso",
+        descripcion: "Activa en sistema 24h antes. No es un boleto emitido.",
       },
       {
         icono: "🏨",
@@ -2338,8 +2338,8 @@ function construirExplicacionIdaYVuelta(ciudad: string, pais: string) {
 function construirFaqsPeruano(ciudad: string, _pais: string): { q: string; a: string }[] {
   return [
     {
-      q: `¿Puedo embarcar en Lima e ingresar a ${ciudad} con este paquete?`,
-      a: `Sí. Tu carpeta incluye los 5 documentos que revisan la aerolínea en Lima y Migraciones en Europa: pasaje de ida, retorno reservado en sistema, hotel, seguro 30.000€ y check-in.`,
+      q: `¿Qué incluye la carpeta para viajar a ${ciudad}?`,
+      a: `Pasaje de ida, reserva de regreso, hotel, seguro 30.000€ y check-in. La decisión de dejarte entrar es de la policía de frontera, que puede pedirte tu boleto de vuelta. La reserva de regreso no es un boleto emitido: si quieres viajar con el regreso emitido, te cotizamos ida y vuelta.`,
     },
     {
       q: `¿Cómo funciona la separación con el 50%?`,
@@ -2471,7 +2471,7 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
             `paquete migratorio a ${ciudadCfg.ciudad.toLowerCase()}`,
             `viajar a ${ciudadCfg.ciudad.toLowerCase()} desde peru ${t.promo}`,
             `paquete smart ${ciudadCfg.ciudad.toLowerCase()} ${t.smart}`,
-            `boleto de regreso para migraciones ${ciudadCfg.ciudad.toLowerCase()}`,
+            `reserva de regreso ${ciudadCfg.ciudad.toLowerCase()}`,
             `viajar a ${ciudadCfg.pais.toLowerCase()} sin carta de invitacion`,
           ],
           enlacesRelacionados,
@@ -2587,7 +2587,7 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
           origenPasajero: orig.nombreOrigen,
           tituloH1: `Paquete Migratorio a ${c.ciudad} para Viajeros de ${orig.nombreOrigen}`,
           subtituloHero: `Planes de ${listaPreciosPlanes(t)} USD · Separa hoy con el 50%`,
-          ganchoPeruano: `Armamos tu paquete migratorio completo hacia ${c.ciudad} (${c.pais}) con pasaje de avión de ida, boleto de regreso reservado para Migraciones, reserva de hotel y seguro médico.`,
+          ganchoPeruano: `Armamos tu paquete migratorio completo hacia ${c.ciudad} (${c.pais}) con pasaje de avión de ida, reserva de regreso, reserva de hotel y seguro médico.`,
           detalleExtraOrigen:
             typeof orig.detalleSalida === "function" ? orig.detalleSalida(t) : orig.detalleSalida,
           indice: idx,
@@ -2645,7 +2645,7 @@ export const PLANES_MIGRATORIOS_OFICIALES: PlanMigratorioOficialResumen[] = [
     separaConUSD: inicialSeparacion(TARIFAS_MIGRATORIO_BASE.promo),
     incluye: [
       "Pasaje de avión de ida emitido a tu nombre",
-      "Boleto de regreso reservado en sistema para Migraciones",
+      "Reserva del vuelo de regreso",
       "Reserva de hotel confirmada por los días declarados",
       "Seguro médico de viaje (30.000€)",
       "Check-in 24h antes + Guía paso a paso de Migraciones",
@@ -2662,7 +2662,7 @@ export const PLANES_MIGRATORIOS_OFICIALES: PlanMigratorioOficialResumen[] = [
     destacado: true,
     incluye: [
       "Pasaje de avión de ida con equipaje de cabina 10 kg",
-      "Boleto de regreso reservado 24h antes para Migraciones",
+      "Reserva de regreso activa 24h antes",
       "Reserva de hotel verificable o cuadre con Carta de Invitación",
       "Seguro médico Schengen 30.000€ sin deducible",
       "Check-in hecho 24h antes + Asesoría personalizada 1 a 1",
@@ -2678,7 +2678,7 @@ export const PLANES_MIGRATORIOS_OFICIALES: PlanMigratorioOficialResumen[] = [
     separaConUSD: inicialSeparacion(TARIFAS_MIGRATORIO_BASE.plus),
     incluye: [
       "Pasaje de avión de ida confirmado en aerolíneas oficiales",
-      "Boleto de regreso reservado para Migraciones + Hotel",
+      "Reserva de regreso + Hotel",
       "Seguro médico Schengen de 30.000€",
       "Selección de asiento + Check-in hecho 24h antes",
       "Carpeta física impresa entregada en nuestra sede de Los Olivos",
@@ -2694,7 +2694,7 @@ export const PLANES_MIGRATORIOS_OFICIALES: PlanMigratorioOficialResumen[] = [
     separaConUSD: inicialSeparacion(TARIFAS_MIGRATORIO_BASE.full),
     incluye: [
       "Pasaje de avión de ida + Maleta de 23 kg en bodega + 10 kg mano",
-      "Boleto de regreso reservado en sistema para Migraciones",
+      "Reserva del vuelo de regreso",
       "Reserva de hotel confirmada + Seguro médico 30.000€",
       "Check-in, asignación de asiento y cálculo de bolsa de viaje",
       "Atención prioritaria 1 a 1 hasta tu ingreso a Europa",

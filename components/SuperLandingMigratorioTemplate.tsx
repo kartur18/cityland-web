@@ -7,6 +7,7 @@ import FlagIcon from "@/components/icons/FlagIcon";
 import NotaPrecio from "@/components/NotaPrecio";
 import { asegurarDesde, formatoUSD, quitarPrecioDeTitulo } from "@/lib/formato-precio";
 import type { DatosSuperLandingMigratorio } from "@/lib/catalogo-paquetes-migratorios-1000";
+import AvisoRegresoReservado from "@/components/AvisoRegresoReservado";
 
 function obtenerEstiloSilo(silo: DatosSuperLandingMigratorio["silo"], pais: string) {
   if (silo === "italia" || pais === "Italia") {
@@ -190,6 +191,7 @@ export default function SuperLandingMigratorioTemplate({
                         </li>
                       ))}
                     </ul>
+                    <AvisoRegresoReservado className="mt-4" />
                   </div>
                 </div>
               </div>

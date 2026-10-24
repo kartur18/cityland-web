@@ -132,7 +132,7 @@ ${BLOQUE_EES_ETIAS}
     },
     {
       titulo: "Paquete migratorio a España",
-      detalle: "Pasaje de ida con la carpeta lista para el aeropuerto: hotel, regreso reservado y seguro.",
+      detalle: "Pasaje de ida emitido con reserva de regreso, hotel y seguro. El regreso no va emitido.",
       precio: `Desde US$ ${PRECIO_MIGRATORIO_DESDE}`,
       href: "/espana",
     },

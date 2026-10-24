@@ -14,13 +14,14 @@ import {
 } from "@/lib/seo-arquitectura";
 import { formatoUSD } from "@/lib/formato-precio";
 import { inicialSeparacion, tarifasMigratorio } from "@/lib/precios-migratorio";
+import AvisoRegresoReservado from "@/components/AvisoRegresoReservado";
 
 const TARIFAS = tarifasMigratorio("Francia");
 const DESDE = formatoUSD(TARIFAS.promo);
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO(`Paquetes Migratorios a Francia 2026 (París, Lyon, Marsella, Niza) desde ${DESDE} USD | Cityland Travel`),
-  description: optimizarMetaDescriptionSEO(`Viaja desde Perú a París, Lyon, Marsella, Niza, Toulouse y Burdeos con nuestro Paquete Migratorio desde ${DESDE} USD. Incluye pasaje de ida + boleto de regreso reservado para Migraciones + hotel + seguro Schengen 30.000€ + check-in 24h antes.`),
+  description: optimizarMetaDescriptionSEO(`Viaja desde Perú a París, Lyon, Marsella, Niza, Toulouse y Burdeos con nuestro Paquete Migratorio desde ${DESDE} USD. Incluye pasaje de ida + reserva de regreso + hotel + seguro Schengen 30.000€ + check-in 24h antes.`),
   alternates: {
     canonical: `${URL_BASE_SEO}/francia`,
   },
@@ -151,7 +152,7 @@ export default function FranciaPage() {
     titulo:
       `Paquetes Migratorios a Francia (París, Lyon, Marsella, Niza, Toulouse) desde ${DESDE} USD`,
     descripcion:
-      "Viaja desde Perú a Francia con tus 5 documentos en regla: pasaje de avión de ida, boleto de regreso reservado para Migraciones, reserva de hotel, seguro Schengen 30.000€ y check-in 24h antes.",
+      "Viaja desde Perú a Francia con tu carpeta de viaje: pasaje de avión de ida, reserva de regreso, reserva de hotel, seguro Schengen 30.000€ y check-in 24h antes.",
     precioDesdeUSD: TARIFAS.promo,
     cantidadOfertas: 4,
     destinoOPais: "Francia",
@@ -197,7 +198,7 @@ export default function FranciaPage() {
               </h1>
 
               <p className="text-base sm:text-lg text-slate-200 leading-relaxed mb-7">
-                Viaja a París, Lyon, Marsella, Niza o Toulouse con todos los documentos que piden en Lima y al ingresar a Francia, sin gastar el doble en un regreso cerrado. Separa hoy con el{" "}
+                Viaja a París, Lyon, Marsella, Niza o Toulouse con tu carpeta de viaje armada: pasaje de ida, reserva de regreso, hotel y seguro. Separa hoy con el{" "}
                 <strong className="text-white">50% de inicial</strong>.
               </p>
 
@@ -263,7 +264,7 @@ export default function FranciaPage() {
                     <li className="py-2 flex items-center gap-2.5">
                       <span className="text-emerald-600 font-black">✓</span>
                       <span>
-                        <strong>2. Boleto de regreso reservado</strong> en sistema para Migraciones.
+                        <strong>2. Reserva del vuelo de regreso</strong> (no es un boleto emitido).
                       </span>
                     </li>
                     <li className="py-2 flex items-center gap-2.5">
@@ -285,6 +286,7 @@ export default function FranciaPage() {
                       </span>
                     </li>
                   </ul>
+                  <AvisoRegresoReservado className="mt-4" />
                 </div>
               </div>
             </div>

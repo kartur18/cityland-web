@@ -9,7 +9,7 @@ import { textoPrecio } from "@/lib/formato-precio";
 const rawTitle =
   "Paquete migratorio a España y Madrid desde $699 | Cityland";
 const rawDesc =
-  "Paquete migratorio a España desde Lima ($699, $799, $899 y $999 según fecha): pasaje de avión de ida + boleto de regreso reservado para Migraciones + hotel + seguro Schengen 30.000€ + check-in 24h antes.";
+  "Paquete migratorio a España desde Lima ($699, $799, $899 y $999 según fecha): pasaje de avión de ida + reserva de regreso + hotel + seguro Schengen 30.000€ + check-in 24h antes.";
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO(rawTitle),
@@ -82,7 +82,7 @@ const JSON_LD_ESPANA = {
       name: "Paquete Migratorio a España desde Lima (5 Documentos Completos)",
       image: "https://citylandtravel.com/images/espana/plaza-mayor.jpg",
       description:
-        "Paquete migratorio formal a España con pasaje de avión de ida, boleto de regreso reservado en sistema para Migraciones, reserva de hotel confirmada, seguro Schengen 30.000€ y check-in 24h antes.",
+        "Paquete migratorio formal a España con pasaje de avión de ida, reserva del vuelo de regreso, reserva de hotel confirmada, seguro Schengen 30.000€ y check-in 24h antes.",
       provider: {
         "@type": "TravelAgency",
         name: "Cityland Travel",
@@ -177,7 +177,7 @@ const JSON_LD_ESPANA = {
           name: "¿El paquete a España desde $699 USD es ida y vuelta?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: textoPrecio("Si viajas a España para quedarte, no tiene sentido gastar $1,500 en un avión de regreso al que no te vas a subir. Por eso nuestro Paquete Migratorio incluye tu pasaje de avión de ida emitido + tu boleto de regreso reservado en sistema para presentar en el aeropuerto y en Migraciones + tu reserva de hotel + tu seguro Schengen de 30.000€ + tu check-in hecho 24h antes."),
+            text: textoPrecio("No. El paquete migratorio incluye tu pasaje de avión de ida emitido, una reserva del vuelo de regreso, tu reserva de hotel, tu seguro Schengen de 30.000€ y tu check-in hecho 24h antes. La reserva de regreso no es un boleto emitido: si quieres viajar con el regreso emitido, te cotizamos ida y vuelta."),
           },
         },
         {

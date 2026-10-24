@@ -55,7 +55,7 @@ const CONFIG_SEGUROS: ConfiguracionLandingAerolinea = {
   waPrincipalMensaje:
     "¡Hola Cityland Travel! Necesito cotizar y emitir un Seguro de Viaje Internacional / Seguro Schengen 30.000€.",
   checksHero: [
-    "Válido para Migraciones Madrid-Barajas",
+    "Cobertura de 30.000 € en Europa",
     "Entrega en PDF en 5 Minutos",
     "Sin Franquicia ni Deducible",
   ],
