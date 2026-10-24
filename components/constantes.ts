@@ -281,7 +281,7 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     img: "/images/espana/puerta-de-alcala.jpg",
     alt: "Paquete Migratorio a Madrid y Barcelona desde Lima desde $699 USD",
     tituloComercial: "Paquete Migratorio a España: Madrid, Barcelona y 25 Ciudades",
-    resaltado: "Pasaje de Ida + Boleto de Regreso Reservado + Hotel + Seguro 30.000€ + Check-in",
+    resaltado: "Pasaje de Ida + Reserva de Regreso + Hotel + Seguro 30.000€ + Check-in",
     inclusiones: {
       vuelo: true,
       hotel: "Reserva de hotel confirmada en España",
@@ -291,12 +291,12 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
       tour: "Carpeta Migratoria Completa + Asesoría 1 a 1",
     },
     toursDestacados: [
-      "Pasaje de avión emitido + Boleto de regreso reservado 24h antes",
+      "Pasaje de avión emitido + Reserva de regreso 24h antes",
       "Reserva de hotel confirmada o ajuste con tu Carta de Invitación",
       "Seguro médico de 30.000€ + Check-in hecho y preparación migratoria",
     ],
     descripcion:
-      "El paquete estrella de Cityland Travel para peruanos que viajan a Madrid, Barcelona, Valencia, Sevilla o cualquier ciudad de España. Incluye todos los documentos obligatorios para pasar el control en Lima y en el Aeropuerto de Madrid-Barajas sin pagar un pasaje de vuelta que no vas a usar.",
+      "El paquete estrella de Cityland Travel para peruanos que viajan a Madrid, Barcelona, Valencia, Sevilla o cualquier ciudad de España. Incluye pasaje de ida emitido, reserva de regreso, hotel, seguro y check-in. La reserva de regreso no es un boleto emitido: si quieres viajar con el regreso emitido, te cotizamos ida y vuelta.",
     itinerario: [
       "Paso 1: Congelas tu cupo abonando el 50% de inicial ($350 USD en el Plan Promo de $699 o $400 USD en el Plan Smart de $799).",
       "Paso 2: Emitimos tu pasaje de avión de ida, tu póliza de seguro médico Schengen de 30.000€ y tu reserva de hotel confirmada.",
@@ -332,7 +332,7 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     },
     toursDestacados: [
       "Vuelos hacia Milán-Malpensa, Roma-Fiumicino, Turín, Bolonia y Venecia",
-      "Boleto de regreso reservado en sistema + Reserva de hotel confirmada",
+      "Reserva de regreso + Reserva de hotel confirmada",
       "Formato oficial de Lettera di Invito y Dichiarazione di Ospitalità (48h)",
     ],
     descripcion:
@@ -372,11 +372,11 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     },
     toursDestacados: [
       "Salidas hacia París (CDG / Orly), Lyon, Marsella, Niza y Bruselas",
-      "Boleto de regreso reservado + Reserva de hotel verificable sin Attestation",
+      "Reserva de regreso + Reserva de hotel verificable sin Attestation",
       "Seguro Schengen de 30.000€ y preparación de entrevista migratoria",
     ],
     descripcion:
-      "Viaja seguro a París, Lyon, Marsella o cualquier ciudad de Francia y Europa con tu carpeta migratoria completa: pasaje emitido, retorno reservado para Migraciones, hotel confirmado y seguro médico.",
+      "Viaja seguro a París, Lyon, Marsella o cualquier ciudad de Francia y Europa con tu carpeta migratoria completa: pasaje emitido, reserva de regreso, hotel confirmado y seguro médico.",
     itinerario: [
       `Paso 1: Reserva tu paquete con el 50% de inicial (${formatoUSD(inicialSeparacion(TARIFAS_FRANCIA.promo))} USD en el Plan Promo de ${formatoUSD(TARIFAS_FRANCIA.promo)}).`,
       "Paso 2: Emisión de boleto aéreo, seguro Schengen 30.000€ y reserva de hotel confirmada.",

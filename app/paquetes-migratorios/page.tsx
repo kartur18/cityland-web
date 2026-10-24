@@ -32,10 +32,11 @@ import {
   URL_BASE_SEO,
   construirSchemaLandingSEO, optimizarMetaTitleSEO, optimizarMetaDescriptionSEO
 } from "@/lib/seo-arquitectura";
+import AvisoRegresoReservado from "@/components/AvisoRegresoReservado";
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO("Paquetes migratorios a Europa desde $699 | Cityland"),
-  description: optimizarMetaDescriptionSEO("Viaja seguro desde Perú a Madrid, Barcelona, Milán, Roma, París y toda Europa desde $699 USD. Incluye pasaje de ida + boleto de regreso reservado para Migraciones + hotel + seguro 30.000€ + check-in 24h antes."),
+  description: optimizarMetaDescriptionSEO("Viaja seguro desde Perú a Madrid, Barcelona, Milán, Roma, París y toda Europa desde $699 USD. Incluye pasaje de ida + reserva de regreso + hotel + seguro 30.000€ + check-in 24h antes."),
   keywords: [
     "paquete migratorio españa desde peru",
     "paquete migratorio madrid 699",
@@ -56,7 +57,7 @@ export const metadata: Metadata = {
     title:
       "Paquetes Migratorios a España, Italia, Francia y Europa desde $699 USD | Cityland Travel",
     description:
-      "Pasaje de ida + boleto de regreso reservado para Migraciones + reserva de hotel + seguro Schengen 30.000€ + check-in 24h antes. Separa con el 50%.",
+      "Pasaje de ida + reserva de regreso + reserva de hotel + seguro Schengen 30.000€ + check-in 24h antes. Separa con el 50%.",
     images: [
       {
         url: `${URL_BASE_SEO}/images/destinos/madrid.webp`,
@@ -94,7 +95,7 @@ export default function PaquetesMigratoriosHubPage() {
     titulo:
       "Paquetes Migratorios a España, Italia, Francia y Europa desde $699 USD",
     descripcion:
-      "Centro oficial de Paquetes Migratorios de Cityland Travel (RUC 20614914239). Rutas y guías para viajar desde Perú con los 5 documentos que piden en el aeropuerto.",
+      "Centro oficial de Paquetes Migratorios de Cityland Travel (RUC 20614914239). Rutas y guías para viajar desde Perú con tu carpeta de viaje completa.",
     precioDesdeUSD: 699,
     cantidadOfertas: 4,
     destinoOPais: "Europa",
@@ -109,7 +110,7 @@ export default function PaquetesMigratoriosHubPage() {
     faqs: [
       {
         q: "¿Qué incluye el Paquete Migratorio a Europa?",
-        a: "Incluye los 5 documentos que te piden en el aeropuerto: 1) Pasaje de avión de ida emitido, 2) Boleto de regreso reservado en sistema para Migraciones, 3) Reserva de hotel confirmada, 4) Seguro médico de 30.000€ y 5) Check-in hecho 24h antes.",
+        a: "Incluye 5 cosas: 1) Pasaje de avión de ida emitido, 2) Reserva del vuelo de regreso (no es un boleto emitido), 3) Reserva de hotel confirmada, 4) Seguro médico de 30.000€ y 5) Check-in hecho 24h antes.",
       },
       {
         q: "¿Cuáles son los planes según la fecha de viaje?",
@@ -162,7 +163,7 @@ export default function PaquetesMigratoriosHubPage() {
               </h1>
 
               <p className="text-base sm:text-lg text-slate-200 leading-relaxed mb-7">
-                Viaja tranquilo desde Lima y provincias con toda tu carpeta lista para el aeropuerto y Migraciones, sin pagar el doble por un retorno cerrado que no vas a utilizar. Separa tu cupo con el{" "}
+                Viaja desde Lima y provincias con tu carpeta de viaje armada: pasaje de ida, reserva de regreso, hotel y seguro. Separa tu cupo con el{" "}
                 <strong className="text-white">50% de inicial</strong>.
               </p>
 
@@ -249,7 +250,7 @@ export default function PaquetesMigratoriosHubPage() {
                     <li className="py-2 flex items-center gap-2.5">
                       <span className="text-emerald-600 font-black">✓</span>
                       <span>
-                        <strong>2. Boleto de regreso reservado</strong> en sistema para Migraciones.
+                        <strong>2. Reserva del vuelo de regreso</strong> (no es un boleto emitido).
                       </span>
                     </li>
                     <li className="py-2 flex items-center gap-2.5">
@@ -271,6 +272,7 @@ export default function PaquetesMigratoriosHubPage() {
                       </span>
                     </li>
                   </ul>
+                  <AvisoRegresoReservado className="mt-4" />
                 </div>
               </div>
             </div>

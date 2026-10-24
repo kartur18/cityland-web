@@ -63,7 +63,7 @@ const FAQS_GUIA_EUROPA = [
   },
   {
     q: "¿Qué incluye exactamente la Carpeta Migratoria?",
-    a: "Incluye los 5 documentos que revisan en Lima y en Migraciones de Europa: 1) Tu pasaje de avión de ida emitido, 2) Tu boleto de regreso reservado en sistema 24h antes, 3) Tu reserva de hotel confirmada (o ajuste con tu Carta de Invitación), 4) Tu seguro médico Schengen de 30.000€ sin deducible, y 5) Tu check-in hecho 24h antes con guía paso a paso.",
+    a: "Incluye 5 cosas: 1) Tu pasaje de avión de ida emitido, 2) Una reserva del vuelo de regreso (no es un boleto emitido), 3) Tu reserva de hotel confirmada (o ajuste con tu Carta de Invitación), 4) Tu seguro médico Schengen de 30.000€ sin deducible, y 5) Tu check-in hecho 24h antes con guía paso a paso.",
   },
   {
     q: "¿Cuánto es la bolsa de viaje recomendada para entrar a Europa?",
@@ -103,7 +103,7 @@ export default function GuiaEuropaPage() {
                 </h1>
 
                 <p className="text-sm sm:text-base text-slate-200 leading-relaxed mb-6 max-w-2xl">
-                  Viaja con los <strong className="text-white">5 documentos obligatorios</strong> listos: pasaje de avión de ida emitido, boleto de regreso reservado para Migraciones, reserva de hotel confirmada, seguro médico de 30.000€ y check-in 24h antes.{" "}
+                  Viaja con tu <strong className="text-white">carpeta de viaje</strong> lista: pasaje de avión de ida emitido, reserva de regreso, reserva de hotel confirmada, seguro médico de 30.000€ y check-in 24h antes.{" "}
                   <strong className="text-amber-300">Separa hoy con el 50% de inicial.</strong>
                 </p>
 

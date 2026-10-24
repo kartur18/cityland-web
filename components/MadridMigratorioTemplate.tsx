@@ -12,6 +12,7 @@ import {
   precioMinimoVisible,
   type TipoProductoMadrid,
 } from "@/lib/tipo-producto-madrid";
+import AvisoRegresoReservado from "@/components/AvisoRegresoReservado";
 
 export interface PlanMadridReal {
   etiqueta: string;
@@ -263,7 +264,7 @@ export default function MadridMigratorioTemplate({
                       <li className="py-2 flex items-center gap-2.5">
                         <span className="text-emerald-600 font-black">✓</span>
                         <span>
-                          <strong>2. Boleto de regreso reservado</strong> en sistema para Migraciones.
+                          <strong>2. Reserva del vuelo de regreso</strong> (no es un boleto emitido).
                         </span>
                       </li>
                       <li className="py-2 flex items-center gap-2.5">
@@ -286,6 +287,7 @@ export default function MadridMigratorioTemplate({
                       </li>
                     </ul>
                     )}
+                    {esMigratorio && <AvisoRegresoReservado className="mt-4" />}
                   </div>
                 </div>
               </div>
@@ -400,7 +402,7 @@ export default function MadridMigratorioTemplate({
                   ¿Ya compraste tu pasaje de avión por tu cuenta?
                 </span>
                 <p className="text-xs sm:text-sm text-slate-200 mt-0.5">
-                  También armamos <strong>Solo tu Carpeta Migratoria para Madrid</strong> (boleto de regreso reservado + hotel + seguro 30.000€ + check-in) desde <strong className="text-emerald-400">${carpetaFmt} USD</strong>.
+                  También armamos <strong>Solo tu Carpeta Migratoria para Madrid</strong> (reserva de regreso + hotel + seguro 30.000€ + check-in) desde <strong className="text-emerald-400">${carpetaFmt} USD</strong>.
                 </p>
               </div>
               <a

@@ -182,16 +182,16 @@ function crearObjetoMadrid(params: {
         paso: "04",
         titulo: "Check-in y Carpeta Lista",
         detalle:
-          "Realizamos tu check-in, asignamos tu asiento y te entregamos tu carpeta impresa o digital lista para presentar en Lima y Madrid-Barajas.",
+          "Realizamos tu check-in, asignamos tu asiento y te entregamos tu carpeta impresa o digital.",
       },
     ],
     checklistBarajas: [
       {
-        requisito: "Sustento de Retorno del Espacio Schengen",
+        requisito: "Boleto de Regreso",
         detalleOficial:
-          "Tanto la aerolínea en Lima (Jorge Chávez) como el control en Madrid-Barajas verifican que cuentes con pasaje o reserva activa de retorno.",
+          "Si la policía lo pide, la norma española (Orden PRE/1282/2007) exige boleto de regreso a tu nombre, intransferible y con fecha fija.",
         comoTeAyudamos:
-          "Incluimos la reserva de retorno (MAD → LIM) activa y verificable en sistema durante tu ingreso, o boleto ida y vuelta cerrado.",
+          "Según lo que elijas: reserva de retorno MAD → LIM (no es un boleto emitido) o boleto de ida y vuelta emitido.",
       },
       {
         requisito: `Alojamiento en ${zonaOMunicipioMadrid} o Carta de Invitación`,
@@ -208,11 +208,11 @@ function crearObjetoMadrid(params: {
           "Calibramos los días de tu estadía (ej. 9 a 15 días) para que tu bolsa de viaje sea 100% coherente con tu presupuesto.",
       },
       {
-        requisito: "Seguro Médico Schengen de 30.000€ sin Franquicia",
+        requisito: "Seguro Médico de Viaje (recomendable)",
         detalleOficial:
-          "Cobertura médica mínima de 30.000 euros con repatriación y 0€ de deducible válida en toda España y Europa Schengen.",
+          "Para peruanos que entran sin visa, el Consulado de España en Lima lo considera recomendable, no obligatorio. Francia sí lo exige.",
         comoTeAyudamos:
-          "Incluimos tu póliza oficial en español lista para presentar en el control migratorio de Barajas.",
+          "Incluimos tu póliza de 30.000 € en español.",
       },
     ],
     faqs: [...faqsExtra, ...textos.faqs],

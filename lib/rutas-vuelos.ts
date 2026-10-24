@@ -98,7 +98,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
           titulo: "Paquete turístico Lima–Madrid: vuelo, hotel y seguro",
           pais: "España",
           filtro: "paquete",
-          subtitulo: "Para turismo o visita familiar · Todo listo para Barajas",
+          subtitulo: "Para turismo o visita familiar · Vuelo, hotel y seguro",
           precioPrincipal: "$1,290",
           precioSecundario: "$645",
           notaPrecio: "Paquete turístico · Incluye impuestos (Verif. Oct 2026)",

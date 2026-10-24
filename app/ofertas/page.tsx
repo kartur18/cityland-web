@@ -41,7 +41,7 @@ const CONFIG_OFERTAS: ConfiguracionLandingAerolinea = {
     etiquetaDer: "Carpeta Completa",
     img: "/images/espana/gran-via-metropolis.jpg",
     alt: "Oferta Paquete Migratorio a España y Europa desde $699 — Cityland Travel",
-    sobretitulo: "Pasaje de Ida + Boleto de Regreso Reservado + Hotel + Seguro 30.000€",
+    sobretitulo: "Pasaje de Ida + Reserva de Regreso + Hotel + Seguro 30.000€",
     titulo: "Paquete Migratorio a España, Italia y Francia",
     labelPrecio: `Solo ida: España desde ${formatoUSD(tarifasMigratorio("España").promo)} · Italia y Francia desde ${formatoUSD(TARIFAS_ITALIA.promo)}`,
     precio: "$699",
@@ -76,7 +76,7 @@ const CONFIG_OFERTAS: ConfiguracionLandingAerolinea = {
       img: "/images/espana/puerta-de-alcala.jpg",
       alt: "Oferta Madrid y Barcelona desde Lima",
       resumenCorto:
-        "Incluye pasaje de avión de ida emitido, boleto de regreso reservado 24h antes para Migraciones, reserva de hotel confirmada, seguro Schengen de 30.000€ y check-in.",
+        "Incluye pasaje de avión de ida emitido, reserva de regreso, reserva de hotel confirmada, seguro Schengen de 30.000€ y check-in.",
       checks: [
         "Pasaje de ida + Retorno reservado",
         "Seguro médico Schengen 30.000€",
@@ -99,7 +99,7 @@ const CONFIG_OFERTAS: ConfiguracionLandingAerolinea = {
       img: "/images/destinos/milan.webp",
       alt: "Oferta Paquete Migratorio a Italia desde Lima",
       resumenCorto:
-        "Vuelo hacia Milán, Roma, Turín, Florencia o Bolonia con retorno reservado en sistema, hotel confirmado o formato Dichiarazione di Ospitalità y seguro 30.000€.",
+        "Vuelo hacia Milán, Roma, Turín, Florencia o Bolonia con reserva de regreso, hotel confirmado o formato Dichiarazione di Ospitalità y seguro 30.000€.",
       checks: [
         "Pasaje de ida + Retorno reservado",
         "Hotel confirmado o guía Ospitalità 48h",

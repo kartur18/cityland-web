@@ -13,6 +13,7 @@ import {
 } from "@/lib/seo-arquitectura";
 import { formatoUSD } from "@/lib/formato-precio";
 import { inicialSeparacion, tarifasMigratorio } from "@/lib/precios-migratorio";
+import AvisoRegresoReservado from "@/components/AvisoRegresoReservado";
 
 const TARIFAS = tarifasMigratorio("Italia");
 const DESDE = formatoUSD(TARIFAS.promo);
@@ -20,7 +21,7 @@ const DESDE = formatoUSD(TARIFAS.promo);
 const rawTitle =
   `Paquetes Migratorios a Italia (Milán, Roma, Turín, Florencia) Desde ${DESDE} USD | Cityland Travel`;
 const rawDesc =
-  "Paquetes migratorios a Milán, Roma, Turín, Florencia y Bolonia desde Lima: pasaje de ida + boleto de regreso reservado para Migraciones + hotel o Lettera di Invito + Seguro 30.000€ + check-in.";
+  "Paquetes migratorios a Milán, Roma, Turín, Florencia y Bolonia desde Lima: pasaje de ida + reserva de regreso + hotel o Lettera di Invito + Seguro 30.000€ + check-in.";
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO(rawTitle),
@@ -158,7 +159,7 @@ const CIUDADES_ITALIA = [
 const FAQS_ITALIA = [
   {
     q: "¿Qué incluye el Paquete Migratorio a Italia?",
-    a: "Incluye los 5 documentos que te piden en Lima y al ingresar a Europa: 1) Pasaje de avión de ida emitido, 2) Boleto de regreso reservado en sistema para Migraciones, 3) Reserva de hotel confirmada o cuadre con tu Lettera di Invito, 4) Seguro médico Schengen de 30.000€ y 5) Check-in hecho 24h antes.",
+    a: "Incluye 5 cosas: 1) Pasaje de avión de ida emitido, 2) Reserva del vuelo de regreso (no es un boleto emitido), 3) Reserva de hotel confirmada o cuadre con tu Lettera di Invito, 4) Seguro médico Schengen de 30.000€ y 5) Check-in hecho 24h antes.",
   },
   {
     q: "¿Cómo funciona la Lettera di Invito y la declaración de 48 horas en Italia?",
@@ -195,7 +196,7 @@ export default function ItaliaLandingPage() {
               </h1>
 
               <p className="text-base sm:text-lg text-slate-200 leading-relaxed mb-7">
-                Viaja a Milán, Roma, Turín, Florencia o Bolonia con tus 5 documentos en regla para el aeropuerto y Migraciones, sin gastar el doble en un regreso cerrado. Separa hoy tu cupo con el{" "}
+                Viaja a Milán, Roma, Turín, Florencia o Bolonia con tu carpeta de viaje armada: pasaje de ida, reserva de regreso, hotel y seguro. Separa hoy tu cupo con el{" "}
                 <strong className="text-white">50% de inicial</strong>.
               </p>
 
@@ -264,7 +265,7 @@ export default function ItaliaLandingPage() {
                     <li className="py-2 flex items-center gap-2.5">
                       <span className="text-emerald-600 font-black">✓</span>
                       <span>
-                        <strong>2. Boleto de regreso reservado</strong> en sistema para Migraciones.
+                        <strong>2. Reserva del vuelo de regreso</strong> (no es un boleto emitido).
                       </span>
                     </li>
                     <li className="py-2 flex items-center gap-2.5">
@@ -286,6 +287,7 @@ export default function ItaliaLandingPage() {
                       </span>
                     </li>
                   </ul>
+                  <AvisoRegresoReservado className="mt-4" />
                 </div>
               </div>
             </div>
