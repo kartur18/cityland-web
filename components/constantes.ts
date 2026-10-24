@@ -1841,6 +1841,170 @@ export const BLOG_POSTS: BlogPost[] = [
 </ul>
 <p>Los precios de pasaje son de referencia al 24 de octubre de 2026 y no incluyen alojamiento ni seguro.</p>`,
   },
+  {
+    slug: "viajar-a-espana-por-primera-vez-desde-peru",
+    titulo: "Viajar a España por primera vez desde Perú: guía práctica 2026",
+    tituloSeo: "Viajar a España por primera vez desde Perú",
+    desc: "Qué llevar y qué no en la maleta, cuánto efectivo puedes llevar, cómo ir de Barajas al centro de Madrid y con cuánto, la diferencia de hora y los enchufes.",
+    categoria: "Europa",
+    catColor: "bg-red-500",
+    fecha: "Actualizado octubre 2026",
+    lectura: "6 min",
+    imagen: "/images/espana/cibeles.jpg",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>La respuesta corta</h2>
+<ul>
+<li>Documentos: pasaporte, boleto de regreso, alojamiento y dinero suficiente. Te los explicamos en los <a href="/viajes/requisitos-viajar-a-espana-desde-peru">requisitos para viajar a España</a>.</li>
+<li>En la maleta no puedes llevar carne ni productos lácteos.</li>
+<li>Si llevas 10.000 € o más en efectivo, tienes que declararlo en la aduana.</li>
+<li>Del aeropuerto al centro de Madrid: desde unos 2 € en tren hasta 33 € en taxi.</li>
+<li>Madrid va 6 horas adelante de Lima en invierno y 7 en verano.</li>
+</ul>
+
+<h2>Antes de salir de Lima</h2>
+<h3>Lo que no puedes llevar en la maleta</h3>
+<p>Si vienes de un país fuera de la Unión Europea, como el Perú, <strong>no puedes entrar carne ni productos lácteos</strong> (queso, leche, embutidos). La excepción es hasta 2 kg de leche en polvo para bebés, comida infantil o alimentos especiales por razones médicas, de marca, en su envase cerrado y que no necesiten refrigeración. Las frutas, verduras y plantas necesitan un certificado fitosanitario.</p>
+
+<h3>Cuánto efectivo puedes llevar</h3>
+<p>Puedes llevar el dinero que quieras, pero si son <strong>10.000 € o más</strong> (o lo mismo en otra moneda) tienes que declararlo en la aduana al entrar. El límite es por persona y por viaje. En España se declara con el modelo E1, y no declararlo es una infracción grave con multa.</p>
+<p>Recuerda que en el control migratorio te pueden pedir que demuestres la <a href="/blog/cuanto-dinero-llevar-espana-bolsa-de-viaje">bolsa de viaje</a>: 122,10 € por día, con un mínimo de 1.098,90 €.</p>
+
+<h3>Lo que puedes llevar sin pagar impuestos</h3>
+<div class="tabla-guia"><table>
+<thead><tr><th>Qué</th><th>Hasta cuánto (por persona, llegando en avión)</th></tr></thead>
+<tbody>
+<tr><td>Compras y regalos</td><td>430 € en total (150 € si es menor de 15 años)</td></tr>
+<tr><td>Tabaco</td><td>200 cigarrillos, o 100 puritos, o 50 puros, o 250 g de tabaco</td></tr>
+<tr><td>Licores de más de 22 %</td><td>1 litro (o 2 litros de bebidas de menos de 22 %)</td></tr>
+<tr><td>Vino y cerveza</td><td>4 litros de vino y 16 litros de cerveza</td></tr>
+</tbody>
+</table></div>
+<p>Los menores de 17 años no tienen franquicia de tabaco ni de alcohol. Los medicamentos de uso personal no cuentan.</p>
+
+<h2>Al llegar a Madrid-Barajas</h2>
+<p>Primero pasas el control de pasaportes: te toman las huellas y una foto, y te pueden hacer preguntas sobre tu viaje. Te lo explicamos en <a href="/blog/que-preguntan-en-migraciones-espana-barajas">qué te preguntan en migraciones</a>. Después recoges tu maleta y pasas la aduana.</p>
+
+<h3>Cómo ir del aeropuerto al centro de Madrid</h3>
+<div class="tabla-guia"><table>
+<thead><tr><th>Opción</th><th>Precio</th><th>Qué saber</th></tr></thead>
+<tbody>
+<tr><td>Metro, línea 8</td><td>Billete de 1,50 € a 2,00 € más 3,00 € de suplemento de aeropuerto</td><td>Sale de las terminales T1-T2-T3 y T4 hacia Nuevos Ministerios.</td></tr>
+<tr><td>Tren de Cercanías C1</td><td>De 1,70 € a 2,60 € según las zonas</td><td>Sale de la T4 hacia Chamartín, Atocha y Príncipe Pío.</td></tr>
+<tr><td>Bus Exprés Aeropuerto (línea 203)</td><td>5 €</td><td>Funciona las 24 horas. Para en T4, T2, T1, O'Donnell, Cibeles y Atocha. Pagas a bordo en efectivo o con tarjeta.</td></tr>
+<tr><td>Taxi</td><td>33 € de tarifa fija</td><td>Para ir del aeropuerto a cualquier punto dentro de la M-30 (el centro de Madrid), a cualquier hora y sin recargos.</td></tr>
+</tbody>
+</table></div>
+
+<h2>Ya en España</h2>
+<ul>
+<li><strong>La hora:</strong> desde el 25 de octubre de 2026 Madrid va 6 horas adelante de Lima. Desde el 28 de marzo de 2027, cuando empieza el horario de verano, van 7 horas adelante.</li>
+<li><strong>Los enchufes:</strong> son de dos clavijas redondas (tipo F) y la corriente es de 230 V y 50 Hz; en el Perú es de 220 V y 60 Hz. La mayoría de cargadores de celular y laptop funcionan con las dos: revisa la etiqueta y lleva un adaptador.</li>
+<li><strong>Emergencias:</strong> llama al 112, gratis desde cualquier teléfono.</li>
+<li><strong>Consulado General del Perú en Madrid:</strong> Paseo del Pintor Rosales 30, Madrid.</li>
+</ul>
+
+<h2>Arma tu viaje</h2>
+<ul>
+<li><a href="/vuelos/lima-madrid">Pasajes Lima–Madrid ida y vuelta</a></li>
+<li><a href="/blog/vuelos-directos-lima-madrid-comparativa-aerolineas">Qué aerolíneas vuelan directo y en qué terminal llegas</a></li>
+<li><a href="/blog/cuanto-cuesta-viajar-a-espana-desde-peru">Cuánto cuesta viajar a España desde Perú</a></li>
+</ul>
+
+<h2>Fuentes oficiales</h2>
+<ul>
+<li><a href="https://europa.eu/youreurope/citizens/travel/carry/meat-dairy-animal/index_es.htm" target="_blank" rel="noopener">Tu Europa (UE): carne, lácteos y otros alimentos</a></li>
+<li><a href="https://sede.agenciatributaria.gob.es/Sede/viajeros-trabajadores-desplazados-fronterizos/viajeros/medios-pago.html" target="_blank" rel="noopener">Agencia Tributaria: declarar efectivo</a></li>
+<li><a href="https://sede.agenciatributaria.gob.es/Sede/viajeros-trabajadores-desplazados-fronterizos/viajeros/franquicias-tabaco-alcohol-otras-mercancias.html" target="_blank" rel="noopener">Agencia Tributaria: franquicias para viajeros</a></li>
+<li><a href="https://crtm.es/billetes-transporte-publico-aeropuerto-madrid" target="_blank" rel="noopener">Consorcio de Transportes de Madrid: billetes al aeropuerto</a></li>
+<li><a href="https://www.aena.es/en/adolfo-suarez-madrid-barajas/getting-there/trains.html" target="_blank" rel="noopener">Aena: tren al aeropuerto</a></li>
+<li><a href="https://www.emtmadrid.es/Aeropuerto" target="_blank" rel="noopener">EMT Madrid: Exprés Aeropuerto</a></li>
+<li><a href="https://www.aena.es/en/adolfo-suarez-madrid-barajas/getting-there/taxi.html" target="_blank" rel="noopener">Aena: taxi y tarifa fija</a></li>
+<li><a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2022-4026" target="_blank" rel="noopener">BOE: cambio de hora</a></li>
+<li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2002-18099" target="_blank" rel="noopener">BOE: tensión de la red eléctrica</a></li>
+<li><a href="https://www.spain.info/es/info/embajada-republica-peru/" target="_blank" rel="noopener">Spain.info: Consulado y Embajada del Perú</a></li>
+</ul>
+<p>Precios y normas revisados el 24 de octubre de 2026. Pueden cambiar.</p>`,
+  },
+  {
+    slug: "visa-de-estudios-espana-desde-peru",
+    titulo: "Visa de estudios para España desde Perú 2026: requisitos, costo y plazos",
+    tituloSeo: "Visa de estudios para España desde Perú 2026",
+    desc: "Cuándo necesitas visa para estudiar en España, qué documentos pide el Consulado en Lima, cuánto dinero acreditar (600 € al mes), dónde se tramita y si puedes trabajar.",
+    categoria: "Visas",
+    catColor: "bg-blue-700",
+    fecha: "Actualizado octubre 2026",
+    lectura: "7 min",
+    imagen: "/images/espana/palacio-real.jpg",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>La respuesta corta</h2>
+<ul>
+<li>Necesitas visa de estudios si vas a estudiar <strong>más de 90 días</strong>. Hasta 90 días entras sin visa, como turista.</li>
+<li>Se tramita en Lima en el centro <strong>BLS International</strong>, con cita que sacas en la web de BLS, al menos <strong>2 meses antes</strong> de que empiecen tus clases.</li>
+<li>La tasa del Consulado es de <strong>352,10 soles</strong>, en efectivo. BLS cobra además su tarifa de servicio.</li>
+<li>Tienes que demostrar <strong>600 € por cada mes</strong> de estudios y tener un seguro médico sin copagos.</li>
+<li>Si vas a estudios superiores, puedes trabajar hasta <strong>30 horas por semana</strong>.</li>
+</ul>
+
+<h2>¿Qué estudios dan visa?</h2>
+<p>El reglamento de extranjería (Real Decreto 1155/2024, artículo 52) da visa de estudios para:</p>
+<ul>
+<li>Estudios superiores a tiempo completo que dan un título reconocido: carrera, máster o un título propio de una universidad, y también el máster de Formación Profesional.</li>
+<li>Secundaria postobligatoria a tiempo completo, incluidos los ciclos de grado medio.</li>
+<li>Programas de movilidad de alumnos y de voluntariado.</li>
+<li>Algunas actividades formativas, como cursos presenciales de castellano en Escuelas Oficiales de Idiomas o en centros acreditados por el Instituto Cervantes.</li>
+</ul>
+<p>«Tiempo completo» significa estar matriculado en al menos el 90 % de los créditos o del programa.</p>
+
+<h2>Los requisitos del Consulado en Lima</h2>
+<div class="tabla-guia"><table>
+<thead><tr><th>Documento</th><th>Qué tener en cuenta</th></tr></thead>
+<tbody>
+<tr><td>Formulario de visado nacional</td><td>Lleno y firmado. Si eres menor de edad, lo firma tu representante.</td></tr>
+<tr><td>Pasaporte</td><td>Con al menos 1 año de vigencia y 2 páginas en blanco. Lleva también tu DNI o carné de extranjería.</td></tr>
+<tr><td>Carta de admisión</td><td>Del centro de estudios, con el curso, la duración, las horas, las fechas, el costo y lo que ya pagaste.</td></tr>
+<tr><td>Dinero</td><td>600 € por cada mes (el 100 % del IPREM). Se demuestra con los estados de cuenta originales de los últimos 6 meses, firmados y sellados por el banco.</td></tr>
+<tr><td>Seguro médico</td><td>Un seguro de enfermedad, no de viaje, de una aseguradora autorizada en España, sin carencias, copagos ni límite de cobertura, por toda tu estancia.</td></tr>
+<tr><td>Certificado médico</td><td>De que no tienes enfermedades graves para la salud pública, con menos de 3 meses, y solo de las clínicas que acepta el Consulado.</td></tr>
+<tr><td>Antecedentes penales</td><td>Si eres mayor de edad y te quedas más de 180 días: de los países donde viviste los últimos 5 años, con menos de 3 meses y apostillado.</td></tr>
+</tbody>
+</table></div>
+<p>Todos los documentos peruanos van apostillados y, si no están en español, traducidos. Si viajan familiares contigo, por el primero se suman 450 € al mes y por cada uno de los demás, 300 € al mes.</p>
+
+<h2>Dónde y cómo se presenta</h2>
+<ul>
+<li><strong>Dónde:</strong> no en el Consulado, sino en BLS International, Av. Javier Prado Este 560, oficina 2201, San Isidro.</li>
+<li><strong>La cita:</strong> se saca solo en la web de BLS, y el Consulado advierte que es la única vía. Desde el 1 de junio de 2026 tienes que llevar impresa la carta de tu cita.</li>
+<li><strong>Quién va:</strong> todos los solicitantes en persona, incluidos los menores de edad.</li>
+<li><strong>Cuándo:</strong> al menos 2 meses antes de que empiecen tus estudios. De junio a septiembre las citas se llenan rápido.</li>
+<li><strong>Cuánto demora:</strong> el Consulado resuelve en un plazo máximo de un mes desde que entregas tus documentos.</li>
+<li><strong>La tasa:</strong> 352,10 soles en efectivo y con el monto exacto (no reciben billetes de 200). No se devuelve si te niegan la visa.</li>
+</ul>
+
+<h2>Al llegar a España</h2>
+<p>Si te quedas más de 6 meses, tienes que pedir tu <strong>Tarjeta de Identidad de Extranjero (TIE)</strong> en persona en la Policía dentro del mes siguiente a tu llegada.</p>
+
+<h2>¿Puedo trabajar mientras estudio?</h2>
+<p>Si vas a estudios superiores, sí: tu autorización de estudios ya te permite trabajar, sin otro trámite, hasta <strong>30 horas por semana</strong> y en la misma comunidad autónoma donde estudias. Si pasas de ese límite, pierdes la autorización. Para otros estudios tienes que pedir un permiso de trabajo aparte. Las prácticas que son parte de tu carrera no necesitan permiso.</p>
+
+<h2>¿Puede ir mi familia?</h2>
+<p>Solo si vas a estudios superiores. Pueden ir tu cónyuge o pareja registrada y tus hijos menores de edad, cada uno con su dinero, su seguro y sus documentos. Tus familiares no pueden trabajar en España con esa visa.</p>
+
+<h2>Antes de viajar, revisa también</h2>
+<ul>
+<li><a href="/blog/viajar-a-espana-por-primera-vez-desde-peru">Tu primer viaje a España: qué llevar y cómo llegar del aeropuerto</a></li>
+<li><a href="/blog/vuelos-directos-lima-madrid-comparativa-aerolineas">Vuelos directos Lima–Madrid</a></li>
+<li><a href="/vuelos/lima-madrid">Pasajes Lima–Madrid</a></li>
+</ul>
+
+<h2>Fuentes oficiales</h2>
+<ul>
+<li><a href="https://www.exteriores.gob.es/Consulados/lima/es/ServiciosConsulares/Paginas/index.aspx?scca=Visados&amp;scco=Per%C3%BA&amp;scd=174&amp;scs=Visados+Nacionales+-+Visado+de+estudios" target="_blank" rel="noopener">Consulado General de España en Lima: visado de estudios</a></li>
+<li><a href="https://www.exteriores.gob.es/Consulados/lima/es/Comunicacion/Noticias/Paginas/Articulos/Informaci%C3%B3n-importante-sobre-la-temporada-de-visados-de-estudios-2026.aspx" target="_blank" rel="noopener">Consulado en Lima: temporada de visados de estudios 2026</a></li>
+<li><a href="https://www.exteriores.gob.es/DocumentosAuxiliaresSC/Per%C3%BA/LIMA%20(C)/Tasas%20consulares%202024.pdf" target="_blank" rel="noopener">Consulado en Lima: tasas consulares 2026</a></li>
+<li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099" target="_blank" rel="noopener">Real Decreto 1155/2024, reglamento de extranjería (BOE)</a></li>
+</ul>
+<p>Revisado el 24 de octubre de 2026. La decisión es del Consulado y los requisitos pueden cambiar: confírmalos antes de presentar.</p>`,
+  },
 ];
 
 

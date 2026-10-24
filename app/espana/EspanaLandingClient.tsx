@@ -10,6 +10,7 @@ import FlagIcon from "@/components/icons/FlagIcon";
 import { textoPrecio } from "@/lib/formato-precio";
 import NotaPrecio from "@/components/NotaPrecio";
 import AvisoRegresoReservado from "@/components/AvisoRegresoReservado";
+import GuiasEspana from "@/components/GuiasEspana";
 
 export const PAQUETES_ESPANA = [
   {
@@ -545,6 +546,8 @@ export default function EspanaLandingClient() {
           </div>
         </div>
       </section>
+
+      <GuiasEspana />
 
       {/* 5. PREGUNTAS FRECUENTES */}
       <section className="py-14 sm:py-20 bg-white">

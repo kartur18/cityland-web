@@ -17,6 +17,7 @@ import {
   optimizarMetaTitleSEO,
   optimizarMetaDescriptionSEO,
 } from "@/lib/seo-arquitectura";
+import GuiasEspana from "@/components/GuiasEspana";
 
 export const revalidate = 86400;
 export const dynamicParams = true;
@@ -169,6 +170,8 @@ export default async function RutaVueloPage({ params }: Props) {
             </div>
           </section>
         )}
+
+        {paisDestino === "España" && <GuiasEspana />}
 
         <GuiaRapidaLanding guia={guia} />
 
