@@ -376,7 +376,7 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
       "Seguro Schengen de 30.000€ y preparación de entrevista migratoria",
     ],
     descripcion:
-      "Viaja seguro a París, Lyon, Marsella o cualquier ciudad de Francia y Europa con tu carpeta migratoria completa: pasaje emitido, retorno reservado para Migraciones, hotel confirmado y seguro médico obligatorio.",
+      "Viaja seguro a París, Lyon, Marsella o cualquier ciudad de Francia y Europa con tu carpeta migratoria completa: pasaje emitido, retorno reservado para Migraciones, hotel confirmado y seguro médico.",
     itinerario: [
       `Paso 1: Reserva tu paquete con el 50% de inicial (${formatoUSD(inicialSeparacion(TARIFAS_FRANCIA.promo))} USD en el Plan Promo de ${formatoUSD(TARIFAS_FRANCIA.promo)}).`,
       "Paso 2: Emisión de boleto aéreo, seguro Schengen 30.000€ y reserva de hotel confirmada.",
