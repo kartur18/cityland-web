@@ -1,28 +1,58 @@
-import type { BlogPost } from "@/components/constantes";
+import { PRECIO_IDA_VUELTA_MADRID_DESDE, type BlogPost } from "@/components/constantes";
 
 export const BLOG_POSTS_MASIVOS: BlogPost[] = [
   {
     slug: "vuelos-directos-lima-madrid-comparativa-aerolineas",
-    titulo: "Iberia, Air Europa, Plus Ultra o LATAM: ¿Cuál conviene para volar de Lima a Madrid?",
-    desc: "Comparativa de horarios, franquicia de maletas de 23 kg, asientos y tarifas en dólares para elegir tu vuelo directo entre Lima y Madrid-Barajas.",
+    titulo: "Vuelos directos de Lima a Madrid: qué aerolíneas vuelan y en qué terminal llegas",
+    tituloSeo: "Vuelos directos Lima–Madrid: aerolíneas 2026",
+    desc: "Iberia, LATAM, Air Europa y Plus Ultra vuelan sin escalas entre Lima y Madrid. En qué terminal de Barajas opera cada una, cuánto dura el vuelo y cómo elegir.",
     categoria: "Europa",
     catColor: "bg-red-600",
-    fecha: "Actualizado 2026",
-    lectura: "6 min",
-    imagen: "/images/espana/gran-via-metropolis.jpg",
+    fecha: "Actualizado octubre 2026",
+    lectura: "4 min",
+    imagen: "/images/espana/barajas.jpg",
     autor: "Equipo Cityland Travel",
-    contenido: `<h2>Las 4 aerolíneas con vuelos directos de Lima a Madrid</h2>
-<p>La ruta transatlántica entre el Aeropuerto Internacional Jorge Chávez (LIM) y el Aeropuerto Adolfo Suárez Madrid-Barajas (MAD) tiene una duración aproximada de 11 horas y 45 minutos sin escalas. Actualmente cuatro compañías aéreas operan vuelos directos desde Lima:</p>
-<h3>1. Iberia (Terminales T4 y T4S en Madrid)</h3>
-<p>Es la aerolínea de bandera española y ofrece hasta dos frecuencias diarias en temporada alta operadas con aviones Airbus A350 de última generación. Es la mejor alternativa si necesitas conectar el mismo día hacia Barcelona, Bilbao, Valencia, Roma, Milán o París con tu equipaje facturado hasta el destino final.</p>
-<h3>2. Air Europa (Terminal T1 en Madrid)</h3>
-<p>Opera vuelos nocturnos desde Lima en flota Boeing 787 Dreamliner. Destaca por sus tarifas competitivas y por aterrizar temprano en la mañana en Madrid, facilitando enlaces rápidos hacia las principales capitales europeas.</p>
-<h3>3. Plus Ultra Líneas Aéreas</h3>
-<p>Es la aerolínea preferida por quienes viajan con bastante equipaje o por largas temporadas, ya que sus promociones suelen incluir <strong>1 o hasta 2 maletas de 23 kg en bodega</strong> más equipaje de cabina de 10 kg a precios muy accesibles.</p>
-<h3>4. LATAM Airlines</h3>
-<p>Ofrece vuelos directos operados en Boeing 787 con entretenimiento a bordo en pantallas individuales y acumulación de millas LATAM Pass, además de excelentes conexiones desde provincias del Perú (Arequipa, Cusco, Trujillo, Piura y Chiclayo).</p>
-<h3>Tarifas referenciales y cómo congelar tu cupo</h3>
-<p>En Cityland Travel contamos con tarifas de agencia <strong>Desde $1,290 USD</strong> (ida y vuelta o paquetes con carpeta migratoria completa). Puedes separar tu asiento con el 50% de inicial y completar el saldo en cuotas programadas antes de tu viaje.</p>`,
+    contenido: `<h2>La respuesta corta</h2>
+<p>Cuatro aerolíneas vuelan sin escalas entre Lima (LIM) y Madrid-Barajas (MAD): <strong>Iberia, LATAM, Air Europa y Plus Ultra</strong>. El vuelo dura alrededor de 12 horas. Con nosotros, el pasaje de ida y vuelta Lima–Madrid sale <strong>desde US$ ${PRECIO_IDA_VUELTA_MADRID_DESDE.toLocaleString("en-US")}</strong> por persona, según la fecha y los asientos disponibles.</p>
+
+<h2>En qué terminal de Barajas opera cada aerolínea</h2>
+<p>Barajas es grande y sus terminales están separadas. Saber cuál es la tuya te ahorra tiempo al volver y si tienes que conectar.</p>
+<div class="tabla-guia"><table>
+<thead><tr><th>Aerolínea</th><th>Terminal en Madrid-Barajas</th></tr></thead>
+<tbody>
+<tr><td>Iberia</td><td>T4</td></tr>
+<tr><td>LATAM</td><td>T4 (las conexiones salen de la T4 Satélite)</td></tr>
+<tr><td>Plus Ultra</td><td>T4 (llega a la T4 Satélite)</td></tr>
+<tr><td>Air Europa</td><td>T1 para vuelos fuera del espacio Schengen, como Lima</td></tr>
+</tbody>
+</table></div>
+<p>Datos de Aena, el operador del aeropuerto, y de Plus Ultra. La terminal puede cambiar: revisa tu boleto antes de viajar.</p>
+
+<h2>¿Cuál conviene?</h2>
+<ul>
+<li><strong>Por precio:</strong> cambia cada semana según la fecha. Lo mejor es comparar las cuatro para tus días exactos; eso hacemos al cotizarte.</li>
+<li><strong>Por equipaje:</strong> cada aerolínea y cada tarifa incluye maletas distintas. Si viajas con una o dos maletas de 23 kg, pídelo al cotizar para comparar el precio final.</li>
+<li><strong>Por horario:</strong> los horarios cambian dos veces al año, cuando España cambia de hora. Plus Ultra, por ejemplo, publicó para el verano europeo de 2026 su vuelo PU 302 con salida de Lima a las 18:10 y llegada a Madrid a las 13:50 del día siguiente.</li>
+<li><strong>Si sigues a otra ciudad:</strong> conviene un solo boleto desde Lima hasta tu destino final, así la aerolínea responde si pierdes la conexión. Lo explicamos en <a href="/blog/como-viajar-de-provincias-peru-a-espana-boleto-unico">viajar con un solo boleto</a>.</li>
+</ul>
+
+<h2>Antes de comprar tu pasaje</h2>
+<ul>
+<li><a href="/viajes/requisitos-viajar-a-espana-desde-peru">Requisitos para viajar a España desde Perú</a></li>
+<li><a href="/blog/que-preguntan-en-migraciones-espana-barajas">Qué te preguntan en migraciones al llegar a España</a></li>
+<li><a href="/blog/cuanto-cuesta-viajar-a-espana-desde-peru">Cuánto cuesta viajar a España desde Perú</a></li>
+<li><a href="/vuelos/lima-madrid">Pasajes Lima–Madrid ida y vuelta</a></li>
+</ul>
+
+<h2>Fuentes</h2>
+<ul>
+<li><a href="https://www.aena.es/es/adolfo-suarez-madrid-barajas/aerolineas-y-destinos/destinos-aeropuerto.html" target="_blank" rel="noopener">Aena: destinos de Madrid-Barajas</a></li>
+<li><a href="https://www.aena.es/es/madrid-barajas-adolfo-suarez/aerolineas/iberia.html" target="_blank" rel="noopener">Aena: Iberia en Barajas</a></li>
+<li><a href="https://www.aena.es/es/madrid-barajas-adolfo-suarez/aerolineas/latam-peru.html" target="_blank" rel="noopener">Aena: LATAM Perú en Barajas</a></li>
+<li><a href="https://www.aena.es/es/madrid-barajas-adolfo-suarez/aerolineas/air-europa.html" target="_blank" rel="noopener">Aena: Air Europa en Barajas</a></li>
+<li><a href="https://www.plusultra.com/es-es/informacion/horario-vuelos/" target="_blank" rel="noopener">Plus Ultra: horario de vuelos</a></li>
+</ul>
+<p>Información revisada el 24 de octubre de 2026.</p>`,
   },
   {
     slug: "como-viajar-de-provincias-peru-a-espana-boleto-unico",
