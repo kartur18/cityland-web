@@ -100,6 +100,12 @@ export function guiaColegios(p: Precios): GuiaServicio {
     ],
     enlaces: [
       { texto: "Consejos para el viaje de promoción", href: "/blog/viajes-promocion-escolar-cusco-caribe-consejos" },
+      { texto: "Promoción a Punta Cana", href: "/ofertas/paquetes-viaje-de-promocion-escolar-punta-cana" },
+      { texto: "Promoción a Cusco y Machu Picchu", href: "/ofertas/paquetes-viaje-de-promocion-escolar-cusco-machu-picchu" },
+      { texto: "Promoción a Punta Sal", href: "/ofertas/paquetes-viaje-de-promocion-decameron-punta-sal" },
+      { texto: "Promoción a Cartagena y San Andrés", href: "/ofertas/paquetes-viaje-de-promocion-cartagena-san-andres" },
+      { texto: "Promoción a Tarapoto", href: "/ofertas/paquetes-viaje-de-promocion-escolar-tarapoto" },
+      { texto: "Promoción a Cancún", href: "/ofertas/paquetes-viaje-de-promocion-escolar-cancun" },
       { texto: "Tarapoto", href: "/destinos/tarapoto-selva" },
       { texto: "Oxapampa y Pozuzo", href: "/destinos/oxapampa-pozuzo-villa-rica-selva-central" },
       { texto: "Paracas, Ica y Huacachina", href: "/destinos/paracas-ica-huacachina-nazca" },
