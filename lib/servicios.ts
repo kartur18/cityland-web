@@ -279,4 +279,117 @@ export const SERVICIOS: Readonly<Record<string, ServicioCityland>> = {
       { texto: "Traslados", href: "/traslados" },
     ],
   },
+  fullDays: {
+    ruta: "/full-days",
+    h1: "Full days desde Lima: paseos de un día",
+    tituloSeo: "Full days desde Lima: paseos de un día",
+    descripcion:
+      "Paseos de un día saliendo de Lima: Paracas e Islas Ballestas, Huacachina, Lunahuaná, Churín y Caral. Para familias, amigos, colegios y empresas. Cotiza por WhatsApp.",
+    intro:
+      "¿Tienes un sábado o un feriado libre? Un full day es salir temprano de Lima, pasear todo el día y volver en la noche. Te cotizamos el paseo con transporte, guía y entradas, y te decimos por escrito lo que incluye antes de pagar.",
+    queCotizamos: [
+      { titulo: "Paracas e Islas Ballestas", detalle: "Lancha a las islas para ver lobos marinos y pingüinos, y la Reserva de Paracas." },
+      { titulo: "Ica y Huacachina", detalle: "El oasis, paseo en tubulares por las dunas, sandboard y visita a bodegas de pisco." },
+      { titulo: "Lunahuaná", detalle: "Canotaje en el río Cañete, bodegas de vino y pisco, y comida campestre." },
+      { titulo: "Churín y Caral", detalle: "Baños termales en Churín o la ciudad más antigua de América en Caral." },
+      { titulo: "Grupos, colegios y empresas", detalle: "Full days para promociones, aniversarios y días de integración, con una sola cotización." },
+    ],
+    pasos: [
+      "Nos escribes el paseo que quieres, la fecha y cuántos van.",
+      "Te enviamos la cotización con la hora de salida, lo que incluye y lo que no.",
+      ...PASOS_COMUNES_FINAL,
+    ],
+    ejemplosTitulo: "Si quieres quedarte más días",
+    ejemplos: [
+      { texto: "Paracas, Ica y Nazca", href: "/destinos/paracas-ica-huacachina-nazca" },
+      { texto: "Oxapampa y Pozuzo", href: "/destinos/oxapampa-pozuzo-villa-rica-selva-central" },
+      { texto: "Cusco, Montaña de 7 Colores y Humantay", href: "/destinos/cusco-montana-7-colores-humantay-5-dias" },
+      { texto: "Máncora y Vichayito", href: "/destinos/mancora-vichayito" },
+    ],
+    faqs: [
+      {
+        q: "¿Qué es un full day?",
+        a: "Un paseo de un solo día: sales temprano de Lima, haces el recorrido y regresas la misma noche, sin dormir fuera.",
+      },
+      {
+        q: "¿Qué incluye?",
+        a: "Depende del paseo. Normalmente el transporte desde Lima, un guía y las visitas del programa; las entradas, la lancha o la comida pueden estar incluidas o no. Siempre te lo detallamos por escrito.",
+      },
+      {
+        q: "¿Pueden ir niños y adultos mayores?",
+        a: "Sí. Cuéntanos quiénes van y te recomendamos el paseo más cómodo: algunos, como el tubular en las dunas, no son para todos.",
+      },
+      {
+        q: "¿Hacen full days para grupos o empresas?",
+        a: "Sí. Te damos una sola cotización para todo el grupo y emitimos boleta o factura electrónica.",
+      },
+    ],
+    mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un full day desde Lima.",
+    relacionados: [
+      { texto: "Feriados largos", href: "/feriados-largos" },
+      { texto: "Tours en el Perú", href: "/tours" },
+      { texto: "Viajes corporativos", href: "/empresas" },
+      { texto: "Promociones escolares", href: "/colegios" },
+    ],
+  },
+  feriados: {
+    ruta: "/feriados-largos",
+    h1: "Feriados largos 2026–2027: a dónde viajar desde Lima",
+    tituloSeo: "Feriados largos 2026–2027: a dónde viajar",
+    descripcion:
+      "Los próximos feriados largos en el Perú (Navidad, Año Nuevo, Semana Santa, junio y Fiestas Patrias) y a dónde viajar desde Lima en cada uno. Reserva con tiempo.",
+    intro:
+      "En los feriados largos los pasajes y los hoteles se llenan primero. Aquí tienes los próximos feriados con sus fechas y a dónde ir en cada uno; mientras antes cotices, más opciones tienes.",
+    queCotizamos: [
+      {
+        titulo: "Navidad: viernes 25 al domingo 27 de diciembre de 2026",
+        detalle: "Tres días para Paracas, Ica o las playas del norte, o un full day en familia.",
+      },
+      {
+        titulo: "Año Nuevo: viernes 1 al domingo 3 de enero de 2027",
+        detalle: "Recibir el año en Máncora, Punta Cana, Cartagena o Cusco.",
+      },
+      {
+        titulo: "Semana Santa: jueves 25 al domingo 28 de marzo de 2027",
+        detalle: "Cuatro días: alcanzan para Cusco y Machu Picchu, Arequipa o Tarapoto.",
+      },
+      {
+        titulo: "Junio: sábado 5 al lunes 7 de junio de 2027",
+        detalle: "Fin de semana largo por el Día de la Bandera: Paracas, Lunahuaná u Oxapampa.",
+      },
+      {
+        titulo: "Fiestas Patrias: miércoles 28 y jueves 29 de julio de 2027",
+        detalle: "Vacaciones de medio año: es la fecha más pedida, conviene reservar con meses de anticipación.",
+      },
+    ],
+    pasos: [
+      "Nos escribes qué feriado te interesa, el destino y cuántos viajan.",
+      "Te enviamos opciones con vuelo o bus, hotel y lo que incluye cada una.",
+      ...PASOS_COMUNES_FINAL,
+    ],
+    ejemplosTitulo: "Destinos para un feriado largo",
+    ejemplos: [
+      { texto: "Cusco y Machu Picchu", href: "/destinos/cusco-machu-picchu-4-dias" },
+      { texto: "Paracas, Ica y Nazca", href: "/destinos/paracas-ica-huacachina-nazca" },
+      { texto: "Máncora y Vichayito", href: "/destinos/mancora-vichayito" },
+      { texto: "Tarapoto", href: "/destinos/tarapoto-selva" },
+      { texto: "Punta Cana", href: "/destinos/punta-cana" },
+      { texto: "Cartagena", href: "/destinos/cartagena" },
+    ],
+    faqs: [
+      {
+        q: "¿Con cuánta anticipación debo reservar para un feriado?",
+        a: "Para Año Nuevo, Semana Santa y Fiestas Patrias, lo ideal es cotizar con dos o tres meses de anticipación: los pasajes suben a medida que se acerca la fecha y los hoteles se llenan.",
+      },
+      { q: "¿Puedo separar mi viaje y pagar después?", a: "Sí. Separas con el 50% y pagas el resto antes de viajar." },
+      { q: "¿Y si solo tengo un día libre?", a: "Hacemos full days desde Lima: Paracas, Huacachina, Lunahuaná, Churín y más." },
+    ],
+    mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un viaje para un feriado largo.",
+    relacionados: [
+      { texto: "Full days desde Lima", href: "/full-days" },
+      { texto: "Cuándo comprar para Fiestas Patrias y Año Nuevo", href: "/blog/mejor-epoca-comprar-vuelos-fiestas-patrias-ano-nuevo" },
+      { texto: "Viajes nacionales", href: "/nacionales" },
+      { texto: "Hoteles", href: "/hoteles" },
+    ],
+  },
 };

@@ -185,6 +185,12 @@ export default function Footer() {
               <Link href="/viajes-adultos-mayores" className="block text-slate-300 hover:text-white transition-colors">
                 Viajes para Adultos Mayores
               </Link>
+              <Link href="/full-days" className="block text-slate-300 hover:text-white transition-colors">
+                Full Days desde Lima
+              </Link>
+              <Link href="/feriados-largos" className="block text-slate-300 hover:text-white transition-colors">
+                Feriados Largos 2026–2027
+              </Link>
               <Link href="/hoteles" className="block text-slate-300 hover:text-white transition-colors">
                 Reserva de Hoteles
               </Link>
