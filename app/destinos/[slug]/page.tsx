@@ -30,6 +30,7 @@ import {
 } from "@/lib/seo-arquitectura";
 import BloqueGuiaServicio from "@/components/BloqueGuiaServicio";
 import { guiaDestino } from "@/lib/guias-destinos";
+import PorQueCityland from "@/components/PorQueCityland";
 
 export const revalidate = 86400;
 export const dynamicParams = true;
@@ -741,6 +742,8 @@ export default async function DestinoPage({
           </div>
         </div>
       </section>
+
+      <PorQueCityland destino={dest.ciudad} />
 
       {guia && <BloqueGuiaServicio guia={guia} />}
 
