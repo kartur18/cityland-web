@@ -448,6 +448,7 @@ export function construirSchemaLandingSEO(params: {
             "@type": "AggregateOffer",
             priceCurrency: "USD",
             lowPrice: String(params.precioDesdeUSD),
+            highPrice: String(params.precioDesdeUSD),
             offerCount: "1",
             availability: "https://schema.org/InStock",
             url: params.url,
@@ -471,7 +472,7 @@ export function construirSchemaLandingSEO(params: {
           offers: {
             "@type": "AggregateOffer",
             lowPrice: String(params.precioDesdeUSD),
-            ...(params.precioMaximoUSD ? { highPrice: String(params.precioMaximoUSD) } : {}),
+            highPrice: String(params.precioMaximoUSD ?? params.precioDesdeUSD),
             offerCount: String(esProductoSimple ? 1 : (params.cantidadOfertas ?? 1)),
             priceCurrency: "USD",
             availability: "https://schema.org/InStock",

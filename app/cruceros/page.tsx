@@ -266,6 +266,7 @@ const JSON_LD_CRUCEROS = {
             offerCount: "1",
             priceCurrency: "USD",
             lowPrice: c.precioPrincipal.replace(/[^0-9]/g, ""),
+            highPrice: c.precioPrincipal.replace(/[^0-9]/g, ""),
             availability: "https://schema.org/InStock",
             url: "https://citylandtravel.com/cruceros",
           },

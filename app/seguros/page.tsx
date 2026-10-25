@@ -265,6 +265,7 @@ const JSON_LD_SEGUROS = {
             offerCount: "1",
             priceCurrency: "USD",
             lowPrice: s.precioPrincipal.replace(/[^0-9]/g, ""),
+            highPrice: s.precioPrincipal.replace(/[^0-9]/g, ""),
             availability: "https://schema.org/InStock",
             url: "https://citylandtravel.com/seguros",
           },

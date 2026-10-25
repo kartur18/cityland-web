@@ -84,6 +84,7 @@ const JSON_LD_VISAS = {
             offerCount: "1",
             priceCurrency: "USD",
             lowPrice: String(v.tarifaDesdeUSD),
+            highPrice: String(v.tarifaDesdeUSD),
             availability: "https://schema.org/InStock",
             url: "https://citylandtravel.com/visas",
           },

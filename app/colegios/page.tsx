@@ -85,6 +85,7 @@ const JSON_LD_COLEGIOS = {
             offerCount: "1",
             priceCurrency: "USD",
             lowPrice: String(p.precioNumeroUSD),
+            highPrice: String(p.precioNumeroUSD),
             availability: "https://schema.org/InStock",
             url: "https://citylandtravel.com/colegios",
           },
