@@ -1425,7 +1425,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "carta-invitacion-espana-peru-requisitos",
     titulo: "Carta de invitación para España desde Perú: quién la pide, requisitos y cuánto cuesta en 2026",
-    tituloSeo: "Carta de invitación para España 2026: requisitos",
+    tituloSeo: "Carta de invitación España 2026: requisitos y costo",
     desc: "La pide tu familiar o amigo en España en la comisaría. Requisitos, tasa de unos 75 € en 2026, cuánto tiempo vale y qué más te piden en el aeropuerto.",
     categoria: "Migratorio",
     catColor: "bg-red-600",
@@ -1545,7 +1545,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "cuanto-dinero-llevar-espana-bolsa-de-viaje",
     titulo: "Bolsa de viaje para España 2026: cuánto dinero te pueden pedir si viajas desde Perú",
-    tituloSeo: "Bolsa de viaje para España 2026: cuánto llevar",
+    tituloSeo: "Bolsa de viaje España 2026: 122,10 € por día",
     desc: "En 2026 te pueden pedir 122,10 € por día y un mínimo de 1.098,90 € por persona. Montos por días, cómo demostrarlo y qué pasa con la carta de invitación.",
     categoria: "Europa",
     catColor: "bg-red-500",

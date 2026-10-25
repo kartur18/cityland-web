@@ -149,7 +149,8 @@ export const BLOG_POSTS_MASIVOS: BlogPost[] = [
   {
     slug: "permiso-notarial-viaje-menores-peru-requisitos",
     titulo: "Permiso Notarial de Viaje para Menores de Edad en Perú: Cuándo es obligatorio",
-    desc: "Diferencias entre vuelos nacionales dentro del Perú y vuelos internacionales cuando un niño o adolescente viaja con uno o ambos padres.",
+    tituloSeo: "Permiso notarial de viaje para menores 2026",
+    desc: "Cuándo necesita tu hijo permiso notarial para viajar: dentro del Perú, al extranjero con un solo padre o en grupo de promoción. Quién lo firma y cuánto tiempo vale (90 días).",
     categoria: "Requisitos",
     catColor: "bg-indigo-600",
     fecha: "Actualizado 2026",
@@ -168,7 +169,8 @@ export const BLOG_POSTS_MASIVOS: BlogPost[] = [
   {
     slug: "cruceros-por-el-caribe-sin-visa-americana-desde-peru",
     titulo: "Cruceros por el Caribe sin Visa Americana saliendo desde Panamá o Cartagena",
-    desc: "Cómo navegar 7 noches Todo Incluido por Aruba, Bonaire y Curazao sin necesidad de tramitar visa de Estados Unidos.",
+    tituloSeo: "Crucero a Aruba desde Cartagena o Panamá sin visa",
+    desc: "Cruceros que salen de Cartagena o de Colón (Panamá) y paran en Aruba, Curazao y Bonaire: no tocan Estados Unidos, así que los peruanos viajan sin visa americana.",
     categoria: "Cruceros",
     catColor: "bg-blue-700",
     fecha: "Actualizado 2026",
@@ -187,20 +189,29 @@ export const BLOG_POSTS_MASIVOS: BlogPost[] = [
   {
     slug: "mejor-epoca-comprar-vuelos-fiestas-patrias-ano-nuevo",
     titulo: "Con cuánta anticipación reservar paquetes para Fiestas Patrias y Año Nuevo desde Lima",
-    desc: "Cómo asegurar cupos aéreos bloqueados y congelar tu tarifa en dólares separando con el 50% de inicial antes de que suban las aerolíneas.",
+    tituloSeo: "Cuándo reservar para Año Nuevo y Fiestas Patrias",
+    desc: "Por qué los pasajes suben en Año Nuevo, Semana Santa y Fiestas Patrias, con cuánta anticipación conviene cotizar y cómo separar tu viaje con el 50%.",
     categoria: "Consejos",
     catColor: "bg-emerald-700",
-    fecha: "Actualizado 2026",
-    lectura: "4 min",
+    fecha: "Actualizado octubre 2026",
+    lectura: "3 min",
     imagen: "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=900&q=80",
     autor: "Equipo Cityland Travel",
-    contenido: `<h2>Ahorra hasta un 35% reservando en preventa con el 50%</h2>
-<p>En el mercado aéreo peruano existen tres picos de máxima demanda donde los boletos suelen duplicar su valor si se compran a última hora: <strong>Semana Santa, Fiestas Patrias (25 al 30 de julio) y Año Nuevo (28 de diciembre al 3 de enero)</strong>.</p>
-<h3>¿Cómo funcionan los bloqueos aéreos de Cityland Travel?</h3>
-<p>Nuestra agencia adquiere cupos anticipados en rutas hacia Punta Cana, Cancún, Cartagena, San Andrés, Cusco, Tarapoto y Máncora. Esto te permite:</p>
-<p>1. <strong>Congelar el precio en dólares hoy</strong> abonando únicamente el 50% de inicial.<br>
-2. <strong>Pagar el 50% restante en cuotas sin intereses</strong> hasta 20 días antes de la salida.<br>
-3. <strong>Asegurar horarios ideales:</strong> Salidas temprano por la mañana y retornos por la tarde/noche para aprovechar todos tus días de vacaciones.</p>`,
+    contenido: `<h2>La respuesta corta</h2>
+<p>Para <strong>Año Nuevo, Semana Santa y Fiestas Patrias</strong>, lo ideal es cotizar con <strong>dos o tres meses de anticipación</strong>. En esas fechas viaja medio Perú: los asientos más baratos de cada vuelo se venden primero y los hoteles de playa se llenan.</p>
+<h3>Los próximos feriados largos</h3>
+<ul>
+<li><strong>Año Nuevo:</strong> viernes 1 al domingo 3 de enero de 2027.</li>
+<li><strong>Semana Santa:</strong> jueves 25 al domingo 28 de marzo de 2027.</li>
+<li><strong>Fiestas Patrias:</strong> miércoles 28 y jueves 29 de julio de 2027.</li>
+</ul>
+<p>Mira todos los feriados y a dónde ir en cada uno en nuestra página de <a href="/feriados-largos">feriados largos</a>.</p>
+<h3>Cómo separar tu viaje</h3>
+<p>Separas con el <strong>50%</strong> y pagas el resto antes de viajar. Al separar te damos por escrito lo que incluye tu viaje y las condiciones de la tarifa.</p>
+<h3>Consejos para pagar menos</h3>
+<p>1. <strong>Sé flexible con las fechas:</strong> salir un día antes o volver un día después puede bajar bastante el precio.<br>
+2. <strong>Mira destinos cercanos:</strong> Paracas, Ica o Máncora se llenan, pero tienen más opciones que el Caribe en esas fechas.<br>
+3. <strong>Si viajas en grupo, cotiza todos juntos</strong> para conseguir asientos en el mismo vuelo.</p>`,
   },
   {
     slug: "requisitos-vacuna-fiebre-amarilla-aruba-curazao-panama",

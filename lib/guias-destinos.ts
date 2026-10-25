@@ -112,6 +112,102 @@ const EXTRAS: Readonly<Record<string, Extra>> = {
       { texto: "Tours en el Perú", href: "/tours" },
     ],
   },
+  medellin: {
+    intro:
+      "Medellín es la ciudad de la eterna primavera: clima templado todo el año, la Comuna 13 con sus grafitis y el paseo a Guatapé y la Piedra del Peñol.",
+    documentos: "Los peruanos pueden viajar a Colombia solo con su DNI vigente, sin pasaporte ni visa.",
+    enlaces: [
+      { texto: "Pasajes Lima–Medellín", href: "/vuelos/lima-medellin" },
+      { texto: "Viajar a Colombia solo con DNI", href: "/blog/viajar-a-colombia-cartagena-san-andres-medellin-solo-dni" },
+      { texto: "Cartagena", href: "/destinos/cartagena" },
+    ],
+  },
+  "buenos-aires": {
+    intro:
+      "Buenos Aires es tango, parrillas, el barrio de La Boca, Caminito, Recoleta y Puerto Madero, a unas cuatro horas de vuelo de Lima.",
+    documentos: "Los peruanos pueden viajar a Argentina con su DNI vigente o con pasaporte, sin visa.",
+    enlaces: [
+      { texto: "Pasajes Lima–Buenos Aires", href: "/vuelos/lima-buenos-aires" },
+      { texto: "Cataratas del Iguazú", href: "/destinos/iguazu-cataratas" },
+      { texto: "Destinos solo con DNI", href: "/blog/destinos-internacionales-solo-con-dni-peruanos" },
+    ],
+  },
+  "santiago-chile": {
+    intro:
+      "Santiago combina ciudad, cerros y viñedos, y en una hora y media llegas a la playa de Viña del Mar y a los cerros de colores de Valparaíso.",
+    documentos: "Los peruanos pueden viajar a Chile con su DNI vigente o con pasaporte, sin visa.",
+    enlaces: [
+      { texto: "Pasajes Lima–Santiago", href: "/vuelos/lima-santiago" },
+      { texto: "Buenos Aires", href: "/destinos/buenos-aires" },
+      { texto: "Destinos solo con DNI", href: "/blog/destinos-internacionales-solo-con-dni-peruanos" },
+    ],
+  },
+  "iguazu-cataratas": {
+    intro:
+      "Las Cataratas del Iguazú, en la frontera de Argentina y Brasil, son de las más grandes del mundo: pasarelas sobre la Garganta del Diablo y paseos en lancha bajo los saltos.",
+    documentos:
+      "Los peruanos pueden entrar a Argentina y a Brasil con su DNI vigente o con pasaporte, sin visa, así que puedes ver los dos lados de las cataratas.",
+    enlaces: [
+      { texto: "Buenos Aires", href: "/destinos/buenos-aires" },
+      { texto: "Río de Janeiro", href: "/destinos/rio-de-janeiro" },
+      { texto: "Destinos solo con DNI", href: "/blog/destinos-internacionales-solo-con-dni-peruanos" },
+    ],
+  },
+  "miami-orlando": {
+    intro:
+      "Miami y Orlando juntan playa, compras y los parques de Disney y Universal: es el viaje familiar que más se sueña desde Lima.",
+    documentos:
+      "Para Estados Unidos los peruanos necesitan visa americana vigente y pasaporte. Si aún no la tienes, te ayudamos con el formulario y la entrevista; consigue la visa antes de comprar los pasajes.",
+    enlaces: [
+      { texto: "Pasajes Lima–Miami", href: "/vuelos/lima-miami" },
+      { texto: "Pasajes Lima–Orlando", href: "/vuelos/lima-orlando" },
+      { texto: "Visa americana", href: "/visas" },
+      { texto: "Cómo tramitar la visa americana", href: "/blog/como-tramitar-visa-americana-b1-b2-peru" },
+    ],
+  },
+  "europa-clasica": {
+    intro:
+      "Madrid, París y Roma en un solo viaje: museos, monumentos y la comida de tres países, con los traslados entre ciudades ya organizados.",
+    documentos:
+      "Los peruanos no necesitan visa para el espacio Schengen: viajas como turista hasta 90 días con pasaporte. En migración te pueden pedir pasaje de regreso, hoteles, dinero para tu estadía y seguro de viaje.",
+    enlaces: [
+      { texto: "Requisitos para viajar a España", href: "/viajes/requisitos-viajar-a-espana-desde-peru" },
+      { texto: "Pasajes Lima–París", href: "/vuelos/lima-paris" },
+      { texto: "Pasajes Lima–Roma", href: "/vuelos/lima-roma" },
+      { texto: "Seguro de viaje para Europa", href: "/blog/seguro-schengen-30000-euros-peru-precio" },
+    ],
+  },
+  "cusco-magico": {
+    intro: "Cusco y Machu Picchu: la ciudad imperial, el Valle Sagrado y la ciudadela inca, con vuelo desde Lima.",
+    documentos:
+      "Solo necesitas tu DNI. Cusco está a más de 3,300 metros de altura: toma el primer día con calma. Las entradas a Machu Picchu son limitadas por día, así que conviene reservar con anticipación.",
+    enlaces: [
+      { texto: "Pasajes Lima–Cusco", href: "/vuelos/lima-cusco" },
+      { texto: "Cusco, Montaña de 7 Colores y Humantay", href: "/destinos/cusco-montana-7-colores-humantay-5-dias" },
+      { texto: "Mejor época para ir a Machu Picchu", href: "/blog/temporada-baja-viajar-machu-picchu-cusco" },
+    ],
+  },
+  "arequipa-colca": {
+    intro:
+      "Arequipa es la Ciudad Blanca, con el Monasterio de Santa Catalina y su comida; desde ahí vas al Cañón del Colca a ver el vuelo de los cóndores.",
+    documentos:
+      "Solo necesitas tu DNI. El camino al Colca pasa por zonas de más de 4,000 metros de altura: lleva abrigo y avísanos si alguien del grupo tiene problemas de salud.",
+    enlaces: [
+      { texto: "Pasajes Lima–Arequipa", href: "/vuelos/lima-arequipa" },
+      { texto: "Cusco y Machu Picchu", href: "/destinos/cusco-magico" },
+      { texto: "Tours en el Perú", href: "/tours" },
+    ],
+  },
+  "tarapoto-selva": {
+    intro:
+      "Tarapoto es la selva más cerca de Lima: la Laguna Azul, las cataratas de Ahuashiyacu y el pueblo de Lamas, a poco más de una hora de vuelo.",
+    documentos: "Solo necesitas tu DNI. Lleva repelente, ropa ligera y algo para la lluvia.",
+    enlaces: [
+      { texto: "Pasajes Lima–Tarapoto", href: "/vuelos/lima-tarapoto" },
+      { texto: "Promoción escolar a Tarapoto", href: "/ofertas/paquetes-viaje-de-promocion-escolar-tarapoto" },
+      { texto: "Tours en el Perú", href: "/tours" },
+    ],
+  },
   "cusco-machu-picchu-4-dias": {
     intro: "Cusco y Machu Picchu en 4 días: la ciudad, el Valle Sagrado y la ciudadela inca, con vuelo desde Lima.",
     documentos: "Solo necesitas tu DNI. Las entradas a Machu Picchu son limitadas por día, así que conviene reservar con anticipación.",
