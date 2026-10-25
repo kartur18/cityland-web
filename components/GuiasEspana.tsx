@@ -12,6 +12,8 @@ export const GUIAS_ESPANA = [
   { href: "/blog/vuelos-directos-lima-madrid-comparativa-aerolineas", texto: "Vuelos directos Lima–Madrid" },
   { href: "/blog/seguro-schengen-30000-euros-peru-precio", texto: "Seguro de viaje para Europa" },
   { href: "/blog/visa-de-estudios-espana-desde-peru", texto: "Visa de estudios para España" },
+  { href: "/blog/reagrupacion-familiar-espana-desde-peru", texto: "Reagrupación familiar" },
+  { href: "/blog/traer-familiar-de-peru-a-espana-de-visita", texto: "Traer a un familiar de visita" },
 ] as const;
 
 export default function GuiasEspana() {
