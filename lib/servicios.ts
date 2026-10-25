@@ -212,4 +212,71 @@ export const SERVICIOS: Readonly<Record<string, ServicioCityland>> = {
       { texto: "Hoteles", href: "/hoteles" },
     ],
   },
+  adultosMayores: {
+    ruta: "/viajes-adultos-mayores",
+    h1: "Viajes para adultos mayores y grupos de jubilados",
+    tituloSeo: "Viajes para adultos mayores y jubilados",
+    descripcion:
+      "Viajes tranquilos para adultos mayores, solos o en grupo: Cusco, Paracas, Tarapoto, Punta Cana y visitas a la familia en España. Silla de ruedas en el aeropuerto y seguro para mayores.",
+    intro:
+      "Viajar después de los 60 se disfruta más sin apuros. Armamos el viaje a tu ritmo: vuelos directos cuando se puede, hoteles cómodos, tours sin caminatas largas y alguien que te responda por WhatsApp antes y durante el viaje.",
+    queCotizamos: [
+      {
+        titulo: "Viajes en grupo",
+        detalle: "Para asociaciones de jubilados, clubes, parroquias o grupos de amigos: una sola cotización para todos.",
+      },
+      {
+        titulo: "Silla de ruedas en el aeropuerto",
+        detalle: "La pedimos a la aerolínea junto con tu pasaje, para que te acompañen en el embarque y la llegada. Las aerolíneas no la cobran.",
+      },
+      {
+        titulo: "Visitar a la familia en el extranjero",
+        detalle: "Pasajes para padres y abuelos que van a ver a sus hijos y nietos en España, Italia o Estados Unidos, con la carpeta de viaje lista.",
+      },
+      {
+        titulo: "Seguro para mayores",
+        detalle: "Seguros de viaje que aceptan pasajeros mayores de 70 años; te decimos por escrito qué cubre cada uno.",
+      },
+    ],
+    pasos: [
+      "Nos escribes (tú o un familiar) el destino, las fechas, cuántos viajan y si alguien necesita ayuda para caminar.",
+      "Te enviamos opciones a un ritmo tranquilo, con lo que incluye cada una.",
+      ...PASOS_COMUNES_FINAL,
+    ],
+    ejemplosTitulo: "Destinos que más eligen",
+    ejemplos: [
+      { texto: "Paracas e Ica", href: "/destinos/paracas-ica-huacachina-nazca" },
+      { texto: "Tarapoto", href: "/destinos/tarapoto-selva" },
+      { texto: "Cusco", href: "/destinos/cusco-magico" },
+      { texto: "Arequipa y el Colca", href: "/destinos/arequipa-colca" },
+      { texto: "Punta Cana todo incluido", href: "/destinos/punta-cana" },
+      { texto: "Cartagena (solo con DNI)", href: "/destinos/cartagena" },
+      { texto: "Cruceros", href: "/cruceros" },
+    ],
+    faqs: [
+      {
+        q: "¿Hay un límite de edad para viajar?",
+        a: "No. Las aerolíneas no ponen edad máxima. Lo que sí cambia con la edad es el seguro de viaje, por eso te cotizamos uno que acepte tu edad.",
+      },
+      {
+        q: "¿Cusco es recomendable para adultos mayores?",
+        a: "Sí, con calma: Cusco está a más de 3,300 metros de altura. Conviene consultar con tu médico antes de viajar, sobre todo si tienes problemas del corazón o de presión, y armamos un itinerario con descanso el primer día.",
+      },
+      {
+        q: "¿Mi papá o mi mamá puede viajar solo?",
+        a: "Sí. Pedimos la asistencia de la aerolínea en el aeropuerto y le damos la carpeta con su itinerario y documentos. Tú puedes hacer todo el trámite por WhatsApp desde Lima o desde el extranjero.",
+      },
+      {
+        q: "¿Organizan viajes para asociaciones o clubes?",
+        a: "Sí. El delegado nos escribe el destino y la cantidad de personas, y le damos una sola cotización para el grupo.",
+      },
+    ],
+    mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un viaje para adultos mayores.",
+    relacionados: [
+      { texto: "Seguros de viaje", href: "/seguros" },
+      { texto: "Carta de invitación para España", href: "/blog/carta-invitacion-espana-peru-requisitos" },
+      { texto: "Tours en el Perú", href: "/tours" },
+      { texto: "Traslados", href: "/traslados" },
+    ],
+  },
 };
