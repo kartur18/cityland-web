@@ -2129,6 +2129,72 @@ export const BLOG_POSTS: BlogPost[] = [
 </ul>
 <p>Revisado el 25 de octubre de 2026. Los requisitos de entrada pueden cambiar: confírmalos antes de viajar.</p>`,
   },
+  {
+    slug: "trabajar-legalmente-en-espana-desde-peru",
+    titulo: "Cómo trabajar legalmente en España siendo peruano: los caminos desde Perú (2026)",
+    tituloSeo: "Trabajar legalmente en España siendo peruano",
+    desc: "Los caminos legales para trabajar en España desde Perú: contrato con visado de trabajo (los peruanos tienen una ventaja), estudiar y trabajar 30 horas, reagrupación familiar y la nacionalidad a los 2 años.",
+    categoria: "Visas",
+    catColor: "bg-blue-700",
+    fecha: "Actualizado octubre 2026",
+    lectura: "7 min",
+    imagen: "/images/espana/gran-via-metropolis.jpg",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>La respuesta corta</h2>
+<ul>
+<li>Con la entrada como turista <strong>no se puede trabajar</strong> en España. Para trabajar necesitas una autorización.</li>
+<li>El camino principal es un <strong>contrato con una empresa española</strong>: la empresa pide la autorización en España y tú sacas el visado de trabajo en el Consulado de España en Lima.</li>
+<li>Los peruanos tienen una <strong>ventaja</strong>: por un acuerdo entre España y Perú, la empresa no tiene que demostrar que no encontró a nadie en España para ese puesto.</li>
+<li>Otros caminos legales: <strong>estudiar y trabajar</strong> hasta 30 horas por semana, o ir por <strong>reagrupación familiar</strong> si tu pareja o tu papá o mamá ya es residente.</li>
+</ul>
+
+<h2>1. Con contrato de trabajo (visado de trabajo)</h2>
+<p>Es el camino más directo. Así funciona según la hoja oficial del Gobierno de España:</p>
+<ol>
+<li><strong>La empresa en España</strong> te ofrece un contrato y pide tu autorización de residencia y trabajo por internet (formulario EX-03). Tú no puedes pedirla por tu cuenta.</li>
+<li><strong>La ventaja peruana:</strong> normalmente la empresa tiene que probar que el puesto es «de difícil cobertura». Con los peruanos no hace falta, porque España tiene un acuerdo con Perú (y con Chile).</li>
+<li><strong>El contrato</strong> tiene que respetar las condiciones legales; si es a tiempo parcial, el sueldo tiene que llegar al menos al salario mínimo de jornada completa.</li>
+<li><strong>Extranjería responde</strong> en un plazo de 3 meses.</li>
+<li><strong>En Lima:</strong> si se aprueba, tienes <strong>1 mes</strong> para pedir el visado en persona en el Consulado de España, con pasaporte de al menos 1 año de vigencia, antecedentes penales, certificado médico y el pago de la tasa. El Consulado responde en 1 mes.</li>
+<li><strong>El viaje:</strong> recoges el visado en 1 mes y tienes 3 meses para entrar a España. Allí la empresa te da de alta en la Seguridad Social y, dentro del mes siguiente, pides tu Tarjeta de Identidad de Extranjero (TIE) en la Policía.</li>
+</ol>
+<p>Si tu profesión exige título (enfermería, medicina, ingeniería…), puede que tengas que <strong>homologarlo</strong> en España antes.</p>
+
+<h2>2. Estudiar y trabajar</h2>
+<p>Con la visa de estudios para estudios superiores (carrera, máster, Formación Profesional de grado superior) puedes trabajar hasta <strong>30 horas por semana</strong> sin otro trámite. Mira la guía completa de la <a href="/blog/visa-de-estudios-espana-desde-peru">visa de estudios para España</a>.</p>
+
+<h2>3. Por reagrupación familiar</h2>
+<p>Si tu esposo, esposa o pareja vive legalmente en España, puede pedir tu reagrupación. Con esa autorización puedes trabajar en cualquier parte de España sin otro trámite. Mira la guía de <a href="/blog/reagrupacion-familiar-espana-desde-peru">reagrupación familiar</a>.</p>
+
+<h2>4. Profesionales muy calificados</h2>
+<p>Si tienes una oferta para un puesto directivo o muy calificado, existe una autorización especial para profesionales altamente cualificados, con un trámite propio.</p>
+
+<h2>Y después: la nacionalidad a los 2 años</h2>
+<p>Los peruanos, como los demás iberoamericanos, pueden pedir la <strong>nacionalidad española</strong> después de <strong>2 años de residencia legal</strong> y continuada en España (Código Civil, artículo 22). Por eso conviene entrar por un camino legal desde el inicio.</p>
+
+<h2>Cuidado con las estafas</h2>
+<ul>
+<li>Nadie puede «venderte» un contrato o una visa de trabajo: la autorización la pide una empresa real y la decide Extranjería.</li>
+<li>Desconfía de quien te pida dinero por adelantado para «conseguirte trabajo en España».</li>
+<li>Entrar como turista para quedarte a trabajar te deja sin papeles y puede cerrarte la puerta para volver.</li>
+</ul>
+
+<h2>Cuando tengas tu visado</h2>
+<p>Te ayudamos con el pasaje Lima–Madrid y te explicamos qué llevar para el viaje.</p>
+<ul>
+<li><a href="/vuelos/lima-madrid">Pasajes Lima–Madrid</a></li>
+<li><a href="/blog/viajar-a-espana-por-primera-vez-desde-peru">Tu primer viaje a España</a></li>
+</ul>
+
+<h2>Fuentes oficiales</h2>
+<ul>
+<li><a href="https://www.inclusion.gob.es/web/migraciones/w/autorizacion-inicial-de-residencia-temporal-y-trabajo-por-cuenta-ajena-hi-16-" target="_blank" rel="noopener">Ministerio de Inclusión, Seguridad Social y Migraciones: Hoja 12, residencia y trabajo por cuenta ajena (mayo de 2025)</a></li>
+<li><a href="https://www.inclusion.gob.es/web/migraciones/w/autorizacion-de-residencia-temporal-por-reagrupacion-familiar" target="_blank" rel="noopener">Hoja 8, reagrupación familiar</a></li>
+<li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099" target="_blank" rel="noopener">Real Decreto 1155/2024, reglamento de extranjería (BOE)</a></li>
+<li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-1889-4763" target="_blank" rel="noopener">Código Civil, artículo 22 (BOE)</a></li>
+</ul>
+<p>Revisado el 25 de octubre de 2026. Esta guía es informativa: cada caso lo deciden Extranjería y el Consulado, y para casos complejos conviene consultar con un abogado de extranjería.</p>`,
+  },
 ];
 
 
