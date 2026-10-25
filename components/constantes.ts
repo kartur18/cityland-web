@@ -1624,7 +1624,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "seguro-schengen-30000-euros-peru-precio",
     titulo: "Seguro Schengen de 30.000 € desde Perú: ¿es obligatorio?, qué debe cubrir y cuánto cuesta",
-    tituloSeo: "Seguro Schengen desde Perú: ¿es obligatorio?",
+    tituloSeo: "Seguro de viaje para España: ¿es obligatorio?",
     desc: "Para entrar a España sin visa, el Consulado lo considera recomendable; Francia sí lo exige. Qué debe cubrir un buen seguro para Europa y cuánto cuesta.",
     categoria: "Europa",
     catColor: "bg-red-600",

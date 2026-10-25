@@ -28,6 +28,8 @@ import {
   optimizarMetaTitleSEO,
   optimizarMetaDescriptionSEO,
 } from "@/lib/seo-arquitectura";
+import BloqueGuiaServicio from "@/components/BloqueGuiaServicio";
+import { guiaDestino } from "@/lib/guias-destinos";
 
 export const revalidate = 86400;
 export const dynamicParams = true;
@@ -123,6 +125,7 @@ export default async function DestinoPage({
     .filter((g, idx, arr) => g && g !== dest.img && arr.indexOf(g) === idx)
     .slice(0, 3);
 
+  const guia = guiaDestino(dest);
   const idxDest = ALL_DESTINOS.findIndex((d) => d.slug === slug);
   const otrosDestinos: typeof ALL_DESTINOS = [];
   for (let i = 1; i < ALL_DESTINOS.length && otrosDestinos.length < 3; i++) {
@@ -738,6 +741,8 @@ export default async function DestinoPage({
           </div>
         </div>
       </section>
+
+      {guia && <BloqueGuiaServicio guia={guia} />}
 
       <SeoSiloFooter
         enlaces={obtenerEnlacesCruzadosSEO(`${dest.ciudad} ${dest.pais}`, dest.slug)}
