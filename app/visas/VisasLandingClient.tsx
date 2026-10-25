@@ -17,7 +17,7 @@ const FILTROS_VISA = [
   { id: "espana", label: "España & Europa" },
 ] as const;
 
-export default function VisasLandingClient() {
+export default function VisasLandingClient({ children }: { children?: React.ReactNode }) {
   const [filtro, setFiltro] = useState<string>("todos");
 
   const lista =
@@ -109,7 +109,7 @@ export default function VisasLandingClient() {
                       Visa Americana B1/B2 · 10 Años
                     </span>
                     <span className="bg-red-600 text-white text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full shadow-xs">
-                      Alta Aprobación
+                      Revisión de perfil
                     </span>
                   </div>
 
@@ -295,7 +295,7 @@ export default function VisasLandingClient() {
               },
               {
                 titulo: "3. Cita y Documentación",
-                sub: "Programamos tu cita en la embajada y armamos tu carpeta física",
+                sub: "Te guiamos para agendar tu cita y armamos tu carpeta física",
               },
               {
                 titulo: "4. Simulacro de Entrevista",
@@ -352,6 +352,8 @@ export default function VisasLandingClient() {
           </div>
         </div>
       </section>
+
+      {children}
 
       <Footer />
 

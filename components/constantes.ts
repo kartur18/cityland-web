@@ -1537,8 +1537,8 @@ export const BLOG_POSTS: BlogPost[] = [
 <p>Para viajar a Miami, Orlando, Nueva York o incluso hacer escala en aeropuertos estadounidenses, los ciudadanos peruanos requieren contar con una Visa B1/B2 vigente.</p>
 <h3>1. Llenado profesional del Formulario DS-160</h3>
 <p>El formulario oficial DS-160 es la base de tu evaluación consular. Un error u omisión en tus datos laborales, ingresos, viajes previos o vínculos familiares en el Perú es la causa principal de rechazo. En Cityland Travel redactamos tu DS-160 de forma estratégica y coherente con tu perfil real.</p>
-<h3>2. Pago de derecho consular y adelanto de cita</h3>
-<p>Una vez generado el código DS-160, se abona la tasa consular oficial y monitoreamos el calendario del sistema para conseguir o adelantar tu fecha de entrevista en la Embajada de EE.UU. en Lima.</p>
+<h3>2. Pago de la tasa consular y cita</h3>
+<p>Con el código del DS-160 pagas la tasa consular, que hoy es de US$185 por persona y no se devuelve aunque te nieguen la visa. Luego eliges tu fecha de entrevista en la Embajada de EE.UU. en Lima desde tu propia cuenta: te guiamos paso a paso. Además, una ley de EE.UU. de 2025 creó una tasa adicional de US$250 que se cobraría solo si te aprueban; te confirmamos al empezar si ya está vigente.</p>
 <h3>3. Simulación de entrevista consular</h3>
 <p>Te preparamos con las preguntas reales que realiza el cónsul según tu ocupación (dependiente, independiente, empresario, estudiante o jubilado) para que asistas con total seguridad.</p>`,
   },
