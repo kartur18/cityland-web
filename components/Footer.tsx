@@ -182,6 +182,9 @@ export default function Footer() {
               <Link href="/institutos" className="block text-slate-300 hover:text-white transition-colors">
                 Viajes de Promoción para Institutos
               </Link>
+              <Link href="/viajes-adultos-mayores" className="block text-slate-300 hover:text-white transition-colors">
+                Viajes para Adultos Mayores
+              </Link>
               <Link href="/hoteles" className="block text-slate-300 hover:text-white transition-colors">
                 Reserva de Hoteles
               </Link>
