@@ -75,6 +75,8 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
     "/traslados",
     "/institutos",
     "/viajes-adultos-mayores",
+    "/full-days",
+    "/feriados-largos",
     "/agencia-de-viajes-lima",
     "/agencia-de-viajes-los-olivos",
     "/agencia-de-viajes-lima-norte",
