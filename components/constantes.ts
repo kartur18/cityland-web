@@ -2005,6 +2005,130 @@ export const BLOG_POSTS: BlogPost[] = [
 </ul>
 <p>Revisado el 24 de octubre de 2026. La decisión es del Consulado y los requisitos pueden cambiar: confírmalos antes de presentar.</p>`,
   },
+  {
+    slug: "reagrupacion-familiar-espana-desde-peru",
+    titulo: "Reagrupación familiar en España 2026: cómo llevar a tu familia desde Perú",
+    tituloSeo: "Reagrupación familiar en España desde Perú 2026",
+    desc: "Quién puede reagrupar, a qué familiares, cuánto dinero piden (900 € al mes para dos personas), qué documentos y cómo es el trámite paso a paso, según la hoja oficial del Gobierno de España.",
+    categoria: "Visas",
+    catColor: "bg-blue-700",
+    fecha: "Actualizado octubre 2026",
+    lectura: "7 min",
+    imagen: "/images/espana/plaza-mayor.jpg",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>La respuesta corta</h2>
+<ul>
+<li>Quien pide la reagrupación es el familiar que ya vive <strong>legalmente en España</strong>, no el que está en Perú.</li>
+<li>En general, tiene que haber vivido en España <strong>al menos un año</strong> y haber pedido la renovación de su residencia por otro año.</li>
+<li>Tiene que demostrar ingresos de al menos el <strong>150 % del IPREM</strong> para dos personas (hoy, 900 € al mes) y <strong>300 € más</strong> por cada familiar adicional.</li>
+<li>También necesita una <strong>vivienda adecuada</strong> y un <strong>seguro de enfermedad</strong> para todos.</li>
+<li>Si se aprueba, el familiar en Perú pide su <strong>visado en el Consulado de España en Lima</strong> y viaja.</li>
+</ul>
+
+<h2>¿A quién se puede reagrupar?</h2>
+<ul>
+<li><strong>Cónyuge o pareja</strong> mayor de 18 años. La pareja sin casarse tiene que estar inscrita en un registro o probar al menos 12 meses de convivencia (no se pide si tienen hijos en común).</li>
+<li><strong>Hijos menores de 18 años</strong>, propios o del cónyuge o pareja, y los mayores de edad que no puedan valerse por sí mismos por su salud o discapacidad.</li>
+<li><strong>Padres o suegros mayores de 65 años</strong> que estén a cargo del reagrupante y cuando haya razones que justifiquen que vivan en España. Para ellos, el reagrupante necesita tener la <strong>residencia de larga duración</strong>.</li>
+<li>Un <strong>hijo mayor de edad</strong> que vaya a cuidar al reagrupante, si este tiene reconocido un grado de dependencia.</li>
+</ul>
+
+<h2>Cuánto dinero piden</h2>
+<div class="tabla-guia"><table>
+<thead><tr><th>Familia en España</th><th>Ingreso mínimo al mes</th></tr></thead>
+<tbody>
+<tr><td>2 personas (tú y tu familiar)</td><td>900 € (150 % del IPREM)</td></tr>
+<tr><td>3 personas</td><td>1.200 €</td></tr>
+<tr><td>4 personas</td><td>1.500 €</td></tr>
+</tbody>
+</table></div>
+<p>El IPREM es de 600 € al mes. Si se reagrupa a hijos menores, la cantidad puede ser menor: basta tener ingresos estables iguales o mayores al salario mínimo. Se demuestra con el contrato y las nóminas de los últimos 6 meses o, si trabajas por tu cuenta, con tus declaraciones de impuestos.</p>
+
+<h2>Paso a paso</h2>
+<ol>
+<li><strong>En España:</strong> el reagrupante presenta el formulario EX-02 en la Oficina de Extranjería de su provincia o por internet, y paga la tasa (modelo 790, código 052).</li>
+<li><strong>La vivienda:</strong> pide a su comunidad autónoma o ayuntamiento el informe de vivienda adecuada, con menos de 6 meses de antigüedad.</li>
+<li><strong>La respuesta:</strong> Extranjería tiene <strong>2 meses</strong> para resolver.</li>
+<li><strong>En Perú:</strong> si se aprueba, el familiar tiene <strong>2 meses</strong> para pedir su visado en persona en el Consulado de España en Lima, con pasaporte de al menos 4 meses de vigencia, antecedentes penales (si es mayor de edad), certificado médico y los documentos que prueban el parentesco.</li>
+<li><strong>El visado:</strong> el Consulado responde en un máximo de <strong>1 mes</strong>; después hay 1 mes para recogerlo y otro mes para entrar a España.</li>
+<li><strong>Al llegar:</strong> dentro del primer mes, el familiar pide su Tarjeta de Identidad de Extranjero (TIE) en la Policía.</li>
+</ol>
+
+<h2>Los documentos peruanos</h2>
+<p>Partidas de nacimiento o de matrimonio y antecedentes penales tienen que ir <strong>apostillados</strong>. Si alguno no está en español, va con traducción jurada.</p>
+
+<h2>¿El familiar puede trabajar?</h2>
+<p>Sí. El cónyuge o pareja y los hijos en edad de trabajar pueden trabajar en cualquier parte de España, por cuenta ajena o propia, sin otro trámite.</p>
+
+<h2>Cuando tengas el visado</h2>
+<p>Te ayudamos con el pasaje Lima–Madrid de tu familiar y, si es una persona mayor, pedimos a la aerolínea la asistencia con silla de ruedas en el aeropuerto.</p>
+<ul>
+<li><a href="/vuelos/lima-madrid">Pasajes Lima–Madrid</a></li>
+<li><a href="/blog/traer-familiar-de-peru-a-espana-de-visita">Si tu familiar solo viene de visita</a></li>
+<li><a href="/viajes-adultos-mayores">Viajes para adultos mayores</a></li>
+</ul>
+
+<h2>Fuente oficial</h2>
+<ul>
+<li><a href="https://www.inclusion.gob.es/web/migraciones/w/autorizacion-de-residencia-temporal-por-reagrupacion-familiar" target="_blank" rel="noopener">Ministerio de Inclusión, Seguridad Social y Migraciones: Hoja 8, reagrupación familiar (mayo de 2025)</a></li>
+<li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2024-24099" target="_blank" rel="noopener">Real Decreto 1155/2024, reglamento de extranjería (BOE)</a></li>
+</ul>
+<p>Revisado el 25 de octubre de 2026. Esta guía es informativa: cada caso lo decide la Oficina de Extranjería y el Consulado, y para casos complejos conviene consultar con un abogado de extranjería.</p>`,
+  },
+  {
+    slug: "traer-familiar-de-peru-a-espana-de-visita",
+    titulo: "Cómo traer a tu mamá o a un familiar de Perú a España de visita",
+    tituloSeo: "Traer a un familiar de Perú a España de visita",
+    desc: "Si vives en España y quieres que tu mamá, tu papá o un familiar venga de visita: cuánto tiempo puede quedarse, qué le pueden pedir en Barajas y cómo comprarle el pasaje desde España.",
+    categoria: "Guías",
+    catColor: "bg-emerald-700",
+    fecha: "Actualizado octubre 2026",
+    lectura: "5 min",
+    imagen: "/images/espana/barajas.jpg",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>La respuesta corta</h2>
+<ul>
+<li>Los peruanos <strong>no necesitan visa</strong> para visitar España: pueden quedarse hasta <strong>90 días</strong> dentro de cada período de 180 días, solo con pasaporte.</li>
+<li>En el aeropuerto de Madrid le pueden pedir el <strong>pasaje de regreso</strong>, dónde se va a alojar, <strong>dinero</strong> para su estadía y un <strong>seguro de viaje</strong>.</li>
+<li>Si se queda en tu casa, el alojamiento se prueba con la <strong>carta de invitación</strong>, que tú pides en la Policía en España.</li>
+<li>Tú puedes cotizar y pagar el pasaje desde España; tu familiar recibe todo en Lima.</li>
+</ul>
+
+<h2>Lo que conviene que lleve en la mano</h2>
+<div class="tabla-guia"><table>
+<thead><tr><th>Documento</th><th>Para qué</th></tr></thead>
+<tbody>
+<tr><td>Pasaporte vigente</td><td>Para entrar al espacio Schengen.</td></tr>
+<tr><td>Pasaje de ida y vuelta</td><td>Demuestra que regresa a Perú dentro de los 90 días.</td></tr>
+<tr><td>Carta de invitación o reserva de hotel</td><td>Demuestra dónde se va a quedar.</td></tr>
+<tr><td>Dinero o tarjeta</td><td>Para sus gastos durante la visita.</td></tr>
+<tr><td>Seguro de viaje</td><td>Para cualquier atención médica en Europa.</td></tr>
+</tbody>
+</table></div>
+<p>Quien decide en la frontera es el policía de migraciones, por eso lo mejor es que tu familiar lleve todo impreso y ordenado.</p>
+
+<h2>Cómo comprarle el pasaje desde España</h2>
+<ol>
+<li>Nos escribes por WhatsApp desde España con las fechas y los datos de tu familiar.</li>
+<li>Te enviamos la cotización del pasaje Lima–Madrid ida y vuelta y, si quieres, el seguro de viaje.</li>
+<li>Pagas con tarjeta o transferencia.</li>
+<li>Tu familiar recibe su itinerario por WhatsApp o lo recoge en nuestras oficinas de Los Olivos, y le explicamos qué llevar.</li>
+</ol>
+<p>Si es una persona mayor, pedimos a la aerolínea la <strong>silla de ruedas</strong> para el embarque y la llegada.</p>
+
+<h2>¿Y si quiere quedarse a vivir?</h2>
+<p>Para vivir en España no sirve la visita como turista. Si tú ya eres residente legal, el camino es la <a href="/blog/reagrupacion-familiar-espana-desde-peru">reagrupación familiar</a>.</p>
+
+<h2>Revisa también</h2>
+<ul>
+<li><a href="/blog/carta-invitacion-espana-peru-requisitos">Carta de invitación para España: requisitos</a></li>
+<li><a href="/blog/cuanto-dinero-llevar-espana-bolsa-de-viaje">Bolsa de viaje: cuánto dinero llevar</a></li>
+<li><a href="/blog/que-preguntan-en-migraciones-espana-barajas">Qué te preguntan en migraciones de Barajas</a></li>
+<li><a href="/vuelos/lima-madrid">Pasajes Lima–Madrid</a></li>
+<li><a href="/vuelos/madrid-lima">Pasajes Madrid–Lima, si eres tú quien viaja a Perú</a></li>
+</ul>
+<p>Revisado el 25 de octubre de 2026. Los requisitos de entrada pueden cambiar: confírmalos antes de viajar.</p>`,
+  },
 ];
 
 
