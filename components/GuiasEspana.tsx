@@ -14,6 +14,7 @@ export const GUIAS_ESPANA = [
   { href: "/blog/visa-de-estudios-espana-desde-peru", texto: "Visa de estudios para España" },
   { href: "/blog/reagrupacion-familiar-espana-desde-peru", texto: "Reagrupación familiar" },
   { href: "/blog/traer-familiar-de-peru-a-espana-de-visita", texto: "Traer a un familiar de visita" },
+  { href: "/blog/trabajar-legalmente-en-espana-desde-peru", texto: "Trabajar legalmente en España" },
 ] as const;
 
 export default function GuiasEspana() {
