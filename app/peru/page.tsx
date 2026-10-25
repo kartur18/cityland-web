@@ -265,6 +265,7 @@ const JSON_LD_PERU = {
             offerCount: "1",
             priceCurrency: "USD",
             lowPrice: item.precioPrincipal.replace(/[^0-9]/g, ""),
+            highPrice: item.precioPrincipal.replace(/[^0-9]/g, ""),
             availability: "https://schema.org/InStock",
             url: "https://citylandtravel.com/peru",
           },

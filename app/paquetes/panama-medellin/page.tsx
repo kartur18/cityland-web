@@ -73,6 +73,7 @@ const JSON_LD_PANAMA_MEDELLIN = {
         offerCount: "1",
         priceCurrency: "USD",
         lowPrice: "799",
+        highPrice: "799",
         availability: "https://schema.org/InStock",
         url: "https://citylandtravel.com/paquetes/panama-medellin",
       },

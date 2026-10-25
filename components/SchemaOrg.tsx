@@ -35,6 +35,7 @@ const OFFERS = {
         offerCount: "1",
         priceCurrency: "USD",
         lowPrice: String(paquete.precioUSD),
+        highPrice: String(paquete.precioUSD),
         availability: "https://schema.org/InStock",
         url: `https://citylandtravel.com/destinos/${paquete.slug}`,
       },

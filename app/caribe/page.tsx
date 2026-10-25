@@ -95,6 +95,7 @@ const JSON_LD_CARIBE = {
             url: `https://citylandtravel.com/caribe#${d.id}`,
             priceCurrency: "USD",
             lowPrice: String(d.precioUSD),
+            highPrice: String(d.precioUSD),
             availability: "https://schema.org/InStock",
           },
         },

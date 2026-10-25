@@ -170,6 +170,7 @@ export default async function DestinoPage({
           "@type": "AggregateOffer",
           priceCurrency: "USD",
           lowPrice: String(precioPrincipal),
+          highPrice: String(precioPrincipal),
           offerCount: String(dest.migratorio ? 2 : 1),
           availability: "https://schema.org/InStock",
           url: `https://citylandtravel.com/destinos/${dest.slug}`,
