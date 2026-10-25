@@ -7,6 +7,13 @@ const CIUDADES_CON_VUELO_DESDE_LIMA = [
   "arequipa", "trujillo", "chiclayo", "piura", "cusco", "iquitos", "tarapoto", "tacna", "juliaca", "cajamarca",
   "pucallpa", "tumbes", "talara", "ayacucho", "jauja", "puerto-maldonado", "jaen",
 ];
+// Una página por destino de viaje de promoción (las variantes «grupos-», «cotizacion-»… siguen fuera de Google).
+const VIAJES_DE_PROMOCION: ReadonlySet<string> = new Set(
+  [
+    "escolar-punta-cana", "escolar-cusco-machu-picchu", "escolar-cancun", "escolar-tarapoto",
+    "decameron-punta-sal", "cartagena-san-andres",
+  ].map((d) => `/ofertas/paquetes-viaje-de-promocion-${d}`)
+);
 const RUTAS_NACIONALES: ReadonlySet<string> = new Set(
   CIUDADES_CON_VUELO_DESDE_LIMA.flatMap((c) => [`/vuelos/lima-${c}`, `/vuelos/${c}-lima`])
 );
@@ -24,7 +31,8 @@ export function esIndexable(ruta: string): boolean {
     PAGINAS_CON_CLIENTES.has(ruta) ||
     PAGINAS_CON_VISITAS_GSC.has(ruta) ||
     RUTAS_VUELOS_PRINCIPALES.has(ruta) ||
-    RUTAS_NACIONALES.has(ruta)
+    RUTAS_NACIONALES.has(ruta) ||
+    VIAJES_DE_PROMOCION.has(ruta)
   );
 }
 

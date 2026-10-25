@@ -57,6 +57,61 @@ const EXTRAS: Readonly<Record<string, Extra>> = {
       { texto: "Cartagena y San Andrés combinado", href: "/destinos/san-andres-cartagena-combinado" },
     ],
   },
+  aruba: {
+    intro:
+      "Aruba es la isla del Caribe con playas de arena blanca como Eagle Beach y Palm Beach, fuera de la zona de huracanes y con sol casi todo el año.",
+    documentos:
+      "Los peruanos no necesitan visa para Aruba como turistas: viajas con pasaporte vigente y, antes de llegar, llenas en línea la tarjeta de embarque y desembarque (ED Card). Te lo confirmamos al cotizar.",
+    enlaces: [
+      { texto: "Pasajes Lima–Aruba", href: "/vuelos/lima-aruba" },
+      { texto: "Curazao", href: "/destinos/curazao" },
+      { texto: "Todo el Caribe", href: "/caribe" },
+      { texto: "Hoteles todo incluido", href: "/hoteles" },
+    ],
+  },
+  curazao: {
+    intro:
+      "Curazao combina casas holandesas de colores en Willemstad con más de 35 playas de agua tranquila, ideales para snorkel y para ir en familia.",
+    documentos:
+      "Curazao no pide visa a los peruanos para visitas cortas: viajas con pasaporte vigente, boleto de salida y llenas en línea la tarjeta digital de inmigración antes de volar.",
+    enlaces: [
+      { texto: "Requisitos para viajar a Curazao", href: "/viajes/requisitos-viajar-a-curazao-desde-peru" },
+      { texto: "Aruba", href: "/destinos/aruba" },
+      { texto: "Todo el Caribe", href: "/caribe" },
+    ],
+  },
+  panama: {
+    intro:
+      "Panamá es compras, el Canal y playa en un solo viaje: centros comerciales, el casco antiguo y paseos a San Blas o a las playas del Pacífico.",
+    documentos:
+      "Los peruanos no necesitan visa para Panamá como turistas: viajas con pasaporte vigente. En migración te pueden pedir el boleto de regreso y que muestres dinero para tu estadía.",
+    enlaces: [
+      { texto: "Pasajes Lima–Panamá", href: "/vuelos/lima-panama" },
+      { texto: "Cartagena", href: "/destinos/cartagena" },
+      { texto: "Todo el Caribe", href: "/caribe" },
+    ],
+  },
+  "rio-de-janeiro": {
+    intro:
+      "Río de Janeiro es Copacabana, Ipanema, el Cristo Redentor y el Pan de Azúcar; desde Lima es uno de los destinos de playa más cercanos fuera del país.",
+    documentos: "Puedes viajar a Brasil con tu DNI vigente o con pasaporte, sin visa.",
+    enlaces: [
+      { texto: "Pasajes Lima–Río de Janeiro", href: "/vuelos/lima-rio-de-janeiro" },
+      { texto: "Cataratas del Iguazú", href: "/destinos/iguazu-cataratas" },
+      { texto: "Destinos solo con DNI", href: "/blog/destinos-internacionales-solo-con-dni-peruanos" },
+    ],
+  },
+  "mancora-vichayito": {
+    intro:
+      "Máncora y Vichayito son las playas del norte del Perú con sol todo el año: hoteles frente al mar, surf, y paseos para ver tortugas.",
+    documentos:
+      "Solo necesitas tu DNI. Vuelas de Lima a Talara o a Tumbes y de ahí sigues por carretera hasta la playa.",
+    enlaces: [
+      { texto: "Pasajes Lima–Talara", href: "/vuelos/lima-talara" },
+      { texto: "Pasajes Lima–Tumbes", href: "/vuelos/lima-tumbes" },
+      { texto: "Tours en el Perú", href: "/tours" },
+    ],
+  },
   "cusco-machu-picchu-4-dias": {
     intro: "Cusco y Machu Picchu en 4 días: la ciudad, el Valle Sagrado y la ciudadela inca, con vuelo desde Lima.",
     documentos: "Solo necesitas tu DNI. Las entradas a Machu Picchu son limitadas por día, así que conviene reservar con anticipación.",
