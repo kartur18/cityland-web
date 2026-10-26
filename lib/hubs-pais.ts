@@ -8,6 +8,8 @@ export interface HubPais {
   nombre: string;
   // Países del catálogo (campo `pais` de cada destino) que entran en la página.
   paises: string[];
+  // Si se indica, solo estos destinos (en lugar de todos los del país).
+  slugs?: string[];
   h1: string;
   // ≤ 49 caracteres: se le suma " | Cityland".
   tituloSeo: string;
@@ -211,5 +213,60 @@ export const HUBS_PAIS: Readonly<Record<string, HubPais>> = {
       SOLO_DNI,
     ],
     mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un paquete a Chile.",
+  },
+  peru: {
+    nombre: "Cusco, Tarapoto o cualquier destino del Perú",
+    ruta: "/nacionales",
+    paises: ["Perú"],
+    h1: "Paquetes turísticos en el Perú desde Lima",
+    tituloSeo: "Paquetes turísticos en el Perú desde Lima",
+    descripcion:
+      "Paquetes turísticos nacionales desde Lima: Cusco y Machu Picchu, Tarapoto, Cajamarca, Huaraz, Arequipa, Puno, Iquitos, Máncora, Punta Sal y Paracas. Solo con DNI. Separa con el 50%.",
+    intro:
+      "Todos nuestros paquetes por el Perú en un solo lugar: sierra, selva y playa, con vuelo o bus, hotel y tours. Elige tu destino y te lo cotizamos por WhatsApp.",
+    documentos: "Para viajar dentro del Perú solo necesitas tu DNI. Los menores que viajan sin sus padres necesitan permiso notarial.",
+    faqs: [
+      { q: "¿Qué incluyen los paquetes nacionales?", a: "Según el paquete: vuelo o bus desde Lima, hotel, traslados y tours. En cada tarjeta ves qué incluye y te lo confirmamos por escrito." },
+      { q: "¿Cuál es el destino más barato?", a: "Los paquetes más económicos están arriba de la lista; el precio final depende de la fecha y del hotel." },
+      { q: "¿Organizan viajes para grupos y promociones?", a: "Sí. Te damos una sola cotización para todo el grupo." },
+      PAGO,
+    ],
+    enlaces: [
+      { texto: "Pasajes nacionales: Lima–Chiclayo", href: "/vuelos/lima-chiclayo" },
+      { texto: "Pasajes Lima–Cusco", href: "/vuelos/lima-cusco" },
+      { texto: "Full days desde Lima", href: "/full-days" },
+      { texto: "Feriados largos", href: "/feriados-largos" },
+      { texto: "Promociones escolares", href: "/colegios" },
+    ],
+    mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un paquete turístico en el Perú.",
+  },
+  todoIncluido: {
+    nombre: "Punta Cana, Cancún o Punta Sal",
+    ruta: "/paquetes-todo-incluido",
+    paises: [],
+    slugs: [
+      "punta-sal-royal-decameron-todo-incluido", "san-andres", "punta-cana", "cancun", "riviera-maya-todo-incluido",
+      "bayahibe-dominicana-all-inclusive", "aruba", "curazao", "guanacaste-costa-rica-all-inclusive",
+    ],
+    h1: "Paquetes todo incluido desde Lima",
+    tituloSeo: "Paquetes todo incluido desde Lima",
+    descripcion:
+      "Paquetes todo incluido desde Lima: Punta Cana, Cancún, Riviera Maya, San Andrés, Aruba, Curazao y Punta Sal. Vuelo, resort con comidas y bebidas y traslados. Separa con el 50%.",
+    intro:
+      "Resorts frente al mar donde las comidas y las bebidas ya están pagadas: solo te preocupas de descansar. Elige tu playa y te cotizamos vuelo, hotel y traslados.",
+    documentos:
+      "Depende del destino: Punta Sal y San Andrés solo con DNI; Punta Cana, Aruba y Curazao con pasaporte y sin visa; para Cancún y la Riviera Maya, México pide visa salvo que tengas visa de Estados Unidos, Canadá, Japón, Reino Unido o Schengen.",
+    faqs: [
+      { q: "¿Qué significa todo incluido?", a: "Que las comidas y bebidas dentro del resort ya están pagadas. Lo que entra exactamente cambia de un hotel a otro, por eso te lo detallamos por escrito." },
+      { q: "¿Cuál es el todo incluido más barato desde Lima?", a: "Punta Sal, en el Perú, porque el vuelo es nacional. Fuera del país, los precios cambian según la fecha: los más económicos están arriba de la lista." },
+      PAGO,
+    ],
+    enlaces: [
+      { texto: "Paquetes a Punta Cana", href: "/paquetes-a-punta-cana" },
+      { texto: "Paquetes a Cancún y México", href: "/paquetes-a-mexico" },
+      { texto: "Punta Cana o Cancún", href: "/blog/punta-cana-vs-cancun-cual-elegir-desde-lima" },
+      { texto: "Hoteles", href: "/hoteles" },
+    ],
+    mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un paquete todo incluido.",
   },
 };

@@ -17,7 +17,7 @@ const TODOS: Destino[] = [...DESTINOS_EUROPA, ...DESTINOS_CARIBE, ...DESTINOS_MA
 
 function destinosDe(h: HubPais): Destino[] {
   const vistos = new Set<string>();
-  return TODOS.filter((d) => h.paises.includes(d.pais) && !vistos.has(d.slug) && vistos.add(d.slug)).sort(
+  return TODOS.filter((d) => (h.slugs ? h.slugs.includes(d.slug) : h.paises.includes(d.pais)) && !vistos.has(d.slug) && vistos.add(d.slug)).sort(
     (a, b) => a.turistico - b.turistico
   );
 }
