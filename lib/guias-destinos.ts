@@ -162,7 +162,7 @@ const EXTRAS: Readonly<Record<string, Extra>> = {
       { texto: "Pasajes Lima–Miami", href: "/vuelos/lima-miami" },
       { texto: "Pasajes Lima–Orlando", href: "/vuelos/lima-orlando" },
       { texto: "Visa americana", href: "/visas" },
-      { texto: "Cómo tramitar la visa americana", href: "/blog/como-tramitar-visa-americana-b1-b2-peru" },
+      { texto: "Viaje a Disney desde Perú", href: "/blog/viaje-a-disney-desde-peru-cuanto-cuesta" },
     ],
   },
   "europa-clasica": {
