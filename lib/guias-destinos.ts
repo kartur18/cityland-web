@@ -208,6 +208,97 @@ const EXTRAS: Readonly<Record<string, Extra>> = {
       { texto: "Tours en el Perú", href: "/tours" },
     ],
   },
+  "cajamarca-banos-del-inca-cumbemayo": {
+    intro:
+      "Cajamarca combina historia y campo: la plaza donde fue capturado Atahualpa, las aguas termales de los Baños del Inca, el acueducto de Cumbemayo y la Granja Porcón.",
+    documentos: "Solo necesitas tu DNI. Cajamarca está a unos 2,700 metros de altura; lleva abrigo para las noches.",
+    enlaces: [
+      { texto: "Pasajes Lima–Cajamarca", href: "/vuelos/lima-cajamarca" },
+      { texto: "Trujillo y Chiclayo", href: "/destinos/trujillo-chiclayo-ruta-moche" },
+      { texto: "Todos los paquetes en el Perú", href: "/nacionales" },
+    ],
+  },
+  "huaraz-laguna-69-pastoruri-chavin": {
+    intro:
+      "Huaraz es la puerta de la Cordillera Blanca: la Laguna 69, el nevado Pastoruri, el Callejón de Huaylas y el templo de Chavín de Huántar.",
+    documentos:
+      "Solo necesitas tu DNI. Se llega por carretera desde Lima. Huaraz está a más de 3,000 metros y lagunas como la 69 pasan los 4,500: tómate un día para acostumbrarte a la altura y consulta a tu médico si tienes problemas de corazón o presión.",
+    enlaces: [
+      { texto: "Full days desde Lima", href: "/full-days" },
+      { texto: "Tours en el Perú", href: "/tours" },
+      { texto: "Todos los paquetes en el Perú", href: "/nacionales" },
+    ],
+  },
+  "trujillo-chiclayo-ruta-moche": {
+    intro:
+      "La Ruta Moche une Trujillo y Chiclayo: Chan Chan, las Huacas del Sol y de la Luna, el Museo Tumbas Reales de Sipán y la playa de Huanchaco.",
+    documentos: "Solo necesitas tu DNI.",
+    enlaces: [
+      { texto: "Pasajes Lima–Trujillo", href: "/vuelos/lima-trujillo" },
+      { texto: "Pasajes Lima–Chiclayo", href: "/vuelos/lima-chiclayo" },
+      { texto: "Todos los paquetes en el Perú", href: "/nacionales" },
+    ],
+  },
+  "puno-lago-titicaca-sillustani": {
+    intro:
+      "Puno y el Lago Titicaca: las islas flotantes de los Uros, la isla de Taquile y las torres funerarias de Sillustani.",
+    documentos: "Solo necesitas tu DNI. Puno está a más de 3,800 metros de altura: toma el primer día con calma.",
+    enlaces: [
+      { texto: "Pasajes Lima–Juliaca (Puno)", href: "/vuelos/lima-juliaca" },
+      { texto: "Cusco, Puno y el Titicaca", href: "/destinos/cusco-puno-lago-titicaca-6-dias" },
+      { texto: "Todos los paquetes en el Perú", href: "/nacionales" },
+    ],
+  },
+  "iquitos-crucero-rio-amazonas-lodge": {
+    intro:
+      "Iquitos es la ciudad de la Amazonía a la que solo se llega por avión o por río: lodges en la selva, paseos en bote por el Amazonas y comunidades nativas.",
+    documentos: "Solo necesitas tu DNI. Lleva repelente, ropa ligera de manga larga y algo para la lluvia.",
+    enlaces: [
+      { texto: "Pasajes Lima–Iquitos", href: "/vuelos/lima-iquitos" },
+      { texto: "Tarapoto", href: "/destinos/tarapoto-selva" },
+      { texto: "Todos los paquetes en el Perú", href: "/nacionales" },
+    ],
+  },
+  "punta-sal-royal-decameron-todo-incluido": {
+    intro:
+      "Punta Sal es la playa todo incluido del Perú: resort frente al mar en Tumbes, con sol casi todo el año, comidas y bebidas incluidas.",
+    documentos: "Solo necesitas tu DNI. Se vuela de Lima a Tumbes y de ahí se sigue por carretera hasta el resort.",
+    enlaces: [
+      { texto: "Pasajes Lima–Tumbes", href: "/vuelos/lima-tumbes" },
+      { texto: "Máncora y Vichayito", href: "/destinos/mancora-vichayito" },
+      { texto: "Paquetes todo incluido", href: "/paquetes-todo-incluido" },
+    ],
+  },
+  "ayacucho-aguas-turquesas-millpu": {
+    intro:
+      "Ayacucho tiene una iglesia en cada esquina, la Pampa de la Quinua donde se selló la independencia y las pozas turquesas de Millpu.",
+    documentos: "Solo necesitas tu DNI.",
+    enlaces: [
+      { texto: "Pasajes Lima–Ayacucho", href: "/vuelos/lima-ayacucho" },
+      { texto: "Feriados largos", href: "/feriados-largos" },
+      { texto: "Todos los paquetes en el Perú", href: "/nacionales" },
+    ],
+  },
+  "oxapampa-pozuzo-villa-rica-selva-central": {
+    intro:
+      "Oxapampa y Pozuzo son la selva central con herencia austro-alemana: casas de madera, cataratas, café de Villa Rica y clima templado.",
+    documentos: "Solo necesitas tu DNI. Se llega por carretera desde Lima.",
+    enlaces: [
+      { texto: "Feriados largos", href: "/feriados-largos" },
+      { texto: "Promociones escolares", href: "/colegios" },
+      { texto: "Todos los paquetes en el Perú", href: "/nacionales" },
+    ],
+  },
+  "paracas-ica-huacachina-nazca": {
+    intro:
+      "Paracas, Ica y Nazca al sur de Lima: las Islas Ballestas, el oasis de Huacachina con sus dunas y el sobrevuelo a las Líneas de Nazca.",
+    documentos: "Solo necesitas tu DNI. Se llega por carretera desde Lima; también se puede hacer como full day.",
+    enlaces: [
+      { texto: "Full days desde Lima", href: "/full-days" },
+      { texto: "Feriados largos", href: "/feriados-largos" },
+      { texto: "Todos los paquetes en el Perú", href: "/nacionales" },
+    ],
+  },
   "cusco-machu-picchu-4-dias": {
     intro: "Cusco y Machu Picchu en 4 días: la ciudad, el Valle Sagrado y la ciudadela inca, con vuelo desde Lima.",
     documentos: "Solo necesitas tu DNI. Las entradas a Machu Picchu son limitadas por día, así que conviene reservar con anticipación.",

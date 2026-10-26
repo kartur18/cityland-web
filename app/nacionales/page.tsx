@@ -1,14 +1,11 @@
-import PeruPage, { metadata as peruMetadata } from "../peru/page";
-import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
-import type { Metadata } from "next";
+import HubPaisPagina, { metadataHub } from "@/components/HubPaisPagina";
+import { HUBS_PAIS } from "@/lib/hubs-pais";
 
-export const metadata: Metadata = {
-  ...peruMetadata,
-  title: optimizarMetaTitleSEO("Viajes y Paquetes Nacionales por el Perú (Cusco, Máncora, Arequipa y Selva) | Cityland Travel"),
-  description: optimizarMetaDescriptionSEO("Programas y paquetes turísticos nacionales desde Lima: Cusco, Machu Picchu, Punta Sal, Máncora, Tarapoto, Iquitos, Arequipa y Paracas con vuelos y hoteles incluidos."),
-  alternates: {
-    canonical: "https://citylandtravel.com/nacionales",
-  },
-};
+// Antes repetía el contenido de /peru con otra URL; ahora es la página de todos los paquetes del Perú.
+const HUB = HUBS_PAIS.peru;
 
-export default PeruPage;
+export const metadata = metadataHub(HUB);
+
+export default function NacionalesPage() {
+  return <HubPaisPagina hub={HUB} />;
+}

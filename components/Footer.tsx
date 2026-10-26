@@ -149,6 +149,9 @@ export default function Footer() {
               <Link href="/paquetes/panama-medellin" className="block text-slate-300 hover:text-white transition-colors">
                 Combinado Panamá + Medellín 2026
               </Link>
+              <Link href="/paquetes-todo-incluido" className="block text-slate-300 hover:text-white transition-colors">
+                Paquetes Todo Incluido
+              </Link>
               <Link href="/paquetes-a-punta-cana" className="block text-slate-300 hover:text-white transition-colors">
                 Paquetes a Punta Cana
               </Link>
