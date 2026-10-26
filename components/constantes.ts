@@ -1386,6 +1386,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "destinos-internacionales-solo-con-dni-peruanos",
     titulo: "8 destinos internacionales a los que puedes viajar desde Perú solo con tu DNI",
+    tituloSeo: "Países a los que puedes viajar solo con DNI 2026",
     desc: "Viaja a Cartagena, Medellín, Buenos Aires, Río de Janeiro y Santiago de Chile sin necesidad de tramitar pasaporte ni visa.",
     categoria: "Guías de Viaje",
     catColor: "bg-emerald-700",
