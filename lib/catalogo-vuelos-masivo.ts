@@ -293,7 +293,10 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
     destino: s.destino,
     codigoOrigen: s.codigoOrigen,
     codigoDestino: s.codigoDestino,
-    metaTitle: `Vuelos de ${s.origen} a ${s.destino} Desde $${s.precioUSD} USD (Impuestos Incluidos) | Cityland Travel`,
+    // En rutas nacionales la gente busca «pasajes Lima Chiclayo», no «vuelos de Lima a Chiclayo».
+    metaTitle: esNacional
+      ? `Pasajes ${s.origen}–${s.destino} baratos desde $${s.precioUSD} | Cityland`
+      : `Vuelos de ${s.origen} a ${s.destino} Desde $${s.precioUSD} USD (Impuestos Incluidos) | Cityland Travel`,
     metaDescription: `Cotiza vuelos de ${s.origen} (${s.codigoOrigen}) a ${s.destino} (${s.codigoDestino}) Desde $${s.precioUSD} USD con impuestos incluidos. Salidas confirmadas con ${s.aerolineas}, equipaje en bodega y atención personalizada de Cityland Travel (RUC 20614914239).`,
     keywords: [
       `vuelos de ${s.origen.toLowerCase()} a ${s.destino.toLowerCase()}`,

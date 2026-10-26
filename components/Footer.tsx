@@ -149,6 +149,27 @@ export default function Footer() {
               <Link href="/paquetes/panama-medellin" className="block text-slate-300 hover:text-white transition-colors">
                 Combinado Panamá + Medellín 2026
               </Link>
+              <Link href="/paquetes-a-punta-cana" className="block text-slate-300 hover:text-white transition-colors">
+                Paquetes a Punta Cana
+              </Link>
+              <Link href="/paquetes-a-mexico" className="block text-slate-300 hover:text-white transition-colors">
+                Paquetes a Cancún y México
+              </Link>
+              <Link href="/paquetes-a-colombia" className="block text-slate-300 hover:text-white transition-colors">
+                Paquetes a Colombia
+              </Link>
+              <Link href="/paquetes-a-brasil" className="block text-slate-300 hover:text-white transition-colors">
+                Paquetes a Brasil
+              </Link>
+              <Link href="/paquetes-a-argentina" className="block text-slate-300 hover:text-white transition-colors">
+                Paquetes a Argentina
+              </Link>
+              <Link href="/paquetes-a-chile" className="block text-slate-300 hover:text-white transition-colors">
+                Paquetes a Chile
+              </Link>
+              <Link href="/paquetes-a-estados-unidos" className="block text-slate-300 hover:text-white transition-colors">
+                Paquetes a Estados Unidos
+              </Link>
             </div>
           </div>
 

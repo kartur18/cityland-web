@@ -4,6 +4,12 @@ import { PRECIO_IDA_VUELTA_MADRID_DESDE } from "@/components/constantes";
 // la ciudad, el mes o la modalidad) y páginas clave que deben usar las palabras que la gente busca. 24-oct-2026.
 export const TITULOS_SEO_UNICOS: Readonly<Record<string, string>> = {
   "/vuelos/lima-madrid": `Pasajes Lima–Madrid ida y vuelta desde $${PRECIO_IDA_VUELTA_MADRID_DESDE.toLocaleString("en-US")} | Cityland`,
+  "/vuelos/lima-cusco": "Pasajes Lima–Cusco baratos ida y vuelta | Cityland",
+  "/vuelos/lima-arequipa": "Pasajes Lima–Arequipa baratos ida y vuelta | Cityland",
+  "/vuelos/lima-piura": "Pasajes Lima–Piura baratos ida y vuelta | Cityland",
+  "/vuelos/lima-tarapoto": "Pasajes Lima–Tarapoto baratos ida y vuelta | Cityland",
+  "/vuelos/lima-iquitos": "Pasajes Lima–Iquitos baratos ida y vuelta | Cityland",
+  "/vuelos/lima-puno": "Pasajes Lima–Puno (Juliaca) baratos | Cityland",
 
   "/paquetes-migratorios/desde-chiclayo-a-madrid": "Paquete migratorio a Madrid desde Chiclayo | Cityland",
   "/paquetes-migratorios/desde-tacna-a-madrid": "Paquete migratorio a Madrid desde Tacna | Cityland",
