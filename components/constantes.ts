@@ -2195,6 +2195,67 @@ export const BLOG_POSTS: BlogPost[] = [
 </ul>
 <p>Revisado el 25 de octubre de 2026. Esta guía es informativa: cada caso lo deciden Extranjería y el Consulado, y para casos complejos conviene consultar con un abogado de extranjería.</p>`,
   },
+  {
+    slug: "viaje-a-disney-desde-peru-cuanto-cuesta",
+    titulo: "Viaje a Disney desde Perú: qué necesitas, cuántos días y cómo armar el presupuesto familiar",
+    tituloSeo: "Viaje a Disney desde Perú: requisitos y presupuesto",
+    desc: "Lo que necesita una familia peruana para ir a Disney en Orlando: visa americana para cada uno, cuántos días de parques, cuándo ir y qué entra en el presupuesto.",
+    categoria: "Guías",
+    catColor: "bg-emerald-700",
+    fecha: "Actualizado octubre 2026",
+    lectura: "6 min",
+    imagen: "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=900&q=80",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>La respuesta corta</h2>
+<ul>
+<li>Cada miembro de la familia, <strong>incluidos los niños</strong>, necesita <strong>pasaporte vigente y visa americana</strong>. Sin visa no se puede viajar a Estados Unidos.</li>
+<li>Primero consigue las visas y <strong>después</strong> compra pasajes y entradas.</li>
+<li>Para ver lo principal de Disney y Universal, calcula entre <strong>4 y 6 días de parques</strong>, más los días de vuelo.</li>
+<li>El presupuesto tiene 5 partes: <strong>vuelos, hotel, entradas, comidas y seguro de viaje</strong>.</li>
+</ul>
+
+<h2>1. Las visas: lo primero</h2>
+<p>La tasa de la visa americana es de <strong>US$185 por persona</strong> y no se devuelve si te la niegan. Los menores de edad también pagan y también necesitan su propia visa. Las citas en la Embajada pueden demorar, así que empieza con tiempo. En nuestra página de <a href="/visas">visas</a> te explicamos cómo te ayudamos con el formulario y la entrevista.</p>
+<p>Si un menor viaja con un solo padre, necesita además el <a href="/blog/permiso-notarial-viaje-menores-peru-requisitos">permiso notarial de viaje</a> firmado por el otro.</p>
+
+<h2>2. Cuántos días</h2>
+<div class="tabla-guia"><table>
+<thead><tr><th>Plan</th><th>Días en Orlando</th></tr></thead>
+<tbody>
+<tr><td>Solo lo principal de Disney</td><td>4 días de parques</td></tr>
+<tr><td>Disney + Universal</td><td>5 o 6 días de parques</td></tr>
+<tr><td>Parques + playa en Miami</td><td>7 días o más en total</td></tr>
+</tbody>
+</table></div>
+<p>Suma un día de ida y otro de vuelta: desde Lima no hay que cruzar medio mundo, pero el viaje toma casi todo el día.</p>
+
+<h2>3. Cuándo ir</h2>
+<ul>
+<li><strong>Vacaciones de enero a marzo</strong> en Perú coinciden con el invierno de Florida: clima fresco y agradable.</li>
+<li>De <strong>junio a noviembre</strong> es la temporada de huracanes del Atlántico: hace calor, llueve por las tardes y conviene llevar un seguro de viaje que cubra cambios.</li>
+<li>Navidad, Año Nuevo y Semana Santa son las fechas más llenas y más caras en los parques.</li>
+</ul>
+
+<h2>4. Qué entra en el presupuesto</h2>
+<ol>
+<li><strong>Vuelos</strong> Lima–Orlando o Lima–Miami, ida y vuelta, con maletas.</li>
+<li><strong>Hotel:</strong> dentro de Disney o cerca de los parques, con o sin desayuno.</li>
+<li><strong>Entradas</strong> por día y por persona; con más días, el precio por día baja.</li>
+<li><strong>Comidas y traslados</strong> entre el hotel y los parques.</li>
+<li><strong>Seguro de viaje:</strong> la atención médica en Estados Unidos es muy cara, no viajes sin seguro.</li>
+</ol>
+<p>Los precios de pasajes, hoteles y entradas cambian según la fecha. Escríbenos con las fechas, cuántos adultos y niños viajan, y te armamos el presupuesto completo por escrito.</p>
+
+<h2>Sigue leyendo</h2>
+<ul>
+<li><a href="/destinos/miami-orlando">Paquete Miami y Orlando</a></li>
+<li><a href="/destinos/orlando-parques-disney-universal">Orlando: Disney y Universal</a></li>
+<li><a href="/vuelos/lima-orlando">Pasajes Lima–Orlando</a></li>
+<li><a href="/blog/como-tramitar-visa-americana-b1-b2-peru">Cómo tramitar la visa americana</a></li>
+<li><a href="/quinceaneras">Viajes de quinceañeras</a></li>
+</ul>
+<p>Revisado el 25 de octubre de 2026.</p>`,
+  },
 ];
 
 

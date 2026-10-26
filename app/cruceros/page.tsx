@@ -3,6 +3,8 @@ import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-ar
 import AirlineLandingTemplate, {
   ConfiguracionLandingAerolinea,
 } from "@/components/AirlineLandingTemplate";
+import BloqueGuiaServicio from "@/components/BloqueGuiaServicio";
+import { GUIA_CRUCEROS } from "@/lib/guia-cruceros";
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO("Cruceros Todo Incluido Sin Visa desde Panamá, Cartagena, Miami y Europa | Cityland Travel"),
@@ -283,7 +285,9 @@ export default function CrucerosPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD_CRUCEROS) }}
       />
-      <AirlineLandingTemplate config={CONFIG_CRUCEROS} />
+      <AirlineLandingTemplate config={CONFIG_CRUCEROS}>
+        <BloqueGuiaServicio guia={GUIA_CRUCEROS} />
+      </AirlineLandingTemplate>
     </>
   );
 }
