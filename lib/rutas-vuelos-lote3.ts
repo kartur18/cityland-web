@@ -35,7 +35,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       tituloHero: "Vuelos y Paquetes de Lima a",
       tituloDestacadoHero: "Valencia, España",
       descripcionHero:
-        "Tarifas referenciales verificadas con impuestos y conexión garantizada vía Madrid.",
+        "Tarifas referenciales verificadas con impuestos y conexión vía Madrid.",
       negritaHero:
         "Ideal para visita familiar, turismo por el Mediterráneo o estadía con carpeta migratoria Schengen completa.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
@@ -182,13 +182,13 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       descripcionHero:
         "Tarifas referenciales verificadas con impuestos incluidos para viajar al sur de España.",
       negritaHero:
-        "Conexiones garantizadas a Málaga, Marbella, Sevilla y Granada con equipaje completo.",
+        "Conexiones a Málaga, Marbella, Sevilla y Granada con equipaje completo.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
       waPrincipalNumero: "51944103890",
       waPrincipalMensaje:
         "Hola, encontré Cityland Travel en Google. Quiero consultar disponibilidad y precio para viajar de Lima a Málaga, España. ¿Me pueden ayudar?",
       checksHero: [
-        "Conexión garantizada vía Madrid",
+        "Conexión vía Madrid",
         "Equipaje 23 kg + cabina 10 kg",
         "Asesoría migratoria Schengen incluida",
       ],
