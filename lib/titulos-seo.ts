@@ -68,8 +68,6 @@ export const TITULOS_SEO_UNICOS: Readonly<Record<string, string>> = {
   "/ofertas/crucero-caribe-desde-cartagena-temporada-2026": "Crucero Caribe desde Cartagena 2026 | Cityland",
   "/ofertas/crucero-caribe-sin-visa-panama-reserva-en-cuotas": "Crucero Caribe sin visa desde Panamá en cuotas | Cityland",
   "/ofertas/crucero-caribe-sin-visa-panama-temporada-2026": "Crucero Caribe sin visa desde Panamá 2026 | Cityland",
-  "/ofertas/formula-1-gran-premio-brasil-temporada-2026": "Fórmula 1 Gran Premio de São Paulo 2026 | Cityland",
-  "/ofertas/formula-1-gran-premio-brasil-salida-desde-lima": "Fórmula 1 en São Paulo con salida de Lima | Cityland",
   "/ofertas/viaje-promocion-secundaria-cusco-salida-desde-lima": "Promoción de secundaria a Cusco desde Lima | Cityland",
   "/ofertas/viaje-promocion-secundaria-cusco-programa-oficial": "Promoción de secundaria a Cusco: programa | Cityland",
   "/ofertas/viaje-incentivos-empresas-cusco-programa-oficial": "Incentivos para empresas en Cusco: programa | Cityland",

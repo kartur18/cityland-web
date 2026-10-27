@@ -403,17 +403,17 @@ const CIRCUITOS_Y_DESTINOS_80: [string, string, string, LandingComercialSEO["clu
   ["Turquía, Egipto y Dubái", "turquia-egipto-y-dubai", "Turquía", "mundiales", "Circuitos Medio Oriente", 2190, true],
   ["Tierra Santa (Jerusalén, Belén y Galilea) y Roma", "tierra-santa-y-roma", "Israel", "religiosos-eventos", "Peregrinaciones Internacionales", 2090, true],
   ["Tokio, Kioto y Osaka (Japón Clásico)", "tokio-kioto-y-osaka", "Japón", "mundiales", "Circuitos por Asia", 2490, true],
-  ["Punta Cana Todo Incluido", "punta-cana-todo-incluido", "República Dominicana", "all-inclusive", "Caribe Todo Incluido", 1049, true],
-  ["Punta Cana y Bayahíbe con Isla Saona", "punta-cana-y-bayahibe", "República Dominicana", "all-inclusive", "Caribe Todo Incluido", 1090, true],
-  ["Cancún Todo Incluido Frente al Mar", "cancun-todo-incluido", "México", "all-inclusive", "Caribe Mexicano", 999, true],
-  ["Riviera Maya y Playa del Carmen Todo Incluido", "riviera-maya-todo-incluido", "México", "all-inclusive", "Caribe Mexicano", 1049, true],
-  ["Cancún, Chichén Itzá y Parque Xcaret", "cancun-y-xcaret", "México", "all-inclusive", "Caribe Mexicano", 1190, true],
+  ["Punta Cana Todo Incluido", "punta-cana-todo-incluido", "República Dominicana", "all-inclusive", "Caribe Todo Incluido", 1190, true],
+  ["Punta Cana y Bayahíbe con Isla Saona", "punta-cana-y-bayahibe", "República Dominicana", "all-inclusive", "Caribe Todo Incluido", 1250, true],
+  ["Cancún Todo Incluido Frente al Mar", "cancun-todo-incluido", "México", "all-inclusive", "Caribe Mexicano", 1149, true],
+  ["Riviera Maya y Playa del Carmen Todo Incluido", "riviera-maya-todo-incluido", "México", "all-inclusive", "Caribe Mexicano", 1190, true],
+  ["Cancún, Chichén Itzá y Parque Xcaret", "cancun-y-xcaret", "México", "all-inclusive", "Caribe Mexicano", 1290, true],
   ["Ciudad de México, Basílica de Guadalupe y Cancún", "cdmx-guadalupe-y-cancun", "México", "mundiales", "Circuitos por México", 1090, true],
-  ["San Andrés Isla Todo Incluido", "san-andres-todo-incluido", "Colombia", "all-inclusive", "Caribe Colombiano", 749, true],
-  ["Cartagena de Indias e Isla Barú", "cartagena-e-isla-baru", "Colombia", "all-inclusive", "Caribe Colombiano", 599, true],
-  ["Cartagena y San Andrés Combinado", "cartagena-y-san-andres-combinado", "Colombia", "all-inclusive", "Caribe Colombiano", 849, true],
+  ["San Andrés Isla Todo Incluido", "san-andres-todo-incluido", "Colombia", "all-inclusive", "Caribe Colombiano", 899, true],
+  ["Cartagena de Indias e Isla Barú", "cartagena-e-isla-baru", "Colombia", "all-inclusive", "Caribe Colombiano", 899, true],
+  ["Cartagena y San Andrés Combinado", "cartagena-y-san-andres-combinado", "Colombia", "all-inclusive", "Caribe Colombiano", 1090, true],
   ["Medellín, Guatapé y Comuna 13", "medellin-y-guatape", "Colombia", "mundiales", "Viajes a Colombia", 589, true],
-  ["Cartagena y Medellín Combinado", "cartagena-y-medellin", "Colombia", "mundiales", "Viajes a Colombia", 769, true],
+  ["Cartagena y Medellín Combinado", "cartagena-y-medellin", "Colombia", "mundiales", "Viajes a Colombia", 990, true],
   ["Panamá y Medellín Combinado", "panama-y-medellin-combinado", "Panamá", "mundiales", "Circuitos Combinados", 799, true],
   ["Ciudad de Panamá y Playa Blanca Todo Incluido", "panama-y-playa-blanca", "Panamá", "all-inclusive", "Caribe y Compras", 799, true],
   ["Bogotá y Eje Cafetero", "bogota-y-eje-cafetero", "Colombia", "mundiales", "Viajes a Colombia", 629, true],
@@ -433,12 +433,12 @@ const CIRCUITOS_Y_DESTINOS_80: [string, string, string, LandingComercialSEO["clu
   ["Las Vegas y Gran Cañón del Colorado", "las-vegas-y-gran-canon", "Estados Unidos", "mundiales", "Viajes a Estados Unidos", 1190, true],
   ["Los Ángeles, Hollywood y Disneyland California", "los-angeles-y-california", "Estados Unidos", "mundiales", "Viajes a Estados Unidos", 1290, true],
   ["Toronto, Montreal y Cataratas del Niágara", "toronto-y-montreal-canada", "Canadá", "mundiales", "Viajes a Canadá", 1350, true],
-  ["Buenos Aires Clásico y Show de Tango", "buenos-aires-clasico", "Argentina", "mundiales", "Sudamérica", 699, true],
+  ["Buenos Aires Clásico y Show de Tango", "buenos-aires-clasico", "Argentina", "mundiales", "Sudamérica", 790, true],
   ["Buenos Aires y San Carlos de Bariloche", "buenos-aires-y-bariloche", "Argentina", "mundiales", "Sudamérica", 890, true],
   ["Buenos Aires, Bariloche y Glaciar Perito Moreno (Calafate)", "argentina-patagonia-completa", "Argentina", "mundiales", "Sudamérica", 1150, true],
   ["Cataratas del Iguazú (Lado Argentino y Brasileño)", "cataratas-del-iguazu", "Brasil", "mundiales", "Sudamérica", 729, true],
-  ["Río de Janeiro (Cristo Redentor y Pan de Azúcar)", "rio-de-janeiro-clasico", "Brasil", "mundiales", "Sudamérica", 749, true],
-  ["Río de Janeiro, Búzios y Arraial do Cabo", "rio-de-janeiro-y-buzios", "Brasil", "mundiales", "Playas de Brasil", 799, true],
+  ["Río de Janeiro (Cristo Redentor y Pan de Azúcar)", "rio-de-janeiro-clasico", "Brasil", "mundiales", "Sudamérica", 990, true],
+  ["Río de Janeiro, Búzios y Arraial do Cabo", "rio-de-janeiro-y-buzios", "Brasil", "mundiales", "Playas de Brasil", 1090, true],
   ["Florianópolis y Camboriú (Parque Beto Carrero)", "florianopolis-y-camboriu", "Brasil", "mundiales", "Playas de Brasil", 769, true],
   ["Gramado y Canela (Ruta Romántica de Brasil)", "gramado-y-canela-brasil", "Brasil", "mundiales", "Sudamérica", 790, true],
   ["Santiago de Chile, Viña del Mar y Valparaíso", "santiago-y-vina-del-mar", "Chile", "mundiales", "Sudamérica", 549, true],
@@ -475,6 +475,18 @@ const DURACIONES_8: [string, string, number][] = [
   ["12 Días / 11 Noches", "12-dias-11-noches", 1.32],
   ["15 Días / 14 Noches", "15-dias-14-noches", 1.45],
 ];
+
+// Circuitos lejanos: duración y precio mínimo por persona con vuelo desde Lima (mercado de Lima, oct-2026).
+const DURACIONES_LEJANAS: [string, string, number, number][] = [
+  ["10 Días / 9 Noches", "10-dias-9-noches", 1.22, 2490],
+  ["12 Días / 11 Noches", "12-dias-11-noches", 1.32, 2790],
+  ["15 Días / 14 Noches", "15-dias-14-noches", 1.45, 3290],
+  ["17 Días / 16 Noches", "17-dias-16-noches", 1.55, 3590],
+  ["19 Días / 18 Noches", "19-dias-18-noches", 1.65, 3890],
+];
+
+// Destinos del Perú a los que solo se llega por carretera desde Lima.
+const SOLO_POR_CARRETERA = /(oxapampa|paracas|huaraz)/i;
 
 const ENFOQUES_DURACION: [string, string, number][] = [
   ["paquete", "Paquete Vuelo + Hotel", 1.0],
@@ -736,13 +748,6 @@ const PROGRAMAS_ESPECIALES_80: [string, string, string, LandingComercialSEO["clu
   ["Paquete Walt Disney World Orlando (4 Parques Mágicos)", "paquete-walt-disney-world-orlando", "Estados Unidos", "mundiales", "Parques Temáticos", 1390, true],
   ["Paquete Universal Orlando y Epic Universe", "paquete-universal-epic-universe-orlando", "Estados Unidos", "mundiales", "Parques Temáticos", 1350, true],
   ["Paquete Disneyland París y Torre Eiffel", "paquete-disneyland-paris", "Francia", "mundiales", "Viajes Familiares Europa", 1490, true],
-  ["Paquete Parque Warner Madrid y Tour Santiago Bernabéu", "parque-warner-y-bernabeu-madrid", "España", "mundiales", "Viajes a España", 1390, true],
-  ["Paquete PortAventura World y Tour Camp Nou Barcelona", "portaventura-y-camp-nou-barcelona", "España", "mundiales", "Viajes a Barcelona", 1420, true],
-  ["Tour Futbolero Real Madrid (Santiago Bernabéu) y FC Barcelona", "tour-futbol-madrid-y-barcelona", "España", "mundiales", "Turismo Deportivo", 1490, true],
-  ["Viaje a la Champions League en Madrid, Barcelona y Milán", "viaje-champions-league-europa", "Europa", "mundiales", "Turismo Deportivo", 1690, true],
-  ["Paquete Fórmula 1 Gran Premio de São Paulo (Interlagos Brasil)", "formula-1-gran-premio-brasil", "Brasil", "mundiales", "Turismo Deportivo", 1190, true],
-  ["Paquete Fórmula 1 Gran Premio de Miami", "formula-1-gran-premio-miami", "Estados Unidos", "mundiales", "Turismo Deportivo", 1490, true],
-  ["Paquete Fórmula 1 Gran Premio de España (Madrid / Barcelona)", "formula-1-gran-premio-espana", "España", "mundiales", "Turismo Deportivo", 1590, true],
   ["Feria de Cantón en Guangzhou (China) para Importadores Peruanos", "feria-de-canton-china-importadores", "China", "empresas", "Ferias y Negocios", 2290, true],
   ["Viaje de Negocios e Importación a Yiwu y Shanghái (China)", "viaje-negocios-yiwu-shanghai", "China", "empresas", "Ferias y Negocios", 2350, true],
   ["Viaje de Compras Mayoristas en Zona Libre de Colón (Panamá)", "viaje-compras-zona-libre-panama", "Panamá", "empresas", "Ferias y Negocios", 749, true],
@@ -899,7 +904,10 @@ function generarIndiceExpansion(): ResumenLandingExpansion[] {
     );
     const esEscapadaCortaNacional = /(paracas|ica|huacachina)/i.test(slugCircuito);
 
-    for (const [textoDuracion, slugDuracion, factorDur] of DURACIONES_8) {
+    const duraciones: [string, string, number, number][] = esLejanoIntercontinental
+      ? DURACIONES_LEJANAS
+      : DURACIONES_8.map(([t, s, f]) => [t, s, f, 149]);
+    for (const [textoDuracion, slugDuracion, factorDur, pisoPrecio] of duraciones) {
       const esCortoEnLejano =
         esLejanoIntercontinental &&
         (slugDuracion === "4-dias-3-noches" || slugDuracion === "5-dias-4-noches");
@@ -907,9 +915,11 @@ function generarIndiceExpansion(): ResumenLandingExpansion[] {
         esEscapadaCortaNacional &&
         (slugDuracion === "12-dias-11-noches" || slugDuracion === "15-dias-14-noches");
 
-      for (const [prefijoEnf, nombreEnf, factorEnf] of ENFOQUES_DURACION) {
+      for (const [prefijoEnf, nombreEnfBase, factorEnf] of ENFOQUES_DURACION) {
+        const nombreEnf =
+          prefijoEnf === "paquete" && SOLO_POR_CARRETERA.test(slugCircuito) ? "Paquete Bus + Hotel" : nombreEnfBase;
         const slug = `${prefijoEnf}-${slugCircuito}-${slugDuracion}`;
-        const precio = Math.max(149, Math.round((precioBase * factorDur * factorEnf) / 10) * 10);
+        const precio = Math.max(pisoPrecio, Math.round((precioBase * factorDur * factorEnf) / 10) * 10);
 
         const etiquetaDuracionReal = esCortoEnLejano
           ? `Extensión en Destino ${textoDuracion} (o Circuito 10-15 Días desde Lima)`

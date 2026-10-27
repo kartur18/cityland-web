@@ -83,6 +83,18 @@ const nextConfig: NextConfig = {
       { source: "/vuelos/iquitos-buenos-aires", destination: "/vuelos/lima-buenos-aires", permanent: true },
       { source: "/vuelos/juliaca-paris", destination: "/vuelos/lima-paris", permanent: true },
       { source: "/vuelos/tacna-punta-cana", destination: "/vuelos/lima-punta-cana", permanent: true },
+      // Lo que Cityland no vende o no existe (26-oct-2026): entradas a fútbol y F1, vuelos a ciudades sin vuelo
+      // regular, circuitos lejanos de 4 a 8 días y «vuelo + hotel» a Paracas.
+      { source: "/ofertas/:s(tour-futbol-madrid-y-barcelona.*|parque-warner-y-bernabeu-madrid.*|formula-1-gran-premio-espana.*)", destination: "/espana", permanent: true },
+      { source: "/ofertas/:s(portaventura-y-camp-nou-barcelona.*|viaje-champions-league-europa.*)", destination: "/europa-turquia", permanent: true },
+      { source: "/ofertas/:s(formula-1-gran-premio-brasil.*)", destination: "/paquetes-a-brasil", permanent: true },
+      { source: "/ofertas/:s(formula-1-gran-premio-miami.*)", destination: "/paquetes-a-estados-unidos", permanent: true },
+      { source: "/ofertas/:s(grupos|paquetes|cotizacion|organizacion|preventa)-viajes-para-hinchas-partidos-y-mundial", destination: "/", permanent: true },
+      { source: "/vuelos/:r(.*huaraz.*)", destination: "/destinos/huaraz-laguna-69-pastoruri-chavin", permanent: true },
+      { source: "/vuelos/:r(.*chachapoyas.*)", destination: "/destinos/chachapoyas-kuelap-catarata-gocta", permanent: true },
+      { source: "/vuelos/:r(.*tingo-maria.*)", destination: "/nacionales", permanent: true },
+      { source: "/ofertas/vuelo-mas-hotel-a-paracas", destination: "/destinos/paracas-ica-huacachina-nazca", permanent: true },
+      { source: "/ofertas/:e(paquete|circuito|oferta)-:c(madrid-y-barcelona-tren-ave|madrid-barcelona-y-roma|madrid-paris-y-roma|roma-florencia-y-venecia|gran-tour-de-italia|espana-e-italia-completo|madrid-y-andalucia|barcelona-costa-azul-y-roma|santuarios-marianos-europa|espana-francia-suiza-italia|madrid-y-lisboa-fatima|paris-brujas-y-amsterdam|londres-paris-y-amsterdam|praga-viena-y-budapest-imperial|atenas-e-islas-griegas|estambul-capadocia-pamukkale|turquia-y-dubai-combinado|turquia-egipto-y-dubai|tierra-santa-y-roma|tokio-kioto-y-osaka)-:d(4-dias-3-noches|5-dias-4-noches|6-dias-5-noches|7-dias-6-noches|8-dias-7-noches)", destination: "/europa-turquia", permanent: true },
       // Páginas de relleno «paquetes a X desde Y» que ya no existen (2,918 en 404 en Search Console): van a la
       // página del país; la regla exige el destino exacto + «-desde-», así que no toca ofertas vivas (26-oct-2026).
       { source: "/ofertas/paquetes-a-:destino(punta-cana)-desde-:origen", destination: "/paquetes-a-punta-cana", permanent: true },

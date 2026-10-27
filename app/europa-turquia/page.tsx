@@ -10,7 +10,7 @@ import {
 
 const rawTitle = "Circuitos a Europa y Turquía Sin Visa | Cityland Travel";
 const rawDesc =
-  "Circuitos a Europa, Turquía (Capadocia) y Dubái sin visa desde Lima: Turquía Desde $1,690, Europa 15 Días Desde $2,590 y España Desde $1,090. Separa con 50%.";
+  "Circuitos a Europa, Turquía (Capadocia) y Dubái sin visa desde Lima: Turquía Desde $2,490, Europa 15 Días Desde $3,290 y España Desde $1,890. Separa con 50%.";
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO(rawTitle),
@@ -74,12 +74,12 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
     sobretitulo: "Vuelos + Hoteles 4★/5★ + Crucero Bósforo + Capadocia",
     titulo: "Turquía Mágica & Capadocia",
     labelPrecio: "Circuito completo",
-    precio: "$1,690",
+    precio: "$2,490",
     moneda: "",
     notaInferior: "Separa hoy con 50% ($845)",
     waNumero: "51944103890",
     waMensaje:
-      "¡Hola Cityland Travel! Deseo cotizar el paquete a Turquía (Estambul y Capadocia · 10 Días) desde $1,690.",
+      "¡Hola Cityland Travel! Deseo cotizar el paquete a Turquía (Estambul y Capadocia · 10 Días) desde $2,490.",
   },
   seccionCatalogo: {
     sobretitulo: "Grandes Viajes con Salidas desde Lima",
@@ -97,7 +97,7 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       pais: "Turquía",
       filtro: "turquia-dubai",
       subtitulo: "10 Días / 9 Noches · No Requiere Visa",
-      precioPrincipal: "$1,690",
+      precioPrincipal: "$2,490",
       notaPrecio: "Separa con 50% (desde $845)",
       tag: "#1 Exótico Sin Visa",
       tagBg: "bg-red-600 text-white",
@@ -114,7 +114,7 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       pais: "Europa",
       filtro: "europa",
       subtitulo: "15 Días / 14 Noches · Circuito Completo",
-      precioPrincipal: "$2,590",
+      precioPrincipal: "$3,290",
       notaPrecio: "Separa con 50% · Incluye Seguro 30.000€",
       tag: "3 Países · 15 Días",
       tagBg: "bg-blue-600 text-white",
@@ -131,7 +131,7 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       pais: "España",
       filtro: "europa",
       subtitulo: "8 Días / 7 Noches · Tren Alta Velocidad AVE",
-      precioPrincipal: "$1,450",
+      precioPrincipal: "$1,890",
       notaPrecio: "Separa con 50% (desde $725)",
       tag: "Madrid + Barcelona",
       tagBg: "bg-red-600 text-white",
@@ -148,7 +148,7 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       pais: "Emiratos Árabes",
       filtro: "turquia-dubai",
       subtitulo: "14 Días / 13 Noches · Lujo Oriental",
-      precioPrincipal: "$2,390",
+      precioPrincipal: "$3,190",
       notaPrecio: "Incluye Safari 4x4 por el Desierto",
       tag: "Turquía + Dubái",
       tagBg: "bg-amber-600 text-white",
@@ -165,7 +165,7 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       pais: "Italia",
       filtro: "europa",
       subtitulo: "10 Días / 9 Noches · Arte, Fe y Gastronomía",
-      precioPrincipal: "$1,850",
+      precioPrincipal: "$2,490",
       notaPrecio: "Ideal para Año Jubilar y Turismo Cultural",
       tag: "Roma & Vaticano",
       tagBg: "bg-emerald-600 text-white",
