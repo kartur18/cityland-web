@@ -11,6 +11,7 @@ import { buscarRutaVuelo, type RutaVueloSEO } from "@/lib/rutas-vuelos";
 import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
 import type { TemporadaEspana } from "@/lib/temporadas-espana";
+import { NAV_MESES_ESPANA } from "@/lib/meses-espana";
 
 export function metadataTemporada(t: TemporadaEspana): Metadata {
   const url = `${URL_BASE_SEO}${t.ruta}`;
@@ -130,9 +131,29 @@ export default function TemporadaEspanaPagina({ temporada: t }: { temporada: Tem
               ))}
             </ul>
             <p className="text-xs text-slate-500">
-              Precios referenciales en temporada baja; en estas fechas suelen ser más altos. Te damos el precio exacto de tu fecha.
+              {t.notaPrecio ??
+                "Precios referenciales en temporada baja; en estas fechas suelen ser más altos. Te damos el precio exacto de tu fecha."}
             </p>
           </section>
+
+          <nav aria-labelledby="meses" className="space-y-3">
+            <h2 id="meses" className="text-lg font-extrabold text-[#0a1628]">
+              España mes a mes
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {NAV_MESES_ESPANA.map((m) =>
+                m.href === t.ruta ? (
+                  <span key={m.href} aria-current="page" className="inline-flex items-center min-h-[44px] px-4 rounded-xl bg-[#0a1628] text-white text-sm font-bold">
+                    {m.texto}
+                  </span>
+                ) : (
+                  <Link key={m.href} href={m.href} className={ENLACE}>
+                    {m.texto}
+                  </Link>
+                )
+              )}
+            </div>
+          </nav>
 
           <section className="space-y-4">
             <h2 className="text-2xl font-extrabold text-[#0a1628]">Preguntas frecuentes</h2>

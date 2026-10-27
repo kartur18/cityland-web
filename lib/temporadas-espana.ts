@@ -17,6 +17,8 @@ export interface TemporadaEspana {
   destinos: { texto: string; href: string }[];
   faqs: { q: string; a: string }[];
   mensajeWhatsApp: string;
+  // Nota bajo los precios; por defecto, la de temporada alta.
+  notaPrecio?: string;
 }
 
 const DOCUMENTOS = {
