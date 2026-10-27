@@ -4,6 +4,13 @@ import { PRECIO_IDA_VUELTA_MADRID_DESDE } from "@/components/constantes";
 // la ciudad, el mes o la modalidad) y páginas clave que deben usar las palabras que la gente busca. 24-oct-2026.
 export const TITULOS_SEO_UNICOS: Readonly<Record<string, string>> = {
   "/vuelos/lima-madrid": `Pasajes Lima–Madrid ida y vuelta desde $${PRECIO_IDA_VUELTA_MADRID_DESDE.toLocaleString("en-US")} | Cityland`,
+  "/vuelos/lima-barcelona": "Pasajes Lima–Barcelona ida y vuelta | Cityland",
+  "/vuelos/lima-valencia": "Pasajes Lima–Valencia ida y vuelta | Cityland",
+  "/vuelos/lima-malaga": "Pasajes Lima–Málaga ida y vuelta | Cityland",
+  "/vuelos/lima-sevilla": "Pasajes Lima–Sevilla ida y vuelta | Cityland",
+  "/vuelos/lima-bilbao": "Pasajes Lima–Bilbao ida y vuelta | Cityland",
+  "/vuelos/madrid-lima": "Pasajes Madrid–Lima: viaja a Perú | Cityland",
+  "/vuelos/barcelona-lima": "Pasajes Barcelona–Lima: viaja a Perú | Cityland",
   "/vuelos/lima-cusco": "Pasajes Lima–Cusco baratos ida y vuelta | Cityland",
   "/vuelos/lima-arequipa": "Pasajes Lima–Arequipa baratos ida y vuelta | Cityland",
   "/vuelos/lima-piura": "Pasajes Lima–Piura baratos ida y vuelta | Cityland",
@@ -103,7 +110,7 @@ export const TITULOS_SEO_UNICOS: Readonly<Record<string, string>> = {
     "Crucero Brasil, Uruguay y Argentina desde Lima | Cityland",
 
   "/destinos/europa-clasica": "Europa clásica: Madrid, París y Roma | Cityland",
-  "/destinos/madrid-paris-roma-12-dias": "Madrid, París y Roma en 12 días | Cityland",
+  "/destinos/madrid-paris-roma-17-dias": "Madrid, París y Roma en 17 días | Cityland",
 };
 
 export function tituloSeoUnico(ruta: string, tituloCalculado: string): string {

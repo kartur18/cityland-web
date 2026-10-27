@@ -85,6 +85,7 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
     "/paquetes-a-chile",
     "/paquetes-a-estados-unidos",
     "/paquetes-todo-incluido",
+    "/pasajes-a-espana",
     "/agencia-de-viajes-lima",
     "/agencia-de-viajes-los-olivos",
     "/agencia-de-viajes-lima-norte",
