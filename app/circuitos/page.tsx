@@ -5,9 +5,10 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import PorQueCityland from "@/components/PorQueCityland";
+import TarjetaCircuito from "@/components/TarjetaCircuito";
+import { HUBS_CIRCUITOS } from "@/lib/hubs-circuitos";
 import { buildWaUrl } from "@/components/constantes";
-import { formatoUSD } from "@/lib/formato-precio";
-import { circuitosVigentes, precioCityland, REGIONES_CIRCUITOS, type Circuito } from "@/lib/circuitos";
+import { circuitosVigentes, REGIONES_CIRCUITOS } from "@/lib/circuitos";
 import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
 
@@ -23,25 +24,6 @@ export const metadata: Metadata = {
   alternates: { canonical: `${URL_BASE_SEO}${RUTA}` },
   openGraph: { type: "website", url: `${URL_BASE_SEO}${RUTA}`, title: "Circuitos y paquetes por el mundo desde Lima", description: DESCRIPCION, siteName: "Cityland Travel", locale: "es_PE" },
 };
-
-function Tarjeta({ c }: { c: Circuito }) {
-  return (
-    <li>
-      <Link
-        href={`/circuitos/${c.slug}`}
-        className="flex h-full flex-col justify-between gap-2 min-h-[56px] rounded-2xl border border-slate-200 px-5 py-4 hover:border-[#0a1628] transition-colors"
-      >
-        <span className="font-extrabold text-[#0a1628] leading-snug">{c.nombre}</span>
-        <span className="text-sm text-slate-600">
-          {c.dias} días · {c.tipo === "vuelo" ? `con vuelo desde ${c.origen}` : c.tipo === "crucero" ? "solo crucero" : "solo terrestre"}
-        </span>
-        <span className="text-[15px] text-slate-700">
-          desde <strong className="text-[#0a1628]">{formatoUSD(precioCityland(c))}</strong>
-        </span>
-      </Link>
-    </li>
-  );
-}
 
 // Vitrina de todos los circuitos vigentes, agrupados por región y ordenados por precio.
 export default function CircuitosPage() {
@@ -103,6 +85,21 @@ export default function CircuitosPage() {
             </a>
           </header>
 
+          <section className="space-y-3">
+            <h2 className="text-lg font-extrabold text-[#0a1628]">Busca por destino o fecha</h2>
+            <div className="flex flex-wrap gap-2">
+              {HUBS_CIRCUITOS.map((h) => (
+                <Link
+                  key={h.ruta}
+                  href={h.ruta}
+                  className="inline-flex items-center min-h-[44px] px-4 rounded-xl border border-slate-300 hover:border-[#0a1628] text-sm font-bold text-[#0a1628]"
+                >
+                  {h.h1.replace(/ desde Lima$/, "")}
+                </Link>
+              ))}
+            </div>
+          </section>
+
           <nav aria-label="Regiones" className="flex flex-wrap gap-2">
             {grupos.map((g) => (
               <a
@@ -120,7 +117,7 @@ export default function CircuitosPage() {
               <h2 className="text-2xl font-extrabold text-[#0a1628]">{g.nombre}</h2>
               <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {g.items.map((c) => (
-                  <Tarjeta key={c.slug} c={c} />
+                  <TarjetaCircuito key={c.slug} c={c} />
                 ))}
               </ul>
             </section>

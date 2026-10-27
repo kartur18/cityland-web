@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import PorQueCityland from "@/components/PorQueCityland";
+import TarjetaCircuito from "@/components/TarjetaCircuito";
+import { circuitosVigentes } from "@/lib/circuitos";
 import { DESTINOS_CARIBE, DESTINOS_EUROPA, buildWaUrl, type Destino } from "@/components/constantes";
 import { DESTINOS_MASIVOS } from "@/lib/catalogo-destinos-masivo";
 import { formatoUSD } from "@/lib/formato-precio";
@@ -37,6 +39,11 @@ export default function HubPaisPagina({ hub: h }: { hub: HubPais }) {
   const url = `${URL_BASE_SEO}${h.ruta}`;
   const destinos = destinosDe(h);
   const desde = destinos[0]?.turistico;
+  const circuitos = h.paises.length
+    ? circuitosVigentes()
+        .filter((c) => c.paises.some((p) => h.paises.includes(p)))
+        .sort((a, b) => a.desde - b.desde)
+    : [];
   const wa = buildWaUrl({ categoria: "general", mensajePersonalizado: h.mensajeWhatsApp, refWeb: `citylandtravel.com${h.ruta}` });
   const schema = {
     "@context": "https://schema.org",
@@ -133,6 +140,19 @@ export default function HubPaisPagina({ hub: h }: { hub: HubPais }) {
               Precios referenciales por persona; el precio final depende de la fecha, el hotel y cuántos viajan.
             </p>
           </section>
+
+          {circuitos.length > 0 && (
+            <section className="space-y-4" aria-labelledby="circuitos">
+              <h2 id="circuitos" className="text-2xl font-extrabold text-[#0a1628]">
+                Programas con salidas confirmadas
+              </h2>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {circuitos.map((c) => (
+                  <TarjetaCircuito key={c.slug} c={c} />
+                ))}
+              </ul>
+            </section>
+          )}
 
           <section className="rounded-2xl bg-sky-50 border border-sky-100 p-5 sm:p-6 space-y-2">
             <h2 className="text-xl font-extrabold text-[#0a1628]">Qué documento necesitas</h2>
