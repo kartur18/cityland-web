@@ -93,6 +93,7 @@ const nextConfig: NextConfig = {
       { source: "/vuelos/:r(.*huaraz.*)", destination: "/destinos/huaraz-laguna-69-pastoruri-chavin", permanent: true },
       { source: "/vuelos/:r(.*chachapoyas.*)", destination: "/destinos/chachapoyas-kuelap-catarata-gocta", permanent: true },
       { source: "/vuelos/:r(.*tingo-maria.*)", destination: "/nacionales", permanent: true },
+      { source: "/ofertas/:s(estadia-hotel-.*paracas.*-vuelo-incluido)", destination: "/destinos/paracas-ica-huacachina-nazca", permanent: true },
       { source: "/ofertas/vuelo-mas-hotel-a-paracas", destination: "/destinos/paracas-ica-huacachina-nazca", permanent: true },
       { source: "/ofertas/:e(paquete|circuito|oferta)-:c(madrid-y-barcelona-tren-ave|madrid-barcelona-y-roma|madrid-paris-y-roma|roma-florencia-y-venecia|gran-tour-de-italia|espana-e-italia-completo|madrid-y-andalucia|barcelona-costa-azul-y-roma|santuarios-marianos-europa|espana-francia-suiza-italia|madrid-y-lisboa-fatima|paris-brujas-y-amsterdam|londres-paris-y-amsterdam|praga-viena-y-budapest-imperial|atenas-e-islas-griegas|estambul-capadocia-pamukkale|turquia-y-dubai-combinado|turquia-egipto-y-dubai|tierra-santa-y-roma|tokio-kioto-y-osaka)-:d(4-dias-3-noches|5-dias-4-noches|6-dias-5-noches|7-dias-6-noches|8-dias-7-noches)", destination: "/europa-turquia", permanent: true },
       // Eurotrips de menos de 17 días, recorridos regionales de menos de 15 y un solo país de menos de 12 (26-oct-2026).

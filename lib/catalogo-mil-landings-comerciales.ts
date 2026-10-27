@@ -1831,6 +1831,7 @@ import {
   INDICE_EXPANSION_MASIVA,
   buscarLandingExpansionMasiva,
 } from "@/lib/catalogo-expansion-masiva";
+import { ajustarRealismo, precioConPiso } from "@/lib/realismo-ofertas";
 
 export const MIL_LANDINGS_COMERCIALES_SEO: LandingComercialSEO[] = [
   ...LANDINGS_CLUSTER_1,
@@ -1859,7 +1860,7 @@ export const TODOS_LOS_RESUMENES_OFERTAS_SEO: ResumenOfertaComercialSEO[] = [
     clusterNombre: o.clusterNombre,
     titulo: o.titulo,
     destinoOPais: o.destinoOPais,
-    precioDesdeUSD: o.precioDesdeUSD,
+    precioDesdeUSD: precioConPiso(o.slug, `${o.slug} ${o.titulo} ${o.destinoOPais}`, o.precioDesdeUSD),
   })),
   ...INDICE_EXPANSION_MASIVA.map((e) => ({
     slug: e.slug,
@@ -1867,7 +1868,7 @@ export const TODOS_LOS_RESUMENES_OFERTAS_SEO: ResumenOfertaComercialSEO[] = [
     clusterNombre: e.clusterNombre,
     titulo: e.titulo,
     destinoOPais: e.destinoOPais,
-    precioDesdeUSD: e.precioDesdeUSD,
+    precioDesdeUSD: precioConPiso(e.slug, `${e.slug} ${e.titulo} ${e.destinoOPais}`, e.precioDesdeUSD),
   })),
 ];
 
@@ -1876,5 +1877,6 @@ const MAPA_LANDINGS_COMERCIALES = new Map<string, LandingComercialSEO>(
 );
 
 export function buscarLandingComercial(slug: string): LandingComercialSEO | undefined {
-  return MAPA_LANDINGS_COMERCIALES.get(slug) ?? buscarLandingExpansionMasiva(slug);
+  const landing = MAPA_LANDINGS_COMERCIALES.get(slug) ?? buscarLandingExpansionMasiva(slug);
+  return landing ? ajustarRealismo(landing) : undefined;
 }

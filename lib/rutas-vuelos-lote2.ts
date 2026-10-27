@@ -665,7 +665,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
       tituloHero: "Vuelos y Paquetes de Lima a",
       tituloDestacadoHero: "Cusco & Machu Picchu",
       descripcionHero:
-        "Vuela de Lima a Cusco en 1h 20m con horarios diarios garantizados.",
+        "Vuela de Lima a Cusco en 1h 20m con vuelos diarios.",
       negritaHero:
         "Elige solo boleto aéreo ida y vuelta o paquete completo de 3 a 6 días con hotel, tren turístico y entrada oficial a Machu Picchu.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
@@ -775,7 +775,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
       ],
       pilares: [
         { titulo: "1h 20m de Vuelo", sub: "Salidas desde las 5:00 am todos los días" },
-        { titulo: "Entradas Garantizadas", sub: "Gestionamos tu boleto oficial a Machu Picchu" },
+        { titulo: "Entradas a Machu Picchu", sub: "Te ayudamos a reservar tu boleto oficial según el cupo disponible" },
         { titulo: "Separa con 50%", sub: "Reserva tu paquete y paga en cuotas" },
         { titulo: "RUC 20614914239", sub: "Agencia formal en Los Olivos, Lima" },
       ],

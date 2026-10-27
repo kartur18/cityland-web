@@ -420,7 +420,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
         sobretitulo: "Descubre Portugal y España",
         titulo: "¿Quieres cotizar tu viaje a Lisboa y Fátima?",
         descripcion:
-          "Escríbenos por WhatsApp y recibe el programa detallado con salidas garantizadas.",
+          "Escríbenos por WhatsApp y recibe el programa detallado con las salidas disponibles.",
         ctaTexto: "Consultar tarifa Lima – Lisboa por WhatsApp",
         waNumero: "51944103890",
         waMensaje:
