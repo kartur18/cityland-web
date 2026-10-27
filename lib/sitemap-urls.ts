@@ -10,6 +10,7 @@ import { CATALOGO_PAQUETES_MIGRATORIOS_1000 } from "@/lib/catalogo-paquetes-migr
 import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
 import { esIndexable } from "@/lib/indexacion";
 import { circuitosVigentes } from "@/lib/circuitos";
+import { ciudadesConProgramas } from "@/lib/hubs-ciudades";
 
 // Fuente única de URLs indexables: cada URL vive en un solo sitemap hijo.
 export const FECHA_SITEMAP = "2026-10-19T15:00:00.000Z";
@@ -38,6 +39,8 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
   vuelos: () => ["/vuelos", ...RUTAS_VUELOS_SEO.map((r) => `/vuelos/${r.slug}`)],
   destinos: () => [
     "/circuitos",
+    "/viajes-a",
+    ...ciudadesConProgramas().map((h) => h.ruta),
     "/paquetes-a-turquia",
     "/paquetes-a-egipto",
     "/paquetes-a-jordania",
