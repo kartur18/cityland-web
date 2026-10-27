@@ -16,6 +16,8 @@ const PISOS: [RegExp, number][] = [
   [/(reveillon|a[ñn]o.?nuevo|fin.?de.?a[ñn]o).{0,60}r[ií]o|r[ií]o.{0,60}(reveillon|a[ñn]o.?nuevo|fin.?de.?a[ñn]o)/i, 1550],
   [/r[ií]o.?de.?janeiro|b[uú]zios|arraial/i, 1190],
   [/florian[oó]polis|cambori[uú]|salvador.?de.?bah|gramado|canela/i, 900],
+  // Cusco con vuelo, hotel, tren y entrada a Machu Picchu: el mercado de Lima arranca en ~US$500 (oct-2026).
+  [/cusco|machu.?picchu|valle.?sagrado/i, 549],
   [/san.?andr[eé]s/i, 850],
   [/cartagena|bar[uú]/i, 850],
   [/buenos.?aires|bariloche|calafate|mendoza|patagonia/i, 750],

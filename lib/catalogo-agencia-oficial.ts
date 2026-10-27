@@ -108,9 +108,9 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
     pais: "Perú",
     filtro: "peru",
     subtitulo: "4 Días / 3 Noches · Tren Turístico Incluido",
-    precioPrincipal: "$349",
-    precioSecundario: "$175",
-    notaPrecio: "Separa con $175 USD (50% inicial)",
+    precioPrincipal: "$549",
+    precioSecundario: "$275",
+    notaPrecio: "Separa con $275 USD (50% inicial)",
     tag: "Perú Imperdible",
     tagBg: "bg-red-600 text-white",
     img: "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=1200&q=85",
@@ -120,7 +120,7 @@ export const PAQUETES_ESTRELLA_AGENCIA: TarjetaCatalogoAerolinea[] = [
     checks: ["Vuelo + Hotel 3★/4★", "Tren + Entrada Machu Picchu", "Traslados y Guía Oficial"],
     waNumber: TELEFONO,
     waMensaje:
-      "¡Hola Cityland Travel! Deseo cotizar el paquete Cusco & Machu Picchu 4D/3N (Desde $349 USD).",
+      "¡Hola Cityland Travel! Deseo cotizar el paquete Cusco & Machu Picchu 4D/3N (Desde $549 USD).",
   },
 ];
 
