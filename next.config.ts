@@ -83,6 +83,17 @@ const nextConfig: NextConfig = {
       { source: "/vuelos/iquitos-buenos-aires", destination: "/vuelos/lima-buenos-aires", permanent: true },
       { source: "/vuelos/juliaca-paris", destination: "/vuelos/lima-paris", permanent: true },
       { source: "/vuelos/tacna-punta-cana", destination: "/vuelos/lima-punta-cana", permanent: true },
+      // Páginas de relleno «paquetes a X desde Y» que ya no existen (2,918 en 404 en Search Console): van a la
+      // página del país; la regla exige el destino exacto + «-desde-», así que no toca ofertas vivas (26-oct-2026).
+      { source: "/ofertas/paquetes-a-:destino(punta-cana)-desde-:origen", destination: "/paquetes-a-punta-cana", permanent: true },
+      { source: "/ofertas/paquetes-a-:destino(cancun|riviera-maya|mexico)-desde-:origen", destination: "/paquetes-a-mexico", permanent: true },
+      { source: "/ofertas/paquetes-a-:destino(cartagena|san-andres|medellin|bogota|santa-marta|colombia)-desde-:origen", destination: "/paquetes-a-colombia", permanent: true },
+      { source: "/ofertas/paquetes-a-:destino(rio-de-janeiro|brasil|florianopolis)-desde-:origen", destination: "/paquetes-a-brasil", permanent: true },
+      { source: "/ofertas/paquetes-a-:destino(buenos-aires|bariloche|argentina)-desde-:origen", destination: "/paquetes-a-argentina", permanent: true },
+      { source: "/ofertas/paquetes-a-:destino(santiago|chile)-desde-:origen", destination: "/paquetes-a-chile", permanent: true },
+      { source: "/ofertas/paquetes-a-:destino(miami|orlando|nueva-york)-desde-:origen", destination: "/paquetes-a-estados-unidos", permanent: true },
+      { source: "/ofertas/paquetes-a-:destino(cusco|tarapoto|iquitos|arequipa|puno-titicaca|mancora-punta-sal|huaraz|cajamarca)-desde-:origen", destination: "/nacionales", permanent: true },
+      { source: "/ofertas/paquetes-a-:destino(madrid|barcelona|espana)-desde-:origen", destination: "/espana", permanent: true },
       // Artículos del blog que competían con las guías de requisitos por la misma búsqueda (24-oct-2026).
       {
         source: "/blog/requisitos-viajar-espana-desde-peru-2026",
