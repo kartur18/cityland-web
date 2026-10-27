@@ -86,7 +86,9 @@ export default function CircuitosPage() {
           </header>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-extrabold text-[#0a1628]">Busca por destino o fecha</h2>
+            <h2 className="text-lg font-extrabold text-[#0a1628]">
+              Busca por destino o fecha · <Link href="/viajes-a" className="underline">o por ciudad</Link>
+            </h2>
             <div className="flex flex-wrap gap-2">
               {HUBS_CIRCUITOS.map((h) => (
                 <Link

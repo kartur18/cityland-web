@@ -725,7 +725,7 @@ function generarCatalogoMasivo(): RutaVueloSEO[] {
     ["Punta Cana", "punta-cana", "PUJ", "República Dominicana", 540],
     ["Aruba", "aruba", "AUA", "Aruba", 560],
     ["Río de Janeiro", "rio-de-janeiro", "GIG", "Brasil", 629],
-    ["São Paulo", "sao-paulo", "GRU", "Brasil", 420],
+    ["São Paulo", "sao-paulo", "GRU", "Brasil", 529],
   ] as [string, string, string, string, number][]) {
     agregar({
       slug: `${slugCiudad}-lima`,

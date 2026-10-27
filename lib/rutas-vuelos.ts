@@ -1059,7 +1059,7 @@ const ESCALA_COMERCIAL_RUTAS_BASE: Record<
   "roma-lima": { desde: 1120, items: [1120, 740, 1150] },
   "paris-lima": { desde: 1140, items: [1140, 750, 1180] },
   "milan-lima": { desde: 1120, items: [1120, 740, 1150] },
-  "lima-sao-paulo": { desde: 420, items: [420, 689, 1090] },
+  "lima-sao-paulo": { desde: 549, items: [549, 749, 1090] },
   "lima-tarapoto": { desde: 99, items: [289, 99, 369] },
   "lima-iquitos": { desde: 129, items: [319, 129, 429] },
   "lima-puno": { desde: 109, items: [299, 109, 419] },
