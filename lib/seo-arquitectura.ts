@@ -396,6 +396,10 @@ export function optimizarMetaDescriptionSEO(descRaw: string): string {
 
   if (limpia.length <= 156) return limpia;
 
+  // Mejor cerrar en una oración completa que dejar «...» a media frase en Google.
+  const finOracion = limpia.slice(0, 157).lastIndexOf(". ");
+  if (finOracion >= 100) return limpia.slice(0, finOracion + 1);
+
   return `${recortarEnPalabra(limpia, 153, 110)}...`;
 }
 

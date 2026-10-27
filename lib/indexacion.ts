@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PAGINAS_CON_CLIENTES, PAGINAS_CON_VISITAS_GSC, PAGINAS_FUERTES } from "@/lib/paginas-fuertes";
 import { RUTAS_VUELOS_PRINCIPALES } from "@/lib/rutas-vuelos";
 import { CIUDADES_ESPANA_CON_RUTA } from "@/lib/catalogo-vuelos-masivo";
+import { VARIANTE_A_PRINCIPAL } from "@/lib/variantes-ofertas";
 
 // Cada ciudad de España responde su propia búsqueda («pasajes Lima Tenerife»): ida desde Lima y vuelta a Lima.
 const RUTAS_ESPANA: ReadonlySet<string> = new Set(
@@ -26,6 +27,7 @@ const RUTAS_NACIONALES: ReadonlySet<string> = new Set(
 // Google solo guarda lo que ya rinde o responde una búsqueda real: inicio, hubs de un nivel, blog, los ~130 destinos,
 // las guías de requisitos, las rutas de vuelo que vendemos, las páginas con impresiones y las que trajeron chats.
 export function esIndexable(ruta: string): boolean {
+  if (VARIANTE_A_PRINCIPAL.has(ruta)) return false;
   return (
     ruta === "/" ||
     ruta.split("/").length <= 2 ||

@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { circuitosVigentes } from "@/lib/circuitos";
 import { ciudadesConProgramas } from "@/lib/hubs-ciudades";
-import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
+import { URL_BASE_SEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 
 export const revalidate = 86400;
 
@@ -14,7 +14,7 @@ const DESCRIPCION =
 
 export const metadata: Metadata = {
   title: "Viajes desde Lima por ciudad: circuitos y paquetes | Cityland",
-  description: DESCRIPCION,
+  description: optimizarMetaDescriptionSEO(DESCRIPCION),
   alternates: { canonical: `${URL_BASE_SEO}/viajes-a` },
 };
 

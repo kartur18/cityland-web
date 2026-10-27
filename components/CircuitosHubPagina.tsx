@@ -10,14 +10,14 @@ import { buildWaUrl } from "@/components/constantes";
 import { formatoUSD } from "@/lib/formato-precio";
 import { circuitosVigentes, precioCityland } from "@/lib/circuitos";
 import { HUBS_CIRCUITOS, type HubCircuitos } from "@/lib/hubs-circuitos";
-import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
+import { URL_BASE_SEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
 
 export function metadataHubCircuitos(h: HubCircuitos): Metadata {
   const url = `${URL_BASE_SEO}${h.ruta}`;
   return {
     title: `${h.tituloSeo} | Cityland`,
-    description: h.descripcion,
+    description: optimizarMetaDescriptionSEO(h.descripcion),
     alternates: { canonical: url },
     openGraph: { type: "website", url, title: h.h1, description: h.descripcion, siteName: "Cityland Travel", locale: "es_PE" },
   };
