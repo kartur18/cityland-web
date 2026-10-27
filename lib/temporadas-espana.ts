@@ -19,6 +19,8 @@ export interface TemporadaEspana {
   mensajeWhatsApp: string;
   // Nota bajo los precios; por defecto, la de temporada alta.
   notaPrecio?: string;
+  // Para usar la misma página fuera de España (Río): miga, nombre del destino y enlaces fijos del pie.
+  fuera?: { miga: { nombre: string; href: string }; destino: string; enlaces: { texto: string; href: string }[] };
 }
 
 const DOCUMENTOS = {

@@ -29,7 +29,12 @@ const ENLACE = "inline-flex items-center min-h-[44px] px-4 rounded-xl bg-slate-1
 export default function TemporadaEspanaPagina({ temporada: t }: { temporada: TemporadaEspana }) {
   const url = `${URL_BASE_SEO}${t.ruta}`;
   const rutas = t.rutas.map((s) => buscarRutaVuelo(s)).filter((r): r is RutaVueloSEO => Boolean(r));
-  const wa = buildWaUrl({ categoria: "europa", mensajePersonalizado: t.mensajeWhatsApp, refWeb: `citylandtravel.com${t.ruta}` });
+  const miga = t.fuera?.miga ?? { nombre: "Pasajes a España", href: "/pasajes-a-espana" };
+  const enlacesFijos = t.fuera?.enlaces ?? [
+    { texto: "Todas las rutas a España", href: "/pasajes-a-espana" },
+    { texto: "Paquete migratorio a España", href: "/espana" },
+  ];
+  const wa = buildWaUrl({ categoria: t.fuera ? "general" : "europa", mensajePersonalizado: t.mensajeWhatsApp, refWeb: `citylandtravel.com${t.ruta}` });
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -37,7 +42,7 @@ export default function TemporadaEspanaPagina({ temporada: t }: { temporada: Tem
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Inicio", item: URL_BASE_SEO },
-          { "@type": "ListItem", position: 2, name: "Pasajes a España", item: `${URL_BASE_SEO}/pasajes-a-espana` },
+          { "@type": "ListItem", position: 2, name: miga.nombre, item: `${URL_BASE_SEO}${miga.href}` },
           { "@type": "ListItem", position: 3, name: t.h1, item: url },
         ],
       },
@@ -60,8 +65,8 @@ export default function TemporadaEspanaPagina({ temporada: t }: { temporada: Tem
                 Inicio
               </Link>{" "}
               /{" "}
-              <Link href="/pasajes-a-espana" className="hover:underline">
-                Pasajes a España
+              <Link href={miga.href} className="hover:underline">
+                {miga.nombre}
               </Link>
             </nav>
             <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight text-balance">{t.h1}</h1>
@@ -136,6 +141,7 @@ export default function TemporadaEspanaPagina({ temporada: t }: { temporada: Tem
             </p>
           </section>
 
+          {!t.fuera && (
           <nav aria-labelledby="meses" className="space-y-3">
             <h2 id="meses" className="text-lg font-extrabold text-[#0a1628]">
               España mes a mes
@@ -154,6 +160,7 @@ export default function TemporadaEspanaPagina({ temporada: t }: { temporada: Tem
               )}
             </div>
           </nav>
+          )}
 
           <section className="space-y-4">
             <h2 className="text-2xl font-extrabold text-[#0a1628]">Preguntas frecuentes</h2>
@@ -180,17 +187,16 @@ export default function TemporadaEspanaPagina({ temporada: t }: { temporada: Tem
                   {d.texto}
                 </Link>
               ))}
-              <Link href="/pasajes-a-espana" className={ENLACE}>
-                Todas las rutas a España
-              </Link>
-              <Link href="/espana" className={ENLACE}>
-                Paquete migratorio a España
-              </Link>
+              {enlacesFijos.map((d) => (
+                <Link key={d.href} href={d.href} className={ENLACE}>
+                  {d.texto}
+                </Link>
+              ))}
             </div>
           </section>
         </div>
       </main>
-      <PorQueCityland destino="España" />
+      <PorQueCityland destino={t.fuera?.destino ?? "España"} />
       <Footer />
       <WhatsAppFloat />
     </>

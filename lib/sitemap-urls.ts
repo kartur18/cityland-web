@@ -100,6 +100,8 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
     "/viajar-a-espana-en-septiembre",
     "/viajar-a-espana-en-octubre",
     "/viajar-a-espana-en-noviembre",
+    "/carnaval-de-rio-2027",
+    "/cuando-viajar-a-rio-de-janeiro",
     "/agencia-de-viajes-lima",
     "/agencia-de-viajes-los-olivos",
     "/agencia-de-viajes-lima-norte",

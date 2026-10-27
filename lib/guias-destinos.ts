@@ -97,8 +97,21 @@ const EXTRAS: Readonly<Record<string, Extra>> = {
     documentos: "Puedes viajar a Brasil con tu DNI vigente o con pasaporte, sin visa.",
     enlaces: [
       { texto: "Pasajes Lima–Río de Janeiro", href: "/vuelos/lima-rio-de-janeiro" },
+      { texto: "Río de Janeiro y Búzios", href: "/destinos/rio-de-janeiro-buzios" },
+      { texto: "Carnaval de Río 2027", href: "/carnaval-de-rio-2027" },
+      { texto: "Cuándo viajar a Río", href: "/cuando-viajar-a-rio-de-janeiro" },
       { texto: "Cataratas del Iguazú", href: "/destinos/iguazu-cataratas" },
-      { texto: "Destinos solo con DNI", href: "/blog/destinos-internacionales-solo-con-dni-peruanos" },
+    ],
+  },
+  "rio-de-janeiro-buzios": {
+    intro:
+      "Río y Búzios es el combinado clásico de Brasil: unos días de ciudad en Río (Cristo Redentor, Pan de Azúcar, Copacabana) y después playas tranquilas en Búzios, una península a unas 2 h 30 min a 3 h por carretera desde Río.",
+    documentos: "Puedes viajar a Brasil con tu DNI vigente o con pasaporte, sin visa.",
+    enlaces: [
+      { texto: "Río de Janeiro", href: "/destinos/rio-de-janeiro" },
+      { texto: "Cuándo viajar a Río", href: "/cuando-viajar-a-rio-de-janeiro" },
+      { texto: "Pasajes Lima–Río de Janeiro", href: "/vuelos/lima-rio-de-janeiro" },
+      { texto: "Paquetes a Brasil", href: "/paquetes-a-brasil" },
     ],
   },
   "mancora-vichayito": {
