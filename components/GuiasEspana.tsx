@@ -18,6 +18,9 @@ export const GUIAS_ESPANA = [
   { href: "/blog/traer-familiar-de-peru-a-espana-de-visita", texto: "Traer a un familiar de visita" },
   { href: "/blog/trabajar-legalmente-en-espana-desde-peru", texto: "Trabajar legalmente en España" },
   { href: "/pasajes-a-barcelona", texto: "Pasajes a Barcelona" },
+  { href: "/viajar-a-espana-en-navidad", texto: "España en Navidad" },
+  { href: "/viajar-a-espana-en-verano", texto: "España en verano" },
+  { href: "/semana-santa-en-espana", texto: "Semana Santa en España" },
   { href: "/blog/equipaje-para-viajar-a-espana-iberia-air-europa-latam-plus-ultra", texto: "Equipaje por aerolínea" },
   { href: "/blog/viajar-a-espana-con-ninos-desde-peru", texto: "Viajar a España con niños" },
 ] as const;
