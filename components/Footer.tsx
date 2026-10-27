@@ -143,6 +143,9 @@ export default function Footer() {
               <Link href="/europa-turquia" className="block text-slate-300 hover:text-white transition-colors">
                 Circuitos a Europa & Turquía Sin Visa
               </Link>
+              <Link href="/circuitos" className="block text-slate-300 hover:text-white transition-colors">
+                Circuitos por el mundo (+200 programas)
+              </Link>
               <Link href="/caribe" className="block text-slate-300 hover:text-white transition-colors">
                 Caribe Todo Incluido (Punta Cana & Cancún)
               </Link>

@@ -9,6 +9,7 @@ import { INDICE_MADRID_10K } from "@/lib/catalogo-madrid-10k";
 import { CATALOGO_PAQUETES_MIGRATORIOS_1000 } from "@/lib/catalogo-paquetes-migratorios-1000";
 import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
 import { esIndexable } from "@/lib/indexacion";
+import { circuitosVigentes } from "@/lib/circuitos";
 
 // Fuente única de URLs indexables: cada URL vive en un solo sitemap hijo.
 export const FECHA_SITEMAP = "2026-10-19T15:00:00.000Z";
@@ -36,6 +37,8 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
   ofertas: () => ["/ofertas", ...TODOS_LOS_RESUMENES_OFERTAS_SEO.map((o) => `/ofertas/${o.slug}`)],
   vuelos: () => ["/vuelos", ...RUTAS_VUELOS_SEO.map((r) => `/vuelos/${r.slug}`)],
   destinos: () => [
+    "/circuitos",
+    ...circuitosVigentes().map((c) => `/circuitos/${c.slug}`),
     "/destinos",
     ...[...DESTINOS_EUROPA, ...DESTINOS_CARIBE, ...DESTINOS_MASIVOS].map((d) => `/destinos/${d.slug}`),
     "/viajes",
