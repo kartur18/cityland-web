@@ -24,6 +24,8 @@ export interface HubPais {
 }
 
 const PAGO = { q: "¿Se puede pagar en partes?", a: "Sí. Separas con el 50% y pagas el resto antes de viajar, por transferencia, Yape, Plin o tarjeta." };
+const SCHENGEN =
+  "Los peruanos no necesitan visa para viajar como turistas al espacio Schengen hasta 90 días: viajas con pasaporte vigente. En migración te pueden pedir el pasaje de regreso, el hotel, dinero para tu estadía y un seguro de viaje.";
 const SOLO_DNI = { texto: "Países a los que viajas solo con DNI", href: "/blog/destinos-internacionales-solo-con-dni-peruanos" };
 
 export const HUBS_PAIS: Readonly<Record<string, HubPais>> = {
