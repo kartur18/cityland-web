@@ -46,6 +46,9 @@ export const HUBS_PAIS: Readonly<Record<string, HubPais>> = {
     ],
     enlaces: [
       { texto: "Pasajes Lima–Río de Janeiro", href: "/vuelos/lima-rio-de-janeiro" },
+      { texto: "Río de Janeiro y Búzios", href: "/destinos/rio-de-janeiro-buzios" },
+      { texto: "Carnaval de Río 2027", href: "/carnaval-de-rio-2027" },
+      { texto: "Cuándo viajar a Río", href: "/cuando-viajar-a-rio-de-janeiro" },
       { texto: "Pasajes Lima–São Paulo", href: "/vuelos/lima-sao-paulo" },
       { texto: "Cataratas del Iguazú", href: "/destinos/iguazu-cataratas" },
       SOLO_DNI,
