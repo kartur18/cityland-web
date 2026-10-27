@@ -9,6 +9,8 @@ import { GUIAS_ESPANA } from "@/components/GuiasEspana";
 import { buildWaUrl } from "@/components/constantes";
 import { formatoUSD } from "@/lib/formato-precio";
 import { buscarRutaVuelo, type RutaVueloSEO } from "@/lib/rutas-vuelos";
+import { CIUDADES_ESPANA_CON_RUTA } from "@/lib/catalogo-vuelos-masivo";
+import { NAV_MESES_ESPANA } from "@/lib/meses-espana";
 import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
 
@@ -72,6 +74,8 @@ function TarjetaRuta({ r }: { r: RutaVueloSEO }) {
 export default function PasajesAEspanaPage() {
   const ida = rutas(IDA);
   const vuelta = rutas(VUELTA);
+  const otras = rutas(CIUDADES_ESPANA_CON_RUTA.map((c) => `lima-${c.slug}`));
+  const otrasVuelta = rutas([...["valencia", "malaga", "sevilla", "bilbao"], ...CIUDADES_ESPANA_CON_RUTA.map((c) => c.slug)].map((c) => `${c}-lima`));
   const wa = buildWaUrl({
     categoria: "europa",
     mensajePersonalizado: "¡Hola Cityland Travel! Quiero cotizar un pasaje a España.",
@@ -137,6 +141,39 @@ export default function PasajesAEspanaPage() {
             <p className="text-xs text-slate-500">Precios referenciales por persona; cambian según la fecha y la aerolínea.</p>
           </section>
 
+          <section className="space-y-4" aria-labelledby="otras">
+            <h2 id="otras" className="text-2xl font-extrabold text-[#0a1628]">
+              Pasajes a otras ciudades de España
+            </h2>
+            <p className="text-[15px] text-slate-600">
+              Todos salen del aeropuerto Jorge Chávez de Lima. A Canarias, Baleares, Galicia, el País Vasco, Andalucía y más vuelas con escala en Madrid o Barcelona, en un
+              solo boleto.
+            </p>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {otras.map((r) => (
+                <TarjetaRuta key={r.slug} r={r} />
+              ))}
+            </ul>
+          </section>
+
+          <section className="space-y-3" aria-labelledby="cuando">
+            <h2 id="cuando" className="text-2xl font-extrabold text-[#0a1628]">
+              ¿Cuándo viajar a España?
+            </h2>
+            <p className="text-[15px] text-slate-600">Clima, fiestas y si es temporada alta o baja, mes a mes.</p>
+            <div className="flex flex-wrap gap-2">
+              {NAV_MESES_ESPANA.map((m) => (
+                <Link
+                  key={m.href}
+                  href={m.href}
+                  className="inline-flex items-center min-h-[44px] px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-sm font-bold text-[#0a1628]"
+                >
+                  {m.texto}
+                </Link>
+              ))}
+            </div>
+          </section>
+
           <section className="rounded-2xl bg-amber-50 border border-amber-100 p-5 sm:p-6 space-y-3">
             <h2 className="text-xl font-extrabold text-[#0a1628]">¿Vas solo de ida?</h2>
             <p className="text-[15px] text-slate-700">
@@ -167,6 +204,18 @@ export default function PasajesAEspanaPage() {
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {vuelta.map((r) => (
                 <TarjetaRuta key={r.slug} r={r} />
+              ))}
+            </ul>
+            <ul className="flex flex-wrap gap-2">
+              {otrasVuelta.map((r) => (
+                <li key={r.slug}>
+                  <Link
+                    href={`/vuelos/${r.slug}`}
+                    className="inline-flex items-center min-h-[44px] px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-sm font-bold text-[#0a1628]"
+                  >
+                    {r.origen} → Lima
+                  </Link>
+                </li>
               ))}
             </ul>
           </section>

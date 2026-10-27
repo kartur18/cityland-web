@@ -19,6 +19,16 @@ import {
 } from "@/lib/seo-arquitectura";
 import GuiasEspana from "@/components/GuiasEspana";
 import PorQueCityland from "@/components/PorQueCityland";
+import { CIUDADES_ESPANA_CON_RUTA } from "@/lib/catalogo-vuelos-masivo";
+
+const CIUDADES_ESPANA_SLUG = new Set([
+  ...CIUDADES_ESPANA_CON_RUTA.map((c) => c.slug),
+  "madrid", "barcelona", "valencia", "malaga", "sevilla", "bilbao", "zaragoza", "valladolid", "salamanca", "logrono", "leon-espana", "murcia", "girona",
+]);
+function esRutaEspana(slug: string): boolean {
+  const [a, b] = [slug.replace(/^lima-/, ""), slug.replace(/-lima$/, "")];
+  return (slug.startsWith("lima-") && CIUDADES_ESPANA_SLUG.has(a)) || (slug.endsWith("-lima") && CIUDADES_ESPANA_SLUG.has(b));
+}
 
 export const revalidate = 86400;
 export const dynamicParams = true;
@@ -110,10 +120,13 @@ export default async function RutaVueloPage({ params }: Props) {
     ruta.slug
   );
 
+  // Las rutas de vuelta (Tenerife → Lima) decían «Perú» y llevaban a /caribe: toda ruta con España va a su página.
   const migas = [
     { nombre: "Inicio", url: "/" },
     { nombre: "Rutas de Vuelos", url: "/vuelos" },
-    { nombre: paisDestino, url: enlacesCruzados.pilar.href },
+    esRutaEspana(ruta.slug)
+      ? { nombre: "Pasajes a España", url: "/pasajes-a-espana" }
+      : { nombre: paisDestino, url: enlacesCruzados.pilar.href },
     { nombre: `Vuelos de ${ruta.origen} a ${ruta.destino}`, url: `/vuelos/${ruta.slug}` },
   ];
 

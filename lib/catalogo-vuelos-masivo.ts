@@ -60,6 +60,13 @@ const CIUDADES_ESPANA: [string, string, string, number, string][] = [
   ["León", "leon-espana", "LEN", 1135, "Vía Madrid (Iberia)"],
 ];
 
+// Ciudades de España con vuelo de conexión real desde Madrid o Barcelona. Zaragoza, Valladolid, Salamanca, Logroño,
+// León, Murcia y Girona se llegan en tren o bus desde Madrid/Barcelona: no se promocionan como vuelo.
+const SIN_VUELO_DE_CONEXION = new Set(["zaragoza", "valladolid", "salamanca", "logrono", "leon-espana", "murcia", "girona"]);
+export const CIUDADES_ESPANA_CON_RUTA: readonly { ciudad: string; slug: string }[] = CIUDADES_ESPANA.filter(
+  ([, slug]) => !SIN_VUELO_DE_CONEXION.has(slug)
+).map(([ciudad, slug]) => ({ ciudad, slug }));
+
 /* ── 2. Destinos en Italia y Resto de Europa (Ida desde Lima + Retornos) ── */
 const CIUDADES_EUROPA: [string, string, string, string, number, string][] = [
   ["Turín", "turin", "TRN", "Italia", 1180, "Iberia, KLM, Air France y LATAM"],
@@ -506,7 +513,7 @@ function generarCatalogoMasivo(): RutaVueloSEO[] {
       paisDestino: "España",
       precioUSD: precio,
       aerolineas: "Iberia, Air Europa, Plus Ultra y LATAM",
-      duracion: "14h 15m aprox.",
+      duracion: "15 a 18 h aprox. con la escala",
       escala,
       requisitos: "Peruanos viajan sin visa Schengen hasta 90 días (pasaporte vigente, seguro 30.000€, reserva de alojamiento o carta de invitación y sustento económico).",
       img: IMG_ESPANA,
@@ -522,7 +529,7 @@ function generarCatalogoMasivo(): RutaVueloSEO[] {
       paisDestino: "Perú",
       precioUSD: precio - 40,
       aerolineas: "Iberia, Air Europa, Plus Ultra y LATAM",
-      duracion: "14h 30m aprox.",
+      duracion: "15 a 18 h aprox. con la escala",
       escala,
       requisitos: "Ideal para traer familiares desde España a Lima o retornar al Perú con 1 o 2 maletas de 23 kg.",
       img: IMG_MADRID,
