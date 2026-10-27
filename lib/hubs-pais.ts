@@ -269,4 +269,36 @@ export const HUBS_PAIS: Readonly<Record<string, HubPais>> = {
     ],
     mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un paquete todo incluido.",
   },
+  espana: {
+    nombre: "España",
+    ruta: "/paquetes-a-espana",
+    paises: [],
+    slugs: [
+      "barcelona-espana", "valencia-espana", "sevilla-andalucia", "malaga-costa-del-sol", "bilbao-pais-vasco",
+      "mallorca-islas-baleares", "tenerife-islas-canarias", "santiago-de-compostela-galicia", "zaragoza-aragon",
+      "madrid-paris-roma-17-dias", "espana-portugal-marruecos", "europa-clasica",
+    ],
+    h1: "Paquetes turísticos a España desde Lima",
+    tituloSeo: "Paquetes turísticos a España desde Lima",
+    descripcion:
+      "Paquetes a España con vuelo y hotel desde Lima: Barcelona, Valencia, Sevilla, Málaga, Bilbao, Mallorca, Tenerife y Galicia, y Eurotrips de 17 días. Sin visa. Separa con el 50%.",
+    intro:
+      "Vacaciones en España con vuelo de ida y vuelta, hotel y traslados: ciudades, playas del Mediterráneo, islas y circuitos por Europa. Si buscas viajar solo de ida, mira nuestro paquete migratorio.",
+    documentos:
+      "Los peruanos no necesitan visa para España: viajas como turista hasta 90 días con pasaporte. En migración te pueden pedir el pasaje de regreso, el hotel o la carta de invitación, dinero para tu estadía y un seguro de viaje.",
+    faqs: [
+      { q: "¿Qué incluye un paquete a España?", a: "Vuelo de ida y vuelta desde Lima, hotel y traslados; según el paquete, también tours y seguro. En cada tarjeta ves los días y el precio desde." },
+      { q: "¿Y si quiero viajar solo de ida?", a: "Para eso está el paquete migratorio a España, con el vuelo de ida y la carpeta de viaje que te armamos." },
+      { q: "¿Cuál es la mejor época?", a: "Primavera (abril a junio) y otoño (septiembre y octubre) tienen buen clima y precios más bajos que julio, agosto y diciembre." },
+      PAGO,
+    ],
+    enlaces: [
+      { texto: "Pasajes a España", href: "/pasajes-a-espana" },
+      { texto: "Paquete migratorio a España", href: "/espana" },
+      { texto: "Requisitos para viajar a España", href: "/viajes/requisitos-viajar-a-espana-desde-peru" },
+      { texto: "Bolsa de viaje", href: "/blog/cuanto-dinero-llevar-espana-bolsa-de-viaje" },
+      { texto: "Carta de invitación", href: "/blog/carta-invitacion-espana-peru-requisitos" },
+    ],
+    mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un paquete turístico a España.",
+  },
 };

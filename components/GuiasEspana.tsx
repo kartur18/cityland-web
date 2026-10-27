@@ -4,6 +4,7 @@ import Link from "next/link";
 // les pasa fuerza en Google y lleva al lector del dato a la cotización.
 export const GUIAS_ESPANA = [
   { href: "/pasajes-a-espana", texto: "Pasajes a España: todas las rutas" },
+  { href: "/paquetes-a-espana", texto: "Paquetes turísticos a España" },
   { href: "/viajes/requisitos-viajar-a-espana-desde-peru", texto: "Requisitos para viajar a España desde Perú" },
   { href: "/blog/cuanto-dinero-llevar-espana-bolsa-de-viaje", texto: "Bolsa de viaje: cuánto dinero llevar" },
   { href: "/blog/carta-invitacion-espana-peru-requisitos", texto: "Carta de invitación para España" },
@@ -16,6 +17,9 @@ export const GUIAS_ESPANA = [
   { href: "/blog/reagrupacion-familiar-espana-desde-peru", texto: "Reagrupación familiar" },
   { href: "/blog/traer-familiar-de-peru-a-espana-de-visita", texto: "Traer a un familiar de visita" },
   { href: "/blog/trabajar-legalmente-en-espana-desde-peru", texto: "Trabajar legalmente en España" },
+  { href: "/pasajes-a-barcelona", texto: "Pasajes a Barcelona" },
+  { href: "/blog/equipaje-para-viajar-a-espana-iberia-air-europa-latam-plus-ultra", texto: "Equipaje por aerolínea" },
+  { href: "/blog/viajar-a-espana-con-ninos-desde-peru", texto: "Viajar a España con niños" },
 ] as const;
 
 export default function GuiasEspana() {
