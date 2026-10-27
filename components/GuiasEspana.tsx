@@ -5,6 +5,12 @@ import Link from "next/link";
 export const GUIAS_ESPANA = [
   { href: "/pasajes-a-espana", texto: "Pasajes a España: todas las rutas" },
   { href: "/paquetes-a-espana", texto: "Paquetes turísticos a España" },
+  { href: "/retorno-gestionado-que-es", texto: "Qué es el retorno gestionado" },
+  { href: "/pasaje-ida-y-vuelta-a-espana", texto: "Pasaje ida y vuelta" },
+  { href: "/pasaje-solo-ida-a-espana", texto: "Pasaje solo de ida" },
+  { href: "/pasajes-de-espana-a-peru", texto: "De España a Perú" },
+  { href: "/visa-de-trabajo-para-espana", texto: "Visa de trabajo" },
+  { href: "/visa-de-estudios-para-espana", texto: "Visa de estudios" },
   { href: "/viajes/requisitos-viajar-a-espana-desde-peru", texto: "Requisitos para viajar a España desde Perú" },
   { href: "/blog/cuanto-dinero-llevar-espana-bolsa-de-viaje", texto: "Bolsa de viaje: cuánto dinero llevar" },
   { href: "/blog/carta-invitacion-espana-peru-requisitos", texto: "Carta de invitación para España" },
