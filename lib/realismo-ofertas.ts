@@ -11,7 +11,11 @@ const PISOS: [RegExp, number][] = [
   [/miami|orlando|disney|universal|nueva.?york|las.?vegas|los.?[aá]ngeles|california|washington/i, 1250],
   [/canc[uú]n|riviera.?maya|tulum|xcaret|playa.?del.?carmen|los.?cabos/i, 1100],
   [/aruba|curaz/i, 1050],
-  [/r[ií]o.?de.?janeiro|b[uú]zios|florian[oó]polis|cambori[uú]|salvador.?de.?bah|gramado|canela/i, 900],
+  // Río: pasaje ida y vuelta desde ~US$600 (Copa, SKY, LATAM; oct-2026); Carnaval y Año Nuevo cuestan mucho más.
+  [/carnaval.{0,40}r[ií]o|r[ií]o.{0,40}carnaval/i, 2490],
+  [/(reveillon|a[ñn]o.?nuevo|fin.?de.?a[ñn]o).{0,60}r[ií]o|r[ií]o.{0,60}(reveillon|a[ñn]o.?nuevo|fin.?de.?a[ñn]o)/i, 1550],
+  [/r[ií]o.?de.?janeiro|b[uú]zios|arraial/i, 1190],
+  [/florian[oó]polis|cambori[uú]|salvador.?de.?bah|gramado|canela/i, 900],
   [/san.?andr[eé]s/i, 850],
   [/cartagena|bar[uú]/i, 850],
   [/buenos.?aires|bariloche|calafate|mendoza|patagonia/i, 750],

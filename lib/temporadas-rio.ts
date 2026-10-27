@@ -54,6 +54,10 @@ export const TEMPORADAS_RIO: Readonly<Record<"carnaval" | "cuandoIr", TemporadaE
         a: "Los días de Carnaval van del sábado 6 al martes 9 de febrero de 2027; el Miércoles de Ceniza es el 10. Los blocos de calle empiezan semanas antes.",
       },
       {
+        q: "¿Cuánto cuesta ir al Carnaval de Río?",
+        a: "Es la semana más cara del año: un paquete de 5 días con vuelo y hotel suele pasar los US$2,000 por persona, sin contar las entradas. Mientras antes cotices, más opciones hay.",
+      },
+      {
         q: "¿Ustedes venden las entradas al Sambódromo?",
         a: "No. Las entradas se compran en la venta oficial del Carnaval. Nosotros te cotizamos el vuelo, el hotel, los traslados y el seguro.",
       },

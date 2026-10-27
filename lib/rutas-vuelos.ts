@@ -1034,7 +1034,7 @@ const ESCALA_COMERCIAL_RUTAS_BASE: Record<
   "lima-cusco": { desde: 109, items: [329, 279, 109] },
   "lima-roma": { desde: 1150, items: [1150, 1390, 1240] },
   "lima-paris": { desde: 1180, items: [1180, 2390, 1450] },
-  "lima-rio-de-janeiro": { desde: 450, items: [749, 450, 899] },
+  "lima-rio-de-janeiro": { desde: 649, items: [1190, 649, 1390] },
   "lima-santiago": { desde: 299, items: [299, 549, 649] },
   "lima-bogota": { desde: 340, items: [340, 589, 699] },
   "lima-panama": { desde: 470, items: [699, 470, 829] },
