@@ -41,7 +41,10 @@ export default function HubPaisPagina({ hub: h }: { hub: HubPais }) {
   const desde = destinos[0]?.turistico;
   const circuitos = h.paises.length
     ? circuitosVigentes()
-        .filter((c) => c.paises.some((p) => h.paises.includes(p)))
+        .filter((c) => {
+          const re = h.ciudadesCircuitos;
+          return re ? c.ciudades.some((x) => re.test(x)) : c.paises.some((p) => h.paises.includes(p));
+        })
         .sort((a, b) => a.desde - b.desde)
     : [];
   const wa = buildWaUrl({ categoria: "general", mensajePersonalizado: h.mensajeWhatsApp, refWeb: `citylandtravel.com${h.ruta}` });
