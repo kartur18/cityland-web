@@ -31,13 +31,15 @@ export default function CircuitosHubPagina({ hub: h }: { hub: HubCircuitos }) {
     .sort((a, b) => a.desde - b.desde);
   const conVuelo = items.filter((c) => c.tipo === "vuelo");
   const terrestres = items.filter((c) => c.tipo !== "vuelo");
-  const desde = items.length ? precioCityland(items[0]) : 0;
+  // El «desde» de cabecera es el de un programa con vuelo: el terrestre más barato atraía consultas que no cierran.
+  const desde = conVuelo.length ? precioCityland(conVuelo[0]) : 0;
+  const desdeTerrestre = terrestres.length ? precioCityland(terrestres[0]) : 0;
   const wa = buildWaUrl({ categoria: "general", mensajePersonalizado: h.mensajeWhatsApp, refWeb: `citylandtravel.com${h.ruta}` });
   const faqs = [
     {
       q: `¿Cuánto cuesta un viaje a ${h.nombre === "Año Nuevo" || h.nombre === "verano" ? "estos destinos" : h.nombre}?`,
       a: items.length
-        ? `Los programas de esta página van desde ${formatoUSD(desde)} por persona en habitación doble. El precio cambia según la fecha de salida, el hotel y si incluye vuelo desde Lima.`
+        ? `${desde ? `Con vuelo desde Lima, desde ${formatoUSD(desde)} por persona en habitación doble. ` : ""}${desdeTerrestre ? `Los programas solo terrestres (sin vuelo) empiezan en ${formatoUSD(desdeTerrestre)}. ` : ""}El precio cambia según la fecha de salida y el hotel.`
         : "Escríbenos con tu fecha y te cotizamos.",
     },
     {
@@ -94,8 +96,13 @@ export default function CircuitosHubPagina({ hub: h }: { hub: HubCircuitos }) {
             <p className="text-base sm:text-lg text-slate-600">{h.intro}</p>
             {items.length > 0 && (
               <p className="text-[15px] text-slate-700">
-                <strong className="text-[#0a1628]">{items.length} programas</strong> con salidas confirmadas, desde{" "}
-                <strong className="text-[#0a1628]">{formatoUSD(desde)}</strong> por persona.
+                <strong className="text-[#0a1628]">{items.length} programas</strong> con salidas confirmadas
+                {desde > 0 && (
+                  <>
+                    , con vuelo desde Lima desde <strong className="text-[#0a1628]">{formatoUSD(desde)}</strong> por persona
+                  </>
+                )}
+                .
               </p>
             )}
             <a
