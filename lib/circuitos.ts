@@ -1,0 +1,75 @@
+import DATOS from "@/lib/circuitos-datos.json";
+
+// Circuitos de nuestro mayorista (programas reales con salidas confirmadas), copiados de su vitrina para agencias el
+// 27-oct-2026. El precio público es el «desde» del mayorista más nuestro fee; cada programa sale de la web solo
+// cuando vence su última salida. Para actualizar: volver a correr el generador (ver memoria del proyecto).
+
+export type TipoCircuito = "vuelo" | "terrestre" | "crucero";
+
+export interface Circuito {
+  mt: string;
+  slug: string;
+  nombre: string;
+  dias: number;
+  noches: number;
+  region: string;
+  tipo: TipoCircuito;
+  origen: string;
+  desde: number;
+  paises: string[];
+  ciudades: string[];
+  aerolineas: string[];
+  salidas: string;
+  vigencia: string;
+  incluye: string[];
+  noIncluye: string[];
+  hoteles: string[][];
+}
+
+export const REGIONES_CIRCUITOS: { id: string; nombre: string }[] = [
+  { id: "europa", nombre: "Europa" },
+  { id: "medio-oriente", nombre: "Turquía, Egipto, Jordania y Dubái" },
+  { id: "asia", nombre: "Asia: Japón, China, India y Tailandia" },
+  { id: "marruecos", nombre: "Marruecos" },
+  { id: "estados-unidos-canada", nombre: "Estados Unidos y Canadá" },
+  { id: "mexico", nombre: "México" },
+  { id: "centroamerica", nombre: "Centroamérica: Costa Rica y Panamá" },
+  { id: "caribe", nombre: "Caribe" },
+  { id: "sudamerica", nombre: "Sudamérica: Brasil, Colombia y Argentina" },
+  { id: "cruceros", nombre: "Cruceros" },
+];
+
+// Fee de Cityland sobre el precio del mayorista: US$100, o US$150 en programas de US$3,000 a más.
+export function precioCityland(c: Pick<Circuito, "desde">): number {
+  return c.desde + (c.desde >= 3000 ? 150 : 100);
+}
+
+function hoyLima(): string {
+  return new Date(Date.now() - 5 * 3600 * 1000).toISOString().slice(0, 10);
+}
+
+export function circuitosVigentes(): Circuito[] {
+  const hoy = hoyLima();
+  return (DATOS as Circuito[]).filter((c) => !c.vigencia || c.vigencia >= hoy);
+}
+
+export function buscarCircuito(slug: string): Circuito | undefined {
+  return circuitosVigentes().find((c) => c.slug === slug);
+}
+
+export function todosLosSlugsCircuitos(): string[] {
+  return (DATOS as Circuito[]).map((c) => c.slug);
+}
+
+export function textoTipo(c: Circuito): string {
+  if (c.tipo === "vuelo") return `Incluye vuelo desde ${c.origen}`;
+  if (c.tipo === "crucero") return "Solo crucero (sin vuelo)";
+  return "Solo terrestre (sin vuelo)";
+}
+
+export function relacionados(c: Circuito, n = 4): Circuito[] {
+  return circuitosVigentes()
+    .filter((x) => x.region === c.region && x.slug !== c.slug)
+    .sort((a, b) => Math.abs(a.desde - c.desde) - Math.abs(b.desde - c.desde))
+    .slice(0, n);
+}
