@@ -160,6 +160,27 @@ export default async function RutaVueloPage({ params }: Props) {
             destinoInicial={`${ruta.destino} (${paisDestino})`}
           />
         )}
+        {ruta.slug === "lima-cusco" && (
+          // El que pide solo el pasaje a Cusco casi siempre va a Machu Picchu: el paquete le asegura tren y entrada.
+          <section className="py-12 bg-amber-50 border-t border-amber-100">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-4">
+              <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a1628] tracking-tight">¿Vas a Machu Picchu? Asegura el tren y la entrada</h2>
+              <p className="text-[15px] text-slate-700 max-w-3xl">
+                Las entradas a Machu Picchu y los asientos del tren tienen cupos por día y se agotan antes que los vuelos. En el
+                paquete te reservamos todo junto: vuelo Lima–Cusco, hotel con desayuno, city tour, Valle Sagrado, tren turístico,
+                bus de subida y entrada a Machu Picchu.
+              </p>
+              <div className="flex flex-wrap gap-2.5">
+                <Link href="/destinos/cusco-magico" className="inline-flex items-center min-h-[44px] px-4 rounded-xl bg-[#0a1628] text-white text-sm font-bold">
+                  Paquete Cusco y Machu Picchu 4 días desde $549
+                </Link>
+                <Link href="/destinos/cusco-montana-7-colores-humantay-5-dias" className="inline-flex items-center min-h-[44px] px-4 rounded-xl bg-white border border-slate-300 text-sm font-bold text-[#0a1628]">
+                  Cusco completo 5 días desde $649
+                </Link>
+              </div>
+            </div>
+          </section>
+        )}
         {ruta.faqs.length > 0 && (
           <section className="py-12 bg-slate-50 border-t border-slate-200/80">
             <div className="max-w-5xl mx-auto px-4 sm:px-6">
