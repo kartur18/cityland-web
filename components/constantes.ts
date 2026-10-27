@@ -2257,6 +2257,121 @@ export const BLOG_POSTS: BlogPost[] = [
 </ul>
 <p>Revisado el 25 de octubre de 2026.</p>`,
   },
+  {
+    slug: "equipaje-para-viajar-a-espana-iberia-air-europa-latam-plus-ultra",
+    titulo: "Equipaje para viajar a España desde Perú: cuántas maletas incluye cada aerolínea (2026)",
+    tituloSeo: "Equipaje para viajar a España: maletas por aerolínea",
+    desc: "Cuántas maletas de 23 kg incluyen Iberia, Air Europa, LATAM y Plus Ultra en Lima–Madrid según la tarifa, cuánto pesa la de mano y cuánto cuesta una maleta extra.",
+    categoria: "Guías",
+    catColor: "bg-emerald-700",
+    fecha: "Actualizado octubre 2026",
+    lectura: "5 min",
+    imagen: "/images/espana/barajas.jpg",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>La respuesta corta</h2>
+<ul>
+<li>Lo que cuenta es la <strong>tarifa</strong>, no solo la aerolínea: las tarifas más baratas muchas veces <strong>no incluyen maleta en bodega</strong>.</li>
+<li>Las tarifas intermedias de Iberia, Air Europa y LATAM incluyen <strong>1 maleta de 23 kg</strong>.</li>
+<li>Plus Ultra tiene tarifas desde Perú que incluyen <strong>2 maletas de 23 kg</strong>.</li>
+<li>La maleta de mano suele ser de <strong>10 kg</strong> más un artículo personal (cartera o mochila pequeña).</li>
+</ul>
+
+<h2>Maletas por aerolínea en Lima–Madrid (clase económica)</h2>
+<div class="tabla-guia"><table>
+<thead><tr><th>Aerolínea</th><th>Tarifa más barata</th><th>Tarifas con maleta</th></tr></thead>
+<tbody>
+<tr><td>Iberia</td><td>Basic: la maleta en bodega se compra aparte</td><td>Optima, Comfort y Flexible: 1 maleta de 23 kg</td></tr>
+<tr><td>Air Europa</td><td>Lite: sin maleta en bodega (se puede añadir)</td><td>Standard y Flex: 1 maleta de 23 kg</td></tr>
+<tr><td>LATAM</td><td>Light: sin maleta en bodega</td><td>Standard y Full: 1 maleta de 23 kg (en vuelos fuera de Sudamérica)</td></tr>
+<tr><td>Plus Ultra</td><td>Ligera: 1 maleta de 15 kg</td><td>Flash: 1×23 kg · Full y Plus: 2×23 kg · Flexible: 3×23 kg</td></tr>
+</tbody>
+</table></div>
+<p>Las aerolíneas cambian sus tarifas: antes de pagar, en tu cotización te confirmamos por escrito cuántas maletas incluye tu pasaje.</p>
+
+<h2>¿Y si necesito 2 maletas?</h2>
+<p>Tienes dos caminos: elegir una tarifa que ya incluya 2 maletas, o comprar la segunda aparte. En Plus Ultra, por ejemplo, la primera maleta extra cuesta 125 € (US$150) más impuestos. Casi siempre sale más barato <strong>pagarla al comprar el pasaje</strong> que en el aeropuerto.</p>
+
+<h2>Consejos para no pagar de más</h2>
+<ul>
+<li>Pesa tu maleta en casa: el límite normal es 23 kg; con exceso se acepta hasta 32 kg pagando un recargo.</li>
+<li>Lleva en la mano lo importante: pasaporte, dinero, medicinas y la carpeta con tus documentos de viaje.</li>
+<li>Si viajas con niños, cada asiento pagado suele tener su propia franquicia de equipaje.</li>
+</ul>
+
+<h2>Sigue leyendo</h2>
+<ul>
+<li><a href="/pasajes-a-espana">Pasajes a España: todas las rutas</a></li>
+<li><a href="/blog/vuelos-directos-lima-madrid-comparativa-aerolineas">Vuelos directos Lima–Madrid</a></li>
+<li><a href="/blog/viajar-a-espana-por-primera-vez-desde-peru">Tu primer viaje a España</a></li>
+</ul>
+
+<h2>Fuentes</h2>
+<ul>
+<li><a href="https://www.plusultra.com/es-es/informacion/equipaje/franquicia-de-equipaje/" target="_blank" rel="noopener">Plus Ultra: franquicia de equipaje (columna Perú)</a></li>
+<li><a href="https://www.iberia.com/us/fare-classes/economy/" target="_blank" rel="noopener">Iberia: tarifas en clase económica</a></li>
+<li><a href="https://www.latamairlines.com/ec/es/centro-ayuda/preguntas/compras/asistencia/tarifas-pasaje-internacional" target="_blank" rel="noopener">LATAM: tarifas en vuelos internacionales</a></li>
+<li><a href="https://www.aireuropa.com/us/en/aea/faq.html" target="_blank" rel="noopener">Air Europa: preguntas frecuentes</a></li>
+</ul>
+<p>Revisado el 26 de octubre de 2026. Las condiciones de equipaje pueden cambiar: confírmalas al comprar.</p>`,
+  },
+  {
+    slug: "viajar-a-espana-con-ninos-desde-peru",
+    titulo: "Viajar a España con niños desde Perú: permiso notarial, documentos y menores que viajan solos",
+    tituloSeo: "Viajar a España con niños desde Perú: requisitos",
+    desc: "Qué documentos necesita un menor para viajar de Perú a España: pasaporte, permiso notarial si viaja con un solo padre o con terceros (vale 90 días) y el servicio de menor no acompañado de las aerolíneas.",
+    categoria: "Requisitos",
+    catColor: "bg-indigo-600",
+    fecha: "Actualizado octubre 2026",
+    lectura: "5 min",
+    imagen: "/images/espana/plaza-mayor.jpg",
+    autor: "Equipo Cityland Travel",
+    contenido: `<h2>La respuesta corta</h2>
+<ul>
+<li>El niño necesita su <strong>pasaporte vigente</strong>, igual que un adulto. Para España no se pide visa para turismo.</li>
+<li>Si viaja con <strong>un solo padre</strong>, necesita la <strong>autorización notarial</strong> firmada por el padre que no viaja.</li>
+<li>Si viaja <strong>solo o con otra persona</strong> (tíos, abuelos, profesor), la autorización la firman <strong>ambos padres</strong>.</li>
+<li>La autorización vale <strong>90 días</strong> desde que se firma y sirve para <strong>un solo viaje</strong>.</li>
+</ul>
+
+<h2>Salida del Perú: cuándo se necesita permiso</h2>
+<div class="tabla-guia"><table>
+<thead><tr><th>El menor viaja…</th><th>Qué necesita</th></tr></thead>
+<tbody>
+<tr><td>Con ambos padres</td><td>Solo su pasaporte.</td></tr>
+<tr><td>Con un solo padre</td><td>Autorización notarial del padre que no viaja.</td></tr>
+<tr><td>Solo o con un tercero</td><td>Autorización notarial de ambos padres.</td></tr>
+<tr><td>Uno de los padres falleció</td><td>Acta de defunción y partida de nacimiento.</td></tr>
+<tr><td>Los padres no se ponen de acuerdo</td><td>Autorización de un juez.</td></tr>
+<tr><td>Los padres están en el extranjero</td><td>Autorización en el consulado del Perú, apostillada.</td></tr>
+</tbody>
+</table></div>
+
+<h2>Llegada a España</h2>
+<p>La policía de frontera revisa con especial atención a los menores. Si el niño viaja con un solo padre o con otra persona, conviene que lleve también una copia de la autorización de los padres y su partida de nacimiento. Si se queda en casa de un familiar, la <a href="/blog/carta-invitacion-espana-peru-requisitos">carta de invitación</a> ayuda a demostrar dónde se alojará.</p>
+
+<h2>Si el niño viaja solo: servicio de menor no acompañado</h2>
+<ul>
+<li><strong>Iberia:</strong> obligatorio de 5 a 11 años; desde los 12 es opcional.</li>
+<li><strong>LATAM:</strong> los menores de 8 años no pueden volar solos; de 8 a 11 el servicio es obligatorio y de 12 a 17 es opcional.</li>
+<li><strong>Air Europa:</strong> desde los 5 años; en vuelos internacionales el servicio puede ser obligatorio hasta los 14.</li>
+</ul>
+<p>Este servicio tiene un costo aparte y se pide al comprar el pasaje. Te ayudamos a pedirlo y a armar la carpeta del menor.</p>
+
+<h2>Sigue leyendo</h2>
+<ul>
+<li><a href="/blog/permiso-notarial-viaje-menores-peru-requisitos">Permiso notarial de viaje para menores</a></li>
+<li><a href="/blog/traer-familiar-de-peru-a-espana-de-visita">Traer a un familiar de Perú a España de visita</a></li>
+<li><a href="/pasajes-a-espana">Pasajes a España</a></li>
+</ul>
+
+<h2>Fuentes</h2>
+<ul>
+<li><a href="https://elperuano.pe/noticia/294371-migraciones-conoce-los-requisitos-para-viajar-al-extranjero-con-un-menor-de-edad" target="_blank" rel="noopener">El Peruano: requisitos de Migraciones para viajar al extranjero con un menor</a></li>
+<li><a href="https://www.iberia.com/ar/faqs/minors/" target="_blank" rel="noopener">Iberia: menores que viajan solos</a></li>
+<li><a href="https://www.latamairlines.com/co/es/centro-ayuda/preguntas/necesidades-especiales/menor-viajar-solo-avion/requisitos-viaje" target="_blank" rel="noopener">LATAM: menor viajando solo</a></li>
+</ul>
+<p>Revisado el 26 de octubre de 2026. Los requisitos pueden cambiar: confírmalos antes de viajar.</p>`,
+  },
 ];
 
 
