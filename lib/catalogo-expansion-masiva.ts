@@ -485,6 +485,28 @@ const DURACIONES_LEJANAS: [string, string, number, number][] = [
   ["19 Días / 18 Noches", "19-dias-18-noches", 1.65, 3890],
 ];
 
+// Un Eurotrip (3 o más países de Europa) se vende de 17 a 19 días; un recorrido regional de 15 a 17; un solo país
+// de Europa de 12 a 15. Turquía, Medio Oriente y Asia sí tienen circuitos de 10 días.
+const EUROTRIPS = new Set([
+  "madrid-barcelona-y-roma", "madrid-paris-y-roma", "espana-e-italia-completo", "barcelona-costa-azul-y-roma",
+  "santuarios-marianos-europa", "espana-francia-suiza-italia",
+]);
+const EUROPA_REGIONAL = new Set([
+  "paris-brujas-y-amsterdam", "londres-paris-y-amsterdam", "praga-viena-y-budapest-imperial", "madrid-y-lisboa-fatima",
+]);
+const EUROPA_UN_PAIS = new Set([
+  "madrid-y-barcelona-tren-ave", "roma-florencia-y-venecia", "gran-tour-de-italia", "madrid-y-andalucia",
+  "atenas-e-islas-griegas",
+]);
+function duracionesLejanas(slug: string): [string, string, number, number][] {
+  const desde = EUROTRIPS.has(slug) ? 17 : EUROPA_REGIONAL.has(slug) ? 15 : EUROPA_UN_PAIS.has(slug) ? 12 : 10;
+  const hasta = EUROPA_REGIONAL.has(slug) ? 17 : EUROPA_UN_PAIS.has(slug) ? 15 : EUROTRIPS.has(slug) ? 19 : 15;
+  return DURACIONES_LEJANAS.filter(([, s]) => {
+    const dias = Number(s.split("-")[0]);
+    return dias >= desde && dias <= hasta;
+  });
+}
+
 // Destinos del Perú a los que solo se llega por carretera desde Lima.
 const SOLO_POR_CARRETERA = /(oxapampa|paracas|huaraz)/i;
 
@@ -899,13 +921,15 @@ function generarIndiceExpansion(): ResumenLandingExpansion[] {
 
   // 2. Bloque 2: 80 Circuitos/Destinos × 8 Duraciones × 3 Enfoques = 1,920
   for (const [nombreCircuito, slugCircuito, pais, cluster, clusterNombre, precioBase, esInt] of CIRCUITOS_Y_DESTINOS_80) {
-    const esLejanoIntercontinental = /(madrid|barcelona|roma|paris|europa|turquia|estambul|tokio|japon|bangkok|tailandia|egipto|el-cairo|dubai|tierra-santa|londres|suiza|alemania|italia|francia|grecia|china)/i.test(
-      slugCircuito
-    );
+    const esLejanoIntercontinental =
+      EUROTRIPS.has(slugCircuito) ||
+      EUROPA_REGIONAL.has(slugCircuito) ||
+      EUROPA_UN_PAIS.has(slugCircuito) ||
+      /(madrid|barcelona|roma|paris|europa|turquia|estambul|tokio|japon|bangkok|tailandia|egipto|el-cairo|dubai|tierra-santa|londres|suiza|alemania|italia|francia|grecia|china)/i.test(slugCircuito);
     const esEscapadaCortaNacional = /(paracas|ica|huacachina)/i.test(slugCircuito);
 
     const duraciones: [string, string, number, number][] = esLejanoIntercontinental
-      ? DURACIONES_LEJANAS
+      ? duracionesLejanas(slugCircuito)
       : DURACIONES_8.map(([t, s, f]) => [t, s, f, 149]);
     for (const [textoDuracion, slugDuracion, factorDur, pisoPrecio] of duraciones) {
       const esCortoEnLejano =

@@ -98,7 +98,7 @@ export const SERVICIOS: Readonly<Record<string, ServicioCityland>> = {
       { texto: "Huaraz: Laguna 69 y Pastoruri", href: "/destinos/huaraz-laguna-69-pastoruri-chavin" },
       { texto: "Iquitos y el río Amazonas", href: "/destinos/iquitos-crucero-rio-amazonas-lodge" },
       { texto: "Chachapoyas, Kuélap y Gocta", href: "/destinos/chachapoyas-kuelap-catarata-gocta" },
-      { texto: "Madrid, París y Roma en 12 días", href: "/destinos/madrid-paris-roma-12-dias" },
+      { texto: "Madrid, París y Roma en 17 días", href: "/destinos/madrid-paris-roma-17-dias" },
     ],
     faqs: [
       {

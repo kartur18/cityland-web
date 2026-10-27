@@ -3,6 +3,7 @@ import Link from "next/link";
 // Las guías de España que responden lo que la gente busca antes de viajar; enlazarlas desde las páginas que venden
 // les pasa fuerza en Google y lleva al lector del dato a la cotización.
 export const GUIAS_ESPANA = [
+  { href: "/pasajes-a-espana", texto: "Pasajes a España: todas las rutas" },
   { href: "/viajes/requisitos-viajar-a-espana-desde-peru", texto: "Requisitos para viajar a España desde Perú" },
   { href: "/blog/cuanto-dinero-llevar-espana-bolsa-de-viaje", texto: "Bolsa de viaje: cuánto dinero llevar" },
   { href: "/blog/carta-invitacion-espana-peru-requisitos", texto: "Carta de invitación para España" },

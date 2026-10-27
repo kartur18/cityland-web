@@ -10,7 +10,7 @@ import {
 
 const rawTitle = "Circuitos a Europa y Turquía Sin Visa | Cityland Travel";
 const rawDesc =
-  "Circuitos a Europa, Turquía (Capadocia) y Dubái sin visa desde Lima: Turquía Desde $2,490, Europa 15 Días Desde $3,290 y España Desde $1,890. Separa con 50%.";
+  "Circuitos a Europa, Turquía (Capadocia) y Dubái sin visa desde Lima: Turquía Desde $2,490, Europa 17 Días Desde $3,590 y España Desde $2,690. Separa con 50%.";
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO(rawTitle),
@@ -113,8 +113,8 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       titulo: "Europa Soñada: Madrid, París, Venecia, Florencia & Roma",
       pais: "Europa",
       filtro: "europa",
-      subtitulo: "15 Días / 14 Noches · Circuito Completo",
-      precioPrincipal: "$3,290",
+      subtitulo: "17 Días / 16 Noches · Circuito Completo",
+      precioPrincipal: "$3,590",
       notaPrecio: "Separa con 50% · Incluye Seguro 30.000€",
       tag: "3 Países · 15 Días",
       tagBg: "bg-blue-600 text-white",
@@ -130,8 +130,8 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       titulo: "España Imprescindible: Madrid, Toledo & Barcelona",
       pais: "España",
       filtro: "europa",
-      subtitulo: "8 Días / 7 Noches · Tren Alta Velocidad AVE",
-      precioPrincipal: "$1,890",
+      subtitulo: "12 Días / 11 Noches · Tren Alta Velocidad AVE",
+      precioPrincipal: "$2,690",
       notaPrecio: "Separa con 50% (desde $725)",
       tag: "Madrid + Barcelona",
       tagBg: "bg-red-600 text-white",
@@ -164,8 +164,8 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       titulo: "Italia Imperial: Roma, Vaticano, Florencia & Venecia",
       pais: "Italia",
       filtro: "europa",
-      subtitulo: "10 Días / 9 Noches · Arte, Fe y Gastronomía",
-      precioPrincipal: "$2,490",
+      subtitulo: "12 Días / 11 Noches · Arte, Fe y Gastronomía",
+      precioPrincipal: "$2,790",
       notaPrecio: "Ideal para Año Jubilar y Turismo Cultural",
       tag: "Roma & Vaticano",
       tagBg: "bg-emerald-600 text-white",

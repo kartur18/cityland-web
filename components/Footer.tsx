@@ -122,6 +122,9 @@ export default function Footer() {
                 <FlagIcon pais="Europa" className="w-3.5 h-2.5" />
                 <span>Guía Europa 2026 (BOE 122€ & Verificador PNR)</span>
               </Link>
+              <Link href="/pasajes-a-espana" className="block text-slate-300 hover:text-white transition-colors">
+                Pasajes a España ida y vuelta (Madrid y Barcelona)
+              </Link>
               <Link href="/espana" className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors">
                 <FlagIcon pais="España" className="w-3.5 h-2.5" />
                 <span>Paquete Migratorio España (Solo ida desde $699)</span>
