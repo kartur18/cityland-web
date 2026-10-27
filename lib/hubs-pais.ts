@@ -10,6 +10,8 @@ export interface HubPais {
   paises: string[];
   // Si se indica, solo estos destinos (en lugar de todos los del país).
   slugs?: string[];
+  // Circuitos del mayorista que entran por ciudad (si no, por país).
+  ciudadesCircuitos?: RegExp;
   h1: string;
   // ≤ 49 caracteres: se le suma " | Cityland".
   tituloSeo: string;
@@ -216,6 +218,133 @@ export const HUBS_PAIS: Readonly<Record<string, HubPais>> = {
       SOLO_DNI,
     ],
     mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un paquete a Chile.",
+  },
+  cartagena: {
+    nombre: "Cartagena",
+    ruta: "/paquetes-a-cartagena",
+    paises: ["Colombia"],
+    slugs: ["cartagena", "san-andres-cartagena-combinado"],
+    ciudadesCircuitos: /cartagena/i,
+    h1: "Paquetes a Cartagena desde Lima",
+    tituloSeo: "Paquetes a Cartagena desde Lima, solo DNI",
+    descripcion:
+      "Paquetes a Cartagena de Indias desde Lima con vuelo, hotel y traslados: Ciudad Amurallada, Islas del Rosario y Barú. Viajas solo con DNI. Separa con el 50%.",
+    intro:
+      "Cartagena es el Caribe más cerca de Lima: la Ciudad Amurallada, las playas de Barú y las Islas del Rosario, y puedes viajar solo con tu DNI.",
+    documentos: "Los peruanos pueden viajar a Colombia solo con su DNI vigente, sin pasaporte ni visa.",
+    faqs: [
+      { q: "¿Puedo viajar a Cartagena solo con DNI?", a: "Sí. Los peruanos entran a Colombia con su DNI vigente; no necesitas pasaporte ni visa." },
+      { q: "¿Conviene hotel en la ciudad o en Barú?", a: "En la ciudad estás cerca de todo; en Barú tienes playa y descanso. Muchos combinan las dos: te lo armamos según tu presupuesto." },
+      PAGO,
+    ],
+    enlaces: [
+      { texto: "Pasajes Lima–Cartagena", href: "/vuelos/lima-cartagena" },
+      { texto: "Viajar a Colombia solo con DNI", href: "/blog/viajar-a-colombia-cartagena-san-andres-medellin-solo-dni" },
+      { texto: "Paquetes a San Andrés", href: "/paquetes-a-san-andres" },
+      { texto: "Todo Colombia", href: "/paquetes-a-colombia" },
+    ],
+    mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un paquete a Cartagena.",
+  },
+  sanAndres: {
+    nombre: "San Andrés",
+    ruta: "/paquetes-a-san-andres",
+    paises: ["Colombia"],
+    slugs: ["san-andres", "san-andres-cartagena-combinado"],
+    ciudadesCircuitos: /san andr/i,
+    h1: "Paquetes a San Andrés todo incluido desde Lima",
+    tituloSeo: "Paquetes a San Andrés todo incluido",
+    descripcion:
+      "Paquetes a San Andrés desde Lima con vuelo, hotel todo incluido y traslados: el mar de siete colores, Johnny Cay y el Acuario. Viajas con DNI. Separa con el 50%.",
+    intro: "San Andrés es la isla del mar de siete colores: hoteles todo incluido, Johnny Cay, el Acuario y la vuelta a la isla.",
+    documentos:
+      "Los peruanos pueden viajar a Colombia solo con su DNI vigente. Para entrar a la isla se paga además una tarjeta de turismo que cobra San Andrés.",
+    faqs: [
+      { q: "¿Qué documentos necesito para San Andrés?", a: "Tu DNI vigente y la tarjeta de turismo de la isla, que se paga antes de abordar el vuelo a San Andrés." },
+      { q: "¿Se puede combinar con Cartagena?", a: "Sí, es la combinación más pedida: unos días de ciudad en Cartagena y después playa en San Andrés." },
+      PAGO,
+    ],
+    enlaces: [
+      { texto: "Pasajes Lima–San Andrés", href: "/vuelos/lima-san-andres" },
+      { texto: "Paquetes a Cartagena", href: "/paquetes-a-cartagena" },
+      { texto: "Todo Colombia", href: "/paquetes-a-colombia" },
+    ],
+    mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un paquete a San Andrés.",
+  },
+  cancun: {
+    nombre: "Cancún",
+    ruta: "/paquetes-a-cancun",
+    paises: ["México"],
+    slugs: ["cancun", "riviera-maya-todo-incluido", "tulum-cancun-combinado", "cancun-xcaret-experiencia", "cdmx-cancun-combinado"],
+    ciudadesCircuitos: /canc[uú]n|riviera|playa del carmen|tulum/i,
+    h1: "Paquetes a Cancún todo incluido desde Lima",
+    tituloSeo: "Paquetes a Cancún todo incluido desde Lima",
+    descripcion:
+      "Paquetes a Cancún y la Riviera Maya todo incluido desde Lima: vuelo, resort frente al mar, traslados y parques como Xcaret. Separa con el 50%.",
+    intro: "Cancún y la Riviera Maya: resorts todo incluido frente al mar Caribe, Tulum, Playa del Carmen y los parques de Xcaret.",
+    documentos:
+      "Desde 2024 México pide visa a los peruanos. Si tienes visa vigente de Estados Unidos, Canadá, Reino Unido, Japón o del espacio Schengen, puedes entrar sin visa mexicana. Te lo confirmamos al cotizar.",
+    faqs: [
+      { q: "¿Necesito visa para Cancún?", a: "Sí, salvo que tengas visa vigente de Estados Unidos, Canadá, Reino Unido, Japón o Schengen. Si no la tienes, te ayudamos con el trámite de la visa mexicana." },
+      { q: "¿Punta Cana o Cancún?", a: "Punta Cana no pide visa a los peruanos y es más de descanso; Cancún tiene más paseos y parques. Te cotizamos los dos para que compares." },
+      PAGO,
+    ],
+    enlaces: [
+      { texto: "Pasajes Lima–Cancún", href: "/vuelos/lima-cancun" },
+      { texto: "Punta Cana o Cancún", href: "/blog/punta-cana-vs-cancun-cual-elegir-desde-lima" },
+      { texto: "Visa mexicana", href: "/visas" },
+      { texto: "Todo México", href: "/paquetes-a-mexico" },
+    ],
+    mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un paquete a Cancún todo incluido.",
+  },
+  aruba: {
+    nombre: "Aruba",
+    ruta: "/paquetes-a-aruba",
+    paises: ["Aruba"],
+    slugs: ["aruba", "aruba-curazao-combinado", "curazao"],
+    ciudadesCircuitos: /aruba|curaz|willemstad/i,
+    h1: "Paquetes a Aruba y Curazao desde Lima",
+    tituloSeo: "Paquetes a Aruba y Curazao desde Lima",
+    descripcion:
+      "Paquetes a Aruba y Curazao desde Lima con vuelo, hotel en Palm Beach o Eagle Beach y traslados. Sin visa para peruanos. Separa con el 50%.",
+    intro: "Aruba, la isla feliz, con las playas de Eagle Beach y Palm Beach, y Curazao con sus casitas de colores en Willemstad.",
+    documentos:
+      "Los peruanos no necesitan visa para Aruba como turistas: viajas con pasaporte vigente y, antes de llegar, llenas en línea la tarjeta de embarque y desembarque (ED Card). Te lo confirmamos al cotizar.",
+    faqs: [
+      { q: "¿Necesito visa para Aruba?", a: "No. Viajas con pasaporte vigente y llenas en línea la ED Card antes de volar." },
+      { q: "¿Se puede combinar Aruba y Curazao?", a: "Sí, hay vuelos cortos entre las dos islas y armamos el combinado con hotel en cada una." },
+      PAGO,
+    ],
+    enlaces: [
+      { texto: "Pasajes Lima–Aruba", href: "/vuelos/lima-aruba" },
+      { texto: "Todo el Caribe", href: "/caribe" },
+      { texto: "Paquetes todo incluido", href: "/paquetes-todo-incluido" },
+    ],
+    mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un paquete a Aruba.",
+  },
+  panama: {
+    nombre: "Panamá",
+    ruta: "/paquetes-a-panama",
+    paises: ["Panamá"],
+    slugs: ["panama", "san-blas-bocas-del-toro-panama", "crucero-caribe-sin-visa-panama"],
+    ciudadesCircuitos: /panam|contadora|bijao/i,
+    h1: "Paquetes a Panamá desde Lima",
+    tituloSeo: "Paquetes a Panamá desde Lima: compras y playa",
+    descripcion:
+      "Paquetes a Panamá desde Lima: compras, el Canal, San Blas, Bocas del Toro, Isla Contadora y cruceros por el Caribe. Sin visa para peruanos. Separa con el 50%.",
+    intro: "Panamá es compras, el Canal y playa en un solo viaje: centros comerciales, el Casco Antiguo, San Blas e Isla Contadora.",
+    documentos:
+      "Los peruanos no necesitan visa para Panamá como turistas: viajas con pasaporte vigente. En migración te pueden pedir el boleto de regreso y que muestres dinero para tu estadía.",
+    faqs: [
+      { q: "¿Necesito visa para Panamá?", a: "No. Viajas con pasaporte vigente; en migración te pueden pedir el boleto de regreso y dinero para tu estadía." },
+      { q: "¿Hay cruceros desde Panamá?", a: "Sí, hay cruceros por el Caribe que salen de Colón. Te confirmamos fechas, cabinas y requisitos al cotizar." },
+      PAGO,
+    ],
+    enlaces: [
+      { texto: "Pasajes Lima–Panamá", href: "/vuelos/lima-panama" },
+      { texto: "Cruceros", href: "/cruceros" },
+      { texto: "Paquetes a Costa Rica", href: "/paquetes-a-costa-rica" },
+    ],
+    mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un paquete a Panamá.",
   },
   peru: {
     nombre: "Cusco, Tarapoto o cualquier destino del Perú",
