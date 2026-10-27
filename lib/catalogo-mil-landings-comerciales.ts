@@ -1528,7 +1528,6 @@ const PROGRAMAS_COLEGIOS_DEPORTES: {
   { slug: "viajes-academias-de-baile-y-danza", titulo: "Viajes para Academias de Baile, Danza y Concursos Coreográficos", pais: "Perú", precioBase: 269, galeriaKey: "sudamerica" },
   { slug: "pasajes-grupales-delegaciones-deportivas", titulo: "Pasajes Aéreos Grupales para Delegaciones Deportivas con Equipaje", pais: "Perú", precioBase: 129, galeriaKey: "corporativo" },
   { slug: "hoteles-y-alimentacion-equipos-deportivos", titulo: "Alojamiento y Alimentación Nutricional para Equipos en Competencia", pais: "Perú", precioBase: 169, galeriaKey: "corporativo" },
-  { slug: "viajes-para-hinchas-partidos-y-mundial", titulo: "Paquetes para Hinchas a Partidos Internacionales, Copa Libertadores y Mundial", pais: "Argentina", precioBase: 749, galeriaKey: "sudamerica" },
   { slug: "seguros-medicos-delegaciones-deportivas", titulo: "Seguros Médicos de Viaje con Cobertura Deportiva para Delegaciones", pais: "Estados Unidos", precioBase: 45, galeriaKey: "visasSeguros" },
 ];
 

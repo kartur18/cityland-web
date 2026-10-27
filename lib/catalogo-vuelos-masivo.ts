@@ -224,9 +224,6 @@ const CIUDADES_PERU: [string, string, string, number][] = [
   ["Huancayo (Jauja)", "jauja", "JAU", 99],
   ["Puerto Maldonado", "puerto-maldonado", "PEM", 119],
   ["Jaén", "jaen", "JAE", 109],
-  ["Chachapoyas", "chachapoyas", "CHH", 129],
-  ["Huaraz (Anta)", "huaraz", "ATA", 109],
-  ["Tingo María", "tingo-maria", "TGI", 99],
 ];
 
 const DESTINOS_INTL_DESDE_PROVINCIAS: [string, string, string, string, number, string, string][] = [
