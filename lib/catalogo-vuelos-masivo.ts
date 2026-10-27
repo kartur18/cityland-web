@@ -724,7 +724,7 @@ function generarCatalogoMasivo(): RutaVueloSEO[] {
     ["Cancún", "cancun", "CUN", "México", 520],
     ["Punta Cana", "punta-cana", "PUJ", "República Dominicana", 540],
     ["Aruba", "aruba", "AUA", "Aruba", 560],
-    ["Río de Janeiro", "rio-de-janeiro", "GIG", "Brasil", 450],
+    ["Río de Janeiro", "rio-de-janeiro", "GIG", "Brasil", 629],
     ["São Paulo", "sao-paulo", "GRU", "Brasil", 420],
   ] as [string, string, string, string, number][]) {
     agregar({
