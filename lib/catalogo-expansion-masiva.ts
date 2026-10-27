@@ -15,6 +15,19 @@ export interface ResumenLandingExpansion {
 const SALVEDAD_MIGRATORIA =
   "Recuerda que la decisión final de admisión en frontera corresponde siempre a las autoridades migratorias de cada país; en Cityland Travel preparamos tu expediente completo y verificable para que viajes con total respaldo.";
 
+// Antes se cortaba a los 36 caracteres a mitad de palabra («Riviera Ma», «Playas Turque»): Google mostraba eso.
+function tituloConPrecio(nombre: string, precio: number): string {
+  const sufijo = ` desde US$${precio.toLocaleString("en-US")}`;
+  const limpio = nombre.replace(/\s*\([^)]*\)/g, "").replace(/\s*·.*$/, "").replace(/\s+/g, " ").trim();
+  const conMarca = `${limpio}${sufijo} | Cityland`;
+  if (conMarca.length <= 60) return conMarca;
+  if (`${limpio}${sufijo}`.length <= 60) return `${limpio}${sufijo}`;
+  const palabras = limpio.split(" ");
+  while (palabras.length > 2 && `${palabras.join(" ")}${sufijo}`.length > 60) palabras.pop();
+  while (palabras.length > 2 && /^(y|e|de|del|la|el|en|a|con|por|para|los|las|&)$/i.test(palabras[palabras.length - 1])) palabras.pop();
+  return `${palabras.join(" ").replace(/[,;:·\/–-]+$/, "")}${sufijo}`;
+}
+
 export function limpiarParentesisDobles(texto: string): string {
   return texto
     .replace(/\(([^()]+)\)\s*\(([^()]+)\)/g, "($1 · $2)")
@@ -128,7 +141,7 @@ function construirObjetoLanding(params: {
       : `${tituloCompleto}`;
   const metaTitle =
     `${tituloCortoSEO} | Cityland Travel`.length > 60
-      ? `${etiquetaVitrina.slice(0, 36).trim()} Desde $${precioBase} | Cityland`
+      ? tituloConPrecio(etiquetaVitrina, precioBase)
       : `${tituloCortoSEO} | Cityland Travel`;
 
   const descBase = `${etiquetaVitrina} (${destinoOPais}) desde $${precioBase.toLocaleString("en-US")}. ${

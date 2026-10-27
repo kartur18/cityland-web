@@ -10,7 +10,7 @@ import { buildWaUrl } from "@/components/constantes";
 import { formatoUSD } from "@/lib/formato-precio";
 import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
 import { precioCityland, relacionados, REGIONES_CIRCUITOS, textoTipo, type Circuito } from "@/lib/circuitos";
-import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
+import { URL_BASE_SEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
 
 const ruta = (c: Circuito) => `/circuitos/${c.slug}`;
@@ -27,7 +27,7 @@ export function metadataCircuito(c: Circuito): Metadata {
   const descripcion = `${c.nombre}, ${c.dias} días y ${c.noches} noches por ${listaCorta(c.paises, 4)}: ${listaCorta(c.ciudades, 5)}. ${textoTipo(c)}. Desde ${formatoUSD(precioCityland(c))} por persona. Separa con el 50%.`;
   return {
     title: `${titulo} | Cityland`,
-    description: descripcion,
+    description: optimizarMetaDescriptionSEO(descripcion),
     alternates: { canonical: url },
     openGraph: { type: "website", url, title: `${c.nombre} · ${c.dias} días`, description: descripcion, siteName: "Cityland Travel", locale: "es_PE" },
   };

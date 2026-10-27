@@ -8,7 +8,7 @@ import PorQueCityland from "@/components/PorQueCityland";
 import { buildWaUrl } from "@/components/constantes";
 import { formatoUSD } from "@/lib/formato-precio";
 import { buscarRutaVuelo, type RutaVueloSEO } from "@/lib/rutas-vuelos";
-import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
+import { URL_BASE_SEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
 import type { TemporadaEspana } from "@/lib/temporadas-espana";
 import { NAV_MESES_ESPANA } from "@/lib/meses-espana";
@@ -17,7 +17,7 @@ export function metadataTemporada(t: TemporadaEspana): Metadata {
   const url = `${URL_BASE_SEO}${t.ruta}`;
   return {
     title: `${t.tituloSeo} | Cityland`,
-    description: t.descripcion,
+    description: optimizarMetaDescriptionSEO(t.descripcion),
     alternates: { canonical: url },
     openGraph: { type: "website", url, title: t.h1, description: t.descripcion, siteName: "Cityland Travel", locale: "es_PE" },
   };

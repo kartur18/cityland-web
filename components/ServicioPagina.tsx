@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { OFICINAS, buildWaUrl } from "@/components/constantes";
-import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
+import { URL_BASE_SEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
 import type { ServicioCityland } from "@/lib/servicios";
 
@@ -13,7 +13,7 @@ export function metadataServicio(s: ServicioCityland): Metadata {
   const url = `${URL_BASE_SEO}${s.ruta}`;
   return {
     title: `${s.tituloSeo} | Cityland`,
-    description: s.descripcion,
+    description: optimizarMetaDescriptionSEO(s.descripcion),
     alternates: { canonical: url },
     openGraph: { type: "website", url, title: s.h1, description: s.descripcion, siteName: "Cityland Travel", locale: "es_PE" },
   };

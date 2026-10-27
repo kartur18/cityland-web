@@ -12,7 +12,7 @@ import { DESTINOS_CARIBE, DESTINOS_EUROPA, buildWaUrl, type Destino } from "@/co
 import { DESTINOS_MASIVOS } from "@/lib/catalogo-destinos-masivo";
 import { formatoUSD } from "@/lib/formato-precio";
 import type { HubPais } from "@/lib/hubs-pais";
-import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
+import { URL_BASE_SEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
 
 const TODOS: Destino[] = [...DESTINOS_EUROPA, ...DESTINOS_CARIBE, ...DESTINOS_MASIVOS];
@@ -28,7 +28,7 @@ export function metadataHub(h: HubPais): Metadata {
   const url = `${URL_BASE_SEO}${h.ruta}`;
   return {
     title: `${h.tituloSeo} | Cityland`,
-    description: h.descripcion,
+    description: optimizarMetaDescriptionSEO(h.descripcion),
     alternates: { canonical: url },
     openGraph: { type: "website", url, title: h.h1, description: h.descripcion, siteName: "Cityland Travel", locale: "es_PE" },
   };

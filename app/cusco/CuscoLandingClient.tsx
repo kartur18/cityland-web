@@ -115,16 +115,16 @@ export default function CuscoLandingClient() {
                         Desde
                       </span>
                       <span className="text-3xl sm:text-4xl font-black text-[#0a1628] tracking-tight leading-none">
-                        $329
+                        $549
                       </span>
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                      Separa con 50% (desde $165)
+                      Separa con 50% (desde $275)
                     </span>
                   </div>
 
                   <a
-                    href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Vi el paquete Cusco Clásico (4 Días / 3 Noches) desde $329 USD. Quisiera cotizar para mis fechas.\n\n📍 Ref Web: citylandtravel.com/cusco")}`}
+                    href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Vi el paquete Cusco Clásico (4 Días / 3 Noches) desde $549 USD. Quisiera cotizar para mis fechas.\n\n📍 Ref Web: citylandtravel.com/cusco")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0"
