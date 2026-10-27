@@ -346,6 +346,81 @@ export const HUBS_PAIS: Readonly<Record<string, HubPais>> = {
     ],
     mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un paquete a Panamá.",
   },
+  miami: {
+    nombre: "Miami",
+    ruta: "/paquetes-a-miami",
+    paises: ["Estados Unidos"],
+    slugs: ["miami-orlando", "crucero-bahamas-desde-miami"],
+    ciudadesCircuitos: /miami/i,
+    h1: "Paquetes a Miami desde Lima",
+    tituloSeo: "Paquetes a Miami desde Lima: compras y playa",
+    descripcion:
+      "Paquetes a Miami desde Lima: vuelo, hotel, compras en Dolphin Mall y Sawgrass, South Beach, combinados con Orlando y cruceros a las Bahamas. Separa con el 50%.",
+    intro:
+      "Miami es playa, compras y el punto de partida para Orlando y los cruceros a las Bahamas. Te armamos el viaje con vuelo, hotel y traslados.",
+    documentos:
+      "Para Estados Unidos los peruanos necesitan visa americana vigente y pasaporte. Si aún no la tienes, te ayudamos con el formulario y la entrevista; consigue la visa antes de comprar los pasajes.",
+    faqs: [
+      { q: "¿Necesito visa para Miami?", a: "Sí, la visa americana de turismo (B1/B2) y pasaporte vigente. Si no la tienes, revisa nuestra guía paso a paso." },
+      { q: "¿Se puede combinar Miami con Orlando o un crucero?", a: "Sí. Lo más pedido es Miami con los parques de Orlando o con un crucero de 3 o 4 noches a las Bahamas." },
+      PAGO,
+    ],
+    enlaces: [
+      { texto: "Pasajes Lima–Miami", href: "/vuelos/lima-miami" },
+      { texto: "Visa americana paso a paso", href: "/visa-americana" },
+      { texto: "Orlando y Disney", href: "/paquetes-a-orlando-disney" },
+      { texto: "Todo Estados Unidos", href: "/paquetes-a-estados-unidos" },
+    ],
+    mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un paquete a Miami.",
+  },
+  italia: {
+    nombre: "Italia",
+    ruta: "/paquetes-a-italia",
+    paises: ["Italia"],
+    h1: "Paquetes turísticos a Italia desde Lima",
+    tituloSeo: "Paquetes turísticos a Italia desde Lima",
+    descripcion:
+      "Paquetes y circuitos a Italia desde Lima: Roma, Florencia, Venecia, Milán y la Costa Amalfitana, solos o en un Eurotrip. Sin visa para peruanos. Separa con el 50%.",
+    intro:
+      "Roma, Florencia, Venecia y la Costa Amalfitana: viaja solo a Italia o combínala con España, Francia y Suiza en un circuito por Europa.",
+    documentos: SCHENGEN,
+    faqs: [
+      { q: "¿Necesito visa para Italia?", a: "No, para turismo de hasta 90 días. Viajas con pasaporte vigente y te pueden pedir pasaje de regreso, hotel, dinero y seguro de viaje." },
+      { q: "¿Cuántos días necesito para Italia?", a: "Para Roma, Florencia y Venecia, al menos 10 a 12 días con los vuelos. Si quieres sumar otros países, los circuitos por Europa son de 15 a 19 días." },
+      PAGO,
+    ],
+    enlaces: [
+      { texto: "Pasajes Lima–Roma", href: "/vuelos/lima-roma" },
+      { texto: "Circuitos por Europa", href: "/circuitos-por-europa" },
+      { texto: "Paquete migratorio a Italia", href: "/italia" },
+      { texto: "Seguro de viaje para Europa", href: "/seguros" },
+    ],
+    mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un paquete turístico a Italia.",
+  },
+  francia: {
+    nombre: "Francia",
+    ruta: "/paquetes-a-francia",
+    paises: ["Francia"],
+    h1: "Paquetes turísticos a París y Francia desde Lima",
+    tituloSeo: "Paquetes a París y Francia desde Lima",
+    descripcion:
+      "Paquetes a París desde Lima: Torre Eiffel, Louvre, Disneyland París y la Costa Azul, solos o en un circuito por Europa. Sin visa para peruanos. Separa con el 50%.",
+    intro:
+      "París, Disneyland París para la familia y la Costa Azul: viaja solo a Francia o combínala con España e Italia en un circuito por Europa.",
+    documentos: SCHENGEN,
+    faqs: [
+      { q: "¿Necesito visa para Francia?", a: "No, para turismo de hasta 90 días. Viajas con pasaporte vigente y te pueden pedir pasaje de regreso, hotel, dinero y seguro de viaje." },
+      { q: "¿Hay paquetes a Disneyland París?", a: "Sí, te armamos París con entradas a Disneyland París para la familia. Te cotizamos según las fechas y las edades de los niños." },
+      PAGO,
+    ],
+    enlaces: [
+      { texto: "Pasajes Lima–París", href: "/vuelos/lima-paris" },
+      { texto: "Circuitos por Europa", href: "/circuitos-por-europa" },
+      { texto: "Paquete migratorio a Francia", href: "/francia" },
+      { texto: "Seguro de viaje para Europa", href: "/seguros" },
+    ],
+    mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un paquete turístico a Francia.",
+  },
   peru: {
     nombre: "Cusco, Tarapoto o cualquier destino del Perú",
     ruta: "/nacionales",

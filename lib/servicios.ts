@@ -279,6 +279,60 @@ export const SERVICIOS: Readonly<Record<string, ServicioCityland>> = {
       { texto: "Traslados", href: "/traslados" },
     ],
   },
+  visaAmericana: {
+    ruta: "/visa-americana",
+    h1: "Visa americana desde Perú: paso a paso y asesoría",
+    tituloSeo: "Visa americana en Perú: pasos y costo 2026",
+    descripcion:
+      "Cómo sacar la visa americana de turismo (B1/B2) desde Perú: formulario DS-160, tasa de US$185, cita y entrevista en la Embajada en Lima. Te ayudamos paso a paso en Los Olivos.",
+    intro:
+      "La visa de turismo y negocios (B1/B2) es la que necesitas para Miami, Orlando, Nueva York o cualquier viaje a Estados Unidos. El trámite es tuyo ante la Embajada: nosotros te ayudamos a hacerlo bien, sin errores en el formulario y con la entrevista preparada.",
+    queCotizamos: [
+      { titulo: "Evaluación de tu perfil", detalle: "Revisamos tu trabajo, ingresos, familia y viajes anteriores para preparar tu caso." },
+      { titulo: "Formulario DS-160", detalle: "Lo llenamos contigo en inglés, sin errores que te compliquen la entrevista." },
+      { titulo: "Pago de la tasa y cita", detalle: "Te guiamos para pagar la tasa consular y agendar tu cita en el sistema oficial." },
+      { titulo: "Simulacro de entrevista", detalle: "Practicamos las preguntas que más se hacen, para que llegues tranquilo." },
+      { titulo: "Visa para toda la familia", detalle: "Un expediente coherente para padres e hijos que van a la misma cita." },
+    ],
+    pasos: [
+      "Llenas el formulario DS-160 en línea, en inglés, con una foto digital reciente.",
+      "Pagas la tasa consular de la visa B1/B2: US$185 por persona, que no se devuelve aunque te la nieguen.",
+      "Agendas tu cita en el sistema oficial de citas de la Embajada de Estados Unidos en Lima.",
+      "Vas a la entrevista en la Embajada (Santiago de Surco) con tu pasaporte, la confirmación del DS-160 y tus documentos de trabajo, ingresos y familia.",
+      "Si te la aprueban, recoges tu pasaporte con la visa en el punto de entrega que elegiste.",
+    ],
+    ejemplosTitulo: "Cuando tengas tu visa",
+    ejemplos: [
+      { texto: "Paquetes a Orlando y Disney", href: "/paquetes-a-orlando-disney" },
+      { texto: "Paquetes a Miami", href: "/paquetes-a-miami" },
+      { texto: "Paquetes a Estados Unidos", href: "/paquetes-a-estados-unidos" },
+      { texto: "Cancún sin visa mexicana", href: "/paquetes-a-cancun" },
+    ],
+    faqs: [
+      {
+        q: "¿Cuánto cuesta la visa americana?",
+        a: "La tasa consular de la visa B1/B2 es de US$185 por persona y se paga antes de la cita. En 2025 Estados Unidos aprobó un cargo adicional de US$250, que a octubre de 2026 no tiene fecha de cobro confirmada: antes de pagar te confirmamos el monto vigente.",
+      },
+      {
+        q: "¿Ustedes garantizan la visa o adelantan la cita?",
+        a: "No. La decisión es solo del oficial consular y nadie puede garantizarla ni adelantar citas. Lo que hacemos es que tu formulario y tu entrevista estén bien preparados.",
+      },
+      {
+        q: "¿Por cuánto tiempo dan la visa?",
+        a: "A los peruanos normalmente se les da por 10 años y con varias entradas, pero el plazo lo decide el consulado en cada caso.",
+      },
+      {
+        q: "¿La visa americana me sirve para otros países?",
+        a: "Sí. Con visa americana vigente puedes entrar a México (Cancún) sin visa mexicana, y te ayuda en otros destinos. Te lo confirmamos al cotizar tu viaje.",
+      },
+    ],
+    mensajeWhatsApp: "¡Hola Cityland Travel! Quiero asesoría para sacar mi visa americana.",
+    relacionados: [
+      { texto: "Todas las visas", href: "/visas" },
+      { texto: "Seguros de viaje", href: "/seguros" },
+      { texto: "Pasajes Lima–Miami", href: "/vuelos/lima-miami" },
+    ],
+  },
   fullDays: {
     ruta: "/full-days",
     h1: "Full days desde Lima: paseos de un día",
