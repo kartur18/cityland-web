@@ -18,7 +18,7 @@ const PISOS: [RegExp, number][] = [
 ];
 
 // Lo que no es un paquete con vuelo: no se le aplica piso.
-const NO_PAQUETE = /seguro|visa|traslado|asesoria|tramite|reserva-pnr|pnr-verificable|(^|-)tour-|solo-hotel|corporativ|empresa|incentivo|convenio/;
+const NO_PAQUETE = /seguro|visa|traslado|asesoria|tramite|reserva-pnr|pnr-verificable|^(oferta-)?tour-|solo-hotel|corporativ|empresa|incentivo|convenio/;
 
 // `slug` decide si es paquete; `texto` (slug + título + país) decide el destino.
 export function pisoMercado(slug: string, texto: string): number {
