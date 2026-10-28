@@ -135,8 +135,8 @@ export default function HubPaisPagina({ hub: h }: { hub: HubPais }) {
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
-                    <div className="p-4 space-y-1">
-                      <h3 className="font-extrabold text-[#0a1628] leading-snug">{d.ciudad}</h3>
+                    <div className="p-5 space-y-2">
+                      <h3 className="text-lg font-extrabold text-[#0a1628] leading-snug">{d.ciudad}</h3>
                       {d.duracion && <p className="text-sm text-slate-500">{d.duracion}</p>}
                       <p className="flex items-end justify-between gap-2 pt-2 text-xs text-slate-500">
                         <span>

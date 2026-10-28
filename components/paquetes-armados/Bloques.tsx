@@ -121,7 +121,7 @@ export function TablaSalidas({ salidas, actual }: { salidas: Salida[]; actual?: 
   if (!salidas.length) return null;
   const minimo = Math.min(...salidas.map((s) => s.precio));
   return (
-    <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+    <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {salidas.map((s) => {
         const { dia, mes, anio } = partesFecha(s.fecha);
         const esActual = s.slug === actual;
@@ -130,27 +130,38 @@ export function TablaSalidas({ salidas, actual }: { salidas: Salida[]; actual?: 
             <Link
               href={`/salidas/${s.slug}`}
               aria-current={esActual ? "page" : undefined}
-              className={`group flex h-full overflow-hidden rounded-2xl border bg-white transition-shadow hover:shadow-lg ${esActual ? "border-[#0a1628] ring-2 ring-[#0a1628]" : "border-slate-200"}`}
+              className={`group flex h-full flex-col overflow-hidden rounded-2xl border bg-white shadow-sm transition-shadow hover:shadow-xl ${esActual ? "border-[#0a1628] ring-2 ring-[#0a1628]" : "border-slate-200"}`}
             >
-              <div className="relative w-28 shrink-0 sm:w-32">
-                <Image src={portadaDe(s.circuito)} alt={s.circuito.nombre} fill sizes="128px" className="object-cover" />
-                <div className="absolute left-2 top-2 rounded-lg bg-white/95 px-2 py-1 text-center leading-none shadow">
-                  <span className="block text-xl font-extrabold text-[#0a1628]">{dia}</span>
-                  <span className="block text-[10px] font-bold uppercase text-slate-500">
+              <div className="relative aspect-[16/9] bg-slate-100">
+                <Image
+                  src={portadaDe(s.circuito)}
+                  alt={s.circuito.nombre}
+                  fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute left-3 top-3 rounded-xl bg-white px-3 py-1.5 text-center leading-none shadow-md">
+                  <span className="block text-2xl font-extrabold text-[#0a1628]">{dia}</span>
+                  <span className="block text-xs font-bold uppercase text-slate-500">
                     {MESES[mes - 1].slice(0, 3)} {String(anio).slice(2)}
                   </span>
                 </div>
+                {s.precio === minimo && salidas.length > 1 && (
+                  <span className="absolute right-3 top-3 rounded-full bg-emerald-500 px-3 py-1 text-xs font-extrabold text-white">
+                    La más barata
+                  </span>
+                )}
               </div>
-              <div className="flex flex-1 flex-col justify-between gap-2 p-3">
-                <span className="font-extrabold leading-snug text-[#0a1628] group-hover:underline">{s.circuito.nombre}</span>
-                <span className="text-xs text-slate-500">
-                  {s.circuito.dias} días · {fechaLarga(s.fecha)}
+              <div className="flex flex-1 flex-col gap-2 p-5">
+                <span className="text-lg font-extrabold leading-snug text-[#0a1628] group-hover:underline">{s.circuito.nombre}</span>
+                <span className="text-base text-slate-600">
+                  {s.circuito.dias} días · sale el {fechaLarga(s.fecha)}
                 </span>
-                <span className="flex flex-wrap items-center gap-2">
-                  <strong className="text-lg text-[#0a1628]">{formatoUSD(precioSalida(s))}</strong>
-                  {s.precio === minimo && salidas.length > 1 && (
-                    <span className="rounded bg-emerald-50 px-2 py-0.5 text-xs font-bold text-emerald-800">la más barata</span>
-                  )}
+                <span className="mt-auto flex items-end justify-between gap-3 pt-3">
+                  <span className="text-sm text-slate-500">
+                    por persona <strong className="block text-3xl text-[#0a1628]">{formatoUSD(precioSalida(s))}</strong>
+                  </span>
+                  <span className="rounded-xl bg-[#25D366] px-4 py-2.5 text-base font-extrabold text-white">Ver fecha</span>
                 </span>
               </div>
             </Link>
@@ -184,8 +195,8 @@ export function TarjetasPaquetes({ items }: { items: Circuito[] }) {
               </span>
             </div>
             <div className="flex flex-1 flex-col gap-2 p-4">
-              <span className="font-extrabold leading-snug text-[#0a1628]">{o.nombre}</span>
-              <span className="text-sm text-slate-600">{o.ciudades.slice(0, 4).join(" · ")}</span>
+              <span className="text-lg font-extrabold leading-snug text-[#0a1628]">{o.nombre}</span>
+              <span className="text-base text-slate-600">{o.ciudades.slice(0, 4).join(" · ")}</span>
               <span
                 className={`self-start rounded-full px-2.5 py-0.5 text-xs font-bold ${o.tipo === "vuelo" ? "bg-emerald-50 text-emerald-800" : "bg-amber-50 text-amber-800"}`}
               >

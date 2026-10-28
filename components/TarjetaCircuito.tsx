@@ -29,14 +29,14 @@ export default function TarjetaCircuito({ c }: { c: Circuito }) {
             {c.tipo === "vuelo" ? `Con vuelo desde ${c.origen}` : c.tipo === "crucero" ? "Solo crucero" : "Sin vuelo"}
           </span>
         </div>
-        <div className="flex flex-1 flex-col gap-1.5 p-4">
-          <span className="font-extrabold leading-snug text-[#0a1628] group-hover:underline">{c.nombre}</span>
-          <span className="text-sm text-slate-600 line-clamp-1">{c.ciudades.slice(0, 4).join(" · ")}</span>
+        <div className="flex flex-1 flex-col gap-2 p-5">
+          <span className="text-lg font-extrabold leading-snug text-[#0a1628] group-hover:underline">{c.nombre}</span>
+          <span className="text-base text-slate-600 line-clamp-2">{c.ciudades.slice(0, 4).join(" · ")}</span>
           <span className="mt-auto flex items-end justify-between gap-2 pt-2">
-            <span className="text-xs text-slate-500">
-              desde <strong className="block text-2xl text-[#0a1628]">{formatoUSD(precioCityland(c))}</strong>
+            <span className="text-sm text-slate-500">
+              desde <strong className="block text-3xl text-[#0a1628]">{formatoUSD(precioCityland(c))}</strong>
             </span>
-            <span className="rounded-xl bg-[#25D366] px-3 py-2 text-sm font-extrabold text-white">Ver paquete</span>
+            <span className="rounded-xl bg-[#25D366] px-4 py-2.5 text-base font-extrabold text-white">Ver paquete</span>
           </span>
         </div>
       </Link>

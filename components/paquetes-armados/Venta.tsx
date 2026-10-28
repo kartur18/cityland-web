@@ -58,40 +58,60 @@ export interface HeroVentaProps {
   nota?: string;
 }
 
-// Portada: una sola foto grande con el título, lo que incluye y, al lado, el precio con el botón para separar.
+// Portada clara: título y lo que incluye a la izquierda; a la derecha la foto en tarjeta con el precio y el botón.
 export function HeroVenta(p: HeroVentaProps) {
   return (
-    <section className="relative overflow-hidden rounded-3xl bg-[#0a1628]">
-      <Image src={p.foto} alt={p.alt} fill priority sizes="(min-width: 1152px) 1152px, 100vw" className="object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-[#0a1628]/75 to-[#0a1628]/20 lg:bg-gradient-to-r lg:from-[#0a1628]/95 lg:via-[#0a1628]/70 lg:to-[#0a1628]/10" />
-      <div className="relative grid gap-6 p-5 pt-28 sm:p-8 sm:pt-56 lg:grid-cols-[1fr_360px] lg:items-end lg:gap-10 lg:p-10 lg:pt-24 lg:min-h-[480px]">
-        <div className="space-y-4 text-white">
-          <p className="inline-flex flex-wrap items-center gap-x-2 rounded-full bg-amber-400 px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-[#0a1628]">
-            {p.marca ?? "Paquete armado"} <span aria-hidden="true">·</span> {p.sello}
-          </p>
-          <h1 className="text-[28px] sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-balance drop-shadow">{p.titulo}</h1>
-          <p className="max-w-2xl text-base sm:text-lg text-white/90 line-clamp-3 sm:line-clamp-none">{p.bajada}</p>
-          <ul className="hidden flex-wrap gap-2 sm:flex">
-            {p.chips.map((x) => (
-              <li key={x} className="flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1.5 text-sm font-bold backdrop-blur">
-                <Check className="text-emerald-300" />
-                {x}
-              </li>
-            ))}
-          </ul>
+    <section className="grid items-center gap-6 rounded-3xl border border-slate-200 bg-gradient-to-br from-white to-sky-50 p-5 sm:p-8 lg:grid-cols-[1fr_440px] lg:gap-10 lg:p-10">
+      <div className="space-y-4">
+        <p className="inline-flex flex-wrap items-center gap-x-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-extrabold text-[#0a1628]">
+          <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true" />
+          {p.marca ?? "Paquete armado"} <span aria-hidden="true">·</span> {p.sello}
+        </p>
+        <h1 className="text-[28px] sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-[#0a1628] text-balance">{p.titulo}</h1>
+        <p className="max-w-2xl text-base sm:text-lg text-slate-600">{p.bajada}</p>
+        <ul className="hidden flex-wrap gap-2 sm:flex">
+          {p.chips.map((x) => (
+            <li key={x} className="flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1.5 text-sm font-bold text-emerald-900">
+              <Check />
+              {x}
+            </li>
+          ))}
+        </ul>
+        <div className="hidden flex-wrap gap-3 lg:flex">
+          <a
+            href={p.wa}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 text-base font-extrabold text-white shadow-lg shadow-emerald-500/30 hover:bg-[#20ba5a]"
+          >
+            <WhatsAppIcon size={20} />
+            {p.boton}
+          </a>
         </div>
-        <div className="rounded-2xl bg-white p-5 shadow-2xl space-y-3">
-          <div className="flex items-center justify-between gap-2">
-            <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-amber-900">
-              {p.precio === undefined ? "Cotización gratis" : "Cupos limitados"}
+      </div>
+      <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
+        <div className="relative aspect-[16/10] bg-slate-100">
+          <Image src={p.foto} alt={p.alt} fill priority sizes="(min-width: 1024px) 440px, 100vw" className="object-cover" />
+          <span className="absolute right-3 top-3 rounded-full bg-rose-600 px-3 py-1 text-xs font-extrabold uppercase text-white">
+            {p.precio === undefined ? "Cotización gratis" : "Cupos limitados"}
+          </span>
+          {p.proxima && (
+            <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-extrabold text-[#0a1628]">
+              {textoFaltan(p.proxima.fecha)}
             </span>
-            {p.proxima && <span className="text-xs font-bold text-rose-700">{textoFaltan(p.proxima.fecha)}</span>}
-          </div>
+          )}
+        </div>
+        <div className="space-y-3 p-5">
           <div>
             <p className={p.precio === undefined ? "text-xl font-extrabold leading-snug text-[#0a1628]" : "text-sm text-slate-500"}>
               {p.etiquetaPrecio}
             </p>
-            {p.precio !== undefined && <p className="text-5xl font-extrabold tracking-tight text-[#0a1628]">{formatoUSD(p.precio)}</p>}
+            {p.precio !== undefined && (
+              <p className="text-5xl font-extrabold tracking-tight text-[#0a1628]">
+                <span className="mr-1 align-middle text-base font-extrabold text-rose-600">desde</span>
+                {formatoUSD(p.precio)}
+              </p>
+            )}
             {p.detallePrecio && <p className="mt-1 text-sm text-slate-600 line-clamp-2">{p.detallePrecio}</p>}
           </div>
           {p.proxima && (
@@ -127,10 +147,10 @@ const CONFIANZA = [
 
 export function BarraConfianza() {
   return (
-    <ul className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+    <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {CONFIANZA.map((x) => (
-        <li key={x.t} className="flex items-center gap-2.5 rounded-2xl border border-slate-200 bg-white p-3 sm:items-start sm:gap-3 sm:p-4">
-          <span className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700">
+        <li key={x.t} className="flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5">
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700">
             <svg
               viewBox="0 0 24 24"
               width="22"
@@ -145,8 +165,8 @@ export function BarraConfianza() {
             </svg>
           </span>
           <span>
-            <strong className="block text-[13px] leading-tight text-[#0a1628] sm:text-sm">{x.t}</strong>
-            <span className="hidden text-xs text-slate-600 sm:block">{x.d}</span>
+            <strong className="block text-base text-[#0a1628]">{x.t}</strong>
+            <span className="mt-0.5 block text-sm text-slate-600">{x.d}</span>
           </span>
         </li>
       ))}
@@ -168,13 +188,13 @@ export function TarjetaPaqueteAncha({ c, refWeb, destacado }: { c: Circuito; ref
     <article
       className={`overflow-hidden rounded-2xl border bg-white shadow-sm transition-shadow hover:shadow-xl ${destacado ? "border-emerald-500 ring-1 ring-emerald-500" : "border-slate-200"}`}
     >
-      <div className="grid md:grid-cols-[300px_1fr_230px]">
-        <Link href={ver} className="group relative block aspect-[16/10] md:aspect-auto md:min-h-[230px]">
+      <div className="grid md:grid-cols-[340px_1fr] lg:grid-cols-[360px_1fr_260px]">
+        <Link href={ver} className="group relative block aspect-[16/10] md:aspect-auto md:min-h-[280px]">
           <Image
             src={portadaDe(c)}
             alt={`Paquete armado ${c.nombre}`}
             fill
-            sizes="(min-width: 768px) 300px, 100vw"
+            sizes="(min-width: 768px) 360px, 100vw"
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
           <span className="absolute left-3 top-3 rounded-full bg-[#0a1628]/90 px-3 py-1 text-xs font-extrabold text-white">
@@ -184,55 +204,55 @@ export function TarjetaPaqueteAncha({ c, refWeb, destacado }: { c: Circuito; ref
             <span className="absolute right-3 top-3 rounded-full bg-emerald-500 px-3 py-1 text-xs font-extrabold text-white">{destacado}</span>
           )}
         </Link>
-        <div className="space-y-3 p-4 sm:p-5">
-          <h3 className="text-xl font-extrabold leading-snug text-[#0a1628]">
+        <div className="space-y-4 p-5 sm:p-7">
+          <h3 className="text-2xl font-extrabold leading-snug text-[#0a1628]">
             <Link href={ver} className="hover:underline">
               {c.nombre}
             </Link>
           </h3>
-          <p className="text-sm text-slate-600">
+          <p className="text-base leading-relaxed text-slate-600">
             {c.tipo === "vuelo" && <strong className="text-[#0a1628]">{c.origen} → </strong>}
             {c.ciudades.slice(0, 6).join(" → ")}
             {c.ciudades.length > 6 && ` y ${c.ciudades.length - 6} más`}
           </p>
-          <ul className="flex flex-wrap gap-1.5">
+          <ul className="flex flex-wrap gap-2">
             {lineaComponentes(c)
               .split(" + ")
               .map((x) => (
-                <li key={x} className="flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-bold text-emerald-900">
+                <li key={x} className="flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1.5 text-sm font-bold text-emerald-900">
                   <Check />
                   <span className="first-letter:uppercase">{x}</span>
                 </li>
               ))}
           </ul>
-          {c.tipo !== "vuelo" && <p className="text-xs font-bold text-amber-800">No incluye el boleto aéreo; te lo cotizamos aparte.</p>}
+          {c.tipo !== "vuelo" && <p className="text-sm font-bold text-amber-800">No incluye el boleto aéreo; te lo cotizamos aparte.</p>}
           {prox ? (
-            <p className="text-sm text-slate-700">
+            <p className="text-base text-slate-700">
               Próxima salida: <strong>{fechaCorta(prox.fecha)}</strong>
               {salidas.length > 1 && <span className="text-slate-500"> · {salidas.length} fechas con cupo</span>}
             </p>
           ) : (
-            <p className="text-sm text-slate-700 line-clamp-2">Salidas: {c.salidas}</p>
+            <p className="text-base text-slate-700 line-clamp-2">Salidas: {c.salidas}</p>
           )}
         </div>
-        <div className="flex flex-col justify-between gap-3 border-t border-slate-200 bg-slate-50/70 p-4 sm:p-5 md:border-l md:border-t-0">
+        <div className="flex flex-col justify-between gap-4 border-t border-slate-200 bg-slate-50/70 p-5 sm:p-7 md:col-span-2 lg:col-span-1 lg:border-l lg:border-t-0">
           <div>
-            <p className="text-xs text-slate-500">Desde, por persona en doble</p>
-            <p className="text-3xl font-extrabold tracking-tight text-[#0a1628]">{formatoUSD(precioCityland(c))}</p>
+            <p className="text-sm text-slate-500">Desde, por persona en doble</p>
+            <p className="text-4xl font-extrabold tracking-tight text-[#0a1628]">{formatoUSD(precioCityland(c))}</p>
           </div>
-          <div className="grid grid-cols-2 gap-2 md:grid-cols-1">
+          <div className="grid grid-cols-2 gap-3 lg:grid-cols-1">
             <a
               href={wa}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl bg-[#25D366] px-3 text-sm font-extrabold text-white hover:bg-[#20ba5a]"
+              className="flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 text-base font-extrabold text-white hover:bg-[#20ba5a]"
             >
               <WhatsAppIcon size={16} />
               Cotizar
             </a>
             <Link
               href={ver}
-              className="flex min-h-[44px] items-center justify-center rounded-xl border-2 border-[#0a1628] px-3 text-sm font-extrabold text-[#0a1628] hover:bg-[#0a1628] hover:text-white"
+              className="flex min-h-[48px] items-center justify-center rounded-xl border-2 border-[#0a1628] px-4 text-base font-extrabold text-[#0a1628] hover:bg-[#0a1628] hover:text-white"
             >
               Ver itinerario
             </Link>
@@ -246,7 +266,7 @@ export function TarjetaPaqueteAncha({ c, refWeb, destacado }: { c: Circuito; ref
 export function ListaPaquetes({ items, refWeb }: { items: Circuito[]; refWeb: string }) {
   const minimo = Math.min(...items.map(precioCityland));
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       {items.map((c) => (
         <TarjetaPaqueteAncha
           key={c.slug}
@@ -269,12 +289,12 @@ export function PasosSeparar() {
   return (
     <section className="space-y-4">
       <h2 className="text-2xl font-extrabold text-[#0a1628]">Separar tu viaje es así de fácil</h2>
-      <ol className="grid gap-3 sm:grid-cols-3">
+      <ol className="grid gap-4 sm:grid-cols-3">
         {PASOS.map((x, i) => (
-          <li key={x.t} className="rounded-2xl border border-slate-200 bg-white p-5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#0a1628] text-sm font-extrabold text-white">{i + 1}</span>
-            <strong className="mt-3 block text-[#0a1628]">{x.t}</strong>
-            <span className="text-sm text-slate-600">{x.d}</span>
+          <li key={x.t} className="rounded-2xl border border-slate-200 bg-white p-6">
+            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-emerald-500 text-lg font-extrabold text-white">{i + 1}</span>
+            <strong className="mt-4 block text-lg text-[#0a1628]">{x.t}</strong>
+            <span className="mt-1 block text-base text-slate-600">{x.d}</span>
           </li>
         ))}
       </ol>
@@ -285,14 +305,14 @@ export function PasosSeparar() {
 // Cierre de la página: un último llamado con el precio, para el que leyó todo y no apretó el botón de arriba.
 export function CtaFinal({ titulo, precio, wa, boton }: { titulo: string; precio?: number; wa: string; boton: string }) {
   return (
-    <section className="rounded-3xl bg-gradient-to-br from-[#0a1628] to-[#13315c] p-6 sm:p-10 text-white">
+    <section className="rounded-3xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-white p-6 sm:p-10">
       <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
         <div className="space-y-2">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-balance">{titulo}</h2>
-          <p className="text-white/80">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0a1628] text-balance">{titulo}</h2>
+          <p className="text-slate-600">
             {precio !== undefined ? (
               <>
-                Desde <strong className="text-2xl text-amber-300">{formatoUSD(precio)}</strong> por persona. Los cupos de cada salida son limitados.
+                Desde <strong className="text-2xl text-[#0a1628]">{formatoUSD(precio)}</strong> por persona. Los cupos de cada salida son limitados.
               </>
             ) : (
               "Te respondemos por WhatsApp con la cotización, sin compromiso."
