@@ -89,7 +89,7 @@ export function HeroVenta(p: HeroVentaProps) {
         </div>
         <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
           <div className="relative aspect-[16/10] bg-slate-100">
-            <Image src={p.foto} alt={p.alt} fill priority sizes="(min-width: 1024px) 440px, 100vw" className="object-cover" />
+            <Image src={p.foto} alt={p.alt} fill priority sizes="(min-width: 1024px) 440px, 100vw" className="object-cover object-top" />
             <span className="absolute right-3 top-3 rounded-full bg-rose-600 px-3 py-1 text-xs font-extrabold uppercase text-white">
               {p.precio === undefined ? "Cotización gratis" : "Cupos limitados"}
             </span>
@@ -190,7 +190,7 @@ export function TarjetaPaqueteAncha({ c, refWeb, destacado }: { c: Circuito; ref
             alt={`Paquete armado ${c.nombre}`}
             fill
             sizes="(min-width: 768px) 360px, 100vw"
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
           />
           <span className="absolute left-3 top-3 rounded-full bg-[#0a1628]/90 px-3 py-1 text-xs font-extrabold text-white">
             {c.dias} días · {c.noches} noches

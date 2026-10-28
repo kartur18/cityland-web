@@ -88,7 +88,7 @@ export default function SalidasPage() {
                         alt={`Paquetes armados con salida en ${m.nombre}`}
                         fill
                         sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
                       />
                     </span>
                     <span className="block p-5 pb-0 text-xl font-extrabold capitalize text-[#0a1628]">{m.nombre}</span>
