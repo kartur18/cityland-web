@@ -3,7 +3,10 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
-import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import { Migas } from "@/components/paquetes-armados/Bloques";
+import { BarraConfianza, HeroVenta, TarjetaRutaFoto } from "@/components/paquetes-armados/Venta";
+import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
+import { absoluta } from "@/lib/paquetes-armados/fotos";
 import PorQueCityland from "@/components/PorQueCityland";
 import { GUIAS_ESPANA } from "@/components/GuiasEspana";
 import { buildWaUrl } from "@/components/constantes";
@@ -46,7 +49,15 @@ export const metadata: Metadata = {
   title: "Pasajes a España desde Lima: Madrid y Barcelona | Cityland",
   description: DESCRIPCION,
   alternates: { canonical: `${URL_BASE_SEO}${RUTA}` },
-  openGraph: { type: "website", url: `${URL_BASE_SEO}${RUTA}`, title: "Pasajes a España desde Lima", description: DESCRIPCION, siteName: "Cityland Travel", locale: "es_PE" },
+  openGraph: {
+    type: "website",
+    url: `${URL_BASE_SEO}${RUTA}`,
+    title: "Pasajes a España desde Lima",
+    description: DESCRIPCION,
+    siteName: "Cityland Travel",
+    locale: "es_PE",
+    images: [absoluta(obtenerGaleriaPorTexto("madrid espana")[0], URL_BASE_SEO)],
+  },
 };
 
 function rutas(slugs: string[]): RutaVueloSEO[] {
@@ -102,40 +113,36 @@ export default function PasajesAEspanaPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(schema) }} />
       <Navbar />
-      <main id="main-content" className="bg-white pt-24 sm:pt-28 pb-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-12">
-          <header className="space-y-4 max-w-3xl">
-            <nav aria-label="Migas de pan" className="text-xs text-slate-500">
-              <Link href="/" className="hover:underline">
-                Inicio
-              </Link>{" "}
-              / Pasajes a España
-            </nav>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight text-balance">
-              Pasajes a España desde Lima
-            </h1>
-            <p className="text-base sm:text-lg text-slate-600">
-              Madrid, Barcelona, Valencia, Málaga, Sevilla y Bilbao. Ida y vuelta para tus vacaciones o visitas, o solo
-              ida con nuestro paquete migratorio. Te ayudamos con todo lo que te pueden pedir en el aeropuerto.
-            </p>
-            <a
-              href={wa}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 min-h-[48px] px-6 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-extrabold"
-            >
-              <WhatsAppIcon size={18} />
-              Cotizar mi pasaje por WhatsApp
-            </a>
-          </header>
+      <main id="main-content" className="bg-slate-50/60 pt-24 sm:pt-28 pb-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-12">
+          <div className="space-y-3">
+            <Migas items={[{ nombre: "Inicio", href: "/" }, { nombre: "Pasajes a España" }]} />
+            <HeroVenta
+              foto={obtenerGaleriaPorTexto("madrid espana")[0]}
+              alt="Pasajes a España desde Lima"
+              marca="Pasajes"
+              sello="Lima → España"
+              titulo="Pasajes a España desde Lima"
+              bajada="Madrid, Barcelona, Valencia, Málaga, Sevilla y Bilbao. Ida y vuelta para tus vacaciones o visitas, o solo ida con nuestro paquete migratorio. Te ayudamos con todo lo que te pueden pedir en el aeropuerto."
+              chips={["Ida y vuelta", "Solo ida", "Desde el Jorge Chávez"]}
+              etiquetaPrecio="Ida y vuelta desde, por persona"
+              precio={Math.min(...ida.map((r) => r.precioDesdeUSD))}
+              detallePrecio="Precio referencial; te damos el de tu fecha."
+              wa={wa}
+              boton="Cotizar mi pasaje"
+              nota="Te damos el precio exacto de tu fecha por WhatsApp"
+            />
+          </div>
+
+          <BarraConfianza />
 
           <section className="space-y-4" aria-labelledby="ida">
             <h2 id="ida" className="text-2xl font-extrabold text-[#0a1628]">
               Pasajes ida y vuelta de Lima a España
             </h2>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {ida.map((r) => (
-                <TarjetaRuta key={r.slug} r={r} />
+                <TarjetaRutaFoto key={r.slug} r={r} />
               ))}
             </ul>
             <p className="text-xs text-slate-500">Precios referenciales por persona; cambian según la fecha y la aerolínea.</p>
@@ -146,8 +153,8 @@ export default function PasajesAEspanaPage() {
               Pasajes a otras ciudades de España
             </h2>
             <p className="text-[15px] text-slate-600">
-              Todos salen del aeropuerto Jorge Chávez de Lima. A Canarias, Baleares, Galicia, el País Vasco, Andalucía y más vuelas con escala en Madrid o Barcelona, en un
-              solo boleto.
+              Todos salen del aeropuerto Jorge Chávez de Lima. A Canarias, Baleares, Galicia, el País Vasco, Andalucía y más vuelas con escala en
+              Madrid o Barcelona, en un solo boleto.
             </p>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {otras.map((r) => (
@@ -177,14 +184,11 @@ export default function PasajesAEspanaPage() {
           <section className="rounded-2xl bg-amber-50 border border-amber-100 p-5 sm:p-6 space-y-3">
             <h2 className="text-xl font-extrabold text-[#0a1628]">¿Vas solo de ida?</h2>
             <p className="text-[15px] text-slate-700">
-              El paquete migratorio incluye el vuelo de ida y la carpeta de viaje que te armamos para presentar en el
-              aeropuerto. Mira los planes y lo que incluye cada uno.
+              El paquete migratorio incluye el vuelo de ida y la carpeta de viaje que te armamos para presentar en el aeropuerto. Mira los planes y lo
+              que incluye cada uno.
             </p>
             <div className="flex flex-wrap gap-2.5">
-              <Link
-                href="/espana"
-                className="inline-flex items-center min-h-[44px] px-4 rounded-xl bg-[#0a1628] text-white text-sm font-bold"
-              >
+              <Link href="/espana" className="inline-flex items-center min-h-[44px] px-4 rounded-xl bg-[#0a1628] text-white text-sm font-bold">
                 Paquete migratorio a España
               </Link>
               <Link
@@ -201,9 +205,9 @@ export default function PasajesAEspanaPage() {
               Pasajes de España a Lima
             </h2>
             <p className="text-[15px] text-slate-600">Para peruanos en España que vienen de vacaciones o compran el pasaje a un familiar.</p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {vuelta.map((r) => (
-                <TarjetaRuta key={r.slug} r={r} />
+                <TarjetaRutaFoto key={r.slug} r={r} />
               ))}
             </ul>
             <ul className="flex flex-wrap gap-2">
@@ -255,7 +259,7 @@ export default function PasajesAEspanaPage() {
       </main>
       <PorQueCityland destino="España" />
       <Footer />
-      <WhatsAppFloat />
+      <WhatsAppFloat href={wa} />
     </>
   );
 }

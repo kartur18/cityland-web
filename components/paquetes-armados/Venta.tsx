@@ -7,6 +7,8 @@ import { precioCityland, type Circuito } from "@/lib/circuitos";
 import { MESES, fechaLarga, hoyLima, partesFecha, salidasDe, type Salida } from "@/lib/salidas";
 import { lineaComponentes } from "@/lib/paquetes-armados/comun";
 import { portadaDe } from "@/lib/paquetes-armados/fotos";
+import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
+import type { RutaVueloSEO } from "@/lib/rutas-vuelos";
 
 // Piezas de venta de las páginas de paquetes armados, armadas como las de las agencias y aerolíneas grandes: arriba una
 // portada con el precio y el botón, luego los paquetes en tarjetas anchas, y recién después la información. 28-oct-2026.
@@ -46,12 +48,14 @@ export interface HeroVentaProps {
   bajada: string;
   chips: string[];
   etiquetaPrecio: string;
-  precio: number;
+  // Sin precio (servicios que se cotizan a medida) la caja ofrece la cotización gratis.
+  precio?: number;
   detallePrecio?: string;
   proxima?: Salida;
   etiquetaFecha?: string;
   wa: string;
   boton: string;
+  nota?: string;
 }
 
 // Portada: una sola foto grande con el título, lo que incluye y, al lado, el precio con el botón para separar.
@@ -78,12 +82,16 @@ export function HeroVenta(p: HeroVentaProps) {
         </div>
         <div className="rounded-2xl bg-white p-5 shadow-2xl space-y-3">
           <div className="flex items-center justify-between gap-2">
-            <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-amber-900">Cupos limitados</span>
+            <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-amber-900">
+              {p.precio === undefined ? "Cotización gratis" : "Cupos limitados"}
+            </span>
             {p.proxima && <span className="text-xs font-bold text-rose-700">{textoFaltan(p.proxima.fecha)}</span>}
           </div>
           <div>
-            <p className="text-sm text-slate-500">{p.etiquetaPrecio}</p>
-            <p className="text-5xl font-extrabold tracking-tight text-[#0a1628]">{formatoUSD(p.precio)}</p>
+            <p className={p.precio === undefined ? "text-xl font-extrabold leading-snug text-[#0a1628]" : "text-sm text-slate-500"}>
+              {p.etiquetaPrecio}
+            </p>
+            {p.precio !== undefined && <p className="text-5xl font-extrabold tracking-tight text-[#0a1628]">{formatoUSD(p.precio)}</p>}
             {p.detallePrecio && <p className="mt-1 text-sm text-slate-600 line-clamp-2">{p.detallePrecio}</p>}
           </div>
           {p.proxima && (
@@ -102,7 +110,7 @@ export function HeroVenta(p: HeroVentaProps) {
           </a>
           <p className="flex items-start gap-1.5 text-sm text-slate-600">
             <Check />
-            Separas con el 50% y pagas el saldo antes de viajar
+            {p.nota ?? "Separas con el 50% y pagas el saldo antes de viajar"}
           </p>
         </div>
       </div>
@@ -275,14 +283,20 @@ export function PasosSeparar() {
 }
 
 // Cierre de la página: un último llamado con el precio, para el que leyó todo y no apretó el botón de arriba.
-export function CtaFinal({ titulo, precio, wa, boton }: { titulo: string; precio: number; wa: string; boton: string }) {
+export function CtaFinal({ titulo, precio, wa, boton }: { titulo: string; precio?: number; wa: string; boton: string }) {
   return (
     <section className="rounded-3xl bg-gradient-to-br from-[#0a1628] to-[#13315c] p-6 sm:p-10 text-white">
       <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
         <div className="space-y-2">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-balance">{titulo}</h2>
           <p className="text-white/80">
-            Desde <strong className="text-2xl text-amber-300">{formatoUSD(precio)}</strong> por persona. Los cupos de cada salida son limitados.
+            {precio !== undefined ? (
+              <>
+                Desde <strong className="text-2xl text-amber-300">{formatoUSD(precio)}</strong> por persona. Los cupos de cada salida son limitados.
+              </>
+            ) : (
+              "Te respondemos por WhatsApp con la cotización, sin compromiso."
+            )}
           </p>
         </div>
         <a
@@ -296,5 +310,36 @@ export function CtaFinal({ titulo, precio, wa, boton }: { titulo: string; precio
         </a>
       </div>
     </section>
+  );
+}
+
+// Ruta de vuelo como tarjeta con la foto del destino y el precio desde.
+export function TarjetaRutaFoto({ r }: { r: RutaVueloSEO }) {
+  const foto = r.destino === "Lima" ? "/images/destinos/lima-plaza-mayor.jpg" : obtenerGaleriaPorTexto(r.destino)[0];
+  return (
+    <li>
+      <Link
+        href={`/vuelos/${r.slug}`}
+        className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-xl"
+      >
+        <span className="relative block aspect-[16/9] bg-slate-100">
+          <Image
+            src={foto}
+            alt={`Pasajes de ${r.origen} a ${r.destino}`}
+            fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+        </span>
+        <span className="flex flex-1 items-end justify-between gap-3 p-4">
+          <span className="font-extrabold leading-snug text-[#0a1628]">
+            {r.origen} → {r.destino}
+          </span>
+          <span className="whitespace-nowrap text-xs text-slate-500">
+            desde <strong className="block text-2xl text-[#0a1628]">{formatoUSD(r.precioDesdeUSD)}</strong>
+          </span>
+        </span>
+      </Link>
+    </li>
   );
 }

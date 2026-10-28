@@ -3,7 +3,17 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
-import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import { Migas } from "@/components/paquetes-armados/Bloques";
+import { BarraConfianza, CtaFinal, HeroVenta } from "@/components/paquetes-armados/Venta";
+import { absoluta } from "@/lib/paquetes-armados/fotos";
+import {
+  IMG_AEROPUERTO_INTERNACIONAL,
+  IMG_FAMILIA_VIAJE,
+  IMG_GRUPO_ESTUDIANTES,
+  IMG_HOTEL_LUJO_PISCINA,
+  IMG_PASAPORTE_VIAJE,
+  obtenerGaleriaPorTexto,
+} from "@/lib/imagenes-destinos";
 import { OFICINAS, buildWaUrl } from "@/components/constantes";
 import { URL_BASE_SEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
@@ -15,8 +25,36 @@ export function metadataServicio(s: ServicioCityland): Metadata {
     title: `${s.tituloSeo} | Cityland`,
     description: optimizarMetaDescriptionSEO(s.descripcion),
     alternates: { canonical: url },
-    openGraph: { type: "website", url, title: s.h1, description: s.descripcion, siteName: "Cityland Travel", locale: "es_PE" },
+    openGraph: {
+      type: "website",
+      url,
+      title: s.h1,
+      description: s.descripcion,
+      siteName: "Cityland Travel",
+      locale: "es_PE",
+      images: [absoluta(fotoServicio(s), URL_BASE_SEO)],
+    },
   };
+}
+
+// Foto de portada por servicio; los que no están en la lista toman la del destino que nombra su título.
+const FOTOS: Record<string, string> = {
+  "/hoteles": IMG_HOTEL_LUJO_PISCINA,
+  "/traslados": IMG_AEROPUERTO_INTERNACIONAL,
+  "/institutos": IMG_GRUPO_ESTUDIANTES,
+  "/viajes-adultos-mayores": IMG_FAMILIA_VIAJE,
+  "/visa-americana": IMG_PASAPORTE_VIAJE,
+  "/retorno-gestionado-que-es": IMG_PASAPORTE_VIAJE,
+  "/visa-de-trabajo-para-espana": IMG_PASAPORTE_VIAJE,
+  "/visa-de-estudios-para-espana": IMG_PASAPORTE_VIAJE,
+  "/pasajes-de-espana-a-peru": "/images/destinos/lima-plaza-mayor.jpg",
+  "/tours": obtenerGaleriaPorTexto("machu picchu cusco")[0],
+  "/full-days": obtenerGaleriaPorTexto("paracas")[0],
+  "/feriados-largos": obtenerGaleriaPorTexto("mancora playa")[0],
+};
+
+function fotoServicio(s: ServicioCityland): string {
+  return FOTOS[s.ruta] ?? obtenerGaleriaPorTexto(s.h1)[0];
 }
 
 const CHECK = (
@@ -50,35 +88,32 @@ export default function ServicioPagina({ servicio: s }: { servicio: ServicioCity
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(schema) }} />
       <Navbar />
-      <main id="main-content" className="bg-white pt-24 sm:pt-28 pb-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-12">
-          <header className="space-y-4 max-w-3xl">
-            <nav aria-label="Migas de pan" className="text-xs text-slate-500">
-              <Link href="/" className="hover:underline">
-                Inicio
-              </Link>{" "}
-              / {s.h1}
-            </nav>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight text-balance">
-              {s.h1}
-            </h1>
-            <p className="text-base sm:text-lg text-slate-600">{s.intro}</p>
-            <a
-              href={wa}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 min-h-[48px] px-6 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-extrabold"
-            >
-              <WhatsAppIcon size={18} />
-              Cotizar por WhatsApp
-            </a>
-          </header>
+      <main id="main-content" className="bg-slate-50/60 pt-24 sm:pt-28 pb-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-12">
+          <div className="space-y-3">
+            <Migas items={[{ nombre: "Inicio", href: "/" }, { nombre: s.h1 }]} />
+            <HeroVenta
+              foto={fotoServicio(s)}
+              alt={s.h1}
+              marca="Cityland Travel"
+              sello="Agencia en Los Olivos"
+              titulo={s.h1}
+              bajada={s.intro}
+              chips={s.queCotizamos.slice(0, 4).map((q) => q.titulo)}
+              etiquetaPrecio="Te cotizamos por WhatsApp en minutos"
+              wa={wa}
+              boton="Cotizar por WhatsApp"
+              nota="Atención de lunes a sábado, de 9:00 a. m. a 7:00 p. m."
+            />
+          </div>
+
+          <BarraConfianza />
 
           <section className="space-y-4">
             <h2 className="text-2xl font-extrabold text-[#0a1628]">Qué te cotizamos</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {s.queCotizamos.map((q) => (
-                <div key={q.titulo} className="rounded-2xl border border-slate-200 p-5">
+                <div key={q.titulo} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
                   <h3 className="font-extrabold text-[#0a1628]">{q.titulo}</h3>
                   <p className="text-[15px] text-slate-600 mt-1">{q.detalle}</p>
                 </div>
@@ -150,6 +185,8 @@ export default function ServicioPagina({ servicio: s }: { servicio: ServicioCity
             </div>
           </section>
 
+          <CtaFinal titulo={s.h1} wa={wa} boton="Cotizar por WhatsApp" />
+
           <section className="space-y-3">
             <h2 className="text-lg font-extrabold text-[#0a1628]">También te puede servir</h2>
             <div className="flex flex-wrap gap-2.5">
@@ -167,7 +204,7 @@ export default function ServicioPagina({ servicio: s }: { servicio: ServicioCity
         </div>
       </main>
       <Footer />
-      <WhatsAppFloat />
+      <WhatsAppFloat href={wa} />
     </>
   );
 }

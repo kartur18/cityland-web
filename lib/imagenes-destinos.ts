@@ -28,7 +28,7 @@ export const IMG_OFICINA_CORPORATIVA =
 export const IMG_EDIFICIOS_FINANCIEROS =
   "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=85";
 export const IMG_GRUPO_ESTUDIANTES =
-  "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&q=85";
+  "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&q=85";
 export const IMG_PAREJA_ROMANTICA =
   "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=1200&q=85";
 
