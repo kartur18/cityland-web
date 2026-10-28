@@ -23,6 +23,7 @@ export const metadata: Metadata = {
       "Guías migratorias, requisitos, presupuestos y consejos reales para viajeros peruanos.",
     siteName: "Cityland Travel",
     locale: "es_PE",
+    images: ["https://citylandtravel.com/opengraph-image"],
   },
 };
 

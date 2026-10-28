@@ -57,6 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         description: descripcionGuia,
         siteName: "Cityland Travel",
         locale: "es_PE",
+        images: ["https://citylandtravel.com/opengraph-image"],
       },
     };
   }
