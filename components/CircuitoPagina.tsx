@@ -1,19 +1,18 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
-import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import PorQueCityland from "@/components/PorQueCityland";
 import { buildWaUrl } from "@/components/constantes";
 import { formatoUSD } from "@/lib/formato-precio";
-import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
 import { precioCityland, relacionados, REGIONES_CIRCUITOS, textoTipo, type Circuito } from "@/lib/circuitos";
 import { URL_BASE_SEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
 import QueEsPaqueteArmado from "@/components/paquetes-armados/QueEsPaqueteArmado";
-import { SelloArmado, TablaSalidas } from "@/components/paquetes-armados/Bloques";
+import { SelloArmado, TablaHoteles, TablaSalidas, TarjetasPaquetes } from "@/components/paquetes-armados/Bloques";
+import { CajaPrecio, GaleriaMosaico, IncluyeFranja, RecorridoVisual, VideoRecorrido } from "@/components/paquetes-armados/Visual";
+import { absoluta, fotosPara, videoDe } from "@/lib/paquetes-armados/fotos";
 import { etiquetaArmado, lineaComponentes } from "@/lib/paquetes-armados/comun";
 import { salidasDe } from "@/lib/salidas";
 
@@ -33,7 +32,14 @@ export function metadataCircuito(c: Circuito): Metadata {
     title: `${titulo} | Cityland`,
     description: optimizarMetaDescriptionSEO(descripcion),
     alternates: { canonical: url },
-    openGraph: { type: "website", url, title: `${c.nombre} · ${c.dias} días`, description: descripcion, siteName: "Cityland Travel", locale: "es_PE" },
+    openGraph: {
+      type: "website",
+      url,
+      title: `${c.nombre} · ${c.dias} días`,
+      description: descripcion,
+      siteName: "Cityland Travel",
+      locale: "es_PE",
+    },
   };
 }
 
@@ -56,7 +62,8 @@ export default function CircuitoPagina({ circuito: c }: { circuito: Circuito }) 
   const url = `${URL_BASE_SEO}${ruta(c)}`;
   const precio = precioCityland(c);
   const region = REGIONES_CIRCUITOS.find((r) => r.id === c.region);
-  const [foto] = obtenerGaleriaPorTexto(`${c.ciudades.slice(0, 3).join(" ")} ${c.paises.join(" ")}`);
+  const fotos = fotosPara([c], `${c.ciudades.slice(0, 3).join(" ")} ${c.paises.join(" ")}`);
+  const video = videoDe(c);
   const otros = relacionados(c);
   const salidas = salidasDe(c.mt);
   const wa = buildWaUrl({
@@ -99,7 +106,7 @@ export default function CircuitoPagina({ circuito: c }: { circuito: Circuito }) 
         "@type": ["Product", "TouristTrip"],
         name: `${c.nombre} (${c.dias} días)`,
         description: `${textoTipo(c)}. Recorrido: ${c.ciudades.join(", ")}.`,
-        image: [foto.startsWith("http") ? foto : `${URL_BASE_SEO}${foto}`],
+        image: fotos.map((f) => absoluta(f, URL_BASE_SEO)),
         brand: { "@type": "Brand", name: "Cityland Travel" },
         offers: { "@type": "Offer", price: String(precio), priceCurrency: "USD", availability: "https://schema.org/InStock", url },
       },
@@ -112,7 +119,7 @@ export default function CircuitoPagina({ circuito: c }: { circuito: Circuito }) 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(schema) }} />
       <Navbar />
       <main id="main-content" className="bg-white pt-24 sm:pt-28 pb-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-8">
           <header className="space-y-4">
             <nav aria-label="Migas de pan" className="text-xs text-slate-500">
               <Link href="/" className="hover:underline">
@@ -133,7 +140,9 @@ export default function CircuitoPagina({ circuito: c }: { circuito: Circuito }) 
               )}
             </nav>
             <SelloArmado texto={`Fecha fija · ${lineaComponentes(c)}`} />
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight text-balance">Paquete armado {c.nombre}</h1>
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight text-balance">
+              Paquete armado {c.nombre}
+            </h1>
             <div className="flex flex-wrap gap-2 text-sm font-bold">
               <span className="rounded-full bg-slate-100 px-3 py-1.5 text-[#0a1628]">
                 {c.dias} días · {c.noches} noches
@@ -145,100 +154,77 @@ export default function CircuitoPagina({ circuito: c }: { circuito: Circuito }) 
             </div>
           </header>
 
-          <section className="grid gap-6 md:grid-cols-[1.4fr_1fr] items-start">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-slate-100">
-              <Image src={foto} alt={`${c.nombre}: ${c.ciudades.slice(0, 3).join(", ")}`} fill sizes="(min-width: 768px) 60vw, 100vw" className="object-cover" priority />
+          <GaleriaMosaico fotos={fotos} alt={`Paquete armado ${c.nombre}`} />
+
+          <div className="grid gap-8 lg:grid-cols-[1fr_340px] items-start">
+            <aside className="lg:order-2">
+              <CajaPrecio
+                etiqueta="Precio desde, por persona en habitación doble"
+                precio={formatoUSD(precio)}
+                detalle={`${textoTipo(c)}. ${salidas.length ? `${salidas.length} ${salidas.length === 1 ? "salida" : "salidas"} con cupo.` : ""}`}
+                wa={wa}
+                boton="Separar este paquete armado"
+                nota="Precio referencial; cambia según la fecha de salida, el hotel y la disponibilidad."
+              />
+            </aside>
+            <div className="lg:order-1 space-y-10 min-w-0">
+              <IncluyeFranja
+                items={lineaComponentes(c)
+                  .split(" + ")
+                  .map((x) => x.charAt(0).toUpperCase() + x.slice(1))}
+              />
+
+              <section className="space-y-3">
+                <h2 className="text-2xl font-extrabold text-[#0a1628]">Recorrido</h2>
+                <RecorridoVisual ciudades={c.ciudades} />
+              </section>
+
+              {video && <VideoRecorrido url={video} poster={fotos[0]} titulo={c.nombre} />}
+
+              {salidas.length ? (
+                <section className="space-y-3">
+                  <h2 className="text-2xl font-extrabold text-[#0a1628]">Salidas con cupo y su precio</h2>
+                  <TablaSalidas salidas={salidas} />
+                </section>
+              ) : (
+                <section className="rounded-2xl bg-sky-50 border border-sky-100 p-5 space-y-2">
+                  <h2 className="text-xl font-extrabold text-[#0a1628]">Fechas de salida</h2>
+                  <p className="text-[15px] text-slate-700">{c.salidas}</p>
+                </section>
+              )}
+
+              <QueEsPaqueteArmado sinVuelo={c.tipo !== "vuelo"} />
+
+              <Lista titulo="Qué incluye" items={c.incluye} />
+              <Lista titulo="No incluye" items={c.noIncluye} />
+
+              <TablaHoteles hoteles={c.hoteles} />
+
+              <section className="space-y-4">
+                <h2 className="text-2xl font-extrabold text-[#0a1628]">Preguntas frecuentes</h2>
+                <div className="divide-y divide-slate-200 border-y border-slate-200">
+                  {faqs.map((f) => (
+                    <details key={f.q} className="group py-4">
+                      <summary className="cursor-pointer list-none font-bold text-[#0a1628] flex justify-between gap-4 min-h-[44px] items-center">
+                        {f.q}
+                        <span className="text-slate-400 group-open:rotate-45 transition-transform" aria-hidden="true">
+                          +
+                        </span>
+                      </summary>
+                      <p className="text-[15px] text-slate-600 mt-2">{f.a}</p>
+                    </details>
+                  ))}
+                </div>
+              </section>
+
+              {otros.length > 0 && (
+                <section className="space-y-4">
+                  <h2 className="text-2xl font-extrabold text-[#0a1628]">Otros paquetes armados parecidos</h2>
+                  <TarjetasPaquetes items={otros} />
+                </section>
+              )}
             </div>
-            <div className="rounded-2xl border border-slate-200 p-5 sm:p-6 space-y-4">
-              <p className="text-sm text-slate-500">Precio desde, por persona en habitación doble</p>
-              <p className="text-4xl font-extrabold text-[#0a1628]">{formatoUSD(precio)}</p>
-              <p className="text-sm text-slate-600">{textoTipo(c)}. Separa con el 50% y paga el resto antes de viajar.</p>
-              <a
-                href={wa}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 min-h-[48px] px-6 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-extrabold"
-              >
-                <WhatsAppIcon size={18} />
-                Separar este paquete armado
-              </a>
-              <p className="text-xs text-slate-500">Precio referencial; cambia según la fecha de salida, el hotel y la disponibilidad.</p>
-            </div>
-          </section>
-
-          <section className="space-y-3">
-            <h2 className="text-2xl font-extrabold text-[#0a1628]">Recorrido</h2>
-            <p className="text-[15px] text-slate-700">{c.ciudades.join(" → ")}</p>
-          </section>
-
-          {salidas.length ? (
-            <section className="space-y-3">
-              <h2 className="text-2xl font-extrabold text-[#0a1628]">Salidas con cupo y su precio</h2>
-              <TablaSalidas salidas={salidas} />
-            </section>
-          ) : (
-            <section className="rounded-2xl bg-sky-50 border border-sky-100 p-5 space-y-2">
-              <h2 className="text-xl font-extrabold text-[#0a1628]">Fechas de salida</h2>
-              <p className="text-[15px] text-slate-700">{c.salidas}</p>
-            </section>
-          )}
-
-          <QueEsPaqueteArmado sinVuelo={c.tipo !== "vuelo"} />
-
-          <Lista titulo="Qué incluye" items={c.incluye} />
-          <Lista titulo="No incluye" items={c.noIncluye} />
-
-          {c.hoteles.length > 0 && (
-            <section className="space-y-3">
-              <h2 className="text-2xl font-extrabold text-[#0a1628]">Hoteles previstos o similares</h2>
-              <ul className="divide-y divide-slate-200 border-y border-slate-200 text-[15px]">
-                {c.hoteles.map((h, i) => (
-                  <li key={i} className="py-3 flex flex-wrap justify-between gap-x-4 gap-y-1">
-                    <span className="font-bold text-[#0a1628]">{h[0]}</span>
-                    <span className="text-slate-700">
-                      {h[1]}
-                      {h[2] ? ` · ${h[2]}` : ""}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-
-          <section className="space-y-4">
-            <h2 className="text-2xl font-extrabold text-[#0a1628]">Preguntas frecuentes</h2>
-            <div className="divide-y divide-slate-200 border-y border-slate-200">
-              {faqs.map((f) => (
-                <details key={f.q} className="group py-4">
-                  <summary className="cursor-pointer list-none font-bold text-[#0a1628] flex justify-between gap-4 min-h-[44px] items-center">
-                    {f.q}
-                    <span className="text-slate-400 group-open:rotate-45 transition-transform" aria-hidden="true">
-                      +
-                    </span>
-                  </summary>
-                  <p className="text-[15px] text-slate-600 mt-2">{f.a}</p>
-                </details>
-              ))}
-            </div>
-          </section>
-
-          {otros.length > 0 && (
-            <section className="space-y-4">
-              <h2 className="text-xl font-extrabold text-[#0a1628]">Otros paquetes armados parecidos</h2>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {otros.map((o) => (
-                  <li key={o.slug}>
-                    <Link href={ruta(o)} className="block min-h-[56px] rounded-2xl border border-slate-200 px-5 py-4 hover:border-[#0a1628] transition-colors">
-                      <span className="block font-extrabold text-[#0a1628]">{o.nombre}</span>
-                      <span className="block text-[15px] text-slate-600 mt-0.5">
-                        {o.dias} días · desde {formatoUSD(precioCityland(o))}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
+          </div>
         </div>
       </main>
       <PorQueCityland destino={c.paises.length === 1 ? c.paises[0] : c.nombre} />

@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import PorQueCityland from "@/components/PorQueCityland";
 import QueEsPaqueteArmado from "@/components/paquetes-armados/QueEsPaqueteArmado";
-import { BotonWhatsApp, Migas, Preguntas, SelloArmado, TablaSalidas, TarjetasPaquetes, faqSchema } from "@/components/paquetes-armados/Bloques";
+import { Migas, Preguntas, SelloArmado, TablaSalidas, TarjetasPaquetes, faqSchema } from "@/components/paquetes-armados/Bloques";
 import EnlacesCaribe from "@/components/paquetes-armados/EnlacesCaribe";
+import { CajaPrecio, GaleriaMosaico, IncluyeFranja, VideoRecorrido } from "@/components/paquetes-armados/Visual";
+import { absoluta, fotosPara, primerVideo } from "@/lib/paquetes-armados/fotos";
 import { buildWaUrl } from "@/components/constantes";
 import { formatoUSD } from "@/lib/formato-precio";
-import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
-import { precioCityland } from "@/lib/circuitos";
-import { MESES, precioSalida } from "@/lib/salidas";
+import { MESES } from "@/lib/salidas";
 import { climaDelMes, zonaClima } from "@/lib/paquetes-armados/clima";
-import { lineaComponentes, listaY } from "@/lib/paquetes-armados/comun";
-import type { PaginaCaribe } from "@/lib/paquetes-armados/paginas-caribe";
+import { componentesDe, lineaComponentes, listaY } from "@/lib/paquetes-armados/comun";
+import { desdePagina, type PaginaCaribe } from "@/lib/paquetes-armados/paginas-caribe";
+import { ExtrasPagina } from "@/components/paquetes-armados/Extras";
 import { DESTINOS_CARIBE } from "@/lib/paquetes-armados/destinos-caribe";
 import { URL_BASE_SEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
@@ -24,15 +24,7 @@ const EUROPA = new Set(["europa", "espana", "italia", "francia", "balcanes", "gr
 
 const ruta = (p: PaginaCaribe) => `/paquetes-armados/${p.slug}`;
 
-// Si el programa tiene salidas en la página (p. ej. las de ese mes), manda el precio de esas fechas, no el del año.
-function desdeDe(p: PaginaCaribe): number {
-  return Math.min(
-    ...p.programas.map((c) => {
-      const propias = p.salidas.filter((s) => s.mt === c.mt);
-      return propias.length ? Math.min(...propias.map(precioSalida)) : precioCityland(c);
-    }),
-  );
-}
+const desdeDe = desdePagina;
 
 export function metadataCaribe(p: PaginaCaribe): Metadata {
   const url = `${URL_BASE_SEO}${ruta(p)}`;
@@ -60,7 +52,17 @@ export default function PaqueteCaribePagina({ pagina: p }: { pagina: PaginaCarib
   const desde = desdeDe(p);
   const zona = zonaClima(d.zona);
   const esPlaya = DESTINOS_CARIBE.some((x) => x.id === d.id);
-  const [foto] = obtenerGaleriaPorTexto(`${d.nombre} ${d.pais}${esPlaya ? " playa" : ""}`);
+  const fotos = fotosPara(p.programas, `${d.nombre} ${d.pais}${esPlaya ? " playa" : ""}`);
+  const video = primerVideo(p.programas);
+  const k = p.programas.map(componentesDe);
+  const incluye = [
+    k.some((x) => x.vuelo) && "Vuelo desde Lima",
+    k.some((x) => x.crucero) ? "Crucero" : "Hotel reservado",
+    k.some((x) => x.todoIncluido) && "Todo incluido",
+    k.some((x) => x.traslados) && "Traslados",
+    k.some((x) => x.tours) && "Visitas guiadas",
+    "Fecha fija",
+  ].filter(Boolean) as string[];
   const principal = p.programas[0];
   const conVuelo = p.programas.some((c) => c.tipo === "vuelo");
   const wa = buildWaUrl({
@@ -125,7 +127,7 @@ export default function PaqueteCaribePagina({ pagina: p }: { pagina: PaginaCarib
         "@type": ["Product", "TouristTrip"],
         name: p.titulo,
         description: p.intro,
-        image: [foto.startsWith("http") ? foto : `${URL_BASE_SEO}${foto}`],
+        image: fotos.map((f) => absoluta(f, URL_BASE_SEO)),
         brand: { "@type": "Brand", name: "Cityland Travel" },
         offers: {
           "@type": "AggregateOffer",
@@ -145,7 +147,7 @@ export default function PaqueteCaribePagina({ pagina: p }: { pagina: PaginaCarib
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(schema) }} />
       <Navbar />
       <main id="main-content" className="bg-white pt-24 sm:pt-28 pb-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-8">
           <header className="space-y-4">
             <Migas items={[{ nombre: "Inicio", href: "/" }, { nombre: "Paquetes armados", href: "/paquetes-armados" }, { nombre: d.nombre }]} />
             <SelloArmado texto={`Fecha fija · ${conVuelo ? "vuelo + hotel + traslados" : "hotel + traslados"}`} />
@@ -153,97 +155,103 @@ export default function PaqueteCaribePagina({ pagina: p }: { pagina: PaginaCarib
             <p className="text-[17px] text-slate-700">{p.intro}</p>
           </header>
 
-          <section className="grid gap-6 md:grid-cols-[1.4fr_1fr] items-start">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-slate-100">
-              <Image src={foto} alt={`Paquete armado a ${d.nombre}`} fill sizes="(min-width: 768px) 60vw, 100vw" className="object-cover" priority />
+          <GaleriaMosaico fotos={fotos} alt={p.h1} />
+
+          <div className="grid gap-8 lg:grid-cols-[1fr_340px] items-start">
+            <div className="order-2 lg:order-1 space-y-10 min-w-0">
+              <IncluyeFranja items={incluye} />
+              {clima && (
+                <section className="rounded-2xl bg-sky-50 border border-sky-100 p-5 space-y-1">
+                  <h2 className="text-xl font-extrabold text-[#0a1628]">
+                    Clima en {d.nombre} en {p.clave}
+                  </h2>
+                  <p className="text-[15px] text-slate-700">
+                    <strong>{clima.t}</strong> en promedio. {clima.txt}
+                  </p>
+                </section>
+              )}
+              {p.estilo && (
+                <section className="rounded-2xl bg-sky-50 border border-sky-100 p-5 space-y-1">
+                  <h2 className="text-xl font-extrabold text-[#0a1628]">Un consejo antes de elegir</h2>
+                  <p className="text-[15px] text-slate-700">{p.estilo.consejo}</p>
+                </section>
+              )}
+              {p.hotel && (
+                <section className="rounded-2xl bg-sky-50 border border-sky-100 p-5 space-y-1">
+                  <h2 className="text-xl font-extrabold text-[#0a1628]">{p.hotel.nombre}</h2>
+                  <p className="text-[15px] text-slate-700">
+                    {p.hotel.categoria ? `Categoría ${p.hotel.categoria}. ` : ""}
+                    Aparece en {listaY(p.programas.map((c) => `${c.nombre} (${c.dias} días)`))}. El precio con este hotel puede ser distinto al
+                    «desde»; te lo cotizamos según tu fecha.
+                  </p>
+                </section>
+              )}
+
+              <ExtrasPagina pagina={p} />
+
+              <section className="space-y-3">
+                <h2 className="text-2xl font-extrabold text-[#0a1628]">Paquetes armados disponibles</h2>
+                <TarjetasPaquetes items={p.programas} />
+              </section>
+
+              {video && <VideoRecorrido url={video.url} poster={fotos[0]} titulo={video.circuito.nombre} />}
+
+              {p.salidas.length > 0 && (
+                <section className="space-y-3">
+                  <h2 className="text-2xl font-extrabold text-[#0a1628]">Salidas con cupo confirmado</h2>
+                  <TablaSalidas salidas={p.salidas} />
+                </section>
+              )}
+
+              <section className="space-y-3">
+                <h2 className="text-2xl font-extrabold text-[#0a1628]">
+                  {d.imperdibles.length ? `Qué hacer en ${d.nombre}` : `Datos para tu viaje a ${d.nombre}`}
+                </h2>
+                {d.imperdibles.length > 0 && (
+                  <ul className="list-disc pl-5 space-y-1.5 text-[15px] text-slate-700">
+                    {d.imperdibles.map((x) => (
+                      <li key={x}>{x}</li>
+                    ))}
+                  </ul>
+                )}
+                <p className="text-[15px] text-slate-700">
+                  <strong>Moneda:</strong> {d.moneda}
+                </p>
+                {d.requisitos && (
+                  <p className="text-[15px] text-slate-700">
+                    <strong>Documentos:</strong>{" "}
+                    <Link href={d.requisitos} className="font-bold text-[#0a1628] underline">
+                      revisa los requisitos para peruanos
+                    </Link>{" "}
+                    antes de separar tu cupo.
+                  </p>
+                )}
+                {zona && p.clase !== "mes" && (
+                  <p className="text-[15px] text-slate-700">
+                    <strong>Mejor época:</strong>{" "}
+                    {MESES.filter((_, i) => /seco|seca|mejor/i.test(zona.meses[i].txt))
+                      .slice(0, 5)
+                      .join(", ") || "todo el año"}
+                    .
+                  </p>
+                )}
+              </section>
+
+              <QueEsPaqueteArmado sinVuelo={!conVuelo} />
+              <Preguntas faqs={faqs} />
+              <EnlacesCaribe actual={p} />
             </div>
-            <div className="rounded-2xl border border-slate-200 p-5 sm:p-6 space-y-4">
-              <p className="text-sm text-slate-500">Desde, por persona en habitación doble</p>
-              <p className="text-4xl font-extrabold text-[#0a1628]">{formatoUSD(desde)}</p>
-              <p className="text-sm text-slate-600">
-                {p.programas.length} {p.programas.length === 1 ? "paquete armado" : "paquetes armados"}
-                {p.salidas.length ? ` y ${p.salidas.length} ${p.salidas.length === 1 ? "salida" : "salidas"} con cupo` : ""}.
-              </p>
-              <BotonWhatsApp href={wa} texto="Consultar cupos" />
-            </div>
-          </section>
-
-          {clima && (
-            <section className="rounded-2xl bg-sky-50 border border-sky-100 p-5 space-y-1">
-              <h2 className="text-xl font-extrabold text-[#0a1628]">
-                Clima en {d.nombre} en {p.clave}
-              </h2>
-              <p className="text-[15px] text-slate-700">
-                <strong>{clima.t}</strong> en promedio. {clima.txt}
-              </p>
-            </section>
-          )}
-          {p.estilo && (
-            <section className="rounded-2xl bg-sky-50 border border-sky-100 p-5 space-y-1">
-              <h2 className="text-xl font-extrabold text-[#0a1628]">Un consejo antes de elegir</h2>
-              <p className="text-[15px] text-slate-700">{p.estilo.consejo}</p>
-            </section>
-          )}
-          {p.hotel && (
-            <section className="rounded-2xl bg-sky-50 border border-sky-100 p-5 space-y-1">
-              <h2 className="text-xl font-extrabold text-[#0a1628]">{p.hotel.nombre}</h2>
-              <p className="text-[15px] text-slate-700">
-                {p.hotel.categoria ? `Categoría ${p.hotel.categoria}. ` : ""}
-                Aparece en {listaY(p.programas.map((c) => `${c.nombre} (${c.dias} días)`))}. El precio con este hotel puede ser distinto al «desde»;
-                te lo cotizamos según tu fecha.
-              </p>
-            </section>
-          )}
-
-          <section className="space-y-3">
-            <h2 className="text-2xl font-extrabold text-[#0a1628]">Paquetes armados disponibles</h2>
-            <TarjetasPaquetes items={p.programas} />
-          </section>
-
-          {p.salidas.length > 0 && (
-            <section className="space-y-3">
-              <h2 className="text-2xl font-extrabold text-[#0a1628]">Salidas con cupo confirmado</h2>
-              <TablaSalidas salidas={p.salidas} />
-            </section>
-          )}
-
-          <section className="space-y-3">
-            <h2 className="text-2xl font-extrabold text-[#0a1628]">
-              {d.imperdibles.length ? `Qué hacer en ${d.nombre}` : `Datos para tu viaje a ${d.nombre}`}
-            </h2>
-            {d.imperdibles.length > 0 && (
-              <ul className="list-disc pl-5 space-y-1.5 text-[15px] text-slate-700">
-                {d.imperdibles.map((x) => (
-                  <li key={x}>{x}</li>
-                ))}
-              </ul>
-            )}
-            <p className="text-[15px] text-slate-700">
-              <strong>Moneda:</strong> {d.moneda}
-            </p>
-            {d.requisitos && (
-              <p className="text-[15px] text-slate-700">
-                <strong>Documentos:</strong>{" "}
-                <Link href={d.requisitos} className="font-bold text-[#0a1628] underline">
-                  revisa los requisitos para peruanos
-                </Link>{" "}
-                antes de separar tu cupo.
-              </p>
-            )}
-            {zona && p.clase !== "mes" && (
-              <p className="text-[15px] text-slate-700">
-                <strong>Mejor época:</strong>{" "}
-                {MESES.filter((_, i) => /seco|seca|mejor/i.test(zona.meses[i].txt))
-                  .slice(0, 5)
-                  .join(", ") || "todo el año"}
-                .
-              </p>
-            )}
-          </section>
-
-          <QueEsPaqueteArmado sinVuelo={!conVuelo} />
-          <Preguntas faqs={faqs} />
-          <EnlacesCaribe actual={p} />
+            <aside className="order-1 lg:order-2">
+              <CajaPrecio
+                etiqueta="Desde, por persona en habitación doble"
+                precio={formatoUSD(desde)}
+                detalle={`${p.programas.length} ${p.programas.length === 1 ? "paquete armado" : "paquetes armados"}${p.salidas.length ? ` y ${p.salidas.length} ${p.salidas.length === 1 ? "salida" : "salidas"} con cupo` : ""}`}
+                wa={wa}
+                boton="Consultar cupos por WhatsApp"
+                nota="Precio sujeto a cupo y a cambios del mayorista o la aerolínea."
+              />
+            </aside>
+          </div>
         </div>
       </main>
       <PorQueCityland destino={d.nombre} />

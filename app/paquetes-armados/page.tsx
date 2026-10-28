@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { portadaDe } from "@/lib/paquetes-armados/fotos";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
@@ -34,12 +36,14 @@ export default function PaquetesArmadosPage() {
   const primera = (id: string) => paginas.find((p) => p.destino.id === id);
   const combinados = DESTINOS_COMBINADOS.map((d) => primera(d.id)).filter((p) => p !== undefined);
   const ciudades = DESTINOS_CIUDADES.filter((d) => primera(d.id));
-  const destinos = [...DESTINOS_CARIBE, ...DESTINOS_MUNDO].map((d) => ({ d, ps: paginas.filter((p) => p.destino.id === d.id) })).filter((x) => x.ps.length);
+  const destinos = [...DESTINOS_CARIBE, ...DESTINOS_MUNDO]
+    .map((d) => ({ d, ps: paginas.filter((p) => p.destino.id === d.id) }))
+    .filter((x) => x.ps.length);
   return (
     <>
       <Navbar />
       <main id="main-content" className="bg-white pt-24 sm:pt-28 pb-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-10">
           <header className="space-y-4">
             <Migas items={[{ nombre: "Inicio", href: "/" }, { nombre: "Paquetes armados" }]} />
             <SelloArmado texto="Caribe, Europa, Asia y más" />
@@ -48,6 +52,30 @@ export default function PaquetesArmadosPage() {
               Viajes ya organizados: fecha fija, vuelo, hotel y traslados reservados. Elige el destino y luego el mes, el tipo de viaje o el hotel.
             </p>
           </header>
+
+          <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+            {destinos.map(({ d, ps }) => {
+              const progs = ps.flatMap((p) => p.programas);
+              return (
+                <li key={d.id}>
+                  <a href={`#${d.id}`} className="group relative block aspect-[4/3] overflow-hidden rounded-2xl bg-slate-200">
+                    <Image
+                      src={portadaDe(progs[0])}
+                      alt={`Paquetes armados a ${d.nombre}`}
+                      fill
+                      sizes="(min-width: 1024px) 25vw, 50vw"
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <span className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+                    <span className="absolute bottom-3 left-3 right-3 text-white">
+                      <span className="block text-lg font-extrabold leading-tight first-letter:uppercase">{d.nombre}</span>
+                      <span className="block text-sm">desde {formatoUSD(Math.min(...progs.map(precioCityland)))}</span>
+                    </span>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
 
           {destinos.map(({ d, ps }) => {
             const desde = Math.min(...ps.flatMap((p) => p.programas.map(precioCityland)));
