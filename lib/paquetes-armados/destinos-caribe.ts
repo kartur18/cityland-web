@@ -10,6 +10,8 @@ export interface DestinoCaribe {
   // Texto para el clima (lib/paquetes-armados/clima.ts).
   zona: string;
   hub?: string;
+  // Guía de requisitos para peruanos que ya existe en la web.
+  requisitos?: string;
   intro: string;
   imperdibles: string[];
   moneda: string;
@@ -25,6 +27,7 @@ export const DESTINOS_CARIBE: DestinoCaribe[] = [
     pais: "República Dominicana",
     zona: "punta cana",
     hub: "/paquetes-a-punta-cana",
+    requisitos: "/viajes/requisitos-viajar-a-punta-cana-desde-peru",
     intro: "Punta Cana es el destino todo incluido más pedido desde Lima: resorts frente al mar, arena blanca y aguas tranquilas en la costa este de República Dominicana.",
     imperdibles: ["Playa Bávaro y sus resorts frente al mar", "Excursión en catamarán a Isla Saona", "Hoyo Azul, una poza de agua turquesa en Cap Cana", "Zona colonial de Santo Domingo (día completo)"],
     moneda: "Peso dominicano; en los resorts y tours aceptan dólares.",
@@ -36,6 +39,7 @@ export const DESTINOS_CARIBE: DestinoCaribe[] = [
     pais: "Aruba",
     zona: "aruba",
     hub: "/paquetes-a-aruba",
+    requisitos: "/viajes/requisitos-viajar-a-aruba-desde-peru",
     intro: "Aruba, «la isla feliz», tiene sol casi todo el año, poca lluvia y está fuera de la ruta de los huracanes. Sus playas de Eagle Beach y Palm Beach son de las más lindas del Caribe.",
     imperdibles: ["Eagle Beach y Palm Beach", "Parque Nacional Arikok y la piscina natural", "Baby Beach, de aguas bajas y tranquilas", "Atardecer en el faro California"],
     moneda: "Florín arubeño; el dólar se acepta en todas partes.",
@@ -46,6 +50,7 @@ export const DESTINOS_CARIBE: DestinoCaribe[] = [
     nombre: "Jamaica",
     pais: "Jamaica",
     zona: "jamaica",
+    requisitos: "/viajes/requisitos-viajar-a-jamaica-desde-peru",
     intro: "Jamaica combina resorts todo incluido con cascadas, música reggae y mucha cultura. Montego Bay y Ocho Ríos son sus zonas de playa más visitadas.",
     imperdibles: ["Cascadas Dunn's River en Ocho Ríos", "Seven Mile Beach en Negril", "Atardecer en Rick's Café", "Nine Mile, el pueblo de Bob Marley"],
     moneda: "Dólar jamaiquino; en los resorts aceptan dólares americanos.",
@@ -57,6 +62,7 @@ export const DESTINOS_CARIBE: DestinoCaribe[] = [
     pais: "México",
     zona: "cancun",
     hub: "/paquetes-a-cancun",
+    requisitos: "/viajes/requisitos-viajar-a-mexico-cancun-desde-peru",
     intro: "Cancún y la Riviera Maya son mar turquesa, resorts todo incluido, cenotes y ruinas mayas como Chichén Itzá y Tulum.",
     imperdibles: ["Isla Mujeres en catamarán", "Chichén Itzá y un cenote en el camino", "Tulum y Playa del Carmen", "Parques como Xcaret o Xel-Há"],
     moneda: "Peso mexicano; en la zona hotelera también aceptan dólares.",
@@ -68,6 +74,7 @@ export const DESTINOS_CARIBE: DestinoCaribe[] = [
     pais: "Colombia",
     zona: "cartagena",
     hub: "/paquetes-a-cartagena",
+    requisitos: "/viajes/requisitos-viajar-a-colombia-solo-dni",
     intro: "Cartagena de Indias es la ciudad amurallada más bonita del Caribe: calles coloniales con balcones de flores, playas cercanas y las Islas del Rosario a un paseo en lancha.",
     imperdibles: ["Ciudad Amurallada y el barrio de Getsemaní", "Castillo de San Felipe de Barajas", "Islas del Rosario y Playa Blanca en Barú", "Atardecer en las murallas"],
     moneda: "Peso colombiano.",
@@ -79,6 +86,7 @@ export const DESTINOS_CARIBE: DestinoCaribe[] = [
     pais: "Colombia",
     zona: "san andres",
     hub: "/paquetes-a-san-andres",
+    requisitos: "/viajes/requisitos-viajar-a-colombia-solo-dni",
     intro: "San Andrés es la isla colombiana del «mar de siete colores»: playas de arena blanca, cayos para hacer snorkel y un ambiente relajado.",
     imperdibles: ["Johnny Cay", "El Acuario y Haynes Cay", "Vuelta a la isla y el Hoyo Soplador", "Snorkel en La Piscinita"],
     moneda: "Peso colombiano.",
@@ -90,6 +98,7 @@ export const DESTINOS_CARIBE: DestinoCaribe[] = [
     pais: "Brasil",
     zona: "rio de janeiro",
     hub: "/carnaval-de-rio-2027",
+    requisitos: "/viajes/requisitos-viajar-a-brasil-solo-dni",
     intro: "Río de Janeiro es playa y ciudad a la vez: Copacabana, Ipanema, el Cristo Redentor y el Pan de Azúcar, con la mejor vida nocturna de Sudamérica.",
     imperdibles: ["Cristo Redentor en el Corcovado", "Pan de Azúcar en teleférico", "Playas de Copacabana e Ipanema", "Escalera Selarón y el barrio de Lapa"],
     moneda: "Real brasileño.",

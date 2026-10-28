@@ -8,6 +8,7 @@ import { Migas, SelloArmado } from "@/components/paquetes-armados/Bloques";
 import { formatoUSD } from "@/lib/formato-precio";
 import { precioCityland } from "@/lib/circuitos";
 import { DESTINOS_CARIBE } from "@/lib/paquetes-armados/destinos-caribe";
+import { DESTINOS_MUNDO } from "@/lib/paquetes-armados/destinos-mundo";
 import { paginasCaribe, type ClasePagina } from "@/lib/paquetes-armados/paginas-caribe";
 import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
 
@@ -16,11 +17,11 @@ export const revalidate = 86400;
 const URL = `${URL_BASE_SEO}/paquetes-armados`;
 
 export const metadata: Metadata = {
-  title: "Paquetes armados al Caribe desde Lima: Punta Cana, Aruba, Cancún | Cityland",
+  title: "Paquetes armados desde Lima: Caribe, Europa, Turquía y más | Cityland",
   description:
-    "Paquetes armados a Punta Cana, Aruba, Jamaica, Cancún, Cartagena, San Andrés, Río de Janeiro y cruceros por el Caribe: fecha fija, vuelo, hotel y traslados listos. Separa con el 50%.",
+    "Paquetes armados a Punta Cana, Aruba, Cancún, Cartagena, Río, Europa, Turquía, Egipto, Japón y más: fecha fija, vuelo, hotel y traslados listos. Separa con el 50%.",
   alternates: { canonical: URL },
-  openGraph: { type: "website", url: URL, title: "Paquetes armados al Caribe", siteName: "Cityland Travel", locale: "es_PE" },
+  openGraph: { type: "website", url: URL, title: "Paquetes armados desde Lima", siteName: "Cityland Travel", locale: "es_PE" },
 };
 
 const ETIQUETA: Record<ClasePagina, string> = { mes: "Por mes", estilo: "Por tipo de viaje", hotel: "Por hotel" };
@@ -28,7 +29,7 @@ const ETIQUETA: Record<ClasePagina, string> = { mes: "Por mes", estilo: "Por tip
 // Vitrina de los paquetes armados de playa, destino por destino.
 export default function PaquetesArmadosPage() {
   const paginas = paginasCaribe();
-  const destinos = DESTINOS_CARIBE.map((d) => ({ d, ps: paginas.filter((p) => p.destino.id === d.id) })).filter((x) => x.ps.length);
+  const destinos = [...DESTINOS_CARIBE, ...DESTINOS_MUNDO].map((d) => ({ d, ps: paginas.filter((p) => p.destino.id === d.id) })).filter((x) => x.ps.length);
   return (
     <>
       <Navbar />
@@ -36,10 +37,10 @@ export default function PaquetesArmadosPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-10">
           <header className="space-y-4">
             <Migas items={[{ nombre: "Inicio", href: "/" }, { nombre: "Paquetes armados" }]} />
-            <SelloArmado texto="Caribe y playas de Sudamérica" />
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight">Paquetes armados al Caribe desde Lima</h1>
+            <SelloArmado texto="Caribe, Europa, Asia y más" />
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight">Paquetes armados desde Lima</h1>
             <p className="text-[17px] text-slate-700">
-              Viajes de playa ya organizados: fecha fija, vuelo, hotel y traslados reservados. Elige el destino, el mes o el hotel que buscas.
+              Viajes ya organizados: fecha fija, vuelo, hotel y traslados reservados. Elige el destino y luego el mes, el tipo de viaje o el hotel.
             </p>
           </header>
 

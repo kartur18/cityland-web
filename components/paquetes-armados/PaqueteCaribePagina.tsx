@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
@@ -15,8 +16,11 @@ import { MESES, precioSalida } from "@/lib/salidas";
 import { climaDelMes, zonaClima } from "@/lib/paquetes-armados/clima";
 import { lineaComponentes, listaY } from "@/lib/paquetes-armados/comun";
 import type { PaginaCaribe } from "@/lib/paquetes-armados/paginas-caribe";
+import { DESTINOS_CARIBE } from "@/lib/paquetes-armados/destinos-caribe";
 import { URL_BASE_SEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
+
+const EUROPA = new Set(["europa", "espana", "italia", "francia", "balcanes", "grecia"]);
 
 const ruta = (p: PaginaCaribe) => `/paquetes-armados/${p.slug}`;
 
@@ -48,11 +52,12 @@ export default function PaqueteCaribePagina({ pagina: p }: { pagina: PaginaCarib
   const url = `${URL_BASE_SEO}${ruta(p)}`;
   const desde = desdeDe(p);
   const zona = zonaClima(d.zona);
-  const [foto] = obtenerGaleriaPorTexto(`${d.nombre} ${d.pais} playa`);
+  const esPlaya = DESTINOS_CARIBE.some((x) => x.id === d.id);
+  const [foto] = obtenerGaleriaPorTexto(`${d.nombre} ${d.pais}${esPlaya ? " playa" : ""}`);
   const principal = p.programas[0];
   const conVuelo = p.programas.some((c) => c.tipo === "vuelo");
   const wa = buildWaUrl({
-    categoria: "caribe",
+    categoria: esPlaya ? "caribe" : EUROPA.has(d.id) ? "europa" : "general",
     mensajePersonalizado: `¡Hola Cityland Travel! Quiero el paquete armado a ${d.nombre}${p.clase === "mes" ? ` en ${p.clave}` : p.clase === "hotel" ? ` con ${p.clave}` : ` (${p.clave})`}${p.programas.length === 1 ? ` (cód. ${principal.mt})` : ""}. ¿Qué fechas tienen con cupo?`,
     refWeb: `citylandtravel.com${ruta(p)}`,
   });
@@ -180,6 +185,15 @@ export default function PaqueteCaribePagina({ pagina: p }: { pagina: PaginaCarib
             <p className="text-[15px] text-slate-700">
               <strong>Moneda:</strong> {d.moneda}
             </p>
+            {d.requisitos && (
+              <p className="text-[15px] text-slate-700">
+                <strong>Documentos:</strong>{" "}
+                <Link href={d.requisitos} className="font-bold text-[#0a1628] underline">
+                  revisa los requisitos para peruanos
+                </Link>{" "}
+                antes de separar tu cupo.
+              </p>
+            )}
             {zona && p.clase !== "mes" && (
               <p className="text-[15px] text-slate-700">
                 <strong>Mejor época:</strong>{" "}
