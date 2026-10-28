@@ -1,8 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { formatoUSD } from "@/lib/formato-precio";
 import { precioCityland, type Circuito } from "@/lib/circuitos";
-import { fechaLarga, precioSalida, type Salida } from "@/lib/salidas";
+import { MESES, fechaLarga, partesFecha, precioSalida, type Salida } from "@/lib/salidas";
+import { portadaDe } from "@/lib/paquetes-armados/fotos";
 
 // Bloques que comparten las páginas de paquetes armados (salidas, meses y Caribe).
 
@@ -114,43 +116,88 @@ export function faqSchema(faqs: Pregunta[]) {
   return { "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
 }
 
+// Salidas con fecha como tarjetas con foto: el día bien grande, el paquete y el precio de esa fecha.
 export function TablaSalidas({ salidas, actual }: { salidas: Salida[]; actual?: string }) {
   if (!salidas.length) return null;
   const minimo = Math.min(...salidas.map((s) => s.precio));
   return (
-    <ul className="divide-y divide-slate-200 border-y border-slate-200 text-[15px]">
-      {salidas.map((s) => (
-        <li key={s.slug}>
-          <Link
-            href={`/salidas/${s.slug}`}
-            aria-current={s.slug === actual ? "page" : undefined}
-            className={`flex flex-wrap items-center justify-between gap-x-4 gap-y-1 min-h-[48px] py-3 px-2 hover:bg-slate-50 ${s.slug === actual ? "bg-sky-50" : ""}`}
-          >
-            <span className="font-bold text-[#0a1628]">
-              {s.circuito.nombre} · {fechaLarga(s.fecha)}
-            </span>
-            <span className="text-slate-700">
-              {s.circuito.dias} días · <strong className="text-[#0a1628]">{formatoUSD(precioSalida(s))}</strong>
-              {s.precio === minimo && salidas.length > 1 && <span className="ml-2 rounded bg-emerald-50 px-2 py-0.5 text-xs font-bold text-emerald-800">la más barata</span>}
-            </span>
-          </Link>
-        </li>
-      ))}
+    <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {salidas.map((s) => {
+        const { dia, mes, anio } = partesFecha(s.fecha);
+        const esActual = s.slug === actual;
+        return (
+          <li key={s.slug}>
+            <Link
+              href={`/salidas/${s.slug}`}
+              aria-current={esActual ? "page" : undefined}
+              className={`group flex h-full overflow-hidden rounded-2xl border bg-white transition-shadow hover:shadow-lg ${esActual ? "border-[#0a1628] ring-2 ring-[#0a1628]" : "border-slate-200"}`}
+            >
+              <div className="relative w-28 shrink-0 sm:w-32">
+                <Image src={portadaDe(s.circuito)} alt={s.circuito.nombre} fill sizes="128px" className="object-cover" />
+                <div className="absolute left-2 top-2 rounded-lg bg-white/95 px-2 py-1 text-center leading-none shadow">
+                  <span className="block text-xl font-extrabold text-[#0a1628]">{dia}</span>
+                  <span className="block text-[10px] font-bold uppercase text-slate-500">
+                    {MESES[mes - 1].slice(0, 3)} {String(anio).slice(2)}
+                  </span>
+                </div>
+              </div>
+              <div className="flex flex-1 flex-col justify-between gap-2 p-3">
+                <span className="font-extrabold leading-snug text-[#0a1628] group-hover:underline">{s.circuito.nombre}</span>
+                <span className="text-xs text-slate-500">
+                  {s.circuito.dias} días · {fechaLarga(s.fecha)}
+                </span>
+                <span className="flex flex-wrap items-center gap-2">
+                  <strong className="text-lg text-[#0a1628]">{formatoUSD(precioSalida(s))}</strong>
+                  {s.precio === minimo && salidas.length > 1 && (
+                    <span className="rounded bg-emerald-50 px-2 py-0.5 text-xs font-bold text-emerald-800">la más barata</span>
+                  )}
+                </span>
+              </div>
+            </Link>
+          </li>
+        );
+      })}
     </ul>
   );
 }
 
+// Tarjetas de paquetes con su portada, duración, si lleva vuelo y el precio desde.
 export function TarjetasPaquetes({ items }: { items: Circuito[] }) {
   return (
-    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((o) => (
         <li key={o.slug}>
-          <Link href={`/circuitos/${o.slug}`} className="block min-h-[56px] rounded-2xl border border-slate-200 px-5 py-4 hover:border-[#0a1628] transition-colors">
-            <span className="block font-extrabold text-[#0a1628]">{o.nombre}</span>
-            <span className="block text-[15px] text-slate-600 mt-0.5">
-              {o.dias} días · {o.tipo === "vuelo" ? `con vuelo desde ${o.origen}` : o.tipo === "crucero" ? "solo crucero" : "sin vuelo"} · desde{" "}
-              {formatoUSD(precioCityland(o))}
-            </span>
+          <Link
+            href={`/circuitos/${o.slug}`}
+            className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition-shadow hover:shadow-lg"
+          >
+            <div className="relative aspect-[16/10] bg-slate-100">
+              <Image
+                src={portadaDe(o)}
+                alt={`Paquete armado ${o.nombre}`}
+                fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <span className="absolute left-3 top-3 rounded-full bg-[#0a1628]/90 px-3 py-1 text-xs font-extrabold text-white">
+                {o.dias} días · {o.noches} noches
+              </span>
+            </div>
+            <div className="flex flex-1 flex-col gap-2 p-4">
+              <span className="font-extrabold leading-snug text-[#0a1628]">{o.nombre}</span>
+              <span className="text-sm text-slate-600">{o.ciudades.slice(0, 4).join(" · ")}</span>
+              <span
+                className={`self-start rounded-full px-2.5 py-0.5 text-xs font-bold ${o.tipo === "vuelo" ? "bg-emerald-50 text-emerald-800" : "bg-amber-50 text-amber-800"}`}
+              >
+                {o.tipo === "vuelo" ? `Con vuelo desde ${o.origen}` : o.tipo === "crucero" ? "Solo crucero" : "Sin vuelo"}
+              </span>
+              <span className="mt-auto flex items-end justify-between gap-2 pt-2">
+                <span className="text-sm text-slate-500">
+                  desde <strong className="block text-2xl text-[#0a1628]">{formatoUSD(precioCityland(o))}</strong>
+                </span>
+                <span className="rounded-xl bg-[#25D366] px-3 py-2 text-sm font-extrabold text-white">Ver paquete</span>
+              </span>
+            </div>
           </Link>
         </li>
       ))}

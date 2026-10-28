@@ -1,5 +1,5 @@
-import { circuitosVigentes, type Circuito } from "@/lib/circuitos";
-import { MESES, partesFecha, salidasVigentes, type Salida } from "@/lib/salidas";
+import { circuitosVigentes, precioCityland, type Circuito } from "@/lib/circuitos";
+import { MESES, partesFecha, precioSalida, salidasVigentes, type Salida } from "@/lib/salidas";
 import { DESTINOS_CARIBE, sinTildes, textoPrograma, type DestinoCaribe } from "@/lib/paquetes-armados/destinos-caribe";
 import { DESTINOS_MUNDO } from "@/lib/paquetes-armados/destinos-mundo";
 import { DESTINOS_CIUDADES } from "@/lib/paquetes-armados/destinos-ciudades";
@@ -43,9 +43,18 @@ function hoyLima(): string {
 }
 
 const NOMBRES_MES: [RegExp, number][] = [
-  [/\benero|\bene\b/, 1], [/\bfebrero|\bfeb\b/, 2], [/\bmarzo|\bmar\b/, 3], [/\babril|\babr\b/, 4], [/\bmayo\b|\bmay\b/, 5],
-  [/\bjunio|\bjun\b/, 6], [/\bjulio|\bjul\b/, 7], [/\bagosto|\bago\b/, 8], [/\bse(p|t)tiembre|\bsetiembre|\bsep\b|\bset\b/, 9],
-  [/\boctubre|\boct\b/, 10], [/\bnoviembre|\bnov\b/, 11], [/\bdiciembre|\bdic\b/, 12],
+  [/\benero|\bene\b/, 1],
+  [/\bfebrero|\bfeb\b/, 2],
+  [/\bmarzo|\bmar\b/, 3],
+  [/\babril|\babr\b/, 4],
+  [/\bmayo\b|\bmay\b/, 5],
+  [/\bjunio|\bjun\b/, 6],
+  [/\bjulio|\bjul\b/, 7],
+  [/\bagosto|\bago\b/, 8],
+  [/\bse(p|t)tiembre|\bsetiembre|\bsep\b|\bset\b/, 9],
+  [/\boctubre|\boct\b/, 10],
+  [/\bnoviembre|\bnov\b/, 11],
+  [/\bdiciembre|\bdic\b/, 12],
 ];
 
 // Meses (1-12) en que el programa tiene salida dentro de su vigencia.
@@ -81,7 +90,8 @@ export const ESTILOS: Estilo[] = [
     id: "todo-incluido",
     nombre: "todo incluido",
     titulo: (d) => `Paquete armado a ${d} todo incluido`,
-    intro: (d) => `Paquetes armados a ${d} con hotel todo incluido: comidas, snacks y bebidas (también con alcohol) dentro del resort, más el vuelo y los traslados.`,
+    intro: (d) =>
+      `Paquetes armados a ${d} con hotel todo incluido: comidas, snacks y bebidas (también con alcohol) dentro del resort, más el vuelo y los traslados.`,
     consejo: "En un todo incluido casi no gastas dentro del hotel: lleva dinero solo para tours opcionales, propinas y compras.",
     filtra: (c) => componentesDe(c).todoIncluido,
   },
@@ -125,7 +135,9 @@ export const ESTILOS: Estilo[] = [
     intro: (d) => `Aprovecha el feriado largo de Semana Santa (jueves 25 y viernes 26 de marzo de 2027) con un paquete armado a ${d}.`,
     consejo: "Semana Santa es temporada alta: los cupos se separan con meses de anticipación.",
     fechas: (s) => s.fecha >= "2027-03-18" && s.fecha <= "2027-03-28",
-    filtra: (c, s) => c.tipo === "vuelo" && (s.some((x) => x.mt === c.mt && x.fecha >= "2027-03-18" && x.fecha <= "2027-03-28") || (!s.some((x) => x.mt === c.mt) && enMes(s, c, 3))),
+    filtra: (c, s) =>
+      c.tipo === "vuelo" &&
+      (s.some((x) => x.mt === c.mt && x.fecha >= "2027-03-18" && x.fecha <= "2027-03-28") || (!s.some((x) => x.mt === c.mt) && enMes(s, c, 3))),
   },
   {
     id: "vacaciones-de-julio",
@@ -140,7 +152,8 @@ export const ESTILOS: Estilo[] = [
     id: "en-familia",
     nombre: "en familia",
     titulo: (d) => `Paquete armado a ${d} en familia`,
-    intro: (d) => `Paquetes armados a ${d} pensados para viajar con niños: resorts todo incluido con piscinas, actividades y, en algunos casos, hoteles temáticos como Nickelodeon.`,
+    intro: (d) =>
+      `Paquetes armados a ${d} pensados para viajar con niños: resorts todo incluido con piscinas, actividades y, en algunos casos, hoteles temáticos como Nickelodeon.`,
     consejo: "Los bebés de 0 a 1 año suelen pagar un porcentaje mínimo; los niños tienen tarifa propia según el hotel. Pídela al cotizar.",
     filtra: (c) => componentesDe(c).todoIncluido && c.tipo === "vuelo",
   },
@@ -156,7 +169,8 @@ export const ESTILOS: Estilo[] = [
     id: "con-guia-en-espanol",
     nombre: "con guía en español",
     titulo: (d) => `Paquete armado a ${d} con guía en español`,
-    intro: (d) => `Paquetes armados a ${d} con guía de habla hispana durante el recorrido: no necesitas hablar otro idioma para entender cada visita.`,
+    intro: (d) =>
+      `Paquetes armados a ${d} con guía de habla hispana durante el recorrido: no necesitas hablar otro idioma para entender cada visita.`,
     consejo: "Las propinas del guía y del chofer casi nunca están incluidas; revisa el «no incluye» para saber cuánto separar.",
     filtra: (c) => /gu[ií]a.{0,40}(habla hispana|espa[nñ]ol)|habla hispana/i.test(c.incluye.join(" ")),
   },
@@ -232,7 +246,17 @@ const MAX_SALIDAS = 24;
 
 // Viajes de fe o de recorrido largo por varios países: no se venden como luna de miel.
 const SIN_LUNA_DE_MIEL = new Set([
-  "tierra-santa", "centroamerica", "india", "petra", "wadi-rum", "mar-muerto", "amman", "delhi", "jaipur", "taj-mahal", "katmandu",
+  "tierra-santa",
+  "centroamerica",
+  "india",
+  "petra",
+  "wadi-rum",
+  "mar-muerto",
+  "amman",
+  "delhi",
+  "jaipur",
+  "taj-mahal",
+  "katmandu",
 ]);
 
 let cache: { dia: string; paginas: PaginaCaribe[] } | null = null;
@@ -305,7 +329,9 @@ export function paginasCaribe(): PaginaCaribe[] {
     }
     for (const [k, h] of hoteles) {
       const esBarco = d.id === "crucero-por-el-caribe";
-      const titulo = esBarco ? `Crucero por el Caribe en el ${h.nombre}: paquete armado` : `Paquete armado a ${d.nombre} con hotel ${h.nombre.replace(/^hotel\s+/i, "")}`;
+      const titulo = esBarco
+        ? `Crucero por el Caribe en el ${h.nombre}: paquete armado`
+        : `Paquete armado a ${d.nombre} con hotel ${h.nombre.replace(/^hotel\s+/i, "")}`;
       paginas.push({
         slug: `${d.id}-${esBarco ? "barco" : "hotel"}-${k}`,
         clase: "hotel",
@@ -328,4 +354,18 @@ export function paginasCaribe(): PaginaCaribe[] {
 
 export function buscarPaginaCaribe(slug: string): PaginaCaribe | undefined {
   return paginasCaribe().find((p) => p.slug === slug);
+}
+
+// «Desde» de una página: si el programa tiene salidas en la página (p. ej. las de ese mes), manda el precio de esas
+// fechas y no el del año. Si hay programas con vuelo, el «desde» es el de esos: un terrestre barato no se compara.
+export function desdePagina(p: PaginaCaribe, tipo: "auto" | "vuelo" | "sin-vuelo" = "auto"): number {
+  const conVuelo = p.programas.filter((c) => c.tipo === "vuelo");
+  const lista = tipo === "vuelo" ? conVuelo : tipo === "sin-vuelo" ? p.programas.filter((c) => c.tipo !== "vuelo") : conVuelo.length ? conVuelo : p.programas;
+  if (!lista.length) return 0;
+  return Math.min(
+    ...lista.map((c) => {
+      const propias = p.salidas.filter((s) => s.mt === c.mt);
+      return propias.length ? Math.min(...propias.map(precioSalida)) : precioCityland(c);
+    }),
+  );
 }

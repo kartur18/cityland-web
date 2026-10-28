@@ -1,4 +1,5 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
+import { redireccionOfertaVieja } from "@/lib/redirecciones-ofertas-viejas";
 import type { Metadata } from "next";
 import { robotsSegunRuta } from "@/lib/indexacion";
 import { tituloSeoUnico } from "@/lib/titulos-seo";
@@ -86,6 +87,9 @@ export default async function OfertaComercialPage({ params }: Props) {
   const item = buscarLandingComercial(slug);
 
   if (!item) {
+    // Variante vieja borrada en la limpieza: lleva a la página vigente de su destino (Google la tenía como 404).
+    const destino = redireccionOfertaVieja(slug);
+    if (destino) permanentRedirect(destino);
     notFound();
   }
 

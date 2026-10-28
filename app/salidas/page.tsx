@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { portadaDe } from "@/lib/paquetes-armados/fotos";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
@@ -35,8 +37,8 @@ export default function SalidasPage() {
             <SelloArmado texto={`${total} salidas con cupo`} />
             <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight">Paquetes armados con fecha de salida</h1>
             <p className="text-[17px] text-slate-700">
-              Viajes ya organizados con fecha fija: el vuelo, los hoteles y los traslados están reservados y solo eliges tu salida. Los cupos de
-              cada fecha son limitados.
+              Viajes ya organizados con fecha fija: el vuelo, los hoteles y los traslados están reservados y solo eliges tu salida. Los cupos de cada
+              fecha son limitados.
             </p>
           </header>
 
@@ -44,14 +46,27 @@ export default function SalidasPage() {
             {meses.map((m) => {
               const desde = Math.min(...m.salidas.map(precioSalida));
               const destinos = [...new Set(m.salidas.map((s) => s.circuito.paises[0]))];
+              const foto = portadaDe([...m.salidas].sort((a, b) => a.precio - b.precio)[0].circuito);
               return (
                 <li key={m.clave}>
-                  <Link href={`/salidas/${m.clave}`} className="block h-full rounded-2xl border border-slate-200 p-5 hover:border-[#0a1628] transition-colors">
-                    <span className="block text-xl font-extrabold capitalize text-[#0a1628]">{m.nombre}</span>
-                    <span className="block text-sm text-slate-600 mt-1">
+                  <Link
+                    href={`/salidas/${m.clave}`}
+                    className="group block h-full overflow-hidden rounded-2xl border border-slate-200 hover:shadow-lg transition-shadow"
+                  >
+                    <span className="relative block aspect-[16/9] bg-slate-100">
+                      <Image
+                        src={foto}
+                        alt={`Paquetes armados con salida en ${m.nombre}`}
+                        fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </span>
+                    <span className="block p-5 pb-0 text-xl font-extrabold capitalize text-[#0a1628]">{m.nombre}</span>
+                    <span className="block px-5 text-sm text-slate-600 mt-1">
                       {m.salidas.length} salidas · desde {formatoUSD(desde)}
                     </span>
-                    <span className="block text-sm text-slate-500 mt-2">{destinos.slice(0, 6).join(", ")}</span>
+                    <span className="block px-5 pb-5 text-sm text-slate-500 mt-2">{destinos.slice(0, 6).join(", ")}</span>
                   </Link>
                 </li>
               );
