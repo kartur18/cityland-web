@@ -138,7 +138,7 @@ export function TablaSalidas({ salidas, actual }: { salidas: Salida[]; actual?: 
                   alt={s.circuito.nombre}
                   fill
                   sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute left-3 top-3 rounded-xl bg-white px-3 py-1.5 text-center leading-none shadow-md">
                   <span className="block text-2xl font-extrabold text-[#0a1628]">{dia}</span>
@@ -188,7 +188,7 @@ export function TarjetasPaquetes({ items }: { items: Circuito[] }) {
                 alt={`Paquete armado ${o.nombre}`}
                 fill
                 sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
               />
               <span className="absolute left-3 top-3 rounded-full bg-[#0a1628]/90 px-3 py-1 text-xs font-extrabold text-white">
                 {o.dias} días · {o.noches} noches

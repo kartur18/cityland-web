@@ -96,7 +96,7 @@ export default function PaquetesArmadosPage() {
                       alt={`Paquetes armados a ${d.nombre}`}
                       fill
                       sizes="(min-width: 1024px) 25vw, 50vw"
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
                     />
                     <span className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
                     <span className="absolute bottom-3 left-3 right-3 text-white">
