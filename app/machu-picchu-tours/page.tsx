@@ -19,7 +19,15 @@ export const metadata: Metadata = {
   title: "Machu Picchu Tour Packages from Lima | Cityland Travel",
   description: DESCRIPCION,
   alternates: { canonical: `${URL_BASE_SEO}${RUTA}`, languages: { en: `${URL_BASE_SEO}${RUTA}`, "es-PE": `${URL_BASE_SEO}/destinos/cusco-magico` } },
-  openGraph: { type: "website", url: `${URL_BASE_SEO}${RUTA}`, title: "Machu Picchu Tour Packages from Lima", description: DESCRIPCION, siteName: "Cityland Travel", locale: "en_US" },
+  openGraph: {
+    type: "website",
+    url: `${URL_BASE_SEO}${RUTA}`,
+    title: "Machu Picchu Tour Packages from Lima",
+    description: DESCRIPCION,
+    siteName: "Cityland Travel",
+    locale: "en_US",
+    images: ["https://citylandtravel.com/opengraph-image"],
+  },
 };
 
 const PAQUETES = [
@@ -27,7 +35,8 @@ const PAQUETES = [
     titulo: "Cusco & Machu Picchu Classic",
     dias: "4 days / 3 nights",
     precio: 549,
-    detalle: "Flight Lima–Cusco–Lima, 3 nights in Cusco with breakfast, city tour, Sacred Valley, tourist train, bus up and guided visit to Machu Picchu.",
+    detalle:
+      "Flight Lima–Cusco–Lima, 3 nights in Cusco with breakfast, city tour, Sacred Valley, tourist train, bus up and guided visit to Machu Picchu.",
   },
   {
     titulo: "Machu Picchu, Rainbow Mountain & Humantay Lake",
@@ -102,8 +111,8 @@ export default function MachuPicchuToursPage() {
                 Machu Picchu Tour Packages from Lima
               </h1>
               <p className="text-base sm:text-lg text-slate-600">
-                Landing in Lima? We arrange your whole trip to Machu Picchu: flight to Cusco, hotel, Sacred Valley, train and entry
-                tickets, all booked together by a licensed Peruvian travel agency.
+                Landing in Lima? We arrange your whole trip to Machu Picchu: flight to Cusco, hotel, Sacred Valley, train and entry tickets, all
+                booked together by a licensed Peruvian travel agency.
               </p>
               <a
                 href={wa}
@@ -116,7 +125,14 @@ export default function MachuPicchuToursPage() {
               </a>
             </div>
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-100">
-              <Image src={foto} alt="Machu Picchu citadel, Cusco, Peru" fill sizes="(min-width: 768px) 40vw, 100vw" className="object-cover" priority />
+              <Image
+                src={foto}
+                alt="Machu Picchu citadel, Cusco, Peru"
+                fill
+                sizes="(min-width: 768px) 40vw, 100vw"
+                className="object-cover"
+                priority
+              />
             </div>
           </header>
 
@@ -134,7 +150,9 @@ export default function MachuPicchuToursPage() {
                 </li>
               ))}
             </ul>
-            <p className="text-xs text-slate-500">Per person in a double room, including the round-trip flight from Lima. Prices change with dates, hotel category and train service.</p>
+            <p className="text-xs text-slate-500">
+              Per person in a double room, including the round-trip flight from Lima. Prices change with dates, hotel category and train service.
+            </p>
           </section>
 
           <section className="rounded-2xl bg-sky-50 border border-sky-100 p-5 sm:p-6 space-y-2">

@@ -31,6 +31,7 @@ export const metadata: Metadata = {
       "Tarifas promocionales en dólares (impuestos y tasas según fecha y aerolínea) a Europa desde $699, Caribe, Sudamérica y Perú. Separa hoy con el 50%.",
     siteName: "Cityland Travel",
     locale: "es_PE",
+    images: ["https://citylandtravel.com/opengraph-image"],
   },
 };
 

@@ -22,14 +22,22 @@ export const metadata: Metadata = {
   title: "Circuitos y paquetes por el mundo desde Lima | Cityland",
   description: optimizarMetaDescriptionSEO(DESCRIPCION),
   alternates: { canonical: `${URL_BASE_SEO}${RUTA}` },
-  openGraph: { type: "website", url: `${URL_BASE_SEO}${RUTA}`, title: "Circuitos y paquetes por el mundo desde Lima", description: DESCRIPCION, siteName: "Cityland Travel", locale: "es_PE" },
+  openGraph: {
+    type: "website",
+    url: `${URL_BASE_SEO}${RUTA}`,
+    title: "Circuitos y paquetes por el mundo desde Lima",
+    description: DESCRIPCION,
+    siteName: "Cityland Travel",
+    locale: "es_PE",
+    images: ["https://citylandtravel.com/opengraph-image"],
+  },
 };
 
 // Vitrina de todos los circuitos vigentes, agrupados por región y ordenados por precio.
 export default function CircuitosPage() {
   const todos = circuitosVigentes();
   const grupos = REGIONES_CIRCUITOS.map((r) => ({ ...r, items: todos.filter((c) => c.region === r.id).sort((a, b) => a.desde - b.desde) })).filter(
-    (g) => g.items.length
+    (g) => g.items.length,
   );
   const wa = buildWaUrl({
     categoria: "general",
@@ -71,8 +79,8 @@ export default function CircuitosPage() {
               Circuitos y paquetes por el mundo desde Lima
             </h1>
             <p className="text-base sm:text-lg text-slate-600">
-              {todos.length} paquetes armados con salidas confirmadas: con vuelo desde Lima o solo terrestres para armar a tu medida.
-              El precio es por persona en habitación doble.
+              {todos.length} paquetes armados con salidas confirmadas: con vuelo desde Lima o solo terrestres para armar a tu medida. El precio es por
+              persona en habitación doble.
             </p>
             <p className="text-[15px] text-slate-700">
               <Link href="/salidas" className="font-bold text-[#0a1628] underline">
@@ -96,7 +104,10 @@ export default function CircuitosPage() {
 
           <section className="space-y-3">
             <h2 className="text-lg font-extrabold text-[#0a1628]">
-              Busca por destino o fecha · <Link href="/viajes-a" className="underline">o por ciudad</Link>
+              Busca por destino o fecha ·{" "}
+              <Link href="/viajes-a" className="underline">
+                o por ciudad
+              </Link>
             </h2>
             <div className="flex flex-wrap gap-2">
               {HUBS_CIRCUITOS.map((h) => (

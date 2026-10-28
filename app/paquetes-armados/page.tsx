@@ -6,9 +6,13 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import QueEsPaqueteArmado from "@/components/paquetes-armados/QueEsPaqueteArmado";
-import { Migas, SelloArmado } from "@/components/paquetes-armados/Bloques";
+import { Migas } from "@/components/paquetes-armados/Bloques";
+import { BarraConfianza, HeroVenta } from "@/components/paquetes-armados/Venta";
+import { buildWaUrl } from "@/components/constantes";
+import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
+import { absoluta } from "@/lib/paquetes-armados/fotos";
 import { formatoUSD } from "@/lib/formato-precio";
-import { precioCityland } from "@/lib/circuitos";
+import { circuitosVigentes, precioCityland } from "@/lib/circuitos";
 import { DESTINOS_CARIBE } from "@/lib/paquetes-armados/destinos-caribe";
 import { DESTINOS_MUNDO } from "@/lib/paquetes-armados/destinos-mundo";
 import { DESTINOS_CIUDADES } from "@/lib/paquetes-armados/destinos-ciudades";
@@ -19,13 +23,21 @@ import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
 export const revalidate = 86400;
 
 const URL = `${URL_BASE_SEO}/paquetes-armados`;
+const FOTO = obtenerGaleriaPorTexto("punta cana playa")[0];
 
 export const metadata: Metadata = {
   title: "Paquetes armados desde Lima: Caribe, Europa, Turquía y más | Cityland",
   description:
     "Paquetes armados a Punta Cana, Aruba, Cancún, Cartagena, Río, Europa, Turquía, Egipto, Japón y más: fecha fija, vuelo, hotel y traslados listos. Separa con el 50%.",
   alternates: { canonical: URL },
-  openGraph: { type: "website", url: URL, title: "Paquetes armados desde Lima", siteName: "Cityland Travel", locale: "es_PE" },
+  openGraph: {
+    type: "website",
+    url: URL,
+    title: "Paquetes armados desde Lima",
+    siteName: "Cityland Travel",
+    locale: "es_PE",
+    images: [absoluta(FOTO, URL_BASE_SEO)],
+  },
 };
 
 const ETIQUETA: Record<ClasePagina, string> = { mes: "Por mes", estilo: "Por tipo de viaje", hotel: "Por hotel" };
@@ -39,19 +51,39 @@ export default function PaquetesArmadosPage() {
   const destinos = [...DESTINOS_CARIBE, ...DESTINOS_MUNDO]
     .map((d) => ({ d, ps: paginas.filter((p) => p.destino.id === d.id) }))
     .filter((x) => x.ps.length);
+  const desde = Math.min(
+    ...circuitosVigentes()
+      .filter((c) => c.tipo === "vuelo")
+      .map(precioCityland),
+  );
+  const wa = buildWaUrl({
+    categoria: "general",
+    mensajePersonalizado: "¡Hola Cityland Travel! Quiero un paquete armado con fecha fija. ¿Qué salidas tienen con cupo?",
+    refWeb: "citylandtravel.com/paquetes-armados",
+  });
   return (
     <>
       <Navbar />
-      <main id="main-content" className="bg-white pt-24 sm:pt-28 pb-16">
+      <main id="main-content" className="bg-slate-50/60 pt-24 sm:pt-28 pb-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-10">
-          <header className="space-y-4">
+          <div className="space-y-3">
             <Migas items={[{ nombre: "Inicio", href: "/" }, { nombre: "Paquetes armados" }]} />
-            <SelloArmado texto="Caribe, Europa, Asia y más" />
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight">Paquetes armados desde Lima</h1>
-            <p className="text-[17px] text-slate-700">
-              Viajes ya organizados: fecha fija, vuelo, hotel y traslados reservados. Elige el destino y luego el mes, el tipo de viaje o el hotel.
-            </p>
-          </header>
+            <HeroVenta
+              foto={FOTO}
+              alt="Paquetes armados desde Lima"
+              sello="Caribe, Europa, Asia y más"
+              titulo="Paquetes armados desde Lima"
+              bajada="Viajes ya organizados: fecha fija, vuelo, hotel y traslados reservados. Elige el destino y luego el mes, el tipo de viaje o el hotel."
+              chips={["Fecha fija", "Vuelo + hotel + traslados", `${destinos.length} destinos`]}
+              etiquetaPrecio="Con vuelo desde Lima, por persona"
+              precio={desde}
+              detallePrecio={`${destinos.length} destinos y ${ciudades.length} ciudades para elegir`}
+              wa={wa}
+              boton="Ver salidas con cupo"
+            />
+          </div>
+
+          <BarraConfianza />
 
           <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
             {destinos.map(({ d, ps }) => {
@@ -153,7 +185,7 @@ export default function PaquetesArmadosPage() {
         </div>
       </main>
       <Footer />
-      <WhatsAppFloat />
+      <WhatsAppFloat href={wa} />
     </>
   );
 }

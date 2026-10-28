@@ -27,6 +27,7 @@ export const metadata: Metadata = {
       "Programas grupales y familiares de 15 años con vuelos desde Lima, parques Disney, cruceros Todo Incluido y circuitos por Europa.",
     siteName: "Cityland Travel",
     locale: "es_PE",
+    images: ["https://citylandtravel.com/opengraph-image"],
   },
 };
 

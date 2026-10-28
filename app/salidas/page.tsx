@@ -6,7 +6,11 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import QueEsPaqueteArmado from "@/components/paquetes-armados/QueEsPaqueteArmado";
-import { Migas, SelloArmado } from "@/components/paquetes-armados/Bloques";
+import { Migas } from "@/components/paquetes-armados/Bloques";
+import { BarraConfianza, HeroVenta } from "@/components/paquetes-armados/Venta";
+import { buildWaUrl } from "@/components/constantes";
+import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
+import { absoluta } from "@/lib/paquetes-armados/fotos";
 import { formatoUSD } from "@/lib/formato-precio";
 import { mesesConSalidas, precioSalida, salidasVigentes } from "@/lib/salidas";
 import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
@@ -20,27 +24,52 @@ export const metadata: Metadata = {
   description:
     "Calendario de paquetes armados con fecha fija y cupo confirmado: Europa, Turquía, Egipto, Asia, Caribe y Sudamérica con vuelo desde Lima. Elige tu mes y separa con el 50%.",
   alternates: { canonical: URL },
-  openGraph: { type: "website", url: URL, title: "Paquetes armados con fecha de salida", siteName: "Cityland Travel", locale: "es_PE" },
+  openGraph: {
+    type: "website",
+    url: URL,
+    title: "Paquetes armados con fecha de salida",
+    siteName: "Cityland Travel",
+    locale: "es_PE",
+    images: [absoluta(obtenerGaleriaPorTexto("estambul turquia")[0], URL_BASE_SEO)],
+  },
 };
 
 // Calendario de todas las salidas con cupo bloqueado, por mes.
 export default function SalidasPage() {
   const meses = mesesConSalidas();
-  const total = salidasVigentes().length;
+  const todas = salidasVigentes();
+  const total = todas.length;
+  const barata = todas.reduce((x, y) => (precioSalida(y) < precioSalida(x) ? y : x));
+  const proxima = [...todas].sort((a, b) => a.fecha.localeCompare(b.fecha))[0];
+  const wa = buildWaUrl({
+    categoria: "general",
+    mensajePersonalizado: "¡Hola Cityland Travel! Quiero un paquete armado con fecha fija. ¿Qué salidas tienen con cupo?",
+    refWeb: "citylandtravel.com/salidas",
+  });
   return (
     <>
       <Navbar />
-      <main id="main-content" className="bg-white pt-24 sm:pt-28 pb-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-10">
-          <header className="space-y-4">
+      <main id="main-content" className="bg-slate-50/60 pt-24 sm:pt-28 pb-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-10">
+          <div className="space-y-3">
             <Migas items={[{ nombre: "Inicio", href: "/" }, { nombre: "Salidas con fecha" }]} />
-            <SelloArmado texto={`${total} salidas con cupo`} />
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight">Paquetes armados con fecha de salida</h1>
-            <p className="text-[17px] text-slate-700">
-              Viajes ya organizados con fecha fija: el vuelo, los hoteles y los traslados están reservados y solo eliges tu salida. Los cupos de cada
-              fecha son limitados.
-            </p>
-          </header>
+            <HeroVenta
+              foto={portadaDe(proxima.circuito)}
+              alt="Paquetes armados con fecha de salida"
+              sello={`${total} salidas con cupo`}
+              titulo="Paquetes armados con fecha de salida"
+              bajada="Viajes ya organizados con fecha fija: el vuelo, los hoteles y los traslados están reservados y solo eliges tu salida. Los cupos de cada fecha son limitados."
+              chips={["Fecha fija", "Cupo bloqueado", `${meses.length} meses`]}
+              etiquetaPrecio="La salida más barata, por persona"
+              precio={precioSalida(barata)}
+              detallePrecio={`${barata.circuito.nombre}, ${barata.circuito.dias} días`}
+              proxima={proxima}
+              wa={wa}
+              boton="Consultar cupos"
+            />
+          </div>
+
+          <BarraConfianza />
 
           <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {meses.map((m) => {
@@ -88,7 +117,7 @@ export default function SalidasPage() {
         </div>
       </main>
       <Footer />
-      <WhatsAppFloat />
+      <WhatsAppFloat href={wa} />
     </>
   );
 }
