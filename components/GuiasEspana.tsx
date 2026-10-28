@@ -4,6 +4,14 @@ import Link from "next/link";
 // les pasa fuerza en Google y lleva al lector del dato a la cotización.
 export const GUIAS_ESPANA = [
   { href: "/pasajes-a-espana", texto: "Pasajes a España: todas las rutas" },
+  { href: "/espana/pasajes-a-madrid-desde-provincias", texto: "Pasajes a Madrid desde provincias" },
+  { href: "/espana/pasajes-baratos-lima-madrid", texto: "Pasajes baratos Lima–Madrid" },
+  { href: "/espana/viajar-a-espana-a-visitar-familia", texto: "Viajar a visitar a tu familia" },
+  { href: "/espana/viajar-a-espana-con-ninos", texto: "Pasajes para viajar con niños" },
+  { href: "/espana/viajar-a-espana-adultos-mayores", texto: "Viajes para adultos mayores" },
+  { href: "/espana/primer-viaje-a-espana", texto: "Primer viaje: te acompañamos" },
+  { href: "/espana/pasajes-para-estudiantes-a-espana", texto: "Pasajes para estudiantes" },
+  { href: "/espana/pasaje-reagrupacion-familiar-espana", texto: "Pasaje para reagrupación familiar" },
   { href: "/paquetes-a-espana", texto: "Paquetes turísticos a España" },
   { href: "/retorno-gestionado-que-es", texto: "Qué es el retorno gestionado" },
   { href: "/pasaje-ida-y-vuelta-a-espana", texto: "Pasaje ida y vuelta" },
