@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { Migas } from "@/components/paquetes-armados/Bloques";
 import { BarraConfianza, CtaFinal, HeroVenta, PasosSeparar, proximaSalida } from "@/components/paquetes-armados/Venta";
-import { portadaDe } from "@/lib/paquetes-armados/fotos";
+import { fotoDe } from "@/lib/paquetes-armados/fotos";
 import { salidasDe } from "@/lib/salidas";
 import PorQueCityland from "@/components/PorQueCityland";
 import TarjetaCircuito from "@/components/TarjetaCircuito";
@@ -102,7 +102,7 @@ export default function CircuitosHubPagina({ hub: h }: { hub: HubCircuitos }) {
             <Migas items={[{ nombre: "Inicio", href: "/" }, { nombre: "Circuitos", href: "/circuitos" }, { nombre: h.nombre }]} />
             {items.length > 0 ? (
               <HeroVenta
-                foto={portadaDe(items[0])}
+                foto={fotoDe(items[0])}
                 alt={h.h1}
                 sello={`${items.length} programas con salida confirmada`}
                 titulo={h.h1}

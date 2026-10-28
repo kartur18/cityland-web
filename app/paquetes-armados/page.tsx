@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { portadaDe } from "@/lib/paquetes-armados/fotos";
+import { fotoDe } from "@/lib/paquetes-armados/fotos";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
@@ -92,11 +92,11 @@ export default function PaquetesArmadosPage() {
                 <li key={d.id}>
                   <a href={`#${d.id}`} className="group relative block aspect-[4/3] overflow-hidden rounded-2xl bg-slate-200">
                     <Image
-                      src={portadaDe(progs[0])}
+                      src={fotoDe(progs[0])}
                       alt={`Paquetes armados a ${d.nombre}`}
                       fill
                       sizes="(min-width: 1024px) 25vw, 50vw"
-                      className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                     <span className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
                     <span className="absolute bottom-3 left-3 right-3 text-white">
