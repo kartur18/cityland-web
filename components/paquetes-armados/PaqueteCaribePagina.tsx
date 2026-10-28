@@ -44,7 +44,12 @@ export function metadataCaribe(p: PaginaCaribe): Metadata {
       siteName: "Cityland Travel",
       locale: "es_PE",
       images: [
-        absoluta(obtenerGaleriaPorTexto(`${p.destino.nombre} ${p.destino.pais}`)[0] ?? fotosPara(p.programas, p.destino.nombre)[0], URL_BASE_SEO),
+        absoluta(
+          p.destino.id === "crucero-por-el-caribe"
+            ? fotosPara(p.programas, p.destino.nombre)[0]
+            : (obtenerGaleriaPorTexto(`${p.destino.nombre} ${p.destino.pais}`)[0] ?? fotosPara(p.programas, p.destino.nombre)[0]),
+          URL_BASE_SEO,
+        ),
       ],
     },
   };
@@ -57,6 +62,8 @@ export default function PaqueteCaribePagina({ pagina: p }: { pagina: PaginaCarib
   const desde = desdeDe(p);
   const zona = zonaClima(d.zona);
   const esPlaya = DESTINOS_CARIBE.some((x) => x.id === d.id);
+  // En los cruceros la portada es el barco del mayorista, no una playa del destino.
+  const esCrucero = d.id === "crucero-por-el-caribe";
   const fotos = fotosPara(p.programas, `${d.nombre} ${d.pais}${esPlaya ? " playa" : ""}`);
   const video = primerVideo(p.programas);
   const k = p.programas.map(componentesDe);
@@ -159,7 +166,7 @@ export default function PaqueteCaribePagina({ pagina: p }: { pagina: PaginaCarib
           <div className="space-y-3">
             <Migas items={[{ nombre: "Inicio", href: "/" }, { nombre: "Paquetes armados", href: "/paquetes-armados" }, { nombre: d.nombre }]} />
             <HeroVenta
-              foto={obtenerGaleriaPorTexto(`${d.nombre} ${d.pais}${esPlaya ? " playa" : ""}`)[0] ?? fotos[0]}
+              foto={esCrucero ? fotos[0] : (obtenerGaleriaPorTexto(`${d.nombre} ${d.pais}${esPlaya ? " playa" : ""}`)[0] ?? fotos[0])}
               alt={p.h1}
               sello={`Fecha fija · ${conVuelo ? "vuelo + hotel + traslados" : "hotel + traslados"}`}
               titulo={p.h1}
