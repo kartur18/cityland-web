@@ -91,6 +91,7 @@ export const SERVICIOS: Readonly<Record<string, ServicioCityland>> = {
     ],
     ejemplosTitulo: "Tours que más nos piden",
     ejemplos: [
+      { texto: "Tours en Europa, el Caribe y Sudamérica", href: "/tours-y-actividades" },
       { texto: "Cusco y Machu Picchu en 4 días", href: "/destinos/cusco-machu-picchu-4-dias" },
       { texto: "Cusco, Montaña de 7 Colores y Humantay", href: "/destinos/cusco-montana-7-colores-humantay-5-dias" },
       { texto: "Arequipa y el Colca", href: "/destinos/arequipa-colca" },
