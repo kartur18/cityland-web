@@ -1,6 +1,7 @@
 import { circuitosVigentes, type Circuito } from "@/lib/circuitos";
 import { MESES, partesFecha, salidasVigentes, type Salida } from "@/lib/salidas";
 import { DESTINOS_CARIBE, sinTildes, textoPrograma, type DestinoCaribe } from "@/lib/paquetes-armados/destinos-caribe";
+import { DESTINOS_MUNDO } from "@/lib/paquetes-armados/destinos-mundo";
 import { componentesDe } from "@/lib/paquetes-armados/comun";
 
 // Páginas de paquetes armados a la playa: por mes, por estilo de viaje y por hotel. Solo existe una página si hay al
@@ -31,6 +32,8 @@ export interface Estilo {
   intro: (d: string) => string;
   consejo: string;
   filtra: (c: Circuito, salidas: Salida[]) => boolean;
+  // Para estilos atados a una fecha (Año Nuevo, Semana Santa, julio): solo se muestran esas salidas.
+  fechas?: (s: Salida) => boolean;
 }
 
 function hoyLima(): string {
@@ -110,6 +113,7 @@ export const ESTILOS: Estilo[] = [
     titulo: (d) => `Paquete armado a ${d} para Año Nuevo`,
     intro: (d) => `Recibe el Año Nuevo en ${d} con un paquete armado: fecha fija alrededor del 31 de diciembre, vuelo, hotel y traslados listos.`,
     consejo: "La cena especial de Año Nuevo casi nunca está incluida: pregunta por ella al separar tu cupo. Es la fecha que se agota primero.",
+    fechas: (s) => /-12-(2[0-9]|3[01])$/.test(s.fecha),
     filtra: (c, s) => /ano nuevo/.test(sinTildes(c.nombre)) || s.some((x) => x.mt === c.mt && /-12-(2[6-9]|3[01])$/.test(x.fecha)),
   },
   {
@@ -118,6 +122,7 @@ export const ESTILOS: Estilo[] = [
     titulo: (d) => `Paquete armado a ${d} en Semana Santa 2027`,
     intro: (d) => `Aprovecha el feriado largo de Semana Santa (jueves 25 y viernes 26 de marzo de 2027) con un paquete armado a ${d}.`,
     consejo: "Semana Santa es temporada alta: los cupos se separan con meses de anticipación.",
+    fechas: (s) => s.fecha >= "2027-03-18" && s.fecha <= "2027-03-28",
     filtra: (c, s) => c.tipo === "vuelo" && (s.some((x) => x.mt === c.mt && x.fecha >= "2027-03-18" && x.fecha <= "2027-03-28") || (!s.some((x) => x.mt === c.mt) && enMes(s, c, 3))),
   },
   {
@@ -126,6 +131,7 @@ export const ESTILOS: Estilo[] = [
     titulo: (d) => `Paquete armado a ${d} en vacaciones de julio`,
     intro: (d) => `Paquetes armados a ${d} con salida en julio, para aprovechar Fiestas Patrias y las vacaciones de medio año de los chicos.`,
     consejo: "Julio es temporada alta en el Perú: separa con tiempo, sobre todo si viajas en familia.",
+    fechas: (s) => partesFecha(s.fecha).mes === 7,
     filtra: (c, s) => enMes(s, c, 7),
   },
   {
@@ -143,6 +149,14 @@ export const ESTILOS: Estilo[] = [
     intro: (d) => `Paquetes armados a ${d} para tu luna de miel: vuelo, hotel frente al mar y traslados listos para que solo disfruten.`,
     consejo: "Avisa que es tu luna de miel al reservar: muchos hoteles dan un detalle de bienvenida a los recién casados.",
     filtra: (c) => c.tipo === "vuelo" && !/ano nuevo/.test(sinTildes(c.nombre)),
+  },
+  {
+    id: "con-guia-en-espanol",
+    nombre: "con guía en español",
+    titulo: (d) => `Paquete armado a ${d} con guía en español`,
+    intro: (d) => `Paquetes armados a ${d} con guía de habla hispana durante el recorrido: no necesitas hablar otro idioma para entender cada visita.`,
+    consejo: "Las propinas del guía y del chofer casi nunca están incluidas; revisa el «no incluye» para saber cuánto separar.",
+    filtra: (c) => /gu[ií]a.{0,40}(habla hispana|espa[nñ]ol)|habla hispana/i.test(c.incluye.join(" ")),
   },
   {
     id: "sin-vuelo",
@@ -211,6 +225,12 @@ const CIUDAD_HOTEL: Record<string, RegExp> = {
   "crucero-por-el-caribe": /^crucero$/,
 };
 
+// Una tabla de más de 24 fechas ya no se lee; el resto está en el calendario de /salidas.
+const MAX_SALIDAS = 24;
+
+// Viajes de fe o de recorrido largo por varios países: no se venden como luna de miel.
+const SIN_LUNA_DE_MIEL = new Set(["tierra-santa", "centroamerica", "india"]);
+
 let cache: { dia: string; paginas: PaginaCaribe[] } | null = null;
 
 export function paginasCaribe(): PaginaCaribe[] {
@@ -219,7 +239,7 @@ export function paginasCaribe(): PaginaCaribe[] {
   const todos = circuitosVigentes();
   const salidas = salidasVigentes();
   const paginas: PaginaCaribe[] = [];
-  for (const d of DESTINOS_CARIBE) {
+  for (const d of [...DESTINOS_CARIBE, ...DESTINOS_MUNDO]) {
     const progs = todos.filter((c) => d.pertenece(c, textoPrograma(c))).sort((a, b) => a.desde - b.desde);
     if (!progs.length) continue;
     const salidasDe = (ps: Circuito[]) => salidas.filter((s) => ps.some((p) => p.mt === s.mt));
@@ -243,7 +263,7 @@ export function paginasCaribe(): PaginaCaribe[] {
     for (const e of ESTILOS) {
       const ps = progs.filter((c) => e.filtra(c, salidas));
       // «Barato» solo tiene sentido si hay con qué comparar.
-      if (!ps.length || (e.id === "barato" && progs.length < 3)) continue;
+      if (!ps.length || (e.id === "barato" && progs.length < 3) || (e.id === "luna-de-miel" && SIN_LUNA_DE_MIEL.has(d.id))) continue;
       paginas.push({
         slug: e.id === "luna-de-miel" ? `luna-de-miel-en-${d.id}` : `${d.id}-${e.id}`,
         clase: "estilo",
@@ -253,7 +273,11 @@ export function paginasCaribe(): PaginaCaribe[] {
         h1: e.titulo(d.nombre).replace("Paquete armado", "Paquetes armados"),
         intro: e.intro(d.nombre),
         programas: e.id === "barato" ? ps.slice(0, 8) : ps,
-        salidas: salidasDe(ps),
+        salidas: e.fechas
+          ? salidasDe(ps).filter(e.fechas)
+          : e.id === "barato"
+            ? [...salidasDe(ps)].sort((a, b) => a.precio - b.precio).slice(0, MAX_SALIDAS)
+            : salidasDe(ps).slice(0, MAX_SALIDAS),
         estilo: e,
       });
     }

@@ -47,7 +47,7 @@ export default function EnlacesCaribe({ actual }: { actual: PaginaCaribe }) {
         </p>
       )}
       <div className="space-y-2">
-        <h3 className="text-sm font-extrabold uppercase tracking-wide text-slate-500">Otros destinos de playa</h3>
+        <h3 className="text-sm font-extrabold uppercase tracking-wide text-slate-500">Otros destinos con paquetes armados</h3>
         <ul className="flex flex-wrap gap-2">
           {otros.map((p) => (
             <Chip key={p.destino.id} href={`/paquetes-armados#${p.destino.id}`} texto={p.destino.nombre.charAt(0).toUpperCase() + p.destino.nombre.slice(1)} />
