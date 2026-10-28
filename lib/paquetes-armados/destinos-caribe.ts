@@ -12,6 +12,10 @@ export interface DestinoCaribe {
   hub?: string;
   // Guía de requisitos para peruanos que ya existe en la web.
   requisitos?: string;
+  // Mínimo de programas para publicar el destino (ciudades: 3, como su portada de /viajes-a).
+  minimoProgramas?: number;
+  // Solo estos estilos (las combinaciones de países no llevan «en familia» ni hoteles).
+  soloEstilos?: string[];
   intro: string;
   imperdibles: string[];
   moneda: string;

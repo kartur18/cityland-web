@@ -12,6 +12,7 @@ import { circuitosVigentes, precioCityland } from "@/lib/circuitos";
 import { HUBS_CIRCUITOS, type HubCircuitos } from "@/lib/hubs-circuitos";
 import { URL_BASE_SEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
+import { paginasCaribe } from "@/lib/paquetes-armados/paginas-caribe";
 
 export function metadataHubCircuitos(h: HubCircuitos): Metadata {
   const url = `${URL_BASE_SEO}${h.ruta}`;
@@ -34,6 +35,8 @@ export default function CircuitosHubPagina({ hub: h }: { hub: HubCircuitos }) {
   // El «desde» de cabecera es el de un programa con vuelo: el terrestre más barato atraía consultas que no cierran.
   const desde = conVuelo.length ? precioCityland(conVuelo[0]) : 0;
   const desdeTerrestre = terrestres.length ? precioCityland(terrestres[0]) : 0;
+  // Páginas de paquetes armados cuyo destino tiene esta página como portada (ciudad o país).
+  const armados = paginasCaribe().filter((p) => p.destino.hub === h.ruta && p.clase !== "hotel");
   const wa = buildWaUrl({ categoria: "general", mensajePersonalizado: h.mensajeWhatsApp, refWeb: `citylandtravel.com${h.ruta}` });
   const faqs = [
     {
@@ -127,6 +130,24 @@ export default function CircuitosHubPagina({ hub: h }: { hub: HubCircuitos }) {
             </section>
           ))}
           <p className="text-xs text-slate-500">Precios referenciales por persona en habitación doble; cambian según la fecha, el hotel y la disponibilidad.</p>
+
+          {armados.length > 0 && (
+            <section className="space-y-3">
+              <h2 className="text-xl font-extrabold text-[#0a1628]">Paquetes armados a {h.nombre} por mes y tipo de viaje</h2>
+              <ul className="flex flex-wrap gap-2">
+                {armados.map((p) => (
+                  <li key={p.slug}>
+                    <Link
+                      href={`/paquetes-armados/${p.slug}`}
+                      className="inline-flex items-center min-h-[44px] px-4 rounded-full border border-slate-200 hover:border-[#0a1628] text-sm font-bold text-[#0a1628]"
+                    >
+                      {p.clave.charAt(0).toUpperCase() + p.clave.slice(1)}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
 
           <section className="space-y-4">
             <h2 className="text-2xl font-extrabold text-[#0a1628]">Preguntas frecuentes</h2>
