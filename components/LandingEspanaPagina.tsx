@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Fragment as Fragmento, type ReactNode } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -6,12 +7,14 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import PorQueCityland from "@/components/PorQueCityland";
 import { Migas } from "@/components/paquetes-armados/Bloques";
 import { BarraConfianza, HeroVenta, PasosSeparar } from "@/components/paquetes-armados/Venta";
-import { Atajos, CierreUrgencia, PreguntaFaq, TarjetaPregunta, waEspana } from "@/components/landing-espana/CtasWhatsApp";
+import { Atajos, CierreUrgencia, CtaMedio, PreguntaFaq, TarjetaPregunta, waEspana } from "@/components/landing-espana/CtasWhatsApp";
+import CalendarioSoloIda from "@/components/landing-espana/CalendarioSoloIda";
 import { Lista, Puntos, Tabla } from "@/components/landing-espana/Bloques";
 import { formatoUSD } from "@/lib/formato-precio";
 import { absoluta } from "@/lib/paquetes-armados/fotos";
 import { tituloSeo } from "@/lib/paquetes-armados/comun";
 import { LANDINGS_ESPANA, rutaLandingEspana, type LandingEspana } from "@/lib/landings-espana";
+import type { TemaEspana } from "@/lib/landings-espana-tipos";
 import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
 
@@ -46,10 +49,29 @@ export function metadataLandingEspana(l: LandingEspana): Metadata {
       description: l.descripcion,
       siteName: "Cityland Travel",
       locale: "es_PE",
-      images: [absoluta(l.foto, URL_BASE_SEO)],
+      images: [absoluta(l.ogImagen ?? l.foto, URL_BASE_SEO)],
     },
   };
 }
+
+function migasDe(l: LandingEspana): { nombre: string; href?: string }[] {
+  return [{ nombre: "Inicio", href: "/" }, { nombre: "España", href: "/espana" }, ...(l.seccion ? [l.seccion] : []), { nombre: l.migas }];
+}
+
+const esSoloIda = (l: LandingEspana) => Boolean(l.tema?.startsWith("solo"));
+
+// Orden de los bloques del medio según la familia: así cada grupo se ve y se lee distinto.
+type Bloque = "atajos" | "puntos" | "tabla" | "calendario" | "pregunta" | "lista" | "medio" | "aviso";
+const ORDEN_COMUN: Bloque[] = ["puntos", "tabla", "pregunta", "lista", "atajos", "aviso"];
+const ORDEN: Partial<Record<TemaEspana, Bloque[]>> = {
+  provincia: ["atajos", "puntos", "tabla", "pregunta", "lista", "aviso"],
+  soloPerfil: ["lista", "calendario", "puntos", "medio", "tabla", "pregunta", "aviso"],
+  soloMes: ["calendario", "puntos", "medio", "tabla", "lista", "pregunta", "aviso"],
+  soloOrigen: ["tabla", "calendario", "puntos", "medio", "lista", "pregunta", "aviso"],
+  soloDestino: ["puntos", "calendario", "tabla", "medio", "lista", "pregunta", "aviso"],
+  soloAerolinea: ["tabla", "puntos", "calendario", "medio", "lista", "pregunta", "aviso"],
+  soloGuia: ["puntos", "lista", "medio", "tabla", "calendario", "pregunta", "aviso"],
+};
 
 function esquema(l: LandingEspana, url: string) {
   return {
@@ -57,11 +79,12 @@ function esquema(l: LandingEspana, url: string) {
     "@graph": [
       {
         "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Inicio", item: URL_BASE_SEO },
-          { "@type": "ListItem", position: 2, name: "España", item: `${URL_BASE_SEO}/espana` },
-          { "@type": "ListItem", position: 3, name: l.migas, item: url },
-        ],
+        itemListElement: migasDe(l).map((m, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: m.nombre,
+          item: m.href ? `${URL_BASE_SEO}${m.href === "/" ? "" : m.href}` : url,
+        })),
       },
       {
         "@type": "FAQPage",
@@ -90,12 +113,30 @@ const URGENCIA = "Las tarifas más baratas de cada vuelo se venden primero. Mien
 
 const CHIP = "inline-flex items-center min-h-[44px] px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-sm font-bold text-[#0a1628]";
 
-export default function LandingEspanaPagina({ landing: l }: { landing: LandingEspana }) {
+export default function LandingEspanaPagina({ landing: l, hermanas = LANDINGS_ESPANA }: { landing: LandingEspana; hermanas?: readonly LandingEspana[] }) {
   const ruta = rutaLandingEspana(l);
   const url = `${URL_BASE_SEO}${ruta}`;
   const wa = waEspana(ruta, l.mensaje, "Precio");
   // Primero las del mismo grupo, para que cada página enlace a sus hermanas.
-  const otras = [...LANDINGS_ESPANA.filter((x) => x.slug !== l.slug && x.tema === l.tema), ...LANDINGS_ESPANA.filter((x) => x.tema !== l.tema)];
+  const otras = [...hermanas.filter((x) => x.slug !== l.slug && x.tema === l.tema), ...hermanas.filter((x) => x.tema !== l.tema)];
+  const bloques: Record<Bloque, ReactNode> = {
+    atajos: l.atajos && <Atajos ruta={ruta} titulo={l.atajosTitulo ?? "Escríbenos directo"} atajos={l.atajos} />,
+    puntos: <Puntos l={l} />,
+    tabla: <Tabla l={l} />,
+    calendario: l.calendario && <CalendarioSoloIda ruta={ruta} c={l.calendario} destacado={l.mesDestacado} />,
+    pregunta: l.pregunta && <TarjetaPregunta ruta={ruta} pregunta={l.pregunta} />,
+    lista: <Lista l={l} />,
+    medio: l.ctaMedio && <CtaMedio ruta={ruta} {...l.ctaMedio} />,
+    aviso: l.aviso && (
+      <section className="rounded-2xl border border-amber-200 bg-amber-50 p-5 sm:p-6 space-y-2">
+        <h2 className="text-lg font-extrabold text-[#0a1628]">{l.aviso.titulo}</h2>
+        <p className="text-base text-slate-700">{l.aviso.texto}</p>
+      </section>
+    ),
+  };
+  // Las que no fijan su orden ponen los atajos al final; las de solo ida los suman tras la lista.
+  const orden = ORDEN[l.tema ?? "perfil"] ?? ORDEN_COMUN;
+  const ordenFinal = orden.includes("atajos") ? orden : [...orden, "atajos" as const];
 
   return (
     <>
@@ -104,11 +145,11 @@ export default function LandingEspanaPagina({ landing: l }: { landing: LandingEs
       <main id="main-content" className="bg-white pt-24 sm:pt-28 pb-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-12 sm:space-y-16">
           <div className="space-y-3">
-            <Migas items={[{ nombre: "Inicio", href: "/" }, { nombre: "España", href: "/espana" }, { nombre: l.migas }]} />
+            <Migas items={migasDe(l)} />
             <HeroVenta
               foto={l.foto}
               alt={l.fotoAlt ?? l.h1}
-              marca="Pasajes"
+              marca={esSoloIda(l) ? "Solo ida" : "Pasajes"}
               sello={l.sello}
               titulo={l.h1}
               bajada={l.bajada}
@@ -125,24 +166,9 @@ export default function LandingEspanaPagina({ landing: l }: { landing: LandingEs
 
           <BarraConfianza items={CONFIANZA_PASAJES} />
 
-          {l.atajos && l.tema === "provincia" && <Atajos ruta={ruta} titulo={l.atajosTitulo ?? "Escríbenos directo"} atajos={l.atajos} />}
-
-          <Puntos l={l} />
-
-          <Tabla l={l} />
-
-          {l.pregunta && <TarjetaPregunta ruta={ruta} pregunta={l.pregunta} />}
-
-          <Lista l={l} />
-
-          {l.atajos && l.tema !== "provincia" && <Atajos ruta={ruta} titulo={l.atajosTitulo ?? "Escríbenos directo"} atajos={l.atajos} />}
-
-          {l.aviso && (
-            <section className="rounded-2xl border border-amber-200 bg-amber-50 p-5 sm:p-6 space-y-2">
-              <h2 className="text-lg font-extrabold text-[#0a1628]">{l.aviso.titulo}</h2>
-              <p className="text-base text-slate-700">{l.aviso.texto}</p>
-            </section>
-          )}
+          {ordenFinal.map((b) => (
+            <Fragmento key={b}>{bloques[b]}</Fragmento>
+          ))}
 
           <PasosSeparar pasos={PASOS_PASAJE} />
 
@@ -181,9 +207,15 @@ export default function LandingEspanaPagina({ landing: l }: { landing: LandingEs
               <Link href="/pasajes-a-espana" className={CHIP}>
                 Pasajes a España
               </Link>
-              <Link href="/espana" className={CHIP}>
-                Paquete migratorio a España
-              </Link>
+              {esSoloIda(l) ? (
+                <Link href="/espana/solo-ida" className={CHIP}>
+                  Solo ida a España
+                </Link>
+              ) : (
+                <Link href="/espana" className={CHIP}>
+                  Paquete migratorio a España
+                </Link>
+              )}
             </div>
             <div className="flex flex-wrap gap-2.5">
               {otras.map((x) => (

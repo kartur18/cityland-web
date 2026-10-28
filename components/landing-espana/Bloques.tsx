@@ -6,6 +6,12 @@ const TEMAS: Record<TemaEspana, { caja: string; numero: string; borde: string }>
   provincia: { caja: "bg-sky-50/70 border-sky-100", numero: "bg-sky-600", borde: "border-sky-200" },
   perfil: { caja: "bg-emerald-50/60 border-emerald-100", numero: "bg-emerald-600", borde: "border-emerald-200" },
   guia: { caja: "bg-violet-50/60 border-violet-100", numero: "bg-violet-600", borde: "border-violet-200" },
+  soloPerfil: { caja: "bg-teal-50/70 border-teal-100", numero: "bg-teal-600", borde: "border-teal-200" },
+  soloMes: { caja: "bg-indigo-50/60 border-indigo-100", numero: "bg-indigo-600", borde: "border-indigo-200" },
+  soloOrigen: { caja: "bg-cyan-50/70 border-cyan-100", numero: "bg-cyan-600", borde: "border-cyan-200" },
+  soloDestino: { caja: "bg-orange-50/70 border-orange-100", numero: "bg-orange-500", borde: "border-orange-200" },
+  soloAerolinea: { caja: "bg-blue-50/60 border-blue-100", numero: "bg-blue-700", borde: "border-blue-200" },
+  soloGuia: { caja: "bg-lime-50/70 border-lime-100", numero: "bg-lime-600", borde: "border-lime-200" },
 };
 
 export const temaDe = (l: LandingEspana) => TEMAS[l.tema ?? "perfil"];
@@ -15,7 +21,7 @@ const H2 = "text-2xl sm:text-3xl font-extrabold text-[#0a1628]";
 export function Puntos({ l }: { l: LandingEspana }) {
   const t = temaDe(l);
   // La guía cuenta pasos en orden: va como línea de tiempo. El resto, en tarjetas.
-  if (l.tema === "guia") {
+  if (l.tema === "guia" || l.tema === "soloGuia") {
     return (
       <section className="space-y-5" aria-labelledby="puntos">
         <h2 id="puntos" className={H2}>
@@ -40,7 +46,7 @@ export function Puntos({ l }: { l: LandingEspana }) {
       </h2>
       <ul className="grid gap-4 sm:grid-cols-2">
         {l.puntos.map((p) => (
-          <li key={p.t} className={`rounded-2xl border bg-white p-6 ${l.tema === "provincia" ? "border-l-4 " + t.borde : "border-slate-200"}`}>
+          <li key={p.t} className={`rounded-2xl border bg-white p-6 ${l.tema === "provincia" || l.tema?.startsWith("solo") ? "border-l-4 " + t.borde : "border-slate-200"}`}>
             <strong className="block text-lg text-[#0a1628]">{p.t}</strong>
             <p className="mt-2 text-base leading-relaxed text-slate-600">{p.d}</p>
           </li>
@@ -77,7 +83,7 @@ function Tramos({ l }: { l: LandingEspana }) {
 export function Tabla({ l }: { l: LandingEspana }) {
   const tabla = l.tabla;
   if (!tabla) return null;
-  if (l.tema === "provincia") return <Tramos l={l} />;
+  if (l.tema === "provincia" || l.tema === "soloOrigen") return <Tramos l={l} />;
   return (
     <section className="space-y-4" aria-labelledby="tabla">
       <h2 id="tabla" className={H2}>
