@@ -10,7 +10,7 @@ import { URL_BASE_SEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectur
 import { portadaDe } from "@/lib/paquetes-armados/fotos";
 import { safeJsonLd } from "@/lib/seguridad-http";
 import QueEsPaqueteArmado from "@/components/paquetes-armados/QueEsPaqueteArmado";
-import { IncluyeNoIncluye, Migas, Preguntas, TablaHoteles, TablaSalidas, TarjetasPaquetes } from "@/components/paquetes-armados/Bloques";
+import { IncluyeNoIncluye, Migas, Preguntas, TablaHoteles, CalendarioSalidas, TarjetasPaquetes } from "@/components/paquetes-armados/Bloques";
 import { BarraConfianza, CtaFinal, HeroVenta, PasosSeparar, proximaSalida } from "@/components/paquetes-armados/Venta";
 import { CajaPrecio, RecorridoVisual, VideoRecorrido } from "@/components/paquetes-armados/Visual";
 import { absoluta, fotosPara, videoDe } from "@/lib/paquetes-armados/fotos";
@@ -151,7 +151,7 @@ export default function CircuitoPagina({ circuito: c }: { circuito: Circuito }) 
                 <section className="space-y-3">
                   <h2 className="text-2xl font-extrabold text-[#0a1628]">Elige tu fecha de salida</h2>
                   <p className="text-[15px] text-slate-600">Cada fecha tiene su precio. Toca la que te conviene para ver el detalle.</p>
-                  <TablaSalidas salidas={salidas} />
+                  <CalendarioSalidas salidas={salidas} />
                 </section>
               ) : (
                 <section className="rounded-2xl bg-sky-50 border border-sky-100 p-5 space-y-2">

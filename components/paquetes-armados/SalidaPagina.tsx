@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import PorQueCityland from "@/components/PorQueCityland";
 import QueEsPaqueteArmado from "@/components/paquetes-armados/QueEsPaqueteArmado";
-import { IncluyeNoIncluye, Migas, Preguntas, TablaHoteles, TablaSalidas, faqSchema } from "@/components/paquetes-armados/Bloques";
+import { IncluyeNoIncluye, Migas, Preguntas, TablaHoteles, CalendarioSalidas, faqSchema } from "@/components/paquetes-armados/Bloques";
 import { BarraConfianza, CtaFinal, HeroVenta, PasosSeparar } from "@/components/paquetes-armados/Venta";
 import { buildWaUrl } from "@/components/constantes";
 import { formatoUSD } from "@/lib/formato-precio";
@@ -218,7 +218,7 @@ export default function SalidaPagina({ salida: s }: { salida: Salida }) {
           {hermanas.length > 1 && (
             <section className="space-y-4">
               <h2 className="text-2xl font-extrabold text-[#0a1628]">Otras fechas de este paquete armado</h2>
-              <TablaSalidas salidas={hermanas} actual={s.slug} />
+              <CalendarioSalidas salidas={hermanas} actual={s.slug} />
             </section>
           )}
 
