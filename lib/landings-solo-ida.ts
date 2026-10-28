@@ -3,6 +3,7 @@ import { hoyLima } from "@/lib/salidas";
 import { PRECIO_SOLO_IDA_TOPE_CERCANO, proximoMesSoloIda } from "@/lib/precios-solo-ida";
 import { AVISO_TURISMO, DETALLE, ENLACES_BASE, QUIENES, RUTA_SOLO_IDA, SECCION, base, og, usd } from "@/lib/solo-ida-comun";
 import { landingsSoloIdaB } from "@/lib/landings-solo-ida-b";
+import { landingsSoloIdaGuias } from "@/lib/landings-solo-ida-guias";
 import type { LandingEspana } from "@/lib/landings-espana-tipos";
 import { LANDINGS_ESPANA } from "@/lib/landings-espana";
 
@@ -465,7 +466,7 @@ function meses(hoy: string): LandingEspana[] {
 
 // Todas las páginas de solo ida, armadas con la fecha de Lima del día.
 export function landingsSoloIda(hoy = hoyLima()): LandingEspana[] {
-  return [guiaGeneral(hoy), ...perfiles(hoy), ...meses(hoy), ...landingsSoloIdaB(hoy)];
+  return [guiaGeneral(hoy), ...perfiles(hoy), ...meses(hoy), ...landingsSoloIdaB(hoy), ...landingsSoloIdaGuias(hoy)];
 }
 
 export function buscarLandingSoloIda(slug: string, hoy = hoyLima()): LandingEspana | undefined {
