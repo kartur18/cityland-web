@@ -158,6 +158,7 @@ export default function SalidaPagina({ salida: s }: { salida: Salida }) {
               etiquetaFecha="Fecha de salida"
               wa={wa}
               boton="Separar mi cupo"
+              ancla="Ver itinerario"
             />
           </div>
 

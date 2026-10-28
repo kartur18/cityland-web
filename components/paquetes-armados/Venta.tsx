@@ -56,85 +56,80 @@ export interface HeroVentaProps {
   wa: string;
   boton: string;
   nota?: string;
+  // Texto del botón secundario que baja al contenido (el de WhatsApp queda solo en la tarjeta).
+  ancla?: string;
 }
 
 // Portada clara: título y lo que incluye a la izquierda; a la derecha la foto en tarjeta con el precio y el botón.
 export function HeroVenta(p: HeroVentaProps) {
   return (
-    <section className="grid items-center gap-6 rounded-3xl border border-slate-200 bg-gradient-to-br from-white to-sky-50 p-5 sm:p-8 lg:grid-cols-[1fr_440px] lg:gap-10 lg:p-10">
-      <div className="space-y-4">
-        <p className="inline-flex flex-wrap items-center gap-x-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-extrabold text-[#0a1628]">
-          <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true" />
-          {p.marca ?? "Paquete armado"} <span aria-hidden="true">·</span> {p.sello}
-        </p>
-        <h1 className="text-[28px] sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-[#0a1628] text-balance">{p.titulo}</h1>
-        <p className="max-w-2xl text-base sm:text-lg text-slate-600">{p.bajada}</p>
-        <ul className="hidden flex-wrap gap-2 sm:flex">
-          {p.chips.map((x) => (
-            <li key={x} className="flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1.5 text-sm font-bold text-emerald-900">
-              <Check />
-              {x}
-            </li>
-          ))}
-        </ul>
-        <div className="hidden flex-wrap gap-3 lg:flex">
+    <>
+      <section className="grid items-center gap-6 rounded-3xl border border-slate-200 bg-gradient-to-br from-white to-sky-50 p-5 sm:p-8 lg:grid-cols-[1fr_440px] lg:gap-10 lg:p-10">
+        <div className="space-y-4">
+          <p className="inline-flex flex-wrap items-center gap-x-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-extrabold text-[#0a1628]">
+            <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true" />
+            {p.marca ?? "Paquete armado"} <span aria-hidden="true">·</span> {p.sello}
+          </p>
+          <h1 className="text-[28px] sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-[#0a1628] text-balance">{p.titulo}</h1>
+          <p className="max-w-2xl text-base sm:text-lg text-slate-600">{p.bajada}</p>
+          <ul className="hidden flex-wrap gap-2 sm:flex">
+            {p.chips.map((x) => (
+              <li key={x} className="flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1.5 text-sm font-bold text-emerald-900">
+                <Check />
+                {x}
+              </li>
+            ))}
+          </ul>
           <a
-            href={p.wa}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 text-base font-extrabold text-white shadow-lg shadow-emerald-500/30 hover:bg-[#20ba5a]"
+            href="#contenido"
+            className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl border-2 border-[#0a1628] bg-white px-6 text-base font-extrabold text-[#0a1628] hover:bg-[#0a1628] hover:text-white"
           >
-            <WhatsAppIcon size={20} />
-            {p.boton}
+            {p.ancla ?? "Ver paquetes y fechas"} <span aria-hidden="true">↓</span>
           </a>
         </div>
-      </div>
-      <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
-        <div className="relative aspect-[16/10] bg-slate-100">
-          <Image src={p.foto} alt={p.alt} fill priority sizes="(min-width: 1024px) 440px, 100vw" className="object-cover" />
-          <span className="absolute right-3 top-3 rounded-full bg-rose-600 px-3 py-1 text-xs font-extrabold uppercase text-white">
-            {p.precio === undefined ? "Cotización gratis" : "Cupos limitados"}
-          </span>
-          {p.proxima && (
-            <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-extrabold text-[#0a1628]">
-              {textoFaltan(p.proxima.fecha)}
+        <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
+          <div className="relative aspect-[16/10] bg-slate-100">
+            <Image src={p.foto} alt={p.alt} fill priority sizes="(min-width: 1024px) 440px, 100vw" className="object-cover" />
+            <span className="absolute right-3 top-3 rounded-full bg-rose-600 px-3 py-1 text-xs font-extrabold uppercase text-white">
+              {p.precio === undefined ? "Cotización gratis" : "Cupos limitados"}
             </span>
-          )}
-        </div>
-        <div className="space-y-3 p-5">
-          <div>
-            <p className={p.precio === undefined ? "text-xl font-extrabold leading-snug text-[#0a1628]" : "text-sm text-slate-500"}>
-              {p.etiquetaPrecio}
-            </p>
-            {p.precio !== undefined && (
-              <p className="text-5xl font-extrabold tracking-tight text-[#0a1628]">
-                <span className="mr-1 align-middle text-base font-extrabold text-rose-600">desde</span>
-                {formatoUSD(p.precio)}
+            {p.proxima && (
+              <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-extrabold text-[#0a1628]">
+                {textoFaltan(p.proxima.fecha)}
+              </span>
+            )}
+          </div>
+          <div className="space-y-3 p-5">
+            <div>
+              <p className={p.precio === undefined ? "text-xl font-extrabold leading-snug text-[#0a1628]" : "text-sm text-slate-500"}>
+                {p.etiquetaPrecio}
+              </p>
+              {p.precio !== undefined && <p className="text-5xl font-extrabold tracking-tight text-[#0a1628]">{formatoUSD(p.precio)}</p>}
+              {p.detallePrecio && <p className="mt-1 text-sm text-slate-600 line-clamp-2">{p.detallePrecio}</p>}
+            </div>
+            {p.proxima && (
+              <p className="rounded-xl bg-sky-50 px-3 py-2 text-sm text-[#0a1628]">
+                {p.etiquetaFecha ?? "Próxima salida"}: <strong>{fechaLarga(p.proxima.fecha)}</strong>
               </p>
             )}
-            {p.detallePrecio && <p className="mt-1 text-sm text-slate-600 line-clamp-2">{p.detallePrecio}</p>}
-          </div>
-          {p.proxima && (
-            <p className="rounded-xl bg-sky-50 px-3 py-2 text-sm text-[#0a1628]">
-              {p.etiquetaFecha ?? "Próxima salida"}: <strong>{fechaLarga(p.proxima.fecha)}</strong>
+            <a
+              href={p.wa}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 text-base font-extrabold text-white shadow-lg shadow-emerald-500/30 hover:bg-[#20ba5a]"
+            >
+              <WhatsAppIcon size={20} />
+              {p.boton}
+            </a>
+            <p className="flex items-start gap-1.5 text-sm text-slate-600">
+              <Check />
+              {p.nota ?? "Separas con el 50% y pagas el saldo antes de viajar"}
             </p>
-          )}
-          <a
-            href={p.wa}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 text-base font-extrabold text-white shadow-lg shadow-emerald-500/30 hover:bg-[#20ba5a]"
-          >
-            <WhatsAppIcon size={20} />
-            {p.boton}
-          </a>
-          <p className="flex items-start gap-1.5 text-sm text-slate-600">
-            <Check />
-            {p.nota ?? "Separas con el 50% y pagas el saldo antes de viajar"}
-          </p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <div id="contenido" className="scroll-mt-28" aria-hidden="true" />
+    </>
   );
 }
 

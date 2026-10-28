@@ -134,6 +134,7 @@ export default function CircuitoPagina({ circuito: c }: { circuito: Circuito }) 
               proxima={proxima}
               wa={wa}
               boton="Separar este paquete"
+              ancla="Ver itinerario y fechas"
             />
           </div>
 

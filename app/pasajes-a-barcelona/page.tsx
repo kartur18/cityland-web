@@ -125,6 +125,7 @@ export default function PasajesABarcelonaPage() {
               detallePrecio={ida ? "Precio referencial; te damos el de tu fecha." : undefined}
               wa={wa}
               boton="Cotizar Barcelona"
+              ancla="Ver opciones y precios"
               nota="Te damos el precio exacto de tu fecha por WhatsApp"
             />
           </div>

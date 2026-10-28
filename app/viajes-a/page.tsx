@@ -67,6 +67,7 @@ export default function ViajesAPage() {
               detallePrecio={`${todos.length} programas en ${ciudades.length} ciudades`}
               wa={wa}
               boton="Cotizar por WhatsApp"
+              ancla="Ver ciudades"
             />
           </div>
 

@@ -12,27 +12,27 @@ import AvisoRegresoReservado from "@/components/AvisoRegresoReservado";
 function obtenerEstiloSilo(silo: DatosSuperLandingMigratorio["silo"], pais: string) {
   if (silo === "italia" || pais === "Italia") {
     return {
-      heroBg: "from-[#071a14] via-[#0c2920] to-[#0a1628]",
+      heroBg: "from-white via-emerald-50/40 to-sky-50",
       borderHero: "border-emerald-400",
-      badgeHero: "bg-emerald-400/15 border-emerald-400/40 text-emerald-200",
-      gradSubtitulo: "from-emerald-300 via-amber-200 to-emerald-300",
+      badgeHero: "bg-emerald-50 border-emerald-200 text-emerald-800",
+      gradSubtitulo: "from-emerald-700 via-emerald-600 to-emerald-700",
       selloPais: "Especialistas en Ruta Italia",
     };
   }
   if (silo === "francia-europa") {
     return {
-      heroBg: "from-[#09152b] via-[#13254a] to-[#1a1033]",
+      heroBg: "from-white via-sky-50/40 to-sky-50",
       borderHero: "border-sky-400",
-      badgeHero: "bg-sky-400/15 border-sky-400/40 text-sky-200",
-      gradSubtitulo: "from-sky-300 via-amber-200 to-sky-300",
+      badgeHero: "bg-sky-50 border-sky-200 text-sky-800",
+      gradSubtitulo: "from-sky-700 via-sky-600 to-sky-700",
       selloPais: `Especialistas en Ruta ${pais}`,
     };
   }
   return {
-    heroBg: "from-[#081224] via-[#10203d] to-[#240d17]",
+    heroBg: "from-white via-amber-50/40 to-sky-50",
     borderHero: "border-amber-400",
-    badgeHero: "bg-amber-400/15 border-amber-400/40 text-amber-200",
-    gradSubtitulo: "from-amber-300 via-yellow-200 to-amber-400",
+    badgeHero: "bg-amber-50 border-amber-200 text-amber-800",
+    gradSubtitulo: "from-amber-600 via-orange-600 to-amber-700",
     selloPais: "Especialistas en Paquetes Migratorios a Europa",
   };
 }
@@ -72,33 +72,33 @@ export default function SuperLandingMigratorioTemplate({
       <main className="flex-1 pb-20 sm:pb-0">
         {/* 1. HERO SIMÉTRICO: MENSAJE CLARO + FOTO REAL ÚNICA DEL DESTINO (SIN CAJAS ANIDADAS) */}
         <section
-          className={`relative bg-gradient-to-br ${estilo.heroBg} text-white pt-6 pb-12 sm:pt-10 sm:pb-16 overflow-hidden border-b-4 ${estilo.borderHero}`}
+          className={`relative bg-gradient-to-br ${estilo.heroBg} text-[#0a1628] pt-6 pb-12 sm:pt-10 sm:pb-16 overflow-hidden border-b-4 ${estilo.borderHero}`}
         >
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
             {/* Migas de pan */}
             <nav
               aria-label="Ruta de navegación"
-              className="flex flex-wrap items-center gap-2 text-xs text-slate-300 mb-5"
+              className="flex flex-wrap items-center gap-2 text-xs text-slate-500 mb-5"
             >
-              <Link href="/" className="hover:text-amber-300 transition-colors">
+              <Link href="/" className="hover:text-emerald-700 transition-colors">
                 Inicio
               </Link>
               <span>/</span>
               <Link
                 href="/paquetes-migratorios"
-                className="hover:text-amber-300 transition-colors"
+                className="hover:text-emerald-700 transition-colors"
               >
                 Paquetes Migratorios
               </Link>
               <span>/</span>
               <Link
                 href={rutaHubPais.href}
-                className="hover:text-amber-300 transition-colors font-semibold text-amber-300"
+                className="hover:text-emerald-700 transition-colors font-semibold text-emerald-700"
               >
                 {rutaHubPais.nombre}
               </Link>
               <span>/</span>
-              <span className="text-white font-bold">{datos.ciudadDestino}</span>
+              <span className="text-[#0a1628] font-bold">{datos.ciudadDestino}</span>
             </nav>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -120,7 +120,7 @@ export default function SuperLandingMigratorioTemplate({
                   </span>
                 </h1>
 
-                <p className="text-sm sm:text-base text-slate-200 leading-relaxed">
+                <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
                   {asegurarDesde(datos.ganchoPeruano)}
                 </p>
 
@@ -137,13 +137,13 @@ export default function SuperLandingMigratorioTemplate({
                   </a>
                   <a
                     href="#planes-precios"
-                    className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold px-6 py-4 rounded-2xl text-xs sm:text-sm whitespace-nowrap transition-all"
+                    className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 border border-slate-300 text-[#0a1628] font-bold px-6 py-4 rounded-2xl text-xs sm:text-sm whitespace-nowrap transition-all"
                   >
                     <span>Ver los 4 planes por fecha ↓</span>
                   </a>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs text-slate-300 pt-2 border-t border-white/15">
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-sm text-slate-600 pt-2 border-t border-slate-200">
                   <span>✓ Agencia Formal RUC 20614914239</span>
                   <span>✓ Oficina en Av. Antúnez de Mayolo 814, Los Olivos</span>
                 </div>
@@ -151,7 +151,7 @@ export default function SuperLandingMigratorioTemplate({
 
               {/* Derecha: Foto grande del Destino + Lista limpia sin recuadros internos */}
               <div className="lg:col-span-6">
-                <div className="bg-white text-slate-900 rounded-3xl shadow-2xl overflow-hidden border border-white/20">
+                <div className="bg-white text-slate-900 rounded-3xl shadow-xl overflow-hidden border border-slate-200">
                   <div className="relative h-56 sm:h-64 w-full bg-slate-100 overflow-hidden">
                     <Image
                       src={datos.imagenHero}
