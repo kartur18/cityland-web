@@ -3,6 +3,7 @@ import { PAGINAS_CON_CLIENTES, PAGINAS_CON_VISITAS_GSC, PAGINAS_FUERTES } from "
 import { RUTAS_VUELOS_PRINCIPALES } from "@/lib/rutas-vuelos";
 import { CIUDADES_ESPANA_CON_RUTA } from "@/lib/catalogo-vuelos-masivo";
 import { VARIANTE_A_PRINCIPAL } from "@/lib/variantes-ofertas";
+import { PRUEBA_REAPERTURA } from "@/lib/prueba-reapertura";
 
 // Cada ciudad de España responde su propia búsqueda («pasajes Lima Tenerife»): ida desde Lima y vuelta a Lima.
 const RUTAS_ESPANA: ReadonlySet<string> = new Set(
@@ -44,6 +45,7 @@ export function esIndexable(ruta: string): boolean {
     PAGINAS_FUERTES.has(ruta) ||
     PAGINAS_CON_CLIENTES.has(ruta) ||
     PAGINAS_CON_VISITAS_GSC.has(ruta) ||
+    PRUEBA_REAPERTURA.has(ruta) ||
     RUTAS_VUELOS_PRINCIPALES.has(ruta) ||
     RUTAS_NACIONALES.has(ruta) ||
     RUTAS_ESPANA.has(ruta) ||
