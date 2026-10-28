@@ -5,15 +5,17 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import PorQueCityland from "@/components/PorQueCityland";
 import QueEsPaqueteArmado from "@/components/paquetes-armados/QueEsPaqueteArmado";
-import { Migas, Preguntas, SelloArmado, TablaSalidas, TarjetasPaquetes, faqSchema } from "@/components/paquetes-armados/Bloques";
+import { Migas, Preguntas, TablaSalidas, faqSchema } from "@/components/paquetes-armados/Bloques";
+import { BarraConfianza, CtaFinal, HeroVenta, ListaPaquetes, PasosSeparar, proximaSalida } from "@/components/paquetes-armados/Venta";
 import EnlacesCaribe from "@/components/paquetes-armados/EnlacesCaribe";
-import { CajaPrecio, GaleriaMosaico, IncluyeFranja, VideoRecorrido } from "@/components/paquetes-armados/Visual";
+import { CajaPrecio, VideoRecorrido } from "@/components/paquetes-armados/Visual";
 import { absoluta, fotosPara, primerVideo } from "@/lib/paquetes-armados/fotos";
+import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
 import { buildWaUrl } from "@/components/constantes";
 import { formatoUSD } from "@/lib/formato-precio";
-import { MESES } from "@/lib/salidas";
+import { MESES, fechaLarga, salidasDe } from "@/lib/salidas";
 import { climaDelMes, zonaClima } from "@/lib/paquetes-armados/clima";
-import { componentesDe, lineaComponentes, listaY } from "@/lib/paquetes-armados/comun";
+import { componentesDe, lineaComponentes, listaY, tituloSeo } from "@/lib/paquetes-armados/comun";
 import { desdePagina, type PaginaCaribe } from "@/lib/paquetes-armados/paginas-caribe";
 import { ExtrasPagina } from "@/components/paquetes-armados/Extras";
 import { DESTINOS_CARIBE } from "@/lib/paquetes-armados/destinos-caribe";
@@ -31,7 +33,7 @@ export function metadataCaribe(p: PaginaCaribe): Metadata {
   const desde = desdeDe(p);
   const desc = `${p.intro} ${p.programas.length} ${p.programas.length === 1 ? "paquete" : "paquetes"} desde ${formatoUSD(desde)} por persona. Separa con el 50%.`;
   return {
-    title: `${p.titulo}${p.titulo.length < 46 ? ` desde ${formatoUSD(desde)}` : ""} | Cityland`,
+    title: tituloSeo(p.titulo, `desde ${formatoUSD(desde)}`),
     description: optimizarMetaDescriptionSEO(desc),
     alternates: { canonical: url },
     openGraph: {
@@ -41,6 +43,9 @@ export function metadataCaribe(p: PaginaCaribe): Metadata {
       description: desc,
       siteName: "Cityland Travel",
       locale: "es_PE",
+      images: [
+        absoluta(obtenerGaleriaPorTexto(`${p.destino.nombre} ${p.destino.pais}`)[0] ?? fotosPara(p.programas, p.destino.nombre)[0], URL_BASE_SEO),
+      ],
     },
   };
 }
@@ -142,24 +147,64 @@ export default function PaqueteCaribePagina({ pagina: p }: { pagina: PaginaCarib
     ],
   };
 
+  const proxima = proximaSalida(p.salidas.length ? p.salidas : p.programas.flatMap((c) => salidasDe(c.mt)));
+  const refWeb = `citylandtravel.com${ruta(p)}`;
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(schema) }} />
       <Navbar />
-      <main id="main-content" className="bg-white pt-24 sm:pt-28 pb-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-8">
-          <header className="space-y-4">
+      <main id="main-content" className="bg-slate-50/60 pt-24 sm:pt-28 pb-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-10">
+          <div className="space-y-3">
             <Migas items={[{ nombre: "Inicio", href: "/" }, { nombre: "Paquetes armados", href: "/paquetes-armados" }, { nombre: d.nombre }]} />
-            <SelloArmado texto={`Fecha fija · ${conVuelo ? "vuelo + hotel + traslados" : "hotel + traslados"}`} />
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight text-balance">{p.h1}</h1>
-            <p className="text-[17px] text-slate-700">{p.intro}</p>
-          </header>
+            <HeroVenta
+              foto={obtenerGaleriaPorTexto(`${d.nombre} ${d.pais}${esPlaya ? " playa" : ""}`)[0] ?? fotos[0]}
+              alt={p.h1}
+              sello={`Fecha fija · ${conVuelo ? "vuelo + hotel + traslados" : "hotel + traslados"}`}
+              titulo={p.h1}
+              bajada={p.intro}
+              chips={incluye}
+              etiquetaPrecio="Desde, por persona en habitación doble"
+              precio={desde}
+              detallePrecio={`${p.programas.length} ${p.programas.length === 1 ? "paquete armado" : "paquetes armados"}${p.salidas.length ? ` · ${p.salidas.length} ${p.salidas.length === 1 ? "salida" : "salidas"} con cupo` : ""}`}
+              proxima={proxima}
+              wa={wa}
+              boton="Consultar cupos por WhatsApp"
+            />
+          </div>
 
-          <GaleriaMosaico fotos={fotos} alt={p.h1} />
+          <BarraConfianza />
+
+          <section id="paquetes" className="space-y-4 scroll-mt-28">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0a1628]">
+                {p.programas.length === 1 ? `Tu paquete armado a ${d.nombre}` : `Elige tu paquete armado a ${d.nombre}`}
+              </h2>
+              <p className="text-slate-600">
+                {p.programas.length === 1
+                  ? "Precio por persona en habitación doble."
+                  : `${p.programas.length} opciones con precio por persona en habitación doble.`}
+              </p>
+            </div>
+            <ListaPaquetes items={p.programas} refWeb={refWeb} />
+          </section>
+
+          {p.salidas.length > 1 && (
+            <section className="space-y-4">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0a1628]">Próximas salidas con cupo</h2>
+              <TablaSalidas salidas={p.salidas} />
+            </section>
+          )}
+
+          {video && (
+            <div className="max-w-4xl">
+              <VideoRecorrido url={video.url} poster={fotos[0]} titulo={video.circuito.nombre} />
+            </div>
+          )}
 
           <div className="grid gap-8 lg:grid-cols-[1fr_340px] items-start">
-            <div className="order-2 lg:order-1 space-y-10 min-w-0">
-              <IncluyeFranja items={incluye} />
+            <div className="space-y-10 min-w-0">
               {clima && (
                 <section className="rounded-2xl bg-sky-50 border border-sky-100 p-5 space-y-1">
                   <h2 className="text-xl font-extrabold text-[#0a1628]">
@@ -190,27 +235,15 @@ export default function PaqueteCaribePagina({ pagina: p }: { pagina: PaginaCarib
               <ExtrasPagina pagina={p} />
 
               <section className="space-y-3">
-                <h2 className="text-2xl font-extrabold text-[#0a1628]">Paquetes armados disponibles</h2>
-                <TarjetasPaquetes items={p.programas} />
-              </section>
-
-              {video && <VideoRecorrido url={video.url} poster={fotos[0]} titulo={video.circuito.nombre} />}
-
-              {p.salidas.length > 0 && (
-                <section className="space-y-3">
-                  <h2 className="text-2xl font-extrabold text-[#0a1628]">Salidas con cupo confirmado</h2>
-                  <TablaSalidas salidas={p.salidas} />
-                </section>
-              )}
-
-              <section className="space-y-3">
                 <h2 className="text-2xl font-extrabold text-[#0a1628]">
                   {d.imperdibles.length ? `Qué hacer en ${d.nombre}` : `Datos para tu viaje a ${d.nombre}`}
                 </h2>
                 {d.imperdibles.length > 0 && (
-                  <ul className="list-disc pl-5 space-y-1.5 text-[15px] text-slate-700">
+                  <ul className="grid gap-2 sm:grid-cols-2">
                     {d.imperdibles.map((x) => (
-                      <li key={x}>{x}</li>
+                      <li key={x} className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-[15px] font-bold text-[#0a1628]">
+                        {x}
+                      </li>
                     ))}
                   </ul>
                 )}
@@ -239,24 +272,27 @@ export default function PaqueteCaribePagina({ pagina: p }: { pagina: PaginaCarib
 
               <QueEsPaqueteArmado sinVuelo={!conVuelo} />
               <Preguntas faqs={faqs} />
-              <EnlacesCaribe actual={p} />
             </div>
-            <aside className="order-1 lg:order-2">
+            <aside className="hidden lg:block lg:sticky lg:top-28">
               <CajaPrecio
                 etiqueta="Desde, por persona en habitación doble"
                 precio={formatoUSD(desde)}
-                detalle={`${p.programas.length} ${p.programas.length === 1 ? "paquete armado" : "paquetes armados"}${p.salidas.length ? ` y ${p.salidas.length} ${p.salidas.length === 1 ? "salida" : "salidas"} con cupo` : ""}`}
+                detalle={proxima ? `Próxima salida: ${fechaLarga(proxima.fecha)}` : undefined}
                 wa={wa}
                 boton="Consultar cupos por WhatsApp"
                 nota="Precio sujeto a cupo y a cambios del mayorista o la aerolínea."
               />
             </aside>
           </div>
+
+          <PasosSeparar />
+          <CtaFinal titulo={`Asegura tu cupo a ${d.nombre}`} precio={desde} wa={wa} boton="Separar por WhatsApp" />
+          <EnlacesCaribe actual={p} />
         </div>
       </main>
       <PorQueCityland destino={d.nombre} />
       <Footer />
-      <WhatsAppFloat />
+      <WhatsAppFloat href={wa} titulo={`Desde ${formatoUSD(desde)} por persona`} subtitulo={`Paquetes armados a ${d.nombre}`} />
     </>
   );
 }

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
@@ -8,13 +7,15 @@ import { buildWaUrl } from "@/components/constantes";
 import { formatoUSD } from "@/lib/formato-precio";
 import { precioCityland, relacionados, REGIONES_CIRCUITOS, textoTipo, type Circuito } from "@/lib/circuitos";
 import { URL_BASE_SEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
+import { portadaDe } from "@/lib/paquetes-armados/fotos";
 import { safeJsonLd } from "@/lib/seguridad-http";
 import QueEsPaqueteArmado from "@/components/paquetes-armados/QueEsPaqueteArmado";
-import { SelloArmado, TablaHoteles, TablaSalidas, TarjetasPaquetes } from "@/components/paquetes-armados/Bloques";
-import { CajaPrecio, GaleriaMosaico, IncluyeFranja, RecorridoVisual, VideoRecorrido } from "@/components/paquetes-armados/Visual";
+import { IncluyeNoIncluye, Migas, Preguntas, TablaHoteles, TablaSalidas, TarjetasPaquetes } from "@/components/paquetes-armados/Bloques";
+import { BarraConfianza, CtaFinal, HeroVenta, PasosSeparar, proximaSalida } from "@/components/paquetes-armados/Venta";
+import { CajaPrecio, RecorridoVisual, VideoRecorrido } from "@/components/paquetes-armados/Visual";
 import { absoluta, fotosPara, videoDe } from "@/lib/paquetes-armados/fotos";
-import { etiquetaArmado, lineaComponentes } from "@/lib/paquetes-armados/comun";
-import { salidasDe } from "@/lib/salidas";
+import { etiquetaArmado, lineaComponentes, tituloSeo } from "@/lib/paquetes-armados/comun";
+import { fechaLarga, salidasDe } from "@/lib/salidas";
 
 const ruta = (c: Circuito) => `/circuitos/${c.slug}`;
 
@@ -29,7 +30,7 @@ export function metadataCircuito(c: Circuito): Metadata {
   const titulo = c.tipo === "vuelo" && base.length < 38 ? `${base} desde ${c.origen}` : base;
   const descripcion = `${etiquetaArmado(c)} ${c.nombre}, ${c.dias} días y ${c.noches} noches por ${listaCorta(c.paises, 4)}: ${listaCorta(c.ciudades, 5)}. ${textoTipo(c)}. Desde ${formatoUSD(precioCityland(c))} por persona. Separa con el 50%.`;
   return {
-    title: `${titulo} | Cityland`,
+    title: tituloSeo(titulo),
     description: optimizarMetaDescriptionSEO(descripcion),
     alternates: { canonical: url },
     openGraph: {
@@ -39,22 +40,9 @@ export function metadataCircuito(c: Circuito): Metadata {
       description: descripcion,
       siteName: "Cityland Travel",
       locale: "es_PE",
+      images: [absoluta(portadaDe(c), URL_BASE_SEO)],
     },
   };
-}
-
-function Lista({ titulo, items }: { titulo: string; items: string[] }) {
-  if (!items.length) return null;
-  return (
-    <section className="space-y-3">
-      <h2 className="text-2xl font-extrabold text-[#0a1628]">{titulo}</h2>
-      <ul className="list-disc pl-5 space-y-1.5 text-[15px] text-slate-700">
-        {items.map((x, i) => (
-          <li key={i}>{x}</li>
-        ))}
-      </ul>
-    </section>
-  );
 }
 
 // Ficha de un circuito del mayorista: recorrido, salidas, qué incluye, hoteles y precio con nuestro fee.
@@ -114,76 +102,54 @@ export default function CircuitoPagina({ circuito: c }: { circuito: Circuito }) 
     ],
   };
 
+  const proxima = proximaSalida(salidas);
+  const componentes = lineaComponentes(c)
+    .split(" + ")
+    .map((x) => x.charAt(0).toUpperCase() + x.slice(1));
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(schema) }} />
       <Navbar />
-      <main id="main-content" className="bg-white pt-24 sm:pt-28 pb-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-8">
-          <header className="space-y-4">
-            <nav aria-label="Migas de pan" className="text-xs text-slate-500">
-              <Link href="/" className="hover:underline">
-                Inicio
-              </Link>{" "}
-              /{" "}
-              <Link href="/circuitos" className="hover:underline">
-                Circuitos
-              </Link>
-              {region && (
-                <>
-                  {" "}
-                  /{" "}
-                  <Link href={`/circuitos#${region.id}`} className="hover:underline">
-                    {region.nombre}
-                  </Link>
-                </>
-              )}
-            </nav>
-            <SelloArmado texto={`Fecha fija · ${lineaComponentes(c)}`} />
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight text-balance">
-              Paquete armado {c.nombre}
-            </h1>
-            <div className="flex flex-wrap gap-2 text-sm font-bold">
-              <span className="rounded-full bg-slate-100 px-3 py-1.5 text-[#0a1628]">
-                {c.dias} días · {c.noches} noches
-              </span>
-              <span className={`rounded-full px-3 py-1.5 ${c.tipo === "vuelo" ? "bg-emerald-50 text-emerald-800" : "bg-amber-50 text-amber-800"}`}>
-                {textoTipo(c)}
-              </span>
-              <span className="rounded-full bg-slate-100 px-3 py-1.5 text-[#0a1628]">{c.paises.join(" · ")}</span>
-            </div>
-          </header>
+      <main id="main-content" className="bg-slate-50/60 pt-24 sm:pt-28 pb-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-10">
+          <div className="space-y-3">
+            <Migas
+              items={[
+                { nombre: "Inicio", href: "/" },
+                { nombre: "Circuitos", href: "/circuitos" },
+                ...(region ? [{ nombre: region.nombre, href: `/circuitos#${region.id}` }] : []),
+              ]}
+            />
+            <HeroVenta
+              foto={fotos[0]}
+              alt={`Paquete armado ${c.nombre}`}
+              sello={c.tipo === "vuelo" ? `Fecha fija · vuelo desde ${c.origen}` : "Fecha fija"}
+              titulo={`Paquete armado ${c.nombre}`}
+              bajada={`${c.dias} días y ${c.noches} noches por ${listaCorta(c.ciudades, 5)}. ${textoTipo(c)}.`}
+              chips={[`${c.dias} días · ${c.noches} noches`, ...componentes]}
+              etiquetaPrecio="Desde, por persona en habitación doble"
+              precio={precio}
+              detallePrecio={salidas.length ? `${salidas.length} ${salidas.length === 1 ? "salida" : "salidas"} con cupo` : `Salidas: ${c.salidas}`}
+              proxima={proxima}
+              wa={wa}
+              boton="Separar este paquete"
+            />
+          </div>
 
-          <GaleriaMosaico fotos={fotos} alt={`Paquete armado ${c.nombre}`} />
+          <BarraConfianza />
 
           <div className="grid gap-8 lg:grid-cols-[1fr_340px] items-start">
-            <aside className="lg:order-2">
-              <CajaPrecio
-                etiqueta="Precio desde, por persona en habitación doble"
-                precio={formatoUSD(precio)}
-                detalle={`${textoTipo(c)}. ${salidas.length ? `${salidas.length} ${salidas.length === 1 ? "salida" : "salidas"} con cupo.` : ""}`}
-                wa={wa}
-                boton="Separar este paquete armado"
-                nota="Precio referencial; cambia según la fecha de salida, el hotel y la disponibilidad."
-              />
-            </aside>
-            <div className="lg:order-1 space-y-10 min-w-0">
-              <IncluyeFranja
-                items={lineaComponentes(c)
-                  .split(" + ")
-                  .map((x) => x.charAt(0).toUpperCase() + x.slice(1))}
-              />
-
+            <div className="space-y-10 min-w-0">
               <section className="space-y-3">
                 <h2 className="text-2xl font-extrabold text-[#0a1628]">Recorrido</h2>
-                <RecorridoVisual ciudades={c.ciudades} />
+                <RecorridoVisual ciudades={c.tipo === "vuelo" ? [c.origen, ...c.ciudades] : c.ciudades} />
               </section>
-
-              {video && <VideoRecorrido url={video} poster={fotos[0]} titulo={c.nombre} />}
 
               {salidas.length ? (
                 <section className="space-y-3">
-                  <h2 className="text-2xl font-extrabold text-[#0a1628]">Salidas con cupo y su precio</h2>
+                  <h2 className="text-2xl font-extrabold text-[#0a1628]">Elige tu fecha de salida</h2>
+                  <p className="text-[15px] text-slate-600">Cada fecha tiene su precio. Toca la que te conviene para ver el detalle.</p>
                   <TablaSalidas salidas={salidas} />
                 </section>
               ) : (
@@ -193,43 +159,42 @@ export default function CircuitoPagina({ circuito: c }: { circuito: Circuito }) 
                 </section>
               )}
 
-              <QueEsPaqueteArmado sinVuelo={c.tipo !== "vuelo"} />
+              {video && <VideoRecorrido url={video} poster={fotos[0]} titulo={c.nombre} />}
 
-              <Lista titulo="Qué incluye" items={c.incluye} />
-              <Lista titulo="No incluye" items={c.noIncluye} />
+              <IncluyeNoIncluye incluye={c.incluye} noIncluye={c.noIncluye} />
 
               <TablaHoteles hoteles={c.hoteles} />
 
-              <section className="space-y-4">
-                <h2 className="text-2xl font-extrabold text-[#0a1628]">Preguntas frecuentes</h2>
-                <div className="divide-y divide-slate-200 border-y border-slate-200">
-                  {faqs.map((f) => (
-                    <details key={f.q} className="group py-4">
-                      <summary className="cursor-pointer list-none font-bold text-[#0a1628] flex justify-between gap-4 min-h-[44px] items-center">
-                        {f.q}
-                        <span className="text-slate-400 group-open:rotate-45 transition-transform" aria-hidden="true">
-                          +
-                        </span>
-                      </summary>
-                      <p className="text-[15px] text-slate-600 mt-2">{f.a}</p>
-                    </details>
-                  ))}
-                </div>
-              </section>
+              <QueEsPaqueteArmado sinVuelo={c.tipo !== "vuelo"} />
 
-              {otros.length > 0 && (
-                <section className="space-y-4">
-                  <h2 className="text-2xl font-extrabold text-[#0a1628]">Otros paquetes armados parecidos</h2>
-                  <TarjetasPaquetes items={otros} />
-                </section>
-              )}
+              <Preguntas faqs={faqs} />
             </div>
+            <aside className="hidden lg:block lg:sticky lg:top-28">
+              <CajaPrecio
+                etiqueta="Desde, por persona en habitación doble"
+                precio={formatoUSD(precio)}
+                detalle={proxima ? `Próxima salida: ${fechaLarga(proxima.fecha)}` : textoTipo(c)}
+                wa={wa}
+                boton="Separar este paquete"
+                nota="Precio referencial; cambia según la fecha de salida, el hotel y la disponibilidad."
+              />
+            </aside>
           </div>
+
+          <PasosSeparar />
+          <CtaFinal titulo={`Separa tu cupo en ${c.nombre}`} precio={precio} wa={wa} boton="Separar por WhatsApp" />
+
+          {otros.length > 0 && (
+            <section className="space-y-4">
+              <h2 className="text-2xl font-extrabold text-[#0a1628]">Otros paquetes armados parecidos</h2>
+              <TarjetasPaquetes items={otros} />
+            </section>
+          )}
         </div>
       </main>
       <PorQueCityland destino={c.paises.length === 1 ? c.paises[0] : c.nombre} />
       <Footer />
-      <WhatsAppFloat />
+      <WhatsAppFloat href={wa} titulo={`Desde ${formatoUSD(precio)} por persona`} subtitulo={`${c.nombre} · ${c.dias} días`} />
     </>
   );
 }

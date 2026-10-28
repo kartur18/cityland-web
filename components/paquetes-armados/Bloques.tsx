@@ -204,3 +204,42 @@ export function TarjetasPaquetes({ items }: { items: Circuito[] }) {
     </ul>
   );
 }
+
+// Qué incluye y qué no, lado a lado: el cliente compara de un vistazo sin bajar dos listas largas.
+export function IncluyeNoIncluye({ incluye, noIncluye }: { incluye: string[]; noIncluye: string[] }) {
+  if (!incluye.length && !noIncluye.length) return null;
+  return (
+    <section className="grid gap-4 md:grid-cols-2">
+      {incluye.length > 0 && (
+        <div className="rounded-2xl border border-emerald-200 bg-white p-5 space-y-3">
+          <h2 className="text-xl font-extrabold text-[#0a1628]">Qué incluye</h2>
+          <ul className="space-y-2 text-[15px] text-slate-700">
+            {incluye.map((x, i) => (
+              <li key={i} className="flex gap-2">
+                <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" className="mt-0.5 shrink-0 text-emerald-600">
+                  <path fill="currentColor" d="M8.1 14.6 3.5 10l1.4-1.4 3.2 3.2 7-7L16.5 6z" />
+                </svg>
+                {x}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {noIncluye.length > 0 && (
+        <div className="rounded-2xl border border-slate-200 bg-white p-5 space-y-3">
+          <h2 className="text-xl font-extrabold text-[#0a1628]">No incluye</h2>
+          <ul className="space-y-2 text-[15px] text-slate-600">
+            {noIncluye.map((x, i) => (
+              <li key={i} className="flex gap-2">
+                <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" className="mt-0.5 shrink-0 text-slate-400">
+                  <path fill="currentColor" d="m5.4 4 4.6 4.6L14.6 4 16 5.4 11.4 10l4.6 4.6-1.4 1.4-4.6-4.6L5.4 16 4 14.6 8.6 10 4 5.4z" />
+                </svg>
+                {x}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </section>
+  );
+}

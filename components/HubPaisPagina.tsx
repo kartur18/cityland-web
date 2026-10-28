@@ -4,15 +4,20 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
-import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import { Migas } from "@/components/paquetes-armados/Bloques";
+import { BarraConfianza, CtaFinal, HeroVenta, PasosSeparar, proximaSalida } from "@/components/paquetes-armados/Venta";
+import { portadaDe } from "@/lib/paquetes-armados/fotos";
+import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
+import { salidasDe } from "@/lib/salidas";
 import PorQueCityland from "@/components/PorQueCityland";
 import TarjetaCircuito from "@/components/TarjetaCircuito";
-import { circuitosVigentes } from "@/lib/circuitos";
+import { circuitosVigentes, precioCityland } from "@/lib/circuitos";
 import { DESTINOS_CARIBE, DESTINOS_EUROPA, buildWaUrl, type Destino } from "@/components/constantes";
 import { DESTINOS_MASIVOS } from "@/lib/catalogo-destinos-masivo";
 import { formatoUSD } from "@/lib/formato-precio";
 import type { HubPais } from "@/lib/hubs-pais";
 import { URL_BASE_SEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
+import { absoluta } from "@/lib/paquetes-armados/fotos";
 import { safeJsonLd } from "@/lib/seguridad-http";
 
 const TODOS: Destino[] = [...DESTINOS_EUROPA, ...DESTINOS_CARIBE, ...DESTINOS_MASIVOS];
@@ -20,7 +25,7 @@ const TODOS: Destino[] = [...DESTINOS_EUROPA, ...DESTINOS_CARIBE, ...DESTINOS_MA
 function destinosDe(h: HubPais): Destino[] {
   const vistos = new Set<string>();
   return TODOS.filter((d) => (h.slugs ? h.slugs.includes(d.slug) : h.paises.includes(d.pais)) && !vistos.has(d.slug) && vistos.add(d.slug)).sort(
-    (a, b) => a.turistico - b.turistico
+    (a, b) => a.turistico - b.turistico,
   );
 }
 
@@ -30,7 +35,15 @@ export function metadataHub(h: HubPais): Metadata {
     title: `${h.tituloSeo} | Cityland`,
     description: optimizarMetaDescriptionSEO(h.descripcion),
     alternates: { canonical: url },
-    openGraph: { type: "website", url, title: h.h1, description: h.descripcion, siteName: "Cityland Travel", locale: "es_PE" },
+    openGraph: {
+      type: "website",
+      url,
+      title: h.h1,
+      description: h.descripcion,
+      siteName: "Cityland Travel",
+      locale: "es_PE",
+      images: [absoluta(destinosDe(h)[0]?.img ?? obtenerGaleriaPorTexto(h.nombre)[0], URL_BASE_SEO)],
+    },
   };
 }
 
@@ -79,34 +92,28 @@ export default function HubPaisPagina({ hub: h }: { hub: HubPais }) {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(schema) }} />
       <Navbar />
-      <main id="main-content" className="bg-white pt-24 sm:pt-28 pb-16">
+      <main id="main-content" className="bg-slate-50/60 pt-24 sm:pt-28 pb-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-12">
-          <header className="space-y-4 max-w-3xl">
-            <nav aria-label="Migas de pan" className="text-xs text-slate-500">
-              <Link href="/" className="hover:underline">
-                Inicio
-              </Link>{" "}
-              / {h.h1}
-            </nav>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight text-balance">
-              {h.h1}
-            </h1>
-            <p className="text-base sm:text-lg text-slate-600">{h.intro}</p>
-            {desde !== undefined && (
-              <p className="text-[15px] text-slate-700">
-                {destinos.length} paquetes, desde <strong>{formatoUSD(desde)}</strong> por persona.
-              </p>
-            )}
-            <a
-              href={wa}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 min-h-[48px] px-6 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-extrabold"
-            >
-              <WhatsAppIcon size={18} />
-              Cotizar por WhatsApp
-            </a>
-          </header>
+          <div className="space-y-3">
+            <Migas items={[{ nombre: "Inicio", href: "/" }, { nombre: h.h1 }]} />
+            <HeroVenta
+              foto={destinos[0]?.img ?? (circuitos[0] ? portadaDe(circuitos[0]) : obtenerGaleriaPorTexto(h.nombre)[0])}
+              alt={h.h1}
+              marca="Paquetes"
+              sello={`${destinos.length + circuitos.length} opciones · salidas desde Lima`}
+              titulo={h.h1}
+              bajada={h.intro}
+              chips={["Vuelo + hotel", "Traslados", "Asesora por WhatsApp"]}
+              etiquetaPrecio="Desde, por persona"
+              precio={desde ?? (circuitos[0] ? precioCityland(circuitos[0]) : 0)}
+              detallePrecio={`${destinos.length + circuitos.length} paquetes para elegir`}
+              proxima={proximaSalida(circuitos.flatMap((c) => salidasDe(c.mt)))}
+              wa={wa}
+              boton="Cotizar por WhatsApp"
+            />
+          </div>
+
+          <BarraConfianza />
 
           <section className="space-y-4" aria-labelledby="paquetes">
             <h2 id="paquetes" className="text-2xl font-extrabold text-[#0a1628]">
@@ -117,7 +124,7 @@ export default function HubPaisPagina({ hub: h }: { hub: HubPais }) {
                 <li key={d.slug}>
                   <Link
                     href={`/destinos/${d.slug}`}
-                    className="group block rounded-2xl overflow-hidden border border-slate-200 hover:shadow-lg transition-shadow"
+                    className="group block h-full rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm hover:shadow-xl transition-shadow"
                   >
                     <div className="relative aspect-[4/3] bg-slate-100">
                       <Image
@@ -131,8 +138,11 @@ export default function HubPaisPagina({ hub: h }: { hub: HubPais }) {
                     <div className="p-4 space-y-1">
                       <h3 className="font-extrabold text-[#0a1628] leading-snug">{d.ciudad}</h3>
                       {d.duracion && <p className="text-sm text-slate-500">{d.duracion}</p>}
-                      <p className="text-[15px] text-slate-700">
-                        Desde <strong className="text-[#0a1628]">{formatoUSD(d.turistico)}</strong> por persona
+                      <p className="flex items-end justify-between gap-2 pt-2 text-xs text-slate-500">
+                        <span>
+                          desde <strong className="block text-2xl text-[#0a1628]">{formatoUSD(d.turistico)}</strong>
+                        </span>
+                        <span className="rounded-xl bg-[#25D366] px-3 py-2 text-sm font-extrabold text-white">Ver paquete</span>
                       </p>
                     </div>
                   </Link>
@@ -147,9 +157,10 @@ export default function HubPaisPagina({ hub: h }: { hub: HubPais }) {
           {circuitos.length > 0 && (
             <section className="space-y-4" aria-labelledby="circuitos">
               <h2 id="circuitos" className="text-2xl font-extrabold text-[#0a1628]">
-                Programas con salidas confirmadas
+                Paquetes armados con fecha fija
               </h2>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              <p className="text-slate-600">Viajes ya organizados con salida confirmada. Toca uno para ver su itinerario y sus fechas.</p>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {circuitos.map((c) => (
                   <TarjetaCircuito key={c.slug} c={c} />
                 ))}
@@ -179,6 +190,9 @@ export default function HubPaisPagina({ hub: h }: { hub: HubPais }) {
             </div>
           </section>
 
+          <PasosSeparar />
+          {desde !== undefined && <CtaFinal titulo={`Cotiza hoy tu viaje a ${h.nombre}`} precio={desde} wa={wa} boton="Cotizar por WhatsApp" />}
+
           <section className="space-y-3">
             <h2 className="text-lg font-extrabold text-[#0a1628]">También te puede servir</h2>
             <div className="flex flex-wrap gap-2.5">
@@ -197,7 +211,11 @@ export default function HubPaisPagina({ hub: h }: { hub: HubPais }) {
       </main>
       <PorQueCityland destino={h.nombre} />
       <Footer />
-      <WhatsAppFloat />
+      <WhatsAppFloat
+        href={wa}
+        titulo={desde !== undefined ? `${h.nombre} desde ${formatoUSD(desde)}` : undefined}
+        subtitulo="Cotiza por WhatsApp y separa con el 50%"
+      />
     </>
   );
 }

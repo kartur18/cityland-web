@@ -88,7 +88,7 @@ export default function ColegiosLandingClient({ children }: { children?: React.R
               <div className="card-interactive group bg-white rounded-3xl border border-slate-200/90 shadow-lg overflow-hidden">
                 <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-100">
                   <Image
-                    src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&q=85"
+                    src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&q=85"
                     alt="Viajes de Promoción para Colegios, Institutos y Universidades en Perú - Cityland Travel"
                     fill
                     priority
