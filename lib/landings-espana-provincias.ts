@@ -9,7 +9,7 @@ import {
 // Pasajes de cada ciudad del Perú a Madrid con conexión en Lima (todos los vuelos a España salen del Jorge Chávez).
 // El precio es el de Lima–Madrid más lo que suele sumar el tramo nacional en el mismo boleto.
 
-interface Provincia {
+export interface Provincia {
   ciudad: string;
   slug: string;
   codigo: string;
@@ -27,7 +27,7 @@ interface Provincia {
 
 const URGENCIA_COMUN = "en julio y diciembre los asientos baratos se venden primero, en el vuelo nacional y en el de Madrid.";
 
-const PROVINCIAS: Provincia[] = [
+export const PROVINCIAS: Provincia[] = [
   {
     ciudad: "Arequipa",
     slug: "arequipa",

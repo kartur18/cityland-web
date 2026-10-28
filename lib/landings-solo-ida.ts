@@ -1,6 +1,8 @@
 import { IMG_AVION_ALA, IMG_AEROPUERTO_INTERNACIONAL, IMG_PASAPORTE_VIAJE } from "@/lib/imagenes-destinos";
 import { hoyLima } from "@/lib/salidas";
-import { PRECIO_SOLO_IDA_TOPE_CERCANO, mesesSoloIda, precioSoloIdaDesde, proximoMesSoloIda } from "@/lib/precios-solo-ida";
+import { PRECIO_SOLO_IDA_TOPE_CERCANO, proximoMesSoloIda } from "@/lib/precios-solo-ida";
+import { AVISO_TURISMO, DETALLE, ENLACES_BASE, QUIENES, RUTA_SOLO_IDA, SECCION, base, og, usd } from "@/lib/solo-ida-comun";
+import { landingsSoloIdaB } from "@/lib/landings-solo-ida-b";
 import type { LandingEspana } from "@/lib/landings-espana-tipos";
 import { LANDINGS_ESPANA } from "@/lib/landings-espana";
 
@@ -8,42 +10,7 @@ import { LANDINGS_ESPANA } from "@/lib/landings-espana";
 // estudiantes con visado, nacionalidad española o doble y pasaporte europeo. Los precios salen de
 // lib/precios-solo-ida.ts y se recalculan cada día con la fecha de Lima. Nada de turismo solo ida ni paquete migratorio.
 
-export const RUTA_SOLO_IDA = "/espana/solo-ida";
-const SECCION = { nombre: "Solo ida", href: RUTA_SOLO_IDA };
-const usd = (n: number) => `US$ ${n.toLocaleString("en-US")}`;
-const og = (slug: string) => `/og/solo-ida/${slug}`;
-
-const DETALLE = "Solo ida con impuestos, para viajeros con residencia, visado o pasaporte europeo. Precio referencial.";
-
-// Para quién es el solo ida (va en todas las páginas generales).
-const QUIENES = [
-  "Residentes en España con TIE vigente que vuelven de sus vacaciones en el Perú",
-  "Familiares con visado de reagrupación familiar",
-  "Estudiantes con visado de estudios",
-  "Peruanos con nacionalidad española o doble nacionalidad",
-  "Peruanos con pasaporte de un país de la Unión Europea (italiano, por ejemplo)",
-];
-
-const AVISO_TURISMO = {
-  titulo: "¿Viajas de turismo?",
-  texto: "Si vas de visita o de vacaciones sin residencia ni visado, lo tuyo es el pasaje ida y vuelta, con el regreso a tu nombre. Te lo cotizamos igual de rápido.",
-};
-
-const ENLACES_BASE = [
-  { href: RUTA_SOLO_IDA, texto: "Solo ida: quién puede viajar" },
-  { href: "/pasaje-ida-y-vuelta-a-espana", texto: "Pasaje ida y vuelta a España" },
-  { href: "/espana/llegada-aeropuerto-madrid-barajas", texto: "Tu llegada a Barajas" },
-];
-
-// Lo que se repite en todas las páginas de solo ida y no cambia por familia.
-function base(hoy: string) {
-  const desde = precioSoloIdaDesde(hoy);
-  const [cercano] = mesesSoloIda(1, hoy);
-  return {
-    desde,
-    urgencia: `El precio del solo ida sube mientras más cerca es la fecha: en ${cercano.nombre} puede llegar a ${usd(PRECIO_SOLO_IDA_TOPE_CERCANO)}, y en los meses lejanos sale desde ${usd(desde)}.`,
-  };
-}
+export { RUTA_SOLO_IDA } from "@/lib/solo-ida-comun";
 
 // ── Perfiles ────────────────────────────────────────────────────────────────────────────────────────────────
 
@@ -498,7 +465,7 @@ function meses(hoy: string): LandingEspana[] {
 
 // Todas las páginas de solo ida, armadas con la fecha de Lima del día.
 export function landingsSoloIda(hoy = hoyLima()): LandingEspana[] {
-  return [guiaGeneral(hoy), ...perfiles(hoy), ...meses(hoy)];
+  return [guiaGeneral(hoy), ...perfiles(hoy), ...meses(hoy), ...landingsSoloIdaB(hoy)];
 }
 
 export function buscarLandingSoloIda(slug: string, hoy = hoyLima()): LandingEspana | undefined {
