@@ -9,7 +9,7 @@ import { Migas, Preguntas, TablaSalidas, faqSchema } from "@/components/paquetes
 import { BarraConfianza, CtaFinal, HeroVenta, ListaPaquetes, PasosSeparar, proximaSalida } from "@/components/paquetes-armados/Venta";
 import EnlacesCaribe from "@/components/paquetes-armados/EnlacesCaribe";
 import { CajaPrecio, VideoRecorrido } from "@/components/paquetes-armados/Visual";
-import { absoluta, fotosPara, primerVideo } from "@/lib/paquetes-armados/fotos";
+import { absoluta, fotoDe, fotosPara, primerVideo } from "@/lib/paquetes-armados/fotos";
 import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
 import { buildWaUrl } from "@/components/constantes";
 import { formatoUSD } from "@/lib/formato-precio";
@@ -46,7 +46,7 @@ export function metadataCaribe(p: PaginaCaribe): Metadata {
       images: [
         absoluta(
           p.destino.id === "crucero-por-el-caribe"
-            ? fotosPara(p.programas, p.destino.nombre)[0]
+            ? fotoDe(p.programas[0])
             : (obtenerGaleriaPorTexto(`${p.destino.nombre} ${p.destino.pais}`)[0] ?? fotosPara(p.programas, p.destino.nombre)[0]),
           URL_BASE_SEO,
         ),
@@ -166,7 +166,7 @@ export default function PaqueteCaribePagina({ pagina: p }: { pagina: PaginaCarib
           <div className="space-y-3">
             <Migas items={[{ nombre: "Inicio", href: "/" }, { nombre: "Paquetes armados", href: "/paquetes-armados" }, { nombre: d.nombre }]} />
             <HeroVenta
-              foto={esCrucero ? fotos[0] : (obtenerGaleriaPorTexto(`${d.nombre} ${d.pais}${esPlaya ? " playa" : ""}`)[0] ?? fotos[0])}
+              foto={esCrucero ? fotoDe(p.programas[0]) : (obtenerGaleriaPorTexto(`${d.nombre} ${d.pais}${esPlaya ? " playa" : ""}`)[0] ?? fotos[0])}
               alt={p.h1}
               sello={`Fecha fija · ${conVuelo ? "vuelo + hotel + traslados" : "hotel + traslados"}`}
               titulo={p.h1}

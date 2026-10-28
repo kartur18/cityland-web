@@ -15,6 +15,12 @@ export function portadaDe(c: Circuito): string {
   return FLYERS[c.mt] ?? PORTADAS[c.mt] ?? obtenerGaleriaPorTexto(`${c.ciudades.slice(0, 3).join(" ")} ${c.paises.join(" ")}`)[0];
 }
 
+// Foto sin texto del programa, para portadas de grupo (un destino, un mes, un país), donde el título de un flyer
+// de un solo programa no calzaría con la página.
+export function fotoDe(c: Circuito): string {
+  return PORTADAS[c.mt] ?? obtenerGaleriaPorTexto(`${c.ciudades.slice(0, 3).join(" ")} ${c.paises.join(" ")}`)[0];
+}
+
 export function videoDe(c: Circuito): string | undefined {
   return VIDEOS[c.mt];
 }

@@ -7,7 +7,7 @@ import PorQueCityland from "@/components/PorQueCityland";
 import QueEsPaqueteArmado from "@/components/paquetes-armados/QueEsPaqueteArmado";
 import { Migas, Preguntas, TablaSalidas, faqSchema } from "@/components/paquetes-armados/Bloques";
 import { BarraConfianza, CtaFinal, HeroVenta, PasosSeparar, proximaSalida } from "@/components/paquetes-armados/Venta";
-import { portadaDe } from "@/lib/paquetes-armados/fotos";
+import { fotoDe } from "@/lib/paquetes-armados/fotos";
 import { buildWaUrl } from "@/components/constantes";
 import { formatoUSD } from "@/lib/formato-precio";
 import { REGIONES_CIRCUITOS } from "@/lib/circuitos";
@@ -41,7 +41,7 @@ export function metadataMes(m: MesSalidas): Metadata {
       description: desc,
       siteName: "Cityland Travel",
       locale: "es_PE",
-      images: [absoluta(portadaDe(m.salidas[0].circuito), URL_BASE_SEO)],
+      images: [absoluta(fotoDe(m.salidas[0].circuito), URL_BASE_SEO)],
     },
   };
 }
@@ -114,7 +114,7 @@ export default function SalidasMesPagina({ mes: m }: { mes: MesSalidas }) {
           <div className="space-y-3">
             <Migas items={[{ nombre: "Inicio", href: "/" }, { nombre: "Salidas con fecha", href: "/salidas" }, { nombre: m.nombre }]} />
             <HeroVenta
-              foto={portadaDe(barata.circuito)}
+              foto={fotoDe(barata.circuito)}
               alt={`Paquetes armados con salida en ${m.nombre}`}
               sello={`${m.salidas.length} salidas en ${m.nombre}`}
               titulo={`Paquetes armados con salida en ${m.nombre}`}
