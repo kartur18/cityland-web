@@ -130,7 +130,7 @@ export default function CircuitoPagina({ circuito: c }: { circuito: Circuito }) 
               chips={[`${c.dias} días · ${c.noches} noches`, ...componentes]}
               etiquetaPrecio="Desde, por persona en habitación doble"
               precio={precio}
-              detallePrecio={salidas.length ? `${salidas.length} ${salidas.length === 1 ? "salida" : "salidas"} con cupo` : `Salidas: ${c.salidas}`}
+              detallePrecio={salidas.length ? `${salidas.length} ${salidas.length === 1 ? "salida" : "salidas"} con cupo` : textoTipo(c)}
               proxima={proxima}
               wa={wa}
               boton="Separar este paquete"
