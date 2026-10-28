@@ -71,8 +71,17 @@ export default function CircuitosPage() {
               Circuitos y paquetes por el mundo desde Lima
             </h1>
             <p className="text-base sm:text-lg text-slate-600">
-              {todos.length} programas con salidas confirmadas: con vuelo desde Lima o solo terrestres para armar a tu medida. El
-              precio es por persona en habitación doble.
+              {todos.length} paquetes armados con salidas confirmadas: con vuelo desde Lima o solo terrestres para armar a tu medida.
+              El precio es por persona en habitación doble.
+            </p>
+            <p className="text-[15px] text-slate-700">
+              <Link href="/salidas" className="font-bold text-[#0a1628] underline">
+                Ver el calendario de salidas con fecha
+              </Link>{" "}
+              ·{" "}
+              <Link href="/paquetes-armados" className="font-bold text-[#0a1628] underline">
+                Paquetes armados al Caribe
+              </Link>
             </p>
             <a
               href={wa}

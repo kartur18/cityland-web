@@ -12,6 +12,10 @@ import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
 import { precioCityland, relacionados, REGIONES_CIRCUITOS, textoTipo, type Circuito } from "@/lib/circuitos";
 import { URL_BASE_SEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
+import QueEsPaqueteArmado from "@/components/paquetes-armados/QueEsPaqueteArmado";
+import { SelloArmado, TablaSalidas } from "@/components/paquetes-armados/Bloques";
+import { etiquetaArmado, lineaComponentes } from "@/lib/paquetes-armados/comun";
+import { salidasDe } from "@/lib/salidas";
 
 const ruta = (c: Circuito) => `/circuitos/${c.slug}`;
 
@@ -22,9 +26,9 @@ function listaCorta(xs: string[], n: number): string {
 
 export function metadataCircuito(c: Circuito): Metadata {
   const url = `${URL_BASE_SEO}${ruta(c)}`;
-  const base = `${c.nombre}: ${c.dias} días`;
+  const base = `Paquete armado ${c.nombre}${c.tipo === "vuelo" ? "" : " sin vuelo"}: ${c.dias} días`;
   const titulo = c.tipo === "vuelo" && base.length < 38 ? `${base} desde ${c.origen}` : base;
-  const descripcion = `${c.nombre}, ${c.dias} días y ${c.noches} noches por ${listaCorta(c.paises, 4)}: ${listaCorta(c.ciudades, 5)}. ${textoTipo(c)}. Desde ${formatoUSD(precioCityland(c))} por persona. Separa con el 50%.`;
+  const descripcion = `${etiquetaArmado(c)} ${c.nombre}, ${c.dias} días y ${c.noches} noches por ${listaCorta(c.paises, 4)}: ${listaCorta(c.ciudades, 5)}. ${textoTipo(c)}. Desde ${formatoUSD(precioCityland(c))} por persona. Separa con el 50%.`;
   return {
     title: `${titulo} | Cityland`,
     description: optimizarMetaDescriptionSEO(descripcion),
@@ -54,9 +58,10 @@ export default function CircuitoPagina({ circuito: c }: { circuito: Circuito }) 
   const region = REGIONES_CIRCUITOS.find((r) => r.id === c.region);
   const [foto] = obtenerGaleriaPorTexto(`${c.ciudades.slice(0, 3).join(" ")} ${c.paises.join(" ")}`);
   const otros = relacionados(c);
+  const salidas = salidasDe(c.mt);
   const wa = buildWaUrl({
     categoria: c.region === "europa" ? "europa" : "general",
-    mensajePersonalizado: `¡Hola Cityland Travel! Quiero cotizar el circuito ${c.nombre} de ${c.dias} días (cód. ${c.mt}).`,
+    mensajePersonalizado: `¡Hola Cityland Travel! Quiero el paquete armado ${c.nombre} de ${c.dias} días (cód. ${c.mt}).`,
     refWeb: `citylandtravel.com${ruta(c)}`,
   });
   const faqs = [
@@ -67,7 +72,12 @@ export default function CircuitoPagina({ circuito: c }: { circuito: Circuito }) 
           ? `Sí. Este programa incluye el vuelo desde ${c.origen}${c.aerolineas.length ? ` (${c.aerolineas.join(", ")})` : ""}. Revisa en «Qué incluye» el equipaje permitido.`
           : `No. El precio es solo de los servicios en destino. Si quieres, te cotizamos el vuelo desde Lima aparte.`,
     },
-    { q: "¿Cuándo sale?", a: `Salidas: ${c.salidas}. Te confirmamos los cupos de tu fecha por WhatsApp.` },
+    {
+      q: "¿Cuándo sale?",
+      a: salidas.length
+        ? `Tiene ${salidas.length} ${salidas.length === 1 ? "salida" : "salidas"} con cupo bloqueado; las ves abajo con su precio. Te confirmamos el cupo de tu fecha por WhatsApp.`
+        : `Salidas: ${c.salidas}. Te confirmamos los cupos de tu fecha por WhatsApp.`,
+    },
     { q: "¿Puedo separar mi viaje?", a: "Sí. Separas con el 50% y pagas el resto antes de viajar." },
     {
       q: "¿El precio es por persona?",
@@ -122,7 +132,8 @@ export default function CircuitoPagina({ circuito: c }: { circuito: Circuito }) 
                 </>
               )}
             </nav>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight text-balance">{c.nombre}</h1>
+            <SelloArmado texto={`Fecha fija · ${lineaComponentes(c)}`} />
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight text-balance">Paquete armado {c.nombre}</h1>
             <div className="flex flex-wrap gap-2 text-sm font-bold">
               <span className="rounded-full bg-slate-100 px-3 py-1.5 text-[#0a1628]">
                 {c.dias} días · {c.noches} noches
@@ -149,7 +160,7 @@ export default function CircuitoPagina({ circuito: c }: { circuito: Circuito }) 
                 className="flex items-center justify-center gap-2 min-h-[48px] px-6 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-extrabold"
               >
                 <WhatsAppIcon size={18} />
-                Cotizar este circuito
+                Separar este paquete armado
               </a>
               <p className="text-xs text-slate-500">Precio referencial; cambia según la fecha de salida, el hotel y la disponibilidad.</p>
             </div>
@@ -160,10 +171,19 @@ export default function CircuitoPagina({ circuito: c }: { circuito: Circuito }) 
             <p className="text-[15px] text-slate-700">{c.ciudades.join(" → ")}</p>
           </section>
 
-          <section className="rounded-2xl bg-sky-50 border border-sky-100 p-5 space-y-2">
-            <h2 className="text-xl font-extrabold text-[#0a1628]">Fechas de salida</h2>
-            <p className="text-[15px] text-slate-700">{c.salidas}</p>
-          </section>
+          {salidas.length ? (
+            <section className="space-y-3">
+              <h2 className="text-2xl font-extrabold text-[#0a1628]">Salidas con cupo y su precio</h2>
+              <TablaSalidas salidas={salidas} />
+            </section>
+          ) : (
+            <section className="rounded-2xl bg-sky-50 border border-sky-100 p-5 space-y-2">
+              <h2 className="text-xl font-extrabold text-[#0a1628]">Fechas de salida</h2>
+              <p className="text-[15px] text-slate-700">{c.salidas}</p>
+            </section>
+          )}
+
+          <QueEsPaqueteArmado sinVuelo={c.tipo !== "vuelo"} />
 
           <Lista titulo="Qué incluye" items={c.incluye} />
           <Lista titulo="No incluye" items={c.noIncluye} />
@@ -204,7 +224,7 @@ export default function CircuitoPagina({ circuito: c }: { circuito: Circuito }) 
 
           {otros.length > 0 && (
             <section className="space-y-4">
-              <h2 className="text-xl font-extrabold text-[#0a1628]">Otros circuitos parecidos</h2>
+              <h2 className="text-xl font-extrabold text-[#0a1628]">Otros paquetes armados parecidos</h2>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {otros.map((o) => (
                   <li key={o.slug}>
