@@ -17,7 +17,10 @@ const mayuscula = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 function Chip({ href, texto }: { href: string; texto: string }) {
   return (
     <li>
-      <Link href={href} className="inline-flex min-h-[44px] items-center rounded-full border border-slate-200 px-4 text-sm font-bold text-[#0a1628] hover:border-[#0a1628]">
+      <Link
+        href={href}
+        className="inline-flex min-h-[44px] items-center rounded-full border border-slate-200 px-4 text-sm font-bold text-[#0a1628] hover:border-[#0a1628]"
+      >
         {texto}
       </Link>
     </li>
@@ -30,10 +33,13 @@ export default function EnlacesCaribe({ actual }: { actual: PaginaCaribe }) {
   const todas = paginasCaribe();
   const g = grupo(actual);
   const mismas = todas.filter((p) => p.destino.id === actual.destino.id && p.slug !== actual.slug);
-  const vecino = (p: PaginaCaribe) => p.destino.id !== actual.destino.id && grupo(p) === g && (g !== "ciudad" || p.destino.pais === actual.destino.pais);
+  const vecino = (p: PaginaCaribe) =>
+    p.destino.id !== actual.destino.id && grupo(p) === g && (g !== "ciudad" || p.destino.pais === actual.destino.pais);
   const otros = [...new Map(todas.filter(vecino).map((p) => [p.destino.id, p])).values()];
-  const enlace = (p: PaginaCaribe) => (g === "destino" ? `/paquetes-armados#${p.destino.id}` : g === "ciudad" ? (p.destino.hub ?? "/paquetes-armados") : `/paquetes-armados/${p.slug}`);
-  const tituloOtros = g === "ciudad" ? "Otras ciudades cerca" : g === "combinado" ? "Otras combinaciones de países" : "Otros destinos con paquetes armados";
+  const enlace = (p: PaginaCaribe) =>
+    g === "destino" ? `/paquetes-armados#${p.destino.id}` : g === "ciudad" ? (p.destino.hub ?? "/paquetes-armados") : `/paquetes-armados/${p.slug}`;
+  const tituloOtros =
+    g === "ciudad" ? "Otras ciudades cerca" : g === "combinado" ? "Otras combinaciones de países" : "Otros destinos con paquetes armados";
   return (
     <section className="space-y-6">
       <h2 className="text-xl font-extrabold text-[#0a1628]">Más paquetes armados a {actual.destino.nombre}</h2>

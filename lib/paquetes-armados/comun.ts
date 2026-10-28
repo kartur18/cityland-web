@@ -73,3 +73,9 @@ export function feriadosEnViaje(desde: string, hasta: string): string[] {
 export function listaY(xs: string[]): string {
   return xs.length > 1 ? `${xs.slice(0, -1).join(", ")} y ${xs[xs.length - 1]}` : xs.join("");
 }
+
+// Google muestra unos 60 caracteres del título: el dato extra y la marca van solo si entran, para que no se corte.
+export function tituloSeo(t: string, extra?: string): string {
+  const base = extra && `${t} ${extra}`.length <= 54 ? `${t} ${extra}` : t;
+  return base.length <= 54 ? `${base} | Cityland` : base;
+}

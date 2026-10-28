@@ -4,20 +4,16 @@ import { usePathname } from "next/navigation";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { NUMERO_WHATSAPP_OFICIAL } from "@/components/constantes";
 
-export default function WhatsAppFloat() {
+// En las páginas de paquetes la barra del celular muestra el precio y abre el mensaje de ese paquete.
+export default function WhatsAppFloat({ href, titulo, subtitulo }: { href?: string; titulo?: string; subtitulo?: string } = {}) {
   const pathname = usePathname() || "/";
   const mensaje = `¡Hola Cityland Travel! Vi su página web y deseo cotizar paquetes y vuelos con un asesor.\n\n📍 Ref Web: citylandtravel.com${pathname} [Botón Flotante]`;
-  const hrefDinamico = `https://wa.me/${NUMERO_WHATSAPP_OFICIAL}?text=${encodeURIComponent(
-    mensaje
-  )}`;
+  const hrefDinamico = href ?? `https://wa.me/${NUMERO_WHATSAPP_OFICIAL}?text=${encodeURIComponent(mensaje)}`;
 
   return (
     <>
       {/* Desktop floating button */}
-      <aside
-        aria-label="Contacto directo por WhatsApp"
-        className="fixed bottom-6 right-6 z-[998] flex items-center gap-3 max-md:hidden group"
-      >
+      <aside aria-label="Contacto directo por WhatsApp" className="fixed bottom-6 right-6 z-[998] flex items-center gap-3 max-md:hidden group">
         <div className="bg-white/95 backdrop-blur-md text-[#0a1628] text-xs font-semibold px-3.5 py-2 rounded-xl shadow-lg border border-slate-100 flex items-center gap-2 group-hover:scale-105 transition-transform">
           <span>
             Cotiza por WhatsApp · <strong>Separa con 50%</strong>
@@ -44,12 +40,8 @@ export default function WhatsAppFloat() {
       >
         <div className="flex gap-2 items-center">
           <div className="flex-1 min-w-0">
-            <strong className="text-[12px] text-[#0a1628] block font-bold truncate">
-              Separa tu paquete con 50%
-            </strong>
-            <span className="text-[10px] text-slate-500 flex items-center gap-1">
-              Escríbenos y te cotizamos por WhatsApp
-            </span>
+            <strong className="text-[12px] text-[#0a1628] block font-bold truncate">{titulo ?? "Separa tu paquete con 50%"}</strong>
+            <span className="text-[10px] text-slate-500 flex items-center gap-1">{subtitulo ?? "Escríbenos y te cotizamos por WhatsApp"}</span>
           </div>
           <a
             href={hrefDinamico}

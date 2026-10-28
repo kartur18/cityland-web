@@ -26,7 +26,7 @@ export function precioSalida(s: Pick<SalidaBloqueo, "precio">): number {
   return s.precio + FEE_USD;
 }
 
-function hoyLima(): string {
+export function hoyLima(): string {
   return new Date(Date.now() - 5 * 3600 * 1000).toISOString().slice(0, 10);
 }
 
