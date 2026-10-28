@@ -111,3 +111,23 @@ export function CierreUrgencia({ ruta, titulo, precio, urgencia, mensaje }: { ru
     </section>
   );
 }
+
+// Llamado a mitad de página: tarjeta clara con borde punteado y botón oscuro (no verde), para no repetir la portada.
+export function CtaMedio({ ruta, titulo, texto, boton, mensaje }: { ruta: string; titulo: string; texto: string; boton: string; mensaje: string }) {
+  return (
+    <section className="flex flex-col gap-4 rounded-3xl border-2 border-dashed border-teal-300 bg-teal-50/60 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+      <div className="space-y-1">
+        <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a1628]">{titulo}</h2>
+        <p className="text-base text-slate-700">{texto}</p>
+      </div>
+      <a
+        href={waEspana(ruta, mensaje, "Mitad de página")}
+        {...EXTERNO}
+        className="flex min-h-[48px] shrink-0 items-center justify-center gap-2 rounded-xl bg-[#0a1628] px-6 text-base font-extrabold text-white hover:bg-[#13284a]"
+      >
+        <WhatsAppIcon size={18} />
+        {boton}
+      </a>
+    </section>
+  );
+}

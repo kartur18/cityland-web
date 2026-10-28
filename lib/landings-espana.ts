@@ -262,7 +262,7 @@ const ESTUDIANTES: LandingEspana = {
   slug: "pasajes-para-estudiantes-a-espana",
   tituloSeo: "Pasajes para estudiantes a España",
   descripcion:
-    "Pasajes a Madrid para estudiar en España: solo ida con visado de estudios, maleta extra y fecha según tu matrícula. Desde US$ 690 solo ida. Separa con el 50%.",
+    `Pasajes a Madrid para estudiar en España: solo ida con visado de estudios, maleta extra y fecha según tu matrícula. Desde US$ ${PRECIO_SOLO_IDA_MADRID} solo ida. Separa con el 50%.`,
   migas: "Estudiantes",
   sello: "Lima → Madrid · Estudios",
   h1: "Pasajes para estudiantes a España",
@@ -270,6 +270,9 @@ const ESTUDIANTES: LandingEspana = {
     "Te aceptaron en un máster, un grado o un curso en España. Te vendemos el pasaje solo de ida si ya tienes tu visado de estudios, con la maleta extra para tu año allá y la fecha que calza con tu matrícula.",
   chips: ["Solo ida con visado", "Maleta extra", "Fecha según tu curso"],
   foto: "/images/destinos/bilbao-guggenheim.jpg",
+  tema: "soloPerfil",
+  seccion: { nombre: "Solo ida", href: "/espana/solo-ida" },
+  calendario: { origen: "Lima", destino: "Madrid", recargo: 0 },
   etiquetaPrecio: "Lima–Madrid, solo ida desde",
   precio: PRECIO_SOLO_IDA_MADRID,
   detallePrecio: "Solo ida con impuestos, para viajeros con visado. Precio referencial.",
@@ -313,6 +316,9 @@ const REAGRUPACION: LandingEspana = {
     "Tu esposo, tu esposa o tus papás ya hicieron el trámite de reagrupación y el Consulado te dio el visado. Te vendemos el pasaje solo de ida, con las maletas que necesitas para empezar tu vida allá.",
   chips: ["Solo ida con visado", "2 maletas de 23 kg", "Viaje de toda la familia"],
   foto: "/images/destinos/valencia-artes.jpg",
+  tema: "soloPerfil",
+  seccion: { nombre: "Solo ida", href: "/espana/solo-ida" },
+  calendario: { origen: "Lima", destino: "Madrid", recargo: 0 },
   etiquetaPrecio: "Lima–Madrid, solo ida desde",
   precio: PRECIO_SOLO_IDA_MADRID,
   detallePrecio: "Solo ida con impuestos, para viajeros con visado. Precio referencial.",
@@ -323,7 +329,7 @@ const REAGRUPACION: LandingEspana = {
     { t: "1. Tu familiar inicia el trámite", d: "El familiar que vive en España pide la autorización de reagrupación en la Oficina de Extranjería de su provincia." },
     { t: "2. Tú pides el visado en Lima", d: "Con la autorización aprobada, solicitas el visado de residencia en el Consulado de España en Lima." },
     { t: "3. Viajas solo de ida", d: "Con el visado en tu pasaporte, compras el pasaje solo de ida y entras a España dentro de la vigencia del visado." },
-    { t: "4. Tu tarjeta en España", d: "Ya en España, tramitas tu tarjeta de identidad de extranjero (TIE) en el plazo que te indican." },
+    { t: "4. Tu tarjeta en España", d: "Entras mientras el visado está vigente y, ya en España, tienes 1 mes para pedir tu tarjeta de identidad de extranjero (TIE)." },
   ],
   listaTitulo: "Para tu viaje",
   lista: [
@@ -420,4 +426,4 @@ export function buscarLandingEspana(slug: string): LandingEspana | undefined {
   return LANDINGS_ESPANA.find((l) => l.slug === slug);
 }
 
-export const rutaLandingEspana = (l: LandingEspana) => `/espana/${l.slug}`;
+export const rutaLandingEspana = (l: LandingEspana) => l.ruta ?? `/espana/${l.slug}`;

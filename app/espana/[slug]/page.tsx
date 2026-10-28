@@ -5,6 +5,9 @@ import { LANDINGS_ESPANA, buscarLandingEspana } from "@/lib/landings-espana";
 
 export const dynamicParams = false;
 
+// Estudiantes y reagrupación muestran el precio del solo ida, que cambia por mes.
+export const revalidate = 86400;
+
 type Props = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
