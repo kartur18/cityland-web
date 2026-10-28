@@ -39,9 +39,9 @@ export const REGIONES_CIRCUITOS: { id: string; nombre: string }[] = [
   { id: "cruceros", nombre: "Cruceros" },
 ];
 
-// Fee de Cityland sobre el precio del mayorista: US$100, o US$150 en programas de US$3,000 a más.
+// Fee de Cityland sobre el precio del mayorista: US$150 parejo (decisión de Carlos, 27-oct-2026).
 export function precioCityland(c: Pick<Circuito, "desde">): number {
-  return c.desde + (c.desde >= 3000 ? 150 : 100);
+  return c.desde + 150;
 }
 
 function hoyLima(): string {
