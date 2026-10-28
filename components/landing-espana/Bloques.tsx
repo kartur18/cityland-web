@@ -1,0 +1,145 @@
+import type { LandingEspana, TemaEspana } from "@/lib/landings-espana-tipos";
+
+// Bloques de contenido de las landings de España. Cada grupo (provincia, perfil, guía) tiene su color y su forma.
+
+const TEMAS: Record<TemaEspana, { caja: string; numero: string; borde: string }> = {
+  provincia: { caja: "bg-sky-50/70 border-sky-100", numero: "bg-sky-600", borde: "border-sky-200" },
+  perfil: { caja: "bg-emerald-50/60 border-emerald-100", numero: "bg-emerald-600", borde: "border-emerald-200" },
+  guia: { caja: "bg-violet-50/60 border-violet-100", numero: "bg-violet-600", borde: "border-violet-200" },
+};
+
+export const temaDe = (l: LandingEspana) => TEMAS[l.tema ?? "perfil"];
+
+const H2 = "text-2xl sm:text-3xl font-extrabold text-[#0a1628]";
+
+export function Puntos({ l }: { l: LandingEspana }) {
+  const t = temaDe(l);
+  // La guía cuenta pasos en orden: va como línea de tiempo. El resto, en tarjetas.
+  if (l.tema === "guia") {
+    return (
+      <section className="space-y-5" aria-labelledby="puntos">
+        <h2 id="puntos" className={H2}>
+          {l.puntosTitulo}
+        </h2>
+        <ol className={`space-y-6 border-l-2 ${t.borde} pl-6`}>
+          {l.puntos.map((p) => (
+            <li key={p.t} className="relative">
+              <span className={`absolute -left-[33px] top-1 h-4 w-4 rounded-full ${t.numero} ring-4 ring-white`} aria-hidden="true" />
+              <strong className="block text-lg text-[#0a1628]">{p.t}</strong>
+              <p className="mt-1 text-base leading-relaxed text-slate-600">{p.d}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+    );
+  }
+  return (
+    <section className="space-y-5" aria-labelledby="puntos">
+      <h2 id="puntos" className={H2}>
+        {l.puntosTitulo}
+      </h2>
+      <ul className="grid gap-4 sm:grid-cols-2">
+        {l.puntos.map((p) => (
+          <li key={p.t} className={`rounded-2xl border bg-white p-6 ${l.tema === "provincia" ? "border-l-4 " + t.borde : "border-slate-200"}`}>
+            <strong className="block text-lg text-[#0a1628]">{p.t}</strong>
+            <p className="mt-2 text-base leading-relaxed text-slate-600">{p.d}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+// En provincias la tabla es el itinerario: se dibuja como tramos de una ruta.
+function Tramos({ l }: { l: LandingEspana }) {
+  const tabla = l.tabla;
+  if (!tabla) return null;
+  return (
+    <section className="space-y-4" aria-labelledby="tabla">
+      <h2 id="tabla" className={H2}>
+        {tabla.titulo}
+      </h2>
+      <ol className="grid gap-3 sm:grid-cols-3">
+        {tabla.filas.map((f, i) => (
+          <li key={f[0]} className="rounded-2xl border border-slate-200 bg-white p-5">
+            <span className={`inline-flex h-8 w-8 items-center justify-center rounded-full ${temaDe(l).numero} text-sm font-extrabold text-white`}>{i + 1}</span>
+            <strong className="mt-3 block text-lg text-[#0a1628]">{f[0]}</strong>
+            <p className="text-base font-bold text-slate-700">{f[1]}</p>
+            <p className="text-sm text-slate-500">{f[2]}</p>
+          </li>
+        ))}
+      </ol>
+      {tabla.nota && <p className="text-sm text-slate-500">{tabla.nota}</p>}
+    </section>
+  );
+}
+
+export function Tabla({ l }: { l: LandingEspana }) {
+  const tabla = l.tabla;
+  if (!tabla) return null;
+  if (l.tema === "provincia") return <Tramos l={l} />;
+  return (
+    <section className="space-y-4" aria-labelledby="tabla">
+      <h2 id="tabla" className={H2}>
+        {tabla.titulo}
+      </h2>
+      <ul className="space-y-3 sm:hidden">
+        {tabla.filas.map((f) => (
+          <li key={f[0]} className="rounded-2xl border border-slate-200 p-4">
+            <strong className="block text-base text-[#0a1628]">{f[0]}</strong>
+            {f.slice(1).map((celda, i) => (
+              <p key={i} className="mt-1 text-[15px] text-slate-700">
+                <span className="text-slate-500">{tabla.columnas[i + 1]}:</span> {celda}
+              </p>
+            ))}
+          </li>
+        ))}
+      </ul>
+      <div className="hidden overflow-x-auto rounded-2xl border border-slate-200 sm:block">
+        <table className="w-full text-left text-base">
+          <thead className="bg-slate-50 text-sm text-slate-600">
+            <tr>
+              {tabla.columnas.map((c) => (
+                <th key={c} scope="col" className="px-4 py-3 font-bold">
+                  {c}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-slate-200">
+            {tabla.filas.map((f) => (
+              <tr key={f[0]}>
+                {f.map((celda, i) => (
+                  <td key={i} className={`px-4 py-3 ${i === 0 ? "font-bold text-[#0a1628]" : "text-slate-700"}`}>
+                    {celda}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {tabla.nota && <p className="text-sm text-slate-500">{tabla.nota}</p>}
+    </section>
+  );
+}
+
+export function Lista({ l }: { l: LandingEspana }) {
+  return (
+    <section className={`rounded-3xl border p-6 sm:p-8 space-y-4 ${temaDe(l).caja}`} aria-labelledby="lista">
+      <h2 id="lista" className="text-2xl font-extrabold text-[#0a1628]">
+        {l.listaTitulo}
+      </h2>
+      <ul className="grid gap-3 sm:grid-cols-2">
+        {l.lista.map((x) => (
+          <li key={x} className="flex items-start gap-2.5 text-base text-slate-700">
+            <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" className="mt-1 shrink-0 text-emerald-600">
+              <path fill="currentColor" d="M8.1 14.6 3.5 10l1.4-1.4 3.2 3.2 7-7L16.5 6z" />
+            </svg>
+            {x}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
