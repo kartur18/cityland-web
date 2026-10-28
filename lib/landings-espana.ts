@@ -34,7 +34,7 @@ export interface LandingEspana {
 }
 
 // Referencias de precio por persona (ida y vuelta Lima–Madrid de lib/rutas-vuelos.ts; solo ida con visado).
-export const PRECIO_IDA_VUELTA_MADRID = 1090;
+export const PRECIO_IDA_VUELTA_MADRID = 1500;
 export const PRECIO_SOLO_IDA_MADRID = 690;
 
 const DETALLE_IDA_VUELTA = "Ida y vuelta con impuestos. Precio referencial; te damos el de tu fecha.";
@@ -59,7 +59,7 @@ const PROVINCIAS: Provincia[] = [
     codigo: "AQP",
     aeropuerto: "Aeropuerto Rodríguez Ballón",
     duracion: "1 h 30 min",
-    precio: 1190,
+    precio: 1600,
     consejo: {
       t: "Sal temprano de Arequipa",
       d: "Los vuelos a Europa salen de Lima por la tarde o la noche. Un vuelo de Arequipa en la mañana te deja en el Jorge Chávez con tiempo de sobra para la conexión.",
@@ -76,7 +76,7 @@ const PROVINCIAS: Provincia[] = [
     codigo: "TRU",
     aeropuerto: "Aeropuerto Carlos Martínez de Pinillos",
     duracion: "1 h 10 min",
-    precio: 1190,
+    precio: 1600,
     consejo: {
       t: "Vuelo o bus hasta Lima",
       d: "Desde Trujillo también se llega a Lima en bus (unas 9 horas). Si prefieres el bus, te armamos el pasaje a Madrid desde Lima y te decimos a qué hora tienes que estar en el aeropuerto.",
@@ -93,7 +93,7 @@ const PROVINCIAS: Provincia[] = [
     codigo: "CIX",
     aeropuerto: "Aeropuerto José Quiñones",
     duracion: "1 h 20 min",
-    precio: 1210,
+    precio: 1620,
     consejo: {
       t: "Pocas frecuencias: reserva con tiempo",
       d: "Chiclayo tiene menos vuelos diarios a Lima que Arequipa o Cusco. En julio y diciembre se llenan rápido: cotiza el tramo nacional junto con el de Madrid.",
@@ -110,7 +110,7 @@ const PROVINCIAS: Provincia[] = [
     codigo: "PIU",
     aeropuerto: "Aeropuerto Guillermo Concha Iberico",
     duracion: "1 h 40 min",
-    precio: 1230,
+    precio: 1640,
     consejo: {
       t: "Piura o Talara",
       d: "Si vives en Sullana, Paita o Talara, también puedes salir del aeropuerto de Talara. Te cotizamos los dos y eliges el que te queda mejor por precio y horario.",
@@ -127,7 +127,7 @@ const PROVINCIAS: Provincia[] = [
     codigo: "CUZ",
     aeropuerto: "Aeropuerto Alejandro Velasco Astete",
     duracion: "1 h 20 min",
-    precio: 1190,
+    precio: 1600,
     consejo: {
       t: "En Cusco solo se vuela de día",
       d: "El aeropuerto de Cusco no opera de noche y en la tarde puede haber demoras por el clima. Por eso te buscamos un vuelo nacional de la mañana, con varias horas de margen en Lima.",
@@ -257,7 +257,7 @@ const VISITAR_FAMILIA: LandingEspana = {
   slug: "viajar-a-espana-a-visitar-familia",
   tituloSeo: "Viajar a España a visitar a tu familia",
   descripcion:
-    "Viaja a Madrid a visitar a tu familia: pasaje ida y vuelta, carta de invitación, bolsa de viaje y seguro explicados. Desde US$ 1,090. Separa con el 50%.",
+    "Viaja a Madrid a visitar a tu familia: pasaje ida y vuelta, carta de invitación, bolsa de viaje y seguro explicados. Desde US$ 1,500. Separa con el 50%.",
   migas: "Visitar a tu familia",
   sello: "Lima → Madrid · Visita familiar",
   h1: "Viajar a España a visitar a tu familia",
