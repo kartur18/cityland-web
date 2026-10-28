@@ -16,11 +16,14 @@ import { paginasCaribe } from "@/lib/paquetes-armados/paginas-caribe";
 import { paisesConPaquetes, paquetesTuristicos } from "@/lib/paquetes-turisticos";
 import { destinosConTours, todosLosTours } from "@/lib/tours-turbo";
 import { LANDINGS_ESPANA, rutaLandingEspana } from "@/lib/landings-espana";
+import { PRUEBA_REAPERTURA } from "@/lib/prueba-reapertura";
 
 // Fuente única de URLs indexables: cada URL vive en un solo sitemap hijo.
 export const FECHA_SITEMAP = "2026-10-19T15:00:00.000Z";
 
 export const IDS_SITEMAP = [
+  // Primero: así las 300 de la prueba quedan solo en su sitemap y no en el de ofertas o vuelos.
+  "prueba",
   "migratorios",
   "madrid",
   "ofertas",
@@ -181,6 +184,8 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
     ...destinosConTours().map((d) => `/tours-y-actividades/${d.slug}`),
     ...todosLosTours().map((t) => `/tours-y-actividades/${t.d}/${t.s}`),
   ],
+  // Prueba de 4 semanas (28-oct-2026): su propio sitemap para medir en Search Console cuántas indexa Google.
+  prueba: () => [...PRUEBA_REAPERTURA],
 };
 
 // Se anuncian a Google solo las páginas indexables (ver lib/indexacion.ts); el sitemap y el meta robots usan la misma regla.
