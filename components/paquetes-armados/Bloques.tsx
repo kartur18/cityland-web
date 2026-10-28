@@ -3,7 +3,7 @@ import Link from "next/link";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { formatoUSD } from "@/lib/formato-precio";
 import { precioCityland, type Circuito } from "@/lib/circuitos";
-import { MESES, fechaLarga, partesFecha, precioSalida, type Salida } from "@/lib/salidas";
+import { MESES, diaSemana, fechaLarga, partesFecha, precioSalida, type Salida } from "@/lib/salidas";
 import { portadaDe } from "@/lib/paquetes-armados/fotos";
 
 // Bloques que comparten las páginas de paquetes armados (salidas, meses y Caribe).
@@ -252,5 +252,48 @@ export function IncluyeNoIncluye({ incluye, noIncluye }: { incluye: string[]; no
         </div>
       )}
     </section>
+  );
+}
+
+// Fechas de un mismo paquete como calendario de precios (estilo aerolínea): sin repetir la foto en cada fecha, con el
+// día bien visible, el precio y la más barata resaltada.
+export function CalendarioSalidas({ salidas, actual }: { salidas: Salida[]; actual?: string }) {
+  if (!salidas.length) return null;
+  const minimo = Math.min(...salidas.map((s) => s.precio));
+  const orden = [...salidas].sort((a, b) => a.fecha.localeCompare(b.fecha));
+  return (
+    <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+      {orden.map((s) => {
+        const { dia, mes, anio } = partesFecha(s.fecha);
+        const esActual = s.slug === actual;
+        const barata = s.precio === minimo && salidas.length > 1;
+        return (
+          <li key={s.slug}>
+            <Link
+              href={`/salidas/${s.slug}`}
+              aria-current={esActual ? "page" : undefined}
+              className={`group relative flex h-full flex-col items-center gap-1 rounded-2xl border-2 bg-white px-3 pb-4 pt-5 text-center transition-all hover:-translate-y-0.5 hover:shadow-lg ${
+                esActual ? "border-[#0a1628]" : barata ? "border-emerald-500" : "border-slate-200 hover:border-slate-300"
+              }`}
+            >
+              {barata && (
+                <span className="absolute -top-3 rounded-full bg-emerald-500 px-3 py-0.5 text-xs font-extrabold text-white">La más barata</span>
+              )}
+              {esActual && !barata && (
+                <span className="absolute -top-3 rounded-full bg-[#0a1628] px-3 py-0.5 text-xs font-extrabold text-white">Esta fecha</span>
+              )}
+              <span className="text-xs font-bold uppercase tracking-wide text-slate-500">{diaSemana(s.fecha)}</span>
+              <span className="text-3xl font-extrabold leading-none text-[#0a1628]">{dia}</span>
+              <span className="text-sm font-bold capitalize text-slate-700">
+                {MESES[mes - 1]} {anio}
+              </span>
+              <span className={`mt-2 text-xl font-extrabold ${barata ? "text-emerald-700" : "text-[#0a1628]"}`}>{formatoUSD(precioSalida(s))}</span>
+              <span className="text-xs text-slate-500">por persona</span>
+              <span className="mt-2 text-sm font-extrabold text-emerald-700 group-hover:underline">Ver fecha →</span>
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
