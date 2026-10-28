@@ -30,7 +30,7 @@ export const TITULOS_SEO_UNICOS: Readonly<Record<string, string>> = {
     "Boleto de regreso a Milán: ¿es ida y vuelta? | Cityland",
 
   "/madrid/plan-estadia-7-dias-6-noches-vuelo-ida-vuelta-madrid-separa-con-50-por-ciento":
-    "Ida y vuelta Lima–Madrid, 7 días, desde $1,090 | Cityland",
+    `Ida y vuelta Lima–Madrid, 7 días, desde $${PRECIO_IDA_VUELTA_MADRID_DESDE.toLocaleString("en-US")} | Cityland`,
   "/madrid/plan-estadia-90-dias-maximo-schengen-vuelo-ida-vuelta-madrid-pago-bcp-bbva-interbank-yape":
     "Ida y vuelta Lima–Madrid por 90 días | Cityland",
   "/madrid/plan-salida-abril-semana-santa-madrid-vuelo-ida-vuelta-madrid-pago-bcp-bbva-interbank-yape":
