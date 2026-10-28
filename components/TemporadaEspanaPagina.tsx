@@ -90,6 +90,7 @@ export default function TemporadaEspanaPagina({ temporada: t }: { temporada: Tem
               detallePrecio={desde !== undefined ? "Precio en temporada baja; te damos el de tu fecha." : undefined}
               wa={wa}
               boton="Cotizar por WhatsApp"
+              ancla="Ver pasajes y fechas"
               nota="Te damos el precio exacto de tu fecha por WhatsApp"
             />
           </div>

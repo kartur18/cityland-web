@@ -129,11 +129,11 @@ export default function PaquetesMigratoriosHubPage() {
       <Navbar />
 
       {/* HERO LIMPIO Y ORDENADO (SIN CAJAS METIDAS DENTRO DE CAJAS) */}
-      <section className="relative pt-10 pb-14 sm:pt-14 sm:pb-18 bg-[#0a1628] text-white overflow-hidden border-b-4 border-amber-400">
+      <section className="relative pt-10 pb-14 sm:pt-14 sm:pb-18 bg-gradient-to-br from-white via-amber-50/40 to-sky-50 text-[#0a1628] overflow-hidden border-b-4 border-amber-400">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             <div className="lg:col-span-6">
-              <div className="inline-flex flex-wrap items-center gap-2 bg-amber-400/15 border border-amber-400/35 px-4 py-1.5 rounded-full text-xs font-extrabold text-amber-300 mb-5">
+              <div className="inline-flex flex-wrap items-center gap-2 bg-amber-50 border border-amber-200 px-4 py-1.5 rounded-full text-xs font-extrabold text-amber-900 mb-5">
                 <span className="inline-flex items-center gap-1.5">
                   <FlagIcon pais="España" className="w-3.5 h-2.5" />
                   <span>España</span>
@@ -159,12 +159,12 @@ export default function PaquetesMigratoriosHubPage() {
 
               <h1 className="text-3xl sm:text-5xl font-black tracking-tight leading-[1.1] mb-4">
                 Paquetes Migratorios a Europa{" "}
-                <span className="text-amber-400">desde $699 USD</span>
+                <span className="text-amber-600">desde $699 USD</span>
               </h1>
 
-              <p className="text-base sm:text-lg text-slate-200 leading-relaxed mb-7">
+              <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-7">
                 Viaja desde Lima y provincias con tu carpeta de viaje armada: pasaje de ida, reserva de regreso, hotel y seguro. Separa tu cupo con el{" "}
-                <strong className="text-white">50% de inicial</strong>.
+                <strong className="text-[#0a1628]">50% de inicial</strong>.
               </p>
 
               <div className="flex flex-wrap items-center gap-3 mb-6">
@@ -179,28 +179,28 @@ export default function PaquetesMigratoriosHubPage() {
                 </a>
                 <Link
                   href="/espana"
-                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-5 py-4 rounded-2xl text-sm whitespace-nowrap transition-all"
+                  className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 border border-slate-300 text-[#0a1628] font-bold px-5 py-4 rounded-2xl text-sm whitespace-nowrap transition-all"
                 >
                   <FlagIcon pais="España" className="w-4 h-3" />
                   <span>España</span>
                 </Link>
                 <Link
                   href="/italia"
-                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-5 py-4 rounded-2xl text-sm whitespace-nowrap transition-all"
+                  className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 border border-slate-300 text-[#0a1628] font-bold px-5 py-4 rounded-2xl text-sm whitespace-nowrap transition-all"
                 >
                   <FlagIcon pais="Italia" className="w-4 h-3" />
                   <span>Italia</span>
                 </Link>
                 <Link
                   href="/francia"
-                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-5 py-4 rounded-2xl text-sm whitespace-nowrap transition-all"
+                  className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 border border-slate-300 text-[#0a1628] font-bold px-5 py-4 rounded-2xl text-sm whitespace-nowrap transition-all"
                 >
                   <FlagIcon pais="Francia" className="w-4 h-3" />
                   <span>Francia</span>
                 </Link>
               </div>
 
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-300 pt-4 border-t border-white/15">
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-600 pt-4 border-t border-slate-200">
                 <span>✓ Agencia Formal RUC 20614914239</span>
                 <span>✓ Oficina en Av. Antúnez de Mayolo 814, Los Olivos</span>
               </div>

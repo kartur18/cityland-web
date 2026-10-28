@@ -103,6 +103,7 @@ export default function ServicioPagina({ servicio: s }: { servicio: ServicioCity
               etiquetaPrecio="Te cotizamos por WhatsApp en minutos"
               wa={wa}
               boton="Cotizar por WhatsApp"
+              ancla="Ver qué te cotizamos"
               nota="Atención de lunes a sábado, de 9:00 a. m. a 7:00 p. m."
             />
           </div>

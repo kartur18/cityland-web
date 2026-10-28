@@ -45,22 +45,22 @@ export default function VuelosJorgeChavezTemplate({
       <Navbar />
 
       {/* Barra de Migas de Pan y Aeropuerto Oficial */}
-      <div className="bg-[#071120] text-slate-300 border-b border-slate-800 text-xs">
+      <div className="bg-white text-slate-500 border-b border-slate-200 text-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-2">
           <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-1.5">
             {breadcrumbs.map((b, idx) => (
               <React.Fragment key={b.url}>
-                {idx > 0 && <span className="text-slate-600">/</span>}
+                {idx > 0 && <span className="text-slate-400">/</span>}
                 <Link
                   href={b.url}
-                  className="hover:text-amber-400 transition-colors font-medium"
+                  className="hover:text-emerald-700 transition-colors font-medium"
                 >
                   {b.nombre}
                 </Link>
               </React.Fragment>
             ))}
           </nav>
-          <span className="text-[11px] font-bold text-emerald-400 flex items-center gap-1.5">
+          <span className="text-[11px] font-bold text-emerald-700 flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             Agencia formal · RUC 20614914239
           </span>
@@ -68,12 +68,12 @@ export default function VuelosJorgeChavezTemplate({
       </div>
 
       {/* HERO ESTILO PANEL DE EMBARQUE JORGE CHÁVEZ (LIM) */}
-      <section className="bg-gradient-to-b from-[#071120] via-[#0c1d36] to-[#102544] text-white py-10 sm:py-14 border-b border-slate-800">
+      <section className="bg-gradient-to-br from-white via-sky-50/60 to-sky-50 text-[#0a1628] py-10 sm:py-14 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Columna Izquierda: Tablero de Ruta */}
             <div className="lg:col-span-7 space-y-5">
-              <div className="inline-flex flex-wrap items-center gap-2 bg-sky-500/15 border border-sky-400/30 text-sky-300 px-3.5 py-1.5 rounded-full text-xs font-extrabold tracking-wide">
+              <div className="inline-flex flex-wrap items-center gap-2 bg-sky-50 border border-sky-200 text-sky-800 px-3.5 py-1.5 rounded-full text-xs font-extrabold tracking-wide">
                 <span>✈️ CENTRAL DE BOLETOS AÉREOS</span>
                 <span>·</span>
                 <span>{config.badgeHero}</span>
@@ -81,57 +81,57 @@ export default function VuelosJorgeChavezTemplate({
 
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.1]">
                 Vuelos de {origen} a{" "}
-                <span className="text-amber-400">{destino}</span>
+                <span className="text-sky-700">{destino}</span>
               </h1>
 
               {/* Tarjeta Visual de Ruta IATA (LIM -> DESTINO) */}
-              <div className="bg-white/5 backdrop-blur-md border border-white/15 rounded-2xl p-4 sm:p-5">
+              <div className="bg-white border border-slate-200 shadow-sm rounded-2xl p-5 sm:p-6">
                 <div className="grid grid-cols-1 sm:grid-cols-11 gap-4 items-center">
                   <div className="sm:col-span-5">
-                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 block">
+                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-slate-500 block">
                       Aeropuerto de Salida
                     </span>
-                    <div className="text-2xl sm:text-3xl font-black text-white tracking-tight mt-0.5">
+                    <div className="text-2xl sm:text-3xl font-black text-[#0a1628] tracking-tight mt-0.5">
                       {codigoOrigen}
                     </div>
-                    <p className="text-xs text-slate-300 font-medium mt-0.5">
+                    <p className="text-sm text-slate-600 font-medium mt-0.5">
                       {etiquetaAeropuertoOrigen}
                     </p>
                   </div>
 
-                  <div className="sm:col-span-1 flex sm:flex-col items-center justify-center text-amber-400">
+                  <div className="sm:col-span-1 flex sm:flex-col items-center justify-center text-sky-600">
                     <span className="text-xl">✈️</span>
                   </div>
 
                   <div className="sm:col-span-5 sm:text-right">
-                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 block">
+                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-slate-500 block">
                       Aeropuerto de Destino
                     </span>
-                    <div className="text-2xl sm:text-3xl font-black text-amber-400 tracking-tight mt-0.5">
+                    <div className="text-2xl sm:text-3xl font-black text-sky-700 tracking-tight mt-0.5">
                       {codigoDestino}
                     </div>
-                    <p className="text-xs text-slate-300 font-medium mt-0.5">
+                    <p className="text-sm text-slate-600 font-medium mt-0.5">
                       {etiquetaAeropuertoDestino}
                     </p>
                   </div>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-300">
+                <div className="mt-4 pt-3 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2 text-sm text-slate-600">
                   <span>
-                    <strong className="text-white">Equipaje:</strong> según aerolínea y tarifa; tu asesor lo confirma
+                    <strong className="text-[#0a1628]">Equipaje:</strong> según aerolínea y tarifa; tu asesor lo confirma
                   </span>
                   <span>
-                    <strong className="text-white">Check-in:</strong> Gestionado por tu asesor
+                    <strong className="text-[#0a1628]">Check-in:</strong> Gestionado por tu asesor
                   </span>
                 </div>
               </div>
 
-              <p className="text-sm sm:text-base text-slate-200 leading-relaxed">
+              <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
                 {textoPrecio(config.descripcionHero)}{" "}
-                <strong className="text-white font-bold">{textoPrecio(config.negritaHero)}</strong>
+                <strong className="text-[#0a1628] font-bold">{textoPrecio(config.negritaHero)}</strong>
               </p>
 
-              <div className="flex flex-wrap items-center gap-3 pt-1">
+              <div className="flex flex-wrap items-center gap-4 pt-1">
                 <a
                   href={waHref}
                   target="_blank"
@@ -141,12 +141,12 @@ export default function VuelosJorgeChavezTemplate({
                   <WhatsAppIcon className="w-5 h-5" />
                   <span>Cotizar Fechas por WhatsApp (+51 944 103 890)</span>
                 </a>
-                <div className="bg-white/10 border border-white/15 rounded-xl px-4 py-2.5 text-xs">
-                  <span className="text-slate-300 block">Tarifa Referencial Desde</span>
-                  <span className="text-lg font-black text-amber-400">
+                <div className="bg-white border border-slate-200 shadow-sm rounded-xl px-5 py-3 text-sm">
+                  <span className="text-slate-500 block">Tarifa Referencial Desde</span>
+                  <span className="text-2xl font-black text-[#0a1628]">
                     ${precioDesdeUSD.toLocaleString("en-US")} USD
                   </span>
-                  <span className="text-slate-300 ml-1.5">
+                  <span className="text-emerald-700 font-bold ml-1.5">
                     (Separa desde ${mitad} USD)
                   </span>
                 </div>

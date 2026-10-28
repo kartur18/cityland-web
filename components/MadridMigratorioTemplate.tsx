@@ -57,42 +57,42 @@ function obtenerTemaSilo(silo: string) {
   switch (silo) {
     case "estadias-boe-madrid":
       return {
-        heroBg: "from-[#061814] via-[#0a2721] to-[#071524]",
+        heroBg: "from-white via-emerald-50/40 to-sky-50",
         borderBottom: "border-emerald-400",
-        badgeBg: "bg-emerald-400/15 border-emerald-400/40 text-emerald-300",
-        subtituloGrad: "from-emerald-300 via-amber-200 to-emerald-300",
+        badgeBg: "bg-emerald-50 border-emerald-200 text-emerald-800",
+        subtituloGrad: "from-emerald-700 via-emerald-600 to-emerald-700",
         selloTexto: "Estadías Calibradas al BOE 2026",
       };
     case "rutas-espana-barajas":
       return {
-        heroBg: "from-[#1a0912] via-[#2b0f1c] to-[#0c1629]",
+        heroBg: "from-white via-amber-50/40 to-sky-50",
         borderBottom: "border-amber-400",
-        badgeBg: "bg-amber-400/15 border-amber-400/40 text-amber-300",
-        subtituloGrad: "from-amber-300 via-yellow-200 to-orange-300",
+        badgeBg: "bg-amber-50 border-amber-200 text-amber-800",
+        subtituloGrad: "from-amber-600 via-orange-600 to-amber-700",
         selloTexto: "Rutas España y Europa vía Madrid-Barajas",
       };
     case "comunidad-peruana-madrid":
       return {
-        heroBg: "from-[#0b132b] via-[#1c2541] to-[#111936]",
+        heroBg: "from-white via-sky-50/40 to-sky-50",
         borderBottom: "border-sky-400",
-        badgeBg: "bg-sky-400/15 border-sky-400/40 text-sky-300",
-        subtituloGrad: "from-amber-300 via-sky-200 to-amber-300",
+        badgeBg: "bg-sky-50 border-sky-200 text-sky-800",
+        subtituloGrad: "from-sky-700 via-sky-600 to-sky-700",
         selloTexto: "Destinos Comunidad Peruana en Madrid",
       };
     case "expediente-servicios-madrid":
       return {
-        heroBg: "from-[#111827] via-[#1e1b4b] to-[#0f172a]",
-        borderBottom: "border-amber-300",
-        badgeBg: "bg-amber-300/15 border-amber-300/40 text-amber-200",
-        subtituloGrad: "from-amber-200 via-yellow-300 to-amber-400",
+        heroBg: "from-white via-amber-50/40 to-sky-50",
+        borderBottom: "border-amber-400",
+        badgeBg: "bg-amber-50 border-amber-200 text-amber-800",
+        subtituloGrad: "from-amber-600 via-orange-600 to-amber-700",
         selloTexto: "Servicios y Expedientes Migratorios Madrid",
       };
     default:
       return {
-        heroBg: "from-[#071120] via-[#0c1d36] to-[#1a0f1e]",
+        heroBg: "from-white via-amber-50/40 to-sky-50",
         borderBottom: "border-amber-400",
-        badgeBg: "bg-amber-400/15 border-amber-400/40 text-amber-300",
-        subtituloGrad: "from-amber-300 via-yellow-200 to-amber-400",
+        badgeBg: "bg-amber-50 border-amber-200 text-amber-800",
+        subtituloGrad: "from-amber-600 via-orange-600 to-amber-700",
         selloTexto: "Especialistas en Ruta Lima → Madrid-Barajas",
       };
   }
@@ -145,25 +145,25 @@ export default function MadridMigratorioTemplate({
       <main className="flex-1 pb-20 sm:pb-0">
         {/* 1. HERO SIMÉTRICO Y LIMPIO (SIN CUADROS METIDOS DENTRO DE CUADROS) */}
         <section
-          className={`relative bg-gradient-to-br ${tema.heroBg} text-white pt-6 pb-12 sm:pt-10 sm:pb-16 overflow-hidden border-b-4 ${tema.borderBottom}`}
+          className={`relative bg-gradient-to-br ${tema.heroBg} text-[#0a1628] pt-6 pb-12 sm:pt-10 sm:pb-16 overflow-hidden border-b-4 ${tema.borderBottom}`}
         >
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
             {/* Breadcrumb SEO */}
             <nav
               aria-label="Ruta de navegación"
-              className="flex flex-wrap items-center gap-2 text-xs text-slate-300 mb-5"
+              className="flex flex-wrap items-center gap-2 text-xs text-slate-500 mb-5"
             >
-              <Link href="/" className="hover:text-amber-300 transition-colors">
+              <Link href="/" className="hover:text-emerald-700 transition-colors">
                 Inicio
               </Link>
               <span>/</span>
-              <Link href="/espana" className="hover:text-amber-300 transition-colors">
+              <Link href="/espana" className="hover:text-emerald-700 transition-colors">
                 España
               </Link>
               {datos.slug && (
                 <>
                   <span>/</span>
-                  <span className="text-white font-bold">{migaFinal}</span>
+                  <span className="text-[#0a1628] font-bold">{migaFinal}</span>
                 </>
               )}
             </nav>
@@ -187,7 +187,7 @@ export default function MadridMigratorioTemplate({
                   </span>
                 </h1>
 
-                <p className="text-sm sm:text-base text-slate-200 leading-relaxed">
+                <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
                   {asegurarDesde(datos.resumenEjecutivo)}
                 </p>
 
@@ -203,13 +203,13 @@ export default function MadridMigratorioTemplate({
                   </a>
                   <a
                     href="#planes-madrid"
-                    className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold px-6 py-4 rounded-2xl text-xs sm:text-sm whitespace-nowrap transition-all"
+                    className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 border border-slate-300 text-[#0a1628] font-bold px-6 py-4 rounded-2xl text-xs sm:text-sm whitespace-nowrap transition-all"
                   >
                     <span>{esMigratorio ? "Ver los 4 planes por fecha ↓" : "Ver la tarifa ↓"}</span>
                   </a>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs text-slate-300 pt-3 border-t border-white/15">
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-sm text-slate-600 pt-3 border-t border-slate-200">
                   <span>✓ Agencia Formal RUC 20614914239</span>
                   <span>✓ Oficina en Av. Antúnez de Mayolo 814, Los Olivos</span>
                 </div>
@@ -217,7 +217,7 @@ export default function MadridMigratorioTemplate({
 
               {/* Columna Derecha: Fotografía grande del destino + lista limpia sin cuadros anidados */}
               <div className="lg:col-span-6">
-                <div className="bg-white text-slate-900 rounded-3xl shadow-2xl overflow-hidden border border-white/20">
+                <div className="bg-white text-slate-900 rounded-3xl shadow-xl overflow-hidden border border-slate-200">
                   <div className="relative h-56 sm:h-64 w-full bg-slate-100 overflow-hidden">
                     <Image
                       src={datos.imagenHero}

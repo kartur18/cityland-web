@@ -168,19 +168,15 @@ export default function AirlineLandingTemplate({
 
   const temaHero = esVerticalEuropa
     ? {
-        sectionBg:
-          "bg-gradient-to-br from-[#071120] via-[#0c1d36] to-[#1a0f1e] text-white border-b-4 border-amber-400",
-        badgeCls:
-          "bg-amber-400/15 border-amber-400/40 text-amber-300",
-        h1Cls: "text-white",
-        highlightCls: "text-amber-300",
-        pCls: "text-slate-200",
-        strongCls: "text-white",
-        chipCls:
-          "bg-white/10 border-white/20 text-white",
-        chipCheckCls: "bg-emerald-500/20 text-emerald-300",
-        btnSecCls:
-          "bg-white/10 hover:bg-white/20 text-white border-white/25",
+        sectionBg: "bg-gradient-to-br from-sky-50/90 via-white to-amber-50/40 text-[#0a1628] border-b-2 border-sky-200",
+        badgeCls: "bg-sky-50 border-sky-200 text-sky-900",
+        h1Cls: "text-[#0a1628]",
+        highlightCls: "text-sky-700",
+        pCls: "text-slate-600",
+        strongCls: "text-[#0a1628]",
+        chipCls: "bg-white border-sky-200/80 text-slate-800 shadow-2xs",
+        chipCheckCls: "bg-sky-100 text-sky-800",
+        btnSecCls: "bg-white hover:bg-sky-50 text-[#0a1628] border-sky-300",
       }
     : esVerticalCaribe
     ? {
@@ -401,42 +397,34 @@ export default function AirlineLandingTemplate({
           {/* Barra de Medios de Pago y Confianza Institucional */}
           <div
             className={`mt-7 pt-4 border-t flex flex-wrap items-center justify-between gap-3 text-xs ${
-              esVerticalEuropa
-                ? "border-white/15 text-slate-200"
-                : "border-slate-200/70 text-slate-600"
+              "border-slate-200/70 text-slate-600"
             }`}
           >
             <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
               <span
                 className={`font-extrabold uppercase tracking-wider text-[11px] ${
-                  esVerticalEuropa ? "text-amber-300" : "text-[#0a1628]"
+                  "text-[#0a1628]"
                 }`}
               >
                 Medios de Pago Oficiales:
               </span>
               <span
                 className={`px-2.5 py-1 rounded-lg font-semibold text-[11px] border ${
-                  esVerticalEuropa
-                    ? "bg-white/10 border-white/15 text-white"
-                    : "bg-slate-100 border-slate-200/80 text-slate-700"
+                  "bg-slate-100 border-slate-200/80 text-slate-700"
                 }`}
               >
                 💳 Visa · Mastercard · Amex
               </span>
               <span
                 className={`px-2.5 py-1 rounded-lg font-semibold text-[11px] border ${
-                  esVerticalEuropa
-                    ? "bg-white/10 border-white/15 text-white"
-                    : "bg-slate-100 border-slate-200/80 text-slate-700"
+                  "bg-slate-100 border-slate-200/80 text-slate-700"
                 }`}
               >
                 🏦 BCP · BBVA · Interbank
               </span>
               <span
                 className={`px-2.5 py-1 rounded-lg font-semibold text-[11px] border ${
-                  esVerticalEuropa
-                    ? "bg-white/10 border-white/15 text-white"
-                    : "bg-slate-100 border-slate-200/80 text-slate-700"
+                  "bg-slate-100 border-slate-200/80 text-slate-700"
                 }`}
               >
                 📱 Yape / Plin Empresarial
@@ -444,9 +432,7 @@ export default function AirlineLandingTemplate({
             </div>
             <div
               className={`flex items-center gap-2 text-[11px] font-bold px-3 py-1 rounded-lg border ${
-                esVerticalEuropa
-                  ? "bg-emerald-500/15 border-emerald-400/30 text-emerald-300"
-                  : "bg-emerald-50 border-emerald-200/70 text-emerald-800"
+                "bg-emerald-50 border-emerald-200/70 text-emerald-800"
               }`}
             >
               <span>✓ Agencia RUC 20614914239 · Salidas desde Lima (Aeropuerto Jorge Chávez LIM)</span>

@@ -130,6 +130,7 @@ export default function PasajesAEspanaPage() {
               detallePrecio="Precio referencial; te damos el de tu fecha."
               wa={wa}
               boton="Cotizar mi pasaje"
+              ancla="Ver rutas y precios"
               nota="Te damos el precio exacto de tu fecha por WhatsApp"
             />
           </div>
