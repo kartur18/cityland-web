@@ -27,7 +27,7 @@ function obtenerFotosPorTexto(texto: string): [string, string, string, string, s
 }
 
 const CIUDADES_PRIMER_VIAJE: [string, string, string, number][] = [
-  ["Madrid", "madrid", "España", 1090],
+  ["Madrid", "madrid", "España", 1500],
   ["Barcelona", "barcelona", "España", 1120],
   ["Valencia", "valencia", "España", 1140],
   ["Sevilla", "sevilla", "España", 1145],
@@ -103,18 +103,18 @@ const RUTAS_DOS_MALETAS: [string, string, string, number, string][] = [
 ];
 
 const RUTAS_AEROLINEAS: [string, string, string, string, number][] = [
-  ["Iberia", "aerolinea-iberia-lima-madrid", "Lima a Madrid", "España", 1120],
+  ["Iberia", "aerolinea-iberia-lima-madrid", "Lima a Madrid", "España", 1500],
   ["Iberia", "aerolinea-iberia-lima-barcelona", "Lima a Barcelona", "España", 1140],
   ["Iberia", "aerolinea-iberia-lima-roma", "Lima a Roma", "Italia", 1165],
   ["Iberia", "aerolinea-iberia-lima-milan", "Lima a Milán", "Italia", 1160],
   ["Iberia", "aerolinea-iberia-lima-paris", "Lima a París", "Francia", 1180],
-  ["Air Europa", "aerolinea-air-europa-lima-madrid", "Lima a Madrid", "España", 1095],
+  ["Air Europa", "aerolinea-air-europa-lima-madrid", "Lima a Madrid", "España", 1500],
   ["Air Europa", "aerolinea-air-europa-lima-barcelona", "Lima a Barcelona", "España", 1120],
   ["Air Europa", "aerolinea-air-europa-lima-milan", "Lima a Milán", "Italia", 1150],
   ["Air Europa", "aerolinea-air-europa-lima-roma", "Lima a Roma", "Italia", 1155],
-  ["Plus Ultra", "aerolinea-plus-ultra-lima-madrid", "Lima a Madrid (Promoción 2 Maletas)", "España", 1090],
+  ["Plus Ultra", "aerolinea-plus-ultra-lima-madrid", "Lima a Madrid (Promoción 2 Maletas)", "España", 1500],
   ["Plus Ultra", "aerolinea-plus-ultra-lima-tenerife", "Lima a Tenerife vía Madrid", "España", 1170],
-  ["LATAM Airlines", "aerolinea-latam-lima-madrid", "Lima a Madrid Directo", "España", 1140],
+  ["LATAM Airlines", "aerolinea-latam-lima-madrid", "Lima a Madrid Directo", "España", 1500],
   ["LATAM Airlines", "aerolinea-latam-lima-miami", "Lima a Miami Directo", "Estados Unidos", 499],
   ["LATAM Airlines", "aerolinea-latam-lima-nueva-york", "Lima a Nueva York (JFK) Directo", "Estados Unidos", 650],
   ["LATAM Airlines", "aerolinea-latam-lima-los-angeles", "Lima a Los Ángeles (LAX) Directo", "Estados Unidos", 620],

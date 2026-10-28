@@ -1021,7 +1021,7 @@ const ESCALA_COMERCIAL_RUTAS_BASE: Record<
   string,
   { desde: number; items: [number, number, number] }
 > = {
-  "lima-madrid": { desde: 1090, items: [1090, 1180, 690] },
+  "lima-madrid": { desde: 1500, items: [1890, 1500, 690] },
   "madrid-lima": { desde: 1050, items: [1050, 680, 1090] },
   "lima-barcelona": { desde: 1120, items: [1120, 1190, 1490] },
   "barcelona-lima": { desde: 1080, items: [1080, 690, 1120] },
