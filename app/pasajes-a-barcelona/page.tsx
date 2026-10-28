@@ -3,7 +3,11 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
-import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import Image from "next/image";
+import { Migas } from "@/components/paquetes-armados/Bloques";
+import { BarraConfianza, HeroVenta } from "@/components/paquetes-armados/Venta";
+import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
+import { absoluta } from "@/lib/paquetes-armados/fotos";
 import PorQueCityland from "@/components/PorQueCityland";
 import { GUIAS_ESPANA } from "@/components/GuiasEspana";
 import { DESTINOS_EUROPA, buildWaUrl } from "@/components/constantes";
@@ -16,6 +20,7 @@ import { safeJsonLd } from "@/lib/seguridad-http";
 // Barcelona es el segundo destino de España más pedido por WhatsApp; desde junio de 2026 LEVEL vuela directo
 // Lima–Barcelona (tres veces por semana, según la nota de Iberia Agencias). Precios de la ficha de cada ruta.
 const RUTA = "/pasajes-a-barcelona";
+const FOTOS = obtenerGaleriaPorTexto("barcelona espana");
 const DESCRIPCION =
   "Pasajes Lima–Barcelona ida y vuelta, vuelo directo desde junio de 2026 o con escala en Madrid, paquete turístico con hotel y paquete migratorio a Barcelona. Separa con el 50%.";
 
@@ -42,7 +47,15 @@ export const metadata: Metadata = {
   title: "Pasajes a Barcelona desde Lima: directo y con escala | Cityland",
   description: DESCRIPCION,
   alternates: { canonical: `${URL_BASE_SEO}${RUTA}` },
-  openGraph: { type: "website", url: `${URL_BASE_SEO}${RUTA}`, title: "Pasajes a Barcelona desde Lima", description: DESCRIPCION, siteName: "Cityland Travel", locale: "es_PE" },
+  openGraph: {
+    type: "website",
+    url: `${URL_BASE_SEO}${RUTA}`,
+    title: "Pasajes a Barcelona desde Lima",
+    description: DESCRIPCION,
+    siteName: "Cityland Travel",
+    locale: "es_PE",
+    images: [absoluta(FOTOS[0], URL_BASE_SEO)],
+  },
 };
 
 export default function PasajesABarcelonaPage() {
@@ -61,8 +74,16 @@ export default function PasajesABarcelonaPage() {
       detalle: `Vuelo + hotel desde ${formatoUSD(paquete.turistico)}`,
       href: `/destinos/${paquete.slug}`,
     },
-    { titulo: "Paquete migratorio a Barcelona", detalle: "Solo ida con carpeta de viaje", href: "/paquetes-migratorios/espana-barcelona-plan-promo-699" },
-    vuelta && { titulo: "Pasaje Barcelona–Lima", detalle: `Para viajar a Perú desde ${formatoUSD(vuelta.precioDesdeUSD)}`, href: `/vuelos/${vuelta.slug}` },
+    {
+      titulo: "Paquete migratorio a Barcelona",
+      detalle: "Solo ida con carpeta de viaje",
+      href: "/paquetes-migratorios/espana-barcelona-plan-promo-699",
+    },
+    vuelta && {
+      titulo: "Pasaje Barcelona–Lima",
+      detalle: `Para viajar a Perú desde ${formatoUSD(vuelta.precioDesdeUSD)}`,
+      href: `/vuelos/${vuelta.slug}`,
+    },
   ].filter((o): o is { titulo: string; detalle: string; href: string } => Boolean(o));
 
   const schema = {
@@ -87,50 +108,51 @@ export default function PasajesABarcelonaPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(schema) }} />
       <Navbar />
-      <main id="main-content" className="bg-white pt-24 sm:pt-28 pb-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-12">
-          <header className="space-y-4 max-w-3xl">
-            <nav aria-label="Migas de pan" className="text-xs text-slate-500">
-              <Link href="/" className="hover:underline">
-                Inicio
-              </Link>{" "}
-              /{" "}
-              <Link href="/pasajes-a-espana" className="hover:underline">
-                Pasajes a España
-              </Link>{" "}
-              / Barcelona
-            </nav>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight text-balance">
-              Pasajes y paquetes a Barcelona desde Lima
-            </h1>
-            <p className="text-base sm:text-lg text-slate-600">
-              Desde junio de 2026 hay vuelo directo Lima–Barcelona, y también puedes ir con escala en Madrid. Elige si
-              vas de vacaciones, con hotel incluido, o solo de ida.
-            </p>
-            <a
-              href={wa}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 min-h-[48px] px-6 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-extrabold"
-            >
-              <WhatsAppIcon size={18} />
-              Cotizar Barcelona por WhatsApp
-            </a>
-          </header>
+      <main id="main-content" className="bg-slate-50/60 pt-24 sm:pt-28 pb-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-12">
+          <div className="space-y-3">
+            <Migas items={[{ nombre: "Inicio", href: "/" }, { nombre: "Pasajes a España", href: "/pasajes-a-espana" }, { nombre: "Barcelona" }]} />
+            <HeroVenta
+              foto={FOTOS[0]}
+              alt="Pasajes y paquetes a Barcelona desde Lima"
+              marca="Pasajes"
+              sello="Lima → Barcelona"
+              titulo="Pasajes y paquetes a Barcelona desde Lima"
+              bajada="Desde junio de 2026 hay vuelo directo Lima–Barcelona, y también puedes ir con escala en Madrid. Elige si vas de vacaciones, con hotel incluido, o solo de ida."
+              chips={["Vuelo directo", "Paquete con hotel", "Solo ida"]}
+              etiquetaPrecio={ida ? "Ida y vuelta desde, por persona" : "Te cotizamos tu fecha por WhatsApp"}
+              precio={ida?.precioDesdeUSD}
+              detallePrecio={ida ? "Precio referencial; te damos el de tu fecha." : undefined}
+              wa={wa}
+              boton="Cotizar Barcelona"
+              nota="Te damos el precio exacto de tu fecha por WhatsApp"
+            />
+          </div>
+
+          <BarraConfianza />
 
           <section className="space-y-4" aria-labelledby="opciones">
             <h2 id="opciones" className="text-2xl font-extrabold text-[#0a1628]">
               Elige cómo viajar a Barcelona
             </h2>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {opciones.map((o) => (
+              {opciones.map((o, i) => (
                 <li key={o.href}>
                   <Link
                     href={o.href}
-                    className="block min-h-[56px] rounded-2xl border border-slate-200 px-5 py-4 hover:border-[#0a1628] transition-colors"
+                    className="group block h-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-xl"
                   >
-                    <span className="block font-extrabold text-[#0a1628]">{o.titulo}</span>
-                    <span className="block text-[15px] text-slate-600 mt-0.5">{o.detalle}</span>
+                    <span className="relative block aspect-[16/9] bg-slate-100">
+                      <Image
+                        src={FOTOS[i % FOTOS.length]}
+                        alt={o.titulo}
+                        fill
+                        sizes="(min-width: 640px) 50vw, 100vw"
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </span>
+                    <span className="block px-5 pt-4 font-extrabold text-[#0a1628]">{o.titulo}</span>
+                    <span className="block px-5 pb-4 text-[15px] font-bold text-emerald-700 mt-0.5">{o.detalle}</span>
                   </Link>
                 </li>
               ))}
@@ -173,7 +195,7 @@ export default function PasajesABarcelonaPage() {
       </main>
       <PorQueCityland destino="Barcelona" />
       <Footer />
-      <WhatsAppFloat />
+      <WhatsAppFloat href={wa} />
     </>
   );
 }

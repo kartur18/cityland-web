@@ -3,10 +3,12 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
-import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import { Migas } from "@/components/paquetes-armados/Bloques";
+import { BarraConfianza, CtaFinal, HeroVenta, TarjetaRutaFoto } from "@/components/paquetes-armados/Venta";
+import { absoluta } from "@/lib/paquetes-armados/fotos";
+import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
 import PorQueCityland from "@/components/PorQueCityland";
 import { buildWaUrl } from "@/components/constantes";
-import { formatoUSD } from "@/lib/formato-precio";
 import { buscarRutaVuelo, type RutaVueloSEO } from "@/lib/rutas-vuelos";
 import { URL_BASE_SEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
@@ -19,7 +21,15 @@ export function metadataTemporada(t: TemporadaEspana): Metadata {
     title: `${t.tituloSeo} | Cityland`,
     description: optimizarMetaDescriptionSEO(t.descripcion),
     alternates: { canonical: url },
-    openGraph: { type: "website", url, title: t.h1, description: t.descripcion, siteName: "Cityland Travel", locale: "es_PE" },
+    openGraph: {
+      type: "website",
+      url,
+      title: t.h1,
+      description: t.descripcion,
+      siteName: "Cityland Travel",
+      locale: "es_PE",
+      images: [absoluta(obtenerGaleriaPorTexto(t.fuera?.destino ?? "madrid espana")[0], URL_BASE_SEO)],
+    },
   };
 }
 
@@ -34,7 +44,13 @@ export default function TemporadaEspanaPagina({ temporada: t }: { temporada: Tem
     { texto: "Todas las rutas a España", href: "/pasajes-a-espana" },
     { texto: "Paquete migratorio a España", href: "/espana" },
   ];
-  const wa = buildWaUrl({ categoria: t.fuera ? "general" : "europa", mensajePersonalizado: t.mensajeWhatsApp, refWeb: `citylandtravel.com${t.ruta}` });
+  const foto = obtenerGaleriaPorTexto(t.fuera?.destino ?? "madrid espana")[0];
+  const desde = rutas.length ? Math.min(...rutas.map((x) => x.precioDesdeUSD)) : undefined;
+  const wa = buildWaUrl({
+    categoria: t.fuera ? "general" : "europa",
+    mensajePersonalizado: t.mensajeWhatsApp,
+    refWeb: `citylandtravel.com${t.ruta}`,
+  });
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -57,36 +73,49 @@ export default function TemporadaEspanaPagina({ temporada: t }: { temporada: Tem
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(schema) }} />
       <Navbar />
-      <main id="main-content" className="bg-white pt-24 sm:pt-28 pb-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-12">
-          <header className="space-y-4 max-w-3xl">
-            <nav aria-label="Migas de pan" className="text-xs text-slate-500">
-              <Link href="/" className="hover:underline">
-                Inicio
-              </Link>{" "}
-              /{" "}
-              <Link href={miga.href} className="hover:underline">
-                {miga.nombre}
-              </Link>
-            </nav>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight text-balance">{t.h1}</h1>
-            <p className="text-base sm:text-lg text-slate-600">{t.intro}</p>
-            <a
-              href={wa}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 min-h-[48px] px-6 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-extrabold"
-            >
-              <WhatsAppIcon size={18} />
-              Cotizar por WhatsApp
-            </a>
-          </header>
+      <main id="main-content" className="bg-slate-50/60 pt-24 sm:pt-28 pb-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-12">
+          <div className="space-y-3">
+            <Migas items={[{ nombre: "Inicio", href: "/" }, { nombre: miga.nombre, href: miga.href }, { nombre: t.h1 }]} />
+            <HeroVenta
+              foto={foto}
+              alt={t.h1}
+              marca="Pasajes"
+              sello={t.fuera?.destino ?? "España"}
+              titulo={t.h1}
+              bajada={t.intro}
+              chips={t.fechas.slice(0, 3).map((x) => x.cuando)}
+              etiquetaPrecio={desde !== undefined ? "Pasajes desde, por persona" : "Te cotizamos tu fecha por WhatsApp"}
+              precio={desde}
+              detallePrecio={desde !== undefined ? "Precio en temporada baja; te damos el de tu fecha." : undefined}
+              wa={wa}
+              boton="Cotizar por WhatsApp"
+              nota="Te damos el precio exacto de tu fecha por WhatsApp"
+            />
+          </div>
+
+          <BarraConfianza />
+
+          <section className="space-y-4" aria-labelledby="rutas">
+            <h2 id="rutas" className="text-2xl font-extrabold text-[#0a1628]">
+              Pasajes para estas fechas
+            </h2>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {rutas.map((r) => (
+                <TarjetaRutaFoto key={r.slug} r={r} />
+              ))}
+            </ul>
+            <p className="text-xs text-slate-500">
+              {t.notaPrecio ??
+                "Precios referenciales en temporada baja; en estas fechas suelen ser más altos. Te damos el precio exacto de tu fecha."}
+            </p>
+          </section>
 
           <section className="space-y-4">
             <h2 className="text-2xl font-extrabold text-[#0a1628]">Fechas clave</h2>
             <ul className="space-y-3">
               {t.fechas.map((f) => (
-                <li key={f.cuando} className="rounded-2xl border border-slate-200 p-4">
+                <li key={f.cuando} className="rounded-2xl border border-slate-200 bg-white p-4">
                   <p className="font-extrabold text-[#0a1628]">{f.cuando}</p>
                   <p className="text-[15px] text-slate-600 mt-1">{f.que}</p>
                 </li>
@@ -114,52 +143,29 @@ export default function TemporadaEspanaPagina({ temporada: t }: { temporada: Tem
             </ul>
           </section>
 
-          <section className="space-y-4" aria-labelledby="rutas">
-            <h2 id="rutas" className="text-2xl font-extrabold text-[#0a1628]">
-              Pasajes para estas fechas
-            </h2>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {rutas.map((r) => (
-                <li key={r.slug}>
-                  <Link
-                    href={`/vuelos/${r.slug}`}
-                    className="flex items-center justify-between gap-4 min-h-[56px] rounded-2xl border border-slate-200 px-5 py-4 hover:border-[#0a1628] transition-colors"
-                  >
-                    <span className="font-extrabold text-[#0a1628]">
-                      {r.origen} → {r.destino}
-                    </span>
-                    <span className="text-[15px] text-slate-700 whitespace-nowrap">
-                      desde <strong className="text-[#0a1628]">{formatoUSD(r.precioDesdeUSD)}</strong>
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <p className="text-xs text-slate-500">
-              {t.notaPrecio ??
-                "Precios referenciales en temporada baja; en estas fechas suelen ser más altos. Te damos el precio exacto de tu fecha."}
-            </p>
-          </section>
-
           {!t.fuera && (
-          <nav aria-labelledby="meses" className="space-y-3">
-            <h2 id="meses" className="text-lg font-extrabold text-[#0a1628]">
-              España mes a mes
-            </h2>
-            <div className="flex flex-wrap gap-2">
-              {NAV_MESES_ESPANA.map((m) =>
-                m.href === t.ruta ? (
-                  <span key={m.href} aria-current="page" className="inline-flex items-center min-h-[44px] px-4 rounded-xl bg-[#0a1628] text-white text-sm font-bold">
-                    {m.texto}
-                  </span>
-                ) : (
-                  <Link key={m.href} href={m.href} className={ENLACE}>
-                    {m.texto}
-                  </Link>
-                )
-              )}
-            </div>
-          </nav>
+            <nav aria-labelledby="meses" className="space-y-3">
+              <h2 id="meses" className="text-lg font-extrabold text-[#0a1628]">
+                España mes a mes
+              </h2>
+              <div className="flex flex-wrap gap-2">
+                {NAV_MESES_ESPANA.map((m) =>
+                  m.href === t.ruta ? (
+                    <span
+                      key={m.href}
+                      aria-current="page"
+                      className="inline-flex items-center min-h-[44px] px-4 rounded-xl bg-[#0a1628] text-white text-sm font-bold"
+                    >
+                      {m.texto}
+                    </span>
+                  ) : (
+                    <Link key={m.href} href={m.href} className={ENLACE}>
+                      {m.texto}
+                    </Link>
+                  ),
+                )}
+              </div>
+            </nav>
           )}
 
           <section className="space-y-4">
@@ -178,6 +184,8 @@ export default function TemporadaEspanaPagina({ temporada: t }: { temporada: Tem
               ))}
             </div>
           </section>
+
+          <CtaFinal titulo={t.h1} precio={desde} wa={wa} boton="Cotizar por WhatsApp" />
 
           <section className="space-y-3">
             <h2 className="text-lg font-extrabold text-[#0a1628]">También te puede servir</h2>
@@ -198,7 +206,7 @@ export default function TemporadaEspanaPagina({ temporada: t }: { temporada: Tem
       </main>
       <PorQueCityland destino={t.fuera?.destino ?? "España"} />
       <Footer />
-      <WhatsAppFloat />
+      <WhatsAppFloat href={wa} />
     </>
   );
 }
