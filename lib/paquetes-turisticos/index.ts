@@ -257,7 +257,12 @@ const limpiarLugar = (x: string) =>
     .replace(/, (Friuli-Venezia Giulia|South Sardinia)$/, "")
     .replace(/^Pula$/, "Pula (Cerdeña)");
 
-const LISTA = (DATOS as PaqueteTuristico[]).map((p) => ({ ...p, lugares: [...new Set(p.lugares.map(limpiarLugar))] }));
+const BASE = (DATOS as PaqueteTuristico[]).map((p) => ({ ...p, lugares: [...new Set(p.lugares.map(limpiarLugar))] }));
+
+// Dos programas con el mismo nombre y noches (rutas inversas, otra ciudad de inicio) llevan «desde <ciudad>» para que
+// cada página tenga título propio.
+const REPETIDOS = new Set(BASE.map((p) => `${p.nombre}|${p.noches}`).filter((k, i, a) => a.indexOf(k) !== i));
+const LISTA = BASE.map((p) => (REPETIDOS.has(`${p.nombre}|${p.noches}`) ? { ...p, nombre: `${p.nombre} desde ${p.lugares[0]}` } : p));
 
 export const paquetesTuristicos = (): PaqueteTuristico[] => LISTA;
 export const buscarPaqueteTuristico = (slug: string) => LISTA.find((p) => p.slug === slug);

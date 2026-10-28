@@ -20,11 +20,22 @@ function resumen(p: PaqueteTuristico): string {
   return `${p.noches} ${p.noches === 1 ? "noche" : "noches"} y ${diasDe(p)} días en ${lugares}, ${p.traslados ? "con alojamiento y traslados incluidos" : "con alojamiento incluido"}.`;
 }
 
+// Título que entra en ~60 caracteres: con las noches si cabe; si no, el nombre recortado en una palabra.
+function tituloCorto(p: PaqueteTuristico): string {
+  const conNoches = `${p.nombre}: ${p.noches} noches`;
+  if (conNoches.length <= 62) return conNoches;
+  if (p.nombre.length <= 62) return p.nombre;
+  return p.nombre
+    .slice(0, 60)
+    .replace(/s+S*$/, "")
+    .replace(/[s:,+-]+$/, "");
+}
+
 export function metadataPaqueteTuristico(p: PaqueteTuristico): Metadata {
   const url = `${URL_BASE_SEO}${ruta(p)}`;
   const desc = `Paquete turístico ${p.nombre}: ${resumen(p)} Desde ${formatoUSD(precioPaquete(p))} por persona. Separa con el 50% y recibe el itinerario por WhatsApp.`;
   return {
-    title: tituloSeo(`${p.nombre}: ${p.noches} noches`, `desde ${formatoUSD(precioPaquete(p))}`),
+    title: tituloSeo(tituloCorto(p), `desde ${formatoUSD(precioPaquete(p))}`),
     description: optimizarMetaDescriptionSEO(desc),
     alternates: { canonical: url },
     openGraph: {
