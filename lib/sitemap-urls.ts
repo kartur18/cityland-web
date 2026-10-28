@@ -17,6 +17,7 @@ import { paisesConPaquetes, paquetesTuristicos } from "@/lib/paquetes-turisticos
 import { destinosConTours, todosLosTours } from "@/lib/tours-turbo";
 import { LANDINGS_ESPANA, rutaLandingEspana } from "@/lib/landings-espana";
 import { PRUEBA_REAPERTURA } from "@/lib/prueba-reapertura";
+import { landingsSoloIda } from "@/lib/landings-solo-ida";
 
 // Fuente única de URLs indexables: cada URL vive en un solo sitemap hijo.
 export const FECHA_SITEMAP = "2026-10-19T15:00:00.000Z";
@@ -82,6 +83,8 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
     "/espana",
     // Landings de pasajes y viajes a España por búsqueda (28-oct-2026).
     ...LANDINGS_ESPANA.map(rutaLandingEspana),
+    // Pasajes solo ida para quien tiene residencia, visado o pasaporte europeo.
+    ...landingsSoloIda().map(rutaLandingEspana),
     "/italia",
     "/francia",
     "/europa-turquia",
