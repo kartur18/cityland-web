@@ -1,234 +1,42 @@
-import { PRECIO_IDA_VUELTA_MADRID_DESDE } from "@/components/constantes";
+import {
+  DETALLE_IDA_VUELTA,
+  PRECIO_IDA_VUELTA_MADRID,
+  PRECIO_SOLO_IDA_MADRID,
+  type LandingEspana,
+} from "@/lib/landings-espana-tipos";
+import { CIUDADES_PROVINCIA, LANDINGS_PROVINCIAS, PRECIO_DESDE_PROVINCIAS } from "@/lib/landings-espana-provincias";
+import { LANDINGS_GUIAS } from "@/lib/landings-espana-guias";
+
+export type { LandingEspana, PuntoLanding } from "@/lib/landings-espana-tipos";
+export { PRECIO_IDA_VUELTA_MADRID, PRECIO_SOLO_IDA_MADRID } from "@/lib/landings-espana-tipos";
 
 // Landings de España bajo /espana/<slug>: cada una responde una búsqueda real de Search Console (pasajes desde
 // provincias, viajar a visitar a la familia, con niños, adultos mayores, estudiantes…) con contenido propio.
 // Cityland vende pasajes y viajes: ninguna página ofrece ni promete trabajo en España. 28-oct-2026.
 
-export interface PuntoLanding {
-  t: string;
-  d: string;
-}
-
-export interface LandingEspana {
-  slug: string;
-  tituloSeo: string;
-  descripcion: string;
-  migas: string;
-  sello: string;
-  h1: string;
-  bajada: string;
-  chips: string[];
-  // Cada página lleva una foto distinta de las demás.
-  foto: string;
-  etiquetaPrecio: string;
-  precio: number;
-  detallePrecio: string;
-  boton: string;
-  mensaje: string;
-  puntosTitulo: string;
-  puntos: PuntoLanding[];
-  listaTitulo: string;
-  lista: string[];
-  tabla?: { titulo: string; columnas: string[]; filas: string[][]; nota?: string };
-  aviso?: { titulo: string; texto: string };
-  faqs: { q: string; a: string }[];
-  enlaces: { href: string; texto: string }[];
-}
-
-// Referencias de precio por persona (ida y vuelta Lima–Madrid de lib/rutas-vuelos.ts; solo ida con visado).
-export const PRECIO_IDA_VUELTA_MADRID = PRECIO_IDA_VUELTA_MADRID_DESDE;
-export const PRECIO_SOLO_IDA_MADRID = 690;
-
-const DETALLE_IDA_VUELTA = "Ida y vuelta con impuestos. Precio referencial; te damos el de tu fecha.";
-
-interface Provincia {
-  ciudad: string;
-  slug: string;
-  codigo: string;
-  aeropuerto: string;
-  duracion: string;
-  precio: number;
-  consejo: PuntoLanding;
-  faqExtra: { q: string; a: string };
-  foto: string;
-}
-
-// Vuelos nacionales a Lima: LATAM, Sky y JetSMART operan estas cinco rutas todo el año.
-const PROVINCIAS: Provincia[] = [
-  {
-    ciudad: "Arequipa",
-    slug: "arequipa",
-    codigo: "AQP",
-    aeropuerto: "Aeropuerto Rodríguez Ballón",
-    duracion: "1 h 30 min",
-    precio: 1600,
-    consejo: {
-      t: "Sal temprano de Arequipa",
-      d: "Los vuelos a Europa salen de Lima por la tarde o la noche. Un vuelo de Arequipa en la mañana te deja en el Jorge Chávez con tiempo de sobra para la conexión.",
-    },
-    faqExtra: {
-      q: "¿Hay vuelo directo de Arequipa a Madrid?",
-      a: "No. Todos los vuelos a España salen del Jorge Chávez de Lima. Desde Arequipa vuelas primero a Lima (1 h 30 min) y ahí tomas el vuelo a Madrid, de unas 12 horas.",
-    },
-    foto: "/images/espana/palacio-real.jpg",
-  },
-  {
-    ciudad: "Trujillo",
-    slug: "trujillo",
-    codigo: "TRU",
-    aeropuerto: "Aeropuerto Carlos Martínez de Pinillos",
-    duracion: "1 h 10 min",
-    precio: 1600,
-    consejo: {
-      t: "Vuelo o bus hasta Lima",
-      d: "Desde Trujillo también se llega a Lima en bus (unas 9 horas). Si prefieres el bus, te armamos el pasaje a Madrid desde Lima y te decimos a qué hora tienes que estar en el aeropuerto.",
-    },
-    faqExtra: {
-      q: "¿Me conviene ir en bus de Trujillo a Lima y volar desde ahí?",
-      a: "Puede salir más barato, pero llegas cansado y sin margen si el bus se retrasa. Si vas en bus, llega a Lima el día anterior. Con el vuelo nacional en el mismo boleto, la aerolínea te protege la conexión.",
-    },
-    foto: "/images/espana/puerta-de-alcala.jpg",
-  },
-  {
-    ciudad: "Chiclayo",
-    slug: "chiclayo",
-    codigo: "CIX",
-    aeropuerto: "Aeropuerto José Quiñones",
-    duracion: "1 h 20 min",
-    precio: 1620,
-    consejo: {
-      t: "Pocas frecuencias: reserva con tiempo",
-      d: "Chiclayo tiene menos vuelos diarios a Lima que Arequipa o Cusco. En julio y diciembre se llenan rápido: cotiza el tramo nacional junto con el de Madrid.",
-    },
-    faqExtra: {
-      q: "¿Puedo regresar de Madrid directo a Chiclayo?",
-      a: "Sí, en un solo boleto Madrid–Lima–Chiclayo. Pasas Migraciones y Aduanas en Lima, y si el boleto es uno solo tu maleta sigue hasta Chiclayo.",
-    },
-    foto: "/images/espana/cibeles.jpg",
-  },
-  {
-    ciudad: "Piura",
-    slug: "piura",
-    codigo: "PIU",
-    aeropuerto: "Aeropuerto Guillermo Concha Iberico",
-    duracion: "1 h 40 min",
-    precio: 1640,
-    consejo: {
-      t: "Piura o Talara",
-      d: "Si vives en Sullana, Paita o Talara, también puedes salir del aeropuerto de Talara. Te cotizamos los dos y eliges el que te queda mejor por precio y horario.",
-    },
-    faqExtra: {
-      q: "¿Cuánto dura el viaje de Piura a Madrid?",
-      a: "Entre 16 y 20 horas en total: 1 h 40 min de Piura a Lima, la espera de la conexión y unas 12 horas de Lima a Madrid.",
-    },
-    foto: "/images/espana/gran-via-metropolis.jpg",
-  },
-  {
-    ciudad: "Cusco",
-    slug: "cusco",
-    codigo: "CUZ",
-    aeropuerto: "Aeropuerto Alejandro Velasco Astete",
-    duracion: "1 h 20 min",
-    precio: 1600,
-    consejo: {
-      t: "En Cusco solo se vuela de día",
-      d: "El aeropuerto de Cusco no opera de noche y en la tarde puede haber demoras por el clima. Por eso te buscamos un vuelo nacional de la mañana, con varias horas de margen en Lima.",
-    },
-    faqExtra: {
-      q: "¿Qué pasa si se retrasa mi vuelo de Cusco?",
-      a: "Si Cusco–Lima y Lima–Madrid están en el mismo boleto, la aerolínea te reacomoda en el siguiente vuelo sin costo. Con boletos separados, el retraso corre por tu cuenta: por eso dejamos un margen amplio.",
-    },
-    foto: "/images/destinos/madrid.webp",
-  },
-];
-
-function landingProvincia(p: Provincia): LandingEspana {
-  return {
-    slug: `pasajes-${p.slug}-madrid`,
-    tituloSeo: `Pasajes ${p.ciudad} a Madrid vía Lima`,
-    descripcion: `Pasajes de ${p.ciudad} a Madrid con conexión en Lima, en un solo boleto y con tu maleta hasta Barajas. Desde US$ ${p.precio.toLocaleString("en-US")} ida y vuelta. Separa con el 50%.`,
-    migas: `Pasajes ${p.ciudad}–Madrid`,
-    sello: `${p.ciudad} → Lima → Madrid`,
-    h1: `${p.ciudad} a Madrid vía Lima`,
-    bajada: `Sales del ${p.aeropuerto} (${p.codigo}), haces la conexión en Lima y llegas a Madrid-Barajas. Te armamos los dos vuelos en un solo boleto, con tu maleta despachada hasta España.`,
-    chips: ["Un solo boleto", "Maleta hasta Madrid", "Vuelta a " + p.ciudad],
-    foto: p.foto,
-    etiquetaPrecio: `${p.ciudad}–Madrid, ida y vuelta desde`,
-    precio: p.precio,
-    detallePrecio: DETALLE_IDA_VUELTA,
-    boton: "Cotizar mi pasaje",
-    mensaje: `¡Hola Cityland Travel! Quiero cotizar un pasaje de ${p.ciudad} a Madrid.`,
-    puntosTitulo: `Cómo es el viaje de ${p.ciudad} a Madrid`,
-    puntos: [
-      {
-        t: "Un solo boleto, una sola maleta",
-        d: `Con ${p.ciudad}–Lima–Madrid en la misma reserva, despachas tu maleta en ${p.ciudad} y la recoges recién en Madrid. No sales del aeropuerto de Lima ni vuelves a hacer cola en el mostrador.`,
-      },
-      {
-        t: "La aerolínea cuida tu conexión",
-        d: "Si el vuelo nacional se retrasa y pierdes el de Madrid, la aerolínea te reacomoda sin costo porque es el mismo boleto. Con dos boletos separados, ese riesgo es tuyo.",
-      },
-      p.consejo,
-      {
-        t: "Migraciones en Lima, no en provincia",
-        d: `En ${p.ciudad} haces un vuelo nacional. El control migratorio de salida del Perú lo pasas en el Jorge Chávez, antes de embarcar a Madrid.`,
-      },
-    ],
-    listaTitulo: "Lo que tienes que llevar",
-    lista: [
-      "Pasaporte vigente (para turismo no necesitas visa)",
-      "Pasaje de regreso, reserva de hotel o carta de invitación",
-      "Dinero para tu estadía: unos 122 € por día, con un mínimo de 1.098,90 €",
-      "Seguro de viaje con cobertura mínima de 30.000 €",
-      "Tu DNI para el vuelo nacional",
-    ],
-    tabla: {
-      titulo: "Tu itinerario, tramo por tramo",
-      columnas: ["Tramo", "Duración aproximada", "Dónde"],
-      filas: [
-        [`${p.ciudad} → Lima`, p.duracion, `${p.codigo} → LIM, vuelo nacional`],
-        ["Conexión en Lima", "De 3 a 6 horas", "Aeropuerto Jorge Chávez"],
-        ["Lima → Madrid", "Unas 12 horas", "LIM → MAD, vuelo directo"],
-      ],
-      nota: "Las horas exactas dependen de la aerolínea y de tu fecha; te las mandamos con la cotización.",
-    },
-    faqs: [
-      p.faqExtra,
-      {
-        q: `¿Cuánto cuesta el pasaje de ${p.ciudad} a Madrid?`,
-        a: `Ida y vuelta desde unos US$ ${p.precio.toLocaleString("en-US")} por persona, con impuestos. Julio, agosto y diciembre son los meses más caros; febrero y noviembre, los más baratos.`,
-      },
-      {
-        q: "¿Puedo comprar solo la ida?",
-        a: "Sí. Si tienes visado de estudios o de residencia te vendemos el pasaje solo de ida. Si viajas como turista, en migración te pueden pedir el regreso: te explicamos tus opciones.",
-      },
-      { q: "¿Cómo separo mi pasaje?", a: "Con el 50% del precio. El saldo lo pagas antes de la emisión y te mandamos el boleto por WhatsApp." },
-    ],
-    enlaces: [
-      { href: "/vuelos/lima-madrid", texto: "Vuelos Lima–Madrid" },
-      { href: "/espana/pasajes-a-madrid-desde-provincias", texto: "Pasajes desde otras ciudades" },
-      { href: "/vuelos/madrid-lima", texto: "Vuelos Madrid–Lima" },
-    ],
-  };
-}
-
 const HUB_PROVINCIAS: LandingEspana = {
   slug: "pasajes-a-madrid-desde-provincias",
   tituloSeo: "Pasajes a Madrid desde provincias del Perú",
   descripcion:
-    "Pasajes a Madrid desde Arequipa, Trujillo, Chiclayo, Piura, Cusco y otras ciudades del Perú, con conexión en Lima en un solo boleto. Separa con el 50%.",
+    "Pasajes a Madrid desde Arequipa, Trujillo, Cusco, Iquitos, Piura y 12 ciudades más del Perú, con conexión en Lima en un solo boleto. Separa con el 50%.",
   migas: "Pasajes desde provincias",
   sello: "Tu ciudad → Lima → Madrid",
   h1: "Pasajes a Madrid desde provincias",
   bajada:
     "Vives fuera de Lima y quieres viajar a España. Te armamos el vuelo de tu ciudad a Lima y el de Lima a Madrid en un solo boleto, para que tu maleta llegue contigo y tu conexión esté protegida.",
   chips: ["Un solo boleto", "Conexión protegida", "Atención por WhatsApp"],
-  foto: "/images/espana/barajas.jpg",
+  foto: "/images/destinos/lima-costa-verde.jpg",
+  fotoAlt: "Costa Verde de Lima, de donde salen los vuelos a España",
+  tema: "provincia",
   etiquetaPrecio: "Desde provincias, ida y vuelta desde",
-  precio: Math.min(...PROVINCIAS.map((p) => p.precio)),
+  precio: PRECIO_DESDE_PROVINCIAS,
   detallePrecio: DETALLE_IDA_VUELTA,
   boton: "Cotizar desde mi ciudad",
   mensaje: "¡Hola Cityland Travel! Vivo en provincia y quiero cotizar un pasaje a Madrid.",
+  pregunta: "Vivo en provincia: ¿me arman el vuelo a Lima y el de Madrid en un solo boleto?",
+  atajosTitulo: "¿Desde qué ciudad sales?",
+  atajos: CIUDADES_PROVINCIA.map((c) => ({ texto: c, mensaje: `¡Hola Cityland Travel! Quiero cotizar un pasaje de ${c} a Madrid.` })),
+  urgencia: "Los vuelos nacionales tienen menos asientos que los de Madrid: en julio y diciembre se acaban primero.",
   puntosTitulo: "Por qué conviene un solo boleto",
   puntos: [
     { t: "Tu maleta va directo", d: "La despachas en tu ciudad y la recoges en Madrid. En Lima no tienes que salir a recogerla ni volver a despacharla." },
@@ -236,8 +44,8 @@ const HUB_PROVINCIAS: LandingEspana = {
     { t: "Un solo pago y un solo código", d: "Todo el viaje queda en una reserva. Tu asesora la sigue de principio a fin y te avisa de cualquier cambio." },
     { t: "Vuelta hasta tu casa", d: "El regreso también puede ser Madrid–Lima–tu ciudad: pasas Migraciones en Lima y sigues viaje." },
   ],
-  listaTitulo: "Otras ciudades desde las que te cotizamos",
-  lista: ["Iquitos", "Tarapoto", "Tacna", "Juliaca y Puno", "Cajamarca", "Pucallpa", "Ayacucho", "Tumbes", "Puerto Maldonado"],
+  listaTitulo: "Ciudades desde las que te cotizamos",
+  lista: [...CIUDADES_PROVINCIA, "Y cualquier otra ciudad con vuelo a Lima"],
   aviso: {
     titulo: "¿Y si compro el vuelo nacional aparte?",
     texto:
@@ -259,13 +67,13 @@ const VISITAR_FAMILIA: LandingEspana = {
   slug: "viajar-a-espana-a-visitar-familia",
   tituloSeo: "Viajar a España a visitar a tu familia",
   descripcion:
-    "Viaja a Madrid a visitar a tu familia: pasaje ida y vuelta, carta de invitación, bolsa de viaje y seguro explicados. Desde US$ 1,500. Separa con el 50%.",
+    `Viaja a Madrid a visitar a tu familia: pasaje ida y vuelta, carta de invitación y bolsa de viaje explicados. Desde US$ ${PRECIO_IDA_VUELTA_MADRID.toLocaleString("en-US")}. Separa con el 50%.`,
   migas: "Visitar a tu familia",
   sello: "Lima → Madrid · Visita familiar",
   h1: "Viajar a España a visitar a tu familia",
   bajada:
-    "Tu hija, tu hermano o tus papás te esperan en España. Te vendemos el pasaje ida y vuelta y te explicamos qué preparar con tu familia: la carta de invitación, el dinero que te pueden pedir y el seguro.",
-  chips: ["Ida y vuelta", "Carta de invitación", "Seguro Schengen"],
+    "Tu hija, tu hermano o tus papás te esperan en España. Te vendemos el pasaje ida y vuelta y te explicamos qué preparar con tu familia: la carta de invitación y el dinero que te pueden pedir.",
+  chips: ["Ida y vuelta", "Carta de invitación", "Bolsa de viaje"],
   foto: "/images/destinos/malaga.jpg",
   etiquetaPrecio: "Lima–Madrid, ida y vuelta desde",
   precio: PRECIO_IDA_VUELTA_MADRID,
@@ -297,7 +105,7 @@ const VISITAR_FAMILIA: LandingEspana = {
     "Pasaje de regreso a Lima",
     "Carta de invitación original de tu familiar (o reserva de hotel)",
     "Dinero para tu estadía: unos 122 € por día, con un mínimo de 1.098,90 €, aunque te alojes con tu familia",
-    "Seguro de viaje de 30.000 € como mínimo",
+    "Seguro de viaje: no lo piden si entras sin visa, pero te lo recomendamos",
   ],
   aviso: {
     titulo: "Somos agencia de viajes",
@@ -305,7 +113,7 @@ const VISITAR_FAMILIA: LandingEspana = {
   },
   faqs: [
     { q: "¿Cuánto tiempo puedo quedarme visitando a mi familia?", a: "Como turista, hasta 90 días dentro de cualquier periodo de 180 días. Tu pasaje de regreso tiene que estar dentro de ese plazo." },
-    { q: "Si tengo carta de invitación, ¿igual necesito dinero?", a: "Sí. La carta reemplaza al hotel, pero en migración te pueden pedir que demuestres dinero para tu estadía y tu seguro de viaje." },
+    { q: "Si tengo carta de invitación, ¿igual necesito dinero?", a: "Sí. La carta reemplaza al hotel, pero en migración te pueden pedir que demuestres dinero para tu estadía." },
     { q: "¿Mi familiar puede pagar mi pasaje desde España?", a: "Sí. Nos escribe por WhatsApp, paga desde allá y el boleto sale a tu nombre." },
     { q: "¿Qué pasa si quiero cambiar la fecha de regreso?", a: "Depende de la tarifa. Al cotizar te decimos cuánto cuesta el cambio en cada opción para que elijas con calma." },
   ],
@@ -345,7 +153,7 @@ const CON_NINOS: LandingEspana = {
     "Pasaporte propio y vigente",
     "Permiso notarial de viaje si viaja con uno solo de sus padres o con otra persona",
     "Si viaja con papá y mamá, no necesita permiso",
-    "Seguro de viaje a su nombre",
+    "Seguro de viaje a su nombre (recomendado)",
     "Dinero para su estadía: la bolsa de viaje se cuenta por cada viajero",
   ],
   faqs: [
@@ -388,7 +196,7 @@ const ADULTOS_MAYORES: LandingEspana = {
   listaTitulo: "Antes de viajar",
   lista: [
     "Pasaporte vigente",
-    "Seguro de viaje que cubra su edad (algunos seguros cobran más desde los 70 o 75 años)",
+    "Seguro de viaje que cubra su edad (recomendado; algunos cobran más desde los 70 o 75 años)",
     "Medicinas en su envase original, con la receta, en el equipaje de mano",
     "Carta de invitación de la familia o reserva de hotel",
     "Dinero para la estadía y el pasaje de regreso",
@@ -434,7 +242,7 @@ const PRIMER_VIAJE: LandingEspana = {
     "Pasaporte vigente",
     "Pasaje de regreso impreso",
     "Reserva de hotel o carta de invitación",
-    "Seguro de viaje de 30.000 € o más",
+    "Seguro de viaje (no es obligatorio sin visa, pero te lo recomendamos)",
     "Dinero para tu estadía en efectivo o en tarjeta",
     "Plan de lo que vas a hacer: lugares que vas a visitar",
   ],
@@ -597,7 +405,7 @@ const MAS_BARATO: LandingEspana = {
 
 export const LANDINGS_ESPANA: readonly LandingEspana[] = [
   HUB_PROVINCIAS,
-  ...PROVINCIAS.map(landingProvincia),
+  ...LANDINGS_PROVINCIAS,
   VISITAR_FAMILIA,
   CON_NINOS,
   ADULTOS_MAYORES,
@@ -605,6 +413,7 @@ export const LANDINGS_ESPANA: readonly LandingEspana[] = [
   ESTUDIANTES,
   REAGRUPACION,
   MAS_BARATO,
+  ...LANDINGS_GUIAS,
 ];
 
 export function buscarLandingEspana(slug: string): LandingEspana | undefined {

@@ -5,16 +5,19 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import PorQueCityland from "@/components/PorQueCityland";
 import { Migas } from "@/components/paquetes-armados/Bloques";
-import { BarraConfianza, CtaFinal, HeroVenta, PasosSeparar } from "@/components/paquetes-armados/Venta";
-import { buildWaUrl } from "@/components/constantes";
+import { BarraConfianza, HeroVenta, PasosSeparar } from "@/components/paquetes-armados/Venta";
+import { Atajos, CierreUrgencia, PreguntaFaq, TarjetaPregunta, waEspana } from "@/components/landing-espana/CtasWhatsApp";
+import { Lista, Puntos, Tabla } from "@/components/landing-espana/Bloques";
+import { formatoUSD } from "@/lib/formato-precio";
 import { absoluta } from "@/lib/paquetes-armados/fotos";
 import { tituloSeo } from "@/lib/paquetes-armados/comun";
 import { LANDINGS_ESPANA, rutaLandingEspana, type LandingEspana } from "@/lib/landings-espana";
 import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
 
-// Plantilla de las landings de España (/espana/<slug>): portada clara con el precio y un solo botón de WhatsApp,
-// lo propio de cada búsqueda al medio y los enlaces a las demás páginas de España al final. 28-oct-2026.
+// Plantilla de las landings de España (/espana/<slug>): portada clara con el precio, lo propio de cada búsqueda
+// al medio y los enlaces a las demás páginas de España al final. Los botones de WhatsApp cambian de forma a lo
+// largo de la página (tarjeta, chat, atajos, FAQ, cierre, barra del celular) y nunca van dos iguales juntos.
 
 const CONFIANZA_PASAJES = [
   { t: "Separas con el 50%", d: "y pagas el saldo antes de viajar", i: "M4 7h16v10H4zM4 10h16" },
@@ -83,13 +86,16 @@ function esquema(l: LandingEspana, url: string) {
   };
 }
 
+const URGENCIA = "Las tarifas más baratas de cada vuelo se venden primero. Mientras antes separes con el 50%, más fácil es mantener el precio de tu cotización.";
+
 const CHIP = "inline-flex items-center min-h-[44px] px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-sm font-bold text-[#0a1628]";
 
 export default function LandingEspanaPagina({ landing: l }: { landing: LandingEspana }) {
   const ruta = rutaLandingEspana(l);
   const url = `${URL_BASE_SEO}${ruta}`;
-  const wa = buildWaUrl({ categoria: "europa", mensajePersonalizado: l.mensaje, refWeb: `citylandtravel.com${ruta}` });
-  const otras = LANDINGS_ESPANA.filter((x) => x.slug !== l.slug);
+  const wa = waEspana(ruta, l.mensaje, "Precio");
+  // Primero las del mismo grupo, para que cada página enlace a sus hermanas.
+  const otras = [...LANDINGS_ESPANA.filter((x) => x.slug !== l.slug && x.tema === l.tema), ...LANDINGS_ESPANA.filter((x) => x.tema !== l.tema)];
 
   return (
     <>
@@ -101,7 +107,7 @@ export default function LandingEspanaPagina({ landing: l }: { landing: LandingEs
             <Migas items={[{ nombre: "Inicio", href: "/" }, { nombre: "España", href: "/espana" }, { nombre: l.migas }]} />
             <HeroVenta
               foto={l.foto}
-              alt={l.h1}
+              alt={l.fotoAlt ?? l.h1}
               marca="Pasajes"
               sello={l.sello}
               titulo={l.h1}
@@ -119,80 +125,17 @@ export default function LandingEspanaPagina({ landing: l }: { landing: LandingEs
 
           <BarraConfianza items={CONFIANZA_PASAJES} />
 
-          <section className="space-y-5" aria-labelledby="puntos">
-            <h2 id="puntos" className="text-2xl sm:text-3xl font-extrabold text-[#0a1628]">
-              {l.puntosTitulo}
-            </h2>
-            <ul className="grid gap-4 sm:grid-cols-2">
-              {l.puntos.map((p) => (
-                <li key={p.t} className="rounded-2xl border border-slate-200 bg-white p-6">
-                  <strong className="block text-lg text-[#0a1628]">{p.t}</strong>
-                  <p className="mt-2 text-base leading-relaxed text-slate-600">{p.d}</p>
-                </li>
-              ))}
-            </ul>
-          </section>
+          {l.atajos && l.tema === "provincia" && <Atajos ruta={ruta} titulo={l.atajosTitulo ?? "Escríbenos directo"} atajos={l.atajos} />}
 
-          {l.tabla && (
-            <section className="space-y-4" aria-labelledby="tabla">
-              <h2 id="tabla" className="text-2xl sm:text-3xl font-extrabold text-[#0a1628]">
-                {l.tabla.titulo}
-              </h2>
-              <ul className="space-y-3 sm:hidden">
-                {l.tabla.filas.map((f) => (
-                  <li key={f[0]} className="rounded-2xl border border-slate-200 p-4">
-                    <strong className="block text-base text-[#0a1628]">{f[0]}</strong>
-                    {f.slice(1).map((celda, i) => (
-                      <p key={i} className="mt-1 text-[15px] text-slate-700">
-                        <span className="text-slate-500">{l.tabla?.columnas[i + 1]}:</span> {celda}
-                      </p>
-                    ))}
-                  </li>
-                ))}
-              </ul>
-              <div className="hidden overflow-x-auto rounded-2xl border border-slate-200 sm:block">
-                <table className="w-full text-left text-base">
-                  <thead className="bg-slate-50 text-sm text-slate-600">
-                    <tr>
-                      {l.tabla.columnas.map((c) => (
-                        <th key={c} scope="col" className="px-4 py-3 font-bold">
-                          {c}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-200">
-                    {l.tabla.filas.map((f) => (
-                      <tr key={f[0]}>
-                        {f.map((celda, i) => (
-                          <td key={i} className={`px-4 py-3 ${i === 0 ? "font-bold text-[#0a1628]" : "text-slate-700"}`}>
-                            {celda}
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              {l.tabla.nota && <p className="text-sm text-slate-500">{l.tabla.nota}</p>}
-            </section>
-          )}
+          <Puntos l={l} />
 
-          <section className="rounded-3xl bg-sky-50/70 border border-sky-100 p-6 sm:p-8 space-y-4" aria-labelledby="lista">
-            <h2 id="lista" className="text-2xl font-extrabold text-[#0a1628]">
-              {l.listaTitulo}
-            </h2>
-            <ul className="grid gap-3 sm:grid-cols-2">
-              {l.lista.map((x) => (
-                <li key={x} className="flex items-start gap-2.5 text-base text-slate-700">
-                  <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" className="mt-1 shrink-0 text-emerald-600">
-                    <path fill="currentColor" d="M8.1 14.6 3.5 10l1.4-1.4 3.2 3.2 7-7L16.5 6z" />
-                  </svg>
-                  {x}
-                </li>
-              ))}
-            </ul>
-          </section>
+          <Tabla l={l} />
+
+          {l.pregunta && <TarjetaPregunta ruta={ruta} pregunta={l.pregunta} />}
+
+          <Lista l={l} />
+
+          {l.atajos && l.tema !== "provincia" && <Atajos ruta={ruta} titulo={l.atajosTitulo ?? "Escríbenos directo"} atajos={l.atajos} />}
 
           {l.aviso && (
             <section className="rounded-2xl border border-amber-200 bg-amber-50 p-5 sm:p-6 space-y-2">
@@ -217,12 +160,13 @@ export default function LandingEspanaPagina({ landing: l }: { landing: LandingEs
                     </span>
                   </summary>
                   <p className="text-base leading-relaxed text-slate-600 mt-2">{f.a}</p>
+                  <PreguntaFaq ruta={ruta} pregunta={f.q} />
                 </details>
               ))}
             </div>
           </section>
 
-          <CtaFinal titulo={`${l.h1}: cotiza hoy`} precio={l.precio} wa={wa} boton={l.boton} />
+          <CierreUrgencia ruta={ruta} titulo={`${l.h1}: cotiza hoy`} precio={l.precio} urgencia={l.urgencia ?? URGENCIA} mensaje={l.mensaje} />
 
           <section className="space-y-4" aria-labelledby="mas">
             <h2 id="mas" className="text-xl font-extrabold text-[#0a1628]">
@@ -253,7 +197,7 @@ export default function LandingEspanaPagina({ landing: l }: { landing: LandingEs
       </main>
       <PorQueCityland destino="España" />
       <Footer />
-      <WhatsAppFloat href={wa} />
+      <WhatsAppFloat href={waEspana(ruta, l.mensaje, "Barra móvil")} titulo={`${l.migas} · desde ${formatoUSD(l.precio)}`} subtitulo="Separa con el 50% por WhatsApp" />
     </>
   );
 }

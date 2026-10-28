@@ -5,6 +5,7 @@ import Link from "next/link";
 export const GUIAS_ESPANA = [
   { href: "/pasajes-a-espana", texto: "Pasajes a España: todas las rutas" },
   { href: "/espana/pasajes-a-madrid-desde-provincias", texto: "Pasajes a Madrid desde provincias" },
+  { href: "/espana/llegada-aeropuerto-madrid-barajas", texto: "Tu llegada a Barajas" },
   { href: "/espana/pasajes-baratos-lima-madrid", texto: "Pasajes baratos Lima–Madrid" },
   { href: "/espana/viajar-a-espana-a-visitar-familia", texto: "Viajar a visitar a tu familia" },
   { href: "/espana/viajar-a-espana-con-ninos", texto: "Pasajes para viajar con niños" },
