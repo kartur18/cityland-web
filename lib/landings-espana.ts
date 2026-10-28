@@ -143,11 +143,11 @@ const PROVINCIAS: Provincia[] = [
 function landingProvincia(p: Provincia): LandingEspana {
   return {
     slug: `pasajes-${p.slug}-madrid`,
-    tituloSeo: `Pasajes de ${p.ciudad} a Madrid ida y vuelta`,
+    tituloSeo: `Pasajes ${p.ciudad} a Madrid vía Lima`,
     descripcion: `Pasajes de ${p.ciudad} a Madrid con conexión en Lima, en un solo boleto y con tu maleta hasta Barajas. Desde US$ ${p.precio.toLocaleString("en-US")} ida y vuelta. Separa con el 50%.`,
     migas: `Pasajes ${p.ciudad}–Madrid`,
     sello: `${p.ciudad} → Lima → Madrid`,
-    h1: `Pasajes de ${p.ciudad} a Madrid`,
+    h1: `${p.ciudad} a Madrid vía Lima`,
     bajada: `Sales del ${p.aeropuerto} (${p.codigo}), haces la conexión en Lima y llegas a Madrid-Barajas. Te armamos los dos vuelos en un solo boleto, con tu maleta despachada hasta España.`,
     chips: ["Un solo boleto", "Maleta hasta Madrid", "Vuelta a " + p.ciudad],
     foto: p.foto,
