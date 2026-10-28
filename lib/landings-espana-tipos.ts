@@ -12,6 +12,7 @@ export interface PuntoLanding {
 export type TemaEspana =
   | "provincia"
   | "perfil"
+  | "ciudad"
   | "guia"
   // Familias del solo ida: cada una con su color y su orden de bloques.
   | "soloPerfil"

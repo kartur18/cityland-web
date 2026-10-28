@@ -8,6 +8,8 @@ export const GUIAS_ESPANA = [
   { href: "/espana/llegada-aeropuerto-madrid-barajas", texto: "Tu llegada a Barajas" },
   { href: "/espana/pasajes-baratos-lima-madrid", texto: "Pasajes baratos Lima–Madrid" },
   { href: "/espana/viajar-a-espana-a-visitar-familia", texto: "Viajar a visitar a tu familia" },
+  { href: "/espana/visitar-familia-en-barcelona", texto: "Tu familia en Barcelona" },
+  { href: "/espana/visitar-familia-en-valencia", texto: "Tu familia en Valencia" },
   { href: "/espana/viajar-a-espana-con-ninos", texto: "Pasajes para viajar con niños" },
   { href: "/espana/viajar-a-espana-adultos-mayores", texto: "Viajes para adultos mayores" },
   { href: "/espana/primer-viaje-a-espana", texto: "Primer viaje: te acompañamos" },

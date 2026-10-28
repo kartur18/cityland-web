@@ -6,6 +6,7 @@ import {
 } from "@/lib/landings-espana-tipos";
 import { CIUDADES_PROVINCIA, LANDINGS_PROVINCIAS, PRECIO_DESDE_PROVINCIAS } from "@/lib/landings-espana-provincias";
 import { LANDINGS_GUIAS } from "@/lib/landings-espana-guias";
+import { LANDINGS_FAMILIA } from "@/lib/landings-espana-familia";
 
 export type { LandingEspana, PuntoLanding } from "@/lib/landings-espana-tipos";
 export { PRECIO_IDA_VUELTA_MADRID, PRECIO_SOLO_IDA_MADRID } from "@/lib/landings-espana-tipos";
@@ -74,7 +75,8 @@ const VISITAR_FAMILIA: LandingEspana = {
   bajada:
     "Tu hija, tu hermano o tus papás te esperan en España. Te vendemos el pasaje ida y vuelta y te explicamos qué preparar con tu familia: la carta de invitación y el dinero que te pueden pedir.",
   chips: ["Ida y vuelta", "Carta de invitación", "Bolsa de viaje"],
-  foto: "/images/destinos/malaga.jpg",
+  foto: "/images/destinos/elche.jpg",
+  fotoAlt: "Elche, en Alicante, España",
   etiquetaPrecio: "Lima–Madrid, ida y vuelta desde",
   precio: PRECIO_IDA_VUELTA_MADRID,
   detallePrecio: DETALLE_IDA_VUELTA,
@@ -135,7 +137,8 @@ const CON_NINOS: LandingEspana = {
   bajada:
     "Doce horas de vuelo con niños se preparan con tiempo. Te ayudamos a elegir el horario, pedir la cuna o los asientos juntos, y a no olvidar el permiso de viaje si el menor no viaja con sus dos padres.",
   chips: ["Tarifa de bebé y de niño", "Asientos juntos", "Permiso de viaje"],
-  foto: "/images/destinos/barcelona.webp",
+  foto: "/images/destinos/hospitalet.jpg",
+  fotoAlt: "L'Hospitalet de Llobregat, junto a Barcelona",
   etiquetaPrecio: "Lima–Madrid por adulto, ida y vuelta desde",
   precio: PRECIO_IDA_VUELTA_MADRID,
   detallePrecio: "Los niños pagan tarifa de niño y los bebés en brazos, tarifa de bebé. Precio referencial.",
@@ -180,7 +183,8 @@ const ADULTOS_MAYORES: LandingEspana = {
   bajada:
     "Tus papás o abuelos van a España a ver a la familia. Les buscamos el vuelo directo, pedimos la silla de ruedas si la necesitan y hacemos el check-in por ellos, para que solo se preocupen de llegar.",
   chips: ["Vuelo directo", "Silla de ruedas", "Check-in por tu asesora"],
-  foto: "/images/destinos/sevilla.jpg",
+  foto: "/images/destinos/badalona.jpg",
+  fotoAlt: "Badalona, junto a Barcelona",
   etiquetaPrecio: "Lima–Madrid, ida y vuelta desde",
   precio: PRECIO_IDA_VUELTA_MADRID,
   detallePrecio: DETALLE_IDA_VUELTA,
@@ -269,7 +273,8 @@ const ESTUDIANTES: LandingEspana = {
   bajada:
     "Te aceptaron en un máster, un grado o un curso en España. Te vendemos el pasaje solo de ida si ya tienes tu visado de estudios, con la maleta extra para tu año allá y la fecha que calza con tu matrícula.",
   chips: ["Solo ida con visado", "Maleta extra", "Fecha según tu curso"],
-  foto: "/images/destinos/bilbao-guggenheim.jpg",
+  foto: "/images/destinos/sabadell.jpg",
+  fotoAlt: "Sabadell, en Cataluña, España",
   tema: "soloPerfil",
   seccion: { nombre: "Solo ida", href: "/espana/solo-ida" },
   calendario: { origen: "Lima", destino: "Madrid", recargo: 0 },
@@ -315,7 +320,8 @@ const REAGRUPACION: LandingEspana = {
   bajada:
     "Tu esposo, tu esposa o tus papás ya hicieron el trámite de reagrupación y el Consulado te dio el visado. Te vendemos el pasaje solo de ida, con las maletas que necesitas para empezar tu vida allá.",
   chips: ["Solo ida con visado", "2 maletas de 23 kg", "Viaje de toda la familia"],
-  foto: "/images/destinos/valencia-artes.jpg",
+  foto: "/images/destinos/terrassa.jpg",
+  fotoAlt: "Terrassa, en Cataluña, España",
   tema: "soloPerfil",
   seccion: { nombre: "Solo ida", href: "/espana/solo-ida" },
   calendario: { origen: "Lima", destino: "Madrid", recargo: 0 },
@@ -413,6 +419,7 @@ export const LANDINGS_ESPANA: readonly LandingEspana[] = [
   HUB_PROVINCIAS,
   ...LANDINGS_PROVINCIAS,
   VISITAR_FAMILIA,
+  ...LANDINGS_FAMILIA,
   CON_NINOS,
   ADULTOS_MAYORES,
   PRIMER_VIAJE,
