@@ -11,6 +11,7 @@ import { formatoUSD } from "@/lib/formato-precio";
 import { absoluta } from "@/lib/paquetes-armados/fotos";
 import { paisesConPaquetes, paquetesDePais, paquetesTuristicos, precioPaquete } from "@/lib/paquetes-turisticos";
 import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
+import { safeJsonLd } from "@/lib/seguridad-http";
 
 export const revalidate = 86400;
 
@@ -47,8 +48,31 @@ export default function PaquetesTuristicosPage() {
     mensajePersonalizado: "¡Hola Cityland Travel! Quiero cotizar un paquete turístico. ¿Qué opciones tienen?",
     refWeb: "citylandtravel.com/paquetes-turisticos",
   });
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Inicio", item: URL_BASE_SEO },
+          { "@type": "ListItem", position: 2, name: "Paquetes turísticos", item: URL },
+        ],
+      },
+      {
+        "@type": "ItemList",
+        name: "Paquetes turísticos por país",
+        itemListElement: paises.map((x, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          url: `${URL_BASE_SEO}/paquetes-turisticos/${x.slug}`,
+          name: x.nombre,
+        })),
+      },
+    ],
+  };
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(schema) }} />
       <Navbar />
       <main id="main-content" className="bg-[#fffaf3] pt-24 sm:pt-28 pb-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-14">

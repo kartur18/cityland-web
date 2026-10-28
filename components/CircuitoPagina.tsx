@@ -27,7 +27,11 @@ function listaCorta(xs: string[], n: number): string {
 export function metadataCircuito(c: Circuito): Metadata {
   const url = `${URL_BASE_SEO}${ruta(c)}`;
   const base = `Paquete armado ${c.nombre}${c.tipo === "vuelo" ? "" : " sin vuelo"}: ${c.dias} días`;
-  const titulo = c.tipo === "vuelo" && base.length < 38 ? `${base} desde ${c.origen}` : base;
+  // Si no entra en ~60 caracteres, se quita «Paquete armado» y luego «sin vuelo» para que Google no lo corte.
+  const corto =
+    [base, `${c.nombre}${c.tipo === "vuelo" ? "" : " sin vuelo"}: ${c.dias} días`, `${c.nombre}: ${c.dias} días`].find((x) => x.length <= 62) ??
+    `${c.nombre}: ${c.dias} días`;
+  const titulo = c.tipo === "vuelo" && corto.length < 38 ? `${corto} desde ${c.origen}` : corto;
   const descripcion = `${etiquetaArmado(c)} ${c.nombre}, ${c.dias} días y ${c.noches} noches por ${listaCorta(c.paises, 4)}: ${listaCorta(c.ciudades, 5)}. ${textoTipo(c)}. Desde ${formatoUSD(precioCityland(c))} por persona. Separa con el 50%.`;
   return {
     title: tituloSeo(titulo),
