@@ -14,6 +14,7 @@ import { ciudadesConProgramas } from "@/lib/hubs-ciudades";
 import { mesesConSalidas, salidasVigentes } from "@/lib/salidas";
 import { paginasCaribe } from "@/lib/paquetes-armados/paginas-caribe";
 import { paisesConPaquetes, paquetesTuristicos } from "@/lib/paquetes-turisticos";
+import { LANDINGS_ESPANA, rutaLandingEspana } from "@/lib/landings-espana";
 
 // Fuente única de URLs indexables: cada URL vive en un solo sitemap hijo.
 export const FECHA_SITEMAP = "2026-10-19T15:00:00.000Z";
@@ -74,6 +75,8 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
   europa: () => [
     "/guia-europa",
     "/espana",
+    // Landings de pasajes y viajes a España por búsqueda (28-oct-2026).
+    ...LANDINGS_ESPANA.map(rutaLandingEspana),
     "/italia",
     "/francia",
     "/europa-turquia",

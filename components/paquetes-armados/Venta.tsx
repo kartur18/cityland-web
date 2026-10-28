@@ -140,10 +140,11 @@ const CONFIANZA = [
   { t: "2 oficinas en Los Olivos", d: "agencia con local físico en Lima", i: "M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9v2" },
 ];
 
-export function BarraConfianza() {
+// Las páginas de pasajes pasan sus propios puntos (las de paquetes usan los del mayorista).
+export function BarraConfianza({ items = CONFIANZA }: { items?: { t: string; d: string; i: string }[] }) {
   return (
     <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      {CONFIANZA.map((x) => (
+      {items.map((x) => (
         <li key={x.t} className="flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5">
           <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700">
             <svg
@@ -280,12 +281,12 @@ const PASOS = [
   { t: "Separa con el 50%", d: "El saldo lo pagas antes de viajar. Te mandamos todo por escrito." },
 ];
 
-export function PasosSeparar() {
+export function PasosSeparar({ pasos = PASOS }: { pasos?: { t: string; d: string }[] }) {
   return (
     <section className="space-y-4">
       <h2 className="text-2xl font-extrabold text-[#0a1628]">Separar tu viaje es así de fácil</h2>
       <ol className="grid gap-4 sm:grid-cols-3">
-        {PASOS.map((x, i) => (
+        {pasos.map((x, i) => (
           <li key={x.t} className="rounded-2xl border border-slate-200 bg-white p-6">
             <span className="flex h-11 w-11 items-center justify-center rounded-full bg-emerald-500 text-lg font-extrabold text-white">{i + 1}</span>
             <strong className="mt-4 block text-lg text-[#0a1628]">{x.t}</strong>
