@@ -10,6 +10,7 @@ import { portadaDe } from "@/lib/paquetes-armados/fotos";
 import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
 import { salidasDe } from "@/lib/salidas";
 import PorQueCityland from "@/components/PorQueCityland";
+import EnlacePaquetesTuristicos from "@/components/paquetes-turisticos/EnlacePaquetes";
 import TarjetaCircuito from "@/components/TarjetaCircuito";
 import { circuitosVigentes, precioCityland } from "@/lib/circuitos";
 import { DESTINOS_CARIBE, DESTINOS_EUROPA, buildWaUrl, type Destino } from "@/components/constantes";
@@ -192,6 +193,8 @@ export default function HubPaisPagina({ hub: h }: { hub: HubPais }) {
 
           <PasosSeparar />
           {desde !== undefined && <CtaFinal titulo={`Cotiza hoy tu viaje a ${h.nombre}`} precio={desde} wa={wa} boton="Cotizar por WhatsApp" />}
+
+          <EnlacePaquetesTuristicos ruta={h.ruta} />
 
           <section className="space-y-3">
             <h2 className="text-lg font-extrabold text-[#0a1628]">También te puede servir</h2>

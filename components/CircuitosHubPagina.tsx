@@ -8,6 +8,7 @@ import { BarraConfianza, CtaFinal, HeroVenta, PasosSeparar, proximaSalida } from
 import { fotoDe } from "@/lib/paquetes-armados/fotos";
 import { salidasDe } from "@/lib/salidas";
 import PorQueCityland from "@/components/PorQueCityland";
+import EnlacePaquetesTuristicos from "@/components/paquetes-turisticos/EnlacePaquetes";
 import TarjetaCircuito from "@/components/TarjetaCircuito";
 import { buildWaUrl } from "@/components/constantes";
 import { formatoUSD } from "@/lib/formato-precio";
@@ -176,6 +177,8 @@ export default function CircuitosHubPagina({ hub: h }: { hub: HubCircuitos }) {
           {items.length > 0 && (
             <CtaFinal titulo={`Separa tu cupo: ${h.nombre}`} precio={Math.min(...items.map(precioCityland))} wa={wa} boton="Reservar por WhatsApp" />
           )}
+
+          <EnlacePaquetesTuristicos ruta={h.ruta} />
 
           <section className="space-y-3">
             <h2 className="text-lg font-extrabold text-[#0a1628]">Otros destinos</h2>
