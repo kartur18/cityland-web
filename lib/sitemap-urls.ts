@@ -11,6 +11,8 @@ import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
 import { esIndexable } from "@/lib/indexacion";
 import { circuitosVigentes } from "@/lib/circuitos";
 import { ciudadesConProgramas } from "@/lib/hubs-ciudades";
+import { mesesConSalidas, salidasVigentes } from "@/lib/salidas";
+import { paginasCaribe } from "@/lib/paquetes-armados/paginas-caribe";
 
 // Fuente única de URLs indexables: cada URL vive en un solo sitemap hijo.
 export const FECHA_SITEMAP = "2026-10-19T15:00:00.000Z";
@@ -23,6 +25,7 @@ export const IDS_SITEMAP = [
   "destinos",
   "europa",
   "1000",
+  "paquetes-armados",
 ] as const;
 
 export type IdSitemap = (typeof IDS_SITEMAP)[number];
@@ -150,6 +153,14 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
     "/agencia-de-viajes-san-martin-de-porres",
     "/canales-oficiales",
     "/politicas",
+  ],
+  // Paquetes armados del mayorista: salidas con fecha, meses y páginas de playa (27-oct-2026).
+  "paquetes-armados": () => [
+    "/paquetes-armados",
+    ...paginasCaribe().map((p) => `/paquetes-armados/${p.slug}`),
+    "/salidas",
+    ...mesesConSalidas().map((m) => `/salidas/${m.clave}`),
+    ...salidasVigentes().map((s) => `/salidas/${s.slug}`),
   ],
 };
 

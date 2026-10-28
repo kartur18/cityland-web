@@ -1,4 +1,5 @@
 import DATOS from "@/lib/circuitos-datos.json";
+import BLOQUEOS from "@/lib/salidas-datos.json";
 
 // Circuitos de nuestro mayorista (programas reales con salidas confirmadas), copiados de su vitrina para agencias el
 // 27-oct-2026. El precio público es el «desde» del mayorista más nuestro fee; cada programa sale de la web solo
@@ -48,9 +49,27 @@ function hoyLima(): string {
   return new Date(Date.now() - 5 * 3600 * 1000).toISOString().slice(0, 10);
 }
 
+// Si el programa tiene salidas con cupo (bloqueos), su «desde» es la más barata de las que quedan: el precio del
+// catálogo a veces es viejo (Punta Cana decía 899 y sus salidas reales cuestan 1,249).
+function minimoPorPrograma(hoy: string): Map<string, number> {
+  const m = new Map<string, number>();
+  for (const s of BLOQUEOS as { mt: string; fecha: string; precio: number }[]) {
+    if (s.fecha >= hoy) m.set(s.mt, Math.min(m.get(s.mt) ?? Infinity, s.precio));
+  }
+  return m;
+}
+
+let cache: { dia: string; lista: Circuito[] } | null = null;
+
 export function circuitosVigentes(): Circuito[] {
   const hoy = hoyLima();
-  return (DATOS as Circuito[]).filter((c) => !c.vigencia || c.vigencia >= hoy);
+  if (cache?.dia === hoy) return cache.lista;
+  const minimos = minimoPorPrograma(hoy);
+  const lista = (DATOS as Circuito[])
+    .filter((c) => !c.vigencia || c.vigencia >= hoy)
+    .map((c) => (minimos.has(c.mt) ? { ...c, desde: minimos.get(c.mt)! } : c));
+  cache = { dia: hoy, lista };
+  return lista;
 }
 
 export function buscarCircuito(slug: string): Circuito | undefined {
