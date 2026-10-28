@@ -128,6 +128,14 @@ export default function PaquetesTuristicosPage() {
             <GrillaTickets items={destacados} />
           </section>
 
+          <Link
+            href="/tours-y-actividades"
+            className="flex flex-col gap-3 rounded-3xl border-2 border-dashed border-orange-200 bg-white p-6 hover:shadow-lg sm:flex-row sm:items-center sm:justify-between"
+          >
+            <strong className="text-xl text-[#10302e]">Súmale tours y actividades a tu viaje</strong>
+            <span className="shrink-0 rounded-full bg-[#0f766e] px-5 py-3 text-base font-extrabold text-white">Ver tours →</span>
+          </Link>
+
           <ComoSeparar />
           <CierreTicket titulo="¿No encuentras tu destino?" precio={Math.min(...destacados.map(precioPaquete))} wa={wa} />
         </div>

@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: "https" as const, hostname: "images.unsplash.com", pathname: "/photo-**" },
       { protocol: "https" as const, hostname: "viaje.b-cdn.net", pathname: "/megatravel-peru/**" },
+      { protocol: "https" as const, hostname: "cdn.travelconline.com", pathname: "/images/**" },
     ],
   },
   async headers() {

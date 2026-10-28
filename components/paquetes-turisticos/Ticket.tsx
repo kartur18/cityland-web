@@ -79,6 +79,7 @@ export function PortadaTicket({
   boton,
   ancla,
   insignia,
+  sinOptimizar,
 }: {
   foto: string;
   alt: string;
@@ -93,12 +94,14 @@ export function PortadaTicket({
   boton: string;
   ancla: string;
   insignia?: string;
+  // Fotos de la CDN del proveedor: van directas, sin pasar por el optimizador de imágenes de Vercel.
+  sinOptimizar?: boolean;
 }) {
   return (
     <>
       <section className="grid items-center gap-8 lg:grid-cols-[1.15fr_1fr]">
         <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] bg-orange-50 shadow-lg sm:aspect-[4/3]">
-          <Image src={foto} alt={alt} fill priority sizes="(min-width: 1024px) 640px, 100vw" className="object-cover" />
+          <Image src={foto} alt={alt} fill priority unoptimized={sinOptimizar} sizes="(min-width: 1024px) 640px, 100vw" className="object-cover" />
           {insignia && (
             <span className="absolute left-4 top-4 rounded-full bg-white px-4 py-1.5 text-sm font-extrabold text-[#0f5f5a] shadow">{insignia}</span>
           )}
@@ -157,12 +160,12 @@ const PASOS = [
   { t: "Separa con el 50%", d: "El saldo lo pagas antes de viajar; todo queda por escrito." },
 ];
 
-export function ComoSeparar() {
+export function ComoSeparar({ pasos = PASOS }: { pasos?: { t: string; d: string }[] } = {}) {
   return (
     <section className="rounded-[2rem] bg-[#e6f4f1] p-6 sm:p-10">
-      <h2 className="text-2xl font-extrabold text-[#10302e] sm:text-3xl">Cómo separas tu viaje</h2>
+      <h2 className="text-2xl font-extrabold text-[#10302e] sm:text-3xl">{pasos === PASOS ? "Cómo separas tu viaje" : "Cómo lo reservas"}</h2>
       <ol className="mt-6 grid gap-5 sm:grid-cols-3">
-        {PASOS.map((x, i) => (
+        {pasos.map((x, i) => (
           <li key={x.t} className="flex gap-4">
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#e4513f] text-xl font-extrabold text-white">
               {i + 1}

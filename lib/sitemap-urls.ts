@@ -14,6 +14,7 @@ import { ciudadesConProgramas } from "@/lib/hubs-ciudades";
 import { mesesConSalidas, salidasVigentes } from "@/lib/salidas";
 import { paginasCaribe } from "@/lib/paquetes-armados/paginas-caribe";
 import { paisesConPaquetes, paquetesTuristicos } from "@/lib/paquetes-turisticos";
+import { destinosConTours, todosLosTours } from "@/lib/tours-turbo";
 import { LANDINGS_ESPANA, rutaLandingEspana } from "@/lib/landings-espana";
 
 // Fuente única de URLs indexables: cada URL vive en un solo sitemap hijo.
@@ -29,6 +30,7 @@ export const IDS_SITEMAP = [
   "1000",
   "paquetes-armados",
   "paquetes-turisticos",
+  "tours",
 ] as const;
 
 export type IdSitemap = (typeof IDS_SITEMAP)[number];
@@ -172,6 +174,12 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
     "/paquetes-turisticos",
     ...paisesConPaquetes().map((x) => `/paquetes-turisticos/${x.slug}`),
     ...paquetesTuristicos().map((p) => `/paquetes-turisticos/${p.slug}`),
+  ],
+  // Tours y actividades del segundo proveedor, por destino (28-oct-2026).
+  tours: () => [
+    "/tours-y-actividades",
+    ...destinosConTours().map((d) => `/tours-y-actividades/${d.slug}`),
+    ...todosLosTours().map((t) => `/tours-y-actividades/${t.d}/${t.s}`),
   ],
 };
 
