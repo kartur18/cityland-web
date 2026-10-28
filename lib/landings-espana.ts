@@ -1,3 +1,5 @@
+import { PRECIO_IDA_VUELTA_MADRID_DESDE } from "@/components/constantes";
+
 // Landings de España bajo /espana/<slug>: cada una responde una búsqueda real de Search Console (pasajes desde
 // provincias, viajar a visitar a la familia, con niños, adultos mayores, estudiantes…) con contenido propio.
 // Cityland vende pasajes y viajes: ninguna página ofrece ni promete trabajo en España. 28-oct-2026.
@@ -34,7 +36,7 @@ export interface LandingEspana {
 }
 
 // Referencias de precio por persona (ida y vuelta Lima–Madrid de lib/rutas-vuelos.ts; solo ida con visado).
-export const PRECIO_IDA_VUELTA_MADRID = 1500;
+export const PRECIO_IDA_VUELTA_MADRID = PRECIO_IDA_VUELTA_MADRID_DESDE;
 export const PRECIO_SOLO_IDA_MADRID = 690;
 
 const DETALLE_IDA_VUELTA = "Ida y vuelta con impuestos. Precio referencial; te damos el de tu fecha.";

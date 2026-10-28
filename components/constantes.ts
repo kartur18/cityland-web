@@ -1283,7 +1283,7 @@ export const DESTINOS_CARIBE: Destino[] = PAQUETES_COMPLETOS
 // Paquete migratorio a España: solo ida + gestión (pasaje de ida, retorno reservado, hotel, seguro).
 export const PRECIO_MIGRATORIO_DESDE = 699;
 // Pasaje Lima-Madrid ida y vuelta (producto distinto del paquete migratorio).
-export const PRECIO_IDA_VUELTA_MADRID_DESDE = 1090;
+export const PRECIO_IDA_VUELTA_MADRID_DESDE = 1500;
 export const PRECIO_DESDE_CARIBE = 589;
 
 // ── Preguntas Frecuentes (FAQ) ──
