@@ -13,6 +13,7 @@ import { circuitosVigentes } from "@/lib/circuitos";
 import { ciudadesConProgramas } from "@/lib/hubs-ciudades";
 import { mesesConSalidas, salidasVigentes } from "@/lib/salidas";
 import { paginasCaribe } from "@/lib/paquetes-armados/paginas-caribe";
+import { paisesConPaquetes, paquetesTuristicos } from "@/lib/paquetes-turisticos";
 
 // Fuente única de URLs indexables: cada URL vive en un solo sitemap hijo.
 export const FECHA_SITEMAP = "2026-10-19T15:00:00.000Z";
@@ -26,6 +27,7 @@ export const IDS_SITEMAP = [
   "europa",
   "1000",
   "paquetes-armados",
+  "paquetes-turisticos",
 ] as const;
 
 export type IdSitemap = (typeof IDS_SITEMAP)[number];
@@ -161,6 +163,12 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
     "/salidas",
     ...mesesConSalidas().map((m) => `/salidas/${m.clave}`),
     ...salidasVigentes().map((s) => `/salidas/${s.slug}`),
+  ],
+  // Paquetes turísticos del segundo proveedor, con su página por país (28-oct-2026).
+  "paquetes-turisticos": () => [
+    "/paquetes-turisticos",
+    ...paisesConPaquetes().map((x) => `/paquetes-turisticos/${x.slug}`),
+    ...paquetesTuristicos().map((p) => `/paquetes-turisticos/${p.slug}`),
   ],
 };
 
