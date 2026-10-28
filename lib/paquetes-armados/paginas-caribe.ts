@@ -2,6 +2,8 @@ import { circuitosVigentes, type Circuito } from "@/lib/circuitos";
 import { MESES, partesFecha, salidasVigentes, type Salida } from "@/lib/salidas";
 import { DESTINOS_CARIBE, sinTildes, textoPrograma, type DestinoCaribe } from "@/lib/paquetes-armados/destinos-caribe";
 import { DESTINOS_MUNDO } from "@/lib/paquetes-armados/destinos-mundo";
+import { DESTINOS_CIUDADES } from "@/lib/paquetes-armados/destinos-ciudades";
+import { DESTINOS_COMBINADOS } from "@/lib/paquetes-armados/destinos-combinados";
 import { componentesDe } from "@/lib/paquetes-armados/comun";
 
 // Páginas de paquetes armados a la playa: por mes, por estilo de viaje y por hotel. Solo existe una página si hay al
@@ -229,7 +231,9 @@ const CIUDAD_HOTEL: Record<string, RegExp> = {
 const MAX_SALIDAS = 24;
 
 // Viajes de fe o de recorrido largo por varios países: no se venden como luna de miel.
-const SIN_LUNA_DE_MIEL = new Set(["tierra-santa", "centroamerica", "india"]);
+const SIN_LUNA_DE_MIEL = new Set([
+  "tierra-santa", "centroamerica", "india", "petra", "wadi-rum", "mar-muerto", "amman", "delhi", "jaipur", "taj-mahal", "katmandu",
+]);
 
 let cache: { dia: string; paginas: PaginaCaribe[] } | null = null;
 
@@ -239,11 +243,13 @@ export function paginasCaribe(): PaginaCaribe[] {
   const todos = circuitosVigentes();
   const salidas = salidasVigentes();
   const paginas: PaginaCaribe[] = [];
-  for (const d of [...DESTINOS_CARIBE, ...DESTINOS_MUNDO]) {
+  for (const d of [...DESTINOS_CARIBE, ...DESTINOS_MUNDO, ...DESTINOS_CIUDADES, ...DESTINOS_COMBINADOS]) {
     const progs = todos.filter((c) => d.pertenece(c, textoPrograma(c))).sort((a, b) => a.desde - b.desde);
-    if (!progs.length) continue;
+    if (!progs.length || progs.length < (d.minimoProgramas ?? 1)) continue;
+    // Una combinación de países con un solo programa lleva una sola página: más serían copias del mismo viaje.
+    const unaSola = d.pais === "combinado" && progs.length === 1;
     const salidasDe = (ps: Circuito[]) => salidas.filter((s) => ps.some((p) => p.mt === s.mt));
-    for (let mes = 1; mes <= 12; mes++) {
+    for (let mes = 1; mes <= 12 && !unaSola; mes++) {
       const ps = progs.filter((c) => enMes(salidas, c, mes));
       if (!ps.length) continue;
       const nombreMes = MESES[mes - 1];
@@ -260,7 +266,9 @@ export function paginasCaribe(): PaginaCaribe[] {
         mes,
       });
     }
+    let estilosHechos = 0;
     for (const e of ESTILOS) {
+      if ((d.soloEstilos && !d.soloEstilos.includes(e.id)) || (unaSola && estilosHechos > 0)) continue;
       const ps = progs.filter((c) => e.filtra(c, salidas));
       // «Barato» solo tiene sentido si hay con qué comparar.
       if (!ps.length || (e.id === "barato" && progs.length < 3) || (e.id === "luna-de-miel" && SIN_LUNA_DE_MIEL.has(d.id))) continue;
@@ -280,6 +288,7 @@ export function paginasCaribe(): PaginaCaribe[] {
             : salidasDe(ps).slice(0, MAX_SALIDAS),
         estilo: e,
       });
+      estilosHechos++;
     }
     const ciudadOk = CIUDAD_HOTEL[d.id];
     if (!ciudadOk) continue;

@@ -5,7 +5,7 @@ import type { HubCircuitos } from "@/lib/hubs-circuitos";
 // con esos programas y su precio. Las ciudades que ya tienen página propia (Cartagena, Punta Cana, Panamá, Miami,
 // Orlando, Cancún) no se repiten aquí. 27-oct-2026.
 
-interface Ciudad {
+export interface Ciudad {
   slug: string;
   nombre: string;
   // Cómo aparece en los programas, sin tildes y en minúsculas.
@@ -13,7 +13,7 @@ interface Ciudad {
   intro: string;
 }
 
-const CIUDADES: Ciudad[] = [
+export const CIUDADES: Ciudad[] = [
   // Europa
   { slug: "madrid", nombre: "Madrid", alias: ["madrid"], intro: "Madrid es la puerta de entrada a Europa desde Lima: el Palacio Real, el Museo del Prado, el Retiro y la Gran Vía." },
   { slug: "paris", nombre: "París", alias: ["paris"], intro: "París es la Torre Eiffel, el Louvre, Montmartre y un paseo en barco por el Sena." },
@@ -91,7 +91,7 @@ const norm = (s: string) =>
     .replace(/[^a-z0-9]+/g, " ")
     .trim();
 
-function pasaPor(c: Circuito, alias: string[]): boolean {
+export function pasaPor(c: Circuito, alias: string[]): boolean {
   return c.ciudades.some((x) => {
     const n = norm(x);
     return alias.some((a) => n === a || n.startsWith(`${a} `));

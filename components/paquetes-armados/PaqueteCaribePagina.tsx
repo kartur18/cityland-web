@@ -30,7 +30,7 @@ function desdeDe(p: PaginaCaribe): number {
     ...p.programas.map((c) => {
       const propias = p.salidas.filter((s) => s.mt === c.mt);
       return propias.length ? Math.min(...propias.map(precioSalida)) : precioCityland(c);
-    })
+    }),
   );
 }
 
@@ -42,7 +42,14 @@ export function metadataCaribe(p: PaginaCaribe): Metadata {
     title: `${p.titulo}${p.titulo.length < 46 ? ` desde ${formatoUSD(desde)}` : ""} | Cityland`,
     description: optimizarMetaDescriptionSEO(desc),
     alternates: { canonical: url },
-    openGraph: { type: "website", url, title: p.h1, description: desc, siteName: "Cityland Travel", locale: "es_PE" },
+    openGraph: {
+      type: "website",
+      url,
+      title: p.h1,
+      description: desc,
+      siteName: "Cityland Travel",
+      locale: "es_PE",
+    },
   };
 }
 
@@ -78,9 +85,16 @@ export default function PaqueteCaribePagina({ pagina: p }: { pagina: PaginaCarib
       q: "¿Las fechas son fijas?",
       a: "Sí. Un paquete armado sale en fechas ya definidas por el mayorista. Si necesitas otra fecha, te armamos un viaje a medida.",
     },
-    { q: "¿Cómo separo?", a: "Escríbenos por WhatsApp con la fecha y el número de personas; separas con el 50% y el saldo se paga antes de viajar." },
+    {
+      q: "¿Cómo separo?",
+      a: "Escríbenos por WhatsApp con la fecha y el número de personas; separas con el 50% y el saldo se paga antes de viajar.",
+    },
   ];
-  if (clima) faqs.splice(1, 0, { q: `¿Cómo es el clima en ${d.nombre} en ${p.clave}?`, a: `${clima.t} en promedio. ${clima.txt}` });
+  if (clima)
+    faqs.splice(1, 0, {
+      q: `¿Cómo es el clima en ${d.nombre} en ${p.clave}?`,
+      a: `${clima.t} en promedio. ${clima.txt}`,
+    });
   if (p.hotel)
     faqs.splice(1, 0, {
       q: `¿Me aseguran el hotel ${p.hotel.nombre}?`,
@@ -92,8 +106,18 @@ export default function PaqueteCaribePagina({ pagina: p }: { pagina: PaginaCarib
       {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Inicio", item: URL_BASE_SEO },
-          { "@type": "ListItem", position: 2, name: "Paquetes armados", item: `${URL_BASE_SEO}/paquetes-armados` },
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Inicio",
+            item: URL_BASE_SEO,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Paquetes armados",
+            item: `${URL_BASE_SEO}/paquetes-armados`,
+          },
           { "@type": "ListItem", position: 3, name: p.h1, item: url },
         ],
       },
@@ -103,7 +127,14 @@ export default function PaqueteCaribePagina({ pagina: p }: { pagina: PaginaCarib
         description: p.intro,
         image: [foto.startsWith("http") ? foto : `${URL_BASE_SEO}${foto}`],
         brand: { "@type": "Brand", name: "Cityland Travel" },
-        offers: { "@type": "AggregateOffer", lowPrice: String(desde), priceCurrency: "USD", offerCount: String(p.programas.length), availability: "https://schema.org/LimitedAvailability", url },
+        offers: {
+          "@type": "AggregateOffer",
+          lowPrice: String(desde),
+          priceCurrency: "USD",
+          offerCount: String(p.programas.length),
+          availability: "https://schema.org/LimitedAvailability",
+          url,
+        },
       },
       faqSchema(faqs),
     ],
@@ -158,7 +189,8 @@ export default function PaqueteCaribePagina({ pagina: p }: { pagina: PaginaCarib
               <h2 className="text-xl font-extrabold text-[#0a1628]">{p.hotel.nombre}</h2>
               <p className="text-[15px] text-slate-700">
                 {p.hotel.categoria ? `Categoría ${p.hotel.categoria}. ` : ""}
-                Aparece en {listaY(p.programas.map((c) => `${c.nombre} (${c.dias} días)`))}. El precio con este hotel puede ser distinto al «desde»; te lo cotizamos según tu fecha.
+                Aparece en {listaY(p.programas.map((c) => `${c.nombre} (${c.dias} días)`))}. El precio con este hotel puede ser distinto al «desde»;
+                te lo cotizamos según tu fecha.
               </p>
             </section>
           )}
@@ -176,12 +208,16 @@ export default function PaqueteCaribePagina({ pagina: p }: { pagina: PaginaCarib
           )}
 
           <section className="space-y-3">
-            <h2 className="text-2xl font-extrabold text-[#0a1628]">Qué hacer en {d.nombre}</h2>
-            <ul className="list-disc pl-5 space-y-1.5 text-[15px] text-slate-700">
-              {d.imperdibles.map((x) => (
-                <li key={x}>{x}</li>
-              ))}
-            </ul>
+            <h2 className="text-2xl font-extrabold text-[#0a1628]">
+              {d.imperdibles.length ? `Qué hacer en ${d.nombre}` : `Datos para tu viaje a ${d.nombre}`}
+            </h2>
+            {d.imperdibles.length > 0 && (
+              <ul className="list-disc pl-5 space-y-1.5 text-[15px] text-slate-700">
+                {d.imperdibles.map((x) => (
+                  <li key={x}>{x}</li>
+                ))}
+              </ul>
+            )}
             <p className="text-[15px] text-slate-700">
               <strong>Moneda:</strong> {d.moneda}
             </p>
