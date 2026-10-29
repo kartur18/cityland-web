@@ -1,14 +1,15 @@
 import type { TemporadaEspana } from "@/lib/temporadas-espana";
 
 // «Viajar a España en <mes>»: una página por mes con sus fiestas fijas, el clima y si es temporada alta o baja.
-// Julio, agosto y diciembre ya tienen su página (verano y Navidad). Fechas 2027: Pascua 28-mar, Ceniza 10-feb. 26-oct-2026.
+// Julio, agosto y diciembre tienen su página y enlazan a las de verano y Navidad. Fechas 2027: Pascua 28-mar, Ceniza 10-feb. 26-oct-2026.
 
 const DOCUMENTOS = {
   q: "¿Qué documentos necesito?",
-  a: "Pasaporte vigente, sin visa, para turismo de hasta 90 días. En migración te pueden pedir el pasaje de regreso, el hotel o la carta de invitación, dinero para tu estadía y un seguro de viaje.",
+  a: "Pasaporte vigente, sin visa, para turismo de hasta 90 días. En migración te pueden pedir el pasaje de regreso, el hotel o la carta de invitación y dinero para tu estadía. El seguro de viaje no es obligatorio sin visa, pero te lo recomendamos.",
 };
 const PAGO = { q: "¿Puedo separar mi pasaje?", a: "Sí. Separas con el 50% y pagas el resto antes de viajar." };
 const PRECIO_BAJA = "Precios referenciales por persona. Este mes suele estar entre los más baratos del año; te damos el precio exacto de tu fecha.";
+const PRECIO_ALTA = "Precios referenciales por persona. Es temporada alta: compra con 3 o 4 meses de anticipación y te damos el precio exacto de tu fecha.";
 const PRECIO_MEDIA = "Precios referenciales por persona; cambian según la fecha y la aerolínea. Te damos el precio exacto de tu fecha.";
 
 export interface MesEspana extends TemporadaEspana {
@@ -216,6 +217,71 @@ export const MESES_ESPANA: readonly MesEspana[] = [
     notaPrecio: PRECIO_MEDIA,
   }),
   mes({
+    mes: "julio",
+    descripcion:
+      "Viajar a España en julio desde Lima: San Fermín en Pamplona, rebajas de verano, calor fuerte en Madrid y playas llenas. Temporada alta: compra con tiempo.",
+    intro:
+      "Julio es pleno verano y temporada alta: hay sol hasta las diez de la noche, rebajas en las tiendas y fiestas como San Fermín. También es el mes en que muchos peruanos viajan por Fiestas Patrias.",
+    fechas: [
+      { cuando: "Desde el 1 de julio", que: "Rebajas de verano en tiendas y centros comerciales." },
+      { cuando: "Del 6 al 14 de julio", que: "San Fermín en Pamplona, con los encierros de cada mañana." },
+      { cuando: "25 de julio", que: "Día de Santiago Apóstol, fiesta grande en Santiago de Compostela y Galicia." },
+      { cuando: "28 y 29 de julio", que: "Fiestas Patrias en el Perú: muchos viajeros salen de Lima esos días y los pasajes suben." },
+    ],
+    clima:
+      "Calor fuerte: en Madrid y Sevilla pasa los 35 °C en la tarde. En el norte (Galicia, Asturias, País Vasco) es más fresco. Lleva ropa ligera, gorra y protector solar.",
+    queHacer: [
+      "Playa en la Costa del Sol, la Costa Brava, Valencia o las Islas Baleares.",
+      "San Fermín en Pamplona, o el norte de España si prefieres menos calor.",
+      "Visitar museos y monumentos temprano en la mañana, antes del calor.",
+    ],
+    consejoCompra:
+      "Julio es de los meses más caros para volar entre Lima y Madrid, sobre todo alrededor de Fiestas Patrias. Compra con 3 o 4 meses de anticipación.",
+    rutas: ["lima-madrid", "lima-barcelona", "lima-malaga", "lima-valencia"],
+    destinos: [
+      { texto: "España en verano", href: "/viajar-a-espana-en-verano" },
+      { texto: "España en agosto", href: "/viajar-a-espana-en-agosto" },
+    ],
+    faqs: [
+      { q: "¿Julio es buen mes para viajar a España?", a: "Sí, si te gusta el calor y la playa. Es temporada alta: hay más gente y los pasajes y hoteles cuestan más." },
+      DOCUMENTOS,
+      PAGO,
+    ],
+    notaPrecio: PRECIO_ALTA,
+  }),
+  mes({
+    mes: "agosto",
+    descripcion:
+      "Viajar a España en agosto desde Lima: la Tomatina, la Feria de Málaga, la Semana Grande de Bilbao y Madrid más tranquilo. Temporada alta: compra con tiempo.",
+    intro:
+      "Agosto es el mes de vacaciones de los españoles: las playas se llenan, muchos negocios de Madrid cierran unos días y en los pueblos hay fiestas. Para el turista es temporada alta.",
+    fechas: [
+      { cuando: "15 de agosto", que: "Día de la Asunción, feriado en toda España." },
+      { cuando: "Mediados de agosto", que: "Feria de Málaga y Semana Grande de Bilbao." },
+      { cuando: "Último miércoles de agosto", que: "La Tomatina en Buñol (Valencia): la batalla de tomates más famosa del mundo." },
+    ],
+    clima:
+      "Sigue el calor: en el sur y en Madrid puede pasar los 35 °C. En la costa norte el clima es más suave. Busca hotel con aire acondicionado.",
+    queHacer: [
+      "La Tomatina en Buñol o la Feria de Málaga.",
+      "Playa en el Mediterráneo o en Canarias.",
+      "Madrid con menos tráfico: muchos madrileños se van de vacaciones.",
+    ],
+    consejoCompra:
+      "Agosto es temporada alta para volar a Europa. Compra con 3 o 4 meses; la última semana suele subir por el regreso de las vacaciones y el inicio del curso.",
+    rutas: ["lima-madrid", "lima-barcelona", "lima-malaga", "lima-bilbao"],
+    destinos: [
+      { texto: "España en verano", href: "/viajar-a-espana-en-verano" },
+      { texto: "España en julio", href: "/viajar-a-espana-en-julio" },
+    ],
+    faqs: [
+      { q: "¿Es buena idea viajar a España en agosto?", a: "Sí, para playa y fiestas de verano. Ten en cuenta que hace mucho calor y que es temporada alta: compra con anticipación." },
+      DOCUMENTOS,
+      PAGO,
+    ],
+    notaPrecio: PRECIO_ALTA,
+  }),
+  mes({
     mes: "septiembre",
     descripcion:
       "Viajar a España en septiembre desde Lima: La Mercè en Barcelona, la vendimia en La Rioja, el mar todavía caliente y menos gente. Separa con el 50%.",
@@ -308,9 +374,42 @@ export const MESES_ESPANA: readonly MesEspana[] = [
     ],
     notaPrecio: PRECIO_BAJA,
   }),
+  mes({
+    mes: "diciembre",
+    descripcion:
+      "Viajar a España en diciembre desde Lima: puente de la Constitución, luces y mercados de Navidad, Lotería del 22 y Nochevieja en la Puerta del Sol. Compra con tiempo.",
+    intro:
+      "Diciembre es frío y festivo: las ciudades se llenan de luces y mercadillos, y entre el puente de inicio de mes y las fiestas de fin de año es temporada alta para volar.",
+    fechas: [
+      { cuando: "6 y 8 de diciembre", que: "Día de la Constitución y de la Inmaculada: el puente más largo del año en España." },
+      { cuando: "22 de diciembre", que: "Sorteo de la Lotería de Navidad, que se ve en todos los bares." },
+      { cuando: "24 y 25 de diciembre", que: "Nochebuena y Navidad, fiesta en familia." },
+      { cuando: "31 de diciembre", que: "Nochevieja: las doce uvas con las campanadas de la Puerta del Sol." },
+    ],
+    clima:
+      "Invierno: en Madrid las máximas rondan los 10 °C y las noches son frías. En Canarias sigue cerca de 20 °C. Lleva abrigo, guantes y bufanda.",
+    queHacer: [
+      "Pasear por las luces de Navidad y el mercado de la Plaza Mayor de Madrid.",
+      "Pasar Nochevieja en la Puerta del Sol.",
+      "Visitar a la familia en España para las fiestas.",
+    ],
+    consejoCompra:
+      "Del 15 al 24 de diciembre es lo más caro. Si puedes, viaja a inicios de mes o compra con 3 o 4 meses. Ida en noviembre y vuelta en enero suele salir mejor.",
+    rutas: ["lima-madrid", "lima-barcelona", "lima-tenerife", "madrid-lima"],
+    destinos: [
+      { texto: "España en Navidad", href: "/viajar-a-espana-en-navidad" },
+      { texto: "España en enero", href: "/viajar-a-espana-en-enero" },
+    ],
+    faqs: [
+      { q: "¿Es caro viajar a España en diciembre?", a: "Sí, sobre todo del 15 al 24. Las fechas de inicio de mes y las compras con anticipación salen más baratas." },
+      DOCUMENTOS,
+      PAGO,
+    ],
+    notaPrecio: PRECIO_ALTA,
+  }),
 ];
 
-// Navegación «mes a mes»: los meses que tienen página de temporada enlazan a ella.
+// Navegación «mes a mes»: una página por mes; verano y Navidad se enlazan desde julio, agosto y diciembre.
 export const NAV_MESES_ESPANA: { texto: string; href: string }[] = [
   ["Enero", "/viajar-a-espana-en-enero"],
   ["Febrero", "/viajar-a-espana-en-febrero"],
@@ -318,11 +417,12 @@ export const NAV_MESES_ESPANA: { texto: string; href: string }[] = [
   ["Abril", "/viajar-a-espana-en-abril"],
   ["Mayo", "/viajar-a-espana-en-mayo"],
   ["Junio", "/viajar-a-espana-en-junio"],
-  ["Julio y agosto", "/viajar-a-espana-en-verano"],
+  ["Julio", "/viajar-a-espana-en-julio"],
+  ["Agosto", "/viajar-a-espana-en-agosto"],
   ["Septiembre", "/viajar-a-espana-en-septiembre"],
   ["Octubre", "/viajar-a-espana-en-octubre"],
   ["Noviembre", "/viajar-a-espana-en-noviembre"],
-  ["Diciembre", "/viajar-a-espana-en-navidad"],
+  ["Diciembre", "/viajar-a-espana-en-diciembre"],
 ].map(([texto, href]) => ({ texto, href }));
 
 export function buscarMesEspana(m: string): MesEspana {
