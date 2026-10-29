@@ -75,6 +75,7 @@ export default async function BlogArticlePage({
   }
 
   const canonicalUrl = `https://citylandtravel.com/blog/${post.slug}`;
+  const esDeEspana = /espana|madrid|barcelona|schengen/i.test(post.slug) || /España/.test(post.titulo);
   const waHref = armarLinkWhatsApp(
     `Hola Cityland Travel, leí su guía "${post.titulo}" y deseo cotizar mi viaje.`,
     `citylandtravel.com/blog/${post.slug}`
@@ -188,6 +189,25 @@ export default async function BlogArticlePage({
       <div className="max-w-[1140px] mx-auto px-4 sm:px-6 py-10 lg:py-14">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-8 bg-white rounded-2xl p-6 sm:p-9 border border-slate-200 shadow-sm">
+            {esDeEspana && (
+              // En celular la barra lateral cae al final del artículo: el pasaje se ofrece arriba, donde sí se lee.
+              <aside className="mb-7 flex flex-col gap-3 rounded-xl border border-red-100 bg-red-50/60 p-4 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-[14px] font-bold text-[#0b2347] flex items-center gap-2">
+                  <FlagIcon pais="España" className="w-4 h-3 shrink-0" />
+                  <span>
+                    Pasaje Lima–Madrid ida y vuelta desde ${PRECIO_IDA_VUELTA_MADRID_DESDE.toLocaleString("en-US")}
+                  </span>
+                </p>
+                <span className="flex flex-wrap gap-x-4 gap-y-1 text-[13px] font-bold">
+                  <Link href="/pasajes-a-espana" className="text-[#e30613] underline">
+                    Ver pasajes a España
+                  </Link>
+                  <Link href="/pasaje-solo-ida-a-espana" className="text-[#0b2347] underline">
+                    Pasaje solo ida
+                  </Link>
+                </span>
+              </aside>
+            )}
             <AnimateOnScroll>
               <article
                 className="article-body min-w-0"
