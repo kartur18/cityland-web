@@ -1,3 +1,5 @@
+import { preconnect, preload } from "react-dom";
+
 // Foto del CDN del segundo proveedor con varios tamaños: el CDN recorta al ancho que diga la URL («fit-in/700x0/»),
 // así el celular baja una de 400 px y no la de 1,600 px. next/image con «unoptimized» siempre mandaba la grande.
 
@@ -19,11 +21,17 @@ export default function FotoCdn({
   className?: string;
 }) {
   if (!src) return null;
+  const srcSet = ANCHOS.map((w) => `${conAncho(src, w)} ${w}w`).join(", ");
+  // La portada viene de otro servidor: se avisa en el <head> para que el navegador la pida antes de leer el cuerpo.
+  if (prioridad) {
+    preconnect("https://cdn.travelconline.com");
+    preload(conAncho(src, 700), { as: "image", imageSrcSet: srcSet, imageSizes: sizes, fetchPriority: "high" });
+  }
   return (
     // eslint-disable-next-line @next/next/no-img-element -- el CDN ya entrega cada tamaño; next/image no puede armar el srcset
     <img
       src={conAncho(src, 700)}
-      srcSet={ANCHOS.map((w) => `${conAncho(src, w)} ${w}w`).join(", ")}
+      srcSet={srcSet}
       sizes={sizes}
       alt={alt}
       loading={prioridad ? "eager" : "lazy"}
