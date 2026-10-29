@@ -12,6 +12,10 @@ const TEMAS: Record<TemaEspana, { caja: string; numero: string; borde: string }>
   soloDestino: { caja: "bg-orange-50/70 border-orange-100", numero: "bg-orange-500", borde: "border-orange-200" },
   soloAerolinea: { caja: "bg-blue-50/60 border-blue-100", numero: "bg-blue-700", borde: "border-blue-200" },
   soloGuia: { caja: "bg-lime-50/70 border-lime-100", numero: "bg-lime-600", borde: "border-lime-200" },
+  dudaBolsa: { caja: "bg-emerald-50/70 border-emerald-100", numero: "bg-emerald-600", borde: "border-emerald-200" },
+  dudaCosto: { caja: "bg-yellow-50/70 border-yellow-100", numero: "bg-yellow-500", borde: "border-yellow-200" },
+  dudaCarta: { caja: "bg-pink-50/60 border-pink-100", numero: "bg-pink-600", borde: "border-pink-200" },
+  dudaRequisito: { caja: "bg-slate-50 border-slate-200", numero: "bg-slate-700", borde: "border-slate-300" },
   ciudad: { caja: "bg-amber-50/70 border-amber-100", numero: "bg-amber-500", borde: "border-amber-200" },
 };
 
@@ -22,7 +26,7 @@ const H2 = "text-2xl sm:text-3xl font-extrabold text-[#0a1628]";
 export function Puntos({ l }: { l: LandingEspana }) {
   const t = temaDe(l);
   // La guía cuenta pasos en orden: va como línea de tiempo. El resto, en tarjetas.
-  if (l.tema === "guia" || l.tema === "soloGuia") {
+  if (l.tema === "guia" || l.tema === "soloGuia" || l.tema === "dudaCarta") {
     return (
       <section className="space-y-5" aria-labelledby="puntos">
         <h2 id="puntos" className={H2}>
@@ -47,7 +51,7 @@ export function Puntos({ l }: { l: LandingEspana }) {
       </h2>
       <ul className="grid gap-4 sm:grid-cols-2">
         {l.puntos.map((p) => (
-          <li key={p.t} className={`rounded-2xl border bg-white p-6 ${l.tema === "provincia" || l.tema?.startsWith("solo") ? "border-l-4 " + t.borde : "border-slate-200"}`}>
+          <li key={p.t} className={`rounded-2xl border bg-white p-6 ${l.tema === "provincia" || l.tema?.startsWith("solo") || l.tema?.startsWith("duda") ? "border-l-4 " + t.borde : "border-slate-200"}`}>
             <strong className="block text-lg text-[#0a1628]">{p.t}</strong>
             <p className="mt-2 text-base leading-relaxed text-slate-600">{p.d}</p>
           </li>

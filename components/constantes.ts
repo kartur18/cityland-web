@@ -1546,8 +1546,8 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "cuanto-dinero-llevar-espana-bolsa-de-viaje",
     titulo: "Bolsa de viaje para España 2026: cuánto dinero te pueden pedir si viajas desde Perú",
-    tituloSeo: "Bolsa de viaje para España 2026: 122,10 € al día",
-    desc: "En 2026 te pueden pedir 122,10 € por día y un mínimo de 1.098,90 € por persona. Montos por días, cómo demostrarlo y qué pasa con la carta de invitación.",
+    tituloSeo: "Bolsa de viaje España 2026: 122,10 €/día y tabla",
+    desc: "¿Cuánto dinero llevar a España? En 2026: 122,10 € por día y mínimo 1.098,90 € por persona. Tabla por días, en soles, calculadora y qué vale como prueba.",
     categoria: "Europa",
     catColor: "bg-red-500",
     fecha: "Actualizado octubre 2026",
@@ -1557,6 +1557,7 @@ export const BLOG_POSTS: BlogPost[] = [
     contenido: `<h2>La respuesta corta</h2>
 <p>Si entras a España como turista desde Perú, en el control migratorio te pueden pedir que demuestres <strong>122,10 € por cada día de estancia</strong>, con un <strong>mínimo de 1.098,90 € por persona</strong>, aunque tu viaje sea más corto. Son las cifras de 2026, calculadas sobre el salario mínimo de España.</p>
 <p>No siempre lo piden, pero si lo piden y no lo puedes demostrar, el policía puede negarte la entrada. Por eso conviene llevarlo listo.</p>
+<p>Haz tu cálculo exacto, en euros y en soles, con nuestra <a href="/espana/calculadora-bolsa-de-viaje-espana">calculadora de bolsa de viaje</a>, o mira la <a href="/espana/bolsa-de-viaje-espana-en-soles">bolsa de viaje en soles</a>.</p>
 
 <h2>¿De dónde sale el monto?</h2>
 <p>Lo fija la <strong>Orden PRE/1282/2007</strong>, publicada en el Boletín Oficial del Estado (BOE). Esa norma dice que cada extranjero que entra por turismo debe tener medios económicos equivalentes al <strong>10% del salario mínimo interprofesional (SMI) por cada día</strong> que se va a quedar, y como mínimo el <strong>90% del SMI</strong> en total, sin importar cuántos días dure el viaje.</p>

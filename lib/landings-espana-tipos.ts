@@ -20,7 +20,12 @@ export type TemaEspana =
   | "soloOrigen"
   | "soloDestino"
   | "soloAerolinea"
-  | "soloGuia";
+  | "soloGuia"
+  // Dudas frecuentes sobre España.
+  | "dudaBolsa"
+  | "dudaCosto"
+  | "dudaCarta"
+  | "dudaRequisito";
 
 // Calendario de precios por mes (solo ida): lo que suma esta página sobre el Lima–Madrid de la tabla.
 export interface CalendarioLanding {
@@ -42,6 +47,8 @@ export interface LandingEspana {
   // Paso intermedio de las migas (p. ej. «Solo ida»).
   seccion?: { nombre: string; href: string };
   calendario?: CalendarioLanding;
+  // Calculadora de bolsa de viaje con los días con que arranca.
+  calculadora?: { dias: number };
   // Imagen para compartir propia (si no, se usa la foto).
   ogImagen?: string;
   // Mes de salida que la página resalta en el calendario.
