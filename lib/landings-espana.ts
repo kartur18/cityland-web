@@ -10,6 +10,7 @@ import { LANDINGS_FAMILIA } from "@/lib/landings-espana-familia";
 import { LANDINGS_DUDAS } from "@/lib/landings-espana-dudas";
 import { LANDINGS_TRAER } from "@/lib/landings-espana-traer";
 import { LANDINGS_FIESTAS } from "@/lib/landings-espana-fiestas";
+import { LANDINGS_EQUIPAJE } from "@/lib/landings-espana-equipaje";
 
 export type { LandingEspana, PuntoLanding } from "@/lib/landings-espana-tipos";
 export { PRECIO_IDA_VUELTA_MADRID, PRECIO_SOLO_IDA_MADRID } from "@/lib/landings-espana-tipos";
@@ -433,6 +434,7 @@ export const LANDINGS_ESPANA: readonly LandingEspana[] = [
   ...LANDINGS_DUDAS,
   ...LANDINGS_TRAER,
   ...LANDINGS_FIESTAS,
+  ...LANDINGS_EQUIPAJE,
 ];
 
 export function buscarLandingEspana(slug: string): LandingEspana | undefined {
