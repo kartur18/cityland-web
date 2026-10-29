@@ -76,6 +76,7 @@ const ORDEN: Partial<Record<TemaEspana, Bloque[]>> = {
   dudaCosto: ["tabla", "puntos", "medio", "lista", "pregunta", "aviso"],
   dudaCarta: ["puntos", "tabla", "medio", "lista", "pregunta", "aviso"],
   dudaRequisito: ["lista", "puntos", "tabla", "medio", "pregunta", "aviso"],
+  traer: ["aviso", "puntos", "medio", "lista", "pregunta"],
 };
 
 function esquema(l: LandingEspana, url: string) {
