@@ -27,7 +27,12 @@ export type TemaEspana =
   | "dudaCarta"
   | "dudaRequisito"
   // Traer a un familiar del Perú de visita.
-  | "traer";
+  | "traer"
+  // Tanda 4: fiestas, equipaje por aerolínea, trámites de residentes y viajar al Perú.
+  | "fiesta"
+  | "equipaje"
+  | "tramite"
+  | "peru";
 
 // Calendario de precios por mes (solo ida): lo que suma esta página sobre el Lima–Madrid de la tabla.
 export interface CalendarioLanding {
