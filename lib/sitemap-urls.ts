@@ -18,6 +18,7 @@ import { destinosConTours, todosLosTours } from "@/lib/tours-turbo";
 import { LANDINGS_ESPANA, rutaLandingEspana } from "@/lib/landings-espana";
 import { PRUEBA_REAPERTURA } from "@/lib/prueba-reapertura";
 import { landingsSoloIda } from "@/lib/landings-solo-ida";
+import { LANDINGS_ITALIA, rutaLandingItalia } from "@/lib/italia/landings";
 
 // Fuente única de URLs indexables: cada URL vive en un solo sitemap hijo.
 export const FECHA_SITEMAP = "2026-10-19T15:00:00.000Z";
@@ -35,6 +36,7 @@ export const IDS_SITEMAP = [
   "paquetes-armados",
   "paquetes-turisticos",
   "tours",
+  "italia",
 ] as const;
 
 export type IdSitemap = (typeof IDS_SITEMAP)[number];
@@ -192,6 +194,8 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
   ],
   // Prueba de 4 semanas (28-oct-2026): su propio sitemap para medir en Search Console cuántas indexa Google.
   prueba: () => [...PRUEBA_REAPERTURA],
+  // Pasajes, guías y temporadas de Italia (29-oct-2026).
+  italia: () => LANDINGS_ITALIA.map(rutaLandingItalia),
 };
 
 // Se anuncian a Google solo las páginas indexables (ver lib/indexacion.ts); el sitemap y el meta robots usan la misma regla.
