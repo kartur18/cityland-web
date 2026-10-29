@@ -12,6 +12,7 @@ const TEMAS: Record<TemaEspana, { caja: string; numero: string; borde: string }>
   soloDestino: { caja: "bg-orange-50/70 border-orange-100", numero: "bg-orange-500", borde: "border-orange-200" },
   soloAerolinea: { caja: "bg-blue-50/60 border-blue-100", numero: "bg-blue-700", borde: "border-blue-200" },
   soloGuia: { caja: "bg-lime-50/70 border-lime-100", numero: "bg-lime-600", borde: "border-lime-200" },
+  ciudad: { caja: "bg-amber-50/70 border-amber-100", numero: "bg-amber-500", borde: "border-amber-200" },
 };
 
 export const temaDe = (l: LandingEspana) => TEMAS[l.tema ?? "perfil"];
@@ -83,7 +84,7 @@ function Tramos({ l }: { l: LandingEspana }) {
 export function Tabla({ l }: { l: LandingEspana }) {
   const tabla = l.tabla;
   if (!tabla) return null;
-  if (l.tema === "provincia" || l.tema === "soloOrigen") return <Tramos l={l} />;
+  if (l.tema === "provincia" || l.tema === "soloOrigen" || l.tema === "ciudad") return <Tramos l={l} />;
   return (
     <section className="space-y-4" aria-labelledby="tabla">
       <h2 id="tabla" className={H2}>
