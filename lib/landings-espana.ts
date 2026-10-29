@@ -7,6 +7,7 @@ import {
 import { CIUDADES_PROVINCIA, LANDINGS_PROVINCIAS, PRECIO_DESDE_PROVINCIAS } from "@/lib/landings-espana-provincias";
 import { LANDINGS_GUIAS } from "@/lib/landings-espana-guias";
 import { LANDINGS_FAMILIA } from "@/lib/landings-espana-familia";
+import { LANDINGS_DUDAS } from "@/lib/landings-espana-dudas";
 
 export type { LandingEspana, PuntoLanding } from "@/lib/landings-espana-tipos";
 export { PRECIO_IDA_VUELTA_MADRID, PRECIO_SOLO_IDA_MADRID } from "@/lib/landings-espana-tipos";
@@ -427,6 +428,7 @@ export const LANDINGS_ESPANA: readonly LandingEspana[] = [
   REAGRUPACION,
   MAS_BARATO,
   ...LANDINGS_GUIAS,
+  ...LANDINGS_DUDAS,
 ];
 
 export function buscarLandingEspana(slug: string): LandingEspana | undefined {

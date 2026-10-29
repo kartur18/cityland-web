@@ -7,9 +7,9 @@ import {
 import { textoPrecio } from "@/lib/formato-precio";
 
 const rawTitle =
-  "Paquete migratorio a España y Madrid desde $699 | Cityland";
+  "Paquete migratorio España desde Lima: $699 | Cityland";
 const rawDesc =
-  "Paquete migratorio a España desde Lima ($699, $799, $899 y $999 según fecha): pasaje de avión de ida + reserva de regreso + hotel + seguro Schengen 30.000€ + check-in 24h antes.";
+  "Paquete migratorio a España saliendo de Lima, desde $699 según la fecha. Separa con el 50%, te atiende una asesora por WhatsApp y tenemos 2 oficinas en Los Olivos.";
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO(rawTitle),

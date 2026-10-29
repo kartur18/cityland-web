@@ -9,6 +9,7 @@ import { Migas } from "@/components/paquetes-armados/Bloques";
 import { BarraConfianza, HeroVenta, PasosSeparar } from "@/components/paquetes-armados/Venta";
 import { Atajos, CierreUrgencia, CtaMedio, PreguntaFaq, TarjetaPregunta, waEspana } from "@/components/landing-espana/CtasWhatsApp";
 import CalendarioSoloIda from "@/components/landing-espana/CalendarioSoloIda";
+import CalculadoraBolsa from "@/components/landing-espana/CalculadoraBolsa";
 import { Lista, Puntos, Tabla } from "@/components/landing-espana/Bloques";
 import { formatoUSD } from "@/lib/formato-precio";
 import { absoluta } from "@/lib/paquetes-armados/fotos";
@@ -61,7 +62,7 @@ function migasDe(l: LandingEspana): { nombre: string; href?: string }[] {
 const esSoloIda = (l: LandingEspana) => Boolean(l.tema?.startsWith("solo"));
 
 // Orden de los bloques del medio según la familia: así cada grupo se ve y se lee distinto.
-type Bloque = "atajos" | "puntos" | "tabla" | "calendario" | "pregunta" | "lista" | "medio" | "aviso";
+type Bloque = "atajos" | "puntos" | "tabla" | "calendario" | "calculadora" | "pregunta" | "lista" | "medio" | "aviso";
 const ORDEN_COMUN: Bloque[] = ["puntos", "tabla", "pregunta", "lista", "atajos", "aviso"];
 const ORDEN: Partial<Record<TemaEspana, Bloque[]>> = {
   provincia: ["atajos", "puntos", "tabla", "pregunta", "lista", "aviso"],
@@ -71,6 +72,10 @@ const ORDEN: Partial<Record<TemaEspana, Bloque[]>> = {
   soloDestino: ["puntos", "calendario", "tabla", "medio", "lista", "pregunta", "aviso"],
   soloAerolinea: ["tabla", "puntos", "calendario", "medio", "lista", "pregunta", "aviso"],
   soloGuia: ["puntos", "lista", "medio", "tabla", "calendario", "pregunta", "aviso"],
+  dudaBolsa: ["calculadora", "tabla", "puntos", "medio", "lista", "pregunta", "aviso"],
+  dudaCosto: ["tabla", "puntos", "medio", "lista", "pregunta", "aviso"],
+  dudaCarta: ["puntos", "tabla", "medio", "lista", "pregunta", "aviso"],
+  dudaRequisito: ["lista", "puntos", "tabla", "medio", "pregunta", "aviso"],
 };
 
 function esquema(l: LandingEspana, url: string) {
@@ -124,6 +129,7 @@ export default function LandingEspanaPagina({ landing: l, hermanas = LANDINGS_ES
     puntos: <Puntos l={l} />,
     tabla: <Tabla l={l} />,
     calendario: l.calendario && <CalendarioSoloIda ruta={ruta} c={l.calendario} destacado={l.mesDestacado} />,
+    calculadora: l.calculadora && <CalculadoraBolsa ruta={ruta} diasIniciales={l.calculadora.dias} />,
     pregunta: l.pregunta && <TarjetaPregunta ruta={ruta} pregunta={l.pregunta} />,
     lista: <Lista l={l} />,
     medio: l.ctaMedio && <CtaMedio ruta={ruta} {...l.ctaMedio} />,
