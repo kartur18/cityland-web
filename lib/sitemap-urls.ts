@@ -183,6 +183,7 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
     "/agencia-de-viajes-san-martin-de-porres",
     "/canales-oficiales",
     "/politicas",
+    "/libro-de-reclamaciones",
   ],
   // Paquetes armados del mayorista: salidas con fecha, meses y páginas de playa (27-oct-2026).
   "paquetes-armados": () => [

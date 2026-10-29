@@ -8,6 +8,15 @@ import FlagIcon from "@/components/icons/FlagIcon";
 import { formatoUSD } from "@/lib/formato-precio";
 import { tarifasMigratorio } from "@/lib/precios-migratorio";
 
+function LibroIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 shrink-0 fill-none stroke-current stroke-2" aria-hidden="true">
+      <path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5z" />
+      <path d="M4 19a2 2 0 0 1 2-2h13" />
+    </svg>
+  );
+}
+
 export default function Footer() {
   return (
     <footer className="bg-[#0a1628] text-white/70 border-t border-slate-800">
@@ -245,6 +254,10 @@ export default function Footer() {
               <Link href="/politicas" className="block text-slate-300 hover:text-white transition-colors">
                 Términos, Condiciones y Políticas
               </Link>
+              <Link href="/libro-de-reclamaciones" className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors">
+                <LibroIcon />
+                <span>Libro de Reclamaciones</span>
+              </Link>
             </div>
           </div>
 
@@ -296,6 +309,10 @@ export default function Footer() {
           </p>
           <div className="flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 gap-3 text-center sm:text-left">
             <span>&copy; 2026 Cityland Travel · Cityland Group E.I.R.L. (RUC 20614914239) y Cityland Travel S.A.C. (RUC 20611406305)</span>
+            <Link href="/libro-de-reclamaciones" className="inline-flex items-center gap-1.5 min-h-[44px] sm:min-h-0 font-semibold text-slate-200 hover:text-white underline-offset-2 hover:underline transition-colors">
+              <LibroIcon />
+              <span>Libro de Reclamaciones</span>
+            </Link>
             <span>Lima, Perú · Agencia de Viajes y Turismo</span>
           </div>
         </div>
