@@ -3,6 +3,9 @@ import { landingsRutasIda } from "@/lib/italia/rutas-ida";
 import { landingsRegreso } from "@/lib/italia/rutas-regreso";
 import { landingsGuias } from "@/lib/italia/guias";
 import { landingsTramites } from "@/lib/italia/guias-tramites";
+import { landingsMeses } from "@/lib/italia/meses";
+import { landingsFiestas } from "@/lib/italia/fiestas";
+import { landingsCombinados } from "@/lib/italia/combinados";
 
 // Todas las landings de Italia (/italia/<slug>). Cada familia vive en su propio archivo.
 
@@ -22,6 +25,9 @@ export const LANDINGS_ITALIA: readonly LandingItalia[] = [
   ...landingsRegreso(),
   ...landingsGuias(),
   ...landingsTramites(),
+  ...landingsMeses(),
+  ...landingsFiestas(),
+  ...landingsCombinados(),
 ];
 
 const POR_SLUG = new Map(LANDINGS_ITALIA.map((l) => [l.slug, l]));
