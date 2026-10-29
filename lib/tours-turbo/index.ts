@@ -19,9 +19,10 @@ export interface DestinoTour {
   paisTuristico?: string;
 }
 
-// Fee elegido por Carlos para tours y actividades (US$ por persona).
+// Fee de Carlos (29-oct-2026): 20 % por persona, nunca menos de US$15; redondeado al dólar de arriba.
 export const FEE_TOUR = 15;
-export const precioTour = (t: Pick<TourCrudo, "p">) => t.p + FEE_TOUR;
+export const FEE_TOUR_PORCENTAJE = 0.2;
+export const precioTour = (t: Pick<TourCrudo, "p">) => Math.ceil(t.p + Math.max(t.p * FEE_TOUR_PORCENTAJE, FEE_TOUR));
 
 const CDN = "https://cdn.travelconline.com/images/fit-in/";
 export const fotoTour = (t: Pick<TourCrudo, "i">, ancho = 700) => `${CDN}${ancho}x0/filters:quality(75):strip_metadata():format(webp)/${t.i}`;
