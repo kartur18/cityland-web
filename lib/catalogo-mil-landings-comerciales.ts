@@ -1831,7 +1831,7 @@ import {
   INDICE_EXPANSION_MASIVA,
   buscarLandingExpansionMasiva,
 } from "@/lib/catalogo-expansion-masiva";
-import { ajustarRealismo, precioConPiso } from "@/lib/realismo-ofertas";
+import { ajustarRealismo, precioConPiso, tituloRealista } from "@/lib/realismo-ofertas";
 
 export const MIL_LANDINGS_COMERCIALES_SEO: LandingComercialSEO[] = [
   ...LANDINGS_CLUSTER_1,
@@ -1858,7 +1858,7 @@ export const TODOS_LOS_RESUMENES_OFERTAS_SEO: ResumenOfertaComercialSEO[] = [
     slug: o.slug,
     cluster: o.cluster,
     clusterNombre: o.clusterNombre,
-    titulo: o.titulo,
+    titulo: tituloRealista(`${o.slug} ${o.titulo} ${o.destinoOPais}`, o.titulo),
     destinoOPais: o.destinoOPais,
     precioDesdeUSD: precioConPiso(o.slug, `${o.slug} ${o.titulo} ${o.destinoOPais}`, o.precioDesdeUSD),
   })),
@@ -1866,7 +1866,7 @@ export const TODOS_LOS_RESUMENES_OFERTAS_SEO: ResumenOfertaComercialSEO[] = [
     slug: e.slug,
     cluster: e.cluster,
     clusterNombre: e.clusterNombre,
-    titulo: e.titulo,
+    titulo: tituloRealista(`${e.slug} ${e.titulo} ${e.destinoOPais}`, e.titulo),
     destinoOPais: e.destinoOPais,
     precioDesdeUSD: precioConPiso(e.slug, `${e.slug} ${e.titulo} ${e.destinoOPais}`, e.precioDesdeUSD),
   })),

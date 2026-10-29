@@ -93,6 +93,7 @@ const nextConfig: NextConfig = {
       { source: "/ofertas/:s(formula-1-gran-premio-brasil.*)", destination: "/paquetes-a-brasil", permanent: true },
       { source: "/ofertas/:s(formula-1-gran-premio-miami.*)", destination: "/paquetes-a-estados-unidos", permanent: true },
       { source: "/ofertas/:s(grupos|paquetes|cotizacion|organizacion|preventa)-viajes-para-hinchas-partidos-y-mundial", destination: "/", permanent: true },
+      { source: "/ofertas/:s(grupos|paquetes|cotizacion|organizacion|preventa)-viajes-para-clubes-de-futbol-torneos", destination: "/empresas", permanent: true },
       { source: "/vuelos/:r(.*huaraz.*)", destination: "/destinos/huaraz-laguna-69-pastoruri-chavin", permanent: true },
       { source: "/vuelos/:r(.*chachapoyas.*)", destination: "/destinos/chachapoyas-kuelap-catarata-gocta", permanent: true },
       { source: "/vuelos/:r(.*tingo-maria.*)", destination: "/nacionales", permanent: true },

@@ -56,6 +56,9 @@ function ajustarTexto(t: string, factor: number, porCarretera: boolean): string 
   if (porCarretera) {
     s = s
       .replace(/Vuelo \+ Hotel/g, "Bus + Hotel")
+      .replace(/Vuelo\/Transporte \+ Hotel/g, "Bus + Hotel")
+      .replace(/transporte a[eé]reo o tur[ií]stico/gi, "bus turístico")
+      .replace(/Coordinación de vuelos nacionales/g, "Coordinación del bus")
       .replace(/vuelos? y hotel/gi, "bus y hotel")
       .replace(/boletos? a[eé]reos? ida y vuelta/gi, "bus turístico ida y vuelta")
       .replace(/vuelos? (confirmados?|ida y vuelta) desde Lima/gi, "transporte desde Lima")
@@ -80,6 +83,11 @@ function recorrer<T>(valor: T, f: (s: string) => string, factor: number, clave =
 export function precioConPiso(slug: string, texto: string, precio: number): number {
   const piso = pisoMercado(slug, texto);
   return precio > 0 && precio < piso ? piso : precio;
+}
+
+// Para los títulos de las listas: sin esto, Oxapampa o Paracas seguían diciendo «Vuelo/Transporte» en los enlaces.
+export function tituloRealista(clave: string, titulo: string): string {
+  return ajustarTexto(titulo, 1, SOLO_POR_CARRETERA.test(clave));
 }
 
 export function ajustarRealismo(l: LandingComercialSEO): LandingComercialSEO {
