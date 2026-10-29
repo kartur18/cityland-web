@@ -17,6 +17,10 @@ const TEMAS: Record<TemaEspana, { caja: string; numero: string; borde: string }>
   dudaCarta: { caja: "bg-pink-50/60 border-pink-100", numero: "bg-pink-600", borde: "border-pink-200" },
   dudaRequisito: { caja: "bg-slate-50 border-slate-200", numero: "bg-slate-700", borde: "border-slate-300" },
   traer: { caja: "bg-fuchsia-50/60 border-fuchsia-100", numero: "bg-fuchsia-600", borde: "border-fuchsia-200" },
+  fiesta: { caja: "bg-red-50/60 border-red-100", numero: "bg-red-600", borde: "border-red-200" },
+  equipaje: { caja: "bg-sky-50/70 border-sky-100", numero: "bg-sky-700", borde: "border-sky-200" },
+  tramite: { caja: "bg-stone-50 border-stone-200", numero: "bg-stone-700", borde: "border-stone-300" },
+  peru: { caja: "bg-rose-50/60 border-rose-100", numero: "bg-rose-600", borde: "border-rose-200" },
   ciudad: { caja: "bg-amber-50/70 border-amber-100", numero: "bg-amber-500", borde: "border-amber-200" },
 };
 
@@ -52,7 +56,7 @@ export function Puntos({ l }: { l: LandingEspana }) {
       </h2>
       <ul className="grid gap-4 sm:grid-cols-2">
         {l.puntos.map((p) => (
-          <li key={p.t} className={`rounded-2xl border bg-white p-6 ${l.tema === "provincia" || l.tema?.startsWith("solo") || l.tema?.startsWith("duda") || l.tema === "traer" ? "border-l-4 " + t.borde : "border-slate-200"}`}>
+          <li key={p.t} className={`rounded-2xl border bg-white p-6 ${l.tema === "provincia" || l.tema?.startsWith("solo") || l.tema?.startsWith("duda") || ["traer", "fiesta", "equipaje", "tramite", "peru"].includes(l.tema ?? "") ? "border-l-4 " + t.borde : "border-slate-200"}`}>
             <strong className="block text-lg text-[#0a1628]">{p.t}</strong>
             <p className="mt-2 text-base leading-relaxed text-slate-600">{p.d}</p>
           </li>
