@@ -1546,7 +1546,8 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "cuanto-dinero-llevar-espana-bolsa-de-viaje",
     titulo: "Bolsa de viaje para España 2026: cuánto dinero te pueden pedir si viajas desde Perú",
-    tituloSeo: "Bolsa de viaje España 2026: 122,10 €/día y tabla",
+    // Igual a lo que más busca la gente (GSC oct-2026): con la cifra en el título Google respondía y nadie entraba.
+    tituloSeo: "¿Cuánto es la bolsa de viaje para España 2026?",
     desc: "¿Cuánto dinero llevar a España? En 2026: 122,10 € por día y mínimo 1.098,90 € por persona. Tabla por días, en soles, calculadora y qué vale como prueba.",
     categoria: "Europa",
     catColor: "bg-red-500",

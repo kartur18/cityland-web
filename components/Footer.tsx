@@ -128,6 +128,12 @@ export default function Footer() {
               <Link href="/pasajes-a-espana" className="block text-slate-300 hover:text-white transition-colors">
                 Pasajes a España ida y vuelta (Madrid y Barcelona)
               </Link>
+              <Link href="/pasaje-solo-ida-a-espana" className="block text-slate-300 hover:text-white transition-colors">
+                Pasaje solo ida a España
+              </Link>
+              <Link href="/pasajes-a-barcelona" className="block text-slate-300 hover:text-white transition-colors">
+                Pasajes a Barcelona desde Lima
+              </Link>
               <Link href="/espana" className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors">
                 <FlagIcon pais="España" className="w-3.5 h-2.5" />
                 <span>Paquete Migratorio España (Solo ida desde $699)</span>
