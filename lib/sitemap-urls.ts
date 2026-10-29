@@ -15,6 +15,7 @@ import { mesesConSalidas, salidasVigentes } from "@/lib/salidas";
 import { paginasCaribe } from "@/lib/paquetes-armados/paginas-caribe";
 import { paisesConPaquetes, paquetesTuristicos } from "@/lib/paquetes-turisticos";
 import { destinosConTours, todosLosTours } from "@/lib/tours-turbo";
+import { destinosConHoteles, todosLosHoteles } from "@/lib/hoteles-turbo";
 import { LANDINGS_ESPANA, rutaLandingEspana } from "@/lib/landings-espana";
 import { PRUEBA_REAPERTURA } from "@/lib/prueba-reapertura";
 import { PAGINAS_RECUPERADAS } from "@/lib/paginas-recuperadas";
@@ -43,6 +44,7 @@ export const IDS_SITEMAP = [
   "paquetes-armados",
   "paquetes-turisticos",
   "tours",
+  "hoteles",
   "italia",
   "seguros",
 ] as const;
@@ -199,6 +201,12 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
     "/tours-y-actividades",
     ...destinosConTours().map((d) => `/tours-y-actividades/${d.slug}`),
     ...todosLosTours().map((t) => `/tours-y-actividades/${t.d}/${t.s}`),
+  ],
+  // Hoteles del segundo proveedor por destino, con fee del 20 % (29-oct-2026).
+  hoteles: () => [
+    "/hoteles-en",
+    ...destinosConHoteles().map((d) => `/hoteles-en/${d.slug}`),
+    ...todosLosHoteles().map((h) => `/hoteles-en/${h.d}/${h.s}`),
   ],
   // Tandas 5 y 6 (29-oct-2026): rutas Perú ↔ España y dudas prácticas con búsqueda real, en su propio sitemap.
   "espana-rutas": () => [...LANDINGS_RUTAS_BARCELONA, ...LANDINGS_RUTAS_PERU, ...LANDINGS_PRACTICO].map((l) => `/espana/${l.slug}`),

@@ -63,6 +63,7 @@ export const SERVICIOS: Readonly<Record<string, ServicioCityland>> = {
     ],
     mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un hotel.",
     relacionados: [
+      { texto: "Hoteles por destino, con precio por noche", href: "/hoteles-en" },
       { texto: "Caribe todo incluido", href: "/caribe" },
       { texto: "Luna de miel", href: "/luna-de-miel" },
       { texto: "Traslados", href: "/traslados" },
