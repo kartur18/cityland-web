@@ -37,7 +37,9 @@ export type TemaEspana =
   | "rutaBarcelona"
   | "rutaPeru"
   // Tanda 6: dudas prácticas (hora, enchufes, dinero, tren, celular).
-  | "practico";
+  | "practico"
+  // Tanda 3: requisitos de reagrupación familiar y visado de estudios.
+  | "visado";
 
 // Calendario de precios por mes (solo ida): lo que suma esta página sobre el Lima–Madrid de la tabla.
 export interface CalendarioLanding {
@@ -61,6 +63,8 @@ export interface LandingEspana {
   calendario?: CalendarioLanding;
   // Calculadora de bolsa de viaje con los días con que arranca.
   calculadora?: { dias: number };
+  // Calculadora de medios económicos sobre el IPREM (reagrupación o estudios).
+  calculadoraIprem?: { tipo: "reagrupacion" | "estudios"; inicial: number };
   // Imagen para compartir propia (si no, se usa la foto).
   ogImagen?: string;
   // Mes de salida que la página resalta en el calendario.
