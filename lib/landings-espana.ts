@@ -12,6 +12,7 @@ import { LANDINGS_TRAER } from "@/lib/landings-espana-traer";
 import { LANDINGS_FIESTAS } from "@/lib/landings-espana-fiestas";
 import { LANDINGS_EQUIPAJE } from "@/lib/landings-espana-equipaje";
 import { LANDINGS_PERU, LANDINGS_TRAMITES } from "@/lib/landings-espana-tramites";
+import { LANDINGS_RUTAS_BARCELONA, LANDINGS_RUTAS_PERU } from "@/lib/landings-espana-rutas";
 
 export type { LandingEspana, PuntoLanding } from "@/lib/landings-espana-tipos";
 export { PRECIO_IDA_VUELTA_MADRID, PRECIO_SOLO_IDA_MADRID } from "@/lib/landings-espana-tipos";
@@ -438,6 +439,8 @@ export const LANDINGS_ESPANA: readonly LandingEspana[] = [
   ...LANDINGS_EQUIPAJE,
   ...LANDINGS_TRAMITES,
   ...LANDINGS_PERU,
+  ...LANDINGS_RUTAS_BARCELONA,
+  ...LANDINGS_RUTAS_PERU,
 ];
 
 export function buscarLandingEspana(slug: string): LandingEspana | undefined {

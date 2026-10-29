@@ -21,6 +21,8 @@ const TEMAS: Record<TemaEspana, { caja: string; numero: string; borde: string }>
   equipaje: { caja: "bg-sky-50/70 border-sky-100", numero: "bg-sky-700", borde: "border-sky-200" },
   tramite: { caja: "bg-stone-50 border-stone-200", numero: "bg-stone-700", borde: "border-stone-300" },
   peru: { caja: "bg-rose-50/60 border-rose-100", numero: "bg-rose-600", borde: "border-rose-200" },
+  rutaBarcelona: { caja: "bg-purple-50/60 border-purple-100", numero: "bg-purple-600", borde: "border-purple-200" },
+  rutaPeru: { caja: "bg-green-50/60 border-green-100", numero: "bg-green-600", borde: "border-green-200" },
   ciudad: { caja: "bg-amber-50/70 border-amber-100", numero: "bg-amber-500", borde: "border-amber-200" },
 };
 
@@ -56,7 +58,7 @@ export function Puntos({ l }: { l: LandingEspana }) {
       </h2>
       <ul className="grid gap-4 sm:grid-cols-2">
         {l.puntos.map((p) => (
-          <li key={p.t} className={`rounded-2xl border bg-white p-6 ${l.tema === "provincia" || l.tema?.startsWith("solo") || l.tema?.startsWith("duda") || ["traer", "fiesta", "equipaje", "tramite", "peru"].includes(l.tema ?? "") ? "border-l-4 " + t.borde : "border-slate-200"}`}>
+          <li key={p.t} className={`rounded-2xl border bg-white p-6 ${l.tema === "provincia" || l.tema?.startsWith("solo") || l.tema?.startsWith("duda") || ["traer", "fiesta", "equipaje", "tramite", "peru", "rutaBarcelona", "rutaPeru"].includes(l.tema ?? "") ? "border-l-4 " + t.borde : "border-slate-200"}`}>
             <strong className="block text-lg text-[#0a1628]">{p.t}</strong>
             <p className="mt-2 text-base leading-relaxed text-slate-600">{p.d}</p>
           </li>
@@ -93,7 +95,7 @@ function Tramos({ l }: { l: LandingEspana }) {
 export function Tabla({ l }: { l: LandingEspana }) {
   const tabla = l.tabla;
   if (!tabla) return null;
-  if (l.tema === "provincia" || l.tema === "soloOrigen" || l.tema === "ciudad") return <Tramos l={l} />;
+  if (l.tema === "provincia" || l.tema === "soloOrigen" || l.tema === "ciudad" || l.tema === "rutaBarcelona" || l.tema === "rutaPeru") return <Tramos l={l} />;
   return (
     <section className="space-y-4" aria-labelledby="tabla">
       <h2 id="tabla" className={H2}>

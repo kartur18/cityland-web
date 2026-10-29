@@ -32,7 +32,10 @@ export type TemaEspana =
   | "fiesta"
   | "equipaje"
   | "tramite"
-  | "peru";
+  | "peru"
+  // Tanda 5: rutas Perú → Barcelona y España → ciudades del Perú.
+  | "rutaBarcelona"
+  | "rutaPeru";
 
 // Calendario de precios por mes (solo ida): lo que suma esta página sobre el Lima–Madrid de la tabla.
 export interface CalendarioLanding {
