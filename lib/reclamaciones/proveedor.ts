@@ -7,7 +7,7 @@ export const PROVEEDOR_RECLAMOS = {
   nombreComercial: "Cityland Travel",
 } as const;
 
-// Respaldo si algún día el RUC deja de estar en OFICINAS; pendiente confirmar el domicilio fiscal exacto con el dueño.
+// Respaldo si algún día el RUC deja de estar en OFICINAS. Domicilio fiscal de Cityland Group E.I.R.L. confirmado por el dueño el 29-oct-2026 (Av. Antúnez de Mayolo 814, Los Olivos).
 export const DOMICILIO_PROVEEDOR_RESPALDO = "Av. Santiago Antúnez de Mayolo 814, Urb. Mercurio, Los Olivos, Lima";
 
 export const WHATSAPP_RECLAMOS = "51944103890";
