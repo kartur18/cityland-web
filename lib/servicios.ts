@@ -163,6 +163,7 @@ export const SERVICIOS: Readonly<Record<string, ServicioCityland>> = {
     ],
     mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un traslado aeropuerto–hotel.",
     relacionados: [
+      { texto: "Traslados por destino, con precio", href: "/traslados-en" },
       { texto: "Hoteles", href: "/hoteles" },
       { texto: "Caribe todo incluido", href: "/caribe" },
       { texto: "Tours", href: "/tours" },

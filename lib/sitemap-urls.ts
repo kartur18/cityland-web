@@ -16,6 +16,7 @@ import { paginasCaribe } from "@/lib/paquetes-armados/paginas-caribe";
 import { paisesConPaquetes, paquetesTuristicos } from "@/lib/paquetes-turisticos";
 import { destinosConTours, todosLosTours } from "@/lib/tours-turbo";
 import { destinosConHoteles, todosLosHoteles } from "@/lib/hoteles-turbo";
+import { destinosConTraslados } from "@/lib/traslados-turbo";
 import { LANDINGS_ESPANA, rutaLandingEspana } from "@/lib/landings-espana";
 import { PRUEBA_REAPERTURA } from "@/lib/prueba-reapertura";
 import { PAGINAS_RECUPERADAS } from "@/lib/paginas-recuperadas";
@@ -45,6 +46,7 @@ export const IDS_SITEMAP = [
   "paquetes-turisticos",
   "tours",
   "hoteles",
+  "traslados",
   "italia",
   "seguros",
 ] as const;
@@ -208,6 +210,8 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
     ...destinosConHoteles().map((d) => `/hoteles-en/${d.slug}`),
     ...todosLosHoteles().map((h) => `/hoteles-en/${h.d}/${h.s}`),
   ],
+  // Traslados aeropuerto–hotel del segundo proveedor, con fee del 20 % (29-oct-2026).
+  traslados: () => ["/traslados-en", ...destinosConTraslados().map((d) => `/traslados-en/${d.slug}`)],
   // Tandas 5 y 6 (29-oct-2026): rutas Perú ↔ España y dudas prácticas con búsqueda real, en su propio sitemap.
   "espana-rutas": () => [...LANDINGS_RUTAS_BARCELONA, ...LANDINGS_RUTAS_PERU, ...LANDINGS_PRACTICO].map((l) => `/espana/${l.slug}`),
   // Prueba de 4 semanas (28-oct-2026): su propio sitemap para medir en Search Console cuántas indexa Google.
