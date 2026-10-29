@@ -60,6 +60,8 @@ function migasDe(l: LandingEspana): { nombre: string; href?: string }[] {
 }
 
 const esSoloIda = (l: LandingEspana) => Boolean(l.tema?.startsWith("solo"));
+// Solo los grupos de pasajes del inicio enlazan al paquete migratorio; los demás llevan a «Solo ida».
+const enlazaMigratorio = (l: LandingEspana) => !l.tema || ["provincia", "perfil", "guia"].includes(l.tema);
 
 // Orden de los bloques del medio según la familia: así cada grupo se ve y se lee distinto.
 type Bloque = "atajos" | "puntos" | "tabla" | "calendario" | "calculadora" | "pregunta" | "lista" | "medio" | "aviso";
@@ -218,7 +220,7 @@ export default function LandingEspanaPagina({ landing: l, hermanas = LANDINGS_ES
               <Link href="/pasajes-a-espana" className={CHIP}>
                 Pasajes a España
               </Link>
-              {esSoloIda(l) ? (
+              {!enlazaMigratorio(l) ? (
                 <Link href="/espana/solo-ida" className={CHIP}>
                   Solo ida a España
                 </Link>
