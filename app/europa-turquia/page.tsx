@@ -282,7 +282,7 @@ export default function EuropaTurquiaPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD_EUROPA_TURQUIA) }}
       />
       <AirlineLandingTemplate config={CONFIG_EUROPA_TURQUIA}>
-        <ModuloSeguridadYCalculadoraEuropa destinoInicial="Madrid, Roma, París y Estambul" />
+        <ModuloSeguridadYCalculadoraEuropa destinoInicial="Madrid, Roma, París y Estambul" refWebRuta="/europa-turquia" />
       </AirlineLandingTemplate>
     </>
   );

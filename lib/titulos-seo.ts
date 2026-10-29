@@ -116,3 +116,101 @@ export const TITULOS_SEO_UNICOS: Readonly<Record<string, string>> = {
 export function tituloSeoUnico(ruta: string, tituloCalculado: string): string {
   return TITULOS_SEO_UNICOS[ruta] ?? tituloCalculado;
 }
+
+// Variantes del mismo producto que salían con el mismo título (1,163 páginas el 29-oct-2026): se les suma lo que las
+// distingue según su slug. El orden importa: primero la fecha, luego la duración, el público y la forma de pago.
+const ETIQUETAS_SLUG: readonly (readonly [RegExp, string | ((m: RegExpMatchArray) => string)])[] = [
+  [/semana-santa/, "Semana Santa"],
+  [/fiestas-patrias/, "Fiestas Patrias"],
+  [/ano-nuevo|fin-de-ano/, "Año Nuevo"],
+  [/navidad/, "Navidad"],
+  [/todos-los-santos/, "feriado de noviembre"],
+  [/santa-rosa/, "feriado de agosto"],
+  [/angamos/, "feriado de octubre"],
+  [/san-pedro/, "feriado de junio"],
+  [/1-de-mayo/, "feriado de mayo"],
+  [/largo-diciembre/, "feriado de diciembre"],
+  [/vacaciones-escolares-(mayo|julio|octubre)/, (m) => `vacaciones de ${m[1]}`],
+  [/vacaciones-escolares/, "vacaciones escolares"],
+  [/verano/, "verano"],
+  [/temporada-baja/, "temporada baja"],
+  [/(?:temporada|salidas-confirmadas)-(202\d)/, (m) => `salidas ${m[1]}`],
+  [/(?:^|-)(enero|febrero|marzo|abril|mayo|junio|julio|agosto|setiembre|septiembre|octubre|noviembre|diciembre)(?:-|$)/, (m) => `en ${m[1]}`],
+  [/(?:^|-)(\d{1,2})-dias/, (m) => `${m[1]} días`],
+  [/-(\d{1,2})-(\d{1,2})(?:-|$)/, (m) => (+m[1] === +m[2] + 1 ? `${m[1]} días` : "")],
+  [/luna-de-miel/, "luna de miel"],
+  [/aniversario/, "aniversario"],
+  [/familia|ninos/, "en familia"],
+  [/grupos|amigos|delegaciones/, "en grupo"],
+  [/mayores/, "adultos mayores"],
+  [/corporativo|empresas/, "empresas"],
+  [/vuelo-directo/, "vuelo directo"],
+  [/ida-y-vuelta/, "ida y vuelta"],
+  [/flexible/, "tarifa flexible"],
+  [/todo-incluido/, "todo incluido"],
+  [/vista-al-mar/, "vista al mar"],
+  [/vuelo-mas-hotel|vuelo-incluido|vuelo-hotel/, "con vuelo"],
+  [/traslados/, "con traslados"],
+  [/seguro/, "con seguro"],
+  [/2-maletas/, "2 maletas"],
+  [/1-maleta/, "1 maleta"],
+  [/cuotas/, "en cuotas"],
+  [/preventa|50-inicial|50-por-ciento/, "separa con 50 %"],
+  [/emision-inmediata|pnr|voucher/, "emisión inmediata"],
+  [/cotizacion-inmediata/, "cotiza al instante"],
+  [/bcp|yape/, "paga con Yape o banco"],
+  [/los-olivos/, "sede Los Olivos"],
+  [/checkin/, "check-in incluido"],
+  [/escapada/, "escapada"],
+  [/todo-organizado/, "todo organizado"],
+  [/vip/, "VIP"],
+  [/salida-desde-lima/, "salida de Lima"],
+  [/oficial/, "programa oficial"],
+];
+
+const sinTildes = (s: string) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+function etiquetasDe(ruta: string, titulo: string): string[] {
+  const slug = ruta.split("/").pop() ?? "";
+  const t = sinTildes(titulo);
+  const out: string[] = [];
+  for (const [re, et] of ETIQUETAS_SLUG) {
+    const m = slug.match(re);
+    if (!m) continue;
+    const e = typeof et === "string" ? et : et(m);
+    if (e && !t.includes(sinTildes(e)) && !out.includes(e)) out.push(e);
+  }
+  return out;
+}
+
+// La etiqueta va antes del precio: si Google corta el título, lo que se pierde es la marca y no lo que distingue.
+function conEtiquetas(titulo: string, etiquetas: string[]): string {
+  if (!etiquetas.length) return titulo;
+  const base = titulo.replace(/\s*\|\s*Cityland(?: Travel)?\s*$/, "");
+  const extra = ` · ${etiquetas.join(" · ")}`;
+  const m = base.match(/^(.*)(\s+desde\s+(?:US)?\$.*)$/i);
+  const largo = m ? `${m[1]}${extra}${m[2]}` : `${base}${extra}`;
+  return largo.length <= 54 ? `${largo} | Cityland` : largo;
+}
+
+// Recibe todos los títulos de una familia de páginas y devuelve, por ruta, uno que no se repita: a cada grupo de
+// iguales le suma 1, 2 o 3 etiquetas de su slug, lo justo para que se distingan.
+export function titulosSinRepetir(items: readonly { ruta: string; titulo: string }[]): Map<string, string> {
+  const grupos = new Map<string, { ruta: string; titulo: string }[]>();
+  for (const x of items) grupos.set(x.titulo, [...(grupos.get(x.titulo) ?? []), x]);
+  const out = new Map<string, string>();
+  for (const [titulo, g] of grupos) {
+    if (g.length === 1) {
+      out.set(g[0].ruta, titulo);
+      continue;
+    }
+    const etiquetas = g.map((x) => etiquetasDe(x.ruta, titulo));
+    let elegidos = g.map(() => titulo);
+    for (let k = 1; k <= 3; k++) {
+      elegidos = g.map((_, i) => conEtiquetas(titulo, etiquetas[i].slice(0, k)));
+      if (new Set(elegidos).size === g.length) break;
+    }
+    g.forEach((x, i) => out.set(x.ruta, elegidos[i]));
+  }
+  return out;
+}

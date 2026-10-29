@@ -1,6 +1,8 @@
 import { Metadata } from "next";
-import { robotsSegunRuta } from "@/lib/indexacion";
-import { tituloSeoUnico } from "@/lib/titulos-seo";
+import { esIndexable, robotsSegunRuta } from "@/lib/indexacion";
+import { PAGINAS_RECUPERADAS } from "@/lib/paginas-recuperadas";
+import { PRUEBA_REAPERTURA } from "@/lib/prueba-reapertura";
+import { tituloSeoUnico, titulosSinRepetir } from "@/lib/titulos-seo";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import VuelosJorgeChavezTemplate from "@/components/VuelosJorgeChavezTemplate";
@@ -45,13 +47,25 @@ export function generateStaticParams() {
   return RUTAS_VUELOS_SEO.map((r) => ({ slug: r.slug }));
 }
 
+// Variantes de la misma ruta (directo, ida y vuelta, con maletas) no deben salir con el mismo título.
+let titulosVuelos: Map<string, string> | undefined;
+const tituloVuelo = (ruta: string, base: string) =>
+  (titulosVuelos ??= titulosSinRepetir(
+    [...new Set([...RUTAS_VUELOS_SEO.map((r) => `/vuelos/${r.slug}`), ...PRUEBA_REAPERTURA, ...PAGINAS_RECUPERADAS])]
+      .filter((r) => r.startsWith("/vuelos/") && esIndexable(r))
+      .flatMap((r) => {
+        const v = buscarRutaVuelo(r.slice("/vuelos/".length));
+        return v ? [{ ruta: r, titulo: tituloSeoUnico(r, optimizarMetaTitleSEO(v.metaTitle)) }] : [];
+      })
+  )).get(ruta) ?? base;
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const ruta = buscarRutaVuelo(slug);
   if (!ruta) return {};
 
   const url = `https://citylandtravel.com/vuelos/${ruta.slug}`;
-  const title = tituloSeoUnico(`/vuelos/${ruta.slug}`, optimizarMetaTitleSEO(ruta.metaTitle));
+  const title = tituloVuelo(`/vuelos/${ruta.slug}`, tituloSeoUnico(`/vuelos/${ruta.slug}`, optimizarMetaTitleSEO(ruta.metaTitle)));
   const description = optimizarMetaDescriptionSEO(ruta.metaDescription);
 
   return {
@@ -158,6 +172,7 @@ export default async function RutaVueloPage({ params }: Props) {
         {esRutaEuropa && (
           <ModuloSeguridadYCalculadoraEuropa
             destinoInicial={`${ruta.destino} (${paisDestino})`}
+            refWebRuta={`/vuelos/${ruta.slug}`}
           />
         )}
         {ruta.slug === "lima-cusco" && (

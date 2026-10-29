@@ -351,6 +351,7 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
         {esViajeEuropa && (
           <ModuloSeguridadYCalculadoraEuropa
             destinoInicial={item.destinoOPais}
+            refWebRuta={`/viajes/${item.slug}`}
           />
         )}
 
