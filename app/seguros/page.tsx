@@ -3,6 +3,8 @@ import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-ar
 import AirlineLandingTemplate, {
   ConfiguracionLandingAerolinea,
 } from "@/components/AirlineLandingTemplate";
+import IndiceSeguros from "@/components/seguros/IndiceSeguros";
+import { safeJsonLd } from "@/lib/seguridad-http";
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO("Seguro de viaje y Schengen 30.000 € en Lima | Cityland Travel"),
@@ -280,9 +282,11 @@ export default function SegurosPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD_SEGUROS) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(JSON_LD_SEGUROS) }}
       />
-      <AirlineLandingTemplate config={CONFIG_SEGUROS} />
+      <AirlineLandingTemplate config={CONFIG_SEGUROS}>
+        <IndiceSeguros />
+      </AirlineLandingTemplate>
     </>
   );
 }

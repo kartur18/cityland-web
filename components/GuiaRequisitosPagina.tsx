@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import CotizadorWhatsApp from "@/components/CotizadorWhatsApp";
+import { EnlaceSeguroGuia } from "@/components/seguros/IndiceSeguros";
 import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
 import { GUIAS_REQUISITOS, type GuiaRequisitos } from "@/lib/guias-requisitos";
@@ -121,6 +122,8 @@ export default function GuiaRequisitosPagina({ guia }: { guia: GuiaRequisitos })
               </div>
             </section>
           )}
+
+          <EnlaceSeguroGuia slugGuia={guia.slug} pais={guia.pais} />
 
           <section className="space-y-4">
             <h2 className="text-2xl font-extrabold text-[#0a1628]">Preguntas frecuentes</h2>
