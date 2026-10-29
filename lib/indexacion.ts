@@ -41,6 +41,7 @@ export function esIndexable(ruta: string): boolean {
     ruta.startsWith("/paquetes-armados/") ||
     ruta.startsWith("/paquetes-turisticos/") ||
     ruta.startsWith("/tours-y-actividades/") ||
+    ruta.startsWith("/hoteles-en/") ||
     ruta.startsWith("/viajes/requisitos-") ||
     ruta.startsWith("/espana/") ||
     ruta.startsWith("/italia/") ||
