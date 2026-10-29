@@ -118,12 +118,12 @@ export default function PoliticasPage() {
               Libro de Reclamaciones
             </h2>
             <p className="text-[15px] text-gray-600 leading-relaxed mb-4">
-              Si tienes un reclamo o una queja, puedes presentarlo en nuestro{" "}
+              Si tienes un reclamo o una queja, consulta cómo presentarlo en la
+              página del{" "}
               <Link href="/libro-de-reclamaciones" className="font-bold text-emerald-700 underline">
-                Libro de Reclamaciones virtual
+                Libro de Reclamaciones
               </Link>
-              . Recibes una copia en tu correo y te respondemos en un plazo no
-              mayor a quince (15) días hábiles.
+              . Respondemos en un plazo no mayor a quince (15) días hábiles.
             </p>
           </section>
         </div>

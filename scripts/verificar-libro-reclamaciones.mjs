@@ -2,6 +2,7 @@
 // Uso: node --import ./scripts/_registrar-loader.mjs scripts/verificar-libro-reclamaciones.mjs   (o: npm run verificar:reclamos)
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
+import { createRequire } from "node:module";
 
 const RAIZ = fileURLToPath(new URL("..", import.meta.url));
 const leer = (ruta) => readFileSync(RAIZ + ruta, "utf8");
@@ -79,8 +80,74 @@ exigir(/^LR-20261029-[A-Z2-9]{6}$/.test(codigo), `El código de reclamo no usa f
 exigir(generarCodigoReclamo() !== generarCodigoReclamo(), "El código de reclamo no es aleatorio.");
 exigir(fechaLima(new Date("2026-10-30T03:00:00Z")).iso === "2026-10-29", "La fecha de la hoja no está en hora de Lima.");
 
+// 5. Los dos modos de la página, renderizados a HTML con el loader del repo (sin build).
+//    Sin las 3 variables RECLAMOS_*: página informativa, sin formulario ni promesa de constancia. Con ellas: libro virtual con formulario.
+const requireRepo = createRequire(RAIZ + "package.json");
+const { renderToStaticMarkup } = requireRepo("react-dom/server");
+const { createElement } = requireRepo("react");
+const pag = await import(new URL("../app/libro-de-reclamaciones/page.tsx", import.meta.url).href);
+const VARS = ["RECLAMOS_RESEND_API_KEY", "RECLAMOS_EMAIL_DESDE", "RECLAMOS_EMAIL_DESTINO"];
+const guardadas = Object.fromEntries(VARS.map((v) => [v, process.env[v]]));
+const poner = (cfg) => { for (const v of VARS) delete process.env[v]; if (cfg) Object.assign(process.env, cfg); };
+const textoPlano = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+
+try {
+  poner(null);
+  const sin = renderToStaticMarkup(createElement(pag.default));
+  const sinTxt = textoPlano(sin);
+  exigir(!/<form[\s>]/.test(sin), "Modo sin config: la página NO debe tener <form>.");
+  exigir(!/virtual/i.test(sinTxt), "Modo sin config: la página no debe llamarse ni sugerir 'libro virtual'.");
+  exigir(!/constancia|copia en tu correo|recibes una copia/i.test(sinTxt), "Modo sin config: la página no debe prometer constancia ni copia por correo.");
+  exigir(!sin.includes("mailto:"), "Modo sin config: no debe mencionarse un correo si RECLAMOS_EMAIL_DESTINO no está cargado.");
+  for (const frag of [RUC, "Cityland Group E.I.R.L.", "Antúnez de Mayolo 814", "Libro de Reclamaciones físico", "wa.me/51944103890?text=Hola%2C%20quiero%20presentar%20un%20reclamo%2Fqueja", "quince (15) días hábiles", "RECLAMO:", "QUEJA:", "<h1"]) {
+    exigir(sin.includes(frag) || sinTxt.includes(frag), `Modo sin config: falta «${frag}».`);
+  }
+  const mSin = pag.generateMetadata();
+  exigir(!/virtual/i.test(String(mSin.title) + String(mSin.description)) && /físico/.test(String(mSin.description)), "Modo sin config: la metadata no es coherente con la página informativa.");
+
+  poner({ RECLAMOS_RESEND_API_KEY: "re_prueba", RECLAMOS_EMAIL_DESDE: "Cityland <reclamos@example.com>", RECLAMOS_EMAIL_DESTINO: "reclamos@example.com" });
+  const con = renderToStaticMarkup(createElement(pag.default));
+  exigir(/<form[\s>]/.test(con), "Modo con config: la página debe tener el <form>.");
+  exigir(con.includes("Libro de Reclamaciones virtual") && con.includes(RUC) && con.includes("Antúnez de Mayolo 814"), "Modo con config: faltan título virtual, RUC o domicilio.");
+  exigir(/name="sitioWeb"/.test(con), "Modo con config: el formulario perdió el honeypot.");
+  exigir(/virtual/i.test(String(pag.generateMetadata().title)), "Modo con config: el title debe decir libro virtual.");
+
+  // 6. Ruta POST con fetch simulado: 503 sin config (siempre), 200 con dos correos, honeypot, 400, 413, 502 y 429.
+  const { NextRequest } = requireRepo("next/server");
+  const { POST } = await import(new URL("../app/api/libro-de-reclamaciones/route.ts", import.meta.url).href);
+  const mk = (body, ip) => new NextRequest("http://localhost/api/libro-de-reclamaciones", { method: "POST", headers: { "x-forwarded-for": ip, "content-type": "application/json" }, body: typeof body === "string" ? body : JSON.stringify(body) });
+  const hoja = { ...valida, tipoDocumento: "DNI", tipoBien: "SERVICIO", moneda: "USD", tipoReclamo: "RECLAMO" };
+  poner(null);
+  exigir((await POST(mk(hoja, "10.0.0.1"))).status === 503, "La ruta POST sin config debe responder 503.");
+  poner({ RECLAMOS_RESEND_API_KEY: "re_prueba", RECLAMOS_EMAIL_DESDE: "Cityland <reclamos@example.com>", RECLAMOS_EMAIL_DESTINO: "empresa@example.com" });
+  const fetchReal = globalThis.fetch;
+  const errorReal = console.error;
+  console.error = () => {};
+  const enviados = [];
+  globalThis.fetch = async (_u, init) => { enviados.push(JSON.parse(init.body)); return new Response("{}", { status: 200 }); };
+  const ok = await POST(mk(hoja, "10.0.0.2"));
+  const cuerpoOk = await ok.json();
+  exigir(ok.status === 200 && cuerpoOk.ok && cuerpoOk.copiaEnviada === true && enviados.length === 2, "La ruta POST con config debe enviar 2 correos y responder 200.");
+  exigir(enviados[0]?.to?.[0] === "empresa@example.com" && enviados[0]?.reply_to === hoja.correo && enviados[1]?.to?.[0] === hoja.correo, "Los correos deben ir a la empresa (con reply_to) y al consumidor.");
+  exigir(enviados[0]?.html.includes("Antúnez de Mayolo 814") && enviados[0]?.text.includes("US$ 1250.50"), "El correo debe traer el domicilio del proveedor y el monto.");
+  const antes = enviados.length;
+  exigir((await POST(mk({ ...hoja, sitioWeb: "spam" }, "10.0.0.3"))).status === 200 && enviados.length === antes, "El honeypot no debe enviar correos.");
+  exigir((await POST(mk({ ...hoja, correo: "x" }, "10.0.0.4"))).status === 400, "Una hoja inválida debe dar 400.");
+  exigir((await POST(mk("{no", "10.0.0.5"))).status === 400, "Un JSON roto debe dar 400.");
+  exigir((await POST(mk("x".repeat(LIMITES.cuerpoMaxBytes + 1), "10.0.0.6"))).status === 413, "Un cuerpo enorme debe dar 413.");
+  globalThis.fetch = async () => new Response("{}", { status: 500 });
+  exigir((await POST(mk(hoja, "10.0.0.7"))).status === 502, "Si el proveedor de correo falla, la ruta debe dar 502 (no perder el reclamo en silencio).");
+  let ultimo;
+  for (let i = 0; i < 6; i++) ultimo = await POST(mk(hoja, "10.0.0.8"));
+  exigir(ultimo.status === 429, "El rate limit por IP debe responder 429 al sexto intento.");
+  globalThis.fetch = fetchReal;
+  console.error = errorReal;
+} finally {
+  for (const v of VARS) { if (guardadas[v] === undefined) delete process.env[v]; else process.env[v] = guardadas[v]; }
+}
+
 if (fallas.length) {
   console.error(`Libro de Reclamaciones: ${fallas.length} FALLAS\n- ` + fallas.join("\n- "));
   process.exit(1);
 }
-console.log("Libro de Reclamaciones OK: enlaces, RUC, ruta POST (validación, límites, honeypot, rate limit) y código de reclamo.");
+console.log("Libro de Reclamaciones OK: enlaces, RUC, modo informativo (sin config) y modo virtual (con config), ruta POST y código de reclamo.");
