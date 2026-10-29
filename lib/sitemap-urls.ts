@@ -18,6 +18,7 @@ import { destinosConTours, todosLosTours } from "@/lib/tours-turbo";
 import { LANDINGS_ESPANA, rutaLandingEspana } from "@/lib/landings-espana";
 import { PRUEBA_REAPERTURA } from "@/lib/prueba-reapertura";
 import { landingsSoloIda } from "@/lib/landings-solo-ida";
+import { LANDINGS_RUTAS_BARCELONA, LANDINGS_RUTAS_PERU } from "@/lib/landings-espana-rutas";
 
 // Fuente única de URLs indexables: cada URL vive en un solo sitemap hijo.
 export const FECHA_SITEMAP = "2026-10-19T15:00:00.000Z";
@@ -30,6 +31,8 @@ export const IDS_SITEMAP = [
   "ofertas",
   "vuelos",
   "destinos",
+  // Antes de «europa»: así las rutas Perú ↔ España de la tanda 5 quedan solo en su sitemap.
+  "espana-rutas",
   "europa",
   "1000",
   "paquetes-armados",
@@ -190,6 +193,8 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
     ...destinosConTours().map((d) => `/tours-y-actividades/${d.slug}`),
     ...todosLosTours().map((t) => `/tours-y-actividades/${t.d}/${t.s}`),
   ],
+  // Tanda 5 (29-oct-2026): rutas Perú ↔ España con búsqueda real, en su propio sitemap.
+  "espana-rutas": () => [...LANDINGS_RUTAS_BARCELONA, ...LANDINGS_RUTAS_PERU].map((l) => `/espana/${l.slug}`),
   // Prueba de 4 semanas (28-oct-2026): su propio sitemap para medir en Search Console cuántas indexa Google.
   prueba: () => [...PRUEBA_REAPERTURA],
 };
