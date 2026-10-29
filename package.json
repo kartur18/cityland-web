@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "verificar:reclamos": "node --import ./scripts/_registrar-loader.mjs scripts/verificar-libro-reclamaciones.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
