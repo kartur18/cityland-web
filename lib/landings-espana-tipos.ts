@@ -25,7 +25,9 @@ export type TemaEspana =
   | "dudaBolsa"
   | "dudaCosto"
   | "dudaCarta"
-  | "dudaRequisito";
+  | "dudaRequisito"
+  // Traer a un familiar del Perú de visita.
+  | "traer";
 
 // Calendario de precios por mes (solo ida): lo que suma esta página sobre el Lima–Madrid de la tabla.
 export interface CalendarioLanding {
