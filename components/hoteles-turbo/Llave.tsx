@@ -1,4 +1,4 @@
-import Image from "next/image";
+import FotoCdn from "@/components/FotoCdn";
 import Link from "next/link";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { formatoUSD } from "@/lib/formato-precio";
@@ -33,14 +33,11 @@ export function TarjetaHotel({ h }: { h: HotelCrudo }) {
         className="group flex h-full flex-col overflow-hidden rounded-[28px] bg-white shadow-sm ring-1 ring-slate-200 transition-shadow hover:shadow-xl"
       >
         <div className="relative aspect-[4/3] bg-slate-100">
-          <Image
+          <FotoCdn
             src={fotoHotel(h)}
             alt={`${h.n}, ${d?.nombre ?? ""}`}
-            fill
-            unoptimized
-            loading="lazy"
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="transition-transform duration-300 group-hover:scale-105"
           />
           <span
             className="absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-extrabold text-white shadow"
@@ -109,7 +106,7 @@ export function PortadaHotel({
   return (
     <section className="overflow-hidden rounded-[32px] bg-white shadow-sm ring-1 ring-slate-200">
       <div className="relative aspect-[16/9] sm:aspect-[21/8]">
-        <Image src={foto} alt={alt} fill priority unoptimized sizes="100vw" className="object-cover" />
+        <FotoCdn src={foto} alt={alt} prioridad sizes="100vw" />
       </div>
       <div className="grid gap-6 p-6 sm:p-8 lg:grid-cols-[1fr_340px] lg:items-center">
         <div className="space-y-3">

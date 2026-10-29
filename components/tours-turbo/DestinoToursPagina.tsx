@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import FotoCdn from "@/components/FotoCdn";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -134,14 +134,10 @@ export default function DestinoToursPagina({ destino: d }: { destino: DestinoTou
                     className="group block overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-orange-100 hover:shadow-lg"
                   >
                     <span className="relative block aspect-[4/3] bg-orange-50">
-                      <Image
+                      <FotoCdn
                         src={y.foto}
                         alt={`Tours en ${y.nombre}`}
-                        fill
-                        unoptimized
-                        loading="lazy"
                         sizes="(min-width: 1024px) 25vw, 50vw"
-                        className="object-cover"
                       />
                     </span>
                     <span className="block p-4">
