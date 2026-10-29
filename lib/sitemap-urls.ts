@@ -17,6 +17,7 @@ import { paisesConPaquetes, paquetesTuristicos } from "@/lib/paquetes-turisticos
 import { destinosConTours, todosLosTours } from "@/lib/tours-turbo";
 import { LANDINGS_ESPANA, rutaLandingEspana } from "@/lib/landings-espana";
 import { PRUEBA_REAPERTURA } from "@/lib/prueba-reapertura";
+import { PAGINAS_RECUPERADAS } from "@/lib/paginas-recuperadas";
 import { landingsSoloIda } from "@/lib/landings-solo-ida";
 import { LANDINGS_ITALIA, rutaLandingItalia } from "@/lib/italia/landings";
 import { LANDINGS_PRACTICO } from "@/lib/landings-espana-practico";
@@ -28,6 +29,7 @@ export const FECHA_SITEMAP = "2026-10-19T15:00:00.000Z";
 export const IDS_SITEMAP = [
   // Primero: así las 300 de la prueba quedan solo en su sitemap y no en el de ofertas o vuelos.
   "prueba",
+  "recuperadas",
   "migratorios",
   "madrid",
   "ofertas",
@@ -200,6 +202,8 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
   "espana-rutas": () => [...LANDINGS_RUTAS_BARCELONA, ...LANDINGS_RUTAS_PERU, ...LANDINGS_PRACTICO].map((l) => `/espana/${l.slug}`),
   // Prueba de 4 semanas (28-oct-2026): su propio sitemap para medir en Search Console cuántas indexa Google.
   prueba: () => [...PRUEBA_REAPERTURA],
+  // Ocultas el 24-oct que sí salían en búsquedas; vuelven el 29-oct-2026 (lib/paginas-recuperadas.ts).
+  recuperadas: () => [...PAGINAS_RECUPERADAS],
   // Pasajes, guías y temporadas de Italia (29-oct-2026).
   italia: () => LANDINGS_ITALIA.map(rutaLandingItalia),
 };
