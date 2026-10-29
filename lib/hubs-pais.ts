@@ -393,6 +393,7 @@ export const HUBS_PAIS: Readonly<Record<string, HubPais>> = {
     ],
     enlaces: [
       { texto: "Pasajes Lima–Roma", href: "/vuelos/lima-roma" },
+      { texto: "Pasajes de Italia a Perú", href: "/italia/pasajes-de-italia-a-peru" },
       { texto: "Circuitos por Europa", href: "/circuitos-por-europa" },
       { texto: "Paquete migratorio a Italia", href: "/italia" },
       { texto: "Seguro de viaje para Europa", href: "/seguros" },

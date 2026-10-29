@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -49,7 +50,8 @@ export function metadataHub(h: HubPais): Metadata {
 }
 
 // Página por país: todos los paquetes del catálogo de ese país, documentos, preguntas y WhatsApp con su Ref Web.
-export default function HubPaisPagina({ hub: h }: { hub: HubPais }) {
+// `extra` va al final del contenido (por ejemplo, el índice de páginas de Italia).
+export default function HubPaisPagina({ hub: h, extra }: { hub: HubPais; extra?: ReactNode }) {
   const url = `${URL_BASE_SEO}${h.ruta}`;
   const destinos = destinosDe(h);
   const desde = destinos[0]?.turistico;
@@ -212,6 +214,7 @@ export default function HubPaisPagina({ hub: h }: { hub: HubPais }) {
           </section>
         </div>
       </main>
+      {extra}
       <PorQueCityland destino={h.nombre} />
       <Footer />
       <WhatsAppFloat

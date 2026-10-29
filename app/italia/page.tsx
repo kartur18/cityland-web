@@ -14,6 +14,7 @@ import {
 import { formatoUSD } from "@/lib/formato-precio";
 import { inicialSeparacion, tarifasMigratorio } from "@/lib/precios-migratorio";
 import AvisoRegresoReservado from "@/components/AvisoRegresoReservado";
+import IndiceItalia from "@/components/landing-italia/IndiceItalia";
 
 const TARIFAS = tarifasMigratorio("Italia");
 const DESDE = formatoUSD(TARIFAS.promo);
@@ -486,6 +487,8 @@ export default function ItaliaLandingPage() {
           </div>
         </div>
       </section>
+
+      <IndiceItalia />
 
       <Footer />
       <WhatsAppFloat />
