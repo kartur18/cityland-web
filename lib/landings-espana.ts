@@ -12,6 +12,7 @@ import { LANDINGS_TRAER } from "@/lib/landings-espana-traer";
 import { LANDINGS_FIESTAS } from "@/lib/landings-espana-fiestas";
 import { LANDINGS_EQUIPAJE } from "@/lib/landings-espana-equipaje";
 import { LANDINGS_PERU, LANDINGS_TRAMITES } from "@/lib/landings-espana-tramites";
+import { LANDINGS_VISADOS } from "@/lib/landings-espana-visados";
 import { LANDINGS_PRACTICO } from "@/lib/landings-espana-practico";
 import { LANDINGS_RUTAS_BARCELONA, LANDINGS_RUTAS_PERU } from "@/lib/landings-espana-rutas";
 
@@ -443,6 +444,7 @@ export const LANDINGS_ESPANA: readonly LandingEspana[] = [
   ...LANDINGS_RUTAS_BARCELONA,
   ...LANDINGS_RUTAS_PERU,
   ...LANDINGS_PRACTICO,
+  ...LANDINGS_VISADOS,
 ];
 
 export function buscarLandingEspana(slug: string): LandingEspana | undefined {

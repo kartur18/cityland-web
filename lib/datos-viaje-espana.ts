@@ -29,6 +29,13 @@ export const GASTO_DIARIO_ESTIMADO = { hotel: 75, comida: 40, transporte: 7 };
 // Seguro de viaje para Europa de 15 días en el mercado peruano (referencial, planes básicos).
 export const SEGURO_15_DIAS_SOLES = { min: 180, max: 280 };
 
+// IPREM 2026: 600 € al mes (Presupuestos de 2023 prorrogados). Lo usan la reagrupación familiar y el visado de estudios.
+export const IPREM_MENSUAL = 600;
+// Reagrupación familiar (Hoja 8 de Extranjería, mayo de 2025): 150 % del IPREM para 2 personas y 50 % más por cada una.
+export const reagrupacionMensual = (miembros: number) => IPREM_MENSUAL * (1.5 + 0.5 * Math.max(0, miembros - 2));
+// Estancia por estudios: 100 % del IPREM por cada mes de estancia.
+export const estudiosTotal = (meses: number) => IPREM_MENSUAL * meses;
+
 export const bolsaPorPersona = (dias: number) => Math.max(BOLSA_MINIMO, BOLSA_POR_DIA * dias);
 
 // Formato español con punto de miles también en cifras de 4 dígitos (Intl en es-ES no lo pone: «3663,00»).

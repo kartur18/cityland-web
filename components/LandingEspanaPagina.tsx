@@ -10,6 +10,7 @@ import { BarraConfianza, HeroVenta, PasosSeparar } from "@/components/paquetes-a
 import { Atajos, CierreUrgencia, CtaMedio, PreguntaFaq, TarjetaPregunta, waEspana } from "@/components/landing-espana/CtasWhatsApp";
 import CalendarioSoloIda from "@/components/landing-espana/CalendarioSoloIda";
 import CalculadoraBolsa from "@/components/landing-espana/CalculadoraBolsa";
+import CalculadoraIprem from "@/components/landing-espana/CalculadoraIprem";
 import { Lista, Puntos, Tabla } from "@/components/landing-espana/Bloques";
 import { formatoUSD } from "@/lib/formato-precio";
 import { absoluta } from "@/lib/paquetes-armados/fotos";
@@ -84,6 +85,7 @@ const ORDEN: Partial<Record<TemaEspana, Bloque[]>> = {
   tramite: ["puntos", "lista", "medio", "calendario", "pregunta", "aviso"],
   peru: ["puntos", "lista", "medio", "pregunta", "aviso"],
   rutaBarcelona: ["tabla", "atajos", "puntos", "medio", "lista", "pregunta"],
+  visado: ["calculadora", "puntos", "tabla", "medio", "lista", "calendario", "pregunta", "aviso"],
   practico: ["tabla", "puntos", "pregunta", "lista", "medio"],
   rutaPeru: ["puntos", "tabla", "pregunta", "atajos", "lista", "medio"],
 };
@@ -139,7 +141,11 @@ export default function LandingEspanaPagina({ landing: l, hermanas = LANDINGS_ES
     puntos: <Puntos l={l} />,
     tabla: <Tabla l={l} />,
     calendario: l.calendario && <CalendarioSoloIda ruta={ruta} c={l.calendario} destacado={l.mesDestacado} />,
-    calculadora: l.calculadora && <CalculadoraBolsa ruta={ruta} diasIniciales={l.calculadora.dias} />,
+    calculadora: l.calculadoraIprem ? (
+      <CalculadoraIprem ruta={ruta} tipo={l.calculadoraIprem.tipo} inicial={l.calculadoraIprem.inicial} />
+    ) : (
+      l.calculadora && <CalculadoraBolsa ruta={ruta} diasIniciales={l.calculadora.dias} />
+    ),
     pregunta: l.pregunta && <TarjetaPregunta ruta={ruta} pregunta={l.pregunta} />,
     lista: <Lista l={l} />,
     medio: l.ctaMedio && <CtaMedio ruta={ruta} {...l.ctaMedio} />,

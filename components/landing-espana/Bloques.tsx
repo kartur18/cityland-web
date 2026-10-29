@@ -24,6 +24,7 @@ const TEMAS: Record<TemaEspana, { caja: string; numero: string; borde: string }>
   rutaBarcelona: { caja: "bg-purple-50/60 border-purple-100", numero: "bg-purple-600", borde: "border-purple-200" },
   rutaPeru: { caja: "bg-green-50/60 border-green-100", numero: "bg-green-600", borde: "border-green-200" },
   practico: { caja: "bg-neutral-50 border-neutral-200", numero: "bg-cyan-700", borde: "border-neutral-300" },
+  visado: { caja: "bg-teal-50/50 border-teal-100", numero: "bg-teal-700", borde: "border-teal-300" },
   ciudad: { caja: "bg-amber-50/70 border-amber-100", numero: "bg-amber-500", borde: "border-amber-200" },
 };
 
@@ -59,7 +60,7 @@ export function Puntos({ l }: { l: LandingEspana }) {
       </h2>
       <ul className="grid gap-4 sm:grid-cols-2">
         {l.puntos.map((p) => (
-          <li key={p.t} className={`rounded-2xl border bg-white p-6 ${l.tema === "provincia" || l.tema?.startsWith("solo") || l.tema?.startsWith("duda") || ["traer", "fiesta", "equipaje", "tramite", "peru", "rutaBarcelona", "rutaPeru", "practico"].includes(l.tema ?? "") ? "border-l-4 " + t.borde : "border-slate-200"}`}>
+          <li key={p.t} className={`rounded-2xl border bg-white p-6 ${l.tema === "provincia" || l.tema?.startsWith("solo") || l.tema?.startsWith("duda") || ["traer", "fiesta", "equipaje", "tramite", "peru", "rutaBarcelona", "rutaPeru", "practico", "visado"].includes(l.tema ?? "") ? "border-l-4 " + t.borde : "border-slate-200"}`}>
             <strong className="block text-lg text-[#0a1628]">{p.t}</strong>
             <p className="mt-2 text-base leading-relaxed text-slate-600">{p.d}</p>
           </li>
