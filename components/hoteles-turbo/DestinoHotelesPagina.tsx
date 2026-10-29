@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import FotoCdn from "@/components/FotoCdn";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -116,7 +116,7 @@ export default function DestinoHotelesPagina({ destino: d }: { destino: DestinoH
                 <li key={y.slug}>
                   <Link href={`/hoteles-en/${y.slug}`} className="group block overflow-hidden rounded-[24px] bg-white shadow-sm ring-1 ring-slate-200 hover:shadow-lg">
                     <span className="relative block aspect-[4/3] bg-slate-100">
-                      <Image src={y.foto} alt={`Hoteles en ${y.nombre}`} fill unoptimized loading="lazy" sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover" />
+                      <FotoCdn src={y.foto} alt={`Hoteles en ${y.nombre}`} sizes="(min-width: 1024px) 25vw, 50vw" />
                     </span>
                     <span className="block p-4">
                       <strong className="block text-base group-hover:underline" style={{ color: AZUL }}>

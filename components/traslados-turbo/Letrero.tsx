@@ -1,4 +1,4 @@
-import Image from "next/image";
+import FotoCdn from "@/components/FotoCdn";
 import Link from "next/link";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { formatoUSD } from "@/lib/formato-precio";
@@ -45,7 +45,7 @@ export function PortadaTraslado({
   return (
     <section className="overflow-hidden rounded-[32px] bg-white shadow-sm ring-1 ring-slate-200">
       <div className="relative aspect-[16/9] sm:aspect-[21/8] bg-slate-200">
-        {foto && <Image src={foto} alt={alt} fill priority unoptimized sizes="100vw" className="object-cover" />}
+        {foto && <FotoCdn src={foto} alt={alt} prioridad sizes="100vw" />}
       </div>
       <div className="grid gap-6 p-6 sm:p-8 lg:grid-cols-[1fr_340px] lg:items-center">
         <div className="space-y-3">
@@ -157,14 +157,11 @@ export function GrillaDestinosTraslado({ items }: { items: DestinoTraslado[] }) 
           <Link href={`/traslados-en/${y.slug}`} className="group block overflow-hidden rounded-[24px] bg-white shadow-sm ring-1 ring-slate-200 hover:shadow-lg">
             <span className="relative block aspect-[4/3] bg-slate-200">
               {y.foto && (
-                <Image
+                <FotoCdn
                   src={y.foto}
                   alt={`Traslado del aeropuerto al hotel en ${y.nombre}`}
-                  fill
-                  unoptimized
-                  loading="lazy"
                   sizes="(min-width: 1024px) 25vw, 50vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="transition-transform duration-300 group-hover:scale-105"
                 />
               )}
               <span className="absolute left-3 top-3 rounded-md px-2 py-1 font-mono text-xs font-extrabold tracking-widest" style={{ background: CARBON, color: AMBAR }}>

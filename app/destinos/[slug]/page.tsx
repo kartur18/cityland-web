@@ -666,6 +666,7 @@ export default async function DestinoPage({
       {dest.tipo === "europa" && (
         <ModuloSeguridadYCalculadoraEuropa
           destinoInicial={`${dest.ciudad} (${dest.pais})`}
+          refWebRuta={`/destinos/${dest.slug}`}
         />
       )}
 

@@ -1,8 +1,10 @@
 import { notFound, permanentRedirect } from "next/navigation";
 import { redireccionOfertaVieja } from "@/lib/redirecciones-ofertas-viejas";
 import type { Metadata } from "next";
-import { robotsSegunRuta } from "@/lib/indexacion";
-import { tituloSeoUnico } from "@/lib/titulos-seo";
+import { esIndexable, robotsSegunRuta } from "@/lib/indexacion";
+import { PAGINAS_RECUPERADAS } from "@/lib/paginas-recuperadas";
+import { PRUEBA_REAPERTURA } from "@/lib/prueba-reapertura";
+import { tituloSeoUnico, titulosSinRepetir } from "@/lib/titulos-seo";
 import Link from "next/link";
 import AirlineLandingTemplate from "@/components/AirlineLandingTemplate";
 import { SeoSiloFooter } from "@/components/SeoSiloFooter";
@@ -32,6 +34,21 @@ export function generateStaticParams() {
   return MIL_LANDINGS_COMERCIALES_SEO.map((item) => ({ slug: item.slug }));
 }
 
+// Variantes del mismo hotel o circuito (fecha, días, forma de pago) no deben salir con el mismo título. Se comparan las
+// que Google puede ver: las del catálogo, las 300 de la prueba y las recuperadas del 29-oct-2026.
+const rutasOfertasIndexables = () =>
+  [...new Set([...MIL_LANDINGS_COMERCIALES_SEO.map((i) => `/ofertas/${i.slug}`), ...PRUEBA_REAPERTURA, ...PAGINAS_RECUPERADAS])].filter(
+    (r) => r.startsWith("/ofertas/") && esIndexable(r)
+  );
+let titulosOfertas: Map<string, string> | undefined;
+const tituloOferta = (ruta: string, base: string) =>
+  (titulosOfertas ??= titulosSinRepetir(
+    rutasOfertasIndexables().flatMap((r) => {
+      const i = buscarLandingComercial(r.slice("/ofertas/".length));
+      return i ? [{ ruta: r, titulo: tituloSeoUnico(r, optimizarMetaTitleSEO(i.metaTitle)) }] : [];
+    })
+  )).get(ruta) ?? base;
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const item = buscarLandingComercial(slug);
@@ -42,7 +59,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ? item.config.vitrina.img
     : `https://citylandtravel.com${item.config.vitrina.img}`;
 
-  const title = tituloSeoUnico(`/ofertas/${item.slug}`, optimizarMetaTitleSEO(item.metaTitle));
+  const title = tituloOferta(`/ofertas/${item.slug}`, tituloSeoUnico(`/ofertas/${item.slug}`, optimizarMetaTitleSEO(item.metaTitle)));
   const description = optimizarMetaDescriptionSEO(item.metaDescription);
 
   return {

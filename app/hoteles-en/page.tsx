@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import FotoCdn from "@/components/FotoCdn";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -85,14 +85,11 @@ export default function HotelesVitrinaPage() {
                 <li key={d.slug}>
                   <Link href={`/hoteles-en/${d.slug}`} className="group block overflow-hidden rounded-[24px] bg-white shadow-sm ring-1 ring-slate-200 hover:shadow-lg">
                     <span className="relative block aspect-[4/3] bg-slate-100">
-                      <Image
+                      <FotoCdn
                         src={d.foto}
                         alt={`Hoteles en ${d.nombre}`}
-                        fill
-                        unoptimized
-                        loading="lazy"
                         sizes="(min-width: 1024px) 25vw, 50vw"
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="transition-transform duration-300 group-hover:scale-105"
                       />
                     </span>
                     <span className="block p-4">

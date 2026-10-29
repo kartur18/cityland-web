@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { robotsSegunRuta } from "@/lib/indexacion";
-import { tituloSeoUnico } from "@/lib/titulos-seo";
+import { esIndexable, robotsSegunRuta } from "@/lib/indexacion";
+import { tituloSeoUnico, titulosSinRepetir } from "@/lib/titulos-seo";
 import { notFound } from "next/navigation";
 import MadridMigratorioTemplate from "@/components/MadridMigratorioTemplate";
 import {
@@ -29,12 +29,22 @@ export function generateStaticParams() {
   }));
 }
 
+// Solo se comparan las que Google puede indexar: armar las 10,000 tomaría casi un segundo.
+let titulosMadrid: Map<string, string> | undefined;
+const tituloMadrid = (ruta: string, base: string) =>
+  (titulosMadrid ??= titulosSinRepetir(
+    INDICE_MADRID_10K.filter((i) => esIndexable(`/madrid/${i.slug}`)).map((i) => ({
+      ruta: `/madrid/${i.slug}`,
+      titulo: tituloSeoUnico(`/madrid/${i.slug}`, optimizarMetaTitleSEO(buscarLandingMadrid10k(i.slug)?.metaTitle ?? "")),
+    }))
+  )).get(ruta) ?? base;
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const datos = buscarLandingMadrid10k(slug);
   if (!datos) return {};
 
-  const title = tituloSeoUnico(`/madrid/${datos.slug}`, optimizarMetaTitleSEO(datos.metaTitle));
+  const title = tituloMadrid(`/madrid/${datos.slug}`, tituloSeoUnico(`/madrid/${datos.slug}`, optimizarMetaTitleSEO(datos.metaTitle)));
   const description = optimizarMetaDescriptionSEO(datos.metaDescription);
   const urlCanonica = `${URL_BASE_SEO}/madrid/${datos.slug}`;
 
