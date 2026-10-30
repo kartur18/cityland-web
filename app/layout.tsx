@@ -102,11 +102,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         {children}
         <WhatsAppTracker />
+        {/* lazyOnload: no compite con la carga inicial, el tracking sigue igual solo que carga después */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-tags-init" strategy="afterInteractive">
+        <Script id="google-tags-init" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
