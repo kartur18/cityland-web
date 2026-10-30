@@ -102,12 +102,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         {children}
         <WhatsAppTracker />
-        {/* lazyOnload: no compite con la carga inicial, el tracking sigue igual solo que carga después */}
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
-          strategy="lazyOnload"
-        />
-        <Script id="google-tags-init" strategy="lazyOnload">
+        {/* beforeInteractive: solo define dataLayer/gtag (sin red, costo ~0), para que un clic en WhatsApp
+            antes de que cargue gtag.js quede en la cola y no se pierda la conversión */}
+        <Script id="google-tags-init" strategy="beforeInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -116,6 +113,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('config', '${GOOGLE_ADS_ID}');
           `}
         </Script>
+        {/* lazyOnload: el script pesado de gtag.js no compite con la carga inicial; la cola de arriba lo espera */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
+          strategy="lazyOnload"
+        />
         <Analytics />
       </body>
     </html>
