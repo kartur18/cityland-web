@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -108,6 +109,21 @@ export default function PoliticasPage() {
               protegido por las leyes de propiedad intelectual. Queda prohibida
               su reproducción sin autorización expresa. Nos reservamos el
               derecho de modificar estos términos en cualquier momento.
+            </p>
+          </section>
+
+          {/* Libro de Reclamaciones */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-extrabold text-[#0a1628] tracking-tight mb-4">
+              Libro de Reclamaciones
+            </h2>
+            <p className="text-[15px] text-gray-600 leading-relaxed mb-4">
+              Si tienes un reclamo o una queja, consulta cómo presentarlo en la
+              página del{" "}
+              <Link href="/libro-de-reclamaciones" className="font-bold text-emerald-700 underline">
+                Libro de Reclamaciones
+              </Link>
+              . Respondemos en un plazo no mayor a quince (15) días hábiles.
             </p>
           </section>
         </div>
