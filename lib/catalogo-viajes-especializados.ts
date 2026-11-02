@@ -268,7 +268,7 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
   }
 
   // B. 35 páginas de Vuelos con 2 Maletas de 23 kg
-  for (const [rutaNombre, slugRuta, pais, precio, aerolineas] of RUTAS_DOS_MALETAS) {
+  for (const [rutaNombre, slugRuta, , precio, aerolineas] of RUTAS_DOS_MALETAS) {
     const fotos = obtenerFotosPorTexto(slugRuta);
     lista.push({
       slug: `vuelos-con-2-maletas-${slugRuta}`,

@@ -27,10 +27,6 @@ const IMG_NYC = "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?au
 const IMG_CARIBE = "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1000&q=80";
 const IMG_LATAM = "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?auto=format&fit=crop&w=1000&q=80";
 const IMG_PERU = "https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=1000&q=80";
-const IMG_EXOTICO = "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1000&q=80";
-const IMG_AVION_CABINA = "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1000&q=80";
-const IMG_AEROPUERTO = "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=1000&q=80";
-const IMG_HOTEL_RESORT = "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1000&q=80";
 
 /* ── 1. Destinos en España (Ida desde Lima + Retorno a Lima) ── */
 const CIUDADES_ESPANA: [string, string, string, number, string][] = [

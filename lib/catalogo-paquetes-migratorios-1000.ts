@@ -2335,7 +2335,7 @@ function construirExplicacionIdaYVuelta(ciudad: string, pais: string) {
   };
 }
 
-function construirFaqsPeruano(ciudad: string, _pais: string): { q: string; a: string }[] {
+function construirFaqsPeruano(ciudad: string): { q: string; a: string }[] {
   return [
     {
       q: `¿Qué incluye la carpeta para viajar a ${ciudad}?`,
@@ -2464,7 +2464,7 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
             zonasPeruanos: ciudadCfg.zonasPeruanos,
             consejoLocal: ciudadCfg.consejoLocal,
           },
-          faqs: construirFaqsPeruano(ciudadCfg.ciudad, ciudadCfg.pais),
+          faqs: construirFaqsPeruano(ciudadCfg.ciudad),
           metaTitle,
           metaDescription,
           keywords: [
