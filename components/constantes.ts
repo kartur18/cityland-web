@@ -57,7 +57,7 @@ export const WHATSAPP_ROUTING = {
 /**
  * Retorna siempre el número oficial único de WhatsApp de Cityland Travel (944 103 890).
  */
-export function getNumeroWhatsapp(_categoria?: "europa" | "caribe" | "general" | string, _seed: string = ""): string {
+export function getNumeroWhatsapp(): string {
   return NUMERO_WHATSAPP_OFICIAL;
 }
 
@@ -74,9 +74,7 @@ export function buildWaUrl(params: {
   texto?: string;
   refWeb?: string;
 }): string {
-  const cat = params.categoria || "general";
-  const seed = params.destino || "general";
-  const num = getNumeroWhatsapp(cat, seed);
+  const num = getNumeroWhatsapp();
   const refEtiqueta =
     params.refWeb ||
     (params.destino
@@ -111,7 +109,7 @@ export function waLink(
   categoria: "europa" | "caribe" | "general" = "general",
   refWeb?: string
 ): string {
-  const num = getNumeroWhatsapp(categoria, mensaje);
+  const num = getNumeroWhatsapp();
   const refEtiqueta = refWeb || `citylandtravel.com [${categoria.toUpperCase()}]`;
   const finalMsg = mensaje.includes("📍 Ref Web:")
     ? mensaje
@@ -165,14 +163,7 @@ export function cotFormLink(data: {
   pasajeros: number;
   refWeb?: string;
 }): string {
-  const cat = data.destino
-    .toLowerCase()
-    .match(/madrid|barcelona|roma|milan|milán|turin|turín|italia|espana|españa|paris|europa/)
-    ? "europa"
-    : data.destino.toLowerCase().match(/punta cana|cancun|cartagena|medellin|caribe/)
-    ? "caribe"
-    : "general";
-  const num = getNumeroWhatsapp(cat, data.destino);
+  const num = getNumeroWhatsapp();
   const refEtiqueta = data.refWeb || `citylandtravel.com [Formulario Cotizador · ${data.destino}]`;
   const msg = `¡Hola Cityland Travel! Solicito cotización desde la web:
 • Pasajero: ${data.nombre}
