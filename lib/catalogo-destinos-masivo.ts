@@ -11,7 +11,7 @@ const IMG_USA = "https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=
 const IMG_PER = "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=1200&q=85";
 const IMG_EXO = "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?w=1200&q=85";
 
-function obtenerGaleriaDestino(s: SemillaDestino, _idx: number): { img: string; gallery: string[] } {
+function obtenerGaleriaDestino(s: SemillaDestino): { img: string; gallery: string[] } {
   const clave =
     s.pais === "España"
       ? "espana"
@@ -212,8 +212,8 @@ function construirItinerarioCoherente(s: SemillaDestino): string[] {
   ];
 }
 
-export const DESTINOS_MASIVOS: Destino[] = SEMILLAS_DESTINOS.map((s, idx) => {
-  const { img, gallery } = obtenerGaleriaDestino(s, idx);
+export const DESTINOS_MASIVOS: Destino[] = SEMILLAS_DESTINOS.map((s) => {
+  const { img, gallery } = obtenerGaleriaDestino(s);
   return {
     ciudad: s.ciudad,
     pais: s.pais,

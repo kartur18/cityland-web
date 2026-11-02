@@ -36,10 +36,12 @@ export default function AdminTarifasPage() {
       })
       .catch(() => {});
 
-    try {
-      const raw = localStorage.getItem("cityland_wa_clicks");
-      if (raw) setClicsRecientes(JSON.parse(raw));
-    } catch {}
+    Promise.resolve().then(() => {
+      try {
+        const raw = localStorage.getItem("cityland_wa_clicks");
+        if (raw) setClicsRecientes(JSON.parse(raw));
+      } catch {}
+    });
   }, []);
 
   const ingresar = async (e: React.FormEvent) => {
