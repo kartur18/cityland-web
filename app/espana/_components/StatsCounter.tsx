@@ -52,24 +52,24 @@ export default function StatsCounter() {
   const years = useCountUp(yearsRef, 3);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl mx-auto px-4">
-      <div className="flex flex-col items-center px-2 py-6 bg-white rounded-2xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-        <span ref={passengersRef} className="text-3xl md:text-5xl font-serif text-[#0A2A6B] mb-1 md:mb-2 flex items-center shadow-sm">
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 w-full max-w-5xl mx-auto">
+      <div className="flex flex-col items-center px-2 py-5 sm:py-6 bg-white rounded-2xl shadow-2xs border border-slate-200/90 hover:shadow-md transition-shadow">
+        <span ref={passengersRef} className="text-3xl md:text-5xl font-black text-[#0a1628] mb-1 md:mb-2 flex items-center">
           {passengers.toLocaleString("es-PE")}+
         </span>
-        <span className="text-sm md:text-base text-gray-600 font-bold uppercase tracking-wide">Felices Pasajeros</span>
+        <span className="text-xs md:text-sm text-slate-600 font-bold uppercase tracking-wide">Pasajeros Atendidos</span>
       </div>
-      <div className="flex flex-col items-center px-2 py-6 bg-white rounded-2xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-         <span ref={perMonthRef} className="text-3xl md:text-5xl font-serif text-[#0A2A6B] mb-1 md:mb-2 flex items-center shadow-sm">
+      <div className="flex flex-col items-center px-2 py-5 sm:py-6 bg-white rounded-2xl shadow-2xs border border-slate-200/90 hover:shadow-md transition-shadow">
+        <span ref={perMonthRef} className="text-3xl md:text-5xl font-black text-[#0a1628] mb-1 md:mb-2 flex items-center">
           {perMonth.toLocaleString("es-PE")}+
         </span>
-        <span className="text-sm md:text-base text-gray-600 font-bold uppercase tracking-wide">Viajan Mensual</span>
+        <span className="text-xs md:text-sm text-slate-600 font-bold uppercase tracking-wide">Viajan con Nosotros al Mes</span>
       </div>
-       <div className="flex flex-col items-center px-2 py-6 bg-white rounded-2xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-        <span ref={yearsRef} className="text-3xl md:text-5xl font-serif text-[#0A2A6B] mb-1 md:mb-2 flex items-center shadow-sm">
+      <div className="flex flex-col items-center px-2 py-5 sm:py-6 bg-white rounded-2xl shadow-2xs border border-slate-200/90 hover:shadow-md transition-shadow">
+        <span ref={yearsRef} className="text-3xl md:text-5xl font-black text-[#0a1628] mb-1 md:mb-2 flex items-center">
           {years}+
         </span>
-        <span className="text-sm md:text-base text-gray-600 font-bold uppercase tracking-wide">Años Operando</span>
+        <span className="text-xs md:text-sm text-slate-600 font-bold uppercase tracking-wide">Años de Experiencia</span>
       </div>
     </div>
   );
