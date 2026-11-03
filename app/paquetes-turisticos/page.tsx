@@ -10,7 +10,7 @@ import { buildWaUrl } from "@/components/constantes";
 import { formatoUSD } from "@/lib/formato-precio";
 import { absoluta } from "@/lib/paquetes-armados/fotos";
 import { paisesConPaquetes, paquetesDePais, paquetesTuristicos, precioPaquete } from "@/lib/paquetes-turisticos";
-import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
+import { URL_BASE_SEO, optimizarMetaTitleSEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
 
 export const revalidate = 86400;
@@ -22,7 +22,7 @@ const DESC =
 export function generateMetadata(): Metadata {
   const paises = paisesConPaquetes();
   return {
-    title: "Paquetes turísticos desde Lima: Colombia, Turquía, Italia y más | Cityland",
+    title: optimizarMetaTitleSEO("Paquetes turísticos desde Lima: Colombia, Turquía, Italia y más | Cityland"),
     description: DESC,
     alternates: { canonical: URL },
     openGraph: {

@@ -18,7 +18,7 @@ import { DESTINOS_MUNDO } from "@/lib/paquetes-armados/destinos-mundo";
 import { DESTINOS_CIUDADES } from "@/lib/paquetes-armados/destinos-ciudades";
 import { DESTINOS_COMBINADOS } from "@/lib/paquetes-armados/destinos-combinados";
 import { paginasCaribe, type ClasePagina } from "@/lib/paquetes-armados/paginas-caribe";
-import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
+import { URL_BASE_SEO, optimizarMetaTitleSEO } from "@/lib/seo-arquitectura";
 
 export const revalidate = 86400;
 
@@ -26,7 +26,7 @@ const URL = `${URL_BASE_SEO}/paquetes-armados`;
 const FOTO = obtenerGaleriaPorTexto("punta cana playa")[0];
 
 export const metadata: Metadata = {
-  title: "Paquetes armados desde Lima: Caribe, Europa, Turquía y más | Cityland",
+  title: optimizarMetaTitleSEO("Paquetes armados desde Lima: Caribe, Europa, Turquía y más | Cityland"),
   description:
     "Paquetes armados a Punta Cana, Aruba, Cancún, Cartagena, Río, Europa, Turquía, Egipto, Japón y más: fecha fija, vuelo, hotel y traslados listos. Separa con el 50%.",
   alternates: { canonical: URL },

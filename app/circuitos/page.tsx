@@ -9,7 +9,7 @@ import TarjetaCircuito from "@/components/TarjetaCircuito";
 import { HUBS_CIRCUITOS } from "@/lib/hubs-circuitos";
 import { buildWaUrl } from "@/components/constantes";
 import { circuitosVigentes, REGIONES_CIRCUITOS } from "@/lib/circuitos";
-import { URL_BASE_SEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
+import { URL_BASE_SEO, optimizarMetaDescriptionSEO, optimizarMetaTitleSEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
 
 export const revalidate = 86400;
@@ -19,7 +19,7 @@ const DESCRIPCION =
   "Circuitos y paquetes por Europa, Turquía, Egipto, Japón, India, Estados Unidos, Brasil, Costa Rica, el Caribe y cruceros desde Lima, con salidas confirmadas. Separa con el 50%.";
 
 export const metadata: Metadata = {
-  title: "Circuitos y paquetes por el mundo desde Lima | Cityland",
+  title: optimizarMetaTitleSEO("Circuitos y paquetes por el mundo desde Lima | Cityland"),
   description: optimizarMetaDescriptionSEO(DESCRIPCION),
   alternates: { canonical: `${URL_BASE_SEO}${RUTA}` },
   openGraph: {
