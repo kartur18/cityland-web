@@ -23,7 +23,10 @@ const PRACTICO: LandingEspana[] = [
   {
     ...comun,
     slug: "diferencia-horaria-peru-espana",
-    tituloSeo: "Diferencia horaria Perú España: 6 o 7 horas según la época",
+    // Antes el título decía "6 o 7 horas" (la respuesta completa): Google la mostraba directo
+    // en el buscador y nadie entraba (0 clics con 226 impresiones en 29 días, igual que pasó
+    // con el precio en el título del paquete migratorio). Se saca el número del título.
+    tituloSeo: "¿Cuál es la diferencia horaria entre Perú y España?",
     descripcion: "Diferencia horaria entre Perú y España: 6 horas en invierno y 7 en verano (horario de verano de marzo a octubre). En Canarias, 5 o 6. Fechas de cambio de 2027.",
     migas: "Diferencia horaria",
     sello: "Perú ↔ España · Hora",
