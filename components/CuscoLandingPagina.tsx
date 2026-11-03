@@ -20,7 +20,7 @@ import { safeJsonLd } from "@/lib/seguridad-http";
 const PASOS_CUSCO = [
   { t: "Escríbenos tu fecha", d: "Por WhatsApp, con cuántos viajan y cuántos días quieren estar en Cusco." },
   { t: "Te armamos tu programa", d: "Vuelo, hotel, tren y entradas oficiales según los días que elijas." },
-  { t: "Separa con el 50%", d: "El saldo lo pagas antes de viajar. Te mandamos todo por escrito." },
+  { t: "Separa con un adelanto", d: "El saldo lo pagas antes de viajar. Te mandamos todo por escrito." },
 ];
 
 export function waCusco(ruta: string, mensaje: string, fuente: string): string {
@@ -102,7 +102,7 @@ export default function CuscoLandingPagina({ landing: l, hermanas = LANDINGS_CUS
               wa={wa}
               boton={l.boton}
               ancla="Ver lo que tienes que saber"
-              nota="Separas con el 50% y pagas el saldo antes de viajar"
+              nota="Separas con un adelanto y pagas el saldo antes de viajar"
             />
           </div>
 
@@ -182,7 +182,7 @@ export default function CuscoLandingPagina({ landing: l, hermanas = LANDINGS_CUS
       </main>
       <PorQueCityland destino="Cusco" />
       <Footer />
-      <WhatsAppFloat href={waCusco(ruta, l.mensaje, "Barra móvil")} titulo={l.migas} subtitulo="Separa con el 50% por WhatsApp" />
+      <WhatsAppFloat href={waCusco(ruta, l.mensaje, "Barra móvil")} titulo={l.migas} subtitulo="Separa con un adelanto por WhatsApp" />
     </>
   );
 }
