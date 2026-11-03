@@ -97,7 +97,7 @@ export default function BuscadorPaquetesMigratoriosClient({
             Elige tu Plan según tu Fecha de Viaje
           </h2>
           <p className="text-slate-600 text-sm mt-1.5">
-            Separa tu cupo con el 50% y completa el pago en cuotas antes de tu vuelo. Tarifas de España; para Italia y
+            Separa tu cupo con un adelanto y completa el pago en cuotas antes de tu vuelo. Tarifas de España; para Italia y
             Francia los planes van desde {listaPreciosPlanes(tarifasMigratorio("Italia"))} USD.
           </p>
         </div>
@@ -141,7 +141,7 @@ export default function BuscadorPaquetesMigratoriosClient({
                       <span className="text-xs font-bold text-slate-500">USD</span>
                     </div>
                     <span className="text-xs font-extrabold text-emerald-700 block mt-1">
-                      ✓ Separa con 50% (desde ${plan.separaConUSD} USD)
+                      ✓ Separa con un adelanto
                     </span>
                   </div>
 
@@ -279,7 +279,7 @@ export default function BuscadorPaquetesMigratoriosClient({
                         <span className="text-[11px] font-bold text-slate-500 ml-1">USD</span>
                       </div>
                       <span className="text-xs font-extrabold text-emerald-700">
-                        ✓ Separa con 50%
+                        ✓ Separa con un adelanto
                       </span>
                     </div>
                   </div>

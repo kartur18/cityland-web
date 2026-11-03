@@ -22,7 +22,6 @@ export default function VuelosJorgeChavezTemplate({
   children,
 }: Props) {
   const { origen, destino, codigoOrigen, codigoDestino, precioDesdeUSD, config } = ruta;
-  const mitad = Math.max(50, Math.round(precioDesdeUSD * 0.5));
   // El CRM lee "Ref Web: citylandtravel.com/<ruta>": sin https://
   const refWeb = `\n\n📍 Ref Web: citylandtravel.com/vuelos/${ruta.slug}`;
   const imagenesUsadas = new Set<string>();
@@ -147,7 +146,7 @@ export default function VuelosJorgeChavezTemplate({
                     ${precioDesdeUSD.toLocaleString("en-US")} USD
                   </span>
                   <span className="text-emerald-700 font-bold ml-1.5">
-                    (Separa desde ${mitad} USD)
+                    (Separa con un adelanto)
                   </span>
                 </div>
               </div>

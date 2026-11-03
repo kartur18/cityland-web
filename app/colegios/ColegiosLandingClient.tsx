@@ -254,7 +254,7 @@ export default function ColegiosLandingClient({ children }: { children?: React.R
                           </span>
                         </div>
                         <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                          Separa con 50% y paga en cuotas
+                          Separa con un adelanto y paga en cuotas
                         </span>
                       </div>
 

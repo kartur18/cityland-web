@@ -307,10 +307,10 @@ export default function MadridMigratorioTemplate({
               </h2>
               <p className="text-sm text-slate-600 mt-2">
                 {esMigratorio
-                  ? "Separa cualquiera de los 4 planes con el 50% y paga el saldo en cuotas antes de tu vuelo."
+                  ? "Separa cualquiera de los 4 planes con un adelanto y paga el saldo en cuotas antes de tu vuelo."
                   : esServicio
                     ? "Escríbenos por WhatsApp y tu asesor te confirma el detalle del servicio."
-                    : "Separa con el 50% y paga el saldo antes de tu vuelo."}
+                    : "Separa con un adelanto y paga el saldo antes de tu vuelo."}
               </p>
             </div>
 
@@ -323,7 +323,6 @@ export default function MadridMigratorioTemplate({
             >
               {datos.planesReales.map((plan, idx) => {
                 const tituloLimpio = limpiarTituloPlan(plan.titulo);
-                const mitadPlan = Math.round(plan.precioUSD * 0.5);
                 const waPlan = `https://wa.me/51944103890?text=${encodeURIComponent(
                   `${plan.waMensaje}${refTag} [${tituloLimpio} desde ${formatoUSD(plan.precioUSD)}]`
                 )}`;
@@ -363,7 +362,7 @@ export default function MadridMigratorioTemplate({
                           <span className="text-xs font-bold text-slate-500">USD</span>
                         </div>
                         <span className="text-xs font-extrabold text-emerald-700 block mt-1">
-                          ✓ Separa con el 50% (desde {formatoUSD(mitadPlan)} USD)
+                          ✓ Separa con un adelanto
                         </span>
                       </div>
 
@@ -528,7 +527,7 @@ export default function MadridMigratorioTemplate({
       <div className="sm:hidden fixed bottom-0 inset-x-0 z-30 bg-white/95 backdrop-blur-md border-t border-slate-200 px-4 py-2.5 flex items-center justify-between gap-3">
         <div>
           <span className="text-[10px] font-extrabold uppercase text-slate-500 block">
-            Madrid · Separa con 50%
+            Madrid · Separa con un adelanto
           </span>
           <span className="text-sm font-black text-[#071120]">
             {etiquetaDesde} ${precioFmt} USD

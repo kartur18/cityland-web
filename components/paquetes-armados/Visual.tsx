@@ -74,7 +74,7 @@ export function CajaPrecio({
       <ul className="space-y-1.5 text-sm text-slate-700">
         <li className="flex items-center gap-2">
           <Check />
-          Separas con el 50% y pagas el resto antes de viajar
+          Separas con un adelanto y pagas el resto antes de viajar
         </li>
         <li className="flex items-center gap-2">
           <Check />

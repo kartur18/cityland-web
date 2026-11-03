@@ -9,7 +9,7 @@ import { textoPrecio } from "@/lib/formato-precio";
 const rawTitle =
   "Paquete migratorio España desde $699 en Lima | Cityland";
 const rawDesc =
-  "Paquete migratorio a España saliendo de Lima, desde $699 según la fecha. Separa con el 50%, te atiende una asesora por WhatsApp y tenemos 2 oficinas en Los Olivos.";
+  "Paquete migratorio a España saliendo de Lima, desde $699 según la fecha. Separa con un adelanto, te atiende una asesora por WhatsApp y tenemos 2 oficinas en Los Olivos.";
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO(rawTitle),
@@ -185,7 +185,7 @@ const JSON_LD_ESPANA = {
           name: "¿Cuánto cuesta el paquete a España según el mes de viaje y cómo se separa?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: textoPrecio("Contamos con 4 planes oficiales según tu fecha de viaje: Plan Promo $699 USD (fines de Feb, Mar, Abr, May — separa con $350), Plan Smart $799 USD (Jun, Sep, Oct, Nov — separa con $400), Plan Plus $899 USD (salidas cercanas Ene/1ra quincena Feb — separa con $450) y Plan Full $999 USD (temporada alta Dic/Jul/Ago o con maleta de 23 kg en bodega — separa con $500)."),
+            text: textoPrecio("Contamos con 4 planes oficiales según tu fecha de viaje: Plan Promo $699 USD (fines de Feb, Mar, Abr, May), Plan Smart $799 USD (Jun, Sep, Oct, Nov), Plan Plus $899 USD (salidas cercanas Ene/1ra quincena Feb) y Plan Full $999 USD (temporada alta Dic/Jul/Ago o con maleta de 23 kg en bodega). Cada plan se separa con un adelanto."),
           },
         },
       ],

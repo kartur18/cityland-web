@@ -96,7 +96,7 @@ export function CierreUrgencia({ ruta, titulo, precio, urgencia, mensaje }: { ru
           </h2>
           <p className="text-base text-slate-200">{urgencia}</p>
           <p className="text-slate-300">
-            Desde <strong className="text-3xl text-white">{formatoUSD(precio)}</strong> por persona · separas con el 50%
+            Desde <strong className="text-3xl text-white">{formatoUSD(precio)}</strong> por persona · separas con un adelanto
           </p>
         </div>
         <a

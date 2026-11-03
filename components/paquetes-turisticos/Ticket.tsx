@@ -157,7 +157,7 @@ export function PortadaTicket({
 const PASOS = [
   { t: "Elige tu paquete", d: "Mira el precio por persona y la ruta del viaje." },
   { t: "Escríbenos por WhatsApp", d: "Te mandamos el itinerario día por día y las fechas con cupo." },
-  { t: "Separa con el 50%", d: "El saldo lo pagas antes de viajar; todo queda por escrito." },
+  { t: "Separa con un adelanto", d: "El saldo lo pagas antes de viajar; todo queda por escrito." },
 ];
 
 export function ComoSeparar({ pasos = PASOS }: { pasos?: { t: string; d: string }[] } = {}) {

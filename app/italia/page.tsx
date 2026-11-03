@@ -197,8 +197,8 @@ export default function ItaliaLandingPage() {
               </h1>
 
               <p className="text-base sm:text-lg text-slate-200 leading-relaxed mb-7">
-                Viaja a Milán, Roma, Turín, Florencia o Bolonia con tu carpeta de viaje armada: pasaje de ida, reserva de regreso, hotel y seguro. Separa hoy tu cupo con el{" "}
-                <strong className="text-white">50% de inicial</strong>.
+                Viaja a Milán, Roma, Turín, Florencia o Bolonia con tu carpeta de viaje armada: pasaje de ida, reserva de regreso, hotel y seguro. Separa hoy tu cupo con un{" "}
+                <strong className="text-white">adelanto</strong>.
               </p>
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-6">
@@ -307,7 +307,7 @@ export default function ItaliaLandingPage() {
               Elige tu Plan a Italia según tu Fecha
             </h2>
             <p className="text-sm text-slate-600 mt-2">
-              Separa cualquiera de los 4 planes con el 50% y paga el resto en cuotas antes de tu vuelo.
+              Separa cualquiera de los 4 planes con un adelanto y paga el resto en cuotas antes de tu vuelo.
             </p>
           </div>
 
@@ -359,7 +359,7 @@ export default function ItaliaLandingPage() {
                         <span className="text-xs font-bold text-slate-500">USD</span>
                       </div>
                       <span className="text-xs font-extrabold text-emerald-700 block mt-1">
-                        ✓ Separa con el 50% (desde {formatoUSD(p.separaCon)} USD)
+                        ✓ Separa con un adelanto
                       </span>
                     </div>
 

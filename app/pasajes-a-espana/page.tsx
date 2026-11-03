@@ -21,7 +21,7 @@ import { safeJsonLd } from "@/lib/seguridad-http";
 // precio de cada una (de la ficha de la ruta) y la diferencia entre ida y vuelta y paquete migratorio (26-oct-2026).
 const RUTA = "/pasajes-a-espana";
 const DESCRIPCION =
-  "Pasajes de Lima a Madrid, Barcelona, Valencia, Málaga, Sevilla y Bilbao, ida y vuelta o solo ida con paquete migratorio. También pasajes de España a Lima. Separa con el 50%.";
+  "Pasajes de Lima a Madrid, Barcelona, Valencia, Málaga, Sevilla y Bilbao, ida y vuelta o solo ida con paquete migratorio. También pasajes de España a Lima. Separa con un adelanto.";
 
 const IDA = ["lima-madrid", "lima-barcelona", "lima-valencia", "lima-malaga", "lima-sevilla", "lima-bilbao"];
 const VUELTA = ["madrid-lima", "barcelona-lima"];

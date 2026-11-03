@@ -1,6 +1,6 @@
 // ── Constantes Comerciales y Datos de Cityland Travel ──
 import { formatoUSD } from "@/lib/formato-precio";
-import { inicialSeparacion, tarifasMigratorio } from "@/lib/precios-migratorio";
+import { tarifasMigratorio } from "@/lib/precios-migratorio";
 
 const TARIFAS_ITALIA = tarifasMigratorio("Italia");
 const TARIFAS_FRANCIA = tarifasMigratorio("Francia");
@@ -91,7 +91,7 @@ export function buildWaUrl(params: {
 
   let texto = `¡Hola Cityland Travel! Vi su página web y deseo cotizar un viaje con un asesor especializado.`;
   if (params.destino && params.precioUSD) {
-    texto = `¡Hola Cityland Travel! Vi en su web el paquete ${params.tipo || "Todo Incluido"} a ${params.destino}${params.duracion ? ` (${params.duracion})` : ""} desde $${params.precioUSD} USD. Deseo cotizar con un asesor para viajar separando con el 50% de inicial.`;
+    texto = `¡Hola Cityland Travel! Vi en su web el paquete ${params.tipo || "Todo Incluido"} a ${params.destino}${params.duracion ? ` (${params.duracion})` : ""} desde $${params.precioUSD} USD. Deseo cotizar con un asesor para viajar separando con un adelanto.`;
   } else if (params.destino) {
     texto = `¡Hola Cityland Travel! Deseo cotizar paquetes y vuelos a ${params.destino} saliendo desde Lima. ¿Tienen cupos disponibles?`;
   }
@@ -172,7 +172,7 @@ export function cotFormLink(data: {
 • Fecha ida: ${data.fechaIda}
 • Fecha retorno: ${data.fechaRetorno || "Flexible"}
 • Pasajeros: ${data.pasajeros}
-Deseo conocer opciones separando con el 50% de inicial.
+Deseo conocer opciones separando con un adelanto.
 
 📍 Ref Web: ${refEtiqueta}`;
   return `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
@@ -289,7 +289,7 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     descripcion:
       "El paquete estrella de Cityland Travel para peruanos que viajan a Madrid, Barcelona, Valencia, Sevilla o cualquier ciudad de España. Incluye pasaje de ida emitido, reserva de regreso, hotel, seguro y check-in. La reserva de regreso no es un boleto emitido: si quieres viajar con el regreso emitido, te cotizamos ida y vuelta.",
     itinerario: [
-      "Paso 1: Congelas tu cupo abonando el 50% de inicial ($350 USD en el Plan Promo de $699 o $400 USD en el Plan Smart de $799).",
+      "Paso 1: Congelas tu cupo con un adelanto ($350 USD en el Plan Promo de $699 o $400 USD en el Plan Smart de $799).",
       "Paso 2: Emitimos tu pasaje de avión de ida, tu póliza de seguro médico Schengen de 30.000€ y tu reserva de hotel confirmada.",
       "Paso 3: 24 horas antes de tu vuelo realizamos tu check-in, activamos tu reserva de retorno en sistema y te entregamos tu carpeta lista en Los Olivos.",
     ],
@@ -329,7 +329,7 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     descripcion:
       "Diseñado para la gran comunidad peruana que viaja a Milán, Roma, Turín, Florencia, Bolonia o Génova. Te entregamos tu carpeta migratoria completa con todos los requisitos que exige la Polizia di Frontiera italiana.",
     itinerario: [
-      `Paso 1: Separa tu paquete a Italia con el 50% de inicial (${formatoUSD(inicialSeparacion(TARIFAS_ITALIA.promo))} USD en el Plan Promo de ${formatoUSD(TARIFAS_ITALIA.promo)}).`,
+      `Paso 1: Separa tu paquete a Italia con un adelanto.`,
       "Paso 2: Emisión de pasaje aéreo, seguro médico de 30.000€ y reserva de alojamiento en tu ciudad de llegada.",
       "Paso 3: Activación de retorno reservado 24h antes, check-in y asesoría paso a paso para tu ingreso a Italia.",
     ],
@@ -369,7 +369,7 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     descripcion:
       "Viaja seguro a París, Lyon, Marsella o cualquier ciudad de Francia y Europa con tu carpeta migratoria completa: pasaje emitido, reserva de regreso, hotel confirmado y seguro médico.",
     itinerario: [
-      `Paso 1: Reserva tu paquete con el 50% de inicial (${formatoUSD(inicialSeparacion(TARIFAS_FRANCIA.promo))} USD en el Plan Promo de ${formatoUSD(TARIFAS_FRANCIA.promo)}).`,
+      `Paso 1: Reserva tu paquete con un adelanto.`,
       "Paso 2: Emisión de boleto aéreo, seguro Schengen 30.000€ y reserva de hotel confirmada.",
       "Paso 3: Check-in 24h antes, activación de retorno en sistema y entrega de carpeta física en Los Olivos.",
     ],
@@ -1280,8 +1280,8 @@ export const PRECIO_DESDE_CARIBE = 589;
 // ── Preguntas Frecuentes (FAQ) ──
 export const FAQS = [
   {
-    pregunta: "¿Cómo funciona la reserva con el 50%?",
-    respuesta: "Congelas tu tarifa promocional y aseguras tus vuelos y hotel pagando solo el 50% de inicial. El 50% restante lo abonas cómodamente hasta 20 días antes de viajar.",
+    pregunta: "¿Cómo funciona la reserva con un adelanto?",
+    respuesta: "Congelas tu tarifa promocional y aseguras tus vuelos y hotel con un adelanto. El saldo lo abonas cómodamente hasta 20 días antes de viajar.",
   },
   {
     pregunta: "¿Qué incluye un paquete All Inclusive?",
@@ -1398,7 +1398,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "como-encontrar-vuelos-economicos-europa-caribe",
     titulo: "Consejos reales para conseguir vuelos y paquetes económicos a Europa o el Caribe desde Lima",
-    desc: "Cuáles son los meses más baratos para volar desde el Perú: congela tarifas promocionales con el 50% de inicial.",
+    desc: "Cuáles son los meses más baratos para volar desde el Perú: congela tarifas promocionales con un adelanto.",
     categoria: "Consejos",
     catColor: "bg-amber-600",
     fecha: "Actualizado 2026",
@@ -1411,8 +1411,8 @@ export const BLOG_POSTS: BlogPost[] = [
 <p>Los meses de <strong>noviembre, febrero, marzo, abril y mayo</strong> ofrecen las tarifas más bajas del año desde Lima hacia Madrid, Barcelona, Roma y París, ahorrando entre $200 y $400 frente a julio o diciembre.</p>
 <h3>2. Temporadas ideales para el Caribe (Punta Cana y Cancún)</h3>
 <p>Reservando con 60 a 90 días de anticipación para viajar entre abril y junio o entre septiembre y noviembre consigues resorts 5 estrellas Todo Incluido a tarifa promocional.</p>
-<h3>3. Separa con el 50% de inicial</h3>
-<p>En Cityland Travel puedes bloquear tu paquete promocional abonando el 50% de inicial y completando el saldo en cuotas antes de tu fecha de salida.</p>`,
+<h3>3. Separa con un adelanto</h3>
+<p>En Cityland Travel puedes bloquear tu paquete promocional con un adelanto y completando el saldo en cuotas antes de tu fecha de salida.</p>`,
   },
   {
     slug: "carta-invitacion-espana-peru-requisitos",
@@ -1511,7 +1511,7 @@ export const BLOG_POSTS: BlogPost[] = [
     contenido: `<h2>Guía de temporadas para viajar a Punta Cana y Cancún</h2>
 <p>Tanto Punta Cana (República Dominicana) como Cancún y la Riviera Maya (México) cuentan con clima cálido tropical durante todo el año, con temperaturas entre 26 °C y 31 °C.</p>
 <h3>1. Temporada seca y clima perfecto (Diciembre a Abril)</h3>
-<p>Es la época con días más soleados, brisa fresca y mar completamente cristalino. Si planeas viajar en enero, febrero o Semana Santa, te recomendamos separar tu paquete con el 50% al menos con 60 días de anticipación.</p>
+<p>Es la época con días más soleados, brisa fresca y mar completamente cristalino. Si planeas viajar en enero, febrero o Semana Santa, te recomendamos separar tu paquete con un adelanto al menos con 60 días de anticipación.</p>
 <h3>2. Temporada de mejores ofertas (Mayo, Junio, Septiembre, Octubre y Noviembre)</h3>
 <p>En estos meses los resorts 5 estrellas All Inclusive lanzan sus mejores promociones del año para viajeros desde Perú, permitiéndote ahorrar hasta un 30% en paquetes completos con vuelo, traslados y excursiones.</p>`,
   },
@@ -1700,7 +1700,7 @@ export const BLOG_POSTS: BlogPost[] = [
     contenido: `<h2>Planifica tu viaje a Cusco y Machu Picchu sin contratiempos</h2>
 <p>La Ciudadela Inca de Machu Picchu cuenta con aforos diarios estrictos regulados por el Ministerio de Cultura. Por ello, reservar tu paquete con anticipación garantiza conseguir los mejores horarios en el Circuito 2 (Clásico) y en los trenes turísticos.</p>
 <h3>1. Temporada Seca (Abril a Octubre)</h3>
-<p>Ofrece cielos despejados ideales para fotografía en Machu Picchu, Montaña de 7 Colores y Laguna Humantay. Se recomienda separar con el 50% de inicial al menos 30 a 60 días antes.</p>
+<p>Ofrece cielos despejados ideales para fotografía en Machu Picchu, Montaña de 7 Colores y Laguna Humantay. Se recomienda separar con un adelanto al menos 30 a 60 días antes.</p>
 <h3>2. Temporada de Ofertas (Noviembre a Marzo)</h3>
 <p>Encontrarás paisajes verdes espectaculares en el Valle Sagrado y tarifas promocionales más bajas tanto en vuelos Lima – Cusco como en hoteles de 3, 4 y 5 estrellas.</p>`,
   },
@@ -1815,7 +1815,7 @@ export const BLOG_POSTS: BlogPost[] = [
 
 <h2>¿Cómo pagar tu viaje?</h2>
 <ul>
-<li>Separas tu pasaje o paquete con el <strong>50%</strong> y pagas el resto antes de viajar.</li>
+<li>Separas tu pasaje o paquete con un <strong>adelanto</strong> y pagas el resto antes de viajar.</li>
 <li>Pagas en nuestras oficinas de Los Olivos o por transferencia, Yape, Plin o tarjeta.</li>
 <li>Recibes tu boleta o factura electrónica.</li>
 </ul>

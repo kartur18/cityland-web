@@ -5,7 +5,7 @@ import { DESTINOS_TOP_PERU } from "./datos";
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO("Paquetes a Punta Cana, Cancún, Cartagena, Medellín, Río de Janeiro y Miami desde Lima | Cityland Travel"),
-  description: optimizarMetaDescriptionSEO("Paquetes turísticos Todo Incluido saliendo desde Lima: Medellín desde $589 USD, Cartagena desde $599 USD, Río de Janeiro desde $749 USD, Cancún desde $999 USD, Punta Cana desde $1,049 USD y Miami desde $999 USD. Separa hoy con el 50% de inicial en Cityland Travel (RUC 20614914239 · Los Olivos)."),
+  description: optimizarMetaDescriptionSEO("Paquetes turísticos Todo Incluido saliendo desde Lima: Medellín desde $589 USD, Cartagena desde $599 USD, Río de Janeiro desde $749 USD, Cancún desde $999 USD, Punta Cana desde $1,049 USD y Miami desde $999 USD. Separa hoy con un adelanto en Cityland Travel (RUC 20614914239 · Los Olivos)."),
   keywords: [
     "paquetes turisticos punta cana todo incluido desde lima",
     "paquetes a cancun todo incluido desde lima peru",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title:
       "Paquetes Todo Incluido: Punta Cana, Cancún, Colombia, Brasil y Miami desde Lima — Cityland Travel",
     description:
-      "Vuelos ida y vuelta + Hoteles y Resorts 5★ + Traslados y Tours. Viaja a Colombia y Brasil solo con DNI. Separa con el 50% de inicial.",
+      "Vuelos ida y vuelta + Hoteles y Resorts 5★ + Traslados y Tours. Viaja a Colombia y Brasil solo con DNI. Separa con un adelanto.",
     siteName: "Cityland Travel",
     locale: "es_PE",
     images: [
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     title:
       "Paquetes a Punta Cana, Cancún, Cartagena, Medellín, Río y Miami desde Lima — Cityland Travel",
     description:
-      "Vuelos confirmados + Resorts All Inclusive + Tours y Traslados saliendo desde Lima. Separa hoy con el 50% de inicial.",
+      "Vuelos confirmados + Resorts All Inclusive + Tours y Traslados saliendo desde Lima. Separa hoy con un adelanto.",
     images: ["https://citylandtravel.com/opengraph-image"],
   },
   other: {
@@ -147,7 +147,7 @@ const JSON_LD_CARIBE = {
           name: "¿Cómo separo mi paquete turístico en Cityland Travel?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Puedes congelar tu tarifa promocional hoy con el 50% de inicial en nuestra oficina física en Av. Antúnez de Mayolo N. 814, Los Olivos (Lima) o mediante cuentas bancarias empresariales de Cityland Group E.I.R.L. (RUC 20614914239).",
+            text: "Puedes congelar tu tarifa promocional hoy con un adelanto en nuestra oficina física en Av. Antúnez de Mayolo N. 814, Los Olivos (Lima) o mediante cuentas bancarias empresariales de Cityland Group E.I.R.L. (RUC 20614914239).",
           },
         },
       ],

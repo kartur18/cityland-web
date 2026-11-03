@@ -36,12 +36,12 @@ const HERO_POR_MODO: Record<
     badge: "🌍 Cityland Group E.I.R.L. · RUC 20614914239 · Atención en Los Olivos",
     h1: "Catálogo Oficial de Paquetes a Europa, Caribe y Perú",
     descripcion:
-      `Encuentra en segundos tu paquete migratorio a España desde ${formatoUSD(tarifasMigratorio("España").promo)} USD o a Italia y Francia desde ${formatoUSD(tarifasMigratorio("Italia").promo)} USD, solo ida (el plan cambia según tu fecha), o vacaciones Todo Incluido al Caribe y Perú. Separa hoy con el 50% de inicial.`,
+      `Encuentra en segundos tu paquete migratorio a España desde ${formatoUSD(tarifasMigratorio("España").promo)} USD o a Italia y Francia desde ${formatoUSD(tarifasMigratorio("Italia").promo)} USD, solo ida (el plan cambia según tu fecha), o vacaciones Todo Incluido al Caribe y Perú. Separa hoy con un adelanto.`,
     waTexto:
       "¡Hola Cityland Travel! Vi su catálogo de destinos y quiero cotizar mi próximo viaje.",
   },
   destinos: {
-    badge: "🌎 Destinos Internacionales y Nacionales · Separa con el 50%",
+    badge: "🌎 Destinos Internacionales y Nacionales · Separa con un adelanto",
     h1: "Destinos Turísticos y Migratorios desde Lima y Todo el Perú",
     descripcion:
       "Conoce nuestros paquetes completos a España, Italia, Francia, el Caribe Todo Incluido, Estados Unidos, Sudamérica y el interior del Perú con vuelos, seguro médico y hoteles confirmados.",

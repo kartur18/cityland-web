@@ -2,7 +2,7 @@
 export default function ProofBar() {
   const ITEMS = [
     { valor: "2 OFICINAS", label: "Atención presencial en Los Olivos" },
-    { valor: "SEPARA CON 50%", label: "El saldo lo pagas antes de viajar" },
+    { valor: "SEPARA CON ADELANTO", label: "El saldo lo pagas antes de viajar" },
     { valor: "BOLETA O FACTURA", label: "Comprobante electrónico SUNAT" },
     { valor: "RUC 20614914239", label: "Cityland Group E.I.R.L." },
   ];

@@ -143,7 +143,7 @@ const FAQS_ESPANA = [
   },
   {
     q: "¿Cómo puedo separar mi paquete y dónde queda la oficina?",
-    a: "Puedes separar cualquiera de los 4 planes con el 50% y pagar el saldo en cuotas antes de tu viaje. Te atendemos en nuestra oficina de Av. Antúnez de Mayolo 814, Los Olivos (Lima) o 100% por WhatsApp con contrato formal y RUC 20614914239.",
+    a: "Puedes separar cualquiera de los 4 planes con un adelanto y pagar el saldo en cuotas antes de tu viaje. Te atendemos en nuestra oficina de Av. Antúnez de Mayolo 814, Los Olivos (Lima) o 100% por WhatsApp con contrato formal y RUC 20614914239.",
   },
 ];
 
@@ -172,8 +172,8 @@ export default function EspanaLandingClient() {
               </h1>
 
               <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-7">
-                Pagas tu pasaje de ida y te armamos la carpeta del viaje: reserva de regreso, hotel, seguro y check-in. Puedes separar tu cupo con el{" "}
-                <strong className="text-[#0a1628]">50% de inicial</strong>.
+                Pagas tu pasaje de ida y te armamos la carpeta del viaje: reserva de regreso, hotel, seguro y check-in. Puedes separar tu cupo con un{" "}
+                <strong className="text-[#0a1628]">adelanto</strong>.
               </p>
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-7">
@@ -339,7 +339,7 @@ export default function EspanaLandingClient() {
                         <span className="text-xs font-bold text-slate-500">USD</span>
                       </div>
                       <span className="text-xs font-extrabold text-emerald-700 block mt-1">
-                        ✓ Separa con el 50% (desde ${p.separaCon} USD)
+                        ✓ Separa con un adelanto
                       </span>
                     </div>
 

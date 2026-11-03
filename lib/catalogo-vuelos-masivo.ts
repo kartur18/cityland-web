@@ -430,7 +430,7 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
           filtro: "paquete",
           subtitulo: esRetornoEuropa
             ? "Compra desde Europa con entrega de carpeta en Lima + Silla de Ruedas SSR WCHR"
-            : "Separa con el 50% y paga en cuotas sin intereses",
+            : "Separa con un adelanto y paga en cuotas sin intereses",
           precioPrincipal: `$${pPaquete}`,
           precioSecundario: esRetornoEuropa
             ? "Vuelo + Seguro Schengen 30.000€ + Revisión Carta Invitación / Ospitalità"
@@ -465,7 +465,7 @@ function construirRutaVuelo(s: SemillaRuta): RutaVueloSEO {
       pilares: [
         { titulo: `${s.codigoOrigen} → ${s.codigoDestino}`, sub: s.escala },
         { titulo: "100% en USD", sub: "Impuestos y tasas incluidas sin sorpresas" },
-        { titulo: "Separa con 50%", sub: "Congela tu tarifa hoy y paga en cuotas" },
+        { titulo: "Separa con un adelanto", sub: "Congela tu tarifa hoy y paga en cuotas" },
         { titulo: "RUC 20614914239", sub: "Agencia física formal en Los Olivos, Lima" },
       ],
       bannerFinal: {
@@ -784,7 +784,7 @@ function generarCatalogoMasivo(): RutaVueloSEO[] {
     ["solo-ida-migratorio", "Modalidad con Reserva de Retorno RF", -120, "Boleto desde Lima (LIM) + reserva de retorno activa y código PNR verificable"],
     ["ida-y-vuelta-confirmado", "Boleto Ida y Vuelta Confirmado", 0, "Pasaje redondo Lima (LIM) con fechas fijas emitidas y código PNR oficial"],
     ["tarifa-flexible-cambios", "Tarifa Flexible con Cambios", 65, "Boleto desde el Aeropuerto Jorge Chávez (LIM) con opción de reprogramación"],
-    ["preventa-50-por-ciento", "Preventa Separando con 50%", -40, "Congela hoy tu tarifa desde Lima (LIM) abonando el 50% de inicial"],
+    ["preventa-50-por-ciento", "Preventa Separando con un adelanto", -40, "Congela hoy tu tarifa desde Lima (LIM) con un adelanto"],
     ["viaje-familiar-asientos", "Tarifa Familiar Asientos Juntos", -20, "Asignación de asientos contiguos saliendo del Aeropuerto Jorge Chávez (LIM)"],
     ["adultos-mayores-asistencia", "Con Asistencia Especial en Aeropuerto", 0, "Incluye gestión de silla de ruedas (SSR) y acompañamiento en check-in desde Lima (LIM)"],
     ["con-seguro-internacional", "Vuelo + Seguro Médico Internacional", 35, "Boleto aéreo desde Lima (LIM) + póliza médica internacional sin deducible"],

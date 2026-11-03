@@ -319,7 +319,7 @@ const PERU: LandingEspana[] = [
       { t: "Con tu familia", d: "Si te alojas con ellos, el gasto en el Perú baja bastante: lo grande es el pasaje." },
     ],
     listaTitulo: "Para pagar menos",
-    lista: ["Compra con 2 o 3 meses de anticipación", "Evita del 15 al 24 de diciembre", "Compara la tarifa con maleta incluida", "Separa con el 50%"],
+    lista: ["Compra con 2 o 3 meses de anticipación", "Evita del 15 al 24 de diciembre", "Compara la tarifa con maleta incluida", "Separa con un adelanto"],
     faqs: [
       { q: "¿Cuánto cuesta un pasaje de Madrid a Lima?", a: `Ida y vuelta desde ${usd(MADRID_LIMA)} por persona en temporada baja, con impuestos.` },
       { q: "¿Hay vuelos directos de España a Perú?", a: "Sí, de Madrid a Lima con Iberia, LATAM, Air Europa y Plus Ultra. Desde otras ciudades se hace conexión." },

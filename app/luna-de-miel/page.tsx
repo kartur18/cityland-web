@@ -8,7 +8,7 @@ import { guiaLunaDeMiel } from "@/lib/guias-servicios";
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO("Paquetes de luna de miel 2026 todo incluido | Cityland"),
-  description: optimizarMetaDescriptionSEO("Paquetes románticos de Luna de Miel Todo Incluido en Resorts 5★ Solo Adultos (Punta Cana, Cancún, Cartagena y Santorini) y Viajes de Quinceañeras a Disney Orlando, Crucero y Europa. Separa con el 50% en Cityland Travel (RUC 20614914239)."),
+  description: optimizarMetaDescriptionSEO("Paquetes románticos de Luna de Miel Todo Incluido en Resorts 5★ Solo Adultos (Punta Cana, Cancún, Cartagena y Santorini) y Viajes de Quinceañeras a Disney Orlando, Crucero y Europa. Separa con un adelanto en Cityland Travel (RUC 20614914239)."),
   keywords: [
     "paquetes de luna de miel todo incluido desde lima",
     "viajes para parejas resorts solo adultos punta cana cancun",
@@ -51,7 +51,7 @@ const CONFIG_LUNA_DE_MIEL: ConfiguracionLandingAerolinea = {
   tituloDestacadoHero: "Todo Incluido desde Lima",
   descripcionHero:
     "Celebramos los momentos más importantes de tu vida con habitaciones de lujo frente al mar, atenciones románticas para recién casados y programas inolvidables de 15 años.",
-  negritaHero: "Separa hoy con el 50% de inicial y congela tu tarifa de temporada",
+  negritaHero: "Separa hoy con un adelanto y congela tu tarifa de temporada",
   ctaPrincipalTexto: "Cotizar con Asesora VIP",
   waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
@@ -95,7 +95,7 @@ const CONFIG_LUNA_DE_MIEL: ConfiguracionLandingAerolinea = {
       subtitulo: "5 Días / 4 Noches · Todo Incluido 24h",
       precioPrincipal: "$1,090",
       precioSecundario: "USD",
-      notaPrecio: "Separa con 50% · Incluye botella de espumante",
+      notaPrecio: "Separa con un adelanto · Incluye botella de espumante",
       tag: "#1 Recién Casados",
       tagBg: "bg-red-600 text-white",
       img: "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=85",
@@ -113,7 +113,7 @@ const CONFIG_LUNA_DE_MIEL: ConfiguracionLandingAerolinea = {
       subtitulo: "5 Días / 4 Noches · Todo Incluido 24h",
       precioPrincipal: "$1,090",
       precioSecundario: "USD",
-      notaPrecio: "Separa con 50% (desde $545 USD)",
+      notaPrecio: "Separa con un adelanto",
       tag: "Romántico & Playa",
       tagBg: "bg-sky-600 text-white",
       img: "https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=1200&q=85",
@@ -210,7 +210,7 @@ const CONFIG_LUNA_DE_MIEL: ConfiguracionLandingAerolinea = {
       sub: "Acompañamiento completo para quinceañeras que viajan con su familia",
     },
     {
-      titulo: "Pagos con el 50%",
+      titulo: "Pagos con un adelanto",
       sub: "Separa con anticipación tu fecha de boda o cumpleaños y paga en partes",
     },
   ],

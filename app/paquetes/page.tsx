@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   ...caribeMetadata,
   title: optimizarMetaTitleSEO("Paquetes Turísticos Internacionales Todo Incluido desde Lima | Cityland Travel"),
-  description: optimizarMetaDescriptionSEO("Paquetes turísticos completos desde Lima a Punta Cana, Cancún, Cartagena, San Andrés, Aruba, Medellín, Río de Janeiro y Europa. Separa con el 50% en Cityland Travel."),
+  description: optimizarMetaDescriptionSEO("Paquetes turísticos completos desde Lima a Punta Cana, Cancún, Cartagena, San Andrés, Aruba, Medellín, Río de Janeiro y Europa. Separa con un adelanto en Cityland Travel."),
   alternates: {
     canonical: "https://citylandtravel.com/paquetes",
   },

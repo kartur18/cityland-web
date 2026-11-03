@@ -193,7 +193,7 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
     vitrina: {
       pais: item.destinoOPais,
       etiquetaIzq: item.destinoOPais,
-      etiquetaDer: item.precioDesdeUSD >= 200 ? "Separa con 50%" : "Emisión Inmediata",
+      etiquetaDer: item.precioDesdeUSD >= 200 ? "Separa con un adelanto" : "Emisión Inmediata",
       img: item.imagenHero,
       alt: item.titulo,
       sobretitulo: item.etiquetaPrecio,
@@ -203,7 +203,7 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
       moneda: "",
       notaInferior:
         item.precioDesdeUSD >= 200
-          ? `Separa hoy con $${mitadPrecio.toLocaleString("en-US")} (50% inicial)`
+          ? `Separa hoy con un adelanto`
           : "Entrega inmediata verificada con respaldo RUC 20614914239",
       waNumero: "51944103890",
       waMensaje: item.waMensaje,
@@ -279,7 +279,7 @@ export default async function ViajeEspecializadoPage({ params }: Props) {
         resumenCorto: "Cotización personalizada según tus fechas de viaje",
         checks: [
           "Descuento preferencial viajando en pareja, familia o grupo",
-          "Facilidad de pago con el 50% de inicial y cuotas programadas",
+          "Facilidad de pago con un adelanto y cuotas programadas",
           "Atención presencial en Los Olivos o 100% digital por WhatsApp",
         ],
         waNumber: "51944103890",

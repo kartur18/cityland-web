@@ -45,7 +45,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
       checksHero: [
         "Vuelos directos de 5h 15m desde Lima",
         "Peruanos viajan sin visa (Solo Pasaporte)",
-        "Separa tu paquete All Inclusive con 50%",
+        "Separa tu paquete All Inclusive con un adelanto",
       ],
       vitrina: {
         pais: "República Dominicana",
@@ -146,7 +146,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
       pilares: [
         { titulo: "Sin Visa Consular", sub: "Solo necesitas pasaporte peruano vigente" },
         { titulo: "5h 15m Directo", sub: "Vuelos sin escalas desde el Jorge Chávez" },
-        { titulo: "Separa con 50%", sub: "Congela tu paquete y paga en cuotas" },
+        { titulo: "Separa con un adelanto", sub: "Congela tu paquete y paga en cuotas" },
         { titulo: "RUC 20614914239", sub: "Respaldo físico en Los Olivos, Lima" },
       ],
       bannerFinal: {
@@ -214,7 +214,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
       vitrina: {
         pais: "México",
         etiquetaIzq: "Vuelo Directo 5h 25m",
-        etiquetaDer: "Separa con 50%",
+        etiquetaDer: "Separa con un adelanto",
         img: "https://images.unsplash.com/photo-1552074284-5e88ef1aef18?auto=format&fit=crop&w=1000&q=85",
         alt: "Zona Hotelera de Cancún — Vuelos de Lima a Cancún",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Cancún International (CUN)",
@@ -310,7 +310,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
       pilares: [
         { titulo: "5h 25m Directo", sub: "Vuelos sin escalas Lima → Cancún" },
         { titulo: "All Inclusive 24h", sub: "Resorts frente al mar Caribe mexicano" },
-        { titulo: "Separa con 50%", sub: "Congela tu tarifa hoy mismo" },
+        { titulo: "Separa con un adelanto", sub: "Congela tu tarifa hoy mismo" },
         { titulo: "Asesoría Visa", sub: "Te ayudamos con tu visa mexicana o ingreso con Visa USA" },
       ],
       bannerFinal: {
@@ -473,7 +473,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
       pilares: [
         { titulo: "Solo con DNI", sub: "Sin necesidad de pasaporte ni visa" },
         { titulo: "3h 45m de Vuelo", sub: "El Caribe más cercano desde Lima" },
-        { titulo: "Separa con 50%", sub: "Reserva hoy y paga en cuotas" },
+        { titulo: "Separa con un adelanto", sub: "Reserva hoy y paga en cuotas" },
         { titulo: "RUC 20614914239", sub: "Agencia formal en Los Olivos, Lima" },
       ],
       bannerFinal: {
@@ -613,7 +613,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
       pilares: [
         { titulo: "Solo con DNI", sub: "Viaja sin pasaporte ni visa consular" },
         { titulo: "3h 20m Directo", sub: "Vuelo corto desde el Aeropuerto Jorge Chávez" },
-        { titulo: "Separa con 50%", sub: "Congela tu paquete turístico hoy" },
+        { titulo: "Separa con un adelanto", sub: "Congela tu paquete turístico hoy" },
         { titulo: "RUC 20614914239", sub: "Agencia formal en Los Olivos, Lima" },
       ],
       bannerFinal: {
@@ -675,7 +675,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
       checksHero: [
         "Salidas diarias de 1h 20m desde Lima",
         "Entradas a Machu Picchu y tren confirmados",
-        "Separa tu paquete con el 50% de inicial",
+        "Separa tu paquete con un adelanto",
       ],
       vitrina: {
         pais: "Perú",
@@ -776,7 +776,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
       pilares: [
         { titulo: "1h 20m de Vuelo", sub: "Salidas desde las 5:00 am todos los días" },
         { titulo: "Entradas a Machu Picchu", sub: "Te ayudamos a reservar tu boleto oficial según el cupo disponible" },
-        { titulo: "Separa con 50%", sub: "Reserva tu paquete y paga en cuotas" },
+        { titulo: "Separa con un adelanto", sub: "Reserva tu paquete y paga en cuotas" },
         { titulo: "RUC 20614914239", sub: "Agencia formal en Los Olivos, Lima" },
       ],
       bannerFinal: {
@@ -838,12 +838,12 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
       checksHero: [
         "Maleta de 23 kg enviada directo a Roma FCO",
         "Seguro Schengen de 30.000€ obligatorio incluido",
-        "Separa tu paquete con el 50% de inicial",
+        "Separa tu paquete con un adelanto",
       ],
       vitrina: {
         pais: "Italia",
         etiquetaIzq: "LIM → FCO",
-        etiquetaDer: "Separa con 50%",
+        etiquetaDer: "Separa con un adelanto",
         img: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1000&q=85",
         alt: "Coliseo Romano — Vuelos de Lima a Roma",
         sobretitulo: "Conexiones vía Madrid (Iberia/Air Europa) o Ámsterdam (KLM)",
@@ -916,7 +916,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
       pilares: [
         { titulo: "Equipaje Directo", sub: "Tu maleta de 23 kg llega hasta Roma FCO" },
         { titulo: "Seguro 30.000€", sub: "Cobertura Schengen obligatoria incluida" },
-        { titulo: "Separa con 50%", sub: "Congela tu tarifa promocional en dólares" },
+        { titulo: "Separa con un adelanto", sub: "Congela tu tarifa promocional en dólares" },
         { titulo: "RUC 20614914239", sub: "Agencia formal en Los Olivos, Lima" },
       ],
       bannerFinal: {
@@ -978,12 +978,12 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
       checksHero: [
         "Opciones de vuelo directo o 1 conexión corta",
         "Seguro médico Schengen 30.000€ incluido",
-        "Separa tu paquete con el 50% de inicial",
+        "Separa tu paquete con un adelanto",
       ],
       vitrina: {
         pais: "Francia",
         etiquetaIzq: "LIM → CDG",
-        etiquetaDer: "Separa con 50%",
+        etiquetaDer: "Separa con un adelanto",
         img: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1000&q=85",
         alt: "Torre Eiffel en París — Vuelos de Lima a París",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → París Charles de Gaulle (CDG)",
@@ -1056,7 +1056,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
       pilares: [
         { titulo: "Vuelos Confirmados", sub: "Código PNR oficial en Air France, KLM o Iberia" },
         { titulo: "Seguro 30.000€", sub: "Cobertura Schengen obligatoria incluida" },
-        { titulo: "Separa con 50%", sub: "Congela tu tarifa hoy y paga en cuotas" },
+        { titulo: "Separa con un adelanto", sub: "Congela tu tarifa hoy y paga en cuotas" },
         { titulo: "RUC 20614914239", sub: "Agencia formal en Los Olivos, Lima" },
       ],
       bannerFinal: {
@@ -1196,7 +1196,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
       pilares: [
         { titulo: "Solo con DNI", sub: "Ingresa a Brasil sin pasaporte ni visa" },
         { titulo: "5h 10m Directo", sub: "Vuelos directos desde Lima" },
-        { titulo: "Separa con 50%", sub: "Reserva tu paquete hoy y paga en cuotas" },
+        { titulo: "Separa con un adelanto", sub: "Reserva tu paquete hoy y paga en cuotas" },
         { titulo: "RUC 20614914239", sub: "Agencia formal en Los Olivos, Lima" },
       ],
       bannerFinal: {
@@ -1336,7 +1336,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
       pilares: [
         { titulo: "Solo con DNI", sub: "Viaja sin pasaporte ni visa" },
         { titulo: "3h 35m Directo", sub: "Múltiples frecuencias todos los días" },
-        { titulo: "Separa con 50%", sub: "Para todos nuestros paquetes con hotel" },
+        { titulo: "Separa con un adelanto", sub: "Para todos nuestros paquetes con hotel" },
         { titulo: "RUC 20614914239", sub: "Agencia formal en Los Olivos, Lima" },
       ],
       bannerFinal: {
@@ -1616,7 +1616,7 @@ export const RUTAS_VUELOS_LOTE_2: RutaVueloSEO[] = [
       pilares: [
         { titulo: "Sin Visa", sub: "Ingresa a Panamá solo con pasaporte vigente" },
         { titulo: "3h 40m Directo", sub: "Vuelos diarios sin escalas en Copa Airlines" },
-        { titulo: "Separa con 50%", sub: "Reserva tu paquete hoy y paga en cuotas" },
+        { titulo: "Separa con un adelanto", sub: "Reserva tu paquete hoy y paga en cuotas" },
         { titulo: "RUC 20614914239", sub: "Agencia formal en Los Olivos, Lima" },
       ],
       bannerFinal: {

@@ -32,7 +32,7 @@ export function metadataCircuito(c: Circuito): Metadata {
     [base, `${c.nombre}${c.tipo === "vuelo" ? "" : " sin vuelo"}: ${c.dias} días`, `${c.nombre}: ${c.dias} días`].find((x) => x.length <= 62) ??
     `${c.nombre}: ${c.dias} días`;
   const titulo = c.tipo === "vuelo" && corto.length < 38 ? `${corto} desde ${c.origen}` : corto;
-  const descripcion = `${etiquetaArmado(c)} ${c.nombre}, ${c.dias} días y ${c.noches} noches por ${listaCorta(c.paises, 4)}: ${listaCorta(c.ciudades, 5)}. ${textoTipo(c)}. Desde ${formatoUSD(precioCityland(c))} por persona. Separa con el 50%.`;
+  const descripcion = `${etiquetaArmado(c)} ${c.nombre}, ${c.dias} días y ${c.noches} noches por ${listaCorta(c.paises, 4)}: ${listaCorta(c.ciudades, 5)}. ${textoTipo(c)}. Desde ${formatoUSD(precioCityland(c))} por persona. Separa con un adelanto.`;
   return {
     title: tituloSeo(titulo),
     description: optimizarMetaDescriptionSEO(descripcion),
@@ -77,7 +77,7 @@ export default function CircuitoPagina({ circuito: c }: { circuito: Circuito }) 
         ? `Tiene ${salidas.length} ${salidas.length === 1 ? "salida" : "salidas"} con cupo bloqueado; las ves abajo con su precio. Te confirmamos el cupo de tu fecha por WhatsApp.`
         : `Salidas: ${c.salidas}. Te confirmamos los cupos de tu fecha por WhatsApp.`,
     },
-    { q: "¿Puedo separar mi viaje?", a: "Sí. Separas con el 50% y pagas el resto antes de viajar." },
+    { q: "¿Puedo separar mi viaje?", a: "Sí. Separas con un adelanto y pagas el resto antes de viajar." },
     {
       q: "¿El precio es por persona?",
       a: "Sí, es el precio desde por persona en habitación doble. Cambia según la fecha de salida, la categoría de hotel y la disponibilidad.",

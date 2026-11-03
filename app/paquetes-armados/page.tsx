@@ -28,7 +28,7 @@ const FOTO = obtenerGaleriaPorTexto("punta cana playa")[0];
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO("Paquetes armados desde Lima: Caribe, Europa, Turquía y más | Cityland"),
   description:
-    "Paquetes armados a Punta Cana, Aruba, Cancún, Cartagena, Río, Europa, Turquía, Egipto, Japón y más: fecha fija, vuelo, hotel y traslados listos. Separa con el 50%.",
+    "Paquetes armados a Punta Cana, Aruba, Cancún, Cartagena, Río, Europa, Turquía, Egipto, Japón y más: fecha fija, vuelo, hotel y traslados listos. Separa con un adelanto.",
   alternates: { canonical: URL },
   openGraph: {
     type: "website",

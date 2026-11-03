@@ -27,7 +27,7 @@ const HUB_PROVINCIAS: LandingEspana = {
   slug: "pasajes-a-madrid-desde-provincias",
   tituloSeo: "Pasajes a Madrid desde provincias del Perú",
   descripcion:
-    "Pasajes a Madrid desde Arequipa, Trujillo, Cusco, Iquitos, Piura y 12 ciudades más del Perú, con conexión en Lima en un solo boleto. Separa con el 50%.",
+    "Pasajes a Madrid desde Arequipa, Trujillo, Cusco, Iquitos, Piura y 12 ciudades más del Perú, con conexión en Lima en un solo boleto. Separa con un adelanto.",
   migas: "Pasajes desde provincias",
   sello: "Tu ciudad → Lima → Madrid",
   h1: "Pasajes a Madrid desde provincias",
@@ -63,7 +63,7 @@ const HUB_PROVINCIAS: LandingEspana = {
   faqs: [
     { q: "¿Hay vuelos directos de provincia a España?", a: "No. Todos los vuelos a España salen del aeropuerto Jorge Chávez de Lima. Desde provincia siempre haces conexión en Lima." },
     { q: "¿Cuánto tiempo de conexión necesito en Lima?", a: "En un solo boleto, la aerolínea fija un mínimo seguro. Con boletos separados, recomendamos 5 horas o más, porque tienes que recoger la maleta y volver a despacharla." },
-    { q: "¿Tengo que ir a la oficina de Lima?", a: "No. Te atendemos por WhatsApp, separas con el 50% y te mandamos el boleto a tu celular." },
+    { q: "¿Tengo que ir a la oficina de Lima?", a: "No. Te atendemos por WhatsApp, separas con un adelanto y te mandamos el boleto a tu celular." },
   ],
   enlaces: [
     { href: "/vuelos/lima-madrid", texto: "Vuelos Lima–Madrid" },
@@ -76,7 +76,7 @@ const VISITAR_FAMILIA: LandingEspana = {
   slug: "viajar-a-espana-a-visitar-familia",
   tituloSeo: "Viajar a España a visitar a tu familia",
   descripcion:
-    `Viaja a Madrid a visitar a tu familia: pasaje ida y vuelta, carta de invitación y bolsa de viaje explicados. Desde US$ ${PRECIO_IDA_VUELTA_MADRID.toLocaleString("en-US")}. Separa con el 50%.`,
+    `Viaja a Madrid a visitar a tu familia: pasaje ida y vuelta, carta de invitación y bolsa de viaje explicados. Desde US$ ${PRECIO_IDA_VUELTA_MADRID.toLocaleString("en-US")}. Separa con un adelanto.`,
   migas: "Visitar a tu familia",
   sello: "Lima → Madrid · Visita familiar",
   h1: "Viajar a España a visitar a tu familia",
@@ -138,7 +138,7 @@ const CON_NINOS: LandingEspana = {
   slug: "viajar-a-espana-con-ninos",
   tituloSeo: "Viajar a España con niños desde Perú",
   descripcion:
-    "Pasajes a Madrid para viajar con niños: tarifa de bebé y de niño, permiso notarial si viaja con un solo padre, pasaporte del menor y seguro. Separa con el 50%.",
+    "Pasajes a Madrid para viajar con niños: tarifa de bebé y de niño, permiso notarial si viaja con un solo padre, pasaporte del menor y seguro. Separa con un adelanto.",
   migas: "Viajar con niños",
   sello: "Lima → Madrid · En familia",
   h1: "Viajar a España con niños desde Perú",
@@ -184,7 +184,7 @@ const ADULTOS_MAYORES: LandingEspana = {
   slug: "viajar-a-espana-adultos-mayores",
   tituloSeo: "Viajar a España con adultos mayores",
   descripcion:
-    "Pasajes a Madrid para papás y abuelos: vuelo directo, silla de ruedas en el aeropuerto, seguro según la edad y check-in hecho por tu asesora. Separa con el 50%.",
+    "Pasajes a Madrid para papás y abuelos: vuelo directo, silla de ruedas en el aeropuerto, seguro según la edad y check-in hecho por tu asesora. Separa con un adelanto.",
   migas: "Adultos mayores",
   sello: "Lima → Madrid · Viaje tranquilo",
   h1: "Viajes a España para adultos mayores",
@@ -229,7 +229,7 @@ const PRIMER_VIAJE: LandingEspana = {
   slug: "primer-viaje-a-espana",
   tituloSeo: "Tu primer viaje a España desde Lima",
   descripcion:
-    "Primera vez que viajas a España: te acompañamos del pasaje al aeropuerto de Barajas, con lista de documentos, check-in y asesora por WhatsApp. Separa con el 50%.",
+    "Primera vez que viajas a España: te acompañamos del pasaje al aeropuerto de Barajas, con lista de documentos, check-in y asesora por WhatsApp. Separa con un adelanto.",
   migas: "Primer viaje",
   sello: "Lima → Madrid · Primera vez",
   h1: "Tu primer viaje a España, acompañado",
@@ -245,7 +245,7 @@ const PRIMER_VIAJE: LandingEspana = {
   puntosTitulo: "Tu viaje, paso a paso",
   puntos: [
     { t: "1. Pasaporte", d: "Revisa que esté vigente. Si no tienes, sácalo en Migraciones antes de comprar: el pasaje sale con tu nombre tal cual figura en él." },
-    { t: "2. Pasaje y documentos", d: "Eliges tu fecha, separas con el 50% y te mandamos la lista de documentos para tu carpeta de viaje." },
+    { t: "2. Pasaje y documentos", d: "Eliges tu fecha, separas con un adelanto y te mandamos la lista de documentos para tu carpeta de viaje." },
     { t: "3. El día del vuelo", d: "Llega al Jorge Chávez 3 horas antes. Tu asesora ya hizo el check-in: solo despachas tu maleta y pasas Migraciones." },
     { t: "4. Llegada a Barajas", d: "Pasas el control de pasaportes: la primera vez te registran las huellas y la foto. Luego recoges tu maleta y sales." },
   ],
@@ -274,7 +274,7 @@ const ESTUDIANTES: LandingEspana = {
   slug: "pasajes-para-estudiantes-a-espana",
   tituloSeo: "Pasajes para estudiantes a España",
   descripcion:
-    `Pasajes a Madrid para estudiar en España: solo ida con visado de estudios, maleta extra y fecha según tu matrícula. Desde US$ ${PRECIO_SOLO_IDA_MADRID} solo ida. Separa con el 50%.`,
+    `Pasajes a Madrid para estudiar en España: solo ida con visado de estudios, maleta extra y fecha según tu matrícula. Desde US$ ${PRECIO_SOLO_IDA_MADRID} solo ida. Separa con un adelanto.`,
   migas: "Estudiantes",
   sello: "Lima → Madrid · Estudios",
   h1: "Pasajes para estudiantes a España",
@@ -374,13 +374,13 @@ const MAS_BARATO: LandingEspana = {
   slug: "pasajes-baratos-lima-madrid",
   tituloSeo: "Pasajes baratos Lima Madrid: cuándo comprar",
   descripcion:
-    "Cuándo están más baratos los pasajes Lima–Madrid: meses de temporada baja, alta y media, con cuánta anticipación comprar y cómo separar con el 50%.",
+    "Cuándo están más baratos los pasajes Lima–Madrid: meses de temporada baja, alta y media, con cuánta anticipación comprar y cómo separar con un adelanto.",
   migas: "Pasajes baratos",
   sello: "Lima → Madrid · Mejor precio",
   h1: "Pasajes baratos de Lima a Madrid",
   bajada:
-    "El mismo vuelo puede costar varios cientos de dólares más según el mes. Te mostramos cuándo es temporada baja, cuánto antes comprar y te separamos la tarifa con el 50% para que no se te escape.",
-  chips: ["Temporada baja", "Separa con el 50%", "Precio de tu fecha"],
+    "El mismo vuelo puede costar varios cientos de dólares más según el mes. Te mostramos cuándo es temporada baja, cuánto antes comprar y te separamos la tarifa con un adelanto para que no se te escape.",
+  chips: ["Temporada baja", "Separa con un adelanto", "Precio de tu fecha"],
   foto: "/images/espana/plaza-mayor.jpg",
   etiquetaPrecio: "Lima–Madrid, ida y vuelta desde",
   precio: PRECIO_IDA_VUELTA_MADRID,
@@ -413,7 +413,7 @@ const MAS_BARATO: LandingEspana = {
   },
   faqs: [
     { q: "¿Cuál es el mes más barato para viajar a Madrid?", a: "Por lo general, febrero y noviembre. También la segunda quincena de enero, después del Día de Reyes." },
-    { q: "¿Cómo aseguro el precio que me cotizaron?", a: "Separando con el 50%. Las tarifas cambian todos los días: mientras antes separes, más fácil es mantener el precio de tu cotización." },
+    { q: "¿Cómo aseguro el precio que me cotizaron?", a: "Separando con un adelanto. Las tarifas cambian todos los días: mientras antes separes, más fácil es mantener el precio de tu cotización." },
     { q: "¿Es más barato comprar a última hora?", a: "Casi nunca en esta ruta. Los asientos baratos se venden primero y lo que queda al final suele ser más caro." },
   ],
   enlaces: [

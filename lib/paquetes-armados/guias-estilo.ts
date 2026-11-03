@@ -81,7 +81,7 @@ export const GUIAS_ESTILO: Record<string, GuiaEstilo> = {
       "Es temporada alta: las salidas de julio son de las primeras en llenarse.",
       "Los feriados del 23, 28 y 29 de julio te ahorran días de vacaciones.",
       "Para niños, confirma la tarifa infantil y si el hotel tiene club de niños.",
-      "Separa con el 50% y paga el saldo antes de viajar, sin pagar todo de golpe.",
+      "Separa con un adelanto y paga el saldo antes de viajar, sin pagar todo de golpe.",
     ],
   },
   "en-familia": {
@@ -136,7 +136,7 @@ export const GUIAS_ESTILO: Record<string, GuiaEstilo> = {
       "Las fechas fuera de vacaciones, feriados y fin de año son las más baratas.",
       "Compara las salidas del mismo programa: entre una fecha y otra puede haber cientos de dólares de diferencia.",
       "Elige el hotel de categoría más simple del programa; el recorrido y las visitas son los mismos.",
-      "Separa con el 50% apenas tengas la fecha: los cupos más baratos se venden primero.",
+      "Separa con un adelanto apenas tengas la fecha: los cupos más baratos se venden primero.",
     ],
   },
 };

@@ -69,7 +69,7 @@ const ORDEN: Record<GrupoItalia, Bloque[]> = {
 };
 
 const CHIP = "inline-flex items-center min-h-[44px] px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-sm font-bold text-[#0a1628]";
-const URGENCIA = "Las tarifas más baratas de cada vuelo se venden primero. Cotiza con tiempo y separa con el 50% para no perder el precio.";
+const URGENCIA = "Las tarifas más baratas de cada vuelo se venden primero. Cotiza con tiempo y separa con un adelanto para no perder el precio.";
 
 export default function PaginaItalia({ landing: l }: { landing: LandingItalia }) {
   const ruta = rutaLandingItalia(l);

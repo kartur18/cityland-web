@@ -98,7 +98,7 @@ export default async function Image() {
               marginTop: "16px",
             }}
           >
-            {["Separa con 50%", "Oficinas en Los Olivos", "Cotiza por WhatsApp"].map((t) => (
+            {["Separa con un adelanto", "Oficinas en Los Olivos", "Cotiza por WhatsApp"].map((t) => (
               <div
                 key={t}
                 style={{

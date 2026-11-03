@@ -83,7 +83,7 @@ function PortadaBoleto({ l, wa }: { l: LandingItalia; wa: string }) {
             <WhatsAppIcon size={20} />
             {l.boton}
           </a>
-          <p className="text-sm text-slate-600">Separas con el 50% y pagas el saldo antes de la emisión.</p>
+          <p className="text-sm text-slate-600">Separas con un adelanto y pagas el saldo antes de la emisión.</p>
         </div>
       </div>
     </section>

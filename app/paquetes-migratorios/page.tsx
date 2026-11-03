@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     title:
       "Paquetes Migratorios a España, Italia, Francia y Europa desde $699 USD | Cityland Travel",
     description:
-      "Pasaje de ida + reserva de regreso + reserva de hotel + seguro Schengen 30.000€ + check-in 24h antes. Separa con el 50%.",
+      "Pasaje de ida + reserva de regreso + reserva de hotel + seguro Schengen 30.000€ + check-in 24h antes. Separa con un adelanto.",
     images: [
       {
         url: `${URL_BASE_SEO}/images/destinos/madrid.webp`,
@@ -114,7 +114,7 @@ export default function PaquetesMigratoriosHubPage() {
       },
       {
         q: "¿Cuáles son los planes según la fecha de viaje?",
-        a: `Contamos con 4 planes oficiales según temporada: Plan Promo ($699 USD), Plan Smart ($799 USD), Plan Plus ($899 USD) y Plan Full con maleta de 23 kg ($999 USD) para España. Para Italia y Francia los planes van desde ${listaPreciosPlanes(tarifasMigratorio("Italia"))} USD. Todos se separan con el 50%.`,
+        a: `Contamos con 4 planes oficiales según temporada: Plan Promo ($699 USD), Plan Smart ($799 USD), Plan Plus ($899 USD) y Plan Full con maleta de 23 kg ($999 USD) para España. Para Italia y Francia los planes van desde ${listaPreciosPlanes(tarifasMigratorio("Italia"))} USD. Todos se separan con un adelanto.`,
       },
     ],
   });
@@ -163,8 +163,8 @@ export default function PaquetesMigratoriosHubPage() {
               </h1>
 
               <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-7">
-                Viaja desde Lima y provincias con tu carpeta de viaje armada: pasaje de ida, reserva de regreso, hotel y seguro. Separa tu cupo con el{" "}
-                <strong className="text-[#0a1628]">50% de inicial</strong>.
+                Viaja desde Lima y provincias con tu carpeta de viaje armada: pasaje de ida, reserva de regreso, hotel y seguro. Separa tu cupo con un{" "}
+                <strong className="text-[#0a1628]">adelanto</strong>.
               </p>
 
               <div className="flex flex-wrap items-center gap-3 mb-6">

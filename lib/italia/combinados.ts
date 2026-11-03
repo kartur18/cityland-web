@@ -32,7 +32,7 @@ const ENLACES = [
   { texto: "Viajes a Venecia", href: "/viajes-a/venecia" },
 ];
 
-const PAGO = { q: "¿Se puede pagar en partes?", a: "Sí. Separas con el 50% y pagas el saldo antes de viajar, por transferencia, Yape, Plin o tarjeta." };
+const PAGO = { q: "¿Se puede pagar en partes?", a: "Sí. Separas con un adelanto y pagas el saldo antes de viajar, por transferencia, Yape, Plin o tarjeta." };
 const TERRESTRE = {
   q: "¿Qué quiere decir «solo terrestre»?",
   a: "Que el precio incluye hoteles, bus, guía y las visitas del programa, pero no el vuelo desde Lima. Te cotizamos el pasaje aparte o el programa con vuelo incluido.",
@@ -136,7 +136,7 @@ function landingCombo(c: Combo): LandingItalia | null {
     slug: c.slug,
     grupo: "combinado",
     tituloSeo: c.titulo,
-    descripcion: `${c.h1}: ${paquetes.length} programas desde ${formatoUSD(precio)}. ${c.dias} Separa con el 50%.`,
+    descripcion: `${c.h1}: ${paquetes.length} programas desde ${formatoUSD(precio)}. ${c.dias} Separa con un adelanto.`,
     h1: c.h1,
     bajada: c.bajada,
     migas: nombre,

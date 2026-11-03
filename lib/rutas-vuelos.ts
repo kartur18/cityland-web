@@ -70,7 +70,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
       vitrina: {
         pais: "España",
         etiquetaIzq: "Ruta #1 a Europa",
-        etiquetaDer: "Separa con 50%",
+        etiquetaDer: "Separa con un adelanto",
         img: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1000&q=85",
         alt: "Gran Vía de Madrid — Vuelos de Lima a Madrid",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Madrid-Barajas (MAD)",
@@ -402,12 +402,12 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
       checksHero: [
         "Equipaje enviado directo Lima → Barcelona",
         "Seguro Schengen 30.000€ incluido en paquete",
-        "Separa tu cupo con el 50% de inicial",
+        "Separa tu cupo con un adelanto",
       ],
       vitrina: {
         pais: "España",
         etiquetaIzq: "LIM → BCN",
-        etiquetaDer: "Separa con 50%",
+        etiquetaDer: "Separa con un adelanto",
         img: "https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=1000&q=85",
         alt: "Sagrada Familia en Barcelona — Vuelos de Lima a Barcelona",
         sobretitulo: "Conexiones rápidas vía Madrid, Bogotá o São Paulo",
@@ -503,7 +503,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
       pilares: [
         { titulo: "Equipaje Directo", sub: "Tu maleta de 23 kg llega directo a Barcelona BCN" },
         { titulo: "Seguro 30.000€", sub: "Póliza Schengen obligatoria incluida" },
-        { titulo: "Separa con 50%", sub: "Congela tu tarifa promocional en dólares" },
+        { titulo: "Separa con un adelanto", sub: "Congela tu tarifa promocional en dólares" },
         { titulo: "Asesoría Experta", sub: "Te preparamos para tu escala en Barajas o El Prat" },
       ],
       bannerFinal: {
@@ -829,7 +829,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
       pilares: [
         { titulo: "5h 40m Directo", sub: "Vuelos sin escalas Lima → Miami todos los días" },
         { titulo: "Impuestos Incluidos", sub: "Tarifas transparentes expresadas en US$" },
-        { titulo: "Separa con 50%", sub: "Reserva tu paquete hoy y paga en cuotas" },
+        { titulo: "Separa con un adelanto", sub: "Reserva tu paquete hoy y paga en cuotas" },
         { titulo: "Trámite Visa USA", sub: "Área propia consular para solicitar o renovar tu B1/B2" },
       ],
       bannerFinal: {
@@ -992,7 +992,7 @@ const RUTAS_VUELOS_BASE: RutaVueloSEO[] = [
       pilares: [
         { titulo: "Solo con DNI", sub: "Ingresa a Argentina sin pasaporte ni visa" },
         { titulo: "4h 30m Directo", sub: "Salidas diarias en LATAM, Sky y Aerolíneas Arg." },
-        { titulo: "Separa con 50%", sub: "Reserva tu paquete hoy y paga en cuotas" },
+        { titulo: "Separa con un adelanto", sub: "Reserva tu paquete hoy y paga en cuotas" },
         { titulo: "RUC 20614914239", sub: "Agencia física en Los Olivos, Lima" },
       ],
       bannerFinal: {

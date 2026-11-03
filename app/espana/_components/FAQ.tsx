@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     question: "¿Cómo es la forma de pago?",
-    answer: "50% de adelanto para congelar tu tarifa y cupo aéreo, y el saldo antes del viaje. Aceptamos transferencia, Yape, Plin y tarjetas."
+    answer: "Un adelanto para congelar tu tarifa y cupo aéreo, y el saldo antes del viaje. Aceptamos transferencia, Yape, Plin y tarjetas."
   },
   {
     question: "¿Por qué la tarifa dice Desde $1,290?",

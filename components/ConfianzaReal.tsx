@@ -44,7 +44,7 @@ export default function ConfianzaReal() {
             <ul className="space-y-2.5 text-sm text-slate-600">
               <li className="flex gap-2">
                 <span className="text-emerald-600 font-extrabold">✓</span>
-                <span>Separas con el 50% y pagas el saldo antes de viajar.</span>
+                <span>Separas con un adelanto y pagas el saldo antes de viajar.</span>
               </li>
               <li className="flex gap-2">
                 <span className="text-emerald-600 font-extrabold">✓</span>

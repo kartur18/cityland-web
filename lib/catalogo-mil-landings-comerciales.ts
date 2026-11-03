@@ -173,7 +173,6 @@ function armarLandingComercial(params: {
   const faqs = params.faqs.map((f) => ({ q: limpiar(f.q), a: limpiar(f.a) }));
 
   const tituloCompleto = limpiar(`${tituloHero} ${tituloDestacado}`.trim());
-  const mitadBase = Math.max(20, Math.round(precioBase * 0.5));
   const msgPrincipal = `¡Hola Cityland Travel! Vi su promoción web de ${tituloCompleto} (Desde $${precioBase.toLocaleString("en-US")} USD) y deseo recibir una cotización personalizada.`;
 
   const fallbackRegion =
@@ -215,7 +214,7 @@ function armarLandingComercial(params: {
       vitrina: {
         pais: destinoOPais,
         etiquetaIzq: destinoOPais,
-        etiquetaDer: precioBase >= 180 ? "Separa con 50%" : "Emisión Inmediata",
+        etiquetaDer: precioBase >= 180 ? "Separa con un adelanto" : "Emisión Inmediata",
         img: f0,
         alt: tituloCompleto,
         sobretitulo: duracionOServicio,
@@ -225,7 +224,7 @@ function armarLandingComercial(params: {
         moneda: "USD",
         notaInferior:
           precioBase >= 180
-            ? `Separa hoy con $${mitadBase.toLocaleString("en-US")} (50% de inicial)`
+            ? `Separa hoy con un adelanto`
             : "Emisión oficial con factura o boleta electrónica SUNAT",
         waNumero: "51944103890",
         waMensaje: msgPrincipal,
@@ -311,7 +310,7 @@ function armarLandingComercial(params: {
           sub: "Reserva aérea y hotelera verificable en sistema",
         },
         {
-          titulo: "Separa con el 50%",
+          titulo: "Separa con un adelanto",
           sub: "Congela tu tarifa hoy y paga el saldo en cuotas",
         },
         {
@@ -426,7 +425,7 @@ const LANDINGS_CLUSTER_1: LandingComercialSEO[] = DESTINOS_MUNDIALES.flatMap((d)
       tituloHero: `Paquetes Turísticos a ${d.ciudad},`,
       tituloDestacado: d.pais,
       descripcionHero: `Viaja a ${d.ciudad} con boletos aéreos ida y vuelta, alojamiento seleccionado, traslados aeropuerto-hotel y excursiones principales incluidas.`,
-      negritaHero: "Separa tu paquete con el 50% de inicial y paga el saldo en cuotas sin intereses.",
+      negritaHero: "Separa tu paquete con un adelanto y paga el saldo en cuotas sin intereses.",
       destinoOPais: d.pais,
       precioBase: d.precioClasico,
       etiquetaVitrina: `Paquete Completo a ${d.ciudad} (${d.duracion})`,
@@ -470,8 +469,8 @@ const LANDINGS_CLUSTER_1: LandingComercialSEO[] = DESTINOS_MUNDIALES.flatMap((d)
           a: `Incluye boletos aéreos ida y vuelta desde Lima con impuestos, alojamiento en ${d.ciudad}, traslados aeropuerto-hotel-aeropuerto, tarjeta de asistencia médica y visitas guiadas según el programa elegido.`,
         },
         {
-          q: `¿Cómo puedo reservar mi viaje a ${d.ciudad} con el 50%?`,
-          a: `Puedes congelar tu tarifa promocional abonando el 50% en nuestra oficina de Los Olivos o por transferencia empresarial a nombre de Cityland Group E.I.R.L. (RUC 20614914239).`,
+          q: `¿Cómo puedo reservar mi viaje a ${d.ciudad} con un adelanto?`,
+          a: `Puedes congelar tu tarifa promocional con un adelanto en nuestra oficina de Los Olivos o por transferencia empresarial a nombre de Cityland Group E.I.R.L. (RUC 20614914239).`,
         },
       ],
     }),
@@ -502,7 +501,7 @@ const LANDINGS_CLUSTER_1: LandingComercialSEO[] = DESTINOS_MUNDIALES.flatMap((d)
       ],
       checksVip: [
         `Descuento adicional viajando en pareja, familia o grupo de amigos`,
-        `Facilidad de pago: separa con el 50% y completa en cuotas`,
+        `Facilidad de pago: separa con un adelanto y completa en cuotas`,
         `Respaldo formal con Boleta o Factura Electrónica RUC 20614914239`,
       ],
       tituloCard1: `Oferta Flash: Vuelo + Hotel Básico en ${d.ciudad}`,
@@ -609,7 +608,7 @@ const LANDINGS_CLUSTER_1: LandingComercialSEO[] = DESTINOS_MUNDIALES.flatMap((d)
         `Equipaje de mano y opción de maleta de bodega de 23 kg`,
       ],
       checksVip: [
-        `Separa tu combo Vuelo + Hotel con el 50% de inicial`,
+        `Separa tu combo Vuelo + Hotel con un adelanto`,
         `Paga con tarjetas Visa/Mastercard, transferencia BCP/BBVA/Interbank o Yape`,
         `Respaldo legal de Cityland Group E.I.R.L. (RUC 20614914239)`,
       ],
@@ -723,7 +722,7 @@ const MODALIDADES_RESORTS: {
     factorPrecio: 0.92,
     badge: "Tarifas Mayoristas de Agencia · Ahorra hasta 30%",
     desc: "Reservamos tu hotel o resort con tarifas negociadas de operador turístico más traslados y boletos aéreos confirmados.",
-    negrita: "Accede a tarifas mayoristas más bajas que buscadores online y congela tu reserva con el 50%.",
+    negrita: "Accede a tarifas mayoristas más bajas que buscadores online y congela tu reserva con un adelanto.",
     checksHero: (nombre) => [
       `Tarifa de operador mayorista en hoteles verificados de ${nombre}`,
       `Vuelo ida y vuelta desde Lima + noches de alojamiento con impuestos`,
@@ -763,12 +762,12 @@ const MODALIDADES_RESORTS: {
     tituloPre: "Ofertas Todo Incluido a",
     tituloPost: "Temporada 2026",
     factorPrecio: 0.95,
-    badge: "Preventa 2026 · Separa hoy con el 50% de inicial",
+    badge: "Preventa 2026 · Separa hoy con un adelanto",
     desc: "Asegura tus próximas vacaciones de sol y playa congelando el precio promocional de hoy con pagos flexibles.",
-    negrita: "Separa tus cupos aéreos y de resort con el 50% de inicial y completa el saldo en cuotas programadas.",
+    negrita: "Separa tus cupos aéreos y de resort con un adelanto y completa el saldo en cuotas programadas.",
     checksHero: (nombre) => [
       `Tarifa de preventa 2026 hacia ${nombre} con espacios aéreos bloqueados`,
-      `Separa hoy con el 50% y paga el resto antes de tu fecha de salida`,
+      `Separa hoy con un adelanto y paga el resto antes de tu fecha de salida`,
       `Todo Incluido: boletos aéreos, resort, alimentación 24h y traslados`,
     ],
   },
@@ -802,7 +801,7 @@ const LANDINGS_CLUSTER_2: LandingComercialSEO[] = DESTINOS_PLAYA_RESORTS.flatMap
       checksVip: [
         `Habitación Ocean View / Swim-Up o Suite Familiar`,
         `Tarifa preferencial para parejas, grupos de amigos y familias`,
-        `Separa con el 50% hoy en Cityland Travel (RUC 20614914239)`,
+        `Separa con un adelanto hoy en Cityland Travel (RUC 20614914239)`,
       ],
       tituloCard1: `${d.nombre} Resort 4★ Todo Incluido (Oferta)`,
       subCard1: "5 Días / 4 Noches · Vuelo + Resort 24h",
@@ -828,7 +827,7 @@ const LANDINGS_CLUSTER_2: LandingComercialSEO[] = DESTINOS_PLAYA_RESORTS.flatMap
         },
         {
           q: `¿Cómo puedo reservar mi viaje a ${d.nombre} en cuotas?`,
-          a: `Puedes congelar la tarifa Desde $${pBase.toLocaleString("en-US")} USD abonando el 50% de inicial en nuestra sede de Los Olivos o cuentas empresa BCP/BBVA/Interbank de Cityland Group E.I.R.L. (RUC 20614914239).`,
+          a: `Puedes congelar la tarifa Desde $${pBase.toLocaleString("en-US")} USD con un adelanto en nuestra sede de Los Olivos o cuentas empresa BCP/BBVA/Interbank de Cityland Group E.I.R.L. (RUC 20614914239).`,
         },
       ],
     });
@@ -892,7 +891,7 @@ const MODALIDADES_CRUCEROS: {
     desc: (nombre) => `Aprovecha nuestras salidas en promoción para el crucero ${nombre} con tarifas rebajadas por preventa y bloqueo de cabina garantizado.`,
     checksHero: [
       "Tarifa promocional de temporada con tasas e impuestos portuarios incluidos",
-      "Congela tu cabina hoy con el 50% de inicial y paga en cuotas",
+      "Congela tu cabina hoy con un adelanto y paga en cuotas",
       "Pensión completa a bordo: restaurantes principales, buffet y snacks",
     ],
   },
@@ -955,7 +954,7 @@ const LANDINGS_CLUSTER_3: LandingComercialSEO[] = RUTAS_CRUCEROS.flatMap((c) => 
       tituloHero: `${m.tituloPre}`,
       tituloDestacado: c.nombre,
       descripcionHero: m.desc(c.nombre),
-      negritaHero: `${c.requisito}. Separa tu cabina con el 50% de inicial en Cityland Travel.`,
+      negritaHero: `${c.requisito}. Separa tu cabina con un adelanto en Cityland Travel.`,
       destinoOPais: c.pais,
       precioBase: pBase,
       etiquetaVitrina: `${m.tituloPre} ${c.nombre}`,
@@ -1263,7 +1262,7 @@ const MODALIDADES_TOURS: {
     checksHero: [
       "Tarifa reducida por pasajero para familias, parejas y grupos de amigos",
       "Coordinación integral de entradas y transporte para todo el grupo",
-      "Facilidad para separar con el 50% de inicial y pagar el saldo antes del viaje",
+      "Facilidad para separar con un adelanto y pagar el saldo antes del viaje",
     ],
   },
   {
@@ -1726,13 +1725,13 @@ const VARIANTES_RELIGIOSOS_EVENTOS: {
   },
   {
     prefijo: "oferta",
-    etiqueta: "Preventa 2026 con 50% Inicial",
+    etiqueta: "Preventa 2026 con un adelanto Inicial",
     factor: 0.92,
-    desc: (titulo) => `Aprovecha la tarifa de Preventa 2026 para ${titulo}: congela hoy el precio promocional abonando el 50% de inicial y paga el saldo en cuotas.`,
+    desc: (titulo) => `Aprovecha la tarifa de Preventa 2026 para ${titulo}: congela hoy el precio promocional con un adelanto y paga el saldo en cuotas.`,
     negrita: "Ahorra reservando con anticipación en nuestra oficina de Los Olivos o por WhatsApp.",
     checksHero: [
       "Tarifa rebajada de preventa 2026 con espacios aéreos garantizados",
-      "Separa tu cupo con el 50% de inicial y abona en cuotas mensuales",
+      "Separa tu cupo con un adelanto y abona en cuotas mensuales",
       "Contrato formal y comprobante electrónico RUC 20614914239",
     ],
   },
@@ -1785,7 +1784,7 @@ const LANDINGS_CLUSTER_8: LandingComercialSEO[] = PROGRAMAS_RELIGIOSOS_EVENTOS.f
       checksPlus: [
         "Tarifas grupales preferenciales para parroquias, familias e invitados",
         "Atención especial en habitación para novios (Luna de Miel) o quinceañeras",
-        "Facilidad de pago: separa con el 50% y abona en cuotas mensuales",
+        "Facilidad de pago: separa con un adelanto y abona en cuotas mensuales",
       ],
       checksVip: [
         "Acompañamiento y orientación desde el Aeropuerto Jorge Chávez de Lima",
@@ -1793,7 +1792,7 @@ const LANDINGS_CLUSTER_8: LandingComercialSEO[] = PROGRAMAS_RELIGIOSOS_EVENTOS.f
         "Agencia formal registrada RUC 20614914239 con soporte 24/7",
       ],
       tituloCard1: `Modalidad Preventa — ${r.titulo}`,
-      subCard1: "Separa hoy con el 50% de inicial",
+      subCard1: "Separa hoy con un adelanto",
       precioCard1: Math.round(pBase * 0.94),
       tagCard1: "Preventa 2026",
       tituloCard2: `Programa Oficial Completo — ${r.titulo}`,
@@ -1816,7 +1815,7 @@ const LANDINGS_CLUSTER_8: LandingComercialSEO[] = PROGRAMAS_RELIGIOSOS_EVENTOS.f
         },
         {
           q: `¿Qué facilidades ofrecen para grupos o familias en ${r.titulo}?`,
-          a: `Ofrecemos tarifas grupales congeladas por contrato, facilidad de separar con el 50% de inicial y pagar en cuotas mensuales, y atención personalizada en nuestra oficina de Los Olivos.`,
+          a: `Ofrecemos tarifas grupales congeladas por contrato, facilidad de separar con un adelanto y pagar en cuotas mensuales, y atención personalizada en nuestra oficina de Los Olivos.`,
         },
       ],
     });

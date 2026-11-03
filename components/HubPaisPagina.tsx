@@ -220,7 +220,7 @@ export default function HubPaisPagina({ hub: h, extra }: { hub: HubPais; extra?:
       <WhatsAppFloat
         href={wa}
         titulo={desde !== undefined ? `${h.nombre} desde ${formatoUSD(desde)}` : undefined}
-        subtitulo="Cotiza por WhatsApp y separa con el 50%"
+        subtitulo="Cotiza por WhatsApp y separa con un adelanto"
       />
     </>
   );

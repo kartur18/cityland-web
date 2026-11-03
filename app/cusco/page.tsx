@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title:
       "Paquetes Turísticos a Cusco y Machu Picchu Todo Incluido desde Lima — Cityland Travel",
     description:
-      "Vuelos ida y vuelta + Hotel + Tren Turístico + Entradas a Machu Picchu, Valle Sagrado y Montaña de 7 Colores desde $499 USD. Separa hoy con el 50%.",
+      "Vuelos ida y vuelta + Hotel + Tren Turístico + Entradas a Machu Picchu, Valle Sagrado y Montaña de 7 Colores desde $499 USD. Separa hoy con un adelanto.",
     siteName: "Cityland Travel",
     locale: "es_PE",
     images: [

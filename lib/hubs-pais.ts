@@ -23,7 +23,7 @@ export interface HubPais {
   mensajeWhatsApp: string;
 }
 
-const PAGO = { q: "¿Se puede pagar en partes?", a: "Sí. Separas con el 50% y pagas el resto antes de viajar, por transferencia, Yape, Plin o tarjeta." };
+const PAGO = { q: "¿Se puede pagar en partes?", a: "Sí. Separas con un adelanto y pagas el resto antes de viajar, por transferencia, Yape, Plin o tarjeta." };
 const SCHENGEN =
   "Los peruanos no necesitan visa para viajar como turistas al espacio Schengen hasta 90 días: viajas con pasaporte vigente. En migración te pueden pedir el pasaje de regreso, el hotel, dinero para tu estadía y un seguro de viaje.";
 const SOLO_DNI = { texto: "Países a los que viajas solo con DNI", href: "/blog/destinos-internacionales-solo-con-dni-peruanos" };
@@ -36,7 +36,7 @@ export const HUBS_PAIS: Readonly<Record<string, HubPais>> = {
     h1: "Paquetes a Brasil desde Lima",
     tituloSeo: "Paquetes a Brasil desde Lima: Río y más",
     descripcion:
-      "Paquetes a Brasil desde Lima con vuelo y hotel: Río de Janeiro, Búzios, Florianópolis, Salvador de Bahía y Gramado. Viajas solo con DNI. Separa con el 50%.",
+      "Paquetes a Brasil desde Lima con vuelo y hotel: Río de Janeiro, Búzios, Florianópolis, Salvador de Bahía y Gramado. Viajas solo con DNI. Separa con un adelanto.",
     intro:
       "Playas, samba y naturaleza a pocas horas de Lima. Elige tu destino en Brasil y te cotizamos el paquete con vuelo, hotel y traslados.",
     documentos: "Los peruanos viajan a Brasil con su DNI vigente o con pasaporte, sin visa.",
@@ -66,7 +66,7 @@ export const HUBS_PAIS: Readonly<Record<string, HubPais>> = {
     h1: "Paquetes a Argentina desde Lima",
     tituloSeo: "Paquetes a Argentina desde Lima",
     descripcion:
-      "Paquetes a Argentina desde Lima: Buenos Aires, Bariloche, Mendoza, El Calafate, Salta e Iguazú, con vuelo y hotel. Viajas solo con DNI. Separa con el 50%.",
+      "Paquetes a Argentina desde Lima: Buenos Aires, Bariloche, Mendoza, El Calafate, Salta e Iguazú, con vuelo y hotel. Viajas solo con DNI. Separa con un adelanto.",
     intro:
       "De la ciudad de Buenos Aires a los lagos de Bariloche, los glaciares de El Calafate o los viñedos de Mendoza. Te armamos el paquete con vuelo, hotel y traslados.",
     documentos: "Los peruanos viajan a Argentina con su DNI vigente o con pasaporte, sin visa.",
@@ -149,7 +149,7 @@ export const HUBS_PAIS: Readonly<Record<string, HubPais>> = {
     h1: "Paquetes a Punta Cana todo incluido desde Lima",
     tituloSeo: "Paquetes a Punta Cana todo incluido",
     descripcion:
-      "Paquetes a Punta Cana todo incluido desde Lima: vuelo, resort frente al mar con comidas y bebidas, y traslados. Sin visa para peruanos. Separa con el 50%.",
+      "Paquetes a Punta Cana todo incluido desde Lima: vuelo, resort frente al mar con comidas y bebidas, y traslados. Sin visa para peruanos. Separa con un adelanto.",
     intro:
       "Punta Cana es el todo incluido más pedido desde Lima: resorts frente al mar en Bávaro con comidas y bebidas incluidas. También Bayahibe, Samaná y Puerto Plata.",
     documentos:
@@ -205,7 +205,7 @@ export const HUBS_PAIS: Readonly<Record<string, HubPais>> = {
     h1: "Paquetes a Chile desde Lima",
     tituloSeo: "Paquetes a Chile desde Lima con DNI",
     descripcion:
-      "Paquetes a Chile desde Lima: Santiago, Viña del Mar, Valle Nevado y San Pedro de Atacama, con vuelo y hotel. Viajas solo con DNI. Separa con el 50%.",
+      "Paquetes a Chile desde Lima: Santiago, Viña del Mar, Valle Nevado y San Pedro de Atacama, con vuelo y hotel. Viajas solo con DNI. Separa con un adelanto.",
     intro:
       "Santiago y la costa de Viña del Mar, la nieve de Valle Nevado o el desierto de Atacama. Te cotizamos el paquete con vuelo, hotel y traslados.",
     documentos: "Los peruanos viajan a Chile con su DNI vigente o con pasaporte, sin visa.",
@@ -230,7 +230,7 @@ export const HUBS_PAIS: Readonly<Record<string, HubPais>> = {
     h1: "Paquetes a Cartagena desde Lima",
     tituloSeo: "Paquetes a Cartagena desde Lima, solo DNI",
     descripcion:
-      "Paquetes a Cartagena de Indias desde Lima con vuelo, hotel y traslados: Ciudad Amurallada, Islas del Rosario y Barú. Viajas solo con DNI. Separa con el 50%.",
+      "Paquetes a Cartagena de Indias desde Lima con vuelo, hotel y traslados: Ciudad Amurallada, Islas del Rosario y Barú. Viajas solo con DNI. Separa con un adelanto.",
     intro:
       "Cartagena es el Caribe más cerca de Lima: la Ciudad Amurallada, las playas de Barú y las Islas del Rosario, y puedes viajar solo con tu DNI.",
     documentos: "Los peruanos pueden viajar a Colombia solo con su DNI vigente, sin pasaporte ni visa.",
@@ -256,7 +256,7 @@ export const HUBS_PAIS: Readonly<Record<string, HubPais>> = {
     h1: "Paquetes a San Andrés todo incluido desde Lima",
     tituloSeo: "Paquetes a San Andrés todo incluido",
     descripcion:
-      "Paquetes a San Andrés desde Lima con vuelo, hotel todo incluido y traslados: el mar de siete colores, Johnny Cay y el Acuario. Viajas con DNI. Separa con el 50%.",
+      "Paquetes a San Andrés desde Lima con vuelo, hotel todo incluido y traslados: el mar de siete colores, Johnny Cay y el Acuario. Viajas con DNI. Separa con un adelanto.",
     intro: "San Andrés es la isla del mar de siete colores: hoteles todo incluido, Johnny Cay, el Acuario y la vuelta a la isla.",
     documentos:
       "Los peruanos pueden viajar a Colombia solo con su DNI vigente. Para entrar a la isla se paga además una tarjeta de turismo que cobra San Andrés.",
@@ -281,7 +281,7 @@ export const HUBS_PAIS: Readonly<Record<string, HubPais>> = {
     h1: "Paquetes a Cancún todo incluido desde Lima",
     tituloSeo: "Paquetes a Cancún todo incluido desde Lima",
     descripcion:
-      "Paquetes a Cancún y la Riviera Maya todo incluido desde Lima: vuelo, resort frente al mar, traslados y parques como Xcaret. Separa con el 50%.",
+      "Paquetes a Cancún y la Riviera Maya todo incluido desde Lima: vuelo, resort frente al mar, traslados y parques como Xcaret. Separa con un adelanto.",
     intro: "Cancún y la Riviera Maya: resorts todo incluido frente al mar Caribe, Tulum, Playa del Carmen y los parques de Xcaret.",
     documentos:
       "Desde 2024 México pide visa a los peruanos. Si tienes visa vigente de Estados Unidos, Canadá, Reino Unido, Japón o del espacio Schengen, puedes entrar sin visa mexicana. Te lo confirmamos al cotizar.",
@@ -307,7 +307,7 @@ export const HUBS_PAIS: Readonly<Record<string, HubPais>> = {
     h1: "Paquetes a Aruba y Curazao desde Lima",
     tituloSeo: "Paquetes a Aruba y Curazao desde Lima",
     descripcion:
-      "Paquetes a Aruba y Curazao desde Lima con vuelo, hotel en Palm Beach o Eagle Beach y traslados. Sin visa para peruanos. Separa con el 50%.",
+      "Paquetes a Aruba y Curazao desde Lima con vuelo, hotel en Palm Beach o Eagle Beach y traslados. Sin visa para peruanos. Separa con un adelanto.",
     intro: "Aruba, la isla feliz, con las playas de Eagle Beach y Palm Beach, y Curazao con sus casitas de colores en Willemstad.",
     documentos:
       "Los peruanos no necesitan visa para Aruba como turistas: viajas con pasaporte vigente y, antes de llegar, llenas en línea la tarjeta de embarque y desembarque (ED Card). Te lo confirmamos al cotizar.",
@@ -332,7 +332,7 @@ export const HUBS_PAIS: Readonly<Record<string, HubPais>> = {
     h1: "Paquetes a Panamá desde Lima",
     tituloSeo: "Paquetes a Panamá desde Lima: compras y playa",
     descripcion:
-      "Paquetes a Panamá desde Lima: compras, el Canal, San Blas, Bocas del Toro, Isla Contadora y cruceros por el Caribe. Sin visa para peruanos. Separa con el 50%.",
+      "Paquetes a Panamá desde Lima: compras, el Canal, San Blas, Bocas del Toro, Isla Contadora y cruceros por el Caribe. Sin visa para peruanos. Separa con un adelanto.",
     intro: "Panamá es compras, el Canal y playa en un solo viaje: centros comerciales, el Casco Antiguo, San Blas e Isla Contadora.",
     documentos:
       "Los peruanos no necesitan visa para Panamá como turistas: viajas con pasaporte vigente. En migración te pueden pedir el boleto de regreso y que muestres dinero para tu estadía.",
@@ -357,7 +357,7 @@ export const HUBS_PAIS: Readonly<Record<string, HubPais>> = {
     h1: "Paquetes a Miami desde Lima",
     tituloSeo: "Paquetes a Miami desde Lima: compras y playa",
     descripcion:
-      "Paquetes a Miami desde Lima: vuelo, hotel, compras en Dolphin Mall y Sawgrass, South Beach, combinados con Orlando y cruceros a las Bahamas. Separa con el 50%.",
+      "Paquetes a Miami desde Lima: vuelo, hotel, compras en Dolphin Mall y Sawgrass, South Beach, combinados con Orlando y cruceros a las Bahamas. Separa con un adelanto.",
     intro:
       "Miami es playa, compras y el punto de partida para Orlando y los cruceros a las Bahamas. Te armamos el viaje con vuelo, hotel y traslados.",
     documentos:
@@ -382,7 +382,7 @@ export const HUBS_PAIS: Readonly<Record<string, HubPais>> = {
     h1: "Paquetes turísticos a Italia desde Lima",
     tituloSeo: "Paquetes turísticos a Italia desde Lima",
     descripcion:
-      "Paquetes y circuitos a Italia desde Lima: Roma, Florencia, Venecia, Milán y la Costa Amalfitana, solos o en un Eurotrip. Sin visa para peruanos. Separa con el 50%.",
+      "Paquetes y circuitos a Italia desde Lima: Roma, Florencia, Venecia, Milán y la Costa Amalfitana, solos o en un Eurotrip. Sin visa para peruanos. Separa con un adelanto.",
     intro:
       "Roma, Florencia, Venecia y la Costa Amalfitana: viaja solo a Italia o combínala con España, Francia y Suiza en un circuito por Europa.",
     documentos: SCHENGEN,
@@ -407,7 +407,7 @@ export const HUBS_PAIS: Readonly<Record<string, HubPais>> = {
     h1: "Paquetes turísticos a París y Francia desde Lima",
     tituloSeo: "Paquetes a París y Francia desde Lima",
     descripcion:
-      "Paquetes a París desde Lima: Torre Eiffel, Louvre, Disneyland París y la Costa Azul, solos o en un circuito por Europa. Sin visa para peruanos. Separa con el 50%.",
+      "Paquetes a París desde Lima: Torre Eiffel, Louvre, Disneyland París y la Costa Azul, solos o en un circuito por Europa. Sin visa para peruanos. Separa con un adelanto.",
     intro:
       "París, Disneyland París para la familia y la Costa Azul: viaja solo a Francia o combínala con España e Italia en un circuito por Europa.",
     documentos: SCHENGEN,
@@ -431,7 +431,7 @@ export const HUBS_PAIS: Readonly<Record<string, HubPais>> = {
     h1: "Paquetes turísticos en el Perú desde Lima",
     tituloSeo: "Paquetes turísticos en el Perú desde Lima",
     descripcion:
-      "Paquetes turísticos nacionales desde Lima: Cusco y Machu Picchu, Tarapoto, Cajamarca, Huaraz, Arequipa, Puno, Iquitos, Máncora, Punta Sal y Paracas. Solo con DNI. Separa con el 50%.",
+      "Paquetes turísticos nacionales desde Lima: Cusco y Machu Picchu, Tarapoto, Cajamarca, Huaraz, Arequipa, Puno, Iquitos, Máncora, Punta Sal y Paracas. Solo con DNI. Separa con un adelanto.",
     intro:
       "Todos nuestros paquetes por el Perú en un solo lugar: sierra, selva y playa, con vuelo o bus, hotel y tours. Elige tu destino y te lo cotizamos por WhatsApp.",
     documentos: "Para viajar dentro del Perú solo necesitas tu DNI. Los menores que viajan sin sus padres necesitan permiso notarial.",
@@ -461,7 +461,7 @@ export const HUBS_PAIS: Readonly<Record<string, HubPais>> = {
     h1: "Paquetes todo incluido desde Lima",
     tituloSeo: "Paquetes todo incluido desde Lima",
     descripcion:
-      "Paquetes todo incluido desde Lima: Punta Cana, Cancún, Riviera Maya, San Andrés, Aruba, Curazao y Punta Sal. Vuelo, resort con comidas y bebidas y traslados. Separa con el 50%.",
+      "Paquetes todo incluido desde Lima: Punta Cana, Cancún, Riviera Maya, San Andrés, Aruba, Curazao y Punta Sal. Vuelo, resort con comidas y bebidas y traslados. Separa con un adelanto.",
     intro:
       "Resorts frente al mar donde las comidas y las bebidas ya están pagadas: solo te preocupas de descansar. Elige tu playa y te cotizamos vuelo, hotel y traslados.",
     documentos:
@@ -491,7 +491,7 @@ export const HUBS_PAIS: Readonly<Record<string, HubPais>> = {
     h1: "Paquetes turísticos a España desde Lima",
     tituloSeo: "Paquetes turísticos a España desde Lima",
     descripcion:
-      "Paquetes a España con vuelo y hotel desde Lima: Barcelona, Valencia, Sevilla, Málaga, Bilbao, Mallorca, Tenerife y Galicia, y Eurotrips de 17 días. Sin visa. Separa con el 50%.",
+      "Paquetes a España con vuelo y hotel desde Lima: Barcelona, Valencia, Sevilla, Málaga, Bilbao, Mallorca, Tenerife y Galicia, y Eurotrips de 17 días. Sin visa. Separa con un adelanto.",
     intro:
       "Vacaciones en España con vuelo de ida y vuelta, hotel y traslados: ciudades, playas del Mediterráneo, islas y circuitos por Europa. Si buscas viajar solo de ida, mira nuestro paquete migratorio.",
     documentos:

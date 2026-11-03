@@ -25,7 +25,7 @@ import { safeJsonLd } from "@/lib/seguridad-http";
 // largo de la página (tarjeta, chat, atajos, FAQ, cierre, barra del celular) y nunca van dos iguales juntos.
 
 const CONFIANZA_PASAJES = [
-  { t: "Separas con el 50%", d: "y pagas el saldo antes de viajar", i: "M4 7h16v10H4zM4 10h16" },
+  { t: "Separas con un adelanto", d: "y pagas el saldo antes de viajar", i: "M4 7h16v10H4zM4 10h16" },
   { t: "Check-in por tu asesora", d: "te mandamos la tarjeta de embarque", i: "M5 6h14v13H5zM5 10h14M9 4v4M15 4v4" },
   { t: "Te atiende una asesora", d: "por WhatsApp, de la cotización al regreso", i: "M5 5h14v10H9l-4 4z" },
   { t: "2 oficinas en Los Olivos", d: "agencia con local físico en Lima", i: "M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9v2" },
@@ -34,7 +34,7 @@ const CONFIANZA_PASAJES = [
 const PASOS_PASAJE = [
   { t: "Escríbenos tu fecha", d: "Por WhatsApp, con cuántos viajan y desde qué ciudad salen." },
   { t: "Te mandamos las opciones", d: "Aerolínea, horario, maleta y precio de cada una, por escrito." },
-  { t: "Separa con el 50%", d: "El saldo lo pagas antes de la emisión. El boleto te llega al celular." },
+  { t: "Separa con un adelanto", d: "El saldo lo pagas antes de la emisión. El boleto te llega al celular." },
 ];
 
 export function metadataLandingEspana(l: LandingEspana): Metadata {
@@ -126,7 +126,7 @@ function esquema(l: LandingEspana, url: string) {
   };
 }
 
-const URGENCIA = "Las tarifas más baratas de cada vuelo se venden primero. Mientras antes separes con el 50%, más fácil es mantener el precio de tu cotización.";
+const URGENCIA = "Las tarifas más baratas de cada vuelo se venden primero. Mientras antes separes con un adelanto, más fácil es mantener el precio de tu cotización.";
 
 const CHIP = "inline-flex items-center min-h-[44px] px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-sm font-bold text-[#0a1628]";
 
@@ -182,7 +182,7 @@ export default function LandingEspanaPagina({ landing: l, hermanas = LANDINGS_ES
               wa={wa}
               boton={l.boton}
               ancla="Ver lo que tienes que saber"
-              nota="Separas con el 50% y pagas el saldo antes de la emisión"
+              nota="Separas con un adelanto y pagas el saldo antes de la emisión"
             />
           </div>
 
@@ -251,7 +251,7 @@ export default function LandingEspanaPagina({ landing: l, hermanas = LANDINGS_ES
       </main>
       <PorQueCityland destino="España" />
       <Footer />
-      <WhatsAppFloat href={waEspana(ruta, l.mensaje, "Barra móvil")} titulo={`${l.migas} · desde ${formatoUSD(l.precio)}`} subtitulo="Separa con el 50% por WhatsApp" />
+      <WhatsAppFloat href={waEspana(ruta, l.mensaje, "Barra móvil")} titulo={`${l.migas} · desde ${formatoUSD(l.precio)}`} subtitulo="Separa con un adelanto por WhatsApp" />
     </>
   );
 }

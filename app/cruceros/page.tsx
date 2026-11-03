@@ -8,7 +8,7 @@ import { GUIA_CRUCEROS } from "@/lib/guia-cruceros";
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO("Cruceros Todo Incluido Sin Visa desde Panamá, Cartagena, Miami y Europa | Cityland Travel"),
-  description: optimizarMetaDescriptionSEO("Cruceros Royal Caribbean, MSC y Norwegian saliendo desde Lima: Crucero Caribe Sur sin visa americana (saliendo de Panamá o Cartagena) desde $1,090 USD, Bahamas desde Miami y Mediterráneo por Europa. Separa con el 50% en Cityland Travel (RUC 20614914239)."),
+  description: optimizarMetaDescriptionSEO("Cruceros Royal Caribbean, MSC y Norwegian saliendo desde Lima: Crucero Caribe Sur sin visa americana (saliendo de Panamá o Cartagena) desde $1,090 USD, Bahamas desde Miami y Mediterráneo por Europa. Separa con un adelanto en Cityland Travel (RUC 20614914239)."),
   keywords: [
     "cruceros sin visa para peruanos 2026",
     "crucero por el caribe desde panama y cartagena",
@@ -52,7 +52,7 @@ const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
   tituloDestacadoHero: "Caribe, Bahamas y Europa",
   descripcionHero:
     "Despierta cada mañana en un país distinto con restaurantes buffet y a la carta, piscinas, teatro estilo Broadway y vuelos desde Lima.",
-  negritaHero: "Viaja sin visa americana saliendo desde Panamá o Cartagena y separa con el 50%",
+  negritaHero: "Viaja sin visa americana saliendo desde Panamá o Cartagena y separa con un adelanto",
   ctaPrincipalTexto: "Cotizar mi Crucero por WhatsApp",
   waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
@@ -60,7 +60,7 @@ const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
   checksHero: [
     "Rutas Sin Visa Americana (Panamá y Cartagena)",
     "Pensión Completa + Shows a Bordo",
-    "Separa tu Cabina con el 50%",
+    "Separa tu Cabina con un adelanto",
   ],
   vitrina: {
     pais: "Panamá",
@@ -73,7 +73,7 @@ const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
     labelPrecio: "Cabina + Impuestos desde",
     precio: "$1,090",
     moneda: "USD",
-    notaInferior: "Separa hoy con 50% ($545 USD)",
+    notaInferior: "Separa hoy con un adelanto",
     waNumero: "51944103890",
     waMensaje:
       "¡Hola Cityland Travel! Deseo cotizar el Crucero Caribe Sur Sin Visa (Panamá, Cartagena, Aruba y Curazao) desde $1,090 USD.",
@@ -97,7 +97,7 @@ const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
       subtitulo: "8 Días / 7 Noches · Royal Caribbean",
       precioPrincipal: "$1,090",
       precioSecundario: "USD",
-      notaPrecio: "Sin Visa USA · Separa con $545 USD",
+      notaPrecio: "Sin Visa USA · Separa con un adelanto",
       tag: "#1 Sin Visa USA",
       tagBg: "bg-red-600 text-white",
       img: "https://images.unsplash.com/photo-1580541631950-7282082b53ce?w=1200&q=85",
@@ -115,7 +115,7 @@ const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
       subtitulo: "8 Días / 7 Noches · MSC Cruceros",
       precioPrincipal: "$990",
       precioSecundario: "USD",
-      notaPrecio: "Viaja solo con DNI · Separa con 50%",
+      notaPrecio: "Viaja solo con DNI · Separa con un adelanto",
       tag: "Viaja Solo con DNI",
       tagBg: "bg-emerald-600 text-white",
       img: "https://images.unsplash.com/photo-1599640842225-85d111c60e6b?w=1200&q=85",
@@ -133,7 +133,7 @@ const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
       subtitulo: "5 Días / 4 Noches · Royal Caribbean",
       precioPrincipal: "$890",
       precioSecundario: "USD",
-      notaPrecio: "Requiere Visa USA · Separa con $445 USD",
+      notaPrecio: "Requiere Visa USA · Separa con un adelanto",
       tag: "Isla Privada CocoCay",
       tagBg: "bg-sky-600 text-white",
       img: "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=1200&q=85",
@@ -151,7 +151,7 @@ const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
       subtitulo: "8 Días / 7 Noches · MSC / Costa",
       precioPrincipal: "$1,490",
       precioSecundario: "USD",
-      notaPrecio: "Sin Visa Consular · Separa con 50%",
+      notaPrecio: "Sin Visa Consular · Separa con un adelanto",
       tag: "Europa en Crucero",
       tagBg: "bg-amber-600 text-white",
       img: "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&q=85",
@@ -212,7 +212,7 @@ const CONFIG_CRUCEROS: ConfiguracionLandingAerolinea = {
       sub: "Armamos tu paquete completo con boleto aéreo Lima–Puerto–Lima",
     },
     {
-      titulo: "Separa con 50%",
+      titulo: "Separa con un adelanto",
       sub: "Elige tu cabina interior, vista al mar o con balcón y congela tu tarifa",
     },
   ],

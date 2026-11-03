@@ -166,7 +166,7 @@ export default async function AgenciaLocalSlugPage({ params }: Props) {
                 <p>
                   {agencia.tipoZona === "provincia"
                     ? `Sí. Coordinamos tu itinerario desde ${agencia.zona} (${agencia.region}) hacia el Aeropuerto Internacional Jorge Chávez (LIM) para conectar con tus vuelos a España, Europa, el Caribe o Estados Unidos con tiempos de escala seguros.`
-                    : `Puedes separar tus paquetes internacionales o nacionales con el 50% de inicial mediante cuentas empresariales BCP, BBVA, Interbank, Yape, Plin o tarjeta, y programar el saldo antes de tu viaje.`}
+                    : `Puedes separar tus paquetes internacionales o nacionales con un adelanto mediante cuentas empresariales BCP, BBVA, Interbank, Yape, Plin o tarjeta, y programar el saldo antes de tu viaje.`}
                 </p>
               </div>
             </div>

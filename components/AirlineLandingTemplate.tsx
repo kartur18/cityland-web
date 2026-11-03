@@ -559,7 +559,7 @@ export default function AirlineLandingTemplate({
                         </div>
                         <span className="text-[11px] font-semibold text-emerald-700 block mt-1">
                           {textoPrecio(
-                            esInicial ? `Separa con ${item.precioSecundario} (50% inicial)` : item.notaPrecio
+                            esInicial ? `Separa con un adelanto` : item.notaPrecio
                           )}
                         </span>
                       </div>

@@ -28,7 +28,7 @@ const PREGUNTAS = [
   { q: "¿Atienden los sábados?", a: `Sí. Atendemos ${HORARIO.charAt(0).toLowerCase()}${HORARIO.slice(1)}` },
   {
     q: "¿Puedo pagar en efectivo en la oficina?",
-    a: "Sí. También aceptamos transferencia (BCP, BBVA, Interbank), Yape, Plin y tarjeta. Separas con el 50% y recibes tu boleta o factura electrónica.",
+    a: "Sí. También aceptamos transferencia (BCP, BBVA, Interbank), Yape, Plin y tarjeta. Separas con un adelanto y recibes tu boleta o factura electrónica.",
   },
   {
     q: "¿Tengo que sacar cita para ir?",
@@ -135,7 +135,7 @@ export default function AgenciaLosOlivosPage() {
               </li>
               <li className="flex gap-2">
                 <span className="text-emerald-600 font-extrabold">✓</span>
-                <span>Separar con el 50% en efectivo, transferencia, Yape, Plin o tarjeta.</span>
+                <span>Separar con un adelanto en efectivo, transferencia, Yape, Plin o tarjeta.</span>
               </li>
               <li className="flex gap-2">
                 <span className="text-emerald-600 font-extrabold">✓</span>

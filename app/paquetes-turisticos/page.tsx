@@ -17,7 +17,7 @@ export const revalidate = 86400;
 
 const URL = `${URL_BASE_SEO}/paquetes-turisticos`;
 const DESC =
-  "Paquetes turísticos a Colombia, Ecuador y Galápagos, Italia, Turquía, Dubái, México, Argentina y más, con alojamiento y precio por persona. Separa con el 50%.";
+  "Paquetes turísticos a Colombia, Ecuador y Galápagos, Italia, Turquía, Dubái, México, Argentina y más, con alojamiento y precio por persona. Separa con un adelanto.";
 
 export function generateMetadata(): Metadata {
   const paises = paisesConPaquetes();
@@ -141,7 +141,7 @@ export default function PaquetesTuristicosPage() {
         </div>
       </main>
       <Footer />
-      <WhatsAppFloat href={wa} titulo={`Paquetes desde ${formatoUSD(desde)}`} subtitulo="Cotiza por WhatsApp y separa con el 50%" />
+      <WhatsAppFloat href={wa} titulo={`Paquetes desde ${formatoUSD(desde)}`} subtitulo="Cotiza por WhatsApp y separa con un adelanto" />
     </>
   );
 }

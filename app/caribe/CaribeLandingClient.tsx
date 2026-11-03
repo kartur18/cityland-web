@@ -49,14 +49,14 @@ export default function CaribeLandingClient() {
               <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-7 max-w-xl">
                 Paquetes completos con vuelos ida y vuelta, hoteles seleccionados, traslados y tours incluidos.{" "}
                 <strong className="text-[#0a1628] font-bold">
-                  Separa hoy tu viaje con solo el 50% de inicial
+                  Separa hoy tu viaje con un adelanto
                 </strong>
                 .
               </p>
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-7">
                 <a
-                  href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar un paquete turístico (Punta Cana, Cancún, Cartagena, Medellín, Río o Miami) separando con el 50% de inicial.")}`}
+                  href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Deseo cotizar un paquete turístico (Punta Cana, Cancún, Cartagena, Medellín, Río o Miami) separando con un adelanto.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-wa-pulse inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-7 py-4 rounded-2xl text-sm sm:text-base font-bold shadow-md cursor-pointer"
@@ -136,12 +136,12 @@ export default function CaribeLandingClient() {
                       </span>
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                      Separa con 50% (desde $525)
+                      Separa con un adelanto
                     </span>
                   </div>
 
                   <a
-                    href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Vi en su web el paquete Todo Incluido a Punta Cana (5 Días / 4 Noches) desde $1,049 USD. Deseo cotizar separando con el 50%.\n\n📍 Ref Web: citylandtravel.com/caribe")}`}
+                    href={`https://wa.me/51944103890?text=${encodeURIComponent("¡Hola Cityland Travel! Vi en su web el paquete Todo Incluido a Punta Cana (5 Días / 4 Noches) desde $1,049 USD. Deseo cotizar separando con un adelanto.\n\n📍 Ref Web: citylandtravel.com/caribe")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-wa-pulse inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-bold cursor-pointer shrink-0"
@@ -190,9 +190,8 @@ export default function CaribeLandingClient() {
           {/* Grilla 3x2 Perfectamente Simétrica */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {destinosMostrados.map((d) => {
-              const inicialUSD = Math.round(d.precioUSD * 0.5);
               const waUrl = `https://wa.me/${d.waNumber}?text=${encodeURIComponent(
-                `¡Hola Cityland Travel! Vi su página web y deseo cotizar el paquete a ${d.ciudad} (${d.duracion}) desde $${d.precioUSD} USD separando con el 50% de inicial ($${inicialUSD} USD).`
+                `¡Hola Cityland Travel! Vi su página web y deseo cotizar el paquete a ${d.ciudad} (${d.duracion}) desde $${d.precioUSD} USD separando con un adelanto.`
               )}`;
 
               return (
@@ -266,7 +265,7 @@ export default function CaribeLandingClient() {
                           </span>
                         </div>
                         <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                          Separa desde ${inicialUSD} (50%)
+                          Separa con un adelanto
                         </span>
                       </div>
 
@@ -316,7 +315,7 @@ export default function CaribeLandingClient() {
                 sub: "Recepción en aeropuerto, excursiones y seguro de viaje",
               },
               {
-                titulo: "Reserva con el 50%",
+                titulo: "Reserva con un adelanto",
                 sub: "Congela tu tarifa hoy en oficina o cuenta empresarial",
               },
             ].map((item) => (

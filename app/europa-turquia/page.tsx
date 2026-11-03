@@ -10,7 +10,7 @@ import {
 
 const rawTitle = "Circuitos a Europa y Turquía Sin Visa | Cityland Travel";
 const rawDesc =
-  "Circuitos a Europa, Turquía (Capadocia) y Dubái sin visa desde Lima: Turquía Desde $2,490, Europa 17 Días Desde $3,590 y España Desde $2,690. Separa con 50%.";
+  "Circuitos a Europa, Turquía (Capadocia) y Dubái sin visa desde Lima: Turquía Desde $2,490, Europa 17 Días Desde $3,590 y España Desde $2,690. Separa con un adelanto.";
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO(rawTitle),
@@ -55,7 +55,7 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
   tituloDestacadoHero: "Capadocia Todo Organizado",
   descripcionHero:
     "Conoce la Torre Eiffel, el Coliseo Romano, Madrid o vuela en globo sobre Capadocia con boletos aéreos confirmados, hoteles seleccionados y guía en español durante todo el recorrido.",
-  negritaHero: "Solo necesitas tu pasaporte peruano vigente y separas con el 50%",
+  negritaHero: "Solo necesitas tu pasaporte peruano vigente y separas con un adelanto",
   ctaPrincipalTexto: "Cotizar Circuito por WhatsApp",
   waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
@@ -76,7 +76,7 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
     labelPrecio: "Circuito completo",
     precio: "$2,490",
     moneda: "",
-    notaInferior: "Separa hoy con 50% ($845)",
+    notaInferior: "Separa hoy con un adelanto",
     waNumero: "51944103890",
     waMensaje:
       "¡Hola Cityland Travel! Deseo cotizar el paquete a Turquía (Estambul y Capadocia · 10 Días) desde $2,490.",
@@ -98,7 +98,7 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       filtro: "turquia-dubai",
       subtitulo: "10 Días / 9 Noches · No Requiere Visa",
       precioPrincipal: "$2,490",
-      notaPrecio: "Separa con 50% (desde $845)",
+      notaPrecio: "Separa con un adelanto",
       tag: "#1 Exótico Sin Visa",
       tagBg: "bg-red-600 text-white",
       img: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=85",
@@ -115,7 +115,7 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       filtro: "europa",
       subtitulo: "17 Días / 16 Noches · Circuito Completo",
       precioPrincipal: "$3,590",
-      notaPrecio: "Separa con 50% · Incluye Seguro 30.000€",
+      notaPrecio: "Separa con un adelanto · Incluye Seguro 30.000€",
       tag: "3 Países · 15 Días",
       tagBg: "bg-blue-600 text-white",
       img: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1200&q=85",
@@ -132,7 +132,7 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       filtro: "europa",
       subtitulo: "12 Días / 11 Noches · Tren Alta Velocidad AVE",
       precioPrincipal: "$2,690",
-      notaPrecio: "Separa con 50% (desde $725)",
+      notaPrecio: "Separa con un adelanto",
       tag: "Madrid + Barcelona",
       tagBg: "bg-red-600 text-white",
       img: "/images/espana/gran-via-metropolis.jpg",
@@ -183,7 +183,7 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       filtro: "europa",
       subtitulo: "Planes de solo ida según fecha: $699 · $799 · $899 · $999",
       precioPrincipal: "$699",
-      notaPrecio: "Separa hoy con $350 (50%)",
+      notaPrecio: "Separa hoy con un adelanto",
       tag: "#1 Más Vendido",
       tagBg: "bg-red-600 text-white",
       img: "/images/espana/plaza-mayor.jpg",
@@ -208,7 +208,7 @@ const CONFIG_EUROPA_TURQUIA: ConfiguracionLandingAerolinea = {
       sub: "Alojamiento verificado con desayunos buffet y traslados en autocar de lujo",
     },
     {
-      titulo: "Reserva con el 50%",
+      titulo: "Reserva con un adelanto",
       sub: "Congela tu cupo aéreo hoy en nuestra oficina de Los Olivos",
     },
   ],

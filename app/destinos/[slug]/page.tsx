@@ -58,7 +58,7 @@ export async function generateMetadata({
     )
   );
   const description = optimizarMetaDescriptionSEO(
-    `Paquetes a ${dest.ciudad} (${dest.duracion || "5 Días / 4 Noches"}) desde Lima desde $${precioDesde.toLocaleString("en-US")}. Separa con 50% en Cityland Travel (RUC ${EMPRESA_RUC}). ${dest.descripcion}`
+    `Paquetes a ${dest.ciudad} (${dest.duracion || "5 Días / 4 Noches"}) desde Lima desde $${precioDesde.toLocaleString("en-US")}. Separa con un adelanto en Cityland Travel (RUC ${EMPRESA_RUC}). ${dest.descripcion}`
   );
   const canonicalUrl = `https://citylandtravel.com/destinos/${dest.slug}`;
 
@@ -119,7 +119,6 @@ export default async function DestinoPage({
 
   const catWa = dest.tipo === "europa" ? "europa" : "caribe";
   const precioPrincipal = dest.migratorio ?? dest.turistico;
-  const mitadPrecio = Math.round(precioPrincipal * 0.5);
 
   // Garantizamos que las fotos de galería nunca repitan la foto del Hero
   const fotosGaleria = (dest.gallery || [])
@@ -319,7 +318,7 @@ export default async function DestinoPage({
                       {dest.pais}
                     </span>
                     <span className="bg-red-600 text-white text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full shadow-xs">
-                      Separa con 50%
+                      Separa con un adelanto
                     </span>
                   </div>
                 </div>
@@ -348,7 +347,7 @@ export default async function DestinoPage({
                         </span>
                       </div>
                       <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                        Separa hoy desde {formatoUSD(mitadPrecio)} (50% inicial)
+                        Separa hoy con un adelanto
                       </span>
                     </div>
 
@@ -510,28 +509,28 @@ export default async function DestinoPage({
                         Facilidad de Pago
                       </span>
                       <h3 className="text-base font-extrabold text-[#0a1628] mb-1">
-                        Reserva Flexible con el 50% de Inicial
+                        Reserva Flexible con un adelanto
                       </h3>
                       <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                        Congela tu tarifa aérea y hotelera abonando el 50% hoy y completa el saldo en cuotas programadas antes de tu viaje.
+                        Congela tu tarifa aérea y hotelera con un adelanto hoy y completa el saldo en cuotas programadas antes de tu viaje.
                       </p>
                     </div>
                     <div className="pt-3 border-t border-slate-200 flex items-center justify-between gap-2">
                       <div>
                         <span className="text-[10px] font-bold uppercase text-slate-500 block">
-                          Inicial 50% desde
+                          Separa tu cupo
                         </span>
                         <span className="text-2xl font-extrabold text-emerald-700 leading-none">
-                          ${Math.round(dest.turistico * 0.5).toLocaleString("en-US")}
+                          Con un adelanto
                         </span>
                       </div>
                       <a
                         href={cotLink(
                           dest.ciudad,
-                          "Reserva con 50%",
+                          "Reserva con un adelanto",
                           dest.turistico,
                           catWa,
-                          `citylandtravel.com/destinos/${dest.slug} [Inicial 50%]`
+                          `citylandtravel.com/destinos/${dest.slug} [Adelanto]`
                         )}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -609,9 +608,9 @@ export default async function DestinoPage({
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-300">Inicial 50%, desde:</span>
+                  <span className="text-slate-300">Para separar:</span>
                   <span className="text-sm font-bold text-amber-300">
-                    ${mitadPrecio.toLocaleString("en-US")}
+                    Con un adelanto
                   </span>
                 </div>
                 <div className="flex items-center justify-between">

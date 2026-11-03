@@ -259,8 +259,8 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
           a: `Incluye tu boleto aéreo confirmado hacia ${ciudad} con número de E-Ticket IATA de 13 dígitos, póliza de Seguro Schengen de 30.000€ sin deducible, reserva hotelera verificable (o ajuste sin hotel si viajas con Carta de Invitación) y orientación migratoria personalizada.`,
         },
         {
-          q: `¿El precio Desde $${precio} incluye impuestos y se puede separar con el 50%?`,
-          a: `Sí. Todas nuestras tarifas están expresadas en dólares americanos con impuestos aeroportuarios incluidos y puedes congelar tu cupo con el 50% de inicial.`,
+          q: `¿El precio Desde $${precio} incluye impuestos y se puede separar con un adelanto?`,
+          a: `Sí. Todas nuestras tarifas están expresadas en dólares americanos con impuestos aeroportuarios incluidos y puedes congelar tu cupo con un adelanto.`,
         },
       ],
       waMensaje: `¡Hola Cityland Travel! Quiero cotizar mi Primer Viaje a ${ciudad} (${pais}) Desde $${precio} con carpeta completa. ¿Me pueden asesorar?\n\n📍 Ref Web: citylandtravel.com/viajes/primer-viaje-a-${slugCiudad}`,
@@ -391,7 +391,7 @@ function generarViajesEspecializados(): ViajeEspecializadoSEO[] {
         "Atención directa en nuestra Central WhatsApp (+51 944 103 890) y oficina en Los Olivos",
         "Contrato formal y comprobantes electrónicos (Boleta o Factura RUC 20614914239)",
         "Tarifas expresadas 100% en dólares americanos (USD) con impuestos incluidos",
-        "Facilidades de pago fraccionado reservando con inicial desde el 50%",
+        "Facilidades de pago fraccionado reservando con un adelanto",
         "Asistencia permanente 24/7 antes y durante todo el viaje",
       ],
       beneficiosClave: [

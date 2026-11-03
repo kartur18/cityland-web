@@ -123,7 +123,7 @@ export function HeroVenta(p: HeroVentaProps) {
             </a>
             <p className="flex items-start gap-1.5 text-sm text-slate-600">
               <Check />
-              {p.nota ?? "Separas con el 50% y pagas el saldo antes de viajar"}
+              {p.nota ?? "Separas con un adelanto y pagas el saldo antes de viajar"}
             </p>
           </div>
         </div>
@@ -134,7 +134,7 @@ export function HeroVenta(p: HeroVentaProps) {
 }
 
 const CONFIANZA = [
-  { t: "Separas con el 50%", d: "y pagas el saldo antes de viajar", i: "M4 7h16v10H4zM4 10h16" },
+  { t: "Separas con un adelanto", d: "y pagas el saldo antes de viajar", i: "M4 7h16v10H4zM4 10h16" },
   { t: "Fechas fijas con cupo", d: "salidas ya organizadas por el mayorista", i: "M5 6h14v13H5zM5 10h14M9 4v4M15 4v4" },
   { t: "Te atiende una asesora", d: "por WhatsApp, de la cotización al regreso", i: "M5 5h14v10H9l-4 4z" },
   { t: "2 oficinas en Los Olivos", d: "agencia con local físico en Lima", i: "M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9v2" },
@@ -278,7 +278,7 @@ export function ListaPaquetes({ items, refWeb }: { items: Circuito[]; refWeb: st
 const PASOS = [
   { t: "Elige tu paquete y tu fecha", d: "Mira las salidas con cupo y el precio de cada una." },
   { t: "Escríbenos por WhatsApp", d: "Una asesora confirma el cupo y te manda el detalle." },
-  { t: "Separa con el 50%", d: "El saldo lo pagas antes de viajar. Te mandamos todo por escrito." },
+  { t: "Separa con un adelanto", d: "El saldo lo pagas antes de viajar. Te mandamos todo por escrito." },
 ];
 
 export function PasosSeparar({ pasos = PASOS }: { pasos?: { t: string; d: string }[] }) {
