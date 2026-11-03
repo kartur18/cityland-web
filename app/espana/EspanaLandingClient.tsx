@@ -17,7 +17,7 @@ export const PAQUETES_ESPANA = [
     id: "promo-699",
     nombre: "Plan Promo",
     temporada: "Fines de Febrero · Marzo · Abril · Mayo",
-    precio: 699,
+    precio: 799,
     separaCon: 350,
     tag: "Temporada Promo",
     tagColor: "bg-emerald-600 text-white",
@@ -27,7 +27,7 @@ export const PAQUETES_ESPANA = [
     beneficioExtra: "Ideal si programas tu viaje con anticipación.",
     waTexto: "Elegir Plan Promo",
     waUrl: `https://wa.me/51944103890?text=${encodeURIComponent(
-      "¡Hola! Quiero más información del paquete a Madrid desde $699.\n\n📍 Ref Web: citylandtravel.com/espana [Plan Promo $699]"
+      "¡Hola! Quiero más información del paquete a Madrid desde $799.\n\n📍 Ref Web: citylandtravel.com/espana [Plan Promo $799]"
     )}`,
   },
   {
@@ -134,8 +134,8 @@ const FAQS_ESPANA = [
     a: "El pasaje de ida y vuelta lleva los dos vuelos emitidos. El paquete migratorio lleva tu pasaje de ida emitido y una reserva del vuelo de regreso, además de hotel, seguro y check-in. Si quieres viajar con el regreso emitido, elige ida y vuelta.",
   },
   {
-    q: "¿De qué depende que me aplique el plan de $699, $799, $899 o $999?",
-    a: "Depende únicamente de la fecha en que desees volar y si llevas maleta de bodega: el Plan Promo ($699) aplica de fines de febrero a mayo; el Plan Smart ($799) en junio, septiembre, octubre y noviembre; el Plan Plus ($899) para salidas cercanas o con conexión interna; y el Plan Full ($999) para temporada alta (diciembre, julio y agosto) o con maleta de 23 kg en bodega.",
+    q: "¿De qué depende que me aplique el plan de $799, $899 o $999?",
+    a: "Depende de la fecha en que desees volar y de si llevas maleta de bodega. El precio depende de la fecha de viaje: mientras más anticipación, mejor precio. Comprando con anticipación el paquete va desde $799 (fines de febrero a mayo, junio, septiembre, octubre y noviembre); el Plan Plus ($899) es para salidas cercanas o con conexión interna; y el Plan Full ($999) para temporada alta (diciembre, julio y agosto) o con maleta de 23 kg en bodega.",
   },
   {
     q: "¿Qué pasa si un familiar en España me envía Carta de Invitación?",
@@ -168,7 +168,7 @@ export default function EspanaLandingClient() {
 
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0a1628] tracking-tight leading-[1.1] mb-4">
                 Paquete Migratorio a{" "}
-                <span className="text-red-600">España desde $699 USD</span>
+                <span className="text-red-600">España desde $799 USD</span>
               </h1>
 
               <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-7">
@@ -179,7 +179,7 @@ export default function EspanaLandingClient() {
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-7">
                 <a
                   href={`https://wa.me/51944103890?text=${encodeURIComponent(
-                    "¡Hola! Quiero más información del paquete a Madrid desde $699.\n\n📍 Ref Web: citylandtravel.com/espana [Hero Principal]"
+                    "¡Hola! Quiero más información del paquete a Madrid desde $799.\n\n📍 Ref Web: citylandtravel.com/espana [Hero Principal]"
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -432,7 +432,7 @@ export default function EspanaLandingClient() {
                   </Link>
                   <a
                     href={`https://wa.me/51944103890?text=${encodeURIComponent(
-                      `¡Hola! Quiero más información del paquete migratorio a ${c.ciudad}, España desde $699.\n\n📍 Ref Web: citylandtravel.com/espana [Ciudad ${c.ciudad}]`
+                      `¡Hola! Quiero más información del paquete migratorio a ${c.ciudad}, España desde $799.\n\n📍 Ref Web: citylandtravel.com/espana [Ciudad ${c.ciudad}]`
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -465,7 +465,7 @@ export default function EspanaLandingClient() {
                 </p>
               </div>
               <p className="text-xs font-bold text-emerald-700 pt-3 border-t border-slate-100">
-                ✓ Incluido en todos nuestros planes desde $699 USD
+                ✓ Incluido en todos nuestros planes desde $799 USD
               </p>
             </div>
 

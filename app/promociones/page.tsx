@@ -12,7 +12,7 @@ const TARIFAS_ITALIA = tarifasMigratorio("Italia");
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO("Promociones y Ofertas de Viajes 2026 desde Lima (Separa con un adelanto) | Cityland Travel"),
-  description: optimizarMetaDescriptionSEO("Aprovecha nuestras promociones de viajes y preventas 2026 desde Lima: Paquetes Migratorios a Europa desde $699 USD (solo ida), Punta Cana y Cancún Todo Incluido desde $999 USD, Cartagena desde $599 USD y Cusco desde $329 USD. Separa con un adelanto en Cityland Travel (RUC 20614914239)."),
+  description: optimizarMetaDescriptionSEO("Aprovecha nuestras promociones de viajes y preventas 2026 desde Lima: Paquetes Migratorios a Europa desde $799 USD (solo ida), Punta Cana y Cancún Todo Incluido desde $999 USD, Cartagena desde $599 USD y Cusco desde $329 USD. Separa con un adelanto en Cityland Travel (RUC 20614914239)."),
   keywords: [
     "promociones de viajes desde lima",
     "ofertas paquetes turisticos 2026 peru",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     url: "https://citylandtravel.com/promociones",
     title: "Promociones y Preventa de Viajes 2026 — Cityland Travel",
     description:
-      "Tarifas promocionales en dólares (impuestos y tasas según fecha y aerolínea) a Europa desde $699, Caribe, Sudamérica y Perú. Separa hoy con un adelanto.",
+      "Tarifas promocionales en dólares (impuestos y tasas según fecha y aerolínea) a Europa desde $799, Caribe, Sudamérica y Perú. Separa hoy con un adelanto.",
     siteName: "Cityland Travel",
     locale: "es_PE",
     images: ["https://citylandtravel.com/opengraph-image"],
@@ -41,14 +41,14 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
   tituloHero: "Promociones y Ofertas de",
   tituloDestacadoHero: "Viajes a Europa y el Caribe desde Lima",
   descripcionHero:
-    "Congela tu tarifa promocional en dólares para viajar a España, Italia o Francia desde $699 USD (solo ida), o disfrutar de vacaciones Todo Incluido en el Caribe y el Perú con respaldo de agencia formal.",
+    "Congela tu tarifa promocional en dólares para viajar a España, Italia o Francia desde $799 USD (solo ida), o disfrutar de vacaciones Todo Incluido en el Caribe y el Perú con respaldo de agencia formal.",
   negritaHero: "Separa cualquiera de nuestras promociones con un adelanto",
   ctaPrincipalTexto: "Consultar Promociones por WhatsApp",
   waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
     "¡Hola Cityland Travel! Quiero consultar las Promociones y Preventas de Viajes vigentes saliendo desde Lima.",
   checksHero: [
-    "Paquetes Migratorios a Europa (solo ida): $699 · $799 · $899 · $999",
+    "Paquetes Migratorios a Europa (solo ida): $799 · $899 · $999",
     "Separa con un adelanto y congela tu precio",
     "Atención en oficina física en Los Olivos y por WhatsApp",
   ],
@@ -57,16 +57,16 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
     etiquetaIzq: "Promo Europa · Salidas Confirmadas",
     etiquetaDer: "#1 Más Vendido",
     img: "/images/espana/gran-via-metropolis.jpg",
-    alt: "Promoción Paquete Migratorio a España e Italia desde $699 USD (solo ida) — Cityland Travel",
+    alt: "Promoción Paquete Migratorio a España e Italia desde $799 USD (solo ida) — Cityland Travel",
     sobretitulo: "Pasaje + Reserva de Regreso + Hotel + Seguro 30.000€",
     titulo: "Promo Paquete Migratorio a España, Italia y Francia",
     labelPrecio: `Solo ida: España desde ${formatoUSD(tarifasMigratorio("España").promo)} · Italia y Francia desde ${formatoUSD(TARIFAS_ITALIA.promo)}`,
-    precio: "$699",
+    precio: "$799",
     moneda: "USD",
     notaInferior: "Separa hoy con un adelanto",
     waNumero: "51944103890",
     waMensaje:
-      "¡Hola! Quiero más información del paquete migratorio a Europa desde $699.",
+      "¡Hola! Quiero más información del paquete migratorio a Europa desde $799.",
   },
   seccionCatalogo: {
     sobretitulo: "Catálogo de Ofertas y Preventas Vigentes",
@@ -84,8 +84,8 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
       titulo: "Promo Madrid y Barcelona + Carpeta Migratoria",
       pais: "España",
       filtro: "europa",
-      subtitulo: "Planes de solo ida según tu fecha: $699 · $799 · $899 · $999",
-      precioPrincipal: "$699",
+      subtitulo: "Planes de solo ida según tu fecha: $799 · $899 · $999",
+      precioPrincipal: "$799",
       precioSecundario: "USD",
       notaPrecio: "Separa con un adelanto",
       tag: "Más Pedido",
@@ -100,7 +100,7 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
         "Hotel confirmado y check-in 24h antes",
       ],
       waNumber: "51944103890",
-      waMensaje: "¡Hola! Quiero más información del paquete migratorio a España desde $699.",
+      waMensaje: "¡Hola! Quiero más información del paquete migratorio a España desde $799.",
     },
     {
       id: "promo-italia-migratorio",
@@ -204,7 +204,7 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
   ],
   pilares: [
     {
-      titulo: "Solo ida desde $699 USD",
+      titulo: "Solo ida desde $799 USD",
       sub: "Paquetes migratorios a España, Italia y Francia: pasaje de ida, reserva de regreso, hotel y seguro",
     },
     {

@@ -11,7 +11,8 @@ export interface TarifasMigratorio {
 export type NivelPlanMigratorio = keyof TarifasMigratorio;
 
 // España y el resto de Europa (Alemania, Suiza, Portugal, Países Bajos, Bélgica).
-export const TARIFAS_MIGRATORIO_BASE: TarifasMigratorio = { promo: 699, smart: 799, plus: 899, full: 999 };
+// Decisión del dueño (3-nov-2026): el «desde» público es US$ 799; la asesora maneja precios menores con mucha anticipación.
+export const TARIFAS_MIGRATORIO_BASE: TarifasMigratorio = { promo: 799, smart: 799, plus: 899, full: 999 };
 
 // Decisión del dueño (oct-2026): el solo ida a Italia y Francia ya ronda US$ 550–660, por eso cada plan sube +150.
 const TARIFAS_ITALIA_FRANCIA: TarifasMigratorio = { promo: 849, smart: 949, plus: 1049, full: 1149 };
@@ -38,7 +39,8 @@ export function ahorroFrenteARedondo(precioPromo: number): number {
   return Math.floor((PASAJE_REDONDO_REFERENCIA_USD - precioPromo) / 50) * 50;
 }
 
-// "$699, $799, $899 y $999" para frases que ya llevan "desde" delante.
+// "$799, $899 y $999" para frases que ya llevan "desde" delante (sin repetir montos iguales).
 export function listaPreciosPlanes(t: TarifasMigratorio): string {
-  return `${formatoUSD(t.promo)}, ${formatoUSD(t.smart)}, ${formatoUSD(t.plus)} y ${formatoUSD(t.full)}`;
+  const montos = [...new Set([t.promo, t.smart, t.plus, t.full])].map(formatoUSD);
+  return montos.length === 1 ? montos[0] : `${montos.slice(0, -1).join(", ")} y ${montos[montos.length - 1]}`;
 }

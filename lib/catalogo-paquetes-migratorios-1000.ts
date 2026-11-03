@@ -4,7 +4,7 @@
  *
  * Estructura Comercial Unificada:
  * - 4 Planes Oficiales según la fecha de viaje, todos separando con un adelanto. Los precios salen de lib/precios-migratorio.ts
- *   (España y resto de Europa: $699 · $799 · $899 · $999; Italia y Francia: $849 · $949 · $1,049 · $1,149).
+ *   (España y resto de Europa: $799 · $899 · $999; Italia y Francia: $849 · $949 · $1,049 · $1,149).
  * - Explicación en lenguaje 100% sencillo peruano (sin tecnicismos confusos):
  *   Pasaje de avión de ida + Reserva de regreso + Reserva de hotel + Seguro médico + Preparación paso a paso.
  * - Fotografías 100% reales y coherentes con cada ciudad europea de destino.
@@ -1755,7 +1755,7 @@ const INTENCIONES_ESPANA: {
     slugIntencion: "salidas-mayo",
     etiquetaCorta: "Salidas Mayo",
     focoTitulo: (c, t) => `Paquete Migratorio a ${c} — Salidas de Mayo Desde ${usd(t.promo)}`,
-    focoSubtitulo: (_c, t) => `Plan Promo ${usd(t.promo)} y Smart ${usd(t.smart)} · Carpeta Migratoria Completa`,
+    focoSubtitulo: (_c, t) => (t.promo === t.smart ? `Planes desde ${usd(t.promo)} · Carpeta Migratoria Completa` : `Plan Promo ${usd(t.promo)} y Smart ${usd(t.smart)} · Carpeta Migratoria Completa`),
     focoGancho: (c, t) =>
       `Reserva con tiempo tu salida de Mayo hacia ${c} desde ${usd(t.promo)} USD y recibe tu carpeta completa con pasaje, reserva de regreso, alojamiento y seguro médico.`,
   },

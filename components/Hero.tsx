@@ -16,10 +16,10 @@ export default function Hero() {
     categoria: "europa",
     destino: "Madrid / España / Europa",
     tipo: "Paquete Migratorio Completo",
-    precioUSD: 699,
+    precioUSD: 799,
     mensajePersonalizado:
-      "¡Hola! Quiero más información del paquete migratorio a Europa desde $699.",
-    refWeb: "citylandtravel.com [Hero Principal · Paquete Migratorio $699]",
+      "¡Hola! Quiero más información del paquete migratorio a Europa desde $799.",
+    refWeb: "citylandtravel.com [Hero Principal · Paquete Migratorio $799]",
   });
 
   return (
@@ -41,7 +41,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-6 max-w-xl">
-              Especialistas en <strong className="text-[#0a1628] font-bold">Paquetes Migratorios a Europa desde $699 USD (solo ida)</strong> (pasaje, retorno reservado, hotel, seguro 30.000€ y check-in) y vacaciones Todo Incluido al Caribe.{" "}
+              Especialistas en <strong className="text-[#0a1628] font-bold">Paquetes Migratorios a Europa desde $799 USD (solo ida)</strong> (pasaje, retorno reservado, hotel, seguro 30.000€ y check-in) y vacaciones Todo Incluido al Caribe.{" "}
               <strong className="text-emerald-700 font-bold">
                 Separa hoy con un adelanto.
               </strong>
@@ -54,7 +54,7 @@ export default function Hero() {
                 className="inline-flex items-center gap-1.5 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 px-3.5 py-1.5 rounded-full text-xs font-extrabold transition-colors whitespace-nowrap"
               >
                 <FlagIcon pais="España" className="w-3.5 h-2.5" />
-                <span>España solo ida desde $699</span>
+                <span>España solo ida desde $799</span>
               </Link>
               <Link
                 href="/italia"
@@ -105,7 +105,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Columna Derecha: Tarjeta Protagonista del Producto #1 (Paquete Migratorio Europa desde $699) */}
+          {/* Columna Derecha: Tarjeta Protagonista del Producto #1 (Paquete Migratorio Europa desde $799) */}
           <div className="lg:col-span-5">
             <div className="card-interactive group bg-white rounded-3xl border border-slate-200/90 shadow-lg overflow-hidden">
               <div className="relative h-60 sm:h-64 w-full overflow-hidden bg-slate-100">
@@ -153,7 +153,7 @@ export default function Hero() {
                     <div className="flex items-baseline gap-1.5">
                       <span className="text-xs font-extrabold uppercase text-red-600">Desde</span>
                       <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0a1628] leading-none">
-                        $699
+                        $799
                       </span>
                       <span className="text-xs font-bold text-slate-500">USD</span>
                     </div>

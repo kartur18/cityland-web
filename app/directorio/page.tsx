@@ -60,7 +60,7 @@ const HERO_POR_MODO: Record<
     badge: "🧳 Guías Operativas · Equipaje 23 kg y Carpeta Migratoria",
     h1: "Viajes Especializados, Equipaje de Bodega y Requisitos Migratorios",
     descripcion:
-      "Soluciones especializadas para viajeros peruanos: paquetes migratorios desde $699 USD (solo ida), tarifas con maleta de 23 kg, requisitos de ingreso sin visa y preparación paso a paso.",
+      "Soluciones especializadas para viajeros peruanos: paquetes migratorios desde $799 USD (solo ida), tarifas con maleta de 23 kg, requisitos de ingreso sin visa y preparación paso a paso.",
     waTexto:
       "¡Hola Cityland Travel! Quiero asesoría sobre paquetes de viaje, equipaje o requisitos migratorios.",
   },
@@ -70,7 +70,7 @@ const DIVISIONES_VISUALES = [
   {
     titulo: "Paquetes Migratorios a España",
     subtitulo: "Madrid, Barcelona, Valencia, Sevilla y 25 ciudades · 4 planes según fecha",
-    precio: "Solo ida desde $699",
+    precio: "Solo ida desde $799",
     img: "/images/espana/gran-via-metropolis.jpg",
     href: "/espana",
   },
@@ -91,7 +91,7 @@ const DIVISIONES_VISUALES = [
   {
     titulo: "1,000 Rutas Migratorias Europa",
     subtitulo: "Buscador completo por ciudad europea y salida desde todo el Perú",
-    precio: "Solo ida desde $699",
+    precio: "Solo ida desde $799",
     img: "/images/destinos/barcelona.webp",
     href: "/paquetes-migratorios",
   },

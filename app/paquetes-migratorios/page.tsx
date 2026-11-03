@@ -35,8 +35,8 @@ import {
 import AvisoRegresoReservado from "@/components/AvisoRegresoReservado";
 
 export const metadata: Metadata = {
-  title: optimizarMetaTitleSEO("Paquetes migratorios a Europa desde $699 | Cityland"),
-  description: optimizarMetaDescriptionSEO("Viaja seguro desde Perú a Madrid, Barcelona, Milán, Roma, París y toda Europa desde $699 USD. Incluye pasaje de ida + reserva de regreso + hotel + seguro 30.000€ + check-in 24h antes."),
+  title: optimizarMetaTitleSEO("Paquetes migratorios a Europa desde $799 | Cityland"),
+  description: optimizarMetaDescriptionSEO("Viaja seguro desde Perú a Madrid, Barcelona, Milán, Roma, París y toda Europa desde $799 USD. Incluye pasaje de ida + reserva de regreso + hotel + seguro 30.000€ + check-in 24h antes."),
   keywords: [
     "paquete migratorio españa desde peru",
     "paquete migratorio madrid 699",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     url: `${URL_BASE_SEO}/paquetes-migratorios`,
     siteName: "Cityland Travel",
     title:
-      "Paquetes Migratorios a España, Italia, Francia y Europa desde $699 USD | Cityland Travel",
+      "Paquetes Migratorios a España, Italia, Francia y Europa desde $799 USD | Cityland Travel",
     description:
       "Pasaje de ida + reserva de regreso + reserva de hotel + seguro Schengen 30.000€ + check-in 24h antes. Separa con un adelanto.",
     images: [
@@ -88,15 +88,15 @@ export default function PaquetesMigratoriosHubPage() {
     }));
 
   const msgHero =
-    "¡Hola! Quiero más información del paquete migratorio a Europa desde $699.\n📍 Ref Web: citylandtravel.com/paquetes-migratorios [Hub Principal]";
+    "¡Hola! Quiero más información del paquete migratorio a Europa desde $799.\n📍 Ref Web: citylandtravel.com/paquetes-migratorios [Hub Principal]";
 
   const schemaHub = construirSchemaLandingSEO({
     url: `${URL_BASE_SEO}/paquetes-migratorios`,
     titulo:
-      "Paquetes Migratorios a España, Italia, Francia y Europa desde $699 USD",
+      "Paquetes Migratorios a España, Italia, Francia y Europa desde $799 USD",
     descripcion:
       "Centro oficial de Paquetes Migratorios de Cityland Travel (RUC 20614914239). Rutas y guías para viajar desde Perú con tu carpeta de viaje completa.",
-    precioDesdeUSD: 699,
+    precioDesdeUSD: 799,
     cantidadOfertas: 4,
     destinoOPais: "Europa",
     imagenUrl: `${URL_BASE_SEO}/images/destinos/madrid.webp`,
@@ -114,7 +114,7 @@ export default function PaquetesMigratoriosHubPage() {
       },
       {
         q: "¿Cuáles son los planes según la fecha de viaje?",
-        a: `Contamos con 4 planes oficiales según temporada: Plan Promo ($699 USD), Plan Smart ($799 USD), Plan Plus ($899 USD) y Plan Full con maleta de 23 kg ($999 USD) para España. Para Italia y Francia los planes van desde ${listaPreciosPlanes(tarifasMigratorio("Italia"))} USD. Todos se separan con un adelanto.`,
+        a: `En España el precio depende de la fecha de viaje: mientras más anticipación, mejor precio. Va desde $799 USD comprando con anticipación, $899 USD (Plan Plus) para salidas cercanas y $999 USD (Plan Full) en temporada alta o con maleta de 23 kg. Para Italia y Francia los planes van desde ${listaPreciosPlanes(tarifasMigratorio("Italia"))} USD. Todos se separan con un adelanto.`,
       },
     ],
   });
@@ -159,7 +159,7 @@ export default function PaquetesMigratoriosHubPage() {
 
               <h1 className="text-3xl sm:text-5xl font-black tracking-tight leading-[1.1] mb-4">
                 Paquetes Migratorios a Europa{" "}
-                <span className="text-amber-600">desde $699 USD</span>
+                <span className="text-amber-600">desde $799 USD</span>
               </h1>
 
               <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-7">

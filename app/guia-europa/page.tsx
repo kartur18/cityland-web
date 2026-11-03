@@ -19,7 +19,7 @@ import {
 
 const rawTitle = "Guía Viajar a España, Italia y Francia desde Perú 2026 | Cityland Travel";
 const rawDesc =
-  "Paquetes migratorios y requisitos para viajar a España, Italia y Francia desde Perú: planes de $699, $799, $899 y $999 USD, bolsa de viaje BOE y seguro 30.000€.";
+  "Paquetes migratorios y requisitos para viajar a España, Italia y Francia desde Perú: planes de $799, $899 y $999 USD, bolsa de viaje BOE y seguro 30.000€.";
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO(rawTitle),
@@ -36,7 +36,7 @@ const RUTAS_PRINCIPALES = [
     ciudades: "Madrid, Barcelona, Valencia, Sevilla, Zaragoza, Málaga y Bilbao",
     img: "/images/espana/gran-via-metropolis.jpg",
     href: "/espana",
-    precio: "Desde $699 USD",
+    precio: "Desde $799 USD",
   },
   {
     pais: "Italia",
@@ -58,8 +58,8 @@ const RUTAS_PRINCIPALES = [
 
 const FAQS_GUIA_EUROPA = [
   {
-    q: "¿De qué depende que el paquete a Europa cueste $699, $799, $899 o $999?",
-    a: `Depende de tu fecha de viaje: $699 USD aplica comprando con anticipación para fines de Febrero, Marzo, Abril y Mayo. $799 USD (Plan Smart) aplica para Junio, Septiembre, Octubre y Noviembre. $899 USD (Plan Plus) es para salidas cercanas o con conexión, y $999 USD (Plan Full) es para temporada alta (Diciembre, Julio y Agosto) o incluye maleta de 23 kg en bodega. Esos montos son de España; para Italia y Francia los planes van desde ${listaPreciosPlanes(TARIFAS_ITALIA_FRANCIA)} USD.`,
+    q: "¿De qué depende que el paquete a Europa cueste $799, $899 o $999?",
+    a: `Depende de tu fecha de viaje: mientras más anticipación, mejor precio. Comprando con anticipación, el paquete va desde $799 USD para fines de Febrero, Marzo, Abril, Mayo, Junio, Septiembre, Octubre y Noviembre. $899 USD (Plan Plus) es para salidas cercanas o con conexión, y $999 USD (Plan Full) es para temporada alta (Diciembre, Julio y Agosto) o incluye maleta de 23 kg en bodega. Esos montos son de España; para Italia y Francia los planes van desde ${listaPreciosPlanes(TARIFAS_ITALIA_FRANCIA)} USD.`,
   },
   {
     q: "¿Qué incluye exactamente la Carpeta Migratoria?",
@@ -71,13 +71,13 @@ const FAQS_GUIA_EUROPA = [
   },
   {
     q: "¿Cómo funciona la separación con un adelanto?",
-    a: "Congelas tu tarifa con un adelanto ($350 USD en el plan de $699, $400 USD en el plan de $799, $450 USD en el plan de $899 o $500 USD en el plan de $999) y pagas la otra mitad antes de tu fecha de vuelo.",
+    a: "Congelas tu tarifa con un adelanto y pagas el saldo antes de tu fecha de vuelo. Tu asesora te dice el monto según tu fecha y el número de pasajeros.",
   },
 ];
 
 export default function GuiaEuropaPage() {
   const waGeneral = `https://wa.me/51944103890?text=${encodeURIComponent(
-    "¡Hola! Quiero más información del paquete migratorio a Europa desde $699.\n\n📍 Ref Web: citylandtravel.com/guia-europa"
+    "¡Hola! Quiero más información del paquete migratorio a Europa desde $799.\n\n📍 Ref Web: citylandtravel.com/guia-europa"
   )}`;
 
   return (
@@ -121,7 +121,7 @@ export default function GuiaEuropaPage() {
                     href="#planes"
                     className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-5 py-3.5 rounded-xl text-sm whitespace-nowrap transition-colors"
                   >
-                    Ver Planes (desde $699 a $999) ↓
+                    Ver Planes (desde $799 a $999) ↓
                   </a>
                 </div>
               </div>
@@ -147,7 +147,7 @@ export default function GuiaEuropaPage() {
                       </span>
                     </div>
                     <span className="bg-emerald-500 text-slate-950 text-xs font-black px-3 py-1 rounded-lg shrink-0">
-                      Desde $699
+                      Desde $799
                     </span>
                   </div>
                 </div>
@@ -156,7 +156,7 @@ export default function GuiaEuropaPage() {
           </div>
         </section>
 
-        {/* 2. LOS 4 PLANES OFICIALES ($699, $799, $899, $999) */}
+        {/* 2. LOS 4 PLANES OFICIALES ($799, $899, $999) */}
         <section id="planes" className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="text-xs font-extrabold uppercase tracking-widest text-red-600 block mb-1">

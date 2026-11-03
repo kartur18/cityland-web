@@ -7,9 +7,9 @@ import {
 import { textoPrecio } from "@/lib/formato-precio";
 
 const rawTitle =
-  "Paquete migratorio España desde $699 en Lima | Cityland";
+  "Paquete migratorio España desde $799 en Lima | Cityland";
 const rawDesc =
-  "Paquete migratorio a España saliendo de Lima, desde $699 según la fecha. Separa con un adelanto, te atiende una asesora por WhatsApp y tenemos 2 oficinas en Los Olivos.";
+  "Paquete migratorio a España saliendo de Lima, desde $799 según la fecha. Separa con un adelanto, te atiende una asesora por WhatsApp y tenemos 2 oficinas en Los Olivos.";
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO(rawTitle),
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
         url: "https://citylandtravel.com/images/espana/plaza-mayor.jpg",
         width: 1200,
         height: 630,
-        alt: "Paquetes Migratorios a España desde $699 USD - Cityland Travel",
+        alt: "Paquetes Migratorios a España desde $799 USD - Cityland Travel",
       },
     ],
   },
@@ -72,7 +72,7 @@ const JSON_LD_ESPANA = {
         {
           "@type": "ListItem",
           position: 2,
-          name: "Paquetes Migratorios a España desde $699 USD",
+          name: "Paquetes Migratorios a España desde $799 USD",
           item: "https://citylandtravel.com/espana",
         },
       ],
@@ -90,14 +90,14 @@ const JSON_LD_ESPANA = {
       offers: {
         "@type": "AggregateOffer",
         priceCurrency: "USD",
-        lowPrice: "699",
+        lowPrice: "799",
         highPrice: "999",
         offerCount: "4",
         offers: [
           {
             "@type": "Offer",
             name: "Plan Promo España — Fines de Febrero, Marzo, Abril y Mayo",
-            priceSpecification: { "@type": "PriceSpecification", minPrice: "699", priceCurrency: "USD" },
+            priceSpecification: { "@type": "PriceSpecification", minPrice: "799", priceCurrency: "USD" },
             priceCurrency: "USD",
             priceValidUntil: "2027-05-31",
             availability: "https://schema.org/InStock",
@@ -174,7 +174,7 @@ const JSON_LD_ESPANA = {
       mainEntity: [
         {
           "@type": "Question",
-          name: "¿El paquete a España desde $699 USD es ida y vuelta?",
+          name: "¿El paquete a España desde $799 USD es ida y vuelta?",
           acceptedAnswer: {
             "@type": "Answer",
             text: textoPrecio("No. El paquete migratorio incluye tu pasaje de avión de ida emitido, una reserva del vuelo de regreso, tu reserva de hotel, tu seguro Schengen de 30.000€ y tu check-in hecho 24h antes. La reserva de regreso no es un boleto emitido: si quieres viajar con el regreso emitido, te cotizamos ida y vuelta."),
@@ -185,7 +185,7 @@ const JSON_LD_ESPANA = {
           name: "¿Cuánto cuesta el paquete a España según el mes de viaje y cómo se separa?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: textoPrecio("Contamos con 4 planes oficiales según tu fecha de viaje: Plan Promo $699 USD (fines de Feb, Mar, Abr, May), Plan Smart $799 USD (Jun, Sep, Oct, Nov), Plan Plus $899 USD (salidas cercanas Ene/1ra quincena Feb) y Plan Full $999 USD (temporada alta Dic/Jul/Ago o con maleta de 23 kg en bodega). Cada plan se separa con un adelanto."),
+            text: textoPrecio("El precio depende de la fecha de viaje: mientras más anticipación, mejor precio. Comprando con anticipación va desde $799 USD (fines de Feb a May y Jun, Sep, Oct, Nov), Plan Plus $899 USD (salidas cercanas Ene/1ra quincena Feb) y Plan Full $999 USD (temporada alta Dic/Jul/Ago o con maleta de 23 kg en bodega). Cada plan se separa con un adelanto."),
           },
         },
       ],
