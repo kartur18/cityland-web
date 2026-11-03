@@ -13,7 +13,7 @@ import { absoluta } from "@/lib/paquetes-armados/fotos";
 import { tituloSeo } from "@/lib/paquetes-armados/comun";
 import { LANDINGS_ITALIA, NOMBRE_GRUPO, rutaLandingItalia } from "@/lib/italia/landings";
 import type { GrupoItalia, LandingItalia } from "@/lib/italia/tipos";
-import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
+import { URL_BASE_SEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
 
 // Plantilla de /italia/<slug>: portada propia de cada familia, el contenido propio de la búsqueda al medio
@@ -22,11 +22,12 @@ import { safeJsonLd } from "@/lib/seguridad-http";
 export function metadataLandingItalia(l: LandingItalia): Metadata {
   const url = `${URL_BASE_SEO}${rutaLandingItalia(l)}`;
   const titulo = tituloSeo(l.tituloSeo);
+  const descripcion = optimizarMetaDescriptionSEO(l.descripcion);
   return {
     title: { absolute: titulo },
-    description: l.descripcion,
+    description: descripcion,
     alternates: { canonical: url },
-    openGraph: { type: "website", url, title: titulo, description: l.descripcion, siteName: "Cityland Travel", locale: "es_PE", images: [absoluta(l.foto, URL_BASE_SEO)] },
+    openGraph: { type: "website", url, title: titulo, description: descripcion, siteName: "Cityland Travel", locale: "es_PE", images: [absoluta(l.foto, URL_BASE_SEO)] },
   };
 }
 
