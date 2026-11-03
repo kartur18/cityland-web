@@ -122,7 +122,7 @@ export default function Footer() {
             <div className="space-y-2.5 text-xs">
               <Link href="/paquetes-migratorios" className="flex items-center gap-1.5 text-amber-300 hover:text-amber-200 font-bold transition-colors">
                 <FlagIcon pais="Europa" className="w-3.5 h-2.5 shrink-0" />
-                <span>Paquetes Migratorios (Solo ida desde $699)</span>
+                <span>Paquetes Migratorios (Solo ida desde $799)</span>
               </Link>
               <Link href="/directorio#buscador" className="block text-slate-200 hover:text-white font-semibold transition-colors">
                 🔍 Buscador de paquetes y destinos
@@ -145,7 +145,7 @@ export default function Footer() {
               </Link>
               <Link href="/espana" className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors">
                 <FlagIcon pais="España" className="w-3.5 h-2.5" />
-                <span>Paquete Migratorio España (Solo ida desde $699)</span>
+                <span>Paquete Migratorio España (Solo ida desde $799)</span>
               </Link>
               <Link href="/italia" className="flex items-center gap-1.5 text-emerald-300 hover:text-white font-semibold transition-colors">
                 <FlagIcon pais="Italia" className="w-3.5 h-2.5" />

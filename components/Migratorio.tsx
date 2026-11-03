@@ -12,10 +12,10 @@ export default function Migratorio() {
     categoria: "europa",
     destino: "Madrid / Europa",
     tipo: "Paquete Migratorio",
-    precioUSD: 699,
+    precioUSD: 799,
     mensajePersonalizado:
-      "¡Hola! Quiero más información del paquete migratorio a Europa desde $699.",
-    refWeb: "citylandtravel.com [Portada · Paquete Migratorio $699]",
+      "¡Hola! Quiero más información del paquete migratorio a Europa desde $799.",
+    refWeb: "citylandtravel.com [Portada · Paquete Migratorio $799]",
   });
 
   return (
@@ -33,7 +33,7 @@ export default function Migratorio() {
 
             <h2 className="font-[family-name:var(--font-bebas)] text-4xl sm:text-6xl text-white tracking-tight leading-[0.95] mb-3">
               PAQUETE MIGRATORIO A EUROPA{" "}
-              <span className="text-amber-400">SOLO IDA DESDE $699 USD</span>
+              <span className="text-amber-400">SOLO IDA DESDE $799 USD</span>
             </h2>
 
             <p className="text-sm sm:text-base text-slate-200 mb-6 max-w-2xl leading-relaxed">
@@ -48,7 +48,7 @@ export default function Migratorio() {
                   Plan Promo
                 </span>
                 <span className="text-xl font-black text-white">
-                  <span className="text-[11px] font-bold text-slate-300 mr-1">Desde</span>$699
+                  <span className="text-[11px] font-bold text-slate-300 mr-1">Desde</span>$799
                 </span>
                 <span className="text-[11px] text-slate-300 block">
                   Feb – May
@@ -131,7 +131,7 @@ export default function Migratorio() {
           <div className="lg:col-span-5 relative min-h-[280px] sm:min-h-[360px] w-full overflow-hidden">
             <Image
               src="/images/espana/palacio-real.jpg"
-              alt="Paquete Migratorio a Europa desde $699 USD (solo ida) - Cityland Travel"
+              alt="Paquete Migratorio a Europa desde $799 USD (solo ida) - Cityland Travel"
               fill
               sizes="(max-width: 1024px) 100vw, 500px"
               className="object-cover"

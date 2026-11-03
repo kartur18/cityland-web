@@ -18,10 +18,10 @@ export default function LandingPage() {
       <Navbar />
 
       <main id="main-content">
-        {/* 1. Hero Principal con Prioridad en Europa $699 y Caribe */}
+        {/* 1. Hero Principal con Prioridad en Europa $799 y Caribe */}
         <Hero />
 
-        {/* 2. Paquetes Migratorios a España, Italia y Francia ($699 · $799 · $899 · $999) */}
+        {/* 2. Paquetes Migratorios a España, Italia y Francia ($799 · $899 · $999) */}
         <Migratorio />
 
         {/* 3. Catálogo Fotográfico de Destinos Más Vendidos */}

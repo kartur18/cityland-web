@@ -263,20 +263,20 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     pais: "España",
     bandera: "🇪🇸",
     categoria: "europa",
-    duracion: "Planes desde $699 · $799 · $899 · $999",
-    precioUSD: 699,
+    duracion: "Planes desde $799 · $899 · $999",
+    precioUSD: 799,
     precioSoles: 2620,
     precioRegularUSD: 999,
     tag: "#1 MÁS VENDIDO · PAQUETE MIGRATORIO",
     tagColor: "hot",
     img: "/images/espana/puerta-de-alcala.jpg",
-    alt: "Paquete Migratorio a Madrid y Barcelona desde Lima desde $699 USD",
+    alt: "Paquete Migratorio a Madrid y Barcelona desde Lima desde $799 USD",
     tituloComercial: "Paquete Migratorio a España: Madrid, Barcelona y 25 Ciudades",
     resaltado: "Pasaje de Ida + Reserva de Regreso + Hotel + Seguro 30.000€ + Check-in",
     inclusiones: {
       vuelo: true,
       hotel: "Reserva de hotel confirmada en España",
-      alimentacion: "Según plan elegido ($699 a $999)",
+      alimentacion: "Según plan elegido ($799 a $999)",
       traslados: true,
       seguro: "Seguro médico Schengen 30.000€",
       tour: "Carpeta Migratoria Completa + Asesoría 1 a 1",
@@ -289,12 +289,12 @@ export const PAQUETES_COMPLETOS: PaqueteTuristico[] = [
     descripcion:
       "El paquete estrella de Cityland Travel para peruanos que viajan a Madrid, Barcelona, Valencia, Sevilla o cualquier ciudad de España. Incluye pasaje de ida emitido, reserva de regreso, hotel, seguro y check-in. La reserva de regreso no es un boleto emitido: si quieres viajar con el regreso emitido, te cotizamos ida y vuelta.",
     itinerario: [
-      "Paso 1: Congelas tu cupo con un adelanto ($350 USD en el Plan Promo de $699 o $400 USD en el Plan Smart de $799).",
+      "Paso 1: Congelas tu cupo con un adelanto; tu asesora te dice el monto según tu fecha. Mientras más anticipación, mejor precio.",
       "Paso 2: Emitimos tu pasaje de avión de ida, tu póliza de seguro médico Schengen de 30.000€ y tu reserva de hotel confirmada.",
       "Paso 3: 24 horas antes de tu vuelo realizamos tu check-in, activamos tu reserva de retorno en sistema y te entregamos tu carpeta lista en Los Olivos.",
     ],
     tipoViaje: "migratorio",
-    migratorioUSD: 699,
+    migratorioUSD: 799,
   },
   {
     id: "italia-milan-roma-migratorio",
@@ -1272,7 +1272,7 @@ export const DESTINOS_CARIBE: Destino[] = PAQUETES_COMPLETOS
   }));
 
 // Paquete migratorio a España: solo ida + gestión (pasaje de ida, retorno reservado, hotel, seguro).
-export const PRECIO_MIGRATORIO_DESDE = 699;
+export const PRECIO_MIGRATORIO_DESDE = 799;
 // Pasaje Lima-Madrid ida y vuelta (producto distinto del paquete migratorio).
 export const PRECIO_IDA_VUELTA_MADRID_DESDE = 1250;
 export const PRECIO_DESDE_CARIBE = 589;

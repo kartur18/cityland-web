@@ -15,8 +15,8 @@ function planesMigratorios(zona: string, codigoRuta: string, aerolinea: string):
   return [
     {
       etiqueta: "Plan Promo · Separa con un adelanto",
-      titulo: `Plan Promo a ${zona} ($699)`,
-      precioUSD: 699,
+      titulo: `Plan Promo a ${zona} ($799)`,
+      precioUSD: 799,
       subtitulo: `Salidas fines de Feb, Mar, Abr y May · 5 Documentos Incluidos`,
       incluye: [
         `Pasaje de avión de ida emitido (${codigoRuta})`,
@@ -24,7 +24,7 @@ function planesMigratorios(zona: string, codigoRuta: string, aerolinea: string):
         `Reserva de hotel verificable en ${zona} o cuadre con Carta`,
         "Seguro Schengen 30.000€ sin deducible + Check-in 24h antes",
       ],
-      waMensaje: `¡Hola! Quiero más información del paquete a ${zona} desde $699.`,
+      waMensaje: `¡Hola! Quiero más información del paquete a ${zona} desde $799.`,
     },
     {
       etiqueta: "★ El Más Pedido · Separa con un adelanto",
