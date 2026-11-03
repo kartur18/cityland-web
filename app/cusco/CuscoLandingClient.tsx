@@ -6,8 +6,10 @@ import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import PlaneIcon from "@/components/icons/PlaneIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
+import Link from "next/link";
 import NotaPrecio from "@/components/NotaPrecio";
 import { PAQUETES_CUSCO } from "./datos";
+import { LANDINGS_CUSCO, rutaLandingCusco } from "@/lib/landings-cusco-practico";
 
 export default function CuscoLandingClient() {
   return (
@@ -281,6 +283,26 @@ export default function CuscoLandingClient() {
                 className="object-cover"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Dudas frecuentes de viaje a Cusco */}
+      <section className="py-14 sm:py-20 bg-slate-50/70 border-t border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-6">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0a1628] tracking-tight">
+            Dudas frecuentes para tu viaje a Cusco
+          </h2>
+          <div className="flex flex-wrap gap-2.5">
+            {LANDINGS_CUSCO.map((l) => (
+              <Link
+                key={l.slug}
+                href={rutaLandingCusco(l)}
+                className="inline-flex items-center min-h-[44px] px-4 rounded-xl bg-white border border-slate-200 hover:border-red-300 hover:bg-red-50 text-sm font-bold text-[#0a1628]"
+              >
+                {l.migas}
+              </Link>
+            ))}
           </div>
         </div>
       </section>

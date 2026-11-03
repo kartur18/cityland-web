@@ -46,6 +46,7 @@ export function esIndexable(ruta: string): boolean {
     ruta.startsWith("/viajes/requisitos-") ||
     ruta.startsWith("/espana/") ||
     ruta.startsWith("/italia/") ||
+    ruta.startsWith("/cusco/") ||
     ruta.startsWith("/seguros/") ||
     PAGINAS_FUERTES.has(ruta) ||
     PAGINAS_CON_CLIENTES.has(ruta) ||

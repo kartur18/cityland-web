@@ -18,6 +18,7 @@ import { destinosConTours, todosLosTours } from "@/lib/tours-turbo";
 import { destinosConHoteles, todosLosHoteles } from "@/lib/hoteles-turbo";
 import { destinosConTraslados } from "@/lib/traslados-turbo";
 import { LANDINGS_ESPANA, rutaLandingEspana } from "@/lib/landings-espana";
+import { LANDINGS_CUSCO, rutaLandingCusco } from "@/lib/landings-cusco-practico";
 import { PRUEBA_REAPERTURA } from "@/lib/prueba-reapertura";
 import { PAGINAS_RECUPERADAS } from "@/lib/paginas-recuperadas";
 import { landingsSoloIda } from "@/lib/landings-solo-ida";
@@ -111,6 +112,7 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
     "/directorio",
     "/caribe",
     "/cusco",
+    ...LANDINGS_CUSCO.map(rutaLandingCusco),
     "/peru",
     "/cruceros",
     "/luna-de-miel",
