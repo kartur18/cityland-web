@@ -18,7 +18,7 @@ export const GUIA_CRUCEROS: GuiaServicio = {
     },
     {
       q: "¿Puedo pagar en partes?",
-      a: "Sí. Separas con el 50% y pagas el resto antes del viaje, según las fechas que pide la naviera.",
+      a: "Sí. Separas con un adelanto y pagas el resto antes del viaje, según las fechas que pide la naviera.",
     },
     {
       q: "¿Pueden ir niños y adultos mayores?",

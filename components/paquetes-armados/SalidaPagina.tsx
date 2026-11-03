@@ -89,7 +89,7 @@ export default function SalidaPagina({ salida: s }: { salida: Salida }) {
     },
     {
       q: "¿Cómo separo mi cupo?",
-      a: "Escríbenos por WhatsApp con la fecha; tu asesora confirma que haya cupo y separas con el 50%. El saldo se paga antes de viajar.",
+      a: "Escríbenos por WhatsApp con la fecha; tu asesora confirma que haya cupo y separas con un adelanto. El saldo se paga antes de viajar.",
     },
     {
       q: "¿Qué documentos necesito?",

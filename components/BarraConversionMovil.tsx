@@ -15,7 +15,7 @@ interface Props {
 export default function BarraConversionMovil({
   precio,
   href,
-  nota = "Separa con 50%",
+  nota = "Separa con un adelanto",
   etiqueta = "WhatsApp Ahora",
 }: Props) {
   return (

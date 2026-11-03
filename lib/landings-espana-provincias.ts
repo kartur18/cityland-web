@@ -358,7 +358,7 @@ function landingProvincia(p: Provincia): LandingEspana {
   return {
     slug: `pasajes-${p.slug}-madrid`,
     tituloSeo: `Pasajes ${p.ciudad} a Madrid vía Lima`,
-    descripcion: `Pasajes de ${p.ciudad} a Madrid con conexión en Lima, en un solo boleto y con tu maleta hasta Barajas. Desde US$ ${precioTexto} ida y vuelta. Separa con el 50%.`,
+    descripcion: `Pasajes de ${p.ciudad} a Madrid con conexión en Lima, en un solo boleto y con tu maleta hasta Barajas. Desde US$ ${precioTexto} ida y vuelta. Separa con un adelanto.`,
     migas: `Pasajes ${p.ciudad}–Madrid`,
     sello: `${p.ciudad} → Lima → Madrid`,
     h1: `${p.ciudad} a Madrid vía Lima`,
@@ -420,7 +420,7 @@ function landingProvincia(p: Provincia): LandingEspana {
         q: "¿Puedo comprar solo la ida?",
         a: "Sí, si tienes visado de estudios o de residencia. Si viajas como turista, te vendemos el pasaje ida y vuelta.",
       },
-      { q: "¿Cómo separo mi pasaje?", a: "Con el 50% del precio. El saldo lo pagas antes de la emisión y te mandamos el boleto por WhatsApp." },
+      { q: "¿Cómo separo mi pasaje?", a: "Con un adelanto del precio. El saldo lo pagas antes de la emisión y te mandamos el boleto por WhatsApp." },
     ],
     enlaces: [
       { href: "/vuelos/lima-madrid", texto: "Vuelos Lima–Madrid" },

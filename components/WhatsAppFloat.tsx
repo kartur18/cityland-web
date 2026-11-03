@@ -16,7 +16,7 @@ export default function WhatsAppFloat({ href, titulo, subtitulo }: { href?: stri
       <aside aria-label="Contacto directo por WhatsApp" className="fixed bottom-6 right-6 z-[998] flex items-center gap-3 max-md:hidden group">
         <div className="bg-white/95 backdrop-blur-md text-[#0a1628] text-xs font-semibold px-3.5 py-2 rounded-xl shadow-lg border border-slate-100 flex items-center gap-2 group-hover:scale-105 transition-transform">
           <span>
-            Cotiza por WhatsApp · <strong>Separa con 50%</strong>
+            Cotiza por WhatsApp · <strong>Separa con un adelanto</strong>
           </span>
         </div>
         <a
@@ -40,7 +40,7 @@ export default function WhatsAppFloat({ href, titulo, subtitulo }: { href?: stri
       >
         <div className="flex gap-2 items-center">
           <div className="flex-1 min-w-0">
-            <strong className="text-[12px] text-[#0a1628] block font-bold truncate">{titulo ?? "Separa tu paquete con 50%"}</strong>
+            <strong className="text-[12px] text-[#0a1628] block font-bold truncate">{titulo ?? "Separa tu paquete con un adelanto"}</strong>
             <span className="text-[10px] text-slate-500 flex items-center gap-1">{subtitulo ?? "Escríbenos y te cotizamos por WhatsApp"}</span>
           </div>
           <a

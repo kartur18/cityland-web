@@ -42,7 +42,7 @@ const CIUDADES_ORIGEN = [
   { id: "iberia", label: "Vuelo Iberia (Barajas T4)" },
   { id: "air europa", label: "Vuelo Air Europa (Barajas T1)" },
   { id: "todo incluido", label: "Resort Todo Incluido" },
-  { id: "50", label: "Separa con 50% Inicial" },
+  { id: "50", label: "Separa con un adelanto Inicial" },
 ];
 
 const MESES_TEMPORADAS = [
@@ -303,7 +303,6 @@ export default function BuscadorCatalogoInstantaneo({
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {items.map((item) => {
-              const inicial50 = Math.round(item.precioDesdeUSD * 0.5);
               const waHref =
                 "https://wa.me/51944103890?text=" +
                 encodeURIComponent(
@@ -341,7 +340,7 @@ export default function BuscadorCatalogoInstantaneo({
                           📍 {item.destinoOPais}
                         </span>
                         <span className="font-extrabold text-emerald-800 bg-emerald-50 border border-emerald-200/80 px-2.5 py-0.5 rounded-lg text-[11px] shrink-0 whitespace-nowrap">
-                          Separa desde ${inicial50.toLocaleString("en-US")}
+                          Separa con un adelanto
                         </span>
                       </div>
 

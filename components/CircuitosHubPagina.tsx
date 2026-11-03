@@ -67,7 +67,7 @@ export default function CircuitosHubPagina({ hub: h }: { hub: HubCircuitos }) {
       q: "¿Qué documentos necesito?",
       a: "Pasaporte vigente y, según el destino, visa o permiso de ingreso. Al cotizar te confirmamos los requisitos vigentes para peruanos.",
     },
-    { q: "¿Puedo separar mi viaje?", a: "Sí. Separas con el 50% y pagas el resto antes de viajar, por transferencia, Yape, Plin o tarjeta." },
+    { q: "¿Puedo separar mi viaje?", a: "Sí. Separas con un adelanto y pagas el resto antes de viajar, por transferencia, Yape, Plin o tarjeta." },
   ];
   const schema = {
     "@context": "https://schema.org",

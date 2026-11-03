@@ -6,7 +6,7 @@ import AirlineLandingTemplate, {
 import BuscadorCatalogoInstantaneo from "@/components/BuscadorCatalogoInstantaneo";
 import { INDICE_PAQUETES_MIGRATORIOS_1000 } from "@/lib/catalogo-paquetes-migratorios-1000";
 import { formatoUSD } from "@/lib/formato-precio";
-import { inicialSeparacion, tarifasMigratorio } from "@/lib/precios-migratorio";
+import { tarifasMigratorio } from "@/lib/precios-migratorio";
 
 const TARIFAS_ITALIA = tarifasMigratorio("Italia");
 
@@ -25,14 +25,14 @@ const CONFIG_OFERTAS: ConfiguracionLandingAerolinea = {
   tituloDestacadoHero: "Paquetes a Europa, Caribe y Perú",
   descripcionHero:
     "Explora nuestras ofertas organizadas por prioridad comercial: paquetes migratorios a España, Italia y Francia desde $699 USD (solo ida), resorts All Inclusive en el Caribe y circuitos por el Perú.",
-  negritaHero: "Separa hoy con el 50% de inicial y congela tu tarifa oficial",
+  negritaHero: "Separa hoy con un adelanto y congela tu tarifa oficial",
   ctaPrincipalTexto: "Cotizar Oferta por WhatsApp",
   waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
     "¡Hola Cityland Travel! Estuve revisando el catálogo de Ofertas de Viajes en su web y quiero cotizar mi viaje.",
   checksHero: [
     "Paquetes Migratorios a Europa (solo ida): $699 · $799 · $899 · $999",
-    "Separa con el 50% y congela tu tarifa",
+    "Separa con un adelanto y congela tu tarifa",
     "Atención presencial en Los Olivos y por WhatsApp",
   ],
   vitrina: {
@@ -46,7 +46,7 @@ const CONFIG_OFERTAS: ConfiguracionLandingAerolinea = {
     labelPrecio: `Solo ida: España desde ${formatoUSD(tarifasMigratorio("España").promo)} · Italia y Francia desde ${formatoUSD(TARIFAS_ITALIA.promo)}`,
     precio: "$699",
     moneda: "USD",
-    notaInferior: "Separa hoy con $350 (50% inicial)",
+    notaInferior: "Separa hoy con un adelanto",
     waNumero: "51944103890",
     waMensaje:
       "¡Hola! Quiero más información del paquete migratorio a Europa desde $699.",
@@ -70,7 +70,7 @@ const CONFIG_OFERTAS: ConfiguracionLandingAerolinea = {
       subtitulo: "Planes de solo ida según tu fecha: $699 · $799 · $899 · $999",
       precioPrincipal: "$699",
       precioSecundario: "USD",
-      notaPrecio: "Separa con $350 (50% inicial)",
+      notaPrecio: "Separa con un adelanto",
       tag: "#1 Más Vendido",
       tagBg: "bg-red-600 text-white",
       img: "/images/espana/puerta-de-alcala.jpg",
@@ -93,7 +93,7 @@ const CONFIG_OFERTAS: ConfiguracionLandingAerolinea = {
       subtitulo: `Planes de solo ida según tu fecha: ${formatoUSD(TARIFAS_ITALIA.promo)} · ${formatoUSD(TARIFAS_ITALIA.smart)} · ${formatoUSD(TARIFAS_ITALIA.plus)} · ${formatoUSD(TARIFAS_ITALIA.full)}`,
       precioPrincipal: formatoUSD(TARIFAS_ITALIA.promo),
       precioSecundario: "USD",
-      notaPrecio: `Separa con ${formatoUSD(inicialSeparacion(TARIFAS_ITALIA.promo))} (50% inicial)`,
+      notaPrecio: `Separa con un adelanto`,
       tag: "Especial Italia",
       tagBg: "bg-emerald-600 text-white",
       img: "/images/destinos/milan.webp",
@@ -116,7 +116,7 @@ const CONFIG_OFERTAS: ConfiguracionLandingAerolinea = {
       subtitulo: "5 Días / 4 Noches · Playa Bávaro Todo Incluido 24h",
       precioPrincipal: "$1,049",
       precioSecundario: "USD",
-      notaPrecio: "Separa con $525 (50% inicial)",
+      notaPrecio: "Separa con un adelanto",
       tag: "All Inclusive",
       tagBg: "bg-teal-600 text-white",
       img: "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=85",
@@ -154,7 +154,7 @@ const CONFIG_OFERTAS: ConfiguracionLandingAerolinea = {
       subtitulo: "5 Días / 4 Noches · Vuelos + Hotel + Tours",
       precioPrincipal: "$599",
       precioSecundario: "USD",
-      notaPrecio: "Separa con $300 (50% inicial)",
+      notaPrecio: "Separa con un adelanto",
       tag: "Solo con DNI",
       tagBg: "bg-amber-600 text-white",
       img: "https://images.unsplash.com/photo-1583531352515-8884af319dc1?w=1200&q=85",
@@ -191,7 +191,7 @@ const CONFIG_OFERTAS: ConfiguracionLandingAerolinea = {
       sub: "Paquetes migratorios completos a España, Italia y Francia según tu fecha",
     },
     {
-      titulo: "Separa con 50%",
+      titulo: "Separa con un adelanto",
       sub: "Reserva tu espacio hoy y completa el pago antes de viajar",
     },
     {

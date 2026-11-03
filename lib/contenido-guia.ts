@@ -117,7 +117,7 @@ export function guiaOferta(item: LandingComercialSEO): GuiaRapida {
     titulo: `Guía rápida: ${lugar}`,
     intro: [
       aperturaPorCluster(item.cluster, lugar, detalle),
-      `Cómo funciona: nos indicas fecha y pasajeros, revisamos que ${minuscula(checks[0] ?? "la oferta")} esté disponible y, si te conviene, separas con el 50%.`,
+      `Cómo funciona: nos indicas fecha y pasajeros, revisamos que ${minuscula(checks[0] ?? "la oferta")} esté disponible y, si te conviene, separas con un adelanto.`,
     ],
     pasos: [],
     faqs,
@@ -197,7 +197,7 @@ export function guiaViaje(item: ViajeEspecializadoSEO): GuiaRapida {
     titulo: `Guía rápida: ${item.destinoOPais}`,
     intro: [
       `${APERTURA_VIAJE[item.categoria]}: ${sinPuntoFinal(item.subtitulo)}.`,
-      `Cómo funciona: nos cuentas tu fecha de salida desde Lima, confirmamos que ${minuscula(incluye[0] ?? "la oferta")} esté disponible y puedes separar con el 50%.`,
+      `Cómo funciona: nos cuentas tu fecha de salida desde Lima, confirmamos que ${minuscula(incluye[0] ?? "la oferta")} esté disponible y puedes separar con un adelanto.`,
     ],
     pasos: [],
     faqs,

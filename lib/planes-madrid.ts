@@ -14,7 +14,7 @@ interface EntradaPlanes {
 function planesMigratorios(zona: string, codigoRuta: string, aerolinea: string): PlanMadridReal[] {
   return [
     {
-      etiqueta: "Plan Promo · Separa con $350 (50%)",
+      etiqueta: "Plan Promo · Separa con un adelanto",
       titulo: `Plan Promo a ${zona} ($699)`,
       precioUSD: 699,
       subtitulo: `Salidas fines de Feb, Mar, Abr y May · 5 Documentos Incluidos`,
@@ -27,7 +27,7 @@ function planesMigratorios(zona: string, codigoRuta: string, aerolinea: string):
       waMensaje: `¡Hola! Quiero más información del paquete a ${zona} desde $699.`,
     },
     {
-      etiqueta: "★ El Más Pedido · Separa con $400 (50%)",
+      etiqueta: "★ El Más Pedido · Separa con un adelanto",
       titulo: `Plan Smart a ${zona} ($799)`,
       precioUSD: 799,
       subtitulo: "Salidas Jun, Sep, Oct y Nov + Asesoría Migratoria 1 a 1",
@@ -41,7 +41,7 @@ function planesMigratorios(zona: string, codigoRuta: string, aerolinea: string):
       waMensaje: `¡Hola! Quiero más información del paquete Smart a ${zona} desde $799.`,
     },
     {
-      etiqueta: "Salidas Cercanas · Separa con $450 (50%)",
+      etiqueta: "Salidas Cercanas · Separa con un adelanto",
       titulo: `Plan Plus a ${zona} ($899)`,
       precioUSD: 899,
       subtitulo: "Salidas Enero, 1ra quincena Febrero o rutas con conexión",
@@ -54,7 +54,7 @@ function planesMigratorios(zona: string, codigoRuta: string, aerolinea: string):
       waMensaje: `¡Hola! Quiero más información del paquete Plus a ${zona} desde $899.`,
     },
     {
-      etiqueta: "Temporada Alta / 23 kg · Separa con $500",
+      etiqueta: "Temporada Alta / 23 kg · Separa con un adelanto",
       titulo: `Plan Full ${zona} con Maleta 23 kg ($999)`,
       precioUSD: 999,
       subtitulo: "Salidas Dic, Jul, Ago o incluye maleta grande de 23 kg en bodega",
@@ -72,8 +72,7 @@ function planesMigratorios(zona: string, codigoRuta: string, aerolinea: string):
 // Una sola tarjeta con el precio real del producto; solo MIGRATORIO muestra los 4 planes de 699 a 999.
 export function construirPlanesMadrid(e: EntradaPlanes): PlanMadridReal[] {
   const { tipo, zona, codigoRuta, aerolinea, precio, nombreProducto } = e;
-  const mitad = Math.round(precio * 0.5);
-  const etiqueta = (nombre: string) => `${nombre} · Separa con $${mitad} (50%)`;
+  const etiqueta = (nombre: string) => `${nombre} · Separa con un adelanto`;
   const cierre = "Check-in 24h antes hecho por tu asesor";
 
   switch (tipo) {
@@ -147,8 +146,8 @@ interface EntradaTextos {
 }
 
 export function textosMetaMadrid(e: EntradaTextos): { descripcion: string; faqs: { q: string; a: string }[] } {
-  const { tipo, tituloSinDosPuntos: titulo, subtituloDorado: sub, mitadFmt, precioFmt, zona, nombreProducto } = e;
-  const separa = `Separa con $${mitadFmt} (50%) en Los Olivos.`;
+  const { tipo, tituloSinDosPuntos: titulo, subtituloDorado: sub, precioFmt, zona, nombreProducto } = e;
+  const separa = `Separa con un adelanto en Los Olivos.`;
   const faqQ = (rotulo: string) => `¿Qué incluye ${nombreProducto} hacia ${zona} (${rotulo} $${precioFmt} USD)?`;
 
   switch (tipo) {

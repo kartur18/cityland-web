@@ -70,8 +70,8 @@ const FAQS_GUIA_EUROPA = [
     a: "En España la referencia oficial del BOE es de 122,10 € por día de estancia (con un mínimo de 1.098,90 € por persona). En nuestra oficina de Los Olivos te asesoramos sobre cuántos días declarar en tu itinerario para cumplir cómodamente con este requisito.",
   },
   {
-    q: "¿Cómo funciona la separación con el 50%?",
-    a: "Congelas tu tarifa abonando el 50% de inicial ($350 USD en el plan de $699, $400 USD en el plan de $799, $450 USD en el plan de $899 o $500 USD en el plan de $999) y pagas la otra mitad antes de tu fecha de vuelo.",
+    q: "¿Cómo funciona la separación con un adelanto?",
+    a: "Congelas tu tarifa con un adelanto ($350 USD en el plan de $699, $400 USD en el plan de $799, $450 USD en el plan de $899 o $500 USD en el plan de $999) y pagas la otra mitad antes de tu fecha de vuelo.",
   },
 ];
 
@@ -104,7 +104,7 @@ export default function GuiaEuropaPage() {
 
                 <p className="text-sm sm:text-base text-slate-200 leading-relaxed mb-6 max-w-2xl">
                   Viaja con tu <strong className="text-white">carpeta de viaje</strong> lista: pasaje de avión de ida emitido, reserva de regreso, reserva de hotel confirmada, seguro médico de 30.000€ y check-in 24h antes.{" "}
-                  <strong className="text-amber-300">Separa hoy con el 50% de inicial.</strong>
+                  <strong className="text-amber-300">Separa hoy con un adelanto.</strong>
                 </p>
 
                 <div className="flex flex-wrap items-center gap-3">
@@ -197,7 +197,7 @@ export default function GuiaEuropaPage() {
                         {p.etiqueta}
                       </span>
                       <span className="text-xs font-bold text-emerald-700">
-                        Separa desde ${p.separaConUSD}
+                        Separa con un adelanto
                       </span>
                     </div>
 
@@ -287,7 +287,7 @@ export default function GuiaEuropaPage() {
                       </p>
                     </div>
                     <div className="pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs font-extrabold text-[#0a1628]">
-                      <span>Separa con el 50% (desde $350 USD)</span>
+                      <span>Separa con un adelanto</span>
                       <span className="text-red-600 group-hover:translate-x-1 transition-transform">
                         Ver ciudades →
                       </span>

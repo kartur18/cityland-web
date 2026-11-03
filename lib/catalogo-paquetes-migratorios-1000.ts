@@ -3,7 +3,7 @@
  * (España, Italia, Francia, Resto de Europa Schengen, Salidas desde Perú y Dudas Reales)
  *
  * Estructura Comercial Unificada:
- * - 4 Planes Oficiales según la fecha de viaje, todos separando con el 50%. Los precios salen de lib/precios-migratorio.ts
+ * - 4 Planes Oficiales según la fecha de viaje, todos separando con un adelanto. Los precios salen de lib/precios-migratorio.ts
  *   (España y resto de Europa: $699 · $799 · $899 · $999; Italia y Francia: $849 · $949 · $1,049 · $1,149).
  * - Explicación en lenguaje 100% sencillo peruano (sin tecnicismos confusos):
  *   Pasaje de avión de ida + Reserva de regreso + Reserva de hotel + Seguro médico + Preparación paso a paso.
@@ -1643,7 +1643,7 @@ const INTENCIONES_ESPANA: {
     slugIntencion: "plan-promo-699",
     etiquetaCorta: "Plan Promo",
     focoTitulo: (c, t) => `Paquete Migratorio a ${c} — Plan Promo Desde ${usd(t.promo)}`,
-    focoSubtitulo: (_c, t) => `Separa con el 50% (${usd(inicialSeparacion(t.promo))} USD) · Pasaje + Reserva de regreso + Hotel + Seguro`,
+    focoSubtitulo: () => `Separa con un adelanto · Pasaje + Reserva de regreso + Hotel + Seguro`,
     focoGancho: (c, t) =>
       `La tarifa promocional de ${usd(t.promo)} USD para viajar a ${c} comprando con anticipación (salidas fines de Febrero, Marzo, Abril y Mayo). Incluye todos tus documentos listos para presentar en el aeropuerto.`,
   },
@@ -1651,7 +1651,7 @@ const INTENCIONES_ESPANA: {
     slugIntencion: "plan-smart-799",
     etiquetaCorta: "Plan Smart",
     focoTitulo: (c, t) => `Paquete Migratorio Smart a ${c} Desde ${usd(t.smart)}`,
-    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.smart))} USD (50%) · Incluye Check-in 24h Antes + Asesoría 1 a 1`,
+    focoSubtitulo: () => `Separa con un adelanto · Incluye Check-in 24h Antes + Asesoría 1 a 1`,
     focoGancho: (c) =>
       `Nuestro paquete más pedido para viajar a ${c} en temporada media (Octubre, Noviembre, Junio y Septiembre). Incluye tu vuelo de ida, tu reserva de regreso, hotel, seguro y check-in hecho por tu asesor.`,
   },
@@ -1659,7 +1659,7 @@ const INTENCIONES_ESPANA: {
     slugIntencion: "plan-plus-899",
     etiquetaCorta: "Plan Plus",
     focoTitulo: (c, t) => `Paquete Migratorio Plus a ${c} Desde ${usd(t.plus)}`,
-    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.plus))} USD (50%) · Ideal para Fechas Próximas y Conexión Directa`,
+    focoSubtitulo: () => `Separa con un adelanto · Ideal para Fechas Próximas y Conexión Directa`,
     focoGancho: (c) =>
       `Diseñado para quienes necesitan viajar pronto a ${c} (Enero y primera quincena de Febrero) o desean conexión garantizada con carpeta migratoria completa lista para el control en el aeropuerto.`,
   },
@@ -1667,7 +1667,7 @@ const INTENCIONES_ESPANA: {
     slugIntencion: "plan-full-999",
     etiquetaCorta: "Plan Full",
     focoTitulo: (c, t) => `Paquete Migratorio Full a ${c} con Maleta 23 kg Desde ${usd(t.full)}`,
-    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.full))} USD (50%) · Temporada Alta o con Maleta Grande de Bodega`,
+    focoSubtitulo: () => `Separa con un adelanto · Temporada Alta o con Maleta Grande de Bodega`,
     focoGancho: (c) =>
       `La opción más completa para viajar a ${c} en temporada de alta demanda (Diciembre, Julio y Agosto) o llevando tu maleta grande de 23 kg en bodega más toda tu documentación migratoria.`,
   },
@@ -1675,7 +1675,7 @@ const INTENCIONES_ESPANA: {
     slugIntencion: "sin-carta-de-invitacion-con-hotel",
     etiquetaCorta: "Sin Carta de Invitación (Con Hotel)",
     focoTitulo: (c) => `Viajar a ${c} Sin Carta de Invitación (Con Reserva de Hotel)`,
-    focoSubtitulo: (_c, t) => `Paquete Migratorio Completo Desde ${usd(t.promo)} y ${usd(t.smart)} · Separa con el 50%`,
+    focoSubtitulo: (_c, t) => `Paquete Migratorio Completo Desde ${usd(t.promo)} y ${usd(t.smart)} · Separa con un adelanto`,
     focoGancho: (c) =>
       `¿Tu familiar o amigo en ${c} no puede tramitarte la Carta de Invitación en la comisaría? No te preocupes: armamos tu paquete con Reserva de Hotel confirmada a tu nombre para que pases Migraciones sin ningún problema.`,
   },
@@ -1689,11 +1689,11 @@ const INTENCIONES_ESPANA: {
   },
   {
     slugIntencion: "separar-con-50-por-ciento",
-    etiquetaCorta: "Separar con el 50%",
-    focoTitulo: (c, t) => `Viaja a ${c} Separando con el 50% de Inicial (Desde ${usd(inicialSeparacion(t.promo))} USD)`,
+    etiquetaCorta: "Separar con un adelanto",
+    focoTitulo: (c) => `Viaja a ${c} Separando con un adelanto`,
     focoSubtitulo: (_c, t) => `Planes de ${listaPreciosPlanes(t)} · Congela tu Cupo Hoy en Los Olivos`,
-    focoGancho: (c, t) =>
-      `Asegura tu tarifa a ${c} hoy mismo abonando solo la mitad (desde ${usd(inicialSeparacion(t.promo))} USD en el plan de ${usd(t.promo)} o ${usd(inicialSeparacion(t.smart))} USD en el plan Smart de ${usd(t.smart)}) y completa el saldo antes de tu fecha de vuelo.`,
+    focoGancho: (c) =>
+      `Asegura tu tarifa a ${c} hoy mismo con un adelanto y completa el saldo antes de tu fecha de vuelo.`,
   },
   {
     slugIntencion: "primer-viaje-paso-a-paso",
@@ -1707,7 +1707,7 @@ const INTENCIONES_ESPANA: {
     slugIntencion: "salidas-octubre-noviembre",
     etiquetaCorta: "Salidas Octubre y Noviembre",
     focoTitulo: (c) => `Paquete Migratorio a ${c} — Salidas Octubre y Noviembre`,
-    focoSubtitulo: (_c, t) => `Tarifa Smart ${usd(t.smart)} y Plus ${usd(t.plus)} · Separa Hoy con el 50%`,
+    focoSubtitulo: (_c, t) => `Tarifa Smart ${usd(t.smart)} y Plus ${usd(t.plus)} · Separa Hoy con un adelanto`,
     focoGancho: (c) =>
       `Aprovecha la temporada de otoño para viajar a ${c} con menos filas en el aeropuerto y toda tu carpeta migratoria (pasaje de ida + regreso reservado + hotel + seguro) lista.`,
   },
@@ -1715,7 +1715,7 @@ const INTENCIONES_ESPANA: {
     slugIntencion: "salidas-diciembre-navidad",
     etiquetaCorta: "Salidas Diciembre y Fin de Año",
     focoTitulo: (c) => `Paquete Migratorio a ${c} en Diciembre y Navidad`,
-    focoSubtitulo: (_c, t) => `Cupos de Temporada Alta (${usd(t.plus)} y ${usd(t.full)}) · Separa con el 50%`,
+    focoSubtitulo: (_c, t) => `Cupos de Temporada Alta (${usd(t.plus)} y ${usd(t.full)}) · Separa con un adelanto`,
     focoGancho: (c) =>
       `Viaja a ${c} para reencontrarte con tu familia en Navidad y Año Nuevo o empezar el año en España con tu carpeta de viaje armada.`,
   },
@@ -1723,7 +1723,7 @@ const INTENCIONES_ESPANA: {
     slugIntencion: "salidas-enero",
     etiquetaCorta: "Salidas Enero",
     focoTitulo: (c) => `Paquete Migratorio a ${c} — Salidas de Enero`,
-    focoSubtitulo: (_c, t) => `Empieza el Año en España · Planes ${usd(t.smart)} y ${usd(t.plus)} (Separa con 50%)`,
+    focoSubtitulo: (_c, t) => `Empieza el Año en España · Planes ${usd(t.smart)} y ${usd(t.plus)} (Separa con un adelanto)`,
     focoGancho: (c) =>
       `Enero es uno de los meses favoritos de los peruanos para viajar a ${c} y empezar una nueva etapa con pasaje, reserva de regreso, hotel y seguro médico completos.`,
   },
@@ -1731,7 +1731,7 @@ const INTENCIONES_ESPANA: {
     slugIntencion: "salidas-febrero",
     etiquetaCorta: "Salidas Febrero",
     focoTitulo: (c, t) => `Paquete Migratorio a ${c} — Salidas de Febrero Desde ${usd(t.promo)}`,
-    focoSubtitulo: (_c, t) => `Tarifas Promo ${usd(t.promo)} y Smart ${usd(t.smart)} · Separa con ${usd(inicialSeparacion(t.promo))} USD`,
+    focoSubtitulo: (_c, t) => `Tarifas Promo ${usd(t.promo)} y Smart ${usd(t.smart)} · Separa con un adelanto`,
     focoGancho: (c, t) =>
       `En la segunda quincena de Febrero empiezan las tarifas promocionales desde ${usd(t.promo)} USD para viajar a ${c} ahorrando más de ${usd(ahorroFrenteARedondo(t.promo))} dólares frente a un boleto redondo tradicional.`,
   },
@@ -1739,7 +1739,7 @@ const INTENCIONES_ESPANA: {
     slugIntencion: "salidas-marzo",
     etiquetaCorta: "Salidas Marzo",
     focoTitulo: (c, t) => `Paquete Migratorio a ${c} — Salidas de Marzo Desde ${usd(t.promo)}`,
-    focoSubtitulo: (_c, t) => `Mejor Temporada de Precio (${usd(t.promo)} y ${usd(t.smart)}) · Separa con el 50%`,
+    focoSubtitulo: (_c, t) => `Mejor Temporada de Precio (${usd(t.promo)} y ${usd(t.smart)}) · Separa con un adelanto`,
     focoGancho: (c, t) =>
       `Marzo marca el inicio de la primavera en ${c} y tiene cupos en el Plan Promo de ${usd(t.promo)} USD con pasaje de ida, reserva de regreso, hotel y seguro.`,
   },
@@ -1747,9 +1747,9 @@ const INTENCIONES_ESPANA: {
     slugIntencion: "salidas-abril",
     etiquetaCorta: "Salidas Abril",
     focoTitulo: (c, t) => `Paquete Migratorio a ${c} — Salidas de Abril Desde ${usd(t.promo)}`,
-    focoSubtitulo: (_c, t) => `Clima Primaveral y Tarifa Promo ${usd(t.promo)} · Separa Hoy con ${usd(inicialSeparacion(t.promo))}`,
+    focoSubtitulo: (_c, t) => `Clima Primaveral y Tarifa Promo ${usd(t.promo)} · Separa Hoy con un adelanto`,
     focoGancho: (c, t) =>
-      `Viaja en Abril a ${c} cuando empieza la temporada alta de contrataciones en España, asegurando hoy tu paquete desde ${usd(t.promo)} USD con el 50% de inicial.`,
+      `Viaja en Abril a ${c} cuando empieza la temporada alta de contrataciones en España, asegurando hoy tu paquete desde ${usd(t.promo)} USD con un adelanto.`,
   },
   {
     slugIntencion: "salidas-mayo",
@@ -1781,7 +1781,7 @@ const INTENCIONES_ITALIA: {
     slugIntencion: "paquete-migratorio-699",
     etiquetaCorta: "Plan Promo",
     focoTitulo: (c, t) => `Paquete Migratorio a ${c} (Italia) — Plan Promo Desde ${usd(t.promo)}`,
-    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.promo))} USD (50%) · Pasaje + Reserva de regreso + Hotel + Seguro`,
+    focoSubtitulo: () => `Separa con un adelanto · Pasaje + Reserva de regreso + Hotel + Seguro`,
     focoGancho: (c, t) =>
       `Viaja a ${c} comprando con anticipación desde ${usd(t.promo)} USD. Te entregamos tu pasaje de ida, tu reserva de regreso, tu reserva de hotel y tu seguro médico.`,
   },
@@ -1789,7 +1789,7 @@ const INTENCIONES_ITALIA: {
     slugIntencion: "paquete-smart-799",
     etiquetaCorta: "Plan Smart",
     focoTitulo: (c, t) => `Paquete Migratorio Smart a ${c} (Italia) Desde ${usd(t.smart)}`,
-    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.smart))} USD (50%) · Incluye Check-in 24h Antes y Asesoría`,
+    focoSubtitulo: () => `Separa con un adelanto · Incluye Check-in 24h Antes y Asesoría`,
     focoGancho: (c) =>
       `El plan preferido por la comunidad peruana que viaja a ${c}: incluye vuelo confirmado, reserva de regreso activa el día del viaje, hotel o Lettera di Invito y preparación 1 a 1.`,
   },
@@ -1797,7 +1797,7 @@ const INTENCIONES_ITALIA: {
     slugIntencion: "paquete-plus-conexion-899",
     etiquetaCorta: "Plan Plus Conexión",
     focoTitulo: (c, t) => `Paquete Migratorio Plus a ${c} con Conexión Directa (${usd(t.plus)})`,
-    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.plus))} USD (50%) · Ideal para Salidas Próximas a Italia`,
+    focoSubtitulo: () => `Separa con un adelanto · Ideal para Salidas Próximas a Italia`,
     focoGancho: (c) =>
       `Para quienes viajan pronto a ${c} con conexión directa desde Lima (vía Madrid, Ámsterdam o París) y desean toda su carpeta migratoria lista para el aeropuerto.`,
   },
@@ -1805,7 +1805,7 @@ const INTENCIONES_ITALIA: {
     slugIntencion: "paquete-full-maleta-999",
     etiquetaCorta: "Plan Full Maleta 23 kg",
     focoTitulo: (c, t) => `Paquete Migratorio Full a ${c} con Maleta de 23 kg (${usd(t.full)})`,
-    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.full))} USD (50%) · Temporada Alta o Equipaje de Bodega`,
+    focoSubtitulo: () => `Separa con un adelanto · Temporada Alta o Equipaje de Bodega`,
     focoGancho: (c) =>
       `Viaja a ${c} llevando tu maleta grande de 23 kg en bodega y tu carpeta de viaje armada.`,
   },
@@ -1813,7 +1813,7 @@ const INTENCIONES_ITALIA: {
     slugIntencion: "sin-carta-de-invitacion-con-hotel",
     etiquetaCorta: "Sin Invitación (Con Hotel)",
     focoTitulo: (c) => `Viajar a ${c} Sin Lettera di Invito (Con Reserva de Hotel)`,
-    focoSubtitulo: (_c, t) => `Paquete Migratorio Completo Desde ${usd(t.promo)} y ${usd(t.smart)} · Separa con el 50%`,
+    focoSubtitulo: (_c, t) => `Paquete Migratorio Completo Desde ${usd(t.promo)} y ${usd(t.smart)} · Separa con un adelanto`,
     focoGancho: (c) =>
       `Si no tienes quién te envíe carta de invitación en ${c}, nosotros incluimos tu Reserva de Hotel confirmada a tu nombre para que pases el control migratorio con total respaldo.`,
   },
@@ -1843,11 +1843,11 @@ const INTENCIONES_ITALIA: {
   },
   {
     slugIntencion: "separar-con-50-por-ciento",
-    etiquetaCorta: "Separar con el 50%",
-    focoTitulo: (c, t) => `Viaja a ${c} Separando Hoy con el 50% (Desde ${usd(inicialSeparacion(t.promo))} USD)`,
+    etiquetaCorta: "Separar con un adelanto",
+    focoTitulo: (c) => `Viaja a ${c} Separando Hoy con un adelanto`,
     focoSubtitulo: () => `Congela tu Tarifa en Nuestra Oficina de Los Olivos`,
     focoGancho: (c) =>
-      `Asegura tu paquete migratorio a ${c} con solo el 50% de adelanto (en efectivo, transferencia o Yape/Plin en nuestra oficina de Los Olivos) y paga el resto antes de viajar.`,
+      `Asegura tu paquete migratorio a ${c} con un adelanto de adelanto (en efectivo, transferencia o Yape/Plin en nuestra oficina de Los Olivos) y paga el resto antes de viajar.`,
   },
   {
     slugIntencion: "primer-viaje-desde-peru",
@@ -1872,7 +1872,7 @@ const INTENCIONES_FRANCIA_EUROPA: {
     slugIntencion: "paquete-migratorio-699",
     etiquetaCorta: "Plan Promo",
     focoTitulo: (c, p, t) => `Paquete Migratorio a ${c} (${p}) — Plan Promo Desde ${usd(t.promo)}`,
-    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.promo))} USD (50%) · Pasaje + Reserva de regreso + Hotel + Seguro`,
+    focoSubtitulo: () => `Separa con un adelanto · Pasaje + Reserva de regreso + Hotel + Seguro`,
     focoGancho: (c, p, t) =>
       `Viaja a ${c} (${p}) ahorrando más de ${usd(ahorroFrenteARedondo(t.promo))} dólares con nuestro Plan Promo anticipado de ${usd(t.promo)} USD: incluye vuelo de ida, reserva de regreso, hotel y seguro médico.`,
   },
@@ -1880,7 +1880,7 @@ const INTENCIONES_FRANCIA_EUROPA: {
     slugIntencion: "paquete-smart-799",
     etiquetaCorta: "Plan Smart",
     focoTitulo: (c, p, t) => `Paquete Migratorio Smart a ${c} (${p}) Desde ${usd(t.smart)}`,
-    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.smart))} USD (50%) · Check-in 24h Antes + Asesoría Personalizada`,
+    focoSubtitulo: () => `Separa con un adelanto · Check-in 24h Antes + Asesoría Personalizada`,
     focoGancho: (c) =>
       `Nuestro paquete más vendido para viajar a ${c} en temporada media con todos tus documentos listos para presentar en Lima y en el control fronterizo europeo.`,
   },
@@ -1888,7 +1888,7 @@ const INTENCIONES_FRANCIA_EUROPA: {
     slugIntencion: "paquete-plus-899",
     etiquetaCorta: "Plan Plus",
     focoTitulo: (c, p, t) => `Paquete Migratorio Plus a ${c} (${p}) Desde ${usd(t.plus)}`,
-    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.plus))} USD (50%) · Salidas Próximas y Conexión Directa`,
+    focoSubtitulo: () => `Separa con un adelanto · Salidas Próximas y Conexión Directa`,
     focoGancho: (c) =>
       `Ideal si buscas viajar pronto a ${c} con conexión garantizada y carpeta migratoria completa verificada antes de tu embarque.`,
   },
@@ -1896,7 +1896,7 @@ const INTENCIONES_FRANCIA_EUROPA: {
     slugIntencion: "paquete-full-999",
     etiquetaCorta: "Plan Full",
     focoTitulo: (c, p, t) => `Paquete Migratorio Full a ${c} (${p}) con Maleta 23 kg (${usd(t.full)})`,
-    focoSubtitulo: (_c, t) => `Separa con ${usd(inicialSeparacion(t.full))} USD (50%) · Temporada Alta o Maleta Grande en Bodega`,
+    focoSubtitulo: () => `Separa con un adelanto · Temporada Alta o Maleta Grande en Bodega`,
     focoGancho: (c) =>
       `Para quienes viajan a ${c} en temporada alta o necesitan llevar maleta grande de 23 kg en bodega junto con toda su documentación migratoria.`,
   },
@@ -1904,7 +1904,7 @@ const INTENCIONES_FRANCIA_EUROPA: {
     slugIntencion: "sin-carta-de-invitacion-con-hotel",
     etiquetaCorta: "Con Reserva de Hotel",
     focoTitulo: (c, p) => `Viajar a ${c} (${p}) Sin Carta de Invitación — Con Reserva de Hotel`,
-    focoSubtitulo: (_c, t) => `Carpeta Completa Desde ${usd(t.promo)} y ${usd(t.smart)} · Separa con el 50%`,
+    focoSubtitulo: (_c, t) => `Carpeta Completa Desde ${usd(t.promo)} y ${usd(t.smart)} · Separa con un adelanto`,
     focoGancho: (c, p) =>
       `En ${p} el trámite municipal de invitación suele demorar; por eso la forma más rápida y segura de viajar a ${c} es con nuestra Reserva de Hotel confirmada incluida en tu paquete.`,
   },
@@ -1926,11 +1926,11 @@ const INTENCIONES_FRANCIA_EUROPA: {
   },
   {
     slugIntencion: "separar-con-50-por-ciento",
-    etiquetaCorta: "Separar con 50%",
-    focoTitulo: (c, p, t) => `Viaja a ${c} (${p}) Separando con el 50% (Desde ${usd(inicialSeparacion(t.promo))} USD)`,
+    etiquetaCorta: "Separar con un adelanto",
+    focoTitulo: (c, p) => `Viaja a ${c} (${p}) Separando con un adelanto`,
     focoSubtitulo: () => `Atención Presencial en Av. Antúnez de Mayolo 814, Los Olivos`,
     focoGancho: (c) =>
-      `Congela hoy tu paquete hacia ${c} con la mitad del valor y paga el saldo restante antes de tu vuelo con total respaldo formal (RUC 20614914239).`,
+      `Congela hoy tu paquete hacia ${c} con un adelanto y paga el saldo restante antes de tu vuelo con total respaldo formal (RUC 20614914239).`,
   },
   {
     slugIntencion: "requisitos-migraciones-2026",
@@ -2000,7 +2000,7 @@ const ORIGENES_PERU: {
   {
     slugOrigen: "santiago-de-surco",
     nombreOrigen: "Santiago de Surco y Lima Sur",
-    detalleSalida: "Reserva con el 50% por transferencia bancaria o en nuestra oficina y recibe tus documentos verificables.",
+    detalleSalida: "Reserva con un adelanto por transferencia bancaria o en nuestra oficina y recibe tus documentos verificables.",
   },
   {
     slugOrigen: "san-miguel",
@@ -2040,7 +2040,7 @@ const ORIGENES_PERU: {
   {
     slugOrigen: "chimbote",
     nombreOrigen: "Chimbote y Áncash",
-    detalleSalida: "Muchos viajeros de Chimbote y Nuevo Chimbote viajan cada semana con nosotros a España e Italia separando con el 50%.",
+    detalleSalida: "Muchos viajeros de Chimbote y Nuevo Chimbote viajan cada semana con nosotros a España e Italia separando con un adelanto.",
   },
   {
     slugOrigen: "ica",
@@ -2056,7 +2056,7 @@ const ORIGENES_PERU: {
     slugOrigen: "tacna",
     nombreOrigen: "Tacna y Moquegua",
     detalleSalida: (t) =>
-      `Para viajeros del sur del Perú: reserva tu paquete desde ${usd(t.promo)} con el 50% y viaja con tu carpeta de viaje armada.`,
+      `Para viajeros del sur del Perú: reserva tu paquete desde ${usd(t.promo)} con un adelanto y viaja con tu carpeta de viaje armada.`,
   },
 ];
 
@@ -2111,10 +2111,10 @@ const TEMAS_DUDAS_MIGRATORIAS: {
   },
   {
     slugTema: "separar-paquete-migratorio-con-50-por-ciento",
-    tituloTema: (c) => `Cómo Separar tu Paquete Migratorio a ${c} con el 50% de Inicial`,
-    subtituloTema: (_c, t) => `Separa con ${usd(inicialSeparacion(t.promo))}, ${usd(inicialSeparacion(t.smart))}, ${usd(inicialSeparacion(t.plus))} o ${usd(inicialSeparacion(t.full))} USD según tu Fecha de Viaje`,
+    tituloTema: (c) => `Cómo Separar tu Paquete Migratorio a ${c} con un adelanto`,
+    subtituloTema: () => `Separa con un adelanto según tu Fecha de Viaje`,
     ganchoTema: (c) =>
-      `Congela hoy el precio de tu viaje a ${c} pagando solo el 50% en nuestra oficina de Av. Antúnez de Mayolo 814 (Los Olivos) o por cuentas empresariales y completa el resto antes de volar.`,
+      `Congela hoy el precio de tu viaje a ${c} con un adelanto en nuestra oficina de Av. Antúnez de Mayolo 814 (Los Olivos) o por cuentas empresariales y completa el resto antes de volar.`,
   },
   {
     slugTema: "seguro-medico-schengen-obligatorio-para-peruanos",
@@ -2154,7 +2154,7 @@ const TEMAS_DUDAS_MIGRATORIAS: {
   {
     slugTema: "paquete-migratorio-con-maleta-de-23-kilos",
     tituloTema: (c) => `Paquete Migratorio a ${c} con Maleta Grande de 23 kg en Bodega`,
-    subtituloTema: (_c, t) => `Lleva Toda tu Ropa de Abrigo · Plan Full ${usd(t.full)} (Separa con ${usd(inicialSeparacion(t.full))})`,
+    subtituloTema: (_c, t) => `Lleva Toda tu Ropa de Abrigo · Plan Full ${usd(t.full)} (Separa con un adelanto)`,
     ganchoTema: (c) =>
       `Si te vas a quedar en ${c} y necesitas llevar tu maleta grande de 23 kg en bodega además de tu equipaje de mano de 10 kg, nuestro Plan Full te incluye todo.`,
   },
@@ -2196,7 +2196,7 @@ const TEMAS_DUDAS_MIGRATORIAS: {
   {
     slugTema: "paquete-smart-799-con-checkin-y-asesoria",
     tituloTema: (c, t) => `Qué Incluye el Paquete Migratorio Smart de ${usd(t.smart)} USD a ${c}`,
-    subtituloTema: (_c, t) => `El Paquete Favorito de Nuestros Clientes · Separa Hoy con ${usd(inicialSeparacion(t.smart))} USD`,
+    subtituloTema: () => `El Paquete Favorito de Nuestros Clientes · Separa Hoy con un adelanto`,
     ganchoTema: (c, t) =>
       `El Plan Smart de ${usd(t.smart)} a ${c} incluye pasaje de ida, reserva de regreso, hotel confirmado, seguro médico, check-in 24h antes y preparación personalizada.`,
   },
@@ -2342,8 +2342,8 @@ function construirFaqsPeruano(ciudad: string): { q: string; a: string }[] {
       a: `Pasaje de ida, reserva de regreso, hotel, seguro 30.000€ y check-in. La decisión de dejarte entrar es de la policía de frontera, que puede pedirte tu boleto de vuelta. La reserva de regreso no es un boleto emitido: si quieres viajar con el regreso emitido, te cotizamos ida y vuelta.`,
     },
     {
-      q: `¿Cómo funciona la separación con el 50%?`,
-      a: `Congelas tu tarifa hoy abonando el 50% de inicial y completas el otro 50% en cuotas programadas antes de tu fecha de vuelo.`,
+      q: `¿Cómo funciona la separación con un adelanto?`,
+      a: `Congelas tu tarifa hoy con un adelanto y completas el saldo en cuotas programadas antes de tu fecha de vuelo.`,
     },
     {
       q: `¿Necesito tener Carta de Invitación de un familiar en ${ciudad}?`,
@@ -2427,7 +2427,7 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
           metaTitleRaw.length > 62
             ? `${tituloH1.slice(0, 48).trim()}... | Cityland`
             : metaTitleRaw;
-        const metaDescRaw = `${ganchoPeruano} Planes de ${listaPreciosPlanes(t)} USD según tu fecha. Separa con el 50% en Los Olivos (RUC 20614914239).`;
+        const metaDescRaw = `${ganchoPeruano} Planes de ${listaPreciosPlanes(t)} USD según tu fecha. Separa con un adelanto en Los Olivos (RUC 20614914239).`;
         const metaDescription =
           metaDescRaw.length > 158
             ? `${metaDescRaw.slice(0, 155).trim()}...`
@@ -2586,7 +2586,7 @@ function generarCatalogo1000(): ResumenSuperLanding[] {
           ciudadCfg: c,
           origenPasajero: orig.nombreOrigen,
           tituloH1: `Paquete Migratorio a ${c.ciudad} para Viajeros de ${orig.nombreOrigen}`,
-          subtituloHero: `Planes de ${listaPreciosPlanes(t)} USD · Separa hoy con el 50%`,
+          subtituloHero: `Planes de ${listaPreciosPlanes(t)} USD · Separa hoy con un adelanto`,
           ganchoPeruano: `Armamos tu paquete migratorio completo hacia ${c.ciudad} (${c.pais}) con pasaje de avión de ida, reserva de regreso, reserva de hotel y seguro médico.`,
           detalleExtraOrigen:
             typeof orig.detalleSalida === "function" ? orig.detalleSalida(t) : orig.detalleSalida,

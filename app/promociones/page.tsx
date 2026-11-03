@@ -6,13 +6,13 @@ import AirlineLandingTemplate, {
 import BuscadorCatalogoInstantaneo from "@/components/BuscadorCatalogoInstantaneo";
 import { INDICE_PAQUETES_MIGRATORIOS_1000 } from "@/lib/catalogo-paquetes-migratorios-1000";
 import { formatoUSD } from "@/lib/formato-precio";
-import { inicialSeparacion, tarifasMigratorio } from "@/lib/precios-migratorio";
+import { tarifasMigratorio } from "@/lib/precios-migratorio";
 
 const TARIFAS_ITALIA = tarifasMigratorio("Italia");
 
 export const metadata: Metadata = {
-  title: optimizarMetaTitleSEO("Promociones y Ofertas de Viajes 2026 desde Lima (Separa con 50%) | Cityland Travel"),
-  description: optimizarMetaDescriptionSEO("Aprovecha nuestras promociones de viajes y preventas 2026 desde Lima: Paquetes Migratorios a Europa desde $699 USD (solo ida), Punta Cana y Cancún Todo Incluido desde $999 USD, Cartagena desde $599 USD y Cusco desde $329 USD. Separa con el 50% en Cityland Travel (RUC 20614914239)."),
+  title: optimizarMetaTitleSEO("Promociones y Ofertas de Viajes 2026 desde Lima (Separa con un adelanto) | Cityland Travel"),
+  description: optimizarMetaDescriptionSEO("Aprovecha nuestras promociones de viajes y preventas 2026 desde Lima: Paquetes Migratorios a Europa desde $699 USD (solo ida), Punta Cana y Cancún Todo Incluido desde $999 USD, Cartagena desde $599 USD y Cusco desde $329 USD. Separa con un adelanto en Cityland Travel (RUC 20614914239)."),
   keywords: [
     "promociones de viajes desde lima",
     "ofertas paquetes turisticos 2026 peru",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     url: "https://citylandtravel.com/promociones",
     title: "Promociones y Preventa de Viajes 2026 — Cityland Travel",
     description:
-      "Tarifas promocionales en dólares (impuestos y tasas según fecha y aerolínea) a Europa desde $699, Caribe, Sudamérica y Perú. Separa hoy con el 50%.",
+      "Tarifas promocionales en dólares (impuestos y tasas según fecha y aerolínea) a Europa desde $699, Caribe, Sudamérica y Perú. Separa hoy con un adelanto.",
     siteName: "Cityland Travel",
     locale: "es_PE",
     images: ["https://citylandtravel.com/opengraph-image"],
@@ -42,14 +42,14 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
   tituloDestacadoHero: "Viajes a Europa y el Caribe desde Lima",
   descripcionHero:
     "Congela tu tarifa promocional en dólares para viajar a España, Italia o Francia desde $699 USD (solo ida), o disfrutar de vacaciones Todo Incluido en el Caribe y el Perú con respaldo de agencia formal.",
-  negritaHero: "Separa cualquiera de nuestras promociones con el 50% de inicial",
+  negritaHero: "Separa cualquiera de nuestras promociones con un adelanto",
   ctaPrincipalTexto: "Consultar Promociones por WhatsApp",
   waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
     "¡Hola Cityland Travel! Quiero consultar las Promociones y Preventas de Viajes vigentes saliendo desde Lima.",
   checksHero: [
     "Paquetes Migratorios a Europa (solo ida): $699 · $799 · $899 · $999",
-    "Separa con el 50% y congela tu precio",
+    "Separa con un adelanto y congela tu precio",
     "Atención en oficina física en Los Olivos y por WhatsApp",
   ],
   vitrina: {
@@ -63,7 +63,7 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
     labelPrecio: `Solo ida: España desde ${formatoUSD(tarifasMigratorio("España").promo)} · Italia y Francia desde ${formatoUSD(TARIFAS_ITALIA.promo)}`,
     precio: "$699",
     moneda: "USD",
-    notaInferior: "Separa hoy con $350 (50% inicial)",
+    notaInferior: "Separa hoy con un adelanto",
     waNumero: "51944103890",
     waMensaje:
       "¡Hola! Quiero más información del paquete migratorio a Europa desde $699.",
@@ -87,7 +87,7 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
       subtitulo: "Planes de solo ida según tu fecha: $699 · $799 · $899 · $999",
       precioPrincipal: "$699",
       precioSecundario: "USD",
-      notaPrecio: "Separa con $350 (50% inicial)",
+      notaPrecio: "Separa con un adelanto",
       tag: "Más Pedido",
       tagBg: "bg-red-600 text-white",
       img: "/images/espana/puerta-de-alcala.jpg",
@@ -110,7 +110,7 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
       subtitulo: `Planes de solo ida según tu fecha: ${formatoUSD(TARIFAS_ITALIA.promo)} · ${formatoUSD(TARIFAS_ITALIA.smart)} · ${formatoUSD(TARIFAS_ITALIA.plus)} · ${formatoUSD(TARIFAS_ITALIA.full)}`,
       precioPrincipal: formatoUSD(TARIFAS_ITALIA.promo),
       precioSecundario: "USD",
-      notaPrecio: `Separa con ${formatoUSD(inicialSeparacion(TARIFAS_ITALIA.promo))} (50% inicial)`,
+      notaPrecio: `Separa con un adelanto`,
       tag: "Ruta Italia",
       tagBg: "bg-emerald-600 text-white",
       img: "/images/destinos/milan.webp",
@@ -133,7 +133,7 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
       subtitulo: "5 Días / 4 Noches · Sin Visa para Peruanos",
       precioPrincipal: "$1,049",
       precioSecundario: "USD",
-      notaPrecio: "Separa con $525 (50% inicial)",
+      notaPrecio: "Separa con un adelanto",
       tag: "Todo Incluido",
       tagBg: "bg-teal-600 text-white",
       img: "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=85",
@@ -152,7 +152,7 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
       subtitulo: "5 Días / 4 Noches · Viaja solo con DNI",
       precioPrincipal: "$599",
       precioSecundario: "USD",
-      notaPrecio: "Separa con $300 (50% inicial)",
+      notaPrecio: "Separa con un adelanto",
       tag: "Solo con DNI",
       tagBg: "bg-amber-600 text-white",
       img: "https://images.unsplash.com/photo-1583531352515-8884af319dc1?w=1200&q=85",
@@ -208,7 +208,7 @@ const CONFIG_PROMOCIONES: ConfiguracionLandingAerolinea = {
       sub: "Paquetes migratorios a España, Italia y Francia: pasaje de ida, reserva de regreso, hotel y seguro",
     },
     {
-      titulo: "Separa con 50%",
+      titulo: "Separa con un adelanto",
       sub: "Asegura tu cupo aéreo hoy y abona el saldo antes de tu viaje",
     },
     {

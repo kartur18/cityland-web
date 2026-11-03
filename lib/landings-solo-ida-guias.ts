@@ -204,7 +204,7 @@ const GUIAS: Guia[] = [
     foto: "/images/destinos/lima-plaza-mayor.jpg",
     fotoAlt: "Plaza Mayor de Lima",
     pregunta: "Tengo que apostillar documentos antes de viajar: ¿con cuánta anticipación compro mi solo ida?",
-    medio: { titulo: "Compra cuando tengas todo listo", texto: "Si tus documentos aún están en trámite, te separamos la tarifa con el 50% y emitimos cuando estén.", boton: "Separar mi tarifa" },
+    medio: { titulo: "Compra cuando tengas todo listo", texto: "Si tus documentos aún están en trámite, te separamos la tarifa con un adelanto y emitimos cuando estén.", boton: "Separar mi tarifa" },
     puntosTitulo: "Lo que tienes que saber",
     puntos: [
       { t: "Qué es la apostilla", d: "Es el sello que hace valer un documento peruano en España, porque los dos países son parte del Convenio de La Haya." },

@@ -125,10 +125,10 @@ function construirContexto(d: DatosSuperLandingMigratorio): Contexto {
       };
       break;
     case "separar":
-      apertura = `Puedes separar tu viaje a ${ciudad} con el 50% y completar el saldo en cuotas antes de la fecha de vuelo.`;
+      apertura = `Puedes separar tu viaje a ${ciudad} con un adelanto y completar el saldo en cuotas antes de la fecha de vuelo.`;
       faqAngulo = {
         q: `¿Cómo separo mi viaje a ${ciudad}?`,
-        a: `Abonas el 50% de inicial en Los Olivos o por transferencia y programamos el resto antes de tu vuelo. La tarifa sigue sujeta a disponibilidad.`,
+        a: `Abonas un adelanto en Los Olivos o por transferencia y programamos el resto antes de tu vuelo. La tarifa sigue sujeta a disponibilidad.`,
       };
       break;
     case "primer-viaje":
@@ -150,7 +150,7 @@ function construirContexto(d: DatosSuperLandingMigratorio): Contexto {
       apertura = `Para salir hacia ${ciudad} en ${mes ?? "la fecha elegida"}${mes ? ` (${notaDelMes(mes)})` : ""}, esta temporada corresponde al ${nombrePlan}.`;
       faqAngulo = {
         q: `¿Qué plan corresponde a una salida a ${ciudad} en ${mes ?? "esa fecha"}?`,
-        a: `${nombrePlan}: ${minuscula(plan.fechasIdeales)}. Todos los planes incluyen la misma carpeta y se separan con el 50%.`,
+        a: `${nombrePlan}: ${minuscula(plan.fechasIdeales)}. Todos los planes incluyen la misma carpeta y se separan con un adelanto.`,
       };
       break;
     }

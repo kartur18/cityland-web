@@ -93,7 +93,7 @@ function landingDestino(c: CiudadItalia): LandingItalia {
       { q: `¿Hay vuelo directo de Lima a ${c.nombre}?`, a: `No. Ninguna aerolínea vuela directo de Lima a Italia. Lo habitual es ${c.escalas.toLowerCase()}, con conexión en ${c.conexion}; el viaje completo toma ${c.tiempoTotal}.` },
       { q: `¿Cuánto cuesta el pasaje de Lima a ${c.nombre}?`, a: `Desde ${formatoUSD(precio)} ida y vuelta por persona en clase económica. Julio, agosto y diciembre son los meses más caros; ${barato.mes.toLowerCase()} es hoy el más barato.` },
       { q: `¿Cómo llego del aeropuerto de ${c.nombre} al centro?`, a: c.traslados.map((t) => `${t.medio}: ${t.precio}, ${t.tiempo}`).join(". ") + "." },
-      { q: "¿Puedo pagar en partes?", a: "Sí. Separas con el 50% y pagas el saldo antes de la emisión, por transferencia, Yape, Plin o tarjeta." },
+      { q: "¿Puedo pagar en partes?", a: "Sí. Separas con un adelanto y pagas el saldo antes de la emisión, por transferencia, Yape, Plin o tarjeta." },
     ],
     enlaces: ENLACES_IDA,
   };
@@ -157,7 +157,7 @@ function landingProvincia(slug: string): LandingItalia | null {
       { q: `¿Hay vuelo directo de ${p.ciudad} a Italia?`, a: `No. Primero vuelas de ${p.ciudad} a Lima (${p.duracion}) y en Lima tomas el vuelo a Europa. Con un solo boleto la aerolínea te protege la conexión si el primer vuelo se atrasa.` },
       { q: `¿Cuánto cuesta el pasaje de ${p.ciudad} a Italia?`, a: `Desde ${formatoUSD(precio)} ida y vuelta a Roma por persona, con el tramo ${p.ciudad}–Lima incluido. El vuelo nacional suele sumar desde ${formatoUSD(p.recargo)} al precio desde Lima.` },
       consejo.faq,
-      { q: "¿Puedo pagar en partes?", a: "Sí. Separas con el 50% y pagas el saldo antes de la emisión. Te mandamos el boleto al celular." },
+      { q: "¿Puedo pagar en partes?", a: "Sí. Separas con un adelanto y pagas el saldo antes de la emisión. Te mandamos el boleto al celular." },
     ],
     enlaces,
   };

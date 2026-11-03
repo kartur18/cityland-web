@@ -5,7 +5,7 @@ import { obtenerConfigAgenciaOficial } from "@/lib/catalogo-agencia-oficial";
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO("Agencia de viajes en San Martín de Porres | Cityland"),
-  description: optimizarMetaDescriptionSEO("Agencia de viajes formal en Lima (RUC 20614914239). Paquetes Todo Incluido a Punta Cana, Cancún, Cartagena, Cusco y vuelos a España con carpeta migratoria. Separa con el 50%."),
+  description: optimizarMetaDescriptionSEO("Agencia de viajes formal en Lima (RUC 20614914239). Paquetes Todo Incluido a Punta Cana, Cancún, Cartagena, Cusco y vuelos a España con carpeta migratoria. Separa con un adelanto."),
   alternates: { canonical: "https://citylandtravel.com/agencia-de-viajes-san-martin-de-porres" },
 };
 

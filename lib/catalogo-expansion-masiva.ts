@@ -120,10 +120,10 @@ function construirObjetoLanding(params: {
     {
       q: esTramiteOSeguro
         ? `¿Cómo inicio la gestión de ${tituloCompleto} en Cityland Travel?`
-        : `¿Cómo puedo separar ${tituloCompleto} con el 50% de inicial?`,
+        : `¿Cómo puedo separar ${tituloCompleto} con un adelanto?`,
       a: esTramiteOSeguro
         ? `Puedes iniciar tu trámite o emisión hoy mismo desde $${precioBase.toLocaleString("en-US")} por WhatsApp (+51 944 103 890) o en nuestra oficina de Los Olivos (RUC 20614914239), recibiendo tu documentación oficial y comprobante electrónico SUNAT.`
-        : `Puedes congelar tu tarifa referencial abonando el 50% ($${mitadBase.toLocaleString("en-US")} por pasajero) mediante transferencia bancaria BCP/BBVA/Interbank, tarjeta o en nuestra sede de Los Olivos (RUC 20614914239), sujeto a disponibilidad de tu fecha exacta de viaje.`,
+        : `Puedes congelar tu tarifa referencial con un adelanto mediante transferencia bancaria BCP/BBVA/Interbank, tarjeta o en nuestra sede de Los Olivos (RUC 20614914239), sujeto a disponibilidad de tu fecha exacta de viaje.`,
     },
     {
       q: esInternacional
@@ -147,7 +147,7 @@ function construirObjetoLanding(params: {
   const descBase = `${etiquetaVitrina} (${destinoOPais}) desde $${precioBase.toLocaleString("en-US")}. ${
     esTramiteOSeguro
       ? "Atención formal RUC 20614914239 en Los Olivos y WhatsApp 944103890."
-      : `Separa con 50% ($${mitadBase.toLocaleString("en-US")}) en Cityland Travel · WhatsApp 944103890.`
+      : `Separa con un adelanto en Cityland Travel · WhatsApp 944103890.`
   }`;
   const metaDescription =
     descBase.length > 156 ? `${descBase.slice(0, 153).trim()}...` : descBase;
@@ -177,7 +177,7 @@ function construirObjetoLanding(params: {
       vitrina: {
         pais: destinoOPais,
         etiquetaIzq: destinoOPais,
-        etiquetaDer: precioBase >= 180 ? "Separa con 50%" : "Emisión Inmediata",
+        etiquetaDer: precioBase >= 180 ? "Separa con un adelanto" : "Emisión Inmediata",
         img: f0,
         alt: tituloCompleto,
         sobretitulo: duracionOServicio,
@@ -189,7 +189,7 @@ function construirObjetoLanding(params: {
         moneda: "USD",
         notaInferior:
           precioBase >= 180
-            ? `Separa con $${mitadBase.toLocaleString("en-US")} (50%) · Sujeto a fecha`
+            ? `Separa con un adelanto · Sujeto a fecha`
             : "Emisión formal con Boleta o Factura SUNAT (RUC 20614914239)",
         waNumero: "51944103890",
         waMensaje: msgPrincipal,
@@ -214,7 +214,7 @@ function construirObjetoLanding(params: {
           filtro: "ahorro",
           subtitulo: esTramiteOSeguro
             ? "Revisión de requisitos y emisión documentaria verificable"
-            : "Salida desde Aeropuerto Jorge Chávez (LIM) · Separa con 50%",
+            : "Salida desde Aeropuerto Jorge Chávez (LIM) · Separa con un adelanto",
           precioPrincipal: `$${pCard1.toLocaleString("en-US")}`,
           precioSecundario:
             pCard1 >= 180 ? `$${Math.round(pCard1 * 0.5).toLocaleString("en-US")}` : undefined,
@@ -287,7 +287,7 @@ function construirObjetoLanding(params: {
           sub: "Boleta, factura electrónica SUNAT y contrato oficial.",
         },
         {
-          titulo: "Separa con el 50% de Inicial",
+          titulo: "Separa con un adelanto",
           sub: "Congela tu tarifa hoy y paga el saldo en cuotas.",
         },
         {
@@ -388,7 +388,7 @@ const TEMPORADAS_EUROPA: [string, string, number, string][] = [
 const MODALIDADES_EUROPA: [string, string, number, string][] = [
   ["paquetes-a", "Paquete Vuelo + Hotel", 1.0, "Incluye boleto aéreo ida y vuelta desde Lima, hotel céntrico con desayunos y seguro Schengen 30.000€"],
   ["circuitos-por", "Circuito Guiado en Español", 1.12, "Incluye vuelos, hoteles seleccionados, traslados en tren AVE / bus turístico y guías en español"],
-  ["ofertas-viajes-a", "Preventa 50% Inicial", 0.85, "Tarifa promocional bloqueando tu espacio con el 50% de inicial y saldo en cuotas mensuales"],
+  ["ofertas-viajes-a", "Preventa con Adelanto", 0.85, "Tarifa promocional bloqueando tu espacio con un adelanto y saldo en cuotas mensuales"],
 ];
 
 // ============================================================================
@@ -526,7 +526,7 @@ const SOLO_POR_CARRETERA = /(oxapampa|paracas|huaraz)/i;
 const ENFOQUES_DURACION: [string, string, number][] = [
   ["paquete", "Paquete Vuelo + Hotel", 1.0],
   ["circuito", "Itinerario Guiado Completo", 1.08],
-  ["oferta", "Preventa con 50% Inicial", 0.94],
+  ["oferta", "Preventa con un adelanto Inicial", 0.94],
 ];
 
 // ============================================================================
@@ -658,7 +658,7 @@ const HOTELES_FAMOSOS_120: [string, string, string, string, number][] = [
 
 const MODALIDADES_HOTELES_12: [string, string, number][] = [
   ["paquete-todo-incluido", "Paquete Vuelo + Hotel Todo Incluido", 1.0],
-  ["preventa-50-inicial", "Preventa 2026 (Separa con 50%)", 0.93],
+  ["preventa-50-inicial", "Preventa 2026 (Separa con un adelanto)", 0.93],
   ["viaje-familiar-ninos", "Paquete Familiar con Niños", 0.96],
   ["luna-de-miel-parejas", "Escapada Romántica y Luna de Miel", 1.05],
   ["escapada-5-dias-4-noches", "Programa 5 Días / 4 Noches", 0.94],
@@ -677,7 +677,7 @@ const MODALIDADES_HOTELES_12: [string, string, number][] = [
 // ============================================================================
 const MODALIDADES_JORGE_CHAVEZ_32: [string, string, string, number][] = [
   ["Vuelo + Hotel Confirmado", "vuelo-mas-hotel-jorge-chavez", "saliendo desde el Aeropuerto Internacional Jorge Chávez (LIM) con reserva PNR y hotel seleccionado", 0],
-  ["Preventa con 50% de Inicial", "preventa-50-inicial-desde-lima", "congelando hoy tu tarifa con el 50% de inicial y saliendo desde el Aeropuerto Jorge Chávez (LIM)", -30],
+  ["Preventa con un adelanto", "preventa-50-inicial-desde-lima", "congelando hoy tu tarifa con un adelanto y saliendo desde el Aeropuerto Jorge Chávez (LIM)", -30],
   ["Programa Todo Organizado con Traslados", "todo-organizado-con-traslados-lima", "incluyendo vuelos desde Lima (LIM), traslados aeropuerto-hotel-aeropuerto y alojamiento", 25],
   ["Paquete con 2 Maletas de 23 kg", "con-2-maletas-23kg-desde-lima", "con franquicia ampliada de 2 maletas de 23 kg en bodega saliendo de Lima (LIM)", 65],
   ["Viaje Familiar (Adultos + Niños)", "viaje-familiar-desde-lima", "con asientos contiguos garantizados y hoteles familiares saliendo del Aeropuerto Jorge Chávez (LIM)", -15],
@@ -688,7 +688,7 @@ const MODALIDADES_JORGE_CHAVEZ_32: [string, string, string, number][] = [
   ["Programa con Tours y Excursiones en Español", "con-tours-en-espanol-desde-lima", "incluyendo visitas guiadas en español a los atractivos principales y vuelos desde Lima (LIM)", 40],
   ["Categoría Hotel 4★ Céntrico", "hotel-4-estrellas-desde-lima", "con alojamiento en hoteles 4 estrellas de ubicación estratégica y salida desde Lima (LIM)", 55],
   ["Categoría Superior 5★ / VIP", "categoria-5-estrellas-vip-lima", "con hotelería de lujo, traslados privados y vuelos desde el Aeropuerto Jorge Chávez (LIM)", 120],
-  ["Reserva en Cuotas Programadas", "en-cuotas-programadas-desde-lima", "abonando el 50% al reservar y completando el saldo en cuotas antes de volar desde Lima (LIM)", 0],
+  ["Reserva en Cuotas Programadas", "en-cuotas-programadas-desde-lima", "con un adelanto al reservar y completando el saldo en cuotas antes de volar desde Lima (LIM)", 0],
   ["Con Seguro Médico Internacional Incluido", "con-seguro-medico-desde-lima", "con póliza de asistencia médica internacional sin deducible y vuelos desde Lima (LIM)", 15],
   ["Primer Viaje Internacional Asesorado", "primer-viaje-asesorado-desde-lima", "con preparación completa de carpeta de viaje, check-in y salida desde el Jorge Chávez (LIM)", 0],
   ["Salidas Vacaciones de Verano (Enero y Febrero)", "vacaciones-verano-desde-lima", "aprovechando la temporada de vacaciones de verano con vuelos confirmados desde Lima (LIM)", 30],
@@ -845,7 +845,7 @@ const PROGRAMAS_ESPECIALES_80: [string, string, string, LandingComercialSEO["clu
 
 const VARIANTES_ESPECIALES_14: [string, string, number][] = [
   ["programa-oficial", "Programa Oficial Completo", 1.0],
-  ["preventa-50-inicial", "Preventa con 50% de Inicial", 0.93],
+  ["preventa-50-inicial", "Preventa con un adelanto", 0.93],
   ["salida-desde-lima", "Salidas Confirmadas desde Lima", 1.0],
   ["todo-organizado", "Modalidad Todo Organizado", 1.05],
   ["tarifa-promocional", "Tarifa Promocional en Dólares", 0.95],
@@ -885,7 +885,7 @@ function generarIndiceExpansion(): ResumenLandingExpansion[] {
               slug,
               cluster: "mundiales",
               clusterNombre: `Viajes a ${pais} y Europa`,
-              badge: `${pais} en ${nombreMes} · Separa con 50%`,
+              badge: `${pais} en ${nombreMes} · Separa con un adelanto`,
               banderas: ["Perú", pais],
               tituloHero: `Viajes a ${ciudad} en ${nombreMes}:`,
               tituloDestacado: `${nombreMod} Desde $${precio}`,
@@ -903,7 +903,7 @@ function generarIndiceExpansion(): ResumenLandingExpansion[] {
               checksPlus: [
                 `Excursiones y visitas guiadas en español por ${ciudad}`,
                 "Asesoría integral de requisitos y carpeta de viaje",
-                "Facilidad de pago: separa con el 50% y abona en cuotas",
+                "Facilidad de pago: separa con un adelanto y abona en cuotas",
               ],
               checksVip: [
                 `Hotelería 4★ Superior en el centro de ${ciudad}`,
@@ -993,7 +993,7 @@ function generarIndiceExpansion(): ResumenLandingExpansion[] {
               descripcionHero: esCortoEnLejano
                 ? `Módulo de estadía y visitas en ${nombreCircuito} (${textoDuracion}) ideal para combinar con tu viaje internacional, o cotiza el paquete aéreo completo de 10 a 15 días saliendo desde Lima.`
                 : `Programa organizado de ${textoDuracion} para recorrer ${nombreCircuitoReal} con transporte, alojamiento seleccionado, traslados y excursiones principales.`,
-              negritaHero: `Cotiza tu fecha exacta por WhatsApp y separa con el 50% de inicial en Cityland Travel.`,
+              negritaHero: `Cotiza tu fecha exacta por WhatsApp y separa con un adelanto en Cityland Travel.`,
               destinoOPais: pais,
               precioBase: precio,
               etiquetaVitrina: `${nombreCircuitoReal} · ${textoDuracion}`,
@@ -1065,7 +1065,7 @@ function generarIndiceExpansion(): ResumenLandingExpansion[] {
             tituloHero: `${nombreHotel}:`,
             tituloDestacado: `${nombreMod} Desde $${precio}`,
             descripcionHero: `Reserva tu estadía en ${nombreHotel} (${ciudad}, ${pais}) con boletos aéreos ida y vuelta, traslados aeropuerto-hotel y voucher oficial garantizado.`,
-            negritaHero: `Separa hoy tu habitación en ${nombreHotel} con el 50% de inicial y paga en cuotas.`,
+            negritaHero: `Separa hoy tu habitación en ${nombreHotel} con un adelanto y paga en cuotas.`,
             destinoOPais: pais,
             precioBase: precio,
             etiquetaVitrina: `${nombreHotel} (${ciudad})`,
@@ -1078,7 +1078,7 @@ function generarIndiceExpansion(): ResumenLandingExpansion[] {
             checksPlus: [
               "Acceso completo a piscinas, playas, restaurantes y shows del hotel",
               "Voucher hotelero oficial y código PNR aéreo verificable",
-              "Facilidad de separar con el 50% de inicial en Cityland Travel",
+              "Facilidad de separar con un adelanto en Cityland Travel",
             ],
             checksVip: [
               "Habitaciones de categoría superior / vista al mar bajo solicitud",
@@ -1098,7 +1098,7 @@ function generarIndiceExpansion(): ResumenLandingExpansion[] {
               },
               {
                 q: `¿Cómo garantizan mi reserva en ${nombreHotel}?`,
-                a: `Emitimos tu voucher oficial de hotel y tu código PNR de aerolínea al instante de separar con el 50% de inicial, respaldado por contrato y comprobante electrónico SUNAT (RUC 20614914239).`,
+                a: `Emitimos tu voucher oficial de hotel y tu código PNR de aerolínea al instante de separar con un adelanto, respaldado por contrato y comprobante electrónico SUNAT (RUC 20614914239).`,
               },
             ],
           }),
@@ -1129,7 +1129,7 @@ function generarIndiceExpansion(): ResumenLandingExpansion[] {
             tituloHero: `Paquetes a ${nombreDestino} desde Lima:`,
             tituloDestacado: `${nombreModalidad} Desde $${precio}`,
             descripcionHero: `Programa verificado rumbo a ${nombreDestino} (${paisDestino}) ${notaSalida}. Incluye boletos confirmados, alojamiento seleccionado, traslados y asesoría permanente.`,
-            negritaHero: `Salida desde el Aeropuerto Internacional Jorge Chávez (LIM) · Separa hoy con el 50% de inicial en Cityland Travel.`,
+            negritaHero: `Salida desde el Aeropuerto Internacional Jorge Chávez (LIM) · Separa hoy con un adelanto en Cityland Travel.`,
             destinoOPais: paisDestino,
             precioBase: precio,
             etiquetaVitrina: `${nombreDestino}: ${nombreModalidad}`,
@@ -1142,7 +1142,7 @@ function generarIndiceExpansion(): ResumenLandingExpansion[] {
             checksPlus: [
               "Código de reserva PNR verificable en la web oficial de la aerolínea",
               "Emisión formal con Boleta o Factura Electrónica SUNAT (RUC 20614914239)",
-              "Separa con el 50% de inicial mediante BCP, BBVA, Interbank o tarjeta",
+              "Separa con un adelanto mediante BCP, BBVA, Interbank o tarjeta",
             ],
             checksVip: [
               "Check-in y asignación de asientos gestionados por tu asesor",
@@ -1164,7 +1164,7 @@ function generarIndiceExpansion(): ResumenLandingExpansion[] {
               },
               {
                 q: `¿Cuánto cuesta el paquete "${nombreModalidad}" a ${nombreDestino} y cómo reservo?`,
-                a: `La tarifa referencial empieza Desde $${precio} USD por pasajero. Puedes congelar tu espacio hoy mismo abonando el 50% de inicial en nuestra sede de Los Olivos (Av. Antúnez de Mayolo 814) o por WhatsApp (+51 944 103 890).`,
+                a: `La tarifa referencial empieza Desde $${precio} USD por pasajero. Puedes congelar tu espacio hoy mismo con un adelanto en nuestra sede de Los Olivos (Av. Antúnez de Mayolo 814) o por WhatsApp (+51 944 103 890).`,
               },
             ],
           }),
@@ -1206,7 +1206,7 @@ function generarIndiceExpansion(): ResumenLandingExpansion[] {
               "Comprobante electrónico SUNAT (RUC 20614914239) y contrato",
             ],
             checksPlus: [
-              "Facilidad de pago con el 50% de inicial y cuotas programadas",
+              "Facilidad de pago con un adelanto y cuotas programadas",
               "Reservas con código oficial verificable en línea",
               "Asesoría paso a paso antes y durante tu viaje",
             ],

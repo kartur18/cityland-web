@@ -33,7 +33,7 @@ function tituloCorto(p: PaqueteTuristico): string {
 
 export function metadataPaqueteTuristico(p: PaqueteTuristico): Metadata {
   const url = `${URL_BASE_SEO}${ruta(p)}`;
-  const desc = `Paquete turístico ${p.nombre}: ${resumen(p)} Desde ${formatoUSD(precioPaquete(p))} por persona. Separa con el 50% y recibe el itinerario por WhatsApp.`;
+  const desc = `Paquete turístico ${p.nombre}: ${resumen(p)} Desde ${formatoUSD(precioPaquete(p))} por persona. Separa con un adelanto y recibe el itinerario por WhatsApp.`;
   return {
     title: tituloSeo(tituloCorto(p), `desde ${formatoUSD(precioPaquete(p))}`),
     description: optimizarMetaDescriptionSEO(desc),
@@ -83,7 +83,7 @@ export default function PaquetePagina({ paquete: p }: { paquete: PaqueteTuristic
       q: "¿Dónde veo el itinerario día por día?",
       a: "Escríbenos por WhatsApp y tu asesora te envía el itinerario completo, los hoteles y lo que incluye cada día.",
     },
-    { q: "¿Cómo separo?", a: "Separas con el 50% y pagas el saldo antes de viajar. Todo queda por escrito." },
+    { q: "¿Cómo separo?", a: "Separas con un adelanto y pagas el saldo antes de viajar. Todo queda por escrito." },
   ];
   if (pais) faqs.splice(2, 0, { q: `¿Qué documento necesito para viajar a ${pais.nombre}?`, a: pais.documento });
   const schema = {

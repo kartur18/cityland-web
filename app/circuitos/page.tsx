@@ -16,7 +16,7 @@ export const revalidate = 86400;
 
 const RUTA = "/circuitos";
 const DESCRIPCION =
-  "Circuitos y paquetes por Europa, Turquía, Egipto, Japón, India, Estados Unidos, Brasil, Costa Rica, el Caribe y cruceros desde Lima, con salidas confirmadas. Separa con el 50%.";
+  "Circuitos y paquetes por Europa, Turquía, Egipto, Japón, India, Estados Unidos, Brasil, Costa Rica, el Caribe y cruceros desde Lima, con salidas confirmadas. Separa con un adelanto.";
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO("Circuitos y paquetes por el mundo desde Lima | Cityland"),

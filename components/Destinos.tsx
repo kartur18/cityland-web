@@ -75,7 +75,7 @@ export default function Destinos() {
               duracion: paquete.duracion,
               mensajePersonalizado: esMigratorio
                 ? `¡Hola! Quiero más información del paquete migratorio a ${paquete.ciudad} desde $${paquete.precioUSD}.`
-                : `¡Hola Cityland Travel! Vi en su web el paquete a ${paquete.ciudad} (${paquete.duracion}) desde $${paquete.precioUSD} USD. Deseo cotizar separando con el 50%.`,
+                : `¡Hola Cityland Travel! Vi en su web el paquete a ${paquete.ciudad} (${paquete.duracion}) desde $${paquete.precioUSD} USD. Deseo cotizar separando con un adelanto.`,
             });
 
             const detalleHref =
@@ -156,7 +156,7 @@ export default function Destinos() {
                         <span className="text-[11px] font-bold text-slate-500">USD</span>
                       </div>
                       <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                        Separa con 50% (desde ${Math.round(paquete.precioUSD * 0.5).toLocaleString("en-US")})
+                        Separa con un adelanto
                       </span>
                     </div>
 

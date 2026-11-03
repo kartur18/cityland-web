@@ -98,7 +98,7 @@ export const TITULOS_SEO_UNICOS: Readonly<Record<string, string>> = {
   "/ofertas/estadia-hotel-doubletree-hilton-paracas-tarifa-grupos-y-amigos":
     "DoubleTree Paracas para grupos y amigos | Cityland",
   "/ofertas/estadia-hotel-doubletree-hilton-paracas-preventa-con-50-por-ciento":
-    "DoubleTree Paracas: separa con el 50% | Cityland",
+    "DoubleTree Paracas: separa con un adelanto | Cityland",
   "/ofertas/rutas-peru-churin-banos-termales-huancahuasi-feriado-noviembre-todos-los-santos-preventa-con-50-por-ciento":
     "Churín y Huancahuasi: feriado de noviembre | Cityland",
   "/ofertas/rutas-peru-churin-banos-termales-huancahuasi-feriado-largo-diciembre-preventa-con-50-por-ciento":
@@ -155,7 +155,7 @@ const ETIQUETAS_SLUG: readonly (readonly [RegExp, string | ((m: RegExpMatchArray
   [/2-maletas/, "2 maletas"],
   [/1-maleta/, "1 maleta"],
   [/cuotas/, "en cuotas"],
-  [/preventa|50-inicial|50-por-ciento/, "separa con 50 %"],
+  [/preventa|50-inicial|50-por-ciento/, "separa con un adelanto"],
   [/emision-inmediata|pnr|voucher/, "emisión inmediata"],
   [/cotizacion-inmediata/, "cotiza al instante"],
   [/bcp|yape/, "paga con Yape o banco"],

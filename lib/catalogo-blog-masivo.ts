@@ -190,7 +190,7 @@ export const BLOG_POSTS_MASIVOS: BlogPost[] = [
     slug: "mejor-epoca-comprar-vuelos-fiestas-patrias-ano-nuevo",
     titulo: "Con cuánta anticipación reservar paquetes para Fiestas Patrias y Año Nuevo desde Lima",
     tituloSeo: "Cuándo reservar para Año Nuevo y Fiestas Patrias",
-    desc: "Por qué los pasajes suben en Año Nuevo, Semana Santa y Fiestas Patrias, con cuánta anticipación conviene cotizar y cómo separar tu viaje con el 50%.",
+    desc: "Por qué los pasajes suben en Año Nuevo, Semana Santa y Fiestas Patrias, con cuánta anticipación conviene cotizar y cómo separar tu viaje con un adelanto.",
     categoria: "Consejos",
     catColor: "bg-emerald-700",
     fecha: "Actualizado octubre 2026",
@@ -207,7 +207,7 @@ export const BLOG_POSTS_MASIVOS: BlogPost[] = [
 </ul>
 <p>Mira todos los feriados y a dónde ir en cada uno en nuestra página de <a href="/feriados-largos">feriados largos</a>.</p>
 <h3>Cómo separar tu viaje</h3>
-<p>Separas con el <strong>50%</strong> y pagas el resto antes de viajar. Al separar te damos por escrito lo que incluye tu viaje y las condiciones de la tarifa.</p>
+<p>Separas con un <strong>adelanto</strong> y pagas el resto antes de viajar. Al separar te damos por escrito lo que incluye tu viaje y las condiciones de la tarifa.</p>
 <h3>Consejos para pagar menos</h3>
 <p>1. <strong>Sé flexible con las fechas:</strong> salir un día antes o volver un día después puede bajar bastante el precio.<br>
 2. <strong>Mira destinos cercanos:</strong> Paracas, Ica o Máncora se llenan, pero tienen más opciones que el Caribe en esas fechas.<br>
@@ -320,7 +320,7 @@ export const BLOG_POSTS_MASIVOS: BlogPost[] = [
 <p>1. <strong>Empresa peruana formal y verificable:</strong> Cityland Group E.I.R.L. con RUC 20614914239.<br>
 2. <strong>Oficina física propia en Lima:</strong> Visítanos en Av. Antúnez de Mayolo N. 814, Los Olivos (lunes a sábado de 9:00 a.m. a 7:00 p.m.).<br>
 3. <strong>Especialistas en carpeta migratoria europea:</strong> Revisamos documento por documento tu vuelo de retorno, voucher de hotel y seguro Schengen de 30.000€.<br>
-4. <strong>Facilidad de pago con el 50%:</strong> Separa tus paquetes promocionales en dólares y completa el saldo antes de viajar.<br>
+4. <strong>Facilidad de pago con un adelanto:</strong> Separa tus paquetes promocionales en dólares y completa el saldo antes de viajar.<br>
 5. <strong>Atención directa por WhatsApp oficial (+51 944 103 890):</strong> Un asesor real te acompaña hasta tu retorno a casa.</p>`,
   },
   {

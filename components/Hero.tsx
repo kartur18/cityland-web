@@ -43,7 +43,7 @@ export default function Hero() {
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-6 max-w-xl">
               Especialistas en <strong className="text-[#0a1628] font-bold">Paquetes Migratorios a Europa desde $699 USD (solo ida)</strong> (pasaje, retorno reservado, hotel, seguro 30.000€ y check-in) y vacaciones Todo Incluido al Caribe.{" "}
               <strong className="text-emerald-700 font-bold">
-                Separa hoy con el 50% de inicial.
+                Separa hoy con un adelanto.
               </strong>
             </p>
 
@@ -94,7 +94,7 @@ export default function Hero() {
             {/* 3 Checks Limpios en Línea */}
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-bold text-slate-700 pt-5 border-t border-slate-200/80">
               <span className="flex items-center gap-1.5">
-                <span className="text-emerald-600 font-extrabold">✓</span> Separa con el 50%
+                <span className="text-emerald-600 font-extrabold">✓</span> Separa con un adelanto
               </span>
               <span className="flex items-center gap-1.5">
                 <span className="text-emerald-600 font-extrabold">✓</span> Oficina en Los Olivos
@@ -158,7 +158,7 @@ export default function Hero() {
                       <span className="text-xs font-bold text-slate-500">USD</span>
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-700 block mt-1">
-                      Separa con 50% (desde $350 USD)
+                      Separa con un adelanto
                     </span>
                   </div>
 

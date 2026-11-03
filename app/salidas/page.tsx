@@ -22,7 +22,7 @@ const URL = `${URL_BASE_SEO}/salidas`;
 export const metadata: Metadata = {
   title: "Paquetes armados con fecha de salida desde Lima | Cityland",
   description:
-    "Calendario de paquetes armados con fecha fija y cupo confirmado: Europa, Turquía, Egipto, Asia, Caribe y Sudamérica con vuelo desde Lima. Elige tu mes y separa con el 50%.",
+    "Calendario de paquetes armados con fecha fija y cupo confirmado: Europa, Turquía, Egipto, Asia, Caribe y Sudamérica con vuelo desde Lima. Elige tu mes y separa con un adelanto.",
   alternates: { canonical: URL },
   openGraph: {
     type: "website",

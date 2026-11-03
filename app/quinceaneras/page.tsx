@@ -38,7 +38,7 @@ const CONFIG_QUINCEANERAS: ConfiguracionLandingAerolinea = {
   tituloDestacadoHero: "Europa, Disney, Crucero & Caribe",
   descripcionHero:
     "Cambia la fiesta de una noche por recuerdos para toda la vida. Organizamos viajes de Quinceañeras en grupo acompañado o en familia a Europa con Disneyland París, Orlando + Crucero a las Bahamas y Resorts Todo Incluido en el Caribe.",
-  negritaHero: "Separa el cupo con el 50% de inicial y paga en cuotas programadas hasta antes del viaje",
+  negritaHero: "Separa el cupo con un adelanto y paga en cuotas programadas hasta antes del viaje",
   ctaPrincipalTexto: "Cotizar Viaje de 15 Años por WhatsApp",
   waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
@@ -186,7 +186,7 @@ const CONFIG_QUINCEANERAS: ConfiguracionLandingAerolinea = {
     },
     {
       titulo: "Pagos Programados",
-      sub: "Congela el precio con el 50% y programa tus abonos en oficina o banco",
+      sub: "Congela el precio con un adelanto y programa tus abonos en oficina o banco",
     },
   ],
   bannerFinal: {

@@ -198,8 +198,8 @@ export default function FranciaPage() {
               </h1>
 
               <p className="text-base sm:text-lg text-slate-200 leading-relaxed mb-7">
-                Viaja a París, Lyon, Marsella, Niza o Toulouse con tu carpeta de viaje armada: pasaje de ida, reserva de regreso, hotel y seguro. Separa hoy con el{" "}
-                <strong className="text-white">50% de inicial</strong>.
+                Viaja a París, Lyon, Marsella, Niza o Toulouse con tu carpeta de viaje armada: pasaje de ida, reserva de regreso, hotel y seguro. Separa hoy con un{" "}
+                <strong className="text-white">adelanto</strong>.
               </p>
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-6">
@@ -305,7 +305,7 @@ export default function FranciaPage() {
               Elige tu Plan a Francia según tu Fecha
             </h2>
             <p className="text-sm text-slate-600 mt-2">
-              Separa hoy con el 50% y completa el pago en cuotas antes de tu vuelo.
+              Separa hoy con un adelanto y completa el pago en cuotas antes de tu vuelo.
             </p>
           </div>
 
@@ -359,7 +359,7 @@ export default function FranciaPage() {
                           <span className="text-xs font-bold text-slate-500">USD</span>
                         </div>
                         <span className="text-xs font-extrabold text-emerald-700 block mt-1">
-                          ✓ Separa con el 50% (desde {formatoUSD(plan.separaCon)} USD)
+                          ✓ Separa con un adelanto
                         </span>
                       </div>
 

@@ -20,7 +20,7 @@ export function metadataPais(x: PaisTuristico): Metadata {
   const ps = paquetesDePais(x.slug);
   const url = `${URL_BASE_SEO}${ruta(x)}`;
   const desde = precioPaquete(ps[0]);
-  const desc = `${ps.length} paquetes turísticos a ${x.nombre} desde ${formatoUSD(desde)} por persona. ${x.intro} Separa con el 50%.`;
+  const desc = `${ps.length} paquetes turísticos a ${x.nombre} desde ${formatoUSD(desde)} por persona. ${x.intro} Separa con un adelanto.`;
   return {
     title: tituloSeo(`Paquetes turísticos a ${x.nombre}`, `desde ${formatoUSD(desde)}`),
     description: optimizarMetaDescriptionSEO(desc),

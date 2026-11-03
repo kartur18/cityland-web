@@ -107,7 +107,7 @@ function aHub(x: Ciudad): HubCircuitos {
     nombre: x.nombre,
     h1: `Viajes a ${x.nombre} desde Lima`,
     tituloSeo: largo.length <= 49 ? largo : `Viajes a ${x.nombre} desde Lima`.slice(0, 49),
-    descripcion: `${total} programas que pasan por ${x.nombre}, con salidas confirmadas desde Lima: con vuelo o solo terrestres, hotel y guía en español. Precios por persona. Separa con el 50%.`,
+    descripcion: `${total} programas que pasan por ${x.nombre}, con salidas confirmadas desde Lima: con vuelo o solo terrestres, hotel y guía en español. Precios por persona. Separa con un adelanto.`,
     intro: x.intro,
     filtro: (c) => pasaPor(c, x.alias),
     mensajeWhatsApp: `¡Hola Cityland Travel! Quiero cotizar un viaje a ${x.nombre}.`,

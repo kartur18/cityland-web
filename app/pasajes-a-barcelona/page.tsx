@@ -22,7 +22,7 @@ import { safeJsonLd } from "@/lib/seguridad-http";
 const RUTA = "/pasajes-a-barcelona";
 const FOTOS = obtenerGaleriaPorTexto("barcelona espana");
 const DESCRIPCION =
-  "Pasajes Lima–Barcelona ida y vuelta, vuelo directo desde junio de 2026 o con escala en Madrid, paquete turístico con hotel y paquete migratorio a Barcelona. Separa con el 50%.";
+  "Pasajes Lima–Barcelona ida y vuelta, vuelo directo desde junio de 2026 o con escala en Madrid, paquete turístico con hotel y paquete migratorio a Barcelona. Separa con un adelanto.";
 
 const FAQS = [
   {

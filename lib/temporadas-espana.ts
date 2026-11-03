@@ -27,7 +27,7 @@ const DOCUMENTOS = {
   q: "¿Qué documentos necesito?",
   a: "Pasaporte vigente, sin visa, para turismo de hasta 90 días. En migración te pueden pedir el pasaje de regreso, el hotel o la carta de invitación, dinero para tu estadía y un seguro de viaje.",
 };
-const PAGO = { q: "¿Puedo separar mi pasaje?", a: "Sí. Separas con el 50% y pagas el resto antes de viajar." };
+const PAGO = { q: "¿Puedo separar mi pasaje?", a: "Sí. Separas con un adelanto y pagas el resto antes de viajar." };
 
 export const TEMPORADAS_ESPANA: Readonly<Record<string, TemporadaEspana>> = {
   navidad: {
@@ -35,7 +35,7 @@ export const TEMPORADAS_ESPANA: Readonly<Record<string, TemporadaEspana>> = {
     h1: "Viajar a España en Navidad y Año Nuevo desde Lima",
     tituloSeo: "Viajar a España en Navidad y Año Nuevo",
     descripcion:
-      "Pasajes Lima–Madrid y Barcelona para Navidad y Año Nuevo, y pasajes Madrid–Lima para pasar las fiestas en Perú. Fechas clave, clima y cuándo comprar. Separa con el 50%.",
+      "Pasajes Lima–Madrid y Barcelona para Navidad y Año Nuevo, y pasajes Madrid–Lima para pasar las fiestas en Perú. Fechas clave, clima y cuándo comprar. Separa con un adelanto.",
     intro:
       "Diciembre es de los meses más caros para volar entre Perú y España: viajan los que van a pasar las fiestas con su familia en España y los peruanos que vuelven a Lima. Mientras antes cotices, más opciones de vuelo tienes.",
     fechas: [
@@ -73,7 +73,7 @@ export const TEMPORADAS_ESPANA: Readonly<Record<string, TemporadaEspana>> = {
     h1: "Viajar a España en verano desde Lima: julio y agosto",
     tituloSeo: "Viajar a España en verano: julio y agosto",
     descripcion:
-      "Pasajes y paquetes a España para julio y agosto: playas de Barcelona, la Costa del Sol, Valencia, Mallorca y Canarias. Clima, temporada alta y cuándo comprar. Separa con el 50%.",
+      "Pasajes y paquetes a España para julio y agosto: playas de Barcelona, la Costa del Sol, Valencia, Mallorca y Canarias. Clima, temporada alta y cuándo comprar. Separa con un adelanto.",
     intro:
       "Julio y agosto son el verano europeo y la temporada más alta del año: coinciden con las vacaciones de medio año y Fiestas Patrias en el Perú. Es la mejor época para las playas de España.",
     fechas: [
@@ -109,7 +109,7 @@ export const TEMPORADAS_ESPANA: Readonly<Record<string, TemporadaEspana>> = {
     h1: "Semana Santa 2027 en España desde Lima",
     tituloSeo: "Semana Santa 2027 en España desde Lima",
     descripcion:
-      "Semana Santa 2027 en España: procesiones de Sevilla y Málaga del 21 al 28 de marzo, clima de primavera y pasajes desde Lima. Cuándo comprar y qué llevar. Separa con el 50%.",
+      "Semana Santa 2027 en España: procesiones de Sevilla y Málaga del 21 al 28 de marzo, clima de primavera y pasajes desde Lima. Cuándo comprar y qué llevar. Separa con un adelanto.",
     intro:
       "La Semana Santa española es famosa por sus procesiones, sobre todo en Andalucía. En 2027 cae a fines de marzo, en plena primavera, con buen clima para recorrer las ciudades.",
     fechas: [

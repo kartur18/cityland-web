@@ -67,7 +67,7 @@ const FAQS = [
   },
   {
     q: "How do I pay?",
-    a: "You reserve with 50% and pay the rest before the trip, by credit card or bank transfer. You receive a written confirmation and an electronic receipt.",
+    a: "You reserve with a deposit and pay the rest before the trip, by credit card or bank transfer. You receive a written confirmation and an electronic receipt.",
   },
 ];
 
@@ -161,7 +161,7 @@ export default function MachuPicchuToursPage() {
               <li>Registered Peruvian company: Cityland Group E.I.R.L., tax ID (RUC) 20614914239.</li>
               <li>Office in Lima: Av. Antúnez de Mayolo 814, Los Olivos.</li>
               <li>Flight, hotels, train and Machu Picchu tickets confirmed in writing before you pay the balance.</li>
-              <li>Reserve with 50%; pay by card or bank transfer.</li>
+              <li>Reserve with a deposit; pay by card or bank transfer.</li>
             </ul>
           </section>
 

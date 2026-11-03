@@ -7,7 +7,7 @@ const DOCUMENTOS = {
   q: "¿Qué documentos necesito?",
   a: "Pasaporte vigente, sin visa, para turismo de hasta 90 días. En migración te pueden pedir el pasaje de regreso, el hotel o la carta de invitación y dinero para tu estadía. El seguro de viaje no es obligatorio sin visa, pero te lo recomendamos.",
 };
-const PAGO = { q: "¿Puedo separar mi pasaje?", a: "Sí. Separas con el 50% y pagas el resto antes de viajar." };
+const PAGO = { q: "¿Puedo separar mi pasaje?", a: "Sí. Separas con un adelanto y pagas el resto antes de viajar." };
 const PRECIO_BAJA = "Precios referenciales por persona. Este mes suele estar entre los más baratos del año; te damos el precio exacto de tu fecha.";
 const PRECIO_ALTA = "Precios referenciales por persona. Es temporada alta: compra con 3 o 4 meses de anticipación y te damos el precio exacto de tu fecha.";
 const PRECIO_MEDIA = "Precios referenciales por persona; cambian según la fecha y la aerolínea. Te damos el precio exacto de tu fecha.";
@@ -31,7 +31,7 @@ export const MESES_ESPANA: readonly MesEspana[] = [
   mes({
     mes: "enero",
     descripcion:
-      "Viajar a España en enero desde Lima: Reyes, rebajas de invierno, el frío de Madrid y el sol de Canarias. Después de Reyes bajan los pasajes. Separa con el 50%.",
+      "Viajar a España en enero desde Lima: Reyes, rebajas de invierno, el frío de Madrid y el sol de Canarias. Después de Reyes bajan los pasajes. Separa con un adelanto.",
     intro:
       "Enero empieza con fiesta y termina tranquilo: pasado el Día de Reyes los españoles vuelven al trabajo, bajan los precios de vuelos y hoteles, y empiezan las rebajas en las tiendas.",
     fechas: [
@@ -63,7 +63,7 @@ export const MESES_ESPANA: readonly MesEspana[] = [
   mes({
     mes: "febrero",
     descripcion:
-      "Viajar a España en febrero desde Lima: Carnaval de Tenerife y Cádiz, invierno suave en el sur y uno de los meses más baratos para volar. Separa con el 50%.",
+      "Viajar a España en febrero desde Lima: Carnaval de Tenerife y Cádiz, invierno suave en el sur y uno de los meses más baratos para volar. Separa con un adelanto.",
     intro:
       "Febrero es temporada baja en España: hay pocos turistas, los precios están entre los más bajos del año y en 2027 el Carnaval cae a inicios de mes.",
     fechas: [
@@ -95,7 +95,7 @@ export const MESES_ESPANA: readonly MesEspana[] = [
   mes({
     mes: "marzo",
     descripcion:
-      "Viajar a España en marzo desde Lima: las Fallas de Valencia (15 al 19), Semana Santa 2027 del 21 al 28 y el inicio de la primavera. Separa con el 50%.",
+      "Viajar a España en marzo desde Lima: las Fallas de Valencia (15 al 19), Semana Santa 2027 del 21 al 28 y el inicio de la primavera. Separa con un adelanto.",
     intro:
       "Marzo trae la primavera y dos de las fiestas más famosas de España: las Fallas de Valencia y, en 2027, la Semana Santa a fin de mes.",
     fechas: [
@@ -126,7 +126,7 @@ export const MESES_ESPANA: readonly MesEspana[] = [
   mes({
     mes: "abril",
     descripcion:
-      "Viajar a España en abril desde Lima: Feria de Abril de Sevilla, Sant Jordi en Barcelona, primavera y buen clima para recorrer. Separa con el 50%.",
+      "Viajar a España en abril desde Lima: Feria de Abril de Sevilla, Sant Jordi en Barcelona, primavera y buen clima para recorrer. Separa con un adelanto.",
     intro:
       "Abril es de los meses más bonitos para conocer España: clima agradable, parques en flor y fiestas como la Feria de Sevilla y Sant Jordi en Barcelona.",
     fechas: [
@@ -157,7 +157,7 @@ export const MESES_ESPANA: readonly MesEspana[] = [
   mes({
     mes: "mayo",
     descripcion:
-      "Viajar a España en mayo desde Lima: San Isidro en Madrid, los Patios de Córdoba, días largos y buen clima antes del verano. Separa con el 50%.",
+      "Viajar a España en mayo desde Lima: San Isidro en Madrid, los Patios de Córdoba, días largos y buen clima antes del verano. Separa con un adelanto.",
     intro:
       "Mayo es para muchos el mejor mes para viajar a España: hace buen tiempo, los días son largos y todavía no llegan los precios del verano.",
     fechas: [
@@ -188,7 +188,7 @@ export const MESES_ESPANA: readonly MesEspana[] = [
   mes({
     mes: "junio",
     descripcion:
-      "Viajar a España en junio desde Lima: la Noche de San Juan, las primeras playas, días larguísimos y el inicio de la temporada alta. Separa con el 50%.",
+      "Viajar a España en junio desde Lima: la Noche de San Juan, las primeras playas, días larguísimos y el inicio de la temporada alta. Separa con un adelanto.",
     intro:
       "En junio empieza el verano español: las playas se llenan, anochece pasadas las nueve y media, y a fin de mes suben los precios por la temporada alta.",
     fechas: [
@@ -284,7 +284,7 @@ export const MESES_ESPANA: readonly MesEspana[] = [
   mes({
     mes: "septiembre",
     descripcion:
-      "Viajar a España en septiembre desde Lima: La Mercè en Barcelona, la vendimia en La Rioja, el mar todavía caliente y menos gente. Separa con el 50%.",
+      "Viajar a España en septiembre desde Lima: La Mercè en Barcelona, la vendimia en La Rioja, el mar todavía caliente y menos gente. Separa con un adelanto.",
     intro:
       "Septiembre es la mejor época para quien quiere verano sin multitudes: el mar sigue caliente, el calor fuerte se va y los precios bajan después de mediados de mes.",
     fechas: [
@@ -315,7 +315,7 @@ export const MESES_ESPANA: readonly MesEspana[] = [
   mes({
     mes: "octubre",
     descripcion:
-      "Viajar a España en octubre desde Lima: Fiesta Nacional del 12 de octubre, las Fiestas del Pilar en Zaragoza y otoño templado. Separa con el 50%.",
+      "Viajar a España en octubre desde Lima: Fiesta Nacional del 12 de octubre, las Fiestas del Pilar en Zaragoza y otoño templado. Separa con un adelanto.",
     intro:
       "Octubre es otoño templado en España: buen clima para caminar, menos turistas y precios más bajos que en verano.",
     fechas: [
@@ -346,7 +346,7 @@ export const MESES_ESPANA: readonly MesEspana[] = [
   mes({
     mes: "noviembre",
     descripcion:
-      "Viajar a España en noviembre desde Lima: uno de los meses más baratos para volar, Todos los Santos y el encendido de las luces de Navidad. Separa con el 50%.",
+      "Viajar a España en noviembre desde Lima: uno de los meses más baratos para volar, Todos los Santos y el encendido de las luces de Navidad. Separa con un adelanto.",
     intro:
       "Noviembre es temporada baja: es de los meses más baratos para volar Lima–Madrid y, a fin de mes, las ciudades encienden sus luces de Navidad.",
     fechas: [

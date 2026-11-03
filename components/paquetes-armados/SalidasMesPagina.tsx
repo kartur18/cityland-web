@@ -81,7 +81,7 @@ export default function SalidasMesPagina({ mes: m }: { mes: MesSalidas }) {
       q: "¿Puedo viajar en otra fecha?",
       a: "Las fechas de un paquete armado son fijas. Si necesitas otra fecha, te armamos un viaje a medida con los mismos destinos.",
     },
-    { q: "¿Cómo separo mi cupo?", a: "Elige tu salida, escríbenos por WhatsApp y separas con el 50%. El saldo se paga antes de viajar." },
+    { q: "¿Cómo separo mi cupo?", a: "Elige tu salida, escríbenos por WhatsApp y separas con un adelanto. El saldo se paga antes de viajar." },
   ];
   const schema = {
     "@context": "https://schema.org",

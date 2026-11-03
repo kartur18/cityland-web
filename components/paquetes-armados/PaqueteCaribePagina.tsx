@@ -31,7 +31,7 @@ const desdeDe = desdePagina;
 export function metadataCaribe(p: PaginaCaribe): Metadata {
   const url = `${URL_BASE_SEO}${ruta(p)}`;
   const desde = desdeDe(p);
-  const desc = `${p.intro} ${p.programas.length} ${p.programas.length === 1 ? "paquete" : "paquetes"} desde ${formatoUSD(desde)} por persona. Separa con el 50%.`;
+  const desc = `${p.intro} ${p.programas.length} ${p.programas.length === 1 ? "paquete" : "paquetes"} desde ${formatoUSD(desde)} por persona. Separa con un adelanto.`;
   return {
     title: tituloSeo(p.titulo, `desde ${formatoUSD(desde)}`),
     description: optimizarMetaDescriptionSEO(desc),
@@ -101,7 +101,7 @@ export default function PaqueteCaribePagina({ pagina: p }: { pagina: PaginaCarib
     },
     {
       q: "¿Cómo separo?",
-      a: "Escríbenos por WhatsApp con la fecha y el número de personas; separas con el 50% y el saldo se paga antes de viajar.",
+      a: "Escríbenos por WhatsApp con la fecha y el número de personas; separas con un adelanto y el saldo se paga antes de viajar.",
     },
   ];
   if (clima)

@@ -169,7 +169,7 @@ function crearObjetoMadrid(params: {
       },
       {
         paso: "02",
-        titulo: `Reserva con 50% ($${mitadFmt} USD)`,
+        titulo: `Reserva con un adelanto`,
         detalle: `Congelas tu tarifa en nuestra oficina de Los Olivos o por cuentas empresa BCP/BBVA/Interbank y emitimos tu código PNR real.`,
       },
       {
@@ -375,7 +375,7 @@ const PLANES_ESTADIA_BOE_MADRID_40: [string, string, string][] = [
   ["Salida Especial Semana Santa Abril", "salida-abril-semana-santa-madrid", "Viaja en Semana Santa y abril desde el Aeropuerto Jorge Chávez (LIM)"],
   ["Salida Mayo Fiestas de San Isidro Madrid", "salida-mayo-san-isidro-madrid", "Temporada ideal de mayo saliendo desde Lima (LIM) hacia Barajas"],
   ["Salida Junio Inicio de Verano Europeo", "salida-junio-verano-europeo", "Inicio del verano español con vuelos desde el Jorge Chávez (LIM)"],
-  ["Salida Julio Vacaciones y Fiestas Patrias", "salida-julio-fiestas-patrias", "Alta demanda de julio reservando con 50% desde Lima (LIM)"],
+  ["Salida Julio Vacaciones y Fiestas Patrias", "salida-julio-fiestas-patrias", "Alta demanda de julio reservando con un adelanto desde Lima (LIM)"],
   ["Salida Agosto Vacaciones en Europa", "salida-agosto-verano-madrid", "Salidas de agosto confirmadas desde el Aeropuerto Jorge Chávez (LIM)"],
   ["Salida Septiembre Otoño Europeo", "salida-septiembre-otono-madrid", "Excelente temporada en septiembre saliendo desde Lima (LIM)"],
   ["Salida Octubre Fiesta Nacional España", "salida-octubre-madrid-barajas", "Vuelos de octubre con código PNR verificable desde Lima (LIM)"],
@@ -407,7 +407,7 @@ const PRODUCTOS_MADRID_10: [string, string, number][] = [
 ];
 
 const MODALIDADES_EMISION_6: [string, string, number][] = [
-  ["separa-con-50-por-ciento", "Separa con 50% de Inicial", 1.0],
+  ["separa-con-50-por-ciento", "Separa con un adelanto", 1.0],
   ["emision-inmediata-pnr", "Emisión con Código PNR", 1.0],
   ["atencion-sede-los-olivos", "Atención en Sede Los Olivos", 1.0],
   ["pago-bcp-bbva-interbank-yape", "Pago BCP · BBVA · Interbank · Yape", 1.0],
@@ -564,7 +564,7 @@ const SERVICIOS_ESPECIALES_BD_24: [string, string, number][] = [
 
 const VARIANTES_ATENCION_5: [string, string, number][] = [
   ["tarifa-oficial-pnr", "Emisión Oficial PNR", 1.0],
-  ["reserva-50-inicial", "Separa con 50%", 1.0],
+  ["reserva-50-inicial", "Separa con un adelanto", 1.0],
   ["sede-los-olivos", "Sede Los Olivos", 1.0],
   ["atencion-whatsapp-24-7", "Atención WhatsApp", 1.0],
   ["preventa-garantizada", "Tarifa Preventa", 0.96],
@@ -629,7 +629,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
                 },
                 {
                   q: `¿Con cuánto puedo separar mi viaje a ${zonaNombre}?`,
-                  a: `Puedes congelar tu tarifa Desde $${precio.toLocaleString("en-US")} abonando el 50% de inicial en nuestra sede de Los Olivos (Av. Antúnez de Mayolo 814) o por BCP, BBVA e Interbank.`,
+                  a: `Puedes congelar tu tarifa Desde $${precio.toLocaleString("en-US")} con un adelanto en nuestra sede de Los Olivos (Av. Antúnez de Mayolo 814) o por BCP, BBVA e Interbank.`,
                 },
               ],
               indiceSemilla: idxActual,
@@ -748,7 +748,7 @@ function generarIndiceMadrid10k(): ResumenLandingMadrid[] {
                 },
                 {
                   q: `¿Cuál es la tarifa en ${nombreMes} para ${nombreRutaEsp} y con cuánto se separa?`,
-                  a: `La tarifa referencial para ${nombreMes} parte Desde $${precio.toLocaleString("en-US")} y puedes congelarla hoy abonando el 50% de inicial en Los Olivos o por WhatsApp (+51 944 103 890).`,
+                  a: `La tarifa referencial para ${nombreMes} parte Desde $${precio.toLocaleString("en-US")} y puedes congelarla hoy con un adelanto en Los Olivos o por WhatsApp (+51 944 103 890).`,
                 },
               ],
               indiceSemilla: idxActual,

@@ -7,8 +7,8 @@ const RAZONES: readonly { titulo: string; texto: string }[] = [
     texto: `Puedes venir a ${OFICINAS.length} oficinas físicas, con RUC registrado en SUNAT, y hablar cara a cara con tu asesora.`,
   },
   {
-    titulo: "Separas con el 50%",
-    texto: "No pagas todo de golpe: separas tu viaje con la mitad y completas antes de viajar.",
+    titulo: "Separas con un adelanto",
+    texto: "No pagas todo de golpe: separas tu viaje con un adelanto y completas antes de viajar.",
   },
   {
     titulo: "Pagas como prefieras",

@@ -340,7 +340,7 @@ export function guiaDestino(dest: Destino): GuiaServicio | null {
       },
       ...(incluye.length ? [{ q: "¿Qué incluye el paquete?", a: `${incluye.join(", ")}.` }] : []),
       { q: "¿Qué documentos necesito?", a: extra.documentos },
-      { q: "¿Cómo se paga?", a: "Separas con el 50% y pagas el resto antes del viaje, en nuestras oficinas de Los Olivos o por transferencia, Yape, Plin o tarjeta." },
+      { q: "¿Cómo se paga?", a: "Separas con un adelanto y pagas el resto antes del viaje, en nuestras oficinas de Los Olivos o por transferencia, Yape, Plin o tarjeta." },
       ...(extra.faqExtra ? [extra.faqExtra] : []),
     ],
     enlaces: extra.enlaces,

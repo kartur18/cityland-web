@@ -62,7 +62,7 @@ export default function PanamaMedellinLanding() {
           <div className="lg:col-span-5">
             <div className="bg-white rounded-3xl p-6 md:p-8 shadow-2xl border border-slate-100">
               <span className="inline-block bg-amber-100 text-amber-800 text-xs font-extrabold uppercase tracking-wider px-3 py-1 rounded-full mb-3">
-                Tarifa Preventa · Separa con 50%
+                Tarifa Preventa · Separa con un adelanto
               </span>
               <div className="text-4xl md:text-5xl font-black text-[#0a1628] leading-none mb-2">
                 Desde $799
@@ -189,7 +189,7 @@ export default function PanamaMedellinLanding() {
 
           <div className="bg-gradient-to-br from-[#0a1628] to-[#162a4a] rounded-3xl p-6 md:p-8 text-center text-white">
             <p className="text-amber-400 text-xs font-bold uppercase tracking-widest mb-1">
-              Separa con el 50% de Inicial
+              Separa con un adelanto
             </p>
             <div className="text-3xl font-black mb-1">Desde $799</div>
             <p className="text-white/70 text-xs mb-5">

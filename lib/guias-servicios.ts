@@ -35,7 +35,7 @@ export function guiaLunaDeMiel(p: Precios): GuiaServicio {
       },
       { q: "¿Qué destinos no piden pasaporte?", a: "Cartagena y San Andrés, en Colombia: los peruanos pueden viajar solo con DNI vigente." },
       { q: "¿Qué es un resort «solo adultos»?", a: "Un hotel que solo recibe a mayores de 18 años. Es más tranquilo y está pensado para parejas." },
-      { q: "¿Cómo se paga?", a: "Separas con el 50% y pagas el resto antes del viaje." },
+      { q: "¿Cómo se paga?", a: "Separas con un adelanto y pagas el resto antes del viaje." },
     ],
     enlaces: [
       { texto: "Punta Cana todo incluido", href: "/destinos/punta-cana" },
@@ -66,7 +66,7 @@ export function guiaQuinceaneras(p: Precios): GuiaServicio {
       },
       { q: "¿Puede viajar sin sus padres?", a: `Sí. ${PERMISO_MENORES} Te explicamos cómo sacarlo en nuestra guía.` },
       { q: "¿Hay viajes en grupo?", a: "Sí. Tenemos programas en grupo y en familia." },
-      { q: "¿Cómo se paga?", a: "Separas el cupo con el 50% y pagas el resto en cuotas antes del viaje." },
+      { q: "¿Cómo se paga?", a: "Separas el cupo con un adelanto y pagas el resto en cuotas antes del viaje." },
     ],
     enlaces: [
       { texto: "Permiso notarial para menores", href: "/blog/permiso-notarial-viaje-menores-peru-requisitos" },
@@ -90,7 +90,7 @@ export function guiaColegios(p: Precios): GuiaServicio {
         q: "¿Cuánto cuesta un viaje de promoción?",
         a: `Por alumno: desde ${usd(p, "promocion-tarapoto-selva")} a Tarapoto, ${usd(p, "promocion-cusco-machu-picchu")} a Cusco, ${usd(p, "promocion-punta-sal-mancora")} a Punta Sal y Máncora, ${usd(p, "promocion-cartagena-colombia")} a Cartagena y ${usd(p, "promocion-punta-cana")} a Punta Cana. Lo que incluye cada programa está en su tarjeta.`,
       },
-      { q: "¿Se puede pagar en cuotas?", a: "Sí. El grupo separa con el 50% y paga el resto en cuotas antes del viaje." },
+      { q: "¿Se puede pagar en cuotas?", a: "Sí. El grupo separa con un adelanto y paga el resto en cuotas antes del viaje." },
       { q: "¿Presentan el viaje a los padres de familia?", a: "Sí. Hacemos la exposición del programa a los padres." },
       {
         q: "¿Qué documentos necesitan los alumnos para viajar al extranjero?",

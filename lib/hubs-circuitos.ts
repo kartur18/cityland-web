@@ -172,7 +172,7 @@ export const HUBS_CIRCUITOS: readonly HubCircuitos[] = [
     descripcion:
       "Paquetes para pasar Navidad y Año Nuevo 2026 fuera de Lima: Río de Janeiro, Punta Cana, Cartagena, Aruba, Europa y cruceros por el Caribe. Salidas de diciembre confirmadas.",
     intro:
-      "Programas que salen en las fiestas de fin de año. Los cupos de diciembre son los primeros que se agotan: si ya tienes tu fecha, sepáralo con el 50%.",
+      "Programas que salen en las fiestas de fin de año. Los cupos de diciembre son los primeros que se agotan: si ya tienes tu fecha, sepáralo con un adelanto.",
     filtro: (c) => /año nuevo|fin de año|navidad|natal|papá noel/i.test(c.nombre) || /diciembre\s*:?[^a-z]*(2[4-9]|3[01])/i.test(c.salidas),
     mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un viaje para Navidad o Año Nuevo.",
   },

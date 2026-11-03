@@ -7,7 +7,7 @@ const DOCUMENTOS = {
   q: "¿Qué documento necesito para ir a Brasil?",
   a: "Tu DNI vigente o tu pasaporte, sin visa. Te recomendamos viajar con un seguro de viaje.",
 };
-const PAGO = { q: "¿Puedo separar mi viaje?", a: "Sí. Separas con el 50% y pagas el resto antes de viajar." };
+const PAGO = { q: "¿Puedo separar mi viaje?", a: "Sí. Separas con un adelanto y pagas el resto antes de viajar." };
 const FUERA = {
   miga: { nombre: "Paquetes a Brasil", href: "/paquetes-a-brasil" },
   destino: "Río de Janeiro",

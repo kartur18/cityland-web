@@ -18,7 +18,7 @@ export interface ServicioCityland {
 }
 
 const PASOS_COMUNES_FINAL = [
-  "Separas con el 50% en la oficina o por transferencia, Yape, Plin o tarjeta.",
+  "Separas con un adelanto en la oficina o por transferencia, Yape, Plin o tarjeta.",
   "Recibes tu confirmación por escrito y tu boleta o factura electrónica.",
 ];
 
@@ -28,7 +28,7 @@ export const SERVICIOS: Readonly<Record<string, ServicioCityland>> = {
     h1: "Reserva de hoteles en el Perú y el extranjero",
     tituloSeo: "Reserva de hoteles en Perú y el extranjero",
     descripcion:
-      "Reservamos tu hotel solo o con vuelo: resorts todo incluido en el Caribe, hoteles en Cusco, Paracas o Máncora y en Europa. Separa con el 50% en Los Olivos.",
+      "Reservamos tu hotel solo o con vuelo: resorts todo incluido en el Caribe, hoteles en Cusco, Paracas o Máncora y en Europa. Separa con un adelanto en Los Olivos.",
     intro:
       "Te buscamos el hotel que va con tu viaje y tu presupuesto, y te decimos por escrito qué incluye antes de que pagues: régimen de comidas, tipo de habitación y condiciones de cambio.",
     queCotizamos: [
@@ -111,7 +111,7 @@ export const SERVICIOS: Readonly<Record<string, ServicioCityland>> = {
         q: "¿Hacen tours para grupos, colegios o empresas?",
         a: "Sí. Para grupos te armamos una sola cotización con las fechas y la lista de pasajeros.",
       },
-      { q: "¿Puedo pagar en partes?", a: "Separas con el 50% y pagas el resto antes del viaje." },
+      { q: "¿Puedo pagar en partes?", a: "Separas con un adelanto y pagas el resto antes del viaje." },
     ],
     mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un tour.",
     relacionados: [
@@ -341,7 +341,7 @@ export const SERVICIOS: Readonly<Record<string, ServicioCityland>> = {
     h1: "Pasaje solo de ida a España desde Lima",
     tituloSeo: "Pasaje solo de ida a España desde Lima",
     descripcion:
-      "Pasaje solo de ida Lima–Madrid o Lima–Barcelona: qué te pueden pedir en migración, cuándo conviene el paquete migratorio y cuándo el ida y vuelta. Separa con el 50%.",
+      "Pasaje solo de ida Lima–Madrid o Lima–Barcelona: qué te pueden pedir en migración, cuándo conviene el paquete migratorio y cuándo el ida y vuelta. Separa con un adelanto.",
     intro:
       "Muchos peruanos viajan a España para quedarse un tiempo, estudiar o reunirse con su familia, y buscan solo la ida. Antes de comprar, conviene saber qué te pueden pedir al llegar: te explicamos las opciones y te cotizamos la que te sirve.",
     queCotizamos: [
@@ -388,7 +388,7 @@ export const SERVICIOS: Readonly<Record<string, ServicioCityland>> = {
     h1: "Pasaje ida y vuelta a España desde Lima",
     tituloSeo: "Pasaje ida y vuelta a España desde Lima",
     descripcion:
-      "Pasajes ida y vuelta Lima–Madrid y Lima–Barcelona con el regreso emitido a tu nombre. Tarifas con maleta y con cambio de fecha. Separa con el 50%.",
+      "Pasajes ida y vuelta Lima–Madrid y Lima–Barcelona con el regreso emitido a tu nombre. Tarifas con maleta y con cambio de fecha. Separa con un adelanto.",
     intro:
       "El pasaje ida y vuelta es la opción más tranquila para ir de vacaciones, visitar a tu familia o hacer turismo: el regreso queda emitido a tu nombre y con fecha fija, que es lo que te pueden pedir en migración.",
     queCotizamos: [
@@ -713,7 +713,7 @@ export const SERVICIOS: Readonly<Record<string, ServicioCityland>> = {
         q: "¿Con cuánta anticipación debo reservar para un feriado?",
         a: "Para Año Nuevo, Semana Santa y Fiestas Patrias, lo ideal es cotizar con dos o tres meses de anticipación: los pasajes suben a medida que se acerca la fecha y los hoteles se llenan.",
       },
-      { q: "¿Puedo separar mi viaje y pagar después?", a: "Sí. Separas con el 50% y pagas el resto antes de viajar." },
+      { q: "¿Puedo separar mi viaje y pagar después?", a: "Sí. Separas con un adelanto y pagas el resto antes de viajar." },
       { q: "¿Y si solo tengo un día libre?", a: "Hacemos full days desde Lima: Paracas, Huacachina, Lunahuaná, Churín y más." },
     ],
     mensajeWhatsApp: "¡Hola Cityland Travel! Quiero cotizar un viaje para un feriado largo.",

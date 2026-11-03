@@ -207,7 +207,7 @@ export default function Footer() {
             </h4>
             <div className="space-y-2.5 text-xs">
               <Link href="/ofertas" className="block text-slate-300 hover:text-white transition-colors">
-                Ofertas y Preventas con 50%
+                Ofertas y Preventas con un adelanto
               </Link>
               <Link href="/cusco" className="block text-slate-300 hover:text-white transition-colors">
                 Cusco & Machu Picchu (3 a 6 Días)

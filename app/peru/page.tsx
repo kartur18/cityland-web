@@ -6,7 +6,7 @@ import AirlineLandingTemplate, {
 
 export const metadata: Metadata = {
   title: optimizarMetaTitleSEO("Paquetes a Playas del Norte y Selva Peruana: Punta Sal, Máncora, Tarapoto, Iquitos y Arequipa | Cityland Travel"),
-  description: optimizarMetaDescriptionSEO("Viajes nacionales Todo Incluido saliendo desde Lima: Royal Decameron Punta Sal desde $489 USD, Máncora desde $319 USD, Tarapoto y Laguna Azul desde $289 USD, Iquitos Río Amazonas desde $349 USD, Arequipa Cañón del Colca desde $289 USD y Paracas-Ica desde $229 USD. Separa con el 50% en Cityland Travel (RUC 20614914239)."),
+  description: optimizarMetaDescriptionSEO("Viajes nacionales Todo Incluido saliendo desde Lima: Royal Decameron Punta Sal desde $489 USD, Máncora desde $319 USD, Tarapoto y Laguna Azul desde $289 USD, Iquitos Río Amazonas desde $349 USD, Arequipa Cañón del Colca desde $289 USD y Paracas-Ica desde $229 USD. Separa con un adelanto en Cityland Travel (RUC 20614914239)."),
   keywords: [
     "paquetes a punta sal todo incluido decameron desde lima",
     "viajes a tarapoto todo incluido precios 2026",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title:
       "Paquetes a Punta Sal, Máncora, Tarapoto, Iquitos y Arequipa — Cityland Travel",
     description:
-      "Escapadas por el Perú con vuelos ida y vuelta, resorts de playa y lodges en la selva desde $229 USD. Separa hoy con el 50% de inicial.",
+      "Escapadas por el Perú con vuelos ida y vuelta, resorts de playa y lodges en la selva desde $229 USD. Separa hoy con un adelanto.",
     siteName: "Cityland Travel",
     locale: "es_PE",
     images: [
@@ -49,7 +49,7 @@ const CONFIG_PERU: ConfiguracionLandingAerolinea = {
   tituloDestacadoHero: "Playas del Norte, Selva y Sur",
   descripcionHero:
     "Escápate del frío de Lima hacia las playas soleadas del norte, la selva de Tarapoto e Iquitos o los paisajes de Arequipa con vuelos confirmados, hoteles con piscina y tours incluidos.",
-  negritaHero: "Separa hoy tu paquete nacional con el 50% de inicial",
+  negritaHero: "Separa hoy tu paquete nacional con un adelanto",
   ctaPrincipalTexto: "Cotizar Destino Nacional",
   waPrincipalNumero: "51944103890",
   waPrincipalMensaje:
@@ -70,7 +70,7 @@ const CONFIG_PERU: ConfiguracionLandingAerolinea = {
     labelPrecio: "Paquete Completo",
     precio: "$489",
     moneda: "USD",
-    notaInferior: "Separa hoy con 50% ($245 USD)",
+    notaInferior: "Separa hoy con un adelanto",
     waNumero: "51944103890",
     waMensaje:
       "¡Hola Cityland Travel! Deseo cotizar el paquete Todo Incluido a Punta Sal (4 Días / 3 Noches) desde $489 USD.",
@@ -94,7 +94,7 @@ const CONFIG_PERU: ConfiguracionLandingAerolinea = {
       subtitulo: "4 Días / 3 Noches · Tumbes",
       precioPrincipal: "$489",
       precioSecundario: "USD",
-      notaPrecio: "Separa con 50% (desde $245 USD)",
+      notaPrecio: "Separa con un adelanto",
       tag: "#1 Playa en Perú",
       tagBg: "bg-red-600 text-white",
       img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=85",
@@ -112,7 +112,7 @@ const CONFIG_PERU: ConfiguracionLandingAerolinea = {
       subtitulo: "4 Días / 3 Noches · Sol Todo el Año",
       precioPrincipal: "$319",
       precioSecundario: "USD",
-      notaPrecio: "Separa con 50% (desde $160 USD)",
+      notaPrecio: "Separa con un adelanto",
       tag: "Sol & Relax",
       tagBg: "bg-sky-600 text-white",
       img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85",
@@ -130,7 +130,7 @@ const CONFIG_PERU: ConfiguracionLandingAerolinea = {
       subtitulo: "4 Días / 3 Noches · La Ciudad de las Palmeras",
       precioPrincipal: "$289",
       precioSecundario: "USD",
-      notaPrecio: "Separa con 50% (desde $145 USD)",
+      notaPrecio: "Separa con un adelanto",
       tag: "Top Ventas Selva",
       tagBg: "bg-emerald-600 text-white",
       img: "https://images.unsplash.com/photo-1620658927695-c33df6fb8130?w=1200&q=85",
@@ -166,7 +166,7 @@ const CONFIG_PERU: ConfiguracionLandingAerolinea = {
       subtitulo: "4 Días / 3 Noches · Cultura y Paisajes",
       precioPrincipal: "$289",
       precioSecundario: "USD",
-      notaPrecio: "Separa con 50% (desde $145 USD)",
+      notaPrecio: "Separa con un adelanto",
       tag: "Sur del Perú",
       tagBg: "bg-blue-600 text-white",
       img: "https://images.unsplash.com/photo-1787929759288-1b4aa7af30f6?w=1200&q=85",
@@ -209,7 +209,7 @@ const CONFIG_PERU: ConfiguracionLandingAerolinea = {
       sub: "Paga por transferencia BCP, BBVA, Interbank, Yape, Plin o tarjeta",
     },
     {
-      titulo: "Separa con 50%",
+      titulo: "Separa con un adelanto",
       sub: "Asegura tus cupos para feriados largos, vacaciones escolares o verano",
     },
   ],

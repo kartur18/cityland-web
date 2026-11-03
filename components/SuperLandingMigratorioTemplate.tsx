@@ -210,7 +210,7 @@ export default function SuperLandingMigratorioTemplate({
                 Elige tu Plan para Viajar a {datos.ciudadDestino}
               </h2>
               <p className="text-sm text-slate-600 mt-2">
-                Todos los planes incluyen los 5 documentos de tu carpeta migratoria y se separan con el 50%.
+                Todos los planes incluyen los 5 documentos de tu carpeta migratoria y se separan con un adelanto.
               </p>
             </div>
 
@@ -253,7 +253,7 @@ export default function SuperLandingMigratorioTemplate({
                           <span className="text-xs font-bold text-slate-500">USD</span>
                         </div>
                         <span className="text-xs font-extrabold text-emerald-700 block mt-1">
-                          ✓ Separa con el 50% (desde {formatoUSD(plan.inicial50USD)} USD)
+                          ✓ Separa con un adelanto
                         </span>
                       </div>
 
@@ -423,7 +423,7 @@ export default function SuperLandingMigratorioTemplate({
       <div className="fixed bottom-0 inset-x-0 z-30 sm:hidden bg-white/95 backdrop-blur-md border-t border-slate-200 px-3.5 py-2.5 flex items-center justify-between gap-3 shadow-2xl">
         <div>
           <span className="text-[10px] font-extrabold uppercase text-slate-500 block">
-            {datos.ciudadDestino} · Separa con 50%
+            {datos.ciudadDestino} · Separa con un adelanto
           </span>
           <span className="text-sm font-black text-[#0a1628]">
             Desde {formatoUSD(datos.precioDesdeUSD)} USD

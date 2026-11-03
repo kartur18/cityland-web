@@ -130,9 +130,9 @@ const MODALIDADES_MIGRATORIAS_10: [string, string, number, string][] = [
   ],
   [
     "preventa-con-50-por-ciento",
-    "Preventa 2026 Separando con el 50% de Inicial",
+    "Preventa 2026 Separando con un adelanto",
     0.94,
-    "Congela hoy tu tarifa aérea y hotelera abonando el 50% de inicial y completa el saldo en cuotas programadas antes de tu vuelo",
+    "Congela hoy tu tarifa aérea y hotelera con un adelanto y completa el saldo en cuotas programadas antes de tu vuelo",
   ],
   [
     "carpeta-schengen-pnr-y-seguro",
@@ -223,7 +223,7 @@ const MESES_12: [string, string, number][] = [
 
 const MODALIDADES_MES_4: [string, string, number][] = [
   ["paquete-vuelo-mas-hotel", "Paquete Vuelo + Hotel Confirmado", 1.0],
-  ["preventa-con-50-inicial", "Preventa Separando con el 50%", 0.94],
+  ["preventa-con-50-inicial", "Preventa Separando con un adelanto", 0.94],
   ["programa-familiar-completo", "Programa Familiar Todo Organizado", 1.03],
   ["oferta-confirmada-pnr", "Tarifa Promocional con Código PNR", 0.97],
 ];
@@ -238,8 +238,8 @@ const PLANES_DESDE_JORGE_CHAVEZ_40: [string, string, string, number][] = [
   ["Paquete con Desayunos y City Tour", "plan-con-desayunos-y-city-tour-lima", "con desayunos diarios, visita panorámica en español y salida desde Lima (LIM)", 30],
   ["Paquete con 2 Maletas de 23 kg", "plan-con-2-maletas-23kg-lima", "con doble franquicia de equipaje en bodega (2x23 kg) saliendo de Lima (LIM)", 65],
   ["Paquete con 1 Maleta de 23 kg + Cabina", "plan-maleta-23kg-mas-cabina-lima", "con equipaje documentado de 23 kg más carry-on de 10 kg desde el Jorge Chávez (LIM)", 20],
-  ["Preventa con 50% de Inicial", "plan-preventa-50-inicial-lima", "congelando hoy tu tarifa con el 50% de inicial y saliendo desde Lima (LIM)", -30],
-  ["Reserva en Cuotas Programadas", "plan-reserva-en-cuotas-lima", "abonando el 50% al reservar y el saldo en cuotas antes de tu vuelo desde Lima (LIM)", 0],
+  ["Preventa con un adelanto", "plan-preventa-50-inicial-lima", "congelando hoy tu tarifa con un adelanto y saliendo desde Lima (LIM)", -30],
+  ["Reserva en Cuotas Programadas", "plan-reserva-en-cuotas-lima", "con un adelanto al reservar y el saldo en cuotas antes de tu vuelo desde Lima (LIM)", 0],
   ["Viaje Familiar (2 Adultos + Niños)", "plan-familiar-adultos-y-ninos-lima", "con habitaciones familiares y asientos juntos saliendo del Aeropuerto Jorge Chávez (LIM)", -15],
   ["Plan Familiar Numeroso (4 a 6 Pasajeros)", "plan-familiar-4-a-6-pasajeros-lima", "con tarifa preferencial familiar y traslados privados saliendo de Lima (LIM)", -25],
   ["Escapada para Parejas y Esposos", "plan-escapada-parejas-lima", "en habitación doble matrimonial con traslados y vuelos desde el Jorge Chávez (LIM)", 15],
@@ -419,7 +419,7 @@ const PLANES_HOTEL_20: [string, string, number][] = [
   ["6-dias-5-noches-vuelo-y-traslados", "Paquete 6 Días / 5 Noches + Traslados", 1.07],
   ["7-dias-6-noches-semana-completa", "Semana Completa 7 Días / 6 Noches", 1.14],
   ["8-dias-7-noches-vacaciones", "Vacaciones 8 Días / 7 Noches", 1.2],
-  ["preventa-con-50-por-ciento", "Preventa Separando con el 50%", 0.94],
+  ["preventa-con-50-por-ciento", "Preventa Separando con un adelanto", 0.94],
   ["plan-familiar-2-adultos-2-ninos", "Plan Familiar (2 Adultos + Niños)", 0.96],
   ["especial-luna-de-miel-parejas", "Especial Luna de Miel y Parejas", 1.04],
   ["habitacion-vista-al-mar", "Categoría Superior Vista al Mar", 1.1],
@@ -512,7 +512,7 @@ const FERIADOS_PERU_15: [string, string, number][] = [
 
 const MODALIDADES_PERU_2: [string, string, number][] = [
   ["paquete-vuelo-hotel-tours", "Paquete Completo (Vuelo/Transporte + Hotel + Tours)", 1.0],
-  ["preventa-con-50-por-ciento", "Preventa Separando con el 50% de Inicial", 0.94],
+  ["preventa-con-50-por-ciento", "Preventa Separando con un adelanto", 0.94],
 ];
 
 // ============================================================================
@@ -565,7 +565,7 @@ export function generarIndiceExpansion20k(
               ],
               checksPlus: [
                 "Código de reserva PNR verificable en la web de la aerolínea",
-                "Facilidad de pago: separa con el 50% de inicial y paga en cuotas",
+                "Facilidad de pago: separa con un adelanto y paga en cuotas",
                 "Revisión personalizada de tu carpeta de viaje antes del embarque",
               ],
               checksVip: [
@@ -622,7 +622,7 @@ export function generarIndiceExpansion20k(
               tituloHero: `Viajes a ${nombreDestino} en ${nombreMes}:`,
               tituloDestacado: `${nombreMod} Desde $${precio}`,
               descripcionHero: `Planifica tu viaje a ${nombreDestino} (${pais}) para el mes de ${nombreMes} con boletos aéreos ida y vuelta desde Lima, alojamiento seleccionado, traslados y seguro de asistencia.`,
-              negritaHero: `Congela tu tarifa de ${nombreMes} con el 50% de inicial en Cityland Travel (RUC 20614914239).`,
+              negritaHero: `Congela tu tarifa de ${nombreMes} con un adelanto en Cityland Travel (RUC 20614914239).`,
               destinoOPais: pais,
               precioBase: precio,
               etiquetaVitrina: `${nombreDestino} en ${nombreMes}`,
@@ -637,7 +637,7 @@ export function generarIndiceExpansion20k(
                   ? "Sistema Todo Incluido con comidas, bebidas y entretenimiento"
                   : `Desayunos diarios y excursiones principales en ${nombreDestino}`,
                 "Código PNR de aerolínea y voucher hotelero verificable al instante",
-                "Separa con el 50% de inicial y completa el saldo antes de viajar",
+                "Separa con un adelanto y completa el saldo antes de viajar",
               ],
               checksVip: [
                 "Asesoría de requisitos migratorios y equipaje permitido",
@@ -653,7 +653,7 @@ export function generarIndiceExpansion20k(
               faqsExtra: [
                 {
                   q: `¿Cuánto cuesta viajar a ${nombreDestino} en el mes de ${nombreMes}?`,
-                  a: `Nuestra tarifa referencial en la modalidad "${nombreMod}" para ${nombreMes} empieza Desde $${precio} USD por pasajero. Al reservar con anticipación puedes congelar el precio con el 50% de inicial.`,
+                  a: `Nuestra tarifa referencial en la modalidad "${nombreMod}" para ${nombreMes} empieza Desde $${precio} USD por pasajero. Al reservar con anticipación puedes congelar el precio con un adelanto.`,
                 },
                 {
                   q: `¿Qué incluye el paquete a ${nombreDestino} (${pais}) en ${nombreMes}?`,
@@ -692,7 +692,7 @@ export function generarIndiceExpansion20k(
             tituloHero: `Viajes a ${nombreDestino} desde Lima:`,
             tituloDestacado: `${nombrePlanLima} Desde $${precio}`,
             descripcionHero: `Reserva tu viaje a ${nombreDestino} (${pais}) ${detallePlanLima}. Incluye código PNR verificable en aerolínea, alojamiento garantizado y respaldo formal RUC 20614914239.`,
-            negritaHero: `Salida desde el Aeropuerto Internacional Jorge Chávez (LIM) · Separa hoy con el 50% de inicial.`,
+            negritaHero: `Salida desde el Aeropuerto Internacional Jorge Chávez (LIM) · Separa hoy con un adelanto.`,
             destinoOPais: pais,
             precioBase: precio,
             etiquetaVitrina: `${nombreDestino}: ${nombrePlanLima}`,
@@ -703,7 +703,7 @@ export function generarIndiceExpansion20k(
               "Emisión inmediata de código PNR y Boleta/Factura Electrónica SUNAT",
             ],
             checksPlus: [
-              "Separa con el 50% de inicial en BCP, BBVA, Interbank o tarjeta",
+              "Separa con un adelanto en BCP, BBVA, Interbank o tarjeta",
               "Traslados aeropuerto – hotel – aeropuerto incluidos",
               esInt
                 ? "Seguro médico internacional y asesoría migratoria completa"
@@ -727,7 +727,7 @@ export function generarIndiceExpansion20k(
               },
               {
                 q: `¿Cuál es el precio referencial de "${nombrePlanLima}" a ${nombreDestino}?`,
-                a: `La tarifa referencial parte Desde $${precio} USD por pasajero saliendo desde Lima (LIM) y puedes separarla hoy mismo abonando el 50% de inicial.`,
+                a: `La tarifa referencial parte Desde $${precio} USD por pasajero saliendo desde Lima (LIM) y puedes separarla hoy mismo con un adelanto.`,
               },
             ],
           }),
@@ -762,7 +762,7 @@ export function generarIndiceExpansion20k(
             tituloHero: `${nombreHotel} (${ciudad}):`,
             tituloDestacado: `${nombrePlan} Desde $${precio}`,
             descripcionHero: `Disfruta tu estadía en ${nombreHotel} ubicado en ${ciudad} (${pais}) bajo la modalidad "${nombrePlan}", con vuelos ida y vuelta desde Lima, traslados y voucher hotelero garantizado.`,
-            negritaHero: `Reserva hoy en ${nombreHotel} abonando el 50% de inicial en Cityland Travel.`,
+            negritaHero: `Reserva hoy en ${nombreHotel} con un adelanto en Cityland Travel.`,
             destinoOPais: pais,
             precioBase: precio,
             etiquetaVitrina: `${nombreHotel} · ${ciudad}`,
@@ -775,7 +775,7 @@ export function generarIndiceExpansion20k(
             checksPlus: [
               "Voucher oficial de hotel y código PNR verificable en aerolínea",
               "Acceso a las instalaciones, piscinas y servicios del alojamiento",
-              "Facilidad de pago con el 50% de inicial y saldo en cuotas",
+              "Facilidad de pago con un adelanto y saldo en cuotas",
             ],
             checksVip: [
               "Opciones para familias, parejas, luna de miel y grupos",
@@ -795,7 +795,7 @@ export function generarIndiceExpansion20k(
               },
               {
                 q: `¿Con cuánto puedo separar mi habitación en ${nombreHotel}?`,
-                a: `Puedes congelar la tarifa referencial Desde $${precio} USD abonando el 50% de inicial y completando el saldo en cuotas programadas antes de tu fecha de viaje.`,
+                a: `Puedes congelar la tarifa referencial Desde $${precio} USD con un adelanto y completando el saldo en cuotas programadas antes de tu fecha de viaje.`,
               },
             ],
           }),
@@ -825,12 +825,12 @@ export function generarIndiceExpansion20k(
               slug,
               cluster: "tours",
               clusterNombre: `Viajes por el Perú · ${nombreFeriado}`,
-              badge: `Perú en ${nombreFeriado} · Separa con 50%`,
+              badge: `Perú en ${nombreFeriado} · Separa con un adelanto`,
               banderas: ["Perú"],
               tituloHero: `${nombreRuta} (${nombreFeriado}):`,
               tituloDestacado: `Todo Organizado Desde $${precio}`,
               descripcionHero: `Recorre ${atractivosRuta} durante ${nombreFeriado}. Programa completo con transporte aéreo o turístico, hotel seleccionado, desayunos, traslados e ingresos.`,
-              negritaHero: `Reserva hoy tu cupo para ${nombreFeriado} con el 50% de inicial en Cityland Travel.`,
+              negritaHero: `Reserva hoy tu cupo para ${nombreFeriado} con un adelanto en Cityland Travel.`,
               destinoOPais: "Perú",
               precioBase: precio,
               etiquetaVitrina: `${nombreRuta} (${nombreFeriado})`,
@@ -842,7 +842,7 @@ export function generarIndiceExpansion20k(
               ],
               checksPlus: [
                 "Guías oficiales de turismo en español e ingresos incluidos",
-                "Facilidad de separar con el 50% de inicial para feriados y vacaciones",
+                "Facilidad de separar con un adelanto para feriados y vacaciones",
                 "Boleta o Factura Electrónica SUNAT (RUC 20614914239)",
               ],
               checksVip: [
@@ -863,7 +863,7 @@ export function generarIndiceExpansion20k(
                 },
                 {
                   q: `¿Cómo aseguro mis cupos para ${nombreRuta} en ${nombreFeriado}?`,
-                  a: `Debido a la alta demanda en ${nombreFeriado}, te recomendamos separar hoy con el 50% de inicial (Desde $${precio} USD por pasajero) escribiéndonos al WhatsApp +51 944 103 890.`,
+                  a: `Debido a la alta demanda en ${nombreFeriado}, te recomendamos separar hoy con un adelanto (Desde $${precio} USD por pasajero) escribiéndonos al WhatsApp +51 944 103 890.`,
                 },
               ],
             }),

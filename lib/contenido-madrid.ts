@@ -97,7 +97,7 @@ const FRASE_SERVICIO: [string, string][] = [
 
 const EXPLICA_VARIANTE: Record<string, string> = {
   "Emisión Oficial PNR": "el código PNR sale a tu nombre en el sistema de la aerolínea",
-  "Separa con 50%": "congelas la tarifa con el 50% y completas el saldo antes del vuelo",
+  "Separa con un adelanto": "congelas la tarifa con un adelanto y completas el saldo antes del vuelo",
   "Sede Los Olivos": "te atendemos en persona en Av. Antúnez de Mayolo 814, Los Olivos",
   "Atención WhatsApp": "coordinas todo por WhatsApp al +51 944 103 890",
   "Tarifa Preventa": "la tarifa de preventa está sujeta a disponibilidad",
@@ -203,7 +203,7 @@ function construirCtx(d: DatosLandingMadridSEO): Ctx {
       destino: ruta,
       dias: null,
       mes,
-      intro: `Viajar en ${mes}: ${notaDelMes(mes)}. En la ruta ${ruta} sales de Lima (LIM), ingresas por Madrid-Barajas y ${tramo}. Eliges la opción «${subtitulo}» y fijas tu tarifa con el 50%.`,
+      intro: `Viajar en ${mes}: ${notaDelMes(mes)}. En la ruta ${ruta} sales de Lima (LIM), ingresas por Madrid-Barajas y ${tramo}. Eliges la opción «${subtitulo}» y fijas tu tarifa con un adelanto.`,
       faq2: {
         q: `¿Cómo se organiza la ruta ${ruta} en ${mes}?`,
         a: `Sales del Aeropuerto Jorge Chávez, ingresas por Madrid-Barajas y ${tramo}. En ${mes} (${notaDelMes(mes)}) conviene reservar con anticipación.`,
@@ -301,8 +301,8 @@ function faqsUnicas(ctx: Ctx): FaqUnica[] {
     a: `Piden sustento de retorno, alojamiento, medios económicos y seguro médico de 30.000 €. Los peruanos entran a Schengen sin visa por turismo hasta 90 días.`,
   };
   const separar: FaqUnica = {
-    q: `¿Puedo separar este viaje con el 50%?`,
-    a: `Sí. Congelas la tarifa con el 50% en Los Olivos o por BCP, BBVA e Interbank y completas el saldo antes del vuelo. Es una tarifa referencial sujeta a disponibilidad.`,
+    q: `¿Puedo separar este viaje con un adelanto?`,
+    a: `Sí. Congelas la tarifa con un adelanto en Los Olivos o por BCP, BBVA e Interbank y completas el saldo antes del vuelo. Es una tarifa referencial sujeta a disponibilidad.`,
   };
   const legal: FaqUnica = {
     q: `¿Me aseguran el ingreso a España?`,

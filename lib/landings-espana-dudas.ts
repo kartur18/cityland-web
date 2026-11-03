@@ -117,7 +117,7 @@ function bolsa(): LandingEspana[] {
       pregunta: "Ya sé cuánto dinero llevar: ¿cuánto me sale el pasaje Lima–Madrid ida y vuelta?",
       ctaMedio: {
         titulo: "Ya sabes cuánto llevar",
-        texto: `Ahora asegura el pasaje: ida y vuelta Lima–Madrid desde ${PASAJE}, separando con el 50%.`,
+        texto: `Ahora asegura el pasaje: ida y vuelta Lima–Madrid desde ${PASAJE}, separando con un adelanto.`,
         boton: "Cotizar mi pasaje",
         mensaje: "¡Hola Cityland Travel! Usé la calculadora de bolsa de viaje y quiero cotizar mi pasaje.",
       },
@@ -151,12 +151,12 @@ function bolsa(): LandingEspana[] {
       foto: "/images/espana/gran-via-metropolis.jpg",
       fotoAlt: "Gran Vía de Madrid",
       mensaje: "¡Hola Cityland Travel! Estoy ahorrando para ir a España y quiero cotizar el pasaje.",
-      pregunta: "¿Puedo pagar el pasaje a España en soles y separarlo con el 50%?",
+      pregunta: "¿Puedo pagar el pasaje a España en soles y separarlo con un adelanto?",
       ctaMedio: {
         titulo: "Separa tu pasaje mientras ahorras",
-        texto: `Con el 50% aseguras tu fecha y pagas el saldo antes de la emisión. Ida y vuelta desde ${PASAJE}.`,
+        texto: `Con un adelanto aseguras tu fecha y pagas el saldo antes de la emisión. Ida y vuelta desde ${PASAJE}.`,
         boton: "Separar mi pasaje",
-        mensaje: "¡Hola Cityland Travel! Quiero separar mi pasaje a España con el 50%.",
+        mensaje: "¡Hola Cityland Travel! Quiero separar mi pasaje a España con un adelanto.",
       },
       puntosTitulo: "Lo que tienes que saber",
       puntos: [
@@ -257,7 +257,7 @@ function bolsa(): LandingEspana[] {
       pregunta: "Quiero viajar a España en 2027: ¿cuánto antes conviene comprar el pasaje?",
       ctaMedio: {
         titulo: "Compra 2027 con anticipación",
-        texto: "Los pasajes de los meses lejanos son los más baratos. Separa con el 50% y paga el saldo antes de la emisión.",
+        texto: "Los pasajes de los meses lejanos son los más baratos. Separa con un adelanto y paga el saldo antes de la emisión.",
         boton: "Cotizar 2027",
         mensaje: "¡Hola Cityland Travel! Quiero separar con anticipación un pasaje a España para 2027.",
       },
@@ -314,7 +314,7 @@ function costoPorDias(dias: number, foto: string, fotoAlt: string): LandingEspan
     pregunta: `Quiero ir ${dias} días a España: ¿qué mes me sale más barato el pasaje?`,
     ctaMedio: {
       titulo: "El pasaje es lo primero",
-      texto: "Es lo que más sube si esperas. Sepáralo con el 50% y arma el resto del presupuesto con calma.",
+      texto: "Es lo que más sube si esperas. Sepáralo con un adelanto y arma el resto del presupuesto con calma.",
       boton: "Separar mi pasaje",
       mensaje: `¡Hola Cityland Travel! Quiero separar el pasaje para ${dias} días en España.`,
     },
@@ -359,9 +359,9 @@ function costos(): LandingEspana[] {
       atajos: [10, 15, 30].map((d) => ({ texto: `${d} días`, mensaje: `¡Hola Cityland Travel! Quiero viajar ${d} días a España y cotizar el pasaje.` })),
       ctaMedio: {
         titulo: "Empieza por el pasaje",
-        texto: "Es lo que más sube si esperas. Sepáralo con el 50% y arma el resto del presupuesto con calma.",
+        texto: "Es lo que más sube si esperas. Sepáralo con un adelanto y arma el resto del presupuesto con calma.",
         boton: "Separar mi pasaje",
-        mensaje: "¡Hola Cityland Travel! Quiero separar mi pasaje a España con el 50%.",
+        mensaje: "¡Hola Cityland Travel! Quiero separar mi pasaje a España con un adelanto.",
       },
       puntosTitulo: "Las cinco partes del viaje",
       puntos: [
@@ -435,7 +435,7 @@ function cartas(): LandingEspana[] {
     mensaje: "¡Hola Cityland Travel! Mi familia me está haciendo la carta de invitación y quiero cotizar el pasaje a España.",
     ctaMedio: {
       titulo: "Ten el pasaje listo para la carta",
-      texto: "En la solicitud van las fechas aproximadas del viaje. Te cotizamos y separamos tu fecha con el 50%.",
+      texto: "En la solicitud van las fechas aproximadas del viaje. Te cotizamos y separamos tu fecha con un adelanto.",
       boton: "Separar mi fecha",
       mensaje: "¡Hola Cityland Travel! Necesito las fechas del pasaje para la carta de invitación.",
     },
@@ -519,7 +519,7 @@ function cartas(): LandingEspana[] {
         { t: `4. Vale ${VIGENCIA_CARTA_MESES} meses`, d: "Desde que notifican la resolución. Viaja dentro de ese plazo." },
       ],
       listaTitulo: "Para que no te falte tiempo",
-      lista: ["Pídela al menos 2 meses antes del viaje", "Separa tu pasaje con el 50% mientras sale", "Lleva el original de la carta al viajar", `Viaja dentro de los ${VIGENCIA_CARTA_MESES} meses de vigencia`],
+      lista: ["Pídela al menos 2 meses antes del viaje", "Separa tu pasaje con un adelanto mientras sale", "Lleva el original de la carta al viajar", `Viaja dentro de los ${VIGENCIA_CARTA_MESES} meses de vigencia`],
       faqs: [
         { q: "¿Cuánto demora la carta de invitación?", a: "No tiene un plazo fijo: depende de la comisaría. Pídela con al menos dos meses de margen." },
         { q: "¿Cuánto tiempo vale?", a: `${VIGENCIA_CARTA_MESES} meses desde que se notifica la resolución.` },

@@ -50,7 +50,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
       vitrina: {
         pais: "España",
         etiquetaIzq: "Andalucía",
-        etiquetaDer: "Separa con 50%",
+        etiquetaDer: "Separa con un adelanto",
         img: "https://images.unsplash.com/photo-1559564484-e48b3e040ff4?auto=format&fit=crop&w=1000&q=85",
         alt: "Plaza de España en Sevilla — Vuelos desde Lima",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Sevilla (SVQ)",
@@ -195,7 +195,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
       vitrina: {
         pais: "España",
         etiquetaIzq: "Norte de España",
-        etiquetaDer: "Separa con 50%",
+        etiquetaDer: "Separa con un adelanto",
         img: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1000&q=85",
         alt: "Bilbao y País Vasco — Vuelos desde Lima",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Bilbao (BIO)",
@@ -340,7 +340,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
       vitrina: {
         pais: "Portugal",
         etiquetaIzq: "Portugal & Fátima",
-        etiquetaDer: "Separa con 50%",
+        etiquetaDer: "Separa con un adelanto",
         img: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=1000&q=85",
         alt: "Tranvía de Lisboa — Vuelos de Lima a Portugal",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Lisboa (LIS)",
@@ -413,7 +413,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
       pilares: [
         { titulo: "Sin Visa Schengen", sub: "Ingreso con pasaporte peruano vigente" },
         { titulo: "Santuario de Fátima", sub: "Circuitos culturales y religiosos" },
-        { titulo: "Separa con 50%", sub: "Congela tu circuito en dólares" },
+        { titulo: "Separa con un adelanto", sub: "Congela tu circuito en dólares" },
         { titulo: "RUC 20614914239", sub: "Agencia formal con sede en Los Olivos" },
       ],
       bannerFinal: {
@@ -485,7 +485,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
       vitrina: {
         pais: "Alemania",
         etiquetaIzq: "Europa Central",
-        etiquetaDer: "Separa con 50%",
+        etiquetaDer: "Separa con un adelanto",
         img: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1000&q=85",
         alt: "Alemania — Vuelos de Lima a Frankfurt",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Frankfurt (FRA)",
@@ -617,7 +617,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
       descripcionHero:
         "Tarifas referenciales verificadas con impuestos incluidos hacia la Gran Manzana.",
       negritaHero:
-        "Vuelos directos de 7h 50m y paquetes con hotel en Times Square separando con el 50%.",
+        "Vuelos directos de 7h 50m y paquetes con hotel en Times Square separando con un adelanto.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
       waPrincipalNumero: "51944103890",
       waPrincipalMensaje:
@@ -630,7 +630,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
       vitrina: {
         pais: "Estados Unidos",
         etiquetaIzq: "La Gran Manzana",
-        etiquetaDer: "Separa con 50%",
+        etiquetaDer: "Separa con un adelanto",
         img: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=1000&q=85",
         alt: "Manhattan Nueva York — Vuelos desde Lima",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Nueva York (JFK / EWR)",
@@ -703,7 +703,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
       pilares: [
         { titulo: "Vuelos a JFK y Newark", sub: "Directos o con 1 escala corta" },
         { titulo: "Hoteles en Manhattan", sub: "Cerca de Times Square y Central Park" },
-        { titulo: "Separa con 50%", sub: "Congela tu paquete y paga en cuotas" },
+        { titulo: "Separa con un adelanto", sub: "Congela tu paquete y paga en cuotas" },
         { titulo: "RUC 20614914239", sub: "Agencia formal en Lima, Perú" },
       ],
       bannerFinal: {
@@ -762,7 +762,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
       descripcionHero:
         "Tarifas referenciales verificadas con impuestos incluidos para las vacaciones soñadas en familia.",
       negritaHero:
-        "Reserva tus vuelos a Orlando o el paquete combinado Orlando + Miami separando con el 50%.",
+        "Reserva tus vuelos a Orlando o el paquete combinado Orlando + Miami separando con un adelanto.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
       waPrincipalNumero: "51944103890",
       waPrincipalMensaje:
@@ -775,7 +775,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
       vitrina: {
         pais: "Estados Unidos",
         etiquetaIzq: "Vacaciones en Familia",
-        etiquetaDer: "Separa con 50%",
+        etiquetaDer: "Separa con un adelanto",
         img: "https://images.unsplash.com/photo-1535498730771-e735b998cd64?auto=format&fit=crop&w=1000&q=85",
         alt: "Viajes a Orlando y Miami desde Lima",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Orlando International (MCO)",
@@ -848,7 +848,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
       pilares: [
         { titulo: "Parques Temáticos", sub: "Asesoría en Disney y Universal" },
         { titulo: "Tarifas Familiares", sub: "Precios especiales para niños" },
-        { titulo: "Separa con 50%", sub: "Congela tu paquete en dólares" },
+        { titulo: "Separa con un adelanto", sub: "Congela tu paquete en dólares" },
         { titulo: "RUC 20614914239", sub: "Agencia formal en Lima, Perú" },
       ],
       bannerFinal: {
@@ -1487,7 +1487,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
       descripcionHero:
         "Tarifas referenciales verificadas con impuestos incluidos hacia el destino #1 de la selva peruana.",
       negritaHero:
-        "Reserva solo tu boleto aéreo o el paquete completo con hotel con piscina y tours separando con el 50%.",
+        "Reserva solo tu boleto aéreo o el paquete completo con hotel con piscina y tours separando con un adelanto.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
       waPrincipalNumero: "51944103890",
       waPrincipalMensaje:
@@ -1500,7 +1500,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
       vitrina: {
         pais: "Perú",
         etiquetaIzq: "Selva Peruana",
-        etiquetaDer: "Separa con 50%",
+        etiquetaDer: "Separa con un adelanto",
         img: "https://images.unsplash.com/photo-1620658927695-c33df6fb8130?auto=format&fit=crop&w=1000&q=85",
         alt: "Laguna Azul en Tarapoto — Vuelos desde Lima",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Tarapoto (TPP)",
@@ -1573,7 +1573,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
       pilares: [
         { titulo: "1h 20m Directo", sub: "Múltiples vuelos todos los días" },
         { titulo: "Laguna Azul", sub: "Paseo en bote y almuerzo amazónico" },
-        { titulo: "Separa con 50%", sub: "Congela tu paquete y paga en cuotas" },
+        { titulo: "Separa con un adelanto", sub: "Congela tu paquete y paga en cuotas" },
         { titulo: "RUC 20614914239", sub: "Agencia formal con sede en Los Olivos" },
       ],
       bannerFinal: {
@@ -1632,7 +1632,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
       descripcionHero:
         "Tarifas referenciales verificadas con impuestos incluidos hacia el corazón de la Amazonía.",
       negritaHero:
-        "Reserva tus vuelos directos o vive la experiencia de un Lodge en el Río Amazonas separando con el 50%.",
+        "Reserva tus vuelos directos o vive la experiencia de un Lodge en el Río Amazonas separando con un adelanto.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
       waPrincipalNumero: "51944103890",
       waPrincipalMensaje:
@@ -1645,7 +1645,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
       vitrina: {
         pais: "Perú",
         etiquetaIzq: "Río Amazonas",
-        etiquetaDer: "Separa con 50%",
+        etiquetaDer: "Separa con un adelanto",
         img: "https://images.unsplash.com/photo-1699575678956-aefa714b67f0?auto=format&fit=crop&w=1000&q=85",
         alt: "Río Amazonas en Iquitos — Vuelos desde Lima",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Iquitos (IQT)",
@@ -1718,7 +1718,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
       pilares: [
         { titulo: "1h 50m Directo", sub: "Vuelos diarios sin escalas desde Lima" },
         { titulo: "Lodges en la Selva", sub: "Con alimentación y excursiones fluviales" },
-        { titulo: "Separa con 50%", sub: "Congela tu paquete hoy mismo" },
+        { titulo: "Separa con un adelanto", sub: "Congela tu paquete hoy mismo" },
         { titulo: "RUC 20614914239", sub: "Agencia formal con sede en Los Olivos" },
       ],
       bannerFinal: {
@@ -1777,7 +1777,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
       descripcionHero:
         "Tarifas referenciales verificadas con impuestos incluidos hacia Juliaca, Puno y el Lago Titicaca.",
       negritaHero:
-        "Reserva solo tu vuelo o el paquete con Islas de los Uros, Taquile y Sillustani separando con el 50%.",
+        "Reserva solo tu vuelo o el paquete con Islas de los Uros, Taquile y Sillustani separando con un adelanto.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
       waPrincipalNumero: "51944103890",
       waPrincipalMensaje:
@@ -1790,7 +1790,7 @@ export const RUTAS_VUELOS_LOTE_4: RutaVueloSEO[] = [
       vitrina: {
         pais: "Perú",
         etiquetaIzq: "Lago Titicaca",
-        etiquetaDer: "Separa con 50%",
+        etiquetaDer: "Separa con un adelanto",
         img: "https://images.unsplash.com/photo-1522409994346-2682217b9a3e?auto=format&fit=crop&w=1000&q=85",
         alt: "Lago Titicaca en Puno — Vuelos desde Lima",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Juliaca / Puno (JUL)",

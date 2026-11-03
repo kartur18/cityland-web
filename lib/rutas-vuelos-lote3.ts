@@ -50,7 +50,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       vitrina: {
         pais: "España",
         etiquetaIzq: "Mediterráneo Español",
-        etiquetaDer: "Separa con 50%",
+        etiquetaDer: "Separa con un adelanto",
         img: "https://images.unsplash.com/photo-1559564484-e48b3e040ff4?auto=format&fit=crop&w=1000&q=85",
         alt: "Ciudad de las Artes y las Ciencias — Vuelos de Lima a Valencia",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Valencia (VLC)",
@@ -195,7 +195,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       vitrina: {
         pais: "España",
         etiquetaIzq: "Sur de España",
-        etiquetaDer: "Separa con 50%",
+        etiquetaDer: "Separa con un adelanto",
         img: "https://images.unsplash.com/photo-1561632669-7f55f7975606?auto=format&fit=crop&w=1000&q=85",
         alt: "Málaga y Costa del Sol — Vuelos desde Lima",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Málaga-Costa del Sol (AGP)",
@@ -268,7 +268,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       pilares: [
         { titulo: "Costa del Sol", sub: "Málaga, Marbella, Torremolinos y Sevilla" },
         { titulo: "Equipaje Completo", sub: "23 kg en bodega + 10 kg en cabina" },
-        { titulo: "Separa con 50%", sub: "Congela tu paquete turístico hoy" },
+        { titulo: "Separa con un adelanto", sub: "Congela tu paquete turístico hoy" },
         { titulo: "RUC 20614914239", sub: "Agencia formal con sede en Los Olivos" },
       ],
       bannerFinal: {
@@ -340,7 +340,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       vitrina: {
         pais: "Italia",
         etiquetaIzq: "Norte de Italia",
-        etiquetaDer: "Separa con 50%",
+        etiquetaDer: "Separa con un adelanto",
         img: "https://images.unsplash.com/photo-1513581166391-887a96ddeafd?auto=format&fit=crop&w=1000&q=85",
         alt: "Duomo de Milán — Vuelos de Lima a Milán",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Milán Malpensa (MXP)",
@@ -485,7 +485,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       vitrina: {
         pais: "Países Bajos",
         etiquetaIzq: "Hub Europeo",
-        etiquetaDer: "Separa con 50%",
+        etiquetaDer: "Separa con un adelanto",
         img: "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?auto=format&fit=crop&w=1000&q=85",
         alt: "Canales de Ámsterdam — Vuelos desde Lima",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Ámsterdam Schiphol (AMS)",
@@ -617,7 +617,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       descripcionHero:
         "Tarifas referenciales verificadas con impuestos incluidos para conocer Turquía sin visa.",
       negritaHero:
-        "Reserva solo tu boleto aéreo o el circuito completo de 10 días con hoteles 4★/5★ separando con el 50%.",
+        "Reserva solo tu boleto aéreo o el circuito completo de 10 días con hoteles 4★/5★ separando con un adelanto.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
       waPrincipalNumero: "51944103890",
       waPrincipalMensaje:
@@ -630,7 +630,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       vitrina: {
         pais: "Turquía",
         etiquetaIzq: "Exótico Sin Visa",
-        etiquetaDer: "Separa con 50%",
+        etiquetaDer: "Separa con un adelanto",
         img: "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?auto=format&fit=crop&w=1000&q=85",
         alt: "Globos en Capadocia y Estambul — Vuelos desde Lima",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Estambul (IST)",
@@ -703,7 +703,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       pilares: [
         { titulo: "Sin Visa Consular", sub: "Ingreso libre con pasaporte peruano" },
         { titulo: "Hoteles 4★ y 5★", sub: "Estambul, Capadocia y Pamukkale" },
-        { titulo: "Separa con 50%", sub: "Congela tu paquete y paga en cuotas" },
+        { titulo: "Separa con un adelanto", sub: "Congela tu paquete y paga en cuotas" },
         { titulo: "RUC 20614914239", sub: "Respaldo legal en Lima, Perú" },
       ],
       bannerFinal: {
@@ -1197,7 +1197,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       descripcionHero:
         "Tarifas referenciales verificadas con impuestos incluidos al Caribe Colombiano.",
       negritaHero:
-        "Separa tu paquete Todo Incluido a San Andrés con el 50% de inicial y viaja solo con tu DNI.",
+        "Separa tu paquete Todo Incluido a San Andrés con un adelanto y viaja solo con tu DNI.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
       waPrincipalNumero: "51944103890",
       waPrincipalMensaje:
@@ -1210,7 +1210,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       vitrina: {
         pais: "Colombia",
         etiquetaIzq: "Mar de 7 Colores",
-        etiquetaDer: "Separa con 50%",
+        etiquetaDer: "Separa con un adelanto",
         img: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1000&q=85",
         alt: "Mar de los 7 Colores en San Andrés — Vuelos desde Lima",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Gustavo Rojas Pinilla (ADZ)",
@@ -1283,7 +1283,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       pilares: [
         { titulo: "Solo con DNI", sub: "Volando vía Bogotá o Medellín" },
         { titulo: "Todo Incluido", sub: "Comidas y bebidas ilimitadas en la isla" },
-        { titulo: "Separa con 50%", sub: "Congela tu paquete y paga en cuotas" },
+        { titulo: "Separa con un adelanto", sub: "Congela tu paquete y paga en cuotas" },
         { titulo: "RUC 20614914239", sub: "Agencia formal con sede en Los Olivos" },
       ],
       bannerFinal: {
@@ -1342,7 +1342,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       descripcionHero:
         "Tarifas referenciales verificadas con impuestos incluidos al destino más exclusivo del Caribe Sur.",
       negritaHero:
-        "Vuelos directos o con conexión corta y paquetes en resorts frente a Palm Beach separando con el 50%.",
+        "Vuelos directos o con conexión corta y paquetes en resorts frente a Palm Beach separando con un adelanto.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
       waPrincipalNumero: "51944103890",
       waPrincipalMensaje:
@@ -1355,7 +1355,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       vitrina: {
         pais: "Aruba",
         etiquetaIzq: "Caribe Premium",
-        etiquetaDer: "Separa con 50%",
+        etiquetaDer: "Separa con un adelanto",
         img: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1000&q=85",
         alt: "Playa Eagle Beach en Aruba — Vuelos desde Lima",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Reina Beatrix (AUA)",
@@ -1428,7 +1428,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       pilares: [
         { titulo: "Sin Visa Consular", sub: "Ingreso con pasaporte peruano vigente" },
         { titulo: "Sol 365 Días", sub: "Fuera del cinturón de huracanes" },
-        { titulo: "Separa con 50%", sub: "Congela tu paquete en dólares" },
+        { titulo: "Separa con un adelanto", sub: "Congela tu paquete en dólares" },
         { titulo: "RUC 20614914239", sub: "Respaldo de agencia formal en Lima" },
       ],
       bannerFinal: {
@@ -1487,7 +1487,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       descripcionHero:
         "Tarifas referenciales verificadas con impuestos incluidos hacia la Ciudad Blanca.",
       negritaHero:
-        "Reserva solo tu boleto aéreo o el paquete completo con hotel y Cañón del Colca separando con el 50%.",
+        "Reserva solo tu boleto aéreo o el paquete completo con hotel y Cañón del Colca separando con un adelanto.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
       waPrincipalNumero: "51944103890",
       waPrincipalMensaje:
@@ -1495,12 +1495,12 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       checksHero: [
         "Vuelos directos diarios de 1h 30m",
         "Paquetes con Monasterio de Santa Catalina y Colca",
-        "Separa tu paquete con el 50% de inicial",
+        "Separa tu paquete con un adelanto",
       ],
       vitrina: {
         pais: "Perú",
         etiquetaIzq: "Sur del Perú",
-        etiquetaDer: "Separa con 50%",
+        etiquetaDer: "Separa con un adelanto",
         img: "https://images.unsplash.com/photo-1787929759288-1b4aa7af30f6?auto=format&fit=crop&w=1000&q=85",
         alt: "Plaza de Armas de Arequipa y Volcán Misti — Vuelos desde Lima",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Rodríguez Ballón (AQP)",
@@ -1573,7 +1573,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       pilares: [
         { titulo: "1h 30m Directo", sub: "Salidas diarias desde el Jorge Chávez" },
         { titulo: "Cañón del Colca", sub: "Tours con movilidad y guía oficial" },
-        { titulo: "Separa con 50%", sub: "Congela tu paquete nacional hoy" },
+        { titulo: "Separa con un adelanto", sub: "Congela tu paquete nacional hoy" },
         { titulo: "RUC 20614914239", sub: "Agencia formal con sede en Los Olivos" },
       ],
       bannerFinal: {
@@ -1632,7 +1632,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       descripcionHero:
         "Tarifas referenciales verificadas con impuestos incluidos hacia las mejores playas del norte peruano.",
       negritaHero:
-        "Escápate al sol del norte con vuelos confirmados y hoteles frente al mar separando con el 50%.",
+        "Escápate al sol del norte con vuelos confirmados y hoteles frente al mar separando con un adelanto.",
       ctaPrincipalTexto: "Consultar disponibilidad por WhatsApp",
       waPrincipalNumero: "51944103890",
       waPrincipalMensaje:
@@ -1645,7 +1645,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       vitrina: {
         pais: "Perú",
         etiquetaIzq: "Playas del Norte",
-        etiquetaDer: "Separa con 50%",
+        etiquetaDer: "Separa con un adelanto",
         img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=85",
         alt: "Playas de Máncora y Vichayito — Vuelos desde Lima",
         sobretitulo: "Aeropuerto Jorge Chávez (LIM) → Piura (PIU) / Talara (TYL)",
@@ -1718,7 +1718,7 @@ export const RUTAS_VUELOS_LOTE_3: RutaVueloSEO[] = [
       pilares: [
         { titulo: "Sol Todo el Año", sub: "Vichayito, Las Pocitas, Máncora y Punta Sal" },
         { titulo: "Traslados Incluidos", sub: "Recojo en aeropuerto de Piura o Talara" },
-        { titulo: "Separa con 50%", sub: "Reserva tu hotel de playa con inicial" },
+        { titulo: "Separa con un adelanto", sub: "Reserva tu hotel de playa con inicial" },
         { titulo: "RUC 20614914239", sub: "Agencia formal con sede en Los Olivos" },
       ],
       bannerFinal: {

@@ -249,7 +249,7 @@ export default async function BlogArticlePage({
                 Planifica tu viaje con Cityland Travel
               </h3>
               <p className="text-[13px] text-slate-600 leading-relaxed mb-4">
-                Separa tus paquetes promocionales con el 50% de inicial y recibe asesoría migratoria personalizada.
+                Separa tus paquetes promocionales con un adelanto y recibe asesoría migratoria personalizada.
               </p>
 
               <div className="space-y-2.5 mb-5">

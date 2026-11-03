@@ -32,7 +32,7 @@ export default function CuscoLandingClient() {
               <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-7 max-w-xl">
                 Vuelos ida y vuelta + Hotel + Tren Turístico + Entradas a Machu Picchu, Valle Sagrado y Montaña de 7 Colores.{" "}
                 <strong className="text-[#0a1628] font-bold">
-                  Armamos el paquete a tu medida y separas con el 50% de inicial
+                  Armamos el paquete a tu medida y separas con un adelanto
                 </strong>
                 .
               </p>
@@ -65,7 +65,7 @@ export default function CuscoLandingClient() {
                   <span className="text-emerald-600 font-extrabold">✓</span> Ingreso Oficial a Machu Picchu
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <span className="text-emerald-600 font-extrabold">✓</span> Separa con 50% de Inicial
+                  <span className="text-emerald-600 font-extrabold">✓</span> Separa con un adelanto
                 </span>
               </div>
             </div>
@@ -118,7 +118,7 @@ export default function CuscoLandingClient() {
                       </span>
                     </div>
                     <span className="text-[11px] font-semibold text-emerald-700 block mt-0.5">
-                      Separa con 50% (desde $275)
+                      Separa con un adelanto
                     </span>
                   </div>
 
@@ -157,7 +157,6 @@ export default function CuscoLandingClient() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {PAQUETES_CUSCO.map((p) => {
-              const inicialUSD = Math.round(p.precioUSD * 0.5);
               const waUrl = `https://wa.me/${p.waNumber}?text=${encodeURIComponent(
                 `¡Hola Cityland Travel! Deseo cotizar el paquete ${p.titulo} (${p.duracion}) desde $${p.precioUSD} USD. ¿Me ayudan a armarlo para mis fechas?`
               )}`;
@@ -221,7 +220,7 @@ export default function CuscoLandingClient() {
                           </div>
                         </div>
                         <span className="text-[11px] font-bold text-emerald-700">
-                          Inicial desde ${inicialUSD}
+                          Separa con un adelanto
                         </span>
                       </div>
 

@@ -240,8 +240,8 @@ function guiaGeneral(hoy: string): LandingEspana {
     sello: "Lima → Madrid · Solo ida",
     h1: "Pasajes solo ida a España",
     bajada:
-      "Si tienes residencia, visado o pasaporte español o europeo, viajas solo de ida. Mientras antes compres, más barato: mira el precio de cada mes y separa con el 50%.",
-    chips: ["Desde " + usd(desde), "Precio por mes", "Separa con el 50%"],
+      "Si tienes residencia, visado o pasaporte español o europeo, viajas solo de ida. Mientras antes compres, más barato: mira el precio de cada mes y separa con un adelanto.",
+    chips: ["Desde " + usd(desde), "Precio por mes", "Separa con un adelanto"],
     foto: IMG_AVION_ALA,
     fotoAlt: "Ala de avión sobre las nubes",
     tema: "soloPerfil",
@@ -262,7 +262,7 @@ function guiaGeneral(hoy: string): LandingEspana {
     ],
     ctaMedio: {
       titulo: "Compra con anticipación",
-      texto: `En los meses lejanos el solo ida sale desde ${usd(desde)}; en la fecha cercana puede llegar a ${usd(PRECIO_SOLO_IDA_TOPE_CERCANO)}. Separa hoy con el 50%.`,
+      texto: `En los meses lejanos el solo ida sale desde ${usd(desde)}; en la fecha cercana puede llegar a ${usd(PRECIO_SOLO_IDA_TOPE_CERCANO)}. Separa hoy con un adelanto.`,
       boton: "Separar mi fecha",
       mensaje: "¡Hola Cityland Travel! Quiero separar un pasaje solo ida a España con anticipación.",
     },
@@ -274,7 +274,7 @@ function guiaGeneral(hoy: string): LandingEspana {
       { t: "Mira el calendario", d: "Cada mes tiene su precio «desde». Los meses lejanos son los más baratos; los dos más cercanos, los más caros." },
       { t: "Ten tu documento listo", d: "Te pedimos el nombre tal cual figura en el pasaporte con que vas a viajar, y te decimos qué documento llevar según tu caso." },
       { t: "Elige tu maleta", d: "Si te mudas, la tarifa con 2 maletas de 23 kg suele salir más barata que comprar la segunda después." },
-      { t: "Separa con el 50%", d: "El saldo lo pagas antes de la emisión y el boleto te llega por WhatsApp." },
+      { t: "Separa con un adelanto", d: "El saldo lo pagas antes de la emisión y el boleto te llega por WhatsApp." },
     ],
     aviso: AVISO_TURISMO,
     faqs: [
@@ -413,7 +413,7 @@ function meses(hoy: string): LandingEspana[] {
       sello: `Lima → Madrid · ${etiqueta}`,
       h1: `Solo ida Lima–Madrid en ${etiqueta}`,
       bajada: `${d.quien} Te mostramos el precio de ${m.nombre} frente a los demás meses para que elijas bien tu fecha.`,
-      chips: [m.cercano ? "Fecha cercana: sube" : "Fecha con anticipación", "Desde " + usd(m.desde), "Separa con el 50%"],
+      chips: [m.cercano ? "Fecha cercana: sube" : "Fecha con anticipación", "Desde " + usd(m.desde), "Separa con un adelanto"],
       foto: m.mes % 2 === 0 ? IMG_AEROPUERTO_INTERNACIONAL : IMG_AVION_ALA,
       fotoAlt: m.mes % 2 === 0 ? "Sala de un aeropuerto internacional" : "Ala de avión sobre las nubes",
       etiquetaPrecio: `Lima–Madrid en ${m.nombre}, solo ida desde`,
