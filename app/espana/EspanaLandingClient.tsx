@@ -11,6 +11,7 @@ import { textoPrecio } from "@/lib/formato-precio";
 import NotaPrecio from "@/components/NotaPrecio";
 import AvisoRegresoReservado from "@/components/AvisoRegresoReservado";
 import GuiasEspana from "@/components/GuiasEspana";
+import StatsCounter from "@/app/espana/_components/StatsCounter";
 
 export const PAQUETES_ESPANA = [
   {
@@ -272,6 +273,13 @@ export default function EspanaLandingClient() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* 1.5 CIFRAS REALES: refuerzan el gancho justo después del hero, antes de que decidan seguir leyendo */}
+      <section className="py-8 sm:py-10 bg-white border-b border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <StatsCounter />
         </div>
       </section>
 
