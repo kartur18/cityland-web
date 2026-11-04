@@ -111,6 +111,7 @@ export const TITULOS_SEO_UNICOS: Readonly<Record<string, string>> = {
 
   "/destinos/europa-clasica": "Europa clásica: Madrid, París y Roma | Cityland",
   "/destinos/madrid-paris-roma-17-dias": "Madrid, París y Roma en 17 días | Cityland",
+  "/destinos/orlando-parques-disney-universal": "Paquete a Orlando: Disney y Universal desde Lima | Cityland",
 };
 
 export function tituloSeoUnico(ruta: string, tituloCalculado: string): string {

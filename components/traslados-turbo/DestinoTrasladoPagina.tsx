@@ -1,3 +1,4 @@
+import TodoElDestino from "@/components/TodoElDestino";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -151,6 +152,7 @@ export default function DestinoTrasladoPagina({ destino: d }: { destino: Destino
           </section>
 
           <PasosTraslado />
+          <TodoElDestino ciudad={d.slug} actual="traslados" />
           <Preguntas faqs={faqs} />
 
           <p className="text-base text-slate-700">

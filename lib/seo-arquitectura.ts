@@ -347,7 +347,16 @@ export function obtenerEnlacesCruzadosSEO(
   };
 }
 
-const PALABRA_COLGADA = /\s+(?:a|al|de|del|y|e|o|u|con|por|en|para|la|el|los|las|desde|como|sin|all|todo|\$)$/i;
+// «&», «que», «tu»… también cuelgan: «Paquete a Orlando: Parques Disney World &» (15 destinos y ~300 tours, 4-nov).
+const PALABRA_COLGADA = /\s+(?:a|al|de|del|y|e|o|u|con|por|en|para|la|el|los|las|desde|como|sin|all|todo|que|un|una|tu|tus|su|sus|&|\+|\$)$/i;
+
+// Para los títulos que no pasan por optimizarMetaTitleSEO (tours, hoteles): si hay una pregunta o frase completa
+// que entra, se corta ahí; si no, en la última palabra con sentido.
+export function recortarTitulo(texto: string, max: number): string {
+  if (texto.length <= max) return texto;
+  const frase = texto.slice(0, max + 1).match(/^(.{25,}?[?!.])\s/);
+  return frase ? frase[1] : recortarEnPalabra(texto, max, 20);
+}
 
 // Corta en el ultimo espacio y descarta un parentesis o monto a medio escribir ("($50 | Cityland").
 function recortarEnPalabra(texto: string, max: number, minimo: number): string {

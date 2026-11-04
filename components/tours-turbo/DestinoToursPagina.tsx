@@ -1,3 +1,4 @@
+import TodoElDestino from "@/components/TodoElDestino";
 import type { Metadata } from "next";
 import FotoCdn from "@/components/FotoCdn";
 import Link from "next/link";
@@ -122,6 +123,7 @@ export default function DestinoToursPagina({ destino: d }: { destino: DestinoTou
           )}
 
           <ComoSeparar pasos={PASOS_TOUR} />
+          <TodoElDestino ciudad={d.slug} actual="tours" />
           <Preguntas faqs={faqs} />
 
           <section className="space-y-5">

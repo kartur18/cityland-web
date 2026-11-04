@@ -1,3 +1,4 @@
+import TodoElDestino from "@/components/TodoElDestino";
 import type { Metadata } from "next";
 import FotoCdn from "@/components/FotoCdn";
 import Link from "next/link";
@@ -105,6 +106,7 @@ export default function DestinoHotelesPagina({ destino: d }: { destino: DestinoH
           </section>
 
           <PasosHotel />
+          <TodoElDestino ciudad={d.slug} actual="hoteles" />
           <Preguntas faqs={faqs} />
 
           <section className="space-y-5">

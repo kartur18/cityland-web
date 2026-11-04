@@ -1,3 +1,4 @@
+import TodoElDestino from "@/components/TodoElDestino";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -11,17 +12,13 @@ import { buildWaUrl } from "@/components/constantes";
 import { formatoUSD } from "@/lib/formato-precio";
 import { tituloSeo } from "@/lib/paquetes-armados/comun";
 import { DESTINOS_TOUR, fotoTour, precioTour, toursParecidos, type TourCrudo } from "@/lib/tours-turbo";
-import { URL_BASE_SEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
+import { URL_BASE_SEO, optimizarMetaDescriptionSEO, recortarTitulo } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
 
 const ruta = (t: TourCrudo) => `/tours-y-actividades/${t.d}/${t.s}`;
 
 function tituloCorto(t: TourCrudo): string {
-  if (t.n.length <= 62) return t.n;
-  return t.n
-    .slice(0, 60)
-    .replace(/\s+\S*$/, "")
-    .replace(/[\s:,+-]+$/, "");
+  return t.n.length <= 62 ? t.n : recortarTitulo(t.n, 60);
 }
 
 export function metadataTour(t: TourCrudo): Metadata {
@@ -156,6 +153,7 @@ export default function TourPagina({ tour: t }: { tour: TourCrudo }) {
             </section>
           )}
 
+          <TodoElDestino ciudad={t.d} actual="tours" />
           <Preguntas faqs={faqs} />
           <CierreTicket titulo={`Reserva tu tour en ${d.nombre}`} precio={precio} wa={wa} />
         </div>

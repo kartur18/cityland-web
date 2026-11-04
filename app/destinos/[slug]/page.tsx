@@ -1,3 +1,5 @@
+import TodoElDestino from "@/components/TodoElDestino";
+import { ciudadDeDestino } from "@/lib/destino-cruzado";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { robotsSegunRuta } from "@/lib/indexacion";
@@ -668,6 +670,10 @@ export default async function DestinoPage({
           refWebRuta={`/destinos/${dest.slug}`}
         />
       )}
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+        <TodoElDestino ciudad={ciudadDeDestino(dest.slug)} actual="destino" />
+      </div>
 
       {/* 4. OTROS DESTINOS RECOMENDADOS */}
       <section className="py-14 bg-white border-t border-slate-200/80">

@@ -1345,6 +1345,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "turquia-sin-visa-peruanos",
     titulo: "Turquía: el viaje de ensueño que los peruanos pueden hacer sin visa",
+    tituloSeo: "Turquía sin visa para peruanos: requisitos 2026",
     desc: "Vuelos en globo en Capadocia, mezquitas en Estambul y compras en el Gran Bazar.",
     categoria: "Exóticos",
     catColor: "bg-indigo-600",
