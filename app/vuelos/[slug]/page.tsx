@@ -1,3 +1,5 @@
+import TodoElDestino from "@/components/TodoElDestino";
+import { ciudadDeVuelo } from "@/lib/destino-cruzado";
 import { Metadata } from "next";
 import { esIndexable, robotsSegunRuta } from "@/lib/indexacion";
 import { PAGINAS_RECUPERADAS } from "@/lib/paginas-recuperadas";
@@ -169,6 +171,9 @@ export default async function RutaVueloPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <VuelosJorgeChavezTemplate ruta={ruta} breadcrumbs={migas}>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+          <TodoElDestino ciudad={ciudadDeVuelo(ruta.slug)} actual="vuelos" />
+        </div>
         {esRutaEuropa && (
           <ModuloSeguridadYCalculadoraEuropa
             destinoInicial={`${ruta.destino} (${paisDestino})`}

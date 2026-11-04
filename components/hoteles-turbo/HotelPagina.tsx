@@ -1,3 +1,4 @@
+import TodoElDestino from "@/components/TodoElDestino";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -188,6 +189,7 @@ export default function HotelPagina({ hotel: h }: { hotel: HotelCrudo }) {
             </section>
           )}
 
+          <TodoElDestino ciudad={h.d} actual="hoteles" />
           <Preguntas faqs={faqs} />
           <CierreHotel titulo={`Reserva ${nombreCorto(h)}`} precio={noche} wa={wa} />
         </div>
