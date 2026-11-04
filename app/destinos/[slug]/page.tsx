@@ -1,3 +1,4 @@
+import { pilarDe } from "@/lib/pilar-destino";
 import TodoElDestino from "@/components/TodoElDestino";
 import { ciudadDeDestino } from "@/lib/destino-cruzado";
 import { notFound } from "next/navigation";
@@ -137,6 +138,12 @@ export default async function DestinoPage({
     }
   }
 
+  // Página principal del destino en las migas (si la hay); si no, el grupo de siempre.
+  const migaMedia = pilarDe(dest.slug, `/destinos/${dest.slug}`) ?? {
+    nombre: dest.tipo === "europa" ? "Europa & Exóticos" : "Caribe & América",
+    href: dest.tipo === "europa" ? "/espana" : "/caribe",
+  };
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -152,8 +159,8 @@ export default async function DestinoPage({
           {
             "@type": "ListItem",
             position: 2,
-            name: dest.tipo === "europa" ? "Europa & Exóticos" : "Caribe & América",
-            item: `https://citylandtravel.com${dest.tipo === "europa" ? "/espana" : "/caribe"}`,
+            name: migaMedia.nombre,
+            item: `https://citylandtravel.com${migaMedia.href}`,
           },
           {
             "@type": "ListItem",
@@ -208,11 +215,8 @@ export default async function DestinoPage({
               Inicio
             </Link>
             <span>/</span>
-            <Link
-              href={dest.tipo === "europa" ? "/espana" : "/caribe"}
-              className="hover:text-[#0a1628] transition-colors"
-            >
-              {dest.tipo === "europa" ? "Europa & Exóticos" : "Caribe & América"}
+            <Link href={migaMedia.href} className="hover:text-[#0a1628] transition-colors">
+              {migaMedia.nombre}
             </Link>
             <span>/</span>
             <span className="text-[#0a1628] font-bold">{dest.ciudad}</span>
