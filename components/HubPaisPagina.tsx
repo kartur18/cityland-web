@@ -13,6 +13,7 @@ import { salidasDe } from "@/lib/salidas";
 import PorQueCityland from "@/components/PorQueCityland";
 import EnlacePaquetesTuristicos from "@/components/paquetes-turisticos/EnlacePaquetes";
 import TarjetaCircuito from "@/components/TarjetaCircuito";
+import OfertasDelPilar from "@/components/OfertasDelPilar";
 import { circuitosVigentes, precioCityland } from "@/lib/circuitos";
 import { DESTINOS_CARIBE, DESTINOS_EUROPA, buildWaUrl, type Destino } from "@/components/constantes";
 import { DESTINOS_MASIVOS } from "@/lib/catalogo-destinos-masivo";
@@ -156,6 +157,8 @@ export default function HubPaisPagina({ hub: h, extra }: { hub: HubPais; extra?:
               Precios referenciales por persona; el precio final depende de la fecha, el hotel y cuántos viajan.
             </p>
           </section>
+
+          <OfertasDelPilar ruta={h.ruta} nombre={h.nombre} />
 
           {circuitos.length > 0 && (
             <section className="space-y-4" aria-labelledby="circuitos">
