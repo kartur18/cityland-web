@@ -288,7 +288,7 @@ export default function ItaliaLandingPage() {
                       </span>
                     </li>
                   </ul>
-                  <AvisoRegresoReservado className="mt-4" />
+                  <AvisoRegresoReservado className="mt-4" pais="Italia" />
                 </div>
               </div>
             </div>

@@ -286,7 +286,7 @@ export default function FranciaPage() {
                       </span>
                     </li>
                   </ul>
-                  <AvisoRegresoReservado className="mt-4" />
+                  <AvisoRegresoReservado className="mt-4" pais="Francia" />
                 </div>
               </div>
             </div>
