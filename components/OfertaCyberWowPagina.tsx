@@ -129,13 +129,13 @@ export default function OfertaCyberWowPagina({ o }: { o: OfertaCyberWow }) {
                 {o.aerolinea ? `Con vuelo vía ${o.aerolinea}, todo listo para viajar sin complicarte.` : "Vuelo, hotel y traslados, todo listo para viajar sin complicarte."}
               </p>
 
-              <div className="shimmer-effect relative overflow-hidden rounded-3xl bg-gradient-to-br from-red-600 to-red-500 p-6 shadow-2xl shadow-red-600/30 sm:p-7">
-                <p className="text-sm font-bold uppercase tracking-wide text-red-100">Desde</p>
-                <p className="text-6xl font-black tracking-tight text-white sm:text-7xl">{dolarCyberWow(o.precio)}</p>
-                <ul className="mt-5 space-y-2 border-t border-white/20 pt-4">
+              <div className="shimmer-effect relative overflow-hidden rounded-3xl bg-white p-6 shadow-2xl sm:p-7">
+                <p className="text-sm font-extrabold uppercase tracking-wide text-red-600">Desde</p>
+                <p className="text-6xl font-black tracking-tight text-[#0a1628] sm:text-7xl">{dolarCyberWow(o.precio)}</p>
+                <ul className="mt-5 space-y-2 border-t border-slate-200 pt-4">
                   {o.incluye.map((x) => (
-                    <li key={x} className="flex items-start gap-2 text-[15px] font-medium text-white">
-                      <span className="mt-0.5 font-black" aria-hidden="true">
+                    <li key={x} className="flex items-start gap-2 text-[15px] font-medium text-slate-700">
+                      <span className="mt-0.5 font-black text-emerald-600" aria-hidden="true">
                         ✓
                       </span>
                       {x}
@@ -152,7 +152,7 @@ export default function OfertaCyberWowPagina({ o }: { o: OfertaCyberWow }) {
                     <WhatsAppIcon size={22} />
                     Reserva hoy
                   </a>
-                  <span className="flex min-h-[56px] items-center justify-center gap-2 rounded-xl border-2 border-white px-5 text-sm font-extrabold uppercase text-white">
+                  <span className="flex min-h-[56px] items-center justify-center gap-2 rounded-xl border-2 border-[#0a1628] px-5 text-sm font-extrabold uppercase text-[#0a1628]">
                     ⏱ Cupos limitados
                   </span>
                 </div>
