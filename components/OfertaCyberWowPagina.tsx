@@ -72,6 +72,21 @@ export default function OfertaCyberWowPagina({ o }: { o: OfertaCyberWow }) {
           url,
         },
       },
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: `¿Necesito visa para viajar a ${o.destino}?`,
+            acceptedAnswer: { "@type": "Answer", text: o.documentos },
+          },
+          {
+            "@type": "Question",
+            name: `¿Qué incluye la oferta Cyber Wow a ${o.destino}?`,
+            acceptedAnswer: { "@type": "Answer", text: o.incluye.join(", ") },
+          },
+        ],
+      },
     ],
   };
 
@@ -143,6 +158,14 @@ export default function OfertaCyberWowPagina({ o }: { o: OfertaCyberWow }) {
                 </div>
               </div>
               <p className="text-sm text-slate-400">Precio por persona en habitación doble; cambia según la fecha y la disponibilidad.</p>
+
+              <div className="rounded-2xl border border-white/15 bg-white/5 p-5">
+                <h2 className="text-sm font-extrabold uppercase tracking-wide text-amber-400">Documentos para viajar a {o.pais}</h2>
+                <p className="mt-2 text-[15px] text-slate-200">{o.documentos}</p>
+                <Link href={o.rutaRequisitos} className="mt-2 inline-block text-sm font-bold text-amber-400 hover:underline">
+                  Ver la guía completa de requisitos →
+                </Link>
+              </div>
             </div>
           </section>
 
