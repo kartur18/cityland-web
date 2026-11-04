@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import PrecioAnimadoCyberWow from "@/components/PrecioAnimadoCyberWow";
 import { buildWaUrl } from "@/components/constantes";
 import { dolarCyberWow, OFERTAS_CYBER_WOW, rutaOfertaCyberWow } from "@/lib/ofertas-cyber-wow";
 import { URL_BASE_SEO, optimizarMetaDescriptionSEO, optimizarMetaTitleSEO } from "@/lib/seo-arquitectura";
@@ -124,7 +125,7 @@ export default function CyberWowPage() {
                   </Link>
                   <div className="space-y-3 bg-white p-5">
                     <p className="text-xs font-extrabold uppercase tracking-wide text-red-600">Desde</p>
-                    <p className="text-4xl font-black tracking-tight text-[#0a1628]">{dolarCyberWow(o.precio)}</p>
+                    <PrecioAnimadoCyberWow precio={o.precio} className="block text-4xl font-black tracking-tight text-[#0a1628]" />
                     <div className="grid grid-cols-2 gap-2 pt-1">
                       <a
                         href={wa}

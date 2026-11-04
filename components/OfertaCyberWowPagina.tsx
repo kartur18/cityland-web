@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import PorQueCityland from "@/components/PorQueCityland";
+import PrecioAnimadoCyberWow from "@/components/PrecioAnimadoCyberWow";
 import { buildWaUrl } from "@/components/constantes";
 import { dolarCyberWow, OFERTAS_CYBER_WOW, rutaOfertaCyberWow, type OfertaCyberWow } from "@/lib/ofertas-cyber-wow";
 import { URL_BASE_SEO, optimizarMetaDescriptionSEO, optimizarMetaTitleSEO } from "@/lib/seo-arquitectura";
@@ -18,13 +19,20 @@ import { safeJsonLd } from "@/lib/seguridad-http";
 
 export function metadataOfertaCyberWow(o: OfertaCyberWow): Metadata {
   const url = `${URL_BASE_SEO}${rutaOfertaCyberWow(o)}`;
-  const titulo = optimizarMetaTitleSEO(`Cyber Wow ${o.destino} desde ${dolarCyberWow(o.precio)} | Cityland`);
+  const titulo = optimizarMetaTitleSEO(`${o.destino}: vuelo + hotel desde ${dolarCyberWow(o.precio)} | Cityland`);
   const descripcion = optimizarMetaDescriptionSEO(
-    `Oferta Cyber Wow a ${o.destino}: ${o.incluye.join(", ")}. Desde ${dolarCyberWow(o.precio)}. Cupos limitados, reserva hoy por WhatsApp.`
+    `Oferta Cyber Wow a ${o.destino}, ${o.pais}: ${o.incluye.join(", ")}. Desde ${dolarCyberWow(o.precio)} por persona. Cupos limitados, reserva hoy por WhatsApp.`
   );
   return {
     title: titulo,
     description: descripcion,
+    keywords: [
+      `paquete a ${o.destino.toLowerCase()} desde peru`,
+      `vuelo y hotel a ${o.destino.toLowerCase()}`,
+      `cuanto cuesta viajar a ${o.destino.toLowerCase()} desde lima`,
+      `oferta cyber wow ${o.destino.toLowerCase()}`,
+      `paquete turistico ${o.destino.toLowerCase()} 2026`,
+    ],
     alternates: { canonical: url },
     openGraph: {
       type: "website",
@@ -34,6 +42,12 @@ export function metadataOfertaCyberWow(o: OfertaCyberWow): Metadata {
       siteName: "Cityland Travel",
       locale: "es_PE",
       images: [{ url: o.foto, width: 1200, height: 630, alt: o.fotoAlt }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: titulo,
+      description: descripcion,
+      images: [o.foto],
     },
   };
 }
@@ -131,7 +145,7 @@ export default function OfertaCyberWowPagina({ o }: { o: OfertaCyberWow }) {
 
               <div className="shimmer-effect relative overflow-hidden rounded-3xl bg-white p-6 shadow-2xl sm:p-7">
                 <p className="text-sm font-extrabold uppercase tracking-wide text-red-600">Desde</p>
-                <p className="text-6xl font-black tracking-tight text-[#0a1628] sm:text-7xl">{dolarCyberWow(o.precio)}</p>
+                <PrecioAnimadoCyberWow precio={o.precio} className="block text-6xl font-black tracking-tight text-[#0a1628] sm:text-7xl" />
                 <ul className="mt-5 space-y-2 border-t border-slate-200 pt-4">
                   {o.incluye.map((x) => (
                     <li key={x} className="flex items-start gap-2 text-[15px] font-medium text-slate-700">
