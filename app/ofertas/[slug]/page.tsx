@@ -1,3 +1,4 @@
+import { pilarDe } from "@/lib/pilar-destino";
 import { notFound, permanentRedirect } from "next/navigation";
 import { redireccionOfertaVieja } from "@/lib/redirecciones-ofertas-viejas";
 import type { Metadata } from "next";
@@ -132,10 +133,12 @@ export default async function OfertaComercialPage({ params }: Props) {
     item.slug
   );
 
+  const pilar = pilarDe(item.slug);
   const migas = [
     { nombre: "Inicio", url: "/" },
     { nombre: "Ofertas y Paquetes", url: "/ofertas" },
-    { nombre: item.clusterNombre, url: enlacesCruzados.pilar.href },
+    // La página principal del destino (si la hay) en vez del grupo genérico: así las variantes no compiten entre sí.
+    pilar ? { nombre: pilar.nombre, url: pilar.href } : { nombre: item.clusterNombre, url: enlacesCruzados.pilar.href },
     { nombre: item.titulo, url: `/ofertas/${item.slug}` },
   ];
 
