@@ -5,6 +5,7 @@ import { VIAJES_ESPECIALIZADOS_SEO } from "@/lib/catalogo-viajes-especializados"
 import { AGENCIAS_LOCALES_SEO } from "@/lib/catalogo-agencias-locales";
 import { BLOG_POSTS_MASIVOS } from "@/lib/catalogo-blog-masivo";
 import { TODOS_LOS_RESUMENES_OFERTAS_SEO } from "@/lib/catalogo-mil-landings-comerciales";
+import { OFERTAS_CYBER_WOW, rutaOfertaCyberWow } from "@/lib/ofertas-cyber-wow";
 import { INDICE_MADRID_10K } from "@/lib/catalogo-madrid-10k";
 import { CATALOGO_PAQUETES_MIGRATORIOS_1000 } from "@/lib/catalogo-paquetes-migratorios-1000";
 import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
@@ -62,7 +63,12 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
     ...CATALOGO_PAQUETES_MIGRATORIOS_1000.map((p) => `/paquetes-migratorios/${p.slug}`),
   ],
   madrid: () => INDICE_MADRID_10K.map((m) => `/madrid/${m.slug}`),
-  ofertas: () => ["/ofertas", ...TODOS_LOS_RESUMENES_OFERTAS_SEO.map((o) => `/ofertas/${o.slug}`)],
+  ofertas: () => [
+    "/ofertas",
+    ...TODOS_LOS_RESUMENES_OFERTAS_SEO.map((o) => `/ofertas/${o.slug}`),
+    "/ofertas/cyber-wow",
+    ...OFERTAS_CYBER_WOW.map(rutaOfertaCyberWow),
+  ],
   vuelos: () => ["/vuelos", ...RUTAS_VUELOS_SEO.map((r) => `/vuelos/${r.slug}`)],
   destinos: () => [
     "/circuitos",
