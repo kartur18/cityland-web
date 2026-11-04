@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { optimizarMetaTitleSEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import AirlineLandingTemplate, {
   ConfiguracionLandingAerolinea,
@@ -236,6 +237,23 @@ export default function OfertasIndexPage() {
 
   return (
     <AirlineLandingTemplate config={CONFIG_OFERTAS}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-10">
+        <Link
+          href="/ofertas/cyber-wow"
+          className="flex flex-col items-start justify-between gap-4 rounded-3xl bg-gradient-to-r from-red-600 to-red-500 p-6 text-white shadow-lg transition-transform hover:scale-[1.01] sm:flex-row sm:items-center sm:p-8"
+        >
+          <div className="space-y-1.5">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-xs font-extrabold uppercase tracking-wider">
+              🛒 Cyber Wow
+            </span>
+            <h2 className="text-2xl font-black sm:text-3xl">Río, Medellín, Panamá, Punta Cana y Cartagena</h2>
+            <p className="text-sm text-red-50 sm:text-base">Vuelo + hotel + traslados a precio fijo. Cupos limitados.</p>
+          </div>
+          <span className="inline-flex min-h-[48px] shrink-0 items-center justify-center rounded-xl bg-white px-6 text-base font-extrabold text-red-600">
+            Ver ofertas →
+          </span>
+        </Link>
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <BuscadorCatalogoInstantaneo
           itemsIniciales={iniciales}
