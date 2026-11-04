@@ -6,8 +6,9 @@ import { pilarDe } from "@/lib/pilar-destino";
 // ninguna de sus 174 ofertas. Una por producto (las variantes del mismo hotel salen una sola vez, la más barata).
 let porPilar: Map<string, ResumenOfertaComercialSEO[]> | undefined;
 
-// En «Paquetes a X» van paquetes: ni tours sueltos, ni seguros, ni asesorías de visa, ni viajes de empresa.
-const NO_ES_PAQUETE = /seguro de viaje|asesor[ií]a|visa |tour |excursi[oó]n|traslado privado|incentivos|corporativ|empresas/i;
+// En «Paquetes a X» van paquetes: ni seguros, ni asesorías de visa, ni viajes de empresa. Los tours sueltos quedan
+// fuera por el piso de precio («Tour Estambul y Capadocia» sí es un paquete).
+const NO_ES_PAQUETE = /seguro de viaje|asesor[ií]a|visa |traslado privado|incentivos|corporativ|empresas/i;
 const PISO_PAQUETE = 300;
 
 export function ofertasDePilar(ruta: string, max = 9): ResumenOfertaComercialSEO[] {
