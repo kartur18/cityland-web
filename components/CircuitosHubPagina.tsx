@@ -1,3 +1,4 @@
+import OfertasDelPilar from "@/components/OfertasDelPilar";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -154,6 +155,8 @@ export default function CircuitosHubPagina({ hub: h }: { hub: HubCircuitos }) {
               </ul>
             </section>
           )}
+
+          <OfertasDelPilar ruta={h.ruta} nombre={h.nombre} />
 
           <PasosSeparar />
 
