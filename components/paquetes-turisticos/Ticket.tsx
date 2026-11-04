@@ -100,13 +100,16 @@ export function PortadaTicket({
   return (
     <>
       <section className="grid items-center gap-8 lg:grid-cols-[1.15fr_1fr]">
-        <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] bg-orange-50 shadow-lg sm:aspect-[4/3]">
+        {/* En celular el precio y el botón de WhatsApp (dentro del bloque de texto) van primero: antes la foto, alta
+            y de ancho completo, los dejaba fuera de lo que se ve sin bajar la pantalla. En escritorio se restaura
+            el orden original (foto a la izquierda) con lg:order. */}
+        <div className="relative order-2 aspect-[16/10] overflow-hidden rounded-[2rem] bg-orange-50 shadow-lg sm:aspect-[4/3] lg:order-1">
           <Image src={foto} alt={alt} fill priority unoptimized={sinOptimizar} sizes="(min-width: 1024px) 640px, 100vw" className="object-cover" />
           {insignia && (
             <span className="absolute left-4 top-4 rounded-full bg-white px-4 py-1.5 text-sm font-extrabold text-[#0f5f5a] shadow">{insignia}</span>
           )}
         </div>
-        <div className="space-y-5">
+        <div className="order-1 space-y-5 lg:order-2">
           <p className="inline-flex items-center gap-2 rounded-full bg-[#e6f4f1] px-4 py-1.5 text-sm font-extrabold text-[#0f5f5a]">{sello}</p>
           <h1 className="text-[30px] font-extrabold leading-tight tracking-tight text-[#10302e] sm:text-4xl lg:text-5xl text-balance">{titulo}</h1>
           <p className="text-lg text-slate-600">{bajada}</p>

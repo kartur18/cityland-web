@@ -191,7 +191,7 @@ export default function SuperLandingMigratorioTemplate({
                         </li>
                       ))}
                     </ul>
-                    <AvisoRegresoReservado className="mt-4" />
+                    <AvisoRegresoReservado className="mt-4" pais={datos.pais} />
                   </div>
                 </div>
               </div>

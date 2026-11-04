@@ -287,7 +287,7 @@ export default function MadridMigratorioTemplate({
                       </li>
                     </ul>
                     )}
-                    {esMigratorio && <AvisoRegresoReservado className="mt-4" />}
+                    {esMigratorio && <AvisoRegresoReservado className="mt-4" pais="España" />}
                   </div>
                 </div>
               </div>

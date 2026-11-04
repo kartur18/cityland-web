@@ -80,12 +80,26 @@ export function HeroVenta(p: HeroVentaProps) {
               </li>
             ))}
           </ul>
-          <a
-            href="#contenido"
-            className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl border-2 border-[#0a1628] bg-white px-6 text-base font-extrabold text-[#0a1628] hover:bg-[#0a1628] hover:text-white"
-          >
-            {p.ancla ?? "Ver paquetes y fechas"} <span aria-hidden="true">↓</span>
-          </a>
+          {/* Botón de WhatsApp arriba, junto al título: en celular la tarjeta de la foto (con el precio y este mismo
+              botón) queda debajo de una imagen alta, así que sin esto el primer tramo visible no tenía ningún
+              llamado a cotizar. */}
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a
+              href={p.wa}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 text-base font-extrabold text-white shadow-lg shadow-emerald-500/30 hover:bg-[#20ba5a]"
+            >
+              <WhatsAppIcon size={20} />
+              {p.boton}
+            </a>
+            <a
+              href="#contenido"
+              className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl border-2 border-[#0a1628] bg-white px-6 text-base font-extrabold text-[#0a1628] hover:bg-[#0a1628] hover:text-white"
+            >
+              {p.ancla ?? "Ver paquetes y fechas"} <span aria-hidden="true">↓</span>
+            </a>
+          </div>
         </div>
         <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
           <div className="relative aspect-[16/10] bg-slate-100">

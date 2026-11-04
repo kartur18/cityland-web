@@ -268,7 +268,7 @@ export default function EspanaLandingClient() {
                       </span>
                     </li>
                   </ul>
-                  <AvisoRegresoReservado className="mt-4" />
+                  <AvisoRegresoReservado className="mt-4" pais="España" />
                 </div>
               </div>
             </div>

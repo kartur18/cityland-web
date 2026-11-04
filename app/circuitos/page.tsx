@@ -3,12 +3,14 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
-import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import PorQueCityland from "@/components/PorQueCityland";
 import TarjetaCircuito from "@/components/TarjetaCircuito";
+import { Migas } from "@/components/paquetes-armados/Bloques";
+import { BarraConfianza, HeroVenta } from "@/components/paquetes-armados/Venta";
+import { portadaDe } from "@/lib/paquetes-armados/fotos";
 import { HUBS_CIRCUITOS } from "@/lib/hubs-circuitos";
 import { buildWaUrl } from "@/components/constantes";
-import { circuitosVigentes, REGIONES_CIRCUITOS } from "@/lib/circuitos";
+import { circuitosVigentes, precioCityland, REGIONES_CIRCUITOS } from "@/lib/circuitos";
 import { URL_BASE_SEO, optimizarMetaDescriptionSEO, optimizarMetaTitleSEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
 
@@ -39,6 +41,7 @@ export default function CircuitosPage() {
   const grupos = REGIONES_CIRCUITOS.map((r) => ({ ...r, items: todos.filter((c) => c.region === r.id).sort((a, b) => a.desde - b.desde) })).filter(
     (g) => g.items.length,
   );
+  const masBarato = [...todos].sort((a, b) => precioCityland(a) - precioCityland(b))[0];
   const wa = buildWaUrl({
     categoria: "general",
     mensajePersonalizado: "¡Hola Cityland Travel! Quiero cotizar un circuito.",
@@ -68,39 +71,36 @@ export default function CircuitosPage() {
       <Navbar />
       <main id="main-content" className="bg-white pt-24 sm:pt-28 pb-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-12">
-          <header className="space-y-4 max-w-3xl">
-            <nav aria-label="Migas de pan" className="text-xs text-slate-500">
-              <Link href="/" className="hover:underline">
-                Inicio
-              </Link>{" "}
-              / Circuitos
-            </nav>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0a1628] tracking-tight leading-tight text-balance">
-              Circuitos y paquetes por el mundo desde Lima
-            </h1>
-            <p className="text-base sm:text-lg text-slate-600">
-              {todos.length} paquetes armados con salidas confirmadas: con vuelo desde Lima o solo terrestres para armar a tu medida. El precio es por
-              persona en habitación doble.
-            </p>
-            <p className="text-[15px] text-slate-700">
-              <Link href="/salidas" className="font-bold text-[#0a1628] underline">
-                Ver el calendario de salidas con fecha
-              </Link>{" "}
-              ·{" "}
-              <Link href="/paquetes-armados" className="font-bold text-[#0a1628] underline">
-                Paquetes armados al Caribe
-              </Link>
-            </p>
-            <a
-              href={wa}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 min-h-[48px] px-6 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-extrabold"
-            >
-              <WhatsAppIcon size={18} />
-              Cotizar por WhatsApp
-            </a>
-          </header>
+          <div className="space-y-3">
+            <Migas items={[{ nombre: "Inicio", href: "/" }, { nombre: "Circuitos" }]} />
+            <HeroVenta
+              foto={portadaDe(masBarato)}
+              alt={`Circuito ${masBarato.nombre}`}
+              sello="Europa, Asia, América y cruceros"
+              marca="Circuitos del mayorista"
+              titulo="Circuitos y paquetes por el mundo desde Lima"
+              bajada="Viajes ya organizados con salidas confirmadas: con vuelo desde Lima o solo terrestres para armar a tu medida. El precio es por persona en habitación doble."
+              chips={["Salidas confirmadas", `${todos.length} circuitos`, `${grupos.length} regiones`]}
+              etiquetaPrecio="Circuitos desde, por persona en doble"
+              precio={precioCityland(masBarato)}
+              detallePrecio={`${masBarato.nombre} · ${masBarato.dias} días`}
+              wa={wa}
+              boton="Cotizar por WhatsApp"
+              ancla="Ver todos los circuitos"
+            />
+          </div>
+
+          <BarraConfianza />
+
+          <p className="text-[15px] text-slate-700">
+            <Link href="/salidas" className="font-bold text-[#0a1628] underline">
+              Ver el calendario de salidas con fecha
+            </Link>{" "}
+            ·{" "}
+            <Link href="/paquetes-armados" className="font-bold text-[#0a1628] underline">
+              Paquetes armados al Caribe
+            </Link>
+          </p>
 
           <section className="space-y-3">
             <h2 className="text-lg font-extrabold text-[#0a1628]">
