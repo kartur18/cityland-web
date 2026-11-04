@@ -102,6 +102,7 @@ export default function CyberWowPage() {
                         src={o.foto}
                         alt={o.fotoAlt}
                         fill
+                        priority={i === 0}
                         sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                         className="object-cover transition-transform duration-500 group-hover:scale-110"
                       />
@@ -121,9 +122,9 @@ export default function CyberWowPage() {
                       </span>
                     </span>
                   </Link>
-                  <div className="space-y-3 bg-gradient-to-br from-red-600 to-red-500 p-5">
-                    <p className="text-xs font-bold uppercase tracking-wide text-red-100">Desde</p>
-                    <p className="text-4xl font-black tracking-tight text-white">{dolarCyberWow(o.precio)}</p>
+                  <div className="space-y-3 bg-white p-5">
+                    <p className="text-xs font-extrabold uppercase tracking-wide text-red-600">Desde</p>
+                    <p className="text-4xl font-black tracking-tight text-[#0a1628]">{dolarCyberWow(o.precio)}</p>
                     <div className="grid grid-cols-2 gap-2 pt-1">
                       <a
                         href={wa}
@@ -136,7 +137,7 @@ export default function CyberWowPage() {
                       </a>
                       <Link
                         href={rutaOfertaCyberWow(o)}
-                        className="flex min-h-[48px] items-center justify-center rounded-xl border-2 border-white px-2 text-[13px] font-extrabold text-white transition-colors hover:bg-white hover:text-red-600"
+                        className="flex min-h-[48px] items-center justify-center rounded-xl border-2 border-[#0a1628] px-2 text-[13px] font-extrabold text-[#0a1628] transition-colors hover:bg-[#0a1628] hover:text-white"
                       >
                         Ver oferta
                       </Link>

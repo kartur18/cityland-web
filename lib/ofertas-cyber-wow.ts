@@ -14,6 +14,10 @@ export interface OfertaCyberWow {
   incluye: string[];
   foto: string;
   fotoAlt: string;
+  // Documento/visa: mismo texto ya verificado que usan las guías de requisitos del sitio (no se repite texto
+  // nuevo sin fuente). rutaRequisitos enlaza a la guía completa con la fuente oficial.
+  documentos: string;
+  rutaRequisitos: string;
 }
 
 export const OFERTAS_CYBER_WOW: OfertaCyberWow[] = [
@@ -27,6 +31,8 @@ export const OFERTAS_CYBER_WOW: OfertaCyberWow[] = [
     incluye: ["Vuelos", "Hotel 4 días / 3 noches", "Desayunos diarios", "Traslados aeropuerto – hotel – aeropuerto"],
     foto: obtenerGaleriaPorTexto("rio de janeiro copacabana brasil")[0],
     fotoAlt: "Playa de Copacabana en Río de Janeiro",
+    documentos: "Viajas con tu DNI peruano vigente o pasaporte, sin visa: Brasil te deja entrar como turista hasta 90 días.",
+    rutaRequisitos: "/viajes/requisitos-viajar-a-brasil-solo-dni",
   },
   {
     slug: "medellin",
@@ -38,6 +44,9 @@ export const OFERTAS_CYBER_WOW: OfertaCyberWow[] = [
     incluye: ["Vuelos", "Hotel 4 días / 3 noches", "Desayunos diarios", "Traslados aeropuerto – hotel – aeropuerto"],
     foto: obtenerGaleriaPorTexto("medellin colombia comuna 13")[0],
     fotoAlt: "Comuna 13 en Medellín, Colombia",
+    documentos:
+      "Viajas solo con tu DNI peruano vigente (o pasaporte) por los acuerdos de la Comunidad Andina. Solo falta llenar el Check-Mig, el registro gratis de Migración Colombia, antes de tu vuelo.",
+    rutaRequisitos: "/viajes/requisitos-viajar-a-colombia-solo-dni",
   },
   {
     slug: "ciudad-de-panama",
@@ -49,6 +58,9 @@ export const OFERTAS_CYBER_WOW: OfertaCyberWow[] = [
     incluye: ["Vuelos", "Hotel 4 días / 3 noches", "Desayunos diarios", "Traslados aeropuerto – hotel – aeropuerto"],
     foto: "/images/paquetes/panama-medellin/hero-panama.jpg",
     fotoAlt: "Skyline de Ciudad de Panamá",
+    documentos:
+      "Sin visa para peruanos: pasaporte vigente (mínimo 6 meses), boleto de retorno, reserva de hotel y solvencia económica mínima de $500 o tarjeta de crédito.",
+    rutaRequisitos: "/viajes/requisitos-viajar-a-panama-desde-peru",
   },
   {
     slug: "punta-cana",
@@ -67,6 +79,9 @@ export const OFERTAS_CYBER_WOW: OfertaCyberWow[] = [
     ],
     foto: obtenerGaleriaPorTexto("punta cana playa republica dominicana")[0],
     fotoAlt: "Playa de Punta Cana, República Dominicana",
+    documentos:
+      "No necesitas visa ni tarjeta de turista: pasaporte vigente mínimo 6 meses y llenar el E-Ticket de migración, que es gratis y se hace en línea.",
+    rutaRequisitos: "/viajes/requisitos-viajar-a-punta-cana-desde-peru",
   },
   {
     slug: "cartagena-de-indias",
@@ -78,6 +93,9 @@ export const OFERTAS_CYBER_WOW: OfertaCyberWow[] = [
     incluye: ["Vuelos", "Hotel 4 días / 3 noches", "Desayunos diarios", "Traslados aeropuerto – hotel – aeropuerto"],
     foto: obtenerGaleriaPorTexto("cartagena de indias ciudad amurallada")[0],
     fotoAlt: "Ciudad amurallada de Cartagena de Indias",
+    documentos:
+      "Viajas solo con tu DNI peruano vigente (o pasaporte) por los acuerdos de la Comunidad Andina. Solo falta llenar el Check-Mig, el registro gratis de Migración Colombia, antes de tu vuelo.",
+    rutaRequisitos: "/viajes/requisitos-viajar-a-colombia-solo-dni",
   },
 ];
 
