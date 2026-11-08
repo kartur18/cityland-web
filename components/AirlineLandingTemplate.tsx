@@ -319,8 +319,9 @@ export default function AirlineLandingTemplate({
               </div>
             </div>
 
-            {/* Tarjeta Vitrina Promocional Derecha (Foto 100% limpia sin textos encima) */}
-            <div className="lg:col-span-5 animate-fade-up delay-100">
+            {/* Tarjeta Vitrina Promocional Derecha (Foto 100% limpia sin textos encima). En celular va primero: foto,
+                precio y botón antes que el texto largo (8-nov-2026); el H1 sigue primero en el HTML. */}
+            <div className="order-first lg:order-none lg:col-span-5 animate-fade-up delay-100">
               <div className="card-interactive group bg-white text-[#0a1628] rounded-3xl border-2 border-slate-200/90 shadow-xl overflow-hidden">
                 <div className="relative h-56 sm:h-60 w-full overflow-hidden bg-slate-100">
                   <Image
@@ -365,7 +366,7 @@ export default function AirlineLandingTemplate({
                           Desde
                         </span>
                         <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0a1628] leading-none">
-                          {config.vitrina.precio.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1")}
+                          {config.vitrina.precio.replace(/(\$[\d,.]+)\s*USD\b/gi, "$1").replace(/^\s*(?:US)?\$\s*/, "US$ ")}
                         </span>
                         {config.vitrina.moneda &&
                           config.vitrina.moneda.replace(/\bUSD\b\s*[·•-]?\s*/gi, "").trim() !== "" && (
