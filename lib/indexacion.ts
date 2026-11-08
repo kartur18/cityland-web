@@ -40,8 +40,9 @@ export function esIndexable(ruta: string): boolean {
     ruta.startsWith("/salidas/") ||
     ruta.startsWith("/paquetes-armados/") ||
     ruta.startsWith("/paquetes-turisticos/") ||
-    ruta.startsWith("/tours-y-actividades/") ||
-    ruta.startsWith("/hoteles-en/") ||
+    // Fichas sueltas de tours y hoteles: copia del proveedor, casi 0 clics; quedan las de destino (8-nov-2026).
+    (ruta.startsWith("/tours-y-actividades/") && ruta.split("/").length <= 3) ||
+    (ruta.startsWith("/hoteles-en/") && ruta.split("/").length <= 3) ||
     ruta.startsWith("/traslados-en/") ||
     ruta.startsWith("/viajes/requisitos-") ||
     ruta.startsWith("/espana/") ||

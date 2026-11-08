@@ -1,3 +1,4 @@
+import { robotsSegunRuta } from "@/lib/indexacion";
 import TodoElDestino from "@/components/TodoElDestino";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -28,6 +29,8 @@ export function metadataTour(t: TourCrudo): Metadata {
   return {
     title: tituloSeo(tituloCorto(t), `desde ${formatoUSD(precioTour(t))}`),
     description: optimizarMetaDescriptionSEO(desc),
+    // Fichas sueltas: noindex salvo las que ya tuvieron apariciones en Google (lib/indexacion.ts).
+    robots: robotsSegunRuta(ruta(t)),
     alternates: { canonical: url },
     openGraph: { type: "website", url, title: t.n, description: desc, siteName: "Cityland Travel", locale: "es_PE", images: [fotoTour(t, 1200)] },
   };

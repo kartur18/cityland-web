@@ -1,3 +1,4 @@
+import { robotsSegunRuta } from "@/lib/indexacion";
 import TodoElDestino from "@/components/TodoElDestino";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -42,6 +43,8 @@ export function metadataHotel(h: HotelCrudo): Metadata {
   return {
     title: tituloSeo(`${nombreCorto(h)}, ${d.nombre}`, `desde ${formatoUSD(precioNoche(h))}`),
     description: optimizarMetaDescriptionSEO(desc),
+    // Fichas sueltas: noindex salvo las que ya tuvieron apariciones en Google (lib/indexacion.ts).
+    robots: robotsSegunRuta(ruta(h)),
     alternates: { canonical: url },
     openGraph: { type: "website", url, title: `${h.n}, ${d.nombre}`, description: desc, siteName: "Cityland Travel", locale: "es_PE", images: [fotoHotel(h, 1200)] },
   };

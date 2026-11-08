@@ -211,13 +211,13 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
   tours: () => [
     "/tours-y-actividades",
     ...destinosConTours().map((d) => `/tours-y-actividades/${d.slug}`),
-    ...todosLosTours().map((t) => `/tours-y-actividades/${t.d}/${t.s}`),
+    ...todosLosTours().map((t) => `/tours-y-actividades/${t.d}/${t.s}`).filter(esIndexable),
   ],
   // Hoteles del segundo proveedor por destino, con fee del 20 % (29-oct-2026).
   hoteles: () => [
     "/hoteles-en",
     ...destinosConHoteles().map((d) => `/hoteles-en/${d.slug}`),
-    ...todosLosHoteles().map((h) => `/hoteles-en/${h.d}/${h.s}`),
+    ...todosLosHoteles().map((h) => `/hoteles-en/${h.d}/${h.s}`).filter(esIndexable),
   ],
   // Traslados aeropuerto–hotel del segundo proveedor, con fee del 20 % (29-oct-2026).
   traslados: () => ["/traslados-en", ...destinosConTraslados().map((d) => `/traslados-en/${d.slug}`)],
