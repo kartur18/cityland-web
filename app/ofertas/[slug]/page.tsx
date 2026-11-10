@@ -1,6 +1,8 @@
 import { pilarDe } from "@/lib/pilar-destino";
 import { notFound, permanentRedirect } from "next/navigation";
 import { redireccionOfertaVieja } from "@/lib/redirecciones-ofertas-viejas";
+import { ofertaRedirigida } from "@/lib/ofertas-redirigidas";
+import { vecinasIndexables } from "@/lib/vecinas-indexables";
 import type { Metadata } from "next";
 import { esIndexable, robotsSegunRuta } from "@/lib/indexacion";
 import { PAGINAS_RECUPERADAS } from "@/lib/paginas-recuperadas";
@@ -26,6 +28,9 @@ import {
 
 export const revalidate = 86400;
 export const dynamicParams = true;
+
+// Sin las que next.config.ts redirige: así las «vecinas» nunca apuntan a una redirección.
+const OFERTAS_VIGENTES = TODOS_LOS_RESUMENES_OFERTAS_SEO.filter((x) => !ofertaRedirigida(x.slug));
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -112,7 +117,7 @@ export default async function OfertaComercialPage({ params }: Props) {
   }
 
   const listaCluster = TODOS_LOS_RESUMENES_OFERTAS_SEO.filter(
-    (x) => x.cluster === item.cluster
+    (x) => x.cluster === item.cluster && !ofertaRedirigida(x.slug)
   );
   const idxCluster = Math.max(
     0,
@@ -120,8 +125,8 @@ export default async function OfertaComercialPage({ params }: Props) {
   );
   const saltosSmallWorld = [1, 2, 3, 4, 5, 6, 24, 72, 180, 450, 1100, 2200];
   const vistos = new Set<string>([item.slug]);
-  const relacionadosCluster = saltosSmallWorld
-    .map((salto) => listaCluster[(idxCluster + salto) % listaCluster.length])
+  const vecinas = vecinasIndexables(OFERTAS_VIGENTES, (x) => `/ofertas/${x.slug}`, `/ofertas/${item.slug}`, 2);
+  const relacionadosCluster = [...vecinas, ...saltosSmallWorld.map((salto) => listaCluster[(idxCluster + salto) % listaCluster.length])]
     .filter((x) => {
       if (!x || vistos.has(x.slug)) return false;
       vistos.add(x.slug);

@@ -219,7 +219,7 @@ const ADULTOS_MAYORES: LandingEspana = {
     { q: "¿Pueden viajar solos?", a: "Sí. Con la asistencia pedida, el personal del aeropuerto los acompaña en Lima y en Madrid hasta la salida, donde los espera la familia." },
   ],
   enlaces: [
-    { href: "/blog/vuelos-adulto-mayor-silla-de-ruedas-lima-madrid-roma", texto: "Guía: silla de ruedas en el vuelo" },
+    { href: "/viajes/vuelos-adulto-mayor-silla-de-ruedas-lima-madrid-roma", texto: "Guía: silla de ruedas en el vuelo" },
     { href: "/viajes-adultos-mayores", texto: "Viajes para adultos mayores" },
     { href: "/espana/viajar-a-espana-a-visitar-familia", texto: "Visitar a la familia en España" },
   ],
@@ -365,7 +365,7 @@ const REAGRUPACION: LandingEspana = {
   ],
   enlaces: [
     { href: "/blog/reagrupacion-familiar-espana-desde-peru", texto: "Guía: reagrupación familiar" },
-    { href: "/blog/vuelos-reagrupacion-familiar-espana-italia", texto: "Vuelos para reagrupación" },
+    { href: "/viajes/vuelos-reagrupacion-familiar-espana-italia", texto: "Vuelos para reagrupación" },
     { href: "/pasaje-solo-ida-a-espana", texto: "Pasaje solo de ida a España" },
   ],
 };

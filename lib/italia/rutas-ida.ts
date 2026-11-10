@@ -108,7 +108,7 @@ function landingProvincia(slug: string): LandingItalia | null {
   const destinos = ["roma", "milan", "venecia", "florencia", "napoles"].map((d) => CIUDADES_ITALIA[d]).filter(Boolean);
   const mensaje = `¡Hola Cityland Travel! Estoy en ${p.ciudad} y quiero cotizar pasajes a Italia, ida y vuelta.`;
   const enlaces = [...ENLACES_IDA];
-  if (VUELOS_PROVINCIA_MILAN.has(slug)) enlaces.splice(1, 0, { texto: `Pasajes ${p.ciudad}–Milán`, href: `/vuelos/${slug}-milan` });
+  if (VUELOS_PROVINCIA_MILAN.has(slug)) enlaces.splice(1, 0, { texto: "Pasajes Lima–Milán", href: "/vuelos/lima-milan" });
   return {
     slug: `pasajes-${slug}-italia`,
     grupo: "provincia",

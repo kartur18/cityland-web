@@ -15,6 +15,7 @@ import {
   optimizarMetaDescriptionSEO,
 } from "@/lib/seo-arquitectura";
 import { precioMinimoVisible } from "@/lib/tipo-producto-madrid";
+import { vecinasIndexables } from "@/lib/vecinas-indexables";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -85,7 +86,18 @@ export default async function MadridSlugPage({ params }: Props) {
   const { slug } = await params;
   const base = buscarLandingMadrid10k(slug);
   if (!base) notFound();
-  const datos = enriquecerLandingMadrid(base);
+  const enriquecida = enriquecerLandingMadrid(base);
+  const vecinas = vecinasIndexables(INDICE_MADRID_10K, (x) => `/madrid/${x.slug}`, `/madrid/${enriquecida.slug}`, 3).map((x) => ({
+    titulo: x.titulo,
+    href: `/madrid/${x.slug}`,
+    precio: x.precioDesdeUSD,
+    tipo: x.tipo,
+  }));
+  const hrefsVecinas = new Set(vecinas.map((v) => v.href));
+  const datos = {
+    ...enriquecida,
+    enlacesRelacionados: [...vecinas, ...enriquecida.enlacesRelacionados.filter((r) => !hrefsVecinas.has(r.href))],
+  };
 
   const urlActual = `${URL_BASE_SEO}/madrid/${datos.slug}`;
 

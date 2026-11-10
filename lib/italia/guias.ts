@@ -7,7 +7,6 @@ const CONSULTA = "28-oct-2026";
 const ENLACES = [
   { texto: "Requisitos para viajar a Italia", href: "/viajes/requisitos-viajar-a-italia-desde-peru" },
   { texto: "Dichiarazione di ospitalità", href: "/blog/dichiarazione-di-ospitalita-italia-48-horas-questura" },
-  { texto: "Permiso ETIAS", href: "/blog/requisitos-y-permiso-etias-europa" },
   { texto: "Pasajes de Italia a Perú", href: "/italia/pasajes-de-italia-a-peru" },
   { texto: "Paquetes a Italia", href: "/paquetes-a-italia" },
 ];
