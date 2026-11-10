@@ -15,6 +15,8 @@ import { LANDINGS_ITALIA, NOMBRE_GRUPO, rutaLandingItalia } from "@/lib/italia/l
 import type { GrupoItalia, LandingItalia } from "@/lib/italia/tipos";
 import { URL_BASE_SEO, optimizarMetaDescriptionSEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
+import TodoElDestino from "@/components/TodoElDestino";
+import { ciudadDeSlug } from "@/lib/destino-cruzado";
 
 // Plantilla de /italia/<slug>: portada propia de cada familia, el contenido propio de la búsqueda al medio
 // y las páginas hermanas al final.
@@ -155,6 +157,10 @@ export default function PaginaItalia({ landing: l }: { landing: LandingItalia })
               </div>
             )}
           </section>
+
+          {[...new Set([ciudadDeSlug(l.slug) ?? "roma", "roma", "milan"])].slice(0, 2).map((c) => (
+            <TodoElDestino key={c} ciudad={c} />
+          ))}
         </div>
       </main>
       <Footer />

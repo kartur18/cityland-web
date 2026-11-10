@@ -2,7 +2,7 @@ import Link from "next/link";
 import { enlacesDeCiudad, type Seccion } from "@/lib/destino-cruzado";
 
 // «Todo para tu viaje a X»: une las secciones de una misma ciudad. Neutro, para que entre en cualquier diseño.
-export default function TodoElDestino({ ciudad, actual }: { ciudad?: string; actual: Seccion }) {
+export default function TodoElDestino({ ciudad, actual }: { ciudad?: string; actual?: Seccion }) {
   const datos = ciudad ? enlacesDeCiudad(ciudad, actual) : null;
   if (!datos) return null;
   return (

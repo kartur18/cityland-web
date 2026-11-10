@@ -7,6 +7,16 @@ import { EnlaceSeguroGuia } from "@/components/seguros/IndiceSeguros";
 import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
 import { GUIAS_REQUISITOS, type GuiaRequisitos } from "@/lib/guias-requisitos";
+import TodoElDestino from "@/components/TodoElDestino";
+
+// Ciudades cuyo hotel, vuelo y seguro se muestran en cada guía (la guía posiciona; así empuja a lo que vendemos).
+const CIUDADES_DE_GUIA: Record<string, string[]> = {
+  "requisitos-viajar-a-espana-desde-peru": ["madrid", "barcelona"],
+  "requisitos-viajar-a-italia-desde-peru": ["roma", "milan"],
+  "requisitos-viajar-a-francia-desde-peru": ["paris"],
+  "requisitos-viajar-a-punta-cana-desde-peru": ["punta-cana"],
+  "requisitos-viajar-a-dubai-desde-peru": ["dubai"],
+};
 
 const OTRAS_GUIAS = [
   { href: "/blog/cuanto-dinero-llevar-espana-bolsa-de-viaje", texto: "Bolsa de viaje para España" },
@@ -124,6 +134,10 @@ export default function GuiaRequisitosPagina({ guia }: { guia: GuiaRequisitos })
           )}
 
           <EnlaceSeguroGuia slugGuia={guia.slug} pais={guia.pais} />
+
+          {(CIUDADES_DE_GUIA[guia.slug] ?? []).map((c) => (
+            <TodoElDestino key={c} ciudad={c} />
+          ))}
 
           <section className="space-y-4">
             <h2 className="text-2xl font-extrabold text-[#0a1628]">Preguntas frecuentes</h2>
