@@ -3,6 +3,8 @@ import { notFound, permanentRedirect } from "next/navigation";
 import { redireccionOfertaVieja } from "@/lib/redirecciones-ofertas-viejas";
 import { ofertaRedirigida } from "@/lib/ofertas-redirigidas";
 import { vecinasIndexables } from "@/lib/vecinas-indexables";
+import TodoElDestino from "@/components/TodoElDestino";
+import { ciudadDeSlug } from "@/lib/destino-cruzado";
 import type { Metadata } from "next";
 import { esIndexable, robotsSegunRuta } from "@/lib/indexacion";
 import { PAGINAS_RECUPERADAS } from "@/lib/paginas-recuperadas";
@@ -220,6 +222,10 @@ export default async function OfertaComercialPage({ params }: Props) {
             </div>
           </div>
         </section>
+
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+          <TodoElDestino ciudad={ciudadDeSlug(item.slug)} />
+        </div>
 
         <SeoSiloFooter
           enlaces={enlacesCruzados}

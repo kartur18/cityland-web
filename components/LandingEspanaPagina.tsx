@@ -19,6 +19,8 @@ import { LANDINGS_ESPANA, rutaLandingEspana, type LandingEspana } from "@/lib/la
 import type { TemaEspana } from "@/lib/landings-espana-tipos";
 import { URL_BASE_SEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
+import TodoElDestino from "@/components/TodoElDestino";
+import { ciudadDeSlug } from "@/lib/destino-cruzado";
 
 // Plantilla de las landings de España (/espana/<slug>): portada clara con el precio, lo propio de cada búsqueda
 // al medio y los enlaces a las demás páginas de España al final. Los botones de WhatsApp cambian de forma a lo
@@ -247,6 +249,10 @@ export default function LandingEspanaPagina({ landing: l, hermanas = LANDINGS_ES
               ))}
             </div>
           </section>
+
+          {[...new Set([ciudadDeSlug(l.slug) ?? "madrid", "madrid", "barcelona"])].slice(0, 2).map((c) => (
+            <TodoElDestino key={c} ciudad={c} />
+          ))}
         </div>
       </main>
       <PorQueCityland destino="España" />
