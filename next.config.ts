@@ -119,6 +119,14 @@ const nextConfig: NextConfig = {
       { source: "/ofertas/paquetes-a-:destino(miami|orlando|nueva-york)-desde-:origen", destination: "/paquetes-a-estados-unidos", permanent: true },
       { source: "/ofertas/paquetes-a-:destino(cusco|tarapoto|iquitos|arequipa|puno-titicaca|mancora-punta-sal|huaraz|cajamarca)-desde-:origen", destination: "/nacionales", permanent: true },
       { source: "/ofertas/paquetes-a-:destino(madrid|barcelona|espana)-desde-:origen", destination: "/espana", permanent: true },
+      // Las 164 URL de sitemaps viejos (16-oct → 6-nov) que seguían en 404 (revisión del 10-nov-2026): vuelos desde
+      // provincia al extranjero (salen de Lima), luna de miel / fiestas patrias por destino y Paracas de 4 a 8 días.
+      { source: "/vuelos/:o(arequipa|trujillo|chiclayo|piura|cusco|iquitos|tarapoto|tacna|juliaca|cajamarca)-:d(barcelona|madrid|paris|roma|milan|miami|newark|nueva-york|punta-cana|cancun|cartagena|panama|buenos-aires|santiago)", destination: "/vuelos/lima-:d", permanent: true },
+      { source: "/destinos/luna-de-miel-:d", destination: "/luna-de-miel", permanent: true },
+      // Enlazadas desde 87 páginas (paquetes armados de Europa y guías de Italia) sin existir nunca.
+      { source: "/:s(viajes|blog)/requisitos-y-permiso-etias-europa", destination: "/guia-europa", permanent: true },
+      { source: "/destinos/fiestas-patrias-:d", destination: "/feriados-largos", permanent: true },
+      { source: "/ofertas/:e(paquete|circuito|oferta)-paracas-ica-y-huacachina-:n(4|5|6|7|8)-dias-:m-noches", destination: "/destinos/paracas-ica-huacachina-nazca", permanent: true },
       // Artículos del blog que competían con las guías de requisitos por la misma búsqueda (24-oct-2026).
       {
         source: "/blog/requisitos-viajar-espana-desde-peru-2026",

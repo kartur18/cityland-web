@@ -8,6 +8,7 @@ import {
   obtenerSuperLandingPorSlug,
 } from "@/lib/catalogo-paquetes-migratorios-1000";
 import { enriquecerLandingMigratorio } from "@/lib/contenido-migratorios";
+import { vecinasIndexables } from "@/lib/vecinas-indexables";
 import {
   URL_BASE_SEO,
   construirSchemaLandingSEO,
@@ -77,7 +78,20 @@ export default async function PaqueteMigratorioSlugPage({ params }: Props) {
   const { slug } = await params;
   const base = obtenerSuperLandingPorSlug(slug);
   if (!base) notFound();
-  const datos = enriquecerLandingMigratorio(base);
+  const enriquecida = enriquecerLandingMigratorio(base);
+  const ruta = (s: string) => `/paquetes-migratorios/${s}`;
+  const vecinas = vecinasIndexables(INDICE_PAQUETES_MIGRATORIOS_1000, (x) => ruta(x.slug), ruta(enriquecida.slug), 2).map((x) => ({
+    titulo: x.titulo,
+    href: ruta(x.slug),
+    ciudad: x.ciudadDestino,
+    pais: x.pais,
+    precioDesde: x.precioPromo,
+  }));
+  const hrefsVecinas = new Set(vecinas.map((v) => v.href));
+  const datos = {
+    ...enriquecida,
+    enlacesRelacionados: [...vecinas, ...enriquecida.enlacesRelacionados.filter((r) => !hrefsVecinas.has(r.href))],
+  };
 
   const urlActual = `${URL_BASE_SEO}/paquetes-migratorios/${datos.slug}`;
   const imagenAbsoluta = datos.imagenHero.startsWith("/")

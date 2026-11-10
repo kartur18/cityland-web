@@ -5,6 +5,7 @@ import CotizadorWhatsApp from "@/components/CotizadorWhatsApp";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import PhoneIcon from "@/components/icons/PhoneIcon";
 import FlagIcon from "@/components/icons/FlagIcon";
+import EnlacesPie from "@/components/EnlacesPie";
 import { formatoUSD } from "@/lib/formato-precio";
 import { tarifasMigratorio } from "@/lib/precios-migratorio";
 
@@ -301,6 +302,8 @@ export default function Footer() {
           </div>
 
         </div>
+
+        <EnlacesPie />
 
         {/* Legal Bottom Bar */}
         <div className="border-t border-slate-800 pt-8 space-y-3">

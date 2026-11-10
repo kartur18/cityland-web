@@ -11,7 +11,8 @@ interface Pais {
 }
 
 const R = (slug: string) => `/viajes/requisitos-viajar-a-${slug}`;
-const ETIAS = "/viajes/requisitos-y-permiso-etias-europa";
+// Guía de requisitos para Europa (no hay página propia de ETIAS: la vieja daba 404, 10-nov-2026).
+const ETIAS = "/guia-europa";
 
 const PAISES: Record<string, Pais> = {
   espana: {

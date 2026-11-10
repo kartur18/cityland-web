@@ -1,4 +1,5 @@
 import { DESTINOS_EUROPA, DESTINOS_CARIBE } from "@/components/constantes";
+import { ofertaRedirigida } from "@/lib/ofertas-redirigidas";
 import { DESTINOS_MASIVOS } from "@/lib/catalogo-destinos-masivo";
 import { RUTAS_VUELOS_SEO } from "@/lib/rutas-vuelos";
 import { VIAJES_ESPECIALIZADOS_SEO } from "@/lib/catalogo-viajes-especializados";
@@ -302,9 +303,9 @@ export function obtenerEnlacesCruzadosSEO(
   });
 
   const ofertasCoincidentes = TODOS_LOS_RESUMENES_OFERTAS_SEO.filter(
-    (o) => o.slug !== slugActual && coincide(`${o.titulo} ${o.destinoOPais} ${o.slug}`)
+    (o) => o.slug !== slugActual && !ofertaRedirigida(o.slug) && coincide(`${o.titulo} ${o.destinoOPais} ${o.slug}`)
   );
-  const poolOfertas = ofertasCoincidentes.length >= 6 ? ofertasCoincidentes : TODOS_LOS_RESUMENES_OFERTAS_SEO;
+  const poolOfertas = ofertasCoincidentes.length >= 6 ? ofertasCoincidentes : TODOS_LOS_RESUMENES_OFERTAS_SEO.filter((o) => !ofertaRedirigida(o.slug));
   const ofertas: EnlaceSiloSEO[] = Array.from({ length: 8 }, (_, i) => {
     const o = poolOfertas[(hash + i * 7) % poolOfertas.length];
     return {
