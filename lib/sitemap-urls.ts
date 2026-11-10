@@ -25,6 +25,7 @@ import { PAGINAS_RECUPERADAS } from "@/lib/paginas-recuperadas";
 import { landingsSoloIda } from "@/lib/landings-solo-ida";
 import { LANDINGS_ITALIA, rutaLandingItalia } from "@/lib/italia/landings";
 import { LANDINGS_SEGUROS, rutaLandingSeguro } from "@/lib/seguros/landings";
+import { GUIAS_VISA, rutaGuiaVisa } from "@/lib/guias-visas-pais";
 import { LANDINGS_PRACTICO } from "@/lib/landings-espana-practico";
 import { LANDINGS_RUTAS_BARCELONA, LANDINGS_RUTAS_PERU } from "@/lib/landings-espana-rutas";
 
@@ -51,6 +52,7 @@ export const IDS_SITEMAP = [
   "traslados",
   "italia",
   "seguros",
+  "visas",
 ] as const;
 
 export type IdSitemap = (typeof IDS_SITEMAP)[number];
@@ -231,6 +233,7 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
   italia: () => LANDINGS_ITALIA.map(rutaLandingItalia),
   // Seguros de viaje por destino, perfil y dudas (29-oct-2026).
   seguros: () => LANDINGS_SEGUROS.map(rutaLandingSeguro),
+  visas: () => GUIAS_VISA.map(rutaGuiaVisa),
 };
 
 // Se anuncian a Google solo las páginas indexables (ver lib/indexacion.ts); el sitemap y el meta robots usan la misma regla.

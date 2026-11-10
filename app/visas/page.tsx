@@ -4,10 +4,11 @@ import VisasLandingClient from "./VisasLandingClient";
 import { SERVICIOS_VISAS } from "./datos";
 import BloqueGuiaServicio from "@/components/BloqueGuiaServicio";
 import { GUIA_VISAS } from "@/lib/guia-visas";
+import IndiceGuiasVisas from "@/components/IndiceGuiasVisas";
 
 export const metadata: Metadata = {
-  title: optimizarMetaTitleSEO("Trámite y Asesoría de Visa Americana, Canadá, México y España en Lima | Cityland Travel"),
-  description: optimizarMetaDescriptionSEO("Asesoría para tramitar tu Visa Americana B1/B2 (primera vez y renovación), Visa de Canadá, Visa de México y visados a España desde Lima. Llenado DS-160, revisión de documentos y simulacro de entrevista en Los Olivos (RUC 20614914239)."),
+  title: optimizarMetaTitleSEO("Visas para peruanos: turismo, estudios y trabajo | Cityland Travel"),
+  description: optimizarMetaDescriptionSEO("Visas para peruanos: Estados Unidos, Canadá, México, Australia, Reino Unido y España. Requisitos oficiales de turismo, estudios y trabajo, y asesoría en Los Olivos, Lima."),
   keywords: [
     "tramite de visa americana en lima peru",
     "asesoria visa americana b1 b2 lima",
@@ -125,6 +126,7 @@ export default function VisasPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD_VISAS) }}
       />
       <VisasLandingClient>
+        <IndiceGuiasVisas />
         <BloqueGuiaServicio guia={GUIA_VISAS} />
       </VisasLandingClient>
     </>

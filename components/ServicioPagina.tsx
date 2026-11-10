@@ -34,6 +34,8 @@ export function metadataServicio(s: ServicioCityland): Metadata {
       locale: "es_PE",
       images: [absoluta(fotoServicio(s), URL_BASE_SEO)],
     },
+    // Sin esto la tarjeta de X heredaba el texto de la portada («Paquete Migratorio US$ 799, Seguro Schengen 30.000€»).
+    twitter: { card: "summary_large_image", title: s.h1, description: s.descripcion, images: [absoluta(fotoServicio(s), URL_BASE_SEO)] },
   };
 }
 

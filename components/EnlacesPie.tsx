@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { GUIAS_VISA, NOMBRE_TIPO_VISA, rutaGuiaVisa } from "@/lib/guias-visas-pais";
 
 // Revisión del 10-nov-2026: las páginas por distrito tenían 0-1 enlaces internos y Google aún no conocía
 // /paquetes-a-italia. Desde el pie las recibe cada página de la web.
@@ -47,10 +48,21 @@ const GRUPOS: { titulo: string; enlaces: [string, string][] }[] = [
   },
 ];
 
+const GRUPO_VISAS = {
+  titulo: "Visas de turismo, estudios y trabajo",
+  enlaces: [
+    ["/visas", "Todas las visas"],
+    ["/visa-americana", "Visa americana"],
+    ["/visa-de-estudios-para-espana", "Estudios España"],
+    ["/visa-de-trabajo-para-espana", "Trabajo España"],
+    ...GUIAS_VISA.map((g) => [rutaGuiaVisa(g), `${NOMBRE_TIPO_VISA[g.tipo]} ${g.pais}`]),
+  ] as [string, string][],
+};
+
 export default function EnlacesPie() {
   return (
     <div className="mb-10 space-y-4 border-t border-slate-800 pt-8">
-      {GRUPOS.map((g) => (
+      {[...GRUPOS, GRUPO_VISAS].map((g) => (
         <div key={g.titulo}>
           <p className="mb-2 text-[10px] font-bold uppercase tracking-wider text-slate-400">{g.titulo}</p>
           <ul className="flex flex-wrap gap-x-4 gap-y-1 text-xs">
