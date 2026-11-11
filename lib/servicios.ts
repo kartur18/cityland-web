@@ -482,9 +482,9 @@ export const SERVICIOS: Readonly<Record<string, ServicioCityland>> = {
     h1: "Visa de trabajo para España desde Perú",
     tituloSeo: "Visa de trabajo para España desde Perú",
     descripcion:
-      "Cómo trabajar legalmente en España siendo peruano: la oferta de trabajo, la autorización que pide el empleador y el visado en el Consulado. Te ayudamos con la carpeta y el pasaje.",
+      "Cómo trabajar legalmente en España siendo peruano: la oferta de trabajo, la autorización que pide el empleador y el visado en Lima. Te ayudamos con la carpeta y el pasaje.",
     intro:
-      "Para trabajar legalmente en España necesitas que un empleador en España pida tu autorización de trabajo y, después, el visado en el Consulado de España en Lima. Te explicamos el camino y te armamos la carpeta y el viaje.",
+      "Para trabajar legalmente en España necesitas que un empleador en España pida tu autorización de trabajo y, después, el visado en Lima. Te explicamos el camino y te armamos la carpeta y el viaje.",
     queCotizamos: [
       { titulo: "Orientación del trámite", detalle: "Te explicamos los pasos y los documentos según tu caso." },
       { titulo: "Carpeta de documentos", detalle: "Te ayudamos a ordenar lo que pide el Consulado para el visado." },
@@ -493,7 +493,7 @@ export const SERVICIOS: Readonly<Record<string, ServicioCityland>> = {
     ],
     pasos: [
       "Un empleador en España te ofrece trabajo y pide tu autorización de residencia y trabajo.",
-      "Con la autorización concedida, pides tu visado en el Consulado de España en Lima.",
+      "Con la autorización concedida, pides tu visado en Lima, a través del centro BLS, dentro de 1 mes desde que se notifica la resolución favorable.",
       "Con el visado en tu pasaporte, viajas y tramitas tu tarjeta de residencia en España.",
     ],
     ejemplosTitulo: "Guías para tu viaje",
@@ -509,7 +509,7 @@ export const SERVICIOS: Readonly<Record<string, ServicioCityland>> = {
       },
       {
         q: "¿Los peruanos tienen alguna ventaja?",
-        a: "Sí: para los peruanos el empleador no necesita demostrar que no encontró trabajadores en España (la llamada situación nacional de empleo), lo que facilita la autorización.",
+        a: "Posiblemente. Según el Ministerio de Inclusión, la situación nacional de empleo (que el empleador pruebe que no encontró trabajadores en España) no se aplica a los nacionales de países con acuerdos internacionales sobre este tema, entre ellos Perú. Cómo se aplica en tu caso lo confirma la Oficina de Extranjería al tramitar la autorización.",
       },
       { q: "¿Ustedes consiguen el trabajo?", a: "No. El contrato lo da un empleador en España; nosotros te orientamos con el trámite, la carpeta y el viaje." },
     ],
@@ -537,13 +537,13 @@ export const SERVICIOS: Readonly<Record<string, ServicioCityland>> = {
     pasos: [
       "Consigues tu matrícula en un centro de estudios autorizado en España.",
       "Reúnes los documentos: matrícula, medios económicos, seguro médico y los certificados que te pidan.",
-      "Pides tu cita y presentas la solicitud en el centro de visados en Lima, con tiempo antes de viajar.",
+      "Pides tu cita y presentas la solicitud en el centro de visados BLS en Lima, con al menos 2 meses de antelación al inicio de tus estudios.",
       "Con la visa aprobada, compras tu pasaje y viajas.",
     ],
     ejemplosTitulo: "Guías para tu viaje",
     ejemplos: [
       { texto: "Visa de estudios: guía completa", href: "/blog/visa-de-estudios-espana-desde-peru" },
-      { texto: "Seguro de viaje para Europa", href: "/blog/seguro-schengen-30000-euros-peru-precio" },
+      { texto: "Seguro para estudiantes", href: "/seguros/seguro-de-viaje-para-estudiantes" },
       { texto: "Tu primer viaje a España", href: "/blog/viajar-a-espana-por-primera-vez-desde-peru" },
     ],
     faqs: [
