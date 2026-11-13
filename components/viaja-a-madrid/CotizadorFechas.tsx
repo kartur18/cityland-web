@@ -1,5 +1,6 @@
 "use client";
 
+import { PRECIO_IDA_VUELTA_MADRID_DESDE } from "@/components/constantes";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { useCotizador, useEnlaceWhatsApp } from "@/components/viaja-a-madrid/CotizadorContexto";
 import { MAX_RETORNO, MAX_SALIDA, MESES_VIAJE, MIN_SALIDA, PRECIO_ANTICIPADO } from "@/lib/viaja-a-madrid";
@@ -14,6 +15,8 @@ export default function CotizadorFechas() {
   const href = useEnlaceWhatsApp("Cotizador por fechas");
   const retornoMalo = Boolean(c.salida && c.retorno && c.retorno < c.salida);
   const total = c.adultos * PRECIO_ANTICIPADO;
+  // Diferencia con la tarifa «desde» que la web publica para otras fechas (/vuelos/lima-madrid): solo si es a favor.
+  const diferencia = c.adultos * (PRECIO_IDA_VUELTA_MADRID_DESDE - PRECIO_ANTICIPADO);
 
   return (
     <form onSubmit={(e) => e.preventDefault()} className="grid gap-5 sm:grid-cols-2" aria-label="Cotiza tu viaje a Madrid por fechas">
@@ -79,11 +82,16 @@ export default function CotizadorFechas() {
         </select>
       </div>
 
-      <div className="rounded-xl bg-slate-50 px-4 py-3.5 sm:col-span-2" aria-live="polite">
+      <div className="rounded-xl bg-gradient-to-br from-amber-50 to-orange-50 px-4 py-3.5 ring-1 ring-amber-200 sm:col-span-2" aria-live="polite">
         <p className="text-sm text-slate-600">
           {c.adultos === 1 ? "1 adulto" : `${c.adultos} adultos`}, ida y vuelta, desde
         </p>
         <p className="text-3xl font-extrabold tracking-tight text-[#0a1628]">US$ {total.toLocaleString("en-US")}</p>
+        {diferencia > 0 && (
+          <p className="mt-1.5 inline-block rounded-full bg-emerald-600 px-3 py-1 text-xs font-bold text-white">
+            US$ {diferencia.toLocaleString("en-US")} menos que la tarifa desde US$ {PRECIO_IDA_VUELTA_MADRID_DESDE.toLocaleString("en-US")} de otras fechas
+          </p>
+        )}
         <p className="mt-1 text-xs text-slate-500">
           Referencial según la tarifa «desde». {c.menores > 0 ? "Los menores se cotizan aparte. " : ""}El precio final depende de tus fechas y se confirma antes de comprar.
         </p>
@@ -94,7 +102,7 @@ export default function CotizadorFechas() {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex min-h-[58px] w-full items-center justify-center gap-2.5 rounded-xl bg-[#e30613] px-6 text-base font-extrabold text-white transition-all duration-200 hover:bg-[#c40510] hover:shadow-[0_8px_24px_-8px_rgba(227,6,19,0.7)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e30613]"
+          className="group inline-flex min-h-[60px] w-full items-center justify-center gap-2.5 rounded-xl bg-gradient-to-b from-[#1ebe5d] to-[#0b7a43] px-6 text-base font-extrabold text-white transition-all duration-200 hover:from-[#25d366] hover:to-[#0e8f4e] hover:shadow-[0_8px_24px_-8px_rgba(14,143,78,0.8)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0b7a43]"
         >
           <WhatsAppIcon size={20} />
           Solicitar cotización por WhatsApp
