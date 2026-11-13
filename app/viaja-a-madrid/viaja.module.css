@@ -1,0 +1,72 @@
+/* Movimiento sutil de la landing: entrada escalonada del hero y un punto que viaja de Lima a Madrid.
+   Todo se apaga con «reducir movimiento» del sistema. */
+@keyframes subir {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes viajar {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  15%,
+  85% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 8px);
+    opacity: 0;
+  }
+}
+
+@keyframes acercar {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.entrada {
+  opacity: 0;
+  animation: subir 0.75s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  animation-delay: var(--d, 0s);
+}
+
+.punto {
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  border-radius: 9999px;
+  background: #e30613;
+  animation: viajar 3.4s ease-in-out infinite;
+}
+
+.foto {
+  animation: acercar 2.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entrada {
+    animation: none;
+    opacity: 1;
+  }
+  .punto {
+    animation: none;
+    left: calc(50% - 4px);
+    opacity: 1;
+  }
+  .foto {
+    animation: none;
+  }
+}
