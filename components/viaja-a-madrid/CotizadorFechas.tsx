@@ -92,7 +92,7 @@ export default function CotizadorFechas() {
           </p>
         )}
         <p className="mt-1 text-xs text-slate-500">
-          Referencial según la tarifa «desde». {c.menores > 0 ? "Los menores se cotizan aparte. " : ""}El precio final depende de tus fechas y se confirma antes de comprar.
+          Referencial. {c.menores > 0 ? "Los menores se cotizan aparte. " : ""}El precio final depende de tus fechas.
         </p>
       </div>
 
@@ -109,7 +109,7 @@ export default function CotizadorFechas() {
             →
           </span>
         </a>
-        <p className="mt-3 text-center text-sm text-slate-500">No pedimos DNI ni pasaporte para cotizar. Una asesora te responde con las opciones y el precio.</p>
+        <p className="mt-3 text-center text-sm text-slate-500">Cotizar es gratis. No pedimos DNI ni pasaporte.</p>
       </div>
     </form>
   );
