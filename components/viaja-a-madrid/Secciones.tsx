@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { PRECIO_IDA_VUELTA_MADRID_DESDE } from "@/components/constantes";
 import BotonCotizar from "@/components/viaja-a-madrid/BotonCotizar";
-import { PRECIO_ANTICIPADO } from "@/lib/viaja-a-madrid";
+import { PRECIO_ANTICIPADO, PRECIO_OTRAS_FECHAS } from "@/lib/viaja-a-madrid";
 import estilos from "@/app/viaja-a-madrid/viaja.module.css";
 
 // Secciones de venta de /viaja-a-madrid, todas sin estado (el estado vive en CotizadorContexto).
@@ -19,7 +18,7 @@ export function Cinta() {
     </span>
   ));
   return (
-    <div aria-hidden="true" className="overflow-hidden bg-gradient-to-r from-[#c40510] via-[#e30613] to-[#c40510] py-3 text-white">
+    <div aria-hidden="true" className="overflow-hidden bg-[#e30613] py-3 text-white">
       <div className={estilos.cinta}>
         {grupo}
         {grupo}
@@ -31,9 +30,9 @@ export function Cinta() {
 }
 
 const HECHOS = [
-  { n: "2", t: "oficinas físicas en Lima", d: "Los Olivos, con atención en persona", color: "from-[#e30613] to-[#f5b83d]" },
-  { n: "1", t: "asesora personal", d: "te responde por WhatsApp con tus opciones", color: "from-[#3b5bdb] to-[#22d3ee]" },
-  { n: "0", t: "sorpresas al pagar", d: "el precio final se confirma por escrito antes", color: "from-[#059669] to-[#a3e635]" },
+  { n: "2", t: "oficinas físicas en Lima", d: "Los Olivos, con atención en persona", color: "text-[#e30613]" },
+  { n: "1", t: "asesora personal", d: "te responde por WhatsApp con tus opciones", color: "text-[#3b5bdb]" },
+  { n: "0", t: "sorpresas al pagar", d: "el precio final se confirma por escrito antes", color: "text-[#059669]" },
 ];
 
 export function Hechos() {
@@ -41,8 +40,8 @@ export function Hechos() {
     <section className="border-b border-slate-200">
       <div className="mx-auto grid max-w-7xl divide-y divide-slate-200 px-5 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
         {HECHOS.map((h) => (
-          <div key={h.t} className="flex items-center gap-4 py-5 sm:px-6 sm:first:pl-0">
-            <span className={`bg-gradient-to-br ${h.color} bg-clip-text text-6xl font-black tracking-tighter text-transparent`}>{h.n}</span>
+          <div key={h.t} className={`${estilos.revelar} flex items-center gap-4 py-5 sm:px-6 sm:first:pl-0`}>
+            <span className={`${h.color} text-6xl font-black tracking-tighter`}>{h.n}</span>
             <p className="text-sm leading-snug text-slate-600">
               <strong className="block text-base text-[#0a1628]">{h.t}</strong>
               {h.d}
@@ -56,12 +55,12 @@ export function Hechos() {
 
 // El precio anticipado frente a la tarifa «desde» que la web publica para otras fechas. Referencial, y se dice.
 export function Comparativo() {
-  const otras = PRECIO_IDA_VUELTA_MADRID_DESDE;
+  const otras = PRECIO_OTRAS_FECHAS;
   const dif = otras - PRECIO_ANTICIPADO;
   if (dif <= 0) return null;
   const ancho = Math.round((PRECIO_ANTICIPADO / otras) * 100);
   return (
-    <section className="bg-gradient-to-b from-amber-50 to-white px-5 py-16 sm:py-24">
+    <section className="bg-amber-50 px-5 py-16 sm:py-24">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-20">
         <div>
           <p className={`${ETIQUETA} text-[#c40510]`}>Anticiparte se nota en el precio</p>
@@ -77,7 +76,7 @@ export function Comparativo() {
               <span className="text-xl font-extrabold">US$ {PRECIO_ANTICIPADO}</span>
             </div>
             <div className="h-5 overflow-hidden rounded-full bg-slate-200">
-              <div className="h-full rounded-full bg-gradient-to-r from-[#059669] via-[#84cc16] to-[#f5b83d]" style={{ width: `${ancho}%` }} />
+              <div className={`${estilos.barra} h-full rounded-full bg-[#16a34a]`} style={{ width: `${ancho}%` }} />
             </div>
           </div>
           <div>
@@ -86,7 +85,7 @@ export function Comparativo() {
               <span className="text-xl font-extrabold">US$ {otras.toLocaleString("en-US")}</span>
             </div>
             <div className="h-5 overflow-hidden rounded-full bg-slate-200">
-              <div className="h-full w-full rounded-full bg-slate-400" />
+              <div className={`${estilos.barra} h-full w-full rounded-full bg-slate-400`} />
             </div>
           </div>
           <p className="text-xs text-slate-500">
@@ -117,7 +116,7 @@ export function LineaDeTiempo() {
       <p className="mt-4 max-w-xl text-lg text-slate-600">Las tarifas suelen subir a medida que se acerca la fecha de viaje. Por eso esta tarifa es para quien se adelanta.</p>
       <ol className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
         {LINEA.map((p) => (
-          <li key={p.t} className="relative border-l-2 border-slate-200 pl-7 md:border-l-0 md:border-t-2 md:pl-0 md:pt-8">
+          <li key={p.t} className={`${estilos.revelar} relative border-l-2 border-slate-200 pl-7 md:border-l-0 md:border-t-2 md:pl-0 md:pt-8`}>
             <span aria-hidden="true" className={`absolute -left-[8px] top-1 h-3.5 w-3.5 rounded-full ring-4 ring-white md:-top-[8px] md:left-0 ${p.punto}`} />
             <p className={`${ETIQUETA} text-slate-500`}>{p.cuando}</p>
             <h3 className="mt-2 text-2xl font-extrabold tracking-tight">{p.t}</h3>
@@ -130,9 +129,9 @@ export function LineaDeTiempo() {
 }
 
 const PARA = [
-  { t: "Ver a los tuyos", d: "Tu familia o tus amigos en España te esperan. Viaja con tiempo y llega sin apuros.", fondo: "from-[#e11d48] to-[#f97316]", emoji: "♥" },
-  { t: "Tu primer viaje a Madrid", d: "Si nunca fuiste, una asesora te explica cada paso: fechas, documentos y qué te conviene.", fondo: "from-[#3b5bdb] to-[#22d3ee]", emoji: "★" },
-  { t: "Vacaciones en pareja o en familia", d: "Elige tus fechas con calma y viaja en la mejor época para caminar la ciudad.", fondo: "from-[#059669] to-[#a3e635]", emoji: "☀" },
+  { t: "Ver a los tuyos", d: "Tu familia o tus amigos en España te esperan. Viaja con tiempo y llega sin apuros.", fondo: "bg-[#e11d48]", emoji: "♥" },
+  { t: "Tu primer viaje a Madrid", d: "Si nunca fuiste, una asesora te explica cada paso: fechas, documentos y qué te conviene.", fondo: "bg-[#3b5bdb]", emoji: "★" },
+  { t: "Vacaciones en pareja o en familia", d: "Elige tus fechas con calma y viaja en la mejor época para caminar la ciudad.", fondo: "bg-[#059669]", emoji: "☀" },
 ];
 
 export function ParaQuien() {
@@ -141,8 +140,8 @@ export function ParaQuien() {
       <h2 className="max-w-2xl text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl">Un viaje a Madrid para cada motivo</h2>
       <div className="mt-10 grid gap-5 md:grid-cols-3">
         {PARA.map((p) => (
-          <article key={p.t} className={`relative overflow-hidden rounded-3xl bg-gradient-to-br ${p.fondo} p-7 text-white`}>
-            <span aria-hidden="true" className="absolute -right-3 -top-6 text-[8rem] font-black leading-none text-white/15">
+          <article key={p.t} className={`${estilos.revelar} group relative overflow-hidden rounded-3xl ${p.fondo} p-7 text-white shadow-lg transition-transform duration-300 hover:-translate-y-2 hover:rotate-1`}>
+            <span aria-hidden="true" className="absolute -right-3 -top-6 text-[8rem] font-black leading-none text-white/15 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-125">
               {p.emoji}
             </span>
             <h3 className="relative text-2xl font-extrabold leading-tight">{p.t}</h3>
@@ -163,7 +162,7 @@ const GALERIA = [
 // Fotos pequeñas: en celular se deslizan de lado, en pantalla grande son tres tarjetas bajas.
 export function Galeria() {
   return (
-    <section className="bg-gradient-to-b from-sky-50 to-white px-5 py-14 sm:py-20">
+    <section className="bg-sky-50 px-5 py-14 sm:py-20">
       <div className="mx-auto max-w-5xl">
         <h2 className="max-w-2xl text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl">Madrid te espera en abril, mayo y junio</h2>
         <p className="mt-3 max-w-xl text-lg text-slate-600">Terrazas, plazas y días más largos: los meses para caminar Madrid sin apuro.</p>
@@ -204,7 +203,7 @@ export function GuiaViaje() {
       <p className={`${ETIQUETA} text-[#059669]`}>Antes de viajar</p>
       <h2 className="mt-3 max-w-2xl text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl">Lo que necesitas saber para viajar a Madrid desde Perú</h2>
       <div className="mt-10 grid gap-6 lg:grid-cols-2">
-        <div className="rounded-3xl bg-gradient-to-br from-sky-50 to-indigo-50 p-6 ring-1 ring-sky-200 sm:p-8">
+        <div className={`${estilos.revelar} rounded-3xl bg-sky-50 p-6 ring-1 ring-sky-200 sm:p-8`}>
           <h3 className="text-xl font-extrabold text-[#1e3a8a]">Documentos que te pueden pedir</h3>
           <p className="mt-1 text-sm text-slate-600">Para turismo, los peruanos viajan a España sin visa hasta 90 días.</p>
           <ul className="mt-5 space-y-4">
@@ -224,7 +223,7 @@ export function GuiaViaje() {
             Ver los requisitos actualizados
           </Link>
         </div>
-        <div className="rounded-3xl bg-gradient-to-br from-amber-50 to-orange-50 p-6 ring-1 ring-amber-200 sm:p-8">
+        <div className={`${estilos.revelar} rounded-3xl bg-amber-50 p-6 ring-1 ring-amber-200 sm:p-8`}>
           <h3 className="text-xl font-extrabold text-[#9a3412]">Cómo comprar bien tu boleto</h3>
           <p className="mt-1 text-sm text-slate-600">Cuatro cuidados que evitan sorpresas y costos extra.</p>
           <ul className="mt-5 space-y-4">

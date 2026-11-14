@@ -27,7 +27,7 @@ export default function BotonCotizar({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`${estilos.pulso} group inline-flex items-center justify-center gap-2.5 rounded-xl bg-gradient-to-b from-[#1ebe5d] to-[#0b7a43] font-extrabold text-white transition-all duration-200 hover:from-[#25d366] hover:to-[#0e8f4e] hover:shadow-[0_10px_30px_-8px_rgba(14,143,78,0.8)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0b7a43] ${tamano} ${className}`}
+      className={`${estilos.pulso} group inline-flex items-center justify-center gap-2.5 rounded-xl bg-[#16a34a] font-extrabold text-white transition-all duration-200 hover:bg-[#15803d] hover:shadow-[0_10px_30px_-8px_rgba(14,143,78,0.8)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0b7a43] ${tamano} ${className}`}
     >
       <WhatsAppIcon size={22} />
       {etiqueta}

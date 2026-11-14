@@ -6,6 +6,8 @@ import { buildWaUrl } from "@/components/constantes";
 
 export const RUTA_LANDING = "/viaja-a-madrid";
 export const PRECIO_ANTICIPADO = 999;
+// Tarifa «desde» de las demás fechas, solo para el comparativo de esta landing (la web general sigue en su propia cifra).
+export const PRECIO_OTRAS_FECHAS = 1500;
 export const MESES_VIAJE = ["Abril 2027", "Mayo 2027", "Junio 2027"] as const;
 export const MIN_SALIDA = "2027-04-01";
 export const MAX_SALIDA = "2027-06-30";
