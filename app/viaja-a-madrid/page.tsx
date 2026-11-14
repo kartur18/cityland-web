@@ -7,7 +7,7 @@ import Buscador from "@/components/viaja-a-madrid/Buscador";
 import BurbujaWhatsApp from "@/components/viaja-a-madrid/BurbujaWhatsApp";
 import { CotizadorProvider } from "@/components/viaja-a-madrid/CotizadorContexto";
 import PrecioAnimado from "@/components/viaja-a-madrid/PrecioAnimado";
-import { Beneficios, CONTENEDOR, Comparativo, Destino, Encabezado, Pasos, Requisitos } from "@/components/viaja-a-madrid/Secciones";
+import { CONTENEDOR, Comparativo, Encabezado, Meses, Pasos, Requisitos } from "@/components/viaja-a-madrid/Secciones";
 import { HORARIO, OFICINAS, PRECIO_ANTICIPADO, PRECIO_OTRAS_FECHAS } from "@/lib/viaja-a-madrid";
 import e from "./viaja.module.css";
 
@@ -33,14 +33,12 @@ export const metadata: Metadata = {
 const PREGUNTAS = [
   { q: "¿El precio de US$ 999 es por persona?", a: "Sí. Es por persona, ida y vuelta Lima–Madrid–Lima. Es una tarifa «desde», sujeta a disponibilidad: el precio final depende de tus fechas." },
   { q: "¿Por qué solo abril, mayo y junio de 2027?", a: "La tarifa de compra anticipada es para esos tres meses. Para otras fechas, escríbenos y cotizamos." },
-  { q: "¿Incluye equipaje?", a: "Depende de la aerolínea y de la tarifa. Te lo confirmamos antes de que pagues." },
-  { q: "¿Puedo cambiar o devolver mi boleto?", a: "Depende de la tarifa y de la aerolínea. Te las decimos antes de comprar." },
+  { q: "¿Incluye equipaje? ¿Puedo cambiar o devolver el boleto?", a: "Depende de la aerolínea y de la tarifa. Te lo confirmamos antes de que pagues." },
   { q: "¿Necesito visa para viajar a España?", a: "Para turismo, los peruanos pueden viajar a España sin visa hasta 90 días. En el aeropuerto pueden pedirte documentos y dinero para tu estadía." },
-  { q: "¿Cómo compro?", a: "Cotiza por WhatsApp, elige tu opción y reserva con nuestro equipo." },
 ];
 
 const NAV = [
-  { href: "#destino", t: "Destino" },
+  { href: "#meses", t: "Elige tu mes" },
   { href: "#pasos", t: "Cómo reservar" },
   { href: "#requisitos", t: "Requisitos" },
   { href: "#oficinas", t: "Oficinas" },
@@ -55,7 +53,7 @@ export default function ViajaAMadridPage() {
       <main className="bg-white pb-20 text-[#0a1628] md:pb-0">
         <div className="bg-[#0a1628] px-4 py-2 text-xs font-semibold text-white">
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-3">
-            <p>Oferta Lima–Madrid ida y vuelta desde US$ {PRECIO_ANTICIPADO} · Viaja abril, mayo o junio 2027</p>
+            <p>Atención por WhatsApp · {HORARIO}</p>
             <p className="hidden md:block">+51 944 103 890</p>
           </div>
         </div>
@@ -77,7 +75,7 @@ export default function ViajaAMadridPage() {
         </header>
 
         {/* PORTADA: foto amplia con zoom lento, tarjeta con el gancho y el buscador que se superpone, como en las web de aerolíneas. */}
-        <section className="relative h-[440px] overflow-hidden bg-slate-300 md:h-[500px]">
+        <section className="relative h-[440px] overflow-hidden bg-slate-300 md:h-[460px]">
           <div className={`${e.zoom} absolute -inset-[4%]`}>
             <Image src="/images/espana/cibeles.jpg" alt="Fuente de Cibeles, Madrid" fill priority sizes="100vw" className="object-cover object-[50%_40%]" />
           </div>
@@ -94,18 +92,18 @@ export default function ViajaAMadridPage() {
             </span>
           </div>
 
-          <div className={`${CONTENEDOR} relative pt-7 md:pt-[70px]`}>
+          <div className={`${CONTENEDOR} relative pt-6 md:pt-[52px]`}>
             <div className="max-w-[640px] rounded-[20px] bg-white p-5 shadow-[0_30px_60px_-28px_rgba(10,22,40,0.6)] md:px-6 md:pb-6">
               <p className={`${e.entrada} inline-block rounded-lg bg-[#e30613] px-3 py-1.5 text-[13px] font-bold shadow-[0_6px_14px_-6px_rgba(227,6,19,0.6)] text-white`} style={retraso("0s")}>
                 Compra anticipada
               </p>
-              <h1 className={`${e.entrada} mt-3.5 text-[clamp(32px,6vw,56px)] font-extrabold leading-[1.02] tracking-tighter`} style={retraso("0.08s")}>
+              <h1 className={`${e.entrada} mt-3.5 text-[clamp(30px,5.4vw,50px)] font-extrabold leading-[1.02] tracking-tighter`} style={retraso("0.08s")}>
                 <span className="block">Viaja Lima a Madrid</span>
                 <span className="block text-[#e30613]">ida y vuelta</span>
               </h1>
               <p className={`${e.entrada} mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1`} style={retraso("0.16s")}>
                 <small className="text-[15px] font-bold">Desde US$</small>
-                <b className="text-[clamp(44px,9vw,76px)] font-extrabold leading-none tracking-tighter">
+                <b className="text-[clamp(42px,8vw,64px)] font-extrabold leading-none tracking-tighter">
                   <PrecioAnimado />
                 </b>
                 <span className="text-sm font-semibold text-slate-500">por persona · viaja abril a junio 2027</span>
@@ -118,13 +116,12 @@ export default function ViajaAMadridPage() {
           <Buscador />
         </div>
 
-        <Destino />
-        <Beneficios />
+        <Meses />
         <Comparativo />
         <Pasos />
         <Requisitos />
 
-        <section className="py-14 sm:py-[72px]">
+        <section className="py-12 sm:py-16">
           <div className={CONTENEDOR}>
             <Encabezado etiqueta="Dudas" titulo="Preguntas frecuentes" />
             <div className="mt-6 max-w-3xl divide-y divide-slate-200 border-y border-slate-200">
@@ -155,12 +152,12 @@ export default function ViajaAMadridPage() {
         </section>
 
         {/* Cierre: bloque azul con el precio y el botón */}
-        <section className="px-5 pb-14 sm:pb-[72px]">
-          <div className="relative mx-auto grid max-w-6xl items-center gap-5 overflow-hidden rounded-[26px] bg-[#2563eb] p-7 text-white shadow-[0_30px_50px_-30px_rgba(37,99,235,0.8)] md:grid-cols-[1fr_auto] md:p-12">
+        <section className="px-5 pb-12 sm:pb-16">
+          <div className="relative mx-auto grid max-w-6xl items-center gap-5 overflow-hidden rounded-3xl bg-[#2563eb] p-6 text-white shadow-[0_30px_50px_-30px_rgba(37,99,235,0.8)] md:grid-cols-[1fr_auto] md:p-9">
             <span aria-hidden="true" className="pointer-events-none absolute -right-8 -top-8 h-56 w-56 rounded-full border-[34px] border-white/10" />
             <div className="relative">
-              <h2 className="max-w-xl text-balance text-3xl font-extrabold leading-[1.08] tracking-tight sm:text-4xl">Asegura hoy tu tarifa de US$ {PRECIO_ANTICIPADO}</h2>
-              <p className="mt-3 text-lg font-medium text-white/90">Ida y vuelta Lima–Madrid por persona. Viaja en abril, mayo o junio de 2027.</p>
+              <h2 className="max-w-xl text-balance text-2xl font-extrabold leading-[1.1] tracking-tight sm:text-3xl">Tu tarifa de compra anticipada te espera</h2>
+              <p className="mt-2 text-base font-medium text-white/90">Elige tu mes y cuántos viajan: te respondemos por WhatsApp con las opciones.</p>
             </div>
             <BotonCotizar zona="Cierre" texto="Cotizar por WhatsApp" claro className="relative shrink-0" />
           </div>
