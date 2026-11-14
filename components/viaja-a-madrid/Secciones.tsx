@@ -1,259 +1,180 @@
 import Image from "next/image";
-import Link from "next/link";
 import BotonCotizar from "@/components/viaja-a-madrid/BotonCotizar";
 import Icono, { type NombreIcono } from "@/components/viaja-a-madrid/Iconos";
 import { PRECIO_ANTICIPADO, PRECIO_OTRAS_FECHAS } from "@/lib/viaja-a-madrid";
 import estilos from "@/app/viaja-a-madrid/viaja.module.css";
 
-// Secciones de venta de /viaja-a-madrid, todas sin estado (el estado vive en CotizadorContexto).
-// Un solo ancho (max-w-6xl), un solo tamaño de título, tarjetas con sombra suave e iconos de línea.
-export const CONTENEDOR = "mx-auto max-w-6xl px-5";
-export const SECCION = "py-14 sm:py-20";
-export const TARJETA = "rounded-3xl bg-white p-6 ring-1 ring-slate-200/70 shadow-[0_1px_2px_rgba(10,22,40,0.05),0_16px_40px_-20px_rgba(10,22,40,0.22)]";
+export const CONTENEDOR = "mx-auto w-full max-w-6xl px-5";
+const AHORRO = PRECIO_OTRAS_FECHAS - PRECIO_ANTICIPADO;
+const fmt = (n: number) => n.toLocaleString("en-US");
 
-// Encabezado común: etiqueta en píldora, título grande y bajada.
-export function Encabezado({ etiqueta, titulo, texto }: { etiqueta: string; titulo: React.ReactNode; texto?: string }) {
+// Etiqueta azul con rayita + título de sección.
+export function Encabezado({ etiqueta, titulo, texto }: { etiqueta: string; titulo: string; texto?: string }) {
   return (
-    <header className="max-w-2xl">
-      <p className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-[#e30613] ring-1 ring-slate-200">
-        <span className="h-1.5 w-1.5 rounded-full bg-[#e30613]" />
+    <div>
+      <span className="inline-flex items-center gap-2.5 text-xs font-extrabold uppercase tracking-[0.1em] text-[#2563eb]">
         {etiqueta}
-      </p>
-      <h2 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight text-[#0a1628] sm:text-4xl">{titulo}</h2>
-      {texto && <p className="mt-3 text-base leading-relaxed text-slate-600 sm:text-lg">{texto}</p>}
-    </header>
+        <span aria-hidden="true" className="h-[3px] w-8 rounded-full bg-current" />
+      </span>
+      <h2 className="mt-2 text-balance text-3xl font-extrabold leading-[1.08] tracking-tight text-[#0a1628] sm:text-[40px]">{titulo}</h2>
+      {texto && <p className="mt-2 text-base text-slate-600 sm:text-lg">{texto}</p>}
+    </div>
   );
 }
 
-function Chip({ icono, tono = "rojo" }: { icono: NombreIcono; tono?: "rojo" | "azul" | "verde" | "marino" }) {
-  const colores = {
-    rojo: "bg-[#fdecee] text-[#e30613]",
-    azul: "bg-[#e6f1fb] text-[#1d6fb8]",
-    verde: "bg-[#e5f6ec] text-[#16a34a]",
-    marino: "bg-[#0a1628] text-white",
-  };
-  return (
-    <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${colores[tono]}`}>
-      <Icono nombre={icono} />
-    </span>
-  );
-}
-
-const HECHOS: { icono: NombreIcono; t: string; d: string }[] = [
-  { icono: "boleto", t: "Ida y vuelta incluida", d: "Lima–Madrid–Lima en un solo boleto" },
-  { icono: "calendario", t: "Abril, mayo o junio 2027", d: "Tú eliges el mes de salida" },
-  { icono: "ubicacion", t: "2 oficinas en Los Olivos", d: "Compra en persona o por WhatsApp" },
-];
-
-// Franja de confianza: tres razones comprobables para escribirnos.
-export function Hechos() {
-  return (
-    <section className="bg-white">
-      <div className={`${CONTENEDOR} grid gap-6 py-10 sm:grid-cols-3`}>
-        {HECHOS.map((h) => (
-          <div key={h.t} className={`${estilos.revelar} flex items-center gap-4`}>
-            <Chip icono={h.icono} tono="marino" />
-            <p className="text-sm leading-snug text-slate-600">
-              <strong className="block text-base text-[#0a1628]">{h.t}</strong>
-              {h.d}
-            </p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-// El precio anticipado frente a la tarifa «desde» de otras fechas. Referencial, y se dice.
-export function Comparativo() {
-  const otras = PRECIO_OTRAS_FECHAS;
-  const dif = otras - PRECIO_ANTICIPADO;
-  if (dif <= 0) return null;
-  const ancho = Math.round((PRECIO_ANTICIPADO / otras) * 100);
-  return (
-    <section className={`${SECCION} bg-[#faf8f4]`}>
-      <div className={`${CONTENEDOR} grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20`}>
-        <Encabezado
-          etiqueta="El ahorro"
-          titulo={
-            <>
-              Esta tarifa es <span className="text-[#e30613]">US$ {dif}</span> más barata
-            </>
-          }
-          texto={`Comprando con anticipación pagas US$ ${PRECIO_ANTICIPADO}. En otras fechas, la tarifa parte desde US$ ${otras.toLocaleString("en-US")}.`}
-        />
-        <div className={`${TARJETA} sm:p-9`}>
-          <p className="text-sm font-semibold text-slate-500">Ahorras por persona</p>
-          <p className="mt-1 text-5xl font-extrabold leading-none tracking-tighter text-[#0a1628]">
-            US$ {dif}
-          </p>
-          <div className="mt-8 space-y-5">
-            <div>
-              <div className="mb-2 flex items-baseline justify-between text-sm font-bold text-[#0a1628]">
-                <span>Compra anticipada · abril a junio 2027</span>
-                <span className="text-lg font-extrabold">US$ {PRECIO_ANTICIPADO}</span>
-              </div>
-              <div className="h-3.5 overflow-hidden rounded-full bg-slate-100">
-                <div className={`${estilos.barra} h-full rounded-full bg-[#16a34a]`} style={{ width: `${ancho}%` }} />
-              </div>
-            </div>
-            <div>
-              <div className="mb-2 flex items-baseline justify-between text-sm font-semibold text-slate-500">
-                <span>Otras fechas</span>
-                <span className="text-lg font-extrabold">US$ {otras.toLocaleString("en-US")}</span>
-              </div>
-              <div className="h-3.5 overflow-hidden rounded-full bg-slate-100">
-                <div className={`${estilos.barra} h-full w-full rounded-full bg-slate-300`} />
-              </div>
-            </div>
-          </div>
-          <p className="mt-6 rounded-xl bg-[#e5f6ec] px-4 py-3 text-sm font-semibold text-[#14532d]">Viajan 2: ahorran US$ {(dif * 2).toLocaleString("en-US")} en total.</p>
-          <p className="mt-6 text-xs leading-relaxed text-slate-500">
-            Tarifas «desde» por persona, ida y vuelta, sujetas a disponibilidad. El precio final depende de tus fechas.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const LINEA: { icono: NombreIcono; cuando: string; t: string; d: string }[] = [
-  { icono: "calendario", cuando: "Paso 1", t: "Elige tu mes", d: "Dinos cuándo quieres viajar y cuántos son." },
-  { icono: "mensaje", cuando: "Paso 2", t: "Recibe tus opciones", d: "Te enviamos vuelos y precio para tus fechas por WhatsApp." },
-  { icono: "avion", cuando: "Paso 3", t: "Reserva y vuela", d: "Aseguras tu tarifa y viajas a Madrid en abril, mayo o junio." },
-];
-
-// Proceso en tres pasos: tarjetas iguales con icono, unidas por una línea en pantallas grandes.
-export function LineaDeTiempo() {
-  return (
-    <section className={`${CONTENEDOR} ${SECCION}`}>
-      <Encabezado etiqueta="Cómo reservar" titulo="Reserva en 3 pasos" texto="Las tarifas suben mientras se acerca la fecha. Esta es para los que se adelantan." />
-      <ol className="mt-10 grid gap-5 md:grid-cols-3">
-        {LINEA.map((p, i) => (
-          <li key={p.t} className={`${estilos.revelar} ${TARJETA} relative`}>
-            <div className="flex items-center justify-between">
-              <Chip icono={p.icono} tono={i === 2 ? "rojo" : "azul"} />
-              <span className="text-5xl font-extrabold leading-none tracking-tighter text-slate-100">{i + 1}</span>
-            </div>
-            <p className="mt-6 text-xs font-bold uppercase tracking-[0.16em] text-[#e30613]">{p.cuando}</p>
-            <h3 className="mt-2 text-lg font-bold leading-snug tracking-tight text-[#0a1628]">{p.t}</h3>
-            <p className="mt-2 leading-relaxed text-slate-600">{p.d}</p>
-          </li>
-        ))}
-      </ol>
-    </section>
-  );
-}
-
-const PARA: { icono: NombreIcono; tono: "rojo" | "azul" | "verde"; t: string; d: string }[] = [
-  { icono: "corazon", tono: "rojo", t: "En pareja", d: "Terrazas, museos y cenas largas. Abril a junio es primavera en Madrid." },
-  { icono: "brujula", tono: "azul", t: "En familia o con amigos", d: "La tarifa es por persona: viajan los que quieran y el total lo ves al cotizar." },
-  { icono: "sol", tono: "verde", t: "A ver a los tuyos", d: "Si tienes familia o amigos en España, llega en primavera con tu boleto ya asegurado." },
-];
-
-export function ParaQuien() {
-  return (
-    <section className={`${SECCION} bg-[#faf8f4]`}>
-      <div className={CONTENEDOR}>
-        <Encabezado etiqueta="Para quién" titulo="¿Con quién vas a Madrid?" />
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {PARA.map((p) => (
-            <article key={p.t} className={`${estilos.revelar} ${TARJETA} transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-20px_rgba(10,22,40,0.3)]`}>
-              <Chip icono={p.icono} tono={p.tono} />
-              <h3 className="mt-6 text-lg font-bold leading-tight text-[#0a1628]">{p.t}</h3>
-              <p className="mt-2 leading-relaxed text-slate-600">{p.d}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const DOCUMENTOS = [
-  { t: "Pasaporte vigente", d: "Con 3 meses de validez después de tu salida de España y emitido en los últimos 10 años." },
-  { t: "Pasaje de ida y vuelta", d: "Migraciones lo revisa al entrar." },
-  { t: "Reserva de alojamiento", d: "Hotel reservado o carta de invitación." },
-  { t: "Dinero para tu estadía", d: "Pueden pedirte comprobar que tienes con qué cubrir tu estadía." },
-];
-
-const CONSEJOS = [
-  { t: "Que el nombre coincida con tu pasaporte", d: "Un error en el boleto puede costar un cambio." },
-  { t: "Pregunta qué equipaje incluye", d: "Cambia según la aerolínea y la tarifa. Pregúntalo antes de pagar." },
-  { t: "Contrata un seguro de viaje", d: "Cubre gastos médicos y cancelaciones del viaje." },
-  { t: "Reserva con fechas seguras", d: "Cambiar fechas después puede tener costo." },
-];
-
-function Lista({ items }: { items: { t: string; d: string }[] }) {
-  return (
-    <ul className="space-y-5">
-      {items.map((d) => (
-        <li key={d.t} className="flex gap-3.5">
-          <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#e5f6ec] text-[#16a34a]">
-            <Icono nombre="check" className="h-3.5 w-3.5" />
-          </span>
-          <p className="text-sm leading-snug text-slate-600">
-            <strong className="block text-base text-[#0a1628]">{d.t}</strong>
-            {d.d}
-          </p>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-// Información útil para decidir: lo que se pide para entrar a España y cómo comprar bien el boleto.
-export function GuiaViaje() {
-  return (
-    <section className={`${CONTENEDOR} ${SECCION}`}>
-      <Encabezado etiqueta="Antes de volar" titulo="Lo que pide España a los peruanos" />
-      <div className="mt-10 grid gap-6 lg:grid-cols-2">
-        <div className={`${estilos.revelar} ${TARJETA} sm:p-9`}>
-          <Chip icono="escudo" tono="marino" />
-          <h3 className="mt-5 text-xl font-bold text-[#0a1628]">Lleva en tu equipaje de mano</h3>
-          <p className="mb-6 mt-1 text-sm text-slate-500">Para turismo, sin visa hasta 90 días.</p>
-          <Lista items={DOCUMENTOS} />
-          <Link href="/viajes/requisitos-viajar-a-espana-desde-peru" className="mt-6 inline-flex min-h-[44px] items-center text-sm font-bold text-[#e30613] underline underline-offset-4">
-            Ver los requisitos actualizados
-          </Link>
-        </div>
-        <div className={`${estilos.revelar} ${TARJETA} sm:p-9`}>
-          <Chip icono="boleto" tono="marino" />
-          <h3 className="mt-5 text-xl font-bold text-[#0a1628]">Revisa antes de pagar tu boleto</h3>
-          <p className="mb-6 mt-1 text-sm text-slate-500">Cuatro puntos que te ahorran costos extra.</p>
-          <Lista items={CONSEJOS} />
-        </div>
-      </div>
-      <p className="mt-5 text-xs text-slate-500">Información general: los requisitos pueden cambiar. Verifícalos antes de viajar.</p>
-    </section>
-  );
-}
-
-const GALERIA = [
-  { src: "/images/espana/cibeles.jpg", alt: "Fuente de Cibeles, Madrid", t: "Cibeles", clase: "sm:row-span-2" },
+const FOTOS = [
+  { src: "/images/espana/cibeles.jpg", alt: "Plaza de Cibeles, Madrid", t: "Plaza de Cibeles", clase: "md:row-span-2 min-h-[220px]" },
   { src: "/images/espana/palacio-real.jpg", alt: "Palacio Real de Madrid", t: "Palacio Real", clase: "" },
-  { src: "/images/espana/plaza-mayor.jpg", alt: "Plaza Mayor de Madrid", t: "Plaza Mayor", clase: "" },
+  { src: "/images/espana/plaza-mayor.jpg", alt: "Plaza Mayor de Madrid", t: "Plaza Mayor", clase: "md:col-span-2" },
 ];
 
-// Mosaico: una foto alta y dos bajas; en celular se deslizan de lado.
-export function Galeria() {
+export function Destino() {
   return (
-    <section className={`${SECCION} bg-[#faf8f4]`}>
+    <section id="destino" className="scroll-mt-20 bg-[#eaf1ff] py-14 sm:py-[72px]">
       <div className={CONTENEDOR}>
-        <Encabezado etiqueta="Tu destino" titulo="Madrid te espera en abril, mayo y junio" />
-        <div className="-mx-5 mt-10 flex snap-x gap-4 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:h-[340px] sm:grid-cols-[1.15fr_1fr] sm:grid-rows-2 sm:overflow-visible sm:px-0">
-          {GALERIA.map((g) => (
-            <figure key={g.src} className={`group relative aspect-[4/3] w-[78%] shrink-0 snap-start overflow-hidden rounded-3xl bg-slate-200 sm:aspect-auto sm:w-auto ${g.clase}`}>
-              <Image src={g.src} alt={g.alt} fill sizes="(min-width: 640px) 50vw, 78vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
-              <figcaption className="absolute bottom-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-sm font-bold text-[#0a1628] shadow-md">
-                <Icono nombre="ubicacion" className="h-4 w-4 text-[#e30613]" />
-                {g.t}
-              </figcaption>
-            </figure>
+        <Encabezado etiqueta="Destino" titulo="Madrid en abril, mayo o junio" texto={`Tres meses para elegir y una sola tarifa: US$ ${PRECIO_ANTICIPADO} por persona.`} />
+        <div className="mt-6 grid gap-3 md:grid-cols-[1.3fr_1fr_1fr] md:grid-rows-[200px_200px]">
+          {FOTOS.map((f) => (
+            <div
+              key={f.src}
+              className={`${estilos.revelar} group relative h-[190px] overflow-hidden rounded-[20px] shadow-[0_26px_40px_-26px_rgba(10,22,40,0.6)] transition-transform duration-300 hover:-translate-y-1.5 md:h-auto ${f.clase}`}
+            >
+              <Image src={f.src} alt={f.alt} fill sizes="(min-width: 768px) 40vw, 92vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+              <span className="absolute bottom-3 left-3 rounded-lg bg-white px-3 py-1.5 text-[13px] font-bold">{f.t}</span>
+            </div>
           ))}
         </div>
-        <div className="mt-10">
-          <BotonCotizar zona="Galería" adaptable />
+        <BotonCotizar zona="Destino" texto="Cotizar mi viaje a Madrid" className="mt-7" />
+      </div>
+    </section>
+  );
+}
+
+const BENEFICIOS: { icono: NombreIcono; t: string; d: string; color: string; fondo: string }[] = [
+  { icono: "avion", t: "Ida y vuelta", d: "Incluida en el precio", color: "text-[#2563eb]", fondo: "bg-[#e1ecff]" },
+  { icono: "mensaje", t: "Cotiza por WhatsApp", d: "Gratis y sin DNI", color: "text-[#0d9488]", fondo: "bg-[#dcf5ee]" },
+  { icono: "ubicacion", t: "2 oficinas", d: "En Los Olivos, Lima", color: "text-[#7c3aed]", fondo: "bg-[#f1ecff]" },
+  { icono: "calendario", t: "Abril · mayo · junio", d: "Viaja en 2027", color: "text-[#f97316]", fondo: "bg-[#fff0e4]" },
+];
+
+export function Beneficios() {
+  return (
+    <section className="py-10 sm:py-14">
+      <div className={`${CONTENEDOR} grid gap-0 md:grid-cols-4 md:gap-6`}>
+        {BENEFICIOS.map((b) => (
+          <div key={b.t} className={`${estilos.revelar} grid grid-cols-[44px_1fr] items-center gap-x-3 border-t border-slate-200 py-3.5 first:border-t-0 md:grid-cols-1 md:gap-y-2 md:border-t-0 md:py-0`}>
+            <span className={`row-span-2 flex h-11 w-11 items-center justify-center rounded-xl md:row-span-1 ${b.fondo} ${b.color}`}>
+              <Icono nombre={b.icono} className="h-6 w-6" />
+            </span>
+            <b className="text-[15px] font-bold">{b.t}</b>
+            <span className="text-[13px] text-slate-500">{b.d}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function Comparativo() {
+  return (
+    <section className="bg-[#f1ecff] py-14 sm:py-[72px]">
+      <div className={CONTENEDOR}>
+        <Encabezado etiqueta="Compara" titulo={`Esta tarifa es US$ ${AHORRO} más barata`} />
+        <div className="mt-8 grid items-center gap-5 md:grid-cols-[1fr_auto_1.2fr] md:gap-8">
+          <div className="px-1">
+            <p className="text-sm font-semibold text-slate-500">Otras fechas</p>
+            <p className="my-1 text-[clamp(40px,9vw,60px)] font-extrabold leading-[1.1] tracking-tighter text-slate-400 line-through decoration-[#e30613]/55 decoration-4">US$ {fmt(PRECIO_OTRAS_FECHAS)}</p>
+            <p className="text-sm font-semibold text-slate-500">Tarifa desde, por persona</p>
+          </div>
+
+          <span aria-hidden="true" className="hidden h-[54px] w-[54px] items-center justify-center rounded-full bg-[#7c3aed] text-[15px] font-extrabold text-white shadow-[0_10px_20px_-8px_rgba(124,58,237,0.7)] md:flex">
+            VS
+          </span>
+
+          <div className={`${estilos.revelar} relative rounded-3xl bg-white p-7 pt-9 shadow-[0_40px_70px_-34px_rgba(10,22,40,0.55),0_0_0_2px_#e30613] transition-transform duration-300 hover:-translate-y-1.5`}>
+            <span className="absolute -top-4 left-6 rounded-[10px] bg-[#e30613] px-4 py-2 text-sm font-extrabold text-white shadow-[0_12px_20px_-8px_rgba(227,6,19,0.7)]">Ahorras US$ {AHORRO}</span>
+            <p className="text-sm font-semibold text-slate-500">Abril, mayo o junio 2027</p>
+            <p className="mb-1 mt-1.5 text-[clamp(56px,13vw,92px)] font-extrabold leading-none tracking-tighter text-[#e30613]">US$ {PRECIO_ANTICIPADO}</p>
+            <p className="text-sm font-semibold text-slate-500">Ida y vuelta Lima–Madrid, por persona</p>
+            <ul className="mb-5 mt-4 grid gap-2 text-[15px] font-semibold">
+              {["Boleto de ida y vuelta incluido", "Cotización gratis por WhatsApp"].map((t) => (
+                <li key={t} className="flex items-center gap-2.5">
+                  <span className="flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[#16a34a] text-white">
+                    <Icono nombre="check" className="h-3 w-3" />
+                  </span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+            <BotonCotizar zona="Comparativo" texto="Quiero esta tarifa" className="w-full" />
+          </div>
+        </div>
+
+        <p className="mt-7 flex flex-wrap items-baseline gap-x-3.5 gap-y-1 rounded-2xl bg-[#0a1628] px-6 py-4 text-white shadow-[0_24px_40px_-26px_rgba(10,22,40,0.7)]">
+          <b className="text-[22px] font-extrabold">Viajan 2</b>
+          <span className="text-lg font-semibold">
+            ahorran <em className="rounded-lg bg-[#0d9488] px-2.5 py-0.5 font-extrabold not-italic">US$ {fmt(AHORRO * 2)}</em> en total
+          </span>
+          <span className="text-sm opacity-70 md:ml-auto">
+            {PRECIO_ANTICIPADO} + {PRECIO_ANTICIPADO} = US$ {fmt(PRECIO_ANTICIPADO * 2)}
+          </span>
+        </p>
+      </div>
+    </section>
+  );
+}
+
+const PASOS: { icono: NombreIcono; t: string; d: string; color: string; sombra: string }[] = [
+  { icono: "calendario", t: "Elige tu mes", d: "Abril, mayo o junio de 2027.", color: "bg-[#2563eb]", sombra: "shadow-[0_14px_22px_-10px_rgba(37,99,235,0.7)]" },
+  { icono: "mensaje", t: "Recibe opciones", d: "Te escribimos con vuelos y precios.", color: "bg-[#0d9488]", sombra: "shadow-[0_14px_22px_-10px_rgba(13,148,136,0.7)]" },
+  { icono: "boleto", t: "Reserva y vuela", d: `Aseguras tu tarifa de US$ ${PRECIO_ANTICIPADO}.`, color: "bg-[#7c3aed]", sombra: "shadow-[0_14px_22px_-10px_rgba(124,58,237,0.7)]" },
+];
+
+export function Pasos() {
+  return (
+    <section id="pasos" className="scroll-mt-20 py-14 sm:py-[72px]">
+      <div className={CONTENEDOR}>
+        <Encabezado etiqueta="Cómo reservar" titulo="Reserva en 3 pasos" />
+        <ol className="relative mt-8 grid gap-6 md:grid-cols-3 md:gap-7">
+          <span aria-hidden="true" className="absolute left-[12%] right-[12%] top-[57px] hidden border-t-[3px] border-dashed border-[#c5d3f5] md:block" />
+          {PASOS.map((p, i) => (
+            <li key={p.t} className={`${estilos.revelar} relative z-10 rounded-[20px] bg-white p-6 shadow-[0_26px_44px_-30px_rgba(10,22,40,0.5),0_0_0_1px_#e3e8f0]`}>
+              <span className={`relative mb-3.5 flex h-[62px] w-[62px] items-center justify-center rounded-[18px] text-white ${p.color} ${p.sombra}`}>
+                <Icono nombre={p.icono} className="h-[30px] w-[30px]" />
+                <span className="absolute -right-2.5 -top-2.5 flex h-7 w-7 items-center justify-center rounded-full border-[3px] border-white bg-[#0a1628] text-sm font-extrabold">{i + 1}</span>
+              </span>
+              <b className="block text-xl font-extrabold tracking-tight">{p.t}</b>
+              <span className="mt-1 block text-[15px] text-slate-600">{p.d}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
+const DOCUMENTOS = ["Pasaporte vigente", "Boleto de ida y vuelta", "Reserva de alojamiento", "Seguro de viaje"];
+
+export function Requisitos() {
+  return (
+    <section id="requisitos" className="scroll-mt-20 bg-[#e3f6f3] py-14 sm:py-[72px]">
+      <div className={`${CONTENEDOR} grid items-center gap-7 md:grid-cols-[0.9fr_1.1fr] md:gap-14`}>
+        <div className="relative h-60 -rotate-1 overflow-hidden rounded-[22px] shadow-[0_34px_50px_-30px_rgba(13,148,136,0.7)] md:h-[340px]">
+          <Image src="/images/espana/gran-via-metropolis.jpg" alt="Gran Vía y el edificio Metrópolis, Madrid" fill sizes="(min-width: 768px) 45vw, 92vw" className="object-cover" />
+          <span className="absolute bottom-3.5 left-3.5 rounded-[9px] bg-white px-3 py-1.5 text-[13px] font-bold">Gran Vía, Madrid</span>
+        </div>
+        <div>
+          <Encabezado etiqueta="Requisitos" titulo="Lo que pide España a los peruanos" />
+          <ul className="mt-5 grid gap-2.5">
+            {DOCUMENTOS.map((d) => (
+              <li key={d} className="flex items-center gap-3 rounded-[14px] bg-white px-4 py-3.5 text-base font-bold shadow-[0_14px_24px_-18px_rgba(10,22,40,0.5)]">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#0d9488] text-white">
+                  <Icono nombre="check" className="h-4 w-4" />
+                </span>
+                {d}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
