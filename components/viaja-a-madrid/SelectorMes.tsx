@@ -7,7 +7,7 @@ import { MESES_VIAJE } from "@/lib/viaja-a-madrid";
 const COLORES: Record<string, { punto: string; activo: string }> = {
   Abril: { punto: "bg-emerald-500", activo: "border-emerald-500 bg-emerald-500 text-white shadow-[0_8px_24px_-10px_rgba(16,185,129,0.9)]" },
   Mayo: { punto: "bg-rose-500", activo: "border-rose-500 bg-rose-500 text-white shadow-[0_8px_24px_-10px_rgba(244,63,94,0.9)]" },
-  Junio: { punto: "bg-amber-400", activo: "border-amber-400 bg-amber-400 text-[#3d2c00] shadow-[0_8px_24px_-10px_rgba(251,191,36,0.9)]" },
+  Junio: { punto: "bg-sky-500", activo: "border-sky-500 bg-sky-500 text-white shadow-[0_8px_24px_-10px_rgba(14,165,233,0.9)]" },
 };
 
 export default function SelectorMes() {

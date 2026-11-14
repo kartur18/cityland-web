@@ -78,7 +78,7 @@ export function Comparativo() {
   if (dif <= 0) return null;
   const ancho = Math.round((PRECIO_ANTICIPADO / otras) * 100);
   return (
-    <section className={`${SECCION} bg-slate-50`}>
+    <section className={`${SECCION} bg-[#faf8f4]`}>
       <div className={`${CONTENEDOR} grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16`}>
         <Encabezado
           codigo="01"
@@ -154,7 +154,7 @@ const PARA = [
 
 export function ParaQuien() {
   return (
-    <section className={`${SECCION} bg-slate-50`}>
+    <section className={`${SECCION} bg-[#faf8f4]`}>
       <div className={CONTENEDOR}>
         <Encabezado codigo="03" etiqueta="Motivos" titulo="Un viaje a Madrid para cada motivo" />
         <div className="mt-10 grid gap-5 md:grid-cols-3">
@@ -237,7 +237,7 @@ const GALERIA = [
 // Fotos pequeñas: en celular se deslizan de lado, en pantalla grande son tres tarjetas bajas.
 export function Galeria() {
   return (
-    <section className={`${SECCION} bg-slate-50`}>
+    <section className={`${SECCION} bg-[#faf8f4]`}>
       <div className={CONTENEDOR}>
         <Encabezado codigo="05" etiqueta="Destino" titulo="Madrid te espera en abril, mayo y junio" texto="Terrazas, plazas y días más largos: los meses para caminar Madrid sin apuro." />
         <div className="-mx-5 mt-8 flex snap-x gap-4 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0">

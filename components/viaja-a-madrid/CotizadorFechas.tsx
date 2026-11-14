@@ -81,7 +81,7 @@ export default function CotizadorFechas() {
         </select>
       </div>
 
-      <div className="rounded-xl bg-amber-50 px-4 py-3.5 ring-1 ring-amber-200 sm:col-span-2" aria-live="polite">
+      <div className="rounded-xl bg-[#faf8f4] px-4 py-3.5 ring-1 ring-slate-200 sm:col-span-2" aria-live="polite">
         <p className="text-sm text-slate-600">
           {c.adultos === 1 ? "1 adulto" : `${c.adultos} adultos`}, ida y vuelta, desde
         </p>

@@ -80,7 +80,7 @@ export default function ViajaAMadridPage() {
   return (
     <CotizadorProvider>
       <main className="bg-white pb-20 text-[#0a1628] md:pb-0">
-        <div className="bg-[#f5b83d] px-4 py-2 text-center font-mono text-xs font-bold uppercase tracking-[0.14em] text-[#3d2c00] sm:text-sm">
+        <div className="border-b border-slate-200 bg-[#faf8f4] px-4 py-2 text-center font-mono text-xs font-bold uppercase tracking-[0.14em] text-[#e30613] sm:text-sm">
           Tarifa de compra anticipada · Abril, mayo y junio 2027
         </div>
 
@@ -97,7 +97,7 @@ export default function ViajaAMadridPage() {
         </header>
 
         {/* HERO: panel de reserva como el de una aerolínea (ruta, tarifa, mes) y un pase de abordar sobre la foto. */}
-        <section className="border-b border-slate-200 bg-[#fff8e8]">
+        <section className="border-b border-slate-200 bg-[#faf8f4]">
           <div className={`${CONTENEDOR} grid items-center gap-10 py-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14 lg:py-16`}>
             <div>
               <p className={`${e.entrada} font-mono text-xs font-bold uppercase tracking-[0.22em] text-[#e30613]`} style={retraso("0s")}>
@@ -194,8 +194,8 @@ export default function ViajaAMadridPage() {
                     </div>
                   </div>
                   <div className="relative flex items-center border-l-2 border-dashed border-slate-300 bg-[#e30613] px-4 text-white">
-                    <span aria-hidden="true" className="absolute -left-2 -top-2 h-3.5 w-3.5 rounded-full bg-[#fff8e8]" />
-                    <span aria-hidden="true" className="absolute -bottom-2 -left-2 h-3.5 w-3.5 rounded-full bg-[#fff8e8]" />
+                    <span aria-hidden="true" className="absolute -left-2 -top-2 h-3.5 w-3.5 rounded-full bg-[#faf8f4]" />
+                    <span aria-hidden="true" className="absolute -bottom-2 -left-2 h-3.5 w-3.5 rounded-full bg-[#faf8f4]" />
                     <p className="text-center leading-none">
                       <span className="block font-mono text-[10px] font-bold uppercase tracking-widest opacity-90">Desde</span>
                       <span className="font-mono text-2xl font-black">US$ {PRECIO_ANTICIPADO}</span>
@@ -238,7 +238,7 @@ export default function ViajaAMadridPage() {
           </div>
         </section>
 
-        <section className={`${SECCION} bg-slate-50`}>
+        <section className={`${SECCION} bg-[#faf8f4]`}>
           <div className={CONTENEDOR}>
             <Encabezado codigo="07" etiqueta="Dudas" titulo="Preguntas frecuentes" />
             <div className="mt-8 max-w-3xl divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white px-6">
@@ -270,10 +270,10 @@ export default function ViajaAMadridPage() {
 
         {/* Cierre: tarjeta de color plano */}
         <section className="bg-white px-5 py-14 sm:py-20">
-          <div className="mx-auto flex max-w-6xl flex-col gap-6 rounded-3xl bg-[#fcd34d] p-7 sm:p-12 lg:flex-row lg:items-center lg:justify-between">
+          <div className="mx-auto flex max-w-6xl flex-col gap-6 rounded-3xl border border-slate-200 bg-[#faf8f4] p-7 sm:p-12 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <h2 className="max-w-xl text-3xl font-extrabold leading-[1.1] tracking-tight text-[#3d1d00] sm:text-4xl">Asegura tu viaje a Madrid con anticipación</h2>
-              <p className="mt-3 text-lg font-semibold text-[#5a2e00]">Desde US$ {PRECIO_ANTICIPADO} por persona, ida y vuelta. Abril, mayo y junio de 2027.</p>
+              <h2 className="max-w-xl text-3xl font-extrabold leading-[1.1] tracking-tight text-[#0a1628] sm:text-4xl">Asegura tu viaje a Madrid con anticipación</h2>
+              <p className="mt-3 text-lg font-semibold text-slate-600">Desde US$ {PRECIO_ANTICIPADO} por persona, ida y vuelta. Abril, mayo y junio de 2027.</p>
             </div>
             <BotonCotizar zona="Cierre" adaptable className="shrink-0" />
           </div>
