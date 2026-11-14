@@ -1,5 +1,5 @@
-/* Movimiento sutil de la landing: entrada escalonada del hero y un punto que viaja de Lima a Madrid.
-   Todo se apaga con «reducir movimiento» del sistema. */
+/* Movimiento de la landing: entrada escalonada de la portada, foto con zoom lento, avión que cruza, sello flotante,
+   destello en los botones de WhatsApp y revelado al desplazarse. Todo se apaga con «reducir movimiento» del sistema. */
 @keyframes subir {
   from {
     opacity: 0;
@@ -11,62 +11,169 @@
   }
 }
 
-@keyframes viajar {
-  0% {
-    left: 0;
-    opacity: 0;
-  }
-  15%,
-  85% {
-    opacity: 1;
-  }
-  100% {
-    left: calc(100% - 8px);
-    opacity: 0;
-  }
-}
-
-@keyframes acercar {
-  from {
-    transform: scale(1.06);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-
 .entrada {
   opacity: 0;
   animation: subir 0.75s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
   animation-delay: var(--d, 0s);
 }
 
-.punto {
-  position: absolute;
-  top: 50%;
-  width: 8px;
-  height: 8px;
-  margin-top: -4px;
-  border-radius: 9999px;
-  background: #e30613;
-  animation: viajar 3.4s ease-in-out infinite;
+/* Foto de la portada: acercamiento muy lento, de ida y vuelta. */
+@keyframes zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1) translateX(-1.5%);
+  }
 }
 
-.foto {
-  animation: acercar 2.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+.zoom {
+  animation: zoom 20s ease-in-out infinite alternate;
+}
+
+/* Avión que cruza la portada de izquierda a derecha, con el morro hacia adelante. */
+@keyframes jet {
+  0% {
+    left: -70px;
+    top: 150px;
+    opacity: 0;
+  }
+  6%,
+  94% {
+    opacity: 1;
+  }
+  100% {
+    left: 105%;
+    top: 34px;
+    opacity: 0;
+  }
+}
+
+.jet {
+  position: absolute;
+  left: -70px;
+  top: 150px;
+  z-index: 2;
+  width: 52px;
+  height: 52px;
+  fill: #fff;
+  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.35));
+  animation: jet 12s linear 1.5s infinite;
+}
+
+@keyframes flotarSello {
+  0%,
+  100% {
+    transform: rotate(-10deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-10deg) translateY(-8px);
+  }
+}
+
+.sello {
+  animation: flotarSello 3.2s ease-in-out infinite;
+}
+
+/* Botones de WhatsApp: la sombra late y un destello los cruza cada pocos segundos. */
+@keyframes brillo {
+  50% {
+    box-shadow: 0 16px 36px -6px rgba(22, 163, 74, 0.95);
+  }
+}
+
+@keyframes destello {
+  0%,
+  55% {
+    left: -90px;
+  }
+  100% {
+    left: 130%;
+  }
+}
+
+.boton {
+  position: relative;
+  overflow: hidden;
+  animation: brillo 2.6s ease-in-out infinite;
+}
+
+.boton::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  bottom: -10%;
+  left: -90px;
+  width: 56px;
+  background: rgba(255, 255, 255, 0.4);
+  transform: skewX(-22deg);
+  animation: destello 3.8s ease-in-out infinite;
+}
+
+.botonClaro {
+  animation: none;
+}
+
+.botonClaro::before {
+  background: rgba(37, 99, 235, 0.18);
+}
+
+/* Aro verde que late alrededor de la burbuja flotante. */
+@keyframes pulso {
+  0% {
+    box-shadow: 0 0 0 0 rgba(30, 190, 93, 0.55);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 14px rgba(30, 190, 93, 0);
+  }
+}
+
+.pulso {
+  animation: pulso 2.2s ease-out infinite;
+}
+
+/* Entrada al desplazarse (solo navegadores con animaciones ligadas al scroll; en el resto todo se ve de una vez). */
+@keyframes revelar {
+  from {
+    opacity: 0;
+    transform: translateY(36px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .revelar {
+    animation: revelar linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+}
+
+@media (max-width: 767px) {
+  .jet {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .zoom,
+  .jet,
+  .sello,
+  .boton,
+  .boton::before,
+  .pulso,
+  .revelar {
+    animation: none;
+  }
+  .jet {
+    display: none;
+  }
   .entrada {
     animation: none;
     opacity: 1;
-  }
-  .punto {
-    animation: none;
-    left: calc(50% - 4px);
-    opacity: 1;
-  }
-  .foto {
-    animation: none;
   }
 }
