@@ -127,7 +127,7 @@ export default function Buscador() {
           Tarifa referencial <b className="text-[#0a1628]">desde US$ {PRECIO_ANTICIPADO} por persona</b>.
           <span className="block text-xs text-slate-500">Sujeta a disponibilidad. El precio final se confirma al cotizar.</span>
         </p>
-        <BotonCotizar zona="Cotizador" principal className="w-full md:w-auto md:min-w-[300px]" />
+        <BotonCotizar zona="Cotizador" principal className="w-full md:w-auto md:min-w-[260px]" />
       </div>
     </div>
   );

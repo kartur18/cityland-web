@@ -23,7 +23,7 @@ export default function BurbujaWhatsApp() {
       }`}
     >
       <WhatsAppIcon size={22} />
-      WhatsApp
+      Cotizar por WhatsApp
     </a>
   );
 }

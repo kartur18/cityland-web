@@ -4,7 +4,6 @@ import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { useCtaVisible } from "@/components/viaja-a-madrid/CtaVisible";
 import { useEnlaceWhatsApp } from "@/components/viaja-a-madrid/CotizadorContexto";
 import { evento } from "@/lib/analitica-landing";
-import { PRECIO_ANTICIPADO } from "@/lib/viaja-a-madrid";
 
 // Barra fija solo en celular, discreta y con una sola acción. Respeta el área segura del teléfono y se esconde cuando
 // el botón principal del cotizador o del cierre ya está a la vista, para no poner dos botones verdes juntos.
@@ -27,7 +26,7 @@ export default function BarraMovil() {
         className="mx-auto flex min-h-[48px] max-w-md items-center justify-center gap-2.5 rounded-xl bg-[#16a34a] px-4 text-[15px] font-bold text-white active:scale-[0.98]"
       >
         <WhatsAppIcon size={20} />
-        Cotizar Madrid desde US$ {PRECIO_ANTICIPADO}
+        Cotizar por WhatsApp
       </a>
     </div>
   );
