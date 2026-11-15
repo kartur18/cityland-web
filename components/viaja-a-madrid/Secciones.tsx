@@ -25,7 +25,7 @@ export function Encabezado({ etiqueta, titulo, texto }: { etiqueta: string; titu
 // Guía para elegir el mes (clima y fiestas), en lugar de repetir el precio.
 export function Meses() {
   return (
-    <section id="meses" className="scroll-mt-20 bg-[#eaf1ff] py-12 sm:py-16">
+    <section id="meses" className="scroll-mt-20 py-12 sm:py-16">
       <div className={CONTENEDOR}>
         <Encabezado etiqueta="Elige tu mes" titulo="¿Cuándo te conviene viajar?" texto="La tarifa es la misma en los tres meses. Elige según el clima que prefieres." />
         <GuiaMeses />

@@ -74,40 +74,45 @@ export default function ViajaAMadridPage() {
           </div>
         </header>
 
-        {/* PORTADA: foto amplia con zoom lento, tarjeta con el gancho y el buscador que se superpone, como en las web de aerolíneas. */}
-        <section className="relative h-[440px] overflow-hidden bg-slate-300 md:h-[460px]">
-          <div className={`${e.zoom} absolute -inset-[4%]`}>
-            <Image src="/images/espana/cibeles.jpg" alt="Fuente de Cibeles, Madrid" fill priority sizes="100vw" className="object-cover object-[50%_40%]" />
-          </div>
+        {/* PORTADA: el gancho a la izquierda y la Puerta de Alcalá a la derecha; el buscador se superpone al borde inferior. */}
+        <section className="relative overflow-hidden bg-[#eaf1ff] pb-16 pt-6 md:pb-20 md:pt-10">
           <svg className={e.jet} viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" transform="rotate(90 12 12)" />
+            <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.500z" transform="rotate(90 12 12)" />
           </svg>
-          <div
-            aria-hidden="true"
-            className={`${e.sello} absolute bottom-[150px] right-8 z-[2] hidden h-[118px] w-[118px] place-items-center rounded-full bg-[#e30613] text-center font-extrabold leading-[1.05] text-white shadow-[0_18px_30px_-12px_rgba(227,6,19,0.7)] md:grid`}
-          >
-            <span>
-              <small className="block text-xs font-bold">Ahorras</small>
-              <b className="text-2xl tracking-tight">US$ {AHORRO}</b>
-            </span>
-          </div>
-
-          <div className={`${CONTENEDOR} relative pt-6 md:pt-[52px]`}>
-            <div className="max-w-[640px] rounded-[20px] bg-white p-5 shadow-[0_30px_60px_-28px_rgba(10,22,40,0.6)] md:px-6 md:pb-6">
-              <p className={`${e.entrada} inline-block rounded-lg bg-[#e30613] px-3 py-1.5 text-[13px] font-bold shadow-[0_6px_14px_-6px_rgba(227,6,19,0.6)] text-white`} style={retraso("0s")}>
+          <div className={`${CONTENEDOR} grid items-center gap-7 md:grid-cols-[1fr_1.05fr] md:gap-10`}>
+            <div>
+              <p className={`${e.entrada} inline-block rounded-lg bg-[#e30613] px-3 py-1.5 text-[13px] font-bold text-white shadow-[0_6px_14px_-6px_rgba(227,6,19,0.6)]`} style={retraso("0s")}>
                 Compra anticipada
               </p>
-              <h1 className={`${e.entrada} mt-3.5 text-[clamp(30px,5.4vw,50px)] font-extrabold leading-[1.02] tracking-tighter`} style={retraso("0.08s")}>
+              <h1 className={`${e.entrada} mt-3.5 text-[clamp(32px,5vw,52px)] font-extrabold leading-[1.02] tracking-tighter`} style={retraso("0.08s")}>
                 <span className="block">Viaja Lima a Madrid</span>
                 <span className="block text-[#e30613]">ida y vuelta</span>
               </h1>
-              <p className={`${e.entrada} mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1`} style={retraso("0.16s")}>
+              <p className={`${e.entrada} mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1`} style={retraso("0.16s")}>
                 <small className="text-[15px] font-bold">Desde US$</small>
-                <b className="text-[clamp(42px,8vw,64px)] font-extrabold leading-none tracking-tighter">
+                <b className="text-[clamp(52px,8vw,76px)] font-extrabold leading-none tracking-tighter">
                   <PrecioAnimado />
                 </b>
-                <span className="text-sm font-semibold text-slate-500">por persona · viaja abril a junio 2027</span>
+                <span className="text-sm font-semibold text-slate-600">por persona · viaja abril a junio 2027</span>
               </p>
+            </div>
+
+            <div className={`${e.entrada} relative`} style={retraso("0.2s")}>
+              <div className="relative h-[240px] overflow-hidden rounded-3xl bg-slate-300 shadow-[0_34px_60px_-32px_rgba(10,22,40,0.6)] md:h-[370px]">
+                <div className={`${e.zoom} absolute inset-0`}>
+                  <Image src="/images/espana/puerta-de-alcala.jpg" alt="Puerta de Alcalá, Madrid" fill priority sizes="(min-width: 768px) 50vw, 92vw" className="object-cover object-[50%_45%]" />
+                </div>
+                <span className="absolute bottom-3 left-3 rounded-lg bg-white px-3 py-1.5 text-[13px] font-bold">Puerta de Alcalá, Madrid</span>
+              </div>
+              <div
+                aria-hidden="true"
+                className={`${e.sello} absolute -right-2 -top-5 z-[2] grid h-[96px] w-[96px] place-items-center rounded-full bg-[#e30613] text-center font-extrabold leading-[1.05] text-white shadow-[0_18px_30px_-12px_rgba(227,6,19,0.7)] md:-right-5 md:h-[112px] md:w-[112px]`}
+              >
+                <span>
+                  <small className="block text-[11px] font-bold">Ahorras</small>
+                  <b className="text-xl tracking-tight md:text-2xl">US$ {AHORRO}</b>
+                </span>
+              </div>
             </div>
           </div>
         </section>
