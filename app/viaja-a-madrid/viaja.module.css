@@ -37,7 +37,24 @@
   }
 }
 
+/* Foto de la portada: acercamiento muy lento, de ida y vuelta. */
+@keyframes zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.zoom {
+  animation: zoom 22s ease-in-out infinite alternate;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .zoom {
+    animation: none;
+  }
   .revelar {
     animation: none;
   }

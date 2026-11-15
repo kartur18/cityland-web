@@ -25,7 +25,7 @@ export function Encabezado({ etiqueta, titulo, texto }: { etiqueta: string; titu
 // Tarjetas de mes. No promete que todas las fechas cuesten lo mismo: la tarifa se confirma al cotizar.
 export function Meses() {
   return (
-    <section id="meses" className="scroll-mt-20 bg-[#f4f7fb] py-12 sm:py-16">
+    <section id="meses" className="scroll-mt-20 bg-[#eaf1ff] py-12 sm:py-16">
       <div className={CONTENEDOR}>
         <Encabezado etiqueta="Meses disponibles" titulo="¿Cuándo te gustaría viajar?" texto="Explora los meses disponibles y solicita una cotización para tus fechas." />
         <GuiaMeses />
@@ -37,7 +37,7 @@ export function Meses() {
 // Reemplaza al comparativo de ahorro (sin respaldo verificable): una invitación ligera, sin recuadro grande.
 export function Planifica() {
   return (
-    <section className="py-12 sm:py-16">
+    <section className="bg-[#f1ecff] py-12 sm:py-14">
       <div className={`${CONTENEDOR} flex flex-col gap-4 md:flex-row md:items-center md:justify-between md:gap-10`}>
         <div className="max-w-2xl">
           <h2 className="text-balance text-2xl font-extrabold leading-[1.1] tracking-tight text-[#0a1628] sm:text-[30px]">Planifica hoy tu viaje a Madrid para 2027</h2>
@@ -45,7 +45,7 @@ export function Planifica() {
         </div>
         <a
           href="#cotiza"
-          className="inline-flex min-h-[48px] shrink-0 items-center justify-center self-start rounded-xl border-[1.5px] border-[#0a1628] px-6 text-[15px] font-bold text-[#0a1628] transition-colors hover:bg-[#0a1628] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0a1628]"
+          className="inline-flex min-h-[48px] shrink-0 items-center justify-center self-start rounded-xl border-[1.5px] border-[#0a1628] bg-white px-6 text-[15px] font-bold text-[#0a1628] shadow-[0_10px_20px_-14px_rgba(10,22,40,0.5)] transition-all hover:-translate-y-0.5 hover:bg-[#0a1628] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0a1628]"
         >
           Consultar disponibilidad
         </a>
@@ -54,22 +54,22 @@ export function Planifica() {
   );
 }
 
-const ARGUMENTOS: { icono: NombreIcono; t: string; d: string }[] = [
-  { icono: "persona", t: "Atención personalizada", d: "Nuestros asesores te ayudan a revisar las alternativas para tu viaje." },
-  { icono: "ubicacion", t: "Oficinas físicas en Lima", d: "Puedes encontrarnos en nuestras sedes de Los Olivos." },
-  { icono: "escudo", t: "Información clara antes de reservar", d: "Te orientamos sobre tarifas, itinerarios y condiciones antes de confirmar tu compra." },
+const ARGUMENTOS: { icono: NombreIcono; t: string; d: string; color: string }[] = [
+  { icono: "persona", t: "Atención personalizada", d: "Nuestros asesores te ayudan a revisar las alternativas para tu viaje.", color: "bg-[#2563eb]" },
+  { icono: "ubicacion", t: "Oficinas físicas en Lima", d: "Puedes encontrarnos en nuestras sedes de Los Olivos.", color: "bg-[#e30613]" },
+  { icono: "escudo", t: "Información clara antes de reservar", d: "Te orientamos sobre tarifas, itinerarios y condiciones antes de confirmar tu compra.", color: "bg-[#0d9488]" },
 ];
 
 // Confianza comercial: oficinas reales y, cuando existan, fotos reales de clientes (lista FOTOS_CLIENTES). No hay testimonios ni puntajes inventados.
 export function Confianza() {
   return (
-    <section id="confianza" className="scroll-mt-20 pb-12 sm:pb-16">
+    <section id="confianza" className="scroll-mt-20 py-12 sm:py-16">
       <div className={CONTENEDOR}>
         <Encabezado etiqueta="Cityland Travel" titulo="Tu viaje, en buenas manos" texto="Conoce a Cityland Travel y recibe atención personalizada para organizar tu próximo viaje." />
         <ul className="mt-7 grid gap-5 md:grid-cols-3 md:gap-8">
           {ARGUMENTOS.map((a) => (
-            <li key={a.t} className={`${estilos.revelar} flex gap-3.5`}>
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#0a1628] text-white">
+            <li key={a.t} className={`${estilos.revelar} flex gap-3.5 rounded-2xl bg-white p-5 shadow-[0_20px_40px_-28px_rgba(10,22,40,0.45),0_0_0_1px_#e3e8f0] transition-transform duration-300 hover:-translate-y-1`}>
+              <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-white ${a.color}`}>
                 <Icono nombre={a.icono} className="h-6 w-6" />
               </span>
               <div>
@@ -90,9 +90,9 @@ export function Confianza() {
           </ul>
         )}
 
-        <ul className="mt-8 grid gap-4 border-t border-slate-200 pt-6 md:grid-cols-2">
+        <ul className="mt-6 grid gap-4 md:grid-cols-2">
           {OFICINAS.map((o) => (
-            <li key={o.nombre} className="text-[15px] leading-snug text-slate-600">
+            <li key={o.nombre} className="rounded-2xl bg-[#fff1f1] p-5 text-[15px] leading-snug text-slate-600">
               <b className="block text-base font-bold text-[#0a1628]">{o.nombre}</b>
               <span className="block">{o.direccion}</span>
               <a href={o.mapa} target="_blank" rel="noopener noreferrer" className="mt-1 inline-flex min-h-[44px] items-center text-sm font-bold text-[#2563eb] underline underline-offset-4">
@@ -101,27 +101,27 @@ export function Confianza() {
             </li>
           ))}
         </ul>
-        <p className="text-sm text-slate-500">{HORARIO}</p>
+        <p className="mt-3 text-sm text-slate-500">{HORARIO}</p>
       </div>
     </section>
   );
 }
 
-const PASOS: { icono: NombreIcono; t: string; d: string }[] = [
-  { icono: "calendario", t: "Elige tus fechas", d: "Selecciona tu mes de viaje y dinos cuántas personas viajarán." },
-  { icono: "mensaje", t: "Recibe las opciones", d: "Un asesor te enviará alternativas con itinerarios, equipaje y condiciones de tarifa." },
-  { icono: "boleto", t: "Confirma tu reserva", d: "Revisa las condiciones y el precio final antes de realizar el pago." },
+const PASOS: { icono: NombreIcono; t: string; d: string; color: string }[] = [
+  { icono: "calendario", t: "Elige tus fechas", d: "Selecciona tu mes de viaje y dinos cuántas personas viajarán.", color: "bg-[#2563eb]" },
+  { icono: "mensaje", t: "Recibe las opciones", d: "Un asesor te enviará alternativas con itinerarios, equipaje y condiciones de tarifa.", color: "bg-[#0d9488]" },
+  { icono: "boleto", t: "Confirma tu reserva", d: "Revisa las condiciones y el precio final antes de realizar el pago.", color: "bg-[#e30613]" },
 ];
 
 export function Pasos() {
   return (
-    <section id="pasos" className="scroll-mt-20 bg-[#f4f7fb] py-12 sm:py-16">
+    <section id="pasos" className="scroll-mt-20 bg-[#eaf1ff] py-12 sm:py-16">
       <div className={CONTENEDOR}>
         <Encabezado etiqueta="Cómo reservar" titulo="Reservar tu viaje es muy sencillo" />
         <ol className="mt-7 grid gap-5 md:grid-cols-3 md:gap-8">
           {PASOS.map((p, i) => (
-            <li key={p.t} className={`${estilos.revelar} flex gap-4`}>
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#0a1628] text-white">
+            <li key={p.t} className={`${estilos.revelar} flex gap-4 rounded-2xl bg-white p-5 shadow-[0_22px_40px_-28px_rgba(10,22,40,0.5)] transition-transform duration-300 hover:-translate-y-1`}>
+              <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-white ${p.color}`}>
                 <Icono nombre={p.icono} className="h-6 w-6" />
               </span>
               <div>
@@ -150,13 +150,13 @@ const REQUISITOS = [
 
 export function Requisitos() {
   return (
-    <section id="requisitos" className="scroll-mt-20 py-12 sm:py-16">
+    <section id="requisitos" className="scroll-mt-20 bg-[#e3f6f3] py-12 sm:py-16">
       <div className={CONTENEDOR}>
         <Encabezado etiqueta="Antes de viajar" titulo="Qué pide España a los peruanos" texto="Resumen de lo que te pueden pedir en migración. Los requisitos pueden cambiar: al cotizar te confirmamos la lista vigente." />
-        <ul className="mt-6 grid gap-x-10 sm:grid-cols-2">
+        <ul className="mt-6 grid gap-3 sm:grid-cols-2">
           {REQUISITOS.map((r) => (
-            <li key={r.t} className="flex gap-3 border-t border-slate-200 py-3.5">
-              <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#2563eb] text-white">
+            <li key={r.t} className="flex gap-3 rounded-xl bg-white p-4 shadow-[0_14px_24px_-20px_rgba(10,22,40,0.5)]">
+              <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#0d9488] text-white">
                 <Icono nombre="check" className="h-3.5 w-3.5" />
               </span>
               <p className="text-[15px] leading-snug text-slate-600">

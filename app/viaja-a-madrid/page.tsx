@@ -88,7 +88,7 @@ export default function ViajaAMadridPage() {
         </header>
 
         {/* PORTADA: el gancho a la izquierda y la Puerta de Alcalá a la derecha; el precio pesa más que el título. */}
-        <section className="bg-[#f4f7fb] pb-16 pt-7 md:pb-20 md:pt-10">
+        <section className="bg-[#eaf1ff] pb-16 pt-7 md:pb-20 md:pt-10">
           <div className={`${CONTENEDOR} grid items-center gap-7 md:grid-cols-[1fr_1.05fr] md:gap-10`}>
             <div>
               <p className={`${e.entrada} text-xs font-extrabold uppercase tracking-[0.14em] text-[#e30613]`} style={retraso("0s")}>
@@ -124,8 +124,10 @@ export default function ViajaAMadridPage() {
             </div>
 
             <div className={`${e.entrada} relative`} style={retraso("0.18s")}>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-slate-300 md:aspect-auto md:h-[360px]">
-                <Image src="/images/espana/puerta-de-alcala.jpg" alt="Puerta de Alcalá, Madrid" fill priority sizes="(min-width: 768px) 50vw, 92vw" className="object-cover object-[50%_45%]" />
+              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-slate-300 shadow-[0_34px_60px_-32px_rgba(10,22,40,0.6)] md:aspect-auto md:h-[360px]">
+                <div className={`${e.zoom} absolute inset-0`}>
+                  <Image src="/images/espana/puerta-de-alcala.jpg" alt="Puerta de Alcalá, Madrid" fill priority sizes="(min-width: 768px) 50vw, 92vw" className="object-cover object-[50%_45%]" />
+                </div>
                 <span className="absolute bottom-3 left-3 rounded-lg bg-white px-3 py-1.5 text-[13px] font-bold">Puerta de Alcalá, Madrid</span>
               </div>
             </div>
@@ -142,12 +144,12 @@ export default function ViajaAMadridPage() {
         <Pasos />
         <Requisitos />
 
-        <section id="preguntas" className="scroll-mt-20 bg-[#f4f7fb] py-12 sm:py-16">
+        <section id="preguntas" className="scroll-mt-20 py-12 sm:py-16">
           <div className={CONTENEDOR}>
             <Encabezado etiqueta="Dudas" titulo="Preguntas frecuentes" />
             <div className="mt-6 max-w-3xl divide-y divide-slate-200 border-y border-slate-200">
               {PREGUNTAS.map((p) => (
-                <details key={p.q} className="group">
+                <details key={p.q} className="group transition-colors open:bg-[#f4f7fb]">
                   <summary className="flex min-h-[56px] cursor-pointer list-none items-center justify-between gap-4 py-4 text-[17px] font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0a1628]">
                     {p.q}
                     <span aria-hidden="true" className="text-2xl font-light text-[#2563eb] transition-transform duration-200 group-open:rotate-45">
@@ -174,7 +176,8 @@ export default function ViajaAMadridPage() {
 
         {/* Cierre: bloque azul sin urgencia artificial */}
         <section className="px-5 py-12 sm:py-16">
-          <div className="mx-auto grid max-w-6xl items-center gap-5 rounded-3xl bg-[#2563eb] p-6 text-white md:grid-cols-[1fr_auto] md:p-9">
+          <div className="relative mx-auto grid max-w-6xl items-center gap-5 overflow-hidden rounded-3xl bg-[#2563eb] p-6 text-white shadow-[0_30px_50px_-30px_rgba(37,99,235,0.8)] md:grid-cols-[1fr_auto] md:p-9">
+            <span aria-hidden="true" className="pointer-events-none absolute -right-8 -top-8 h-48 w-48 rounded-full border-[30px] border-white/10" />
             <div>
               <h2 className="max-w-xl text-balance text-2xl font-extrabold leading-[1.1] tracking-tight sm:text-3xl">Tu próximo viaje a Madrid comienza aquí</h2>
               <p className="mt-2 text-base font-medium text-white/90">Cotiza tu boleto de ida y vuelta desde US$ {PRECIO_ANTICIPADO} y recibe atención personalizada de Cityland Travel.</p>
@@ -186,7 +189,7 @@ export default function ViajaAMadridPage() {
           </div>
         </section>
 
-        <footer id="oficinas" className="scroll-mt-20 border-t border-slate-200 py-10 text-sm text-slate-500">
+        <footer id="oficinas" className="scroll-mt-20 bg-[#f4f7fb] py-10 text-sm text-slate-500">
           <div className={`${CONTENEDOR} grid gap-8 md:grid-cols-[1.1fr_1.4fr_auto]`}>
             <div className="flex items-start gap-4">
               <Image src="/logo-transparent.png" alt="Cityland Travel" width={110} height={64} loading="lazy" className="h-16 w-auto" />
