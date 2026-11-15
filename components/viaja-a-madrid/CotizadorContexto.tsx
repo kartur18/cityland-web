@@ -1,10 +1,11 @@
 "use client";
 
 import { createContext, useContext, useMemo, useState, useSyncExternalStore, type ReactNode } from "react";
+import { busquedaConUtm } from "@/lib/analitica-landing";
 import { MENSAJE_GENERAL, fuenteDeUrl, mensajeCotizacion, urlWhatsApp, type DatosCotizacion } from "@/lib/viaja-a-madrid";
 
-// Una sola cotización para toda la página: el mes que eliges arriba, los datos del formulario y la barra del celular
-// arman el mismo mensaje de WhatsApp.
+// Una sola cotización para toda la página: el mes que eliges, los pasajeros y las fechas arman el mismo mensaje de WhatsApp
+// en el cotizador, la barra del celular, el encabezado y el cierre.
 interface Estado extends DatosCotizacion {
   poner: <K extends keyof DatosCotizacion>(campo: K, valor: DatosCotizacion[K]) => void;
   tocado: boolean;
@@ -38,11 +39,7 @@ const nadie = () => () => {};
 // De dónde llegó la persona (utm o clic de anuncio), para que el CRM sepa de qué anuncio salió cada chat.
 export function useEnlaceWhatsApp(zona: string): string {
   const c = useCotizador();
-  const busqueda = useSyncExternalStore(
-    nadie,
-    () => window.location.search,
-    () => ""
-  );
+  const busqueda = useSyncExternalStore(nadie, busquedaConUtm, () => "");
   const retorno = c.salida && c.retorno && c.retorno < c.salida ? "" : c.retorno;
   const mensaje = c.tocado ? mensajeCotizacion({ mes: c.mes, salida: c.salida, retorno, adultos: c.adultos, menores: c.menores }) : MENSAJE_GENERAL;
   return urlWhatsApp(mensaje, fuenteDeUrl(busqueda), zona);

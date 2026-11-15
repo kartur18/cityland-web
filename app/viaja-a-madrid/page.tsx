@@ -1,67 +1,78 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { EMPRESA_NOMBRE, OFICINAS, TELEFONO_FORMATEADO } from "@/components/constantes";
 import BarraMovil from "@/components/viaja-a-madrid/BarraMovil";
 import BotonCotizar from "@/components/viaja-a-madrid/BotonCotizar";
 import Buscador from "@/components/viaja-a-madrid/Buscador";
 import BurbujaWhatsApp from "@/components/viaja-a-madrid/BurbujaWhatsApp";
 import { CotizadorProvider } from "@/components/viaja-a-madrid/CotizadorContexto";
-import PrecioAnimado from "@/components/viaja-a-madrid/PrecioAnimado";
-import { CONTENEDOR, Comparativo, Encabezado, Meses, Pasos, Requisitos } from "@/components/viaja-a-madrid/Secciones";
-import { HORARIO, OFICINAS, PRECIO_ANTICIPADO, PRECIO_OTRAS_FECHAS } from "@/lib/viaja-a-madrid";
+import MedicionLanding from "@/components/viaja-a-madrid/MedicionLanding";
+import { CONTENEDOR, Confianza, Encabezado, Meses, Pasos, Planifica, Requisitos } from "@/components/viaja-a-madrid/Secciones";
+import { HORARIO, PRECIO_ANTICIPADO, URL_LANDING } from "@/lib/viaja-a-madrid";
 import e from "./viaja.module.css";
 
 // Landing para anuncios de pago: sin indexar (no debe competir con /vuelos/lima-madrid ni con las páginas de España) y
 // fuera de los sitemaps. Los anuncios la abren igual: noindex no impide que la plataforma la revise.
-const DESCRIPCION =
-  "Boletos ida y vuelta Lima–Madrid desde US$ 999 por persona con compra anticipada, para viajar en abril, mayo o junio de 2027. Cotiza por WhatsApp.";
+const TITULO = "Vuelos Lima a Madrid Ida y Vuelta desde US$999 | Cityland Travel";
+const DESCRIPCION = "Cotiza boletos Lima–Madrid ida y vuelta desde US$999 para viajar en abril, mayo o junio de 2027. Atención personalizada en Cityland Travel.";
 
 export const metadata: Metadata = {
-  title: "Viaja a Madrid desde US$ 999 | Cityland Travel",
+  title: TITULO,
   description: DESCRIPCION,
+  alternates: { canonical: URL_LANDING },
   robots: { index: false, follow: true },
   openGraph: {
     type: "website",
-    title: "Viaja a Madrid: ida y vuelta desde Lima, desde US$ 999",
+    url: URL_LANDING,
+    title: TITULO,
     description: DESCRIPCION,
-    siteName: "Cityland Travel",
+    siteName: EMPRESA_NOMBRE,
     locale: "es_PE",
-    images: ["https://citylandtravel.com/images/espana/gran-via-metropolis.jpg"],
+    images: ["https://citylandtravel.com/images/espana/puerta-de-alcala.jpg"],
   },
 };
 
-const PREGUNTAS = [
-  { q: "¿El precio de US$ 999 es por persona?", a: "Sí. Es por persona, ida y vuelta Lima–Madrid–Lima. Es una tarifa «desde», sujeta a disponibilidad: el precio final depende de tus fechas." },
-  { q: "¿Por qué solo abril, mayo y junio de 2027?", a: "La tarifa de compra anticipada es para esos tres meses. Para otras fechas, escríbenos y cotizamos." },
-  { q: "¿Incluye equipaje? ¿Puedo cambiar o devolver el boleto?", a: "Depende de la aerolínea y de la tarifa. Te lo confirmamos antes de que pagues." },
-  { q: "¿Necesito visa para viajar a España?", a: "Para turismo, los peruanos pueden viajar a España sin visa hasta 90 días. En el aeropuerto pueden pedirte documentos y dinero para tu estadía." },
+const PREGUNTAS: { q: string; a: string; guia?: boolean }[] = [
+  { q: "¿Los US$ 999 son por persona?", a: "Sí. La tarifa «desde US$ 999» es por persona y está sujeta a disponibilidad. El precio final depende de tus fechas y de la aerolínea, y te lo confirmamos antes de que pagues." },
+  { q: "¿El boleto incluye ida y vuelta?", a: "Sí. La promoción es para el viaje de ida y vuelta Lima–Madrid–Lima." },
+  { q: "¿Qué fechas están disponibles?", a: "La promoción es para viajar en abril, mayo y junio de 2027. Dinos tu mes y tus fechas aproximadas, y te enviamos las opciones disponibles." },
+  { q: "¿El precio incluye equipaje?", a: "Depende de la aerolínea y de la tarifa. Te indicamos qué equipaje incluye cada opción antes de que confirmes." },
+  { q: "¿Puedo cambiar la fecha o solicitar una devolución?", a: "Depende de la tarifa y de las condiciones de la aerolínea. Te las explicamos antes de comprar." },
+  { q: "¿Cómo puedo reservar y pagar?", a: "Cotizas por WhatsApp, eliges tu opción y un asesor te indica cómo reservar y las formas de pago disponibles. Verás el precio final antes de pagar." },
+  {
+    q: "¿Qué documentos necesito para viajar a España?",
+    a: "Los peruanos pueden viajar a España como turistas, sin visa, hasta 90 días con pasaporte vigente. En migración pueden pedirte pasaje de retorno, alojamiento, seguro y dinero para tu estadía. Los requisitos pueden cambiar, por eso te recomendamos revisar la guía actualizada o consultarnos.",
+    guia: true,
+  },
+  { q: "¿Dónde están las oficinas de Cityland Travel?", a: `${OFICINAS.map((o) => o.direccion).join(" y ")}. Atendemos de ${HORARIO.charAt(0).toLowerCase()}${HORARIO.slice(1)}.` },
 ];
 
 const NAV = [
-  { href: "#meses", t: "Elige tu mes" },
+  { href: "#meses", t: "Meses" },
   { href: "#pasos", t: "Cómo reservar" },
-  { href: "#requisitos", t: "Requisitos" },
+  { href: "#preguntas", t: "Preguntas" },
   { href: "#oficinas", t: "Oficinas" },
 ];
 
 const retraso = (s: string) => ({ "--d": s }) as React.CSSProperties;
-const AHORRO = PRECIO_OTRAS_FECHAS - PRECIO_ANTICIPADO;
 
 export default function ViajaAMadridPage() {
   return (
     <CotizadorProvider>
-      <main className="bg-white pb-20 text-[#0a1628] md:pb-0">
+      <MedicionLanding />
+      <main className="bg-white pb-24 text-[#0a1628] md:pb-0">
         <div className="bg-[#0a1628] px-4 py-2 text-xs font-semibold text-white">
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-3">
             <p>Atención por WhatsApp · {HORARIO}</p>
-            <p className="hidden md:block">+51 944 103 890</p>
+            <p className="hidden md:block">{TELEFONO_FORMATEADO}</p>
           </div>
         </div>
 
         <header className="sticky top-0 z-40 border-b border-slate-200 bg-white">
-          <div className={`${CONTENEDOR} flex h-[68px] items-center justify-between gap-4 md:h-[76px]`}>
+          <div className={`${CONTENEDOR} flex h-[64px] items-center justify-between gap-4 md:h-[76px]`}>
             <Link href="/" aria-label="Cityland Travel, inicio" className="block shrink-0">
-              <Image src="/logo-transparent.png" alt="Cityland Travel, agencia de viajes" width={100} height={58} priority className="h-[50px] w-auto md:h-[58px]" />
+              <Image src="/logo-transparent.png" alt="Cityland Travel, agencia de viajes" width={100} height={58} priority className="h-[46px] w-auto md:h-[58px]" />
             </Link>
             <nav aria-label="Secciones" className="hidden gap-7 text-[14.5px] font-semibold md:flex">
               {NAV.map((n) => (
@@ -70,48 +81,54 @@ export default function ViajaAMadridPage() {
                 </a>
               ))}
             </nav>
-            <BotonCotizar zona="Encabezado" texto="WhatsApp" compacto />
+            <div className="hidden md:block">
+              <BotonCotizar zona="Encabezado" texto="WhatsApp" compacto />
+            </div>
           </div>
         </header>
 
-        {/* PORTADA: el gancho a la izquierda y la Puerta de Alcalá a la derecha; el buscador se superpone al borde inferior. */}
-        <section className="relative overflow-hidden bg-[#eaf1ff] pb-16 pt-6 md:pb-20 md:pt-10">
-          <svg className={e.jet} viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.500z" transform="rotate(90 12 12)" />
-          </svg>
+        {/* PORTADA: el gancho a la izquierda y la Puerta de Alcalá a la derecha; el precio pesa más que el título. */}
+        <section className="bg-[#eaf1ff] pb-16 pt-7 md:pb-20 md:pt-10">
           <div className={`${CONTENEDOR} grid items-center gap-7 md:grid-cols-[1fr_1.05fr] md:gap-10`}>
             <div>
-              <p className={`${e.entrada} inline-block rounded-lg bg-[#e30613] px-3 py-1.5 text-[13px] font-bold text-white shadow-[0_6px_14px_-6px_rgba(227,6,19,0.6)]`} style={retraso("0s")}>
-                Compra anticipada
+              <p className={`${e.entrada} text-xs font-extrabold uppercase tracking-[0.14em] text-[#e30613]`} style={retraso("0s")}>
+                España 2027
               </p>
-              <h1 className={`${e.entrada} mt-3.5 text-[clamp(32px,5vw,52px)] font-extrabold leading-[1.02] tracking-tighter`} style={retraso("0.08s")}>
-                <span className="block">Viaja Lima a Madrid</span>
-                <span className="block text-[#e30613]">ida y vuelta</span>
+              <h1 className={`${e.entrada} mt-2 text-[clamp(30px,4.6vw,44px)] font-extrabold leading-[1.05] tracking-tighter`} style={retraso("0.06s")}>
+                Viaja a Madrid
               </h1>
-              <p className={`${e.entrada} mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1`} style={retraso("0.16s")}>
-                <small className="text-[15px] font-bold">Desde US$</small>
-                <b className="text-[clamp(52px,8vw,76px)] font-extrabold leading-none tracking-tighter">
-                  <PrecioAnimado />
-                </b>
-                <span className="text-sm font-semibold text-slate-600">por persona · viaja abril a junio 2027</span>
+              <p className={`${e.entrada} mt-1 text-lg font-semibold text-slate-600 sm:text-xl`} style={retraso("0.1s")}>
+                Ida y vuelta desde Lima
               </p>
+              <p className={`${e.entrada} mt-4 flex items-baseline gap-3`} style={retraso("0.16s")}>
+                <small className="text-base font-bold">Desde</small>
+                <b className="text-[clamp(56px,9vw,84px)] font-extrabold leading-none tracking-tighter">US$ {PRECIO_ANTICIPADO}</b>
+              </p>
+              <p className={`${e.entrada} mt-2 text-sm font-semibold text-slate-600`} style={retraso("0.2s")}>
+                Por persona · Viajes en abril, mayo y junio de 2027.
+              </p>
+              <p className={`${e.entrada} mt-3 max-w-md text-[15px] text-slate-600`} style={retraso("0.24s")}>
+                Elige tu mes de viaje y consulta las opciones disponibles con nuestros asesores.
+              </p>
+              <div className={`${e.entrada} mt-5 flex flex-wrap items-center gap-x-6 gap-y-2`} style={retraso("0.28s")}>
+                <a
+                  href="#cotiza"
+                  className="inline-flex min-h-[48px] items-center justify-center rounded-xl bg-[#0a1628] px-7 text-[15px] font-bold text-white transition-colors hover:bg-[#13294b] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0a1628]"
+                >
+                  Cotizar mi viaje
+                </a>
+                <a href="#meses" className="inline-flex min-h-[44px] items-center text-sm font-bold text-[#0a1628] underline underline-offset-4">
+                  Ver meses disponibles
+                </a>
+              </div>
             </div>
 
-            <div className={`${e.entrada} relative`} style={retraso("0.2s")}>
-              <div className="relative h-[240px] overflow-hidden rounded-3xl bg-slate-300 shadow-[0_34px_60px_-32px_rgba(10,22,40,0.6)] md:h-[370px]">
+            <div className={`${e.entrada} relative`} style={retraso("0.18s")}>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-slate-300 shadow-[0_34px_60px_-32px_rgba(10,22,40,0.6)] md:aspect-auto md:h-[360px]">
                 <div className={`${e.zoom} absolute inset-0`}>
                   <Image src="/images/espana/puerta-de-alcala.jpg" alt="Puerta de Alcalá, Madrid" fill priority sizes="(min-width: 768px) 50vw, 92vw" className="object-cover object-[50%_45%]" />
                 </div>
                 <span className="absolute bottom-3 left-3 rounded-lg bg-white px-3 py-1.5 text-[13px] font-bold">Puerta de Alcalá, Madrid</span>
-              </div>
-              <div
-                aria-hidden="true"
-                className={`${e.sello} absolute -right-2 -top-5 z-[2] grid h-[96px] w-[96px] place-items-center rounded-full bg-[#e30613] text-center font-extrabold leading-[1.05] text-white shadow-[0_18px_30px_-12px_rgba(227,6,19,0.7)] md:-right-5 md:h-[112px] md:w-[112px]`}
-              >
-                <span>
-                  <small className="block text-[11px] font-bold">Ahorras</small>
-                  <b className="text-xl tracking-tight md:text-2xl">US$ {AHORRO}</b>
-                </span>
               </div>
             </div>
           </div>
@@ -122,17 +139,18 @@ export default function ViajaAMadridPage() {
         </div>
 
         <Meses />
-        <Comparativo />
+        <Planifica />
+        <Confianza />
         <Pasos />
         <Requisitos />
 
-        <section className="py-12 sm:py-16">
+        <section id="preguntas" className="scroll-mt-20 py-12 sm:py-16">
           <div className={CONTENEDOR}>
             <Encabezado etiqueta="Dudas" titulo="Preguntas frecuentes" />
             <div className="mt-6 max-w-3xl divide-y divide-slate-200 border-y border-slate-200">
               {PREGUNTAS.map((p) => (
-                <details key={p.q} className="group">
-                  <summary className="flex min-h-[56px] cursor-pointer list-none items-center justify-between gap-4 py-4 text-[17px] font-bold">
+                <details key={p.q} className="group transition-colors open:bg-[#f4f7fb]">
+                  <summary className="flex min-h-[56px] cursor-pointer list-none items-center justify-between gap-4 py-4 text-[17px] font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0a1628]">
                     {p.q}
                     <span aria-hidden="true" className="text-2xl font-light text-[#2563eb] transition-transform duration-200 group-open:rotate-45">
                       +
@@ -140,11 +158,11 @@ export default function ViajaAMadridPage() {
                   </summary>
                   <p className="pb-5 leading-relaxed text-slate-600">
                     {p.a}
-                    {p.q.includes("visa") && (
+                    {p.guia && (
                       <>
                         {" "}
                         <Link href="/viajes/requisitos-viajar-a-espana-desde-peru" className="font-bold text-[#0a1628] underline">
-                          Mira los requisitos actualizados
+                          Ver requisitos actualizados
                         </Link>
                         .
                       </>
@@ -156,41 +174,53 @@ export default function ViajaAMadridPage() {
           </div>
         </section>
 
-        {/* Cierre: bloque azul con el precio y el botón */}
-        <section className="px-5 pb-12 sm:pb-16">
+        {/* Cierre: bloque azul sin urgencia artificial */}
+        <section className="px-5 py-12 sm:py-16">
           <div className="relative mx-auto grid max-w-6xl items-center gap-5 overflow-hidden rounded-3xl bg-[#2563eb] p-6 text-white shadow-[0_30px_50px_-30px_rgba(37,99,235,0.8)] md:grid-cols-[1fr_auto] md:p-9">
-            <span aria-hidden="true" className="pointer-events-none absolute -right-8 -top-8 h-56 w-56 rounded-full border-[34px] border-white/10" />
-            <div className="relative">
-              <h2 className="max-w-xl text-balance text-2xl font-extrabold leading-[1.1] tracking-tight sm:text-3xl">Tu tarifa de compra anticipada te espera</h2>
-              <p className="mt-2 text-base font-medium text-white/90">Elige tu mes y cuántos viajan: te respondemos por WhatsApp con las opciones.</p>
+            <span aria-hidden="true" className="pointer-events-none absolute -right-8 -top-8 h-48 w-48 rounded-full border-[30px] border-white/10" />
+            <div>
+              <h2 className="max-w-xl text-balance text-2xl font-extrabold leading-[1.1] tracking-tight sm:text-3xl">Tu próximo viaje a Madrid comienza aquí</h2>
+              <p className="mt-2 text-base font-medium text-white/90">Cotiza tu boleto de ida y vuelta desde US$ {PRECIO_ANTICIPADO} y recibe atención personalizada de Cityland Travel.</p>
             </div>
-            <BotonCotizar zona="Cierre" texto="Cotizar por WhatsApp" claro className="relative shrink-0" />
+            <div className="flex flex-col gap-2 md:items-end">
+              <BotonCotizar zona="Cierre" texto="Quiero cotizar mi viaje" claro principal className="w-full md:w-auto" />
+              <p className="text-xs text-white/80 md:max-w-[22rem] md:text-right">Tarifa desde US$ {PRECIO_ANTICIPADO} por persona, sujeta a disponibilidad y condiciones al momento de cotizar.</p>
+            </div>
           </div>
         </section>
 
-        <footer id="oficinas" className="scroll-mt-20 border-t border-slate-200 py-10 text-sm text-slate-500">
-          <div className={`${CONTENEDOR} flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between`}>
-            <div className="flex items-center gap-4">
-              <Image src="/logo-transparent.png" alt="Cityland Travel" width={110} height={64} className="h-16 w-auto" />
+        <footer id="oficinas" className="scroll-mt-20 bg-[#f4f7fb] py-10 text-sm text-slate-500">
+          <div className={`${CONTENEDOR} grid gap-8 md:grid-cols-[1.1fr_1.4fr_auto]`}>
+            <div className="flex items-start gap-4">
+              <Image src="/logo-transparent.png" alt="Cityland Travel" width={110} height={64} loading="lazy" className="h-16 w-auto" />
               <div>
-                <p className="font-bold text-[#0a1628]">Cityland Travel · Agencia de viajes en Lima, Perú</p>
-                <p className="mt-1">RUC 20614914239 · WhatsApp +51 944 103 890</p>
+                <p className="font-bold text-[#0a1628]">Cityland Travel — Agencia de viajes</p>
+                <p className="mt-1">WhatsApp {TELEFONO_FORMATEADO}</p>
                 <p className="mt-1">{HORARIO}</p>
               </div>
             </div>
-            <ul className="space-y-1">
+            <ul className="space-y-3">
               {OFICINAS.map((o) => (
-                <li key={o}>{o}</li>
+                <li key={o.nombre}>
+                  <b className="block text-[#0a1628]">{o.direccion}</b>
+                  {o.razonSocial} · RUC {o.ruc}
+                </li>
               ))}
             </ul>
-            <p className="flex items-start gap-4">
+            <nav aria-label="Información legal" className="flex flex-col">
               <Link href="/politicas" className="inline-flex min-h-[44px] items-center underline">
-                Políticas
+                Política de privacidad
+              </Link>
+              <Link href="/politicas" className="inline-flex min-h-[44px] items-center underline">
+                Términos y condiciones
+              </Link>
+              <Link href="/politicas" className="inline-flex min-h-[44px] items-center underline">
+                Libro de reclamaciones
               </Link>
               <Link href="/" className="inline-flex min-h-[44px] items-center underline">
                 citylandtravel.com
               </Link>
-            </p>
+            </nav>
           </div>
         </footer>
 

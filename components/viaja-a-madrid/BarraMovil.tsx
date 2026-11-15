@@ -1,17 +1,34 @@
-import BotonCotizar from "@/components/viaja-a-madrid/BotonCotizar";
+"use client";
+
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import { useCtaVisible } from "@/components/viaja-a-madrid/CtaVisible";
+import { useEnlaceWhatsApp } from "@/components/viaja-a-madrid/CotizadorContexto";
+import { evento } from "@/lib/analitica-landing";
 import { PRECIO_ANTICIPADO } from "@/lib/viaja-a-madrid";
 
-// Barra fija solo en celular: el precio y el botón siempre a la vista, sin recorrer la página.
+// Barra fija solo en celular, discreta y con una sola acción. Respeta el área segura del teléfono y se esconde cuando
+// el botón principal del cotizador o del cierre ya está a la vista, para no poner dos botones verdes juntos.
 export default function BarraMovil() {
+  const href = useEnlaceWhatsApp("Barra móvil");
+  const ocultar = useCtaVisible();
   return (
-    <div className="fixed inset-x-0 bottom-0 z-30 border-t border-slate-200 bg-white/95 p-3 pb-[max(12px,env(safe-area-inset-bottom))] backdrop-blur md:hidden">
-      <div className="mx-auto flex max-w-md items-center gap-3">
-        <p className="shrink-0 text-xs font-semibold leading-tight text-slate-500">
-          Desde
-          <strong className="block text-2xl font-extrabold tracking-tight text-[#0a1628]">US$ {PRECIO_ANTICIPADO}</strong>
-        </p>
-        <BotonCotizar zona="Barra móvil" texto="Cotizar por WhatsApp" compacto className="min-h-[50px] flex-1" />
-      </div>
+    <div
+      aria-hidden={ocultar || undefined}
+      className={`fixed inset-x-0 bottom-0 z-30 border-t border-slate-200 bg-white/95 px-4 pt-2.5 pb-[max(10px,env(safe-area-inset-bottom))] backdrop-blur transition-transform duration-300 md:hidden ${
+        ocultar ? "translate-y-full" : "translate-y-0"
+      }`}
+    >
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        tabIndex={ocultar ? -1 : undefined}
+        onClick={() => evento("whatsapp_click", { zona: "Barra móvil" })}
+        className="mx-auto flex min-h-[48px] max-w-md items-center justify-center gap-2.5 rounded-xl bg-[#16a34a] px-4 text-[15px] font-bold text-white active:scale-[0.98]"
+      >
+        <WhatsAppIcon size={20} />
+        Cotizar Madrid desde US$ {PRECIO_ANTICIPADO}
+      </a>
     </div>
   );
 }
