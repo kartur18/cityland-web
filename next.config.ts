@@ -77,6 +77,8 @@ const nextConfig: NextConfig = {
       // Enlace corto de reseñas de Google: temporal (307) porque el destino puede cambiar (4-nov-2026).
       { source: "/resena", destination: "https://g.page/r/CcqRzpILI2GLEBM/review", permanent: false },
       { source: "/resenas", destination: "https://g.page/r/CcqRzpILI2GLEBM/review", permanent: false },
+      // Enlace corto para publicaciones en grupos de Facebook: lleva el código de medición sin mostrarlo (15-nov-2026).
+      { source: "/madrid-999", destination: "/viaja-a-madrid?utm_source=grupos_fb&utm_medium=grupo&utm_campaign=madrid-999", permanent: false },
       // /madrid y /espana vendían el mismo paquete y competían en Google: queda una sola página fuerte (24-oct-2026).
       { source: "/madrid", destination: "/espana", permanent: true },
       // Páginas que Google conocía (con apariciones o clics) y ya no existen: van a la más parecida (24-oct-2026).
