@@ -32,8 +32,9 @@ export const metadata: Metadata = {
     description: DESCRIPCION,
     siteName: EMPRESA_NOMBRE,
     locale: "es_PE",
-    images: ["https://citylandtravel.com/images/espana/puerta-de-alcala.jpg"],
+    images: [{ url: "https://citylandtravel.com/images/espana/madrid-999-compartir.jpg", width: 1200, height: 630, alt: "Lima – Madrid ida y vuelta desde US$ 999" }],
   },
+  twitter: { card: "summary_large_image", title: TITULO, description: DESCRIPCION, images: ["https://citylandtravel.com/images/espana/madrid-999-compartir.jpg"] },
 };
 
 const PREGUNTAS: { q: string; a: string; guia?: boolean }[] = [
