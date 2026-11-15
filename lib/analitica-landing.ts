@@ -46,6 +46,15 @@ function procedencia(): Parametros {
   return salida;
 }
 
+let vistaRegistrada = false;
+
+// `landing_view` se manda una sola vez por carga, aunque React monte el componente dos veces en desarrollo.
+export function registrarVista(): void {
+  if (vistaRegistrada) return;
+  vistaRegistrada = true;
+  evento("landing_view");
+}
+
 export function evento(nombre: string, datos: Parametros = {}): void {
   if (typeof window === "undefined" || typeof window.gtag !== "function") return;
   window.gtag("event", nombre, { landing_page: "/viaja-a-madrid", producto: "lima_madrid_999", ...procedencia(), ...datos });

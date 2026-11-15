@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { EMPRESA_NOMBRE, OFICINAS, TELEFONO_FORMATEADO } from "@/components/constantes";
@@ -9,13 +9,16 @@ import BurbujaWhatsApp from "@/components/viaja-a-madrid/BurbujaWhatsApp";
 import { CotizadorProvider } from "@/components/viaja-a-madrid/CotizadorContexto";
 import MedicionLanding from "@/components/viaja-a-madrid/MedicionLanding";
 import { CONTENEDOR, Confianza, Encabezado, Meses, Pasos, Planifica, Requisitos } from "@/components/viaja-a-madrid/Secciones";
-import { HORARIO, PRECIO_ANTICIPADO, URL_LANDING } from "@/lib/viaja-a-madrid";
+import { HORARIO, PRECIO_ANTICIPADO, URL_FUENTE_REQUISITOS, URL_LANDING } from "@/lib/viaja-a-madrid";
 import e from "./viaja.module.css";
 
 // Landing para anuncios de pago: sin indexar (no debe competir con /vuelos/lima-madrid ni con las páginas de España) y
 // fuera de los sitemaps. Los anuncios la abren igual: noindex no impide que la plataforma la revise.
 const TITULO = "Vuelos Lima a Madrid Ida y Vuelta desde US$999 | Cityland Travel";
 const DESCRIPCION = "Cotiza boletos Lima–Madrid ida y vuelta desde US$999 para viajar en abril, mayo o junio de 2027. Atención personalizada en Cityland Travel.";
+
+// viewport-fit=cover solo en esta ruta: así la barra inferior respeta el área segura del iPhone sin tocar otras páginas.
+export const viewport: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover" };
 
 export const metadata: Metadata = {
   title: TITULO,
@@ -42,7 +45,7 @@ const PREGUNTAS: { q: string; a: string; guia?: boolean }[] = [
   { q: "¿Cómo puedo reservar y pagar?", a: "Cotizas por WhatsApp, eliges tu opción y un asesor te indica cómo reservar y las formas de pago disponibles. Verás el precio final antes de pagar." },
   {
     q: "¿Qué documentos necesito para viajar a España?",
-    a: "Los peruanos pueden viajar a España como turistas, sin visa, hasta 90 días con pasaporte vigente. En migración pueden pedirte pasaje de retorno, alojamiento, seguro y dinero para tu estadía. Los requisitos pueden cambiar, por eso te recomendamos revisar la guía actualizada o consultarnos.",
+    a: "Si cumples las condiciones aplicables, puedes hacer visitas de hasta 90 días dentro de cualquier período de 180 días sin visa, con un pasaporte válido hasta 3 meses después de tu salida del espacio Schengen y expedido en los últimos 10 años. En la frontera pueden pedirte documentos sobre el motivo de tu viaje, tu alojamiento, tu salida prevista y tus medios económicos. Los requisitos pueden cambiar y cumplirlos no garantiza la entrada.",
     guia: true,
   },
   { q: "¿Dónde están las oficinas de Cityland Travel?", a: `${OFICINAS.map((o) => o.direccion).join(" y ")}. Atendemos de ${HORARIO.charAt(0).toLowerCase()}${HORARIO.slice(1)}.` },
@@ -72,17 +75,17 @@ export default function ViajaAMadridPage() {
         <header className="sticky top-0 z-40 border-b border-slate-200 bg-white">
           <div className={`${CONTENEDOR} flex h-[64px] items-center justify-between gap-4 md:h-[76px]`}>
             <Link href="/" aria-label="Cityland Travel, inicio" className="block shrink-0">
-              <Image src="/logo-transparent.png" alt="Cityland Travel, agencia de viajes" width={100} height={58} priority className="h-[46px] w-auto md:h-[58px]" />
+              <Image src="/logo-transparent.png" alt="Cityland Travel, agencia de viajes" width={100} height={58} priority className="h-[46px] w-[79px] md:h-[58px] md:w-[100px]" />
             </Link>
             <nav aria-label="Secciones" className="hidden gap-7 text-[14.5px] font-semibold md:flex">
               {NAV.map((n) => (
-                <a key={n.href} href={n.href} className="border-b-2 border-transparent py-1.5 transition-colors hover:border-[#2563eb]">
+                <a key={n.href} href={n.href} className="inline-flex min-h-[44px] items-center border-b-2 border-transparent transition-colors hover:border-[#2563eb]">
                   {n.t}
                 </a>
               ))}
             </nav>
             <div className="hidden md:block">
-              <BotonCotizar zona="Encabezado" texto="WhatsApp" compacto />
+              <BotonCotizar zona="Encabezado" compacto />
             </div>
           </div>
         </header>
@@ -111,12 +114,7 @@ export default function ViajaAMadridPage() {
                 Elige tu mes de viaje y consulta las opciones disponibles con nuestros asesores.
               </p>
               <div className={`${e.entrada} mt-5 flex flex-wrap items-center gap-x-6 gap-y-2`} style={retraso("0.28s")}>
-                <a
-                  href="#cotiza"
-                  className="inline-flex min-h-[48px] items-center justify-center rounded-xl bg-[#0a1628] px-7 text-[15px] font-bold text-white transition-colors hover:bg-[#13294b] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0a1628]"
-                >
-                  Cotizar mi viaje
-                </a>
+                <BotonCotizar zona="Portada" variante="oscuro" principal className="min-h-[48px] text-[15px]" />
                 <a href="#meses" className="inline-flex min-h-[44px] items-center text-sm font-bold text-[#0a1628] underline underline-offset-4">
                   Ver meses disponibles
                 </a>
@@ -161,9 +159,9 @@ export default function ViajaAMadridPage() {
                     {p.guia && (
                       <>
                         {" "}
-                        <Link href="/viajes/requisitos-viajar-a-espana-desde-peru" className="font-bold text-[#0a1628] underline">
-                          Ver requisitos actualizados
-                        </Link>
+                        <a href={URL_FUENTE_REQUISITOS} target="_blank" rel="noopener noreferrer" className="font-bold text-[#0a1628] underline">
+                          Ver la fuente oficial
+                        </a>
                         .
                       </>
                     )}
@@ -183,16 +181,16 @@ export default function ViajaAMadridPage() {
               <p className="mt-2 text-base font-medium text-white/90">Cotiza tu boleto de ida y vuelta desde US$ {PRECIO_ANTICIPADO} y recibe atención personalizada de Cityland Travel.</p>
             </div>
             <div className="flex flex-col gap-2 md:items-end">
-              <BotonCotizar zona="Cierre" texto="Quiero cotizar mi viaje" claro principal className="w-full md:w-auto" />
+              <BotonCotizar zona="Cierre" variante="claro" principal className="w-full md:w-auto" />
               <p className="text-xs text-white/80 md:max-w-[22rem] md:text-right">Tarifa desde US$ {PRECIO_ANTICIPADO} por persona, sujeta a disponibilidad y condiciones al momento de cotizar.</p>
             </div>
           </div>
         </section>
 
-        <footer id="oficinas" className="scroll-mt-20 bg-[#f4f7fb] py-10 text-sm text-slate-500">
+        <footer id="oficinas" data-cta-wa="" className="scroll-mt-20 bg-[#f4f7fb] py-10 text-sm text-slate-600">
           <div className={`${CONTENEDOR} grid gap-8 md:grid-cols-[1.1fr_1.4fr_auto]`}>
             <div className="flex items-start gap-4">
-              <Image src="/logo-transparent.png" alt="Cityland Travel" width={110} height={64} loading="lazy" className="h-16 w-auto" />
+              <Image src="/logo-transparent.png" alt="Cityland Travel" width={110} height={64} loading="lazy" className="h-16 w-[110px]" />
               <div>
                 <p className="font-bold text-[#0a1628]">Cityland Travel — Agencia de viajes</p>
                 <p className="mt-1">WhatsApp {TELEFONO_FORMATEADO}</p>

@@ -20,9 +20,12 @@ export const MAX_MENORES = 6;
 // y no se inventan clientes. Para sumar una: guardar la foto en /public/images/clientes/ y agregar { src, alt } aquí.
 export const FOTOS_CLIENTES: readonly { src: string; alt: string }[] = [];
 
+// Fuente oficial de los requisitos de entrada (Ministerio del Interior de España).
+export const URL_FUENTE_REQUISITOS = "https://www.interior.gob.es/opencms/es/servicios-al-ciudadano/tramites-y-gestiones/extranjeria/control-de-fronteras/entrada-en-espana/";
+
 export const HORARIO = "Lunes a sábado, de 9:00 a. m. a 7:00 p. m.";
 
-const PROMO = "Estoy interesado en la promoción Lima–Madrid ida y vuelta desde US$ 999";
+const PROMO = "Quiero cotizar la promoción Lima–Madrid ida y vuelta desde US$ 999";
 
 // «Mayo 2027» → «Mayo de 2027».
 export function mesTexto(mes: string): string {
@@ -62,7 +65,7 @@ export interface DatosCotizacion {
   menores: number;
 }
 
-const PREGUNTA_FINAL = "¿Podrían enviarme las opciones disponibles y las condiciones de la tarifa?";
+const PREGUNTA_FINAL = "¿Me pueden indicar las opciones disponibles?";
 
 // Mensaje sin datos elegidos: la promoción y la pregunta, nada más.
 export const MENSAJE_GENERAL = `Hola, Cityland Travel. ${PROMO}.\n${PREGUNTA_FINAL}`;
@@ -70,11 +73,11 @@ export const MENSAJE_GENERAL = `Hola, Cityland Travel. ${PROMO}.\n${PREGUNTA_FIN
 // Mensaje con lo que eligió la persona. Solo entran los datos que existen: nunca se mandan campos vacíos.
 export function mensajeCotizacion(d: DatosCotizacion): string {
   const lineas = [`Hola, Cityland Travel. ${PROMO}.`];
-  if (d.mes) lineas.push(`Mes de viaje: ${mesTexto(d.mes)}.`);
+  if (d.mes) lineas.push(`Mes seleccionado: ${mesTexto(d.mes)}.`);
   const adultos = `${d.adultos} adulto${d.adultos === 1 ? "" : "s"}`;
   lineas.push(`Pasajeros: ${adultos}${d.menores > 0 ? ` y ${d.menores} menor${d.menores === 1 ? "" : "es"}` : ""}.`);
-  if (d.salida) lineas.push(`Fecha aproximada de salida: ${fechaCorta(d.salida)}.`);
-  if (d.retorno) lineas.push(`Fecha aproximada de retorno: ${fechaCorta(d.retorno)}.`);
+  if (d.salida) lineas.push(`Fecha de salida: ${fechaCorta(d.salida)}.`);
+  if (d.retorno) lineas.push(`Fecha de retorno: ${fechaCorta(d.retorno)}.`);
   lineas.push(PREGUNTA_FINAL);
   return lineas.join("\n");
 }

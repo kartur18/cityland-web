@@ -1,9 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 import { OFICINAS } from "@/components/constantes";
+import BotonCotizar from "@/components/viaja-a-madrid/BotonCotizar";
 import GuiaMeses from "@/components/viaja-a-madrid/GuiaMeses";
 import Icono, { type NombreIcono } from "@/components/viaja-a-madrid/Iconos";
-import { FOTOS_CLIENTES, HORARIO, PRECIO_ANTICIPADO } from "@/lib/viaja-a-madrid";
+import { FOTOS_CLIENTES, HORARIO, PRECIO_ANTICIPADO, URL_FUENTE_REQUISITOS } from "@/lib/viaja-a-madrid";
 import estilos from "@/app/viaja-a-madrid/viaja.module.css";
 
 export const CONTENEDOR = "mx-auto w-full max-w-6xl px-5";
@@ -43,12 +43,7 @@ export function Planifica() {
           <h2 className="text-balance text-2xl font-extrabold leading-[1.1] tracking-tight text-[#0a1628] sm:text-[30px]">Planifica hoy tu viaje a Madrid para 2027</h2>
           <p className="mt-2 text-base text-slate-600">Consulta nuestras opciones de ida y vuelta desde US$ {PRECIO_ANTICIPADO} y recibe orientación para elegir tus fechas de viaje.</p>
         </div>
-        <a
-          href="#cotiza"
-          className="inline-flex min-h-[48px] shrink-0 items-center justify-center self-start rounded-xl border-[1.5px] border-[#0a1628] bg-white px-6 text-[15px] font-bold text-[#0a1628] shadow-[0_10px_20px_-14px_rgba(10,22,40,0.5)] transition-all hover:-translate-y-0.5 hover:bg-[#0a1628] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0a1628]"
-        >
-          Consultar disponibilidad
-        </a>
+        <BotonCotizar zona="Intermedia" variante="borde" className="shrink-0 self-start" />
       </div>
     </section>
   );
@@ -138,21 +133,22 @@ export function Pasos() {
   );
 }
 
-// Resumen de la guía de requisitos del propio sitio (misma base que /viajes/requisitos-viajar-a-espana-desde-peru). Pueden cambiar.
+// Resumen de la página oficial del Ministerio del Interior de España (Entrada en España) y del Reglamento (UE) 2016/399. Verificado el 15-nov-2026.
+// No se publican cifras de medios económicos de 2026 como si valieran para 2027: se remite al importe oficial vigente al viajar.
 const REQUISITOS = [
-  { t: "Sin visa hasta 90 días", d: "Los peruanos entran a España como turistas con pasaporte." },
-  { t: "Pasaporte vigente", d: "Con al menos 3 meses de vigencia después de tu retorno." },
-  { t: "Pasaje de ida y vuelta", d: "El regreso debe estar dentro de los 90 días." },
-  { t: "Seguro de viaje", d: "Seguro Schengen con cobertura de 30.000 €." },
-  { t: "Alojamiento", d: "Reserva de hotel, o carta de invitación si te quedas con familiares." },
-  { t: "Dinero para tu estadía", d: "Unos 122 € por día, con un mínimo de 1.098,90 € por persona." },
+  { t: "Estancia sin visa", d: "Hasta 90 días dentro de cualquier período de 180 días en el espacio Schengen, si cumples las condiciones aplicables." },
+  { t: "Pasaporte", d: "Válido hasta 3 meses después de tu fecha prevista de salida del espacio Schengen y expedido en los últimos 10 años." },
+  { t: "Pasaje de retorno", d: "Pueden pedirte documentos que justifiquen el motivo de tu viaje y tu salida o regreso previstos." },
+  { t: "Seguro de viaje", d: "Recomendado, pero no es un requisito general de entrada para quienes viajan sin visa." },
+  { t: "Alojamiento", d: "Pueden pedirte un documento que justifique dónde te hospedarás: reserva de hotel o carta de invitación de un particular." },
+  { t: "Medios económicos", d: "Pueden pedirte que acredites fondos para tu estancia. Se calculan sobre el salario mínimo de España y cambian cada año: consulta el importe oficial vigente al momento de tu viaje." },
 ];
 
 export function Requisitos() {
   return (
     <section id="requisitos" className="scroll-mt-20 bg-[#e3f6f3] py-12 sm:py-16">
       <div className={CONTENEDOR}>
-        <Encabezado etiqueta="Antes de viajar" titulo="Qué pide España a los peruanos" texto="Resumen de lo que te pueden pedir en migración. Los requisitos pueden cambiar: al cotizar te confirmamos la lista vigente." />
+        <Encabezado etiqueta="Antes de viajar" titulo="Qué pide España a los peruanos" texto="Resumen según el Ministerio del Interior de España. Los requisitos pueden cambiar y cumplirlos no garantiza la entrada: la decisión final es de la autoridad de frontera." />
         <ul className="mt-6 grid gap-3 sm:grid-cols-2">
           {REQUISITOS.map((r) => (
             <li key={r.t} className="flex gap-3 rounded-xl bg-white p-4 shadow-[0_14px_24px_-20px_rgba(10,22,40,0.5)]">
@@ -166,9 +162,9 @@ export function Requisitos() {
             </li>
           ))}
         </ul>
-        <Link href="/viajes/requisitos-viajar-a-espana-desde-peru" className="mt-5 inline-flex min-h-[44px] items-center text-sm font-bold text-[#0a1628] underline underline-offset-4">
-          Ver la guía completa de requisitos
-        </Link>
+        <a href={URL_FUENTE_REQUISITOS} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex min-h-[44px] items-center text-sm font-bold text-[#0a1628] underline underline-offset-4">
+          Ver la fuente oficial: Ministerio del Interior de España
+        </a>
       </div>
     </section>
   );
