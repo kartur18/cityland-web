@@ -75,8 +75,8 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       // Enlace corto de reseñas de Google: temporal (307) porque el destino puede cambiar (4-nov-2026).
-      { source: "/resena", destination: "https://g.page/r/CcqRzpILI2GLEBM/review", permanent: false },
-      { source: "/resenas", destination: "https://g.page/r/CcqRzpILI2GLEBM/review", permanent: false },
+      // /resena la atiende app/resena/route.ts (cuenta el clic y redirige); /resenas va a ella.
+      { source: "/resenas", destination: "/resena", permanent: false },
       // Enlace corto para publicaciones en grupos de Facebook: lleva el código de medición sin mostrarlo (15-nov-2026).
       { source: "/madrid-999", destination: "/viaja-a-madrid?utm_source=grupos_fb&utm_medium=grupo&utm_campaign=madrid-999", permanent: false },
       // /madrid y /espana vendían el mismo paquete y competían en Google: queda una sola página fuerte (24-oct-2026).
