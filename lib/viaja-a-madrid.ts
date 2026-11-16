@@ -47,6 +47,8 @@ export function fuenteDeUrl(search: string): string | null {
   let nombre: string | null = null;
   if (/chatgpt|openai/.test(fuente)) nombre = "ChatGPT Ads";
   else if (p.get("gclid") || (/google/.test(fuente) && /cpc|ppc|paid/.test((p.get("utm_medium") || "").toLowerCase()))) nombre = "Google Ads";
+  // Facebook agrega fbclid a todo enlace tocado en sus publicaciones: sin esta línea, el tráfico gratis de los grupos saldría como «Meta Ads».
+  else if (/^grupos?[_-]?(fb|facebook)$/.test(fuente)) nombre = "Grupos de Facebook";
   else if (p.get("fbclid") || /facebook|instagram|meta|^ig$/.test(fuente)) nombre = "Meta Ads";
   else if (fuente) nombre = `Campaña ${fuente.slice(0, 20)}`;
   return nombre ? (campana ? `${nombre} · ${campana}` : nombre) : null;
