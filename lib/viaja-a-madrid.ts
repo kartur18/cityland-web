@@ -40,6 +40,9 @@ export function fechaCorta(iso: string): string {
 }
 
 // Procedencia del clic para el CRM: «Ref Web: citylandtravel.com/viaja-a-madrid [ChatGPT Ads · campaña]».
+// ID público del píxel de ChatGPT Ads (fuente de datos «Landing Madrid 999» en Ads Manager). No es un secreto.
+export const PIXEL_CHATGPT_ID = "QaNptHnonUaTBU87QUkc8c";
+
 export function fuenteDeUrl(search: string): string | null {
   const p = new URLSearchParams(search);
   const fuente = (p.get("utm_source") || "").toLowerCase();

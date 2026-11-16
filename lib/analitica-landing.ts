@@ -9,6 +9,17 @@ type Parametros = Record<string, string | number | boolean | undefined>;
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
+    oaiq?: (...args: unknown[]) => void;
+  }
+}
+
+// Píxel de ChatGPT Ads: página vista y clic de WhatsApp (evento propio; un clic NO es un lead ni una venta).
+function medirChatGPT(nombre: string): void {
+  if (typeof window === "undefined" || typeof window.oaiq !== "function") return;
+  if (nombre === "landing_view") {
+    window.oaiq("measure", "page_viewed", { type: "contents", contents: [{ id: "viaja-a-madrid", name: "Landing Lima-Madrid desde US$ 999", content_type: "page" }] });
+  } else if (nombre === "whatsapp_click") {
+    window.oaiq("measure", "custom", { type: "custom" }, { custom_event_name: "whatsapp_click" });
   }
 }
 
@@ -56,6 +67,8 @@ export function registrarVista(): void {
 }
 
 export function evento(nombre: string, datos: Parametros = {}): void {
-  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+  if (typeof window === "undefined") return;
+  medirChatGPT(nombre);
+  if (typeof window.gtag !== "function") return;
   window.gtag("event", nombre, { landing_page: "/viaja-a-madrid", producto: "lima_madrid_999", ...procedencia(), ...datos });
 }

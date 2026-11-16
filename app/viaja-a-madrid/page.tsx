@@ -8,6 +8,7 @@ import Buscador from "@/components/viaja-a-madrid/Buscador";
 import BurbujaWhatsApp from "@/components/viaja-a-madrid/BurbujaWhatsApp";
 import { CotizadorProvider } from "@/components/viaja-a-madrid/CotizadorContexto";
 import MedicionLanding from "@/components/viaja-a-madrid/MedicionLanding";
+import PixelChatGPT from "@/components/viaja-a-madrid/PixelChatGPT";
 import { CONTENEDOR, Confianza, Encabezado, Meses, Pasos, Planifica, Requisitos } from "@/components/viaja-a-madrid/Secciones";
 import { HORARIO, PRECIO_ANTICIPADO, URL_FUENTE_REQUISITOS, URL_LANDING } from "@/lib/viaja-a-madrid";
 import e from "./viaja.module.css";
@@ -65,6 +66,7 @@ export default function ViajaAMadridPage() {
   return (
     <CotizadorProvider>
       <MedicionLanding />
+      <PixelChatGPT />
       <main className="bg-white pb-24 text-[#0a1628] md:pb-0">
         <div className="bg-[#0a1628] px-4 py-2 text-xs font-semibold text-white">
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-3">
