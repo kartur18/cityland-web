@@ -18,6 +18,7 @@ import { paisesConPaquetes, paquetesTuristicos } from "@/lib/paquetes-turisticos
 import { destinosConTours, todosLosTours } from "@/lib/tours-turbo";
 import { destinosConHoteles, todosLosHoteles } from "@/lib/hoteles-turbo";
 import { destinosConTraslados } from "@/lib/traslados-turbo";
+import FECHAS_SITEMAP from "@/lib/fechas-sitemap.json";
 import { LANDINGS_ESPANA, rutaLandingEspana } from "@/lib/landings-espana";
 import { LANDINGS_CUSCO, rutaLandingCusco } from "@/lib/landings-cusco-practico";
 import { PRUEBA_REAPERTURA } from "@/lib/prueba-reapertura";
@@ -30,6 +31,7 @@ import { LANDINGS_PRACTICO } from "@/lib/landings-espana-practico";
 import { LANDINGS_RUTAS_BARCELONA, LANDINGS_RUTAS_PERU } from "@/lib/landings-espana-rutas";
 
 // Fuente única de URLs indexables: cada URL vive en un solo sitemap hijo.
+// Respaldo si a un sitemap nuevo todavía le falta su fecha en lib/fechas-sitemap.json.
 export const FECHA_SITEMAP = "2026-10-19T15:00:00.000Z";
 
 export const IDS_SITEMAP = [
@@ -252,16 +254,26 @@ export function urlSitemap(id: IdSitemap): string {
   return abs(`/sitemap-${id}.xml`);
 }
 
-export function xmlUrlset(urls: string[]): string {
+/**
+ * El <lastmod> real de cada sitemap: la fecha del último commit que tocó los archivos que generan sus URLs
+ * (lib/fechas-sitemap.json, lo calcula `node scripts/fechas-sitemap.mjs`). Antes era una constante fija en los 18: Google ignora un lastmod
+ * que nunca cambia. Correr el script al publicar contenido nuevo.
+ */
+export function fechaSitemap(id: IdSitemap): string {
+  return (FECHAS_SITEMAP as Record<string, string | undefined>)[id] ?? FECHA_SITEMAP;
+}
+
+export function xmlUrlset(urls: string[], id: IdSitemap): string {
+  const lastmod = fechaSitemap(id);
   const cuerpo = urls
-    .map((u) => `  <url>\n    <loc>${u}</loc>\n    <lastmod>${FECHA_SITEMAP}</lastmod>\n  </url>`)
+    .map((u) => `  <url>\n    <loc>${u}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`)
     .join("\n");
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${cuerpo}\n</urlset>`;
 }
 
 export function xmlIndice(): string {
   const cuerpo = IDS_SITEMAP.map(
-    (id) => `  <sitemap>\n    <loc>${urlSitemap(id)}</loc>\n    <lastmod>${FECHA_SITEMAP}</lastmod>\n  </sitemap>`
+    (id) => `  <sitemap>\n    <loc>${urlSitemap(id)}</loc>\n    <lastmod>${fechaSitemap(id)}</lastmod>\n  </sitemap>`
   ).join("\n");
   return `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${cuerpo}\n</sitemapindex>`;
 }
