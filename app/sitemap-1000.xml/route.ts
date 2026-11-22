@@ -3,5 +3,5 @@ import { respuestaXml, urlsDeSitemap, xmlUrlset } from "@/lib/sitemap-urls";
 export const revalidate = 86400;
 
 export function GET() {
-  return respuestaXml(xmlUrlset(urlsDeSitemap("1000")));
+  return respuestaXml(xmlUrlset(urlsDeSitemap("1000"), "1000"));
 }
