@@ -70,7 +70,7 @@ const GRUPOS: Record<IdSitemap, () => string[]> = {
   ofertas: () => [
     "/ofertas",
     ...TODOS_LOS_RESUMENES_OFERTAS_SEO.map((o) => `/ofertas/${o.slug}`),
-    "/ofertas/cyber-wow",
+    "/ofertas/black-friday",
     ...OFERTAS_CYBER_WOW.map(rutaOfertaCyberWow),
   ],
   vuelos: () => ["/vuelos", ...RUTAS_VUELOS_SEO.map((r) => `/vuelos/${r.slug}`)],

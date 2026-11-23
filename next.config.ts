@@ -77,6 +77,9 @@ const nextConfig: NextConfig = {
       // Enlace corto de reseñas de Google: temporal (307) porque el destino puede cambiar (4-nov-2026).
       // /resena la atiende app/resena/route.ts (cuenta el clic y redirige); /resenas va a ella.
       { source: "/resenas", destination: "/resena", permanent: false },
+      // La campaña Cyber Wow pasó a llamarse Black Friday (23-nov-2026); temporal porque el nombre cambia con la fecha.
+      { source: "/ofertas/cyber-wow", destination: "/ofertas/black-friday", permanent: false },
+      { source: "/ofertas/cyber-wow/:slug", destination: "/ofertas/black-friday/:slug", permanent: false },
       // Enlace corto para publicaciones en grupos de Facebook: lleva el código de medición sin mostrarlo (15-nov-2026).
       { source: "/madrid-999", destination: "/viaja-a-madrid?utm_source=grupos_fb&utm_medium=grupo&utm_campaign=madrid-999", permanent: false },
       // /madrid y /espana vendían el mismo paquete y competían en Google: queda una sola página fuerte (24-oct-2026).

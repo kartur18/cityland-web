@@ -1,6 +1,7 @@
 import { obtenerGaleriaPorTexto } from "@/lib/imagenes-destinos";
 
-// Ofertas "Cyber Wow" confirmadas por gerencia (3-nov-2026), con el precio exacto de cada banner ya aprobado
+// Campaña que nació como "Cyber Wow" y desde el 23-nov-2026 se muestra como "Black Friday" (los nombres internos conservan CyberWow).
+// Ofertas confirmadas por gerencia (3-nov-2026), con el precio exacto de cada banner ya aprobado
 // para redes. Acá se usa el mismo precio, tal cual, en la página web de cada destino. Precio con "$" simple
 // (no "US$") y con "Desde" adelante, por pedido directo de gerencia para esta campaña puntual.
 export interface OfertaCyberWow {
@@ -103,7 +104,7 @@ export function buscarOfertaCyberWow(slug: string): OfertaCyberWow | undefined {
   return OFERTAS_CYBER_WOW.find((o) => o.slug === slug);
 }
 
-export const rutaOfertaCyberWow = (o: OfertaCyberWow) => `/ofertas/cyber-wow/${o.slug}`;
+export const rutaOfertaCyberWow = (o: OfertaCyberWow) => `/ofertas/black-friday/${o.slug}`;
 
 // Precio con "$" simple (no "US$") y sin decimales: pedido puntual de gerencia para esta campaña.
 export const dolarCyberWow = (n: number) => `$${n.toLocaleString("en-US")}`;

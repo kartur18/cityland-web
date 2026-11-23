@@ -13,18 +13,18 @@ import { safeJsonLd } from "@/lib/seguridad-http";
 
 export const revalidate = 86400;
 
-const RUTA = "/ofertas/cyber-wow";
+const RUTA = "/ofertas/black-friday";
 
 export const metadata: Metadata = {
-  title: optimizarMetaTitleSEO("Ofertas Cyber Wow: paquetes desde Lima con cupos limitados | Cityland"),
+  title: optimizarMetaTitleSEO("Ofertas Black Friday: paquetes desde Lima con cupos limitados | Cityland"),
   description: optimizarMetaDescriptionSEO(
-    "Ofertas Cyber Wow a Río de Janeiro, Medellín, Ciudad de Panamá, Punta Cana y Cartagena de Indias, con vuelo, hotel y traslados. Cupos limitados, reserva hoy."
+    "Ofertas Black Friday a Río de Janeiro, Medellín, Ciudad de Panamá, Punta Cana y Cartagena de Indias, con vuelo, hotel y traslados. Cupos limitados, reserva hoy."
   ),
   alternates: { canonical: `${URL_BASE_SEO}${RUTA}` },
   openGraph: {
     type: "website",
     url: `${URL_BASE_SEO}${RUTA}`,
-    title: "Ofertas Cyber Wow desde Lima",
+    title: "Ofertas Black Friday desde Lima",
     siteName: "Cityland Travel",
     locale: "es_PE",
     images: [{ url: OFERTAS_CYBER_WOW[0].foto, width: 1200, height: 630, alt: OFERTAS_CYBER_WOW[0].fotoAlt }],
@@ -40,16 +40,16 @@ export default function CyberWowPage() {
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Inicio", item: URL_BASE_SEO },
           { "@type": "ListItem", position: 2, name: "Ofertas", item: `${URL_BASE_SEO}/ofertas` },
-          { "@type": "ListItem", position: 3, name: "Cyber Wow", item: `${URL_BASE_SEO}${RUTA}` },
+          { "@type": "ListItem", position: 3, name: "Black Friday", item: `${URL_BASE_SEO}${RUTA}` },
         ],
       },
       {
         "@type": "ItemList",
-        name: "Ofertas Cyber Wow",
+        name: "Ofertas Black Friday",
         itemListElement: OFERTAS_CYBER_WOW.map((o, i) => ({
           "@type": "ListItem",
           position: i + 1,
-          name: `Cyber Wow ${o.destino}`,
+          name: `Black Friday ${o.destino}`,
           url: `${URL_BASE_SEO}${rutaOfertaCyberWow(o)}`,
         })),
       },
@@ -70,15 +70,15 @@ export default function CyberWowPage() {
             <Link href="/ofertas" className="hover:underline">
               Ofertas
             </Link>{" "}
-            / Cyber Wow
+            / Black Friday
           </nav>
 
           <header className="animate-fade-up space-y-4 max-w-3xl">
             <p className="shimmer-effect inline-flex items-center gap-2 rounded-full bg-red-600 px-5 py-2 text-base font-black uppercase tracking-wide text-white shadow-lg shadow-red-600/30">
-              🛒 Cyber Wow · Ofertas por tiempo limitado
+              🛒 Black Friday · Ofertas por tiempo limitado
             </p>
             <h1 className="text-4xl sm:text-5xl font-black tracking-tight text-white leading-[1.05] text-balance">
-              Viaja con precio <span className="text-amber-400">Cyber Wow</span>
+              Viaja con precio <span className="text-amber-400">Black Friday</span>
             </h1>
             <p className="text-lg text-slate-300">
               Vuelo, hotel y traslados a precio fijo, todo armado. <strong className="text-white">Cupos limitados</strong> — se acaban antes de que termine la promo.
@@ -89,8 +89,8 @@ export default function CyberWowPage() {
             {OFERTAS_CYBER_WOW.map((o, i) => {
               const wa = buildWaUrl({
                 categoria: "general",
-                mensajePersonalizado: `¡Hola Cityland Travel! Quiero reservar la oferta Cyber Wow a ${o.destino} desde ${dolarCyberWow(o.precio)}.`,
-                refWeb: `citylandtravel.com${rutaOfertaCyberWow(o)} [Cyber Wow · tarjeta]`,
+                mensajePersonalizado: `¡Hola Cityland Travel! Quiero reservar la oferta Black Friday a ${o.destino} desde ${dolarCyberWow(o.precio)}.`,
+                refWeb: `citylandtravel.com${rutaOfertaCyberWow(o)} [Black Friday · tarjeta]`,
               });
               return (
                 <li
@@ -109,7 +109,7 @@ export default function CyberWowPage() {
                       />
                       <span className="absolute inset-x-0 top-0 flex items-start justify-between p-3">
                         <span className="shimmer-effect rounded-full bg-red-600 px-3 py-1 text-xs font-extrabold uppercase text-white shadow">
-                          Cyber Wow
+                          Black Friday
                         </span>
                         <span className="rounded-full bg-black/60 px-3 py-1 text-[11px] font-bold uppercase text-white backdrop-blur-sm">
                           Cupos limitados

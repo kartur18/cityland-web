@@ -12,7 +12,7 @@ import { dolarCyberWow, OFERTAS_CYBER_WOW, rutaOfertaCyberWow, type OfertaCyberW
 import { URL_BASE_SEO, optimizarMetaDescriptionSEO, optimizarMetaTitleSEO } from "@/lib/seo-arquitectura";
 import { safeJsonLd } from "@/lib/seguridad-http";
 
-// Plantilla de las 5 (y las que sigan) páginas de la campaña Cyber Wow: una oferta por destino, con el precio
+// Plantilla de las 5 (y las que sigan) páginas de la campaña Black Friday: una oferta por destino, con el precio
 // exacto que gerencia ya aprobó para redes (3-nov-2026). Formato de precio especial para esta campaña: "$"
 // simple (no "US$") y siempre con "Desde" adelante — pedido puntual de gerencia, no es el formato del resto
 // del sitio (que sigue usando formatoUSD/"US$" en todas las demás páginas).
@@ -21,7 +21,7 @@ export function metadataOfertaCyberWow(o: OfertaCyberWow): Metadata {
   const url = `${URL_BASE_SEO}${rutaOfertaCyberWow(o)}`;
   const titulo = optimizarMetaTitleSEO(`${o.destino}: vuelo + hotel desde ${dolarCyberWow(o.precio)} | Cityland`);
   const descripcion = optimizarMetaDescriptionSEO(
-    `Oferta Cyber Wow a ${o.destino}, ${o.pais}: ${o.incluye.join(", ")}. Desde ${dolarCyberWow(o.precio)} por persona. Cupos limitados, reserva hoy por WhatsApp.`
+    `Oferta Black Friday a ${o.destino}, ${o.pais}: ${o.incluye.join(", ")}. Desde ${dolarCyberWow(o.precio)} por persona. Cupos limitados, reserva hoy por WhatsApp.`
   );
   return {
     title: titulo,
@@ -30,7 +30,7 @@ export function metadataOfertaCyberWow(o: OfertaCyberWow): Metadata {
       `paquete a ${o.destino.toLowerCase()} desde peru`,
       `vuelo y hotel a ${o.destino.toLowerCase()}`,
       `cuanto cuesta viajar a ${o.destino.toLowerCase()} desde lima`,
-      `oferta cyber wow ${o.destino.toLowerCase()}`,
+      `oferta black friday ${o.destino.toLowerCase()}`,
       `paquete turistico ${o.destino.toLowerCase()} 2026`,
     ],
     alternates: { canonical: url },
@@ -55,8 +55,8 @@ export function metadataOfertaCyberWow(o: OfertaCyberWow): Metadata {
 export default function OfertaCyberWowPagina({ o }: { o: OfertaCyberWow }) {
   const wa = buildWaUrl({
     categoria: "general",
-    mensajePersonalizado: `¡Hola Cityland Travel! Quiero reservar la oferta Cyber Wow a ${o.destino} desde ${dolarCyberWow(o.precio)}.`,
-    refWeb: `citylandtravel.com${rutaOfertaCyberWow(o)} [Cyber Wow]`,
+    mensajePersonalizado: `¡Hola Cityland Travel! Quiero reservar la oferta Black Friday a ${o.destino} desde ${dolarCyberWow(o.precio)}.`,
+    refWeb: `citylandtravel.com${rutaOfertaCyberWow(o)} [Black Friday]`,
   });
   const url = `${URL_BASE_SEO}${rutaOfertaCyberWow(o)}`;
   const otras = OFERTAS_CYBER_WOW.filter((x) => x.slug !== o.slug);
@@ -69,12 +69,12 @@ export default function OfertaCyberWowPagina({ o }: { o: OfertaCyberWow }) {
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Inicio", item: URL_BASE_SEO },
           { "@type": "ListItem", position: 2, name: "Ofertas", item: `${URL_BASE_SEO}/ofertas` },
-          { "@type": "ListItem", position: 3, name: `Cyber Wow ${o.destino}`, item: url },
+          { "@type": "ListItem", position: 3, name: `Black Friday ${o.destino}`, item: url },
         ],
       },
       {
         "@type": "TouristTrip",
-        name: `Cyber Wow ${o.destino} (${o.dias} días / ${o.noches} noches)`,
+        name: `Black Friday ${o.destino} (${o.dias} días / ${o.noches} noches)`,
         image: o.foto,
         description: o.incluye.join(", "),
         provider: { "@type": "TravelAgency", name: "Cityland Travel" },
@@ -96,7 +96,7 @@ export default function OfertaCyberWowPagina({ o }: { o: OfertaCyberWow }) {
           },
           {
             "@type": "Question",
-            name: `¿Qué incluye la oferta Cyber Wow a ${o.destino}?`,
+            name: `¿Qué incluye la oferta Black Friday a ${o.destino}?`,
             acceptedAnswer: { "@type": "Answer", text: o.incluye.join(", ") },
           },
         ],
@@ -125,7 +125,7 @@ export default function OfertaCyberWowPagina({ o }: { o: OfertaCyberWow }) {
             <div className="card-interactive animate-fade-up relative order-2 aspect-[4/5] overflow-hidden rounded-[2rem] shadow-xl sm:aspect-[4/3] lg:order-1">
               <Image src={o.foto} alt={o.fotoAlt} fill priority sizes="(min-width: 1024px) 600px, 100vw" className="object-cover" />
               <span className="shimmer-effect absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-red-600 px-4 py-1.5 text-sm font-extrabold uppercase text-white shadow">
-                🛒 Cyber Wow
+                🛒 Black Friday
               </span>
               <span className="absolute right-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-black/60 px-4 py-1.5 text-xs font-bold uppercase text-white backdrop-blur-sm">
                 ⏱ Cupos limitados
@@ -137,7 +137,7 @@ export default function OfertaCyberWowPagina({ o }: { o: OfertaCyberWow }) {
                 {o.pais} · {o.dias} días / {o.noches} noches
               </p>
               <h1 className="text-[32px] font-black leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl text-balance">
-                Cyber Wow <span className="text-amber-400">{o.destino}</span>
+                Black Friday <span className="text-amber-400">{o.destino}</span>
               </h1>
               <p className="text-lg text-slate-300">
                 {o.aerolinea ? `Con vuelo vía ${o.aerolinea}, todo listo para viajar sin complicarte.` : "Vuelo, hotel y traslados, todo listo para viajar sin complicarte."}
@@ -186,7 +186,7 @@ export default function OfertaCyberWowPagina({ o }: { o: OfertaCyberWow }) {
           <PorQueCityland destino={o.destino} />
 
           <section className="space-y-4">
-            <h2 className="text-2xl font-extrabold text-white">Otras ofertas Cyber Wow</h2>
+            <h2 className="text-2xl font-extrabold text-white">Otras ofertas Black Friday</h2>
             <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
               {otras.map((x) => (
                 <li key={x.slug}>
