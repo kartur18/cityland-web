@@ -239,12 +239,12 @@ export default function OfertasIndexPage() {
     <AirlineLandingTemplate config={CONFIG_OFERTAS}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-10">
         <Link
-          href="/ofertas/cyber-wow"
+          href="/ofertas/black-friday"
           className="flex flex-col items-start justify-between gap-4 rounded-3xl bg-gradient-to-r from-red-600 to-red-500 p-6 text-white shadow-lg transition-transform hover:scale-[1.01] sm:flex-row sm:items-center sm:p-8"
         >
           <div className="space-y-1.5">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-xs font-extrabold uppercase tracking-wider">
-              🛒 Cyber Wow
+              🛒 Black Friday
             </span>
             <h2 className="text-2xl font-black sm:text-3xl">Río, Medellín, Panamá, Punta Cana y Cartagena</h2>
             <p className="text-sm text-red-50 sm:text-base">Vuelo + hotel + traslados a precio fijo. Cupos limitados.</p>
