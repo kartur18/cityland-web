@@ -20,7 +20,8 @@ export default function CookieBar() {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 z-[9990] max-w-xs animate-in fade-in slide-in-from-bottom-4 duration-300">
+    // En celular sube sobre la barra fija de WhatsApp (≈72 px) para no taparla.
+    <div className="fixed bottom-[88px] left-3 right-3 z-[9990] animate-in fade-in slide-in-from-bottom-4 duration-300 md:bottom-4 md:left-4 md:right-auto md:max-w-xs">
       <div className="bg-slate-900/95 backdrop-blur-md text-slate-300 p-3.5 rounded-2xl shadow-2xl border border-slate-700/80 text-[11px] flex items-center justify-between gap-3">
         <span>
           Usamos cookies para mejorar tu experiencia en la web.

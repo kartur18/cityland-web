@@ -41,7 +41,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-6 max-w-xl">
-              Especialistas en <strong className="text-[#0a1628] font-bold">Paquetes Migratorios a Europa desde $799 USD (solo ida)</strong> (pasaje, retorno reservado, hotel, seguro 30.000€ y check-in) y vacaciones Todo Incluido al Caribe.{" "}
+              Especialistas en <strong className="text-[#0a1628] font-bold">Paquetes Migratorios a Europa desde $799 USD (solo ida)</strong> (pasaje, retorno reservado, hotel, seguro y check-in) y vacaciones Todo Incluido al Caribe.{" "}
               <strong className="text-emerald-700 font-bold">
                 Separa hoy con un adelanto.
               </strong>
@@ -135,7 +135,7 @@ export default function Hero() {
               <div className="p-5 bg-white space-y-3">
                 <div className="border-b border-slate-100 pb-2.5">
                   <span className="text-[11px] font-extrabold text-red-600 uppercase tracking-wider block">
-                    Pasaje + Retorno Reservado + Hotel + Seguro 30.000€
+                    Pasaje + Retorno Reservado + Hotel + Seguro
                   </span>
                   <h2 className="text-lg sm:text-xl font-extrabold text-[#0a1628] leading-tight mt-0.5">
                     Paquete Migratorio a Europa
